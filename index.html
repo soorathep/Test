@@ -142,7 +142,7 @@ tr:hover td{background:var(--paper-2)}
   border:1px solid var(--line);padding:3px 7px;border-radius:2px;color:var(--ink-soft);margin-right:5px}
 
 footer{border-top:1px solid var(--line);padding:40px 0 60px;font-size:.88rem;color:var(--ink-soft)}
-footer .fw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}
+footer .fw{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;font-weight:500}
 
 .note{background:var(--paper-2);border-left:2px solid var(--sodium);padding:14px 18px;font-size:.9rem;color:var(--ink-soft);margin-top:20px}
@@ -397,6 +397,26 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
           <div class="note">Operando XAS, grazing-incidence XAS, and XRD on cycling cells. Beamtime is the constraint that shapes the group's calendar; proposals are written year-round.</div>
         </div>
       </div>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Lab internal</div>
+        <h2>Booking and code</h2>
+      </div>
+      <div class="two">
+        <div class="callout">
+          <div class="mono">Instruments</div>
+          <h3>Book an instrument</h3>
+          <p>Every shared instrument is booked through one calendar: the eight potentiostats, XRD, Raman, UV-Vis, the furnaces, the oil baths, the coater, the microscope, and the glovebox. Check the calendar before you run. Long cycling tests are booked as a range, not a slot.</p>
+          <p style="margin-top:14px"><a href="https://app.notion.com/p/394f152b7fb34e648aeff7cb80700a88?v=a6559b76a08245a79f2064b7edbf845a">Open the booking calendar</a></p>
+        </div>
+        <div class="callout" style="background:var(--paper-2);color:var(--ink)">
+          <div class="mono" style="color:var(--prussian)">Code and analysis</div>
+          <h3 style="color:var(--ink)">Group repositories</h3>
+          <p style="color:var(--ink-soft)">Analysis scripts, fitting routines, and notebooks live under version control, not in personal drives. A figure in a paper should trace back to the commit that produced it.</p>
+          <p style="color:var(--ink-soft);margin-top:14px"><a href="https://github.com/SKH-group-Chulalongkorn-University">github.com/SKH-group-Chulalongkorn-University</a></p>
+        </div>
+      </div>
+      <div class="note">Both links require group access. Ask the PI to be added.</div>
     </section>
   </div>
 </div>
@@ -627,6 +647,10 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
     <div>
       <h4>Profiles</h4>
       <p><a href="https://orcid.org/0000-0002-3129-2750">ORCID</a> · <a href="https://www.scopus.com/authid/detail.uri?authorId=55897360400">Scopus</a> · <a href="https://scholar.google.com/citations?user=k_UpAnkAAAAJ">Google Scholar</a></p>
+    </div>
+    <div>
+      <h4>Lab internal</h4>
+      <p><a href="https://app.notion.com/p/394f152b7fb34e648aeff7cb80700a88?v=a6559b76a08245a79f2064b7edbf845a">Instrument booking</a><br><a href="https://github.com/SKH-group-Chulalongkorn-University">Group repositories</a></p>
     </div>
   </div>
 </footer>
