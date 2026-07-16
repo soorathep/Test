@@ -5,6 +5,8 @@ index.html   the one-pager (~52 KB), plain static HTML
 assets/style.css           all styling, shared by the one-pager and the blog
 covers/                    journal cover art, 760 px wide
 _data/covers.yml           the cover list — the page is generated from this
+_data/people.yml           current lab members — the People page is generated from this
+member_form.docx           the form you send to a new member
 img/                       PI photo
 news.html                  the blog index (served at /news/ , not /news.html)
 404.html                   custom not-found page (permalink pinned — see the trap below)
@@ -81,6 +83,40 @@ publisher should not be there.
 That is the whole job. The home strip, the Recognition gallery, the cover count, and the
 year range in the heading all read from that file and update themselves. **Never type the
 number of covers into the page.**
+
+### Add or update a lab member
+
+1. Send them **`member_form.docx`**. Seven fields, bilingual, about five minutes.
+   They send it back with **one photo as a separate file**.
+2. Put every returned form and photo into `inbox/` — any filenames, all mixed together.
+3. Run it:
+   ```bash
+   pip install python-docx pyyaml pillow
+   python tools/make_people.py
+   ```
+   It parses the forms, matches each photo to its form by name, crops every photo to a
+   600 px square biased toward the upper third, writes `img/people/`, and rewrites
+   `_data/people.yml`. It shows you a diff and asks before overwriting anything.
+4. **Read the YAML before committing.** The script never invents a value: a field left
+   blank comes out absent, not guessed.
+5. Commit `_data/people.yml` and `img/people/`. The People page, the head-count, and the
+   grid all follow.
+
+Someone leaves: delete their entry from `_data/people.yml` and add them to the alumni
+table in `index.html`. Someone's topic changes: edit the one line.
+
+No script to hand? The YAML is a plain list — type the entry yourself and drop a square
+JPEG in `img/people/`. The script is a convenience, not a dependency.
+
+**Photos.** They will arrive at 4000 px, sideways, in five aspect ratios. Do not fight it;
+the script fixes rotation from EXIF and crops square. The site renders them grayscale
+until hover, which is what makes a set of mismatched phone snaps read as one group. A
+member with no photo gets a neutral placeholder rather than a hole in the grid.
+
+**Privacy.** The form asks for nothing you would not put on a poster: name, role, year,
+one sentence of research, previous degree, an optional ORCID. No phone numbers, no home
+addresses, no dates of birth, no nationality. Keep it that way — this is a public page and
+several members are early-career people who did not choose to be searchable.
 
 ### Add a talk
 

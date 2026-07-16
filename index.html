@@ -391,6 +391,27 @@ layout: null
     </section>
 
     <section>
+      <div class="sec-head" style="margin-top:80px">
+        <div class="mono eyebrow">Current members</div>
+        <h2>Who is in the laboratory now</h2>
+      </div>
+      {% assign folk = site.data.people | where_exp: "p", "p.slug != 'example-person'" %}
+      {% if folk.size > 0 %}
+      <div class="folk" style="margin-bottom:22px">
+        {% for p in folk %}
+        <figure>
+          {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+          <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+          <span class="n">{{ p.name }}</span>
+          <span class="r">{{ p.role }}{% if p.since %} · since {{ p.since }}{% endif %}</span>
+          {% if p.topic %}<span class="t">{{ p.topic }}</span>{% endif %}
+          {% if p.link %}</a>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+      <div class="note" style="margin-bottom:40px">{{ folk.size }} people, plus the alumni below. Each profile is written by the person themselves.</div>
+      {% endif %}
+
       <div class="sec-head">
         <div class="mono eyebrow">Alumni</div>
         <h2>Where our people went</h2>
