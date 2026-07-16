@@ -4,6 +4,7 @@
 index.html   the one-pager (~52 KB), plain static HTML
 assets/style.css           all styling, shared by the one-pager and the blog
 covers/                    journal cover art, 760 px wide
+_data/covers.yml           the cover list — the page is generated from this
 img/                       PI photo
 news.html                  the blog index (served at /news/ , not /news.html)
 _posts/                    one markdown file per post   <- the part you edit often
@@ -13,8 +14,10 @@ _config.yml                Jekyll settings
 
 Two halves, deliberately:
 
-- **The one-pager** is hand-written HTML that GitHub Pages copies through untouched.
-  It changes a few times a year.
+- **The one-pager** is hand-written HTML. It now carries `layout: null` front matter so
+  Jekyll runs Liquid in it — that is what pulls the two latest posts onto the home page.
+  Because of that, **never paste a literal `{{` or `{%` into index.html**; Jekyll will try
+  to execute it and the build will fail.
 - **The blog** is Jekyll, built by GitHub automatically on every push. Adding a post is
   adding one markdown file. Nothing to install, nothing to run.
 
@@ -55,18 +58,22 @@ publisher should not be there.
 
 ### Add a journal cover
 
-1. Resize the publisher's file to **760 px wide, JPEG, quality ~84**. Full-resolution
-   covers are 2,500–6,000 px and have no place on a web page. Keep the originals in your
-   own archive.
-2. Name it `Journal_Name_YEAR.jpg` and put it in `covers/`.
-3. In the home strip (`<div class="strip">`), add at the top:
-   ```html
-   <img src="covers/FILE.jpg" alt="Journal cover, DATE" loading="lazy">
+1. Resize to **760 px wide, JPEG, quality ~84**. Publisher files are 2,500–6,000 px and have
+   no place on a web page. Keep the originals in your own archive.
+2. Name it `Journal_Name_YEAR.jpg` and upload it to `covers/`.
+3. Add a block at the **top** of `_data/covers.yml`:
+   ```yaml
+   - file: Journal_Name_2027.jpg
+     journal: Journal Name
+     meta: Vol 15, No 3 · 12 March 2027 · Front cover
+     year: 2027
+     alt: Journal Name cover, March 2027
+     title: The paper title, if the cover prints one   # omit this line if it does not
    ```
-4. In the gallery (`<div class="covers">`), copy the first `<figure class="cover">` block
-   and edit the four fields: `src`, `alt`, `.j` (journal), `.m` (volume, issue, date,
-   cover type), `.t` (paper title, omit the span if the cover carries no title).
-5. Update the two counts in prose: the gallery `<h2>` and its lede say "twelve".
+
+That is the whole job. The home strip, the Recognition gallery, the cover count, and the
+year range in the heading all read from that file and update themselves. **Never type the
+number of covers into the page.**
 
 ### Add a talk
 

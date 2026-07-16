@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,6 +108,9 @@
       </svg>
     </div>
 
+    <p class="mono" style="text-align:center;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--zinc);margin-bottom:18px">
+      Zinc-ion · Sodium-ion · Organic flow &nbsp;—&nbsp; read through one chain, watched with operando synchrotron
+    </p>
     <div class="chain">
       <div class="node">
         <span class="k">C — First shell</span>
@@ -131,20 +137,30 @@
         <h2>The work, as the journals drew it</h2>
       </div>
       <div class="strip">
-        <img src="covers/Materials_Horizons_2026.jpg" alt="Materials Horizons cover, Opinion" loading="lazy">
-        <img src="covers/Batteries_and_Supercaps_2026.jpg" alt="Batteries and Supercaps cover, Front cover" loading="lazy">
-        <img src="covers/Small_Methods_2026.jpg" alt="Small Methods cover, 9 February 2026" loading="lazy">
-        <img src="covers/ACS_Applied_Materials_and_Interfaces_2025.jpg" alt="ACS Applied Materials and Interfaces cover, 20 August 2025" loading="lazy">
-        <img src="covers/Journal_of_Materials_Chemistry_A_2024.jpg" alt="Journal of Materials Chemistry A cover, Paper" loading="lazy">
-        <img src="covers/ACS_Applied_Materials_and_Interfaces_2024_2.jpg" alt="ACS Applied Materials and Interfaces cover, 23 October 2024" loading="lazy">
-        <img src="covers/Small_2024.jpg" alt="Small cover, 9 May 2024" loading="lazy">
-        <img src="covers/ACS_Applied_Materials_and_Interfaces_2024.jpg" alt="ACS Applied Materials and Interfaces cover, 6 March 2024" loading="lazy">
-        <img src="covers/ChemCatChem_2023.jpg" alt="ChemCatChem cover, Front cover" loading="lazy">
-        <img src="covers/Nanoscale_2023.jpg" alt="Nanoscale cover, Paper" loading="lazy">
-        <img src="covers/Journal_of_Materials_Chemistry_A_2023.jpg" alt="Journal of Materials Chemistry A cover, Inside cover" loading="lazy">
-        <img src="covers/Nanoscale_2022.jpg" alt="Nanoscale cover, Paper" loading="lazy">
+        {% for c in site.data.covers %}
+        <img src="covers/{{ c.file }}" alt="{{ c.alt }}" loading="lazy">
+        {% endfor %}
       </div>
-      <p style="margin-top:16px"><a href="#recognition">All twelve covers, with captions →</a></p>
+      <p style="margin-top:16px"><a href="#recognition">All {{ site.data.covers | size }} covers, with captions →</a></p>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="mono eyebrow">Latest</div>
+        <h2>News</h2>
+      </div>
+      <div class="post-list">
+        {% for post in site.posts limit: 2 %}
+        <a class="entry" href="{{ post.url }}">
+          <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
+          <div>
+            <h3>{{ post.title }}</h3>
+            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <p style="margin-top:16px"><a href="news/">All news &rarr;</a></p>
     </section>
 
     <section>
@@ -172,40 +188,42 @@
     <section>
       <div class="sec-head">
         <div class="mono eyebrow">01 — Research</div>
-        <h2>Non-lithium chemistries, read through coordination, transport, and interface</h2>
+        <h2>Three systems, one method</h2>
       </div>
-      <p class="lede" style="margin-bottom:34px">Lithium is not the only way to store an electron, and in grid-scale and safety-critical settings it is often not the best one. Our work concentrates on the chemistries that are abundant, aqueous-compatible, and unfashionable enough to still have physics left in them.</p>
+      <p class="lede" style="margin-bottom:30px">Zinc-ion, sodium-ion, and organic flow batteries, each read through the same Coordination–Transport–Interface chain. Lithium is not the only way to store an electron, and in grid-scale and safety-critical settings it is often not the best one. We work on the chemistries that are abundant, aqueous-compatible, and unfashionable enough to still have physics left in them.</p>
 
+      <div class="pillars three">
+        <div class="pillar">
+          <span class="tag">Zn²⁺ · zinc-ion</span>
+          <h3>Zinc-ion batteries</h3>
+          <p>Which carrier actually compensates the charge, Zn²⁺ or H⁺, and under what donor environment. Organic and manganese-oxide cathodes, artificial solid-electrolyte interphases on the zinc anode, electrolyte and additive engineering.</p>
+        </div>
+        <div class="pillar">
+          <span class="tag">Na⁺ · sodium-ion</span>
+          <h3>Sodium-ion batteries</h3>
+          <p>Electrolytes read as one liquid-to-solid continuum rather than as rival families. Layered oxide, polyanionic, and tunnel-type Na₀.₄₄MnO₂ cathodes; hard carbon; interface evolution as the thing that decides lifetime.</p>
+        </div>
+        <div class="pillar">
+          <span class="tag">AORFB · flow</span>
+          <h3>Organic flow batteries</h3>
+          <p>Aqueous organic redox chemistries designed from the molecule to the stack. A molecule that works in a vial is not yet a stack that works, and the two are usually designed by different people against different criteria.</p>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:60px">
+        <div class="mono eyebrow">Adjacent</div>
+        <h2>Other work the laboratory carries</h2>
+      </div>
       <div class="pillars">
         <div class="pillar">
-          <span class="tag">Zn</span>
-          <h3>Zinc batteries</h3>
-          <p>Zinc-air, zinc-ion, zinc-iodine, and zinc-bromine systems. Anode stability and dendrite suppression, artificial solid-electrolyte interphases from covalent organic frameworks and carboxymethyl cellulose, electrolyte and additive engineering.</p>
-        </div>
-        <div class="pillar">
-          <span class="tag">Na</span>
-          <h3>Sodium batteries</h3>
-          <p>Layered oxide and polyanionic cathodes, tunnel-type Na<sub>0.44</sub>MnO<sub>2</sub>, and the comparison of liquid against solid electrolytes under matched reporting conditions.</p>
-        </div>
-        <div class="pillar">
-          <span class="tag">Flow</span>
-          <h3>Flow batteries</h3>
-          <p>Zinc, iodine, bromine, and organic redox chemistries for large-scale renewable energy storage. The largest flow battery research program in Thailand, built on a 45 MTHB national grant.</p>
-        </div>
-        <div class="pillar">
-          <span class="tag">Mg · multivalent</span>
-          <h3>Magnesium and multivalent systems</h3>
-          <p>Divalent carriers where the coordination penalty is severe and the interface, not the bulk, sets the achievable rate.</p>
-        </div>
-        <div class="pillar">
-          <span class="tag">MnO<sub>x</sub></span>
-          <h3>Manganese-based cathodes</h3>
-          <p>Intergrowth and polymorph-controlled manganese dioxides, MnO/NC/MXene heterostructures, and the dissolution–redeposition mechanisms that govern their fade.</p>
-        </div>
-        <div class="pillar">
           <span class="tag">ORR · OER</span>
-          <h3>Electrocatalysis</h3>
-          <p>Oxygen reduction and evolution catalysts and processes for bifunctional air electrodes, plus electroreforming routes to hydrogen and green chemicals from biomass.</p>
+          <h3>Electrocatalysis and electroreforming</h3>
+          <p>Oxygen reduction and evolution catalysts for bifunctional air electrodes, and electroreforming routes from biomass to hydrogen and green chemicals under the BIOEC programme.</p>
+        </div>
+        <div class="pillar">
+          <span class="tag">Zn-air · Mg</span>
+          <h3>Zinc-air and multivalent systems</h3>
+          <p>Zinc-air cells and flow batteries, the subject of the group's two patent families, and magnesium and other divalent carriers where the coordination penalty is severe and the interface, not the bulk, sets the achievable rate.</p>
         </div>
       </div>
 
@@ -518,58 +536,16 @@
 
       <div class="sec-head">
         <div class="mono eyebrow">Covers</div>
-        <h2>Journal cover art, 2022 to 2026</h2>
+        <h2>Journal cover art, {% assign yrs = site.data.covers | map: "year" | sort %}{{ yrs | first }} to {{ yrs | last }}</h2>
       </div>
-      <p class="lede" style="margin-bottom:30px">Twelve covers across ACS, RSC, and Wiley titles. A cover is not a metric, but it is a record of an editor deciding the issue should look like this piece of work.</p>
+      <p class="lede" style="margin-bottom:30px">{{ site.data.covers | size }} covers across ACS, RSC, and Wiley titles. A cover is not a metric, but it is a record of an editor deciding the issue should look like this piece of work.</p>
       <div class="covers" style="margin-bottom:70px">
+        {% for c in site.data.covers %}
         <figure class="cover">
-          <img src="covers/Materials_Horizons_2026.jpg" alt="Materials Horizons cover, Opinion" loading="lazy">
-          <figcaption><span class="j">Materials Horizons</span><span class="m">Vol 13, No 12 · 22 June 2026 · Opinion</span><span class="t">Nanoconfinement as an electrolyte-state selector in hard carbon for sodium storage</span></figcaption>
+          <img src="covers/{{ c.file }}" alt="{{ c.alt }}" loading="lazy">
+          <figcaption><span class="j">{{ c.journal }}</span><span class="m">{{ c.meta }}</span>{% if c.title %}<span class="t">{{ c.title }}</span>{% endif %}</figcaption>
         </figure>
-        <figure class="cover">
-          <img src="covers/Batteries_and_Supercaps_2026.jpg" alt="Batteries and Supercaps cover, Front cover" loading="lazy">
-          <figcaption><span class="j">Batteries &amp; Supercaps</span><span class="m">Issue 6/2026 · Front cover</span><span class="t">From molecule to stack: a cross-scale design framework for aqueous organic redox flow batteries</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Small_Methods_2026.jpg" alt="Small Methods cover, 9 February 2026" loading="lazy">
-          <figcaption><span class="j">Small Methods</span><span class="m">Vol 10, No 3 · 9 February 2026</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/ACS_Applied_Materials_and_Interfaces_2025.jpg" alt="ACS Applied Materials and Interfaces cover, 20 August 2025" loading="lazy">
-          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 17, No 33 · 20 August 2025</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Journal_of_Materials_Chemistry_A_2024.jpg" alt="Journal of Materials Chemistry A cover, Paper" loading="lazy">
-          <figcaption><span class="j">Journal of Materials Chemistry A</span><span class="m">Vol 12, No 43 · 21 November 2024 · Paper</span><span class="t">Innovative pH-buffering strategies for enhanced cycling stability in zinc–iodine flow batteries</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/ACS_Applied_Materials_and_Interfaces_2024_2.jpg" alt="ACS Applied Materials and Interfaces cover, 23 October 2024" loading="lazy">
-          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 16, No 42 · 23 October 2024</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Small_2024.jpg" alt="Small cover, 9 May 2024" loading="lazy">
-          <figcaption><span class="j">Small</span><span class="m">Vol 20, No 19 · 9 May 2024</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/ACS_Applied_Materials_and_Interfaces_2024.jpg" alt="ACS Applied Materials and Interfaces cover, 6 March 2024" loading="lazy">
-          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 16, No 9 · 6 March 2024</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/ChemCatChem_2023.jpg" alt="ChemCatChem cover, Front cover" loading="lazy">
-          <figcaption><span class="j">ChemCatChem</span><span class="m">Issue 18/2023 · Front cover</span><span class="t">High-temperature air synthesis: a facile approach to nitrogen-doped, metal-free carbon electrocatalysts</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Nanoscale_2023.jpg" alt="Nanoscale cover, Paper" loading="lazy">
-          <figcaption><span class="j">Nanoscale</span><span class="m">Vol 15, No 20 · 28 May 2023 · Paper</span><span class="t">Stabilizing a zinc anode via a tunable covalent organic framework-based solid electrolyte interphase</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Journal_of_Materials_Chemistry_A_2023.jpg" alt="Journal of Materials Chemistry A cover, Inside cover" loading="lazy">
-          <figcaption><span class="j">Journal of Materials Chemistry A</span><span class="m">Vol 11, No 20 · 28 May 2023 · Inside cover</span><span class="t">Unveiling the role of water in enhancing the performance of zinc-ion batteries using dimethyl sulfoxide electrolyte and manganese dioxide cathode</span></figcaption>
-        </figure>
-        <figure class="cover">
-          <img src="covers/Nanoscale_2022.jpg" alt="Nanoscale cover, Paper" loading="lazy">
-          <figcaption><span class="j">Nanoscale</span><span class="m">Vol 14, No 48 · 28 December 2022 · Paper</span><span class="t">Tailoring the MOF structure via ligand optimization afforded a dandelion-flower-like CoS/Co–N<sub>x</sub>/CoNi/NiS catalyst to enhance the ORR/OER in zinc–air batteries</span></figcaption>
-        </figure>
+        {% endfor %}
       </div>
 
       <div class="sec-head">
