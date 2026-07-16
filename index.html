@@ -144,13 +144,6 @@ section{padding:64px 0}
 .chain .node+.arrow{border-left:1px solid var(--line)}
 .chain .arrow+.node{border-left:1px solid var(--line)}
 
-/* ---------- metrics ---------- */
-.metrics{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.metric{padding:22px 16px;border-left:1px solid var(--line)}
-.metric:first-child{border-left:0;padding-left:0}
-.metric .n{font-family:"Archivo";font-weight:700;font-size:2rem;letter-spacing:-.03em;color:var(--prussian);display:block;line-height:1}
-.metric .l{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:7px;display:block}
-
 /* ---------- callout ---------- */
 .callout{background:var(--prussian-deep);color:#E8EDF1;padding:34px 34px;border-radius:2px;margin-top:8px}
 .callout .mono{color:var(--sodium)}
@@ -208,9 +201,8 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
 
 @media(max-width:900px){
   .two,.pillars,.pi{grid-template-columns:1fr}
-  .metrics{grid-template-columns:repeat(2,1fr)}
-  .metric{border-left:0;border-top:1px solid var(--line);padding-left:0}
-  .metric:first-child,.metric:nth-child(2){border-top:0}
+  .covers{grid-template-columns:repeat(2,1fr)}
+  .strip img{height:180px}
   .chain{grid-template-columns:1fr}
   .chain .arrow{width:auto;height:34px;border-left:0!important;border-top:1px solid var(--line)}
   .chain .arrow+.node{border-left:0;border-top:1px solid var(--line)}
@@ -226,6 +218,17 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* ---------- covers ---------- */
+.covers{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 22px}
+.cover{margin:0}
+.cover img{width:100%;display:block;border:1px solid var(--line);background:var(--paper-2)}
+.cover figcaption{margin-top:11px}
+.cover .j{font-family:"Archivo";font-weight:600;font-size:.95rem;display:block}
+.cover .m{font-family:"IBM Plex Mono";font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--zinc);display:block;margin-top:4px}
+.cover .t{font-size:.84rem;color:var(--ink-soft);display:block;margin-top:7px}
+.strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:14px}
+.strip img{height:236px;width:auto;flex:0 0 auto;border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -285,14 +288,25 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
     </div>
 
     <section>
-      <div class="metrics">
-        <div class="metric"><span class="n">322</span><span class="l">Publications</span></div>
-        <div class="metric"><span class="n">6,779</span><span class="l">Citations</span></div>
-        <div class="metric"><span class="n">47</span><span class="l">h-index</span></div>
-        <div class="metric"><span class="n">8</span><span class="l">PhD graduates</span></div>
-        <div class="metric"><span class="n">11</span><span class="l">Postdoc alumni</span></div>
+      <div class="sec-head">
+        <div class="mono eyebrow">Covers</div>
+        <h2>The work, as the journals drew it</h2>
       </div>
-      <div class="note">Scopus Author ID 55897360400, July 2026. Google Scholar reports a higher count (~7,865) from broader coverage.</div>
+      <div class="strip">
+        <img src="covers/Materials_Horizons_2026.jpg" alt="Materials Horizons cover, Opinion" loading="lazy">
+        <img src="covers/Batteries_and_Supercaps_2026.jpg" alt="Batteries and Supercaps cover, Front cover" loading="lazy">
+        <img src="covers/Small_Methods_2026.jpg" alt="Small Methods cover, 9 February 2026" loading="lazy">
+        <img src="covers/ACS_Applied_Materials_and_Interfaces_2025.jpg" alt="ACS Applied Materials and Interfaces cover, 20 August 2025" loading="lazy">
+        <img src="covers/Journal_of_Materials_Chemistry_A_2024.jpg" alt="Journal of Materials Chemistry A cover, Paper" loading="lazy">
+        <img src="covers/ACS_Applied_Materials_and_Interfaces_2024_2.jpg" alt="ACS Applied Materials and Interfaces cover, 23 October 2024" loading="lazy">
+        <img src="covers/Small_2024.jpg" alt="Small cover, 9 May 2024" loading="lazy">
+        <img src="covers/ACS_Applied_Materials_and_Interfaces_2024.jpg" alt="ACS Applied Materials and Interfaces cover, 6 March 2024" loading="lazy">
+        <img src="covers/ChemCatChem_2023.jpg" alt="ChemCatChem cover, Front cover" loading="lazy">
+        <img src="covers/Nanoscale_2023.jpg" alt="Nanoscale cover, Paper" loading="lazy">
+        <img src="covers/Journal_of_Materials_Chemistry_A_2023.jpg" alt="Journal of Materials Chemistry A cover, Inside cover" loading="lazy">
+        <img src="covers/Nanoscale_2022.jpg" alt="Nanoscale cover, Paper" loading="lazy">
+      </div>
+      <p style="margin-top:16px"><a href="#recognition">All twelve covers, with captions →</a></p>
     </section>
 
     <section>
@@ -434,10 +448,12 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
           <h3 style="font-size:1.15rem;margin-bottom:14px">In the laboratory</h3>
           <table>
             <tbody>
-              <tr><td><strong>Electrochemistry</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Biologic (×3), Squidstat (×3), VersaSTAT (×2) potentiostats; battery cycling</span></td></tr>
+              <tr><td><strong>Electrochemistry</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Biologic (×3), Squidstat (×3), VersaSTAT (×2) potentiostats</span></td></tr>
+              <tr><td><strong>Battery testing</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Multi-channel battery testers for galvanostatic cycling, rate capability, and long-term cycle life</span></td></tr>
+              <tr><td><strong>Controlled atmosphere</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Argon glovebox for moisture- and oxygen-sensitive handling and cell assembly</span></td></tr>
               <tr><td><strong>Structure</strong><br><span style="color:var(--ink-soft);font-size:.88rem">X-ray diffraction; Raman spectroscopy; digital microscopy</span></td></tr>
               <tr><td><strong>Synthesis</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Tube furnace; muffle furnace; oil baths (×3)</span></td></tr>
-              <tr><td><strong>Fabrication</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Doctor blade coater; argon glovebox; coin and pouch cell assembly</span></td></tr>
+              <tr><td><strong>Fabrication</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Doctor blade coater; coin and pouch cell assembly</span></td></tr>
               <tr><td><strong>Optical</strong><br><span style="color:var(--ink-soft);font-size:.88rem">UV-Vis spectroscopy</span></td></tr>
             </tbody>
           </table>
@@ -465,7 +481,7 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
         <div class="callout">
           <div class="mono">Instruments</div>
           <h3>Book an instrument</h3>
-          <p>Every shared instrument is booked through one calendar: the eight potentiostats, XRD, Raman, UV-Vis, the furnaces, the oil baths, the coater, the microscope, and the glovebox. Check the calendar before you run. Long cycling tests are booked as a range, not a slot.</p>
+          <p>Every shared instrument is booked through one calendar: the eight potentiostats, the battery testers, XRD, Raman, UV-Vis, the furnaces, the oil baths, the coater, the microscope, and the argon glovebox. Check the calendar before you run. Long cycling tests are booked as a range, not a slot.</p>
           <p style="margin-top:14px"><a href="https://app.notion.com/p/394f152b7fb34e648aeff7cb80700a88?v=a6559b76a08245a79f2064b7edbf845a">Open the booking calendar</a></p>
         </div>
         <div class="callout" style="background:var(--paper-2);color:var(--ink)">
@@ -569,6 +585,7 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
       <div class="sec-head">
         <div class="mono eyebrow">05 — Publications</div>
         <h2>322 publications · 6,779 citations · h-index 47</h2>
+        <div class="note" style="margin-top:14px">Scopus Author ID 55897360400, July 2026. Google Scholar reports a higher count (~7,865) from broader coverage.</div>
       </div>
       <p class="lede" style="margin-bottom:26px">The complete record is maintained on Scopus and ORCID rather than duplicated here, because a hand-copied list on a lab site is out of date the week it is published. Below is a selection from 2024 to 2026, grouped by where each paper sits in the causal chain.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px">
@@ -662,6 +679,62 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
       </table>
 
       <div class="sec-head">
+        <div class="mono eyebrow">Covers</div>
+        <h2>Journal cover art, 2022 to 2026</h2>
+      </div>
+      <p class="lede" style="margin-bottom:30px">Twelve covers across ACS, RSC, and Wiley titles. A cover is not a metric, but it is a record of an editor deciding the issue should look like this piece of work.</p>
+      <div class="covers" style="margin-bottom:70px">
+        <figure class="cover">
+          <img src="covers/Materials_Horizons_2026.jpg" alt="Materials Horizons cover, Opinion" loading="lazy">
+          <figcaption><span class="j">Materials Horizons</span><span class="m">Vol 13, No 12 · 22 June 2026 · Opinion</span><span class="t">Nanoconfinement as an electrolyte-state selector in hard carbon for sodium storage</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Batteries_and_Supercaps_2026.jpg" alt="Batteries and Supercaps cover, Front cover" loading="lazy">
+          <figcaption><span class="j">Batteries &amp; Supercaps</span><span class="m">Issue 6/2026 · Front cover</span><span class="t">From molecule to stack: a cross-scale design framework for aqueous organic redox flow batteries</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Small_Methods_2026.jpg" alt="Small Methods cover, 9 February 2026" loading="lazy">
+          <figcaption><span class="j">Small Methods</span><span class="m">Vol 10, No 3 · 9 February 2026</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/ACS_Applied_Materials_and_Interfaces_2025.jpg" alt="ACS Applied Materials and Interfaces cover, 20 August 2025" loading="lazy">
+          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 17, No 33 · 20 August 2025</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Journal_of_Materials_Chemistry_A_2024.jpg" alt="Journal of Materials Chemistry A cover, Paper" loading="lazy">
+          <figcaption><span class="j">Journal of Materials Chemistry A</span><span class="m">Vol 12, No 43 · 21 November 2024 · Paper</span><span class="t">Innovative pH-buffering strategies for enhanced cycling stability in zinc–iodine flow batteries</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/ACS_Applied_Materials_and_Interfaces_2024_2.jpg" alt="ACS Applied Materials and Interfaces cover, 23 October 2024" loading="lazy">
+          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 16, No 42 · 23 October 2024</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Small_2024.jpg" alt="Small cover, 9 May 2024" loading="lazy">
+          <figcaption><span class="j">Small</span><span class="m">Vol 20, No 19 · 9 May 2024</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/ACS_Applied_Materials_and_Interfaces_2024.jpg" alt="ACS Applied Materials and Interfaces cover, 6 March 2024" loading="lazy">
+          <figcaption><span class="j">ACS Applied Materials &amp; Interfaces</span><span class="m">Vol 16, No 9 · 6 March 2024</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/ChemCatChem_2023.jpg" alt="ChemCatChem cover, Front cover" loading="lazy">
+          <figcaption><span class="j">ChemCatChem</span><span class="m">Issue 18/2023 · Front cover</span><span class="t">High-temperature air synthesis: a facile approach to nitrogen-doped, metal-free carbon electrocatalysts</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Nanoscale_2023.jpg" alt="Nanoscale cover, Paper" loading="lazy">
+          <figcaption><span class="j">Nanoscale</span><span class="m">Vol 15, No 20 · 28 May 2023 · Paper</span><span class="t">Stabilizing a zinc anode via a tunable covalent organic framework-based solid electrolyte interphase</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Journal_of_Materials_Chemistry_A_2023.jpg" alt="Journal of Materials Chemistry A cover, Inside cover" loading="lazy">
+          <figcaption><span class="j">Journal of Materials Chemistry A</span><span class="m">Vol 11, No 20 · 28 May 2023 · Inside cover</span><span class="t">Unveiling the role of water in enhancing the performance of zinc-ion batteries using dimethyl sulfoxide electrolyte and manganese dioxide cathode</span></figcaption>
+        </figure>
+        <figure class="cover">
+          <img src="covers/Nanoscale_2022.jpg" alt="Nanoscale cover, Paper" loading="lazy">
+          <figcaption><span class="j">Nanoscale</span><span class="m">Vol 14, No 48 · 28 December 2022 · Paper</span><span class="t">Tailoring the MOF structure via ligand optimization afforded a dandelion-flower-like CoS/Co–N<sub>x</sub>/CoNi/NiS catalyst to enhance the ORR/OER in zinc–air batteries</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="sec-head">
         <div class="mono eyebrow">Awards</div>
         <h2>Selected recognition</h2>
       </div>
@@ -679,21 +752,25 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
         <h2>International exhibition medals</h2>
       </div>
       <div class="stack" style="margin-bottom:70px">
-        <div class="item"><div class="yr">2019</div><div><h4>Gold medal with the Congratulations of Jury — Geneva</h4><p>A High Performance Zinc-Air Fuel Cell System. 47th International Exhibition of Inventions, Geneva. Gold medals also awarded the same year for the Tri-Electrode Rechargeable Zinc-Air Flow Battery and a Low-Cost, High-Energy-Density Zinc-ion Battery.</p></div></div>
-        <div class="item"><div class="yr">2018</div><div><h4>Gold medal with the Congratulations of Jury — Geneva</h4><p>Easily Refuelable Emergency Power Box. 46th International Exhibition of Inventions, Geneva.</p></div></div>
-        <div class="item"><div class="yr">2016</div><div><h4>Gold medal — KIDE, Kaohsiung</h4><p>Flexible rechargeable printed zinc-air battery. Also received the Japan Intellectual Property Association award for the best invention in green technology, the Eurobusiness-Haller Pro Inventio Foundation special award, and a WIIPA special award.</p></div></div>
+        <div class="item"><div class="yr">2019</div><div><h4>Gold medal with the Congratulations of Jury — Geneva, Switzerland</h4><p>A High Performance Zinc-Air Fuel Cell System. 47th International Exhibition of Inventions, Geneva, Switzerland. Gold medals also awarded the same year for the Tri-Electrode Rechargeable Zinc-Air Flow Battery and a Low-Cost, High-Energy-Density Zinc-ion Battery.</p></div></div>
+        <div class="item"><div class="yr">2018</div><div><h4>Gold medal with the Congratulations of Jury — Geneva, Switzerland</h4><p>Easily Refuelable Emergency Power Box. 46th International Exhibition of Inventions, Geneva, Switzerland.</p></div></div>
+        <div class="item"><div class="yr">2016</div><div><h4>Gold medal — KIDE, Kaohsiung, Taiwan</h4><p>Flexible rechargeable printed zinc-air battery. Also received the Japan Intellectual Property Association award for the best invention in green technology, the Eurobusiness-Haller Pro Inventio Foundation special award, and a WIIPA special award.</p></div></div>
       </div>
 
       <div class="sec-head">
         <div class="mono eyebrow">Talks</div>
-        <h2>Selected plenary and invited lectures</h2>
+        <h2>Selected plenary, keynote, and invited lectures</h2>
       </div>
       <div class="stack">
         <div class="item"><div class="yr">2026</div><div><h4>Plenary — IUMRS-ICEM 2026, Chiang Mai, Thailand</h4><p>Beyond materials: understanding electrochemical energy systems through operando science. 19th International Conference on Electronic Materials, 28 June – 1 July 2026.</p></div></div>
-        <div class="item"><div class="yr">2025</div><div><h4>Invited — ICGET-Tw 2025, Tainan</h4><p>Toward high-performance zinc–bromine flow batteries: addressing key technical challenges with innovative solutions.</p></div></div>
-        <div class="item"><div class="yr">2024</div><div><h4>Invited — TICC 2024, Taipei, Taiwan</h4><p>12th Singapore International Chemistry Conference · International Conference on Green Electrochemical Technologies · Taiwan International Conference on Catalysis.</p></div></div>
-        <div class="item"><div class="yr">2023</div><div><h4>Invited — ECS Singapore 2023, Singapore</h4><p>International Conference on Green Electrochemical Technologies · 3rd Singapore ECS International Symposium on Energy Materials.</p></div></div>
-        <div class="item"><div class="yr">2022</div><div><h4>Invited — PSEAsia 2022, Chennai, India</h4><p>10th Asian Symposium on Process Systems Engineering.</p></div></div>
+        <div class="item"><div class="yr">2025</div><div><h4>Invited — ICGET-TW 2025, Tainan, Taiwan</h4><p>Toward high-performance zinc–bromine flow batteries: addressing key technical challenges with innovative solutions. International Conference on Green Electrochemical Technologies, 31 October – 2 November 2025.</p></div></div>
+        <div class="item"><div class="yr">2024</div><div><h4>Invited — SICC-12, Singapore</h4><p>12th Singapore International Chemistry Conference, 9–13 December 2024.</p></div></div>
+        <div class="item"><div class="yr">2024</div><div><h4>Invited — ICGET-TW 2024, Taiwan</h4><p>International Conference on Green Electrochemical Technologies, 8–9 November 2024.</p></div></div>
+        <div class="item"><div class="yr">2024</div><div><h4>Invited — TICC 2024, Taipei, Taiwan</h4><p>Taiwan International Conference on Catalysis, 19–21 June 2024.</p></div></div>
+        <div class="item"><div class="yr">2023</div><div><h4>Keynote — ICGET-TW 2023, Taiwan</h4><p>Zinc-based battery systems: zinc–air, zinc–iodine, and zinc-ion batteries. International Conference on Green Electrochemical Technologies, 26–28 October 2023.</p></div></div>
+        <div class="item"><div class="yr">2023</div><div><h4>Invited — 3rd Singapore ECS International Symposium on Energy Materials, Singapore</h4><p>28–31 July 2023.</p></div></div>
+        <div class="item"><div class="yr">2022</div><div><h4>Invited — PSEAsia 2022, Chennai, India</h4><p>10th Asian Symposium on Process Systems Engineering, 10–14 December 2022.</p></div></div>
+        <div class="item"><div class="yr">2019</div><div><h4>Invited — ICRAMC-2019, Chennai, India</h4><p>3rd International Conference on Recent Advances in Material Chemistry, 13–15 February 2019.</p></div></div>
       </div>
     </section>
   </div>
