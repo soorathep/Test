@@ -119,6 +119,13 @@ they will disagree. Refresh the "July 2026" date at the same time.
 
 ---
 
+## Two traps that already bit (do not re-introduce)
+
+**1. `.page` is hidden by default.** The one-pager is a JS tab switcher:
+`.page{display:none}` and JS adds `.on` to whichever section the hash selects. Blog pages
+have no such JS, so `_layouts/default.html` wraps content in `<div class="page on">`.
+Drop the `on` and the blog renders as a nav and a footer with nothing between them.
+
 ## The permalink trap (this cost an hour once)
 
 `permalink:` in `_config.yml` ends with a `/`. In Jekyll that turns on pretty URLs for
