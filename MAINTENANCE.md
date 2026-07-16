@@ -112,6 +112,27 @@ You can do all of this from a phone. There is no local install and no build comm
 The failure mode for an academic blog is not posts that are too short, it is a "Latest
 news, March 2024" banner sitting on a 2026 site. Short and alive beats long and abandoned.
 
+### Put an image in a post
+
+1. **Resize to ~760 px wide first.** A phone photo is 4000 px and 5 MB; the page shows it
+   at 760 px either way, so the other 4.3 MB is pure load time.
+2. Upload it to `img/news/` (Add file → Upload files → drag). Lowercase, no spaces:
+   `2026-08-glovebox.jpg`.
+3. In the post:
+   ```markdown
+   ![Short description of the photo](/img/news/2026-08-glovebox.jpg)
+   ```
+   With a caption:
+   ```html
+   <figure>
+     <img src="/img/news/2026-08-glovebox.jpg" alt="Short description">
+     <figcaption>The caption readers actually see.</figcaption>
+   </figure>
+   ```
+
+Paths start with `/` because `baseurl` is `""` and the site sits at the root of
+www.skhgroup.net. `covers/` is for journal cover art only; put post photos in `img/news/`.
+
 ### Update the publication counts
 
 One `<h2>` and one `<div class="note">` in `id="publications"`. Change both together or
