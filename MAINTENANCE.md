@@ -1,7 +1,7 @@
 # Maintaining skhgroup.net
 
 ```
-skhgroup_redesign_1.html   the one-pager (~52 KB), plain static HTML
+index.html   the one-pager (~52 KB), plain static HTML
 assets/style.css           all styling, shared by the one-pager and the blog
 covers/                    journal cover art, 760 px wide
 img/                       PI photo
@@ -128,7 +128,7 @@ not appear, the folder is missing or misnamed: paths are case-sensitive.
 
 - `baseurl: "/Test"` matches the repo name. Rename the repo and this must change, or every
   blog link 404s. If you point skhgroup.net at Pages, set it to `""`.
-- `home_url: "skhgroup_redesign_1.html"` is what the nav links back to. Renaming the
+- `home_url: "index.html"` is what the nav links back to. Renaming the
   one-pager to `index.html` (recommended eventually, it gives you a clean `/` URL) means
   changing this one line.
 

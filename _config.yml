@@ -1,38 +1,17 @@
+# ── Minimal, boring, hard to break. Two knobs matter. ──────────────────
 title: SKH Research Group
-description: >-
-  Energy Storage Innovation Laboratory, Department of Chemical Engineering,
-  Chulalongkorn University. Non-lithium batteries read through the
-  Coordination-Transport-Interface chain.
+description: Energy Storage Innovation Laboratory, Chulalongkorn University.
 author: Soorathep Kheawhom
 
-# --- URLs -------------------------------------------------------------
-# baseurl must match the repo name while the site is served from
-# soorathep.github.io/Test/. If you rename the repo, or point skhgroup.net
-# at Pages, change it here and nowhere else. Root domain = empty string.
-baseurl: "/Test"
-url: "https://soorathep.github.io"
+baseurl: ""            # site is served at the ROOT of www.skhgroup.net (see CNAME)
+home_url: "index.html"    # the one-pager the nav links back to
+url: "https://www.skhgroup.net"
 
-# The one-pager. If you ever rename it to index.html, change this line only.
-home_url: "index.html"
-
-# --- Posts ------------------------------------------------------------
 permalink: /news/:year/:month/:day/:title/
-timezone: Asia/Bangkok
 
 defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
+  - scope: {path: "", type: posts}
+    values: {layout: post}
 
 plugins:
-  - jekyll-feed      # generates /feed.xml automatically
-
-feed:
-  path: feed.xml
-
-exclude:
-  - MAINTENANCE.md
-  - README.md
-  - "*.zip"
+  - jekyll-feed
