@@ -3,6 +3,7 @@ title: "From molecule to stack: our flow battery framework on the cover of Batte
 date: 2026-07-16
 description: "Front Cover of issue 6/2026, Chemistry Europe."
 tag: Cover
+image: /img/og/Batteries_and_Supercaps_2026.jpg
 ---
 
 **Batteries & Supercaps** has put our work on the Front Cover of issue 6/2026:

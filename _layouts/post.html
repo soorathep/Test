@@ -13,6 +13,30 @@ layout: default
   </article>
 
   <div class="post-nav">
-    <a href="{{ site.baseurl }}/news/">← All news</a>
+    {% assign share_url = page.url | absolute_url %}
+    <div class="mono eyebrow" style="margin-bottom:12px">Share</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url | url_encode }}">LinkedIn</a>
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}">Facebook</a>
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://twitter.com/intent/tweet?url={{ share_url | url_encode }}&amp;text={{ page.title | url_encode }}">X</a>
+      <a class="pill" href="{{ share_url }}" data-copy>Copy link</a>
+      <span style="flex:1"></span>
+      <a href="{{ site.baseurl }}/news/">← All news</a>
+    </div>
   </div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(a.href).then(function () {
+        var t = a.textContent; a.textContent = 'Copied';
+        setTimeout(function () { a.textContent = t; }, 1600);
+      });
+    });
+  });
+</script>
 </section>

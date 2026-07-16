@@ -14,4 +14,5 @@ defaults:
     values: {layout: post}
 
 plugins:
-  - jekyll-feed
+  - jekyll-feed      # /feed.xml
+  - jekyll-sitemap   # /sitemap.xml, so search engines can find every page

@@ -7,6 +7,13 @@ covers/                    journal cover art, 760 px wide
 _data/covers.yml           the cover list — the page is generated from this
 img/                       PI photo
 news.html                  the blog index (served at /news/ , not /news.html)
+404.html                   custom not-found page (permalink pinned — see the trap below)
+og.png                     1200x630 link-preview card. Referenced by index.html's
+                           og:image/twitter:image. If you rename or delete it, every
+                           share on LINE, Slack, X, or Facebook shows a broken image.
+robots.txt                 points crawlers at the sitemap
+img/og/                    1200x630 landscape share cards, one per cover
+tools/make_og_cards.py     regenerates them from _data/covers.yml
 _posts/                    one markdown file per post   <- the part you edit often
 _layouts/                  page shell for blog pages
 _config.yml                Jekyll settings
@@ -115,6 +122,41 @@ You can do all of this from a phone. There is no local install and no build comm
 
 **Suggested tags:** Cover, Paper, Talk, People, Lab.
 
+### Share a post to Facebook or LinkedIn
+
+Every post page has **LinkedIn / Facebook / X / Copy link** buttons under the article.
+Click one, or paste the post URL into a post on either platform. The preview card is
+generated from the page's Open Graph tags.
+
+**Never point `image:` at a file in `covers/`.** Journal covers are portrait (760x999).
+Facebook and LinkedIn want 1.91:1 landscape, so a portrait cover gets centre-cropped into
+a letterbox that cuts off the top and bottom of the artwork. Point at the pre-built
+landscape card instead:
+
+```yaml
+image: /img/og/Batteries_and_Supercaps_2026.jpg   # 1200x630, cover + caption
+```
+
+Posts with no `image:` fall back to `og.png`, which is always a safe default.
+
+**Making a card for a new cover.** Add the cover to `_data/covers.yml` first, then either
+ask Claude for the card, or run it yourself:
+
+```bash
+pip install pillow pyyaml fonttools
+python tools/make_og_cards.py     # reads _data/covers.yml, writes img/og/*.jpg
+```
+
+**If the preview looks wrong or stale**, the platform has cached the old tags. Force a
+refresh:
+
+- LinkedIn: <https://www.linkedin.com/post-inspector/>
+- Facebook: <https://developers.facebook.com/tools/debug/>
+
+Paste the URL, click Inspect / Scrape Again. LinkedIn caches for about 7 days and there is
+no way around it other than the inspector, so **check the preview before you post**, not
+after.
+
 **A post does not have to be an essay.** Three sentences announcing a cover is a post.
 The failure mode for an academic blog is not posts that are too short, it is a "Latest
 news, March 2024" banner sitting on a 2026 site. Short and alive beats long and abandoned.
@@ -163,6 +205,10 @@ root kept working and only the News link broke.
 
 `news.html` now pins its own `permalink: /news/` in the front matter, so it no longer
 depends on that setting. **Link to `/news/`, never `/news.html`.**
+
+`404.html` pins `permalink: /404.html` for the same reason. GitHub Pages only serves a
+custom 404 from that exact path; without the pin Jekyll would build it to `/404/` and you
+would silently get GitHub's generic error page back.
 
 ## Deploying
 
