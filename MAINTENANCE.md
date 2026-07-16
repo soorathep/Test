@@ -1,16 +1,24 @@
 # Maintaining skhgroup.net
 
-The site is one static HTML file plus two image folders. No build step, no framework,
-no dependencies. If you can edit a text file, you can update this site.
-
 ```
-skhgroup_redesign_1.html   the whole page (~61 KB)
+skhgroup_redesign_1.html   the one-pager (~52 KB), plain static HTML
+assets/style.css           all styling, shared by the one-pager and the blog
 covers/                    journal cover art, 760 px wide
 img/                       PI photo
+news.html                  the blog index
+_posts/                    one markdown file per post   <- the part you edit often
+_layouts/                  page shell for blog pages
+_config.yml                Jekyll settings
 ```
 
-Everything is in `skhgroup_redesign_1.html`: eight sections (`<div class="page" id="...">`),
-one `<style>` block at the top. Content is plain HTML, not generated.
+Two halves, deliberately:
+
+- **The one-pager** is hand-written HTML that GitHub Pages copies through untouched.
+  It changes a few times a year.
+- **The blog** is Jekyll, built by GitHub automatically on every push. Adding a post is
+  adding one markdown file. Nothing to install, nothing to run.
+
+They share `assets/style.css`, so the blog can never drift out of visual sync with the site.
 
 ---
 
@@ -35,6 +43,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | People and alumni placements | yearly | `id="people"` | Your records |
 | Patents, awards, roles | rare | `id="recognition"`, home callout | CV |
 | Instruments | rare | `id="facilities"` | Notion booking calendar |
+| **Blog posts** | **whenever** | **`_posts/*.md`** | **You** |
 
 **The CV is upstream of the site.** When the CV changes, the site follows, never the
 reverse. Anything on the site that is not traceable to the CV, Scopus, or a file from a
@@ -74,6 +83,35 @@ Rules learned the hard way:
   has no acronym, write its full name.
 - **Always name the country.** Singapore is its own country; do not write "Singapore, Singapore".
 
+### Publish a blog post  (the 90-second version)
+
+1. On GitHub, open `_posts/` and click **Add file → Create new file**.
+2. Name it `2026-08-14-short-title.md`. **The date in the filename is the publish date.**
+   Get it wrong and the post sorts wrong.
+3. Type this, then write in markdown underneath:
+   ```markdown
+   ---
+   title: "Whatever it is"
+   date: 2026-08-14
+   description: "One sentence. Shows on the news index and in link previews."
+   tag: Cover
+   ---
+
+   Your text. **Bold**, *italic*, [links](https://example.com), ## headings, - bullets.
+
+   ![alt text]({{ site.baseurl }}/covers/FILE.jpg)
+   ```
+4. Commit. The post is live in about a minute, the news index reorders itself, and
+   `feed.xml` updates. You never touch `news.html`.
+
+You can do all of this from a phone. There is no local install and no build command.
+
+**Suggested tags:** Cover, Paper, Talk, People, Lab.
+
+**A post does not have to be an essay.** Three sentences announcing a cover is a post.
+The failure mode for an academic blog is not posts that are too short, it is a "Latest
+news, March 2024" banner sitting on a 2026 site. Short and alive beats long and abandoned.
+
 ### Update the publication counts
 
 One `<h2>` and one `<div class="note">` in `id="publications"`. Change both together or
@@ -83,9 +121,18 @@ they will disagree. Refresh the "July 2026" date at the same time.
 
 ## Deploying
 
-Commit to `github.com/soorathep/Test`. GitHub Pages redeploys on push. If images do not
-appear, the folder is missing or misnamed: paths are case-sensitive and relative to the
-HTML file.
+Commit to `github.com/soorathep/Test`. GitHub Pages rebuilds on every push. If images do
+not appear, the folder is missing or misnamed: paths are case-sensitive.
+
+**Two settings live in `_config.yml` and nowhere else:**
+
+- `baseurl: "/Test"` matches the repo name. Rename the repo and this must change, or every
+  blog link 404s. If you point skhgroup.net at Pages, set it to `""`.
+- `home_url: "skhgroup_redesign_1.html"` is what the nav links back to. Renaming the
+  one-pager to `index.html` (recommended eventually, it gives you a clean `/` URL) means
+  changing this one line.
+
+If the blog breaks after a rename, it is one of those two lines.
 
 ---
 

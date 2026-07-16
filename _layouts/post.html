@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<section>
+  <div class="post-head">
+    <div class="mono eyebrow">News</div>
+    <h1>{{ page.title }}</h1>
+    <div class="d">{{ page.date | date: "%-d %B %Y" }}{% if page.tag %} · {{ page.tag }}{% endif %}</div>
+  </div>
+
+  <article class="post-body">
+    {{ content }}
+  </article>
+
+  <div class="post-nav">
+    <a href="{{ site.baseurl }}/news.html">← All news</a>
+  </div>
+</section>

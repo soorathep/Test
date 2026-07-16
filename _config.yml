@@ -1,0 +1,38 @@
+title: SKH Research Group
+description: >-
+  Energy Storage Innovation Laboratory, Department of Chemical Engineering,
+  Chulalongkorn University. Non-lithium batteries read through the
+  Coordination-Transport-Interface chain.
+author: Soorathep Kheawhom
+
+# --- URLs -------------------------------------------------------------
+# baseurl must match the repo name while the site is served from
+# soorathep.github.io/Test/. If you rename the repo, or point skhgroup.net
+# at Pages, change it here and nowhere else. Root domain = empty string.
+baseurl: "/Test"
+url: "https://soorathep.github.io"
+
+# The one-pager. If you ever rename it to index.html, change this line only.
+home_url: "skhgroup_redesign_1.html"
+
+# --- Posts ------------------------------------------------------------
+permalink: /news/:year/:month/:day/:title/
+timezone: Asia/Bangkok
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed      # generates /feed.xml automatically
+
+feed:
+  path: feed.xml
+
+exclude:
+  - MAINTENANCE.md
+  - README.md
+  - "*.zip"
