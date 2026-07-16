@@ -5,7 +5,7 @@ index.html   the one-pager (~52 KB), plain static HTML
 assets/style.css           all styling, shared by the one-pager and the blog
 covers/                    journal cover art, 760 px wide
 img/                       PI photo
-news.html                  the blog index
+news.html                  the blog index (served at /news/ , not /news.html)
 _posts/                    one markdown file per post   <- the part you edit often
 _layouts/                  page shell for blog pages
 _config.yml                Jekyll settings
@@ -118,6 +118,16 @@ One `<h2>` and one `<div class="note">` in `id="publications"`. Change both toge
 they will disagree. Refresh the "July 2026" date at the same time.
 
 ---
+
+## The permalink trap (this cost an hour once)
+
+`permalink:` in `_config.yml` ends with a `/`. In Jekyll that turns on pretty URLs for
+**every HTML page**, not just posts: `news.html` is built to `/news/index.html` and
+`/news.html` returns 404. `index.html` and `feed.xml` are exempt, which is why the site
+root kept working and only the News link broke.
+
+`news.html` now pins its own `permalink: /news/` in the front matter, so it no longer
+depends on that setting. **Link to `/news/`, never `/news.html`.**
 
 ## Deploying
 
