@@ -205,3 +205,49 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
   .post-list a.entry{grid-template-columns:1fr;gap:6px}
   .post-head h1{font-size:1.6rem}
 }
+
+/* ---------- metrics band (home) ---------- */
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:34px 0 10px}
+.metric{background:var(--paper);padding:22px 18px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start}
+.metric .v{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:2rem;letter-spacing:-.02em;color:var(--prussian);line-height:1}
+.metric .v span{color:var(--sodium)}
+.metric .l{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px;line-height:1.45}
+.metrics-note{color:var(--zinc);text-align:center;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:34px}
+
+/* ---------- featured discoveries ---------- */
+.discoveries{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+.discovery{background:var(--paper);display:grid;grid-template-columns:150px 1fr;align-items:stretch}
+.discovery .da{display:block;border-right:1px solid var(--line)}
+.discovery .da img{width:100%;height:100%;object-fit:cover;display:block;background:var(--paper-2)}
+.discovery .db{padding:24px 26px}
+.discovery .j{color:var(--prussian);margin-bottom:8px}
+.discovery h3{font-size:1.16rem;margin-bottom:10px;max-width:54ch}
+.discovery p{font-size:.94rem;color:var(--ink-soft);max-width:74ch}
+.discovery .doi{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.04em}
+.discovery .doi.muted{color:var(--zinc)}
+
+/* ---------- collaboration map ---------- */
+.geomap-fig{margin:0}
+.geomap{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--paper-2)}
+.geomap .grat line{stroke:var(--line);stroke-width:1}
+.geomap .links line{stroke:var(--zinc);stroke-width:1;opacity:.5}
+.geomap .pts circle{fill:var(--prussian)}
+.geomap .pts .hub{fill:var(--sodium)}
+.geomap .pts .fac{fill:none;stroke:var(--prussian);stroke-width:2}
+.geomap .labs text{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;fill:var(--ink)}
+.geomap .labs .home{fill:var(--prussian);font-weight:500}
+.geomap .labs .sub{fill:var(--zinc);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.geomap-fig figcaption{margin-top:12px;color:var(--ink-soft);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase}
+.geomap-fig figcaption span{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.dot-hub{background:var(--sodium)}
+.dot-fac{background:none;border:2px solid var(--prussian)}
+.dot-part{background:var(--prussian)}
+
+@media(max-width:900px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .discovery{grid-template-columns:1fr}
+  .discovery .da{border-right:0;border-bottom:1px solid var(--line);max-height:210px}
+  .discovery .da img{max-height:210px}
+  .geomap .labs text{font-size:16px}
+  .geomap .labs .sub{font-size:13px}
+}
