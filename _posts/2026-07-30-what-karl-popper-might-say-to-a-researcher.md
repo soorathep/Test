@@ -86,4 +86,4 @@ Science moves forward not because we avoid being wrong.
 
 It moves forward because we are willing to discover when we are.
 
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously in this series: <a href="{{ site.baseurl }}/news/2026/07/27/what-the-buddha-might-say-to-a-researcher/">What the Buddha Might Say to a Researcher</a>.</p>
+<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/07/27/what-the-buddha-might-say-to-a-researcher/">What the Buddha Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/02/what-richard-feynman-might-say-to-a-researcher/">What Richard Feynman Might Say to a Researcher</a></p>
