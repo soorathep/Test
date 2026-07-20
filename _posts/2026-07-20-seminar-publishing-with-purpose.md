@@ -24,7 +24,7 @@ This seminar will be valuable for graduate students, postdoctoral researchers, a
 ## Speaker
 
 <figure style="float:right;max-width:240px;margin:4px 0 18px 26px">
-  <img src="{{ site.baseurl }}/img/news/partha-pratim-pal.jpg" alt="Dr. Partha Pratim Pal" style="width:100%">
+  <img src="{{ site.baseurl }}/img/og/ParthaPal_March2024.jpg" alt="Dr. Partha Pratim Pal" style="width:100%">
   <figcaption>Dr. Partha Pratim Pal, Wiley</figcaption>
 </figure>
 
