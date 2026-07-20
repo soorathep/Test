@@ -243,6 +243,27 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
 .dot-fac{background:none;border:2px solid var(--prussian)}
 .dot-part{background:var(--prussian)}
 
+/* ---------- series navigation (auto) ---------- */
+.series-nav{border-top:1px solid var(--line);margin-top:50px;padding-top:20px}
+.series-nav>.eyebrow{color:var(--prussian);margin-bottom:16px}
+.series-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.series-row a{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid var(--line);border-radius:2px;color:var(--ink)}
+.series-row a:hover{border-color:var(--sodium);text-decoration:none}
+.series-row a:hover .t{color:var(--prussian)}
+.series-row .mono{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--zinc)}
+.series-row .t{font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:1rem;line-height:1.25}
+.series-next{text-align:right}
+.series-nav>a.mono{font-size:.66rem;letter-spacing:.06em;color:var(--prussian)}
+
+/* ---------- essays hub ---------- */
+.series-block{border-top:1px solid var(--line);padding-top:18px;margin-bottom:48px}
+.series-block .s-name{font-size:1.5rem;margin:6px 0 6px}
+.series-block .s-blurb{color:var(--ink-soft);max-width:64ch;margin-bottom:6px}
+.series-count{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--zinc)}
+.series-soon{color:var(--zinc);font-style:italic;padding:10px 0}
+
+@media(max-width:760px){ .series-row{grid-template-columns:1fr} .series-next{text-align:left} }
+
 @media(max-width:900px){
   .metrics{grid-template-columns:repeat(2,1fr)}
   .discovery{grid-template-columns:1fr}

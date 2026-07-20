@@ -3,6 +3,8 @@ title: "What Seneca Might Say to a Researcher"
 date: 2026-08-14
 description: "A reflection on Seneca and the shortness of life: the difference between busyness and contribution, and why sustained attention to what matters is a researcher's greatest resource."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/seneca-researcher.jpg
 ---
 
@@ -97,5 +99,3 @@ Every morning, a researcher should ask one simple question:
 Perhaps the measure of a scientific career is not how full our days have been.
 
 Perhaps it is whether we gave our best time to the questions that mattered most.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/08/11/what-viktor-frankl-might-say-to-a-researcher/">What Viktor Frankl Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/17/what-confucius-might-say-to-a-professor/">What Confucius Might Say to a Professor</a></p>

@@ -3,6 +3,8 @@ title: "What Richard Feynman Might Say to a Researcher"
 date: 2026-08-02
 description: "A reflection for researchers on Feynman's first principle — you must not fool yourself, and you are the easiest person to fool. On self-deception, confidence, and the discipline that guards against it."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/feynman-researcher.jpg
 ---
 
@@ -86,5 +88,3 @@ Every morning, a researcher should ask one simple question:
 The answer may determine not only the quality of today's experiment.
 
 It may determine whether we discover the truth—or merely confirm what we already wanted to believe.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/07/30/what-karl-popper-might-say-to-a-researcher/">What Karl Popper Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/05/what-thomas-kuhn-might-say-to-a-researcher/">What Thomas Kuhn Might Say to a Researcher</a></p>

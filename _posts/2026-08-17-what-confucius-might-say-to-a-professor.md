@@ -3,6 +3,8 @@ title: "What Confucius Might Say to a Professor"
 date: 2026-08-17
 description: "A reflection on Confucius and the teaching life: why a professor's most enduring work may be the people who grow because of them, not the papers left behind."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/confucius-professor.jpg
 ---
 
@@ -91,5 +93,3 @@ Every morning, a professor should ask one simple question:
 Perhaps the most lasting measure of an academic career is not the papers we leave behind.
 
 Perhaps it is the people who continue to learn, teach, and inspire long after we are gone.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/08/14/what-seneca-might-say-to-a-researcher/">What Seneca Might Say to a Researcher</a> · Series close: <a href="{{ site.baseurl }}/news/2026/08/20/becoming-a-better-researcher/">Becoming a Better Researcher</a></p>

@@ -3,6 +3,8 @@ title: "What Marcus Aurelius Might Say to a Researcher"
 date: 2026-07-24
 description: "A Stoic reflection for researchers: focus on what is within our control — honesty, rigor, and curiosity — and leave recognition to history."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/marcus-aurelius-researcher.jpg
 ---
 
@@ -74,5 +76,3 @@ Every morning, a researcher has only one responsibility:
 > Learn continuously.
 
 History will decide the rest.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously in this series: <a href="{{ site.baseurl }}/news/2026/07/20/the-academic-shadow/">The Academic Shadow</a>.</p>

@@ -3,6 +3,8 @@ title: "What Viktor Frankl Might Say to a Researcher"
 date: 2026-08-11
 description: "A reflection on Viktor Frankl and the search for meaning: why achievement and meaning are not the same, and what sustains research through the long days no one sees."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/frankl-researcher.jpg
 ---
 
@@ -95,5 +97,3 @@ Every morning, a researcher should ask one simple question:
 The answer may reveal not only the purpose of today's research.
 
 It may reveal the purpose of the researcher.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/08/08/what-socrates-might-say-to-a-researcher/">What Socrates Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/14/what-seneca-might-say-to-a-researcher/">What Seneca Might Say to a Researcher</a></p>

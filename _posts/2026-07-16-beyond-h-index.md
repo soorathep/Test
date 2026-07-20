@@ -3,6 +3,8 @@ title: "Beyond H-index: The Next Milestone Is Not a Number"
 date: 2026-07-16
 description: "Metrics measure where research has been; frameworks shape where it goes next. On the transition from measuring impact to creating direction."
 tag: Perspective
+kind: essay
+series: "Beyond Metrics"
 image: /img/og/beyond-h-index.jpg
 ---
 

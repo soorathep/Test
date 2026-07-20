@@ -3,6 +3,7 @@ title: "From oxygen redox to usable energy: a design framework and reporting sta
 date: 2026-07-20
 description: "New review in Journal of Energy Storage: the Accessibility–Reversibility–Containment (ARC) descriptor triad and evidence tiers that turn oxygen redox from a source of instability into a tractable design variable for high-energy sodium-layered oxide cathodes."
 tag: Paper
+kind: news
 image: /img/og/oxygen-redox-arc-review.jpg
 ---
 

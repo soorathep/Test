@@ -3,6 +3,8 @@ title: "What the Buddha Might Say to a Researcher"
 date: 2026-07-27
 description: "A reflection for researchers on non-attachment: caring more about the truth than about being right, and treating every hypothesis as an exercise in letting go of certainty."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/buddha-researcher.jpg
 ---
 
@@ -97,5 +99,3 @@ Every morning, a researcher has only one responsibility.
 > Follow the evidence.  
 > Let go of what the evidence cannot support.  
 > Then begin again.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously in this series: <a href="{{ site.baseurl }}/news/2026/07/24/what-marcus-aurelius-might-say-to-a-researcher/">What Marcus Aurelius Might Say to a Researcher</a>.</p>

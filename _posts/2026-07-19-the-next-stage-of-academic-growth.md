@@ -3,6 +3,8 @@ title: "The Next Stage of Academic Growth"
 date: 2026-07-19
 description: "Publications, citations, and the H-index are not the destination but the foundation. On how a school of thought emerges from — not instead of — rigorous science."
 tag: Perspective
+kind: essay
+series: "Beyond Metrics"
 image: /img/og/next-stage-academic-growth.jpg
 ---
 

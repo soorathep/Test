@@ -3,6 +3,8 @@ title: "What Thomas Kuhn Might Say to a Researcher"
 date: 2026-08-05
 description: "A reflection on Thomas Kuhn, paradigms, and anomalies: sometimes the greatest obstacle to discovery is not missing evidence, but the assumptions no one thinks to question."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/kuhn-researcher.jpg
 ---
 
@@ -93,5 +95,3 @@ Every morning, a researcher should ask one simple question:
 The answer may not change today's experiment.
 
 But it may change the question that defines tomorrow's science.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/08/02/what-richard-feynman-might-say-to-a-researcher/">What Richard Feynman Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/08/what-socrates-might-say-to-a-researcher/">What Socrates Might Say to a Researcher</a></p>

@@ -3,6 +3,8 @@ title: "The Academic Shadow"
 date: 2026-07-20
 description: "On Jung's persona and the hidden psychological dimension of academic careers — how the identity built by past success can quietly limit future thought."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/the-academic-shadow.jpg
 ---
 

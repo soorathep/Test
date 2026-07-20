@@ -3,6 +3,8 @@ title: "What Socrates Might Say to a Researcher"
 date: 2026-08-08
 description: "A reflection on Socrates and intellectual honesty: the more we learn, the more clearly we see how much remains unknown — and why curiosity never becomes obsolete."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/socrates-researcher.jpg
 ---
 
@@ -77,5 +79,3 @@ Every morning, a researcher should ask one simple question:
 Perhaps wisdom is not measured by how much we know.
 
 Perhaps it is measured by how much of the unknown we are still willing to explore.
-
-<p class="mono" style="margin-top:40px;color:var(--zinc)">Previously: <a href="{{ site.baseurl }}/news/2026/08/05/what-thomas-kuhn-might-say-to-a-researcher/">What Thomas Kuhn Might Say to a Researcher</a> · Next: <a href="{{ site.baseurl }}/news/2026/08/11/what-viktor-frankl-might-say-to-a-researcher/">What Viktor Frankl Might Say to a Researcher</a></p>

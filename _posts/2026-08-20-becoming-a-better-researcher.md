@@ -3,6 +3,8 @@ title: "Becoming a Better Researcher"
 date: 2026-08-20
 description: "A closing synthesis of the series — ten thinkers, from Jung to Confucius, and one idea: becoming a better researcher has always been about becoming a wiser human being."
 tag: Perspective
+kind: essay
+series: "Through the Thinkers"
 image: /img/og/becoming-a-better-researcher.jpg
 ---
 

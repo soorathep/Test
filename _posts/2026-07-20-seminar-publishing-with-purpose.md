@@ -3,6 +3,7 @@ title: "Publishing with Purpose — A Distinguished Seminar with Dr. Partha Prat
 date: 2026-07-20
 description: "Distinguished Seminar at Chulalongkorn University: Dr. Partha Pratim Pal (Wiley) on navigating manuscript submission, peer review, publication ethics, open science, and AI in scholarly publishing. Monday 27 July 2026, 10:00–11:30 AM."
 tag: Seminar
+kind: news
 image: /img/og/seminar-publishing-with-purpose.jpg
 ---
 

@@ -1,16 +1,37 @@
 ---
 layout: default
 ---
+{% comment %} Series position (computed once, reused below) {% endcomment %}
+{% if page.series %}
+  {% assign sp = site.posts | where: "series", page.series | sort: "date" %}
+  {% assign total = sp | size %}
+  {% assign idx = 0 %}
+  {% for p in sp %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+  {% assign partno = idx | plus: 1 %}
+  {% assign previdx = idx | minus: 1 %}
+  {% assign nextidx = idx | plus: 1 %}
+{% endif %}
 <section>
   <div class="post-head">
-    <div class="mono eyebrow">News</div>
+    <div class="mono eyebrow">{% if page.series %}{{ page.series }}{% else %}News{% endif %}</div>
     <h1>{{ page.title }}</h1>
-    <div class="d">{{ page.date | date: "%-d %B %Y" }}{% if page.tag %} · {{ page.tag }}{% endif %}</div>
+    <div class="d">{{ page.date | date: "%-d %B %Y" }}{% if page.series %} · Part {{ partno }} of {{ total }}{% elsif page.tag %} · {{ page.tag }}{% endif %}</div>
   </div>
 
   <article class="post-body">
     {{ content }}
   </article>
+
+  {% if page.series %}
+  <nav class="series-nav">
+    <div class="mono eyebrow">{{ page.series }} · Part {{ partno }} of {{ total }}</div>
+    <div class="series-row">
+      {% if idx > 0 %}{% assign prev = sp[previdx] %}<a class="series-prev" href="{{ prev.url | relative_url }}"><span class="mono">← Previous</span><span class="t">{{ prev.title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if nextidx < total %}{% assign next = sp[nextidx] %}<a class="series-next" href="{{ next.url | relative_url }}"><span class="mono">Next →</span><span class="t">{{ next.title }}</span></a>{% endif %}
+    </div>
+    <a class="mono" href="{{ site.baseurl }}/essays/">All essays in this series &amp; others →</a>
+  </nav>
+  {% endif %}
 
   <div class="post-nav">
     {% assign share_url = page.url | absolute_url %}
@@ -24,7 +45,7 @@ layout: default
          href="https://twitter.com/intent/tweet?url={{ share_url | url_encode }}&amp;text={{ page.title | url_encode }}">X</a>
       <a class="pill" href="{{ share_url }}" data-copy>Copy link</a>
       <span style="flex:1"></span>
-      <a href="{{ site.baseurl }}/news/">← All news</a>
+      {% if page.kind == 'essay' %}<a href="{{ site.baseurl }}/essays/">← All essays</a>{% else %}<a href="{{ site.baseurl }}/news/">← All news</a>{% endif %}
     </div>
   </div>
 
