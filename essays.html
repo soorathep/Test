@@ -1,0 +1,42 @@
+---
+layout: default
+title: Essays
+permalink: /essays/
+description: Essays on the research life from the Energy Storage Innovation Laboratory — reflections, science-as-metaphor, letters, and the craft of research, grouped into series.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Writing</div>
+    <h2>Essays on the research life</h2>
+  </div>
+
+  <p class="lede" style="margin-bottom:40px">A running notebook, separate from the laboratory's <a href="{{ site.baseurl }}/news/">research news</a>.
+  Short essays on what a scientific career is actually made of — grouped into series. Read them in any order.</p>
+
+  {% for s in site.data.series %}
+  {% assign posts = site.posts | where: "series", s.name | sort: "date" %}
+  <div class="series-block">
+    <div class="mono eyebrow">Series</div>
+    <h2 class="s-name">{{ s.name }}</h2>
+    <p class="s-blurb">{{ s.blurb }}</p>
+    {% if posts.size > 0 %}
+    <div class="series-count" style="margin-bottom:14px">{{ posts.size }} {% if posts.size == 1 %}part{% else %}parts{% endif %}</div>
+    <div class="post-list">
+      {% for post in posts %}
+      <a class="entry" href="{{ post.url | relative_url }}">
+        <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
+        <div>
+          <h3>{{ post.title }}</h3>
+          <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="series-soon">In progress — the first parts are being written.</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="note">Subscribe by <a href="{{ site.baseurl }}/feed.xml">RSS</a>.</div>
+</section>

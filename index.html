@@ -6,8 +6,9 @@ layout: null
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SKH Research Group — Energy Storage Innovation Laboratory, Chulalongkorn University</title>
-<meta name="description" content="Energy Storage Innovation Laboratory at Chulalongkorn University. Zinc, sodium, magnesium, and flow batteries studied through the Coordination–Transport–Interface framework, with operando synchrotron characterization. Led by Assoc. Prof. Dr. Soorathep Kheawhom.">
+<title>SKH Research Group — Coordination–Transport–Interface (CTI) Framework for Predictive Electrochemical Engineering</title>
+<meta name="description" content="Home of the Coordination–Transport–Interface (CTI) framework for predictive electrochemical engineering. Zinc-ion, sodium-ion, and aqueous organic redox flow batteries read through coordination, transport, and interface, with operando synchrotron characterization. Energy Storage Innovation Laboratory, Chulalongkorn University, led by Assoc. Prof. Dr. Soorathep Kheawhom.">
+<meta name="keywords" content="Coordination–Transport–Interface, CTI Engineering, Predictive Electrochemical Engineering, zinc battery, aqueous organic redox flow battery, sodium-ion battery, operando battery characterization, electrochemical diagnostics, EIS, DRT">
 <meta name="author" content="Soorathep Kheawhom">
 <link rel="canonical" href="https://www.skhgroup.net/">
 <meta name="theme-color" content="#0E3B5C">
@@ -79,14 +80,17 @@ layout: null
     <button class="burger" aria-label="Menu">MENU</button>
     <nav class="nav-links">
       <a href="#home">Home</a>
-      <a href="#research">Research</a>
       <a href="#cti">CTI Framework</a>
+      <a href="#research">Research</a>
       <a href="#facilities">Facilities</a>
       <a href="#people">People</a>
       <a href="#publications">Publications</a>
+      <a href="#collaborate">Collaborate</a>
+      <a href="#industry">Industry</a>
       <a href="#recognition">Recognition</a>
       <a href="#join">Join Us</a>
       <a href="news/">News</a>
+      <a href="essays/">Essays</a>
     </nav>
   </div>
 </header>
@@ -97,9 +101,9 @@ layout: null
 <div class="page" id="home">
   <div class="wrap">
     <div class="hero">
-      <div class="mono eyebrow">Energy Storage Innovation Laboratory · Chulalongkorn University</div>
+      <div class="mono eyebrow">Predictive Electrochemical Engineering · Home of the Coordination–Transport–Interface (CTI) framework</div>
       <h1>Durability is a chain, <em>not a number.</em></h1>
-      <p class="lede">We study non-lithium batteries where they actually fail — at the solvation shell, through transport, and at the interface. Ionic conductivity does not predict lifetime. The causal chain does.</p>
+      <p class="lede">We develop the Coordination–Transport–Interface (CTI) framework for predictive electrochemical engineering across rechargeable batteries and aqueous organic redox flow batteries — studying non-lithium systems where they actually fail: at the solvation shell, through transport, and at the interface. Ionic conductivity does not predict lifetime. The causal chain does.</p>
       <svg class="spectrum" viewBox="0 0 1120 150" preserveAspectRatio="none" aria-hidden="true">
         <rect class="band" x="0" y="0" width="373" height="150" fill="#0E3B5C"></rect>
         <rect class="band" x="746" y="0" width="374" height="150" fill="#E8A80B"></rect>
@@ -107,6 +111,16 @@ layout: null
         <path id="exafs" d=""></path>
       </svg>
     </div>
+
+    <!-- Research impact metrics -->
+    <div class="metrics" aria-label="Research impact at a glance">
+      <div class="metric"><div class="v">322<span>+</span></div><div class="l">Scopus publications</div></div>
+      <div class="metric"><div class="v">47</div><div class="l">h-index</div></div>
+      <div class="metric"><div class="v">6,779</div><div class="l">Citations</div></div>
+      <div class="metric"><div class="v">Top 2%</div><div class="l">Stanford / Elsevier World's Top 2% Scientists</div></div>
+      <div class="metric"><div class="v">Founding<span> Chair</span></div><div class="l">ECS Thailand Section</div></div>
+    </div>
+    <p class="mono metrics-note">Scopus Author ID 55897360400, July 2026 · Editorial and associate-editor roles across RSC, IOP, Frontiers, and PLOS titles</p>
 
     <p class="mono" style="text-align:center;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--zinc);margin-bottom:18px">
       Zinc-ion · Sodium-ion · Organic flow &nbsp;—&nbsp; read through one chain, watched with operando synchrotron
@@ -133,6 +147,28 @@ layout: null
 
     <section>
       <div class="sec-head">
+        <div class="mono eyebrow">Featured discoveries</div>
+        <h2>What the framework has produced lately</h2>
+      </div>
+      <p class="lede" style="margin-bottom:30px">Selected flagship papers, each stated as one scientific contribution rather than a citation. The complete record is on Scopus and ORCID.</p>
+      <div class="discoveries">
+        {% for f in site.data.featured %}
+        <article class="discovery">
+          {% if f.image %}<a class="da" href="{% if f.doi %}https://doi.org/{{ f.doi }}{% else %}#recognition{% endif %}"><img src="{{ f.image }}" alt="{{ f.journal }} — graphical abstract" loading="lazy"></a>{% endif %}
+          <div class="db">
+            <div class="mono j">{{ f.journal }} · {{ f.year }}</div>
+            <h3>{{ f.title }}</h3>
+            <p>{{ f.contribution }}</p>
+            {% if f.doi %}<p class="doi"><a href="https://doi.org/{{ f.doi }}">DOI {{ f.doi }}</a></p>{% else %}<p class="doi muted">DOI forthcoming</p>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <p style="margin-top:20px"><a href="#publications">All selected publications, grouped by the causal chain →</a></p>
+    </section>
+
+    <section>
+      <div class="sec-head">
         <div class="mono eyebrow">Covers</div>
         <h2>The work, as the journals drew it</h2>
       </div>
@@ -150,7 +186,8 @@ layout: null
         <h2>News</h2>
       </div>
       <div class="post-list">
-        {% for post in site.posts limit: 2 %}
+        {% assign newsposts = site.posts | where: "kind", "news" %}
+        {% for post in newsposts limit: 2 %}
         <a class="entry" href="{{ post.url }}">
           <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
           <div>
@@ -161,6 +198,27 @@ layout: null
         {% endfor %}
       </div>
       <p style="margin-top:16px"><a href="news/">All news &rarr;</a></p>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="mono eyebrow">Writing</div>
+        <h2>Essays</h2>
+      </div>
+      <p class="lede" style="margin-bottom:20px">A separate notebook on the research life — reflections, science-as-metaphor, and the craft of research, grouped into series.</p>
+      <div class="post-list">
+        {% assign essayposts = site.posts | where: "kind", "essay" %}
+        {% for post in essayposts limit: 2 %}
+        <a class="entry" href="{{ post.url }}">
+          <div class="d">{{ post.date | date: "%-d %b %Y" }}{% if post.series %} · {{ post.series }}{% endif %}</div>
+          <div>
+            <h3>{{ post.title }}</h3>
+            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <p style="margin-top:16px"><a href="essays/">All essays &rarr;</a></p>
     </section>
 
     <section>
@@ -285,6 +343,86 @@ layout: null
             <p>Part of the reported sulfide electrolyte advantage is pressure-assisted contact rather than intrinsic transport. Disclose stack pressure and areal capacity, and the standard ranking of sulfide against NASICON-type oxide does not survive in every case. This is a prediction, and it can be shown wrong.</p>
             <p style="margin-top:14px"><a href="https://doi.org/10.1039/D6TA01969B">Read the paper — J. Mater. Chem. A, 2026</a></p>
           </div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Motivation</div>
+        <h2>Why empirical optimization is insufficient</h2>
+      </div>
+      <p class="lede" style="margin-bottom:22px">The field improves batteries by screening: change a salt, an additive, a coating, keep what cycles longer. This finds local optima and hides their cause. Two electrolytes that report the same conductivity can fail after 50 and 500 cycles, and a screen cannot say why — because the property that separates them is not the one being measured. Empirical optimization is fast until the design space shifts, and then every hard-won number has to be re-earned. CTI exists to replace "what worked" with "why it worked," so that a result transfers across chemistries instead of staying trapped in the system it was found in.</p>
+
+      <div class="sec-head" style="margin-top:60px">
+        <div class="mono eyebrow">Descriptors</div>
+        <h2>The measurable quantities the framework is built on</h2>
+      </div>
+      <p class="lede" style="margin-bottom:26px">CTI is only useful if each link reduces to something you can measure and report. These are the descriptors the group treats as the minimum honest set for comparing two systems across classes.</p>
+      <table style="margin-bottom:20px">
+        <thead><tr><th style="width:150px">Link</th><th>Descriptor</th><th>Reads out</th></tr></thead>
+        <tbody>
+          <tr><td class="yr">Coordination</td><td>First-shell anion fraction · coordination number · free-solvent activity</td><td>What can decompose, and what is protected</td></tr>
+          <tr><td class="yr">Transport</td><td>Transference number · ionic conductivity vs. temperature</td><td>Necessary, widely reported, insufficient alone</td></tr>
+          <tr><td class="yr">Interface</td><td>Time-resolved interfacial resistance · interfacial fracture energy · stack-pressure sensitivity</td><td>The link that decides lifetime</td></tr>
+          <tr><td class="yr">Reporting</td><td>Stack pressure · areal capacity</td><td>Disclosed as a condition of comparison, not an appendix</td></tr>
+        </tbody>
+      </table>
+      <div class="note">A comparison that omits stack pressure and areal capacity is not wrong so much as unfalsifiable. The framework asks for both before it accepts a ranking.</div>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Representative work</div>
+        <h2>Papers that carry the framework</h2>
+      </div>
+      <div class="stack" style="margin-bottom:20px">
+        {% for f in site.data.featured %}
+        <div class="item">
+          <div class="yr">{{ f.year }}</div>
+          <div>
+            <h4>{{ f.title }}</h4>
+            <p>{{ f.journal }}. {{ f.contribution }}{% if f.doi %} <a href="https://doi.org/{{ f.doi }}">DOI {{ f.doi }}</a>{% endif %}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <p><a href="#publications">Full selected publication list →</a></p>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Current projects</div>
+        <h2>Where the framework is being tested now</h2>
+      </div>
+      <div class="pillars three">
+        <div class="pillar">
+          <span class="tag">Sodium · solid</span>
+          <h3>Stack-pressure baselines for solid electrolytes</h3>
+          <p>Testing the falsifiable claim directly: sulfide against NASICON-type oxide under matched pressure, with the composite Na₃SbS₄/NASICON work as the experimental counterpart.</p>
+        </div>
+        <div class="pillar">
+          <span class="tag">Zinc · coordination</span>
+          <h3>Carrier identity in zinc electrolytes</h3>
+          <p>Resolving whether Zn²⁺ or H⁺ compensates charge under a given donor environment, and tying that first-shell picture to interfacial lifetime.</p>
+        </div>
+        <div class="pillar">
+          <span class="tag">Flow · cross-scale</span>
+          <h3>Molecule-to-stack design for AORFBs</h3>
+          <p>Carrying descriptor-level design from the redox molecule to the working stack, so a promising molecule and a working system are designed against the same criteria.</p>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Future directions</div>
+        <h2>What the framework should become</h2>
+      </div>
+      <div class="two">
+        <div>
+          <div class="facts" style="margin-top:0">
+            <div class="fact"><div class="k">Predictive</div><div>From descriptors measured on one chemistry to a lifetime prediction on another, tested against held-out systems rather than fitted to them.</div></div>
+            <div class="fact"><div class="k">Operando</div><div>Descriptors read while the cell cycles, so the interface reveals its failure sequence in order rather than in a post-mortem.</div></div>
+            <div class="fact"><div class="k">Reporting standard</div><div>A minimum reporting set — stack pressure, areal capacity — adopted widely enough that cross-class comparisons become routine.</div></div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="mono">The ambition</div>
+          <h3>A framework that predicts a verdict before the cell is built</h3>
+          <p>The end state is not another taxonomy of electrolytes. It is a descriptor set complete enough that the durability of an untested system can be predicted, and the prediction can be shown wrong.</p>
         </div>
       </div>
     </section>
@@ -606,6 +744,162 @@ layout: null
         <div class="item"><div class="yr">2023</div><div><h4>Invited — 3rd Singapore ECS International Symposium on Energy Materials, Singapore</h4><p>28–31 July 2023.</p></div></div>
         <div class="item"><div class="yr">2022</div><div><h4>Invited — PSEAsia 2022, Chennai, India</h4><p>10th Asian Symposium on Process Systems Engineering, 10–14 December 2022.</p></div></div>
         <div class="item"><div class="yr">2019</div><div><h4>Invited — ICRAMC-2019, Chennai, India</h4><p>3rd International Conference on Recent Advances in Material Chemistry, 13–15 February 2019.</p></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= COLLABORATE ================= -->
+<div class="page" id="collaborate">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div class="mono eyebrow">08 — Collaborate</div>
+        <h2>An international laboratory, read on a map</h2>
+      </div>
+      <p class="lede" style="margin-bottom:30px">The group's calendar is shaped by collaborators and by beamtime. Partners span Asia, Europe, and the Pacific; the synchrotron facilities the group runs operando experiments at are marked as rings. Bangkok is the home laboratory.</p>
+
+      <figure class="geomap-fig">
+        <svg class="geomap" viewBox="0 0 1000 560" role="img" aria-label="Map of SKH Research Group collaborators and synchrotron facilities across Asia, Europe, and Australia">
+          <g class="grat">
+            <line x1="0" y1="140" x2="1000" y2="140"></line>
+            <line x1="0" y1="280" x2="1000" y2="280"></line>
+            <line x1="0" y1="420" x2="1000" y2="420"></line>
+            <line x1="200" y1="0" x2="200" y2="560"></line>
+            <line x1="400" y1="0" x2="400" y2="560"></line>
+            <line x1="600" y1="0" x2="600" y2="560"></line>
+            <line x1="800" y1="0" x2="800" y2="560"></line>
+          </g>
+          <g class="links">
+            <line x1="662" y1="248" x2="48" y2="36"></line>
+            <line x1="662" y1="248" x2="62" y2="53"></line>
+            <line x1="662" y1="248" x2="758" y2="101"></line>
+            <line x1="662" y1="248" x2="823" y2="115"></line>
+            <line x1="662" y1="248" x2="903" y2="123"></line>
+            <line x1="662" y1="248" x2="787" y2="186"></line>
+            <line x1="662" y1="248" x2="745" y2="200"></line>
+            <line x1="662" y1="248" x2="669" y2="307"></line>
+            <line x1="662" y1="248" x2="971" y2="515"></line>
+          </g>
+          <g class="pts">
+            <circle class="hub" cx="662" cy="248" r="7"></circle>
+            <circle cx="48" cy="36" r="4"></circle>
+            <circle cx="758" cy="101" r="4"></circle>
+            <circle cx="823" cy="115" r="4"></circle>
+            <circle cx="745" cy="200" r="4"></circle>
+            <circle cx="669" cy="307" r="4"></circle>
+            <circle cx="971" cy="515" r="4"></circle>
+            <circle class="fac" cx="62" cy="53" r="7"></circle>
+            <circle class="fac" cx="903" cy="123" r="7"></circle>
+            <circle class="fac" cx="787" cy="186" r="7"></circle>
+            <circle class="fac" cx="662" cy="248" r="12"></circle>
+          </g>
+          <g class="labs">
+            <text x="60" y="40">United Kingdom</text>
+            <text x="74" y="57">France · SOLEIL</text>
+            <text x="746" y="97" text-anchor="end">China</text>
+            <text x="835" y="108">Korea</text>
+            <text x="889" y="142" text-anchor="end">Japan · KEK PF</text>
+            <text x="799" y="190">Taiwan · NSRRC</text>
+            <text x="733" y="204" text-anchor="end">Hong Kong</text>
+            <text x="648" y="240" text-anchor="end" class="home">Thailand · SLRI</text>
+            <text x="648" y="255" text-anchor="end" class="sub">home laboratory</text>
+            <text x="681" y="311">Malaysia</text>
+            <text x="959" y="519" text-anchor="end">Australia</text>
+          </g>
+        </svg>
+        <figcaption class="mono"><span class="dot-hub"></span> Home lab &nbsp; <span class="dot-fac"></span> Synchrotron facility &nbsp; <span class="dot-part"></span> Partner country</figcaption>
+      </figure>
+
+      <div class="two" style="margin-top:20px">
+        <div>
+          <h3 style="font-size:1.15rem;margin-bottom:14px">Partner regions</h3>
+          <table>
+            <tbody>
+              <tr><td>Japan</td><td class="yr">KEK Photon Factory · Hokkaido · Kyushu · Shinshu</td></tr>
+              <tr><td>France</td><td class="yr">SOLEIL synchrotron</td></tr>
+              <tr><td>United Kingdom</td><td class="yr">Royal Academy of Engineering LIF</td></tr>
+              <tr><td>Korea</td><td class="yr">High-entropy electrocatalysis</td></tr>
+              <tr><td>Taiwan</td><td class="yr">NSRRC synchrotron</td></tr>
+              <tr><td>China</td><td class="yr">Solid electrolytes</td></tr>
+              <tr><td>Malaysia · Hong Kong · Australia</td><td class="yr">Materials and systems</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 style="font-size:1.15rem;margin-bottom:14px">Synchrotron facilities</h3>
+          <table>
+            <thead><tr><th>Facility</th><th>Country</th></tr></thead>
+            <tbody>
+              <tr><td>SLRI — Synchrotron Light Research Institute</td><td class="yr">Thailand</td></tr>
+              <tr><td>SOLEIL</td><td class="yr">France</td></tr>
+              <tr><td>KEK Photon Factory</td><td class="yr">Japan</td></tr>
+              <tr><td>NSRRC</td><td class="yr">Taiwan</td></tr>
+            </tbody>
+          </table>
+          <div class="note">Operando XAS, grazing-incidence XAS, and XRD on cycling cells. Proposals are written year-round.</div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:70px">
+        <div class="mono eyebrow">Opportunities</div>
+        <h2>Ways to work with the group</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><span class="tag">Visiting</span><h3>Visiting professors &amp; distinguished lectures</h3><p>Short and extended research visits, seminars, and distinguished lectures, hosted through the Department of Chemical Engineering.</p></div>
+        <div class="pillar"><span class="tag">Degrees</span><h3>Joint PhD / cotutelle</h3><p>Co-supervised doctorates and dual-degree arrangements with partner universities, structured around a shared research question.</p></div>
+        <div class="pillar"><span class="tag">Funding</span><h3>International research grants</h3><p>Joint proposals to bilateral and multilateral schemes, built around operando characterization and cross-scale battery design.</p></div>
+        <div class="pillar"><span class="tag">Exchange</span><h3>Student &amp; researcher exchange</h3><p>Inbound and outbound placements for graduate students and postdocs, including beamtime campaigns at partner facilities.</p></div>
+        <div class="pillar"><span class="tag">Beamtime</span><h3>Operando synchrotron experiments</h3><p>Collaborative beamtime proposals for XAS, GI-XAS, and XRD on cycling cells at SLRI, SOLEIL, KEK, and NSRRC.</p></div>
+        <div class="pillar"><span class="tag">Flow</span><h3>Organic flow battery collaborations</h3><p>Molecule-to-stack design partnerships for aqueous organic redox flow chemistries, from synthesis to stack testing.</p></div>
+      </div>
+      <div class="callout" style="margin-top:26px">
+        <div class="mono">Start a conversation</div>
+        <h3>Propose a collaboration</h3>
+        <p>Email a short description of the question you want to work on and the capability you bring. Operando campaigns and joint-degree arrangements need lead time; earlier is better.</p>
+        <p style="margin-top:14px"><a href="mailto:soorathep.k@chula.ac.th">soorathep.k@chula.ac.th</a></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= INDUSTRY ================= -->
+<div class="page" id="industry">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div class="mono eyebrow">09 — Industry</div>
+        <h2>Working with industry</h2>
+      </div>
+      <p class="lede" style="margin-bottom:30px">The laboratory's methods — operando characterization, electrochemical diagnostics, and failure-mode analysis — translate directly to problems industry cares about: why a cell degrades, how far a chemistry can be pushed, and whether a claimed advantage survives a fair comparison.</p>
+
+      <div class="pillars three">
+        <div class="pillar"><span class="tag">R&amp;D</span><h3>Industrial collaborations</h3><p>Joint development on non-lithium chemistries — zinc-ion, zinc-air, sodium-ion, and aqueous organic flow — framed around durability and failure mechanism, not only first-cycle performance.</p></div>
+        <div class="pillar"><span class="tag">Testing</span><h3>Testing capabilities</h3><p>Galvanostatic cycling, rate capability, and long-term life testing; EIS and DRT diagnostics; operando XAS/XRD at partner beamlines for root-cause analysis of degradation.</p></div>
+        <div class="pillar"><span class="tag">IP</span><h3>Technology transfer</h3><p>Two patent families in zinc-iodine and metal-air systems, with international filings, available for licensing and co-development.</p></div>
+      </div>
+
+      <div class="two" style="margin-top:30px">
+        <div>
+          <h3 style="font-size:1.15rem;margin-bottom:14px">Facilities available to partners</h3>
+          <table>
+            <tbody>
+              <tr><td><strong>Electrochemistry</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Eight potentiostats (Biologic, Squidstat, VersaSTAT); EIS and DRT analysis</span></td></tr>
+              <tr><td><strong>Battery testing</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Multi-channel testers for cycling, rate capability, and cycle life</span></td></tr>
+              <tr><td><strong>Characterization</strong><br><span style="color:var(--ink-soft);font-size:.88rem">XRD, Raman, UV-Vis; operando synchrotron access at SLRI, SOLEIL, KEK, NSRRC</span></td></tr>
+              <tr><td><strong>Fabrication</strong><br><span style="color:var(--ink-soft);font-size:.88rem">Argon glovebox, doctor-blade coating, coin- and pouch-cell assembly</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="callout">
+            <div class="mono">Consulting</div>
+            <h3>Diagnostics and consulting</h3>
+            <p>Independent assessment of cell degradation, electrolyte and interface behavior, and comparative claims — with results reported against disclosed conditions so a ranking can be trusted.</p>
+            <p style="margin-top:14px"><a href="mailto:soorathep.k@chula.ac.th">Enquire about a project</a></p>
+          </div>
+          <div class="note">Scope, confidentiality, and terms are agreed per project through the Faculty of Engineering, Chulalongkorn University.</div>
+        </div>
       </div>
     </section>
   </div>

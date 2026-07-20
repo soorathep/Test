@@ -11,10 +11,12 @@ description: Papers, covers, talks, and people from the Energy Storage Innovatio
   </div>
 
   <p class="lede" style="margin-bottom:34px">Papers, covers, talks, and people. Short entries,
-  posted when something actually happens rather than on a schedule.</p>
+  posted when something actually happens rather than on a schedule. Looking for the essays and
+  reflections? They live on the <a href="{{ site.baseurl }}/essays/">Essays</a> page.</p>
 
+  {% assign newsposts = site.posts | where: "kind", "news" %}
   <div class="post-list">
-    {% for post in site.posts %}
+    {% for post in newsposts %}
     <a class="entry" href="{{ post.url | relative_url }}">
       <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
       <div>
@@ -25,8 +27,8 @@ description: Papers, covers, talks, and people from the Energy Storage Innovatio
     {% endfor %}
   </div>
 
-  {% if site.posts.size == 0 %}
-  <div class="note">No posts yet. Add a markdown file to <code>_posts/</code> to publish one.</div>
+  {% if newsposts.size == 0 %}
+  <div class="note">No lab news yet. Add a markdown file with <code>kind: news</code> to <code>_posts/</code>.</div>
   {% endif %}
 
   <div class="note">Subscribe by <a href="{{ site.baseurl }}/feed.xml">RSS</a>.</div>
