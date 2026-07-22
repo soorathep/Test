@@ -1,0 +1,208 @@
+---
+layout: default
+---
+{% comment %} Series position (computed once, reused below) {% endcomment %}
+{% if page.series %}
+  {% assign sp = site.posts | where: "series", page.series | sort: "date" %}
+  {% assign total = sp | size %}
+  {% assign idx = 0 %}
+  {% for p in sp %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+  {% assign partno = idx | plus: 1 %}
+  {% assign previdx = idx | minus: 1 %}
+  {% assign nextidx = idx | plus: 1 %}
+{% endif %}
+
+<section>
+  <!-- Featured image (if provided) -->
+  {% if page.image %}
+  <div class="post-featured">
+    <img src="{{ page.image }}" alt="{{ page.title }}" loading="lazy">
+  </div>
+  {% endif %}
+
+  <!-- Post header with better hierarchy -->
+  <div class="post-head">
+    <div class="post-meta-top">
+      <div class="mono eyebrow">{% if page.series %}{{ page.series }}{% else %}{{ page.tag | default: "News" }}{% endif %}</div>
+      <div class="post-date">
+        <span class="d">{{ page.date | date: "%-d %B %Y" }}</span>
+        {% if page.series %}
+          <span class="separator">·</span>
+          <span class="series-info">Part {{ partno }} of {{ total }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    <!-- Optional: Author/research domain -->
+    {% if page.research_domain %}
+    <div class="post-domain">
+      <span class="mono">Research focus:</span>
+      <span>{{ page.research_domain }}</span>
+    </div>
+    {% endif %}
+
+    <!-- Optional: Description/lede -->
+    {% if page.description %}
+    <p class="post-lede">{{ page.description }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Main content -->
+  <article class="post-body">
+    {{ content }}
+  </article>
+
+  <!-- Series navigation (if part of a series) -->
+  {% if page.series %}
+  <nav class="series-nav">
+    <div class="mono eyebrow">{{ page.series }} · Part {{ partno }} of {{ total }}</div>
+    <div class="series-row">
+      {% if idx > 0 %}{% assign prev = sp[previdx] %}<a class="series-prev" href="{{ prev.url | relative_url }}"><span class="mono">← Previous</span><span class="t">{{ prev.title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if nextidx < total %}{% assign next = sp[nextidx] %}<a class="series-next" href="{{ next.url | relative_url }}"><span class="mono">Next →</span><span class="t">{{ next.title }}</span></a>{% endif %}
+    </div>
+    <a class="mono" href="{{ site.baseurl }}/essays/">All essays in this series &amp; others →</a>
+  </nav>
+  {% endif %}
+
+  <!-- Social sharing & navigation -->
+  <div class="post-nav">
+    {% assign share_url = page.url | absolute_url %}
+    <div class="mono eyebrow" style="margin-bottom:12px">Share this {% if page.kind == 'paper' %}paper{% else %}post{% endif %}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url | url_encode }}">LinkedIn</a>
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}">Facebook</a>
+      <a class="pill" target="_blank" rel="noopener"
+         href="https://twitter.com/intent/tweet?url={{ share_url | url_encode }}&amp;text={{ page.title | url_encode }}">X</a>
+      <a class="pill" href="{{ share_url }}" data-copy>Copy link</a>
+      <span style="flex:1"></span>
+      {% if page.kind == 'essay' %}<a href="{{ site.baseurl }}/essays/">← All essays</a>{% else %}<a href="{{ site.baseurl }}/news/">← All news</a>{% endif %}
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* Post V2 enhancements */
+.post-featured {
+  margin: 0 0 60px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(14, 59, 92, 0.15);
+}
+
+.post-featured img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-head {
+  margin-bottom: 48px;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 40px;
+}
+
+.post-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.post-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.post-date .separator {
+  color: var(--line);
+}
+
+.series-info {
+  color: var(--sodium);
+  font-weight: 600;
+}
+
+.post-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin: 12px 0 20px;
+  line-height: 1.15;
+  max-width: 90%;
+}
+
+.post-domain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(232, 168, 11, 0.08);
+  border-left: 3px solid var(--sodium);
+  border-radius: 2px;
+  font-size: 0.95rem;
+}
+
+.post-domain .mono {
+  color: var(--sodium);
+  font-weight: 600;
+}
+
+.post-lede {
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+  max-width: 70ch;
+  margin-top: 16px;
+  font-style: italic;
+}
+
+.post-body {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 75ch;
+  margin-bottom: 60px;
+}
+
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 30px 0;
+  border-radius: 4px;
+}
+
+.post-body figure {
+  margin: 30px 0;
+}
+
+.post-body figcaption {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.post-nav {
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+  margin-top: 60px;
+}
+</style>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(a.href).then(function () {
+        var t = a.textContent; a.textContent = 'Copied';
+        setTimeout(function () { a.textContent = t; }, 1600);
+      });
+    });
+  });
+</script>
