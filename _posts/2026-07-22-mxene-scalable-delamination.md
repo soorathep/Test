@@ -1,11 +1,10 @@
 ---
 title: "Scalable delamination of multilayer MXene via high-pressure homogenization and surface functionalization"
-date: 2026-05-12
+date: 2026-07-22
 description: "High-pressure homogenization enables rapid, scalable MXene delamination without chemical intercalants, with enhanced surface functionalization for tunable solvent dispersion."
 kind: paper
 tag: Paper
 research_domain: "MXene · 2D Materials · Surface Functionalization"
-image: /covers/Communications_Materials_2026.jpg
 layout: post_v2
 ---
 
