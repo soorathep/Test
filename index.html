@@ -418,10 +418,10 @@ layout: null
         <div class="mono eyebrow">Current members</div>
         <h2>Who is in the laboratory now</h2>
       </div>
-      {% assign folk = site.data.people | where_exp: "p", "p.slug != 'example-person'" %}
-      {% if folk.size > 0 %}
+      {% assign current = site.data.people | where: "status", "current" %}
+      {% if current.size > 0 %}
       <div class="folk" style="margin-bottom:22px">
-        {% for p in folk %}
+        {% for p in current %}
         <figure>
           {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
           <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
@@ -432,7 +432,9 @@ layout: null
         </figure>
         {% endfor %}
       </div>
-      <div class="note" style="margin-bottom:40px">{{ folk.size }} people, plus the alumni below. Each profile is written by the person themselves.</div>
+      <div class="note" style="margin-bottom:40px">{{ current.size }} people. Each profile is written by the person themselves.</div>
+      {% else %}
+      <div class="note" style="margin-bottom:40px">Current doctoral students and postdocs are being added here as their profiles come in.</div>
       {% endif %}
 
       <div class="sec-head">
@@ -441,39 +443,37 @@ layout: null
       </div>
       <p class="lede" style="margin-bottom:30px">Former group members hold positions at Shinshu University, Kyushu University, Mahidol University, Thammasat University, Alliance University in India, Cellforce Group (Porsche AG) in Germany, and within Chulalongkorn University.</p>
 
-      <h3 style="font-size:1.15rem;margin-bottom:14px">Doctoral graduates</h3>
-      <table>
-        <thead><tr><th style="width:70px">Year</th><th>Name</th><th>Thesis</th><th style="width:210px">Now</th></tr></thead>
-        <tbody>
-          <tr><td class="yr">2025</td><td>Dr. Getu Kassegn Weldegebrieal</td><td>Stabilizing tunnel-type Na<sub>0.44</sub>MnO<sub>2</sub> cathodes through electrolyte and cathode engineering for sodium-ion batteries</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2024</td><td>Dr. Abdulkadeem Sanni</td><td>Aluminium-doped, carbon-supported zinc oxide ternary composite electrodes for supercapacitors</td><td class="now">Shinshu University, Japan</td></tr>
-          <tr><td class="yr">2023</td><td>Dr. Vipada Aupama</td><td>Covalent organic frameworks from aldehyde and amine linkers as artificial SEI for zinc anodes</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2023</td><td>Dr. Phonnapha Tangthuam</td><td>Carboxymethyl cellulose as artificial SEI and separator for Zn-based batteries</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2021</td><td>Dr. Wathanyu Kao-ian</td><td>Development of a nonaqueous zinc-ion battery based on a manganese dioxide cathode</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2020</td><td>Dr. Woranunt Laoatiman</td><td>Modeling of zinc-air batteries using theoretical and empirical approaches</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2020</td><td>Dr. Sonti Khamsanga</td><td>MnO<sub>2</sub>/carbon cathodes for rechargeable aqueous zinc-ion batteries</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2012</td><td>Dr. Pornchai Bumroongsri</td><td>Robust constrained model predictive control with applications to chemical processes</td><td class="now">Mahidol University, Thailand</td></tr>
-        </tbody>
-      </table>
+      {% assign phds = site.data.people | where_exp: "p", "p.phd" | sort: "phd" | reverse %}
+      <h3 style="font-size:1.15rem;margin:0 0 18px">Doctoral graduates</h3>
+      <div class="folk" style="margin-bottom:48px">
+        {% for p in phds %}
+        <figure>
+          {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+          <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+          <span class="n">{{ p.name }}</span>
+          <span class="r">PhD · {{ p.phd }}{% if p.postdoc %} · postdoc {{ p.postdoc }}{% endif %}</span>
+          {% if p.thesis %}<span class="t">{{ p.thesis }}</span>{% endif %}
+          {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% endif %}
+          {% if p.link %}</a>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
 
-      <h3 style="font-size:1.15rem;margin:44px 0 14px">Postdoctoral alumni</h3>
-      <table>
-        <thead><tr><th style="width:110px">Period</th><th>Name</th><th style="width:300px">Now</th></tr></thead>
-        <tbody>
-          <tr><td class="yr">2018–2020</td><td>Dr. Ali Abbasi</td><td class="now">Cellforce Group GmbH (Porsche AG), Germany</td></tr>
-          <tr><td class="yr">2019–2025</td><td>Dr. Ramin Khezri</td><td class="now">MMRI, Chulalongkorn University, Thailand</td></tr>
-          <tr><td class="yr">2019–2026</td><td>Dr. Mohammad Etesami</td><td class="now">Kyushu University, Japan</td></tr>
-          <tr><td class="yr">2022–2024</td><td>Dr. Shiva Rezaei Motlagh</td><td class="now">Chulalongkorn University, Thailand</td></tr>
-          <tr><td class="yr">2022–2025</td><td>Dr. Durai Govindarajan</td><td class="now">Alliance University, Bangalore, India</td></tr>
-          <tr><td class="yr">2023–2025</td><td>Dr. Kulandaivel Thirumoorthy</td><td class="now">PPC, Chulalongkorn University, Thailand</td></tr>
-          <tr><td class="yr">2023–2025</td><td>Dr. Sagar Ingavale</td><td class="now">Thammasat University, Thailand</td></tr>
-          <tr><td class="yr">2020–2026</td><td>Dr. Mohan Gopalakrishnan</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2022–2026</td><td>Dr. Wathanyu Kao-ian</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2024–2026</td><td>Dr. Vipada Aupama</td><td class="now here">—</td></tr>
-          <tr><td class="yr">2024–2026</td><td>Dr. Phonnapha Tangthuam</td><td class="now here">—</td></tr>
-        </tbody>
-      </table>
-      <div class="note">Current doctoral students and postdoctoral researchers are not listed yet — this section will be added once profiles are collected.</div>
+      {% assign postdocs = site.data.people | where_exp: "p", "p.postdoc" | sort: "postdoc" | reverse %}
+      <h3 style="font-size:1.15rem;margin:0 0 18px">Postdoctoral alumni</h3>
+      <div class="folk" style="margin-bottom:22px">
+        {% for p in postdocs %}
+        <figure>
+          {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+          <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+          <span class="n">{{ p.name }}</span>
+          <span class="r">Postdoc · {{ p.postdoc }}{% if p.phd %} · PhD {{ p.phd }} here{% endif %}</span>
+          {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% else %}<span class="t">Chulalongkorn University</span>{% endif %}
+          {% if p.link %}</a>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+      <div class="note">All three groups are built from one entry per person in <code>_data/people.yml</code>. Someone who did a PhD and then a postdoc here appears in both alumni grids automatically — no HTML to edit.</div>
     </section>
   </div>
 </div>
