@@ -1,0 +1,58 @@
+name: Build and deploy site
+
+# Rebuilds the site on every push AND on a daily schedule, so that
+# future-dated posts (e.g. the "Through the Thinkers" essay series)
+# publish themselves automatically once their date arrives — without
+# anyone having to push. GitHub Pages does not rebuild on a schedule
+# by itself; this workflow supplies that.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 00:20 UTC daily = 07:20 Asia/Bangkok. A post dated YYYY-MM-DD
+    # (no time) becomes eligible at 00:00 UTC on that date, so it goes
+    # live on the first run on or after its date.
+    - cron: "20 0 * * *"
+  workflow_dispatch:        # lets you trigger a rebuild by hand from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once; don't cancel an in-progress deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
