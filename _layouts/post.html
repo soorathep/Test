@@ -22,6 +22,16 @@ layout: default
     {{ content }}
   </article>
 
+  {% if page.kind == 'essay' %}
+  <div class="essay-byline">
+    <img src="{{ site.baseurl }}/img/pi-sketch.jpg" alt="Soorathep Kheawhom" loading="lazy">
+    <div>
+      <span class="by-name">Soorathep Kheawhom</span>
+      <span class="by-role">Energy Storage Innovation Laboratory · Chulalongkorn University</span>
+    </div>
+  </div>
+  {% endif %}
+
   {% if page.series %}
   <nav class="series-nav">
     <div class="mono eyebrow">{{ page.series }} · Part {{ partno }} of {{ total }}</div>
