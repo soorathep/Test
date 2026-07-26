@@ -418,23 +418,59 @@ layout: null
         <div class="mono eyebrow">Current members</div>
         <h2>Who is in the laboratory now</h2>
       </div>
-      {% assign current = site.data.people | where: "status", "current" %}
-      {% if current.size > 0 %}
-      <div class="folk" style="margin-bottom:22px">
-        {% for p in current %}
-        <figure>
-          {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
-          <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
-          <span class="n">{{ p.name }}</span>
-          <span class="r">{{ p.role }}{% if p.since %} · since {{ p.since }}{% endif %}</span>
-          {% if p.topic %}<span class="t">{{ p.topic }}</span>{% endif %}
-          {% if p.link %}</a>{% endif %}
-        </figure>
-        {% endfor %}
-      </div>
-      <div class="note" style="margin-bottom:40px">{{ current.size }} people. Each profile is written by the person themselves.</div>
+      {% assign cur_post = site.data.people | where: "status", "current" | where: "level", "postdoc" %}
+      {% assign cur_deng = site.data.people | where: "status", "current" | where: "level", "deng" %}
+      {% assign cur_meng = site.data.people | where: "status", "current" | where: "level", "meng" %}
+      {% assign cur_total = cur_post.size | plus: cur_deng.size | plus: cur_meng.size %}
+
+      {% if cur_total > 0 %}
+        {% if cur_post.size > 0 %}
+        <h3 class="people-sub">Postdoctoral researchers</h3>
+        <div class="folk" style="margin-bottom:40px">
+          {% for p in cur_post %}
+          <figure>
+            {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+            <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+            <span class="n">{{ p.name }}</span>
+            <span class="r">{{ p.role | default: "Postdoctoral researcher" }}{% if p.since %} · since {{ p.since }}{% endif %}</span>
+            {% if p.topic %}<span class="t">{{ p.topic }}</span>{% endif %}
+            {% if p.link %}</a>{% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if cur_deng.size > 0 %}
+        <h3 class="people-sub">Doctoral students <span class="deg">D.Eng.</span></h3>
+        <div class="folk" style="margin-bottom:40px">
+          {% for p in cur_deng %}
+          <figure>
+            {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+            <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+            <span class="n">{{ p.name }}</span>
+            <span class="r">{{ p.role | default: "Doctoral student" }}{% if p.since %} · since {{ p.since }}{% endif %}</span>
+            {% if p.topic %}<span class="t">{{ p.topic }}</span>{% endif %}
+            {% if p.link %}</a>{% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if cur_meng.size > 0 %}
+        <h3 class="people-sub">Master's students <span class="deg">M.Eng.</span></h3>
+        <div class="folk" style="margin-bottom:40px">
+          {% for p in cur_meng %}
+          <figure>
+            {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+            <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+            <span class="n">{{ p.name }}</span>
+            <span class="r">{{ p.role | default: "Master's student" }}{% if p.since %} · since {{ p.since }}{% endif %}</span>
+            {% if p.topic %}<span class="t">{{ p.topic }}</span>{% endif %}
+            {% if p.link %}</a>{% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+        {% endif %}
       {% else %}
-      <div class="note" style="margin-bottom:40px">Current doctoral students and postdocs are being added here as their profiles come in.</div>
+      <div class="note" style="margin-bottom:40px">Current postdocs and students are being added here as their profiles come in.</div>
       {% endif %}
 
       <div class="sec-head">
@@ -443,37 +479,60 @@ layout: null
       </div>
       <p class="lede" style="margin-bottom:30px">Former group members hold positions at Shinshu University, Kyushu University, Mahidol University, Thammasat University, Alliance University in India, Cellforce Group (Porsche AG) in Germany, and within Chulalongkorn University.</p>
 
-      {% assign phds = site.data.people | where_exp: "p", "p.phd" | sort: "phd" | reverse %}
-      <h3 style="font-size:1.15rem;margin:0 0 18px">Doctoral graduates</h3>
-      <div class="folk" style="margin-bottom:48px">
-        {% for p in phds %}
+      {% assign al_post = site.data.people | where: "status", "alumnus" | where_exp: "p", "p.postdoc" | sort: "postdoc" | reverse %}
+      {% if al_post.size > 0 %}
+      <h3 class="people-sub">Postdoctoral researchers</h3>
+      <div class="folk" style="margin-bottom:40px">
+        {% for p in al_post %}
         <figure>
           {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
           <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
           <span class="n">{{ p.name }}</span>
-          <span class="r">PhD · {{ p.phd }}{% if p.postdoc %} · postdoc {{ p.postdoc }}{% endif %}</span>
+          <span class="r">Postdoc · {{ p.postdoc }}{% if p.deng %} · D.Eng. {{ p.deng }} here{% endif %}</span>
+          {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% else %}<span class="t">Chulalongkorn University</span>{% endif %}
+          {% if p.link %}</a>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% assign al_deng = site.data.people | where_exp: "p", "p.deng" | sort: "deng" | reverse %}
+      {% if al_deng.size > 0 %}
+      <h3 class="people-sub">Doctoral graduates <span class="deg">D.Eng.</span></h3>
+      <div class="folk" style="margin-bottom:40px">
+        {% for p in al_deng %}
+        <figure>
+          {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
+          <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
+          <span class="n">{{ p.name }}</span>
+          <span class="r">D.Eng. · {{ p.deng }}{% if p.postdoc %} · postdoc {{ p.postdoc }}{% endif %}</span>
           {% if p.thesis %}<span class="t">{{ p.thesis }}</span>{% endif %}
           {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% endif %}
           {% if p.link %}</a>{% endif %}
         </figure>
         {% endfor %}
       </div>
+      {% endif %}
 
-      {% assign postdocs = site.data.people | where_exp: "p", "p.postdoc" | sort: "postdoc" | reverse %}
-      <h3 style="font-size:1.15rem;margin:0 0 18px">Postdoctoral alumni</h3>
-      <div class="folk" style="margin-bottom:22px">
-        {% for p in postdocs %}
+      {% assign al_meng = site.data.people | where_exp: "p", "p.meng" | sort: "meng" | reverse %}
+      {% if al_meng.size > 0 %}
+      <h3 class="people-sub">Master's graduates <span class="deg">M.Eng.</span></h3>
+      <div class="folk" style="margin-bottom:40px">
+        {% for p in al_meng %}
         <figure>
           {% if p.link %}<a href="{{ p.link }}" target="_blank" rel="noopener">{% endif %}
           <img src="{% if p.photo %}img/people/{{ p.photo }}{% else %}img/people/_placeholder.jpg{% endif %}" alt="{{ p.name }}" loading="lazy">
           <span class="n">{{ p.name }}</span>
-          <span class="r">Postdoc · {{ p.postdoc }}{% if p.phd %} · PhD {{ p.phd }} here{% endif %}</span>
-          {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% else %}<span class="t">Chulalongkorn University</span>{% endif %}
+          <span class="r">M.Eng. · {{ p.meng }}{% if p.deng %} · D.Eng. {{ p.deng }} here{% endif %}</span>
+          {% if p.thesis %}<span class="t">{{ p.thesis }}</span>{% endif %}
+          {% if p.now %}<span class="t" style="color:var(--prussian)">Now · {{ p.now }}</span>{% endif %}
           {% if p.link %}</a>{% endif %}
         </figure>
         {% endfor %}
       </div>
-      <div class="note">All three groups are built from one entry per person in <code>_data/people.yml</code>. Someone who did a PhD and then a postdoc here appears in both alumni grids automatically — no HTML to edit.</div>
+      {% endif %}
+
+      <div class="note">Every group is built from one entry per person in <code>_data/people.yml</code>. Current members are placed by <code>level</code>; alumni by their degree markers (<code>deng</code>, <code>meng</code>, <code>postdoc</code>). Someone who earned a degree here and then did a postdoc here appears in both alumni groups automatically — no HTML to edit.</div>
     </section>
   </div>
 </div>
