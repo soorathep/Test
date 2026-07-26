@@ -1,0 +1,26 @@
+---
+layout: default
+title: Teaching
+permalink: /teaching/
+description: Graduate and undergraduate courses taught by Assoc. Prof. Dr. Soorathep Kheawhom at Chulalongkorn University.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Teaching</div>
+    <h2>Courses</h2>
+  </div>
+  <p class="lede" style="margin-bottom:30px">Graduate and undergraduate courses in the Department of Chemical Engineering,
+  Faculty of Engineering, Chulalongkorn University.</p>
+
+  <div class="courses">
+    {% for course in site.data.courses %}
+    <div class="course">
+      <div class="c-name">{{ course.name }}{% if course.code %} <span class="c-code">{{ course.code }}</span>{% endif %}</div>
+      <div class="c-level mono">{{ course.level }}</div>
+      {% if course.note %}<div class="c-note">{{ course.note }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="note">Courses are listed in <code>_data/courses.yml</code>.</div>
+</section>

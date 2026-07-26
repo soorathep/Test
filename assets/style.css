@@ -178,6 +178,39 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
   text-transform:uppercase;color:var(--prussian);background:var(--paper-2);
   border:1px solid var(--line);border-radius:3px;padding:2px 7px}
 
+/* ---------- collaborators map ---------- */
+.worldmap{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
+  padding:18px 20px;margin-bottom:40px}
+.worldmap svg{width:100%;height:auto;display:block}
+.wm-land circle{r:1.5px;fill:#c7cdd0}
+.wm-mark{fill:var(--sodium);stroke:#fff;stroke-width:1.2;cursor:pointer;
+  transition:fill .2s ease, r .2s ease}
+.wm-mark:hover,.wm-mark.is-active{fill:var(--prussian);r:9px}
+.collab-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 22px}
+.collab-grid figure{margin:0}
+.collab-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 25%;display:block;
+  border:1px solid var(--line);background:var(--paper-2);filter:grayscale(1) contrast(1.04);transition:filter .35s ease}
+.collab-grid figure:hover img{filter:none}
+.collab-grid .n{font-family:"Archivo";font-weight:600;font-size:1rem;display:block;margin-top:12px;line-height:1.3}
+.collab-grid .r{font-size:.85rem;color:var(--ink);display:block;margin-top:5px;line-height:1.4}
+.collab-grid .t{font-family:"IBM Plex Mono";font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--zinc);display:block;margin-top:6px}
+.collab-grid a{color:inherit;border:0}
+.collab-grid a:hover .n{color:var(--prussian)}
+
+/* ---------- teaching / courses ---------- */
+.courses{border-top:1px solid var(--line);margin-bottom:30px}
+.course{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--line)}
+.course .c-name{font-family:"Archivo";font-weight:600;font-size:1.15rem}
+.course .c-code{font-family:"IBM Plex Mono";font-size:.72rem;color:var(--zinc);margin-left:8px}
+.course .c-level{font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--prussian);
+  background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:3px 9px;white-space:nowrap}
+.course .c-note{font-size:.9rem;color:var(--ink-soft);flex-basis:100%}
+@media(max-width:640px){
+  .collab-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 /* ---------- news / posts ---------- */
 .post-list{display:flex;flex-direction:column;gap:0}
 .post-list a.entry{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;

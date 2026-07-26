@@ -1,0 +1,61 @@
+---
+layout: default
+title: Collaborators
+permalink: /collaborators/
+description: Institutions and researchers the SKH Research Group works with, across Asia and Europe.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Network</div>
+    <h2>Collaborators &amp; partner institutions</h2>
+  </div>
+  <p class="lede" style="margin-bottom:30px">Universities and researchers we publish, exchange, and run experiments with.
+  Each marker is a partner institution; the cards below list the people, grouped by country.</p>
+
+  <div class="worldmap">
+    <svg viewBox="0 0 1000 389" role="img" aria-label="World map of collaborator institutions" preserveAspectRatio="xMidYMid meet">
+      {% include worldmap-dots.svg %}
+      <g class="wm-marks">
+        {% for c in site.data.collaborators %}
+        {% assign x = c.lng | plus: 180 | times: 1000 | divided_by: 360.0 %}
+        {% assign y = 84 | minus: c.lat | times: 1000 | divided_by: 360.0 %}
+        <circle class="wm-mark" id="mk-{{ c.name | slugify }}" cx="{{ x | round: 1 }}" cy="{{ y | round: 1 }}" r="6">
+          <title>{{ c.name }} — {{ c.affiliation }}, {{ c.city }}</title>
+        </circle>
+        {% endfor %}
+      </g>
+    </svg>
+  </div>
+
+  {% assign groups = site.data.collaborators | group_by: "country" | sort: "name" %}
+  {% for g in groups %}
+  <h3 class="people-sub" style="margin-top:14px">{{ g.name }} <span class="deg">{{ g.items | size }}</span></h3>
+  <div class="collab-grid" style="margin-bottom:36px">
+    {% for c in g.items %}
+    <figure data-mk="{{ c.name | slugify }}">
+      {% if c.link %}<a href="{{ c.link }}" target="_blank" rel="noopener">{% endif %}
+      <img src="{% if c.photo %}{{ site.baseurl }}/img/collaborators/{{ c.photo }}{% else %}{{ site.baseurl }}/img/people/_placeholder.jpg{% endif %}" alt="{{ c.name }}" loading="lazy">
+      <span class="n">{{ c.name }}</span>
+      <span class="r">{{ c.affiliation }}</span>
+      <span class="t">{{ c.city }}, {{ c.country }}</span>
+      {% if c.link %}</a>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% endfor %}
+
+  <div class="note">Partners are listed in <code>_data/collaborators.yml</code> — one entry per person, with the institution's
+  latitude and longitude for the map marker.</div>
+</section>
+
+<script>
+  // Link hover between a card and its map marker
+  document.querySelectorAll('.collab-grid figure[data-mk]').forEach(function (fig) {
+    var mk = document.getElementById('mk-' + fig.getAttribute('data-mk'));
+    if (!mk) return;
+    function on(){ mk.classList.add('is-active'); }
+    function off(){ mk.classList.remove('is-active'); }
+    fig.addEventListener('mouseenter', on);
+    fig.addEventListener('mouseleave', off);
+  });
+</script>

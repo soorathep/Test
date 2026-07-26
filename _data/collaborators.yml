@@ -1,0 +1,83 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Collaborators shown on /collaborators/ — one entry per person.
+# Each entry places a marker on the world map (by lat/lng) and a card in the list.
+#
+# ── Fields ───────────────────────────────────────────────────────────────────
+#   name         required.
+#   affiliation  required. Institution / university.
+#   city         city of the institution.
+#   country      country — cards are grouped by this.
+#   lat, lng     decimal degrees of the institution (for the map marker).
+#                Look up the campus on Google Maps; right-click → the numbers are
+#                lat, lng in that order.
+#   photo        square JPEG in img/collaborators/. Omit → a placeholder shows.
+#   link         ORCID / personal or lab website. Optional.
+#
+# The entries below are seeded from recent co-authorships and research visits on
+# this site — please review, correct affiliations, add photos, and extend.
+# ─────────────────────────────────────────────────────────────────────────────
+
+- name: Insik In
+  affiliation: Korea National University of Transportation
+  city: Chungju
+  country: South Korea
+  lat: 36.969
+  lng: 127.870
+- name: G. Murali
+  affiliation: Korea National University of Transportation
+  city: Chungju
+  country: South Korea
+  lat: 36.969
+  lng: 127.870
+- name: Seung Jun Lee
+  affiliation: Korea National University of Transportation
+  city: Chungju
+  country: South Korea
+  lat: 36.969
+  lng: 127.870
+- name: Myong Yong Choi
+  affiliation: Gyeongsang National University
+  city: Jinju
+  country: South Korea
+  lat: 35.153
+  lng: 128.099
+- name: Jayaraman Theerthagiri
+  affiliation: Gyeongsang National University
+  city: Jinju
+  country: South Korea
+  lat: 35.153
+  lng: 128.099
+- name: Do-Heyoung Kim
+  affiliation: Chonnam National University
+  city: Gwangju
+  country: South Korea
+  lat: 35.176
+  lng: 126.907
+- name: Ho-Hsiu Chou
+  affiliation: National Tsing Hua University
+  city: Hsinchu
+  country: Taiwan
+  lat: 24.795
+  lng: 120.997
+- name: Tetsu Yonezawa
+  affiliation: Hokkaido University
+  city: Sapporo
+  country: Japan
+  lat: 43.077
+  lng: 141.340
+- name: Ahmad Azmin Mohamad
+  affiliation: Universiti Sains Malaysia
+  city: Penang
+  country: Malaysia
+  lat: 5.356
+  lng: 100.302
+
+# ── Template (copy to add a collaborator) ────────────────────────────────────
+# - name: Full Name
+#   affiliation: University or Institute
+#   city: City
+#   country: Country
+#   lat: 0.000
+#   lng: 0.000
+#   photo: full-name.jpg
+#   link: https://orcid.org/0000-0000-0000-0000
