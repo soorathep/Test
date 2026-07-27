@@ -226,6 +226,26 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
   .essays-portrait{width:120px;height:120px}
 }
 
+/* ---------- activities gallery ---------- */
+.activity-event{margin-bottom:48px}
+.activity-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+.activity-head h3{font-size:1.2rem;margin:0}
+.activity-date{font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--prussian);
+  background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:3px 9px}
+.activity-caption{color:var(--ink-soft);font-size:.95rem;margin:0 0 16px;max-width:70ch}
+.activity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.activity-thumb{display:block;border:0;border-radius:4px;overflow:hidden;background:var(--paper-2)}
+.activity-thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  transition:transform .4s ease, filter .4s ease;filter:saturate(.96)}
+.activity-thumb:hover img{transform:scale(1.05);filter:none}
+.lightbox{position:fixed;inset:0;background:rgba(7,36,58,.93);display:none;align-items:center;
+  justify-content:center;z-index:1000;padding:28px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:90vh;border:2px solid #fff;box-shadow:0 12px 48px rgba(0,0,0,.5)}
+@media(max-width:640px){
+  .activity-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+}
+
 /* ---------- news / posts ---------- */
 .post-list{display:flex;flex-direction:column;gap:0}
 .post-list a.entry{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;

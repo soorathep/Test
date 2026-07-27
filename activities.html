@@ -1,0 +1,61 @@
+---
+layout: default
+title: Activities
+permalink: /activities/
+description: Life in the lab — trips, celebrations, and activities of the SKH Research Group.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Life in the lab</div>
+    <h2>Activities</h2>
+  </div>
+  <p class="lede" style="margin-bottom:36px">Trips, celebrations, and the everyday life of the group —
+  the part of research that does not show up in the papers.</p>
+
+  {% assign events = site.data.activities %}
+  {% if events and events.size > 0 %}
+    {% for ev in events %}
+    <div class="activity-event">
+      <div class="activity-head">
+        <h3>{{ ev.title }}</h3>
+        {% if ev.date %}<span class="activity-date mono">{{ ev.date }}</span>{% endif %}
+      </div>
+      {% if ev.caption %}<p class="activity-caption">{{ ev.caption }}</p>{% endif %}
+      <div class="activity-grid">
+        {% for p in ev.photos %}
+        <a class="activity-thumb" href="{{ site.baseurl }}/img/activities/{{ p }}" data-lightbox aria-label="{{ ev.title }}">
+          <img src="{{ site.baseurl }}/img/activities/{{ p }}" alt="{{ ev.title }}" loading="lazy">
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="note">Photos coming soon — group trips and activities will appear here.</div>
+  {% endif %}
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img src="" alt="">
+</div>
+
+<script>
+  (function () {
+    var box = document.getElementById('lightbox');
+    var img = box.querySelector('img');
+    document.querySelectorAll('[data-lightbox]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        img.src = a.getAttribute('href');
+        box.classList.add('open');
+      });
+    });
+    box.addEventListener('click', function () {
+      box.classList.remove('open');
+      img.src = '';
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { box.classList.remove('open'); img.src = ''; }
+    });
+  })();
+</script>

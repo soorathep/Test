@@ -1,0 +1,24 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Lab activities shown on /activities/ — one block per event (trip, party, etc.).
+# Newest first. Each event is a titled album of photos.
+#
+# ── Fields ───────────────────────────────────────────────────────────────────
+#   title    required. Name of the activity, e.g. "Group trip to Chiang Mai".
+#   date     free text, e.g. "June 2026".
+#   caption  optional one line about the event.
+#   photos   list of image filenames in img/activities/ (any aspect ratio;
+#            the gallery crops thumbnails to a tidy grid and shows the full
+#            image when clicked).
+#
+# ── How to add an activity ───────────────────────────────────────────────────
+#   1. Drop the photos into  img/activities/
+#   2. Copy the template block below to the top, fill it in, list the filenames.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# - title: Group trip to Chiang Mai
+#   date: June 2026
+#   caption: Annual lab retreat — hiking, food, and a group photo at Doi Suthep.
+#   photos:
+#     - chiangmai-2026-1.jpg
+#     - chiangmai-2026-2.jpg
+#     - chiangmai-2026-3.jpg
