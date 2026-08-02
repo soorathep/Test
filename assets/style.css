@@ -338,6 +338,33 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
   padding-top:16px;margin:16px 0 0}
 .bc-src b{color:var(--ink-soft)}
 @media(max-width:760px){ .bc-cols{grid-template-columns:1fr;gap:0} .bc-col .bc-h:first-child{margin-top:16px} }
+
+/* ---------- GITT / PITT ---------- */
+.gp{border:1px solid var(--line);border-radius:5px;background:var(--paper-2);padding:24px 26px 20px;margin:0 0 22px}
+.gp-lede{font-size:1rem;line-height:1.65;color:var(--ink);margin:0 0 20px;max-width:80ch}
+.gp-block{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+.gp-block p{font-size:.9rem;line-height:1.6;color:var(--ink);margin:0 0 10px;max-width:82ch}
+.gp-def{color:var(--ink-soft)!important;font-size:.85rem!important}
+.gp b{font-weight:600}
+.gp pre{background:var(--ink);color:#dfe7ea;font-family:"IBM Plex Mono";font-size:.75rem;line-height:1.7;
+  padding:14px 16px;border-radius:4px;overflow-x:auto;margin:0 0 10px;white-space:pre}
+.gp-table{width:100%;border-collapse:collapse;margin-top:4px;font-size:.88rem}
+.gp-table th,.gp-table td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}
+.gp-table th{font-family:"IBM Plex Mono";font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate,#66727C)}
+.gp-table td:not(:first-child),.gp-table th:not(:first-child){text-align:center;width:120px}
+.gp-fig{margin:12px 0 0}
+.gp-fig img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:#fff}
+.gp-fig figcaption{font-size:.8rem;color:var(--slate,#66727C);margin-top:8px;line-height:1.5}
+.gp-ul{margin:0 0 10px;padding-left:18px}
+.gp-ul li{font-size:.9rem;line-height:1.55;color:var(--ink);margin-bottom:5px}
+.gp-ul li b{font-weight:600}
+.gp-warn ul{margin:0;padding-left:18px}
+.gp-warn li{font-size:.88rem;line-height:1.55;color:var(--ink-soft);margin-bottom:7px}
+.gp-warn li b{color:var(--ink)}
+.gp-refs{border-top:1px solid var(--line);padding-top:16px;margin:18px 0 0;font-size:.85rem;
+  line-height:1.6;color:var(--ink-soft)}
+.gp-refs b{color:var(--ink)}
+@media(max-width:600px){ .gp-table td:not(:first-child),.gp-table th:not(:first-child){width:52px} .gp pre{font-size:.68rem} }
 @media(max-width:760px){
   .ph-quick{grid-template-columns:1fr;gap:22px}
   .ph-swatches{grid-template-columns:repeat(2,1fr)}

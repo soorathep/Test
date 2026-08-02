@@ -48,6 +48,38 @@
           file: battery-reporting-checklist.md
           kind: MD
           desc: The full checklist with journal notes and sources — print it or keep it open while you write up.
+    - title: GITT &amp; PITT — what they measure, how to run &amp; calculate
+      howto: gittpitt
+      description: >
+        Two intermittent titration techniques for insertion electrodes. What each one answers
+        (diffusion coefficient, OCV, resistance vs SOC), how to design the pulses/steps, the actual
+        equations, and the caveats — the absolute diffusion coefficient is only a relative measure.
+        Includes references for students to read.
+      files:
+        - label: GITT &amp; PITT guide
+          file: gitt-pitt-guide.md
+          kind: MD
+          desc: Full write-up with equations, design conditions, reporting, caveats, and a reading list.
+        - label: gitt_pitt.py — analysis script
+          file: gitt_pitt.py
+          kind: PY
+          desc: "Loads a GITT run, finds each pulse, computes D vs SOC (Weppner–Huggins) and plots it; PITT long-time D too. Runs a demo out of the box: python gitt_pitt.py"
+    - title: EIS &amp; DRT — measure, analyse, plot &amp; report
+      howto: eisdrt
+      description: >
+        Impedance spectroscopy and the distribution of relaxation times, kept simple: what each
+        frequency region means, how to run and validate the measurement (Kramers–Kronig), how DRT
+        deconvolutes overlapping processes, how to plot Nyquist/Bode/DRT correctly, and how to report
+        replicates and multiple samples. Includes references for students.
+      files:
+        - label: EIS &amp; DRT guide
+          file: eis-drt-guide.md
+          kind: MD
+          desc: Full guide with equations, validation, plotting rules, multi-sample reporting, caveats, and a reading list.
+        - label: eis.py — plotting &amp; reading script
+          file: eis.py
+          kind: PY
+          desc: "Draws a correct Nyquist (equal axes) + Bode, reads R_s and R_ct, and shows an illustrative DRT; points to pyDRTtools for the real DRT. Runs a demo: python eis.py"
 
 - category: Figures &amp; design
   blurb: Colour, style, and templates for figures, posters, and slide decks.

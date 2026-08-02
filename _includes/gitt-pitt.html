@@ -1,0 +1,75 @@
+<div class="gp">
+  <p class="gp-lede">Both techniques step the cell a little and wait, right across the state of charge,
+  and return the <b>chemical (apparent) diffusion coefficient</b> of the working ion, the
+  <b>equilibrium (OCV) curve</b>, and the <b>resistance</b> vs SOC. The absolute D is only trustworthy
+  for <b>comparing samples measured the same way</b> — see the caveats.</p>
+
+  <div class="gp-what">
+    <div class="bc-h">What they answer</div>
+    <table class="gp-table">
+      <tr><th></th><th>GITT</th><th>PITT</th></tr>
+      <tr><td>Diffusion coefficient D vs SOC</td><td>✔</td><td>✔</td></tr>
+      <tr><td>Equilibrium potential / OCV (thermodynamics)</td><td>✔</td><td>✔</td></tr>
+      <tr><td>Overpotential &amp; internal resistance</td><td>✔</td><td>indirect</td></tr>
+      <tr><td>Solid-solution vs two-phase reaction</td><td>partly</td><td>✔ (transient shape)</td></tr>
+      <tr><td>Resolution near a plateau</td><td>coarse</td><td>✔ fine</td></tr>
+    </table>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">GITT — galvanostatic (current pulse → rest)</div>
+    <p><b>Run:</b> constant-current pulses (~C/20–C/10, 5–30 min) each followed by a rest to equilibrium
+    (1–10 h, until dV/dt is flat). Keep current small &amp; pulse short so E is linear in √t. Do charge and discharge.</p>
+    <p><b>Read four voltages per step:</b> ΔE<sub>s</sub> = equilibrium change (E<sub>4</sub>−E<sub>1</sub>);
+    ΔE<sub>τ</sub> = transient change during the pulse, IR removed (E<sub>3</sub>−E<sub>2</sub>).</p>
+    <pre>D = (4 / π·τ) · ( m_B · V_M / (M_B · S) )² · ( ΔE_s / ΔE_τ )²      [ valid for  τ ≪ L²/D ]</pre>
+    <p class="gp-def">τ pulse time · m_B, M_B mass &amp; molar mass of active material · V_M molar volume ·
+    S electrode–electrolyte area. Also: OCV = rested voltage; overpotential η = E<sub>meas</sub> − E<sub>eq</sub>;
+    internal resistance R = η / I.</p>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">PITT — potentiostatic (small voltage steps → current decay)</div>
+    <p><b>Run:</b> a staircase of small steps (ΔE ≪ 25 mV, typically 5–20 mV); hold each until the
+    current decays to a cut-off, then step again. Integrate current per step → dQ/dE and OCV.</p>
+    <pre>Long time (t ≳ L²/D):   ln I(t) = const − (π²D / 4L²)·t   →   D = −(4L²/π²)·slope
+Short time (t ≪ L²/D):  I(t) ∝ t^(−1/2)   (Cottrell)     →   D from slope with ΔQ and L</pre>
+    <p class="gp-def">L = diffusion length (particle radius / film thickness). <b>Bonus:</b> current
+    decays monotonically for solid-solution insertion, but <b>rises then falls</b> for a two-phase
+    reaction — PITT reads mechanism near plateaus better than GITT.</p>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Worked example (GITT)</div>
+    <p>Electrode: m<sub>B</sub> = 1.5 mg, M<sub>B</sub> = 96 g mol⁻¹, density 4.8 g cm⁻³ →
+    V<sub>M</sub> = 20 cm³ mol⁻¹, area S = 1.13 cm² (12 mm disk), pulse τ = 600 s. One step gives
+    <b>ΔE<sub>s</sub> = 8 mV</b> and <b>ΔE<sub>τ</sub> = 40 mV</b>.</p>
+    <pre>m_B·V_M / (M_B·S) = (1.5e-3 · 20)/(96 · 1.13) = 2.77e-4 cm
+
+D = (4 / π·600) · (2.77e-4)² · (8/40)²  ≈  6.5 × 10⁻¹²  cm² s⁻¹</pre>
+    <p class="gp-def">Do this for every step to get D vs SOC. The script <code>gitt_pitt.py</code> (in the
+    downloads) does it automatically from a data file — its demo produced the figure below.</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/gitt-example.png" alt="GITT voltage curve and D vs SOC" loading="lazy">
+      <figcaption>GITT pulses &amp; rests (left) and the apparent D across SOC (right), from <code>gitt_pitt.py</code>.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gp-block gp-warn">
+    <div class="bc-h">Report &amp; caveats</div>
+    <ul>
+      <li>Report step size, duration, rest/cut-off criterion, temperature, direction, and <b>how you got S or L</b> (geometric vs BET vs particle size).</li>
+      <li>Show a representative single step (E–√t for GITT, ln I–t for PITT) and plot <b>D vs SOC</b> for charge and discharge — never one headline number.</li>
+      <li>The <b>absolute D can be wrong by orders of magnitude</b> (unknown true area / length); it is a <b>relative</b> measure. Call it <em>apparent / chemical</em> D.</li>
+      <li>Phase-transition &amp; conversion materials break the assumptions; GITT and PITT should agree if the physics is right.</li>
+    </ul>
+  </div>
+
+  <p class="gp-refs"><b>References to read</b> (start with 1–2): (1) Kim, Park, Hwang &amp; Yoon,
+  <em>J. Electrochem. Sci. Technol.</em> 13, 19 (2022) — open-access GITT review with full derivation;
+  (2) Weppner &amp; Huggins, <em>J. Electrochem. Soc.</em> 124, 1569 (1977) — the original GITT;
+  (3) Li/Xie et al., <em>Electrochim. Acta</em> 51, 1039 (2005) — practical PITT;
+  (4) Bard &amp; Faulkner, <em>Electrochemical Methods</em> — Cottrell &amp; diffusion basics;
+  (5) the "spurious diffusion coefficient" papers (Electrochim. Acta 2002, 2004) — why the absolute
+  numbers can mislead. Full list in the download.</p>
+</div>

@@ -42,8 +42,12 @@ me exactly what is missing or overstated. A reader must be able to rebuild the c
 the plot from the text, and compare the numbers on equal terms.
 
 MUST BE STATED:
- · Cell type & configuration; half-cell vs full-cell; 2- or 3-electrode; counter/reference
-   (half-cell CE vs Li is NOT full-cell CE).
+ · Cell type & configuration; half-cell vs full-cell; counter/reference (half-cell CE vs Li is
+   NOT full-cell CE).
+ · Number of electrodes: 2-electrode vs 3-electrode. Insist on 3-electrode when a single electrode's
+   true potential is needed or anode/cathode contributions must be separated.
+ · Number of cells (n): how many INDEPENDENT cells each value is based on — at least 3 per condition
+   where feasible.
  · Active-material mass and mass loading (mg/cm2); electrode area; areal capacity (mAh/cm2).
  · Electrode formulation (active:conductive:binder), thickness, density; N/P ratio for full cells;
    Li excess for Li-metal.
@@ -57,9 +61,17 @@ MUST BE STATED:
 RIGOUR — insist on:
  · Practical mass loading (mAh/cm2 range), not ultra-thin electrodes.
  · A fair control under identical conditions in the same study.
- · More than one cell: report n, show error bars/spread, give the average — not the best cell.
+ · At least 3 independent cells per condition: report n, show error bars/spread, give the average
+   — not the best cell.
  · Raw voltage profiles, not only capacity-vs-cycle.
  · A full cell (or an explicit statement that none was made) before any device-level claim.
+
+SEVERAL CELLS (GCD) — how to present n cells:
+ · Scalar numbers as mean ± SD with n stated (e.g. "148 ± 4 mAh/g, n=3"); say SD, not SE.
+ · GCD voltage curves: show ONE representative cell (closest to the mean) — never point-by-point
+   average voltage-capacity curves (it smears the plateaus). Overlay all cells faintly to show spread.
+ · Capacity/CE vs cycle: plot the mean with a ±SD band, or all cells thin with the mean bold.
+ · Account for every cell: how many assembled vs included, and why any were excluded.
 
 RED FLAGS — call these out if you see them:
  · Big areal capacity implied by a tiny loading · half-cell shown as a full cell · CE as "~100%" ·

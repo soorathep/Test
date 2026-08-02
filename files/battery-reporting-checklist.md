@@ -14,8 +14,10 @@ Energy* — expect these same items even when they do not provide a form.
 ## A · Report these (in Methods / SI)
 
 ### 1. Cell and electrodes
-- [ ] **Cell type and configuration** — coin / pouch / Swagelok; **half-cell vs full-cell**; 2- vs 3-electrode.
+- [ ] **Cell type and configuration** — coin / pouch / Swagelok; **half-cell vs full-cell**.
+- [ ] **Number of electrodes** — **2-electrode** (working + counter, i.e. a normal cell) or **3-electrode** (working + counter + reference). Use **3-electrode** whenever you need a single electrode's true potential, or to separate anode from cathode contributions; a 2-electrode voltage cannot tell you which electrode is limiting.
 - [ ] **Counter / reference electrode** identity (e.g. Li metal). *Half-cell CE against Li is not full-cell CE — say which you report.*
+- [ ] **Number of cells (n)** — report how many **independent cells** each value is based on. Run **at least three per condition** (triplicate) where feasible; this is the common expectation and the basis for the error bars below.
 - [ ] **Active-material mass** and **mass loading** (mg cm⁻²).
 - [ ] **Electrode area** (cm²) and **areal capacity** (mAh cm⁻²).
 - [ ] **Electrode formulation** (active : conductive : binder), thickness, and density after calendering.
@@ -47,7 +49,7 @@ Energy* — expect these same items even when they do not provide a form.
 
 - [ ] Test at a **practical mass loading** (aim for areal capacity in the mAh cm⁻² range, not µAh); ultra-thin electrodes inflate rate and cycling.
 - [ ] Run a **fair baseline / control** under identical conditions in the same study.
-- [ ] Report **more than one cell**: give **n**, show **error bars or the spread**, and report the **average** — never just the best cell.
+- [ ] Report **more than one cell**: at least **three independent cells** per condition where feasible, give **n**, show **error bars or the spread**, and report the **average** — never just the best cell.
 - [ ] Show **raw voltage profiles** (V vs capacity), not only capacity-vs-cycle.
 - [ ] Use an appropriate number of **significant figures**; put **error bars** on plots.
 - [ ] Build a **full cell** — or state plainly that you did not — before claiming device-level performance.
@@ -55,7 +57,30 @@ Energy* — expect these same items even when they do not provide a form.
 
 ---
 
-## C · Red flags reviewers catch
+## C · Reporting several cells (GCD &amp; cycling)
+
+When the same measurement is run on n cells, present it so the spread is visible and nothing is
+hidden. State **n** in every caption.
+
+- [ ] **Scalar numbers** (capacity, ICE, steady-state CE, retention, energy density) — quote as
+  **mean ± standard deviation** across the n cells, and say it is SD (not SE). Example:
+  "148 ± 4 mAh g⁻¹ (n = 3)".
+- [ ] **Voltage profiles (the GCD curves)** — show **one representative cell**, chosen as the one
+  closest to the mean, and say so. **Do not point-by-point average voltage–capacity curves** —
+  averaging smears the plateaus and invents a shape no cell produced. If you want to show
+  reproducibility, **overlay all cells as thin, faint lines** behind the representative one.
+- [ ] **Capacity / CE vs cycle number** — plot the **mean as the line with a shaded ± SD band**, or
+  plot **every cell as a thin line with the mean in bold**. Do not plot only the best cell.
+- [ ] **Rate capability / bar summaries** — bar = mean, error bar = SD; overlay the individual data
+  points when there are only a few cells.
+- [ ] **Account for every cell** — state how many cells were assembled and how many are included. If
+  any were excluded (short, no contact, leak), say so and why. Never quietly keep only the good ones.
+- [ ] **One basis throughout** — keep the same normalisation (per active mass, or per area) across
+  all cells and all panels so the numbers are comparable.
+
+---
+
+## D · Red flags reviewers catch
 
 - A large **areal capacity implied by a tiny loading**, or huge specific capacity from ~0.5 mg cm⁻².
 - **Half-cell** data presented as if it were a full cell.

@@ -7,8 +7,10 @@
     <div class="bc-col">
       <div class="bc-h">Report — cell &amp; electrodes</div>
       <ul>
-        <li>Cell type &amp; configuration; <b>half-cell vs full-cell</b>; 2- or 3-electrode</li>
+        <li>Cell type &amp; configuration; <b>half-cell vs full-cell</b></li>
+        <li><b>2- or 3-electrode</b> — use 3-electrode to get a single electrode's true potential / separate anode from cathode</li>
         <li>Counter/reference (e.g. Li) — half-cell CE ≠ full-cell CE</li>
+        <li><b>Number of cells (n)</b> — <b>≥3 independent cells</b> per condition where feasible</li>
         <li>Active-material <b>mass</b> and <b>loading</b> (mg cm⁻²)</li>
         <li>Electrode area and <b>areal capacity</b> (mAh cm⁻²)</li>
         <li>Formulation (active:conductive:binder), thickness, density</li>
@@ -43,9 +45,20 @@
     <ul>
       <li>Test at a <b>practical mass loading</b> (mAh cm⁻² range) — thin electrodes inflate rate &amp; cycling</li>
       <li>Run a <b>fair control</b> under identical conditions in the same study</li>
-      <li><b>More than one cell:</b> report n, show error bars/spread, give the average — not the best cell</li>
+      <li><b>≥3 independent cells</b> per condition: report n, show error bars/spread, give the average — not the best cell</li>
       <li>Show <b>raw voltage profiles</b>, not only capacity-vs-cycle</li>
       <li>Make a <b>full cell</b> (or say you didn't) before claiming device-level performance</li>
+    </ul>
+  </div>
+
+  <div class="bc-do">
+    <div class="bc-h">Reporting several cells (GCD &amp; cycling)</div>
+    <ul>
+      <li>Scalar numbers (capacity, CE, retention) as <b>mean ± SD</b> with <b>n</b> — e.g. "148 ± 4 mAh g⁻¹ (n = 3)"</li>
+      <li><b>GCD voltage curves:</b> show <b>one representative cell</b> (closest to the mean) — <b>never point-by-point average</b> voltage–capacity curves; it smears the plateaus. Overlay all cells faintly if you want to show spread</li>
+      <li><b>Capacity/CE vs cycle:</b> plot the <b>mean with a ± SD band</b>, or all cells thin + mean bold — not only the best</li>
+      <li>Bar/rate summaries: bar = mean, error bar = SD, overlay individual points</li>
+      <li><b>Account for every cell</b> — how many assembled vs included; say why any were excluded</li>
     </ul>
   </div>
 

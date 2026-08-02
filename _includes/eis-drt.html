@@ -1,0 +1,75 @@
+<div class="gp">
+  <p class="gp-lede"><b>EIS</b> applies a tiny AC perturbation across frequency and measures
+  <code>Z(ω) = Z′ − jZ″</code>; because processes respond at different timescales, it <b>separates them
+  by frequency</b>. <b>DRT</b> is a <b>model-free</b> transform of the same data into a distribution
+  <code>γ(τ)</code> whose <b>peaks</b> resolve overlapping arcs — no equivalent circuit needed.
+  Both are only as good as the data: small amplitude, a stable cell, and a Kramers–Kronig check first.</p>
+
+  <div class="gp-block">
+    <div class="bc-h">EIS — what it separates (high → low frequency)</div>
+    <ul class="gp-ul">
+      <li><b>R_s / ohmic</b> — high-frequency real-axis intercept (electrolyte + contacts + wiring)</li>
+      <li><b>Film / SEI</b> — high–mid frequency semicircle (if present)</li>
+      <li><b>Charge transfer R_ct</b> — mid-frequency semicircle; <b>diameter = R_ct</b>; use a CPE for a depressed arc</li>
+      <li><b>Diffusion (Warburg)</b> — low-frequency ~45° line</li>
+    </ul>
+    <p><b>Run:</b> small amplitude ~5–10 mV (stay linear), at an equilibrated OCV/SOC, wide range
+    (~100 kHz–10 mHz, ≥6 pts/decade), state T and 2- vs 3-electrode.
+    <b>Validate</b> with a <b>Lin-KK</b> test — structured low-frequency residuals usually mean the SOC drifted.</p>
+    <p><b>Read:</b> R_s = high-f intercept; R_ct = semicircle diameter; apex frequency →
+    <code>τ = 1/(2πf)</code>, <code>C_dl = 1/(2π f R_ct)</code>. Equivalent-circuit fits must report the
+    circuit, values ± uncertainty, and χ² — and beware that <b>many circuits fit the same data</b>.</p>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">DRT — deconvolve the overlapping arcs</div>
+    <pre>Z(ω) = R∞ + R_pol · ∫ γ(τ)/(1 + jωτ) dτ        peak position = τ (f = 1/2πτ);  peak area = its resistance</pre>
+    <p>The inversion is <b>ill-posed</b> → <b>Tikhonov regularisation</b> with a parameter <b>λ</b>:
+    <b>too small</b> = noisy, spurious peaks; <b>too large</b> = oversmoothed, merged peaks. Choose λ by
+    the <b>L-curve / GCV / discrepancy principle</b> and <b>report it</b>. Use tools
+    <b>DRTtools</b> (MATLAB) or <b>pyDRTtools</b> (Python) on KK-valid, low-noise data.</p>
+    <p class="gp-def">Assign peaks with evidence — watch how they move with temperature, SOC, or in a
+    symmetric cell. A peak is a time constant, not automatically one physical step.</p>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">How to plot</div>
+    <ul class="gp-ul">
+      <li><b>Nyquist</b> (−Z″ vs Z′) with <b>equal (1:1) axes</b> — unequal axes turn circles into ellipses and mislead. Mark frequency direction &amp; decades</li>
+      <li><b>Bode</b> (|Z| and phase vs log f) alongside — Nyquist hides the frequency axis</li>
+      <li>Overlay the <b>fit + residuals</b>; <b>normalise to area (Ω·cm²)</b> to compare samples</li>
+      <li><b>DRT:</b> γ(τ) vs log τ, label each peak, give λ + tool in the caption</li>
+    </ul>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Worked example</div>
+    <p>Reading the spectrum below: <b>R<sub>s</sub> ≈ 8 Ω</b> (high-frequency intercept). The DRT
+    resolves <b>two processes</b> — τ ≈ 2 ms (R ≈ 25 Ω) and τ ≈ 50 ms (R ≈ 60 Ω) — so
+    R<sub>ct,total</sub> ≈ 85 Ω. Each gives a capacitance <code>C = τ/R</code>: ≈ 80 µF and ≈ 830 µF.
+    The low-frequency 45° tail is diffusion (Warburg).</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/eis-drt-example.png" alt="Nyquist, Bode and DRT of an example spectrum" loading="lazy">
+      <figcaption>Nyquist (equal axes), Bode, and the DRT — one peak per process — from <code>eis.py</code>.
+      For real DRT on measured data use pyDRTtools and report λ.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gp-block gp-warn">
+    <div class="bc-h">Replicates / several samples</div>
+    <ul>
+      <li>Fix SOC, T, amplitude, frequency range, equilibration — and, for DRT, the <b>same λ and range</b> — or spectra are not comparable</li>
+      <li><b>Do not average raw spectra.</b> Fit each cell, report <b>parameters (R_s, R_ct, …) as mean ± SD with n</b>; overlay all spectra thin + a representative one bold</li>
+      <li>DRT: overlay γ(τ), report <b>peak τ and area (R) as mean ± SD</b></li>
+      <li>Account for excluded cells; state n, range, amplitude, T, SOC in every caption</li>
+    </ul>
+  </div>
+
+  <p class="gp-refs"><b>References to read</b> (start with 1–2): (1) Lasia, <em>Electrochemical Impedance
+  Spectroscopy and its Applications</em> (Springer) — the teaching text; (2) Orazem &amp; Tribollet,
+  <em>Electrochemical Impedance Spectroscopy</em> (Wiley) — rigorous, incl. Kramers–Kronig; (3) Meddings
+  et al., <em>J. Power Sources</em> 480, 228742 (2020) — EIS on real Li-ion cells; (4) Schönleber, Klotz
+  &amp; Ivers-Tiffée, <em>Electrochim. Acta</em> 131, 20 (2014) — the Lin-KK test; (5) Wan, Saccoccio, Chen
+  &amp; Ciucci, <em>Electrochim. Acta</em> 184, 483 (2015) — theory behind DRTtools/pyDRTtools. Full list
+  and software links in the download.</p>
+</div>
