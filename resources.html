@@ -1,0 +1,39 @@
+---
+layout: default
+title: Resources
+permalink: /resources/
+description: Files and tools for members of the SKH Research Group — starting with the lab figure palette.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">For lab members</div>
+    <h2>Resources</h2>
+  </div>
+  <p class="lede" style="margin-bottom:40px">Templates, tools, and shared files for the group.
+  Everything here is meant to be downloaded and used in your own work.</p>
+
+  {% assign resources = site.data.resources %}
+  {% if resources and resources.size > 0 %}
+    {% for r in resources %}
+    <div class="resource">
+      <h3 class="resource-title">{{ r.title }}</h3>
+      {% if r.description %}<p class="resource-desc">{{ r.description }}</p>{% endif %}
+      {% if r.howto == 'palette' %}{% include palette-howto.html %}{% endif %}
+      <div class="resource-files">
+        {% for f in r.files %}
+        <a class="res-file" href="{{ site.baseurl }}/files/{{ f.file }}" target="_blank" rel="noopener">
+          <span class="rf-kind">{{ f.kind }}</span>
+          <span class="rf-body">
+            <span class="rf-label">{{ f.label }}</span>
+            {% if f.desc %}<span class="rf-desc">{{ f.desc }}</span>{% endif %}
+          </span>
+          <span class="rf-get">Download →</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="note">No resources yet.</div>
+  {% endif %}
+</section>

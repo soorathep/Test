@@ -1,0 +1,72 @@
+<div class="palette-howto">
+
+  <div class="ph-block">
+    <div class="ph-label">Categorical — for discrete groups, used strictly in this order</div>
+    <div class="ph-swatches">
+      <div class="ph-sw"><span class="ph-chip" style="background:#0F6E6B"></span><b>teal</b><code>#0F6E6B</code><em>control / baseline</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#E29A2D"></span><b>amber</b><code>#E29A2D</code><em>the effect of interest</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#BE654C"></span><b>rust</b><code>#BE654C</code><em>3rd condition</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#5A91BE"></span><b>skyblue</b><code>#5A91BE</code><em>4th condition</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#83A462"></span><b>sage</b><code>#83A462</code><em>5th condition</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#995A90"></span><b>plum</b><code>#995A90</code><em>6th condition</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#333F4A"></span><b>graphite</b><code>#333F4A</code><em>axes, ticks, text</em></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#DFC98F"></span><b>sand</b><code>#DFC98F</code><em>fills / CI bands</em></div>
+    </div>
+  </div>
+
+  <div class="ph-block">
+    <div class="ph-label">Neutrals — text, axes and gridlines (never pure black)</div>
+    <div class="ph-swatches ph-neutrals">
+      <div class="ph-sw"><span class="ph-chip" style="background:#1C242B"></span><b>ink</b><code>#1C242B</code></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#333F4A"></span><b>graphite</b><code>#333F4A</code></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#66727C"></span><b>slate</b><code>#66727C</code></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#B9C1C6"></span><b>mist</b><code>#B9C1C6</code></div>
+      <div class="ph-sw"><span class="ph-chip" style="background:#F3F0EB"></span><b>paper</b><code>#F3F0EB</code></div>
+    </div>
+  </div>
+
+  <div class="ph-block">
+    <div class="ph-label">Ramps — for continuous data, not discrete groups</div>
+    <div class="ph-ramps">
+      <div class="ph-ramp">
+        <span class="ph-bar" style="background:linear-gradient(90deg,#EDF9FA,#B8E4E7,#85CED2,#51B7BC,#009FA3,#00888A,#006F70,#005756,#003F3D)"></span>
+        <span class="ph-rlabel">Sequential teal — unsigned magnitude (intensity, density)</span>
+      </div>
+      <div class="ph-ramp">
+        <span class="ph-bar" style="background:linear-gradient(90deg,#FDF9EE,#F3DEA8,#E4C27C,#D5A656,#C58A33,#B46F0C,#A35200,#923400,#810800)"></span>
+        <span class="ph-rlabel">Sequential amber — second magnitude channel</span>
+      </div>
+      <div class="ph-ramp">
+        <span class="ph-bar" style="background:linear-gradient(90deg,#007372,#008C8B,#53A6A5,#86C0BF,#B6D9D9,#F3F0EB,#ECCF9F,#DDAD68,#CC8C36,#BA6A00,#A84500)"></span>
+        <span class="ph-rlabel">Diverging — signed values, centred on zero (log2FC, z-score)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph-quick">
+    <div class="ph-q">
+      <div class="ph-qk mono">Python</div>
+      <p>Drop <code>labpalette.py</code> beside your script, then one line applies the whole house style:</p>
+      <pre>import labpalette as lp
+lp.apply()                     # colours, fonts, 600 dpi
+ax.plot(x, y, label="control") # cycles teal, amber, rust, ...
+ax.imshow(Z, cmap=lp.cmap("teal"))</pre>
+    </div>
+    <div class="ph-q">
+      <div class="ph-qk mono">AI tools</div>
+      <p>Open the <b>AI prompt pack</b> below, copy the block, and paste it into ChatGPT / Claude / Gemini
+      <em>before</em> asking for a plot, diagram, or figure. It makes the AI use these exact colours and rules.</p>
+    </div>
+    <div class="ph-q">
+      <div class="ph-qk mono">Core rules</div>
+      <ul>
+        <li><b>teal</b> = control/baseline, <b>amber</b> = the effect the figure is about.</li>
+        <li>Use categorical colours <b>in order</b>; add marker shape or line style beyond 4 groups.</li>
+        <li>Axes and text in <b>graphite</b> (#333F4A) — never pure black; gridlines in mist.</li>
+        <li>Categorical for groups, ramps for continuous. Centre the diverging ramp on zero.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="ph-more">Full rationale, accessibility validation, and setup for R, Illustrator, LaTeX and CSS are in the style guide below.</p>
+</div>
