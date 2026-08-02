@@ -1,15 +1,18 @@
 .DS_Store
+__pycache__/
 
 # make_people.py working folder — drop returned forms and photos here to
 # process them; the results go into _data/people.yml and img/people/.
 # The inbox itself is never committed.
 inbox/
-labpalette_preview.png
-__pycache__/
-gitt_example.png
-eis_drt_example.png
-cv_example.png
-gcd_example.png
-eis-fit-example.png
-drt-real-example.png
-pitt_example.png
+
+# Demo images the Resources scripts drop in their own folder when run.
+# Scoped to files/ so they do NOT match the committed figures in img/resources/.
+/files/labpalette_preview.png
+/files/gitt_example.png
+/files/pitt_example.png
+/files/eis_drt_example.png
+/files/eis-fit-example.png
+/files/cv_example.png
+/files/gcd_example.png
+/files/drt-real-example.png
