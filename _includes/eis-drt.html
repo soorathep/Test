@@ -30,6 +30,14 @@
     <b>DRTtools</b> (MATLAB) or <b>pyDRTtools</b> (Python) on KK-valid, low-noise data.</p>
     <p class="gp-def">Assign peaks with evidence — watch how they move with temperature, SOC, or in a
     symmetric cell. A peak is a time constant, not automatically one physical step.</p>
+    <p>The script <code>drt_pyDRTtools.py</code> (downloads) is a real pipeline: load EIS → compute the
+    DRT with <b>pyDRTtools</b>, λ chosen by the <b>L-curve</b> → find the peaks (τ, f, R). The figure
+    below is a genuine DRT it produced — two RC arcs recovered as two peaks.</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/drt-real-example.png" alt="Real DRT computed by pyDRTtools with L-curve lambda" loading="lazy">
+      <figcaption>A real DRT from <code>drt_pyDRTtools.py</code> (pyDRTtools, L-curve λ). Peaks give the
+      process time constant τ (and f = 1/2πτ) and its resistance R (peak area).</figcaption>
+    </figure>
   </div>
 
   <div class="gp-block">
@@ -52,6 +60,26 @@
       <img src="{{ site.baseurl }}/img/resources/eis-drt-example.png" alt="Nyquist, Bode and DRT of an example spectrum" loading="lazy">
       <figcaption>Nyquist (equal axes), Bode, and the DRT — one peak per process — from <code>eis.py</code>.
       For real DRT on measured data use pyDRTtools and report λ.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Equivalent-circuit fitting — and choosing the model</div>
+    <p>Quantitative EIS means fitting a circuit. The script <code>eis_fit.py</code> (downloads) fits
+    Rs–(R∥CPE)–…–Warburg circuits by complex least-squares and returns each value <b>± uncertainty</b>
+    and χ². How to pick the circuit:</p>
+    <ul class="gp-ul">
+      <li><b>Validate first</b> (Lin-KK) — a bad spectrum can't be rescued by a circuit</li>
+      <li><b>Let physics set the count:</b> run the DRT — the number of peaks = number of R∥CPE arcs you need</li>
+      <li><b>CPE, not ideal C</b>, for depressed arcs; add a <b>Warburg</b> only if there's a low-frequency 45° tail</li>
+      <li><b>Keep it simple (Occam):</b> more elements always lower χ², but huge parameter uncertainties, or values that wander with the initial guess, mean over-fitting / a non-unique circuit</li>
+      <li><b>Judge by the residuals</b> (small &amp; unstructured vs frequency), not χ² alone; tie every element to a physical process</li>
+    </ul>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/eis-fit-example.png" alt="ECM fit overlaid on Nyquist, and residuals" loading="lazy">
+      <figcaption>Data vs an Rs–(R∥CPE)–(R∥CPE)–Warburg fit (left) and the residuals (right), from
+      <code>eis_fit.py</code>. Small, unstructured residuals = a trustworthy fit; a good fit to the
+      <em>wrong</em> circuit is still wrong.</figcaption>
     </figure>
   </div>
 

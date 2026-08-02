@@ -64,6 +64,39 @@
           file: gitt_pitt.py
           kind: PY
           desc: "Loads a GITT run, finds each pulse, computes D vs SOC (Weppner–Huggins) and plots it; PITT long-time D too. Runs a demo out of the box: python gitt_pitt.py"
+    - title: Galvanostatic charge–discharge (GCD) — run, calculate &amp; report
+      howto: gcd
+      description: >
+        Constant-current cycling, the workhorse test: specific capacity, Coulombic efficiency, the
+        voltage profile (energy, average voltage), capacity retention and rate capability, plus
+        capacitance and ESR for capacitors — with how to choose the current/window and report multiple
+        cycles and samples. Script, worked example, and references included.
+      files:
+        - label: GCD guide
+          file: gcd-guide.md
+          kind: MD
+          desc: Full write-up — parameters, equations, multi-cycle/multi-sample reporting, caveats, reading list.
+        - label: gcd.py — analysis script
+          file: gcd.py
+          kind: PY
+          desc: "Specific capacity, CE, energy, retention, and supercapacitor C/ESR, with a voltage-profile + capacity/CE-vs-cycle plot. Demo: python gcd.py"
+    - title: Cyclic voltammetry (CV) — run, calculate &amp; report
+      howto: cv
+      description: >
+        Sweep the potential and read the current: redox potentials, reversibility, whether the
+        current is diffusion- or surface-controlled (b-value), the diffusion coefficient
+        (Randles–Ševčík), the capacitive/diffusive split (Dunn), and capacitance — plus how to choose
+        scan rates and windows and how to report multiple cycles and samples. Script, worked example,
+        and references included.
+      files:
+        - label: CV guide
+          file: cv-guide.md
+          kind: MD
+          desc: Full write-up — parameters, equations, multi-cycle/multi-sample reporting, caveats, reading list.
+        - label: cv.py — analysis script
+          file: cv.py
+          kind: PY
+          desc: "D (Randles–Ševčík), b-value, Dunn capacitive/diffusive split, capacitance, and a CV overlay + i_p-vs-√v plot. Demo: python cv.py"
     - title: EIS &amp; DRT — measure, analyse, plot &amp; report
       howto: eisdrt
       description: >
@@ -80,6 +113,14 @@
           file: eis.py
           kind: PY
           desc: "Draws a correct Nyquist (equal axes) + Bode, reads R_s and R_ct, and shows an illustrative DRT; points to pyDRTtools for the real DRT. Runs a demo: python eis.py"
+        - label: eis_fit.py — equivalent-circuit fit
+          file: eis_fit.py
+          kind: PY
+          desc: "Fits Rs–(R∥CPE)–…–Warburg circuits (complex least-squares) with values ± uncertainty and χ², plus a data-vs-fit + residual plot and model-selection guidance. Demo: python eis_fit.py"
+        - label: drt_pyDRTtools.py — real DRT
+          file: drt_pyDRTtools.py
+          kind: PY
+          desc: "A real DRT pipeline with pyDRTtools: load EIS → compute the DRT with λ chosen by the L-curve → find the peaks (τ, f, R) → plot. Demo: python drt_pyDRTtools.py (pip install pyDRTtools cvxopt scikit-learn)"
 
 - category: Figures &amp; design
   blurb: Colour, style, and templates for figures, posters, and slide decks.

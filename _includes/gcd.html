@@ -1,0 +1,56 @@
+<div class="gp">
+  <p class="gp-lede">GCD cycles the cell at <b>constant current</b> between two voltage cut-offs and
+  records the voltage. It is the workhorse test — capacity, Coulombic efficiency, the voltage profile
+  (energy, average voltage), cycle life, rate capability, and (for capacitors) capacitance and ESR.
+  Most numbers in the battery reporting checklist come from here.</p>
+
+  <div class="gp-block">
+    <div class="bc-h">Choosing parameters</div>
+    <ul class="gp-ul">
+      <li><b>Current</b> — give C-rate <b>and</b> density (mA cm⁻²/g), and define what 1C means</li>
+      <li><b>Voltage window</b> (cut-offs); <b>CC vs CC–CV</b> — state the CV cut-off current</li>
+      <li><b>Formation cycles</b> — report a steady cycle, not the first</li>
+      <li>Temperature, cycle count, cell format, and <b>mass loading</b></li>
+    </ul>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Calculations</div>
+    <pre>Specific capacity   q  = I·Δt / (3.6·m)          [mAh/g]   (I[A], Δt[s], m[g])
+Coulombic eff.      CE = Q_dis/Q_ch = Δt_dis/Δt_ch          [%]
+Specific energy     E  = I·∫V dt /(3.6·m) [mWh/g];  V̄ = E/q
+Retention           = Q_N / Q_1 × 100 %
+
+Supercapacitor:  C = I / |dV/dt|  → C_spec = C/m [F/g]   (fit discharge slope, exclude IR)
+                 ESR = ΔV_IR / (2·I) [Ω];   E = ½ C ΔV² ;   P = E/Δt_dis</pre>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Worked example</div>
+    <p>Discharge at <b>I = 1.5 mA</b> for <b>Δt = 1 h (3600 s)</b> on <b>m = 15 mg</b> of active material:</p>
+    <pre>q = I·Δt / (3.6·m) = (1.5e-3 · 3600) / (3.6 · 1.5e-2) = 100 mAh/g
+If charge took 3600 s and discharge 3560 s:  CE = 3560/3600 = 98.9 %</pre>
+    <p class="gp-def">The script <code>gcd.py</code> (downloads) computes capacity, CE, energy,
+    retention, and supercap C/ESR from a data file — its demo produced the figure below.</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/gcd-example.png" alt="GCD voltage profile and capacity/CE vs cycle" loading="lazy">
+      <figcaption>GCD voltage profile (left) and capacity &amp; CE vs cycle (right), from <code>gcd.py</code>.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gp-block gp-warn">
+    <div class="bc-h">Several cycles / samples &amp; caveats</div>
+    <ul>
+      <li><b>Cycles:</b> report which cycle; plot capacity &amp; CE vs cycle; show profiles at 1st/10th/Nth. <b>Do not point-by-point average voltage profiles</b> (smears plateaus) — show a representative one</li>
+      <li><b>Samples:</b> normalise (per g / cm²); report capacity, CE, retention as <b>mean ± SD with n</b> (≥3 cells); overlay capacity-vs-cycle, mean bold</li>
+      <li><b>CE</b> to enough sig-figs (99.92 %, not ~100 %); tiny losses compound over hundreds of cycles</li>
+      <li>State the <b>capacity basis</b>; ultra-low loading inflates rate/cycling; CC–CV charge vs CC discharge lowers CE for protocol reasons</li>
+    </ul>
+  </div>
+
+  <p class="gp-refs"><b>References to read</b> (start with 1–2): (1) Stoller &amp; Ruoff, "Best practical
+  methods … supercapacitors," <em>Energy Environ. Sci.</em> 3, 1294 (2010); (2) the lab's <b>Battery
+  reporting checklist</b> (same section) — what to disclose with any GCD result; (3) Bard &amp; Faulkner,
+  <em>Electrochemical Methods</em> — constant-current fundamentals; (4) BioLogic Application Note 51 —
+  DC characterisation (capacity, energy, ESR, CE). Full list in the download.</p>
+</div>

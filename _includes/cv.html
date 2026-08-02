@@ -1,0 +1,59 @@
+<div class="gp">
+  <p class="gp-lede">CV sweeps the potential up and back at a constant scan rate <code>v</code> and records
+  the current. From the peaks and how they change with <code>v</code> you get redox potentials,
+  reversibility, the <b>mechanism</b> (diffusion vs surface), a diffusion coefficient, and capacitance.
+  <b>Do the b-value check first</b> — a "diffusion coefficient" only means something if the current is
+  actually diffusion-controlled.</p>
+
+  <div class="gp-block">
+    <div class="bc-h">Choosing parameters</div>
+    <ul class="gp-ul">
+      <li><b>Reference electrode</b> — state it; quote all potentials against it</li>
+      <li><b>Window</b> — inside electrolyte stability; only wide enough to capture the peaks</li>
+      <li><b>Scan-rate range</b> — cover ≥ a decade (e.g. 5–100 mV/s) so the slopes are well defined</li>
+      <li><b>Cycles</b> — report a <b>stabilised</b> cycle (3rd–5th), not the first (formation)</li>
+      <li><b>iR compensation</b> at high rates; 3-electrode cell; state area / active mass / temperature</li>
+    </ul>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Calculations</div>
+    <pre>Randles–Ševčík (reversible):  i_p = 2.69e5 · n^(3/2) · A · D^(1/2) · C · v^(1/2)
+   → plot i_p vs √v ;  D = ( slope / (2.69e5 · n^(3/2) · A · C) )²
+
+Reversibility:  ΔE_p = |E_pa − E_pc| ≈ 59/n mV ;  i_pa/i_pc ≈ 1 ;  E_p independent of v
+b-value:        i_p = a·v^b  → log i_p vs log v ;  b≈0.5 diffusion, b≈1 surface/capacitive
+Dunn split:     i(V) = k1·v + k2·√v   (capacitive + diffusion)
+Capacitance:    C = (∮ i dV) / (2·v·ΔV) ;   C_specific = C / m</pre>
+  </div>
+
+  <div class="gp-block">
+    <div class="bc-h">Worked example (D from Randles–Ševčík)</div>
+    <p>Redox couple: n = 1, A = 1 cm², C = 1 mM = 1×10⁻⁶ mol cm⁻³. The plot of i_p vs √v is linear with
+    <b>slope = 2.69×10⁻⁴ A/(V s⁻¹)^½</b>. Then:</p>
+    <pre>D = ( 2.69e-4 / (2.69e5 · 1 · 1 · 1e-6) )²  =  (1e-3)²  =  1×10⁻⁶ cm² s⁻¹</pre>
+    <p class="gp-def">The script <code>cv.py</code> (downloads) does this from your (v, i_p) data, plus the
+    b-value, Dunn split, and capacitance — its demo produced the figure below.</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/cv-example.png" alt="CV at several scan rates and the Randles–Sevcik plot" loading="lazy">
+      <figcaption>CV at several scan rates (left) and i_p vs √v giving D (right), from <code>cv.py</code>.</figcaption>
+    </figure>
+  </div>
+
+  <div class="gp-block gp-warn">
+    <div class="bc-h">Several cycles / several samples &amp; caveats</div>
+    <ul>
+      <li><b>Cycles:</b> report which cycle you show; use a stabilised one for quantitative reads; overlay cycle 1 → N to show activation</li>
+      <li><b>Samples:</b> fix window/rate set/reference/cycle; <b>normalise</b> current (mA cm⁻² or A g⁻¹); report E_p, i_p, D, C, b as <b>mean ± SD with n</b>; overlay CVs thin + representative bold</li>
+      <li><b>b-value first</b> — Randles–Ševčík is for diffusion-controlled reversible couples; capacitive current inflates i_p and it gives only an <em>apparent</em> D on porous electrodes</li>
+      <li>iR drop distorts peaks at high v · geometric vs BET area shifts D · the first cycle is not steady state</li>
+    </ul>
+  </div>
+
+  <p class="gp-refs"><b>References to read</b> (start with 1–2): (1) Elgrishi et al., "A Practical
+  Beginner's Guide to Cyclic Voltammetry," <em>J. Chem. Educ.</em> 95, 197 (2018) — the clearest intro;
+  (2) Bard &amp; Faulkner, <em>Electrochemical Methods</em> — CV theory &amp; Randles–Ševčík; (3) Wang &amp; Dunn
+  et al., <em>J. Phys. Chem. C</em> 111, 14925 (2007) — the k1·v + k2·√v separation; (4) Brousse, Bélanger
+  &amp; Long, <em>J. Electrochem. Soc.</em> 162, A5185 (2015) — "To be or not to be pseudocapacitive?".
+  Full list in the download.</p>
+</div>

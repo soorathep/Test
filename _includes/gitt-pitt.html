@@ -37,6 +37,14 @@ Short time (t ≪ L²/D):  I(t) ∝ t^(−1/2)   (Cottrell)     →   D from slo
     <p class="gp-def">L = diffusion length (particle radius / film thickness). <b>Bonus:</b> current
     decays monotonically for solid-solution insertion, but <b>rises then falls</b> for a two-phase
     reaction — PITT reads mechanism near plateaus better than GITT.</p>
+    <p>The same script <code>gitt_pitt.py</code> runs a full PITT pipeline too — it splits the staircase
+    into steps, fits the exponential tail of each for D, and plots D vs potential (its demo produced the
+    figure below; note the dip where a phase transition slows diffusion).</p>
+    <figure class="gp-fig">
+      <img src="{{ site.baseurl }}/img/resources/pitt-example.png" alt="PITT ln I fit and D vs potential" loading="lazy">
+      <figcaption>PITT: the long-time ln|I| fit of one step (left) and apparent D across potential
+      (right), from <code>gitt_pitt.py</code>.</figcaption>
+    </figure>
   </div>
 
   <div class="gp-block">

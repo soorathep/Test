@@ -104,12 +104,81 @@ def analyse_gitt(t, I, V, P):
 def D_pitt_longtime(t, I, L):
     """PITT: D from the long-time slope of ln|I| vs t.  ln I = c − (π²D/4L²) t.
 
-    Fit the linear tail (last ~40% of the transient). L = diffusion length [cm].
+    Fits the exponential region that is above the noise floor (from where the
+    current has decayed to ~e⁻¹ of its peak down to a few % of it). L in cm.
+    Returns (D, slope, t_fit, lnI_fit) for plotting.
     """
     t, I = np.asarray(t, float), np.abs(np.asarray(I, float))
-    m = t > (t[0] + 0.6 * (t[-1] - t[0]))
-    slope = np.polyfit(t[m], np.log(I[m]), 1)[0]     # 1/s
-    return -slope * 4.0 * L**2 / PI**2               # cm^2/s
+    Imax = I.max()
+    m = (I > 0.03 * Imax) & (I < 0.6 * Imax)         # clean exponential, above noise
+    if m.sum() < 5:
+        m = I > 0.03 * Imax
+    slope, c = np.polyfit(t[m], np.log(I[m]), 1)     # 1/s, -
+    D = -slope * 4.0 * L**2 / PI**2                  # cm^2/s
+    return D, slope, t[m], slope * t[m] + c
+
+
+def analyse_pitt(t, I, V, L):
+    """Full PITT pipeline: one D and one ΔQ per potential step.
+
+    Splits the run into potential steps (V held constant, current decays), fits the
+    long-time tail of each for D, and integrates the current for the incremental
+    capacity ΔQ (→ dQ/dE and the OCV curve). Returns (E_step, D, dQ, steps).
+    """
+    t, I, V = map(lambda x: np.asarray(x, float), (t, I, V))
+    edges = np.flatnonzero(np.abs(np.diff(V)) > 1e-6) + 1
+    bounds = np.concatenate(([0], edges, [len(V)]))
+    E, D, dQ, steps = [], [], [], []
+    for a, b in zip(bounds[:-1], bounds[1:]):
+        if b - a < 8:
+            continue
+        ts, Is = t[a:b] - t[a], I[a:b]
+        Dk, slope, tf, lnf = D_pitt_longtime(ts, Is, L)
+        q = _trapz(np.abs(Is), ts) / 3600.0          # A·h
+        E.append(V[a]); D.append(Dk); dQ.append(q)
+        steps.append(dict(E=V[a], D=Dk, dQ=q, t=ts, I=Is, t_fit=tf, lnI_fit=lnf))
+    return np.array(E), np.array(D), np.array(dQ), steps
+
+
+def _synthetic_pitt(L, D_of_E, E1=3.3, E2=4.2, dE=0.02, dt=0.5):
+    """Fabricate a PITT run: a staircase of small steps, each a decaying transient.
+
+    Each hold lasts ~8 time-constants so the exponential is well captured.
+    """
+    t_all, I_all, V_all, clock = [], [], [], 0.0
+    rng = np.random.default_rng(1)
+    for E in np.arange(E1, E2 + dE / 2, dE):
+        D = D_of_E(E)
+        tau_c = 4 * L**2 / (PI**2 * D)               # time constant of the decay
+        dQ = 3e-4 * (1 + 3 * np.exp(-0.5 * ((E - 3.75) / 0.06) ** 2))  # redox peak in capacity
+        I0 = dQ / tau_c
+        T = 8 * tau_c
+        n = int(T / dt); tt = np.arange(n) * dt
+        Istep = I0 * np.exp(-tt / tau_c) + rng.normal(0, I0 * 1e-3, n)
+        for i in range(n):
+            t_all.append(clock + tt[i]); I_all.append(Istep[i]); V_all.append(E)
+        clock += T
+    return np.array(t_all), np.array(I_all), np.array(V_all)
+
+
+def plot_pitt(steps, E, D, save="pitt_example.png"):
+    import matplotlib.pyplot as plt
+    try:
+        import labpalette as lp; lp.apply(); teal, amber = lp.C["teal"], lp.C["amber"]
+    except Exception:
+        teal, amber = "#0F6E6B", "#E29A2D"
+    s = steps[len(steps) // 2]                       # a representative step
+    fig, ax = plt.subplots(1, 2, figsize=(9, 3.4))
+    ax[0].plot(s["t"], np.log(np.abs(s["I"])), color=teal, lw=1, label="ln|I|")
+    ax[0].plot(s["t_fit"], s["lnI_fit"], color=amber, lw=1.6, label="long-time fit")
+    ax[0].set_xlabel("time (s)"); ax[0].set_ylabel("ln |I|  (A)")
+    ax[0].set_title(f"PITT step at {s['E']:.2f} V  →  D = {s['D']:.1e} cm²/s")
+    ax[0].legend(fontsize=7)
+    ax[1].semilogy(E, D, "o-", color=amber, ms=5, lw=1.1)
+    ax[1].set_xlabel("potential (V)"); ax[1].set_ylabel("D (cm² s⁻¹)")
+    ax[1].set_title("Apparent D vs potential")
+    fig.tight_layout(); fig.savefig(save, dpi=150)
+    return save
 
 
 # ─────────────────────────── synthetic demo ───────────────────────────
@@ -176,8 +245,14 @@ def main():
     print(f"  ΔE_s={s0['dEs']*1e3:.2f} mV   ΔE_τ={s0['dEt']*1e3:.2f} mV")
     print(f"  ->  D = {D[len(D)//2]:.2e} cm^2/s")
     print(f"\nD across {len(D)} steps: {D.min():.1e} … {D.max():.1e} cm^2/s")
-    out = plot_gitt(t, I, V, soc, D)
-    print("wrote", out)
+    print("wrote", plot_gitt(t, I, V, soc, D))
+
+    # PITT pipeline demo (a staircase of potential steps with a dip near 3.75 V)
+    L = 5e-5
+    tP, iP, vP = _synthetic_pitt(L, D_of_E=lambda E: 1e-10 * (1 - 0.8 * np.exp(-0.5 * ((E - 3.75) / 0.05) ** 2)))
+    Ep, Dp, dQp, stepsP = analyse_pitt(tP, iP, vP, L)
+    print(f"PITT: {len(Dp)} steps, D {Dp.min():.1e} … {Dp.max():.1e} cm^2/s (dip near 3.75 V)")
+    print("wrote", plot_pitt(stepsP, Ep, Dp))
 
 
 if __name__ == "__main__":

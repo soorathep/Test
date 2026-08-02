@@ -72,7 +72,10 @@ process's resistance. DRT resolves overlapping arcs far better than a Nyquist pl
 assumed circuit**.
 
 ### How to compute (and the one knob that matters)
-- Use a tool: **DRTtools** (MATLAB) or **pyDRTtools** (Python).
+- Use a tool: **DRTtools** (MATLAB) or **pyDRTtools** (Python). The script
+  **`drt_pyDRTtools.py`** (in the downloads) is a ready pipeline: load EIS → compute the DRT with
+  pyDRTtools, λ chosen by the **L-curve** → find the peaks (τ, f = 1/2πτ, and R = peak area) → plot.
+  Install with `pip install pyDRTtools cvxopt scikit-learn`.
 - The inversion is **ill-posed**, so it uses **Tikhonov regularisation** with a parameter **λ**:
   - **λ too small** → high resolution but **noise-amplified, spurious peaks**.
   - **λ too large** → **oversmoothed**, peaks merge and disappear.
@@ -103,6 +106,37 @@ reads R_s / R_ct, and shows an illustrative DRT; use **pyDRTtools** for the real
 and report λ.
 
 ---
+
+## Equivalent-circuit fitting (ECM) — and choosing the model
+
+Quantitative EIS means fitting a circuit and reporting its elements. The script `eis_fit.py`
+(in the downloads) fits `Rs–(R∥CPE)–…–Warburg` circuits by complex non-linear least squares and
+returns each value **± uncertainty** and a reduced **χ²**, with a data-vs-fit + residual plot.
+
+**Elements.** `R` resistance; `CPE` (constant-phase element) `Z = 1/(Q(jω)^a)` — `a=1` is an ideal
+capacitor, `a<1` a depressed arc; `Warburg` `Z = Aw(1−j)/√ω` for semi-infinite diffusion.
+
+**Common circuits.**
+- `Rs + (R1∥CPE1)` — one arc, no diffusion.
+- `Rs + (R1∥CPE1) + W` (**Randles**) — one arc + a diffusion tail.
+- `Rs + (R1∥CPE1) + (R2∥CPE2) [+ W]` — film/SEI + charge transfer (+ diffusion).
+
+**How to choose it (in order).**
+1. **Validate the data first** (Lin-KK). A bad spectrum cannot be rescued by any circuit.
+2. **Let the physics set the number of elements** — run the DRT; the number of peaks is the number of
+   `R∥CPE` arcs you need. Don't add elements the data can't resolve.
+3. **Use a CPE**, not an ideal capacitor, for any depressed/flattened arc.
+4. **Add a Warburg only** if there is a low-frequency ~45° tail.
+5. **Keep it as simple as the data justify (Occam).** More elements always lower χ², so watch for the
+   signs of over-fitting: huge parameter uncertainties, parameters that change with the initial guess,
+   or physically impossible values.
+6. **Judge by the residuals** — they should be small and *unstructured* vs frequency. A rising or
+   oscillating residual means the circuit is missing something. χ² alone is not enough.
+7. **Report** the circuit drawn out, every value ± uncertainty, and χ². Tie each element to a physical
+   process — a good fit to the wrong circuit is still the wrong circuit.
+
+The fuller community toolbox (built-in circuits, a string syntax like `R0-p(R1,CPE1)-Wo1`) is
+**impedance.py** (`pip install impedance`).
 
 ## Running replicates or several samples — how to report
 

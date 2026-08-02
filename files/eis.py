@@ -88,10 +88,12 @@ def illustrative_drt(ax, arcs, Rs=0.0):
     ax.plot(tau, gamma, color=teal, lw=1.4)
     ax.fill_between(tau, gamma, color=teal, alpha=0.12)
     ax.set_xscale("log"); ax.set_xlabel("τ (s)"); ax.set_ylabel("γ(τ)  (Ω)")
-    ax.set_title("DRT — one peak per process")
+    ax.set_ylim(0, gamma.max() * 1.5)                 # headroom so labels clear the title
+    ax.set_title("DRT — one peak per process", pad=10)
     for (R, t0, phi) in arcs:
-        ax.annotate(f"τ≈{t0:g}s\nR≈{R:g}Ω", (t0, R), ha="center", va="bottom",
-                    fontsize=7)
+        ax.annotate(f"τ ≈ {t0:g} s\nR ≈ {R:g} Ω", (t0, R),
+                    textcoords="offset points", xytext=(0, 6),
+                    ha="center", va="bottom", fontsize=7)
 
 
 def plot_nyquist_bode(f, Z, arcs=None, save="eis_drt_example.png"):
