@@ -35,6 +35,7 @@ description: Files and tools for members of the SKH Research Group — figure pa
         <h4 class="resource-title">{{ r.title }}</h4>
         {% if r.description %}<p class="resource-desc">{{ r.description }}</p>{% endif %}
         {% if r.howto == 'palette' %}{% include palette-howto.html %}{% endif %}
+        {% if r.howto == 'expdesign' %}{% include exp-design.html %}{% endif %}
         {% if r.files %}
         <div class="resource-files">
           {% for f in r.files %}
