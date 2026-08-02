@@ -1,41 +1,81 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# Files and tools for lab members, shown on /resources/. One block per resource.
+# Files and tools for lab members, shown on /resources/.
 #
-# ── Fields ───────────────────────────────────────────────────────────────────
-#   title        required. Name of the resource.
-#   description  what it is and when to use it (1–3 sentences).
-#   files        the downloadable files, each with:
-#       label  short name shown to the reader
-#       file   filename inside the  files/  folder
-#       kind   short tag: PDF | PY | MD | ZIP | XLSX ...
-#       desc   one line about that specific file
+# Structure = CATEGORIES, each holding one or more RESOURCES. The page renders a
+# jump-to index of the categories, then a section per category. Add a whole new
+# topic by adding a category block; add one more file-set to an existing topic by
+# adding an item under it. Empty categories simply do not appear.
 #
-# To add a file: drop it in  files/  and add a block here.
+#   - category: Section name
+#     blurb: One line describing the section.        # optional
+#     items:
+#       - title: Resource name
+#         howto: palette                             # optional — shows a rich how-to panel
+#         description: What it is and when to use it.
+#         files:
+#           - label: Short name
+#             file: filename.pdf                     # must sit inside  files/
+#             kind: PDF                              # PDF | PY | MD | ZIP | XLSX | DOCX ...
+#             desc: One line about this file.
+#
+# To add a file: drop it in  files/  and add it under the right category.
 # ─────────────────────────────────────────────────────────────────────────────
 
-- title: Lab figure palette — Teal &amp; Amber
-  howto: palette
-  description: >
-    The colour system for every figure we publish: papers, theses, posters, and slides.
-    Drawing every figure from the same colours — in the same order and with the same
-    meanings — is what makes our output recognisable, and it keeps figures readable for
-    colour-blind readers and in greyscale, which most journals require. Start with the
-    style guide, pin up the reference sheet, and apply it with the Python module or the
-    AI prompt.
-  files:
-    - label: Style guide
-      file: lab_palette_guide.pdf
-      kind: PDF
-      desc: Full specification — exact colour values, semantic roles, accessibility validation, and per-tool setup (Python, R, Illustrator, LaTeX, CSS).
-    - label: Reference sheet
-      file: lab_palette_sheet.pdf
-      kind: PDF
-      desc: One-page swatch card with every value and rule — print it and pin it up by your desk.
-    - label: Python module — labpalette.py
-      file: labpalette.py
-      kind: PY
-      desc: "matplotlib / seaborn house style in one call: import labpalette as lp; lp.apply(). Colour cycle, colormaps, fonts, and 600 dpi export."
-    - label: AI prompt pack
-      file: skh-figure-palette-ai-prompt.md
-      kind: MD
-      desc: Paste into ChatGPT / Claude / Gemini so any figure it generates uses the palette correctly — colours, order, ramps, and rules.
+- category: Figures &amp; design
+  blurb: Colour, style, and templates for figures, posters, and slide decks.
+  items:
+    - title: Lab figure palette — Teal &amp; Amber
+      howto: palette
+      description: >
+        The colour system for every figure we publish: papers, theses, posters, and slides.
+        Drawing every figure from the same colours — in the same order and with the same
+        meanings — is what makes our output recognisable, and it keeps figures readable for
+        colour-blind readers and in greyscale, which most journals require. Start with the
+        style guide, pin up the reference sheet, and apply it with the Python module or the
+        AI prompt.
+      files:
+        - label: Style guide
+          file: lab_palette_guide.pdf
+          kind: PDF
+          desc: Full specification — exact colour values, semantic roles, accessibility validation, and per-tool setup (Python, R, Illustrator, LaTeX, CSS).
+        - label: Reference sheet
+          file: lab_palette_sheet.pdf
+          kind: PDF
+          desc: One-page swatch card with every value and rule — print it and pin it up by your desk.
+        - label: Python module — labpalette.py
+          file: labpalette.py
+          kind: PY
+          desc: "matplotlib / seaborn house style in one call: import labpalette as lp; lp.apply(). Colour cycle, colormaps, fonts, and 600 dpi export."
+        - label: AI prompt pack
+          file: skh-figure-palette-ai-prompt.md
+          kind: MD
+          desc: Paste into ChatGPT / Claude / Gemini so any figure it generates uses the palette correctly — colours, order, ramps, and rules.
+
+
+# ── More categories — uncomment and fill in as you add resources ──────────────
+#
+# - category: Writing &amp; thesis
+#   blurb: Manuscript and thesis templates, checklists, and submission guides.
+#   items:
+#     - title: Thesis template
+#       description: The department-formatted LaTeX/Word thesis template.
+#       files:
+#         - label: LaTeX template
+#           file: thesis-template.zip
+#           kind: ZIP
+#           desc: Title page, chapter structure, and bibliography style pre-set.
+#
+# - category: Lab protocols
+#   blurb: Standard operating procedures and safety documents.
+#   items:
+#     - title: Coin-cell assembly SOP
+#       description: Step-by-step protocol for assembling and crimping coin cells.
+#       files:
+#         - label: SOP
+#           file: coin-cell-sop.pdf
+#           kind: PDF
+#           desc: Materials, torque settings, and troubleshooting.
+#
+# - category: Code &amp; analysis
+#   blurb: Shared scripts and notebooks for common analyses.
+#   items: []
