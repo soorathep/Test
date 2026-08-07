@@ -1,0 +1,98 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# 2105620 Research Communication Skills for Chemical Engineers
+# Semester 1 / 2026. Drives /teaching/2105620/.
+#
+#   weeks[]
+#     n       week number, or "—" for a break in the term
+#     title   session title
+#     dates   "6 · 9 Aug"  — Thursday (sec 1) then Sunday (sec 9)
+#     lead    who teaches it
+#     slides  optional. File name under teaching/2105620/, e.g. w01.html.
+#             Add it and the link appears by itself.
+#
+#   assessment[]  weight · component · asks
+# ─────────────────────────────────────────────────────────────────────────────
+
+code: "2105620"
+credits: "3 (3-0-9)"
+semester: "Semester 1 / 2026"
+sections: "Section 1 Thursday morning · Section 9 Sunday"
+instructors: "Soorathep Kheawhom · Supareak Praserthdam"
+
+weeks:
+  - n: 1
+    title: Course framing and the publication landscape
+    dates: 6 · 9 Aug
+    lead: Soorathep Kheawhom
+    slides: w01.html
+  - n: 2
+    title: Research integrity, authorship, and responsible use of generative AI
+    dates: 13 · 16 Aug
+    lead: Supareak Praserthdam
+  - n: 3
+    title: Efficient literature review and evidence mapping
+    dates: 20 · 23 Aug
+    lead: Soorathep Kheawhom
+  - n: 4
+    title: Reverse-engineering I — IMRaD architecture
+    dates: 27 · 30 Aug
+    lead: Pre-recorded · facilitated by Supareak Praserthdam
+  - n: 5
+    title: Reverse-engineering II — the Introduction and the gap
+    dates: 3 · 6 Sep
+    lead: Soorathep Kheawhom
+  - n: 6
+    title: Reverse-engineering III — Methods, Results, and evidence
+    dates: 10 · 13 Sep
+    lead: Soorathep Kheawhom
+  - n: 7
+    title: Manuscript blueprint, Introduction and Methods
+    dates: 17 · 20 Sep
+    lead: Supareak Praserthdam
+  - n: "—"
+    title: Midterm examination period — no scheduled sessions
+    dates: 24 Sep – 4 Oct
+    lead: "—"
+    gap: true
+  - n: 8
+    title: Results — writing to the evidence
+    dates: 8 · 11 Oct
+    lead: Soorathep Kheawhom
+  - n: 9
+    title: Figure laboratory — Matplotlib
+    dates: 15 · 18 Oct
+    lead: Soorathep Kheawhom
+  - n: 10
+    title: Writing the Discussion and Conclusion
+    dates: 22 · 25 Oct
+    lead: Soorathep Kheawhom
+  - n: 11
+    title: Title, abstract, cover letter, and journal choice
+    dates: 29 Oct · 1 Nov
+    lead: Supareak Praserthdam
+  - n: 12
+    title: Guest lecture I — the handling editor
+    dates: 5 · 8 Nov
+    lead: Guest editor · hosted by Supareak Praserthdam
+  - n: 13
+    title: Guest lecture II — the editor-in-chief
+    dates: 12 · 15 Nov
+    lead: Guest editor · hosted by Supareak Praserthdam
+  - n: 14
+    title: Peer review simulation and response to reviewers
+    dates: 19 · 22 Nov
+    lead: Supareak Praserthdam
+
+assessment:
+  - weight: 30%
+    component: Midterm
+    asks: Analysis of published work, held after Week 6
+  - weight: 30%
+    component: Final
+    asks: Application — revise a flawed Discussion, and respond to a reviewer
+  - weight: 20%
+    component: Assignments
+    asks: Critical appraisal · Introduction and Methods · a figure set
+  - weight: 20%
+    component: Final project
+    asks: A complete manuscript, which you also present

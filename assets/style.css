@@ -204,7 +204,7 @@ footer h4{font-family:"IBM Plex Mono";font-size:.63rem;letter-spacing:.08em;text
 
 /* ---------- teaching / courses ---------- */
 .courses{border-top:1px solid var(--line);margin-bottom:30px}
-.course{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+.course{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:20px;
   padding:20px 0;border-bottom:1px solid var(--line)}
 .course .c-name{font-family:"Archivo";font-weight:600;font-size:1.15rem}
 .course .c-code{font-family:"IBM Plex Mono";font-size:.72rem;color:var(--zinc);margin-left:8px}

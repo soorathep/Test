@@ -1,0 +1,20 @@
+project:
+  type: website          # shares one site_libs/ folder across every deck,
+  output-dir: _site      # instead of a separate w01_files/ per deck
+  render:
+    - "*.qmd"
+  resources:
+    - assets/**
+
+website:
+  title: "2105620"
+  search: false
+  navbar: false
+
+# Decks live at the project root, one file per week (w01.qmd, w02.qmd, …).
+# Files beginning with an underscore are includes and are never rendered
+# on their own.
+
+format:
+  revealjs:
+    embed-resources: false

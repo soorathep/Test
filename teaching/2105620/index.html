@@ -1,0 +1,96 @@
+---
+layout: default
+title: 2105620 Research Communication Skills for Chemical Engineers
+permalink: /teaching/2105620/
+description: Graduate course on writing and publishing research in chemical engineering — fourteen weeks, from taking published papers apart to building a manuscript of your own. Slides and schedule.
+---
+{% assign c = site.data.rcs2026 %}
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Teaching · Graduate · {{ c.code }}</div>
+    <h2>Research Communication Skills for Chemical Engineers</h2>
+  </div>
+
+  <p class="lede" style="margin-bottom:30px">Fourteen weeks in two parts.
+  <strong>Weeks 1–6, analysis:</strong> you take published papers apart and learn to see
+  structure. <strong>Weeks 7–14, design:</strong> you build one manuscript of your own,
+  section by section, in the same order you learned to take one apart.</p>
+
+  <div class="facts" style="margin-bottom:44px">
+    <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }} · elective</div></div>
+    <div class="fact"><div class="k">Term</div><div>{{ c.semester }}</div></div>
+    <div class="fact"><div class="k">Sections</div><div>{{ c.sections }}</div></div>
+    <div class="fact"><div class="k">Taught by</div><div>{{ c.instructors }}</div></div>
+    <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
+  </div>
+
+  {% assign published = c.weeks | where_exp: "w", "w.slides" %}
+  {% if published.size > 0 %}
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Slides</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:18px">
+    These open in the browser — no download, and they work on a phone.
+    Press <span class="pill">F</span> for full screen,
+    <span class="pill">E</span> for a printable layout,
+    <span class="pill">?</span> for every shortcut.</p>
+
+  <div class="resource-files" style="margin-bottom:44px">
+    {% for w in published %}
+    <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">
+      <span class="rf-kind">Week {{ w.n }}</span>
+      <span class="rf-body">
+        <span class="rf-label">{{ w.title }}</span>
+        <span class="rf-desc">{{ w.dates }} · {{ w.lead }}</span>
+      </span>
+      <span class="rf-get">Open →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
+  <table style="margin-bottom:44px">
+    <thead>
+      <tr><th style="width:52px">#</th><th>Session</th><th style="width:118px">Dates</th><th style="width:210px">Lead</th></tr>
+    </thead>
+    <tbody>
+      {% for w in c.weeks %}
+      <tr>
+        <td class="yr">{{ w.n }}</td>
+        <td>
+          {%- if w.gap -%}
+            <em style="color:var(--ink-soft)">{{ w.title }}</em>
+          {%- elsif w.slides -%}
+            <a href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">{{ w.title }}</a>
+          {%- else -%}
+            {{ w.title }}
+          {%- endif -%}
+        </td>
+        <td class="yr">{{ w.dates }}</td>
+        <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.lead }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Assessment</h3>
+  <table>
+    <thead>
+      <tr><th style="width:90px">Weight</th><th style="width:190px">Component</th><th>What it asks</th></tr>
+    </thead>
+    <tbody>
+      {% for a in c.assessment %}
+      <tr>
+        <td class="yr">{{ a.weight }}</td>
+        <td>{{ a.component }}</td>
+        <td style="color:var(--ink-soft)">{{ a.asks }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Generative AI.</strong> Every assignment carries an AI-use declaration.
+    The course policy permits more than most students expect, and it requires disclosure.
+    It is announced in full in Week 2; no signature is required.
+  </div>
+</section>
