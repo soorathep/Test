@@ -1,0 +1,5 @@
+# Profile used for the published site:  quarto render --profile public
+# Strips speaker notes so the answer keys and instructor observations are not
+# served to students. Render without this profile to keep the notes.
+filters:
+  - tools/strip-notes.lua

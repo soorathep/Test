@@ -1,0 +1,101 @@
+---
+layout: default
+title: 2105623 Optimization of Chemical Processes
+permalink: /teaching/2105623/
+description: Graduate course on optimization for chemical engineers — fifteen weeks, from turning a plant problem into a correct model to solving it with Excel, Pyomo and modern solvers. Slides and schedule.
+---
+{% assign c = site.data.opt2026 %}
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Teaching · Graduate · {{ c.code }}</div>
+    <h2>Optimization of Chemical Processes</h2>
+  </div>
+
+  <p class="lede" style="margin-bottom:30px">Fifteen weeks, weighted toward the part that is
+  actually hard. <strong>Weeks 1–5, model construction:</strong> turning a plant problem into
+  algebra that says what you meant. <strong>Week 6:</strong> drafting models with AI assistance,
+  and proving them right or wrong. <strong>Weeks 7–13, theory and methods:</strong> what solvers
+  do, why they behave as they do, and where data-driven methods beat mathematical programming.</p>
+
+  <div class="facts" style="margin-bottom:44px">
+    <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }} · elective</div></div>
+    <div class="fact"><div class="k">Term</div><div>{{ c.semester }}</div></div>
+    <div class="fact"><div class="k">Sessions</div><div>{{ c.sections }}</div></div>
+    <div class="fact"><div class="k">Taught by</div><div>{{ c.instructors }}</div></div>
+    <div class="fact"><div class="k">Tools</div><div>Excel Solver and OpenSolver in the early weeks, then Python with Pyomo. No commercial solver is required.</div></div>
+    <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
+  </div>
+
+  {% assign published = c.weeks | where_exp: "w", "w.slides" %}
+  {% if published.size > 0 %}
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Slides</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:18px">
+    These open in the browser — no download, and they work on a phone.
+    Press <span class="pill">F</span> for full screen,
+    <span class="pill">E</span> for a printable layout,
+    <span class="pill">?</span> for every shortcut.</p>
+
+  <div class="resource-files" style="margin-bottom:44px">
+    {% for w in published %}
+    <a class="res-file" href="{{ site.baseurl }}/teaching/2105623/{{ w.slides }}">
+      <span class="rf-kind">Week {{ w.n }}</span>
+      <span class="rf-body">
+        <span class="rf-label">{{ w.title }}</span>
+        <span class="rf-desc">{{ w.dates }} · {{ w.tool }}</span>
+      </span>
+      <span class="rf-get">Open →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
+  <table style="margin-bottom:44px">
+    <thead>
+      <tr><th style="width:52px">#</th><th>Session</th><th style="width:86px">Date</th><th style="width:180px">Hands-on</th></tr>
+    </thead>
+    <tbody>
+      {% for w in c.weeks %}
+      <tr>
+        <td class="yr">{{ w.n }}</td>
+        <td>
+          {%- if w.gap -%}
+            <em style="color:var(--ink-soft)">{{ w.title }}</em>
+          {%- elsif w.slides -%}
+            <a href="{{ site.baseurl }}/teaching/2105623/{{ w.slides }}">{{ w.title }}</a>
+          {%- else -%}
+            {{ w.title }}
+          {%- endif -%}
+          {% if w.block %}<br><span class="mono" style="font-size:.76rem;color:var(--ink-soft)">{{ w.block }}</span>{% endif %}
+        </td>
+        <td class="yr">{{ w.dates }}</td>
+        <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.tool }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Assessment</h3>
+  <table>
+    <thead>
+      <tr><th style="width:90px">Weight</th><th style="width:210px">Component</th><th>What it asks</th></tr>
+    </thead>
+    <tbody>
+      {% for a in c.assessment %}
+      <tr>
+        <td class="yr">{{ a.weight }}</td>
+        <td>{{ a.component }}</td>
+        <td style="color:var(--ink-soft)">{{ a.asks }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Generative AI.</strong> Drafting an optimization model with AI assistance is not merely
+    permitted in this course, it is expected, and Week 6 teaches the workflow. What is graded is
+    verification: every AI-assisted deliverable states which parts were AI-drafted and which tests
+    were run against them. An unverified generated model receives no credit for model correctness,
+    however plausible its numbers look. Generative AI is prohibited in both examinations.
+  </div>
+</section>

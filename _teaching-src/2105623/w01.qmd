@@ -1,0 +1,2105 @@
+---
+title: "Introduction, the optimization workflow, and the tool stack"
+subtitle: "Week 1 · 2105623 Optimization of Chemical Processes"
+author: "Soorathep Kheawhom"
+date: 2026-08-10
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Three hours, nine blocks {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [5 min]{.chip .c-slate} Welcome. What this course is, and what it is not
+- [15 min]{.chip .c-amber} Activity 1 — the one-minute pitch
+- [35 min]{.chip .c-teal} Block 1: what optimization is, and the five-stage workflow
+- [10 min]{.chip .c-mist} Break
+- [45 min]{.chip .c-teal} Block 2: anatomy, classification, feasibility, LP geometry
+- [15 min]{.chip .c-amber} Activity 2 — your research as an optimization problem
+- [10 min]{.chip .c-mist} Break
+- [40 min]{.chip .c-teal} Block 3: the tool stack, one model three ways, logistics
+- [5 min]{.chip .c-slate} Wrap-up and what to do before Week 2
+:::
+
+::: {.notes}
+**[00:00 – 00:02] · AGENDA**
+
+**SAY —**
+
+"This is the shape of today. Three hours, nine blocks, two breaks.
+
+Two of those blocks say Activity. That is thirty minutes in which you are doing the work and I am not talking. That proportion holds for the whole term.
+
+Nothing here runs longer than forty-five minutes without a break or a task. Breaks are here and here, and I am writing the two return times on the board now so nobody has to ask."
+
+**DO —**
+
+- Write both return times on the board before you say another word. It is the single cheapest defence against the drift that eats lecture block 3.
+- Also write the five stage names vertically down the left edge of the board and leave them there for the whole session. Every block refers back to them.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.statement}
+A solver will always answer<br>the question you asked it.
+:::
+
+::: {.statement-hi}
+This course is about making that<br>the question you meant.
+:::
+
+::: {.note}
+Fifteen weeks, and almost none of them are about the arithmetic.
+:::
+::::
+
+::: {.notes}
+**[00:02 – 00:04] · THE THESIS OF THE COURSE**
+
+**SAY —**
+
+"One sentence before anything else.
+
+A solver will always answer the question you asked it."
+
+*[ pause three seconds — do not fill it ]*
+
+"This course is about making that the question you meant.
+
+A modern solver will take a linear program with a million variables and hand it back before you finish your coffee. Almost nothing you meet this semester is hard because of the arithmetic. It is hard because deciding what is chosen, what is fixed, what is forbidden and what counts as better is genuinely difficult, and because a model that is wrong in a way that pays will hand you a confident number.
+
+Everything in the next fifteen weeks follows from that."
+
+**DO —** Return to this slide in the Activity 2 debrief, and again in Week 6, which is the whole session on model debugging.
+:::
+
+## By three o'clock you should be able to {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Learning objectives · CLO 1 and CLO 4
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[]{.dot}
+
+### Name the four parts
+
+Variables, parameters, objective, constraints, and find each one in a written problem.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### State the five stages
+
+The artifact each stage produces, and the characteristic failure of each.
+:::
+
+::: {.card .c-sky}
+[]{.dot}
+
+### Classify a problem
+
+LP, NLP, IP, MILP, stochastic, global, and which solver class each one needs.
+:::
+
+::: {.card .c-sage}
+[]{.dot}
+
+### Explain the vertex
+
+Why an LP with a finite optimum has an optimal corner, geometrically.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### Separate the two failures
+
+Infeasible from unbounded, and what each says about the model.
+:::
+
+::: {.card .c-plum}
+[]{.dot}
+
+### Place the tools
+
+What the modeling layer and the solver layer each do, and which week uses which.
+:::
+:::
+
+::: {.notes}
+**[00:04 – 00:05] · OBJECTIVES**
+
+**SAY —**
+
+"Six things you should be able to do by three o'clock. Read them in ten seconds; I am not going to talk through them.
+
+Notice that five of the six are about stating problems, not about solving them. That ratio is the course."
+
+**DO —**
+
+- Ten seconds only. This slide exists so that students can check themselves afterwards, not so you can narrate it.
+- Reading: Rao Ch. 1, Edgar Himmelblau and Lasdon Ch. 1 and Ch. 7, Williams Ch. 1. Say it once here and once at the end.
+:::
+
+## The one-minute pitch {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 1 · 15 minutes · whole class
+:::
+
+::: {.lede}
+Everybody speaks. One minute each, standing.<br>
+I go first, so you can see how short a minute is.
+:::
+
+::: {.note}
+We are going to spend fifteen weeks arguing about models together. We should know who is in the room.
+:::
+
+::: {.notes}
+**[00:05] · ACTIVITY 1 — LAUNCH**
+
+**SAY —**
+
+"Right. First thing we do together.
+
+We are going to spend fifteen weeks arguing about models, so we should know who is in the room. One minute each, standing. Four questions on the next slide.
+
+I will go first, so you can see how short a minute really is."
+
+**DO —**
+
+- Actually stand up and actually keep to sixty seconds. Whatever you do sets the length everyone else takes.
+- SCALING RULE, decided before the session and not during it. Fifteen minutes covers about thirteen students once your own pitch and the transitions are counted. Class of 14 to 20: 45 seconds each and drop question 2. Class above 20: run the first half now and the remainder in the first five minutes after Break 1, taking those five minutes out of lecture block 2.
+- Have the class list in front of you. You are going to write on it.
+:::
+
+## Four questions. Sixty seconds.
+
+::: {.kicker .c-amber}
+Activity 1
+:::
+
+::: {.numbered .n4}
+1. **My name is** \_\_\_
+2. **I graduated from** \_\_\_ (university, degree, field)
+3. **Currently I am working with** \_\_\_ (advisor, research group, or company)
+4. **I am here because** \_\_\_ (what you want out of this course)
+:::
+
+::: {.foot}
+::: {.note}
+Question 4 is the one I write down. Activity 2 this afternoon asks you to bring your own research into the room, so it helps that everyone knows who works on what.
+:::
+:::
+
+::: {.notes}
+**[00:05 – 00:20] · ACTIVITY 1 — RUN**
+
+**SAY —**
+
+"Four questions, in this order. Name. Where you graduated. Who you are working with now. And why you are here.
+
+Sixty seconds. Seating order, starting here. I have already used mine."
+
+**DO —**
+
+- RECORD, on the class list, the research area of every student. You use that tally twice: to choose which project topics to emphasize in lecture block 3, and to form balanced groups in Week 3.
+- The student who runs to three minutes: cut the FIRST overrunner at ninety seconds, politely and visibly. The norm is set by the first person you stop, not by what you asked for.
+- The student who gives only a name: ask question 3 directly. Everyone is working on something.
+- Two or more students from the same research group: note it now and separate them when you form project groups.
+- Checkpoint: you must be finished by 00:20. If you are at 00:18 with five people left, say so out loud and take the last five at thirty seconds each.
+:::
+
+## What optimization is, and the five stages {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Lecture block 1 · 35 minutes
+:::
+
+::: {.lede}
+One definition, one diagram,<br>and one small problem walked end to end.
+:::
+
+::: {.notes}
+**[00:20] · SECTION DIVIDER — three seconds**
+
+**SAY —**
+
+"Now the content. One definition, one diagram, and one small problem walked from a paragraph of English all the way to a number you could take to a plant manager."
+
+**DO —** Do not linger. The next three slides are the ones that must land before 00:32.
+:::
+
+## Choosing, under constraints, against a stated criterion
+
+::: {.kicker .c-amber}
+What optimization is
+:::
+
+> Optimization is the discipline of **choosing**, **under constraints**, against a **stated criterion**.
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[]{.dot}
+
+### If nothing is chosen
+
+It is simulation. A model evaluated, not searched.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### If nothing constrains
+
+The answer is trivial, and the model is wrong.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### If the criterion is unstated
+
+There is no problem yet. "Improve the plant" is not a criterion.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+"Maximize weekly contribution margin, in USD per week" is a criterion. Notice that it carries a unit.
+:::
+:::
+
+::: {.notes}
+**[00:20 – 00:24] · WHAT OPTIMIZATION IS**
+
+**SAY —**
+
+"One sentence, and it is worth memorizing. Optimization is the discipline of choosing, under constraints, against a stated criterion.
+
+Three tests follow from it.
+
+If nothing is being chosen, you do not have an optimization problem. You have a simulation: a model evaluated, not searched. Plenty of good engineering is simulation. It is not this course.
+
+If nothing constrains the choice, the answer is trivial and the model is wrong. Make infinitely much of the profitable thing.
+
+And if the criterion is not stated, you do not yet have a problem at all. 'Improve the plant' is not a criterion. 'Maximize weekly contribution margin in USD per week' is one, and notice that the difference between them is mostly a unit."
+
+**DO —** Ask for one example from the room of something they do that is simulation rather than optimization. Take one answer, not four.
+:::
+
+## Where it appears in process engineering {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Four places, one mathematics
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[]{.dot}
+
+### Design
+
+Equipment sizing. Reactor network selection. Heat exchanger network synthesis. Superstructures: which route to build at all.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Planning and scheduling
+
+Product mix on shared equipment, today's example. Multiperiod production and inventory, Week 2. Blending and pooling, Week 4.
+:::
+
+::: {.card .c-sky}
+[]{.dot}
+
+### Operation
+
+Set-point selection and real-time optimization. Battery dispatch against a tariff. Debottlenecking: where is the next hour worth most.
+:::
+
+::: {.card .c-sage}
+[]{.dot}
+
+### Data and experiment
+
+Parameter estimation for kinetics. Equivalent-circuit fitting. Design of experiments and surrogates, Week 13.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+The mathematics is the same in all four. What changes is the interpretation of the symbols.
+:::
+:::
+
+::: {.notes}
+**[00:24 – 00:28] · WHERE IT APPEARS**
+
+**SAY —**
+
+"Four places you will meet this, and one of them is probably yours.
+
+Design: what to build, and how big. Planning and scheduling: what to make next week, and in what order. Operation: where to sit the set points today. And data: fitting a kinetic model or a battery equivalent circuit is an optimization problem, even though nobody calls it one.
+
+The mathematics is identical in all four. The only thing that changes is what the symbols mean."
+
+**DO —**
+
+- TIMING CHECK. You must reach the five-stage diagram by 00:32. If you are past 00:38, cut this slide entirely and go straight to the worked walkthrough. The walkthrough is the part they remember.
+- If the Activity 1 tally showed a cluster in one area, name that area here. It costs five seconds and buys attention for the next twenty minutes.
+:::
+
+## Five stages. Every week of this course.
+
+::: {.kicker .c-amber}
+The optimization workflow
+:::
+
+::: {.steps}
+::: {.step .c-teal}
+[1]{.n}[Verbal]{.h}[the problem in prose]{.d}
+:::
+::: {.step .c-amber}
+[2]{.n}[Specification]{.h}[sets, data, decisions, units]{.d}
+:::
+::: {.step .c-teal}
+[3]{.n}[Algebra]{.h}[objective and constraints]{.d}
+:::
+::: {.step .c-teal}
+[4]{.n}[Code]{.h}[Pyomo, or a worksheet]{.d}
+:::
+::: {.step .c-plum}
+[5]{.n}[Interpretation]{.h}[status, values, duals]{.d}
+:::
+:::
+
+::: {.lede}
+Each stage consumes the artifact of the one before it and produces one that is more formal and less ambiguous. They are not interchangeable and they are not optional.
+:::
+
+::: {.foot}
+::: {.punch}
+Skipping stage 2 and writing code straight from a paragraph is the commonest cause of a model that runs, returns a number, and is wrong.
+:::
+:::
+
+::: {.notes}
+**[00:28 – 00:33] · THE FIVE-STAGE WORKFLOW**
+
+**SAY —**
+
+"This is the spine of the course. Five stages, and every week returns to them.
+
+One, the verbal problem: what decision is being made, and by whom. Two, the structured specification: sets, data, decisions, one goal and numbered restrictions, every one of them carrying a unit. Three, the algebra. Four, the code. Five, the solution and what it actually means.
+
+Each stage eats the artifact of the previous one and produces something more formal and less ambiguous. They are not interchangeable, and none of them is optional.
+
+Now the sentence I want you to carry out of this room. Skipping stage two, and writing code straight from a paragraph of English, is the commonest cause of a model that runs, returns a number, and is wrong.
+
+Almost every serious error in applied optimization can be located at one specific stage. Naming the stage is how you find the error."
+
+**DO —**
+
+- Point at the board where the five names are written and say they stay there all afternoon.
+- Every homework and every project deliverable in this course is one of these five artifacts. Say so.
+:::
+
+## What each stage produces, and how each one fails
+
+::: {.kicker .c-teal}
+The workflow, in a table
+:::
+
+| Stage | Artifact it produces | Characteristic failure |
+|---|---|---|
+| **1 Verbal** | Prose, plus a data source for every number in it | Optimizing the wrong thing, or a decision the plant cannot execute |
+| **2 Specification** | Sets, parameters with units, variables with units, one objective, numbered restrictions | Missing constraint, unstated assumption, a parameter treated as a variable |
+| **3 Algebra** | min *f*(*x*) subject to *g*(*x*) ≤ 0, *h*(*x*) = 0, every symbol defined | Units that do not balance, an index on one side only, accidental nonlinearity |
+| **4 Code** | A Pyomo `ConcreteModel`, or a worksheet layout | Data typed into model logic, an off-by-one index, a sign error |
+| **5 Interpretation** | Status, values, duals, a figure, one actionable sentence | Reporting numbers without reading the status |
+
+::: {.foot}
+::: {.flag}
+Three rules: stage 2 before any algebra; every symbol carries a unit; no number is quoted until the termination condition has been read.
+:::
+:::
+
+::: {.notes}
+**[00:33 – 00:36] · ARTIFACTS AND FAILURES**
+
+**SAY —**
+
+"Same five stages, with the artifact and the characteristic failure of each.
+
+Read the right-hand column. Every one of those is a failure I have seen in a thesis, and none of them is a failure of arithmetic.
+
+Three rules come out of this table, and I will hold you to all three. Stage two is written before any algebra. Every symbol carries a unit at the moment it is introduced. And no number is quoted until the termination condition has been read."
+
+**DO —** Do not read the table aloud row by row. Give them fifteen seconds on the right-hand column, then move.
+:::
+
+## Stage 1 · a plant that makes two things
+
+::: {.kicker .c-amber}
+The verbal problem
+:::
+
+A unit supplying the zinc-air battery industry makes two products on shared equipment: an electrolyte **Additive** that suppresses zinc dendrite growth, and a **Binder** solution for air-cathode coating. Both pass through a reactor train, then separation and drying, then finishing and packaging. The plant plans one week at a time.
+
+| Resource | Additive, h/t | Binder, h/t | Available, h/week |
+|---|---|---|---|
+| Reactor train | 3 | 2 | 24 |
+| Separation and drying | 1 | 2 | 16 |
+| Finishing and packaging | 1 | 1 | 9 |
+| **Contribution margin, USD/t** | **400** | **300** | |
+
+::: {.foot}
+::: {.note}
+The reactor train is shared with other campaigns, which is why only 24 h/week are allocated. Contribution margin is selling price minus variable cost. Everything produced can be sold. Choose the weekly plan with the largest total contribution margin.
+:::
+:::
+
+::: {.notes}
+**[00:36 – 00:39] · STAGE 1, THE VERBAL PROBLEM**
+
+**SAY —**
+
+"One small problem, and we walk all five stages on it, so that you see the whole pipeline once before we break it into pieces.
+
+A specialty unit supplying the zinc-air battery industry makes two things on shared equipment. An Additive that suppresses dendrite growth, and a Binder for the air cathode. Three shared resources: a reactor train, separation and drying, and finishing and packaging.
+
+The table is the data. Three hours of reactor per tonne of Additive, two per tonne of Binder, twenty-four hours a week available because the reactor is shared with other campaigns. Margins of four hundred and three hundred US dollars a tonne.
+
+That is all of stage one. Notice what it already contains: a unit on every number, and a reason for every limit."
+
+**DO —**
+
+- Say the last sentence of the footnote out loud: everything produced can be sold. It is an assumption, and in three slides they will see it written down as a numbered restriction so that it can be challenged.
+- This is the same model that runs in the Week 1 notebook and in the solution workbook. If a slide and a file ever disagree, the file is authoritative.
+:::
+
+## Stage 2 · the structured specification {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Written before any algebra
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+| Object | Symbol | Meaning | Units |
+|---|---|---|---|
+| set | *p* ∈ *P* | product on the shared equipment | – |
+| set | *r* ∈ *R* | shared resource | – |
+| parameter | *c*<sub>*p*</sub> | contribution margin | USD/t |
+| parameter | *a*<sub>*rp*</sub> | use of resource *r* per tonne of *p* | h/t |
+| parameter | *b*<sub>*r*</sub> | hours of *r* available | h/week |
+| decision | *x*<sub>*p*</sub> ≥ 0 | tonnes of *p* made | t/week |
+:::
+
+::: {.column width="42%"}
+::: {.spec}
+[Objective, in words]{.eyebrow}
+
+Maximize total weekly contribution margin, in USD per week.
+:::
+
+::: {.cards}
+::: {.card .c-amber}
+**Restrictions, in words**
+
+1. Hours used on each resource cannot exceed hours available.
+2. Production cannot be negative.
+3. Everything produced can be sold, so there is no demand limit.
+:::
+:::
+:::
+::::
+
+::: {.foot}
+::: {.note}
+R3 is an assumption. Writing it down as a numbered restriction is exactly what makes it possible to challenge it later.
+:::
+:::
+
+::: {.notes}
+**[00:39 – 00:42] · STAGE 2, THE SPECIFICATION**
+
+**SAY —**
+
+"Stage two. No algebra yet, and that is the point.
+
+On the left, every object in the problem with a symbol, a meaning and a unit. Two index sets, three parameters, one decision. On the right, the goal in one sentence, and the restrictions numbered in plain English.
+
+Look at restriction three. Everything produced can be sold. That is not a fact about the plant; it is an assumption I have made. Writing it down and giving it a number is what makes it possible for somebody to walk in next week and say, actually, we cannot sell more than five tonnes of Binder.
+
+An assumption that is not written down cannot be challenged. It just quietly determines your answer."
+
+**DO —** If the room is with you, ask which of the three restrictions is the one that could be wrong. Somebody will say R3. If nobody does, say it yourself and move on.
+:::
+
+## Stage 3 · the algebra, and the units check
+
+::: {.kicker .c-amber}
+The mathematics, and the thirty-second habit
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+::: {.spec}
+[General form]{.eyebrow}
+
+maximize &nbsp; Σ<sub>*p*</sub> *c*<sub>*p*</sub> *x*<sub>*p*</sub> &nbsp; over *x* ≥ 0
+
+subject to &nbsp; Σ<sub>*p*</sub> *a*<sub>*rp*</sub> *x*<sub>*p*</sub> ≤ *b*<sub>*r*</sub> &nbsp; for every *r*
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[This week's data, written out]{.eyebrow}
+
+max &nbsp; z = 400 x₁ + 300 x₂ &nbsp;&nbsp; [USD/week]
+
+s.t. &nbsp; 3x₁ + 2x₂ ≤ 24 &nbsp;&nbsp; reactor
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ + 2x₂ ≤ 16 &nbsp;&nbsp; separation
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ + x₂ ≤ 9 &nbsp;&nbsp; packaging
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ ≥ 0, x₂ ≥ 0
+:::
+:::
+:::
+
+::: {.column width="44%"}
+::: {.cards}
+::: {.card .c-amber}
+**The units check**
+
+On every constraint, [h/t] · [t/week] = [h/week], which matches the right-hand side.
+
+In the objective, [USD/t] · [t/week] = [USD/week].
+:::
+:::
+
+::: {.punch}
+A units check catches more modeling errors than any other single habit, and it costs thirty seconds.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:42 – 00:45] · STAGE 3, THE ALGEBRA**
+
+**SAY —**
+
+"Stage three. Now the mathematics, and it writes itself, because stage two did the work.
+
+The general form at the top. The same thing with this week's numbers underneath. Three constraints, two variables, non-negativity.
+
+And then the reason stage three exists as a separate stage at all. The units check. On every constraint, hours per tonne times tonnes per week gives hours per week, which is what the right-hand side is. In the objective, dollars per tonne times tonnes per week gives dollars per week.
+
+Thirty seconds. It catches more modeling errors than any other habit I know. Do it on every model you write this semester, including the ones you are sure about."
+
+**DO —** Write the units cancellation on the board while you say it. Watching it cancel is worth more than seeing it printed.
+:::
+
+## Stage 4 · the same model in two dialects {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Code
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-sage}
+[Spreadsheet · W01_product_mix]{.eyebrow}
+
+`B5:C5` changing cells, tonnes per week
+
+`B8:C8` margins, blue: given data
+
+`B12:C14` the coefficient block
+
+`D12:D14` `=SUMPRODUCT($B$5:$C$5,B12:C12)`
+
+`F12:F14` right-hand sides, own column
+
+`D9` objective cell, Set Objective, To: Max
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {.cards}
+::: {.card .c-teal}
+[Pyomo · W01_introduction_first_model]{.eyebrow}
+
+`m.P = pyo.Set(...)`, `m.R = pyo.Set(...)`
+
+`m.margin = pyo.Param(m.P, ...)`
+
+`m.use = pyo.Param(m.R, m.P, ...)`
+
+`m.avail = pyo.Param(m.R, ...)`
+
+`m.x = pyo.Var(m.P, domain=NonNegativeReals)`
+
+`m.resource = pyo.Constraint(m.R, rule=...)`
+
+`m.profit = pyo.Objective(..., sense=maximize)`
+:::
+:::
+:::
+::::
+
+::: {.foot}
+::: {.punch}
+One named component per algebraic object. Never type a number inside a formula, in either dialect.
+:::
+:::
+
+::: {.notes}
+**[00:45 – 00:48] · STAGE 4, CODE**
+
+**SAY —**
+
+"Stage four, in two dialects, because this course uses both.
+
+On the left the worksheet. On the right Pyomo. Look at how they line up. A set of products is a row of column headers, or it is a `Set`. The margins are a row of blue cells, or they are a `Param`. The changing cells are green, or they are a `Var` with a domain. One spreadsheet row per resource is exactly one `Constraint` index.
+
+They are the same object wearing different clothes.
+
+And one rule that holds in both. One named component per algebraic object, and never, ever type a number inside a formula. Data lives in cells with a colour, or in a `Param`. The moment a four hundred appears inside a `SUMPRODUCT`, the model has stopped being maintainable."
+
+**DO —** Blue for given data, green for changing cells. Say the convention out loud; it is used in every workbook in this course.
+:::
+
+## Stage 5 · the solution, and what it actually says
+
+::: {.kicker .c-amber}
+Read the status first, then the numbers
+:::
+
+| Resource | Used, h | Available, h | Slack, h | Status | Shadow price, USD/h |
+|---|---|---|---|---|---|
+| Reactor train | 24 | 24 | 0 | binding | 100 |
+| Separation and drying | 12 | 16 | 4 | slack | 0 |
+| Finishing and packaging | 9 | 9 | 0 | binding | 100 |
+
+:::: {.columns}
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-teal}
+**The answer**
+
+**x\* = (6, 3)** t/week,&nbsp; **z\* = 3,300.00** USD/week.
+
+Make 6 t of Additive and 3 t of Binder. Two resources are fully used; separation has 4 h/week to spare.
+:::
+:::
+:::
+
+::: {.column width="52%"}
+::: {.cards}
+::: {.card .c-amber}
+**The identity that is not a coincidence**
+
+100(24) + 0(16) + 100(9) = 3,300, which is exactly z\*.
+
+That is strong duality, and it is Week 8.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:48 – 00:51] · STAGE 5, THE SOLUTION**
+
+**SAY —**
+
+"Stage five. And it begins with the status, not with the objective value. We come back to why in the next block.
+
+The plan is six tonnes of Additive and three of Binder, worth three thousand three hundred dollars a week. Two of the three resources are fully used, the reactor and the packaging line. Separation and drying has four hours a week spare.
+
+Now look at the last column. One extra reactor hour per week is worth a hundred dollars. One extra packaging hour is also worth a hundred. And one extra hour of separation is worth nothing at all, because separation is not what is stopping you.
+
+And here is something that will look like a coincidence until Week 8. A hundred times twenty-four, plus zero times sixteen, plus a hundred times nine, is three thousand three hundred. Exactly the optimal value. That is the strong duality theorem, and it is not an accident."
+
+**DO —** Numbers to have in your mouth: 24/24, 12/16, 9/9 hours; shadow prices 100, 0, 100 USD per hour. They recur in the summary and in Week 8.
+:::
+
+## The number you take to a capital request
+
+::: {.kicker .c-teal}
+And the range over which it is true
+:::
+
+::: {.dots}
+- **Buy reactor hours** The first extra hour is worth 100 USD. So is the second. The shadow price is what a capacity purchase is worth per hour, before you negotiate a price.
+- **Do not buy separation** Its shadow price is zero. Adding capacity there buys nothing, because separation is not what stops the plan.
+- **But shadow prices are local** Raise packaging from 9 h to 14 h and the margin reaches only 3,400.00 USD/week, at the plan (4, 6). The hundred dollars an hour stops paying once a different constraint takes over.
+- **Which is why Week 8 exists** Sensitivity analysis gives the exact range over which each shadow price holds. Quoting one outside its range is a stage-5 failure.
+:::
+
+::: {.foot}
+::: {.flag}
+Marginal value, valid locally, is still the most useful single output of a linear program.
+:::
+:::
+
+::: {.notes}
+**[00:51 – 00:55] · WHAT THE DUALS ARE WORTH**
+
+**SAY —**
+
+"These two numbers are the reason plant people take linear programming seriously.
+
+A hundred dollars an hour on the reactor is what you take into a capital request. It tells you the most you should be willing to pay for capacity, before anybody negotiates.
+
+Zero on separation tells you not to spend a satang there. That is a real decision, and it is the one people get wrong by intuition.
+
+But now the caveat, and it matters. Push the packaging line from nine hours up to fourteen, and the margin does not climb by a hundred dollars an hour for five hours. It reaches three thousand four hundred, at the plan four tonnes and six tonnes, and then it stops. The extra hours beyond ten are worth nothing, because by then a different constraint is what limits you.
+
+A shadow price is local. It is valid only while the same constraints stay active. Week 8 gives you the exact range."
+
+**DO —**
+
+- Checkpoint: you should be at the break here. If you are past 00:57, take the break anyway and pick up the caveat at the start of block 2.
+- Exercise 3 in the Week 1 notebook sweeps reactor hours and shows the slope change directly. Point at it.
+:::
+
+## &nbsp; {.dark .break .c-teal background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.break-circle}
+[10]{}
+:::
+
+::: {.big-label}
+minute break
+:::
+
+::: {.note}
+Then: anatomy of a model, classification, and the geometry that puts the optimum in a corner
+:::
+::::
+
+::: {.notes}
+**[00:55 – 01:05] · BREAK 1**
+
+**SAY —**
+
+"Ten minutes. We start again at the time on the board.
+
+After the break: what a model is made of, how problems are classified, what infeasible and unbounded actually mean, and the geometry that explains why the answer sat in a corner."
+
+**DO —**
+
+- If Activity 1 overran and you deferred pitches, run the remainder in the first five minutes after the break and take those five minutes out of block 2 by cutting the hard-versus-soft discussion.
+- Lay out the Activity 2 index cards on the tables now, face down. One per student plus ten spare.
+:::
+
+## Anatomy, classification, geometry {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Lecture block 2 · 45 minutes
+:::
+
+::: {.lede}
+What a model is made of, what class it belongs to,<br>
+and why the optimum of a linear program sits in a corner.
+:::
+
+::: {.notes}
+**[01:05] · SECTION DIVIDER**
+
+**SAY —**
+
+"Forty-five minutes, and it ends with the one picture from today that Week 7 assumes you have already seen."
+
+**DO —** TIMING CHECK for this block: the classification table must be on screen by 01:25, and the LP geometry sequence needs a full ten minutes and must not be rushed. If you are late, cut the hard-versus-soft slide to one sentence.
+:::
+
+## Every optimization problem is exactly four things
+
+::: {.kicker .c-teal}
+Anatomy
+:::
+
+::: {.numbered .n4}
+1. **Decision variables** The quantities you are free to choose, collected in the decision vector *x* with *n* components. A quantity you cannot change is a parameter, not a variable.
+2. **Parameters** Numbers fixed before the problem is solved: prices, capacities, yields, demands, constants. They are the data.
+3. **Objective function** One scalar function *f*(*x*) measuring how good a choice is. Maximizing *f* is the same as minimizing minus *f*, so every problem can be written as a minimization.
+4. **Constraints** The rules a choice must satisfy: inequalities *g*(*x*) ≤ 0, equalities *h*(*x*) = 0, and simple bounds on *x*.
+:::
+
+::: {.foot}
+::: {.punch}
+The model is not the plant, and an optimizer exploits every error in it. A model wrong in a way that pays returns an answer that is confidently wrong.
+:::
+:::
+
+::: {.notes}
+**[01:05 – 01:11] · THE FOUR PARTS**
+
+**SAY —**
+
+"Four things, and every problem in this course has exactly these four.
+
+Decision variables: what you are free to choose. Test yourself with one question. Can I actually change this? The market price of nickel is not a decision variable for most of you. It is a parameter, and next semester's you will thank this semester's you for noticing.
+
+Parameters: the data. Fixed before you solve.
+
+Objective: one scalar function. One. If you have two, you have a multi-objective problem and that is a different lecture. And notice that maximizing f is the same as minimizing minus f, so we can write everything as a minimization without losing anything.
+
+Constraints: inequalities, equalities, and bounds.
+
+Now the warning that recurs all semester. The model is not the plant. And an optimizer will exploit every single error you leave in it. If your model is wrong in a direction that pays, the solver will find that direction and hand you a number with four decimal places. That is what Week 6 is for."
+
+**DO —** Standard form for the semester: minimize f of x, subject to g of x less than or equal to zero, h of x equal to zero, bounds on x. Lambda on equalities, mu on inequalities. Write it on the board; Weeks 8 and 10 depend on the notation.
+:::
+
+## Types, and one decision that is yours
+
+::: {.kicker .c-amber}
+Variables, constraints, hard and soft
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+| Variable | Domain | Example |
+|---|---|---|
+| continuous | *x* ∈ ℝ | tonnes per week |
+| integer | *x* ∈ ℤ | number of batches |
+| binary | *x* ∈ {0, 1} | build this unit or not |
+
+| Constraint | Meaning |
+|---|---|
+| *g*(*x*) ≤ 0 | a capacity or a spec limit |
+| *h*(*x*) = 0 | a material or energy balance |
+| *x*<sub>L</sub> ≤ *x* ≤ *x*<sub>U</sub> | a bound: cheap, handled separately |
+:::
+
+::: {.column width="50%"}
+::: {.cards}
+::: {.card .c-rust}
+**Hard or soft is a modeling decision**
+
+A **hard** constraint may never be violated. A **soft** constraint may be violated at a price, written into the model as a slack variable with a penalty.
+
+Which one a requirement is, is not a property of the problem. It is a decision you make and must defend. A safety limit is hard. A delivery date is usually soft, because the plant would in fact pay expediting cost rather than shut down.
+:::
+:::
+
+::: {.punch}
+Writing a soft requirement as hard is the commonest cause of a model that reports infeasible on a situation the plant handles every week.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:11 – 01:16] · TYPES, AND HARD VERSUS SOFT**
+
+**SAY —**
+
+"Three kinds of variable and three kinds of constraint, and then one thing that is genuinely a decision.
+
+Continuous, integer, binary. Tonnes, batches, build-it-or-not. Inequalities, equalities, bounds.
+
+Now the part that is not bookkeeping. Whether a requirement is hard or soft is not a property of the world. It is a choice you make and have to defend.
+
+A safety limit is hard. Nobody negotiates with a relief valve. A delivery date looks hard and almost never is, because if you ask the plant what they would actually do, they would pay expediting cost rather than shut the line down. That means it is soft, and it belongs in the model as a slack with a penalty.
+
+And here is the practical consequence. Writing a soft requirement as if it were hard is the commonest cause of a model that comes back infeasible on a situation the plant handles every week without drama."
+
+**DO —** THIS IS THE CUTTABLE SLIDE. If you are behind, say the hard-versus-soft paragraph in one sentence and move on. Do not cut the LP geometry.
+:::
+
+## Two questions settle almost every case {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Classification
+:::
+
+::: {.lede}
+**Q1.** Are the objective and *all* constraints linear in *x*? &nbsp;&nbsp; **Q2.** Must any variable take a discrete value?
+:::
+
+| Linear? | Discrete? | Class | Typical algorithm |
+|---|---|---|---|
+| linear | none | **LP** | simplex, interior point |
+| linear | all | **IP** | branch and bound |
+| linear | some | **MILP** | branch and cut |
+| nonlinear | none | **NLP** | interior point, SQP |
+| nonlinear | some | **MINLP** | branch and bound over NLP subproblems |
+
+::: {.foot}
+::: {.note}
+Two features cut across the table. **Stochastic**: a parameter is unknown when the decision is made, Week 12. **Global**: the objective or the feasible set is nonconvex, so a local optimum need not be global, Weeks 4 and 13. Products of variables, ratios, powers, exponentials, logarithms and trigonometric functions all break linearity; counts, yes-or-no decisions and batch multiples are all discrete.
+:::
+:::
+
+::: {.notes}
+**[01:16 – 01:22] · CLASSIFICATION**
+
+**SAY —**
+
+"Classification is not bookkeeping. The class decides which algorithm can solve your problem, how long it will take, and whether the answer you get is local or global.
+
+Two questions settle almost every case.
+
+One: is everything linear? Not just the objective. All the constraints too. Products of variables, ratios, powers, exponentials, logs, trig functions all break it.
+
+Two: does any variable have to be a whole number? Counts of units, yes-or-no decisions, batch multiples.
+
+Five combinations, five classes. And two things cut across the whole table: uncertainty, which makes it stochastic and is Week 12, and nonconvexity, which makes local optima possible and is Weeks 4 and 13."
+
+**DO —**
+
+- CHECKPOINT: this table should be on screen by 01:25. If it is later than that, you have lost the geometry sequence and must cut something in the next two slides.
+- Ask the room for one product-of-variables example. Flow times concentration is the one they will need in Week 4.
+:::
+
+## One example each, and what each class promises
+
+::: {.kicker .c-amber}
+Why the class matters
+:::
+
+| Class | One chemical engineering example | What you are promised |
+|---|---|---|
+| **LP** | Gasoline blending: linear costs, linear octane, sulfur and vapor pressure limits | Solved reliably at very large scale, and the optimum is global |
+| **NLP** | CSTR temperature and residence time with Arrhenius kinetics, *k* = *k*<sub>0</sub> e<sup>−*E*/*RT*</sup> | A *local* optimum, unless the problem is convex |
+| **IP / MILP** | Which of eight heat exchanger matches to install; siting five plants and routing tonnages | Worst-case effort grows exponentially; how you write the model matters more than which solver you buy |
+| **Stochastic** | Commit cell capacity before demand is revealed, three scenarios | Size grows with scenarios, and the answer hedges rather than bets |
+| **Global** | Least-squares fit of a battery equivalent circuit, many local minima | Certifying a global optimum costs far more than finding a local one |
+
+::: {.notes}
+**[01:22 – 01:26] · WHAT EACH CLASS PROMISES**
+
+**SAY —**
+
+"One example of each from our own field, and one line on what the class buys you.
+
+Linear programming is the easy one. It solves at enormous scale and the optimum it gives you is global. Blending is the classic.
+
+Nonlinear programming gives you a local optimum, and unless you can prove the problem is convex, that is all you get. An Arrhenius rate constant is nonlinear the moment temperature becomes a decision.
+
+Integer and mixed-integer: the worst case is exponential, and this is the one where how you write the model matters more than which solver you buy. That is the whole of Week 5 and half of Week 11.
+
+Stochastic: the model grows with the number of scenarios, and the answer hedges instead of betting.
+
+Global: certifying that you have the best answer costs far more than finding a good one."
+
+**DO —** If the Activity 1 tally showed several students doing kinetics or fitting, point at the NLP and Global rows and say those are their weeks.
+:::
+
+## "I rounded the LP answer, so I solved the integer problem"
+
+::: {.kicker .c-rust}
+A sentence to be suspicious of
+:::
+
+::: {.cards .feature}
+::: {.card .c-teal}
+[The claim]{.eyebrow}
+
+### It sounds reasonable
+
+The LP optimum is (6, 3). The reactor can only be charged in whole 4 t batches. So round down to whole batches and you have your answer.
+:::
+
+::: {.card .c-rust}
+[On this week's data]{.eyebrow}
+
+### It is wrong
+
+True integer optimum: **(8, 0)**, z = **3,200.00** USD/week.
+
+Rounding (6, 3) down: **(4, 0)**, z = **1,600.00** USD/week.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+The rounded point is suboptimal here by half the objective. On a tighter problem it can be infeasible.
+:::
+:::
+
+::: {.notes}
+**[01:26 – 01:29] · ROUNDING IS NOT AN INTEGER METHOD**
+
+**SAY —**
+
+"A colleague says to you: I rounded the LP answer to whole batches, so I have solved the integer problem.
+
+What is wrong with that sentence?"
+
+*[ take one or two answers before giving the numbers ]*
+
+"Here is the arithmetic on today's data. Suppose the reactor can only be charged in whole four-tonne batches. The true integer optimum is eight tonnes of Additive and none of the Binder, worth three thousand two hundred dollars.
+
+Now round the LP answer down. Six goes to four, three goes to zero. That is sixteen hundred dollars. Less than half.
+
+And on a tighter problem, rounding does not just cost you money. It can land you outside the feasible region entirely, and then you are reporting a plan that cannot be run."
+
+**DO —** Ask before you answer. This is the one slide in block 2 where a wrong answer from the room is worth more than a right one.
+:::
+
+## Optimal, infeasible, unbounded {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Three outcomes, read in this order
+:::
+
+::: {.cards}
+::: {.card .c-sage}
+[]{.dot}
+
+### Optimal
+
+A feasible solution exists and cannot be improved. Read the plan, then the constraint activity, then the duals, then write one sentence an engineer can act on.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### Infeasible
+
+No plan satisfies every constraint at once. The feasible region is empty. This is a statement about the **model**.
+:::
+
+::: {.card .c-plum}
+[]{.dot}
+
+### Unbounded
+
+The region is non-empty but the objective improves without limit. In a physical problem this always means a **constraint has been forgotten**.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+Read `solver.termination_condition`, not the coarse status. In Pyomo, assert it after every solve. In Excel, read the Solver Results dialog before you look at the sheet. Both broken models leave numbers on the screen if you do not check.
+:::
+:::
+
+::: {.notes}
+**[01:29 – 01:33] · THREE OUTCOMES**
+
+**SAY —**
+
+"Three things a solver can tell you, and you read them in this order.
+
+Optimal: a solution exists and cannot be improved. Then, and only then, you read the plan, the constraint activity, the duals, and you write one sentence somebody can act on.
+
+Infeasible: nothing satisfies all the constraints at once.
+
+Unbounded: the objective improves forever.
+
+And here is the sentence I want you to remember. Infeasible and unbounded almost always mean the model is wrong, not that the problem is impossible. No real plant earns infinite margin, so unbounded is never news about the world.
+
+One practical point. On a broken model the coarse status field often reads only error, which tells you nothing. The informative field is the termination condition, and it separates infeasible from unbounded. Assert it after every solve. In Excel, read the Solver Results dialog before you look at the sheet, because both of these leave numbers sitting on the worksheet."
+
+**DO —** Write the Pyomo assertion on the board: `assert res.solver.termination_condition == pyo.TerminationCondition.optimal`. It appears in every notebook from here on.
+:::
+
+## Two broken models, one afternoon apart
+
+::: {.kicker .c-amber}
+What each failure looks like
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-rust}
+[Infeasible]{.eyebrow}
+
+### Two requirements that cannot both hold
+
+Add a supply contract: x₁ + x₂ ≥ 12.
+
+Packaging needs 1 h/t for either product and has 9 h/week, so x₁ + x₂ ≤ 9. Since 12 > 9 the region is empty, and no solver was needed to see it.
+
+**Diagnose on the constraints.** Drop them in groups, ask for an irreducible infeasible subset, or add elastic slacks with a large penalty and read which ones go nonzero.
+:::
+:::
+:::
+
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-plum}
+[Unbounded]{.eyebrow}
+
+### A missing constraint, exhibited as a ray
+
+Delete the three resource limits, keep only x₂ − x₁ ≤ 5.
+
+Take the ray x(t) = (t, t) for t ≥ 0. Every point on it is feasible, and z = 700 t, which grows without limit. At t = 10,000 the model reports 7,000,000 USD/week.
+
+**Find the ray and the missing constraint is obvious.** A capacity row deleted, a cost with the wrong sign, a purchase left unbounded above.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[01:33 – 01:38] · THE TWO FAILURES, WORKED**
+
+**SAY —**
+
+"One example of each, on the same plant.
+
+Infeasible. Add a supply contract: we must deliver at least twelve tonnes a week in total. But packaging takes one hour per tonne of either product and has nine hours. So the total can never exceed nine. Twelve is greater than nine. The region is empty and no solver was needed to find that out.
+
+That is the general shape of an infeasibility. It is not a hard number to find; it is two requirements that cannot both hold. You diagnose it on the constraints, not on the variables. Drop constraints in groups until it solves, or ask for an irreducible infeasible subset, or put an elastic slack on everything with a large penalty and see which slacks go nonzero.
+
+Unbounded. Now delete the three resource limits and keep only a ratio requirement. Walk out along the line where both products are equal. Every point on it is feasible, and the objective is seven hundred times t. At t equals ten thousand the model cheerfully reports seven million dollars a week.
+
+Find the ray, and the missing constraint is usually obvious. Here it is capacity, because I deleted it. In your own models it is a capacity row mistyped, a cost with the wrong sign, or a purchase left unbounded above.
+
+Unboundedness is a modeling error. It is never a solver defect."
+
+**DO —** Both variants are in the Week 1 notebook, Section 9. They run in under a second each. If the room wants to see one, show it.
+:::
+
+## The feasible region is a polytope
+
+::: {.kicker .c-teal}
+LP geometry · 1 of 3
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+<svg viewBox="0 0 540 452" style="width:100%;max-width:580px" role="img" aria-label="Feasible region of the product mix linear program, a five-sided polygon with vertices at (0,0), (8,0), (6,3), (2,7) and (0,8), formed by three constraint lines: reactor 3x1+2x2 at most 24, separation x1+2x2 at most 16, and packaging x1+x2 at most 9.">
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="#DFC98F" fill-opacity="0.7"/>
+<line x1="158.8" y1="39.2" x2="410.8" y2="417.2" stroke="#5A91BE" stroke-width="2.5"/>
+<line x1="41.2" y1="47.6" x2="494.8" y2="274.4" stroke="#83A462" stroke-width="2.5"/>
+<line x1="49.6" y1="5.6" x2="452.8" y2="408.8" stroke="#995A90" stroke-width="2.5"/>
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="none" stroke="#0F6E6B" stroke-width="3.5"/>
+<line x1="58" y1="392" x2="518" y2="392" stroke="#333F4A" stroke-width="2"/><line x1="58" y1="392" x2="58" y2="16" stroke="#333F4A" stroke-width="2"/>
+<g stroke="#333F4A" stroke-width="1.5"><line x1="142" y1="392" x2="142" y2="399"/><line x1="226" y1="392" x2="226" y2="399"/><line x1="310" y1="392" x2="310" y2="399"/><line x1="394" y1="392" x2="394" y2="399"/><line x1="478" y1="392" x2="478" y2="399"/><line x1="58" y1="308" x2="51" y2="308"/><line x1="58" y1="224" x2="51" y2="224"/><line x1="58" y1="140" x2="51" y2="140"/><line x1="58" y1="56" x2="51" y2="56"/></g>
+<g font-size="15" fill="#66727C" text-anchor="middle"><text x="142" y="415">2</text><text x="226" y="415">4</text><text x="310" y="415">6</text><text x="394" y="415">8</text><text x="478" y="415">10</text></g>
+<g font-size="15" fill="#66727C" text-anchor="end"><text x="46" y="313">2</text><text x="46" y="229">4</text><text x="46" y="145">6</text><text x="46" y="61">8</text></g>
+<text x="516" y="446" font-size="16" fill="#1C242B" text-anchor="end">x₁ Additive, t/week</text>
+<text x="66" y="16" font-size="16" fill="#1C242B" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill">x₂ Binder, t/week</text>
+<g fill="#FFFFFF" stroke="#333F4A" stroke-width="2"><circle cx="58" cy="392" r="5"/><circle cx="394" cy="392" r="5"/><circle cx="310" cy="266" r="5"/><circle cx="142" cy="98" r="5"/><circle cx="58" cy="56" r="5"/></g>
+<g font-size="16" fill="#1C242B" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill"><text x="70" y="382">(0,0)</text><text x="402" y="380">(8,0)</text><text x="322" y="262">(6,3)</text><text x="154" y="94">(2,7)</text><text x="72" y="44">(0,8)</text></g>
+<rect x="246" y="30" width="290" height="104" fill="#FFFFFF" fill-opacity="0.93" stroke="#B9C1C6"/>
+<g font-size="15" fill="#333F4A"><line x1="256" y1="48" x2="286" y2="48" stroke="#5A91BE" stroke-width="3"/><text x="294" y="53">reactor  3x₁+2x₂ ≤ 24</text><line x1="256" y1="72" x2="286" y2="72" stroke="#83A462" stroke-width="3"/><text x="294" y="77">separation  x₁+2x₂ ≤ 16</text><line x1="256" y1="96" x2="286" y2="96" stroke="#995A90" stroke-width="3"/><text x="294" y="101">packaging  x₁+x₂ ≤ 9</text><rect x="256" y="113" width="30" height="12" fill="#DFC98F" fill-opacity="0.85"/><text x="294" y="124">feasible region</text></g>
+</svg>
+:::
+
+::: {.column width="43%"}
+::: {.dots}
+- **Each constraint is a half plane** The region is the intersection of five of them: three resources, two non-negativity bounds.
+- **An intersection of half planes is convex** It has flat faces. Such a set is a polyhedron, and when it is bounded, a polytope.
+- **Its corners are the vertices** In two variables a vertex is where two constraint boundaries meet. Here there are five.
+- **Convexity is what makes LP easy** And it is exactly what pooling destroys in Week 4.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:38 – 01:41] · GEOMETRY 1, THE REGION**
+
+**SAY —**
+
+"Three slides, ten minutes, and Week 7 assumes you have seen them.
+
+Every constraint is a half plane: a line, and everything on one side of it. There are five here. The three resources, and the two non-negativity conditions that keep us in the first quadrant.
+
+Intersect five half planes and you get this. Convex, with flat faces. A polyhedron. Bounded, so we call it a polytope.
+
+The corners are the vertices. In two variables, a vertex is where two constraint boundaries cross. Count them: zero-zero, eight-zero, six-three, two-seven, zero-eight. Five.
+
+Convexity is the whole reason linear programming is easy, and it is exactly what we lose in Week 4, when pooling multiplies a flow by a quality and the region stops being convex."
+
+**DO —** Trace the boundary with your hand on the screen while you name the five vertices. Do not just point.
+:::
+
+## The gradient, and the isoprofit lines
+
+::: {.kicker .c-teal}
+LP geometry · 2 of 3
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+<svg viewBox="0 0 540 452" style="width:100%;max-width:580px" role="img" aria-label="The same feasible region with three parallel dotted isoprofit lines for z equal to 1200, 1800 and 2400, and a rust arrow showing the objective gradient (400, 300) perpendicular to them.">
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="#DFC98F" fill-opacity="0.7"/>
+<line x1="158.8" y1="39.2" x2="410.8" y2="417.2" stroke="#5A91BE" stroke-width="2.5"/>
+<line x1="41.2" y1="47.6" x2="494.8" y2="274.4" stroke="#83A462" stroke-width="2.5"/>
+<line x1="49.6" y1="5.6" x2="452.8" y2="408.8" stroke="#995A90" stroke-width="2.5"/>
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="none" stroke="#0F6E6B" stroke-width="3.5"/>
+<line x1="58" y1="392" x2="518" y2="392" stroke="#333F4A" stroke-width="2"/><line x1="58" y1="392" x2="58" y2="16" stroke="#333F4A" stroke-width="2"/>
+<g stroke="#333F4A" stroke-width="1.5"><line x1="142" y1="392" x2="142" y2="399"/><line x1="226" y1="392" x2="226" y2="399"/><line x1="310" y1="392" x2="310" y2="399"/><line x1="394" y1="392" x2="394" y2="399"/><line x1="478" y1="392" x2="478" y2="399"/><line x1="58" y1="308" x2="51" y2="308"/><line x1="58" y1="224" x2="51" y2="224"/><line x1="58" y1="140" x2="51" y2="140"/><line x1="58" y1="56" x2="51" y2="56"/></g>
+<g font-size="15" fill="#66727C" text-anchor="middle"><text x="142" y="415">2</text><text x="226" y="415">4</text><text x="310" y="415">6</text><text x="394" y="415">8</text><text x="478" y="415">10</text></g>
+<g font-size="15" fill="#66727C" text-anchor="end"><text x="46" y="313">2</text><text x="46" y="229">4</text><text x="46" y="145">6</text><text x="46" y="61">8</text></g>
+<text x="516" y="446" font-size="16" fill="#1C242B" text-anchor="end">x₁ Additive, t/week</text>
+<text x="66" y="16" font-size="16" fill="#1C242B" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill">x₂ Binder, t/week</text>
+<g stroke="#333F4A" stroke-width="2.2" stroke-dasharray="4 6"><line x1="184" y1="392" x2="58" y2="224"/><line x1="247" y1="392" x2="58" y2="140"/><line x1="310" y1="392" x2="58" y2="56"/></g>
+<rect x="286" y="42" width="248" height="26" fill="#FFFFFF" fill-opacity="0.93"/>
+<text x="292" y="61" font-size="16" fill="#333F4A">isoprofit: z = 1200, 1800, 2400</text>
+<line x1="226" y1="266" x2="310" y2="203" stroke="#BE654C" stroke-width="4"/>
+<polygon points="313,200 302,216 295,206" fill="#BE654C"/>
+<circle cx="226" cy="266" r="4.5" fill="#FFFFFF" stroke="#333F4A" stroke-width="2"/>
+<text x="330" y="186" font-size="17" fill="#BE654C" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill">∇z = (400, 300)</text>
+</svg>
+:::
+
+::: {.column width="43%"}
+::: {.dots}
+- **The dotted lines are isoprofit lines** The margin takes the same value along each one. They are parallel, with slope minus four thirds.
+- **The arrow is the objective gradient** It is the coefficient vector (400, 300), perpendicular to every isoprofit line, pointing where the margin rises fastest.
+- **A linear objective has a constant gradient** It is the same at every point. One improving direction for the whole plane, and it never changes.
+- **So solving the LP is one geometric act** Push the isoprofit line as far as it goes along the gradient, while keeping at least one feasible point on it.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:41 – 01:44] · GEOMETRY 2, THE GRADIENT**
+
+**SAY —**
+
+"Now put the objective on the picture.
+
+The dotted lines are isoprofit lines. Every point on one of them gives you the same total margin. Twelve hundred on the nearest, eighteen hundred, twenty-four hundred. They are parallel, because the objective is linear, and they have slope minus four thirds.
+
+The rust arrow is the objective gradient. It is just the coefficient vector, four hundred and three hundred. It is perpendicular to every one of those lines, and it points in the direction where the margin climbs fastest.
+
+Here is the part that makes linear programming special. Because the objective is linear, that gradient is the same at every single point of the plane. There is one improving direction, and it never changes. Nothing like that is true in Week 9, when we do nonlinear problems and the gradient turns as you walk.
+
+So solving this LP is one geometric act. Push the dotted line as far as it will go in the direction of the arrow, while keeping at least one feasible point on it."
+
+**DO —** Move your hand along the arrow direction, physically sliding an imaginary line, before you show the next slide. The gesture does most of the teaching here.
+:::
+
+## Push until it last touches
+
+::: {.kicker .c-teal}
+LP geometry · 3 of 3
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+<svg viewBox="0 0 540 452" style="width:100%;max-width:560px" role="img" aria-label="The same feasible region with the amber isoprofit line for z equal to 3300 touching the region at the single vertex (6,3), which is marked in amber, with the gradient arrow pointing out of that vertex away from the region.">
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="#DFC98F" fill-opacity="0.7"/>
+<line x1="158.8" y1="39.2" x2="410.8" y2="417.2" stroke="#5A91BE" stroke-width="2.5"/>
+<line x1="41.2" y1="47.6" x2="494.8" y2="274.4" stroke="#83A462" stroke-width="2.5"/>
+<line x1="49.6" y1="5.6" x2="452.8" y2="408.8" stroke="#995A90" stroke-width="2.5"/>
+<polygon points="58,392 394,392 310,266 142,98 58,56" fill="none" stroke="#0F6E6B" stroke-width="3.5"/>
+<line x1="58" y1="392" x2="518" y2="392" stroke="#333F4A" stroke-width="2"/><line x1="58" y1="392" x2="58" y2="16" stroke="#333F4A" stroke-width="2"/>
+<g stroke="#333F4A" stroke-width="1.5"><line x1="142" y1="392" x2="142" y2="399"/><line x1="226" y1="392" x2="226" y2="399"/><line x1="310" y1="392" x2="310" y2="399"/><line x1="394" y1="392" x2="394" y2="399"/><line x1="478" y1="392" x2="478" y2="399"/><line x1="58" y1="308" x2="51" y2="308"/><line x1="58" y1="224" x2="51" y2="224"/><line x1="58" y1="140" x2="51" y2="140"/><line x1="58" y1="56" x2="51" y2="56"/></g>
+<g font-size="15" fill="#66727C" text-anchor="middle"><text x="142" y="415">2</text><text x="226" y="415">4</text><text x="310" y="415">6</text><text x="394" y="415">8</text><text x="478" y="415">10</text></g>
+<g font-size="15" fill="#66727C" text-anchor="end"><text x="46" y="313">2</text><text x="46" y="229">4</text><text x="46" y="145">6</text><text x="46" y="61">8</text></g>
+<text x="516" y="446" font-size="16" fill="#1C242B" text-anchor="end">x₁ Additive, t/week</text>
+<text x="66" y="16" font-size="16" fill="#1C242B" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill">x₂ Binder, t/week</text>
+<g stroke="#333F4A" stroke-width="1.8" stroke-dasharray="4 6"><line x1="184" y1="392" x2="58" y2="224"/><line x1="247" y1="392" x2="58" y2="140"/><line x1="310" y1="392" x2="58" y2="56"/></g>
+<line x1="121" y1="14" x2="404.5" y2="392" stroke="#E29A2D" stroke-width="5"/>
+<rect x="282" y="26" width="252" height="26" fill="#FFFFFF" fill-opacity="0.93"/>
+<text x="288" y="45" font-size="16" fill="#E29A2D">last touching line, z = 3300</text>
+<line x1="310" y1="266" x2="377" y2="216" stroke="#BE654C" stroke-width="4"/>
+<polygon points="380,213 369,229 362,219" fill="#BE654C"/>
+<g fill="#FFFFFF" stroke="#333F4A" stroke-width="2"><circle cx="58" cy="392" r="5"/><circle cx="394" cy="392" r="5"/><circle cx="142" cy="98" r="5"/><circle cx="58" cy="56" r="5"/></g>
+<circle cx="310" cy="266" r="9" fill="#E29A2D" stroke="#1C242B" stroke-width="2"/>
+<rect x="242" y="292" width="120" height="24" fill="#FFFFFF" fill-opacity="0.93"/>
+<text x="248" y="310" font-size="17" fill="#1C242B">x* = (6, 3)</text>
+</svg>
+:::
+
+::: {.column width="46%"}
+| Active pair | Vertex | z, USD/week |
+|---|---|---|
+| x₁ = 0, x₂ = 0 | (0,0) | 0 |
+| separation, x₁ = 0 | (0,8) | 2,400 |
+| separation, packaging | (2,7) | 2,900 |
+| reactor, x₂ = 0 | (8,0) | 3,200 |
+| **reactor, packaging** | **(6,3)** | **3,300** |
+
+::: {.note}
+Sliding along the gradient, the last point the region touches is the corner (6, 3). **An LP with a finite optimum has an optimal vertex**, or a whole optimal edge if the isoprofit line is parallel to one. That turns an infinite search into a finite one: list the vertices, evaluate the margin, take the best.
+:::
+
+::: {.flag}
+Week 7 walks vertex to vertex uphill instead of listing them. Today the argument is geometric only.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:44 – 01:50] · GEOMETRY 3, THE VERTEX ARGUMENT**
+
+**SAY —**
+
+"Push the line. Watch where it leaves.
+
+Twelve hundred, eighteen hundred, twenty-four hundred, and then the amber line, three thousand three hundred. That is the last position at which the line still has a feasible point on it. Push it one hair further and it is outside the region entirely.
+
+And the last point it touches is a corner. Six tonnes of Additive, three of Binder.
+
+Now the general statement, and it is one of the two or three most useful facts in this course. A linear program with a finite optimum has an optimal vertex. If the isoprofit line happens to be parallel to an edge you get a whole optimal edge, but a corner of that edge is still optimal.
+
+Why does that matter? Because it turns an infinite search into a finite one. There are infinitely many feasible plans in that shaded region. There are five corners. List them, evaluate z at each, take the best. The table on the right does exactly that: zero, two thousand four hundred, two thousand nine hundred, three thousand two hundred, three thousand three hundred.
+
+Two things to notice before we stop. Eight-zero gives three thousand two hundred, which is close. Corners can be nearly as good, and that matters when the data is uncertain. And at the optimum, two constraints are active, in a problem with two variables. That is the general pattern: at a vertex of an LP in n variables, n constraints are active.
+
+Week 7 replaces the listing with the simplex method, which walks from corner to corner uphill. Today the argument is purely geometric."
+
+**DO —**
+
+- This slide must not be rushed. If you are short of time, cut the hard-versus-soft slide retroactively rather than this one, and say so.
+- Checkpoint: Activity 2 starts at 01:50 regardless. If you reach here at 01:48, do not start another topic.
+:::
+
+## Your research as an optimization problem {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 2 · 15 minutes · individual, then pairs
+:::
+
+::: {.lede}
+Do not think about this course for the next six minutes.<br>
+Think about your own work.
+:::
+
+::: {.flag}
+I am collecting these cards, and they become the starting list for your project.
+:::
+
+::: {.notes}
+**[01:50] · ACTIVITY 2 — LAUNCH**
+
+**SAY —**
+
+"Cards on your tables. Turn them over.
+
+For the next six minutes, do not think about this course. Think about your own work. Write down one decision that somebody in your group actually has to make, and then write it as an optimization problem using the five lines on the next slide.
+
+I am collecting these cards, and they become the starting list for your project. So write something you would not mind working on for fifteen weeks."
+
+**DO —** Say the collection sentence before they start writing, not after. It changes how seriously the card is written, and that is the entire reason the sentence exists.
+:::
+
+## Five lines. Fifteen minutes.
+
+::: {.kicker .c-amber}
+Activity 2
+:::
+
+:::: {.columns}
+::: {.column width="55%"}
+::: {.cards}
+::: {.card .c-amber}
+**Your card**
+
+1. One decision that you, your advisor or your company **actually has to make**.
+2. The decision variables, **with units**.
+3. The objective, maximum or minimum, **with units**.
+4. Two constraints, written in words.
+5. Your guess at the class: LP, NLP, IP, MILP or stochastic.
+:::
+:::
+:::
+
+::: {.column width="43%"}
+::: {.numbered .n3}
+1. **0 to 6 min · alone** Write the card.
+2. **6 to 11 min · in pairs** Exchange. Find one thing your partner left undefined.
+3. **11 to 15 min · plenary** Three cards read out and classified live.
+:::
+:::
+::::
+
+::: {.lede}
+Why now: it converts the vocabulary of the last forty-five minutes into your own work while it is still fresh, and it is much harder than it looks.
+:::
+
+::: {.foot}
+::: {.punch}
+Hand back the card with your partner's comment written on it. All cards are collected and become the seed list for the computational project.
+:::
+:::
+
+::: {.notes}
+**[01:50 – 02:05] · ACTIVITY 2 — RUN**
+
+**SAY —**
+
+"Five lines. One decision somebody actually has to make. The decision variables with units. The objective, maximum or minimum, with units. Two constraints in words. And your guess at the class.
+
+Six minutes alone. Then five minutes in pairs: swap cards, and find one thing your partner left undefined. A missing unit. A constraint that is really an objective. A decision that is not actually under their control. Or a quantity that is uncertain and has been written as if it were known.
+
+Then we take three cards in the last four minutes and classify them on the board.
+
+Six minutes. Go."
+
+**DO —**
+
+- HOW LONG TO LET THEM STRUGGLE: do not intervene in the first three minutes even if the room looks stuck. The difficulty is the point, and it is the first evidence that stating a problem is harder than solving one. Start circulating at minute three.
+- What to look for while circulating: cards with no units, which is the commonest defect and worth naming out loud when you see it; objectives that are really constraints; decisions the student does not control, for example the market price; and a blank card, which means sit down beside that student for thirty seconds and ask what their advisor argues about in group meeting. The answer is always a decision.
+- If nobody volunteers in the plenary, do not wait. You have walked the room. Name a student whose card you liked. Ask the two most interesting cards, not the two most correct.
+- Write next to each classified card the week of the course that covers it.
+
+**THE THREE RESPONSES TO BE READY FOR — do not put these on a slide**
+
+1. *"My work has no decisions in it, I only measure things."* Then the optimization problem is in the experimental design, which is Week 13. Every experimental campaign chooses where to sample next under a budget. Ask how they decide which experiment to run tomorrow.
+
+2. *A card whose objective is really a constraint*, for example "the objective is that purity must exceed 99.5 percent". That is a constraint, not an objective. Ask what they would give up to get it. The answer, usually cost or throughput, is the real objective. This is the cleanest teachable moment in the activity, so use it if it appears.
+
+3. *A card with an uncertain parameter written as a fixed number*, a demand forecast or a rate constant. Name it. Say Week 12 is about exactly this, and that writing an uncertain quantity as if it were known is a modeling decision, not a neutral simplification.
+
+**BACKUP, if the room is unusually quiet or the class is very small:** "Optimization in disguise" — six short scenarios of which four are optimization problems and two are not, one a simulation question and one a pure feasibility check. Pairs decide which is which and name the variables, objective and constraints for the four that qualify. Same fifteen minutes. Keep it in your pocket; it is not on the student-facing slides.
+
+**RECORD:** keep the research-area tally running while the cards are read. It decides which project topics to emphasize in the next block and how to form balanced groups in Week 3.
+:::
+
+## &nbsp; {.dark .break .c-amber background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.break-circle}
+[10]{}
+:::
+
+::: {.big-label}
+minute break
+:::
+
+::: {.note}
+Then: the tool stack, today's model solved three ways, and how you are graded
+:::
+::::
+
+::: {.notes}
+**[02:05 – 02:15] · BREAK 2**
+
+**SAY —**
+
+"Second break, ten minutes. Leave your cards on the table; I will pick them up.
+
+One block left after this: the tools, today's model solved three ways with the identical answer, and the logistics. If you have a question about assessment, save it for that block, because I would rather answer it once for everybody."
+
+**DO —**
+
+- Collect every card now, while they are out of the room. Read them tonight and mark the five most promising as project seeds.
+- If you are more than five minutes behind, shorten this break to eight minutes rather than cutting the logistics section.
+:::
+
+## The tool stack {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Lecture block 3 · 40 minutes
+:::
+
+::: {.lede}
+What each layer does, what it cannot do,<br>
+and which one this course uses in which week.
+:::
+
+::: {.notes}
+**[02:15] · SECTION DIVIDER**
+
+**SAY —**
+
+"Last block. Tools, then logistics. Both matter, and the logistics is the part that generates emails, so I will protect the time for it."
+
+**DO —** TIMING CHECK: start the logistics section no later than 02:38 so it gets a full fifteen minutes. If you are late, cut the solver-class content and the side-by-side tool table. Both are in the deck and in the notebook for students to read.
+:::
+
+## Two layers, and neither knows what the other knows
+
+::: {.kicker .c-amber}
+The stack
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[Modeling layer]{.eyebrow}
+
+### Excel Solver
+
+Target cell, changing cells, constraints, all on a worksheet
+:::
+
+::: {.card .c-teal}
+[Modeling layer]{.eyebrow}
+
+### OpenSolver
+
+The same worksheet layout, sent to CBC or HiGHS instead
+:::
+
+::: {.card .c-teal}
+[Modeling layer]{.eyebrow}
+
+### Pyomo
+
+`Set`, `Param`, `Var`, `Constraint`, `Objective`
+:::
+:::
+
+::: {.lede}
+Translation: an `.lp`, `.mps` or `.nl` file, or an in-memory API
+:::
+
+::: {.cards}
+::: {.card .c-slate}
+[Solver layer]{.eyebrow}
+
+HiGHS, GLPK, CBC · LP and MILP
+:::
+
+::: {.card .c-slate}
+[Solver layer]{.eyebrow}
+
+Ipopt · NLP
+:::
+
+::: {.card .c-slate}
+[Solver layer]{.eyebrow}
+
+Bonmin, Couenne · MINLP
+:::
+
+::: {.card .c-slate}
+[Solver layer]{.eyebrow}
+
+Gurobi, CPLEX, BARON · commercial
+:::
+:::
+
+::: {.notes}
+**[02:15 – 02:20] · THE TWO LAYERS**
+
+**SAY —**
+
+"Two layers, and this distinction saves people a great deal of confusion.
+
+The modeling layer knows about sets, variables, constraints and objectives, and it knows absolutely nothing about how to solve anything. Excel Solver is a modeling layer. OpenSolver is a modeling layer. Pyomo is a modeling layer.
+
+Underneath, the solver layer. It knows about factorizations and search trees, and it knows absolutely nothing about your plant. HiGHS, GLPK and CBC for linear and mixed-integer. Ipopt for nonlinear. Bonmin and Couenne for mixed-integer nonlinear. And the commercial ones.
+
+Between them, a translation: a file in one of a few standard formats, or an in-memory handoff.
+
+The spreadsheet, by the way, is a third thing again. It is a data and presentation surface that happens to host a modeling layer. Confusing those three is a standing source of trouble."
+
+**DO —** The one sentence to land: neither layer can tell you your model is wrong. The solver answers the question you asked. That is the first slide of today, coming back.
+:::
+
+## What each tool is for, and where it stops {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Honest limits
+:::
+
+| Tool | What it does | Where it stops |
+|---|---|---|
+| **Excel Solver** | Ships with Excel. Simplex LP, GRG Nonlinear and Evolutionary engines on a worksheet. | 200 changing cells, 100 explicit constraints. The model lives in cell formulas, so it cannot be version controlled or unit tested. |
+| **OpenSolver** | Free add-in. Keeps the worksheet layout, sends the model to CBC or HiGHS, removes the size limit. | Its default engines are LP and MILP only. Nonlinear models need a different tool. |
+| **Pyomo** | Python algebraic modeling language. Separates structure from data and from solver choice. Scales to hundreds of thousands of variables. | Solves nothing by itself. Without a solver installed, a Pyomo model is only a data structure. |
+| **Solver layer** | Simplex or interior point for LP, branch and cut for MILP, interior point or SQP for NLP. | A solver cannot tell you that your model is wrong. It answers the question you asked. |
+
+::: {.foot}
+::: {.flag}
+No commercial solver is required at any point in this course. Everything runs on HiGHS, CBC, GLPK and Ipopt.
+:::
+:::
+
+::: {.notes}
+**[02:20 – 02:25] · WHAT EACH TOOL IS FOR**
+
+**SAY —**
+
+"Four rows, and the right-hand column is the one worth reading.
+
+Excel Solver ships with Excel and stops at two hundred changing cells. But the real limit is not the size. It is that the model lives inside cell formulas, so you cannot version control it and you cannot write a test for it.
+
+OpenSolver keeps the worksheet you already built and sends the model to a real solver, which removes the size limit. Its default engines are linear and mixed-integer only.
+
+Pyomo separates model structure from data and from solver choice, and scales. But Pyomo solves nothing. Without a solver installed, a Pyomo model is a data structure and nothing more. People lose an evening to that.
+
+And the solver, whichever one you use, cannot tell you your model is wrong.
+
+One policy point while it is on screen. No commercial solver is required at any point in this course. Everything in the notebooks, the homework, the examinations and the project runs on open source. Academic licences for Gurobi and CPLEX exist and you may use them, but no assessed work depends on one."
+
+**DO —** THIS IS A CUTTABLE SLIDE if you are behind. Keep only the last flag about commercial solvers, and move on.
+:::
+
+## One model, three ways, one answer
+
+::: {.kicker .c-amber}
+The cheapest verification available
+:::
+
+| Route | What you do | x\*, t/week | z\*, USD/week |
+|---|---|---|---|
+| Graphical | Draw five half planes, list the vertices, evaluate z at each | (6, 3) | 3,300.00 |
+| Spreadsheet | `B5:C5` changing, `D9` objective, `D12:D14` ≤ `F12:F14` | (6, 3) | 3,300.00 |
+| Pyomo | `ConcreteModel`, then `SolverFactory` and one `solve` | (6, 3) | 3,300.00 |
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-teal}
+**Why do this at all**
+
+Three interfaces to one mathematical object. Only the third scales, but the geometry of the first is what you should see in your head when a solver reports an answer, and the second is where most industrial models still live.
+:::
+:::
+:::
+
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-amber}
+**Two implementations that agree is evidence**
+
+The Week 1 notebook asserts it: `assert np.allclose(x_graph, x_pyomo)`. If the spreadsheet and the notebook ever disagree, the spreadsheet is wrong. This habit is expected on every result in this course.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[02:25 – 02:31] · ONE MODEL, THREE WAYS**
+
+**SAY —**
+
+"Same model, three routes, and I want you to watch the last column rather than the middle one.
+
+Graphically: five half planes, five vertices, evaluate z at each, take the best. Three thousand three hundred.
+
+In the spreadsheet: changing cells, an objective cell, three constraint rows. Three thousand three hundred.
+
+In Pyomo: a ConcreteModel, a SolverFactory, one call to solve. Three thousand three hundred.
+
+Now, why bother doing it three times? Because two independent implementations that agree is real evidence, and it is the cheapest evidence you will ever buy. The Week 1 notebook actually asserts it in code.
+
+And if the spreadsheet and the notebook ever disagree, my prior is that the spreadsheet is wrong. I expect this habit on every result in this course, including the project."
+
+**DO —**
+
+- If the classroom machine has Excel with Solver enabled, run the solution workbook live here and let them watch the number appear. Test it the day before.
+- If it fails on the day: present the solution version, say the number, and move on. Do not debug in front of the room.
+:::
+
+## Weeks 1 to 3 Excel. Week 4 Python. And why. {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+The tool plan, designed and not accidental
+:::
+
+::: {.cards .stack}
+::: {.card .c-teal}
+[]{.dot}
+
+### Weeks 1 to 3 · Excel and OpenSolver
+
+The data is naturally tabular and the models are small. Everyone succeeds on day one with no installation. Periods across columns and cost matrices read the way a spreadsheet reads.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Week 4 · the crossover to Python
+
+Linear blending is done in OpenSolver. Then pooling forces the move: it multiplies a flow by a quality, which a spreadsheet cannot handle at all. The crossover happens for a mathematical reason, not a matter of taste.
+:::
+
+::: {.card .c-plum}
+[]{.dot}
+
+### Weeks 5 onward · Python and Pyomo
+
+Models must scale, be re-solved dozens of times, and be verified programmatically. Week 5 opens in the spreadsheet and then moves to Python. From Week 6 the work is Python only.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+The rule: a spreadsheet is right when the data is tabular and the model is small. Python becomes necessary when the model must scale, be re-solved many times, or be verified programmatically.
+:::
+:::
+
+::: {.notes}
+**[02:31 – 02:35] · THE TOOL PLAN**
+
+**SAY —**
+
+"Say this plainly, because students otherwise assume the tool changes because the instructor got bored.
+
+Weeks one to three we lean on Excel and OpenSolver. The data in those weeks is naturally tabular, the models are small, and nobody has to install anything to succeed on day one.
+
+Week four is the crossover, and it happens for a mathematical reason. We do linear blending in OpenSolver, and it works fine. Then we do pooling, and pooling multiplies a flow by a quality. A spreadsheet cannot handle that at all. So the tool changes because the mathematics changed.
+
+Weeks five onward are Python and Pyomo, because from there the models have to scale, be re-solved dozens of times, and be verified in code.
+
+That sequence is designed, not accidental. The rule underneath it is one sentence: a spreadsheet is the right tool when the data is tabular and the model is small; Python becomes necessary when the model must scale, be re-solved many times, or be verified programmatically."
+
+**DO —** Say "designed, not accidental" out loud. Students who arrive in Week 4 expecting continuity of tooling are the ones who fall behind that week.
+:::
+
+## The fifteen weeks
+
+::: {.kicker .c-amber}
+Course map
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+| W | Topic |
+|---|---|
+| 1 | Introduction, workflow, tool stack |
+| 2 | Linear models, product mix, multiperiod, inventory |
+| 3 | Networks, transportation, transshipment, superstructures |
+| 4 | Blending, pooling, quality specs, entry to nonlinearity |
+| 5 | Logical and discrete decisions, big-M versus convex hull |
+| 6 | AI-assisted modeling and model debugging |
+| 7 | LP theory: geometry, simplex, what a solver does |
+:::
+
+::: {.column width="49%"}
+| W | Topic |
+|---|---|
+| 8 | Duality and sensitivity, economic interpretation |
+| 9 | Unconstrained NLP: convexity, line search, Newton |
+| 10 | Constrained NLP: Lagrange, KKT, penalty, SQP |
+| 11 | Integer and mixed-integer programming, branch and bound |
+| 12 | Optimization under uncertainty: DP, stochastic, robust |
+| 13 | Data-driven and AI-based optimization |
+| 14, 15 | Project presentations and wrap-up |
+:::
+::::
+
+::: {.foot}
+::: {.note}
+The midterm is held after Week 8 and covers Weeks 1 to 8, with no nonlinear programming. The final is cumulative, with emphasis on Weeks 9 to 13.
+:::
+:::
+
+::: {.notes}
+**[02:35 – 02:38] · THE COURSE MAP**
+
+**SAY —**
+
+"Three minutes on the map, and then the part you actually want to hear.
+
+Weeks two to five are modeling: linear, networks, blending, discrete. Week six is a three-hour workshop on AI-assisted modeling and debugging, and it is where the verification habit gets taught properly.
+
+Weeks seven and eight are the theory of linear programming: what the simplex method does, and what the dual numbers mean. Nine and ten are nonlinear. Eleven is integer programming done properly. Twelve is uncertainty. Thirteen is data-driven methods.
+
+Fourteen and fifteen are your presentations.
+
+The midterm sits after week eight and contains no nonlinear programming. The final is cumulative with the weight on nine to thirteen."
+
+**DO —** Do not read all fifteen rows. Name the four groupings and let them read.
+:::
+
+## How you are graded
+
+::: {.kicker .c-teal}
+Assessment, homework, project
+:::
+
+:::: {.columns}
+::: {.column width="36%"}
+::: {.spec}
+[Weights]{.eyebrow}
+
+Final examination
+:   35 %
+
+Midterm examination
+:   25 %
+
+Assignments, HW1 to HW4
+:   15 %
+
+Computational project
+:   15 %
+
+Participation and quizzes
+:   10 %
+:::
+
+::: {.note}
+The midterm sits after Week 8 and contains no nonlinear programming.
+:::
+:::
+
+::: {.column width="62%"}
+| Homework | Out | Due |
+|---|---|---|
+| HW1 linear and network models | W2 | W4 |
+| HW2 blending, discrete, audit | W4 | W6 |
+| HW3 LP theory and duality | W7 | W9 |
+| HW4 NLP and MILP | W10 | W12 |
+
+| Project milestone | When |
+|---|---|
+| Group registration and candidate topics | W4 |
+| **Proposal due**: a structured specification | W6 |
+| Formulation checkpoint: algebra, size, tests | W9 |
+| **Preliminary results** and full test suite | W12 |
+| Presentations, 12 min plus 3 of questions | W14, W15 |
+| Report, code, tests, disclosure section | end W15 |
+:::
+::::
+
+::: {.notes}
+**[02:38 – 02:45] · ASSESSMENT**
+
+**SAY —**
+
+"Five components. Final thirty-five, midterm twenty-five, four homework sets fifteen, the computational project fifteen, participation and quizzes ten.
+
+The homework comes out in weeks two, four, seven and ten, and is due two weeks after each. Note that HW1 is released next week, not today.
+
+The project has real milestones, not one deadline at the end. Groups register in week four. The proposal in week six is a structured specification, which is stage two of the workflow you saw this morning, and nothing else. The formulation checkpoint is week nine. Preliminary results and a full test suite in week twelve. Presentations in weeks fourteen and fifteen, twelve minutes plus three of questions.
+
+And the cards you handed in an hour ago are where the topic list comes from."
+
+**DO —** Answer the two questions that always come: yes, the project may use their own thesis problem, and yes, groups may be formed across research groups. Then hold the rest for the AI slide.
+:::
+
+## What the AI policy actually says {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Read this before you ask
+:::
+
+::: {.cards}
+::: {.card .c-sage}
+[]{.dot}
+
+### Permitted, and expected
+
+Generative AI is permitted for assignments and for the project. Using it to **draft** models is expected rather than merely tolerated. Week 6 is a three-hour workshop on how to do it well.
+:::
+
+::: {.card .c-teal}
+[]{.dot}
+
+### What is graded is verification
+
+Disclose which parts were AI-drafted and which tests validated them. The disclosure section is part of the project report.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### No credit without it
+
+An unverified generated model earns **no credit for model correctness**, however good it looks.
+:::
+
+::: {.card .c-slate}
+[]{.dot}
+
+### Prohibited in examinations
+
+Both the midterm and the final. No exceptions, and no ambiguity.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+A solver answers the question you asked. So does a language model. In both cases the verification is your job, and in this course it is the part that carries the marks.
+:::
+:::
+
+::: {.notes}
+**[02:45 – 02:49] · THE AI POLICY**
+
+**SAY —**
+
+"Somebody is going to ask whether they may use ChatGPT for the homework, so I will answer it before it is asked, completely.
+
+Yes. Generative AI is permitted for assignments and for the project, and drafting a model with it is expected rather than merely tolerated. Week six is a three-hour workshop on how to do exactly that.
+
+What is graded is verification. You disclose which parts were AI-drafted and which tests validated them, and that disclosure is part of the report.
+
+An unverified generated model earns no credit for model correctness. It can be beautifully formatted and confidently wrong, and it will score zero on that criterion.
+
+And it is prohibited in both examinations. That is not ambiguous.
+
+Notice that this is the same rule as the first slide of today. A solver answers the question you asked. So does a language model. The verification is your job either way, and in this course it is the part that carries the marks."
+
+**DO —** Answer this directly and completely. It will be asked in the corridor otherwise, and the corridor answer travels further than the lecture one.
+:::
+
+## Numbers established today
+
+::: {.kicker .c-teal}
+Summary
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+| Quantity | Value |
+|---|---|
+| Optimal plan x\* | (6, 3) t/week |
+| Optimal margin z\* | 3,300.00 USD/week |
+| Reactor, used / available | 24 / 24 h |
+| Separation, used / available | 12 / 16 h |
+| Packaging, used / available | 9 / 9 h |
+| Shadow prices | 100, 0, 100 USD/h |
+| Packaging raised 9 to 14 h | 3,400.00 at (4, 6) |
+| Whole 4 t batches, IP | (8, 0), 3,200.00 |
+| LP answer rounded down | (4, 0), 1,600.00 |
+| Concave price variant, NLP | (2.5, 6.5), 2,825.00 |
+:::
+
+::: {.column width="49%"}
+::: {.dots}
+- **Four parts, five stages** Variables, parameters, one objective, constraints. Verbal, specification, algebra, code, interpretation. Stage 2 before any algebra, and a unit on every symbol.
+- **The class decides the guarantee** And rounding an LP answer is not an integer method.
+- **The optimum is at a corner** Convex polytope, constant gradient, so the isoprofit line stops at a vertex. Week 7 makes that an algorithm.
+- **Read the status first** Infeasible means the constraints contradict each other. Unbounded means one is missing.
+:::
+:::
+::::
+
+::: {.notes}
+**[02:49 – 02:53] · SUMMARY**
+
+**SAY —**
+
+"Every number on the left came out of the notebook, and every one of them will be back.
+
+Six and three, three thousand three hundred. Twenty-four of twenty-four, twelve of sixteen, nine of nine. A hundred, zero, a hundred.
+
+The three variants underneath are the ones that make the point. Raise packaging to fourteen hours and you get three thousand four hundred at four and six, not more, because the shadow price expires. Force whole four-tonne batches and the answer moves to eight and zero, three thousand two hundred, while naive rounding gives you sixteen hundred. And let the Additive price fall as volume rises, so the objective becomes concave, and the optimum moves off the corner entirely, to two and a half and six and a half, two thousand eight hundred and twenty-five.
+
+That last one is worth two seconds. It is not at a vertex. The vertex argument is a fact about linear objectives, and the moment the objective bends, it goes away.
+
+On the right, the four things to carry out of the room."
+
+**DO —** If a slide and a file ever disagree, the file is authoritative. Say it once, here.
+:::
+
+## Before we meet again
+
+::: {.kicker .c-amber}
+Four things, and one of them is not optional
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.numbered .n4}
+1. **Install the environment** `pip install pyomo highspy` gives the modeling layer and an LP/MILP solver. Then `conda install -c conda-forge ipopt glpk coincbc` adds an NLP solver and two more.
+2. **Enable Excel Solver** File, Options, Add-ins, Manage: Excel Add-ins, Go, tick Solver Add-in. Then install OpenSolver from opensolver.org, unzipped outside Downloads.
+3. **Run the Week 1 notebook** `W01_introduction_first_model.ipynb`, end to end, including Exercises 1 to 3.
+4. **Bring a working laptop to Week 2** There is no clinic time in Week 2.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-teal}
+**Reading**
+
+Rao, Ch. 1, all of it. Short, and it fixes the vocabulary.
+
+Edgar, Himmelblau and Lasdon, Ch. 1, for the process-industry framing.
+
+Williams, Ch. 1 and 2, for the modeling stance this course takes.
+:::
+:::
+
+::: {.flag}
+HW1 is released next week and is due in Week 4.
+:::
+
+::: {.note}
+Week 2 · 17 August — Linear models: product mix, multiperiod planning, and inventory.
+:::
+:::
+::::
+
+::: {.notes}
+**[02:53 – 02:57] · BEFORE NEXT WEEK**
+
+**SAY —**
+
+"Four things, and the fourth is not optional.
+
+One. Install the environment. One command gives you the modeling layer and a linear solver: pip install pyomo highspy. A second command adds a nonlinear solver. Both are on the slide and both are in the notebook.
+
+Two. Enable Excel Solver, and install OpenSolver from opensolver.org. Unzip it somewhere that is not inside Downloads, or Excel will block it. Test it by pressing Solve on an empty model: the complaint that no objective is set is the proof that it loaded.
+
+Three. Run the week one notebook end to end, including the first three exercises. It repeats today's model in Pyomo and cross-checks it against the graphical and spreadsheet answers.
+
+Four. Bring a laptop on which all of that works to next week's session. There is no clinic time in week two.
+
+Reading is Rao chapter one, Edgar chapter one, Williams chapters one and two. And HW1 comes out next week, due in week four."
+
+**DO —** Put the myCourseVille link on screen while you say this. Upload the syllabus, the outline, this deck, the installation guide and the student workbook the same evening.
+:::
+
+## &nbsp; {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.statement}
+Not: what is the answer?
+:::
+
+::: {.statement-hi}
+But: is this the question<br>I actually meant to ask?
+:::
+
+::: {.flag}
+See you next Monday. Bring the laptop.
+:::
+
+::: {.notes}
+**[02:57 – 03:00] · CLOSING**
+
+**SAY —**
+
+"Last slide, and it is the first slide again.
+
+For the rest of this course, when a solver hands you a number, I do not want the first question to be 'what is the answer?'
+
+I want it to be: is this the question I actually meant to ask?
+
+That is the whole thing. Everything else is technique, and we have fifteen weeks for the technique.
+
+Questions?"
+
+*[ if none ]*
+
+"Then I will see you next Monday. Bring the laptop."
+
+**DO —** Do not add a summary; the contrast between the two questions is the summary. If time remains, take questions. If not, end early — goodwill on the first day is worth more than five extra minutes.
+:::
+
+{{< include _feedback.qmd >}}

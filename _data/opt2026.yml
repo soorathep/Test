@@ -1,0 +1,117 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# 2105623 Optimization of Chemical Processes
+# Semester 1 / 2026. Drives /teaching/2105623/.
+#
+#   weeks[]
+#     n       week number, or "—" for a break in the term
+#     title   session title
+#     dates   "10 Aug"  — the Monday session
+#     block   which part of the course this session belongs to
+#     tool    the hands-on tool for that session
+#     slides  optional. File name under teaching/2105623/, e.g. w01.html.
+#             Add it and the link appears by itself.
+#
+#   assessment[]  weight · component · asks
+# ─────────────────────────────────────────────────────────────────────────────
+
+code: "2105623"
+credits: "3 (3-0-9)"
+semester: "Semester 1 / 2026"
+sections: "Monday · 10 August to 16 November 2026"
+instructors: "Soorathep Kheawhom"
+
+weeks:
+  - n: 1
+    title: Introduction, the optimization workflow, and the tool stack
+    dates: 10 Aug
+    block: Orientation
+    tool: Excel Solver
+    slides: w01.html
+  - n: 2
+    title: "Modeling I: linear models, product mix, multiperiod planning and inventory"
+    dates: 17 Aug
+    block: Model construction
+    tool: OpenSolver
+    slides: w02.html
+  - n: 3
+    title: "Modeling II: networks, flows and process superstructures"
+    dates: 24 Aug
+    block: Model construction
+    tool: OpenSolver
+  - n: 4
+    title: "Modeling III: blending, pooling and quality specifications"
+    dates: 31 Aug
+    block: Model construction
+    tool: Excel, then Python
+  - n: 5
+    title: "Modeling IV: logical and discrete decisions"
+    dates: 7 Sep
+    block: Model construction
+    tool: OpenSolver and Pyomo
+  - n: 6
+    title: AI-assisted modeling and model debugging
+    dates: 14 Sep
+    block: Tools and verification
+    tool: Pyomo · workshop
+  - n: 7
+    title: Linear programming theory and solver behaviour
+    dates: 21 Sep
+    block: Theory and algorithms
+    tool: Python
+  - n: 8
+    title: Duality and sensitivity analysis
+    dates: 28 Sep
+    block: Theory and algorithms
+    tool: Excel and Pyomo
+  - n: 9
+    title: "Unconstrained nonlinear programming"
+    dates: 5 Oct
+    block: Theory and algorithms
+    tool: Python
+  - n: 10
+    title: "Constrained nonlinear programming"
+    dates: 12 Oct
+    block: Theory and algorithms
+    tool: Pyomo and Ipopt
+  - n: 11
+    title: Integer and mixed-integer programming
+    dates: 19 Oct
+    block: Theory and algorithms
+    tool: Pyomo and CBC
+  - n: 12
+    title: Optimization under uncertainty
+    dates: 26 Oct
+    block: Advanced topics
+    tool: Pyomo
+  - n: 13
+    title: Data-driven and AI-based optimization
+    dates: 2 Nov
+    block: Advanced topics
+    tool: Python
+  - n: 14
+    title: Project presentations, part 1
+    dates: 9 Nov
+    block: Synthesis
+    tool: "—"
+  - n: 15
+    title: Project presentations, part 2, and wrap-up
+    dates: 16 Nov
+    block: Synthesis
+    tool: "—"
+
+assessment:
+  - weight: 35%
+    component: Final examination
+    asks: Cumulative, weighted to Weeks 9 to 13 — nonlinear and integer programming, uncertainty, data-driven methods
+  - weight: 25%
+    component: Midterm examination
+    asks: Weeks 1 to 8, weighted to model construction. Includes a model-verification question. No nonlinear programming
+  - weight: 15%
+    component: Assignments
+    asks: Four problem sets — model construction, LP and duality, nonlinear programming, integer programming
+  - weight: 15%
+    component: Computational project
+    asks: A real optimization problem of your own, modelled in Pyomo, with a test suite and a presentation
+  - weight: 10%
+    component: Participation and quizzes
+    asks: In-class activities, the weekly notebook, short quizzes
