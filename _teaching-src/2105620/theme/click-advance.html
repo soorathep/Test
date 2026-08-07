@@ -1,0 +1,48 @@
+<!-- Click anywhere on a slide to advance.
+
+     Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+     the ← key, or the arrow at the left edge of the screen
+     (controlsLayout: edges in _quarto.yml).
+
+     It deliberately does nothing when the click means something else: a link or
+     control, a double-click, a modified click, the overview (O), a drag that
+     selected text, or the click that dismisses a selection. Without those
+     guards a student trying to select a sentence would skip a slide instead.
+
+     Note the selection is checked on mousedown, not on click — the browser
+     clears the selection before the click event fires. -->
+<script>
+(function () {
+  var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+               ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+               ' .speaker-controls, .pdf-page';
+  var DRAG_PX = 6;
+  var downX = 0, downY = 0, hadSelection = false;
+
+  document.addEventListener('mousedown', function (e) {
+    downX = e.clientX;
+    downY = e.clientY;
+    var s = window.getSelection();
+    hadSelection = !!(s && String(s).length > 0);
+  }, true);
+
+  function ready(fn) {
+    if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+    setTimeout(function () { ready(fn); }, 120);
+  }
+
+  ready(function () {
+    document.addEventListener('click', function (e) {
+      if (e.button !== 0) return;                        // left button only
+      if (e.detail > 1) return;                          // ignore double-clicks
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+      if (e.target.closest && e.target.closest(IGNORE)) return;
+      if (Reveal.isOverview() || Reveal.isPaused()) return;
+      if (Math.abs(e.clientX - downX) > DRAG_PX ||
+          Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+      if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+      Reveal.next();
+    }, false);
+  });
+})();
+</script>

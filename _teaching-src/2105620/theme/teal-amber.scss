@@ -144,6 +144,14 @@ section.dark {
 .lede  { font-size: 0.80em; color: $graphite; line-height: 1.42; }
 .note  { font-size: 0.62em; color: $slate; font-style: italic; margin-top: 0.7em; }
 .punch { font-size: 0.66em; font-weight: 700; color: $rust; margin-top: 0.45em; }
+/* citation / provenance line, usually the last thing in .foot */
+.source {
+  font-size: 0.44em;
+  font-style: italic;
+  color: $slate;
+  margin-top: 0.7em;
+  line-height: 1.4;
+}
 .flag  { font-size: 0.66em; font-weight: 700; color: $amber; margin-top: 0.45em; }
 .small { font-size: 0.86em; }
 .center, .center p, .center h2 { text-align: center; }
@@ -371,3 +379,82 @@ section.dark blockquote { color: $white; }
 .reveal .dots ul,
 .reveal .agenda ul { display: block; width: 100%; margin-left: 0; }
 .reveal .card ul, .reveal .card ol { display: block; width: 100%; }
+
+/* ---------- Week 2 additions: traffic-light tiers, badges, quotes ---------- */
+$green: #2F7D4F;
+$red:   #B3352C;
+.c-green { --accent: #{$green}; }
+.c-red   { --accent: #{$red}; }
+.green { color: $green; } .red { color: $red; }
+
+/* a numbered disc used outside an ordered list */
+.numdot {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--accent); color: $white;
+  font-family: $heading-font; font-weight: 700; font-size: 0.62em;
+}
+
+/* stacked cards whose first cell is a numdot rather than a small dot */
+.cards.stack.numbered-stack .card { grid-template-columns: 40px 27% 1fr; gap: 0 22px; padding: 18px 24px; }
+
+/* three-column policy rows: tier chip · what it covers · what you must do */
+.cards.stack.policy .card { grid-template-columns: 120px 1fr 250px; gap: 0 24px; align-items: start; padding: 20px 24px; }
+.cards.stack.policy .card .chip { font-size: 0.46em; width: 100%; text-align: center; }
+.cards.stack.policy .card p { font-size: 0.56em; }
+.cards.stack.policy .card .act { font-weight: 700; color: $ink; }
+
+/* tier rows on a dark slide (Nature Portfolio's own green/amber/red) */
+.tiers ul { list-style: none; margin: 0; padding: 0; }
+.tiers li {
+  display: flex; align-items: baseline; gap: 22px;
+  margin-bottom: 12px; font-size: 0.58em; line-height: 1.35; color: $mist;
+}
+.tiers li .chip { width: 120px; text-align: center; font-size: 0.80em; flex: none; }
+
+/* row of publisher names */
+.badges { display: flex; flex-wrap: wrap; gap: 12px; margin: 0.6em 0 0.3em 0; }
+.badge {
+  background: $paper; border: 1px solid $mist; border-radius: 7px;
+  padding: 0.30em 0.95em; font-size: 0.50em; font-weight: 700; color: $graphite;
+}
+section.dark .badge { background: rgba(255,255,255,0.07); border-color: $slate; color: $mist; }
+
+/* a pulled quotation */
+.pull {
+  font-family: $heading-font; font-size: 0.96em; font-style: italic;
+  color: $teal; line-height: 1.34; margin: 0 0 0.35em 0;
+}
+.attrib { font-size: 0.50em; color: $slate; margin: 0 0 0.9em 0; }
+
+/* the disclosure-template panel */
+.quotecard {
+  background: $paper; border-radius: 10px; padding: 26px 30px;
+  font-family: $heading-font; font-size: 0.78em; font-style: italic;
+  color: $ink; line-height: 1.42;
+}
+
+/* the ten uses, set in two columns */
+.reveal .tenlist ol { column-count: 2; column-gap: 46px; display: block; width: 100%; margin-left: 1.1em; }
+.reveal .tenlist li {
+  font-size: 0.56em; line-height: 1.3; margin-bottom: 0.5em;
+  break-inside: avoid; color: $graphite;
+}
+
+/* ---------- absolute sizes for nested chrome ----------
+   These elements sit inside .card / li, whose own em sizing would multiply
+   with theirs and shrink them to nothing. Reveal scales the whole deck with a
+   transform, so px here stays proportional to the slide. */
+.reveal .card .eyebrow      { font-size: 14px; letter-spacing: 0.13em; }
+.reveal .card .big          { font-size: 42px; }
+.reveal .card .chip         { font-size: 16px; padding: 0.22em 0.85em; }
+.reveal .spec .eyebrow      { font-size: 14px; }
+.reveal .agenda li .chip    { font-size: 15px; }
+.reveal .tiers li .chip     { font-size: 15px; }
+.reveal .numdot             { width: 42px; height: 42px; font-size: 20px; }
+.reveal .cards.stack.policy .card .chip { font-size: 15px; padding: 0.3em 0; }
+.reveal .cards.stack.numbered-stack .card { grid-template-columns: 42px 27% 1fr; }
+.reveal .badges .badge      { font-size: 15px; }
+.reveal .step .n            { font-size: 17px; }
+.reveal .step .h            { font-size: 21px; }
+.reveal .step .d            { font-size: 15px; }

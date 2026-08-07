@@ -30,7 +30,7 @@ them.
 Verify before committing:
 
 ```bash
-grep -c '<div class="notes"' ../../teaching/2105620/w01.html    # must print 0
+grep -c 'class="notes"' ../../teaching/2105620/w01.html    # must print 0
 ```
 
 ### One-file copy for teaching
@@ -52,11 +52,17 @@ injects the compiled CSS — see the comments in the file.)
 
 | Key | Does |
 |-----|------|
+| *click* | Next slide — anywhere on the slide, as in Keynote |
+| `←` | Back. Or the arrow at the left edge of the screen |
 | `S` | Speaker view — spoken script, next slide, elapsed timer |
 | `F` | Full screen |
 | `E` | Print layout, then Print → Save as PDF |
 | `O` | Slide overview |
 | `?` | All shortcuts |
+
+Click-to-advance is added by `theme/click-advance.html`, wired in through
+`_quarto.yml` so every deck gets it. It stays out of the way of links, controls,
+double-clicks and text selection — see the comments in that file.
 
 The published decks have no speaker notes. Present from a local
 `quarto preview`, or from a `bundle-deck.py` build without `--public`.
