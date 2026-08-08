@@ -16,3 +16,20 @@ defaults:
 plugins:
   - jekyll-feed      # /feed.xml
   - jekyll-sitemap   # /sitemap.xml, so search engines can find every page
+
+# Internal working documents and tooling. They live in the repository, they are not
+# part of the published site. Also keeps them out of Liquid: GitHub Pages runs
+# jekyll-optional-front-matter, so any .md file left in scope is rendered, and a
+# stray Liquid tag inside a guide can break the whole build.
+exclude:
+  - MAINTENANCE.md
+  - NEW_PAPER_GUIDE.md
+  - PEOPLE_GUIDE.md
+  - SKH_Writing_Program_Editorial_Map.md
+  - tools/
+  - "Open SKH Dashboard.command"
+  - site-snapshot2.tgz
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/

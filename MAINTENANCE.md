@@ -30,13 +30,19 @@ Two halves, deliberately:
 - **The blog** is Jekyll, built by GitHub automatically on every push. Adding a post is
   adding one markdown file. Nothing to install, nothing to run.
 
-GitHub Pages builds with **Jekyll 3.10**, which is older than the Jekyll documented on
-jekyllrb.com. One trap has already cost a broken build: `where_exp` accepts only a
-**single** expression there — `{% assign x = list | where_exp: "i", "i.a or i.b" %}`
-parses on Jekyll 4 but fails on Pages with *"Liquid syntax error: Expected end_of_string
-but found id"*, and the whole site stops deploying. Filter inside the loop instead
-(`{% for i in list %}{% if i.a or i.b %}` …), and count with
-`{% assign n = n | plus: 1 %}` if a section needs to know whether it is empty.
+GitHub Pages builds with **Jekyll 3.10** plus a fixed plugin set, which differs from the
+Jekyll documented on jekyllrb.com. Two traps have already broken a deploy:
+
+- **`where_exp` accepts only ONE expression.** Writing `where_exp: "w", "w.a or w.b"` parses
+  on Jekyll 4 but fails on Pages with *"Liquid syntax error: Expected end_of_string but found
+  id"*, and the whole site stops deploying — no page updates at all until it is fixed. Filter
+  inside the loop instead: a plain `if` tag does accept `or`. If a section needs to know
+  whether it is empty, count matches with the `plus: 1` filter first.
+- **Every `.md` file in the repo is rendered, front matter or not** — Pages enables the
+  `jekyll-optional-front-matter` plugin. That includes guide files like this one. So never
+  write a complete Liquid tag inside a guide: a brace-percent opener with its matching closer
+  will be *executed*, not shown, and a bad example takes the build down with it. Describe the
+  syntax in words, as above.
 
 They share `assets/style.css`, so the blog can never drift out of visual sync with the site.
 
