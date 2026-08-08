@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-08-08">
+  <title>2105603 – Evolution of Equations of State</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-becc5085daf2b183e6e6234bae6a6c07.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="site_libs/katex/katex.min.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Evolution of Equations of State</h1>
+  <p class="subtitle">Module EOS · 2105603 Advanced Chemical Engineering Thermodynamics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">8 August 2026</p>
+</section>
+<section id="section" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="statement">
+<p>An equation of state is not a fit.</p>
+</div>
+<div class="statement-hi">
+<p>It is a statement about which physics<br>a fluid is allowed to have.</p>
+</div>
+</div>
+</section>
+<section id="the-argument-of-this-course" class="slide level2">
+<h2>The argument of this course</h2>
+<div class="kicker c-amber">
+<p>Introduction</p>
+</div>
+<div class="lede">
+<p>State the organising thesis and the six questions applied to every model.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Six questions asked of every model</span></p>
+<ul>
+<li>What problem existed?</li>
+<li>Why did the previous equation of state fail?</li>
+<li>What new physics was introduced?</li>
+<li>How was the mathematics modified?</li>
+<li>What limitations remain?</li>
+<li>Why was another equation of state developed?</li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:54%;">
+<p><img data-src="figures/f33_hierarchy.png" class="fig-col"></p>
+<div class="source">
+<p>The hierarchy of physics contained in an equation of state.</p>
+</div>
+</div></div>
+</section>
+<section id="one-hundred-and-fifty-years-in-one-line" class="slide level2">
+<h2>One hundred and fifty years in one line</h2>
+<div class="kicker c-amber">
+<p>Introduction</p>
+</div>
+<div class="lede">
+<p>Place every model of the course on a common historical and conceptual axis.</p>
+</div>
+<p><img data-src="figures/f02_timeline.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Classical models (navy) add mean-field physics. Molecular models (amber) add structure: chains, hydrogen bonds, charges. Data-driven models (teal) learn the residual free energy directly.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>The models in industrial use today span a century of physics. A simulator flowsheet routinely mixes a 1976 cubic for the hydrocarbons with a 2001 molecular model for the solvent.</p>
+</div>
+</div>
+</section>
+<section id="foundations" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Foundations</h2>
+<div class="kicker c-amber">
+<p>PART I</p>
+</div>
+<div class="lede">
+<p>Chapter 1 Why do we need an equation of state?<br>Chapter 2 The ideal gas law and the physics it omits</p>
+</div>
+</section>
+<section id="what-an-equation-of-state-is-for" class="slide level2">
+<h2>What an equation of state is for</h2>
+<div class="kicker c-amber">
+<p>Chapter 1 · Why do we need an equation of state?</p>
+</div>
+<div class="lede">
+<p>Identify the EOS as the closure relation that converts measurable P, T and composition into every other thermodynamic property.</p>
+</div>
+<p><img data-src="figures/f01_eos_role.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The EOS supplies the missing relation among P, V, T and composition. Everything else follows from classical thermodynamics without further assumption.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>In a process simulator the EOS is evaluated more often than any other model. Its error propagates into compressor duty, vessel volume, relief sizing and custody metering.</p>
+</div>
+</div>
+</section>
+<section id="from-pvt-data-to-phase-equilibrium" class="slide level2">
+<h2>From PVT data to phase equilibrium</h2>
+<div class="kicker c-amber">
+<p>Chapter 1 · Why do we need an equation of state?</p>
+</div>
+<div class="lede">
+<p>Follow the chain from the compressibility factor to the equilibrium ratio, and see that every link needs Z over a pressure range.</p>
+</div>
+<div class="cards quad">
+<div class="card">
+<p><span class="card-h">1. Define the deviation</span></p>
+<p><span class="math display">
+Z \equiv \frac{PV}{RT}
+</span></p>
+</div>
+<div class="card">
+<p><span class="card-h">2. Fugacity coefficient</span></p>
+<p><span class="math display">
+\ln\varphi = \int_0^P (Z-1)\,\frac{\mathrm{d}P}{P}
+</span></p>
+</div>
+<div class="card">
+<p><span class="card-h">3. Residual enthalpy</span></p>
+<div class="eq-long">
+<p><span class="math display">
+H-H^{\mathrm{ig}} = -RT^{2}\int_0^P\left(\frac{\partial Z}{\partial T}\right)_{\!P}\frac{\mathrm{d}P}{P}
+</span></p>
+</div>
+</div>
+<div class="card">
+<p><span class="card-h">4. Equilibrium ratio</span></p>
+<div class="eq-long">
+<p><span class="math display">
+\hat f_i^{\,V} = \hat f_i^{\,L} \quad\Longrightarrow\quad K_i \equiv \frac{y_i}{x_i} = \frac{\hat\varphi_i^{\,L}}{\hat\varphi_i^{\,V}}
+</span></p>
+</div>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Why this matters</span></p>
+<p>Each expression is exact given Z(T, P). None of them is an approximation. The entire modelling uncertainty of a process simulation therefore sits in the single function Z, which is what an equation of state supplies. Improving an EOS is not a cosmetic refinement; it is the only way to reduce that uncertainty.</p>
+</div>
+</div>
+</section>
+<section id="where-the-error-reaches-the-plant" class="slide level2">
+<h2>Where the error reaches the plant</h2>
+<div class="kicker c-amber">
+<p>Chapter 1 · Why do we need an equation of state?</p>
+</div>
+<div class="lede">
+<p>Quantify what a modelling error in Z costs in inventory, duty and equipment size.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="big c-rust">16.6</span></p>
+<p><span class="eyebrow">per cent</span></p>
+<p><span class="card-h">Inventory error</span></p>
+<p>Methane at 300 K and 100 bar. Using PV = RT instead of Peng-Robinson underestimates the mass held in a 50 cubic metre vessel by 16.6 per cent. This is a safety-case quantity.</p>
+</div>
+<div class="card">
+<p><span class="big c-amber">19.9</span></p>
+<p><span class="eyebrow">per cent</span></p>
+<p><span class="card-h">Volume error</span></p>
+<p>The same state point sized on the ideal gas law gives a molar volume of 249.4 instead of 208.0 cubic centimetres per mole, an oversizing of 19.9 per cent.</p>
+</div>
+<div class="card">
+<p><span class="big c-teal">2.8</span></p>
+<p><span class="eyebrow">per cent</span></p>
+<p><span class="card-h">Compressor duty error</span></p>
+<p>Isentropic compression of 100 kilomoles per hour of carbon dioxide from 10 to 80 bar: 202.1 kilowatts with residual properties against 208.0 kilowatts on ideal-gas heat capacities alone.</p>
+</div>
+</div>
+</section>
+<section id="the-ideal-gas-law-and-its-three-assumptions" class="slide level2">
+<h2>The ideal gas law and its three assumptions</h2>
+<div class="kicker c-amber">
+<p>Chapter 2 · The ideal gas law</p>
+</div>
+<div class="lede">
+<p>State the molecular assumptions behind PV = RT and identify exactly which one each later model repairs.</p>
+</div>
+<p><span class="math display">
+PV = RT \qquad\Longleftrightarrow\qquad Z = 1
+</span></p>
+<div class="eq-long">
+<p><span class="math display">
+P = \frac{1}{3}\,\frac{N}{V}\,m\langle v^{2}\rangle \quad\Longrightarrow\quad PV = Nk_{\mathrm{B}}T
+</span></p>
+</div>
+<div class="source">
+<p>Kinetic theory gives the same result from the momentum flux at the wall, with the same three assumptions built in.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h">1. Point particles</span></p>
+<p>Molecules occupy no volume, so the entire container volume is available to every molecule. Repaired by the co-volume b in 1873.</p>
+</div>
+<div class="card">
+<p><span class="card-h">2. No interaction energy</span></p>
+<p>The average potential energy between molecules is zero. Repaired by the mean-field term a/V squared in 1873, then refined for fifty years.</p>
+</div>
+<div class="card">
+<p><span class="card-h">3. Structureless molecules</span></p>
+<p>No shape, no orientation, no directional bonding, no charge. Not repaired until SAFT in 1990 and electrolyte models thereafter.</p>
+</div>
+</div>
+</section>
+<section id="where-the-ideal-gas-law-is-good-enough" class="slide level2">
+<h2>Where the ideal gas law is good enough</h2>
+<div class="kicker c-amber">
+<p>Chapter 2 · The ideal gas law</p>
+</div>
+<div class="lede">
+<p>Delimit the region of the reduced state plane in which PV = RT is accurate to one and to five per cent.</p>
+</div>
+<p><img data-src="figures/f04_ideal_fail_map.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Ideality is a low-density statement. The gas behaves ideally when the mean separation is large compared with the molecular diameter and the thermal energy is large compared with the well depth.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>For light gases above about twice the critical temperature and below a few bar, PV = RT is adequate for line sizing and vent calculations. Outside that window it is not defensible.</p>
+</div>
+</div>
+</section>
+<section id="two-distinct-failure-modes" class="slide level2">
+<h2>Two distinct failure modes</h2>
+<div class="kicker c-amber">
+<p>Chapter 2 · The ideal gas law</p>
+</div>
+<div class="lede">
+<p>Distinguish failure by density from failure by proximity to saturation, and read both from the Z curve.</p>
+</div>
+<p><img data-src="figures/f03_ideal_vs_real_Z.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The initial fall below unity is attraction. The eventual rise above unity is the finite size of the molecules. Both are absent from PV = RT by construction.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Near saturation the error is not a smooth few per cent: it is a discontinuity, because a real fluid condenses and the ideal gas law does not know that phases exist.</p>
+</div>
+</div>
+</section>
+<section id="what-physics-is-missing" class="slide level2">
+<h2>What physics is missing?</h2>
+<div class="kicker c-amber">
+<p>Chapter 2 · The ideal gas law</p>
+</div>
+<div class="lede">
+<p>Name the two omissions that the next model must repair, and predict the sign of each correction.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">Omission 1 Molecules occupy volume</span></p>
+<p>The volume available for molecular motion is smaller than the container volume. Replacing V by V minus b raises the predicted pressure at fixed T and V.</p>
+<p>Expected sign: Z increases.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Omission 2 Molecules attract one another</span></p>
+<p>A molecule approaching the wall is pulled back by its neighbours, so it delivers less momentum. The correction scales as the square of density.</p>
+<p>Expected sign: Z decreases.</p>
+</div>
+<div class="card">
+<p><span class="card-h">The consequence</span></p>
+<p>Two corrections of opposite sign, with different density dependence, produce a compressibility factor that first falls, passes through a minimum, and then rises. No single-term correction can reproduce that shape. This is the structural reason every subsequent equation of state contains a repulsive term and an attractive term.</p>
+</div>
+</div>
+</section>
+<section id="the-first-real-fluid" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>The first real fluid</h2>
+<div class="kicker c-amber">
+<p>PART II</p>
+</div>
+<div class="lede">
+<p>Chapter 3 The van der Waals equation of state<br>Chapter 4 The compressibility factor<br>Chapter 5 The virial equation and its statistical basis</p>
+</div>
+</section>
+<section id="van-der-waals-1873-the-molecular-picture" class="slide level2">
+<h2>van der Waals 1873: the molecular picture</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Derive the two corrections from a molecular argument rather than accept them as empirical terms.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f05_vdw_molecular.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Excluded volume</span></p>
+<p>Two hard spheres of diameter sigma cannot approach closer than sigma. The excluded volume per molecule is b = 2 pi N sigma cubed over 3, four times the hard-sphere volume.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Mean-field attraction</span></p>
+<p>Each molecule feels an average attractive field proportional to the local density. The energy density therefore scales as density squared, giving a pressure reduction of a over V squared.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="assembling-the-equation" class="slide level2">
+<h2>Assembling the equation</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Assemble the two corrections into a single cubic in volume and interpret each term.</p>
+</div>
+<p><span class="math display">
+b = \frac{2\pi}{3}N_{\mathrm{A}}\sigma^{3}
+</span></p>
+<p><span class="math display">
+P = \frac{RT}{V-b} \;-\; \frac{a}{V^{2}}
+</span></p>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">Repulsive term: RT / (V - b)</span></p>
+<p>Diverges as V approaches b, so the fluid cannot be compressed below the co-volume. This single change already produces Z greater than one at high density.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Attractive term: minus a / V squared</span></p>
+<p>Reduces the pressure in proportion to density squared, because the number of interacting pairs per unit volume scales that way. Produces Z less than one at moderate density.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">The structural point</span></p>
+<p>Clearing denominators gives a cubic polynomial in V. Three real roots below the critical temperature correspond to a saturated liquid, a mechanically unstable state, and a saturated vapour. One equation now contains both phases.</p>
+</div>
+</div>
+</section>
+<section id="the-critical-point-fixes-the-parameters" class="slide level2">
+<h2>The critical point fixes the parameters</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Use the critical isotherm inflection conditions to express a and b in terms of measurable critical constants.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+\left(\frac{\partial P}{\partial V}\right)_{\!T_{\mathrm{c}}} = \left(\frac{\partial^{2} P}{\partial V^{2}}\right)_{\!T_{\mathrm{c}}} = 0
+</span></p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+a = \frac{27R^{2}T_{\mathrm{c}}^{2}}{64P_{\mathrm{c}}}, \qquad b = \frac{RT_{\mathrm{c}}}{8P_{\mathrm{c}}}, \qquad Z_{\mathrm{c}} = 3/8 = 0.375
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">A prediction, not a fit</span></p>
+<p>The critical compressibility is now a pure number: 3/8 for every substance, with no adjustable content. That is a genuine, falsifiable prediction of the theory. It is also, as the next slides show, the first place the theory is measurably wrong, and that failure drives the following one hundred years of development.</p>
+</div>
+</div>
+</section>
+<section id="isotherms-the-dome-and-the-critical-point" class="slide level2">
+<h2>Isotherms, the dome and the critical point</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Read phase behaviour directly from the shape of the predicted isotherms.</p>
+</div>
+<p><img data-src="figures/f06_vdw_isotherms.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>One analytic expression produces a liquid branch, a vapour branch and a critical point. Before 1873 no theory did this.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Cubic equations remain the only models fast and robust enough to be called millions of times inside a distillation column solver.</p>
+</div>
+</div>
+</section>
+<section id="the-maxwell-equal-area-construction" class="slide level2">
+<h2>The Maxwell equal-area construction</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Replace the mechanically unstable loop by the equilibrium saturation pressure using equality of Gibbs energy.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f07_maxwell.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<p><span class="math display">
+\int_{V^{L}}^{V^{V}}\left[P^{\mathrm{sat}} - P(V)\right]\mathrm{d}V = 0
+</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">What the rule enforces</span></p>
+<p>Equality of molar Gibbs energy between the saturated liquid and the saturated vapour, which is the phase-equilibrium criterion applied along one isotherm.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The unstable branch</span></p>
+<p>Where dP/dV is positive the fluid has negative compressibility and cannot exist. It is excluded by stability, not by the equation.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-verdict-on-van-der-waals" class="slide level2">
+<h2>The verdict on van der Waals</h2>
+<div class="kicker c-amber">
+<p>Chapter 3 · The van der Waals equation of state</p>
+</div>
+<div class="lede">
+<p>Identify the specific quantitative failure that motivates every later cubic equation.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f08_vdw_reduced_Zc.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Motivates Chapter 8</span></p>
+<p>Redlich and Kwong changed the volume dependence of the attraction and made it decay with temperature.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-compressibility-factor-as-a-diagnostic" class="slide level2">
+<h2>The compressibility factor as a diagnostic</h2>
+<div class="kicker c-amber">
+<p>Chapter 4 · The compressibility factor</p>
+</div>
+<div class="lede">
+<p>Interpret the sign of Z minus one, the location of the minimum, and the crossover, in molecular terms.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f09_Z_meaning.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<p><span class="math display">
+Z&lt;1: \text{ attraction dominates} \qquad Z&gt;1: \text{ repulsion dominates}
+</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Z &lt; 1</span></p>
+<p>Attraction dominates: the fluid occupies less volume than an ideal gas at the same T and P.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Z &gt; 1</span></p>
+<p>Repulsion dominates: the finite molecular core resists compression and the fluid is stiffer than ideal.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Z = 1</span></p>
+<p>Coincidence, not ideality. The two effects merely cancel.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-boyle-temperature" class="slide level2">
+<h2>The Boyle temperature</h2>
+<div class="kicker c-amber">
+<p>Chapter 4 · The compressibility factor</p>
+</div>
+<div class="lede">
+<p>Connect the initial slope of Z against P to the second virial coefficient and define the Boyle temperature.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f10_boyle.png" class="fig-col"></p>
+<div class="source">
+<p>Lennard-Jones fluid: the second virial coefficient computed by numerical integration of the Mayer function gives a reduced Boyle temperature of 3.42.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<p><span class="math display">
+\lim_{P\to 0}\left(\frac{\partial Z}{\partial P}\right)_{\!T} = \frac{B_{2}(T)}{RT}
+</span></p>
+<p><span class="math display">
+B_{2}(T_{\mathrm{B}}) = 0
+</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Reading the slope</span></p>
+<p>Below the Boyle temperature the initial slope is negative: attraction wins first. Above it the slope is positive: the repulsive core is felt immediately.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-generalized-compressibility-chart" class="slide level2">
+<h2>The generalized compressibility chart</h2>
+<div class="kicker c-amber">
+<p>Chapter 4 · The compressibility factor</p>
+</div>
+<div class="lede">
+<p>Read Z from reduced coordinates and recognise the chart as the engineering form of corresponding states.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="figures/f11_generalized_chart.png" class="fig-pair"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/f34_Z_landscape.png" class="fig-pair"></p>
+</div></div>
+<div class="source">
+<p>Left: the classical chart form. Right: the same information as a contour map of Z over the reduced state plane, with the saturation line and the Z = 1 contour marked.</p>
+</div>
+</section>
+<section id="the-virial-equation-an-exact-expansion" class="slide level2">
+<h2>The virial equation: an exact expansion</h2>
+<div class="kicker c-amber">
+<p>Chapter 5 · The virial equation of state</p>
+</div>
+<div class="lede">
+<p>Write the density and pressure expansions, relate their coefficients, and identify the physical content of each term.</p>
+</div>
+<p><span class="math display">
+Z = 1 + B_{2}\rho + B_{3}\rho^{2} + \cdots
+</span></p>
+<p><span class="math display">
+Z = 1 + B'P + C'P^{2} + \cdots, \qquad B' = \frac{B_{2}}{RT}
+</span></p>
+<div class="cards quad">
+<div class="card">
+<p><span class="card-h">Second coefficient</span></p>
+<p>Two-body interactions only. Computable from the pair potential without approximation, and measurable from low-pressure PVT data.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Third coefficient</span></p>
+<p>Three-body interactions, including genuine non-additive contributions. Far harder to measure and rarely available for industrial compounds.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Higher coefficients</span></p>
+<p>Essentially unavailable. The series is therefore always truncated in practice, which restricts the equation to gases at moderate density.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">The pedagogical point</span></p>
+<p>The virial equation is the only equation in this course that is exact in principle. It is useless for liquids for exactly that reason: an exact expansion in density cannot be truncated where the density is high.</p>
+</div>
+</div>
+</section>
+<section id="from-the-pair-potential-to-the-second-virial-coefficient" class="slide level2">
+<h2>From the pair potential to the second virial coefficient</h2>
+<div class="kicker c-amber">
+<p>Chapter 5 · The virial equation of state</p>
+</div>
+<div class="lede">
+<p>Connect a molecular-level potential to a macroscopic, measurable coefficient through the Mayer function.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+B_{2}(T) = -2\pi N_{\mathrm{A}}\int_0^{\infty}\left[\mathrm{e}^{-u(r)/k_{\mathrm{B}}T}-1\right]r^{2}\,\mathrm{d}r
+</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="figures/f13_pair_potential.png" class="fig-pair-sm"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/f12_virial_B.png" class="fig-pair-sm"></p>
+</div></div>
+<div class="source">
+<p>Left: the Lennard-Jones potential and its Mayer function at two temperatures. Right: the resulting second virial coefficient, negative at low temperature, crossing zero at the Boyle point.</p>
+</div>
+</section>
+<section id="why-truncation-limits-the-virial-equation" class="slide level2">
+<h2>Why truncation limits the virial equation</h2>
+<div class="kicker c-amber">
+<p>Chapter 5 · The virial equation of state</p>
+</div>
+<div class="lede">
+<p>Quantify the density at which two-term and three-term truncations fail, and draw the practical boundary.</p>
+</div>
+<p><img data-src="figures/f14_virial_range.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Truncation is a statement about how many bodies interact simultaneously. At liquid density every molecule interacts with a dozen neighbours at once, so a two-body or three-body expansion cannot converge.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>For compressor and pipeline calculations in the gas phase the two-term virial equation is accurate and cheap. For anything involving a liquid it is not an option, which is why the cubic family survived.</p>
+</div>
+</div>
+</section>
+<section id="generalization" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Generalization</h2>
+<div class="kicker c-amber">
+<p>PART III</p>
+</div>
+<div class="lede">
+<p>Chapter 6 The principle of corresponding states<br>Chapter 7 The Pitzer acentric factor</p>
+</div>
+</section>
+<section id="corresponding-states-falls-out-of-van-der-waals" class="slide level2">
+<h2>Corresponding states falls out of van der Waals</h2>
+<div class="kicker c-amber">
+<p>Chapter 6 · The principle of corresponding states</p>
+</div>
+<div class="lede">
+<p>Derive the reduced form of the van der Waals equation and recognise that it contains no substance-specific constant.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+P_{\mathrm{r}} = \frac{8T_{\mathrm{r}}}{3V_{\mathrm{r}}-1} - \frac{3}{V_{\mathrm{r}}^{2}}
+</span></p>
+</div>
+<p><span class="math display">
+Z = Z(T_{\mathrm{r}},P_{\mathrm{r}}) \quad \text{for every fluid}
+</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Where it works</span></p>
+<p>Argon, krypton, xenon, methane and nitrogen: nearly spherical, non-polar molecules whose pair potentials are conformal, differing only by an energy scale and a length scale.</p>
+<p>These are the simple fluids, and for them the collapse is close to exact.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Where it must fail</span></p>
+<p>Elongated molecules such as n-octane, polar molecules such as ammonia, quadrupolar molecules such as carbon dioxide, and hydrogen-bonding molecules such as water.</p>
+<p>Their potentials are not conformal, so no rescaling can superimpose them.</p>
+</div>
+</div>
+</section>
+<section id="universality-and-its-limits" class="slide level2">
+<h2>Universality and its limits</h2>
+<div class="kicker c-amber">
+<p>Chapter 6 · The principle of corresponding states</p>
+</div>
+<div class="lede">
+<p>Observe the collapse for simple fluids and the systematic departure for polar and associating fluids.</p>
+</div>
+<p><img data-src="figures/f15_corresponding_states.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Two parameters force a single universal critical compressibility. Real fluids have critical compressibilities from 0.23 to 0.29, so a two-parameter theory cannot be exact for all of them.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Two-parameter charts are adequate for light hydrocarbons and permanent gases. For refrigerants, water and amines they are not, and a third parameter is mandatory.</p>
+</div>
+</div>
+</section>
+<section id="why-the-critical-constants-are-not-enough" class="slide level2">
+<h2>Why the critical constants are not enough</h2>
+<div class="kicker c-amber">
+<p>Chapter 7 · The Pitzer acentric factor</p>
+</div>
+<div class="lede">
+<p>Show that reduced vapour-pressure curves have different slopes, and that the slope carries the missing information.</p>
+</div>
+<p><img data-src="figures/f16_psat_reduced.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>In reduced coordinates every vapour-pressure line is pinned at the critical point. What distinguishes fluids is how steeply the line falls, which reflects the strength and directionality of the intermolecular forces.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>This is a practical choice as well as a physical one: vapour pressure is the most widely measured property in chemical engineering, so a parameter defined from it is available for essentially every compound.</p>
+</div>
+</div>
+</section>
+<section id="pitzers-acentric-factor" class="slide level2">
+<h2>Pitzer’s acentric factor</h2>
+<div class="kicker c-amber">
+<p>Chapter 7 · The Pitzer acentric factor</p>
+</div>
+<div class="lede">
+<p>Define the acentric factor from a single point on the reduced vapour-pressure curve and interpret it physically.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f17_acentric_definition.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="eq-long">
+<p><span class="math display">
+\omega \;\equiv\; -1 - \log_{10}\left(P_{\mathrm{r}}^{\mathrm{sat}}\right)_{T_{\mathrm{r}}=0.7}
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Why reduced temperature 0.7</span></p>
+<p>Close to the normal boiling point of many fluids, comfortably subcritical, easily measured, and far enough from the critical point to avoid critical anomalies.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The acentric factor measures how far the intermolecular force field departs from spherical symmetry. It increases with chain length, with polarity and with hydrogen bonding.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-acentric-factor-across-molecular-families" class="slide level2">
+<h2>The acentric factor across molecular families</h2>
+<div class="kicker c-amber">
+<p>Chapter 7 · The Pitzer acentric factor</p>
+</div>
+<div class="lede">
+<p>Relate the numerical value of the acentric factor to molecular architecture, and state the three-parameter correlation.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f18_omega_vs_shape.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="eq-long">
+<p><span class="math display">
+Z = Z^{(0)}(T_{\mathrm{r}},P_{\mathrm{r}}) \;+\; \omega\,Z^{(1)}(T_{\mathrm{r}},P_{\mathrm{r}})
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Three-parameter corresponding states</span></p>
+<p>A simple-fluid reference surface plus a linear correction weighted by the acentric factor. The Lee-Kesler tables are the standard numerical implementation.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Where it still fails</span></p>
+<p>Strongly associating fluids, whose reduced vapour-pressure curves are not straight, so a single slope parameter cannot represent them.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-cubic-era" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>The cubic era</h2>
+<div class="kicker c-amber">
+<p>PART IV</p>
+</div>
+<div class="lede">
+<p>Chapter 8 Redlich-Kwong, 1949<br>Chapter 9 Soave-Redlich-Kwong, 1972<br>Chapter 10 Peng-Robinson, 1976, and the industrial standard</p>
+</div>
+</section>
+<section id="redlich-kwong-1949-two-changes-at-once" class="slide level2">
+<h2>Redlich-Kwong, 1949: two changes at once</h2>
+<div class="kicker c-amber">
+<p>Chapter 8 · Redlich-Kwong</p>
+</div>
+<div class="lede">
+<p>Identify the two independent modifications of the van der Waals attraction term and their separate effects.</p>
+</div>
+<p><span class="math display">
+P = \frac{RT}{V-b} \;-\; \frac{a}{\sqrt{T}\,V(V+b)}
+</span></p>
+<div class="eq-long">
+<p><span class="math display">
+a = \frac{0.42748\,R^{2}T_{\mathrm{c}}^{5/2}}{P_{\mathrm{c}}}, \qquad b = \frac{0.08664\,RT_{\mathrm{c}}}{P_{\mathrm{c}}}, \qquad Z_{\mathrm{c}} = 1/3 = 0.3333
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Change 1 Temperature dependence</span></p>
+<p>The attraction is divided by the square root of temperature. Physically, at higher kinetic energy molecules spend less time in the attractive well, so the mean-field average of the attractive energy falls.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Change 2 Volume dependence</span></p>
+<p>The denominator becomes V(V + b) rather than V squared. This softens the attraction at high density and lowers the predicted critical compressibility from 0.375 to 0.333.</p>
+</div>
+</div>
+</section>
+<section id="the-temperature-dependence-of-the-attraction" class="slide level2">
+<h2>The temperature dependence of the attraction</h2>
+<div class="kicker c-amber">
+<p>Chapter 8 · Redlich-Kwong</p>
+</div>
+<div class="lede">
+<p>Compare the alpha functions of the four classical cubics and see how each encodes a different physical assumption.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f20_alpha_functions.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<p><span class="math display">
+a(T) = a_{\mathrm{c}}\,\alpha(T_{\mathrm{r}},\omega), \qquad \alpha(1,\omega) = 1
+</span></p>
+</div></div>
+</section>
+<section id="what-redlich-kwong-bought-and-what-it-did-not" class="slide level2">
+<h2>What Redlich-Kwong bought, and what it did not</h2>
+<div class="kicker c-amber">
+<p>Chapter 8 · Redlich-Kwong</p>
+</div>
+<div class="lede">
+<p>Separate the genuine improvement in the vapour phase from the persistent failures in the liquid phase.</p>
+</div>
+<p><img data-src="figures/f19_rk_vs_vdw.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The vapour-phase compressibility improves substantially: errors of several per cent under van der Waals fall to about one per cent for simple fluids.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Liquid densities remain poor and vapour pressures remain wrong for anything but simple fluids, because no molecular shape or polarity parameter enters the equation.</p>
+</div>
+</div>
+</section>
+<section id="soave-1972-fit-the-temperature-dependence-to-reality" class="slide level2">
+<h2>Soave 1972: fit the temperature dependence to reality</h2>
+<div class="kicker c-amber">
+<p>Chapter 9 · Soave-Redlich-Kwong</p>
+</div>
+<div class="lede">
+<p>Replace the assumed power law by an alpha function regressed against experimental vapour pressures.</p>
+</div>
+<p><span class="math display">
+P = \frac{RT}{V-b} \;-\; \frac{a_{\mathrm{c}}\,\alpha(T_{\mathrm{r}},\omega)}{V(V+b)}
+</span></p>
+<div class="eq-long">
+<p><span class="math display">
+\alpha = \left[1+m\left(1-\sqrt{T_{\mathrm{r}}}\right)\right]^{2}, \qquad m = 0.480+1.574\,\omega-0.176\,\omega^{2}
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">The new physics</span></p>
+<p>Molecular shape and polarity enter the equation of state for the first time, through the acentric factor, and they enter the attraction term where they physically belong.</p>
+<p>Alpha equals one at the critical temperature by construction, so the critical constants are preserved exactly.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Why this was decisive</span></p>
+<p>Vapour pressures became quantitative for hydrocarbons, and therefore so did equilibrium ratios. This is the point at which process simulation of hydrocarbon separations became reliable enough for design rather than for checking.</p>
+</div>
+</div>
+</section>
+<section id="the-effect-on-predicted-vapour-pressure" class="slide level2">
+<h2>The effect on predicted vapour pressure</h2>
+<div class="kicker c-amber">
+<p>Chapter 9 · Soave-Redlich-Kwong</p>
+</div>
+<div class="lede">
+<p>Quantify the improvement Soave’s alpha function delivers relative to the fixed Redlich-Kwong power law.</p>
+</div>
+<p><img data-src="figures/f21_srk_psat.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The fixed power law of Redlich-Kwong is equivalent to assigning every substance the same acentric factor. Soave’s regression removes that constraint.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Deviations exceeding thirty per cent at low reduced temperature translate directly into equilibrium-ratio errors, and therefore into stage counts and reflux ratios.</p>
+</div>
+</div>
+</section>
+<section id="peng-robinson-1976-repair-the-volume-dependence" class="slide level2">
+<h2>Peng-Robinson 1976: repair the volume dependence</h2>
+<div class="kicker c-amber">
+<p>Chapter 10 · Peng-Robinson</p>
+</div>
+<div class="lede">
+<p>Identify the change in the denominator, its effect on the critical compressibility, and the resulting cubic in Z.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+P = \frac{RT}{V-b} \;-\; \frac{a_{\mathrm{c}}\,\alpha(T_{\mathrm{r}},\omega)}{V(V+b)+b(V-b)}
+</span></p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+a_{\mathrm{c}} = \frac{0.45724\,R^{2}T_{\mathrm{c}}^{2}}{P_{\mathrm{c}}}, \qquad b = \frac{0.07780\,RT_{\mathrm{c}}}{P_{\mathrm{c}}}, \qquad Z_{\mathrm{c}} = 0.3074
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">The new physics</span></p>
+<p>A softer, longer-ranged effective attraction at high density, which is what a real liquid experiences. The critical compressibility falls to 0.3074, much closer to the measured range.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Reduced to a cubic in Z, solved analytically</span></p>
+<p><span class="math display">
+Z^{3} - (1-B)Z^{2} + \left(A-3B^{2}-2B\right)Z - \left(AB-B^{2}-B^{3}\right) = 0
+</span></p>
+<p><span class="math display">
+A \equiv \frac{a P}{R^{2}T^{2}}, \qquad B \equiv \frac{bP}{RT}
+</span></p>
+</div>
+</div>
+</section>
+<section id="liquid-density-the-reason-peng-robinson-won" class="slide level2">
+<h2>Liquid density: the reason Peng-Robinson won</h2>
+<div class="kicker c-amber">
+<p>Chapter 10 · Peng-Robinson</p>
+</div>
+<div class="lede">
+<p>Compare saturated liquid volumes and coexistence envelopes from Soave and Peng-Robinson.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="figures/f22_pr_liquid_density.png" class="fig-pair"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/f23_pvt_envelope_compare.png" class="fig-pair"></p>
+</div></div>
+<div class="source">
+<p>Left: saturated liquid molar volume of propane. Right: the coexistence envelope in density-temperature coordinates. The two models agree closely on the vapour branch and differ systematically on the liquid branch.</p>
+</div>
+</section>
+<section id="van-der-waals-redlich-kwong-soave-and-peng-robinson-compared" class="slide level2">
+<h2>van der Waals, Redlich-Kwong, Soave and Peng-Robinson compared</h2>
+<div class="kicker c-amber">
+<p>Chapter 10 · Peng-Robinson</p>
+</div>
+<div class="lede">
+<p>Assess the four classical cubics on the criteria that actually decide model selection in industry.</p>
+</div>
+<p><img data-src="figures/f24_model_compare.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Each row adds one piece of physics and each addition shows up in exactly one or two columns. No row adds physics that improves every column at once.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>The final column explains the persistence of the family: all four are solvable analytically or in a few Newton steps, which is what an inner-loop model must be.</p>
+</div>
+</div>
+</section>
+<section id="why-peng-robinson-became-the-industrial-standard" class="slide level2">
+<h2>Why Peng-Robinson became the industrial standard</h2>
+<div class="kicker c-amber">
+<p>Chapter 10 · Peng-Robinson</p>
+</div>
+<div class="lede">
+<p>Explain the adoption of Peng-Robinson in engineering rather than purely scientific terms, and name the standard patches.</p>
+</div>
+<ul>
+<li>Adequate for both phases across the ranges of oil and gas processing.</li>
+<li>Analytic cubic solution, so it is fast and robust inside iterative solvers.</li>
+<li>Requires only critical temperature, critical pressure and acentric factor, which are tabulated for essentially every industrial compound.</li>
+<li>Well understood mixing rules and a long record of validated binary interaction parameters.</li>
+</ul>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h">Standard patch 1 Volume translation</span></p>
+<p>Peneloux and co-workers, 1982: a constant volume shift per compound that corrects liquid density without disturbing the predicted vapour-liquid equilibrium.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Standard patch 2 Mathias-Copeman alpha</span></p>
+<p>A three-constant alpha function fitted per compound, used when vapour pressures of polar species must be reproduced accurately.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The cost of every patch, and the limit of the family</span></p>
+<p>Each patch buys accuracy with an additional fitted constant per compound, so predictive power for new molecules is not improved. No amount of patching introduces chain connectivity, hydrogen bonding or electrostatics, because none of those quantities appears anywhere in a cubic equation.</p>
+</div>
+</div>
+</section>
+<section id="working-with-peng-robinson-in-practice" class="slide level2">
+<h2>Working with Peng-Robinson in practice</h2>
+<div class="kicker c-amber">
+<p>Chapter 10 · Peng-Robinson</p>
+</div>
+<div class="lede">
+<p>Assemble the three expressions needed for a flash calculation and identify the most common practical error.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+\ln\varphi = Z-1-\ln(Z-B) \;-\; \frac{A}{2\sqrt{2}\,B}\,\ln\frac{Z+(1+\sqrt{2})B}{Z+(1-\sqrt{2})B}
+</span></p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+a_{\mathrm{mix}} = \sum_i\sum_j y_iy_j\sqrt{a_ia_j}\,(1-k_{ij}), \qquad b_{\mathrm{mix}} = \sum_i y_ib_i
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The most common practical error</span></p>
+<p>Selecting the wrong root of the cubic. Below the critical temperature there may be three real roots; the middle root is mechanically unstable and always discarded, and the choice between the smallest and the largest must be made by comparing the fugacity coefficient, never by assumption.</p>
+<p>A wrong root gives an answer that is not slightly wrong but wrong by the density ratio between a liquid and a vapour.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Mixtures</span></p>
+<p>The van der Waals one-fluid mixing rules reduce a mixture to a pseudo-pure component. The binary interaction parameter is fitted to binary vapour-liquid equilibrium data and is the only adjustable quantity.</p>
+<p>Setting it to zero is a defensible default for similar hydrocarbons and is not defensible for a hydrocarbon with carbon dioxide, water or an alcohol.</p>
+</div>
+</div>
+</section>
+<section id="the-molecular-era" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>The molecular era</h2>
+<div class="kicker c-amber">
+<p>PART V</p>
+</div>
+<div class="lede">
+<p>Chapter 11 SAFT and the statistical associating fluid theory<br>Chapter 12 Electrolyte equations of state<br>Chapter 13 Future directions</p>
+</div>
+</section>
+<section id="saft-a-different-construction" class="slide level2">
+<h2>SAFT: a different construction</h2>
+<div class="kicker c-amber">
+<p>Chapter 11 · SAFT</p>
+</div>
+<div class="lede">
+<p>Contrast writing down a pressure with writing down a residual Helmholtz energy as a sum of separable contributions.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+P = \rho^{2}\left(\frac{\partial\left(A^{\mathrm{res}}/N\right)}{\partial\rho}\right)_{\!T} + \rho\,k_{\mathrm{B}}T
+</span></p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+\tilde a^{\mathrm{res}} = \tilde a^{\mathrm{hs}} + \tilde a^{\mathrm{chain}} + \tilde a^{\mathrm{disp}} + \tilde a^{\mathrm{assoc}}
+</span></p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Wertheim 1984 to 1986</span></p>
+<p>First-order thermodynamic perturbation theory for fluids with highly directional attractive forces. This is the mathematics that makes hydrogen bonding tractable as a free-energy contribution rather than as a fitted correction.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Chapman and co-workers 1990, Gross and Sadowski 2001</span></p>
+<p>SAFT turned the theory into an engineering equation of state. PC-SAFT then perturbed about the hard-chain rather than the hard-sphere reference, which improved the description of long molecules substantially.</p>
+</div>
+</div>
+</section>
+<section id="four-terms-four-pieces-of-physics" class="slide level2">
+<h2>Four terms, four pieces of physics</h2>
+<div class="kicker c-amber">
+<p>Chapter 11 · SAFT</p>
+</div>
+<div class="lede">
+<p>Attribute each Helmholtz contribution to a specific molecular mechanism and to the cubic-equation defect it repairs.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f25_saft_terms.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Hard sphere</span></p>
+<p>Excluded volume treated with the Carnahan-Starling result rather than a single constant b.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Chain</span></p>
+<p>Connectivity of bonded segments. Replaces the acentric factor with a structural parameter.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Dispersion</span></p>
+<p>Attraction between segments from perturbation theory rather than a mean field.</p>
+</div>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Association</span></p>
+<p>Short-range directional bonding. No cubic equation contains this at all.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-terms-in-equations" class="slide level2">
+<h2>The terms in equations</h2>
+<div class="kicker c-amber">
+<p>Chapter 11 · SAFT</p>
+</div>
+<div class="lede">
+<p>Read each contribution and identify the molecular parameter it introduces.</p>
+</div>
+<div class="cards quad">
+<div class="card">
+<p><span class="card-h">Hard-sphere reference (Carnahan-Starling)</span></p>
+<p><span class="math display">
+\tilde a^{\mathrm{hs}} = \frac{4\eta-3\eta^{2}}{(1-\eta)^{2}}
+</span></p>
+</div>
+<div class="card">
+<p><span class="card-h">Chain formation</span></p>
+<p><span class="math display">
+\tilde a^{\mathrm{chain}} = (1-m)\ln g^{\mathrm{hs}}(\sigma)
+</span></p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Association (Wertheim TPT1)</span></p>
+<div class="eq-long">
+<p><span class="math display">
+\tilde a^{\mathrm{assoc}} = \sum_{A}\left[\ln X^{A} - \frac{X^{A}}{2}\right] + \frac{M}{2}
+</span></p>
+</div>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Association strength</span></p>
+<div class="eq-long">
+<p><span class="math display">
+\Delta^{AB} = g^{\mathrm{hs}}\,\kappa^{AB}\left[\mathrm{e}^{\varepsilon^{AB}/k_{\mathrm{B}}T}-1\right]
+</span></p>
+</div>
+</div>
+<div class="card">
+<p><span class="card-h">The five molecular parameters</span></p>
+<p>Segment number, segment diameter, segment energy, association energy and association volume. For an n-alkane series the segment number grows almost linearly with carbon number while the diameter and energy remain nearly constant, which is why SAFT extrapolates to polymers and cubics do not.</p>
+</div>
+</div>
+</section>
+<section id="what-the-terms-contribute-and-what-they-buy" class="slide level2">
+<h2>What the terms contribute, and what they buy</h2>
+<div class="kicker c-amber">
+<p>Chapter 11 · SAFT</p>
+</div>
+<div class="lede">
+<p>Judge the relative magnitude of each contribution and the class of systems on which the investment pays.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="figures/f26_saft_contributions.png" class="fig-pair"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/f27_saft_vs_cubic.png" class="fig-pair"></p>
+</div></div>
+<div class="source">
+<p>Both panels are schematic illustrations of the qualitative behaviour, not output from a validated SAFT implementation.</p>
+</div>
+</section>
+<section id="ions-change-the-range-of-the-forces" class="slide level2">
+<h2>Ions change the range of the forces</h2>
+<div class="kicker c-amber">
+<p>Chapter 12 · Electrolyte equations of state</p>
+</div>
+<div class="lede">
+<p>Recognise that Coulomb interactions are long ranged and require terms with no counterpart in a neutral-fluid model.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f28_electrolyte_terms.png" class="fig-col"></p>
+<div class="source">
+<p>The Debye screening length sets the range over which an ion feels the surrounding ionic atmosphere.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="eq-long">
+<p><span class="math display">
+\kappa^{-1} = \left(\frac{\varepsilon_{\mathrm{r}}\varepsilon_{0}k_{\mathrm{B}}T}{e^{2}\sum_i \rho_i z_i^{2}}\right)^{\!1/2}
+</span></p>
+</div>
+</div></div>
+</section>
+<section id="the-electrolyte-helmholtz-sum" class="slide level2">
+<h2>The electrolyte Helmholtz sum</h2>
+<div class="kicker c-amber">
+<p>Chapter 12 · Electrolyte equations of state</p>
+</div>
+<div class="lede">
+<p>Add the electrostatic and solvation contributions to a molecular reference and identify what each one describes.</p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+\tilde a^{\mathrm{res}} = \tilde a^{\mathrm{SAFT}} + \tilde a^{\mathrm{Born}} + \tilde a^{\mathrm{DH/MSA}}
+</span></p>
+</div>
+<div class="eq-long">
+<p><span class="math display">
+A^{\mathrm{Born}} = -\frac{N_{\mathrm{A}}e^{2}}{8\pi\varepsilon_{0}}\sum_i x_i z_i^{2}\left(1-\frac{1}{\varepsilon_{\mathrm{r}}}\right)\frac{1}{r_i}
+</span></p>
+</div>
+<p><span class="math display">
+\log_{10}\gamma_{\pm} = -A\,|z_{+}z_{-}|\sqrt{I}
+</span></p>
+<div class="cards quad">
+<div class="card">
+<p><span class="card-h">Molecular reference</span></p>
+<p>Hard sphere, chain, dispersion and association terms describing the solvent and the uncharged part of the interactions, taken directly from SAFT.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Born solvation</span></p>
+<p>The free energy of charging an ion inside a dielectric medium. Usually the largest single contribution, and strongly dependent on the ionic radius.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Ion-ion screening</span></p>
+<p>Debye-Huckel or the mean spherical approximation, describing the ionic atmosphere that screens each central charge.</p>
+</div>
+<div class="card">
+<p>The Debye-Huckel expression is a limiting law, exact only as the ionic strength approaches zero. Battery and capture solvents operate one to three orders of magnitude above that limit, where ion pairing, hydration and the composition dependence of the dielectric constant all matter.</p>
+</div>
+</div>
+</section>
+<section id="concentrated-solutions-and-the-activity-minimum" class="slide level2">
+<h2>Concentrated solutions and the activity minimum</h2>
+<div class="kicker c-amber">
+<p>Chapter 12 · Electrolyte equations of state</p>
+</div>
+<div class="lede">
+<p>Explain the minimum and upturn in the mean ionic activity coefficient in terms of competing physics.</p>
+</div>
+<p><img data-src="figures/f29_mean_activity.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Screening lowers the activity coefficient. Solvent depletion and hydrated-ion repulsion raise it. The minimum is where the two mechanisms balance.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Salt solubility limits, low-temperature precipitation in battery electrolytes and amine degradation in capture solvents all depend on the region beyond the minimum.</p>
+</div>
+</div>
+</section>
+<section id="application-battery-electrolytes" class="slide level2">
+<h2>Application: battery electrolytes</h2>
+<div class="kicker c-amber">
+<p>Chapter 12 · Electrolyte equations of state</p>
+</div>
+<div class="lede">
+<p>Map electrolyte thermodynamic outputs onto the design targets of an electrochemical cell.</p>
+</div>
+<p><img data-src="figures/f30_battery_electrolyte.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>The solvation shell is the physical object that connects thermodynamics, transport and interfacial chemistry in a cell. An equation of state that resolves it describes all three consistently.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>Voltage window, solid-electrolyte-interphase chemistry, salt precipitation risk and low-temperature operating limit are all set by properties an electrolyte equation of state can compute.</p>
+</div>
+</div>
+</section>
+<section id="where-the-subject-is-going" class="slide level2">
+<h2>Where the subject is going</h2>
+<div class="kicker c-amber">
+<p>Chapter 13 · Future directions</p>
+</div>
+<div class="lede">
+<p>Identify the four active research directions and the specific limitation each one addresses.</p>
+</div>
+<p><img data-src="figures/f31_future_map.png" class="fig-lg" style="width:66.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Physical meaning</span></p>
+<p>Each direction targets a specific gap: missing data, rigid functional form, unenforced thermodynamic consistency, or unmodelled electrochemical coupling.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Engineering implication</span></p>
+<p>The practical near-term gain is parameter estimation for compounds that have never been measured, which is the binding constraint in specialty chemicals and in new battery chemistries.</p>
+</div>
+</div>
+</section>
+<section id="physics-informed-machine-learning-equations-of-state" class="slide level2">
+<h2>Physics-informed machine learning equations of state</h2>
+<div class="kicker c-amber">
+<p>Chapter 13 · Future directions</p>
+</div>
+<div class="lede">
+<p>Describe an architecture that learns a Helmholtz function under hard thermodynamic constraints.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f32_ml_eos.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="eq-long">
+<p><span class="math display">
+A^{\mathrm{res}}_{\theta}(T,\rho,\mathbf{d}) \;\longrightarrow\; P,\;\mu_i,\;c_v \;\; \text{by automatic differentiation}
+</span></p>
+</div>
+<p><span class="math display">
+\lim_{\rho\to 0}A^{\mathrm{res}} = 0, \qquad c_v &gt; 0, \qquad \oint V\,\mathrm{d}P = 0
+</span></p>
+<div class="cards">
+<div class="card">
+<p>The honest failure mode is extrapolation. Inside the training envelope such models are accurate; outside it they remain confident and are not. Any deployment must include an explicit domain-of-validity check.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="closing-the-argument" class="slide level2">
+<h2>Closing the argument</h2>
+<div class="kicker c-amber">
+<p>Conclusion</p>
+</div>
+<div class="lede">
+<p>Restate the thesis of the course and convert it into a working rule for model selection.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><img data-src="figures/f33_hierarchy.png" class="fig-col"></p>
+</div><div class="column" style="width:46%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">The rule to take away</span></p>
+<p>Do not ask whether an equation of state is accurate. Ask which physics it contains, and whether that physics is the physics of your problem. Every model in this course answers that question honestly if you know how to read it.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="references-and-further-reading" class="slide level2">
+<h2>References and further reading</h2>
+<div class="kicker c-amber">
+<p>Conclusion</p>
+</div>
+<div class="lede">
+<p>Locate the primary sources and the standard graduate texts for each part of the course.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h">Graduate texts</span></p>
+<p>Smith, Van Ness, Abbott and Swihart, Introduction to Chemical Engineering Thermodynamics, 9th edition, 2022.</p>
+<p>Prausnitz, Lichtenthaler and de Azevedo, Molecular Thermodynamics of Fluid-Phase Equilibria, 3rd edition, 1999.</p>
+<p>Poling, Prausnitz and O’Connell, The Properties of Gases and Liquids, 5th edition, 2001.</p>
+<p>Sandler, Chemical, Biochemical, and Engineering Thermodynamics, 5th edition, 2017.</p>
+<p>Kontogeorgis and Folas, Thermodynamic Models for Industrial Applications, 2010.</p>
+</div>
+<div class="card">
+<p><span class="card-h">Primary literature</span></p>
+<p>van der Waals, doctoral thesis, Leiden, 1873.</p>
+<p>Redlich and Kwong, Chemical Reviews 44 (1949) 233.</p>
+<p>Pitzer and co-workers, Journal of the American Chemical Society 77 (1955) 3427 and 3433.</p>
+<p>Soave, Chemical Engineering Science 27 (1972) 1197.</p>
+<p>Peng and Robinson, Industrial and Engineering Chemistry Fundamentals 15 (1976) 59.</p>
+<p>Wertheim, Journal of Statistical Physics 35 (1984) 19 and 35; 42 (1986) 459 and 477.</p>
+<p>Chapman, Gubbins, Jackson and Radosz, Industrial and Engineering Chemistry Research 29 (1990) 1709.</p>
+<p>Gross and Sadowski, Industrial and Engineering Chemistry Research 40 (2001) 1244.</p>
+</div>
+</div>
+</section>
+<section id="where-to-go-next" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Where to go next</h2>
+<div class="kicker c-amber">
+<p>Module EOS · closing</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Read</span></p>
+<p>The lecture notes carry the full derivations behind every slide. The worked examples work four problems end to end, with the arithmetic shown.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Run</span></p>
+<p>Every figure in this deck is generated by a Python script you can download and edit. Change a parameter, re-run, and watch what the physics does.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Ask</span></p>
+<p>Bring one fluid from your own research to the next session, and be ready to say which rung of the ladder it needs.</p>
+</div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

@@ -1,0 +1,117 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# 2105603 Advanced Chemical Engineering Thermodynamics — course page data.
+# Drives /teaching/2105603/. Same pattern as rcs2026.yml.
+#
+# modules   one entry per teaching module. `slides` is the rendered Quarto deck
+#           in teaching/2105603/; `files` are downloads in
+#           teaching/2105603/files/.
+# weeks     the semester schedule. `module` links a week to a module id.
+# ─────────────────────────────────────────────────────────────────────────────
+code: "2105603"
+credits: "3 (3-0-9)"
+semester: "Semester 1 / 2026"
+sections: "Graduate · M.Eng. and Ph.D. Chemical Engineering"
+instructors: "Chanon Pornrungroj · Soorathep Kheawhom"
+
+modules:
+  - id: eos
+    n: 1
+    title: Evolution of Equations of State
+    subtitle: A physics-driven perspective
+    lead: Chanon Pornrungroj
+    weeks: Weeks 4–6
+    slides: eos.html
+    blurb: >-
+      Fifty-six slides tracing one argument: every equation of state was written
+      because the previous one omitted physics that turned out to matter. Ideal
+      gas to van der Waals to the cubics to SAFT to electrolyte models, with the
+      cost of each addition made explicit.
+    files:
+      - kind: Notes
+        file: EOS_Lecture_Notes.pdf
+        label: Lecture notes
+        desc: Full derivations behind every slide, 87 pages
+      - kind: Examples
+        file: EOS_Worked_Examples.pdf
+        label: Worked examples
+        desc: Four problems worked end to end with the arithmetic shown
+      - kind: Slides
+        file: eos-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: eos-notebooks.zip
+        label: Jupyter notebooks
+        desc: Three runnable notebooks — cubic EOS from scratch, the Maxwell construction, cubic against PC-SAFT
+      - kind: Code
+        file: EOS_Python_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it
+
+weeks:
+  - n: 1
+    title: The structure of thermodynamics — fundamental equation, Legendre transforms, Maxwell relations, stability
+    lead: Chanon Pornrungroj
+  - n: 2
+    title: Molecular thermodynamics I — intermolecular forces, potential models, virial coefficients
+    lead: Chanon Pornrungroj
+  - n: 3
+    title: Molecular thermodynamics II — partition functions and ideal-gas properties
+    lead: Chanon Pornrungroj
+  - n: 4
+    title: Cubic equations of state — vdW, RK, SRK, PR, mixing rules, fugacity
+    lead: Chanon Pornrungroj
+    module: eos
+  - n: 5
+    title: Advanced equations of state — SAFT, association, multiparameter reference equations
+    lead: Chanon Pornrungroj
+    module: eos
+  - n: 6
+    title: Property determination — residual and departure functions, diagrams, calibration
+    lead: Chanon Pornrungroj
+    module: eos
+  - n: 7
+    title: Availability and the thermodynamic limits of energy conversion
+    lead: Chanon Pornrungroj
+  - n: "—"
+    title: Midterm examination
+    lead: "—"
+    gap: true
+  - n: 9
+    title: Solution thermodynamics — partial molar properties, fugacity in mixtures, excess properties
+    lead: Soorathep Kheawhom
+  - n: 10
+    title: Activity coefficient models — Margules, van Laar, Wilson, NRTL, UNIQUAC, UNIFAC
+    lead: Soorathep Kheawhom
+  - n: 11
+    title: Thermodynamic consistency and parameter estimation
+    lead: Soorathep Kheawhom
+  - n: 12
+    title: Multicomponent phase equilibrium — flash, phase stability, LLE and VLLE
+    lead: Soorathep Kheawhom
+  - n: 13
+    title: Data-driven thermodynamics — matrix completion, physics-guided and thermodynamics-consistent models
+    lead: Soorathep Kheawhom
+  - n: 14
+    title: Chemical and electrochemical equilibrium — Gibbs energy minimisation, electrolytes, the Nernst equation
+    lead: Soorathep Kheawhom
+  - n: 15
+    title: Process analysis, model selection, and project presentations
+    lead: Soorathep Kheawhom
+
+assessment:
+  - weight: 30%
+    component: Midterm
+    asks: Weeks 1–7. Closed resource, with one short section on reading and correcting thermodynamic code
+  - weight: 35%
+    component: Final
+    asks: Weeks 9–15, weighted towards mixtures, phase equilibrium and reaction equilibrium
+  - weight: 15%
+    component: Homework (SKH)
+    asks: Two problem sets plus the thermodynamic model audit project
+  - weight: 10%
+    component: Homework (TCP)
+    asks: Three problem sets on equations of state and property calculation
+  - weight: 10%
+    component: Class activities
+    asks: The weekly notebook checkpoint and the AI verification exercises

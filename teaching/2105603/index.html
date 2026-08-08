@@ -1,0 +1,124 @@
+---
+layout: default
+title: 2105603 Advanced Chemical Engineering Thermodynamics
+permalink: /teaching/2105603/
+description: Graduate course on advanced chemical engineering thermodynamics — molecular thermodynamics, equations of state, activity coefficient models, multicomponent phase and reaction equilibrium. Slides, notes, Python notebooks and schedule.
+---
+{% assign c = site.data.act2026 %}
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Teaching · Graduate · {{ c.code }}</div>
+    <h2>Advanced Chemical Engineering Thermodynamics</h2>
+  </div>
+
+  <p class="lede" style="margin-bottom:30px">Fifteen weeks in two halves.
+  <strong>Weeks 1–7, structure and the pure fluid:</strong> the formal machinery of
+  thermodynamics, its molecular basis, and the equations of state built on it.
+  <strong>Weeks 9–15, mixtures:</strong> solution thermodynamics, phase and reaction
+  equilibrium, and what happens when a model is fitted to data rather than derived.</p>
+
+  <div class="facts" style="margin-bottom:44px">
+    <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }}</div></div>
+    <div class="fact"><div class="k">Term</div><div>{{ c.semester }}</div></div>
+    <div class="fact"><div class="k">Level</div><div>{{ c.sections }}</div></div>
+    <div class="fact"><div class="k">Taught by</div><div>{{ c.instructors }}</div></div>
+    <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
+  </div>
+
+  {% if c.modules and c.modules.size > 0 %}
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Modules</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:30px">
+    Slides open in the browser — no download, and they work on a phone.
+    Press <span class="pill">F</span> for full screen,
+    <span class="pill">E</span> for a printable layout,
+    <span class="pill">?</span> for every shortcut.
+    Every equation is live text, so it stays sharp at any zoom.</p>
+
+  {% for m in c.modules %}
+  <div class="res-category">
+    <div class="res-cat-head">
+      <h3>Module {{ m.n }} · {{ m.title }}</h3>
+      <p>{{ m.weeks }} · {{ m.lead }}</p>
+    </div>
+    {% if m.blurb %}<p style="font-size:.94rem;color:var(--ink-soft);margin:0 0 16px">{{ m.blurb }}</p>{% endif %}
+    <div class="resource-files">
+      {% if m.slides %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105603/{{ m.slides }}">
+        <span class="rf-kind">Slides</span>
+        <span class="rf-body">
+          <span class="rf-label">{{ m.title }}</span>
+          <span class="rf-desc">{{ m.subtitle }} · opens in the browser</span>
+        </span>
+        <span class="rf-get">Open →</span>
+      </a>
+      {% endif %}
+      {% for f in m.files %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105603/files/{{ f.file }}">
+        <span class="rf-kind">{{ f.kind }}</span>
+        <span class="rf-body">
+          <span class="rf-label">{{ f.label }}</span>
+          {% if f.desc %}<span class="rf-desc">{{ f.desc }}</span>{% endif %}
+        </span>
+        <span class="rf-get">Download →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
+  <table style="margin-bottom:44px">
+    <thead>
+      <tr><th style="width:52px">#</th><th>Session</th><th style="width:200px">Lead</th></tr>
+    </thead>
+    <tbody>
+      {% for w in c.weeks %}
+      <tr>
+        <td class="yr">{{ w.n }}</td>
+        <td>
+          {%- if w.gap -%}
+            <em style="color:var(--ink-soft)">{{ w.title }}</em>
+          {%- elsif w.module -%}
+            {%- assign mod = c.modules | where: "id", w.module | first -%}
+            {%- if mod and mod.slides -%}
+              <a href="{{ site.baseurl }}/teaching/2105603/{{ mod.slides }}">{{ w.title }}</a>
+            {%- else -%}
+              {{ w.title }}
+            {%- endif -%}
+          {%- else -%}
+            {{ w.title }}
+          {%- endif -%}
+        </td>
+        <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.lead }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3 style="font-size:1.25rem;margin-bottom:18px">Assessment</h3>
+  <table>
+    <thead>
+      <tr><th style="width:90px">Weight</th><th style="width:190px">Component</th><th>What it asks</th></tr>
+    </thead>
+    <tbody>
+      {% for a in c.assessment %}
+      <tr>
+        <td class="yr">{{ a.weight }}</td>
+        <td>{{ a.component }}</td>
+        <td style="color:var(--ink-soft)">{{ a.asks }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Generative AI.</strong> Permitted and expected on homework, notebooks and the
+    project: for code, for checking a derivation, for reading around a topic.
+    Not permitted in the midterm or the final, which are closed resource.
+    Every submission carries a short AI-use statement, and any machine-produced
+    number must be reproduced by an independent route — from-scratch code, a
+    reference library, or an analytical limit. An unverified result scores zero
+    whether or not it happens to be right.
+  </div>
+</section>

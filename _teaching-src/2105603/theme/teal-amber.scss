@@ -1,0 +1,523 @@
+/*-- scss:defaults --*/
+/* =====================================================================
+   Teal–Amber Lab — Reveal.js theme for 2105603
+   Palette v1.0 — the same palette as the course Matplotlib figures.
+   Edit colours here; every deck picks them up.
+   ===================================================================== */
+
+$teal:     #0F6E6B;
+$amber:    #E29A2D;
+$rust:     #BE654C;
+$sky:      #5A91BE;
+$sage:     #83A462;
+$plum:     #995A90;
+$sand:     #DFC98F;
+
+$ink:      #1C242B;
+$graphite: #333F4A;
+$slate:    #66727C;
+$mist:     #B9C1C6;
+$paper:    #F3F0EB;
+$white:    #FFFFFF;
+
+$body-font:    "Source Sans 3", "Sarabun", "Helvetica Neue", Arial, sans-serif;
+$heading-font: "Source Serif 4", "Noto Serif Thai", Georgia, "Times New Roman", serif;
+
+/* Reveal variables */
+$backgroundColor: $white;
+$mainColor:       $graphite;
+$headingColor:    $ink;
+$linkColor:       $teal;
+$linkColorHover:  $amber;
+$selectionBackgroundColor: rgba(226, 154, 45, 0.35);
+
+$mainFont:    $body-font;
+$headingFont: $heading-font;
+
+$mainFontSize:  30px;
+$blockMargin:   14px;
+
+$heading1Size: 1.95em;
+$heading2Size: 1.62em;
+$heading3Size: 1.05em;
+$heading4Size: 0.88em;
+$headingLineHeight: 1.14;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 700;
+
+/*-- scss:rules --*/
+
+@import "fonts-embedded";
+
+/* ---------- accent tokens ---------- */
+.reveal {
+  --teal: #{$teal}; --amber: #{$amber}; --rust: #{$rust}; --sky: #{$sky};
+  --sage: #{$sage}; --plum: #{$plum}; --sand: #{$sand};
+  --accent: #{$teal};
+}
+.c-teal  { --accent: #{$teal}; }
+.c-amber { --accent: #{$amber}; }
+.c-rust  { --accent: #{$rust}; }
+.c-sky   { --accent: #{$sky}; }
+.c-sage  { --accent: #{$sage}; }
+.c-plum  { --accent: #{$plum}; }
+.c-sand  { --accent: #{$sand}; }
+.c-mist  { --accent: #{$mist}; }
+.c-slate { --accent: #{$slate}; }
+
+.teal { color: $teal; } .amber { color: $amber; } .rust { color: $rust; }
+.slate { color: $slate; } .mist { color: $mist; } .ink { color: $ink; }
+
+/* ---------- base ---------- */
+.reveal .slides section {
+  text-align: left;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Reveal writes `display:block` inline on the active slide, so the layout
+   helpers below use absolute positioning rather than flexbox. */
+
+/* vertically centred block — used on statement, divider and break slides */
+.vcenter {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+}
+/* trailing footnote strip — sits on the baseline of the slide */
+.foot { position: absolute; left: 0; right: 0; bottom: 0; }
+.foot > *:first-child { margin-top: 0; }
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: $heading-font;
+  margin: 0 0 0.42em 0;
+  text-wrap: balance;
+}
+.reveal h2 { line-height: 1.12; }
+.reveal p { line-height: 1.42; }
+.reveal ul, .reveal ol { margin-left: 1.0em; }
+.reveal li { margin-bottom: 0.40em; line-height: 1.38; }
+.reveal li::marker { color: var(--accent); }
+.reveal strong { color: $ink; font-weight: 700; }
+
+/* dark / tinted variants */
+section.dark {
+  color: $mist;
+  h1, h2, h3, h4 { color: $white; }
+  strong { color: $white; }
+  .lede { color: $mist; }
+  .note, .source { color: $slate; }
+  a { color: $amber; }
+  .kicker { color: $amber; }
+}
+
+/* ---------- title slide ---------- */
+#title-slide {
+  text-align: left;
+  padding-top: 9%;
+  .quarto-title-block > div:empty, .quarto-title-affiliation:empty { display: none; }
+  .quarto-title-block, .title, .subtitle, .quarto-title-authors, .date { text-align: left; }
+  .title {
+    font-family: $heading-font; font-weight: 700; font-size: 1.85em;
+    color: $white; line-height: 1.14; margin-bottom: 0.25em;
+  }
+  .subtitle { font-family: $body-font; font-size: 0.66em; color: $mist; margin-bottom: 0.9em; line-height: 1.4; }
+  .quarto-title-author-name {
+    font-family: $body-font; font-size: 0.60em; color: $mist; text-align: left;
+  }
+  .quarto-title-authors { display: block; margin-top: 1.6em; }
+  .date {
+    font-family: $body-font; font-size: 0.50em; color: $slate; text-align: left; margin-top: 0.4em;
+  }
+  .quarto-title-author { display: block; text-align: left; }
+  .quarto-title-authors { display: block; }
+  .institute, .quarto-title-affiliation { color: $slate; font-size: 0.40em; }
+}
+
+/* ---------- kicker & supporting text ---------- */
+.kicker {
+  font-family: $body-font;
+  font-size: 0.53em; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent, #{$amber});
+  margin: 0 0 0.5em 0;
+}
+.lede  { font-size: 0.80em; color: $graphite; line-height: 1.42; }
+.note  { font-size: 0.62em; color: $slate; font-style: italic; margin-top: 0.7em; }
+.punch { font-size: 0.66em; font-weight: 700; color: $rust; margin-top: 0.45em; }
+/* citation / provenance line, usually the last thing in .foot */
+.source {
+  font-size: 0.44em;
+  font-style: italic;
+  color: $slate;
+  margin-top: 0.7em;
+  line-height: 1.4;
+}
+.flag  { font-size: 0.66em; font-weight: 700; color: $amber; margin-top: 0.45em; }
+.small { font-size: 0.86em; }
+.center, .center p, .center h2 { text-align: center; }
+.tight li { margin-bottom: 0.20em; }
+
+/* ---------- big statement slides ---------- */
+.statement {
+  font-family: $heading-font; font-size: 1.48em; line-height: 1.3;
+  color: $mist; margin: 0 0 0.30em 0;
+}
+.statement-hi {
+  font-family: $heading-font; font-size: 1.76em; font-weight: 700;
+  line-height: 1.22; color: $amber; margin: 0 0 0.55em 0;
+}
+.statement-sub { font-size: 0.86em; color: $white; margin: 0 0 0.3em 0; }
+
+/* ---------- kicker pinned above the title ---------- */
+.reveal .slides section > .kicker { position: absolute; top: 0; left: 0; right: 0; margin: 0; }
+.reveal .slides section:has(> .kicker) > h2 { margin-top: 1.5em; }
+
+/* ---------- section dividers ---------- */
+section.divider { padding-top: 9%; }
+section.divider > .kicker { top: 9%; }
+section.divider h2 { font-size: 1.95em; margin-bottom: 0.3em; }
+section.divider .lede { font-size: 0.88em; }
+section.divider::after {
+  content: "";
+  position: absolute; right: -8%; top: 8%;
+  width: 46vh; height: 46vh; border-radius: 50%;
+  background: var(--accent); opacity: 0.20;
+  z-index: -1; pointer-events: none;
+}
+
+/* ---------- cards ---------- */
+.cards { display: flex; gap: 20px; align-items: stretch; margin-top: 0.25em; }
+.cards.wrap { flex-wrap: wrap; }
+.card {
+  flex: 1 1 0; min-width: 0; box-sizing: border-box;
+  background: $white;
+  border: 1px solid rgba(185,193,198,0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(28,36,43,0.07);
+  padding: 24px 26px;
+}
+.card > *:first-child { margin-top: 0; }
+.card > *:last-child { margin-bottom: 0; }
+/* Card heading. A real "### " heading inside a fenced div makes pandoc emit a
+   nested <section>, which reveal.js then counts as a slide — 56 slides printed
+   as 630 pages. Cards therefore use [Head]{.card-h} and this rule. */
+.card .card-h { display: block; font-family: $heading-font; font-size: 0.93em; font-weight: 700; color: $ink; margin: 0 0 0.32em 0; }
+.card .card-h.c-teal { color: $teal; }
+.card .card-h.c-amber { color: $amber; }
+.card .card-h.c-rust { color: $rust; }
+.card .card-h.c-sky { color: $sky; }
+
+.card h3 { font-family: $heading-font; font-size: 0.93em; font-weight: 700; color: $ink; margin: 0 0 0.32em 0; }
+.card p, .card li { font-size: 0.60em; color: $graphite; line-height: 1.4; }
+.card ul { margin-left: 0.8em; }
+.card .eyebrow {
+  display: block; font-size: 0.44em; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 0.5em 0;
+}
+.card .big {
+  display: block; font-family: $heading-font; font-size: 1.85em;
+  font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.12em;
+}
+.card .dot { display: block; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); margin-bottom: 14px; }
+.card .chip { font-size: 0.52em; margin-bottom: 0.8em; display: inline-block; padding: 0.16em 0.8em; }
+.cards.feature .card { padding: 26px 28px; }
+.cards.feature .card h3 { font-size: 1.22em; margin-bottom: 0.28em; }
+.cards.feature .card p { font-size: 0.64em; }
+
+/* ---------- chips ---------- */
+.chip {
+  display: inline-block; background: var(--accent); color: $white;
+  border-radius: 6px; padding: 0.14em 0.7em;
+  font-weight: 700; white-space: nowrap; line-height: 1.5;
+}
+.chip.c-mist, .chip.c-sand { color: $ink; }
+
+/* ---------- agenda ---------- */
+.reveal .agenda ul { list-style: none; margin: 0; padding: 0; }
+.reveal .agenda li {
+  display: flex; align-items: center; gap: 20px;
+  margin-bottom: 10px; font-size: 0.66em; color: $graphite; line-height: 1.3;
+}
+.reveal .agenda li .chip { width: 130px; text-align: center; font-size: 0.74em; flex: none; }
+.reveal .agenda li.rest { color: $slate; font-style: italic; }
+
+/* ---------- tables ---------- */
+.reveal table { font-size: 0.62em; border-collapse: collapse; width: 100%; }
+.reveal table th {
+  text-align: left; font-family: $body-font; font-size: 0.86em;
+  letter-spacing: 0.08em; text-transform: uppercase; color: $slate;
+  border-bottom: 2px solid $mist; padding: 6px 10px; font-weight: 700;
+}
+.reveal table td { padding: 9px 10px; border-bottom: 1px solid rgba(185,193,198,0.45); }
+
+.evidence table { border-collapse: separate; border-spacing: 0; font-size: 0.66em; }
+.evidence table th { display: none; }
+.evidence table td { border: none; padding: 11px 16px; }
+.evidence table tr:nth-child(odd) td { background: $white; }
+.evidence table td:first-child {
+  width: 27%; font-family: $heading-font; font-weight: 700; color: $teal;
+}
+
+/* ---------- numbered rows ---------- */
+.reveal .numbered ol {
+  list-style: none; margin: 0; padding: 0; counter-reset: nrow;
+}
+.reveal .numbered ol > li {
+  counter-increment: nrow; position: relative;
+  background: $white; border: 1px solid rgba(185,193,198,0.8);
+  border-radius: 10px; box-shadow: 0 2px 10px rgba(28,36,43,0.06);
+  padding: 15px 24px 15px 82px; margin-bottom: 13px;
+  font-size: 0.66em; line-height: 1.35; color: $graphite;
+}
+.reveal .numbered ol > li::before {
+  content: counter(nrow);
+  position: absolute; left: 19px; top: 50%; transform: translateY(-50%);
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--accent); color: $white;
+  font-family: $heading-font; font-weight: 700; font-size: 0.92em;
+  display: flex; align-items: center; justify-content: center;
+}
+.reveal .numbered ol > li strong {
+  display: block; font-family: $heading-font; font-size: 1.10em;
+  color: $ink; margin-bottom: 1px;
+}
+.reveal .numbered.n4 ol > li:nth-child(1) { --accent: #{$teal}; }
+.reveal .numbered.n4 ol > li:nth-child(2) { --accent: #{$rust}; }
+.reveal .numbered.n4 ol > li:nth-child(3) { --accent: #{$amber}; }
+.reveal .numbered.n4 ol > li:nth-child(4) { --accent: #{$sage}; }
+.reveal .numbered.n3 ol > li:nth-child(1) { --accent: #{$teal}; }
+.reveal .numbered.n3 ol > li:nth-child(2) { --accent: #{$amber}; }
+.reveal .numbered.n3 ol > li:nth-child(3) { --accent: #{$rust}; }
+
+/* ---------- dot list ---------- */
+.reveal .dots ul { list-style: none; margin: 0; padding: 0; }
+.reveal .dots ul > li {
+  position: relative; padding-left: 32px; margin-bottom: 18px;
+  font-size: 0.64em; line-height: 1.38; color: $graphite;
+  display: grid; grid-template-columns: 34% 1fr; gap: 0 26px;
+  align-items: start;
+}
+.reveal .dots ul > li::before {
+  content: ""; position: absolute; left: 0; top: 0.36em;
+  width: 15px; height: 15px; border-radius: 50%; background: var(--accent);
+}
+.reveal .dots ul > li > strong {
+  font-family: $heading-font; font-size: 1.12em; color: $ink;
+  display: block; line-height: 1.2;
+}
+.reveal .dots ul > li:nth-child(1) { --accent: #{$teal}; }
+.reveal .dots ul > li:nth-child(2) { --accent: #{$rust}; }
+.reveal .dots ul > li:nth-child(3) { --accent: #{$amber}; }
+.reveal .dots ul > li:nth-child(4) { --accent: #{$plum}; }
+
+/* ---------- seven gates ---------- */
+.steps { display: flex; gap: 12px; margin: 0.35em 0 0.5em 0; }
+.step {
+  flex: 1 1 0; min-width: 0; box-sizing: border-box; background: $white;
+  border: 1px solid rgba(185,193,198,0.8); border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(28,36,43,0.06);
+  padding: 15px 8px; text-align: center;
+}
+.step .n, .step .h, .step .d { display: block; }
+.step .n { font-family: $heading-font; font-weight: 700; font-size: 0.56em; color: var(--accent); }
+.step .h { font-family: $heading-font; font-weight: 700; font-size: 0.70em; color: $ink; margin: 5px 0 4px 0; }
+.step .d { font-size: 0.50em; color: $slate; line-height: 1.3; }
+
+/* ---------- spec panel ---------- */
+.spec { background: $paper; border-radius: 10px; padding: 20px 24px; }
+.spec .eyebrow {
+  display: block; font-size: 0.44em; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: $slate; margin-bottom: 0.9em;
+}
+.spec dl { display: grid; grid-template-columns: 1fr auto; gap: 14px 12px; margin: 0; font-size: 0.58em; }
+.spec dt { color: $slate; }
+.spec dd { margin: 0; text-align: right; font-weight: 700; color: $ink; }
+.spec dd p { margin: 0; }
+
+/* ---------- break slide ---------- */
+section.break { text-align: center; }
+section.break h2, section.break p { text-align: center; }
+.break-circle {
+  width: 3.4em; height: 3.4em; margin: 0.4em auto 0.55em auto;
+  border-radius: 50%; background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.break-circle span { font-family: $heading-font; font-size: 1.5em; font-weight: 700; color: $white; }
+section.break .big-label { font-size: 0.95em; color: $mist; margin: 0; }
+
+/* ---------- QR closing slide ---------- */
+.qr-card { background: $white; border-radius: 14px; padding: 16px; display: inline-block; line-height: 0; }
+.qr-card img { width: 100%; height: auto; display: block; margin: 0; }
+.reveal .qr-card img { border: none; box-shadow: none; }
+
+/* ---------- misc ---------- */
+.reveal .slide-number { font-size: 15px; color: $slate; background: transparent; }
+.reveal .progress { color: $amber; height: 4px; }
+.reveal blockquote {
+  border-left: 4px solid $amber; background: transparent; box-shadow: none;
+  font-style: normal; font-family: $heading-font; color: $ink;
+  padding: 0.15em 0 0.15em 0.8em; width: 100%;
+}
+section.dark blockquote { color: $white; }
+.reveal .footer { color: $slate; font-size: 0.42em; }
+
+/* ---------- grid variants ---------- */
+.cards.g3 { flex-wrap: wrap; }
+.cards.g3 .card { flex: 0 0 calc((100% - 40px) / 3); }
+.cards.stack { flex-direction: column; gap: 14px; }
+.cards.stack .card { display: grid; grid-template-columns: 15px 24% 1fr; gap: 0 20px; align-items: center; padding: 16px 24px; }
+.cards.stack .card > p:first-child { margin: 0; }
+.cards.stack .card .dot { margin-bottom: 0; }
+.cards.stack .card h3 { margin: 0; }
+.cards.stack .card p { margin: 0; }
+.cards.row2 .card { padding: 18px 22px; }
+
+/* two-column slide helper */
+.reveal .columns { display: flex; gap: 30px; align-items: flex-start; }
+
+/* ---------- box model ---------- */
+.reveal .card, .reveal .step, .reveal .spec, .reveal .qr-card,
+.reveal .numbered ol > li { box-sizing: border-box; }
+.reveal .qr-card { max-width: 400px; }
+.reveal .qr-card img { max-width: 100%; }
+
+
+/* Reveal makes lists inline-block; our card-style lists must be full width. */
+.reveal .numbered ol,
+.reveal .dots ul,
+.reveal .agenda ul { display: block; width: 100%; margin-left: 0; }
+.reveal .card ul, .reveal .card ol { display: block; width: 100%; }
+
+/* ---------- Week 2 additions: traffic-light tiers, badges, quotes ---------- */
+$green: #2F7D4F;
+$red:   #B3352C;
+.c-green { --accent: #{$green}; }
+.c-red   { --accent: #{$red}; }
+.green { color: $green; } .red { color: $red; }
+
+/* a numbered disc used outside an ordered list */
+.numdot {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--accent); color: $white;
+  font-family: $heading-font; font-weight: 700; font-size: 0.62em;
+}
+
+/* stacked cards whose first cell is a numdot rather than a small dot */
+.cards.stack.numbered-stack .card { grid-template-columns: 40px 27% 1fr; gap: 0 22px; padding: 18px 24px; }
+
+/* three-column policy rows: tier chip · what it covers · what you must do */
+.cards.stack.policy .card { grid-template-columns: 120px 1fr 250px; gap: 0 24px; align-items: start; padding: 20px 24px; }
+.cards.stack.policy .card .chip { font-size: 0.46em; width: 100%; text-align: center; }
+.cards.stack.policy .card p { font-size: 0.56em; }
+.cards.stack.policy .card .act { font-weight: 700; color: $ink; }
+
+/* tier rows on a dark slide (Nature Portfolio's own green/amber/red) */
+.tiers ul { list-style: none; margin: 0; padding: 0; }
+.tiers li {
+  display: flex; align-items: baseline; gap: 22px;
+  margin-bottom: 12px; font-size: 0.58em; line-height: 1.35; color: $mist;
+}
+.tiers li .chip { width: 120px; text-align: center; font-size: 0.80em; flex: none; }
+
+/* row of publisher names */
+.badges { display: flex; flex-wrap: wrap; gap: 12px; margin: 0.6em 0 0.3em 0; }
+.badge {
+  background: $paper; border: 1px solid $mist; border-radius: 7px;
+  padding: 0.30em 0.95em; font-size: 0.50em; font-weight: 700; color: $graphite;
+}
+section.dark .badge { background: rgba(255,255,255,0.07); border-color: $slate; color: $mist; }
+
+/* a pulled quotation */
+.pull {
+  font-family: $heading-font; font-size: 0.96em; font-style: italic;
+  color: $teal; line-height: 1.34; margin: 0 0 0.35em 0;
+}
+.attrib { font-size: 0.50em; color: $slate; margin: 0 0 0.9em 0; }
+
+/* the disclosure-template panel */
+.quotecard {
+  background: $paper; border-radius: 10px; padding: 26px 30px;
+  font-family: $heading-font; font-size: 0.78em; font-style: italic;
+  color: $ink; line-height: 1.42;
+}
+
+/* the ten uses, set in two columns */
+.reveal .tenlist ol { column-count: 2; column-gap: 46px; display: block; width: 100%; margin-left: 1.1em; }
+.reveal .tenlist li {
+  font-size: 0.56em; line-height: 1.3; margin-bottom: 0.5em;
+  break-inside: avoid; color: $graphite;
+}
+
+/* ---------- absolute sizes for nested chrome ----------
+   These elements sit inside .card / li, whose own em sizing would multiply
+   with theirs and shrink them to nothing. Reveal scales the whole deck with a
+   transform, so px here stays proportional to the slide. */
+.reveal .card .eyebrow      { font-size: 14px; letter-spacing: 0.13em; }
+.reveal .card .big          { font-size: 42px; }
+.reveal .card .chip         { font-size: 16px; padding: 0.22em 0.85em; }
+.reveal .spec .eyebrow      { font-size: 14px; }
+.reveal .agenda li .chip    { font-size: 15px; }
+.reveal .tiers li .chip     { font-size: 15px; }
+.reveal .numdot             { width: 42px; height: 42px; font-size: 20px; }
+.reveal .cards.stack.policy .card .chip { font-size: 15px; padding: 0.3em 0; }
+.reveal .cards.stack.numbered-stack .card { grid-template-columns: 42px 27% 1fr; }
+.reveal .badges .badge      { font-size: 15px; }
+.reveal .step .n            { font-size: 17px; }
+.reveal .step .h            { font-size: 21px; }
+.reveal .step .d            { font-size: 15px; }
+
+
+/* ---------- figures ----------
+   auto-stretch is off (it collapsed figures that share a slide with cards),
+   so cap the height here instead: a tall figure would otherwise run off the
+   bottom of the slide. */
+.reveal .slides section img { max-height: 50vh; height: auto; }
+
+
+/* A long equation inside a narrow card (three-across) must shrink or it runs
+   off the slide — the cubic in Z on the Peng-Robinson slide is the worst case. */
+.card .katex-display { font-size: 0.62em; margin: 0.15em 0; }
+.card .katex-display > .katex { white-space: normal; }
+
+
+/* Cards below a figure were being cut off by the bottom of the slide. */
+.reveal .slides section .cards { margin-top: 0.18em; }
+.cards .card { padding: 18px 20px; }
+.cards.g3 .card { padding: 14px 16px; }
+.card p, .card li { font-size: 0.55em; }
+
+/* Slide-level display math: three stacked equations plus a card row is the
+   worst case (the electrolyte Helmholtz sum), so trim it a little. */
+.reveal .slides section > .katex-display,
+.reveal .slides section > p > .katex-display { font-size: 0.88em; margin: 0.28em 0; }
+
+/* Four cards in one row rather than a wrapped 3 + 1, which ran off the slide. */
+.cards.quad .card { flex: 1 1 0; min-width: 0; padding: 12px 10px; }
+.cards.quad .card p, .cards.quad .card li { font-size: 0.50em; }
+
+
+/* Figure size classes. One global cap made every figure as small as the worst
+   case; the generator now tags each figure with how much room its slide has. */
+.reveal .slides section img.fig-xl   { max-height: 62vh; }   /* figure alone */
+.reveal .slides section img.fig-lg   { max-height: 42vh; }   /* figure + two chips */
+.reveal .slides section img.fig-md   { max-height: 42vh; }   /* figure + a card row */
+.reveal .slides section img.fig-col  { max-height: 58vh; }   /* figure in a column */
+.reveal .slides section img.fig-pair    { max-height: 46vh; }
+.reveal .slides section img.fig-pair-sm { max-height: 36vh; }  /* pair under an equation */   /* two figures side by side */
+
+/* Equations inside cards were shrunk far past legibility chasing an overflow. */
+.card .katex-display { font-size: 0.95em; }
+.cards.g3 .card .katex-display { font-size: 0.82em; }
+.cards.quad .card .katex-display { font-size: 0.86em; }
+
+/* A very long slide-level equation must scale down rather than run off the edge. */
+.reveal .slides section > .katex-display > .katex,
+.reveal .slides section > p > .katex-display > .katex { max-width: 100%; }
+
+
+/* A long display equation is set smaller so it fits the slide width instead of
+   being cut off at the right edge. */
+.eq-long .katex-display { font-size: 0.60em; }
+.eq-long .katex-display > .katex { white-space: normal; }
