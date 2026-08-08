@@ -24,8 +24,9 @@ description: Graduate course on writing and publishing research in chemical engi
     <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
   </div>
 
-  {% assign published = c.weeks | where_exp: "w", "w.slides or w.files" %}
-  {% if published.size > 0 %}
+  {%- assign nres = 0 -%}
+  {%- for w in c.weeks -%}{%- if w.slides or w.files -%}{%- assign nres = nres | plus: 1 -%}{%- endif -%}{%- endfor -%}
+  {% if nres > 0 %}
   <h3 style="font-size:1.25rem;margin-bottom:6px">Slides and handouts</h3>
   <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:30px">
     Slides open in the browser — no download, and they work on a phone.
@@ -34,7 +35,7 @@ description: Graduate course on writing and publishing research in chemical engi
     <span class="pill">?</span> for every shortcut.
     Bring the activity sheets to class, printed or on a laptop.</p>
 
-  {% for w in published %}
+  {% for w in c.weeks %}{% if w.slides or w.files %}
   <div class="res-category">
     <div class="res-cat-head">
       <h3>Week {{ w.n }} · {{ w.title }}</h3>
@@ -63,7 +64,7 @@ description: Graduate course on writing and publishing research in chemical engi
       {% endfor %}
     </div>
   </div>
-  {% endfor %}
+  {% endif %}{% endfor %}
   {% endif %}
 
   <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>

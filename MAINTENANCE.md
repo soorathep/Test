@@ -30,6 +30,14 @@ Two halves, deliberately:
 - **The blog** is Jekyll, built by GitHub automatically on every push. Adding a post is
   adding one markdown file. Nothing to install, nothing to run.
 
+GitHub Pages builds with **Jekyll 3.10**, which is older than the Jekyll documented on
+jekyllrb.com. One trap has already cost a broken build: `where_exp` accepts only a
+**single** expression there — `{% assign x = list | where_exp: "i", "i.a or i.b" %}`
+parses on Jekyll 4 but fails on Pages with *"Liquid syntax error: Expected end_of_string
+but found id"*, and the whole site stops deploying. Filter inside the loop instead
+(`{% for i in list %}{% if i.a or i.b %}` …), and count with
+`{% assign n = n | plus: 1 %}` if a section needs to know whether it is empty.
+
 They share `assets/style.css`, so the blog can never drift out of visual sync with the site.
 
 ---
