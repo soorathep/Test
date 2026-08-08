@@ -10,6 +10,10 @@ __pycache__/
 # The inbox itself is never committed.
 inbox/
 
+# Scratch folder for files that are finished with — old archives, superseded
+# build output. Nothing here is published; delete the folder whenever you like.
+_to_delete/
+
 # Demo images the Resources scripts drop in their own folder when run.
 # Scoped to files/ so they do NOT match the committed figures in img/resources/.
 /files/labpalette_preview.png
