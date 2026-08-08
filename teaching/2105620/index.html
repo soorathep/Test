@@ -2,7 +2,7 @@
 layout: default
 title: 2105620 Research Communication Skills for Chemical Engineers
 permalink: /teaching/2105620/
-description: Graduate course on writing and publishing research in chemical engineering — fourteen weeks, from taking published papers apart to building a manuscript of your own. Slides and schedule.
+description: Graduate course on writing and publishing research in chemical engineering — fourteen weeks, from taking published papers apart to building a manuscript of your own. Slides, handouts and schedule.
 ---
 {% assign c = site.data.rcs2026 %}
 <section>
@@ -24,27 +24,46 @@ description: Graduate course on writing and publishing research in chemical engi
     <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
   </div>
 
-  {% assign published = c.weeks | where_exp: "w", "w.slides" %}
+  {% assign published = c.weeks | where_exp: "w", "w.slides or w.files" %}
   {% if published.size > 0 %}
-  <h3 style="font-size:1.25rem;margin-bottom:6px">Slides</h3>
-  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:18px">
-    These open in the browser — no download, and they work on a phone.
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Slides and handouts</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:30px">
+    Slides open in the browser — no download, and they work on a phone.
     Press <span class="pill">F</span> for full screen,
     <span class="pill">E</span> for a printable layout,
-    <span class="pill">?</span> for every shortcut.</p>
+    <span class="pill">?</span> for every shortcut.
+    Bring the activity sheets to class, printed or on a laptop.</p>
 
-  <div class="resource-files" style="margin-bottom:44px">
-    {% for w in published %}
-    <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">
-      <span class="rf-kind">Week {{ w.n }}</span>
-      <span class="rf-body">
-        <span class="rf-label">{{ w.title }}</span>
-        <span class="rf-desc">{{ w.dates }} · {{ w.lead }}</span>
-      </span>
-      <span class="rf-get">Open →</span>
-    </a>
-    {% endfor %}
+  {% for w in published %}
+  <div class="res-category">
+    <div class="res-cat-head">
+      <h3>Week {{ w.n }} · {{ w.title }}</h3>
+      <p>{{ w.dates }} · {{ w.lead }}</p>
+    </div>
+    <div class="resource-files">
+      {% if w.slides %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">
+        <span class="rf-kind">Slides</span>
+        <span class="rf-body">
+          <span class="rf-label">{{ w.title }}</span>
+          <span class="rf-desc">Opens in the browser</span>
+        </span>
+        <span class="rf-get">Open →</span>
+      </a>
+      {% endif %}
+      {% for f in w.files %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/files/{{ f.file }}">
+        <span class="rf-kind">{{ f.kind }}</span>
+        <span class="rf-body">
+          <span class="rf-label">{{ f.label }}</span>
+          {% if f.desc %}<span class="rf-desc">{{ f.desc }}</span>{% endif %}
+        </span>
+        <span class="rf-get">Download →</span>
+      </a>
+      {% endfor %}
+    </div>
   </div>
+  {% endfor %}
   {% endif %}
 
   <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
@@ -92,5 +111,6 @@ description: Graduate course on writing and publishing research in chemical engi
     <strong>Generative AI.</strong> Every assignment carries an AI-use declaration.
     The course policy permits more than most students expect, and it requires disclosure.
     It is announced in full in Week 2; no signature is required.
+    The policy and the declaration form are in the Week 2 downloads above.
   </div>
 </section>

@@ -9,6 +9,14 @@
 #     lead    who teaches it
 #     slides  optional. File name under teaching/2105620/, e.g. w01.html.
 #             Add it and the link appears by itself.
+#     files   optional. Downloads for that week, served from
+#             teaching/2105620/files/. Each entry:
+#               file  · file name in that folder
+#               kind  · short label on the left of the button (PDF, DOCX, …)
+#               label · what it is
+#               desc  · one line, optional
+#             NEVER list an instructor key or answer sheet here — the site is
+#             public and everything under teaching/ is indexed by search engines.
 #
 #   assessment[]  weight · component · asks
 # ─────────────────────────────────────────────────────────────────────────────
@@ -25,11 +33,41 @@ weeks:
     dates: 6 · 9 Aug
     lead: Soorathep Kheawhom
     slides: w01.html
+    files:
+      - file: w01-activity-sheets.pdf
+        kind: PDF
+        label: Activity sheets
+        desc: The four-sentence pitch template and the listening task
+      - file: w01-six-dossiers.pdf
+        kind: PDF
+        label: Six Papers, Six Purposes — the dossiers
+        desc: The six anonymised papers used in Activity 2
+      - file: w01-slides.pdf
+        kind: PDF
+        label: Slides
+        desc: For printing or reading offline
   - n: 2
     title: Research integrity, authorship, and responsible use of generative AI
     dates: 13 · 16 Aug
     lead: Supareak Praserthdam
     slides: w02.html
+    files:
+      - file: w02-ai-use-policy.pdf
+        kind: PDF
+        label: Course policy on generative AI
+        desc: The three tiers, in full. Applies to every assignment from Week 3
+      - file: w02-ai-disclosure-form.docx
+        kind: DOCX
+        label: AI-use declaration form
+        desc: Fill in and attach to every assignment, the final project, and the Week 14 manuscript
+      - file: w02-activity-sheets.pdf
+        kind: PDF
+        label: Activity sheets
+        desc: The authorship panel and the AI traffic light
+      - file: w02-slides.pdf
+        kind: PDF
+        label: Slides
+        desc: For printing or reading offline
   - n: 3
     title: Efficient literature review and evidence mapping
     dates: 20 · 23 Aug

@@ -10,6 +10,15 @@
 #     tool    the hands-on tool for that session
 #     slides  optional. File name under teaching/2105623/, e.g. w01.html.
 #             Add it and the link appears by itself.
+#     files[] optional. Student downloads for that week. Each entry:
+#               name  what the student sees
+#               desc  one line
+#               kind  PDF | XLSX | Notebook  — the little label on the card
+#               file  path under files/2105623/, e.g. w01/w01-product-mix.xlsx
+#             Drop the file in files/2105623/ and add the entry; the card
+#             appears on the course page by itself. Never list a solution file.
+#
+#   documents[]  course-wide downloads, same four keys, shown above the weeks
 #
 #   assessment[]  weight · component · asks
 # ─────────────────────────────────────────────────────────────────────────────
@@ -20,6 +29,32 @@ semester: "Semester 1 / 2026"
 sections: "Monday · 10 August to 16 November 2026"
 instructors: "Soorathep Kheawhom"
 
+documents:
+  - name: Course syllabus
+    desc: Fifteen weeks, assessment, policies, and the reading list
+    kind: PDF
+    file: 2105623-syllabus.pdf
+  - name: Software setup
+    desc: What to install and when, with a script that checks your solvers. Do this before Week 2
+    kind: PDF
+    file: 2105623-software-setup.pdf
+  - name: OpenSolver setup guide
+    desc: Installing OpenSolver, setting up a model, and reading the sensitivity report
+    kind: PDF
+    file: 2105623-opensolver-guide.pdf
+  - name: Computational project brief
+    desc: Topic menu, milestones, deliverables, and the grading rubric
+    kind: PDF
+    file: 2105623-project-brief.pdf
+  - name: Project proposal form
+    desc: Due Week 6. The structured specification template from Week 6
+    kind: PDF
+    file: 2105623-project-proposal-form.pdf
+  - name: Project report template
+    desc: The four-page format for the final report
+    kind: PDF
+    file: 2105623-project-report-template.pdf
+
 weeks:
   - n: 1
     title: Introduction, the optimization workflow, and the tool stack
@@ -27,12 +62,38 @@ weeks:
     block: Orientation
     tool: Excel Solver
     slides: w01.html
+    files:
+      - name: Product mix workbook
+        desc: The Week 1 model. Fill in the yellow cells, then run Solver
+        kind: XLSX
+        file: w01/w01-product-mix.xlsx
+      - name: Introduction notebook
+        desc: The same model in Pyomo, plus classification and the infeasible and unbounded cases
+        kind: Notebook
+        file: w01/w01-introduction.ipynb
+      - name: "Appendix: the same model in four tools"
+        desc: One product mix model in Excel, Pyomo, JuMP and GAMS, side by side
+        kind: Notebook
+        file: w01/appendix-same-model-four-tools.ipynb
   - n: 2
     title: "Modeling I: linear models, product mix, multiperiod planning and inventory"
     dates: 17 Aug
     block: Model construction
     tool: OpenSolver
     slides: w02.html
+    files:
+      - name: Multiperiod planning workbook
+        desc: The Week 2 model. Complete the balance rows and the objective, then solve
+        kind: XLSX
+        file: w02/w02-multiperiod-planning.xlsx
+      - name: Modeling I notebook
+        desc: The same plan in Pyomo, the value of look-ahead, and a second product on the shared reactor
+        kind: Notebook
+        file: w02/w02-modeling1.ipynb
+      - name: Homework 1
+        desc: Linear and network model construction. Due Week 4, Monday 31 August
+        kind: PDF
+        file: w02/hw1.pdf
   - n: 3
     title: "Modeling II: networks, flows and process superstructures"
     dates: 24 Aug

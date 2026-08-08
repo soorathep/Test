@@ -49,10 +49,51 @@ description: Graduate course on optimization for chemical engineers — fifteen 
   </div>
   {% endif %}
 
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Course documents</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:18px">
+    Read the software setup sheet before Week 2. Everything else you can pick up as it becomes relevant.</p>
+
+  <div class="resource-files" style="margin-bottom:44px">
+    {% for d in c.documents %}
+    <a class="res-file" href="{{ site.baseurl }}/files/2105623/{{ d.file }}" download>
+      <span class="rf-kind">{{ d.kind }}</span>
+      <span class="rf-body">
+        <span class="rf-label">{{ d.name }}</span>
+        <span class="rf-desc">{{ d.desc }}</span>
+      </span>
+      <span class="rf-get">Download →</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% assign withfiles = c.weeks | where_exp: "w", "w.files" %}
+  {% if withfiles.size > 0 %}
+  <h3 style="font-size:1.25rem;margin-bottom:6px">Weekly materials</h3>
+  <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:18px">
+    Workbooks and notebooks for the hands-on half of each session. The workbooks are the
+    student version: the data and the layout are there, and the formulas are yours to write.</p>
+
+  {% for w in withfiles %}
+  <div class="mono eyebrow" style="margin-bottom:8px">Week {{ w.n }} · {{ w.dates }}</div>
+  <div class="resource-files" style="margin-bottom:{% if forloop.last %}44px{% else %}26px{% endif %}">
+    {% for f in w.files %}
+    <a class="res-file" href="{{ site.baseurl }}/files/2105623/{{ f.file }}" download>
+      <span class="rf-kind">{{ f.kind }}</span>
+      <span class="rf-body">
+        <span class="rf-label">{{ f.name }}</span>
+        <span class="rf-desc">{{ f.desc }}</span>
+      </span>
+      <span class="rf-get">Download →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  {% endif %}
+
   <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
   <table style="margin-bottom:44px">
     <thead>
-      <tr><th style="width:52px">#</th><th>Session</th><th style="width:86px">Date</th><th style="width:180px">Hands-on</th></tr>
+      <tr><th style="width:52px">#</th><th>Session</th><th style="width:86px">Date</th><th style="width:150px">Hands-on</th><th style="width:66px">Files</th></tr>
     </thead>
     <tbody>
       {% for w in c.weeks %}
@@ -70,6 +111,7 @@ description: Graduate course on optimization for chemical engineers — fifteen 
         </td>
         <td class="yr">{{ w.dates }}</td>
         <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.tool }}</td>
+        <td class="yr">{% if w.files %}{{ w.files | size }}{% else %}—{% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>
