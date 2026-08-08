@@ -65,7 +65,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | Journal covers | 2–4 / year | `id="recognition"` gallery + home strip | Publisher email with the cover file |
 | Invited / plenary talks | 2–3 / year | `id="recognition"`, Talks | CV |
 | Selected publications | quarterly | `id="publications"` | Scopus |
-| Publication counts (322 / 6,779 / h-47) | yearly | `id="publications"` `<h2>` + note | Scopus |
+| Publication counts (331 / 6,872 / h-47) | yearly | `id="publications"` `<h2>` + note | Scopus |
 | People and alumni placements | yearly | `id="people"` | Your records |
 | Patents, awards, roles | rare | `id="recognition"`, home callout | CV |
 | Instruments | rare | `id="facilities"` | Notion booking calendar |
@@ -235,7 +235,7 @@ www.skhgroup.net. `covers/` is for journal cover art only; put post photos in `i
 ### Update the publication counts
 
 One `<h2>` and one `<div class="note">` in `id="publications"`. Change both together or
-they will disagree. Refresh the "July 2026" date at the same time.
+they will disagree. Refresh the "August 2026" date at the same time.
 
 ---
 
