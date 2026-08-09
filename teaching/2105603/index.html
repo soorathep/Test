@@ -2,7 +2,7 @@
 layout: default
 title: 2105603 Advanced Chemical Engineering Thermodynamics
 permalink: /teaching/2105603/
-description: Graduate course on advanced chemical engineering thermodynamics — molecular thermodynamics, equations of state, activity coefficient models, multicomponent phase and reaction equilibrium. Slides, notes, Python notebooks and schedule.
+description: Graduate course on advanced chemical engineering thermodynamics — molecular thermodynamics, equations of state, activity coefficient models, multicomponent phase and reaction equilibrium. Module slides, lecture notes and Python notebooks.
 ---
 {% assign c = site.data.act2026 %}
 <section>
@@ -11,11 +11,7 @@ description: Graduate course on advanced chemical engineering thermodynamics —
     <h2>Advanced Chemical Engineering Thermodynamics</h2>
   </div>
 
-  <p class="lede" style="margin-bottom:30px">Fifteen weeks in two halves.
-  <strong>Weeks 1–7, structure and the pure fluid:</strong> the formal machinery of
-  thermodynamics, its molecular basis, and the equations of state built on it.
-  <strong>Weeks 9–15, mixtures:</strong> solution thermodynamics, phase and reaction
-  equilibrium, and what happens when a model is fitted to data rather than derived.</p>
+  <p class="lede" style="margin-bottom:30px">{{ c.description }}</p>
 
   <div class="facts" style="margin-bottom:44px">
     <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }}</div></div>
@@ -38,7 +34,7 @@ description: Graduate course on advanced chemical engineering thermodynamics —
   <div class="res-category">
     <div class="res-cat-head">
       <h3>Module {{ m.n }} · {{ m.title }}</h3>
-      <p>{{ m.weeks }} · {{ m.lead }}</p>
+      {% if m.subtitle %}<p>{{ m.subtitle }}</p>{% endif %}
     </div>
     {% if m.blurb %}<p style="font-size:.94rem;color:var(--ink-soft);margin:0 0 16px">{{ m.blurb }}</p>{% endif %}
     <div class="resource-files">
@@ -47,7 +43,7 @@ description: Graduate course on advanced chemical engineering thermodynamics —
         <span class="rf-kind">Slides</span>
         <span class="rf-body">
           <span class="rf-label">{{ m.title }}</span>
-          <span class="rf-desc">{{ m.subtitle }} · opens in the browser</span>
+          <span class="rf-desc">Opens in the browser</span>
         </span>
         <span class="rf-get">Open →</span>
       </a>
@@ -66,6 +62,13 @@ description: Graduate course on advanced chemical engineering thermodynamics —
   </div>
   {% endfor %}
   {% endif %}
+
+  {%- comment -%}
+    The weekly schedule and the assessment table are deliberately not published
+    yet: both are still being settled between the co-instructors, and a draft
+    posted here reads to students as the real thing. To bring them back, add a
+    `weeks:` and an `assessment:` list to _data/act2026.yml and uncomment the
+    two blocks below. Take the content from the registered syllabus.
 
   <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
   <table style="margin-bottom:44px">
@@ -111,10 +114,11 @@ description: Graduate course on advanced chemical engineering thermodynamics —
       {% endfor %}
     </tbody>
   </table>
+  {%- endcomment -%}
 
   <div class="note">
-    <strong>Generative AI.</strong> Permitted and expected on homework, notebooks and the
-    project: for code, for checking a derivation, for reading around a topic.
+    <strong>Generative AI.</strong> Permitted and expected on homework, notebooks and
+    the project: for code, for checking a derivation, for reading around a topic.
     Not permitted in the midterm or the final, which are closed resource.
     Every submission carries a short AI-use statement, and any machine-produced
     number must be reproduced by an independent route — from-scratch code, a
