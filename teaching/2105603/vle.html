@@ -174,7 +174,7 @@ Soorathep Kheawhom
 <p>Introduction</p>
 </div>
 <div class="lede">
-<p>Four descriptions of the same equilibrium, then the full working cycle: data, consistency, regression, and a stated domain of validity.</p>
+<p>Four descriptions of the same equilibrium, the behaviour they produce, then the full working cycle: data, consistency, regression, a stated domain of validity — and the route back into the equation of state.</p>
 </div>
 <div class="columns">
 <div class="column" style="width:48%;">
@@ -182,19 +182,21 @@ Soorathep Kheawhom
 <div class="card">
 <p><span class="card-h c-teal">The chain of reasoning</span></p>
 <p>An equation of state gives <span class="math inline">P</span>-<span class="math inline">V</span>-<span class="math inline">T</span> behaviour → equilibrium is governed by chemical potential → fugacity gives chemical potential a usable form → equality of fugacity predicts phase equilibrium.</p>
-<p>Module 4 is where that chain meets measurement.</p>
+<p>Module 4 is where that chain meets measurement — and, in Section 4.7, where it returns to the equation of state it started from.</p>
 </div>
 </div>
 </div><div class="column" style="width:48%;">
 <div class="cards">
 <div class="card">
-<p><span class="card-h c-amber">Five questions</span></p>
+<p><span class="card-h c-amber">Seven questions</span></p>
 <ul>
 <li>Which description of VLE, and what does it cost?</li>
+<li>What kind of mixture is this, and will it azeotrope?</li>
 <li>What is actually measured, and how well?</li>
 <li>Can this dataset be believed?</li>
 <li>Which model, fitted against what?</li>
 <li>Where may the answer be used?</li>
+<li>When does the activity route run out?</li>
 </ul>
 </div>
 </div>
@@ -249,7 +251,7 @@ Soorathep Kheawhom
 </div>
 <div class="card">
 <p><span class="card-h c-teal">Engineering implication</span></p>
-<p>This is the description behind almost every distillation column ever designed at moderate pressure. Two fitted parameters per binary pair, from binary VLE data. Everything in Sections 4.2 to 4.4 is about where those two numbers come from and what they are worth.</p>
+<p>This is the description behind almost every distillation column ever designed at moderate pressure. Two fitted parameters per binary pair, from binary VLE data. Everything in Sections 4.3 to 4.5 is about where those two numbers come from and what they are worth.</p>
 </div>
 </div>
 </section>
@@ -357,27 +359,168 @@ Soorathep Kheawhom
 <tr class="odd">
 <td>CO₂ / ethanol, 100 bar</td>
 <td>Phi-phi with a <span class="math inline">G^E</span> mixing rule</td>
-<td>Supercritical <em>and</em> polar — see the appendix</td>
+<td>Supercritical <em>and</em> polar — Section 4.7</td>
 </tr>
 </tbody>
 </table>
 <div class="note">
-<p>The last row is the case neither classical description handles, and it is why the appendix to this deck exists.</p>
+<p>The last row is the case neither classical description handles. Section 4.7 builds the description that does, and reports honestly what it is worth.</p>
+</div>
+</section>
+<section id="solution-types-and-azeotropes" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Solution types and azeotropes</h2>
+<div class="kicker c-amber">
+<p>PART II</p>
+</div>
+<div class="lede">
+<p>Section 4.2&nbsp;&nbsp;&nbsp;What the four descriptions produce.<br>Four classes of behaviour, one criterion, and an azeotrope that belongs to the pressure rather than to the mixture.</p>
+</div>
+</section>
+<section id="four-types-on-four-measured-systems" class="slide level2">
+<h2>Four types, on four measured systems</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p>The classification is one statement about the sign and size of <span class="math inline">G^E</span>, read against a common Raoult reference.</p>
+</div>
+<p><img data-src="figures/f4_11_four_solution_types.png" class="fig-xl"></p>
+<div class="source">
+<p>F4.11 · Four published sets, DOIs on the figure. Dashed line: Raoult’s law with the same Antoine constants throughout.</p>
+</div>
+</section>
+<section id="the-criterion-derived" class="slide level2">
+<h2>The criterion, derived</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p>An azeotrope is not a category a mixture belongs to. It is a root of one equation, and the root either lies in <span class="math inline">(0,1)</span> or it does not.</p>
+</div>
+<p><span class="math display">y_1 = x_1
+\iff \gamma_1 P_1^{\rm sat} = \gamma_2 P_2^{\rm sat}
+\iff \alpha_{12} \equiv \frac{\gamma_1 P_1^{\rm sat}}{\gamma_2 P_2^{\rm sat}} = 1</span></p>
+<p><span class="math display">\alpha_{12}\big|_{x_1 \to 0} = \gamma_1^\infty\,\frac{P_1^{\rm sat}}{P_2^{\rm sat}},
+\qquad
+\alpha_{12}\big|_{x_1 \to 1} = \frac{1}{\gamma_2^\infty}\,\frac{P_1^{\rm sat}}{P_2^{\rm sat}}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The test at the ends</span></p>
+<p>If <span class="math inline">\alpha_{12}</span> is above 1 at one end and below 1 at the other, a continuous <span class="math inline">\alpha_{12}(x_1)</span> must cross, and the crossing is the azeotrope. Only the two <span class="math inline">\gamma^\infty</span> and the vapour-pressure ratio are needed — no interior data at all.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Two components, one verdict</span></p>
+<p>Methanol + water has a genuine positive deviation, <span class="math inline">\gamma_1^\infty = 2.41</span>, and no azeotrope: <span class="math inline">P_1^{\rm sat}/P_2^{\rm sat}</span> is already 3.6 to 4.3, so <span class="math inline">\alpha_{12}</span> never approaches 1. <strong>Type 2 and Type 3 differ by the vapour pressures, not by the deviation.</strong></p>
+</div>
+</div>
+</section>
+<section id="the-criterion-as-a-map" class="slide level2">
+<h2>The criterion as a map</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p>Two end-point volatilities place a system in a quadrant. Five published systems, five correct verdicts.</p>
+</div>
+<p><img data-src="figures/f4_12_azeotrope_criterion.png" class="fig-cap" style="width:82.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">What was predicted</span></p>
+<p><span class="math inline">\gamma^\infty</span> from an NRTL fitted by Barker to each set, and <span class="math inline">P^{\rm sat}</span> from Antoine. Ethanol + water: <span class="math inline">\alpha = 12.96</span> and <span class="math inline">0.92</span> — straddles, so minimum-boiling. Chloroform + 2-butanone: <span class="math inline">0.81</span> and <span class="math inline">7.83</span> — straddles from below, so maximum-boiling.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">What checked it</span></p>
+<p>The measured relative volatility, from <span class="math inline">x_1</span> and <span class="math inline">y_1</span> alone, with no <span class="math inline">P^{\rm sat}</span> and no model: it crosses 1 for exactly the three systems the map predicted. <strong>Five out of five</strong>, by two routes sharing no numbers.</p>
+</div>
+</div>
+<div class="source">
+<p>F4.12 · Five published systems on the criterion map, and the same statement in composition space. The two routes are independent.</p>
+</div>
+</section>
+<section id="minimum-boiling-and-maximum-boiling" class="slide level2">
+<h2>Minimum-boiling and maximum-boiling</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p>Gibbs-Konovalov: <span class="math inline">{\rm d}P/{\rm d}x_1 = 0</span> exactly where <span class="math inline">y_1 = x_1</span>. An azeotrope is always a stationary point; the sign of <span class="math inline">G^E</span> decides which kind.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">The argument, without a model</span></p>
+<p><span class="math inline">\gamma_i &gt; 1</span> puts <span class="math inline">P = x_1\gamma_1 P_1^{\rm sat} + x_2\gamma_2 P_2^{\rm sat}</span> <strong>above</strong> the Raoult straight line at every interior composition. A continuous curve that starts and ends on a line and lies above it in between has an interior maximum.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Maximum in <span class="math inline">P</span> is minimum in <span class="math inline">T</span></span></p>
+<p>Higher pressure at fixed <span class="math inline">T</span> means the mixture boils below both pure components. So positive deviation gives a <strong>minimum-boiling</strong> azeotrope, and negative deviation reverses every step of the argument to give a <strong>maximum-boiling</strong> one.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Confirmed, not quoted</span></p>
+<p><span class="math inline">{\rm d}P/{\rm d}x_1</span> at the computed azeotrope is <span class="math inline">-2\times10^{-9}</span> kPa for ethanol + water, <span class="math inline">+2\times10^{-9}</span> for chloroform + 2-butanone and <span class="math inline">-1\times10^{-9}</span> for acetone + chloroform. Konovalov to nine decimals.</p>
+</div>
+</div>
+<div class="note">
+<p>And the uncomfortable corollary: the <span class="math inline">P</span>-<span class="math inline">x</span> curve is <strong>flat</strong> at the azeotrope, so the pressure carries almost no information about where it sits. The same fits that reproduce <span class="math inline">P</span> to 0.32 kPa misplace the azeotrope by <span class="math inline">+0.023</span>, <span class="math inline">-0.050</span> and <span class="math inline">-0.038</span> in <span class="math inline">x_1</span>. If the azeotropic composition is the number your design needs, it must be in the objective function.</p>
+</div>
+</section>
+<section id="the-azeotrope-moves-with-pressure" class="slide level2">
+<h2>The azeotrope moves with pressure</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p><span class="math inline">\gamma_1/\gamma_2</span> depends on composition, <span class="math inline">P_2^{\rm sat}/P_1^{\rm sat}</span> only on temperature. Move the pressure and the balance point moves.</p>
+</div>
+<p><img data-src="figures/f4_13_azeotrope_pressure_shift.png" class="fig-cap" style="width:88.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The window</span></p>
+<p>Ethanol + water: <span class="math inline">x_{\rm az} = 0.9743</span> at 15 kPa and <span class="math inline">0.8573</span> at 1000 kPa — a window of <strong>0.117</strong>. Below 6.85 kPa (295.7 K) there is no azeotrope at all, because <span class="math inline">P_1^{\rm sat}/P_2^{\rm sat}</span> has fallen to <span class="math inline">\gamma_2^\infty = 2.487</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">What is assumed</span></p>
+<p>NRTL was fitted at 101.3 kPa over 351.3–368.2 K and its <span class="math inline">\tau_{ij}</span> carry no <span class="math inline">T</span> dependence, so the whole shift comes from <span class="math inline">P^{\rm sat}(T)</span>. The 1000 kPa point sits 53.6 K outside that range: <strong>an extrapolation.</strong></p>
+</div>
+</div>
+<div class="source">
+<p>F4.13 · NRTL by Barker on <span class="small">doi:10.1021/je2008704</span>, held fixed as <span class="math inline">P</span> varies.</p>
+</div>
+</section>
+<section id="when-a-pressure-swing-is-worth-building" class="slide level2">
+<h2>When a pressure swing is worth building</h2>
+<div class="kicker c-amber">
+<p>4.2 · Solution types and azeotropes</p>
+</div>
+<div class="lede">
+<p>Two columns at two pressures beat the azeotrope only if the azeotrope moves. Two Type 3/4 systems, two answers.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Ethanol + water: it moves</span></p>
+<p><span class="math inline">x_{\rm az}</span> runs 0.9743 at 15 kPa to 0.9172 at 101 kPa — 0.057 over the range a real vacuum column would use, and 0.117 out to 1000 kPa. The prize is real but modest, which is why industry usually prefers extractive or azeotropic distillation to a second column plus a vacuum system.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Acetone + chloroform: it does not</span></p>
+<p><span class="math inline">x_{\rm az}</span> runs 0.3402 at 90 kPa to 0.3469 at 25 kPa — <strong>0.007 over a factor of 3.5 in pressure</strong>. A pressure swing on this pair is not a separation, it is a rounding error.</p>
+</div>
+</div>
+<div class="note">
+<p>The reason is in the criterion. Acetone + chloroform has <span class="math inline">P_1^{\rm sat}/P_2^{\rm sat} \approx 1.18</span> at both ends, barely moving with temperature, while <span class="math inline">\gamma_1/\gamma_2</span> is steep in composition, so the root hardly shifts. Ethanol + water has two components of similar volatility and a <span class="math inline">\gamma_1/\gamma_2</span> that is nearly flat near <span class="math inline">x_1 = 0.9</span>: a small change in the vapour-pressure ratio then moves the crossing a long way.</p>
 </div>
 </section>
 <section id="from-measurement-to-activity-coefficient" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
 <h2>From measurement to activity coefficient</h2>
 <div class="kicker c-amber">
-<p>PART II</p>
+<p>PART III</p>
 </div>
 <div class="lede">
-<p>Section 4.2&nbsp;&nbsp;&nbsp;A reported <span class="math inline">\gamma</span> is not a measurement.<br>It is four measured numbers and two assumptions.</p>
+<p>Section 4.3&nbsp;&nbsp;&nbsp;A reported <span class="math inline">\gamma</span> is not a measurement.<br>It is four measured numbers and two assumptions.</p>
 </div>
 </section>
 <section id="what-a-vle-apparatus-measures" class="slide level2">
 <h2>What a VLE apparatus measures</h2>
 <div class="kicker c-amber">
-<p>4.2 · From measurement to activity coefficient</p>
+<p>4.3 · From measurement to activity coefficient</p>
 </div>
 <div class="lede">
 <p>Four numbers per point, each with its own uncertainty, and none of them is <span class="math inline">\gamma</span>.</p>
@@ -404,7 +547,7 @@ Soorathep Kheawhom
 <section id="computing-gamma" class="slide level2">
 <h2>Computing gamma</h2>
 <div class="kicker c-amber">
-<p>4.2 · From measurement to activity coefficient</p>
+<p>4.3 · From measurement to activity coefficient</p>
 </div>
 <div class="lede">
 <p>Two assumptions convert four measurements into an activity coefficient.</p>
@@ -424,10 +567,30 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
+<section id="taking-gamma-out-of-a-published-table" class="slide level2">
+<h2>Taking <span class="math inline">\gamma</span> out of a published table</h2>
+<div class="kicker c-amber">
+<p>4.3 · From measurement to activity coefficient</p>
+</div>
+<div class="lede">
+<p>The paper gives you four columns. Three of the things you need are not in it.</p>
+</div>
+<div class="numbered n4">
+<ol type="1">
+<li><strong>Copy the table with its DOI and its stated uncertainties.</strong> <span class="math inline">u(T)</span>, <span class="math inline">u(P)</span>, <span class="math inline">u(x)</span>, <span class="math inline">u(y)</span> are part of the data. A table transcribed without them cannot be reduced honestly.</li>
+<li><strong>Check <span class="math inline">P_i^{\rm sat}</span> against the paper’s own end points.</strong> The pure rows are a free calibration of your Antoine constants — and they are the check almost nobody runs.</li>
+<li><strong>Choose <span class="math inline">\Phi_i</span> and say which.</strong> Ideal vapour, virial <span class="math inline">\hat\varphi</span>, or the full three factors. The next two slides say how to decide rather than how to prefer.</li>
+<li><strong>Report <span class="math inline">\gamma</span> with an uncertainty, then test it.</strong> The consistency tests of Section 4.4 are the reason the reduction was worth doing.</li>
+</ol>
+</div>
+<div class="note">
+<p>Step 2, on chloroform + 2-butanone at 303.15 K (<span class="small">doi:10.1021/je060150a</span>): the table’s pure end points read 32.19 and 15.74 kPa, and the stored Antoine constants give 32.33 and 15.22 — <span class="math inline">+0.44</span> % on chloroform but <span class="math inline">-3.28</span> % on 2-butanone. That error goes straight into every <span class="math inline">\gamma_2</span>, and it is larger than every vapour-phase correction on the next slide put together.</p>
+</div>
+</section>
 <section id="where-the-error-actually-comes-from" class="slide level2">
 <h2>Where the error actually comes from</h2>
 <div class="kicker c-amber">
-<p>4.2 · From measurement to activity coefficient</p>
+<p>4.3 · From measurement to activity coefficient</p>
 </div>
 <div class="lede">
 <p>Propagate, and the ranking is not the one students expect.</p>
@@ -452,10 +615,100 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
+<section id="the-corrections-switched-on-one-at-a-time" class="slide level2">
+<h2>The corrections, switched on one at a time</h2>
+<div class="kicker c-amber">
+<p>4.3 · From measurement to activity coefficient</p>
+</div>
+<div class="lede">
+<p><span class="math inline">\Phi_i</span> is three factors, not one. Applied together they largely cancel; applied singly they do not.</p>
+</div>
+<p><img data-src="figures/f4_15_gamma_corrections_ladder.png" class="fig-cap" style="width:84.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The sizes, chloroform + 2-butanone at 15–32 kPa</span></p>
+<p><span class="math inline">\hat\varphi_i</span> alone moves <span class="math inline">\ln\gamma</span> by 0.014 and 0.020. Adding <span class="math inline">\varphi_i^{\rm sat}</span> moves it <strong>back</strong> by 0.015 and 0.011. Poynting adds 0.0005. Net over all three: 0.009 and 0.010.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Why they cancel</span></p>
+<p><span class="math inline">\hat\varphi_i</span> in the mixture and <span class="math inline">\varphi_i^{\rm sat}</span> for the pure saturated vapour have the same physical origin and, at these pressures, nearly the same value. <strong>Applying one without the other is worse than applying neither</strong> — a correction of one sign with its compensating partner omitted.</p>
+</div>
+</div>
+<div class="source">
+<p>F4.15 · Each rung of <span class="math inline">\Phi_i</span> on its own, ethanol + water at 101.3 kPa (<span class="small">doi:10.1021/je2008704</span>) with chloroform + 2-butanone (<span class="small">doi:10.1021/je060150a</span>) as the low-pressure contrast. Nothing here is fitted.</p>
+</div>
+</section>
+<section id="the-rule-compare-the-correction-with-the-noise" class="slide level2">
+<h2>The rule: compare the correction with the noise</h2>
+<div class="kicker c-amber">
+<p>4.3 · From measurement to activity coefficient</p>
+</div>
+<div class="lede">
+<p>Not “correct above one bar”. Compare the size of the correction with the uncertainty of the measurement it is correcting, on your own dataset.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th><span class="math inline">P</span> / kPa</th>
+<th>net <span class="math inline">\lvert\Delta\ln\gamma_1\rvert</span></th>
+<th><span class="math inline">\sigma(\ln\gamma_1)</span></th>
+<th>ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Benzene + toluene</td>
+<td>101.3</td>
+<td>0.0329</td>
+<td>0.0130</td>
+<td>2.53</td>
+</tr>
+<tr class="even">
+<td>Acetone + chloroform</td>
+<td>101.3</td>
+<td>0.0108</td>
+<td>0.0064</td>
+<td>1.70</td>
+</tr>
+<tr class="odd">
+<td>Methanol + water</td>
+<td>66.5</td>
+<td>0.0282</td>
+<td>0.0185</td>
+<td>1.53</td>
+</tr>
+<tr class="even">
+<td>Ethanol + water</td>
+<td>101.3</td>
+<td>0.0214</td>
+<td>0.0215</td>
+<td>1.00</td>
+</tr>
+<tr class="odd">
+<td>Chloroform + 2-butanone</td>
+<td>20.4</td>
+<td>0.0086</td>
+<td>0.0443</td>
+<td>0.19</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>At atmospheric pressure the correction is comparable to or larger than the noise and you may not neglect it. At 20 kPa it is a fifth of the noise and you may — <strong>and you say so, with the number</strong>. <span class="math inline">\sigma</span> is propagated from the uncertainties the papers themselves report.</p>
+</div>
+</section>
 <section id="isothermal-isobaric-and-the-azeotrope" class="slide level2">
 <h2>Isothermal, isobaric, and the azeotrope</h2>
 <div class="kicker c-amber">
-<p>4.2 · From measurement to activity coefficient</p>
+<p>4.3 · From measurement to activity coefficient</p>
 </div>
 <div class="lede">
 <p>The two kinds of dataset, and the one composition where <span class="math inline">\gamma</span> comes for free.</p>
@@ -478,16 +731,16 @@ Soorathep Kheawhom
 <section id="thermodynamic-consistency" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
 <h2>Thermodynamic consistency</h2>
 <div class="kicker c-amber">
-<p>PART III</p>
+<p>PART IV</p>
 </div>
 <div class="lede">
-<p>Section 4.3&nbsp;&nbsp;&nbsp;Can this dataset be believed?<br>Gibbs-Duhem makes a binary VLE dataset over-determined, so the data can be tested against thermodynamics with no model assumed correct.</p>
+<p>Section 4.4&nbsp;&nbsp;&nbsp;Can this dataset be believed?<br>Gibbs-Duhem makes a binary VLE dataset over-determined, so the data can be tested against thermodynamics with no model assumed correct.</p>
 </div>
 </section>
 <section id="the-premise" class="slide level2">
 <h2>The premise</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>One of the four measured variables is redundant. The size of the prediction error is the test.</p>
@@ -509,7 +762,7 @@ Soorathep Kheawhom
 <section id="the-area-test" class="slide level2">
 <h2>The area test</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>The oldest test, the most quoted, and the weakest.</p>
@@ -525,7 +778,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="why-the-area-test-is-weak" class="slide level2">
 <h2>Why the area test is weak</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>An integral cannot see an error that changes sign. This is a structural limitation, not a matter of threshold.</p>
@@ -546,7 +799,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="the-point-test" class="slide level2">
 <h2>The point test</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>Van Ness, Byer and Gibbs: fit <span class="math inline">P</span>-<span class="math inline">x</span> only, then predict <span class="math inline">y</span>. Errors cannot cancel, because nothing is integrated.</p>
@@ -569,7 +822,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="the-direct-test-and-the-1-10-index" class="slide level2">
 <h2>The direct test, and the 1-10 index</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>The same redundancy, expressed in the variable Gibbs-Duhem is actually written in. This is what modern journals expect.</p>
@@ -609,7 +862,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="two-more-tests-and-what-they-add" class="slide level2">
 <h2>Two more tests, and what they add</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>Different tests are blind to different things. That is the reason to run more than one.</p>
@@ -632,7 +885,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="isobaric-data-the-term-that-does-not-vanish" class="slide level2">
 <h2>Isobaric data: the term that does not vanish</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>At constant <span class="math inline">P</span> the temperature varies across the composition range, and the excess enthalpy term returns.</p>
@@ -648,7 +901,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="three-datasets-five-tests" class="slide level2">
 <h2>Three datasets, five tests</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <p><img data-src="figures/f4_05_three_datasets_tests.png" class="fig-xl"></p>
 <div class="source">
@@ -658,7 +911,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="diagnosis-not-verdict" class="slide level2">
 <h2>Diagnosis, not verdict</h2>
 <div class="kicker c-amber">
-<p>4.3 · Thermodynamic consistency testing</p>
+<p>4.4 · Thermodynamic consistency testing</p>
 </div>
 <div class="lede">
 <p>A failure is the beginning of an investigation. Each fault has a signature.</p>
@@ -697,16 +950,16 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="building-a-model-from-data" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
 <h2>Building a model from data</h2>
 <div class="kicker c-amber">
-<p>PART IV</p>
+<p>PART V</p>
 </div>
 <div class="lede">
-<p>Section 4.4&nbsp;&nbsp;&nbsp;Regression converges to something for almost any input.<br>The question is never whether a fit exists. It is what the fit is worth.</p>
+<p>Section 4.5&nbsp;&nbsp;&nbsp;Regression converges to something for almost any input.<br>The question is never whether a fit exists. It is what the fit is worth.</p>
 </div>
 </section>
 <section id="the-objective-function-is-a-modelling-decision" class="slide level2">
 <h2>The objective function is a modelling decision</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Same data, same model, four objectives, four answers. This is not numerical noise; it is a choice about which measurement you trust.</p>
@@ -729,7 +982,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="barkers-method" class="slide level2">
 <h2>Barker’s method</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Fit to <span class="math inline">P</span>-<span class="math inline">x</span> alone. Do not fit <span class="math inline">y</span> at all.</p>
@@ -755,7 +1008,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="does-the-parameter-earn-its-place" class="slide level2">
 <h2>Does the parameter earn its place?</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>A model with more parameters cannot fit worse. The residual alone will always choose the larger model.</p>
@@ -778,7 +1031,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="parameter-uncertainty-is-a-region-not-two-numbers" class="slide level2">
 <h2>Parameter uncertainty is a region, not two numbers</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Two standard errors quoted separately describe a rectangle the fit never occupied.</p>
@@ -801,7 +1054,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="the-consequence-that-actually-matters" class="slide level2">
 <h2>The consequence that actually matters</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Two fits the data cannot separate can disagree completely about the region you care about.</p>
@@ -821,10 +1074,183 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <p>F4.8 · Statistically indistinguishable fits extrapolated beyond the data.</p>
 </div>
 </section>
+<section id="five-models-on-one-real-dataset" class="slide level2">
+<h2>Five models on one real dataset</h2>
+<div class="kicker c-amber">
+<p>4.5 · Building an activity coefficient model from data</p>
+</div>
+<div class="lede">
+<p>Ethanol + water, 21 published points. The models agree where the measurements are and disagree about the limit the data barely reach.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th><span class="math inline">\gamma_1^\infty</span></th>
+<th><span class="math inline">\gamma_2^\infty</span></th>
+<th>rms <span class="math inline">\delta y_1</span></th>
+<th><span class="math inline">\Delta</span>AIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UNIQUAC</td>
+<td>6.00</td>
+<td>2.54</td>
+<td>0.0042</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>van Laar</td>
+<td>5.85</td>
+<td>2.51</td>
+<td>0.0040</td>
+<td>8.7</td>
+</tr>
+<tr class="odd">
+<td>NRTL</td>
+<td>5.77</td>
+<td>2.49</td>
+<td>0.0039</td>
+<td>20.2</td>
+</tr>
+<tr class="even">
+<td>Wilson</td>
+<td>6.56</td>
+<td>2.65</td>
+<td>0.0062</td>
+<td>49.5</td>
+</tr>
+<tr class="odd">
+<td>Margules-2</td>
+<td>5.19</td>
+<td>2.25</td>
+<td>0.0068</td>
+<td>76.5</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>The paper reports <span class="math inline">u(y_1) = 0.015</span>. The top three models predict <span class="math inline">y_1</span> to 0.004 — <strong>indistinguishable within the measurement error</strong>, with an AIC ordering driven by differences the data cannot resolve. What separates them is not the fit. It is that <span class="math inline">\gamma_1^\infty</span> spans 5.19 to 6.56, a spread of 26 %. Data: <span class="small">doi:10.1021/je2008704</span>.</p>
+</div>
+</section>
+<section id="pin-the-ends-and-what-is-left-is-the-form" class="slide level2">
+<h2>Pin the ends, and what is left is the form</h2>
+<div class="kicker c-amber">
+<p>4.5 · Building an activity coefficient model from data</p>
+</div>
+<div class="lede">
+<p>Solve each model’s two parameters so that every model has <em>identical</em> <span class="math inline">\gamma_1^\infty</span> and <span class="math inline">\gamma_2^\infty</span>. Nothing is left to adjust. The curves still differ.</p>
+</div>
+<p><img data-src="figures/f4_16_model_shape_capability.png" class="fig-cap" style="width:86.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The cost of choosing a form</span></p>
+<p>With both ends matched to <span class="math inline">4\times10^{-16}</span> in <span class="math inline">\ln\gamma^\infty</span>, <span class="math inline">G^E/RT</span> at its peak still spans <strong>20 %</strong> across the five forms — 16 % when the ends are pinned to the NRTL fit instead of to UNIFAC. That residue is the functional form and nothing else.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Same numbers, different function</span></p>
+<p>Margules-2 and van Laar come out with <em>identical</em> parameters, 1.7528 and 0.9112: in both, the two parameters <strong>are</strong> <span class="math inline">\ln\gamma_1^\infty</span> and <span class="math inline">\ln\gamma_2^\infty</span>. Different curves all the same. A parameter value quoted without its model is meaningless.</p>
+</div>
+</div>
+<div class="source">
+<p>F4.16 · Nothing on this figure is fitted. Ends pinned to an original-UNIFAC <em>prediction</em> for ethanol + water at 323.15 K, plotted against measured <span class="math inline">G^E/RT</span> (<span class="small">doi:10.1021/je2008704</span>) for scale.</p>
+</div>
+</section>
+<section id="what-each-form-can-draw" class="slide level2">
+<h2>What each form can draw</h2>
+<div class="kicker c-amber">
+<p>4.5 · Building an activity coefficient model from data</p>
+</div>
+<div class="lede">
+<p>Reduce out the ends. <span class="math inline">Q = G^E/(RT x_1 x_2)</span> has <span class="math inline">Q(0) = \ln\gamma_1^\infty</span> and <span class="math inline">Q(1) = \ln\gamma_2^\infty</span>, so every pinned model passes through the same two points and only the shape is left.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">No freedom at all</span></p>
+<p>For Margules-2, <span class="math inline">Q</span> <strong>is</strong> the straight chord between the two end values — verified to <span class="math inline">3\times10^{-15}</span> over a <span class="math inline">60\times60</span> parameter grid. There is nothing to choose: fix the ends and the whole curve is fixed.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">One curvature, fixed sign</span></p>
+<p>Van Laar’s <span class="math inline">Q</span> is a monotone hyperbola: <span class="math inline">{\rm d}^2Q/{\rm d}x_1^2</span> changed sign in <strong>0 of 3600</strong> parameter pairs. It can bow away from the chord, but only one way, and it cannot carry an interior feature.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Local composition buys inflection</span></p>
+<p>Wilson inflects in 392 of 3600 pairs, UNIQUAC in 377, NRTL in 196. That is what the extra structure is for — not a better fit at the ends, which any of them can match exactly, but a shape the two-parameter chord cannot make.</p>
+</div>
+</div>
+<div class="note">
+<p>This is the honest reason to prefer NRTL or UNIQUAC over Margules for a strongly non-ideal binary, and it has nothing to do with the number of parameters: all five here have exactly two.</p>
+</div>
+</section>
+<section id="wilson-cannot-split-a-liquid" class="slide level2">
+<h2>Wilson cannot split a liquid</h2>
+<div class="kicker c-amber">
+<p>4.5 · Building an activity coefficient model from data</p>
+</div>
+<div class="lede">
+<p>Not “does not usually”. Cannot, for any parameters. This is algebra, not a limitation of fitting.</p>
+</div>
+<p><span class="math display">\frac{{\rm d}^2}{{\rm d}x_1^2}\frac{\Delta g_{\rm mix}}{RT}
+= \frac{\Lambda_{12}^2}{x_1 (x_1 + \Lambda_{12}x_2)^2}
++ \frac{\Lambda_{21}^2}{x_2 (x_2 + \Lambda_{21}x_1)^2}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Why that settles it</span></p>
+<p>A sum of two squares over positive quantities. Both <span class="math inline">\Lambda</span> are ratios of Boltzmann factors and so are positive, hence the second derivative is strictly positive at every composition, hence <span class="math inline">\Delta g_{\rm mix}</span> is convex, hence there is no common tangent and no phase split. Ever.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Checked, not asserted</span></p>
+<p>The closed form matches a numerical second derivative to one part in <span class="math inline">10^5</span> over <strong>4000 random</strong> <span class="math inline">(\Lambda_{12}, \Lambda_{21}, x_1)</span>; the smallest value found anywhere is 0, approached only as <span class="math inline">\Lambda \to 0</span>. A <span class="math inline">140\times140</span> grid gives 0 unstable pairs of 19600. For contrast, Margules-2 crosses at <span class="math inline">A = 2</span> exactly and splits above it.</p>
+</div>
+</div>
+</section>
+<section id="choosing-a-form-on-shape-grounds" class="slide level2">
+<h2>Choosing a form, on shape grounds</h2>
+<div class="kicker c-amber">
+<p>4.5 · Building an activity coefficient model from data</p>
+</div>
+<div class="lede">
+<p>Not a capability table. Three questions about your own system, answered before the regression runs.</p>
+</div>
+<div class="evidence">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Is <span class="math inline">G^E</span> skewed, or symmetric about <span class="math inline">x_1 = \tfrac12</span>?</td>
+<td>Symmetric: Margules-2 is enough and its parameters mean something. Strongly skewed: the chord will not do it</td>
+</tr>
+<tr class="even">
+<td>Does the reduced <span class="math inline">Q</span> change curvature?</td>
+<td>If it does, only the local-composition forms can follow it. Van Laar and Margules cannot, at any parameter values</td>
+</tr>
+<tr class="odd">
+<td>Might the system split into two liquid phases, now or under extrapolation?</td>
+<td>Wilson is excluded by algebra. NRTL and UNIQUAC can represent a split; whether they should is Module 5</td>
+</tr>
+<tr class="even">
+<td>Do you need the parameters at another temperature?</td>
+<td>Fit <span class="math inline">\Delta u_{ij}</span>, not <span class="math inline">\tau_{ij}</span>, and say what you assumed — three slides on, and F4.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="two-ways-to-find-out-whether-you-have-learned-the-noise" class="slide level2">
 <h2>Two ways to find out whether you have learned the noise</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Reporting the residual on the points you fitted is not evidence.</p>
@@ -845,7 +1271,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="temperature-and-the-limits-of-two-numbers" class="slide level2">
 <h2>Temperature, and the limits of two numbers</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>Parameters fitted at one temperature, used at another.</p>
@@ -867,7 +1293,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="the-deliverable" class="slide level2">
 <h2>The deliverable</h2>
 <div class="kicker c-amber">
-<p>4.4 · Building an activity coefficient model from data</p>
+<p>4.5 · Building an activity coefficient model from data</p>
 </div>
 <div class="lede">
 <p>A regression report that stops at the parameters is not finished.</p>
@@ -884,43 +1310,110 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="using-the-model" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
 <h2>Using the model</h2>
 <div class="kicker c-amber">
-<p>PART V</p>
+<p>PART VI</p>
 </div>
 <div class="lede">
-<p>Section 4.5&nbsp;&nbsp;&nbsp;Bubble, dew, flash — and the question none of them asks.</p>
+<p>Section 4.6&nbsp;&nbsp;&nbsp;Bubble, dew, flash — and the question none of them asks.</p>
 </div>
 </section>
-<section id="four-algorithms-not-one" class="slide level2">
-<h2>Four algorithms, not one</h2>
+<section id="four-calculations-one-equation" class="slide level2">
+<h2>Four calculations, one equation</h2>
 <div class="kicker c-amber">
-<p>4.5 · Bubble, dew, flash and mixing rules</p>
+<p>4.6 · Bubble, dew and flash</p>
 </div>
 <div class="lede">
-<p>The same equilibrium condition with different variables specified. They do not converge equally well.</p>
+<p><span class="math inline">y_i P = x_i \gamma_i P_i^{\rm sat}</span> throughout. What changes is which two of <span class="math inline">P</span>, <span class="math inline">T</span>, <span class="math inline">x</span>, <span class="math inline">y</span> you were given.</p>
 </div>
 <div class="cards quad">
 <div class="card">
-<p><span class="card-h c-teal">Bubble <span class="math inline">P</span></span></p>
-<p>Given <span class="math inline">x</span>, <span class="math inline">T</span>. Direct: <span class="math inline">\gamma_i(x,T)</span> is known immediately, so <span class="math inline">P</span> and <span class="math inline">y</span> follow with no iteration for an ideal vapour.</p>
+<p><span class="card-h c-teal">BUBL P</span></p>
+<p>Given <span class="math inline">x</span>, <span class="math inline">T</span>; solve for <span class="math inline">P</span>, <span class="math inline">y</span>. <span class="math display">P = \sum_i x_i \gamma_i P_i^{\rm sat}</span> Everything on the right is known. <strong>Explicit.</strong></p>
 </div>
 <div class="card">
-<p><span class="card-h c-amber">Bubble <span class="math inline">T</span></span></p>
-<p>Given <span class="math inline">x</span>, <span class="math inline">P</span>. One outer iteration on <span class="math inline">T</span>, because <span class="math inline">P_i^{\rm sat}</span> and <span class="math inline">\gamma_i</span> both move with it.</p>
+<p><span class="card-h c-sky">DEW P</span></p>
+<p>Given <span class="math inline">y</span>, <span class="math inline">T</span>; solve for <span class="math inline">P</span>, <span class="math inline">x</span>. <span class="math display">\frac{1}{P} = \sum_i \frac{y_i}{\gamma_i P_i^{\rm sat}}</span> <span class="math inline">\gamma_i</span> needs <span class="math inline">x</span>, which is the answer.</p>
 </div>
 <div class="card">
-<p><span class="card-h c-rust">Dew <span class="math inline">P</span></span></p>
-<p>Given <span class="math inline">y</span>, <span class="math inline">T</span>. The liquid composition is unknown, so <span class="math inline">\gamma_i</span> must be updated every iteration. Slower and less robust than bubble.</p>
+<p><span class="card-h c-amber">BUBL T</span></p>
+<p>Given <span class="math inline">x</span>, <span class="math inline">P</span>; solve for <span class="math inline">T</span>, <span class="math inline">y</span>. <span class="math display">\sum_i x_i \gamma_i P_i^{\rm sat}(T) = P</span> <span class="math inline">P_i^{\rm sat}</span> is not computable yet.</p>
 </div>
 <div class="card">
-<p><span class="card-h c-sky">Dew <span class="math inline">T</span></span></p>
-<p>Given <span class="math inline">y</span>, <span class="math inline">P</span>. Both loops at once. This is the one that fails in a flowsheet at three in the morning.</p>
+<p><span class="card-h c-rust">DEW T</span></p>
+<p>Given <span class="math inline">y</span>, <span class="math inline">P</span>; solve for <span class="math inline">T</span>, <span class="math inline">x</span>. <span class="math display">\sum_i \frac{y_i}{\gamma_i P_i^{\rm sat}(T)} = \frac{1}{P}</span> Both difficulties at once.</p>
+</div>
+</div>
+<div class="note">
+<p>The pattern is in the algebra, not in the physics: the bubble forms are sums, the dew forms are sums of reciprocals. Everything that follows — which one needs a loop, which one is slow, which one fails — comes from that difference and from where the unknown sits.</p>
+</div>
+</section>
+<section id="which-of-them-needs-an-inner-loop-and-why" class="slide level2">
+<h2>Which of them needs an inner loop, and why</h2>
+<div class="kicker c-amber">
+<p>4.6 · Bubble, dew and flash</p>
+</div>
+<div class="lede">
+<p>Two independent difficulties, and they compose. Nothing here is about the solver; it is about which unknown appears inside which function.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Difficulty 1 — <span class="math inline">\gamma_i</span> needs the liquid</span></p>
+<p>The activity coefficient is a function of <span class="math inline">x</span>. In the two DEW problems <span class="math inline">x</span> is what you are solving for, so <span class="math inline">\gamma_i</span> must be re-evaluated every step: successive substitution on <span class="math inline">x</span>, starting from the ideal answer <span class="math inline">x = y</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Difficulty 2 — <span class="math inline">P_i^{\rm sat}</span> needs the temperature</span></p>
+<p>Antoine is evaluated at the unknown <span class="math inline">T</span> in the two <span class="math inline">T</span> problems, so an outer root-find on <span class="math inline">T</span> wraps whatever is inside. <strong>DEW T has both</strong>, and the inner loop runs to convergence at every outer trial temperature.</p>
+</div>
+</div>
+<div class="note">
+<p>Which is why the cost is multiplicative rather than additive, and why a loose inner tolerance corrupts the outer root-find instead of merely slowing it: the outer function stops being a smooth function of <span class="math inline">T</span>.</p>
+</div>
+</section>
+<section id="the-four-worked" class="slide level2">
+<h2>The four, worked</h2>
+<div class="kicker c-amber">
+<p>4.6 · Bubble, dew and flash</p>
+</div>
+<div class="lede">
+<p>Methanol + water, NRTL fitted by Barker to 16 published points, ideal vapour, composition specified as 0.40 in each case.</p>
+</div>
+<p><img data-src="figures/f4_14_bubble_dew_four_calculations.png" class="fig-cap" style="width:92.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The four answers</span></p>
+<p>BUBL P 71.646 kPa, no iteration at all. DEW P 42.197 kPa in 15 composition steps. BUBL T 338.163 K in 9 temperature steps. DEW T 350.814 K in <strong>13 outer × 75 inner</strong>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The ratio is the lesson</span></p>
+<p>Nothing was made harder: same system, same model, same tolerance. Moving the specification from the liquid to the vapour and from <span class="math inline">P</span> to <span class="math inline">T</span> costs about two orders of magnitude in work, and that cost is where a flowsheet fails.</p>
+</div>
+</div>
+<div class="source">
+<p>F4.14 · Iteration counts counted by the solvers, not estimated; every answer checked against <code>vlekit</code> to better than <span class="math inline">10^{-10}</span>. Data: <span class="small">doi:10.1021/je300613v</span>.</p>
+</div>
+</section>
+<section id="the-cheapest-check-you-can-run" class="slide level2">
+<h2>The cheapest check you can run</h2>
+<div class="kicker c-amber">
+<p>4.6 · Bubble, dew and flash</p>
+</div>
+<div class="lede">
+<p>For one composition at one condition, the four answers must be ordered. If they are not, you have a sign error.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The ordering, and why it must hold</span></p>
+<p>At the same <span class="math inline">T</span> and specified composition, BUBL <span class="math inline">P &gt;</span> DEW <span class="math inline">P</span>: 71.646 against 42.197 kPa. At the same <span class="math inline">P</span>, BUBL <span class="math inline">T &lt;</span> DEW <span class="math inline">T</span>: 338.163 against 350.814 K. The bubble point is the first bubble of vapour, the dew point the last drop of liquid, and the two-phase region lies between them.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">It held on all four systems</span></p>
+<p>Benzene + toluene, methanol + water, ethanol + water and chloroform + 2-butanone: sixteen numbers, ordered correctly in every row, with the from-scratch code and <code>vlekit</code> agreeing to <span class="math inline">10^{-10}</span>. Two failure modes are caught by one comparison that costs nothing.</p>
 </div>
 </div>
 </section>
 <section id="rachford-rice" class="slide level2">
 <h2>Rachford-Rice</h2>
 <div class="kicker c-amber">
-<p>4.5 · Bubble, dew, flash and mixing rules</p>
+<p>4.6 · Bubble, dew and flash</p>
 </div>
 <div class="lede">
 <p>Monotonic in the vapour fraction, and therefore safe. Show the plot before the algebra.</p>
@@ -935,7 +1428,7 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 <section id="the-question-the-flash-never-asks" class="slide level2">
 <h2>The question the flash never asks</h2>
 <div class="kicker c-amber">
-<p>4.5 · Bubble, dew, flash and mixing rules</p>
+<p>4.6 · Bubble, dew and flash</p>
 </div>
 <div class="lede">
 <p>Rachford-Rice was told there are two phases, and it will find two phases.</p>
@@ -951,152 +1444,206 @@ D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}</span></p>
 </div>
 </div>
 </section>
-<section id="mixing-rules-for-cubic-equations-of-state" class="slide level2">
-<h2>Mixing rules for cubic equations of state</h2>
+<section id="the-link-to-equations-of-state" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>The link to equations of state</h2>
 <div class="kicker c-amber">
-<p>4.5 · Bubble, dew, flash and mixing rules</p>
+<p>PART VII</p>
 </div>
 <div class="lede">
-<p>The phi-phi route needs mixture parameters. The classical answer is quadratic in composition.</p>
-</div>
-<p><span class="math display">a_{\rm mix} = \sum_i\sum_j x_i x_j \sqrt{a_i a_j}\,(1 - k_{ij}),
-\qquad b_{\rm mix} = \sum_i x_i b_i</span></p>
-<div class="cards">
-<div class="card">
-<p><span class="card-h c-amber"><span class="math inline">k_{ij}</span> is fitted, not predicted</span></p>
-<p>It comes from binary data, exactly like the activity model parameters, and it carries the same obligations: a range of validity and an uncertainty.</p>
-</div>
-<div class="card">
-<p><span class="card-h c-rust">Why it fails for polar mixtures</span></p>
-<p>The quadratic form assumes random mixing. Substituting it into the cubic gives an excess Gibbs energy that is thermodynamically equivalent to a one-constant Margules model: symmetric, one parameter. Hydrogen-bonding mixtures are neither symmetric nor one-parameter, and <span class="math inline">k_{ij}</span> can scale that curve but cannot change its shape.</p>
-</div>
+<p>Section 4.7&nbsp;&nbsp;&nbsp;The activity route runs out. The equation of state does not describe polar liquids.<br>A mixing rule built from <span class="math inline">G^E</span> is the bridge — and this section reports what it is actually worth.</p>
 </div>
 </section>
-<section id="one-idea-stated-and-not-derived" class="slide level2">
-<h2>One idea, stated and not derived</h2>
+<section id="where-gamma-phi-stops-working" class="slide level2">
+<h2>Where gamma-phi stops working</h2>
 <div class="kicker c-amber">
-<p>4.5 · Bubble, dew, flash and mixing rules</p>
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
 </div>
 <div class="lede">
-<p>A mixing rule can be constructed so that a cubic equation of state reproduces a chosen excess Gibbs energy model.</p>
+<p>Methane + n-butane at 310.93 K. Methane sits at <span class="math inline">T/T_c = 1.63</span>: no pure liquid, so no reference fugacity to write <span class="math inline">\gamma</span> against.</p>
 </div>
+<p><img data-src="figures/f4_17_gamma_phi_vs_phi_phi.png" class="fig-cap" style="width:82.0%"></p>
 <div class="cards">
 <div class="card">
-<p><span class="card-h c-teal">What that buys</span></p>
-<p>The pressure range and the supercritical components of an equation of state, together with the composition behaviour of NRTL or UNIQUAC. This is how a simulator handles CO₂ with ethanol at 100 bar.</p>
+<p><span class="card-h c-rust">What the two routes say at the critical point</span></p>
+<p>The mixture critical point is at <span class="math inline">x_1 = y_1 = 0.7387</span>, 13.551 MPa. Phi-phi gives <span class="math inline">K_1 = 1.010</span>, <span class="math inline">K_2 = 0.972</span> — going to one together, which is what a critical point <em>is</em>. Gamma-phi says 2.09 and 0.026, and cannot make them meet.</p>
 </div>
 <div class="card">
-<p><span class="card-h c-amber">Where to find it</span></p>
-<p>Huron-Vidal and Wong-Sandler. Four appendix slides follow this one, and the algebra is in <strong><code>vle-mixing-rules-note.pdf</code></strong> on the course page. Not lectured, not examined — but the property-method dropdown in a simulator says PRWS and PSRK, and four pages is what it takes to know what that means.</p>
+<p><span class="card-h c-amber">The fiction underneath</span></p>
+<p><span class="math inline">P_1^{\rm sat} = 28.4</span> MPa at 310.93 K comes from an Antoine correlation evaluated 120 K past its 91–190 K range: a number, not a vapour pressure.</p>
 </div>
+</div>
+<div class="source">
+<p>F4.17 · Both curves are calculations: Peng-Robinson, 1976 <span class="math inline">\alpha</span>, <span class="math inline">k_{12} = 0</span>.</p>
 </div>
 </section>
-<section id="what-you-must-be-able-to-do" class="slide level2">
-<h2>What you must be able to do</h2>
+<section id="what-the-classical-mixing-rule-is-secretly-assuming" class="slide level2">
+<h2>What the classical mixing rule is secretly assuming</h2>
 <div class="kicker c-amber">
-<p>Closing</p>
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
 </div>
 <div class="lede">
-<p>The module in six statements.</p>
+<p>Run the argument backwards. With <span class="math inline">a</span> quadratic and <span class="math inline">b</span> linear, the cubic already has an excess Gibbs energy — and you can write it down.</p>
 </div>
-<div class="numbered n3 two-col">
-<ol type="1">
-<li><strong>Choose a description and defend the assumption.</strong> Raoult, modified Raoult, gamma-phi or phi-phi — and say which assumption you are relying on.</li>
-<li><strong>Turn <span class="math inline">T</span>, <span class="math inline">P</span>, <span class="math inline">x</span>, <span class="math inline">y</span> into <span class="math inline">\gamma</span> with its uncertainty.</strong> Including the vapour-phase assumption, stated, and the error in <span class="math inline">P^{\rm sat}</span>.</li>
-<li><strong>Test a dataset and diagnose the failure.</strong> All five tests, and a signature-based diagnosis rather than a verdict.</li>
-<li><strong>Fit, and say what the fit is worth.</strong> Objective chosen deliberately, confidence region reported, extrapolations named.</li>
-<li><strong>Compare against a prediction.</strong> Know what the two fitted parameters bought over UNIFAC.</li>
-<li><strong>Know what the calculation does not check.</strong> A flash assumes the number of phases. Module 5 supplies the missing test.</li>
-</ol>
-</div>
-</section>
-<section id="section-1" class="slide level2 dark mid" data-background-color="#1C242B" data-visibility="uncounted">
-<h2>&nbsp;</h2>
-<div class="vcenter">
-<div class="statement">
-<p>Appendix</p>
-</div>
-<div class="statement-hi">
-<p>EoS-<span class="math inline">G^E</span> mixing rules<br>Huron-Vidal and Wong-Sandler</p>
-</div>
-<div class="statement-sub">
-<p>Not lectured. Not examined. Read the note if this is your problem.</p>
-</div>
-</div>
-</section>
-<section id="a.1-two-worlds-that-do-not-meet" class="slide level2" data-visibility="uncounted">
-<h2>A.1 · Two worlds that do not meet</h2>
-<div class="kicker c-amber">
-<p>Appendix · EoS-<span class="math inline">G^E</span> mixing rules</p>
-</div>
+<p><span class="math display">\frac{G^E_{\rm cl}}{RT} = \frac{C}{RT}
+\left[\frac{a_{\rm cl}(T,x)}{b_{\rm cl}(x)} - \sum_i x_i \frac{a_i}{b_i}\right]
+\;\xrightarrow{\;k_{12}=0\;}\;
+\frac{K\,x_1x_2}{x_1b_1 + x_2b_2}</span></p>
 <div class="cards">
 <div class="card">
-<p><span class="card-h c-teal">Equations of state</span></p>
-<p>Handle high pressure and supercritical components. One model for both phases, no reference vapour pressure required. Fail on polar and hydrogen-bonding mixtures, because the quadratic mixing rule assumes random mixing.</p>
+<p><span class="card-h c-rust">It is a van Laar with no freedom</span></p>
+<p>With <span class="math inline">k_{12} = 0</span> the bracket factorises into a perfect square, so <span class="math inline">G^E_{\rm cl}</span> is exactly a van Laar function with <span class="math inline">A = K/b_2</span>, <span class="math inline">B = K/b_1</span> — both constants fixed by the pure-component <span class="math inline">a_i</span> and <span class="math inline">b_i</span>. Nothing is adjustable, and <span class="math inline">K &gt; 0</span>, so the classical rule at <span class="math inline">k_{12}=0</span> <strong>can only produce positive deviations</strong>.</p>
 </div>
 <div class="card">
-<p><span class="card-h c-rust">Activity coefficient models</span></p>
-<p>Handle polar and associating liquids, through local-composition terms fitted to data. Cannot cross the critical point, and need a reference fugacity that a supercritical component does not have.</p>
+<p><span class="card-h c-amber">On a real Type 4 binary</span></p>
+<p>Chloroform + 2-butanone at 303.15 K needs <span class="math inline">G^E/RT = -0.278</span> at equimolar. The classical rule at <span class="math inline">k_{12} = 0</span> offers <span class="math inline">+0.024</span> — the wrong sign. One fitted <span class="math inline">k_{12} = -0.072</span> buys <span class="math inline">-0.306</span>, which is why it works here; but the <em>shape</em> stays a single skewed lobe with the skew set by <span class="math inline">b_1 : b_2 = 63.4 : 82.5</span> cm³/mol.</p>
 </div>
 </div>
 <div class="note">
-<p>The engineering problem is the mixture that is both — CO₂ with ethanol, water with a light gas — and neither description can be pushed into the other’s territory. The mixing rule is the bridge.</p>
+<p>So the classical rule is not an alternative to the <span class="math inline">G^E</span> route. It <strong>is</strong> the <span class="math inline">G^E</span> route, with one particular and rather rigid choice of activity model.</p>
 </div>
 </section>
-<section id="a.2-huron-vidal" class="slide level2" data-visibility="uncounted">
-<h2>A.2 · Huron-Vidal</h2>
+<section id="the-bridge-huron-vidal" class="slide level2">
+<h2>The bridge: Huron-Vidal</h2>
 <div class="kicker c-amber">
-<p>Appendix · EoS-<span class="math inline">G^E</span> mixing rules</p>
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
 </div>
 <div class="lede">
-<p>Match the excess Gibbs energy of the equation of state to that of an activity model in the infinite-pressure limit, where the cubic collapses to <span class="math inline">V = b</span> and the expression closes.</p>
+<p>Stop guessing <span class="math inline">a(x)</span>. <strong>Require</strong> the equation of state to reproduce a chosen <span class="math inline">G^E</span> — which can only be done at one reference pressure, because the equation of state’s <span class="math inline">G^E</span> depends on <span class="math inline">P</span> and the activity model’s does not.</p>
 </div>
-<p><span class="math display">\frac{a_{\rm mix}}{b_{\rm mix}}
-= \sum_i x_i \frac{a_i}{b_i} - \frac{g^E_\infty}{C},
+<p><span class="math display">\frac{a_{\rm mix}}{b_{\rm mix}} = \sum_i x_i \frac{a_i}{b_i}
++ \frac{G^E_\infty}{C},
 \qquad
-C = \frac{1}{\delta_1 - \delta_2}\,\ln\frac{1 + \delta_1}{1 + \delta_2}</span></p>
-<div class="cards">
+b_{\rm mix} = \sum_i x_i b_i,
+\qquad
+C = \frac{\ln(\sqrt2 - 1)}{\sqrt2} = -0.6232</span></p>
+<div class="cards g3">
 <div class="card">
-<p><span class="card-h c-teal">The constant</span></p>
-<p><span class="math inline">C = \ln 2 = 0.6931</span> for Soave-Redlich-Kwong; <span class="math inline">C = \ln(1+\sqrt2)/\sqrt2 = 0.6232</span> for Peng-Robinson.</p>
+<p><span class="card-h c-teal">Why infinite pressure</span></p>
+<p>There <span class="math inline">v \to b</span>, the excess volume vanishes and the expression closes in <span class="math inline">a</span> and <span class="math inline">b</span> alone. MHV1 and MHV2 match at zero pressure instead — messier algebra, one large reward, on the last slide of this section.</p>
 </div>
 <div class="card">
-<p><span class="card-h c-rust">The practical cost</span></p>
-<p><strong>Published low-pressure NRTL parameters cannot be reused.</strong> The reference state is the infinite-pressure limit, not the real liquid, so the parameters must be refitted — and they are not transferable between SRK and PR either, because <span class="math inline">C</span> differs.</p>
-</div>
-</div>
-</section>
-<section id="a.3-wong-sandler" class="slide level2" data-visibility="uncounted">
-<h2>A.3 · Wong-Sandler</h2>
-<div class="kicker c-amber">
-<p>Appendix · EoS-<span class="math inline">G^E</span> mixing rules</p>
-</div>
-<div class="lede">
-<p>Keep the infinite-pressure condition and add the low-density one: the second virial coefficient must be quadratic in composition.</p>
-</div>
-<p><span class="math display">B = b - \frac{a}{RT},
-\qquad
-Q = \sum_i\sum_j x_i x_j B_{ij},
-\qquad
-D = \sum_i x_i \frac{a_i}{b_i RT} + \frac{g^E_\infty}{CRT}</span></p>
-<p><span class="math display">b_{\rm mix} = \frac{Q}{1 - D},
-\qquad
-a_{\rm mix} = RT\,\frac{Q\,D}{1 - D}</span></p>
-<div class="cards">
-<div class="card">
-<p><span class="card-h c-teal">What is gained</span></p>
-<p>Correct at both ends of the density range. <span class="math inline">b_{\rm mix}</span> stops being linear in composition, which is the structural difference from Huron-Vidal.</p>
+<p><span class="card-h c-rust">Watch the sign</span></p>
+<p><span class="math inline">C</span> is <strong>negative</strong>, so a positive <span class="math inline">G^E</span> <em>lowers</em> <span class="math inline">a/b</span> — the direction a positive <span class="math inline">k_{ij}</span> moves it, which is the check that the convention is right. Some references define <span class="math inline">C</span> with the opposite sign and then subtract. Both are in print; only one works with the value above. SRK gives <span class="math inline">C = -\ln 2</span>.</p>
 </div>
 <div class="card">
 <p><span class="card-h c-amber">What it costs</span></p>
-<p>One extra binary parameter in the <span class="math inline">B_{ij}</span> combining rule, on top of the <span class="math inline">g^E</span> model parameters. Pure-component reduction (<span class="math inline">b_{\rm mix} = b_i</span>, <span class="math inline">a_{\rm mix} = a_i</span>) is the unit test to run before trusting an implementation.</p>
+<p>The reference state is not the real liquid, so <strong>published low-pressure NRTL parameters cannot be reused</strong>, and they do not transfer between SRK and PR because <span class="math inline">C</span> differs. Unit tests: the pure limits, and <span class="math inline">G^E</span> from the equation of state converging to the activity model as <span class="math inline">P \to \infty</span>.</p>
 </div>
 </div>
 </section>
-<section id="a.4-what-the-names-mean" class="slide level2" data-visibility="uncounted">
-<h2>A.4 · What the names mean</h2>
+<section id="wong-sandler-and-the-constraint-it-exists-for" class="slide level2">
+<h2>Wong-Sandler, and the constraint it exists for</h2>
 <div class="kicker c-amber">
-<p>Appendix · EoS-<span class="math inline">G^E</span> mixing rules</p>
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
+</div>
+<div class="lede">
+<p>Every cubic has a low-density expansion, and statistical mechanics fixes the composition dependence of its leading term exactly.</p>
+</div>
+<p><span class="math display">Z = 1 + \frac{B(T,x)}{v} + \dots,
+\qquad B(T,x) = b(x) - \frac{a(T,x)}{RT}
+= \sum_i\sum_j x_i x_j B_{ij}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Huron-Vidal violates it</span></p>
+<p>It keeps <span class="math inline">b</span> linear and puts <span class="math inline">G^E</span> into <span class="math inline">a/b</span>, so <span class="math inline">B</span> inherits the composition dependence of the activity model, which is not a quadratic. Measured on the excess second virial: <strong>2.20 %</strong> for chloroform + 2-butanone, <strong>22.9 %</strong> for ethanol + water — ten times worse, and the violation scales with <span class="math inline">G^E</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Wong-Sandler imposes it</span></p>
+<p>The quadratic form becomes a second equation, solved together with the <span class="math inline">G^E</span> match for <span class="math inline">a</span> <strong>and</strong> <span class="math inline">b</span>, so <span class="math inline">b_{\rm mix}</span> stops being linear. Its violation is <span class="math inline">4\times10^{-11}</span> %: machine precision, because for that rule it is an identity and not an approximation. Cost: one extra binary parameter inside <span class="math inline">B_{ij}</span>.</p>
+</div>
+</div>
+<div class="note">
+<p>The error Huron-Vidal makes is an error in a limit where the cubic ought to be exact. That is the practical form of the complaint that its parameters do not travel in temperature — and it is an argument about a region nobody measured.</p>
+</div>
+</section>
+<section id="what-it-is-actually-worth-on-real-data" class="slide level2">
+<h2>What it is actually worth, on real data</h2>
+<div class="kicker c-amber">
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
+</div>
+<div class="lede">
+<p>Chloroform + 2-butanone at 303.15 K: bubble pressures from the cubic alone.</p>
+</div>
+<p><img data-src="figures/f4_18_mixing_rules_on_real_data.png" class="fig-cap" style="width:78.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">A factor of ten, for no fitted parameter</span></p>
+<p>Classical Peng-Robinson at <span class="math inline">k_{12} = 0</span>: <strong>21.94 %</strong> AAD in bubble pressure. The same cubic with Huron-Vidal and the Section 4.5 NRTL, which never saw the equation of state: <strong>2.08 %</strong>. Wong-Sandler 3.97 % at <span class="math inline">k_{12}=0</span>, 1.47 % at <span class="math inline">k_{12} = -0.1</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">And the number that loses</span></p>
+<p>Give the classical rule its one parameter, fitted to these pressures: <span class="math inline">k_{12} = -0.072</span>, AAD <strong>1.34 %</strong>. <strong>It beats Huron-Vidal here</strong> — not the result the usual telling leads you to expect.</p>
+</div>
+</div>
+<div class="source">
+<p>F4.18 · Peng-Robinson alone; its own pure vapour pressures are <span class="math inline">-0.2</span> % and <span class="math inline">-3.5</span> % out, so a per cent or two is the floor. <span class="small">doi:10.1021/je060150a</span></p>
+</div>
+</section>
+<section id="reading-that-result-honestly" class="slide level2">
+<h2>Reading that result honestly</h2>
+<div class="kicker c-amber">
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
+</div>
+<div class="lede">
+<p>The case for the <span class="math inline">G^E</span> rules is not that they fit better on one binary. Two things in the table are worth more than the AAD column.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">It fits comparably without being fitted here</span></p>
+<p>The Huron-Vidal 2.08 % used NRTL parameters regressed in Section 4.5, which never saw the equation of state and never saw these pressures through it. The classical 1.34 % was regressed against <strong>these very pressures</strong>. Those two numbers are not the same kind of number.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">And this binary is an easy case</span></p>
+<p><span class="math inline">G^E/RT = -0.28</span> at equimolar: moderately non-ideal, well inside what a single <span class="math inline">k_{12}</span> can absorb. The claim for the <span class="math inline">G^E</span> route is that it does not fall apart where the classical rule does — strongly associating mixtures, and extrapolation in temperature, which is where the second-virial violation bites.</p>
+</div>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Route</th>
+<th>Fitted to these pressures?</th>
+<th>AAD in <span class="math inline">P</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Classical PR, <span class="math inline">k_{12} = 0</span></td>
+<td>no</td>
+<td>21.94 %</td>
+</tr>
+<tr class="even">
+<td>Huron-Vidal + the Section 4.5 NRTL</td>
+<td>no</td>
+<td>2.08 %</td>
+</tr>
+<tr class="odd">
+<td>Wong-Sandler, <span class="math inline">k_{12} = 0</span></td>
+<td>no</td>
+<td>3.97 %</td>
+</tr>
+<tr class="even">
+<td>Wong-Sandler, <span class="math inline">k_{12} = -0.1</span></td>
+<td>one number</td>
+<td>1.47 %</td>
+</tr>
+<tr class="odd">
+<td><strong>Classical PR, <span class="math inline">k_{12} = -0.072</span></strong></td>
+<td><strong>yes</strong></td>
+<td><strong>1.34 %</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>The last two claims are about conditions this dataset does not contain. Say so, and say what would test them: the same binary at a second temperature, with the classical <span class="math inline">k_{12}</span> held at the value fitted here.</p>
+</div>
+</section>
+<section id="what-the-property-method-names-mean" class="slide level2">
+<h2>What the property-method names mean</h2>
+<div class="kicker c-amber">
+<p>4.7 · Equations of state and the <span class="math inline">G^E</span> link</p>
+</div>
+<div class="lede">
+<p>The dropdown in a process simulator, decoded. The reference state is the thing to read off the name.</p>
 </div>
 <table class="caption-top">
 <colgroup>
@@ -1127,13 +1674,168 @@ a_{\rm mix} = RT\,\frac{Q\,D}{1 - D}</span></p>
 <td>Predictive SRK: MHV1 with UNIFAC</td>
 <td>Predictive; no binary VLE data needed</td>
 </tr>
+<tr class="even">
+<td>PR, SRK with <span class="math inline">k_{ij}</span></td>
+<td>The classical rule</td>
+<td>One number per pair, fitted, with a range of validity like any other</td>
+</tr>
 </tbody>
 </table>
 <div class="note">
-<p>MHV1 and MHV2 (Michelsen, 1990) use a zero-pressure rather than an infinite-pressure reference, which is precisely what makes published parameters transferable. That is their entire practical advantage.</p>
+<p>Choosing a row is choosing a reference state and a parameter obligation, not a level of sophistication. Appendix slides A.2 and A.3 carry the algebra behind the first two rows; A.4 is this table with the derivation references.</p>
+</div>
+</section>
+<section id="what-you-must-be-able-to-do" class="slide level2">
+<h2>What you must be able to do</h2>
+<div class="kicker c-amber">
+<p>Closing</p>
+</div>
+<div class="lede">
+<p>The module in eight statements.</p>
+</div>
+<div class="numbered n3 two-col">
+<ol type="1">
+<li><strong>Choose a description and defend the assumption.</strong> Raoult, modified Raoult, gamma-phi or phi-phi — and say which assumption you are relying on.</li>
+<li><strong>Predict the solution type before fitting.</strong> Two <span class="math inline">\gamma^\infty</span> and a vapour-pressure ratio decide whether an azeotrope exists, and whether it moves with pressure.</li>
+<li><strong>Turn <span class="math inline">T</span>, <span class="math inline">P</span>, <span class="math inline">x</span>, <span class="math inline">y</span> into <span class="math inline">\gamma</span> with its uncertainty.</strong> Vapour-phase assumption stated, <span class="math inline">P^{\rm sat}</span> checked against the paper’s own end points.</li>
+<li><strong>Test a dataset and diagnose the failure.</strong> All five tests, and a signature-based diagnosis rather than a verdict.</li>
+<li><strong>Fit, and say what the fit is worth.</strong> Objective chosen deliberately, confidence region reported, extrapolations named — and compared against UNIFAC.</li>
+<li><strong>Choose the functional form on shape grounds.</strong> With both ends pinned, 20 % of <span class="math inline">G^E</span> is still the form; Wilson cannot split a liquid at all.</li>
+<li><strong>Run all four bubble and dew calculations.</strong> Know which need an inner loop, and check the ordering before trusting the answer.</li>
+<li><strong>Know where the activity route stops.</strong> No reference fugacity above <span class="math inline">T_c</span>; a <span class="math inline">G^E</span> mixing rule is the bridge, at a stated reference state.</li>
+</ol>
+</div>
+</section>
+<section id="section-1" class="slide level2 dark mid" data-background-color="#1C242B" data-visibility="uncounted">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="statement">
+<p>Appendix</p>
+</div>
+<div class="statement-hi">
+<p>EoS-<span class="math inline">G^E</span> mixing rules<br>the derivations, in full</p>
+</div>
+<div class="statement-sub">
+<p>The algebra behind Section 4.7 — and the unit tests that settle it.</p>
+</div>
+</div>
+</section>
+<section id="a.1-two-worlds-that-do-not-meet" class="slide level2" data-visibility="uncounted">
+<h2>A.1 · Two worlds that do not meet</h2>
+<div class="kicker c-amber">
+<p>Appendix · EoS-<span class="math inline">G^E</span> mixing rules</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Equations of state</span></p>
+<p>Handle high pressure and supercritical components. One model for both phases, no reference vapour pressure required. Fail on polar and hydrogen-bonding mixtures, because the quadratic mixing rule assumes random mixing.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Activity coefficient models</span></p>
+<p>Handle polar and associating liquids, through local-composition terms fitted to data. Cannot cross the critical point, and need a reference fugacity that a supercritical component does not have.</p>
+</div>
+</div>
+<div class="note">
+<p>The engineering problem is the mixture that is both — CO₂ with ethanol, water with a light gas — and neither description can be pushed into the other’s territory. Section 4.7 builds the bridge; the two slides that follow carry the algebra it quotes.</p>
+</div>
+</section>
+<section id="a.2-the-huron-vidal-algebra" class="slide level2" data-visibility="uncounted">
+<h2>A.2 · The Huron-Vidal algebra</h2>
+<div class="kicker c-amber">
+<p>Appendix · the derivation behind Section 4.7</p>
+</div>
+<div class="lede">
+<p>Where <span class="math inline">C</span> comes from, in five lines. Section 4.7 quotes the result; this is the limit it is quoted from.</p>
+</div>
+<p><span class="math display">\frac{G^{\rm res}}{RT} = B - \frac{A}{2\sqrt2 B}\,
+\ln\frac{Z + (1+\sqrt2)B}{Z + (1-\sqrt2)B} + Z - 1 - \ln Z</span></p>
+<p><span class="math display">P \to \infty:\quad Z \to B,
+\qquad \ln\frac{2+\sqrt2}{2-\sqrt2} = 2\ln(1+\sqrt2),
+\qquad \frac{G^{\rm res}}{RT} \to B + C\,\frac{a}{bRT}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Then subtract the pure components</span></p>
+<p><span class="math display">\frac{G^E_\infty}{RT} = \frac{P}{RT}\Big(b - \textstyle\sum_i x_i b_i\Big)
++ C\left[\frac{a}{bRT} - \sum_i x_i \frac{a_i}{b_iRT}\right]</span></p>
+<p>The first bracket is <span class="math inline">PV^E</span> and vanishes <strong>iff <span class="math inline">b</span> is linear in composition</strong> — exactly the assumption Huron-Vidal makes and exactly the one Wong-Sandler gives up. With it gone, <span class="math inline">a/b = \sum_i x_i a_i/b_i + G^E_\infty/C</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The sign, done slowly</span></p>
+<p><span class="math inline">C = -\ln(1+\sqrt2)/\sqrt2 = \ln(\sqrt2-1)/\sqrt2 = -0.6232</span> — the same number written two ways, and negative. A positive <span class="math inline">G^E</span> therefore lowers <span class="math inline">a/b</span>, which is the direction a positive <span class="math inline">k_{ij}</span> moves it. Writing the rule as “<span class="math inline">-\,G^E/C</span>” with a negative <span class="math inline">C</span> turns every positive-deviation system into a negative-deviation one. Settle it with a numerical limit, not with a reference.</p>
+</div>
 </div>
 <div class="source">
-<p>Full derivations, the sign-convention warning, and the references: <code>vle-mixing-rules-note.pdf</code>.</p>
+<p>Huron, M.; Vidal, J. <em>Fluid Phase Equilib.</em> <strong>3</strong> (1979) 255-271. SRK gives <span class="math inline">C = -\ln 2</span>; the constant depends on the volume translation of the cubic and on nothing else.</p>
+</div>
+</section>
+<section id="a.3-the-wong-sandler-algebra-and-the-trap" class="slide level2" data-visibility="uncounted">
+<h2>A.3 · The Wong-Sandler algebra, and the trap</h2>
+<div class="kicker c-amber">
+<p>Appendix · the derivation behind Section 4.7</p>
+</div>
+<div class="lede">
+<p>Two conditions, two unknowns. Then the test that makes a correct implementation look broken.</p>
+</div>
+<p><span class="math display">Q = \sum_i\sum_j x_i x_j \left(b - \frac{a}{RT}\right)_{ij},
+\qquad
+D = \sum_i x_i \frac{a_i}{b_i RT} + \frac{G^E_\infty}{CRT}</span></p>
+<p><span class="math display">b_{\rm mix} = \frac{Q}{1 - D},
+\qquad
+a_{\rm mix} = RT\,\frac{Q\,D}{1 - D}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Why <span class="math inline">b</span> stops being linear</span></p>
+<p><span class="math inline">Q</span> is the imposed quadratic second virial and <span class="math inline">D</span> carries the <span class="math inline">G^E</span> match, so <span class="math inline">b_{\rm mix} = Q/(1-D)</span> inherits the composition dependence of both. That is the structural difference from Huron-Vidal, and it is what buys <span class="math inline">B(T,x) = \sum_i\sum_j x_ix_jB_{ij}</span> as an identity.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The trap</span></p>
+<p>The infinite-pressure derivation matches an excess <strong>Helmholtz</strong> energy. <span class="math inline">G^E - A^E = PV^E</span>; Huron-Vidal has <span class="math inline">V^E_\infty = 0</span> so the two coincide, but Wong-Sandler’s <span class="math inline">b_{\rm mix}</span> is not linear, so its <span class="math inline">G^E</span> from the equation of state <strong>diverges</strong> like <span class="math inline">PV^E</span> while its <span class="math inline">A^E</span> converges. At <span class="math inline">P = 10^{11}</span> kPa and <span class="math inline">x_1 = 0.4</span>: <span class="math inline">A^E/RT = -0.258836</span> against the activity model’s <span class="math inline">-0.258836</span>, while <span class="math inline">G^E/RT</span> reads <span class="math inline">-93713</span>.</p>
+</div>
+</div>
+<div class="source">
+<p>Wong, D. S. H.; Sandler, S. I. <em>AIChE J.</em> <strong>38</strong> (1992) 671-680. Pure-component reduction (<span class="math inline">b_{\rm mix} = b_i</span>, <span class="math inline">a_{\rm mix} = a_i</span>) is the first unit test; the <span class="math inline">A^E</span> limit above is the second.</p>
+</div>
+</section>
+<section id="a.4-before-you-trust-an-implementation" class="slide level2" data-visibility="uncounted">
+<h2>A.4 · Before you trust an implementation</h2>
+<div class="kicker c-amber">
+<p>Appendix · the derivation behind Section 4.7</p>
+</div>
+<div class="lede">
+<p>Five checks, each a limit the algebra must reproduce exactly. Every number below came out of a run, not out of a reference.</p>
+</div>
+<div class="evidence">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Pure-component reduction</td>
+<td><span class="math inline">b_{\rm mix} = b_i</span> and <span class="math inline">a_{\rm mix} = a_i</span> at <span class="math inline">x_i = 1</span>, for both rules. Catches most indexing errors immediately</td>
+</tr>
+<tr class="even">
+<td>Huron-Vidal, <span class="math inline">P \to \infty</span></td>
+<td><span class="math inline">G^E/RT</span> from the equation of state <span class="math inline">= -0.258836</span> at <span class="math inline">x_1 = 0.4</span>, against the activity model’s <span class="math inline">-0.258836</span>. Converged by <span class="math inline">10^{11}</span> kPa</td>
+</tr>
+<tr class="odd">
+<td>Wong-Sandler, <span class="math inline">P \to \infty</span></td>
+<td>Test <span class="math inline">A^E</span>, not <span class="math inline">G^E</span>: <span class="math inline">-0.258836</span> against the same target, while <span class="math inline">G^E/RT</span> reads <span class="math inline">-93713</span> and is <em>supposed</em> to</td>
+</tr>
+<tr class="even">
+<td>Second virial</td>
+<td>Wong-Sandler reproduces <span class="math inline">\sum_i\sum_j x_ix_jB_{ij}</span> to <span class="math inline">4\times10^{-11}</span> % of the excess; Huron-Vidal to 2.20 % and 22.9 %</td>
+</tr>
+<tr class="odd">
+<td>The classical rule as a special case</td>
+<td>Feed the equation of state’s own <span class="math inline">G^E</span> back into either rule and the classical result returns. At <span class="math inline">k_{12} = 0</span> it is a van Laar: <span class="math inline">A = 0.0840</span>, <span class="math inline">B = 0.1093</span> for chloroform + 2-butanone at 303.15 K</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="source">
+<p>All five are in <code>vlekit/gemix.py</code> and its test module. MHV1 and MHV2 (Michelsen, 1990) match at zero pressure instead and are not implemented in the course toolkit — the reason published UNIFAC parameters transfer to PSRK is the reference state, and that argument is on the taught slide.</p>
 </div>
 
 
