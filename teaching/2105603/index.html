@@ -5,6 +5,29 @@ permalink: /teaching/2105603/
 description: Graduate course on advanced chemical engineering thermodynamics — molecular thermodynamics, equations of state, activity coefficient models, multicomponent phase and reaction equilibrium. Module slides, lecture notes and Python notebooks.
 ---
 {% assign c = site.data.act2026 %}
+
+{%- comment -%}
+  Scoped to this page rather than added to assets/style.css: the disclosure
+  pattern is not used anywhere else on the site yet, and a page-local block is
+  easier to delete than a site-wide rule nobody remembers the reason for. Move
+  it into style.css the day a second page needs it.
+{%- endcomment -%}
+<style>
+.selfcheck{border:1px solid var(--line);border-radius:5px;background:var(--paper);margin-top:14px}
+.selfcheck>summary{cursor:pointer;padding:13px 18px;font-family:"IBM Plex Mono";font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--prussian)}
+.selfcheck>summary:hover{background:var(--paper-2)}
+.selfcheck[open]>summary{border-bottom:1px solid var(--line)}
+.selfcheck ol{margin:0;padding:16px 22px 18px 42px}
+.selfcheck ol>li{margin-bottom:16px;font-size:.94rem}
+.selfcheck ol>li:last-child{margin-bottom:0}
+.selfcheck li details{margin-top:7px}
+.selfcheck li summary{cursor:pointer;display:inline-block;font-family:"IBM Plex Mono";font-size:.62rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.selfcheck li summary:hover{color:var(--prussian)}
+.selfcheck li details p{margin-top:8px;font-size:.9rem;color:var(--ink-soft);
+  border-left:2px solid var(--sodium);padding-left:13px}
+</style>
 <section>
   <div class="sec-head">
     <div class="mono eyebrow">Teaching · Graduate · {{ c.code }}</div>
@@ -73,6 +96,56 @@ description: Graduate course on advanced chemical engineering thermodynamics —
     </div>
   </div>
 
+  <h3 style="font-size:1.25rem;margin-bottom:8px">Start here</h3>
+  <p style="font-size:.95rem;color:var(--ink-soft);margin-bottom:22px;max-width:80ch">
+    This page is the primary reference for the course. Work through it in module
+    order — each one assumes the one before it. Modules 1 to 3 come before the
+    midterm; Modules 4 to 6, from vapour-liquid equilibrium onwards, are the
+    second half.</p>
+
+  <div class="pillars" style="margin-bottom:20px">
+    <div class="pillar">
+      <span class="tag">1 · Read</span>
+      <h3>The deck first, in order</h3>
+      <p>Slides open in the browser — nothing to download, and they work on a
+      phone. Press <span class="pill">F</span> for full screen,
+      <span class="pill">E</span> for a printable layout,
+      <span class="pill">?</span> for every shortcut. Every equation is live
+      text, so it stays sharp at any zoom and can be copied.</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">2 · Run</span>
+      <h3>Then the notebook, actually running</h3>
+      <p>Each notebook opens in Google Colab in one click. Nothing to install,
+      no Python on your own machine, and the course toolkit downloads itself in
+      the first cell. Reading a notebook is not doing it — change a number and
+      find out what breaks.</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">3 · Check</span>
+      <h3>Answer before you look</h3>
+      <p>Every module ends in a short set of questions. Write your answer down
+      first, then open the model answer. A question you can only answer after
+      reading the answer is a question you cannot answer.</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">4 · Verify</span>
+      <h3>The rule of this course</h3>
+      <p>Any number produced by a machine — your code, a library, or an AI
+      assistant — must be reproduced by an independent route before you report
+      it: from-scratch code, a reference implementation, or an analytical limit.
+      An unverified result scores zero whether or not it happens to be right.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-bottom:44px">
+    <strong>What you need beforehand.</strong> Undergraduate thermodynamics and
+    enough Python to read a short script and change a number in it. You are not
+    expected to be able to write the toolkit; you are expected to be able to
+    read it, which is why every routine in it is short enough to read in one
+    sitting. Bring questions about the code to class — they are not off-topic.
+  </div>
+
   {% if c.modules and c.modules.size > 0 %}
   <h3 style="font-size:1.25rem;margin-bottom:6px">Modules</h3>
   <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:30px">
@@ -101,16 +174,46 @@ description: Graduate course on advanced chemical engineering thermodynamics —
       </a>
       {% endif %}
       {% for f in m.files %}
-      <a class="res-file" href="{{ site.baseurl }}/teaching/2105603/files/{{ f.file }}">
-        <span class="rf-kind">{{ f.kind }}</span>
+      {%- comment -%}
+        A notebook gets two rows. The Colab row comes first because that is what
+        a student should click: it runs with nothing installed. The second row
+        is the raw .ipynb for anyone running it locally. `colab: true` in
+        act2026.yml marks a file as runnable; the repository is public, so
+        colab.research.google.com/github/... resolves without a token.
+      {%- endcomment -%}
+      {% if f.colab %}
+      <a class="res-file" href="https://colab.research.google.com/github/soorathep/Test/blob/main/teaching/2105603/files/{{ f.file }}" target="_blank" rel="noopener">
+        <span class="rf-kind">Colab</span>
         <span class="rf-body">
           <span class="rf-label">{{ f.label }}</span>
           {% if f.desc %}<span class="rf-desc">{{ f.desc }}</span>{% endif %}
+        </span>
+        <span class="rf-get">Run it →</span>
+      </a>
+      {% endif %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105603/files/{{ f.file }}">
+        <span class="rf-kind">{{ f.kind }}</span>
+        <span class="rf-body">
+          <span class="rf-label">{{ f.label }}{% if f.colab %} — the .ipynb file{% endif %}</span>
+          {% if f.colab %}<span class="rf-desc">To run it on your own machine instead</span>
+          {% elsif f.desc %}<span class="rf-desc">{{ f.desc }}</span>{% endif %}
         </span>
         <span class="rf-get">Download →</span>
       </a>
       {% endfor %}
     </div>
+    {% if m.checks and m.checks.size > 0 %}
+    <details class="selfcheck">
+      <summary>Check yourself — {{ m.checks | size }} questions</summary>
+      <ol>
+        {% for k in m.checks %}
+        <li>{{ k.q }}
+          <details><summary>Answer</summary><p>{{ k.a }}</p></details>
+        </li>
+        {% endfor %}
+      </ol>
+    </details>
+    {% endif %}
   </div>
   {% endfor %}
   {% endif %}
