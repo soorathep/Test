@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-08-09">
+  <title>2105603 – Phase Stability and Complex Equilibria</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-44ab30104761961979c1939c561e7051.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="site_libs/katex/katex.min.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Phase Stability and Complex Equilibria</h1>
+  <p class="subtitle">Module 5 · 2105603 Advanced Chemical Engineering Thermodynamics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">9 August 2026</p>
+</section>
+<section id="section" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="statement">
+<p>Convergence is not correctness.</p>
+</div>
+<div class="statement-hi">
+<p>A flash calculation solves the equations it was given.<br>It does not check that they were the right equations.</p>
+</div>
+</div>
+</section>
+<section id="what-this-module-establishes" class="slide level2">
+<h2>What this module establishes</h2>
+<div class="kicker c-amber">
+<p>Introduction</p>
+</div>
+<div class="lede">
+<p>Module 4 ended with a flash that had no way of noticing it was solving the wrong problem. This module supplies the missing test, and then follows the consequences.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The callback</span></p>
+<p>Module 1 introduced mechanical stability for a pure fluid through the spinodal — the locus where <span class="math inline">(\partial P/\partial V)_T = 0</span> and the fluid can no longer resist a density fluctuation.</p>
+<p>This module is the same idea in composition space, where it becomes the tangent plane criterion.</p>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Four questions</span></p>
+<ul>
+<li>Where do two liquid phases come from?</li>
+<li>How do I test whether a computed phase is stable?</li>
+<li>What does a ternary split look like, and which models can produce one?</li>
+<li>What does all this cost a separation designer?</li>
+</ul>
+</div>
+</div>
+</div></div>
+</section>
+<section id="stability-from-the-gibbs-energy-of-mixing" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Stability from the Gibbs energy of mixing</h2>
+<div class="kicker c-amber">
+<p>PART I</p>
+</div>
+<div class="lede">
+<p>Section 5.1&nbsp;&nbsp;&nbsp;One curve, one tangent line, and one change of curvature.<br>Everything about a binary split is in that picture.</p>
+</div>
+</section>
+<section id="why-a-liquid-splits-at-all" class="slide level2">
+<h2>Why a liquid splits at all</h2>
+<div class="kicker c-amber">
+<p>5.1 · Stability from the Gibbs energy of mixing</p>
+</div>
+<div class="lede">
+<p>Mixing is entropically favourable. A split needs the energetic term to defeat that, and it can only do so over part of the range.</p>
+</div>
+<p><span class="math display">\frac{\Delta g_{\rm mix}}{RT}
+= \underbrace{x_1\ln x_1 + x_2\ln x_2}_{\text{ideal, always convex}}
+\; + \; \underbrace{\frac{G^E}{RT}}_{\text{can be concave}}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The competition</span></p>
+<p>The ideal part is convex everywhere and has infinite slope at both ends, which is why a <em>little</em> of anything always dissolves. A split therefore never reaches the pure vertices.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">The threshold</span></p>
+<p>For the symmetric case <span class="math inline">G^E/RT = A x_1 x_2</span>, the curve first loses convexity at <span class="math inline">A = 2</span>, at <span class="math inline">x_1 = \tfrac12</span>. Below that value no parameter combination can produce two phases; above it, the gap opens from the middle outwards.</p>
+</div>
+</div>
+</section>
+<section id="the-picture" class="slide level2">
+<h2>The picture</h2>
+<div class="kicker c-amber">
+<p>5.1 · Stability from the Gibbs energy of mixing</p>
+</div>
+<p><img data-src="figures/f5_01_gmix_binodal_spinodal.png" class="fig-xl"></p>
+<div class="source">
+<p>F5.1 · Binodal from the common tangent, spinodal from the change of curvature, and the metastable band between them.</p>
+</div>
+</section>
+<section id="metastable-is-not-stable-and-it-is-not-a-technicality" class="slide level2">
+<h2>Metastable is not stable, and it is not a technicality</h2>
+<div class="kicker c-amber">
+<p>5.1 · Stability from the Gibbs energy of mixing</p>
+</div>
+<div class="lede">
+<p>Between the binodal and the spinodal a liquid is stable against <em>small</em> fluctuations and unstable against large ones.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-rust">Unstable</span></p>
+<p>Inside the spinodal, <span class="math inline">\mathrm{d}^2\Delta g/\mathrm{d}x_1^2 &lt; 0</span>. Any fluctuation, however small, lowers the Gibbs energy. Separation begins everywhere at once and needs no nucleus.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Metastable</span></p>
+<p>Between binodal and spinodal the curve lies <strong>above</strong> its own local tangent nearby, so a small fluctuation is resisted. In the case on the previous slide the barrier is <span class="math inline">+0.0016\,RT</span> and the eventual descent is <span class="math inline">-0.054\,RT</span>: a thirty-fold reward, behind a small wall.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Why it matters</span></p>
+<p>A metastable liquid can sit clear for hours and then go cloudy all at once when a nucleus appears. Emulsions, supersaturated solutions and polymer blends all live in this band, and a design that assumes equilibrium will be surprised.</p>
+</div>
+</div>
+</section>
+<section id="tangent-plane-distance" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Tangent plane distance</h2>
+<div class="kicker c-amber">
+<p>PART II</p>
+</div>
+<div class="lede">
+<p>Section 5.2&nbsp;&nbsp;&nbsp;The common tangent works for a binary because a tangent is a line.<br>For three components it is a plane, and for more it cannot be drawn at all.</p>
+</div>
+</section>
+<section id="the-criterion" class="slide level2">
+<h2>The criterion</h2>
+<div class="kicker c-amber">
+<p>5.2 · Tangent plane distance</p>
+</div>
+<div class="lede">
+<p>Michelsen: a phase is stable if and only if the tangent plane distance is non-negative for <strong>every</strong> trial composition.</p>
+</div>
+<p><span class="math display">\mathrm{TPD}(\mathbf{w})
+= \sum_i w_i\left[\ln w_i + \ln\gamma_i(\mathbf{w})
+   - \ln z_i - \ln\gamma_i(\mathbf{z})\right]</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">What it measures</span></p>
+<p>The vertical distance from the Gibbs energy surface at the trial composition <span class="math inline">\mathbf{w}</span> down to the plane tangent to that surface at the feed <span class="math inline">\mathbf{z}</span>. Negative means some other phase lies below the plane, so the feed is not the global minimum.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The asymmetry</span></p>
+<p><strong>One negative value anywhere proves instability.</strong> Proving <em>stability</em> requires the global minimum over the whole composition space — a much harder claim, and the reason stability analysis is a research topic rather than a formula.</p>
+</div>
+</div>
+</section>
+<section id="what-it-looks-like" class="slide level2">
+<h2>What it looks like</h2>
+<div class="kicker c-amber">
+<p>5.2 · Tangent plane distance</p>
+</div>
+<p><img data-src="figures/f5_02_tangent_plane_distance.png" class="fig-xl"></p>
+<div class="source">
+<p>F5.2 · The same criterion on an unstable and a stable feed. Note that the drawn line is a slice: the global minimum of the unstable case lies off it.</p>
+</div>
+</section>
+<section id="the-trivial-solution" class="slide level2">
+<h2>The trivial solution</h2>
+<div class="kicker c-amber">
+<p>5.2 · Tangent plane distance</p>
+</div>
+<div class="lede">
+<p><span class="math inline">\mathbf{w} = \mathbf{z}</span> gives <span class="math inline">\mathrm{TPD} = 0</span> exactly, for every feed, stable or not. It is a stationary point and it certifies nothing.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-rust">The trap</span></p>
+<p>Start the minimisation at the feed and it will sit there, return zero, and report stability. The answer looks like a converged calculation because it is one.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">The remedy</span></p>
+<p>Start near each pure component, and from the feed pushed halfway toward each vertex. Discard any converged trial phase that has come back to the feed. This is Michelsen’s recommendation and it is what the course code does.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Where it is used</span></p>
+<p>Stability analysis runs <strong>before</strong> the flash, not after. The trial phase it returns is also the best available initial estimate for the flash that follows, so the test pays for itself.</p>
+</div>
+</div>
+</section>
+<section id="liquid-liquid-equilibrium" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Liquid-liquid equilibrium</h2>
+<div class="kicker c-amber">
+<p>PART III</p>
+</div>
+<div class="lede">
+<p>Section 5.3&nbsp;&nbsp;&nbsp;What a split looks like when there are three components,<br>and which models can produce one at all.</p>
+</div>
+</section>
+<section id="the-ternary-picture" class="slide level2">
+<h2>The ternary picture</h2>
+<div class="kicker c-amber">
+<p>5.3 · Liquid-liquid and vapour-liquid-liquid equilibrium</p>
+</div>
+<p><img data-src="figures/f5_03_ternary_lle_tielines.png" class="fig-xl"></p>
+<div class="source">
+<p>F5.3 · Type-I dome from a ternary NRTL. Every tie line is a converged flash; the plait point is an extrapolation and is labelled as one.</p>
+</div>
+</section>
+<section id="why-nrtl-can-and-wilson-cannot" class="slide level2">
+<h2>Why NRTL can and Wilson cannot</h2>
+<div class="kicker c-amber">
+<p>5.3 · Liquid-liquid and vapour-liquid-liquid equilibrium</p>
+</div>
+<div class="lede">
+<p>This is a property of the functional form, argued from the <span class="math inline">G^E</span> introduced in Module 3 — not a matter of finding better parameters.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Wilson</span></p>
+<p><span class="math display">\frac{G^E}{RT} = -\sum_i x_i \ln\!\Big(\sum_j \Lambda_{ij} x_j\Big)</span></p>
+<p>The form cannot make <span class="math inline">\Delta g_{\rm mix}</span> lose convexity for any positive <span class="math inline">\Lambda</span>. A sweep over thirty-six binary parameter pairs and twelve random ternary matrices produces no split — ever.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">NRTL</span></p>
+<p>The local-composition weighting <span class="math inline">G_{ij} = \exp(-\alpha\tau_{ij})</span> gives the model a second scale, and with it the ability to make <span class="math inline">G^E</span> large and asymmetric enough to defeat the entropy of mixing. This is why every published LLE correlation uses NRTL or UNIQUAC and none uses Wilson.</p>
+</div>
+</div>
+<div class="note">
+<p>Module 4 met the same limitation from the other side: fitted to a system that <em>does</em> split, Wilson bought the fit with an infinite-dilution activity coefficient of about twenty thousand. The absurd number was the symptom; this is the cause.</p>
+</div>
+</section>
+<section id="three-phases-and-the-counting-that-goes-with-them" class="slide level2">
+<h2>Three phases, and the counting that goes with them</h2>
+<div class="kicker c-amber">
+<p>5.3 · Liquid-liquid and vapour-liquid-liquid equilibrium</p>
+</div>
+<div class="lede">
+<p>Vapour over two liquids is common in practice — steam distillation, azeotropic drying, any decanter on a column overhead.</p>
+</div>
+<p><span class="math display">F = C - \pi + 2</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>System</th>
+<th><span class="math inline">C</span></th>
+<th><span class="math inline">\pi</span></th>
+<th><span class="math inline">F</span></th>
+<th>What is left free</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Binary VLE</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td><span class="math inline">T</span> and <span class="math inline">P</span>, or <span class="math inline">T</span> and <span class="math inline">x_1</span></td>
+</tr>
+<tr class="even">
+<td>Binary VLLE</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>Fix <span class="math inline">P</span> and everything else is determined</td>
+</tr>
+<tr class="odd">
+<td>Ternary LLE</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td><span class="math inline">T</span>, <span class="math inline">P</span> and one composition</td>
+</tr>
+<tr class="even">
+<td>Ternary VLLE</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td><span class="math inline">T</span> and <span class="math inline">P</span>; all compositions follow</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Binary VLLE at fixed pressure has <strong>no</strong> remaining freedom: the temperature and all three compositions are fixed by the system. That is why a heterogeneous azeotrope boils at a single reproducible temperature.</p>
+</div>
+</section>
+<section id="parameters-fitted-to-vle-used-for-lle" class="slide level2">
+<h2>Parameters fitted to VLE, used for LLE</h2>
+<div class="kicker c-amber">
+<p>5.3 · Liquid-liquid and vapour-liquid-liquid equilibrium</p>
+</div>
+<div class="lede">
+<p>The extrapolation warning from Module 4, in its most expensive form.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Why it fails</span></p>
+<p>VLE data constrain <span class="math inline">G^E</span> mainly through its <em>first</em> derivative, over the composition range measured. A phase split is governed by the <em>second</em> derivative, often in a range where no VLE data exist. A parameter set can reproduce every measured bubble pressure and be wrong about whether the liquid splits at all.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">What to do</span></p>
+<p>If the answer depends on the split, fit LLE data — mutual solubilities are cheap to measure and pin the second derivative directly. Where both matter, fit both together and report the compromise. Never present a VLE-fitted split as a prediction without saying which data it rests on.</p>
+</div>
+</div>
+</section>
+<section id="azeotropy-boundaries-and-critical-behaviour" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Azeotropy, boundaries and critical behaviour</h2>
+<div class="kicker c-amber">
+<p>PART IV</p>
+</div>
+<div class="lede">
+<p>Section 5.4&nbsp;&nbsp;&nbsp;What all of this costs a separation designer.</p>
+</div>
+</section>
+<section id="two-kinds-of-azeotrope" class="slide level2">
+<h2>Two kinds of azeotrope</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<div class="lede">
+<p>Homogeneous and heterogeneous. The difference is worth money.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Homogeneous</span></p>
+<p>One liquid phase at the azeotropic composition. <span class="math inline">y_i = x_i</span>, no further separation by ordinary distillation, and no way around it without changing the pressure or adding an entrainer.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Heterogeneous</span></p>
+<p>The azeotropic liquid is <strong>inside a miscibility gap</strong>, so the condensate splits in a decanter into two liquids of different composition — neither of which is the azeotrope. The split does the separation that distillation could not, and each layer is returned to a different column.</p>
+<p>That is the industrial route for ethanol dehydration and for drying solvents with an entrainer.</p>
+</div>
+</div>
+</section>
+<section id="residue-curves-and-the-boundary" class="slide level2">
+<h2>Residue curves and the boundary</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<p><img data-src="figures/f5_04_residue_curves_boundary.png" class="fig-xl"></p>
+<div class="source">
+<p>F5.4 · Residue curve map. The boundary was located by bisecting between two feeds until the end node flipped, not drawn by hand.</p>
+</div>
+</section>
+<section id="a-saddle-the-search-does-not-look-for" class="slide level2">
+<h2>A saddle the search does not look for</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<div class="lede">
+<p>The boundary on the previous slide runs into a <strong>ternary</strong> azeotrope — a fixed point that involves all three components at once.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">Why it is hard to find</span></p>
+<p>The course code searches every binary edge for azeotropes by sign change, which is reliable because each edge is one-dimensional. A ternary azeotrope sits in the interior, where a sign-change scan does not generalise; finding it reliably needs a homotopy method. The code says so in its own docstring rather than returning a list that quietly misses one.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Why it matters</span></p>
+<p>Interior fixed points are usually saddles, and saddles are where boundaries terminate. Miss one and the topology of the map is wrong — which means the predicted set of reachable products is wrong.</p>
+<p>For this system it sits at <span class="math inline">x = (0.30, 0.15, 0.55)</span> and 329.5 K, where <span class="math inline">\max|y_i - x_i| = 3\times10^{-17}</span>.</p>
+</div>
+</div>
+</section>
+<section id="double-azeotropy-and-what-actually-decides-it" class="slide level2">
+<h2>Double azeotropy, and what actually decides it</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<p><img data-src="figures/f5_06_double_azeotrope_fit_failure.png" class="fig-lg" style="width:82.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The received version is wrong</span></p>
+<p>It is usually said that a two-parameter model cannot produce a double azeotrope. Van Laar indeed cannot — for same-sign parameters its <span class="math inline">\ln(\gamma_1/\gamma_2)</span> has exactly one interior zero. But NRTL can, and so can the two-parameter three-suffix Margules.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">What decides it</span></p>
+<p>The <strong>shape</strong> of <span class="math inline">G^E</span>, not the number of parameters. Here neither fitted two-parameter model reproduces the second azeotrope: NRTL misplaces both zeros and leaves an rms error a hundred times the noise.</p>
+</div>
+</div>
+<div class="source">
+<p>F5.6 · An illustrative double azeotrope, with two fitted two-parameter models failing to reproduce it.</p>
+</div>
+</section>
+<section id="the-mixture-critical-point-is-not-the-top" class="slide level2">
+<h2>The mixture critical point is not the top</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<p><img data-src="figures/f5_05_retrograde_envelope.png" class="fig-xl"></p>
+<div class="source">
+<p>F5.5 · Peng-Robinson envelope for a light/heavy pair. Critical point, cricondentherm and cricondenbar are all different points. <span class="math inline">k_{ij} = 0</span>, assumed and labelled.</p>
+</div>
+</section>
+<section id="retrograde-condensation" class="slide level2">
+<h2>Retrograde condensation</h2>
+<div class="kicker c-amber">
+<p>5.4 · Azeotropy, distillation boundaries and critical behaviour</p>
+</div>
+<div class="lede">
+<p>Drop the pressure at constant temperature and liquid <strong>appears</strong>. Then keep dropping and it evaporates again.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Why it happens</span></p>
+<p>Between the critical temperature and the cricondentherm the dew curve is crossed <strong>twice</strong> at one temperature. Expanding from high pressure the mixture enters the two-phase region through the upper dew point, drops out liquid, and leaves again through the lower one.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Why it costs money</span></p>
+<p>Gas-condensate reservoirs sit in exactly this region. As the reservoir is produced its pressure falls and valuable heavy hydrocarbons condense <strong>in the pore space</strong>, where they are largely unrecoverable. Field development plans are built around keeping the pressure above the dew point.</p>
+</div>
+</div>
+</section>
+<section id="what-you-must-be-able-to-do" class="slide level2">
+<h2>What you must be able to do</h2>
+<div class="kicker c-amber">
+<p>Closing</p>
+</div>
+<div class="lede">
+<p>The module in six statements.</p>
+</div>
+<div class="numbered n3 two-col">
+<ol type="1">
+<li><strong>Read a <span class="math inline">\Delta g_{\rm mix}</span> curve.</strong> Locate the binodal by common tangent and the spinodal by curvature, and say which region a given composition is in.</li>
+<li><strong>Apply the tangent plane criterion.</strong> Compute it, interpret its sign, and explain why instability has a certificate and stability does not.</li>
+<li><strong>Distinguish metastable from unstable.</strong> And say what each means for what you would observe in a vessel.</li>
+<li><strong>Say which models can produce a split, and why.</strong> Argued from the functional form, not from a table of which ones people use.</li>
+<li><strong>Read a residue curve map.</strong> Identify the nodes, the boundary, and the products reachable from a given feed.</li>
+<li><strong>Explain retrograde condensation.</strong> Including why the critical point is not the top of the envelope.</li>
+</ol>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

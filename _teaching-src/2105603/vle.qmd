@@ -1,0 +1,1790 @@
+---
+title: "Vapour-Liquid Equilibrium of Mixtures"
+subtitle: "Module 4 · 2105603 Advanced Chemical Engineering Thermodynamics"
+author: "Soorathep Kheawhom"
+date: 2026-08-09
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.statement}
+A parameter set is not a result.
+:::
+
+::: {.statement-hi}
+A result is a parameter set<br>plus a statement of where it may be used.
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Say this before any equation appears, and say it again at the end. Module 1 was
+about which physics a model contains. This module is about what evidence a
+number rests on. The two halves of the course meet here: the equation of state
+told us how a fluid behaves, and now we ask how we know.
+
+**ASK THE CLASS**
+You have a fitted NRTL parameter pair from a paper. What would you need to know
+before using it in a column simulation?
+:::
+
+## What this module establishes
+
+::: {.kicker .c-amber}
+Introduction
+:::
+
+::: {.lede}
+Four descriptions of the same equilibrium, then the full working cycle: data,
+consistency, regression, and a stated domain of validity.
+:::
+
+:::::: {.columns}
+::::: {.column width="48%"}
+:::: {.cards}
+::: {.card}
+
+[The chain of reasoning]{.card-h .c-teal}
+
+An equation of state gives $P$-$V$-$T$ behaviour → equilibrium is governed by
+chemical potential → fugacity gives chemical potential a usable form → equality
+of fugacity predicts phase equilibrium.
+
+Module 4 is where that chain meets measurement.
+
+:::
+::::
+:::::
+
+::::: {.column width="48%"}
+:::: {.cards}
+::: {.card}
+
+[Five questions]{.card-h .c-amber}
+
+- Which description of VLE, and what does it cost?
+- What is actually measured, and how well?
+- Can this dataset be believed?
+- Which model, fitted against what?
+- Where may the answer be used?
+
+:::
+::::
+:::::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Put the five questions on the board and leave them there for the whole module.
+Every slide answers one of them; students should be able to say which.
+
+**COMMON MISCONCEPTION**
+That this module is about learning NRTL. NRTL takes ten minutes. The module is
+about evidence, and the model is the smallest part of it.
+:::
+
+## Four descriptions of one equilibrium {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+PART I
+:::
+
+::: {.lede}
+Section 4.1&nbsp;&nbsp;&nbsp;Raoult, modified Raoult, gamma-phi, phi-phi<br>Each rung adds physics the rung below omitted, and each addition costs something.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Draw the deliberate parallel with the equation-of-state ladder from Module 1.
+The visual rhyme is not decoration: it is the same argument applied to a
+different question, and students who saw it once will see it faster the second
+time.
+:::
+
+## Raoult's law, and its two assumptions
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+State the two assumptions separately, because they fail separately.
+:::
+
+$$y_i P = x_i P_i^{\rm sat}$$
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Assumption 1 — ideal liquid]{.card-h .c-teal}
+
+Every molecule sees the same environment whatever the composition. True only
+when the two species are chemically almost identical: benzene and toluene,
+hexane and heptane.
+
+:::
+
+::: {.card}
+
+[Assumption 2 — ideal vapour]{.card-h .c-amber}
+
+$\hat\varphi_i = 1$. Fails at high pressure, and also at low pressure when the
+vapour associates. Acetic acid dimerises in the vapour at one atmosphere.
+
+:::
+
+::: {.card}
+
+[What it costs]{.card-h .c-rust}
+
+Nothing but $P_i^{\rm sat}(T)$. No binary parameter, no data, no fitting.
+That is why it survives as the first estimate.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Insist on the separation. Students learn "Raoult's law assumes ideality" as one
+sentence and then cannot diagnose which half failed when it does.
+
+**COMMON MISCONCEPTION**
+That the vapour assumption is safe below one atmosphere. Acetic acid is the
+counterexample that kills it: association is a chemical effect, not a pressure
+effect. The dataset for this is in the course paper library.
+
+**ASK THE CLASS**
+Name a pair for which assumption 1 holds and assumption 2 fails. Then the
+reverse.
+:::
+
+## Modified Raoult's law
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+Liquid non-ideality admitted; the vapour still treated as an ideal gas.
+:::
+
+$$y_i P = x_i \gamma_i P_i^{\rm sat}$$
+
+:::: {.cards}
+::: {.card}
+
+[Physical meaning]{.card-h .c-amber}
+
+$\gamma_i$ measures how much the liquid environment differs from the pure
+liquid. It is a property of the *mixture*, derived from an excess Gibbs energy,
+and it carries the reference state with it — Lewis-Randall here, so
+$\gamma_i \to 1$ as $x_i \to 1$.
+
+:::
+
+::: {.card}
+
+[Engineering implication]{.card-h .c-teal}
+
+This is the description behind almost every distillation column ever designed
+at moderate pressure. Two fitted parameters per binary pair, from binary VLE
+data. Everything in Sections 4.2 to 4.4 is about where those two numbers come
+from and what they are worth.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Emphasise that $\gamma$ is not a fudge factor. It is defined, it obeys
+Gibbs-Duhem, and that constraint is what makes the whole of Section 4.3
+possible.
+
+**ASK THE CLASS**
+If $\gamma_1 > 1$, is the mixture easier or harder to separate than an ideal
+one? Under what circumstance does that reverse?
+:::
+
+## The gamma-phi formulation
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+Both phases non-ideal — but described by two different kinds of model.
+:::
+
+$$y_i \hat\varphi_i P
+  = x_i \gamma_i P_i^{\rm sat} \varphi_i^{\rm sat}
+    \exp\!\left[\frac{v_i^L\,(P - P_i^{\rm sat})}{RT}\right]$$
+
+:::::: {.cards .g3}
+::: {.card}
+
+[$\hat\varphi_i$]{.card-h .c-teal}
+
+Vapour fugacity coefficient, from an equation of state. The two-term virial
+equation is enough below a few bar.
+
+:::
+
+::: {.card}
+
+[$\varphi_i^{\rm sat}$]{.card-h .c-amber}
+
+The same quantity for the pure saturated vapour. It is the reference the liquid
+fugacity is measured against, and it does not cancel.
+
+:::
+
+::: {.card}
+
+[Poynting factor]{.card-h .c-rust}
+
+Corrects the liquid from $P_i^{\rm sat}$ to $P$. Small below a few bar, but it
+is not zero, and omitting it silently is not the same as knowing it is small.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Write the three correction factors as one group $\Phi_i$ and show that setting
+$\Phi_i = 1$ returns the previous slide exactly. Students should see that these
+descriptions are nested, not alternative.
+
+**COMMON MISCONCEPTION**
+That $\varphi_i^{\rm sat}$ cancels against $\hat\varphi_i$. It does not, except
+for a pure component.
+:::
+
+## The phi-phi formulation
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+One equation of state for both phases. The only option above the critical
+temperature of a component.
+:::
+
+$$y_i \hat\varphi_i^{\,V} = x_i \hat\varphi_i^{\,L}$$
+
+:::: {.cards}
+::: {.card}
+
+[Why it is needed]{.card-h .c-amber}
+
+A supercritical component has no $P_i^{\rm sat}$, so the whole right-hand side
+of the gamma-phi equation is undefined. Natural gas, hydrogen, supercritical
+CO₂: there is no vapour pressure to refer to.
+
+:::
+
+::: {.card}
+
+[What it costs]{.card-h .c-rust}
+
+One equation of state that must describe a dense liquid and a dilute vapour
+with the same parameters, a binary interaction parameter $k_{ij}$ fitted to
+data, and a root selection problem — the cubic has three roots and choosing
+wrongly gives a confidently wrong answer.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Connect back to Module 1: this is why the cubics were worth all that trouble.
+The reward for one equation that spans both phases is a description of
+equilibrium that survives the critical point.
+
+**ASK THE CLASS**
+Why can a gamma-phi calculation not be pushed to the mixture critical point,
+even with a very good activity model?
+:::
+
+## The ladder
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+Each rung is exact given its own assumptions. Choosing a rung is choosing which
+assumption to defend.
+:::
+
+![](figures/f4_01_vle_ladder.png){.fig-xl}
+
+::: {.source}
+F4.1 · The four descriptions, with the physics added and the cost incurred at each step.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Walk up from the bottom naming only the physics added, not the equations. The
+vertical axis is physical content, not accuracy and not calendar time.
+
+**COMMON MISCONCEPTION**
+That higher is better. A phi-phi calculation on an ethanol/water column at one
+atmosphere is slower, needs more parameters, and is *worse* than modified
+Raoult with a decent activity model. Content is only worth its cost when your
+problem contains that physics.
+
+**ASK THE CLASS**
+Which rung for: an ethanol/water column at 1 atm; a natural gas separator at
+80 bar; an acetic acid/water column at 1 atm? The third is the interesting one.
+:::
+
+## Choosing a description
+
+::: {.kicker .c-amber}
+4.1 · Four descriptions of the same equilibrium
+:::
+
+::: {.lede}
+A decision table, not a ranking.
+:::
+
+| System | Description | Because |
+|---|---|---|
+| Benzene / toluene, 1 atm | Raoult | Chemically similar; no binary data needed |
+| Ethanol / water, 1 atm | Modified Raoult | Strongly non-ideal liquid, near-ideal vapour |
+| Acetic acid / water, 1 atm | Gamma-phi | Vapour associates; $\hat\varphi \ne 1$ at 1 atm |
+| Methane / propane, 80 bar | Phi-phi | One component is supercritical |
+| CO₂ / ethanol, 100 bar | Phi-phi with a $G^E$ mixing rule | Supercritical *and* polar — see the appendix |
+
+::: {.note}
+The last row is the case neither classical description handles, and it is why
+the appendix to this deck exists.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Make the students defend one row each. The acetic acid row is the one that
+teaches the most, because the pressure is low and the naive answer is wrong.
+
+**ASK THE CLASS**
+Which row would change if the column ran at 10 bar instead of 1?
+:::
+
+## From measurement to activity coefficient {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+PART II
+:::
+
+::: {.lede}
+Section 4.2&nbsp;&nbsp;&nbsp;A reported $\gamma$ is not a measurement.<br>It is four measured numbers and two assumptions.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This is the shortest section and the one students most often skip. Slow down.
+Everything in Sections 4.3 and 4.4 inherits the errors introduced here.
+:::
+
+## What a VLE apparatus measures
+
+::: {.kicker .c-amber}
+4.2 · From measurement to activity coefficient
+:::
+
+::: {.lede}
+Four numbers per point, each with its own uncertainty, and none of them is
+$\gamma$.
+:::
+
+:::::: {.cards .quad}
+::: {.card}
+
+[Temperature]{.card-h .c-teal}
+
+Calibrated thermometer in the boiling liquid. Typically $\pm 0.05$ K.
+Its error enters through $P_i^{\rm sat}(T)$, which is exponential in $T$.
+
+:::
+
+::: {.card}
+
+[Pressure]{.card-h .c-amber}
+
+Manometer or transducer. Typically $\pm 0.05$ kPa. Usually the *best* measured
+variable, which is why Barker's method uses it.
+
+:::
+
+::: {.card}
+
+[Liquid composition]{.card-h .c-rust}
+
+Sample and analyse — refractometry, gas chromatography, density. Typically
+$\pm 0.001$ mole fraction, and only if the calibration is honest.
+
+:::
+
+::: {.card}
+
+[Vapour composition]{.card-h .c-sky}
+
+Condense and analyse. The hardest measurement: partial condensation, holdup,
+and entrainment all bias it. Typically $\pm 0.002$, often worse.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Ask which of the four would you drop if you could only measure three. The
+answer — $y$ — is exactly what Barker's method does, and it prepares Section
+4.4.
+
+**COMMON MISCONCEPTION**
+That an old dataset is worse than a modern one because the instruments were
+cruder. Often the reverse: careful 1950s recirculating-still work with
+gravimetric analysis beats a hurried modern GC calibration.
+:::
+
+## Computing gamma
+
+::: {.kicker .c-amber}
+4.2 · From measurement to activity coefficient
+:::
+
+::: {.lede}
+Two assumptions convert four measurements into an activity coefficient.
+:::
+
+$$\gamma_i = \frac{y_i \Phi_i P}{x_i P_i^{\rm sat}(T)},
+\qquad
+\Phi_i = \frac{\hat\varphi_i}{\varphi_i^{\rm sat}}
+\exp\!\left[-\frac{v_i^L (P - P_i^{\rm sat})}{RT}\right]$$
+
+:::: {.cards}
+::: {.card}
+
+[Assumption A — the vapour]{.card-h .c-amber}
+
+Setting $\Phi_i = 1$ is modified Raoult. For acetone/chloroform at 50 °C the
+virial correction shifts $\ln\gamma_1$ by up to 0.008 — small, but
+**systematic**, and a consistency test reacts to systematic errors, not to
+scatter.
+
+:::
+
+::: {.card}
+
+[Assumption B — the vapour pressure]{.card-h .c-teal}
+
+$P_i^{\rm sat}$ comes from a correlation, not from this experiment. Antoine
+coefficients are copied between references with unit errors more often than any
+other quantity in this subject. Check the correlation against the normal
+boiling point before you trust one activity coefficient.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Do the boiling-point check live. It takes one line of code and it has caught a
+wrong-isomer Antoine set in this course twice.
+
+**COMMON MISCONCEPTION**
+That the vapour correction is negligible because the pressure is low. Its size
+is not the point — its *systematic* character is. A 0.008 bias in $\ln\gamma$
+is invisible in a plot and fatal in a consistency test.
+:::
+
+## Where the error actually comes from
+
+::: {.kicker .c-amber}
+4.2 · From measurement to activity coefficient
+:::
+
+::: {.lede}
+Propagate, and the ranking is not the one students expect.
+:::
+
+$$\sigma^2(\ln\gamma_1)
+ = \left(\frac{\sigma_y}{y_1}\right)^{\!2}
+ + \left(\frac{\sigma_P}{P}\right)^{\!2}
+ + \left(\frac{\sigma_x}{x_1}\right)^{\!2}
+ + \left(\frac{{\rm d}\ln P_1^{\rm sat}}{{\rm d}T}\,\sigma_T\right)^{\!2}$$
+
+:::::: {.cards .g3}
+::: {.card}
+
+[The temperature term]{.card-h .c-rust}
+
+$P^{\rm sat}$ is exponential in $T$, so ${\rm d}\ln P^{\rm sat}/{\rm d}T$ is of
+order $0.03\ {\rm K^{-1}}$ near the normal boiling point. A 0.05 K error is
+then worth 0.0015 in $\ln\gamma$ — comparable to the composition term.
+
+:::
+
+::: {.card}
+
+[The dilute ends]{.card-h .c-amber}
+
+$\sigma_x/x_1$ blows up as $x_1 \to 0$. At $x_1 = 0.02$ a 0.001 error in
+composition is 5 % in $\gamma_1$. That is exactly where the model is least
+constrained and where $\gamma^\infty$ is read off.
+
+:::
+
+::: {.card}
+
+[The consequence]{.card-h .c-teal}
+
+Quoting $\gamma$ to four figures from a thermometer read to 0.1 K is
+arithmetic, not measurement. Report the uncertainty or do not report the
+figure.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Have them change one $\sigma$ at a time in the notebook and watch the ranking
+change with composition. The instrument you should improve is not the same at
+$x_1 = 0.05$ and $x_1 = 0.5$.
+
+**ASK THE CLASS**
+You have money for one better instrument. Which, and does your answer depend on
+the composition range you care about?
+:::
+
+## Isothermal, isobaric, and the azeotrope
+
+::: {.kicker .c-amber}
+4.2 · From measurement to activity coefficient
+:::
+
+::: {.lede}
+The two kinds of dataset, and the one composition where $\gamma$ comes for free.
+:::
+
+![](figures/f4_02_pxy_txy_azeotrope.png){.fig-cap width="78%"}
+
+:::: {.cards}
+::: {.card}
+
+[Isothermal is easier to use]{.card-h .c-teal}
+
+At constant $T$ the Gibbs-Duhem equation has no enthalpy term. Isobaric data
+are more common — that is how a column runs — and harder, because $T$ varies
+across the composition range.
+
+:::
+
+::: {.card}
+
+[The azeotrope is a free measurement]{.card-h .c-amber}
+
+At $x_i = y_i$ the equilibrium condition gives
+$\gamma_1 / \gamma_2 = P_2^{\rm sat} / P_1^{\rm sat}$ directly, with no vapour
+sample at all. In an old dataset it is often the only point that can be
+trusted without qualification.
+
+:::
+::::
+
+::: {.source}
+F4.2 · The same system as $P$-$x$-$y$ and as $T$-$x$-$y$, with the azeotrope marked on both.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Point out that the azeotrope is a maximum in $P$ on the left and a *minimum* in
+$T$ on the right. Students confuse the two constantly, and the pair of panels
+settles it.
+
+**ASK THE CLASS**
+Why does a maximum-pressure azeotrope appear as a minimum-boiling one?
+:::
+
+## Thermodynamic consistency {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+PART III
+:::
+
+::: {.lede}
+Section 4.3&nbsp;&nbsp;&nbsp;Can this dataset be believed?<br>Gibbs-Duhem makes a binary VLE dataset over-determined, so the data can be tested against thermodynamics with no model assumed correct.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This is the heart of the module and the part that transfers to every other
+subject they will meet. The idea — use a physical constraint to test data
+rather than to fit them — is general.
+:::
+
+## The premise
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+One of the four measured variables is redundant. The size of the prediction
+error is the test.
+:::
+
+$$x_1 \frac{{\rm d}\ln\gamma_1}{{\rm d}x_1}
+ + x_2 \frac{{\rm d}\ln\gamma_2}{{\rm d}x_1} = 0
+\qquad \text{(constant } T,\,P)$$
+
+:::: {.cards}
+::: {.card}
+
+[Satisfied by construction]{.card-h .c-teal}
+
+Any model derived from a single $G^E$ satisfies this **identically** — the
+residual is zero to machine precision. Finding otherwise means the code is
+wrong, not the fluid.
+
+:::
+
+::: {.card}
+
+[Satisfied by measurement]{.card-h .c-rust}
+
+Data satisfy it only to within their errors. The two statements look alike on a
+slide and are completely different in practice. Everything that follows is a
+way of deciding whether the gap is noise or a real error.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Run both residuals in front of them. The model's is $10^{-11}$; the data's is
+$10^{-2}$. The contrast is the whole section in one line of output.
+
+**COMMON MISCONCEPTION**
+That the test checks whether the data are *correct*. It checks whether they are
+internally consistent with thermodynamics. A dataset can be consistent and
+wrong — for instance if the sample was impure but the impurity behaved
+smoothly.
+:::
+
+## The area test
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+The oldest test, the most quoted, and the weakest.
+:::
+
+$$\int_0^1 \ln\frac{\gamma_1}{\gamma_2}\,{\rm d}x_1 = 0,
+\qquad
+D = 100\,\frac{|A^+ - A^-|}{A^+ + A^-}$$
+
+![](figures/f4_03_area_test.png){.fig-lg width="60%"}
+
+::: {.source}
+F4.3 · The two areas whose difference must vanish, with $D$ reported.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Derive the integral in one line from Gibbs-Duhem so they see it is not a
+recipe. Then say immediately that it is an integral, and integrals lose
+information.
+
+**ASK THE CLASS**
+Before the next slide: what kind of error would this test fail to notice?
+:::
+
+## Why the area test is weak
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+An integral cannot see an error that changes sign. This is a structural
+limitation, not a matter of threshold.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[The construction]{.card-h .c-rust}
+
+Perturbing $y_1$ shifts the measured ratio by
+$\delta\ln(\gamma_1/\gamma_2) = \delta y_1 / [\,y_1(1-y_1)\,]$.
+
+Choose $\delta y_1 = \varepsilon\, y_1 (1-y_1)(2x_1 - 1)$ and the ratio shifts
+by $\varepsilon(2x_1-1)$ — odd about $x_1 = \tfrac12$, so it contributes
+**exactly nothing** to the integral.
+
+:::
+
+::: {.card}
+
+[The result]{.card-h .c-amber}
+
+At $\varepsilon = 0.4$ the dataset is grossly wrong. The area test reports
+$D = 1.3$ against a threshold of 10 — healthier than the merely noisy control —
+while the point and direct tests both return the worst possible index.
+
+An area test is a necessary condition. It is never a sufficient one.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Build the error live in the notebook rather than asserting it. Students who
+have seen a dataset constructed to defeat a test stop treating a passed test as
+a certificate.
+
+**COMMON MISCONCEPTION**
+That the fix is a tighter threshold. It is not. No threshold on an integral can
+detect a function that integrates to zero.
+
+**ASK THE CLASS**
+Which Redlich-Kister coefficients of $\ln(\gamma_1/\gamma_2)$ can the area test
+respond to at all?
+:::
+
+## The point test
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+Van Ness, Byer and Gibbs: fit $P$-$x$ only, then predict $y$. Errors cannot
+cancel, because nothing is integrated.
+:::
+
+![](figures/f4_04_point_test_residuals.png){.fig-cap width="62%"}
+
+:::: {.cards}
+::: {.card}
+
+[The logic]{.card-h .c-teal}
+
+Barker's method uses only $P$ and $x$. If the data obey Gibbs-Duhem, $y$ is
+already implied by the $P$-$x$ curve, so the fit must reproduce it. Mean
+$|\delta y_1| < 0.01$ is the conventional pass.
+
+:::
+
+::: {.card}
+
+[The trap]{.card-h .c-rust}
+
+A large residual in $P$ means the **model** failed, not the data. Check
+${\rm rms}\,\delta P$ before blaming the measurement, and use a model flexible
+enough to follow the $P$-$x$ curve.
+
+:::
+::::
+
+::: {.source}
+F4.4 · Point-test residuals for a consistent and an inconsistent dataset on common axes.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Stress that this is local, not global. Every point contributes its own
+residual, so an error of one sign in one half and the other sign in the other
+half shows up twice rather than cancelling.
+
+**ASK THE CLASS**
+The residual is all of one sign and roughly constant. Now it changes sign once,
+near the azeotrope. What causes each?
+:::
+
+## The direct test, and the 1-10 index
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+The same redundancy, expressed in the variable Gibbs-Duhem is actually written
+in. This is what modern journals expect.
+:::
+
+$$\delta = \ln\!\left(\frac{\gamma_1}{\gamma_2}\right)_{\!\rm exp}
+        - \ln\!\left(\frac{\gamma_1}{\gamma_2}\right)_{\!\rm fitted}$$
+
+| Index | RMS $\delta$ | Verdict |
+|---|---|---|
+| 1 – 3 | < 0.075 | Good. Publishable without comment |
+| 4 – 5 | 0.075 – 0.125 | Marginal. Requires an explanation |
+| 6 – 10 | > 0.125 | Reject, or diagnose the fault |
+
+::: {.note}
+The fitted values come from a Barker fit to $P$-$x$ alone, so $\delta$ measures
+the data, not the fit — provided the model follows $P$-$x$.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Point out that the index is a convention, not a probability. It is useful
+because everyone uses the same one, and for no deeper reason.
+
+**COMMON MISCONCEPTION**
+That an index of 1 proves the data are right. It proves they are consistent
+with thermodynamics under the vapour-phase assumption used to reduce them.
+:::
+
+## Two more tests, and what they add
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+Different tests are blind to different things. That is the reason to run more
+than one.
+:::
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Infinite dilution]{.card-h .c-teal}
+
+Kojima's test compares $(G^E/RT)/x_1x_2$ with $\ln(\gamma_1/\gamma_2)$ at each
+pure end point, where the two must coincide. Catches the dilute region, which
+the area test averages away and where $\gamma^\infty$ is read off.
+
+:::
+
+::: {.card}
+
+[Herington $D-J$]{.card-h .c-amber}
+
+The area test with an empirical allowance $J = 150\,\Delta T/T_{\min}$ for the
+temperature variation of an isobaric set. Widely required by referees; Wisniak
+has shown it both passes bad data and fails good data.
+
+:::
+
+::: {.card}
+
+[Wisniak L/W]{.card-h .c-rust}
+
+Built on an energy balance rather than on $G^E$, so it responds to a different
+combination of the measurements. Worth quoting when a dataset is contested.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Say plainly that Herington is a correlation, not a derivation, and that we
+report it because reviewers ask for it. Students should know the difference
+between a test with a derivation behind it and a test with a convention behind
+it.
+:::
+
+## Isobaric data: the term that does not vanish
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+At constant $P$ the temperature varies across the composition range, and the
+excess enthalpy term returns.
+:::
+
+$$x_1 \frac{{\rm d}\ln\gamma_1}{{\rm d}x_1}
+ + x_2 \frac{{\rm d}\ln\gamma_2}{{\rm d}x_1}
+ = -\frac{H^E}{RT^2}\,\frac{{\rm d}T}{{\rm d}x_1}$$
+
+![](figures/f4_09_excess_enthalpy_term.png){.fig-lg width="76%"}
+
+::: {.source}
+F4.9 · Size of the enthalpy term against the left-hand side, ethanol/water at 101.325 kPa. The $H^E$ magnitude is assumed and labelled as such on the figure.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+The honest teaching point is that we usually drop this term because we do not
+have $H^E$, not because we have shown it is small. The figure shows when that
+is defensible: in mid-range, yes; at the dilute ends, where ${\rm d}T/{\rm d}x$
+is steep, no.
+
+**COMMON MISCONCEPTION**
+That isobaric data can be tested with the isothermal form and a shrug. They can
+— everyone does — but the omission belongs in the report.
+:::
+
+## Three datasets, five tests
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+![](figures/f4_05_three_datasets_tests.png){.fig-xl}
+
+::: {.source}
+F4.5 · The same experiment at three bias levels, with every statistic tabulated.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+The middle column is the one to dwell on. At $b = 0.06$ every test passes — the
+area test by 0.3 of its threshold and the point test by 0.0005 — and the point
+index is already 4. A dataset that passes on the third decimal place is not a
+dataset that has been vindicated.
+
+Then show the cliff: between $b = 0.06$ and $b = 0.08$ four of the five
+verdicts flip together. These are not independent detectors. They are one
+residual read at different thresholds.
+
+**ASK THE CLASS**
+If four tests flip together, what have you learned by running all four?
+:::
+
+## Diagnosis, not verdict
+
+::: {.kicker .c-amber}
+4.3 · Thermodynamic consistency testing
+:::
+
+::: {.lede}
+A failure is the beginning of an investigation. Each fault has a signature.
+:::
+
+:::: {.evidence}
+| | |
+|---|---|
+| Constant offset in $\delta y$ | Vapour sampling bias — partial condensation, or a GC calibration offset |
+| Residual bowed, one sign throughout | Wrong Antoine constants, or the vapour-phase correction omitted when it mattered |
+| Sign change near the azeotrope | Composition analysis non-linear across the range |
+| Fails at one end only | Impurity concentrating in the volatile or the heavy component |
+| Large ${\rm rms}\,\delta P$ as well | The model, not the data. Refit with a more flexible $G^E$ before concluding anything |
+::::
+
+::: {.notes}
+**TEACHING TIP**
+This table is the useful output of consistency testing and the part textbooks
+omit. Assign it as an exercise: corrupt a good dataset three ways and tabulate
+the signatures.
+
+**COMMON MISCONCEPTION**
+That failing means the paper is wrong. It may mean *your* reduction is wrong —
+your Antoine constants, your vapour assumption, your model.
+:::
+
+## Building a model from data {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+PART IV
+:::
+
+::: {.lede}
+Section 4.4&nbsp;&nbsp;&nbsp;Regression converges to something for almost any input.<br>The question is never whether a fit exists. It is what the fit is worth.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Open with the hazard: students will believe the first parameter set they
+obtain, because it came out of a computer and it plotted nicely. Everything in
+this section is a defence against that.
+:::
+
+## The objective function is a modelling decision
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Same data, same model, four objectives, four answers. This is not numerical
+noise; it is a choice about which measurement you trust.
+:::
+
+![](figures/f4_06_objective_functions.png){.fig-cap width="80%"}
+
+:::: {.cards}
+::: {.card}
+
+[The spread is not small]{.card-h .c-rust}
+
+Across objectives the parameters move by several times the standard error that
+any one of them reports. An uncertainty that ignores the choice of objective is
+understating the real one.
+
+:::
+
+::: {.card}
+
+[Minimise what you measured well]{.card-h .c-teal}
+
+Fitting $\ln\gamma$ weights the dilute ends heavily — precisely where the
+measurement is worst. Fitting $y$ fits the least accurate variable. Fitting
+$P$ uses the best one.
+
+:::
+::::
+
+::: {.source}
+F4.6 · Parameters and predictions from three objective functions on one dataset.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Ask them to predict which objective will be worst before showing the numbers.
+Most guess $P$, on the grounds that $y$ is "the answer".
+
+**ASK THE CLASS**
+Your composition analysis is excellent and your pressure transducer is old.
+Does the recommendation change?
+:::
+
+## Barker's method
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Fit to $P$-$x$ alone. Do not fit $y$ at all.
+:::
+
+$$P^{\rm calc}(x_1) = x_1 \gamma_1 P_1^{\rm sat} + x_2 \gamma_2 P_2^{\rm sat},
+\qquad
+\min_{\boldsymbol\theta} \sum_k \left(P^{\rm calc}_k - P^{\rm exp}_k\right)^2$$
+
+:::::: {.cards .g3}
+::: {.card}
+
+[It uses the best data]{.card-h .c-teal}
+
+$P$ and $x$ are the two accurately measured variables. Nothing in the objective
+depends on the vapour sample.
+
+:::
+
+::: {.card}
+
+[It makes the tests possible]{.card-h .c-amber}
+
+A $y$ that was never fitted can be compared with a $y$ that was measured. That
+comparison is the point test and the direct test. Fit $y$ and you destroy your
+own diagnostic.
+
+:::
+
+::: {.card}
+
+[Many datasets have no $y$]{.card-h .c-rust}
+
+Static-cell measurements report $P$-$x$ only, by design. Barker is not a
+compromise for those data — it is the intended method.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+This is the slide that ties Sections 4.3 and 4.4 together. The consistency
+tests are not a separate activity bolted on before fitting; they are what
+Barker's method makes available.
+:::
+
+## Does the parameter earn its place?
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+A model with more parameters cannot fit worse. The residual alone will always
+choose the larger model.
+:::
+
+$${\rm AIC} = n \ln\frac{\rm SSE}{n} + 2k$$
+
+:::: {.cards}
+::: {.card}
+
+[What AIC answers]{.card-h .c-teal}
+
+Whether the improvement in fit is worth the parameter. A difference below about
+2 is conventionally no evidence at all — the data cannot separate those models.
+
+:::
+
+::: {.card}
+
+[Typical outcome]{.card-h .c-amber}
+
+On twenty-one points at realistic noise, Margules, van Laar, Wilson, NRTL and
+UNIQUAC land within 2 AIC units of one another. Any claim that one "describes
+the system better" needs more than that dataset.
+
+:::
+::::
+
+::: {.note}
+AIC compares models fitted the same way. It does **not** compare objective
+functions: each minimises a different residual vector, so the likelihood being
+approximated is not the same likelihood.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Make them state, in one sentence, which model their data actually support. The
+honest sentence is usually "the data do not distinguish these four", and
+students find that unsatisfying until they see slide F4.8.
+:::
+
+## Parameter uncertainty is a region, not two numbers
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Two standard errors quoted separately describe a rectangle the fit never
+occupied.
+:::
+
+![](figures/f4_07_bootstrap_confidence_region.png){.fig-cap width="60%"}
+
+:::: {.cards}
+::: {.card}
+
+[What the cloud shows]{.card-h .c-rust}
+
+A correlation near $-1$: a long narrow ridge of parameter pairs that fit
+equally well. The two parameters are not separately identifiable from one
+isotherm.
+
+:::
+
+::: {.card}
+
+[Why bootstrap]{.card-h .c-teal}
+
+The linearised errors assume a quadratic optimum and normal residuals. For two
+parameters and twenty points, neither holds well. Resampling makes no such
+assumption and is transparent enough to explain in a report.
+
+:::
+::::
+
+::: {.source}
+F4.7 · Bootstrap replicates with the linearised ellipse over them.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Draw the rectangle implied by two independent error bars on the board, then put
+the cloud inside it. The area difference is the argument.
+
+**COMMON MISCONCEPTION**
+That a strong correlation means the fit is bad. It means the *parameterisation*
+is redundant for this experiment. The predictions can still be excellent.
+:::
+
+## The consequence that actually matters
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Two fits the data cannot separate can disagree completely about the region you
+care about.
+:::
+
+![](figures/f4_08_indistinguishable_fits_lle.png){.fig-cap width="80%"}
+
+:::: {.cards}
+::: {.card}
+
+[Same evidence, different claims]{.card-h .c-rust}
+
+Fitted only where data exist, several models agree to within the scatter. They
+then report $\gamma^\infty$ differing by tens of per cent, and they do not agree
+on whether the liquid splits into two phases.
+
+:::
+
+::: {.card}
+
+[Wilson is the clearest case]{.card-h .c-amber}
+
+Wilson is structurally incapable of predicting a miscibility gap for **any**
+parameters. Fitted to a system that has one, it buys the same fit with an
+absurd $\gamma^\infty$ instead. That number is a symptom of the functional
+form, not a property of the fluid.
+
+:::
+::::
+
+::: {.source}
+F4.8 · Statistically indistinguishable fits extrapolated beyond the data.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This is the single most important slide in the module. A liquid-liquid split
+predicted outside the data range is a warning about extrapolation, not a
+discovery.
+
+**ASK THE CLASS**
+You must size a stripper operating at $x_1 = 0.02$ and the data start at 0.55.
+Which $\gamma^\infty$ do you use, and what measurement do you ask for first?
+:::
+
+## Two ways to find out whether you have learned the noise
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Reporting the residual on the points you fitted is not evidence.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[Cross-validation by composition]{.card-h .c-teal}
+
+Train on the middle of the range and predict the dilute ends, then the reverse.
+Report both. A model that fits its training points three times better than it
+predicts the held-out ones has learned the scatter.
+
+Splitting on alternate points tests almost nothing — neighbouring points carry
+almost the same information.
+
+:::
+
+::: {.card}
+
+[Against a prediction]{.card-h .c-amber}
+
+UNIFAC predicts $\gamma$ from group contributions with nothing fitted to your
+data. Your model must beat it — it saw the answer. The question is by how much,
+and whether the margin survives outside the fitted range.
+
+State the margin in a quantity someone would act on: $\gamma^\infty$, or the
+azeotrope composition. Not in rms.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+The UNIFAC comparison is the reality check on the whole enterprise. If two
+fitted parameters buy 20 % on $\gamma^\infty$ over a zero-parameter prediction,
+say so, and say whether that was worth the experiment.
+
+**ASK THE CLASS**
+When would you use UNIFAC in preference to your own fitted parameters?
+:::
+
+## Temperature, and the limits of two numbers
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Parameters fitted at one temperature, used at another.
+:::
+
+$$\tau_{ij} = \exp\!\left(-\frac{\Delta u_{ij}}{RT}\right)
+\quad\Longrightarrow\quad
+\frac{\partial (G^E/RT)}{\partial T}\Big|_{x} = -\frac{H^E}{RT^2}$$
+
+:::: {.cards}
+::: {.card}
+
+[What the extrapolation assumes]{.card-h .c-rust}
+
+Fitting $\tau$ directly at one temperature and reusing it assumes $G^E/RT$ is
+independent of $T$ — that is, $H^E = 0$. Fitting $\Delta u$ instead assumes
+$\Delta u$ is constant, which is weaker but still an assumption.
+
+:::
+
+::: {.card}
+
+[In practice]{.card-h .c-teal}
+
+Twenty or thirty kelvin is usually tolerable for a non-associating mixture.
+Across an alcohol/water column from reboiler to condenser it is not, and the
+error shows up exactly where the column is hardest to control.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Tie this back to F4.9: the same $H^E$ that we could not obtain for the isobaric
+consistency test is the quantity that governs temperature extrapolation. The
+gap in the data appears twice.
+:::
+
+## The deliverable
+
+::: {.kicker .c-amber}
+4.4 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+A regression report that stops at the parameters is not finished.
+:::
+
+:::: {.numbered .n4}
+1. **Model, parameters and objective.** Which $G^E$ form, which two numbers, minimised against what, with which vapour-phase assumption.
+2. **Range of validity.** The composition, temperature and pressure range of the data, stated as a range and not as a midpoint.
+3. **Uncertainty and correlation.** A confidence region or a covariance, not two independent error bars.
+4. **What was extrapolated.** Every quantity you report that lies outside the data — $\gamma^\infty$, an azeotrope, a predicted phase split — named as an extrapolation.
+::::
+
+::: {.notes}
+**TEACHING TIP**
+This list is the marking scheme for the capstone. Say so. Students write the
+statement when they know it is marked and not otherwise.
+
+**COMMON MISCONCEPTION**
+That the domain of validity is a formality. It is the difference between a
+number and an engineering result.
+:::
+
+## Using the model {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+PART V
+:::
+
+::: {.lede}
+Section 4.5&nbsp;&nbsp;&nbsp;Bubble, dew, flash — and the question none of them asks.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Short closing section. Its purpose is to connect the fitted model to the
+calculations the students will actually run, and to open the door to Module 5.
+:::
+
+## Four algorithms, not one
+
+::: {.kicker .c-amber}
+4.5 · Bubble, dew, flash and mixing rules
+:::
+
+::: {.lede}
+The same equilibrium condition with different variables specified. They do not
+converge equally well.
+:::
+
+:::::: {.cards .quad}
+::: {.card}
+
+[Bubble $P$]{.card-h .c-teal}
+
+Given $x$, $T$. Direct: $\gamma_i(x,T)$ is known immediately, so $P$ and $y$
+follow with no iteration for an ideal vapour.
+
+:::
+
+::: {.card}
+
+[Bubble $T$]{.card-h .c-amber}
+
+Given $x$, $P$. One outer iteration on $T$, because $P_i^{\rm sat}$ and
+$\gamma_i$ both move with it.
+
+:::
+
+::: {.card}
+
+[Dew $P$]{.card-h .c-rust}
+
+Given $y$, $T$. The liquid composition is unknown, so $\gamma_i$ must be
+updated every iteration. Slower and less robust than bubble.
+
+:::
+
+::: {.card}
+
+[Dew $T$]{.card-h .c-sky}
+
+Given $y$, $P$. Both loops at once. This is the one that fails in a flowsheet
+at three in the morning.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+The asymmetry between bubble and dew is not incidental, and it is why
+simulators do not treat them as one routine. Ask why the unknown being in the
+liquid makes the problem harder.
+:::
+
+## Rachford-Rice
+
+::: {.kicker .c-amber}
+4.5 · Bubble, dew, flash and mixing rules
+:::
+
+::: {.lede}
+Monotonic in the vapour fraction, and therefore safe. Show the plot before the
+algebra.
+:::
+
+$$F(V) = \sum_i \frac{z_i (K_i - 1)}{1 + V(K_i - 1)} = 0,
+\qquad K_i = \frac{y_i}{x_i} = \frac{\gamma_i P_i^{\rm sat}}{P}$$
+
+![](figures/f4_10_rachford_rice.png){.fig-lg width="66%"}
+
+::: {.source}
+F4.10 · One feed at three pressures. The signs of $F(0)$ and $F(1)$ settle the phase state before any iteration begins.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+${\rm d}F/{\rm d}V < 0$ everywhere, so there is at most one root and bisection
+cannot fail. That is the whole reason this formulation is used rather than the
+algebraically equivalent ones.
+
+**ASK THE CLASS**
+$F(0) < 0$. What have you learned without solving anything?
+:::
+
+## The question the flash never asks
+
+::: {.kicker .c-amber}
+4.5 · Bubble, dew, flash and mixing rules
+:::
+
+::: {.lede}
+Rachford-Rice was told there are two phases, and it will find two phases.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[What is missing]{.card-h .c-rust}
+
+Nothing in the equilibrium equations checks **how many** phases there should
+be. A fitted model that predicts a liquid-liquid split will still return a
+single perfectly reasonable-looking liquid composition inside the gap.
+
+:::
+
+::: {.card}
+
+[What answers it]{.card-h .c-teal}
+
+The Gibbs energy of mixing and a tangent construction — not the equilibrium
+equations. A liquid splits when $\Delta g_{\rm mix}$ dips below its own chord.
+That is Module 5, and it is why the capstone spans both modules.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Demonstrate the failure rather than describing it: flash a feed inside the
+predicted miscibility gap and show the plausible wrong answer. Then show the
+$\Delta g_{\rm mix}$ curve.
+:::
+
+## Mixing rules for cubic equations of state
+
+::: {.kicker .c-amber}
+4.5 · Bubble, dew, flash and mixing rules
+:::
+
+::: {.lede}
+The phi-phi route needs mixture parameters. The classical answer is quadratic
+in composition.
+:::
+
+$$a_{\rm mix} = \sum_i\sum_j x_i x_j \sqrt{a_i a_j}\,(1 - k_{ij}),
+\qquad b_{\rm mix} = \sum_i x_i b_i$$
+
+:::: {.cards}
+::: {.card}
+
+[$k_{ij}$ is fitted, not predicted]{.card-h .c-amber}
+
+It comes from binary data, exactly like the activity model parameters, and it
+carries the same obligations: a range of validity and an uncertainty.
+
+:::
+
+::: {.card}
+
+[Why it fails for polar mixtures]{.card-h .c-rust}
+
+The quadratic form assumes random mixing. Substituting it into the cubic gives
+an excess Gibbs energy that is thermodynamically equivalent to a one-constant
+Margules model: symmetric, one parameter. Hydrogen-bonding mixtures are neither
+symmetric nor one-parameter, and $k_{ij}$ can scale that curve but cannot change
+its shape.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+The Margules equivalence is the sharpest way to state the failure. It is not
+that the rule is inaccurate; it is that it has the wrong functional form and no
+value of $k_{ij}$ can repair it.
+:::
+
+## One idea, stated and not derived
+
+::: {.kicker .c-amber}
+4.5 · Bubble, dew, flash and mixing rules
+:::
+
+::: {.lede}
+A mixing rule can be constructed so that a cubic equation of state reproduces a
+chosen excess Gibbs energy model.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[What that buys]{.card-h .c-teal}
+
+The pressure range and the supercritical components of an equation of state,
+together with the composition behaviour of NRTL or UNIQUAC. This is how a
+simulator handles CO₂ with ethanol at 100 bar.
+
+:::
+
+::: {.card}
+
+[Where to find it]{.card-h .c-amber}
+
+Huron-Vidal and Wong-Sandler. Four appendix slides follow this one, and the
+algebra is in **`vle-mixing-rules-note.pdf`** on the course page. Not lectured,
+not examined — but the property-method dropdown in a simulator says PRWS and
+PSRK, and four pages is what it takes to know what that means.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Say explicitly that this is not examinable and that it matters to the students
+who go on to high-pressure or polar systems. Naming who it is for is what stops
+the rest of the class worrying about it.
+:::
+
+## What you must be able to do
+
+::: {.kicker .c-amber}
+Closing
+:::
+
+::: {.lede}
+The module in six statements.
+:::
+
+:::: {.numbered .n3 .two-col}
+1. **Choose a description and defend the assumption.** Raoult, modified Raoult, gamma-phi or phi-phi — and say which assumption you are relying on.
+2. **Turn $T$, $P$, $x$, $y$ into $\gamma$ with its uncertainty.** Including the vapour-phase assumption, stated, and the error in $P^{\rm sat}$.
+3. **Test a dataset and diagnose the failure.** All five tests, and a signature-based diagnosis rather than a verdict.
+4. **Fit, and say what the fit is worth.** Objective chosen deliberately, confidence region reported, extrapolations named.
+5. **Compare against a prediction.** Know what the two fitted parameters bought over UNIFAC.
+6. **Know what the calculation does not check.** A flash assumes the number of phases. Module 5 supplies the missing test.
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Return to the opening statement: a parameter set is not a result. Ask whether
+anyone would now use a published NRTL pair without checking the paper's
+consistency table and composition range.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B" visibility="uncounted"}
+
+:::: {.vcenter}
+::: {.statement}
+Appendix
+:::
+
+::: {.statement-hi}
+EoS-$G^E$ mixing rules<br>Huron-Vidal and Wong-Sandler
+:::
+
+::: {.statement-sub}
+Not lectured. Not examined. Read the note if this is your problem.
+:::
+::::
+
+## A.1 · Two worlds that do not meet {visibility="uncounted"}
+
+::: {.kicker .c-amber}
+Appendix · EoS-$G^E$ mixing rules
+:::
+
+:::: {.cards}
+::: {.card}
+
+[Equations of state]{.card-h .c-teal}
+
+Handle high pressure and supercritical components. One model for both phases,
+no reference vapour pressure required. Fail on polar and hydrogen-bonding
+mixtures, because the quadratic mixing rule assumes random mixing.
+
+:::
+
+::: {.card}
+
+[Activity coefficient models]{.card-h .c-rust}
+
+Handle polar and associating liquids, through local-composition terms fitted to
+data. Cannot cross the critical point, and need a reference fugacity that a
+supercritical component does not have.
+
+:::
+::::
+
+::: {.note}
+The engineering problem is the mixture that is both — CO₂ with ethanol, water
+with a light gas — and neither description can be pushed into the other's
+territory. The mixing rule is the bridge.
+:::
+
+## A.2 · Huron-Vidal {visibility="uncounted"}
+
+::: {.kicker .c-amber}
+Appendix · EoS-$G^E$ mixing rules
+:::
+
+::: {.lede}
+Match the excess Gibbs energy of the equation of state to that of an activity
+model in the infinite-pressure limit, where the cubic collapses to $V = b$ and
+the expression closes.
+:::
+
+$$\frac{a_{\rm mix}}{b_{\rm mix}}
+ = \sum_i x_i \frac{a_i}{b_i} - \frac{g^E_\infty}{C},
+\qquad
+C = \frac{1}{\delta_1 - \delta_2}\,\ln\frac{1 + \delta_1}{1 + \delta_2}$$
+
+:::: {.cards}
+::: {.card}
+
+[The constant]{.card-h .c-teal}
+
+$C = \ln 2 = 0.6931$ for Soave-Redlich-Kwong;
+$C = \ln(1+\sqrt2)/\sqrt2 = 0.6232$ for Peng-Robinson.
+
+:::
+
+::: {.card}
+
+[The practical cost]{.card-h .c-rust}
+
+**Published low-pressure NRTL parameters cannot be reused.** The reference
+state is the infinite-pressure limit, not the real liquid, so the parameters
+must be refitted — and they are not transferable between SRK and PR either,
+because $C$ differs.
+
+:::
+::::
+
+## A.3 · Wong-Sandler {visibility="uncounted"}
+
+::: {.kicker .c-amber}
+Appendix · EoS-$G^E$ mixing rules
+:::
+
+::: {.lede}
+Keep the infinite-pressure condition and add the low-density one: the second
+virial coefficient must be quadratic in composition.
+:::
+
+$$B = b - \frac{a}{RT},
+\qquad
+Q = \sum_i\sum_j x_i x_j B_{ij},
+\qquad
+D = \sum_i x_i \frac{a_i}{b_i RT} + \frac{g^E_\infty}{CRT}$$
+
+$$b_{\rm mix} = \frac{Q}{1 - D},
+\qquad
+a_{\rm mix} = RT\,\frac{Q\,D}{1 - D}$$
+
+:::: {.cards}
+::: {.card}
+
+[What is gained]{.card-h .c-teal}
+
+Correct at both ends of the density range. $b_{\rm mix}$ stops being linear in
+composition, which is the structural difference from Huron-Vidal.
+
+:::
+
+::: {.card}
+
+[What it costs]{.card-h .c-amber}
+
+One extra binary parameter in the $B_{ij}$ combining rule, on top of the $g^E$
+model parameters. Pure-component reduction ($b_{\rm mix} = b_i$,
+$a_{\rm mix} = a_i$) is the unit test to run before trusting an implementation.
+
+:::
+::::
+
+## A.4 · What the names mean {visibility="uncounted"}
+
+::: {.kicker .c-amber}
+Appendix · EoS-$G^E$ mixing rules
+:::
+
+| Property method | Is | Parameters |
+|---|---|---|
+| PRWS, RKSWS | Wong-Sandler on PR or SRK | Refit; not the published low-pressure set |
+| PRMHV2, RKSMHV2 | Modified Huron-Vidal, second order | Zero-pressure reference — published UNIFAC/UNIQUAC parameters **can** be reused |
+| PSRK | Predictive SRK: MHV1 with UNIFAC | Predictive; no binary VLE data needed |
+
+::: {.note}
+MHV1 and MHV2 (Michelsen, 1990) use a zero-pressure rather than an
+infinite-pressure reference, which is precisely what makes published parameters
+transferable. That is their entire practical advantage.
+:::
+
+::: {.source}
+Full derivations, the sign-convention warning, and the references: `vle-mixing-rules-note.pdf`.
+:::

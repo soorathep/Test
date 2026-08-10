@@ -521,3 +521,30 @@ section.dark .badge { background: rgba(255,255,255,0.07); border-color: $slate; 
    being cut off at the right edge. */
 .eq-long .katex-display { font-size: 0.60em; }
 .eq-long .katex-display > .katex { white-space: normal; }
+
+
+/* ---------- Module 4 additions ----------
+   A figure that shares a slide with BOTH a card row and a source caption has
+   less room than one with cards alone: measured overflow was 6.8 px on five
+   slides, which clips the caption rather than the figure and so is invisible
+   until someone tries to read the figure number. */
+.reveal .slides section img.fig-cap { max-height: 36vh; }
+
+/* Six numbered rows do not fit at the default padding. Two columns of three
+   do, and reading three items twice is no worse than reading six once. */
+.reveal .numbered.two-col ol {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px;
+}
+.reveal .numbered.two-col ol > li { font-size: 0.60em; padding: 12px 18px 12px 66px; }
+.reveal .numbered.two-col ol > li::before { left: 15px; width: 32px; height: 32px; }
+
+/* A bullet list inside a card inherited the deck-level `ul { margin-left: 1em }`
+   on top of the browser's own padding, so the list box ran 2.8 px past the card
+   and, in a two-column layout, past the slide. Reset the margin and carry the
+   marker indent on padding, which stays inside the content box. */
+.card ul, .card ol {
+  margin-left: 0; padding-left: 1.15em;
+  box-sizing: border-box; max-width: 100%;   /* content-box + max-width:100%
+                                                adds the indent on top of the
+                                                full width and overflows */
+}

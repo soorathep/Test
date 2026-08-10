@@ -55,3 +55,127 @@ modules:
         file: EOS_Python_Toolkit.zip
         label: Figure toolkit
         desc: Every figure in the deck, with the Python that generates it
+
+  - id: fugacity
+    n: 2
+    title: Fugacity, Chemical Potential and the Equilibrium Criterion
+    subtitle: Why pressure is not the driving force
+    slides: fugacity.html
+    blurb: >-
+      Chemical potential is the true driving force, it is unusable in raw form,
+      and fugacity is the quantity constructed to make it usable. The module
+      ends by deriving the Maxwell equal-area construction — presented in
+      Module 1 as a recipe to be accepted — from equality of fugacity.
+    files:
+      - kind: Slides
+        file: fugacity-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: Module2_Figure_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it
+
+  - id: solution
+    n: 3
+    title: Solution Thermodynamics
+    subtitle: Partial molar properties, activity, and the constraint that ties them
+    slides: solution.html
+    blurb: >-
+      The mixture toolkit with the rigour Module 1 applied to pure fluids:
+      partial molar properties, fugacity in a mixture, excess properties,
+      activity and its reference state, and the Gibbs-Duhem constraint that
+      makes an activity coefficient model a choice of excess Gibbs energy
+      rather than an item on a list to memorise.
+    files:
+      - kind: Slides
+        file: solution-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: Module3_Figure_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it
+
+  - id: vle
+    n: 4
+    title: Vapour-Liquid Equilibrium of Mixtures
+    subtitle: Building an activity coefficient model from data
+    slides: vle.html
+    blurb: >-
+      Four descriptions of the same equilibrium, then the full working cycle:
+      what a VLE apparatus measures and how well, whether a published dataset
+      can be believed, which model fitted against which objective, and where
+      the answer may be used. The module where the course stops being about
+      equations and starts being about evidence.
+    files:
+      - kind: Code
+        file: vlekit.zip
+        label: vlekit
+        desc: The toolkit used from here to the end of the course — data reduction, five consistency tests, regression with bootstrap, UNIFAC, flash, stability, Peng-Robinson mixtures and reaction equilibrium. 238 tests.
+      - kind: Notebook
+        file: M4_VLE_regression_and_consistency.ipynb
+        label: Capstone notebook
+        desc: One dataset end to end, from measurement to a written domain of validity. Runs in Colab.
+      - kind: Notes
+        file: vle-mixing-rules-note.pdf
+        label: EoS-G^E mixing rules
+        desc: Huron-Vidal and Wong-Sandler, four pages. Self-study; not lectured and not examined.
+      - kind: Slides
+        file: vle-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: VLE_Figure_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it
+
+  - id: stability
+    n: 5
+    title: Phase Stability and Complex Equilibria
+    subtitle: The question a flash calculation cannot ask
+    slides: stability.html
+    blurb: >-
+      A flash solves the equilibrium equations it was given, and those equations
+      have solutions that are not the global minimum. This module supplies the
+      missing test — the tangent plane criterion — and then follows it into
+      liquid-liquid equilibrium, distillation boundaries and retrograde
+      condensation.
+    files:
+      - kind: Notebook
+        file: M5_stability_and_LLE.ipynb
+        label: Stability notebook
+        desc: A bubble point that is wrong by 5 per cent and does not say so, then the test that catches it. Runs in Colab.
+      - kind: Slides
+        file: stability-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: Stability_Figure_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it
+
+  - id: reaction
+    n: 6
+    title: Chemical Equilibrium
+    subtitle: The same criterion, under a different constraint
+    slides: reaction.html
+    blurb: >-
+      Nothing new is introduced. The equilibrium criterion, the fugacity
+      coefficient and the activity coefficient from the earlier modules are
+      applied to a new constraint, and the module ends where the whole course
+      has been heading: one constrained minimisation of the Gibbs energy, which
+      is what an equilibrium reactor block in a process simulator solves.
+    files:
+      - kind: Notebook
+        file: M6_chemical_equilibrium.ipynb
+        label: Chemical equilibrium notebook
+        desc: One equilibrium solved twice, by extent and by Gibbs minimisation, and required to agree. Then Pitzer and a cell voltage. Runs in Colab; allow about six minutes.
+      - kind: Slides
+        file: reaction-slides.pdf
+        label: Slides as PDF
+        desc: For annotating or printing; the browser version is the primary one
+      - kind: Code
+        file: Reaction_Figure_Toolkit.zip
+        label: Figure toolkit
+        desc: Every figure in the deck, with the Python that generates it

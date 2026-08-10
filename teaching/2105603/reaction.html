@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-08-09">
+  <title>2105603 – Chemical Equilibrium</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-44ab30104761961979c1939c561e7051.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="site_libs/katex/katex.min.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Chemical Equilibrium</h1>
+  <p class="subtitle">Module 6 · 2105603 Advanced Chemical Engineering Thermodynamics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">9 August 2026</p>
+</section>
+<section id="section" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="statement">
+<p>Nothing new is introduced in this module.</p>
+</div>
+<div class="statement-hi">
+<p>The same criterion, the same fugacity coefficient,<br>the same activity coefficient — under a different constraint.</p>
+</div>
+</div>
+</section>
+<section id="where-this-module-ends" class="slide level2">
+<h2>Where this module ends</h2>
+<div class="kicker c-amber">
+<p>Introduction</p>
+</div>
+<div class="lede">
+<p>Everything from Module 1 onward feeds one constrained optimisation, and that optimisation is what an equilibrium reactor block in a process simulator solves.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">The arc</span></p>
+<p>Module 1 gave <span class="math inline">P</span>-<span class="math inline">V</span>-<span class="math inline">T</span>. Module 2 turned it into fugacity. Module 3 gave the liquid an excess Gibbs energy. Module 4 fitted it to data. Module 5 asked whether the answer was stable.</p>
+<p>Module 6 minimises the total Gibbs energy of everything at once.</p>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">Four questions</span></p>
+<ul>
+<li>What is the equilibrium criterion for a reaction, and why is it the same one?</li>
+<li>Where do non-ideality corrections enter, and how much are they worth?</li>
+<li>What do you do when nobody knows the reactions?</li>
+<li>What happens when phases and reactions must be solved together?</li>
+</ul>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-criterion" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>The criterion</h2>
+<div class="kicker c-amber">
+<p>PART I</p>
+</div>
+<div class="lede">
+<p>Section 6.1&nbsp;&nbsp;&nbsp;Extent of reaction, <span class="math inline">\sum_i \nu_i\mu_i = 0</span>, and the sharp distinction between <span class="math inline">K</span> and composition.</p>
+</div>
+</section>
+<section id="extent-of-reaction" class="slide level2">
+<h2>Extent of reaction</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Stoichiometry removes almost all of the freedom. One number describes the whole composition of a single reaction.</p>
+</div>
+<p><span class="math display">n_i = n_{i0} + \nu_i \xi
+\qquad\Longrightarrow\qquad
+\frac{{\rm d}n_i}{\nu_i} = {\rm d}\xi \ \ \text{for every } i</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Why it is one number</span></p>
+<p>Atoms are conserved, so the composition cannot move in an arbitrary direction. For a single reaction it can move along exactly one line in composition space, and <span class="math inline">\xi</span> is the distance along it.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">The bounds matter</span></p>
+<p><span class="math inline">\xi</span> is limited at one end by the limiting reactant and at the other by the products. Outside that window a mole number is negative and the objective evaluates <span class="math inline">\ln</span> of a negative number. A solver started outside it fails in a way that looks like a physics problem and is not.</p>
+</div>
+</div>
+</section>
+<section id="the-equilibrium-condition" class="slide level2">
+<h2>The equilibrium condition</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>At constant <span class="math inline">T</span> and <span class="math inline">P</span>, <span class="math inline">{\rm d}G = 0</span>. Substituting the extent gives the whole of reaction equilibrium in one line.</p>
+</div>
+<p><span class="math display">{\rm d}G = \sum_i \mu_i\,{\rm d}n_i = \left(\sum_i \nu_i\mu_i\right){\rm d}\xi = 0
+\qquad\Longrightarrow\qquad
+\boxed{\sum_i \nu_i\mu_i = 0}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">The same statement</span></p>
+<p>Phase equilibrium says <span class="math inline">\mu_i^{\,\alpha} = \mu_i^{\,\beta}</span> — a <em>transfer</em> of species <span class="math inline">i</span> between phases leaves <span class="math inline">G</span> unchanged. Reaction equilibrium says a <em>conversion</em> along the stoichiometry leaves <span class="math inline">G</span> unchanged. Both are <span class="math inline">{\rm d}G = 0</span>; only the allowed variation differs.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">What follows</span></p>
+<p>Substituting <span class="math inline">\mu_i = G_i^\circ + RT\ln \hat a_i</span> and rearranging gives</p>
+<p><span class="math display">\prod_i \hat a_i^{\,\nu_i} = \exp\!\left(-\frac{\Delta G^\circ}{RT}\right) = K</span></p>
+<p>with <span class="math inline">\Delta G^\circ = \sum_i \nu_i G_i^\circ</span>.</p>
+</div>
+</div>
+</section>
+<section id="k-depends-only-on-temperature" class="slide level2">
+<h2><span class="math inline">K</span> depends only on temperature</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>The single most-confused point in the subject. The composition depends on pressure and on non-ideality; <span class="math inline">K</span> does not.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">Why</span></p>
+<p><span class="math inline">K = \exp(-\Delta G^\circ/RT)</span> and <span class="math inline">\Delta G^\circ</span> is built from <em>standard-state</em> properties. The standard state fixes the pressure — 1 bar for a gas — so nothing on the right-hand side knows the system pressure.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">What does move</span></p>
+<p>The activity quotient. For a gas <span class="math inline">\prod \hat a_i^{\nu_i} = K_\varphi K_y (P/P^\circ)^{\Delta\nu}</span>, so raising <span class="math inline">P</span> with <span class="math inline">\Delta\nu &lt; 0</span> forces <span class="math inline">K_y</span> down — more product — at constant <span class="math inline">K</span>.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Verified, not asserted</span></p>
+<p>For ammonia synthesis at 700 K, raising the pressure from 1 to 300 bar changes <span class="math inline">K</span> by exactly nothing and multiplies the ammonia mole fraction by more than a hundred.</p>
+</div>
+</div>
+</section>
+<section id="gibbs-energy-against-extent" class="slide level2">
+<h2>Gibbs energy against extent</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<p><img data-src="figures/f6_01_gibbs_vs_extent.png" class="fig-xl"></p>
+<div class="source">
+<p>F6.1 · The minimum moves with pressure. <span class="math inline">K</span> does not.</p>
+</div>
+</section>
+<section id="temperature-dependence" class="slide level2">
+<h2>Temperature dependence</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Van ’t Hoff, and where the constant-enthalpy shortcut stops being a shortcut.</p>
+</div>
+<p><span class="math display">\frac{{\rm d}\ln K}{{\rm d}T} = \frac{\Delta H^\circ}{RT^2}
+\qquad\xrightarrow[\ \Delta H^\circ \ \text{constant}\ ]{}\qquad
+\ln\frac{K(T)}{K(T_0)} = -\frac{\Delta H^\circ}{R}\left(\frac1T - \frac1{T_0}\right)</span></p>
+<p><img data-src="figures/f6_02_vant_hoff_departure.png" class="fig-cap" style="width:72.0%"></p>
+<div class="source">
+<p>F6.2 · Exact against constant-enthalpy, with the temperature at which they differ by a factor of two.</p>
+</div>
+</section>
+<section id="standard-states-and-the-traps-in-each" class="slide level2">
+<h2>Standard states, and the traps in each</h2>
+<div class="kicker c-amber">
+<p>6.1 · The criterion for reaction equilibrium</p>
+</div>
+<div class="evidence">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Gas</td>
+<td>Pure ideal gas at 1 bar. <span class="math inline">\hat a_i = \hat\varphi_i y_i P / P^\circ</span>. The trap: forgetting <span class="math inline">P^\circ</span>, which makes <span class="math inline">K</span> dimensional and wrong by <span class="math inline">(P/P^\circ)^{\Delta\nu}</span></td>
+</tr>
+<tr class="even">
+<td>Liquid</td>
+<td>Pure liquid at <span class="math inline">T</span> and <span class="math inline">P</span>. <span class="math inline">\hat a_i = \gamma_i x_i</span>. The trap: the Lewis-Randall reference is the <em>pure</em> liquid, which may not exist at those conditions</td>
+</tr>
+<tr class="odd">
+<td>Solid</td>
+<td>Pure solid. <span class="math inline">\hat a_i = 1</span>, so it drops out of <span class="math inline">K</span> entirely — but not out of the question of whether the solid is present at all</td>
+</tr>
+<tr class="even">
+<td>Solute</td>
+<td>Hypothetical ideal 1 molal solution. <span class="math inline">\hat a_i = \gamma_i m_i / m^\circ</span>. The trap: molarity, molality and mole fraction give three different numerical <span class="math inline">K</span> values for the same physics</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="non-ideality" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Non-ideality</h2>
+<div class="kicker c-amber">
+<p>PART II</p>
+</div>
+<div class="lede">
+<p>Section 6.2&nbsp;&nbsp;&nbsp;Where <span class="math inline">\hat\varphi_i</span> from Module 2 and <span class="math inline">\gamma_i</span> from Module 3 re-enter.<br>Nothing new is introduced. Existing tools meet a new constraint.</p>
+</div>
+</section>
+<section id="the-decomposition" class="slide level2">
+<h2>The decomposition</h2>
+<div class="kicker c-amber">
+<p>6.2 · Non-ideality in reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Split the activity quotient into a composition part and a non-ideality part. Each factor is something you already know how to compute.</p>
+</div>
+<p><span class="math display">K = \underbrace{\prod_i \hat\varphi_i^{\,\nu_i}}_{K_\varphi}
+      \underbrace{\prod_i y_i^{\,\nu_i}}_{K_y}
+      \left(\frac{P}{P^\circ}\right)^{\Delta\nu}
+\qquad\text{(gas)}
+\qquad\qquad
+K = \underbrace{\prod_i \gamma_i^{\,\nu_i}}_{K_\gamma}
+    \underbrace{\prod_i x_i^{\,\nu_i}}_{K_x}
+\qquad\text{(liquid)}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal"><span class="math inline">K_\varphi</span> is a ratio</span></p>
+<p>Which has a useful consequence: much of the model error cancels. Changing every binary interaction parameter by <span class="math inline">\pm 0.05</span> moves the ammonia conversion by less than 0.04 percentage points at any pressure marked on the next slide. The fugacity coefficients themselves are worth 4.2 points at 300 bar.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Where the effort belongs</span></p>
+<p>At 300 bar the corrections rank: <span class="math inline">\hat\varphi</span> is worth 4.2 points of conversion, an uncertainty of 1 kJ/mol in <span class="math inline">\Delta G^\circ</span> is worth 1.6 points, and <span class="math inline">k_{ij}</span> is worth less than 0.04 — forty times smaller than the thermochemical uncertainty. Improve the data before the mixing rule.</p>
+</div>
+</div>
+</section>
+<section id="ammonia-synthesis-done-properly" class="slide level2">
+<h2>Ammonia synthesis, done properly</h2>
+<div class="kicker c-amber">
+<p>6.2 · Non-ideality in reaction equilibrium</p>
+</div>
+<p><img data-src="figures/f6_03_ammonia_kphi.png" class="fig-xl"></p>
+<div class="source">
+<p>F6.3 · Conversion against pressure with and without <span class="math inline">K_\varphi</span>, from Peng-Robinson. <span class="math inline">k_{ij} = 0</span> assumed and labelled.</p>
+</div>
+</section>
+<section id="reactions-in-solution" class="slide level2">
+<h2>Reactions in solution</h2>
+<div class="kicker c-amber">
+<p>6.2 · Non-ideality in reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Three concentration scales, three numerical values of <span class="math inline">K</span>, one physical answer.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">Mole fraction</span></p>
+<p>Lewis-Randall reference: <span class="math inline">\gamma_i \to 1</span> as <span class="math inline">x_i \to 1</span>. Natural for a solvent and for a mixture of comparable components.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Molality</span></p>
+<p>Henry reference: <span class="math inline">\gamma_i \to 1</span> as <span class="math inline">m_i \to 0</span>. Natural for a solute that never approaches purity, and the scale on which electrolyte data are tabulated.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Molarity</span></p>
+<p>Convenient in the laboratory and awkward in thermodynamics, because it depends on the solution density and therefore on temperature and on composition.</p>
+</div>
+</div>
+<div class="note">
+<p>Converting between scales changes <span class="math inline">K</span> and <span class="math inline">\Delta G^\circ</span> together. A reported <span class="math inline">K</span> without its concentration scale is not a number, and neither is a <span class="math inline">\Delta G^\circ</span> without its standard state.</p>
+</div>
+</section>
+<section id="when-nobody-knows-the-reactions" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>When nobody knows the reactions</h2>
+<div class="kicker c-amber">
+<p>PART III</p>
+</div>
+<div class="lede">
+<p>Section 6.3&nbsp;&nbsp;&nbsp;Multiple extents, and then the formulation that needs no reaction set at all.</p>
+</div>
+</section>
+<section id="several-reactions-at-once" class="slide level2">
+<h2>Several reactions at once</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<div class="lede">
+<p>The extent formulation generalises directly — as long as the reaction set is known and independent.</p>
+</div>
+<p><span class="math display">n_i = n_{i0} + \sum_j \nu_{ij}\,\xi_j
+\qquad\qquad
+\sum_i \nu_{ij}\,\mu_i = 0 \quad \text{for each } j</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">How many are independent</span></p>
+<p><span class="math inline">R = S - \text{rank}(\mathbf{A})</span>, with <span class="math inline">S</span> species and <span class="math inline">\mathbf{A}</span> the element matrix. Gas-phase steam reforming: 5 species, 3 elements, rank 3, so <strong>2</strong> independent reactions — and which two you write down is a choice, not a fact. Admit solid carbon and it becomes 6 species and 3 reactions.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Why the choice does not matter</span></p>
+<p>Any independent set spans the same reaction space and gives the same equilibrium. If two choices give different answers, one set was not independent — which is worth checking with a rank rather than by inspection.</p>
+</div>
+</div>
+</section>
+<section id="where-the-extent-formulation-fails" class="slide level2">
+<h2>Where the extent formulation fails</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<div class="lede">
+<p>It needs a reaction set. Combustion, reforming and pyrolysis do not come with one.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The problem</span></p>
+<p>A hydrocarbon flame contains hundreds of species. Nobody writes down the reaction set; there is no agreed set to write. Any list you choose is a modelling assumption you cannot defend, and omitting a species that matters is invisible in the result.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">The alternative</span></p>
+<p>Minimise the total Gibbs energy over all species subject to conservation of atoms. No stoichiometry is required, only an element list — and an element list is not a modelling choice.</p>
+<p><span class="math display">\min_{\mathbf n} \sum_i n_i\mu_i
+\quad\text{s.t.}\quad \mathbf{A}\mathbf{n} = \mathbf{b},\ \ n_i \ge 0</span></p>
+</div>
+</div>
+</section>
+<section id="element-potentials" class="slide level2">
+<h2>Element potentials</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<div class="lede">
+<p>The Lagrange multipliers of the element balances are not bookkeeping. They are the chemical potential of an atom.</p>
+</div>
+<p><span class="math display">\mathcal{L} = \sum_i n_i\mu_i - \sum_k \lambda_k\!\left(\sum_i a_{ki}n_i - b_k\right)
+\qquad\Longrightarrow\qquad
+\boxed{\mu_i = \sum_k a_{ki}\lambda_k}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">What it says</span></p>
+<p>At equilibrium a species carries no information beyond the atoms it is made of. Its chemical potential is a weighted sum of element potentials, and the weights are its formula.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Why it is useful</span></p>
+<p>It is the cheapest possible check on a converged solution: the residual of that relation costs nothing to compute and does not require re-solving anything. For the reforming case it comes out at 0.37 J/mol against chemical potentials of order 400 kJ/mol.</p>
+</div>
+</div>
+</section>
+<section id="what-the-multipliers-look-like" class="slide level2">
+<h2>What the multipliers look like</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<p><img data-src="figures/f6_04_element_potentials.png" class="fig-xl"></p>
+<div class="source">
+<p>F6.4 · Every species on the 45° line. The residual, and the one temperature at which the optimiser failed, are both reported.</p>
+</div>
+</section>
+<section id="the-numerical-difficulty" class="slide level2">
+<h2>The numerical difficulty</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<div class="lede">
+<p>The objective contains <span class="math inline">\sum n_i \ln(n_i/n)</span>, which is ill-conditioned as any mole number approaches zero. Student code fails here, and so does ours.</p>
+</div>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-rust">What goes wrong</span></p>
+<p>A trace species contributes almost nothing to <span class="math inline">G</span> and has a large derivative. Finite-difference gradients lose it entirely. Below about <span class="math inline">y = 10^{-10}</span> the solution is not resolved — adding O₂ and NO to a reforming calculation drove the element-potential residual from 0.37 to <span class="math inline">5\times10^4</span> J/mol.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">What helps</span></p>
+<p>Optimise in <span class="math inline">\ln n_i</span>, which enforces positivity exactly rather than by a constraint the solver can step across. Restart from several compositions. Drop species that cannot matter — and say that you dropped them.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">What settles it</span></p>
+<p>Cross-check against the extent formulation wherever a reaction set <em>is</em> known. For steam reforming over 600–1300 K the two agree to <span class="math inline">10^{-6}</span> in mole fraction. Build that check in before you trust an answer you cannot verify.</p>
+</div>
+</div>
+</section>
+<section id="product-distribution-from-gibbs-minimisation" class="slide level2">
+<h2>Product distribution from Gibbs minimisation</h2>
+<div class="kicker c-amber">
+<p>6.3 · Multiple reactions and Gibbs energy minimisation</p>
+</div>
+<p><img data-src="figures/f6_05_reforming_distribution.png" class="fig-xl"></p>
+<div class="source">
+<p>F6.5 · Steam reforming against temperature. Maximum disagreement with the extent formulation over the whole scan: <span class="math inline">10^{-6}</span> in mole fraction.</p>
+</div>
+</section>
+<section id="phases-reactions-and-charge" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Phases, reactions and charge</h2>
+<div class="kicker c-amber">
+<p>PART IV</p>
+</div>
+<div class="lede">
+<p>Section 6.4&nbsp;&nbsp;&nbsp;Everything at once, and then the one place where a potential difference enters the chemical potential itself.</p>
+</div>
+</section>
+<section id="reactive-flash" class="slide level2">
+<h2>Reactive flash</h2>
+<div class="kicker c-amber">
+<p>6.4 · Simultaneous phase and reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Nothing changes. The species list gains a phase label, the element balance sums over both phases, and the same minimisation runs.</p>
+</div>
+<p><span class="math display">\min_{\{n_i^{\,\alpha}\}} \sum_\alpha\sum_i n_i^{\,\alpha}\mu_i^{\,\alpha}
+\qquad\text{s.t.}\qquad
+\sum_\alpha \mathbf{A}\,\mathbf{n}^{\,\alpha} = \mathbf{b}</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Why this is the ending</span></p>
+<p>Phase equilibrium falls out as the condition <span class="math inline">\mu_i^{\,\alpha} =
+\mu_i^{\,\beta}</span>; reaction equilibrium falls out as <span class="math inline">\sum\nu_i\mu_i = 0</span>. Neither was imposed. Both are consequences of minimising one function subject to atom conservation.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">And the stability question returns</span></p>
+<p>The minimisation is only over the phases you listed. Whether <em>another</em> phase should be present is the Module 5 question, and the answer is still the tangent plane criterion. A reactive flash that was never asked about a second liquid will not find one.</p>
+</div>
+</div>
+</section>
+<section id="reactive-distillation" class="slide level2">
+<h2>Reactive distillation</h2>
+<div class="kicker c-amber">
+<p>6.4 · Simultaneous phase and reaction equilibrium</p>
+</div>
+<div class="lede">
+<p>Why it works, not how it is designed.</p>
+</div>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-amber">The trick</span></p>
+<p>Run the reaction inside the column. Removing a product by distillation as it forms pulls the reaction past its equilibrium conversion — the composition never sits at equilibrium, because the separation keeps moving it.</p>
+<p>Equilibrium-limited esterifications are the standard case: methyl acetate production replaced a reactor and eight columns with one column.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Why it is hard</span></p>
+<p>The reaction changes the phase behaviour and the phase behaviour changes the reaction. Reactive azeotropes exist that are not azeotropes of the non-reacting mixture, and the distillation boundaries of Module 5 move.</p>
+<p>Nothing about the design is separable, which is why it is a specialist subject and why the thermodynamics has to be right first.</p>
+</div>
+</div>
+</section>
+<section id="electrolytes" class="slide level2">
+<h2>Electrolytes</h2>
+<div class="kicker c-amber">
+<p>6.4 · Electrochemical systems</p>
+</div>
+<div class="lede">
+<p>Long-range Coulomb interactions make an electrolyte non-ideal at concentrations where a molecular solution would still be ideal.</p>
+</div>
+<p><span class="math display">\log_{10}\gamma_\pm = -A|z_+z_-|\sqrt{I}
+\qquad\qquad
+\log_{10}\gamma_\pm = \frac{-A|z_+z_-|\sqrt{I}}{1 + Ba\sqrt{I}}
+\qquad\qquad I = \tfrac12\sum_i m_i z_i^2</span></p>
+<div class="cards g3">
+<div class="card">
+<p><span class="card-h c-teal">Limiting law</span></p>
+<p>Derived, with no fitted parameter, from the Poisson-Boltzmann equation and a point-charge ion. Exact as <span class="math inline">I \to 0</span> and 1 % wrong by <span class="math inline">I = 0.005</span> mol/kg.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">Extended law</span></p>
+<p>One fitted ion-size parameter. Buys a factor of thirty: 1 % wrong by <span class="math inline">I = 0.15</span> mol/kg.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-rust">Pitzer</span></p>
+<p>Three fitted parameters and a virial-like expansion. 1 % to about <span class="math inline">I = 5</span> mol/kg — which is where industrial brines and battery electrolytes actually sit.</p>
+</div>
+</div>
+</section>
+<section id="how-far-each-one-reaches" class="slide level2">
+<h2>How far each one reaches</h2>
+<div class="kicker c-amber">
+<p>6.4 · Electrochemical systems</p>
+</div>
+<p><img data-src="figures/f6_06_activity_coefficient_models.png" class="fig-xl"></p>
+<div class="source">
+<p>F6.6 · Three models against critically-evaluated data for HCl(aq) at 298.15 K. The electrolyte is HCl rather than NaCl because that is the data that could be retrieved and corroborated.</p>
+</div>
+</section>
+<section id="electrochemical-potential" class="slide level2">
+<h2>Electrochemical potential</h2>
+<div class="kicker c-amber">
+<p>6.4 · Electrochemical systems</p>
+</div>
+<div class="lede">
+<p>The one place in this course where a potential difference enters the chemical potential itself.</p>
+</div>
+<p><span class="math display">\tilde\mu_i = \mu_i + z_i F\phi
+\qquad\qquad
+\sum_i \nu_i\tilde\mu_i = 0
+\qquad\Longrightarrow\qquad
+E = E^\circ - \frac{RT}{nF}\ln Q</span></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-teal">Derived, not quoted</span></p>
+<p>Nernst is not a new principle. It is <span class="math inline">\sum_i\nu_i\tilde\mu_i = 0</span> with the electrical term collected: the <span class="math inline">z_iF\phi</span> contributions across the two electrodes sum to <span class="math inline">nF(\phi^{\rm R} - \phi^{\rm L}) = nFE</span>, and the rest is the activity quotient.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-amber">The slope is a check</span></p>
+<p><span class="math inline">2.303\,RT/F = 59.16</span> mV per decade at 25 °C. If your derivation gives anything else, the electron count or a sign is wrong — and it is checkable before any data are involved.</p>
+</div>
+</div>
+</section>
+<section id="what-the-activity-coefficient-is-worth-in-millivolts" class="slide level2">
+<h2>What the activity coefficient is worth, in millivolts</h2>
+<div class="kicker c-amber">
+<p>6.4 · Electrochemical systems</p>
+</div>
+<p><img data-src="figures/f6_07_cell_voltage.png" class="fig-lg" style="width:76.0%"></p>
+<div class="cards">
+<div class="card">
+<p><span class="card-h c-rust">The number</span></p>
+<p>Against the Bates and Bower cell data, the rms error is 7.4 mV if <span class="math inline">\gamma_\pm</span> is taken as one, 3.6 mV with the limiting law, 0.09 mV with the extended law, and 0.054 mV with Pitzer.</p>
+</div>
+<div class="card">
+<p><span class="card-h c-teal">Why it matters</span></p>
+<p>At 0.1 molal the activity coefficient is worth 11.6 mV, against a measurement uncertainty of 0.01 mV. A battery state-of-charge estimate built on ideal activities is wrong by a thousand times the resolution of its own sensor.</p>
+</div>
+</div>
+<div class="source">
+<p>F6.7 · Predicted against measured cell voltage. The tabulated data were closed back through Nernst as an independent check on the transcription.</p>
+</div>
+</section>
+<section id="what-you-must-be-able-to-do" class="slide level2">
+<h2>What you must be able to do</h2>
+<div class="kicker c-amber">
+<p>Closing</p>
+</div>
+<div class="lede">
+<p>The module in six statements.</p>
+</div>
+<div class="numbered n3 two-col">
+<ol type="1">
+<li><strong>Derive the equilibrium condition.</strong> From <span class="math inline">{\rm d}G = 0</span> to <span class="math inline">\sum\nu_i\mu_i = 0</span> to <span class="math inline">K</span>, and say why it is the same criterion as phase equilibrium.</li>
+<li><strong>Separate <span class="math inline">K</span> from composition.</strong> <span class="math inline">K</span> is a function of temperature alone; everything else moves with pressure and non-ideality.</li>
+<li><strong>Put the corrections in the right order.</strong> <span class="math inline">\hat\varphi</span>, then <span class="math inline">\Delta G^\circ</span> uncertainty, then <span class="math inline">k_{ij}</span> — and know the size of each.</li>
+<li><strong>Minimise Gibbs energy with an element balance.</strong> Set up the constraints, interpret the multipliers, and know where the objective is ill-conditioned.</li>
+<li><strong>Cross-check.</strong> Extent against minimisation wherever a reaction set exists, because a converged optimisation is not an answer.</li>
+<li><strong>Carry non-ideality to a measurable.</strong> From <span class="math inline">\gamma_\pm</span> to a cell voltage, and say what ignoring it would have cost.</li>
+</ol>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
