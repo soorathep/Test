@@ -21,6 +21,58 @@ description: Graduate course on advanced chemical engineering thermodynamics —
     <div class="fact"><div class="k">Department</div><div>Chemical Engineering, Faculty of Engineering, Chulalongkorn University</div></div>
   </div>
 
+  <h3 style="font-size:1.25rem;margin-bottom:8px">How the modules connect</h3>
+  <p style="font-size:.95rem;color:var(--ink-soft);margin-bottom:26px;max-width:80ch">
+    The whole course is one criterion — at fixed temperature and pressure a system
+    settles into the state of lowest Gibbs energy — applied under steadily weaker
+    assumptions. The first three modules build the quantity that criterion needs.
+    The last three apply it, each one dropping an assumption the module before it
+    relied on.</p>
+
+  <p class="mono" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--zinc);margin-bottom:10px">
+    Modules 1–3 &nbsp;—&nbsp; building the quantity</p>
+  <div class="chain" style="margin-bottom:34px">
+    <div class="node">
+      <span class="k">Module 1 · Pure fluid</span>
+      <h3>Equation of state</h3>
+      <p>How pressure, volume and temperature are related for a real fluid. It says how the fluid responds — not, by itself, which phase it will be in.</p>
+    </div>
+    <div class="arrow"><span>→</span></div>
+    <div class="node">
+      <span class="k">Module 2 · The criterion</span>
+      <h3>Fugacity</h3>
+      <p>Equilibrium is governed by chemical potential, which has no absolute value and runs to minus infinity at zero pressure. Fugacity is constructed to replace it — and the equation of state is what computes it.</p>
+    </div>
+    <div class="arrow"><span>→</span></div>
+    <div class="node">
+      <span class="k">Module 3 · Mixtures</span>
+      <h3>Solution thermodynamics</h3>
+      <p>The same quantities for a mixture: partial molar properties, activity, excess Gibbs energy. Gibbs-Duhem then fixes what the last three can be, so the components cannot be modelled one at a time.</p>
+    </div>
+  </div>
+
+  <p class="mono" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--zinc);margin-bottom:10px">
+    Modules 4–6 &nbsp;—&nbsp; applying it</p>
+  <div class="chain" style="margin-bottom:44px">
+    <div class="node">
+      <span class="k">Module 4 · Two phases</span>
+      <h3>Vapour-liquid equilibrium</h3>
+      <p>Equal fugacity in both phases, with the model now fitted to measured data rather than derived. Where the course stops asking what the equations say and starts asking whether the data can be believed.</p>
+    </div>
+    <div class="arrow"><span>→</span></div>
+    <div class="node">
+      <span class="k">Module 5 · Any phases</span>
+      <h3>Phase stability</h3>
+      <p>A flash returns a solution to the equations it was handed, and that need not be the lowest-energy state. The tangent plane test asks the question a flash cannot: is this the global minimum?</p>
+    </div>
+    <div class="arrow"><span>→</span></div>
+    <div class="node">
+      <span class="k">Module 6 · Rearranged atoms</span>
+      <h3>Chemical equilibrium</h3>
+      <p>The same minimisation, constrained now by an element balance instead of by a phase split. Nothing new is introduced, and it ends at the calculation an equilibrium reactor block performs.</p>
+    </div>
+  </div>
+
   {% if c.modules and c.modules.size > 0 %}
   <h3 style="font-size:1.25rem;margin-bottom:6px">Modules</h3>
   <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:30px">
