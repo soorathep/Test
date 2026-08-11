@@ -141,7 +141,8 @@ modules:
     slides: vle.html
     blurb: >-
       Four descriptions of the same equilibrium; the four classes of binary
-      solution and the criterion that decides which one you have; then the full
+      solution — ideal, positive deviation, negative deviation and partial
+      miscibility — with the criterion that decides which one you have; then the full
       working cycle — what a VLE apparatus measures and how well, whether a
       published dataset can be believed, which model fitted against which
       objective, and how that model is carried into an equation of state. The
@@ -155,7 +156,7 @@ modules:
       - kind: Code
         file: vlekit.zip
         label: vlekit
-        desc: The toolkit used from here to the end of the course — data reduction, five consistency tests, regression with bootstrap, UNIFAC, flash, stability, Peng-Robinson mixtures, the Huron-Vidal and Wong-Sandler mixing rules, five published VLE datasets and reaction equilibrium. 319 tests.
+        desc: The toolkit used from here to the end of the course — data reduction, five consistency tests, regression with bootstrap, UNIFAC, flash, stability, Peng-Robinson mixtures, the Huron-Vidal and Wong-Sandler mixing rules, five published VLE datasets and reaction equilibrium. 335 tests.
       - kind: Notebook
         file: M4_VLE_regression_and_consistency.ipynb
         colab: true

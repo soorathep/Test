@@ -404,7 +404,7 @@ PART II
 :::
 
 ::: {.lede}
-Section 4.2&nbsp;&nbsp;&nbsp;What the four descriptions produce.<br>Four classes of behaviour, one criterion, and an azeotrope that belongs to the pressure rather than to the mixture.
+Section 4.2&nbsp;&nbsp;&nbsp;What the four descriptions produce.<br>Four types of solution — ideal, positive, negative, partially miscible — one criterion that decides azeotropy, and an azeotrope that belongs to the pressure rather than to the mixture.
 :::
 
 ::: {.notes}
@@ -415,46 +415,419 @@ azeotropes as a definition. They met the phenomenon; they did not meet the
 criterion, and they cannot usually say why one azeotrope boils low and another
 boils high.
 
+**COMMON MISCONCEPTION**
+That the four types are four kinds of azeotrope. They are four statements about
+$G^E$. Whether an azeotrope exists is a separate question with its own
+criterion, and one of the five systems in this section is here only to show
+that the two questions have different answers.
+
 **ASK THE CLASS**
 Before anything: name a mixture that forms an azeotrope, and say what property
 of the two molecules made you expect it. Collect the answers and return to them
 at the end of the section.
 :::
 
-## Four types, on four measured systems
+## Four types, and one system that is none of them
 
 ::: {.kicker .c-amber}
 4.2 · Solution types and azeotropes
 :::
 
 ::: {.lede}
-The classification is one statement about the sign and size of $G^E$, read
-against a common Raoult reference.
+Ideal, positive, negative, VLLE — one statement about the sign and size of
+$G^E$.
 :::
 
 ![](figures/f4_11_four_solution_types.png){.fig-xl}
 
 ::: {.source}
-F4.11 · Four published sets, DOIs on the figure. Dashed line: Raoult's law with the same Antoine constants throughout.
+F4.11 · Five published sets, DOIs on the figure. Dashed line: Raoult's law with the same Antoine constants throughout. Nothing here is fitted.
 :::
 
 ::: {.notes}
 **TEACHING TIP**
-Walk the four panels in order and name only what changes. Type 1:
+Walk the four types in order and name only what changes. Type 1:
 $\gamma_1 = 0.990$–$1.003$, largest departure from Raoult $+0.17$ K — two
-aromatics differing by one methyl group. Type 2: $\gamma_1$ up to 2.17,
-$-6.24$ K at $x_1 = 0.160$, and still no azeotrope. Type 3: $\gamma_1$ to 5.30,
-$-11.19$ K, azeotrope at $x_1 = 0.8946$. Type 4: $\gamma < 1$ throughout,
-$-26.9$ % in pressure, azeotrope at $x_1 = 0.1907$.
+aromatics differing by one methyl group. Type 2: $\gamma_1$ to 5.303,
+$-11.19$ K, azeotrope at $x_1 = 0.8946$. Type 3: $\gamma < 1$ throughout,
+$-26.9$ % in pressure, azeotrope at $x_1 = 0.1907$. Type 4: $\gamma_1$ to
+57.117, a hole in the table from $x_1 = 0.009$ to 0.558, three phases at
+365.65 K. Then the fifth panel, which is not a type at all.
 
 **COMMON MISCONCEPTION**
-That Type 2 is a weak Type 3 — that a big enough positive deviation always
-produces an azeotrope. Methanol + water is the counterexample and the next
-slide says why: the vapour-pressure ratio also has a vote.
+That positive deviation implies an azeotrope, so that Type 2 is simply a strong
+version of Type 1. Methanol + water sits on this figure to break that: it
+deviates positively, $\gamma_1$ reaches 2.166, and it has no azeotrope. The
+next five slides take one panel each.
 
 **ASK THE CLASS**
 Which panel would change type if you halved the pressure? Hold the answer until
 F4.13.
+:::
+
+## Type 1 — the ideal solution
+
+::: {.kicker .c-amber}
+4.2 · Solution types and azeotropes
+:::
+
+::: {.lede}
+Two molecules that cannot tell each other apart. There is nothing for $G^E$
+to be.
+:::
+
+![](figures/f4_11a_type1_ideal.png){.fig-cap width="76%"}
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Why the deviation is zero]{.card-h .c-teal}
+
+Benzene and toluene are the same functional class differing by one methyl
+group, so the unlike interaction is within a per cent of the mean of the like
+ones. Ideality here is a measurement, not a modelling convenience.
+
+:::
+
+::: {.card}
+
+[What the $\gamma$ do]{.card-h .c-amber}
+
+Both lie on $\gamma = 1$ across the range: $\gamma_1 = 0.990$–$1.003$,
+$\gamma_2 = 0.934$–$1.014$. The bubble curve sits on the Raoult straight line
+to $+0.17$ K at $x_1 = 0.222$ — the whole non-ideality of the system.
+
+:::
+
+::: {.card}
+
+[Separation]{.card-h .c-rust}
+
+$\alpha_{12}$ never falls below **2.38**; at its smallest, $x_1 = 0.106$,
+$\gamma_2$ would have to reach 2.373 and it is 0.997. Ordinary distillation,
+two pure products, no surprises.
+
+:::
+::::::
+
+::: {.source}
+F4.11a · benzene (1) + toluene (2), 13 points at 101.33 kPa, [doi:10.1016/j.fluid.2013.12.002]{.small}.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Start on panel (b), not panel (a). The classification is a statement about
+where the two $\gamma$ curves sit relative to the line $\gamma = 1$, and this
+is the one system where the answer is "on it". Then look left: the bubble
+points are *on* the dashed line, which is what an ideal solution means.
+
+**COMMON MISCONCEPTION**
+That an ideal solution is one of ideal gases. It is not: benzene and toluene
+are liquids with substantial intermolecular forces. What is ideal is the
+*mixing* — the unlike force equals the mean of the like ones, so nothing
+changes when the molecules are exchanged.
+
+**ASSUMPTION, STATED**
+$\gamma_2$ dips to 0.934 at the last point, $x_2 = 0.045$. That is not physics;
+it is a ratio of two small numbers with the vapour-phase assumption
+$\hat\varphi_i = 1$ inside it. A dilute-end $\gamma$ from a $T$-$x$-$y$ table is
+always the least reliable number in it.
+
+**ASK THE CLASS**
+If $\gamma_i = 1$ exactly, what is the minimum number of stages for a 99/99
+split? Which quantity did you need, and which did you not?
+:::
+
+## Type 2 — positive deviation
+
+::: {.kicker .c-amber}
+4.2 · Solution types and azeotropes
+:::
+
+::: {.lede}
+Mixing breaks more hydrogen bonds than it makes, both $\gamma > 1$, and the two
+curves meet.
+:::
+
+![](figures/f4_11b_type2_positive.png){.fig-cap width="76%"}
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Why the sign is positive]{.card-h .c-teal}
+
+Ethanol's hydroxyl hydrogen-bonds to water, but its ethyl group cannot: it sits
+inside the water network and disrupts it. Mixing costs energy, escaping
+tendency rises, and both $\gamma$ exceed one.
+
+:::
+
+::: {.card}
+
+[What the $\gamma$ do]{.card-h .c-amber}
+
+$\gamma_1$ reaches **5.303** at $x_1 = 0.018$, $\gamma_2$ **2.543** at
+$x_1 = 0.972$ — each largest where its own species is dilute. Bubble $T$ runs
+$-11.19$ K below Raoult at $x_1 = 0.147$.
+
+:::
+
+::: {.card}
+
+[Separation]{.card-h .c-rust}
+
+$y_1 - x_1$ changes sign at $x_1 = 0.8946$, $T = 351.26$ K — a
+**minimum-boiling** azeotrope, and no column of any height passes it. Anhydrous
+ethanol is not a distillation problem.
+
+:::
+::::::
+
+::: {.source}
+F4.11b · ethanol (1) + water (2), 21 points at 101.3 kPa, [doi:10.1021/je2008704]{.small}. The azeotrope is interpolated from the table, not modelled.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Put the two numbers side by side: $\gamma_1^\infty$-ish is 5.303 at the dilute
+end and $\gamma_1 \to 1$ at the pure end. The whole shape of a
+positive-deviation system is in that decay, and it is why a single $G^E$
+parameter is never enough for an alcohol + water pair.
+
+**COMMON MISCONCEPTION**
+That the azeotrope is where $\gamma_1 = \gamma_2$. It is where
+$\gamma_1 P_1^{\rm sat} = \gamma_2 P_2^{\rm sat}$. On panel (b) the two curves
+cross near $x_1 = 0.42$ and the azeotrope is at 0.8946; nothing happens at the
+crossing.
+
+**ASK THE CLASS**
+The azeotrope boils 0.08 K below pure ethanol. Given that margin, how would you
+decide whether a column is producing azeotrope or product?
+:::
+
+## Type 3 — negative deviation
+
+::: {.kicker .c-amber}
+4.2 · Solution types and azeotropes
+:::
+
+::: {.lede}
+The unlike pair forms a bond neither pure liquid has. Both $\gamma < 1$, and the
+mixture boils above both components.
+:::
+
+![](figures/f4_11c_type3_negative.png){.fig-cap width="76%"}
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Why the sign is negative]{.card-h .c-teal}
+
+Chloroform has an acidic C–H and 2-butanone a carbonyl. Together they
+hydrogen-bond; separately neither can. Mixing releases energy, escaping
+tendency falls, and both $\gamma$ drop below one.
+
+:::
+
+::: {.card}
+
+[What the $\gamma$ do]{.card-h .c-amber}
+
+$\gamma_1 = 0.401$–$1.002$, $\gamma_2 = 0.362$–$1.043$ — the mirror image of
+Type 2. At 303.15 K the total pressure runs **26.86 %** below the Raoult line
+at $x_1 = 0.444$.
+
+:::
+
+::: {.card}
+
+[Separation]{.card-h .c-rust}
+
+A minimum-*pressure* azeotrope at $x_1 = 0.1907$, $P = 15.42$ kPa. At constant
+$P$ the same point is **maximum-boiling**: it leaves in the *bottoms*, and the
+distillate is the component in excess.
+
+:::
+::::::
+
+::: {.source}
+F4.11c · chloroform (1) + 2-butanone (2), 22 points at 303.15 K, isothermal, [doi:10.1021/je060150a]{.small}.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This is the panel to slow down on, because it is isothermal and the other four
+are isobaric. Everything inverts: the measured points sit *below* the Raoult
+line here and above it in temperature. Make them say out loud that a
+minimum-pressure azeotrope and a maximum-boiling azeotrope are one stationary
+point on two axes.
+
+**A CHECK WORTH SHOWING**
+The paper's own abstract reports the azeotrope at $x_1 = 0.199$ and 15.3 kPa;
+interpolating the transcribed table gives 0.1907 and 15.42 kPa, and the lowest
+measured pressure in the table is 15.33 kPa. That agreement tests the $x$, $y$
+and $P$ columns jointly against a number the authors computed independently — it
+is the strongest evidence that the table was transcribed correctly.
+
+**COMMON MISCONCEPTION**
+That negative deviation is rare or exotic. It is simply the case where the
+unlike interaction is the strong one — acid + amine, chloroform + ketone,
+nitric acid + water. Any pair that reacts weakly is a candidate.
+
+**ASK THE CLASS**
+Which end of this column would you take the pure chloroform from, and why is
+the answer different from the ethanol + water case?
+:::
+
+## Type 4 — VLLE, and why it is a preview
+
+::: {.kicker .c-amber}
+4.2 · Solution types and azeotropes
+:::
+
+::: {.lede}
+A preview: positive deviation so large that one liquid phase stops being stable.
+:::
+
+![](figures/f4_11d_type4_vlle.png){.fig-cap width="76%"}
+
+:::::: {.cards .g3}
+::: {.card}
+
+[$\gamma_1 = 57.1$ is not a typo]{.card-h .c-teal}
+
+A butyl chain will not fit into water's hydrogen-bond network. At
+$x_1 = 0.006$, 1-butanol has **57 times** the escaping tendency an ideal
+solution would give it — so the liquid splits.
+
+:::
+
+::: {.card}
+
+[The three-phase line]{.card-h .c-amber}
+
+No single liquid exists between $x_1 = 0.009$ and 0.558. At 365.65 K **one**
+vapour, $y_1 = 0.2480$, is in equilibrium with **two** liquids, 0.0190 and
+0.3603 — the heteroazeotrope.
+
+:::
+
+::: {.card}
+
+[Separation]{.card-h .c-rust}
+
+Not by one ordinary column — but the split is itself a separation. Condense the
+vapour, let it settle into two liquids, feed each to its own column: the
+decanter crosses what the distillation cannot.
+
+:::
+::::::
+
+::: {.source}
+F4.11d · 1-butanol (1) + water (2), 17 points at 101.3 kPa, [doi:10.1021/je700411p]{.small}. $T_3$ and $y_1$ measured; conjugate liquids from the paper's LLE table, extrapolated 3.2 K.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Dwell on 57.1. Most of the class has never seen an activity coefficient above
+about 10 and will assume a decimal point moved. Write the definition on the
+board — $\gamma_1 = y_1 P / (x_1 P_1^{\rm sat})$ — and put the numbers in: a
+mole fraction of 0.006 in the denominator is what makes it large, and it is
+large *because* the mixture is on the point of refusing to be one phase.
+
+**WHAT THIS SLIDE DOES NOT DO**
+It does not decide that the liquid splits. That is the tangent-plane criterion,
+which needs the second derivative of $\Delta g_{\rm mix}$ and belongs to
+Module 5. Here the split is read off a published table because the table has a
+hole in it. Say that plainly: this is evidence, not derivation. Take the shape
+and the vocabulary from this slide and nothing more.
+
+**CORROBORATION, IF ASKED**
+The three-phase state is not one laboratory's number. Three others, extracted
+from the same NIST TRC archive, give $T_3 = 365.85$, 365.72 and 366.23 K and
+$y_1 = 0.2460$ and 0.2495 ([doi:10.1016/j.jct.2014.07.021]{.small},
+[doi:10.1016/j.jct.2016.04.013]{.small},
+[doi:10.1021/acs.jced.6b00725]{.small}) against this table's 365.65 K and
+0.2480.
+
+**COMMON MISCONCEPTION**
+That the heteroazeotrope is at the crossing of $y_1$ and $x_1$. Interpolating
+$y_1 - x_1$ across the hole returns $x_1 = 0.2121$, and that number is fiction —
+there is no liquid of that composition to be in equilibrium with anything. The
+heteroazeotropic vapour equals the *overall* liquid composition, not either
+phase's.
+
+**ASK THE CLASS**
+Three phases, two components. How many degrees of freedom does Gibbs allow, and
+does that explain why the line is flat?
+:::
+
+## Positive deviation does not imply an azeotrope
+
+::: {.kicker .c-amber}
+4.2 · Solution types and azeotropes
+:::
+
+::: {.lede}
+The counterexample, and the reason the next slide needs a criterion rather than
+a classification.
+:::
+
+![](figures/f4_11e_counterexample.png){.fig-cap width="76%"}
+
+:::::: {.cards .g3}
+::: {.card}
+
+[The deviation is real]{.card-h .c-teal}
+
+$\gamma_1 = 1.007$–$2.166$, $\gamma_2 = 1.008$–$1.371$: positive at all 16
+points — the Type 2 argument with a methyl group in place of an ethyl. Bubble
+$T$ runs $-6.24$ K below Raoult at $x_1 = 0.160$.
+
+:::
+
+::: {.card}
+
+[And there is no azeotrope]{.card-h .c-amber}
+
+An azeotrope needs $\gamma_2 = \gamma_1 P_1^{\rm sat}/P_2^{\rm sat}$ — the
+dash-dot curve on panel (b). At its closest, $x_1 = 0.948$, it asks **4.350**
+and gets **1.371**: short by a factor **3.17**, so $\alpha_{12} \ge 3.17$
+everywhere.
+
+:::
+
+::: {.card}
+
+[What decided it]{.card-h .c-rust}
+
+The vapour pressures. Methanol boils 34 K below water, so
+$P_1^{\rm sat}/P_2^{\rm sat}$ runs 3.64 to 4.34; ethanol + water runs only 2.25
+to 2.30, with $\gamma_2^\infty = 2.487$ against methanol's 1.596.
+
+:::
+::::::
+
+::: {.source}
+F4.11e · methanol (1) + water (2), 16 points at 66.52 kPa, [doi:10.1021/je300613v]{.small}. $\gamma^\infty$ from NRTL by Barker; ratios from Antoine at each end's own boiling point.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This slide exists because a criterion with nothing to reject is not a criterion.
+Everything the class has seen so far is consistent with the rule "positive
+deviation, therefore azeotrope"; methanol + water breaks it, and it breaks it
+with the most familiar mixture in the course.
+
+**COMMON MISCONCEPTION**
+That methanol + water "nearly" azeotropes. It is not close: $\alpha_{12}$ is
+3.17 at its smallest, so a column sees at worst a relative volatility better
+than benzene + toluene has anywhere. This pair separates cleanly.
+
+**ASK THE CLASS**
+Two positive-deviation alcohols + water, one azeotropes and one does not. Name
+the two quantities that differ, and say which of them you could change by
+turning a valve.
 :::
 
 ## The criterion, derived
@@ -490,12 +863,13 @@ all.
 
 ::: {.card}
 
-[Two components, one verdict]{.card-h .c-amber}
+[The counterexample, in the algebra]{.card-h .c-amber}
 
-Methanol + water has a genuine positive deviation, $\gamma_1^\infty = 2.41$,
-and no azeotrope: $P_1^{\rm sat}/P_2^{\rm sat}$ is already 3.6 to 4.3, so
-$\alpha_{12}$ never approaches 1. **Type 2 and Type 3 differ by the vapour
-pressures, not by the deviation.**
+Methanol + water has a genuine positive deviation,
+$\gamma_1^\infty = 2.413$, $\gamma_2^\infty = 1.596$ — and
+$\alpha_{12} = 8.79$ at one end, 2.72 at the other. Both above 1: no straddle,
+no root, no azeotrope. **The type is set by the sign of $G^E$; the azeotrope is
+set by $\alpha_{12} = 1$.**
 
 :::
 ::::
@@ -513,7 +887,7 @@ non-monotonic and place two azeotropes with both ends on the same side. The
 monotonic assumption is stated on F4.12 and it is an assumption.
 
 **ASK THE CLASS**
-Methanol + water at $\gamma_1^\infty = 2.41$: how small would
+Methanol + water at $\gamma_1^\infty = 2.413$: how small would
 $P_1^{\rm sat}/P_2^{\rm sat}$ have to become before an azeotrope appeared, and
 could you reach that condition?
 :::
@@ -525,21 +899,20 @@ could you reach that condition?
 :::
 
 ::: {.lede}
-Two end-point volatilities place a system in a quadrant. Five published systems,
-five correct verdicts.
+Two end-point volatilities place a system in a quadrant. Six systems, six
+correct verdicts.
 :::
 
-![](figures/f4_12_azeotrope_criterion.png){.fig-cap width="82%"}
+![](figures/f4_12_azeotrope_criterion.png){.fig-cap width="80%"}
 
-:::: {.cards}
+:::::: {.cards .g3}
 ::: {.card}
 
 [What was predicted]{.card-h .c-teal}
 
-$\gamma^\infty$ from an NRTL fitted by Barker to each set, and $P^{\rm sat}$
-from Antoine. Ethanol + water: $\alpha = 12.96$ and $0.92$ — straddles, so
-minimum-boiling. Chloroform + 2-butanone: $0.81$ and $7.83$ — straddles from
-below, so maximum-boiling.
+$\gamma^\infty$ from NRTL by Barker, $P^{\rm sat}$ from Antoine. Ethanol +
+water: $12.96$, $0.92$ — minimum-boiling. Chloroform + 2-butanone: $0.81$,
+$7.83$ — maximum-boiling. Methanol + water: $8.79$, $2.72$ — none.
 
 :::
 
@@ -547,15 +920,26 @@ below, so maximum-boiling.
 
 [What checked it]{.card-h .c-amber}
 
-The measured relative volatility, from $x_1$ and $y_1$ alone, with no
-$P^{\rm sat}$ and no model: it crosses 1 for exactly the three systems the map
-predicted. **Five out of five**, by two routes sharing no numbers.
+The measured relative volatility, from $x_1$ and $y_1$ alone — no
+$P^{\rm sat}$, no model. It crosses 1 for exactly the systems the map predicted
+and for neither it excluded: **six out of six**, by two routes sharing no
+numbers.
 
 :::
-::::
+
+::: {.card}
+
+[What it does not decide]{.card-h .c-rust}
+
+Miscibility. 1-butanol + water lands beside ethanol + water: correct, and
+incomplete. Its $\alpha = 1$ root, $x_1 = 0.2328$, is inside the two-liquid
+region 0.0190–0.3603 — **Module 5's question.**
+
+:::
+::::::
 
 ::: {.source}
-F4.12 · Five published systems on the criterion map, and the same statement in composition space. The two routes are independent.
+F4.12 · Six published systems on the criterion map, and the same statement in composition space. The two routes are independent.
 :::
 
 ::: {.notes}
@@ -569,6 +953,15 @@ $\gamma^\infty$ is an extrapolation. Ethanol + water agrees with the measured
 volatility to 1 % at the end where the data reach $x_1 = 0.972$ and to 8 % at
 the end where they stop at $x_1 = 0.018$. That is the right way round, and it
 is the honest way to report an extrapolated quantity.
+
+**THE LIMIT, SAID OUT LOUD**
+This map answers one question: is there a composition at which
+$\alpha_{12} = 1$? It says nothing about whether the liquid at that composition
+exists as one phase. 1-butanol + water sits at $\alpha_{12} = 34.0$ and $0.155$
+— the same quadrant as ethanol + water, and the map's verdict, minimum-boiling,
+is right. It is also incomplete: the root sits 0.0152 away from the measured
+heteroazeotropic vapour and inside a region where there is no single liquid at
+all. Partial miscibility is a stability question, and Module 5 takes it up.
 
 **ASK THE CLASS**
 Panel (a) is a map with four quadrants but only three verdicts. Why do two
@@ -603,9 +996,9 @@ ends on a line and lies above it in between has an interior maximum.
 [Maximum in $P$ is minimum in $T$]{.card-h .c-amber}
 
 Higher pressure at fixed $T$ means the mixture boils below both pure
-components. So positive deviation gives a **minimum-boiling** azeotrope, and
-negative deviation reverses every step of the argument to give a
-**maximum-boiling** one.
+components. So **Type 2 gives a minimum-boiling azeotrope**, and Type 3
+reverses every step of the argument to give a **maximum-boiling** one. Nothing
+here is a separate rule to memorise.
 
 :::
 
@@ -613,9 +1006,10 @@ negative deviation reverses every step of the argument to give a
 
 [Confirmed, not quoted]{.card-h .c-rust}
 
-${\rm d}P/{\rm d}x_1$ at the computed azeotrope is $-2\times10^{-9}$ kPa for
-ethanol + water, $+2\times10^{-9}$ for chloroform + 2-butanone and
-$-1\times10^{-9}$ for acetone + chloroform. Konovalov to nine decimals.
+${\rm d}P/{\rm d}x_1$ at the computed azeotrope is $+7\times10^{-9}$ kPa for
+ethanol + water and exactly zero at double precision for chloroform +
+2-butanone and acetone + chloroform. Konovalov to the last bit the arithmetic
+has.
 
 :::
 ::::::
@@ -623,9 +1017,10 @@ $-1\times10^{-9}$ for acetone + chloroform. Konovalov to nine decimals.
 ::: {.note}
 And the uncomfortable corollary: the $P$-$x$ curve is **flat** at the
 azeotrope, so the pressure carries almost no information about where it sits.
-The same fits that reproduce $P$ to 0.32 kPa misplace the azeotrope by $+0.023$,
-$-0.050$ and $-0.038$ in $x_1$. If the azeotropic composition is the number your
-design needs, it must be in the objective function.
+The same fits that reproduce the data to 0.06 K, 0.32 kPa and 0.12 K
+respectively misplace the azeotrope by $+0.023$, $-0.050$ and $-0.038$ in
+$x_1$. If the azeotropic composition is the number your design needs, it must
+be in the objective function.
 :::
 
 ::: {.notes}
@@ -707,7 +1102,7 @@ decide?
 
 ::: {.lede}
 Two columns at two pressures beat the azeotrope only if the azeotrope moves.
-Two Type 3/4 systems, two answers.
+A Type 2 system and a Type 3 system, two answers.
 :::
 
 :::: {.cards}
@@ -726,7 +1121,7 @@ distillation to a second column plus a vacuum system.
 
 [Acetone + chloroform: it does not]{.card-h .c-rust}
 
-$x_{\rm az}$ runs 0.3402 at 90 kPa to 0.3469 at 25 kPa — **0.007 over a factor
+$x_{\rm az}$ runs 0.3402 at 90 kPa to 0.3470 at 25 kPa — **0.007 over a factor
 of 3.5 in pressure**. A pressure swing on this pair is not a separation, it is a
 rounding error.
 
@@ -3084,7 +3479,7 @@ positive deviations**.
 
 ::: {.card}
 
-[On a real Type 4 binary]{.card-h .c-amber}
+[On a real Type 3 binary]{.card-h .c-amber}
 
 Chloroform + 2-butanone at 303.15 K needs $G^E/RT = -0.278$ at equimolar. The
 classical rule at $k_{12} = 0$ offers $+0.024$ — the wrong sign. One fitted
@@ -3446,7 +3841,7 @@ The module in eight statements.
 
 :::: {.numbered .n3 .two-col}
 1. **Choose a description and defend the assumption.** Raoult, modified Raoult, gamma-phi or phi-phi — and say which assumption you are relying on.
-2. **Predict the solution type before fitting.** Two $\gamma^\infty$ and a vapour-pressure ratio decide whether an azeotrope exists, and whether it moves with pressure.
+2. **Classify the solution, then predict the azeotrope separately.** The sign of $G^E$ gives the type; two $\gamma^\infty$ and a vapour-pressure ratio decide whether an azeotrope exists — positive deviation alone does not.
 3. **Turn $T$, $P$, $x$, $y$ into $\gamma$ with its uncertainty.** Vapour-phase assumption stated, $P^{\rm sat}$ checked against the paper's own end points.
 4. **Test a dataset and diagnose the failure.** All five tests, and a signature-based diagnosis rather than a verdict.
 5. **Fit, and say what the fit is worth.** Objective chosen deliberately, confidence region reported, extrapolations named — and compared against UNIFAC.
