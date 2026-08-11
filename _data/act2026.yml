@@ -148,10 +148,14 @@ modules:
       module where the course stops being about equations and starts being
       about evidence.
     files:
+      - kind: Examples
+        file: VLE_Worked_Examples.pdf
+        label: Worked examples
+        desc: A notation card, then eight problems worked end to end with the arithmetic shown — gamma from one measured row, classifying a system, the area test by trapezoid, bubble and dew to convergence, a two-parameter fit by hand, K-values and Fenske, and a fugacity coefficient from Peng-Robinson. Every answer checked against vlekit. 34 pages.
       - kind: Code
         file: vlekit.zip
         label: vlekit
-        desc: The toolkit used from here to the end of the course — data reduction, five consistency tests, regression with bootstrap, UNIFAC, flash, stability, Peng-Robinson mixtures, the Huron-Vidal and Wong-Sandler mixing rules, five published VLE datasets and reaction equilibrium. 310 tests.
+        desc: The toolkit used from here to the end of the course — data reduction, five consistency tests, regression with bootstrap, UNIFAC, flash, stability, Peng-Robinson mixtures, the Huron-Vidal and Wong-Sandler mixing rules, five published VLE datasets and reaction equilibrium. 319 tests.
       - kind: Notebook
         file: M4_VLE_regression_and_consistency.ipynb
         colab: true
@@ -185,6 +189,8 @@ modules:
         a: "The size of the deviation relative to the ratio of pure vapour pressures. An azeotrope needs γ<sub>1</sub>/γ<sub>2</sub> = P<sub>2</sub><sup>sat</sup>/P<sub>1</sub><sup>sat</sup> to have a root between 0 and 1, so at the ends it is γ<sub>1</sub><sup>∞</sup> against P<sub>2</sub><sup>sat</sup>/P<sub>1</sub><sup>sat</sup>. If the components boil far enough apart, no achievable deviation closes the gap — which is why methanol/water does not azeotrope and ethanol/water does."
       - q: "On chloroform/2-butanone, classical van der Waals mixing with a fitted k<sub>ij</sub> beats Huron-Vidal — 1.34 per cent against 2.08. So why use the G<sup>E</sup> mixing rules at all?"
         a: "Because one binary at one temperature is not the claim. The G<sup>E</sup> rules carry a fitted activity model into the equation of state, so the same parameters work for strongly non-ideal and asymmetric mixtures where a single k<sub>ij</sub> has no shape to give. Wong-Sandler additionally keeps the second virial coefficient quadratic in composition, which is what lets it extrapolate in temperature and pressure; Huron-Vidal violates that by 2.2 per cent of the excess second virial on this system and 22.9 per cent on ethanol/water."
+      - q: "A process simulator asks you for binary interaction parameters and never asks for a ternary one, even for a ten-component column. Why is that enough?"
+        a: "Because the local-composition models — Wilson, NRTL, UNIQUAC — are built from pairwise interactions, so the N-component expression is assembled from the N(N−1)/2 binary parameter sets with nothing further fitted. Margules and van Laar have no such extension. It is the practical reason the local-composition forms displaced the empirical ones, and it is also a prediction: the ternary is not validated by the binary data it was built from."
       - q: "What does Barker's method use, and why would you prefer it?"
         a: "Only T, P and x — the vapour composition is computed rather than measured. Prefer it because y is the hardest of the four to measure and carries the largest error, so a fit that never touches it can be more trustworthy than one that does."
 

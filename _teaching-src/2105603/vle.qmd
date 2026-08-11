@@ -58,7 +58,8 @@ Introduction
 ::: {.lede}
 Four descriptions of the same equilibrium, the behaviour they produce, then the
 full working cycle: data, consistency, regression, a stated domain of validity —
-and the route back into the equation of state.
+and the route back into the equation of state. F4.22, the last figure of the
+module, is that whole structure as one decision map.
 :::
 
 :::::: {.columns}
@@ -1053,7 +1054,7 @@ Not "correct above one bar". Compare the size of the correction with the
 uncertainty of the measurement it is correcting, on your own dataset.
 :::
 
-| System | $P$ / kPa | net $\lvert\Delta\ln\gamma_1\rvert$ | $\sigma(\ln\gamma_1)$ | ratio |
+| System | $P$ / kPa | net $\max\lvert\Delta\ln\gamma_1\rvert$ | median $\sigma(\ln\gamma_1)$ | ratio |
 |---|---|---|---|---|
 | Benzene + toluene | 101.3 | 0.0329 | 0.0130 | 2.53 |
 | Acetone + chloroform | 101.3 | 0.0108 | 0.0064 | 1.70 |
@@ -2021,6 +2022,240 @@ Take your capstone system. Answer all four rows now, before you have fitted
 anything, and write the answers down. We will check them against the fit.
 :::
 
+## More than two components
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Every dataset in this module is binary. No column is. What extends to $N$
+components, and what it costs in data, is what actually decided which model you
+were taught.
+:::
+
+$$\ln\gamma_i = \frac{\sum_j \tau_{ji}G_{ji}x_j}{\sum_k G_{ki}x_k}
++ \sum_j \frac{x_j G_{ij}}{\sum_k G_{kj}x_k}\left(\tau_{ij} - \bar\tau_j\right),
+\qquad G_{ij} = \exp(-\alpha_{ij}\tau_{ij})$$
+
+:::: {.cards}
+::: {.card}
+
+[Every index runs over pairs]{.card-h .c-teal}
+
+Wilson, NRTL and UNIQUAC are built from the local composition around one
+molecule, which is a sum over its neighbours. A third component adds terms to
+those sums and no new *kind* of term: the $\tau_{12}$ fitted on the 1-2 binary
+is the $\tau_{12}$ that appears above. $N$ components need $N(N-1)/2$ binary
+pairs and **no ternary parameter at all**.
+
+:::
+
+::: {.card}
+
+[Margules and van Laar have no such extension]{.card-h .c-rust}
+
+Their multicomponent forms are constructed rather than derived, and each
+carries a ternary constant that has to be fitted to ternary data — which is
+rarely measured. That, and not binary accuracy, is why the local-composition
+models won, and it is why a process simulator asks you for binary parameters
+and nothing else.
+
+:::
+::::
+
+::: {.notes}
+**TEACHING TIP**
+Write the binary NRTL and this one side by side and let them find the
+difference: there is none, except that the sums run over three indices instead
+of two. The extension is not an approximation added on top of the binary model;
+it is the model, read at $N > 2$.
+
+**COMMON MISCONCEPTION**
+That a simulator's binary-parameter table is a convenience, and that somewhere
+behind it there are ternary parameters being estimated. There are none. The
+table is a statement that the model has no other kind of parameter — and
+therefore that every ternary prediction is only as good as three binary fits.
+
+**ASK THE CLASS**
+A four-component column. How many parameter pairs must you find, and how many
+of them are likely to be in the literature?
+:::
+
+## A ternary assembled from three binaries
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Three binary parameter sets, no ternary parameter, one ternary map.
+:::
+
+![](figures/f4_19_ternary_from_binaries.png){.fig-cap width="80%"}
+
+:::: {.cards}
+::: {.card}
+
+[Two edges fitted to measurement]{.card-h .c-teal}
+
+Acetone + chloroform, 9 points at the map's own pressure: AAD **0.087 K** in
+$T$ ([doi:10.3390/app8091519]{.small}). Chloroform + 2-butanone, 22 points: AAD
+**1.27 %** in $P$ ([doi:10.1021/je060150a]{.small}), measured 50 K below where
+it is used.
+
+:::
+
+::: {.card}
+
+[One edge predicted]{.card-h .c-rust}
+
+Acetone + 2-butanone: no dataset could be sourced, so UNIFAC supplies it —
+$\gamma^\infty = 1.0070$ and $1.0085$ at 341.0 K, almost ideal. All of the risk
+on this edge is in UNIFAC.
+
+:::
+::::
+
+::: {.source}
+F4.19 · Acetone + chloroform + 2-butanone at 101.3 kPa. Original VLE UNIFAC on the unmeasured edge; $\tau$ temperature-independent and $\alpha = 0.3$ assumed.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Take the three edges one at a time and ask what evidence each rests on: a fit at
+the right condition, a fit 50 K away, and no measurement at all. Students expect
+a ternary study to be a ternary experiment; almost none of them are.
+
+**ASSUMPTION, STATED**
+$\tau$ temperature-independent, so edge 2-3 is used 50 K above its data;
+$\alpha = 0.3$ assumed, not fitted; ideal vapour, $\Phi_i = 1$.
+
+**ASK THE CLASS**
+Which of the three edges would you measure first, if you could measure one?
+:::
+
+## What the map predicts
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Five fixed points, two azeotropes and a distillation boundary — every one of
+them out of binary numbers, and every one of them a prediction.
+:::
+
+:::::: {.cards .g3}
+::: {.card}
+
+[The fixed points]{.card-h .c-teal}
+
+Pure acetone at 329.34&nbsp;K and pure chloroform at 334.35&nbsp;K are unstable
+nodes.
+The acetone + chloroform azeotrope, $x_1 = 0.3395$ at **337.62 K**, is a
+saddle; the chloroform + 2-butanone azeotrope, $x_2 = 0.2568$ at **354.44 K**,
+is the stable node. Both are maximum-boiling.
+
+:::
+
+::: {.card}
+
+[The boundary follows]{.card-h .c-amber}
+
+Two unstable nodes and one stable node force a separatrix, integrated here from
+the 1-2 azeotrope to the 2-3 azeotrope. Which side of that line a feed falls on
+decides whether acetone or chloroform can be taken overhead — a process
+decision resting on no ternary measurement.
+
+:::
+
+::: {.card}
+
+[What was checked]{.card-h .c-rust}
+
+Gibbs-Duhem residual $2\times10^{-11}$ on the assembled ternary, pure limits
+exact, and each fitted edge reproducing its own data. Those test the algebra
+and the edges. **They say nothing about the interior.**
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Residue curves are worth two minutes: ${\rm d}x_i/{\rm d}\xi = x_i - y_i$ is the
+liquid left in a still as a batch boils away, so its fixed points are exactly
+the pure components and the azeotropes. Nodes and saddles then follow from the
+boiling temperatures with no extra physics.
+
+**COMMON MISCONCEPTION**
+That a distillation boundary is a measured object. It is a computed separatrix,
+and it moves when the parameters move.
+
+**ASK THE CLASS**
+Both azeotropes here are maximum-boiling. What does that make the stable node,
+and what therefore ends up in the still pot?
+:::
+
+## A prediction is not a validation
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+The interior of that triangle is scored against a second prediction. Say what
+that is worth, and say what would test it.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[The only handle available]{.card-h .c-amber}
+
+Over 55 interior points with every $x_i \ge 0.05$, the assembled binary NRTL
+and a direct ternary UNIFAC agree to a mean of **0.72 K** in bubble
+temperature, **2.57 K** at worst. Two models built on the same kind of
+assumption agreeing is a lower bound on the uncertainty — not evidence about
+the fluid.
+
+:::
+
+::: {.card}
+
+[And the calibration of that handle]{.card-h .c-rust}
+
+On edge 1-2, where measurement exists, that same UNIFAC is 0.25 K out on
+average. So the interior spread is of the order of one model's *known* error on
+an edge. It bounds nothing by itself, and quoting it as an accuracy would be a
+misrepresentation.
+
+:::
+::::
+
+::: {.note}
+What would test it: measured ternary $P$-$x$-$y$ or $T$-$x$-$y$ for this system
+at 101.3 kPa, a ternary azeotrope search, or a measured residue curve. None
+could be sourced, so the map stands as a prediction and is labelled as one on
+its own face.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+This is the epistemic slide of the section. Model-versus-model agreement is
+routinely reported in papers as if it were validation, and students who cannot
+name the difference will reproduce the error in their capstone.
+
+**COMMON MISCONCEPTION**
+That because the edges were fitted to data, the interior has been checked. The
+edges are what was fitted. The interior is what was extrapolated, and no
+residual on the edges constrains it.
+
+**ASK THE CLASS**
+Your simulator has just drawn this boundary and your feed sits 0.02 from it.
+What do you do before spending money?
+:::
+
 ## Two ways to find out whether you have learned the noise
 
 ::: {.kicker .c-amber}
@@ -2067,6 +2302,187 @@ say so, and say whether that was worth the experiment.
 
 **ASK THE CLASS**
 When would you use UNIFAC in preference to your own fitted parameters?
+:::
+
+## When there is nothing to fit
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+The common industrial case is not a noisy dataset. It is no dataset. Group
+contribution answers with nothing fitted, and the question a student must
+answer with a **number** is how wrong that is.
+:::
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Which UNIFAC]{.card-h .c-teal}
+
+Original VLE UNIFAC — the Fredenslund-Jones-Prausnitz form with the Hansen et
+al. group-interaction table. **Not** modified UNIFAC (Dortmund): no
+temperature-dependent $a_{mn}$, no revised combinatorial. Dortmund was fitted
+to more data and gives different numbers. A prediction is reproducible only if
+the table it came from is named.
+
+:::
+
+::: {.card}
+
+[The ladder]{.card-h .c-amber}
+
+Three published binaries, the same bubble-point routine, the same ideal-vapour
+assumption, the same points: 0 parameters (UNIFAC), 1 (two-suffix Margules by
+Barker), 2 (NRTL by Barker, $\alpha = 0.3$). The only thing that changes is how
+many numbers were allowed to see the data.
+
+:::
+
+::: {.card}
+
+[The measuring stick]{.card-h .c-rust}
+
+Every error divided by the uncertainty the **source paper** reports. Below 1,
+the model sits inside the noise of the measurement judging it, and no further
+fitting can be shown to help. An error is only "good enough" against something.
+
+:::
+::::::
+
+::: {.notes}
+**TEACHING TIP**
+Ask what they would do tomorrow if the pair they need has never been measured.
+Most say "find a similar system". The defensible answer is: predict it, name the
+revision and the table, and quote the expected error against a system where both
+were available.
+
+**COMMON MISCONCEPTION**
+That "UNIFAC" names one model. There are at least three in common use with
+different parameter tables, and they disagree. Naming the revision is part of
+reporting the number.
+
+**ASK THE CLASS**
+Your prediction is 3 % out in bubble pressure. Is that acceptable? What single
+piece of information do you need before you can answer?
+:::
+
+## How wrong is a prediction with nothing fitted?
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Three published binaries, and two of the three answers are not the ones the
+usual story predicts.
+:::
+
+![](figures/f4_20_unifac_when_there_is_no_data.png){.fig-cap width="82%"}
+
+:::: {.cards}
+::: {.card}
+
+[The prediction beats the fit]{.card-h .c-teal}
+
+Ethanol + water at 101.3 kPa: UNIFAC gives AAD **0.15 K** in bubble temperature
+against **1.02 K** for the one-parameter fit — better by 6.7 times, with
+nothing fitted. It places the azeotrope at $x_1 = 0.8971$ against 0.8946
+measured, where the Barker-fitted NRTL says 0.9172.
+
+:::
+
+::: {.card}
+
+[Inside the experimental error bar]{.card-h .c-amber}
+
+Chloroform + 2-butanone at 303.15 K: UNIFAC's rms in bubble pressure is
+**0.60 kPa** against the $\pm 0.65$ kPa the paper itself reports — 0.93 of the
+measurement's own uncertainty, with no parameter fitted to it.
+
+:::
+::::
+
+::: {.source}
+F4.20 · [doi:10.1021/je060150a]{.small}, [doi:10.1021/je2008704]{.small}, [doi:10.3390/app8091519]{.small}. Both fits are Barker on the same points, so $y_1$ was withheld from every model on the figure.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+The one-parameter row is the one to dwell on. A two-suffix Margules is
+symmetric, and ethanol + water is not; forcing a symmetric $G^E$ onto a skewed
+system costs more than having no parameters at all. The fit is not bad
+arithmetic — it is the wrong shape, and Section 4.5's shape argument predicted
+it.
+
+**COMMON MISCONCEPTION**
+That more fitted parameters is monotonically better. It is monotonic in the
+residual on the fitted variable, and in nothing else.
+
+**ASK THE CLASS**
+Panel (c): a point below the heavy line is inside the measurement's own
+uncertainty. What would you have to do to demonstrate an improvement below that
+line?
+:::
+
+## A fit is only better where you fitted it
+
+::: {.kicker .c-amber}
+4.5 · Building an activity coefficient model from data
+:::
+
+::: {.lede}
+Acetone + chloroform: the fitted NRTL wins on the variable it was fitted to and
+loses on the one it never saw.
+:::
+
+:::: {.cards}
+::: {.card}
+
+[The two columns]{.card-h .c-rust}
+
+NRTL fitted by Barker on $T$: AAD **0.087 K** against UNIFAC's 0.251 K — the
+fit wins where it was fitted. rms in $y_1$: **0.0072** against UNIFAC's
+**0.0027** — the fit loses by a factor of 2.7 on the variable Barker's method
+deliberately withholds. And $y$ is what an azeotrope and a stage count are made
+of.
+
+:::
+
+::: {.card}
+
+[The lesson]{.card-h .c-teal}
+
+A fit to a poor objective on thin data can be worse than a prediction that used
+none of it. State the margin over UNIFAC in a quantity someone would act on,
+and on a variable the fit did not get to optimise — otherwise the margin is
+bookkeeping.
+
+:::
+::::
+
+::: {.note}
+This is not a claim that UNIFAC is as good as a fit. On these three systems two
+fitted parameters buy a factor of 1.9 to 3.4 on the *fitted* variable. The claim
+is that the gap is a number, that it is often smaller than the measurement
+error, and that it must be quoted somewhere the fit had no advantage.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Put this beside the point test of Section 4.4. Both rest on the same fact: a $y$
+that was never fitted is the only $y$ that can test anything. Here it tests the
+model instead of the data.
+
+**COMMON MISCONCEPTION**
+That reporting the residual on the fitted variable describes the model. It
+describes the fit. The two coincide only when the objective happened to be the
+quantity you need.
+
+**ASK THE CLASS**
+You need the azeotropic composition. Which of the two models on this slide do
+you use, and what does that say about the objective you should have fitted?
 :::
 
 ## Temperature, and the limits of two numbers
@@ -2378,6 +2794,118 @@ reciprocal errors in one line.
 **ASK THE CLASS**
 Your DEW T comes out below your BUBL T. Name three specific bugs that would do
 that.
+:::
+
+## What the activity coefficient is actually for
+
+::: {.kicker .c-amber}
+4.6 · Bubble, dew and flash
+:::
+
+::: {.lede}
+The output of the whole module is two numbers, a column is sized on the second,
+and neither of them is a constant.
+:::
+
+$$K_i = \frac{y_i}{x_i} = \frac{\gamma_i P_i^{\rm sat}(T)}{P},
+\qquad
+\alpha_{12} = \frac{K_1}{K_2} = \frac{\gamma_1 P_1^{\rm sat}}{\gamma_2 P_2^{\rm sat}}$$
+
+![](figures/f4_21_kvalues_and_relative_volatility.png){.fig-cap width="80%"}
+
+::: {.note}
+Benzene + toluene: $\alpha$ runs 2.63 to 2.33, a factor of **1.13**. Ethanol +
+water: 12.64 to 0.93, a factor of **13.6**, through 1 at the azeotrope. The
+markers need no model: $K_1 = y_1/x_1$ from the measured pairs gives 2.38 to
+2.78 and 0.90 to 11.98. NRTL by Barker on
+[doi:10.1016/j.fluid.2013.12.002]{.small} and [doi:10.1021/je2008704]{.small}.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+$K_i$ is the only place the whole module's machinery becomes visible to a
+process engineer, and $K_1 = y_1/x_1$ is measurable with no model at all. Show
+the markers first, then the curve, so they see that the model is being tested
+rather than defining the quantity.
+
+**COMMON MISCONCEPTION**
+That $K$ is a property tabulated per component. It carries $\gamma_i(x, T)$ and
+$P$, so it is a property of the mixture at a state — which is why a De Priester
+chart works for light hydrocarbons and fails for alcohols.
+
+**ASK THE CLASS**
+$\alpha_{12} < 1$ past the ethanol + water azeotrope. What has physically
+happened to the column above that composition?
+:::
+
+## Fenske, and what constant $\alpha$ costs
+
+::: {.kicker .c-amber}
+4.6 · Bubble, dew and flash
+:::
+
+::: {.lede}
+The shortcut is free on one system and wrong by four stages on the other — same
+equation, same effort, no warning either way.
+:::
+
+$$N_{\min} = \frac{\ln\!\left[\dfrac{x_D}{1-x_D}\cdot\dfrac{1-x_B}{x_B}\right]}
+{\ln\tilde\alpha},
+\qquad \tilde\alpha = \sqrt{\alpha_D\,\alpha_B}$$
+
+:::::: {.cards .g3}
+::: {.card}
+
+[Four assumptions]{.card-h .c-teal}
+
+Total reflux, so no product is drawn; $\alpha$ constant over the column, taken
+as the geometric mean of the two end values; equilibrium stages; and one binary
+pair, or two keys treated as one. $N_{\min}$ counts the reboiler.
+
+:::
+
+::: {.card}
+
+[Where it costs nothing]{.card-h .c-amber}
+
+Benzene + toluene, $x_B = 0.05$: stepping the stages off one at a time with the
+real $\alpha(x)$ agrees with Fenske to **0.09 of a stage** anywhere on the
+curve. At a distillate of 0.985 the stepped count is 7.81 and Fenske 7.83.
+
+:::
+
+::: {.card}
+
+[Where it costs four stages]{.card-h .c-rust}
+
+Ethanol + water, $x_B = 0.02$, $x_D = 0.84$: **8.6 stages** stepped against
+**4.4** from Fenske at $\tilde\alpha = 3.52$. At $x_D = 0.912$ the true count is
+34 and diverging into the azeotrope at 0.9172 — and Fenske returns **5.1**.
+
+:::
+::::::
+
+::: {.note}
+The stepping assumes nothing extra: at total reflux $y_{n+1} = x_n$, so the same
+NRTL that gave $\alpha$ gives the stage count. Constant $\alpha$ is an
+assumption about the *mixture*, not a property of the method — and it does not
+fail loudly. It fails by returning a plausible number.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Ask for the sign of the error before showing it. Most expect the shortcut to be
+conservative. It is short by four stages here, in the direction that builds a
+column that cannot make the specification.
+
+**COMMON MISCONCEPTION**
+That the geometric mean fixes the varying $\alpha$. It is exact only if
+$\ln\alpha$ is linear in the stage number, which is a statement about the
+mixture nobody checked.
+
+**ASK THE CLASS**
+Fenske returns 5.1 stages at a distillate specification that actually needs
+infinitely many. What would have told you, without doing the stepping?
 :::
 
 ## Rachford-Rice
@@ -2870,6 +3398,40 @@ practical content of this whole section.
 That PSRK being "predictive" makes it safest. It means it needs no binary data,
 which is an advantage exactly when you have none and a liability when you have
 some and ignore it.
+:::
+
+## The module on one page
+
+::: {.kicker .c-amber}
+Closing
+:::
+
+::: {.lede}
+Which question you are in, and which section answers it. Every box carries its
+section and the figure that does the work.
+:::
+
+![](figures/f4_22_module_map.png){.fig-xl}
+
+::: {.source}
+F4.22 · Checked before it was drawn: every section number and every figure tag on the map resolves against this deck and its rendered figures. There is no measured quantity on it — a number here would be a number without a citation.
+:::
+
+::: {.notes}
+**TEACHING TIP**
+Use this twice: once in the first lecture, when nobody can follow it yet, and
+once here, when every box has a slide behind it. The three branches below the
+spine — no data, failed consistency, more than two components — are the ones
+students meet in the capstone and not in the textbook.
+
+**COMMON MISCONCEPTION**
+That the equation-of-state row along the top is the end of the same path. It is
+a different route with a different reference state, taken from the start, not a
+more advanced version of the one below it.
+
+**ASK THE CLASS**
+Put your capstone system on this map. Which box are you in, and which branch
+will you have to take?
 :::
 
 ## What you must be able to do
