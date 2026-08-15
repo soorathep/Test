@@ -1,0 +1,24 @@
+project:
+  type: website          # shares one site_libs/ folder across every deck,
+  output-dir: _site      # instead of a separate <deck>_files/ per deck
+  render:
+    - "*.qmd"
+
+website:
+  title: "Seminars"
+  search: false
+  navbar: false
+
+# One-off graduate seminars and invited talks, one file per talk
+# (conferences.qmd, …). Files beginning with an underscore are includes and
+# are never rendered on their own.
+
+# Shared deck settings. Anything a single deck needs to override goes in its
+# own front matter.
+format:
+  revealjs:
+    embed-resources: false
+    controls: true
+    controlsLayout: edges        # big arrows at the screen edges
+    controlsBackArrows: visible  # the back arrow never fades out
+    include-after-body: theme/click-advance.html

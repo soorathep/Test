@@ -70,6 +70,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | Patents, awards, roles | rare | `id="recognition"`, home callout | CV |
 | Instruments | rare | `id="facilities"` | Notion booking calendar |
 | **Blog posts** | **whenever** | **`_posts/*.md`** | **You** |
+| Seminars and invited talks | a few / year | `/teaching/seminars/` | `_data/seminars.yml` + the `.qmd` |
 
 **The CV is upstream of the site.** When the CV changes, the site follows, never the
 reverse. Anything on the site that is not traceable to the CV, Scopus, or a file from a
@@ -146,6 +147,36 @@ Rules learned the hard way:
 - **Use the real acronym**, the one printed on the conference materials. If a conference
   has no acronym, write its full name.
 - **Always name the country.** Singapore is its own country; do not write "Singapore, Singapore".
+
+### Add a seminar
+
+One-off graduate seminars and invited talks, as opposed to courses. Source lives in
+`_teaching-src/seminars/` (Quarto + Reveal.js, one `.qmd` per talk); the rendered deck
+is committed to `teaching/seminars/`.
+
+```bash
+cd _teaching-src/seminars
+cp conferences.qmd 2026-09-09-review-articles.qmd    # edit front matter and body
+quarto preview 2026-09-09-review-articles.qmd        # write, with notes visible
+quarto render --profile public --output-dir _site    # notes stripped
+python3 tools/check-overflow.py _site/2026-09-09-review-articles.html
+python3 tools/publish.py                             # copies into teaching/seminars/
+```
+
+Then add an entry to `_data/seminars.yml` — title, date, venue, note, and the rendered
+filename in `slides:`. The talk appears on `/teaching/seminars/` and in the Seminars
+block on `/teaching/` by itself. Nothing else to edit.
+
+**`--profile public` is not optional.** Without it the full spoken script ships inside
+the HTML and anyone can read it by pressing `S`. `tools/publish.py` refuses to copy a
+deck that still contains notes, but only if you let it do the copying — do not drag
+files across by hand.
+
+`teaching/seminars/index.html` pins its own `permalink:` for the reason in the
+permalink trap below. The decks themselves have no front matter, so Jekyll copies them
+through as static files and the pretty-URL rule never touches them.
+
+---
 
 ### Publish a blog post  (the 90-second version)
 

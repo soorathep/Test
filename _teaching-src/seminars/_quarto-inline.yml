@@ -1,0 +1,6 @@
+# Used by tools/bundle-deck.py — see that script.
+# Inlines reveal.js, plugins and images. Quarto drops the custom SCSS theme
+# when this is on, which is why the bundler injects the compiled CSS itself.
+format:
+  revealjs:
+    embed-resources: true

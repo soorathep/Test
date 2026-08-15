@@ -1,0 +1,25 @@
+---
+layout: default
+title: Seminars
+permalink: /teaching/seminars/
+description: One-off graduate seminars and invited talks by Assoc. Prof. Dr. Soorathep Kheawhom — slides online.
+---
+<section>
+  <div class="sec-head">
+    <div class="mono eyebrow">Teaching</div>
+    <h2>Seminars</h2>
+  </div>
+  <p class="lede" style="margin-bottom:30px">Standalone seminars and invited talks, outside the regular course
+  schedule. Slides are published here after each session. Speaker notes are not included.</p>
+
+  <div class="courses">
+    {% assign talks = site.data.seminars | sort: "date" | reverse %}
+    {% for talk in talks %}
+    <div class="course">
+      <div class="c-name">{% if talk.slides %}<a href="{{ site.baseurl }}/teaching/seminars/{{ talk.slides }}">{{ talk.title }}</a>{% else %}{{ talk.title }}{% endif %}</div>
+      <div class="c-level mono">{{ talk.date | date: "%-d %B %Y" }}{% if talk.venue %} · {{ talk.venue }}{% endif %}</div>
+      {% if talk.note %}<div class="c-note">{{ talk.note }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
