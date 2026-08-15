@@ -164,8 +164,11 @@ python3 tools/publish.py                             # copies into teaching/semi
 ```
 
 Then add an entry to `_data/seminars.yml` — title, date, venue, note, and the rendered
-filename in `slides:`. The talk appears on `/teaching/seminars/` and in the Seminars
-block on `/teaching/` by itself. Nothing else to edit.
+filename in `slides:`. The talk appears on `/teaching/seminars/` by itself. Nothing
+else to edit.
+
+Seminars are linked from the nav only — deliberately not also listed on `/teaching/`,
+which is for courses. One link per destination.
 
 **`--profile public` is not optional.** Without it the full spoken script ships inside
 the HTML and anyone can read it by pressing `S`. `tools/publish.py` refuses to copy a

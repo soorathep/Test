@@ -22,25 +22,3 @@ description: Graduate and undergraduate courses taught by Assoc. Prof. Dr. Soora
     {% endfor %}
   </div>
 </section>
-
-{% if site.data.seminars %}
-<section>
-  <div class="sec-head">
-    <div class="mono eyebrow">Teaching</div>
-    <h2>Seminars</h2>
-  </div>
-  <p class="lede" style="margin-bottom:30px">Standalone seminars and invited talks outside the course schedule.
-  <a href="{{ site.baseurl }}/teaching/seminars/">See all seminars</a>.</p>
-
-  <div class="courses">
-    {% assign talks = site.data.seminars | sort: "date" | reverse %}
-    {% for talk in talks limit: 3 %}
-    <div class="course">
-      <div class="c-name">{% if talk.slides %}<a href="{{ site.baseurl }}/teaching/seminars/{{ talk.slides }}">{{ talk.title }}</a>{% else %}{{ talk.title }}{% endif %}</div>
-      <div class="c-level mono">{{ talk.date | date: "%-d %B %Y" }}</div>
-      {% if talk.note %}<div class="c-note">{{ talk.note }}</div>{% endif %}
-    </div>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
