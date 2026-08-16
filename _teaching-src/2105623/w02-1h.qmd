@@ -30,9 +30,10 @@ Today
 :::
 
 ::: {.agenda}
-- [35 min]{.chip .c-teal} The specification, and the four patterns every linear model is built from
-- [6 min]{.chip .c-sky} The warm-up, walked end to end
-- [12 min]{.chip .c-teal} The time index and the inventory balance, in the sheet
+- [5 min]{.chip .c-sky} One plant problem, read together. Two questions, no answers yet
+- [26 min]{.chip .c-teal} The specification, and the four patterns every linear model is built from
+- [7 min]{.chip .c-sky} Back to the same problem — specified, solved, and read
+- [11 min]{.chip .c-teal} The time index and the inventory balance, in the sheet
 - [7 min]{.chip .c-amber} HW1, and your two hours — the self-study pack
 :::
 
@@ -51,86 +52,62 @@ Both classroom activities move out of the room today. They are in the pack, they
 
 Nothing is cancelled. Both activities — the Aurora specification, and the multiperiod sheet — move out of the room into a pack you take away, with a deadline of Friday midnight. Week 3 opens with what you wrote in it.
 
-So this hour keeps the part that is hardest to get from a screen: the structured specification, and the four patterns that every linear model in this course is built from. Then a fast walk through the time index and the inventory balance, so that the sheet is not a mystery when you sit down with it."
+We start with a problem, not with a method. Look at it, answer two questions in your head, and hold it. Everything I say for the next half hour points back at that problem, and at the end of the half hour we come back and finish it."
 
 **DO —**
 
 - Say the change in the first thirty seconds. Do not bury it.
-- Write the four pattern names on the board now — index set, balance, capacity, linking — and leave them there. Week 3, 4 and 5 all point back at that list.
-- Do NOT promise to run the activities in a later week. The pack is where they live now.
+- Write the four pattern names on the board now — index set, balance, capacity, linking — and leave them there. Weeks 3, 4 and 5 all point back at that list.
+- The recap slide from the three-hour version is cut. If you want it back, take the time from *Four domains*.
 :::
 
-## Where Weeks 2 to 5 live
+## A finishing shop, one week {.tint background-color="#F3F0EB"}
 
-::: {.kicker .c-amber}
-Recap of Week 1
-:::
-
-::: {.steps}
-::: {.step .c-mist}
-[1]{.n}[Verbal]{.h}[the problem in prose]{.d}
-:::
-::: {.step .c-amber}
-[2]{.n}[Specification]{.h}[**we are here**]{.d}
-:::
-::: {.step .c-amber}
-[3]{.n}[Algebra]{.h}[**and here**]{.d}
-:::
-::: {.step .c-mist}
-[4]{.n}[Code]{.h}[Weeks 7 and 8]{.d}
-:::
-::: {.step .c-mist}
-[5]{.n}[Interpretation]{.h}[Weeks 7 and 8]{.d}
-:::
+::: {.kicker .c-sky}
+Start here. We come back to this in half an hour
 :::
 
-:::: {.columns}
-::: {.column width="49%"}
-::: {.cards}
-::: {.card .c-teal}
-**Week 1 established**
+A finishing shop attached to the electrolyte plant packages two grades for zinc-air cell assembly, a **Standard** grade and a **HighPurity** grade. Both pass through the same three operations in order: mixing, ion-exchange purification, and filling. The three operations have different weekly hour allocations because they are shared with other campaigns. HighPurity is worth more per tonne but spends four times as long in purification. Everything finished is sold.
 
-The four parts of any problem, the standard form, the classification table, the tool stack, and one solved LP: x\* = (6, 3) t/week at z\* = **3,300.00** USD/week with two binding resources.
-:::
-:::
-:::
-
-::: {.column width="49%"}
-::: {.cards}
-::: {.card .c-slate}
-**And the geometry**
-
-An LP with a finite optimum has an optimal vertex. **That argument is not repeated today.** Every model in this session is an LP and the same picture applies, unchanged.
-:::
-:::
-:::
-::::
+| Operation | Standard, h/t | HighPurity, h/t | Available, h/week |
+|---|---|---|---|
+| Mixing | 2 | 3 | 120 |
+| Ion-exchange purification | 1 | 4 | 104 |
+| Filling | 1 | 1 | 44 |
+| **Contribution margin, USD/t** | **520** | **790** | |
 
 ::: {.foot}
 ::: {.punch}
-The modeling block is stages 2 and 3, done four times on four kinds of structure. Weeks 2 to 5 add no new mathematics at all.
+Two questions, in your head, no writing: what exactly is under your control here — and what would make a plan illegal?
 :::
 :::
 
 ::: {.notes}
-**[00:03 – 00:05] · RECAP, AND ONE PITCH CARD**
+**[00:03 – 00:08] · THE ANCHOR PROBLEM**
 
 **SAY —**
 
-"Thirty seconds of last week, and then one card.
+"Before any method, one problem. Read it. Thirty seconds."
 
-Five stages. Today, next week, and the two weeks after that all live in stages two and three. Nothing in the next four weeks is new mathematics. It is all linear programming, and you already know why the answer sits at a corner — we did that last Monday and I am not doing it again.
+*[ silence, thirty seconds — do not fill it ]*
 
-Now the card. Somebody wrote this on Monday."
+"Now two questions. Do not write anything, just answer them in your head.
 
-*[ read out the one pitch card whose stated objective turned out to be a constraint — anonymously ]*
+First: what exactly is under your control here? Not what you would like to change — what the plant actually lets you choose this week.
 
-"That is the failure this whole session is designed to prevent, and it is the reason stage two exists."
+Second: what would make a plan illegal? Not bad, illegal. A plan the shop could not physically run."
+
+*[ wait ten seconds, then take two or three answers from the room ]*
+
+"Hold those two answers. Everything I say for the next half hour is a way of writing them down so that a second engineer reads them exactly as you meant them. And at half past, we come back to this same shop and finish it."
 
 **DO —**
 
-- Pick the card the night before. Read it without naming the student. If nobody wrote one like it, use the purity example from Week 1: "the objective is that purity must exceed 99.5 percent."
-- One sentence on the geometry and no more. If a hand goes up about vertices, answer it in the break.
+- Take answers, do not correct them. If someone says "the hours available", that is the useful wrong answer — it is a parameter, not a decision, and you pay it off on the parameters slide at 00:16 by name.
+- Expected right answers: tonnes of each grade per week; and a plan is illegal if it uses more hours than any operation has.
+- If the room is silent, ask the second question again pointing at the Filling row: 44 hours, both grades, one hour each. Somebody will say it.
+- Do NOT show the specification for this problem yet. The whole design of this hour is that they meet the template needing it.
+- Keep to five minutes. This slide buys its time back later because every abstract slide now has something to point at.
 :::
 
 ## The specification, and the four patterns {.dark .divider .c-teal background-color="#1C242B"}
@@ -145,7 +122,7 @@ and one small model in which all four are visible at once.
 :::
 
 ::: {.notes}
-**[00:05] · SECTION DIVIDER — three seconds**
+**[00:08] · SECTION DIVIDER — three seconds**
 
 **SAY —**
 
@@ -191,11 +168,11 @@ The code is a *translation* of this document. If the specification is right, wri
 ::::
 
 ::: {.notes}
-**[00:06 – 00:09] · STAGE 2 IS THE DELIVERABLE**
+**[00:09 – 00:12] · STAGE 2 IS THE DELIVERABLE**
 
 **SAY —**
 
-"Last week I told you stage two comes before any algebra. Today I am going to make you do it, so it needs to be worth the trouble.
+"You just did stage two in your head, on the finishing shop. Two answers: what you control, and what makes a plan illegal. Now the claim of this hour. Last week I told you stage two comes before any algebra. Today I am going to make you do it, so it needs to be worth the trouble.
 
 Five sections. Sets, parameters, variables, one objective, numbered restrictions. That is the whole document, and it fits on one side of a page.
 
@@ -233,7 +210,7 @@ Assumptions are written as numbered restrictions, not as prose. "Everything prod
 :::
 
 ::: {.notes}
-**[00:09 – 00:13] · THE TEMPLATE**
+**[00:12 – 00:16] · THE TEMPLATE**
 
 **SAY —**
 
@@ -282,7 +259,7 @@ A parameter is anything fixed **before** the problem is solved. If you can chang
 ::::
 
 ::: {.notes}
-**[00:13 – 00:16] · PARAMETERS**
+**[00:16 – 00:19] · PARAMETERS**
 
 **SAY —**
 
@@ -336,7 +313,7 @@ An unbounded variable is the commonest cause of an unbounded model, and an unbou
 ::::
 
 ::: {.notes}
-**[00:16 – 00:19] · VARIABLES**
+**[00:19 – 00:22] · VARIABLES**
 
 **SAY —**
 
@@ -390,7 +367,7 @@ Mixing a **stock** (tonnes) with a **flow** (tonnes per month), or mixing two ti
 ::::
 
 ::: {.notes}
-**[00:19 – 00:22] · UNITS**
+**[00:22 – 00:24] · UNITS**
 
 **SAY —**
 
@@ -446,7 +423,7 @@ A time set must be **ordered**, because the model needs to know what *t* − 1 m
 ::::
 
 ::: {.notes}
-**[00:22 – 00:24] · PATTERN 1**
+**[00:24 – 00:26] · PATTERN 1**
 
 **SAY —**
 
@@ -502,7 +479,7 @@ Written once, expanded over the ordered set *T*. One line of specification becom
 ::::
 
 ::: {.notes}
-**[00:24 – 00:27] · PATTERN 2**
+**[00:26 – 00:29] · PATTERN 2**
 
 **SAY —**
 
@@ -556,7 +533,7 @@ They behave completely differently, and nothing in the English of a problem stat
 ::::
 
 ::: {.notes}
-**[00:27 – 00:29] · PATTERN 3**
+**[00:29 – 00:31] · PATTERN 3**
 
 **SAY —**
 
@@ -614,7 +591,7 @@ Remove both and the model falls apart into a stack of independent one-period pro
 ::::
 
 ::: {.notes}
-**[00:29 – 00:32] · PATTERN 4, AND THE SHAPE OF THE DAY**
+**[00:31 – 00:33] · PATTERN 4, AND THE SHAPE OF THE DAY**
 
 **SAY —**
 
@@ -656,7 +633,7 @@ Why they are worth naming
 :::
 
 ::: {.notes}
-**[00:32 – 00:34] · FOUR DOMAINS**
+**[00:33 – 00:34] · FOUR DOMAINS**
 
 **SAY —**
 
@@ -671,13 +648,13 @@ Both readings are defensible. Neither is wrong. And the place where you say whic
 **DO —** THIS IS THE CUTTABLE SLIDE in block 1. If you are past 00:36, say the last sentence only and move to the warm-up.
 :::
 
-## The warm-up, stages 1 to 3 · the finishing shop
+## Back to the finishing shop · stages 1 to 3
 
 ::: {.kicker .c-teal}
-All four patterns, in a model small enough to hold in the head
+The problem we opened with, now written down properly
 :::
 
-A finishing shop attached to the electrolyte plant packages two grades for zinc-air cell assembly, a **Standard** grade and a **HighPurity** grade. Both pass through the same three operations in order: mixing, ion-exchange purification, and filling. The three operations have different weekly hour allocations because they are shared with other campaigns. HighPurity is worth more per tonne but spends four times as long in purification. Everything finished is sold.
+The same shop, the same numbers. What has changed is that we can now write what you answered in your head half an hour ago, in a form a second engineer reads the same way.
 
 | Operation | Standard, h/t | HighPurity, h/t | Available, h/week |
 |---|---|---|---|
@@ -693,13 +670,17 @@ A finishing shop attached to the electrolyte plant packages two grades for zinc-
 :::
 
 ::: {.notes}
-**[00:34 – 00:37] · THE WARM-UP, STAGES 1 TO 3**
+**[00:34 – 00:38] · BACK TO THE ANCHOR, STAGES 1 TO 3**
 
 **SAY —**
 
-"One small model, walked quickly, so that you see all four patterns in something you can hold in your head.
+"Back to the shop we opened with. Half an hour ago I asked you two questions and told you to hold the answers. Here they are, written down.
 
-A finishing shop. Two grades, three operations, hours allocated per week because the operations are shared with other campaigns. HighPurity earns more per tonne and spends four times as long in purification.
+What is under your control: tonnes of each grade, per week. Two decision variables, and their unit is tonnes per week — not tonnes, and not tonnes per hour.
+
+What makes a plan illegal: using more hours than an operation has. Three capacity rows, one per operation.
+
+That is the whole specification, and you had it in your head before I showed you a single template. What the template did was make it writable, and make the assumption visible.
 
 Pattern one: two index sets, grades and operations. Pattern three: three capacity rows, one per operation. Pattern four: both grades appear in every row, which is what makes it one problem rather than two.
 
@@ -709,8 +690,9 @@ Stage three writes itself, because stage two did the work. Hours per tonne times
 
 **DO —**
 
-- Do not derive anything here. This slide is a two-minute run-through; the answer slide is where you slow down.
-- If you are behind, this is the pair of slides to compress — say the numbers and go. Do not compress the specification template.
+- This is the pay-off slide of the hour. Say out loud that they already had the answer — that is the point being made, not the model.
+- Name a student who gave one of the two answers at 00:05 if you can. It costs nothing and it changes how the next question in this room gets answered.
+- Do not derive anything here. The answer slide is where you slow down.
 :::
 
 ## The warm-up, stages 4 and 5 · the answer and what it says
@@ -758,7 +740,7 @@ This plans one week in isolation. It has no memory. It cannot build stock now fo
 ::::
 
 ::: {.notes}
-**[00:37 – 00:40] · THE WARM-UP, STAGES 4 AND 5**
+**[00:38 – 00:41] · THE WARM-UP, STAGES 4 AND 5**
 
 **SAY —**
 
@@ -815,7 +797,7 @@ The amber arrows are the **linking constraint** of pattern 4. Everything a multi
 ::::
 
 ::: {.notes}
-**[00:40 – 00:44] · WHAT A TIME INDEX DOES**
+**[00:41 – 00:44] · WHAT A TIME INDEX DOES**
 
 **SAY —**
 
@@ -889,6 +871,16 @@ Two refinements. The net position is written as I minus B, inventory minus backl
 
 And the boundary conditions. Opening inventory is given — it is a number from the stock ledger. Opening backlog is zero, because you do not start a plan already owing somebody something. If you do, that is a data problem, not a modeling one."
 
+**DO — BEFORE THE SYMBOLS, PUT NUMBERS ON THE BOARD (60 seconds)**
+
+Write, and say it as arithmetic, not algebra:
+
+> opening stock 20 t · produce 130 t · ship 120 t → closing stock **30 t**
+
+Then point at the equation and say: "that is this line. I-nought plus x-one minus d-one equals I-one. The letters are only so that I can write it once for all six periods instead of six times."
+
+Only then read the symbols. This is the highest-risk slide of the hour for anyone whose first language is not English, and thirty seconds of arithmetic removes most of the risk. The numbers are the ones from the sheet they complete in Part C, so it is also a preview.
+
 **DO —**
 
 - Trace the four arrows with your finger while you name them. Do not just point at the equation.
@@ -941,7 +933,7 @@ The sheet you are about to complete
 ::::
 
 ::: {.notes}
-**[00:48 – 00:52] · THE SPREADSHEET LAYOUT**
+**[00:48 – 00:51] · THE SPREADSHEET LAYOUT**
 
 **SAY —**
 
@@ -999,7 +991,7 @@ A unit on every symbol, and a bound on every variable. Both are checkable by a r
 ::::
 
 ::: {.notes}
-**[00:52 – 00:54] · HW1**
+**[00:51 – 00:53] · HW1**
 
 **SAY —**
 
@@ -1039,7 +1031,7 @@ One PDF, on myCourseVille, before midnight this Friday, 21 August. Week 3 opens 
 :::
 
 ::: {.notes}
-**[00:54 – 00:58] · THE SELF-STUDY PACK**
+**[00:53 – 00:58] · THE SELF-STUDY PACK**
 
 **SAY —**
 
@@ -1061,5 +1053,7 @@ One PDF, myCourseVille, before midnight on Friday the twenty-first. Week 3 opens
 - Say Friday twice, and say the date.
 - Confirm HW1 is visible on myCourseVille before anyone leaves.
 :::
+
+{{< include _feedback.qmd >}}
 
 {{< include _feedback.qmd >}}

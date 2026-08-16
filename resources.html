@@ -2,15 +2,15 @@
 layout: default
 title: Resources
 permalink: /resources/
-description: Files and tools for members of the SKH Research Group — figure palette, templates, protocols, and more.
+description: Files and tools for members of the SKH Research Group — experimental design, computational modelling, figure standards, protocols, and more.
 ---
 <section>
   <div class="sec-head">
     <div class="mono eyebrow">For lab members</div>
     <h2>Resources</h2>
   </div>
-  <p class="lede" style="margin-bottom:30px">Templates, tools, and shared files for the group.
-  Everything here is meant to be downloaded and used in your own work.</p>
+  <p class="lede" style="margin-bottom:30px">Methods, tools, and shared files for the group —
+  from designing the question to modelling the mechanism and reporting the result.</p>
 
   {% comment %} keep only categories that actually have items {% endcomment %}
   {% assign shown = site.data.resources | where_exp: "c", "c.items.size > 0" %}
@@ -36,6 +36,7 @@ description: Files and tools for members of the SKH Research Group — figure pa
         {% if r.description %}<p class="resource-desc">{{ r.description }}</p>{% endif %}
         {% if r.howto == 'palette' %}{% include palette-howto.html %}{% endif %}
         {% if r.howto == 'expdesign' %}{% include exp-design.html %}{% endif %}
+        {% if r.howto == 'computational' %}{% include computational-modelling.html %}{% endif %}
         {% if r.howto == 'batterychecklist' %}{% include battery-checklist.html %}{% endif %}
         {% if r.howto == 'gcd' %}{% include gcd.html %}{% endif %}
         {% if r.howto == 'gittpitt' %}{% include gitt-pitt.html %}{% endif %}

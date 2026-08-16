@@ -1,0 +1,159 @@
+<div class="comp-modelling">
+  <p class="cm-lede">We use molecular simulation when the question sits below the direct reach of an
+  experiment: which ligands occupy the first coordination shell, how readily that shell reorganises,
+  what crosses a polymer coating or nanopore, and what accumulates at an electrochemical interface.</p>
+
+  <p class="cm-gate"><strong>A trajectory is not evidence until the model has passed a validation gate.</strong>
+  Force-field provenance, thermodynamic checks, structural benchmarks, and comparison with experiment
+  are part of the calculation—not optional additions after it.</p>
+
+  <section class="cm-block" aria-labelledby="cm-investigate">
+    <h5 id="cm-investigate">What we can investigate</h5>
+    <div class="cm-cti-grid">
+      <div class="cm-cti-card">
+        <div class="mono">Coordination</div>
+        <h6>What the ion is wearing</h6>
+        <ul>
+          <li>Radial distribution functions and coordination numbers</li>
+          <li>First-shell solvent and anion populations</li>
+          <li>Free ions, contact ion pairs, solvent-separated ion pairs, and larger aggregates</li>
+          <li>Ligand-exchange and residence times</li>
+          <li>Solvent activity and local hydrogen-bond structure</li>
+        </ul>
+      </div>
+      <div class="cm-cti-card">
+        <div class="mono">Transport</div>
+        <h6>How it moves</h6>
+        <ul>
+          <li>Mean-square displacement and self-diffusion coefficients</li>
+          <li>Ion and solvent mobility</li>
+          <li>Cluster transport and correlated motion</li>
+          <li>Permeation through polymer coatings and nanopores</li>
+          <li>Concentration, density, and composition profiles</li>
+        </ul>
+      </div>
+      <div class="cm-cti-card">
+        <div class="mono">Interface</div>
+        <h6>What arrives and what is excluded</h6>
+        <ul>
+          <li>Electrolyte organisation near metal, oxide, carbon, and polymer-coated surfaces</li>
+          <li>Water and anion enrichment or depletion</li>
+          <li>Ion accessibility and interfacial residence</li>
+          <li>Transport across artificial interphases and protective coatings</li>
+          <li>Molecular descriptors that can be compared with EIS/DRT, Raman, XAS, and electrochemical data</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cm-block" aria-labelledby="cm-systems">
+    <h5 id="cm-systems">Systems the platform can support</h5>
+    <p>The same workflow can be adapted to several systems studied in the group:</p>
+    <ul class="cm-system-list">
+      <li>aqueous, mixed-solvent, and additive-containing zinc electrolytes;</li>
+      <li>zinc surfaces with polymer or artificial-interphase coatings;</li>
+      <li>sodium-ion electrolytes and nanoconfined transport;</li>
+      <li>organic and halogen-containing flow-battery electrolytes;</li>
+      <li>porous-carbon electric-double-layer systems; and</li>
+      <li>pseudocapacitive oxides, hydroxides, polymers, and framework materials.</li>
+    </ul>
+    <p class="cm-caution">The model and analysis must be designed for the scientific question. A force
+    field that is adequate for bulk density is not automatically adequate for ion pairing, ligand
+    exchange, or an interface.</p>
+  </section>
+
+  <section class="cm-block" aria-labelledby="cm-stack">
+    <h5 id="cm-stack">Current computational stack</h5>
+    <div class="cm-table-wrap">
+      <table class="cm-table">
+        <thead><tr><th>Purpose</th><th>Tools</th></tr></thead>
+        <tbody>
+          <tr><td>High-throughput classical molecular dynamics</td><td><strong>GROMACS</strong> with NVIDIA CUDA acceleration</td></tr>
+          <tr><td>Materials and specialised interfacial molecular dynamics</td><td><strong>LAMMPS</strong> with KOKKOS/CUDA</td></tr>
+          <tr><td>Initial molecular-box construction</td><td><strong>Packmol</strong></td></tr>
+          <tr><td>Structure preparation and workflow support</td><td><strong>ASE</strong> and Python</td></tr>
+          <tr><td>Trajectory analysis</td><td><strong>MDAnalysis</strong>, NumPy, SciPy, pandas</td></tr>
+          <tr><td>Figures and reports</td><td>Matplotlib and Jupyter</td></tr>
+          <tr><td>Compute infrastructure</td><td>On-demand <strong>RunPod GPU cloud</strong> with persistent project storage</td></tr>
+          <tr><td>Reproducibility</td><td>Version-controlled inputs, parameter provenance, validation records, and reusable analysis scripts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cm-planned">
+      <span class="mono">Planned extensions</span>
+      <p>Electronic-structure calculations and ab initio molecular dynamics using <strong>CP2K</strong>
+      and <strong>Quantum ESPRESSO</strong> are planned extensions. They will be used only when the
+      question requires explicit electronic structure, adsorption energetics, bond making or breaking,
+      or interfacial charge redistribution.</p>
+    </div>
+  </section>
+
+  <section class="cm-block" aria-labelledby="cm-cti">
+    <h5 id="cm-cti">How CTI guides the calculation</h5>
+    <div class="cm-table-wrap">
+      <table class="cm-table cm-descriptors">
+        <thead><tr><th>CTI link</th><th>Representative computational descriptors</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Coordination</strong></td><td>RDF, coordination number, first-shell composition, free-solvent fraction, ion-pair population, residence time</td></tr>
+          <tr><td><strong>Transport</strong></td><td>Diffusion coefficient, cluster mobility, permeation, density profile, concentration profile</td></tr>
+          <tr><td><strong>Interface</strong></td><td>Interfacial composition, water/anion exclusion, adsorption geometry, local residence, access to active sites</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cm-aim">The aim is not simply to “run MD.” The aim is to identify a descriptor that
+    connects molecular structure to transport and then to the measured interfacial response.</p>
+  </section>
+
+  <section class="cm-block" aria-labelledby="cm-validation">
+    <h5 id="cm-validation">Validation before production</h5>
+    <p>Every new chemical model must pass a documented validation stage before production trajectories
+    are used as scientific evidence. Depending on the system, this may include:</p>
+    <ul class="cm-validation-list">
+      <li>density and temperature stability;</li>
+      <li>experimentally supported bond or ion–solvent distances;</li>
+      <li>coordination number and first-shell geometry;</li>
+      <li>radial distribution functions;</li>
+      <li>diffusion coefficients;</li>
+      <li>ion-pair or cluster populations;</li>
+      <li>comparison with Raman, XAS, scattering, conductivity, viscosity, or electrochemical data; and</li>
+      <li>confirmation that all numerical parameters have a traceable primary source.</li>
+    </ul>
+    <p class="cm-caution">Unvalidated parameters must not be mixed from unrelated force fields merely
+    because the simulation runs without an error.</p>
+  </section>
+
+  <section class="cm-block" aria-labelledby="cm-development">
+    <h5 id="cm-development">Current development</h5>
+    <p>The first platform workflow is being developed for aqueous zinc electrolytes and the
+    <strong>Zn | sulfonated polyimide | electrolyte</strong> interface. The workflow begins with
+    validated bulk-electrolyte models, then progresses to polymer transport and the coated-zinc
+    interface. The same infrastructure will subsequently support supercapacitor and pseudocapacitive
+    systems.</p>
+  </section>
+
+  <section class="cm-access" aria-labelledby="cm-access">
+    <div class="mono">Access for group members</div>
+    <h5 id="cm-access">Start with the research question</h5>
+    <p>Computational resources are available to SKH Group members for approved research questions.
+    <strong>Contact the PI before opening a cloud instance or starting a production calculation.</strong></p>
+    <p>Please provide:</p>
+    <ol>
+      <li>the scientific question;</li>
+      <li>the system and control to be compared;</li>
+      <li>the electrolyte or material composition;</li>
+      <li>the experimental observation or dataset that the model should explain;</li>
+      <li>the CTI descriptor to be extracted; and</li>
+      <li>an estimate of the number of conditions and independent replicas required.</li>
+    </ol>
+    <p>Cloud instances, persistent storage, and production jobs are provisioned centrally.
+    <strong>Do not create cloud resources or incur cloud charges independently without prior approval.</strong></p>
+    <p>No previous MD experience is required to propose a project. Students will, however, be expected
+    to understand the assumptions of the model, complete the benchmark and validation stage, and keep
+    all inputs, scripts, and results under version control.</p>
+    <blockquote>
+      <strong>Start from the question, not the software.</strong><br>
+      “Which species replaces water in the first Zn²⁺ shell?” is a computational question.<br>
+      “Run MD on this electrolyte” is not.
+    </blockquote>
+  </section>
+</div>
