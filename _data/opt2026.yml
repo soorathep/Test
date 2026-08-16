@@ -65,8 +65,6 @@ weeks:
     block: Orientation
     tool: Excel Solver
     slides: w01.html
-    slides_alt: w01-1h.html
-    slides_alt_label: "Introduction and the optimization workflow — one-hour version"
     files:
       - name: Product mix workbook
         desc: The Week 1 model. Fill in the yellow cells, then run Solver
@@ -80,16 +78,14 @@ weeks:
         desc: One product mix model in Excel, Pyomo, JuMP and GAMS, side by side
         kind: Notebook
         file: w01/appendix-same-model-four-tools.ipynb
-      - name: "Week 1 self-study pack"
-        desc: The five parts to work through on your own after the shortened session. Due Friday 14 August, midnight
-        kind: PDF
-        file: w01/w01-self-study-pack.pdf
   - n: 2
     title: "Modeling I: linear models, product mix, multiperiod planning and inventory"
     dates: 17 Aug
     block: Model construction
     tool: OpenSolver
     slides: w02.html
+    slides_alt: w02-1h.html
+    slides_alt_label: "Modeling I: the specification, the four patterns, and the time index — one-hour version"
     files:
       - name: Multiperiod planning workbook
         desc: The Week 2 model. Complete the balance rows and the objective, then solve
@@ -103,6 +99,10 @@ weeks:
         desc: Linear and network model construction. Due Week 4, Monday 31 August
         kind: PDF
         file: w02/hw1.pdf
+      - name: "Week 2 self-study pack"
+        desc: The four parts to work through on your own after the shortened session. Due Friday 21 August, midnight
+        kind: PDF
+        file: w02/w02-self-study-pack.pdf
   - n: 3
     title: "Modeling II: networks, flows and process superstructures"
     dates: 24 Aug

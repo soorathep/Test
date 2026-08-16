@@ -1,0 +1,1065 @@
+---
+title: "Modeling I: the specification, the four patterns, and the time index"
+subtitle: "Week 2 · 2105623 Optimization of Chemical Processes · one-hour session"
+author: "Soorathep Kheawhom"
+date: 2026-08-17
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## One hour today. Two hours on your own. {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [35 min]{.chip .c-teal} The specification, and the four patterns every linear model is built from
+- [6 min]{.chip .c-sky} The warm-up, walked end to end
+- [12 min]{.chip .c-teal} The time index and the inventory balance, in the sheet
+- [7 min]{.chip .c-amber} HW1, and your two hours — the self-study pack
+:::
+
+::: {.foot}
+::: {.flag}
+Both classroom activities move out of the room today. They are in the pack, they have a deadline, and Week 3 opens with your answers.
+:::
+:::
+
+::: {.notes}
+**[00:00 – 00:03] · AGENDA, AND THE CHANGE**
+
+**SAY —**
+
+"A change to today before anything else. I have one hour, not three.
+
+Nothing is cancelled. Both activities — the Aurora specification, and the multiperiod sheet — move out of the room into a pack you take away, with a deadline of Friday midnight. Week 3 opens with what you wrote in it.
+
+So this hour keeps the part that is hardest to get from a screen: the structured specification, and the four patterns that every linear model in this course is built from. Then a fast walk through the time index and the inventory balance, so that the sheet is not a mystery when you sit down with it."
+
+**DO —**
+
+- Say the change in the first thirty seconds. Do not bury it.
+- Write the four pattern names on the board now — index set, balance, capacity, linking — and leave them there. Week 3, 4 and 5 all point back at that list.
+- Do NOT promise to run the activities in a later week. The pack is where they live now.
+:::
+
+## Where Weeks 2 to 5 live
+
+::: {.kicker .c-amber}
+Recap of Week 1
+:::
+
+::: {.steps}
+::: {.step .c-mist}
+[1]{.n}[Verbal]{.h}[the problem in prose]{.d}
+:::
+::: {.step .c-amber}
+[2]{.n}[Specification]{.h}[**we are here**]{.d}
+:::
+::: {.step .c-amber}
+[3]{.n}[Algebra]{.h}[**and here**]{.d}
+:::
+::: {.step .c-mist}
+[4]{.n}[Code]{.h}[Weeks 7 and 8]{.d}
+:::
+::: {.step .c-mist}
+[5]{.n}[Interpretation]{.h}[Weeks 7 and 8]{.d}
+:::
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-teal}
+**Week 1 established**
+
+The four parts of any problem, the standard form, the classification table, the tool stack, and one solved LP: x\* = (6, 3) t/week at z\* = **3,300.00** USD/week with two binding resources.
+:::
+:::
+:::
+
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-slate}
+**And the geometry**
+
+An LP with a finite optimum has an optimal vertex. **That argument is not repeated today.** Every model in this session is an LP and the same picture applies, unchanged.
+:::
+:::
+:::
+::::
+
+::: {.foot}
+::: {.punch}
+The modeling block is stages 2 and 3, done four times on four kinds of structure. Weeks 2 to 5 add no new mathematics at all.
+:::
+:::
+
+::: {.notes}
+**[00:03 – 00:05] · RECAP, AND ONE PITCH CARD**
+
+**SAY —**
+
+"Thirty seconds of last week, and then one card.
+
+Five stages. Today, next week, and the two weeks after that all live in stages two and three. Nothing in the next four weeks is new mathematics. It is all linear programming, and you already know why the answer sits at a corner — we did that last Monday and I am not doing it again.
+
+Now the card. Somebody wrote this on Monday."
+
+*[ read out the one pitch card whose stated objective turned out to be a constraint — anonymously ]*
+
+"That is the failure this whole session is designed to prevent, and it is the reason stage two exists."
+
+**DO —**
+
+- Pick the card the night before. Read it without naming the student. If nobody wrote one like it, use the purity example from Week 1: "the objective is that purity must exceed 99.5 percent."
+- One sentence on the geometry and no more. If a hand goes up about vertices, answer it in the break.
+:::
+
+## The specification, and the four patterns {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Lecture block 1 · 35 minutes
+:::
+
+::: {.lede}
+One document, four patterns,<br>
+and one small model in which all four are visible at once.
+:::
+
+::: {.notes}
+**[00:05] · SECTION DIVIDER — three seconds**
+
+**SAY —**
+
+"Thirty-five minutes. One document you will write for the rest of the course, four patterns that every linear model in this course is assembled from, and one warm-up small enough to hold in your head."
+
+**DO —** TIMING CHECK: the four patterns must be on screen by **00:22**. If you are late, shorten the warm-up walkthrough rather than the template — Part A of the pack depends on the template, not on the patterns.
+:::
+
+## Stage 2 is the real deliverable of engineering thinking
+
+::: {.kicker .c-teal}
+Why a document, and not algebra
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.numbered .n4}
+1. **Index sets** Each one named, with its membership stated.
+2. **Parameters** Symbol, meaning, unit, and the source of the number.
+3. **Decision variables** Symbol, unit, and bounds.
+4. **One objective** Stated in words, with its unit.
+5. **Restrictions** Numbered, in words, including the ones you assume away.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-rust}
+**Why this and not algebra**
+
+Algebra hides assumptions. The symbol *I*<sub>*t*</sub> looks precise, but it does not say whether inventory is measured at the start or the end of the period. The specification has to say so **in words**, where a reader can disagree with it.
+:::
+:::
+
+::: {.punch}
+A specification that requires guessing will be guessed at, and the guess will be plausible, silent and unlabeled.
+:::
+
+::: {.note}
+The code is a *translation* of this document. If the specification is right, writing the algebra and then the model file is close to mechanical.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:06 – 00:09] · STAGE 2 IS THE DELIVERABLE**
+
+**SAY —**
+
+"Last week I told you stage two comes before any algebra. Today I am going to make you do it, so it needs to be worth the trouble.
+
+Five sections. Sets, parameters, variables, one objective, numbered restrictions. That is the whole document, and it fits on one side of a page.
+
+Now the reason it exists, and it is one sentence. Algebra hides assumptions.
+
+Write I subscript t on a board and it looks perfectly precise. It is not. It does not tell you whether that is the stock at the start of the month or at the end. Two engineers implement it two different ways, both correctly, and get two different numbers. The specification has to say which, in English, where somebody can read it and disagree with you.
+
+A specification that requires guessing will be guessed at. And the guess will be plausible, silent, and unlabeled. That is the thesis of Week 6, and it is why the proposal you hand in for the project in Week 6 is a specification and nothing else."
+
+**DO —**
+
+- Say "the specification is also the artifact you hand to a colleague, to a reviewer, or to a language model. Everything else is downstream of it." That sentence is what makes Week 6 land.
+- Do not let this run past 00:09. The template slide is what Part A of the pack needs.
+:::
+
+## The specification template, blank {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+This is what Part A of the pack asks you to fill in
+:::
+
+| Section | What goes in it | The question it forces you to answer |
+|---|---|---|
+| **Sets and indices** | every dimension of the problem, named, with its membership | What is repeated, and over what? |
+| **Parameters** | symbol, meaning, **unit**, source of the number | Which numbers are fixed before the model is solved, and who owns them? |
+| **Decision variables** | symbol with full index, **unit**, **bounds** | What is genuinely under your control? |
+| **Objective** | one sentence in words, with its **unit** | What counts as better, in what currency, over what period? |
+| **Constraints** | numbered, in words | What must hold, and is each one hard or soft? |
+| **Assumptions** | numbered alongside the constraints | What did you decide to ignore, and would a reviewer accept it? |
+
+::: {.foot}
+::: {.flag}
+Assumptions are written as numbered restrictions, not as prose. "Everything produced is sold" is a modeling decision with a cost attached, and numbering it is what lets somebody challenge it.
+:::
+:::
+
+::: {.notes}
+**[00:09 – 00:13] · THE TEMPLATE**
+
+**SAY —**
+
+"Six rows. Photograph it, because you fill it in at twenty to two, and HW1 requires it before any algebra on every question.
+
+Read the right-hand column rather than the middle one. Each row is really a question you are being forced to answer.
+
+Sets: what is repeated, and over what? Parameters: which numbers are fixed before you solve, and who owns them — because somebody does, and you will have to go and ask them. Variables: what is genuinely under your control? Objective: what counts as better, in what currency, over what period? Constraints: what must hold, and is each one hard or soft — which, as we said last week, is your decision and not a property of the world.
+
+And the last row, which is the one people leave out. Assumptions, numbered alongside the constraints. Not written as prose at the bottom. Numbered, so that a reviewer can point at number three and say, that one is wrong."
+
+**DO —**
+
+- This is the slide to leave up longest in block 1. Everything after it is application.
+- Say explicitly: "this is the template Part A of the pack asks you to fill in, and it is the template HW1 requires." Students who hear that write it down.
+:::
+
+## Parameters carry a unit and a source
+
+::: {.kicker .c-teal}
+Specification, row 2
+:::
+
+| Symbol | Meaning | Unit | Where the number comes from |
+|---|---|---|---|
+| *d*<sub>*t*</sub> | demand in period *t* | t/month | sales forecast, revision date recorded |
+| *C*<sub>*t*</sub> | production capacity | t/month | line rate times available hours |
+| *c*<sub>*t*</sub> | unit production cost | USD/t | standard cost plus the electricity contract |
+| *h* | inventory holding cost | USD/t/month | working capital plus storage |
+| *b* | backlog penalty | USD/t/month | expedited freight plus contractual damages |
+| *I*<sub>0</sub> | opening inventory | t | the stock ledger at the planning date |
+| *ρ*<sub>*p*</sub> | reactor hours per tonne of *p* | h/t | the process, measured and not assumed |
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.note}
+A parameter is anything fixed **before** the problem is solved. If you can change it, it is a variable; if you cannot, it is a parameter. Confusing the two is the commonest stage-2 error.
+:::
+:::
+
+::: {.column width="49%"}
+::: {.flag}
+*h* and *b* carry **per month** in their unit. That is what makes a backlog charged *again* in every period until it is cleared — and it is exactly the modeling decision that drives the answer at half past two.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:13 – 00:16] · PARAMETERS**
+
+**SAY —**
+
+"Seven parameters, and I want you to look at the fourth column rather than the third.
+
+Every number in a model came from somewhere, and somebody owns it. The demand forecast has a revision date, and if you do not record it, you will re-run the model in October against March's forecast. The unit cost is standard cost plus whatever the electricity contract says. The reactor hours per tonne were *measured*; they were not assumed, and if they were assumed you write that down as an assumption.
+
+Now look at h and b. Both carry per tonne per month. That is not decoration. It is what makes an unmet order cost you forty-five dollars a tonne in the month you miss it, and another forty-five the month after, and again the month after that until you deliver. Hold on to that. It is the entire reason for the most persuasive number I show you today."
+
+**DO —**
+
+- If somebody asks whether demand should really be a parameter: excellent question, Week 12, and yes, treating an uncertain quantity as known is a modeling decision rather than a neutral simplification.
+:::
+
+## Decision variables carry a unit and bounds
+
+::: {.kicker .c-amber}
+Specification, row 3
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.numbered .n3}
+1. **A symbol with its full index** *x*<sub>*p*,*t*</sub>, not *x*.
+2. **A unit** Tonnes per month is not tonnes.
+3. **Bounds** At minimum: is it non-negative? Is it bounded above by something physical?
+:::
+
+| Symbol | Meaning | Unit |
+|---|---|---|
+| *x*<sub>*t*</sub> ≥ 0 | production in period *t* | t |
+| *I*<sub>*t*</sub> ≥ 0 | inventory carried out of *t* | t |
+| *B*<sub>*t*</sub> ≥ 0 | backlog carried out of *t* | t |
+:::
+
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-rust}
+**Bounds are free performance and free safety**
+
+An unbounded variable is the commonest cause of an unbounded model, and an unbounded integer variable will cripple a solver's presolve in Week 11. Write the physical bound even when you believe the constraints already imply it. It costs one line and it documents the physics.
+:::
+
+::: {.card .c-teal}
+**A variable is not a formula**
+
+*I*<sub>*t*</sub> is a **variable** that the balance equation ties to production and demand. Do not write it as an expression. Keeping it a variable is what lets you bound it, price it, and read its dual.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:16 – 00:19] · VARIABLES**
+
+**SAY —**
+
+"Three things on every variable. Symbol with its full index, a unit, and bounds.
+
+The second one catches people constantly. Tonnes per month is not the same object as tonnes. One is a flow and one is a stock, and later today you will see a model in which mixing them up changes the answer by a factor of four without producing a single error message.
+
+The third one, bounds, is free performance and free safety. An unbounded variable is the single commonest cause of an unbounded model — that failure I showed you last week where the objective walks off to seven million dollars. Write the non-negativity even when the constraints already imply it. It costs one line, and it documents the physics for the next person.
+
+And one thing that is worth saying now, because you will be tempted at twenty to two. Inventory is a *variable*. Not a formula. You could write it as an expression in production and demand and it would give the same plan. But then you cannot bound it, you cannot put a warehouse limit on it, you cannot price it, and you cannot read its dual. Keep it a variable."
+
+**DO —** The "a variable is not a formula" card is the direct preparation for the commonest error in Part C of the pack. Point at it again on the spreadsheet-layout slide.
+:::
+
+## Units on every symbol: the cheapest error detector there is
+
+::: {.kicker .c-teal}
+Thirty seconds, every time
+:::
+
+::: {.spec}
+[The check, applied to the inventory balance]{.eyebrow}
+
+*I*<sub>*t*−1</sub> [t] &nbsp; − &nbsp; *B*<sub>*t*−1</sub> [t] &nbsp; + &nbsp; *x*<sub>*t*</sub> [t] &nbsp; − &nbsp; *d*<sub>*t*</sub> [t] &nbsp; = &nbsp; *I*<sub>*t*</sub> [t] &nbsp; − &nbsp; *B*<sub>*t*</sub> [t]
+
+Every term is a tonnage. If any one of them had carried a **rate**, the equation would be wrong, and it would still solve.
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-teal}
+[And to the objective]{.eyebrow}
+
+*c*<sub>*t*</sub> [USD/t] · *x*<sub>*t*</sub> [t] &nbsp; + &nbsp; *h* [USD/t/month] · *I*<sub>*t*</sub> [t] · 1 [month] &nbsp; ⇒ &nbsp; [USD]
+
+The "one period" in the holding term is implicit. Writing it out is what stops you putting a weekly rate into a monthly model.
+:::
+:::
+:::
+
+::: {.column width="49%"}
+::: {.cards}
+::: {.card .c-rust}
+[The class of error units catch]{.eyebrow}
+
+Mixing a **stock** (tonnes) with a **flow** (tonnes per month), or mixing two time bases. Neither produces an error message. Both produce a plan that is confidently wrong by a factor of four or five.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:19 – 00:22] · UNITS**
+
+**SAY —**
+
+"Same habit as last week, on this week's equation.
+
+Read the inventory balance and check nothing but the units. Tonnes, tonnes, tonnes, tonnes, equals tonnes minus tonnes. Every term is a tonnage. If any one of them had been a rate — tonnes per month — the equation would be wrong, and here is the part that matters: it would still solve. You would get a plan. It would look fine.
+
+The objective is the interesting one. Dollars per tonne times tonnes gives dollars, fine. But the holding term is dollars per tonne *per month*, times tonnes. That is dollars per month, not dollars. It only balances because there is an invisible 'times one period' sitting in there.
+
+Write that one out. It is the thing that stops you putting a weekly holding rate into a monthly model, which is an error of a factor of four and produces no error message whatsoever."
+
+**DO —** Write the cancellation on the board rather than pointing at the slide. Watching it cancel is worth more than seeing it printed — same as Week 1.
+:::
+
+## Pattern 1 · the index set
+
+::: {.kicker .c-amber}
+The same relation repeated over a family
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Template]{.eyebrow}
+
+*i* ∈ *I* &nbsp;&nbsp;&nbsp; and then &nbsp;&nbsp;&nbsp; *x*<sub>*i*</sub> &nbsp;⟶&nbsp; *x*<sub>*i*,*t*</sub>
+:::
+
+::: {.dots}
+- **Name every dimension once** Then index parameters, variables and constraints over it, and write the relation once. The solver expands it.
+- **Growth becomes a data change** Adding a product, a period or a site changes the data, not the model. The number of rows grows; the number of ideas does not.
+- **Where it reappears** Every week of this course. It is the reason the Pyomo Set component exists at all.
+:::
+:::
+
+::: {.column width="48%"}
+| Dimension | Index | Set |
+|---|---|---|
+| product or grade | *p* | *P* |
+| resource or operation | *r*, *s* | *R*, *S* |
+| period | *t* | *T*, **ordered** |
+| node or site | *i*, *j* | *N* |
+| scenario | *ω* | *Ω* |
+
+::: {.cards}
+::: {.card .c-rust}
+**Ordered sets matter**
+
+A time set must be **ordered**, because the model needs to know what *t* − 1 means. In Pyomo, `pyo.Set(initialize=T, ordered=True)`, then `m.T.prev(t)`. In a spreadsheet, "the column immediately to the left" is the same statement — and it is why periods run across columns.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:22 – 00:24] · PATTERN 1**
+
+**SAY —**
+
+"Four patterns, four slides, and they are on the board for the rest of the day. Every linear model in this course is built out of these four and nothing else.
+
+Pattern one is the index set, and it is the least glamorous and most important. Give every dimension of your problem a name. Products, periods, sites, scenarios. Then write each relation once, indexed over the set, and let the solver expand it.
+
+What that buys you is this: adding a seventh period, or a fourth product, becomes a change to the *data*. Not to the model. The number of rows grows; the number of ideas does not. That distinction is the whole argument for Pyomo in Week 4, and you will feel its absence in the spreadsheet you complete this week.
+
+One technical point that matters today. A time set has to be *ordered*, because the balance equation needs to know what t minus one means. In Pyomo you say ordered equals True. In a spreadsheet, 'the column immediately to the left' is exactly the same statement — and that is the real reason periods run across columns rather than down rows."
+
+**DO —** Point at the board where the four names are written. Say they stay there all session.
+:::
+
+## Pattern 2 · the balance equation
+
+::: {.kicker .c-teal}
+What goes in equals what goes out plus what accumulates
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Template]{.eyebrow}
+
+accumulation &nbsp;=&nbsp; inflow &nbsp;−&nbsp; outflow
+
+*I*<sub>*t*−1</sub> &nbsp;+&nbsp; *x*<sub>*t*</sub> &nbsp;−&nbsp; *d*<sub>*t*</sub> &nbsp;=&nbsp; *I*<sub>*t*</sub>
+:::
+
+::: {.dots}
+- **It is the same law as a material balance** Only the boundary moves. Draw it around a vessel and it is a mass balance; draw it around a period and it is an inventory balance.
+- **It is an equality** And it is the backbone of the model, not a refinement of it.
+- **Where it reappears** As the node balance in Week 3, as a component balance in Week 4, and as a unit balance in both.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-rust}
+**The most expensive class of error**
+
+A **missing** balance is worse than a wrong one. The model still solves. It still reports a plan. It has simply stopped conserving material, and nothing on the screen says so.
+:::
+
+::: {.card .c-teal}
+**Patterns 1 and 2 together**
+
+Written once, expanded over the ordered set *T*. One line of specification becomes six rows in the spreadsheet, and the six rows are what make it a plan rather than six unrelated decisions.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:24 – 00:27] · PATTERN 2**
+
+**SAY —**
+
+"Pattern two you already know, and that is the point of putting it second.
+
+Accumulation equals inflow minus outflow. It is the first equation any of you learned in this department. What changes today is only where you draw the boundary. Draw it around a vessel and it is a material balance. Draw it around a *period* — around the month of March — and exactly the same equation is an inventory balance. Stock at the end of February, plus what you made in March, minus what you shipped in March, equals stock at the end of March.
+
+Nothing new. New boundary.
+
+Now the warning. A balance is an equality, and a *missing* balance is the most expensive class of error in this entire course. Not a wrong one — a missing one. Because the model still solves, it still hands you a plan, and the plan simply does not conserve material. There is no error message for a model that has quietly stopped obeying physics."
+
+**DO —** Ask the room where else they have written this equation this year. You want somebody to say "reactor" out loud, because the transfer is the whole point of naming it a pattern.
+:::
+
+## Pattern 3 · the capacity constraint
+
+::: {.kicker .c-amber}
+A shared resource limits a sum
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Template]{.eyebrow}
+
+Σ<sub>*i*</sub> *a*<sub>*ri*</sub> *x*<sub>*i*</sub> &nbsp; ≤ &nbsp; *b*<sub>*r*</sub> &nbsp;&nbsp; for every *r* ∈ *R*
+:::
+
+::: {.dots}
+- **One inequality per resource** And one per resource per period as well, if the resource is renewed each period.
+- **The sum is what makes it a constraint** If only one activity used the resource, it would be a bound on a single variable and the solver would handle it for free.
+- **Where it reappears** Arc capacity in Week 3, pool capacity in Week 4, unit capacity in Week 5.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-teal}
+**Renewable, or consumed once**
+
+*x*<sub>*t*</sub> ≤ *C*<sub>*t*</sub> for every *t* &nbsp;&nbsp; versus &nbsp;&nbsp; Σ<sub>*t*</sub> *x*<sub>*t*</sub> ≤ *C*
+
+Line hours that reset every month give one inequality **per period**. A fixed allocation of catalyst consumed once over the horizon gives **one** inequality summed over *t*.
+:::
+:::
+
+::: {.punch}
+They behave completely differently, and nothing in the English of a problem statement tells you which is meant. The specification has to say.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:27 – 00:29] · PATTERN 3**
+
+**SAY —**
+
+"Pattern three. A shared resource limits a sum. One inequality per resource.
+
+Notice that the sum is what makes it interesting. If only one activity ever used the reactor, this would be a bound on a single variable and the solver would deal with it for nothing. It is a *constraint* precisely because several activities compete for the same hours.
+
+And here is the distinction that catches people, which comes back in ten minutes. There are two completely different things called a capacity. A renewable one — line hours, which reset at the start of every month — gives you one inequality per period. A resource consumed once over the whole horizon — a fixed allocation of catalyst, a water quota for the year — gives you a *single* inequality summed over all periods.
+
+They behave nothing like each other. And nothing in the English of a problem statement tells you which one is meant. The specification has to say."
+
+**DO —** Ask for one example of each from the room. Somebody usually offers cooling water, which is a good argument because it can be either depending on whether the site is on a quota.
+:::
+
+## Pattern 4 · the linking constraint
+
+::: {.kicker .c-teal}
+A variable in one block constrains another
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Template]{.eyebrow}
+
+any constraint whose index<br>spans **more than one block**
+:::
+
+::: {.dots}
+- **It destroys separability** Which sounds like a defect and is in fact the whole point. If the blocks separated, you would not need a solver — you would need arithmetic.
+- **That is where the value of optimizing lives** Every dollar a planning model earns comes through a linking constraint.
+- **Where it reappears** Transshipment nodes in Week 3, pooling in Week 4, big-M links in Week 5.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-amber}
+[Temporal linking · block 2]{.eyebrow}
+
+The inventory balance carries stock from *t* − 1 into *t*, so the periods **cannot be planned one at a time**.
+:::
+
+::: {.card .c-rust}
+[Resource linking · block 3]{.eyebrow}
+
+One shared reactor is used by both products, so the products **cannot be planned one at a time**.
+:::
+:::
+
+::: {.punch}
+Remove both and the model falls apart into a stack of independent one-period problems that nobody needs a solver for.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:29 – 00:32] · PATTERN 4, AND THE SHAPE OF THE DAY**
+
+**SAY —**
+
+"Pattern four is the abstract one, so here is the concrete version: any constraint whose index spans more than one block.
+
+It destroys separability. That sounds like a defect. It is the entire point. If a model separates cleanly into independent pieces, then solving it jointly buys you exactly nothing, and you did not need an optimizer — you needed a calculator. Every dollar that a planning model earns comes through a linking constraint.
+
+And now the shape of what is left, because there are exactly two kinds of linking and they are the whole of this course's model building.
+
+*Temporal* linking, which we do in twenty minutes: the inventory balance carries stock out of March and into April, so you cannot plan the months one at a time.
+
+*Resource* linking, which is in the pack and returns in Week 3: one reactor, two products, so you cannot plan the products one at a time.
+
+Take both away and this model collapses into six independent one-period problems that nobody needs a solver for."
+
+**DO —**
+
+- CHECKPOINT: all four patterns should be on screen by 00:22 and you should be leaving this slide by 00:32.
+- The four names on the board are the spine of Weeks 3, 4 and 5. Point at them.
+:::
+
+## The same four patterns in four unrelated domains {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Why they are worth naming
+:::
+
+|  | 1 Index set | 2 Balance | 3 Capacity | 4 Linking |
+|---|---|---|---|---|
+| **Refinery blend** | feedstocks *c*, properties *q* | volume balance: blend = Σ components | feedstock availability, over *c* | quality specs, over *q* |
+| **Staff roster** | staff *e*, shifts *t* | *only if* headcount carries across periods | cover per shift; hours per person | rest rules, over consecutive *t* |
+| **Battery dispatch** | hours *t*, \|*T*\| = 24 | state-of-charge balance, over *t* | power limit and energy capacity per *t* | the state-of-charge balance itself |
+| **Warehouse network** | plants *i*, warehouses *j*, customers *k* | node balance at each warehouse | plant supply; warehouse throughput | the warehouse node balance |
+
+::: {.foot}
+::: {.note}
+**The honest nuance.** The roster's balance row is arguable. If staff are simply assigned to shifts, the cover requirement is a capacity constraint with a ≥ sense and there is no balance at all. A balance appears only if a pool of people is carried across periods. Both readings are defensible — and the specification is where you say which one you chose.
+:::
+:::
+
+::: {.notes}
+**[00:32 – 00:34] · FOUR DOMAINS**
+
+**SAY —**
+
+"Four problems that look nothing like each other. A refinery blend, a nursing roster, a battery dispatching against a tariff, and a warehouse network.
+
+Same four columns. Only the index sets change.
+
+Read the second row carefully, because I have left an argument in it on purpose. Does a staff roster have a balance equation? If people are simply assigned to shifts, no — the cover requirement is a capacity constraint with a greater-than-or-equal sense, and there is no balance anywhere in the model. A balance only appears if you are carrying a pool of people across periods.
+
+Both readings are defensible. Neither is wrong. And the place where you say which one you chose is the specification. That is the third time in half an hour that the answer to a real modeling question has been 'write it down in the specification', and it will not be the last."
+
+**DO —** THIS IS THE CUTTABLE SLIDE in block 1. If you are past 00:36, say the last sentence only and move to the warm-up.
+:::
+
+## The warm-up, stages 1 to 3 · the finishing shop
+
+::: {.kicker .c-teal}
+All four patterns, in a model small enough to hold in the head
+:::
+
+A finishing shop attached to the electrolyte plant packages two grades for zinc-air cell assembly, a **Standard** grade and a **HighPurity** grade. Both pass through the same three operations in order: mixing, ion-exchange purification, and filling. The three operations have different weekly hour allocations because they are shared with other campaigns. HighPurity is worth more per tonne but spends four times as long in purification. Everything finished is sold.
+
+| Operation | Standard, h/t | HighPurity, h/t | Available, h/week |
+|---|---|---|---|
+| Mixing | 2 | 3 | 120 |
+| Ion-exchange purification | 1 | 4 | 104 |
+| Filling | 1 | 1 | 44 |
+| **Contribution margin, USD/t** | **520** | **790** | |
+
+::: {.foot}
+::: {.note}
+**Stage 2, restrictions in words.** R1. On each operation, the hours consumed cannot exceed the hours allocated. R2. Production cannot be negative. R3. There is no demand limit, because everything finished is sold — *and R3 is an assumption, numbered so that it can be challenged.* &nbsp; **Stage 3.** max Σ<sub>*p*</sub> *c*<sub>*p*</sub> *x*<sub>*p*</sub> subject to Σ<sub>*p*</sub> *a*<sub>*sp*</sub> *x*<sub>*p*</sub> ≤ *b*<sub>*s*</sub> for every *s*, with *x*<sub>*p*</sub> ≥ 0 and [h/t]·[t/week] = [h/week] on every row.
+:::
+:::
+
+::: {.notes}
+**[00:34 – 00:37] · THE WARM-UP, STAGES 1 TO 3**
+
+**SAY —**
+
+"One small model, walked quickly, so that you see all four patterns in something you can hold in your head.
+
+A finishing shop. Two grades, three operations, hours allocated per week because the operations are shared with other campaigns. HighPurity earns more per tonne and spends four times as long in purification.
+
+Pattern one: two index sets, grades and operations. Pattern three: three capacity rows, one per operation. Pattern four: both grades appear in every row, which is what makes it one problem rather than two.
+
+Stage two is at the bottom, three numbered restrictions, and restriction three is an assumption. Everything finished is sold. That is not a fact about the plant. It is my decision, and it has a number so that somebody can argue with it.
+
+Stage three writes itself, because stage two did the work. Hours per tonne times tonnes per week gives hours per week on every row."
+
+**DO —**
+
+- Do not derive anything here. This slide is a two-minute run-through; the answer slide is where you slow down.
+- If you are behind, this is the pair of slides to compress — say the numbers and go. Do not compress the specification template.
+:::
+
+## The warm-up, stages 4 and 5 · the answer and what it says
+
+::: {.kicker .c-amber}
+Busiest and binding are different words
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+| Operation | Used, h | Avail., h | Slack, h | Dual, USD/h |
+|---|---|---|---|---|
+| Mixing | 108 | 120 | 12 | **0** |
+| Purification | 104 | 104 | 0 | **90** |
+| Filling | 44 | 44 | 0 | **430** |
+
+::: {.cards}
+::: {.card .c-teal}
+**The answer**
+
+**24 t of Standard and 20 t of HighPurity**, for **28,280.00 USD** of contribution margin in the week.
+
+Verified two ways in the notebook: vertex enumeration in NumPy, and a finite-difference check on every dual.
+:::
+:::
+:::
+
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-rust}
+**The engineering reading**
+
+Buy an overtime shift on **filling** first, not on the operation that looks busiest.
+
+Mixing consumes 108 hours, more than either other operation in absolute terms, and it is worth **exactly zero** at the margin.
+:::
+
+::: {.card .c-slate}
+**And the limitation we spend the rest of the day removing**
+
+This plans one week in isolation. It has no memory. It cannot build stock now for a peak later, and it cannot say that a shortfall this week must be delivered next week.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:37 – 00:40] · THE WARM-UP, STAGES 4 AND 5**
+
+**SAY —**
+
+"Twenty-four tonnes of Standard, twenty of HighPurity, twenty-eight thousand two hundred and eighty dollars for the week.
+
+Now the column on the right, because it is the one an operations manager cares about. An extra hour of filling is worth four hundred and thirty dollars. An extra hour of purification is worth ninety. An extra hour of mixing is worth nothing at all.
+
+And look at what mixing is doing. It is consuming a hundred and eight hours, more than either of the other two operations in absolute terms. It is the busiest thing in the shop. It is worth zero. 'Busiest' and 'binding' are different words, and the difference between them is the reason this course exists.
+
+Week one told you why that optimum sits at a vertex, and I am not doing it again.
+
+Here is what is wrong with this model. It has no memory. It plans one week, in isolation, and it cannot build stock now for a peak later, and it cannot say that what you fail to deliver this week you owe next week. The rest of this hour is about giving it a memory."
+
+**DO —**
+
+- Numbers to have in your mouth: 108 of 120, 104 of 104, 44 of 44; duals 0, 90, 430. They return in the summary.
+- Ninety times a hundred and four, plus four hundred and thirty times forty-four, is twenty-eight thousand two hundred and eighty. If a strong student notices, confirm it and say Week 8.
+:::
+
+## A time index turns one decision into a plan
+
+::: {.kicker .c-teal}
+Pattern 4, drawn
+:::
+
+<svg viewBox="0 0 900 250" style="width:100%;max-width:980px" role="img" aria-label="Six period boxes labelled t equals 1 through 6 in a row, joined left to right by amber arrows carrying inventory and backlog from each period into the next, with a production arrow entering each box from above and a demand arrow leaving each box below.">
+<g fill="#F3F0EB" stroke="#0F6E6B" stroke-width="2.5"><rect x="40" y="100" width="100" height="56" rx="5"/><rect x="185" y="100" width="100" height="56" rx="5"/><rect x="330" y="100" width="100" height="56" rx="5"/><rect x="475" y="100" width="100" height="56" rx="5"/><rect x="620" y="100" width="100" height="56" rx="5"/><rect x="765" y="100" width="100" height="56" rx="5"/></g>
+<g font-size="18" fill="#1C242B" text-anchor="middle"><text x="90" y="134">t = 1</text><text x="235" y="134">t = 2</text><text x="380" y="134">t = 3</text><text x="525" y="134">t = 4</text><text x="670" y="134">t = 5</text><text x="815" y="134">t = 6</text></g>
+<g stroke="#E29A2D" stroke-width="3"><line x1="143" y1="128" x2="177" y2="128"/><line x1="288" y1="128" x2="322" y2="128"/><line x1="433" y1="128" x2="467" y2="128"/><line x1="578" y1="128" x2="612" y2="128"/><line x1="723" y1="128" x2="757" y2="128"/></g>
+<g fill="#E29A2D"><polygon points="185,128 171,121 171,135"/><polygon points="330,128 316,121 316,135"/><polygon points="475,128 461,121 461,135"/><polygon points="620,128 606,121 606,135"/><polygon points="765,128 751,121 751,135"/></g>
+<g font-size="14" fill="#E29A2D" text-anchor="middle"><text x="162" y="92">Iₜ, Bₜ</text><text x="307" y="92">Iₜ, Bₜ</text><text x="452" y="92">Iₜ, Bₜ</text><text x="597" y="92">Iₜ, Bₜ</text><text x="742" y="92">Iₜ, Bₜ</text></g>
+<g stroke="#0F6E6B" stroke-width="2.2"><line x1="90" y1="56" x2="90" y2="94"/><line x1="235" y1="56" x2="235" y2="94"/><line x1="380" y1="56" x2="380" y2="94"/><line x1="525" y1="56" x2="525" y2="94"/><line x1="670" y1="56" x2="670" y2="94"/><line x1="815" y1="56" x2="815" y2="94"/></g>
+<g fill="#0F6E6B"><polygon points="90,100 83,88 97,88"/><polygon points="235,100 228,88 242,88"/><polygon points="380,100 373,88 387,88"/><polygon points="525,100 518,88 532,88"/><polygon points="670,100 663,88 677,88"/><polygon points="815,100 808,88 822,88"/></g>
+<g stroke="#BE654C" stroke-width="2.2"><line x1="90" y1="156" x2="90" y2="196"/><line x1="235" y1="156" x2="235" y2="196"/><line x1="380" y1="156" x2="380" y2="196"/><line x1="525" y1="156" x2="525" y2="196"/><line x1="670" y1="156" x2="670" y2="196"/><line x1="815" y1="156" x2="815" y2="196"/></g>
+<g fill="#BE654C"><polygon points="90,204 83,192 97,192"/><polygon points="235,204 228,192 242,192"/><polygon points="380,204 373,192 387,192"/><polygon points="525,204 518,192 532,192"/><polygon points="670,204 663,192 677,192"/><polygon points="815,204 808,192 822,192"/></g>
+<text x="14" y="46" font-size="16" fill="#0F6E6B">xₜ produced</text>
+<text x="14" y="228" font-size="16" fill="#BE654C">dₜ shipped</text>
+<text x="884" y="46" font-size="15" fill="#333F4A" text-anchor="end">the amber arrows are the only place consecutive periods meet</text>
+<text x="884" y="228" font-size="15" fill="#333F4A" text-anchor="end">cover them and six independent problems are left</text>
+</svg>
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.note}
+Without the amber arrows these are six **independent** problems. Each would be solved on its own, and nothing at all would be gained by solving them together. The optimization would be arithmetic.
+:::
+:::
+
+::: {.column width="49%"}
+::: {.flag}
+The amber arrows are the **linking constraint** of pattern 4. Everything a multiperiod model can do about seasonality, a demand spike or a cost profile passes through them.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:40 – 00:44] · WHAT A TIME INDEX DOES**
+
+**SAY —**
+
+"Six periods. Into each one, production. Out of each one, demand. And between them, the amber arrows.
+
+Cover the amber arrows with your hand and look at what is left. Six boxes with nothing joining them. Six completely independent problems, each of which you would solve on its own, and solving them together would gain you exactly nothing. That is not optimization. That is arithmetic done six times.
+
+Put the amber arrows back and it becomes one problem with a memory. Everything a multiperiod model can do — pre-building for a peak, riding out a price spike, deciding to be late on purpose because being late is cheaper than being early — every bit of it passes through those five arrows.
+
+Five arrows. That is the whole of pattern four in this model."
+
+**DO —** Physically cover the arrows on the screen with your hand while you say it. The gesture does the teaching.
+:::
+
+## The inventory balance
+
+::: {.kicker .c-amber}
+Pattern 2, with the boundary drawn around a period
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+<svg viewBox="0 0 520 300" style="width:100%;max-width:560px" role="img" aria-label="A control volume drawn around a single period, with net stock flowing in from the left, production entering from above, demand leaving below, and net stock flowing out to the right.">
+<rect x="180" y="110" width="160" height="80" rx="6" fill="#F3F0EB" stroke="#0F6E6B" stroke-width="3"/>
+<text x="260" y="157" font-size="20" fill="#1C242B" text-anchor="middle">period t</text>
+<line x1="30" y1="150" x2="168" y2="150" stroke="#0F6E6B" stroke-width="2.6"/>
+<polygon points="180,150 166,142 166,158" fill="#0F6E6B"/>
+<text x="98" y="138" font-size="16" fill="#0F6E6B" text-anchor="middle">Iₜ₋₁ − Bₜ₋₁</text>
+<line x1="340" y1="150" x2="478" y2="150" stroke="#0F6E6B" stroke-width="2.6"/>
+<polygon points="490,150 476,142 476,158" fill="#0F6E6B"/>
+<text x="416" y="138" font-size="16" fill="#0F6E6B" text-anchor="middle">Iₜ − Bₜ</text>
+<line x1="260" y1="34" x2="260" y2="98" stroke="#E29A2D" stroke-width="2.6"/>
+<polygon points="260,110 252,96 268,96" fill="#E29A2D"/>
+<text x="274" y="66" font-size="16" fill="#E29A2D">xₜ produced</text>
+<line x1="260" y1="190" x2="260" y2="254" stroke="#BE654C" stroke-width="2.6"/>
+<polygon points="260,266 252,252 268,252" fill="#BE654C"/>
+<text x="274" y="228" font-size="16" fill="#BE654C">dₜ shipped</text>
+<text x="260" y="292" font-size="15" fill="#66727C" text-anchor="middle">same law, new boundary</text>
+</svg>
+:::
+
+::: {.column width="52%"}
+::: {.spec}
+[Accumulation equals inflow minus outflow, around a period]{.eyebrow}
+
+*I*<sub>*t*−1</sub> − *B*<sub>*t*−1</sub> + *x*<sub>*t*</sub> − *d*<sub>*t*</sub> &nbsp;=&nbsp; *I*<sub>*t*</sub> − *B*<sub>*t*</sub> &nbsp;&nbsp; for every *t* ∈ *T*
+
+with *I*<sub>0</sub> given and *B*<sub>0</sub> = 0.
+:::
+
+::: {.dots}
+- **The net stock position** Positive means stock on hand at the close of the period, negative means stock owed to a customer.
+- **The same law, a new boundary** Drawn around a period rather than around a vessel.
+- **Patterns 1 and 2 together** Written once, and expanded over the ordered set of periods.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:44 – 00:48] · THE INVENTORY BALANCE**
+
+**SAY —**
+
+"Here is the equation the whole afternoon runs on, and here is the picture of it.
+
+A control volume. You have drawn hundreds of these. The only unusual thing is what it is drawn around: not a vessel, a *month*.
+
+In from the left, what you had at the end of last month. In from the top, what you make. Out of the bottom, what you ship. Out to the right, what you have at the end of this month. Accumulation equals inflow minus outflow, exactly as it has been since your second year.
+
+Two refinements. The net position is written as I minus B, inventory minus backlog. Positive means stock sitting in the warehouse; negative means stock you owe a customer. I will justify splitting it into two variables on the next slide but one.
+
+And the boundary conditions. Opening inventory is given — it is a number from the stock ledger. Opening backlog is zero, because you do not start a plan already owing somebody something. If you do, that is a data problem, not a modeling one."
+
+**DO —**
+
+- Trace the four arrows with your finger while you name them. Do not just point at the equation.
+- Say once more: a missing balance is the most expensive class of error, because the model still solves and still reports a plan.
+:::
+
+## The same model in the spreadsheet: periods across columns {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+The sheet you are about to complete
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+<svg viewBox="0 0 560 320" style="width:100%;max-width:600px" role="img" aria-label="A spreadsheet layout with the six periods running across columns C to H, three blue rows of given data, three green rows of changing cells for production inventory and backlog, and two teal constraint row blocks below for the balance and the capacity.">
+<g font-size="13" fill="#66727C" text-anchor="middle"><text x="78" y="26">B</text><text x="181" y="26">C</text><text x="243" y="26">D</text><text x="305" y="26">E</text><text x="367" y="26">F</text><text x="429" y="26">G</text><text x="491" y="26">H</text></g>
+<g stroke="#B9C1C6" stroke-width="1"><rect x="8" y="34" width="142" height="26" fill="#B9C1C6" fill-opacity="0.45"/><rect x="150" y="34" width="372" height="26" fill="#B9C1C6" fill-opacity="0.45"/></g>
+<g font-size="13" fill="#1C242B" text-anchor="middle"><text x="181" y="52">1</text><text x="243" y="52">2</text><text x="305" y="52">3</text><text x="367" y="52">4</text><text x="429" y="52">5</text><text x="491" y="52">6</text></g>
+<text x="14" y="52" font-size="13" fill="#1C242B">period, row 5</text>
+<g stroke="#B9C1C6" stroke-width="1" fill="#FFFFFF"><rect x="8" y="60" width="142" height="26"/><rect x="8" y="86" width="142" height="26"/><rect x="8" y="112" width="142" height="26"/><rect x="150" y="60" width="372" height="26"/><rect x="150" y="86" width="372" height="26"/><rect x="150" y="112" width="372" height="26"/></g>
+<g font-size="13" fill="#5A91BE"><text x="14" y="78">demand dₜ · row 6</text><text x="14" y="104">capacity Cₜ · row 7</text><text x="14" y="130">unit cost cₜ · row 8</text></g>
+<g font-size="13" fill="#5A91BE" text-anchor="middle"><text x="181" y="78">120</text><text x="243" y="78">150</text><text x="305" y="78">180</text><text x="367" y="78">210</text><text x="429" y="78">160</text><text x="491" y="78">130</text><text x="336" y="104">170 in every period</text><text x="181" y="130">42</text><text x="243" y="130">42</text><text x="305" y="130">45</text><text x="367" y="130">48</text><text x="429" y="130">46</text><text x="491" y="130">43</text></g>
+<g stroke="#83A462" stroke-width="1.4" fill="#83A462" fill-opacity="0.22"><rect x="8" y="146" width="142" height="26"/><rect x="8" y="172" width="142" height="26"/><rect x="8" y="198" width="142" height="26"/><rect x="150" y="146" width="372" height="26"/><rect x="150" y="172" width="372" height="26"/><rect x="150" y="198" width="372" height="26"/></g>
+<g font-size="13" fill="#1C242B"><text x="14" y="164">production xₜ · row 16</text><text x="14" y="190">inventory Iₜ · row 17</text><text x="14" y="216">backlog Bₜ · row 18</text></g>
+<text x="336" y="190" font-size="13" fill="#333F4A" text-anchor="middle">C16:H18 — 18 changing cells</text>
+<g stroke="#0F6E6B" stroke-width="1.6" fill="#0F6E6B" fill-opacity="0.10"><rect x="8" y="236" width="250" height="30"/><rect x="8" y="270" width="250" height="30"/></g>
+<g font-size="13" fill="#1C242B"><text x="16" y="255">balance C28:C33 = E28:E33</text><text x="16" y="289">capacity C34:C39 ≤ E34:E39</text></g>
+<rect x="272" y="236" width="250" height="64" fill="#DFC98F" fill-opacity="0.45" stroke="#E29A2D" stroke-width="1.6"/>
+<text x="282" y="256" font-size="13" fill="#1C242B">C40: B₆ = 0 · the only scalar row</text>
+<text x="282" y="277" font-size="13" fill="#1C242B">C24: objective, Min, sum of C21:C23</text>
+<text x="282" y="296" font-size="12" fill="#66727C">t − 1 is the column to the left</text>
+</svg>
+:::
+
+::: {.column width="46%"}
+| Algebraic symbol | Range | Pyomo component |
+|---|---|---|
+| *t* ∈ *T* | `C5:H5` | `Set(..., ordered=True)` |
+| *d*<sub>*t*</sub>, *C*<sub>*t*</sub>, *c*<sub>*t*</sub> | `C6:H8` | `Param(m.T, ...)` |
+| *h*, *b*, *I*<sub>0</sub>, *B*<sub>0</sub> | `C9:H10`, `C11:C12` | scalar `Param` |
+| *x*, *I*, *B* ≥ 0 | `C16:H18` | three `Var(m.T, ...)` |
+| balance ∀ *t* | `C28:C33` | `Constraint(m.T, rule=...)` |
+| *x*<sub>*t*</sub> ≤ *C*<sub>*t*</sub> | `C34:C39` | `Constraint(m.T, ...)` |
+| objective | `C24` | `Objective(sense=minimize)` |
+
+::: {.note}
+**The transposition.** In Week 1 the model ran down the rows. Here periods run across columns, so each constraint family becomes a *block of rows*. Only the layout changed.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:48 – 00:52] · THE SPREADSHEET LAYOUT**
+
+**SAY —**
+
+"This is the sheet you open in five minutes, so look at it properly.
+
+Periods run across the columns, C to H. That is the whole design decision, and it is there because 'the column immediately to the left' is what t minus one means. Ordered set, spreadsheet edition.
+
+Three blue rows of given data: demand, capacity, unit cost. Blue means given, exactly as in Week 1. Three green rows of changing cells: production, inventory, backlog. Green means the solver moves it. Eighteen cells, and that number should be familiar from two slides ago.
+
+Then the constraint blocks. Six balance rows, one per period, each an explicit row with a VALUE, a relation and a right-hand side. Six capacity rows. One scalar row for the horizon-end condition. And the objective in C24, three terms summed from three rows above it.
+
+The mapping on the right is the thing to photograph. Every spreadsheet range in the left column, every algebraic symbol in the middle, every Pyomo component on the right. Those are three notations for one object, and you will see all three side by side at half past two.
+
+One transposition to notice, because it confuses people who did Week 1 properly. Last week the model ran *down* the rows and VALUE, relation and RHS were columns. Here periods run across, so each indexed constraint family becomes a *block of rows*. The algebra did not change. Only the layout did."
+
+**DO —**
+
+- CHECKPOINT: you must be here by 00:48. If it is later, say the mapping table in three sentences and move on — the students meet this sheet again on their own, with the pack beside them.
+- Project the actual STUDENT workbook next to this slide if the machine allows it. Point at the yellow cells they have to fill.
+:::
+
+## HW1 is released today
+
+::: {.kicker .c-amber}
+Due Week 4
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.numbered .n4}
+1. **Released today, Week 2. Due Week 4.** On myCourseVille at the end of this session.
+2. **Linear and network model construction.** The linear half rests on today; the network half needs Week 3, so start with the linear half now.
+3. **Every question that asks for a model asks for the structured specification first**, exactly as in Part A of the pack, and marks it separately.
+4. **One question asks for a multiperiod plan** built in OpenSolver and reproduced in Pyomo, with the two answers compared.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-rust}
+**The instruction that carries the most marks**
+
+**Write the specification before any algebra.**
+
+A correct model with no specification loses marks. A specification that states its assumptions and its start-versus-end convention earns them even where the algebra slips.
+:::
+
+::: {.card .c-teal}
+**Two habits to carry into it**
+
+A unit on every symbol, and a bound on every variable. Both are checkable by a reader in thirty seconds, and both catch the errors a solver never reports.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:52 – 00:54] · HW1**
+
+**SAY —**
+
+"HW1 goes live on myCourseVille at the end of this session. Due in Week 4.
+
+Linear and network model construction. The linear half rests entirely on today, so start it this week. The network half needs next Monday.
+
+Now the thing that carries the most marks, and I am saying it once, clearly. Every question that asks for a model asks for the **structured specification first**, exactly as in Part A of the pack, and it is marked separately.
+
+Which means this. A correct model with no specification loses marks. And a specification that states its assumptions, and says whether inventory is measured at the start or the end of the period, earns marks even where the algebra slips afterwards.
+
+That is not me being pedantic. It is the same claim I opened with at five past nine: the specification is the deliverable, and the code is a translation of it."
+
+**DO —**
+
+- Confirm the PDF is visible before anyone leaves the room.
+- Expect "does the specification have to be typed?" — no, legible handwriting is fine, and photographing it is fine.
+:::
+
+## Your two hours, and what to hand in {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Before we meet again
+:::
+
+::: {.agenda}
+- [35 min]{.chip .c-teal} **A** Aurora Specialty Chemicals — write the specification table. No algebra, no formulas
+- [30 min]{.chip .c-sky} **B** Read the rest of the Week 2 slides — the convention, backlog, the complete model — and answer three questions
+- [40 min]{.chip .c-teal} **C** Complete the multiperiod sheet, predict one number before you re-solve, then check it in Pyomo
+- [15 min]{.chip .c-amber} **D** Open HW1 and start the linear half
+:::
+
+::: {.foot}
+::: {.punch}
+One PDF, on myCourseVille, before midnight this Friday, 21 August. Week 3 opens with the ambiguities you found in Part A.
+:::
+:::
+
+::: {.notes}
+**[00:54 – 00:58] · THE SELF-STUDY PACK**
+
+**SAY —**
+
+"Here are your two hours. The sheet in your hand has all of it, and the same sheet is on the course page.
+
+Part A is the activity we would have done in pairs. Aurora Specialty Chemicals — two grades, one reactor, four months, a warehouse. You write the specification table only. No algebra. No spreadsheet formulas. And then the part that matters more than the table: list two things in that description that two engineers could read two different ways. There are at least four. Finding them is the whole exercise.
+
+Part B is the rest of today's deck — the start-versus-end convention, backlog, the horizon end, the complete model. Three questions at the end.
+
+Part C is the sheet. Complete it, solve it, and before you change anything, write down a prediction: if period-4 capacity rises by one tonne, how much does total cost fall? Write the number first, then check. Then run the same model in Pyomo and confirm the two agree.
+
+Part D is HW1, which goes live today. The linear half rests entirely on this hour, so start it this week.
+
+One PDF, myCourseVille, before midnight on Friday the twenty-first. Week 3 opens with the ambiguities you found in Part A, so they need to be yours."
+
+**DO —**
+
+- Hand out the printed pack before you start speaking, not after.
+- Say Friday twice, and say the date.
+- Confirm HW1 is visible on myCourseVille before anyone leaves.
+:::
+
+{{< include _feedback.qmd >}}
