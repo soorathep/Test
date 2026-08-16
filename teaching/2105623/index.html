@@ -45,6 +45,16 @@ description: Graduate course on optimization for chemical engineers — fifteen 
       </span>
       <span class="rf-get">Open →</span>
     </a>
+    {% if w.slides_alt %}
+    <a class="res-file" href="{{ site.baseurl }}/teaching/2105623/{{ w.slides_alt }}">
+      <span class="rf-kind">Week {{ w.n }}</span>
+      <span class="rf-body">
+        <span class="rf-label">{{ w.slides_alt_label }}</span>
+        <span class="rf-desc">{{ w.dates }} · the shortened session</span>
+      </span>
+      <span class="rf-get">Open →</span>
+    </a>
+    {% endif %}
     {% endfor %}
   </div>
   {% endif %}

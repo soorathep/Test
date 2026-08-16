@@ -10,6 +10,9 @@
 #     tool    the hands-on tool for that session
 #     slides  optional. File name under teaching/2105623/, e.g. w01.html.
 #             Add it and the link appears by itself.
+#     slides_alt / slides_alt_label
+#             optional second deck for the same week — a shortened version,
+#             a guest lecture. Both keys or neither.
 #     files[] optional. Student downloads for that week. Each entry:
 #               name  what the student sees
 #               desc  one line
@@ -62,6 +65,8 @@ weeks:
     block: Orientation
     tool: Excel Solver
     slides: w01.html
+    slides_alt: w01-1h.html
+    slides_alt_label: "Introduction and the optimization workflow — one-hour version"
     files:
       - name: Product mix workbook
         desc: The Week 1 model. Fill in the yellow cells, then run Solver
@@ -75,6 +80,10 @@ weeks:
         desc: One product mix model in Excel, Pyomo, JuMP and GAMS, side by side
         kind: Notebook
         file: w01/appendix-same-model-four-tools.ipynb
+      - name: "Week 1 self-study pack"
+        desc: The five parts to work through on your own after the shortened session. Due Friday 14 August, midnight
+        kind: PDF
+        file: w01/w01-self-study-pack.pdf
   - n: 2
     title: "Modeling I: linear models, product mix, multiperiod planning and inventory"
     dates: 17 Aug

@@ -1,0 +1,1036 @@
+---
+title: "Efficient literature review and evidence mapping"
+subtitle: "Week 3 · 2105620 Research Communication Skills for Chemical Engineers"
+author: "Soorathep Kheawhom"
+date: 2026-08-20
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Three hours, at your own keyboard {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [10 min]{.chip .c-teal} Why a pile of papers is not a review
+- [8 min]{.chip .c-rust} Laptop check — open Zotero now
+- [22 min]{.chip .c-teal} The search as a reproducible object
+- [15 min]{.chip .c-amber} Activity 1 — build a search you could publish
+- [10 min]{.chip .c-mist} Break
+- [35 min]{.chip .c-teal} Zotero laboratory — capture, repair, organise, cite
+- [15 min]{.chip .c-teal} Screening in two passes
+- [15 min]{.chip .c-amber} Activity 2 — the evidence matrix
+- [10 min]{.chip .c-mist} Break
+- [20 min]{.chip .c-teal} Reading a gap out of the matrix
+- [10 min]{.chip .c-slate} Assignment 1 · Week 4 is a video
+:::
+
+::: {.notes}
+**[00:00 – 00:03] · AGENDA**
+
+**SAY —**
+
+"This is a laboratory, not a lecture. For most of the next three hours your hands are on your own keyboard and mine are not.
+
+Two things before we start. One: the block at eleven-ten is the only part where you must keep up with me live, so if something on your machine is broken, we fix it before then, not during it. Two: the last block is Assignment 1, and it is the first assignment the AI declaration applies to."
+
+**DO —** Write the two break return times on the board now, as in Weeks 1 and 2.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+A literature review is not a pile<br>of papers you have read.
+:::
+
+::: {.statement-hi}
+It is a map of claims,<br>and the evidence for each one.
+:::
+
+::: {.note}
+Week 1: a list of papers is a bibliography. Today you build the thing that makes it a review.
+:::
+
+::: {.notes}
+**[00:00 – 00:06] · THE THESIS OF THE SESSION**
+
+**SAY —**
+
+"In Week 1 I said a list of papers is not a review, it is a bibliography. Today we build the difference.
+
+A review is a map. Claims on one axis, evidence on the other. And the reason to build the map is not tidiness."
+
+*[ pause ]*
+
+"It is that a map has features a pile does not. Two papers that disagree sit next to each other in a table and the disagreement is unmissable. In a stack of PDFs it is invisible — you read one in March and the other in July and you never notice.
+
+That is what we are doing today. And in Week 5, the map is what you will write your gap statement out of."
+
+**DO —** Do not rush this. It is the whole argument of the session in two sentences.
+:::
+
+## What the map buys you
+
+::: {.kicker .c-amber}
+Why bother
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[]{.dot}
+
+### You stop re-reading
+
+A paper you have mapped is a row you can consult. A paper you have only read is one you will open again in six months and re-read from the start.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Disagreements surface
+
+Two rows, one column apart. This is the single most common source of a real research question.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### Empty columns are findings
+
+If nobody reports a quantity, that is not a hole in your reading. It is a hole in the field.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+All three of these are invisible when your literature lives in a folder of PDFs named `paper1.pdf`.
+:::
+:::
+
+::: {.notes}
+**[00:06 – 00:10] · WHAT THE MAP BUYS YOU**
+
+**SAY —**
+
+"Three concrete returns.
+
+First: you stop re-reading. Be honest — how many of you have opened a paper, realised you read it last year, and read it again because you could not remember what it concluded? That is the cost of not mapping.
+
+Second: disagreements surface. Two rows, one column apart. In my experience this is where most genuine research questions come from — not from a hole in the literature, but from a contradiction in it.
+
+Third, and this one is subtle: an empty column is a finding. If nobody in your table reports areal capacity, that is not you having read badly. That is the field having a hole, and you can say so in print."
+
+**DO —** Ask the re-reading question and wait for hands. Most go up. That is the moment the room decides this session is worth their attention.
+:::
+
+## Everybody open Zotero. Now. {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+Laptop check · 8 minutes
+:::
+
+::: {.numbered .n3}
+1. **Open the desktop app** If it is not there, install it now from zotero.org/download while I talk
+2. **Open a journal page and look for the connector icon** In the browser toolbar. No icon: zotero.org/download/connectors
+3. **Raise a hand if either one failed** We fix it now, not at eleven-ten
+:::
+
+::: {.foot}
+::: {.punch}
+Two minutes per machine, maximum. After that you work with a neighbour and we fix yours in the break.
+:::
+:::
+
+::: {.notes}
+**[00:10 – 00:18] · THE LAPTOP CHECK**
+
+**SAY —**
+
+"Everyone open Zotero. Not later — now, while I am still talking.
+
+Then open any journal article page and look for the connector icon in your browser toolbar.
+
+If either of those failed, hand up. And here is the rule, so nobody takes it personally: I will spend two minutes on any one machine, then you work with the person next to you and we fix yours in the break. With fifteen people in the room I cannot debug one laptop for ten minutes. Being paired is not a penalty, it is arithmetic."
+
+**DO — the four failures you will actually see:**
+
+- **macOS says "Zotero is damaged and can't be opened."** Delete it from Applications and reinstall from the download page. Their data is untouched. This is usually a Migration Assistant artefact from moving to a new Mac.
+- **Connector icon missing in Chrome.** Almost always an out-of-date Chrome — only current Stable is supported. Update Chrome first.
+- **Nothing saves on campus wifi.** Connector preferences → Proxies → delete the stored proxy entry. Note this pane does not exist in Safari, so move that student to Chrome or Firefox.
+- **No laptop at all.** Pair immediately; the handout lets them redo everything at home.
+
+Ask the three or four confident students to sit at the ends of rows before the session starts — they become your second pair of hands.
+:::
+
+## The search {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 2 · 22 minutes
+:::
+
+::: {.lede}
+A search is not something you do. It is something you write down, so that somebody else can run it and get your number.
+:::
+
+::: {.notes}
+**[00:18] · SECTION DIVIDER**
+
+**SAY —**
+
+"Most of you search the way you use Google: type a long phrase, take the first page, stop. That works for finding one paper. It does not work for a review, because a review has to state what it looked at — and that means the search has to be an object you can write down."
+:::
+
+## Three blocks, joined by AND
+
+::: {.kicker .c-amber}
+Structure before syntax
+:::
+
+::: {.numbered .n3}
+1. **Material or system** What the work is made of, or acts on — the anode, the membrane, the catalyst, the feedstock
+2. **Process or phenomenon** What happens — dendrite growth, deactivation, fouling, selectivity, corrosion
+3. **Property or metric** What is measured — cycle life, coulombic efficiency, conversion, permeance
+:::
+
+::: {.foot}
+::: {.note}
+Inside a block, synonyms joined by OR. Between blocks, AND. Almost every chemical-engineering question decomposes this way.
+:::
+:::
+
+::: {.notes}
+**[00:18 – 00:26] · CONCEPT BLOCKS**
+
+**SAY —**
+
+"Before syntax, structure. Take your question apart into three blocks.
+
+What it is made of. What happens to it. What you measure.
+
+Inside a block, everything is joined by OR, because those are alternative names for the same idea. Between blocks, AND, because you want all three present.
+
+Try it on your own question in your head right now. Nearly every question in this department splits this way. If yours will not split into three, it is usually because it is really two questions."
+
+**DO —** Work one example on the board from a student's own topic, not a prepared one. It is more convincing and it takes ninety seconds.
+:::
+
+## The synonym you did not think of
+
+::: {.kicker .c-amber}
+Where searches fail
+:::
+
+::: {.dots}
+- **Spelling** sulfur / sulphur · aluminum / aluminium · these are different searches
+- **The older name** What the material was called before 2015. Reviewers who are older than you use it
+- **Abbreviation and expansion** Both. "SEI" and "solid electrolyte interphase" do not retrieve the same set
+- **Trade and systematic names** Nafion and perfluorosulfonic acid. One is in the title; the other is in the methods
+:::
+
+::: {.foot}
+::: {.punch}
+Forty hits and an empty field is almost never an empty field. It is a missing synonym — and a gap found that way is an artefact of your search.
+:::
+:::
+
+::: {.notes}
+**[00:26 – 00:33] · SYNONYMS**
+
+**SAY —**
+
+"This is where searches quietly fail, and the failure is dangerous because it looks like a discovery.
+
+Spelling. Sulfur with an f and sulphur with p-h are two different searches. So are aluminum and aluminium.
+
+The older name. Whatever your material was called before about 2015. The reviewer assessing your paper may well be using that word.
+
+The abbreviation and the expansion. Both. SEI and solid electrolyte interphase do not return the same set, because some authors never spell it out and some never abbreviate it.
+
+Trade name and systematic name — Nafion, and perfluorosulfonic acid.
+
+Now the important part. When you run a search, get forty hits, and conclude the field is empty — you have almost certainly missed a synonym. And a gap you find that way is not a gap in the field. It is an artefact of your own search, and a referee will find it in ten minutes."
+
+**DO —** This is the most useful slide in the block. Slow down.
+:::
+
+## Four operators, and where they apply {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Syntax
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| `AND` `OR` `NOT` | Use `NOT` sparingly. It removes papers you have not seen, and it removes them silently |
+| `"exact phrase"` | Quotes make a phrase one unit. Without them you get the words anywhere, in any order |
+| `dendrit*` | Truncation catches dendrite, dendrites, dendritic. Truncating too early catches too much |
+| Field limits | Title / abstract / keyword. The single most effective way to cut a result set without losing relevance |
+:::
+
+::: {.foot}
+::: {.note}
+Syntax differs between databases. What does not differ is that you must record which one you used.
+:::
+:::
+
+::: {.notes}
+**[00:33 – 00:38] · SYNTAX**
+
+**SAY —**
+
+"Four operators, and one warning.
+
+AND, OR, NOT. Be careful with NOT — it removes papers you have never seen, and it does it silently. I use it almost never.
+
+Quotation marks make a phrase one unit. Without them, 'zinc anode' returns anything containing both words anywhere.
+
+The asterisk truncates. Dendrit-star catches dendrite, dendrites, dendritic. But truncate too early and you drown.
+
+Field limits — restricting to title, abstract and keywords — are the most effective single refinement there is. It cuts the set hard without cutting relevance, because a paper that is genuinely about your topic will say so in one of those three places.
+
+The syntax varies between databases. What does not vary is that you have to record which database you used, because the same string gives different numbers in different places."
+:::
+
+## Write the search down like a result
+
+::: {.kicker .c-amber}
+The log line
+:::
+
+::: {.quotecard}
+Scopus · searched 20 Aug 2026 · TITLE-ABS-KEY( ("zinc anode" OR "Zn anode") AND (dendrit* OR "dendrite suppression") AND ("cycle life" OR "coulombic efficiency") ) · 2015–2026 · articles and reviews only · **412 hits**
+:::
+
+**Five things, every time:** database · date · the full string · the filters · the number of hits.
+
+::: {.foot}
+::: {.punch}
+If you cannot produce this line, your review has no Methods section — and a review without one is an opinion.
+:::
+:::
+
+::: {.notes}
+**[00:38 – 00:40] · THE LOG LINE**
+
+**SAY —**
+
+"Here is the object I want you to leave with. One line. Database, date, the whole string, the filters, the hit count.
+
+Five things, every time.
+
+Why the date? Because the database changes. Run this string next March and you get a different number, and if you did not record when you searched, nobody can tell whether your review is out of date or you made a mistake.
+
+And here is the blunt version. If you cannot produce this line, your review does not have a Methods section. A review without a Methods section is an opinion piece with citations."
+
+**DO —** Tell them to photograph this slide. They will need it in the next fifteen minutes and again for Assignment 1.
+:::
+
+## Build a search you could publish {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 1 · 15 minutes · your own topic
+:::
+
+::: {.lede}
+Eight minutes building and running.<br>Seven minutes reporting.
+:::
+
+::: {.flag}
+Use your own research question. Not a made-up one.
+:::
+
+::: {.notes}
+**[00:40] · ACTIVITY 1 — LAUNCH**
+
+**SAY —**
+
+"Your own question, not a practice one. The point is that you leave with a search you can actually use on Assignment 1."
+
+**DO —** Circulate. The two things to look for: students who have written one long phrase instead of three blocks, and students with fewer than three synonyms in any block. Both are fixable in thirty seconds if you catch them early.
+:::
+
+## What to do
+
+::: {.kicker .c-amber}
+Activity 1 · 8 min building, 7 min report
+:::
+
+::: {.numbered .n4}
+1. **Split** Your question into three blocks. Material · process · metric
+2. **List synonyms** At least three per block. Include the ones you would not use yourself
+3. **Run it** Record the hit count
+4. **Refine once** One filter only — date, document type, or title/abstract/keyword. Record the new count
+:::
+
+::: {.foot}
+::: {.flag}
+Then write the log line. That is what you report.
+:::
+:::
+
+::: {.notes}
+**[00:40 – 00:55] · ACTIVITY 1 — RUN AND REPORT**
+
+**SAY —**
+
+"Four steps on the sheet. Split, synonyms, run, refine once. Then write the log line — that is what you report back.
+
+Eight minutes. Go."
+
+*[ after eight minutes ]*
+
+"Three volunteers. Give me your two hit counts and what the refinement was."
+
+**DO —**
+
+- Take exactly three report-outs. More and you lose the block.
+- After the third, ask the room: **"whose search would give the same number if I ran it tomorrow?"** — that is the diagnostic question, not the hit counts.
+- Name the two failure patterns explicitly: too few synonyms, and the refinement they clicked in the interface but cannot describe. The second one is not reproducible and in a published review it is not defensible.
+:::
+
+## &nbsp; {.dark .break .c-teal background-color="#1C242B"}
+
+::: {.break-circle}
+[10]{}
+:::
+
+::: {.big-label}
+minute break
+:::
+
+::: {.note}
+Come back with Zotero open. Anyone still stuck — come and find me now.
+:::
+
+::: {.notes}
+**[01:00 – 01:10] · BREAK 1**
+
+**DO —** This is when you fix the machines you paired. Also open your own Zotero on the projector with the broken record already prepared, so the next block starts instantly.
+:::
+
+## Zotero {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 3 · 35 minutes · follow along
+:::
+
+::: {.lede}
+Six moves. Do each one on your own machine as I do it.
+:::
+
+::: {.notes}
+**[01:10] · SECTION DIVIDER**
+
+**SAY —**
+
+"Follow along. If you fall behind, say so — I would rather stop than have five people watching a demonstration they cannot repeat."
+:::
+
+## Six moves
+
+::: {.kicker .c-amber}
+The laboratory
+:::
+
+::: {.steps}
+::: {.step .c-teal}
+[1]{.n}[Capture]{.h}[three ways in]{.d}
+:::
+::: {.step .c-rust}
+[2]{.n}[Repair]{.h}[the metadata]{.d}
+:::
+::: {.step .c-amber}
+[3]{.n}[Organise]{.h}[folders vs labels]{.d}
+:::
+::: {.step .c-sage}
+[4]{.n}[Read]{.h}[and annotate]{.d}
+:::
+::: {.step .c-sky}
+[5]{.n}[Cite]{.h}[in your manuscript]{.d}
+:::
+::: {.step .c-plum}
+[6]{.n}[Share]{.h}[a group library]{.d}
+:::
+:::
+
+::: {.foot}
+::: {.note}
+Move 2 is the one that decides whether you are still using this in a year.
+:::
+:::
+
+::: {.notes}
+**[01:10 – 01:13] · THE SIX MOVES**
+
+**SAY —**
+
+"Six moves, in this order. And I will tell you in advance which one matters most: number two, repairing metadata. Everything else is convenience. Number two is the difference between a tool you still use in a year and one you abandon the night before a deadline."
+:::
+
+## Three ways in
+
+::: {.kicker .c-amber}
+Move 1 · capture
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[]{.dot}
+
+### The connector
+
+On a journal page, click the toolbar icon. Takes the record and usually the PDF.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Drag a PDF in
+
+Zotero tries to identify it. Sometimes it cannot — see move 2.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### By identifier
+
+DOI, ISBN, PubMed ID, arXiv ID, ADS Bibcode. Several at once, separated by spaces or line breaks.
+:::
+:::
+
+::: {.foot}
+::: {.flag}
+The third one is the fastest and the most accurate. Almost nobody uses it.
+:::
+
+::: {.source}
+zotero.org/support/adding_items_to_zotero — verified 16 August 2026
+:::
+:::
+
+::: {.notes}
+**[01:13 – 01:20] · CAPTURE**
+
+**DO —** Save three items live, one per method.
+
+**SAY —**
+
+"Three ways in. The connector on a journal page — one click, and it usually grabs the PDF too.
+
+Dragging a PDF in. Zotero tries to work out what it is. Sometimes it cannot, and that is move two.
+
+And the one almost nobody uses: add by identifier. The toolbar button takes a DOI, an ISBN, a PubMed ID, an arXiv ID. And you can paste a whole list at once, separated by spaces or line breaks.
+
+So when a supervisor emails you fifteen DOIs — that is one paste, not fifteen searches."
+
+**DO —** Actually paste several DOIs at once. The gasp is the point.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+A library full of broken metadata
+:::
+
+::: {.statement-hi}
+produces a broken bibliography —<br>and you find out the night before.
+:::
+
+::: {.note}
+Move 2. The five most valuable minutes in this session.
+:::
+
+::: {.notes}
+**[01:20 – 01:27] · REPAIR — THE CORE OF THE BLOCK**
+
+**DO —** Show the record you deliberately broke: title in ALL CAPS, journal as an unexpanded abbreviation, year missing.
+
+**SAY —**
+
+"This is what a bad capture looks like. Title in capitals, journal abbreviated, no year. Now watch what that does."
+
+*[ insert it as a citation and show the mangled output ]*
+
+"Two ways to fix it. By hand, field by field — which works and is slow. Or the fast way: delete it, and re-add it by DOI. Thirty seconds and it is perfect, because it came from the publisher's own record instead of a PDF's guesswork.
+
+I am spending time on this because of what happens otherwise. You collect two hundred references over two years without checking any of them, and at eleven at night before a submission your bibliography has fourteen entries in capital letters and three with no year. That is the moment people give up on reference managers and go back to typing them by hand — which is worse."
+
+**DO —** Then have them fix one broken record on their own machine before moving on. Do not just show it.
+:::
+
+## Folders and labels are not the same thing {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Move 3 · organise
+:::
+
+::: {.cards .feature}
+::: {.card .c-teal}
+[]{.dot}
+
+### Collections
+
+Folders. A paper sits in one. Organise these **by project** — one per chapter, one per manuscript.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Tags
+
+Labels. A paper can carry five. Organise these **by claim type** — `method`, `contradicts-X`, `key`, `to-read`.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+Deleting from a collection does not delete the item. That confuses everyone exactly once.
+:::
+:::
+
+::: {.notes}
+**[01:27 – 01:32] · ORGANISE**
+
+**SAY —**
+
+"Collections are folders. Tags are labels. The difference matters: a paper lives in one collection but can carry any number of tags.
+
+My advice — collections by project, tags by what the paper does for you. Method. Contradicts-such-and-such. Key. To-read.
+
+Then when you sit down to write the section on dendrite suppression, you filter on the tag and the relevant twelve papers appear, regardless of which project folder they were filed under.
+
+One thing that confuses everybody exactly once: removing an item from a collection does not delete it from your library. It is still there, under My Library."
+:::
+
+## Cite, then change your mind
+
+::: {.kicker .c-amber}
+Move 5 · the word processor
+:::
+
+::: {.dots}
+- **The plugin is already installed** Bundled with the app. It appears in Word and LibreOffice the first time you launch Zotero — there is nothing extra to download
+- **Google Docs works too** But through the browser connector, not the bundled plugin, and Zotero must be running
+- **LibreOffice needs Java** A JRE or JDK. This is the single most common setup failure
+- **Then switch the style** One menu. Every citation and the whole bibliography reformat
+:::
+
+::: {.foot}
+::: {.source}
+zotero.org/support/word_processor_integration · zotero.org/support/google_docs — verified 16 August 2026
+:::
+:::
+
+::: {.notes}
+**[01:32 – 01:40] · CITE — DO THIS LIVE**
+
+**DO —** Insert two citations into a document, insert the bibliography, then change the citation style from the menu and let the room watch everything reformat.
+
+**SAY —**
+
+"The plugin is not a separate download — it is bundled, and it installed itself into Word the first time you opened Zotero.
+
+Google Docs works as well, but through the browser connector rather than the bundled plugin, and Zotero has to be running.
+
+If you use LibreOffice you need Java installed. That is the most common reason this does not work.
+
+Now watch this."
+
+*[ change the style ]*
+
+"Every citation, and the whole bibliography, reformatted. That is what happens when a journal rejects you and the next one on your list wants a different style. Ten seconds instead of an evening."
+
+**DO —** This is the moment that converts the sceptics. Do not describe it — do it.
+:::
+
+## What it costs, and what it does not
+
+::: {.kicker .c-amber}
+Move 6 · sync and share
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Free]{.big}
+
+**Data syncing** — items, notes, tags, links. Unlimited, on a free account.
+:::
+
+::: {.card .c-amber}
+[300 MB]{.big}
+
+**File storage** free, then paid tiers. PDFs are files. This is the limit you will actually hit.
+:::
+
+::: {.card .c-sage}
+[Groups]{.big}
+
+Free, no limit on members. Only the **owner's** quota is charged for group files.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+So: sync your library everywhere for nothing. If you also sync every PDF, you will fill 300 MB and have to decide.
+:::
+
+::: {.source}
+zotero.org/storage · zotero.org/support/sync · zotero.org/support/groups — verified 16 August 2026
+:::
+:::
+
+::: {.notes}
+**[01:40 – 01:45] · SYNC, STORAGE AND GROUPS**
+
+**SAY —**
+
+"Two different things get called syncing, and the difference is money.
+
+Your library — the records, notes, tags — syncs free and without limit. Make an account and your library is on every machine you own, for nothing.
+
+Files are separate. Three hundred megabytes free. PDFs are files, so if you sync every PDF you will hit that, and then you either pay, or keep the PDFs local, or use your own WebDAV storage.
+
+Groups are free and there is no limit on members. Note who pays: only the group owner's quota is charged for group files. Which is why the course group is owned by me and not by any of you."
+
+**DO —** Create the course group live and send the invitations from the screen.
+:::
+
+## One warning about plugins {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+Before you go looking
+:::
+
+::: {.lede}
+Zotero itself does not maintain a plugin list, and its own documentation says plugins have **full access to your Zotero and your computer**, so install only from developers you trust.
+:::
+
+::: {.foot}
+::: {.note}
+Third-party plugins also break when Zotero updates — and it now ships a new major version every six to ten weeks. Useful ones exist. None of them is required for anything in this course.
+:::
+
+::: {.source}
+zotero.org/support/plugins · zotero.org/blog/a-faster-release-cycle-for-zotero — verified 16 August 2026
+:::
+:::
+
+::: {.notes}
+**[01:45 – 01:47] · PLUGINS**
+
+**SAY —**
+
+"You will find blog posts recommending plugins. Before you install one, two facts from Zotero's own documentation: they do not maintain a list of plugins, and a plugin has full access to your Zotero and to your computer.
+
+Add to that: Zotero now releases a new major version every six to ten weeks, and third-party plugins break on those releases.
+
+Useful ones exist. None of them is needed for anything in this course. If you install one, install it because you know who wrote it."
+
+**DO —** Do not demonstrate any plugin. If a student names one, acknowledge it and move on — a plugin that breaks in October will be remembered as your recommendation.
+:::
+
+## Two passes, and the criteria come first
+
+::: {.kicker .c-amber}
+Screening
+:::
+
+::: {.numbered .n3}
+1. **Write the criteria before you read** What makes a paper in-scope. Two or three lines, written down before you open anything
+2. **Pass 1 — title and abstract** Seconds each. In, out, or unsure. Never read the full text in this pass
+3. **Pass 2 — full text, only the survivors** And record why each exclusion was excluded, against a criterion
+:::
+
+::: {.foot}
+::: {.punch}
+Criteria written afterwards are not criteria. They are a description of what you happened to keep.
+:::
+:::
+
+::: {.notes}
+**[01:45 – 02:00] · SCREENING**
+
+**SAY —**
+
+"Four hundred hits. You are not going to read four hundred papers, and you should not try.
+
+Two passes. But before either of them, write down what makes a paper in-scope. Two or three lines. Before you open anything.
+
+Pass one is title and abstract only — seconds each. In, out, unsure. Do not start reading the full text; that is how an afternoon disappears.
+
+Pass two is full text, only on the survivors, and you record why each excluded paper was excluded, against a criterion you wrote earlier.
+
+Here is why the order matters. Criteria written afterwards are not criteria — they are a description of what you happened to keep. And that is exactly what a referee will accuse you of if your review does not say when the criteria were fixed."
+
+**DO —** If the room is quiet, ask how many have ever downloaded more than fifty PDFs for one project and read fewer than ten. Most hands go up.
+:::
+
+## The evidence matrix {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 2 · 15 minutes · in pairs
+:::
+
+::: {.lede}
+Four abstracts. One row each.<br>Then find where two of them disagree.
+:::
+
+::: {.flag}
+The four abstracts were written for this exercise. They are not real papers — do not cite them.
+:::
+
+::: {.notes}
+**[02:00] · ACTIVITY 2 — LAUNCH**
+
+**SAY —**
+
+"Four abstracts on the sheet. One row each in the matrix. Then two questions: where do two rows disagree, and what one experiment would settle it.
+
+One warning, and I will repeat it at the end: these four abstracts were written for this exercise. They are not real papers. Do not cite them, do not look for them."
+
+**DO —** Say the warning twice. Every year somebody tries to find them.
+:::
+
+## One row per paper
+
+::: {.kicker .c-amber}
+Activity 2 · 8 min filling, 7 min report
+:::
+
+::: {.evidence}
+| | |
+|---|---|
+| Claim | What the paper says is true — in one sentence, not a summary |
+| System | Material, electrolyte, cell format |
+| Conditions | Current density, depth of discharge, temperature, cycle count |
+| Metric | The number, with its units. If none is given, write **none** |
+| Limitation | What the authors themselves admit |
+:::
+
+::: {.foot}
+::: {.flag}
+Then: where do two rows disagree — and what single experiment would settle it?
+:::
+:::
+
+::: {.notes}
+**[02:00 – 02:15] · ACTIVITY 2 — RUN AND REPORT**
+
+**Answer key**
+
+- **A and B reach opposite conclusions about the same additive.** The resolution is in the Conditions column: different current density and different depth of discharge. Neither paper is wrong; they tested different regimes. This is the most common shape of a real research question.
+- **C reports a much longer cycle life but never states areal capacity**, so it cannot be compared with either A or B. Write **none** in that cell — the empty cell is the finding.
+- **D is a review that cites both A and B and does not notice they disagree.** Take this one last.
+
+**DO —**
+
+- Circulate and check they are writing *claims*, not summaries. "This paper is about zinc anodes" is a topic. "Additive X suppresses dendrites at low current density" is a claim.
+- Take the disagreement question first, D last.
+- The reason to end on D: a published review missed a contradiction that a pair of graduate students found in eight minutes with a table. That is what tells them the literature is not a solved problem — and that they are allowed to find things in it.
+:::
+
+## &nbsp; {.dark .break .c-amber background-color="#1C242B"}
+
+::: {.break-circle}
+[10]{}
+:::
+
+::: {.big-label}
+minute break
+:::
+
+::: {.note}
+Then: what your matrix is actually telling you
+:::
+
+::: {.notes}
+**[02:15 – 02:25] · BREAK 2**
+:::
+
+## Three gaps, three shapes {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Reading the matrix
+:::
+
+::: {.evidence}
+| | | |
+|---|---|---|
+| Two rows contradict | An unresolved question | "Reports disagree on whether … under X the effect is …, whereas under Y …" |
+| A column is empty for every row | Nobody has measured it | "No study to date reports … under … conditions" |
+| Every row shares one condition | The field has tested one regime only | "Existing work is confined to …; behaviour under … remains uncharacterised" |
+:::
+
+::: {.foot}
+::: {.note}
+Each of these is a sentence you can defend, because the table is the evidence for it.
+:::
+:::
+
+::: {.notes}
+**[02:25 – 02:35] · THREE SHAPES OF GAP**
+
+**SAY —**
+
+"Your matrix tells you three different kinds of thing, and they become three different sentences.
+
+Two rows contradict — that is an unresolved question, and it is the strongest of the three, because you are not claiming nobody looked. You are claiming the field does not agree.
+
+A column empty for every row — nobody has measured it. Careful here: make sure it is genuinely unmeasured and not just unreported in the four papers you happened to pick.
+
+Every row sharing one condition — the field has only tested one regime. Everyone works at low current density; nobody has gone high. That is a gap, and it is often the easiest one to fill.
+
+Notice what all three have in common: you can defend each of them, because the table is the evidence."
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+"Not much work has been done on X"<br>is none of those three.
+:::
+
+::: {.statement-hi}
+That is an absence.<br>A gap is what the absence costs us.
+:::
+
+::: {.note}
+Week 1, sentence 2. Most of you could not finish it. This table is how you finish it.
+:::
+
+::: {.notes}
+**[02:35 – 02:45] · DEBRIEF 2 — THE BRIDGE**
+
+**SAY —**
+
+"And now the sentence I want you to take away.
+
+'Not much work has been done on X' is none of those three things. It is an absence — a fact about the literature.
+
+A gap is a claim about what that absence costs us. What we cannot currently do, or predict, or explain, because of it.
+
+Some of you will remember this from the first week. Sentence two of your sixty-second pitch — the one most of you could not finish. This table is how you finish it. You are not being asked to be more eloquent. You are being asked to have the evidence in front of you.
+
+Week 5 takes the Introduction apart and asks you to write the gap statement your matrix implies. Come with a matrix."
+
+**DO —** Point back to Week 1 explicitly. Several of them will remember failing that sentence, and the callback is what makes the two sessions one course.
+:::
+
+## Assignment 1 · critical appraisal
+
+::: {.kicker .c-amber}
+Due before Week 5
+:::
+
+::: {.numbered .n4}
+1. **One paper from your own area** Chosen by you. Plus at least three neighbouring papers
+2. **An evidence matrix** Your paper and the three others, one row each
+3. **600 words** What it claims · what evidence supports it · what the matrix shows is missing
+4. **The AI-use declaration form attached** This is the first assignment it applies to
+:::
+
+::: {.foot}
+::: {.punch}
+Marked on the appraisal, not the summary. A summary of the paper scores nothing.
+:::
+:::
+
+::: {.notes}
+**[02:45 – 02:52] · ASSIGNMENT 1**
+
+**SAY —**
+
+"Assignment 1, due before Week 5.
+
+One paper from your own area, chosen by you, plus three neighbours. A matrix with four rows. Six hundred words on what it claims, what evidence supports that claim, and what the matrix shows is missing.
+
+And the AI declaration form attached — the one from last week. This is the first assignment it applies to. If you did not download it, it is on the course page.
+
+Last thing, and it is the thing people lose marks on. This is an appraisal, not a summary. If you tell me what the paper says, that scores nothing. I already know what it says. Tell me whether the evidence supports it."
+
+**DO —** Confirm the form is on the course page before they leave.
+:::
+
+## Week 4 is a video
+
+::: {.kicker .c-rust}
+Before we meet again
+:::
+
+::: {.numbered .n3}
+1. **Week 4 is pre-recorded** 27 / 30 August. I am away. The video goes up before the session and Prof. Supareak runs the room
+2. **Bring the same paper** Week 4 takes a whole paper apart. Bring the one you chose today, printed
+3. **Finish your matrix** Four rows. It is the spine of Assignment 1 and of Week 5
+:::
+
+::: {.foot}
+::: {.note}
+Week 4 · 27 August — Reverse-engineering I: IMRaD architecture · pre-recorded, facilitated by Prof. Supareak Praserthdam
+:::
+:::
+
+::: {.notes}
+**[02:52 – 02:55] · BEFORE NEXT WEEK**
+
+**SAY —**
+
+"Three things.
+
+Week four is pre-recorded. I am away that week. The video will be up before the session, and Professor Supareak will be in the room. **The class is not cancelled** — say that to anyone who missed it.
+
+Bring the same paper, printed. Week four takes a whole paper apart and it is much better with one you have already chosen.
+
+And finish your matrix. Four rows. It is the spine of Assignment 1 and the starting point of Week 5."
+
+**DO —** Say "the class is not cancelled" out loud. Every year somebody assumes it is.
+:::
+
+## &nbsp; {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.statement}
+You are not looking for papers.
+:::
+
+::: {.statement-hi}
+You are building the evidence<br>for a claim you have not made yet.
+:::
+
+::: {.flag}
+See you in the video.
+:::
+
+::: {.notes}
+**[02:55 – 03:00] · CLOSING**
+
+**SAY —**
+
+"One sentence to close.
+
+You are not looking for papers. You are building the evidence for a claim you have not made yet.
+
+That is why the matrix comes before the writing, and why Week 5 will be easy for whoever finishes theirs and hard for whoever does not.
+
+Questions?"
+
+**DO —** If the room is dry, end early. Three hours at a keyboard is tiring and goodwill is worth more than five extra minutes.
+:::
+
+{{< include _feedback.qmd >}}

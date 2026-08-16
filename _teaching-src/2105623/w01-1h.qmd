@@ -1,0 +1,928 @@
+---
+title: "Introduction and the optimization workflow"
+subtitle: "Week 1 · 2105623 Optimization of Chemical Processes · one-hour session"
+author: "Soorathep Kheawhom"
+date: 2026-08-10
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## One hour today. Two hours on your own. {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [5 min]{.chip .c-slate} What this course is, and what it is not
+- [35 min]{.chip .c-teal} What optimization is, and the five-stage workflow — walked end to end on one plant problem
+- [10 min]{.chip .c-teal} Three outcomes, how you are graded, and the AI policy
+- [10 min]{.chip .c-amber} Your two hours — the self-study pack, and what to hand in
+:::
+
+::: {.foot}
+::: {.flag}
+The two hours we are not spending together are not cancelled. They are on the course page, they have a deadline, and Week 2 opens with your answers.
+:::
+:::
+
+::: {.notes}
+**[00:00 – 00:03] · AGENDA, AND THE CHANGE**
+
+**SAY —**
+
+"Before anything else, a change to today. I have one hour, not three.
+
+Nothing is cancelled. The two hours we are not spending together are on the course page as a self-study pack, with a deadline, and Week 2 opens with what you wrote in it.
+
+So today I keep the part that is hardest to do alone: what optimization actually is, and the five-stage workflow, walked from end to end on one real plant problem. The reading, the classification, the geometry and the tool stack are the parts you can do on your own, and that is what the pack is."
+
+**DO —**
+
+- Say the change in the first thirty seconds. Do not bury it. A room that finds out at minute fifty feels cheated.
+- Write the five stage names vertically down the left edge of the board now and leave them there for the whole hour.
+- Do NOT promise to catch up the missing material in later weeks. The pack is the catch-up.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.statement}
+A solver will always answer<br>the question you asked it.
+:::
+
+::: {.statement-hi}
+This course is about making that<br>the question you meant.
+:::
+
+::: {.note}
+Fifteen weeks, and almost none of them are about the arithmetic.
+:::
+::::
+
+::: {.notes}
+**[00:03 – 00:05] · THE THESIS OF THE COURSE**
+
+**SAY —**
+
+"One sentence before anything else.
+
+A solver will always answer the question you asked it."
+
+*[ pause three seconds — do not fill it ]*
+
+"This course is about making that the question you meant.
+
+A modern solver will take a linear program with a million variables and hand it back before you finish your coffee. Almost nothing you meet this semester is hard because of the arithmetic. It is hard because deciding what is chosen, what is fixed, what is forbidden and what counts as better is genuinely difficult, and because a model that is wrong in a way that pays will hand you a confident number.
+
+Everything in the next fifteen weeks follows from that."
+
+**DO —** Return to this slide in the Activity 2 debrief, and again in Week 6, which is the whole session on model debugging.
+:::
+
+## By next Monday you should be able to {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Learning objectives · CLO 1 and CLO 4
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[]{.dot}
+
+### Name the four parts
+
+Variables, parameters, objective, constraints, and find each one in a written problem.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### State the five stages
+
+The artifact each stage produces, and the characteristic failure of each.
+:::
+
+::: {.card .c-sky}
+[]{.dot}
+
+### Classify a problem
+
+LP, NLP, IP, MILP, stochastic, global, and which solver class each one needs.
+:::
+
+::: {.card .c-sage}
+[]{.dot}
+
+### Explain the vertex
+
+Why an LP with a finite optimum has an optimal corner, geometrically.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### Separate the two failures
+
+Infeasible from unbounded, and what each says about the model.
+:::
+
+::: {.card .c-plum}
+[]{.dot}
+
+### Place the tools
+
+What the modeling layer and the solver layer each do, and which week uses which.
+:::
+:::
+
+::: {.notes}
+**[00:05 – 00:07] · OBJECTIVES**
+
+**SAY —**
+
+"Six things you should be able to do by next Monday. Three of them we do together in this hour; the other three come from the self-study pack. Read them in ten seconds; I am not going to talk through them.
+
+Notice that five of the six are about stating problems, not about solving them. That ratio is the course."
+
+**DO —**
+
+- Ten seconds only. This slide exists so that students can check themselves afterwards, not so you can narrate it.
+- Reading: Rao Ch. 1, Edgar Himmelblau and Lasdon Ch. 1 and Ch. 7, Williams Ch. 1. Say it once here and once at the end.
+:::
+
+## What optimization is, and the five stages {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Lecture block 1 · 35 minutes
+:::
+
+::: {.lede}
+One definition, one diagram,<br>and one small problem walked end to end.
+:::
+
+::: {.notes}
+**[00:20] · SECTION DIVIDER — three seconds**
+
+**SAY —**
+
+"Now the content. One definition, one diagram, and one small problem walked from a paragraph of English all the way to a number you could take to a plant manager."
+
+**DO —** Do not linger. The next three slides are the ones that must land before 00:32.
+:::
+
+## Choosing, under constraints, against a stated criterion
+
+::: {.kicker .c-amber}
+What optimization is
+:::
+
+> Optimization is the discipline of **choosing**, **under constraints**, against a **stated criterion**.
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[]{.dot}
+
+### If nothing is chosen
+
+It is simulation. A model evaluated, not searched.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### If nothing constrains
+
+The answer is trivial, and the model is wrong.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### If the criterion is unstated
+
+There is no problem yet. "Improve the plant" is not a criterion.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+"Maximize weekly contribution margin, in USD per week" is a criterion. Notice that it carries a unit.
+:::
+:::
+
+::: {.notes}
+**[00:08 – 00:11] · WHAT OPTIMIZATION IS**
+
+**SAY —**
+
+"One sentence, and it is worth memorizing. Optimization is the discipline of choosing, under constraints, against a stated criterion.
+
+Three tests follow from it.
+
+If nothing is being chosen, you do not have an optimization problem. You have a simulation: a model evaluated, not searched. Plenty of good engineering is simulation. It is not this course.
+
+If nothing constrains the choice, the answer is trivial and the model is wrong. Make infinitely much of the profitable thing.
+
+And if the criterion is not stated, you do not yet have a problem at all. 'Improve the plant' is not a criterion. 'Maximize weekly contribution margin in USD per week' is one, and notice that the difference between them is mostly a unit."
+
+**DO —** Ask for one example from the room of something they do that is simulation rather than optimization. Take one answer, not four.
+:::
+
+## Where it appears in process engineering {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Four places, one mathematics
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[]{.dot}
+
+### Design
+
+Equipment sizing. Reactor network selection. Heat exchanger network synthesis. Superstructures: which route to build at all.
+:::
+
+::: {.card .c-amber}
+[]{.dot}
+
+### Planning and scheduling
+
+Product mix on shared equipment, today's example. Multiperiod production and inventory, Week 2. Blending and pooling, Week 4.
+:::
+
+::: {.card .c-sky}
+[]{.dot}
+
+### Operation
+
+Set-point selection and real-time optimization. Battery dispatch against a tariff. Debottlenecking: where is the next hour worth most.
+:::
+
+::: {.card .c-sage}
+[]{.dot}
+
+### Data and experiment
+
+Parameter estimation for kinetics. Equivalent-circuit fitting. Design of experiments and surrogates, Week 13.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+The mathematics is the same in all four. What changes is the interpretation of the symbols.
+:::
+:::
+
+::: {.notes}
+**[00:11 – 00:14] · WHERE IT APPEARS**
+
+**SAY —**
+
+"Four places you will meet this, and one of them is probably yours.
+
+Design: what to build, and how big. Planning and scheduling: what to make next week, and in what order. Operation: where to sit the set points today. And data: fitting a kinetic model or a battery equivalent circuit is an optimization problem, even though nobody calls it one.
+
+The mathematics is identical in all four. The only thing that changes is what the symbols mean."
+
+**DO —**
+
+- TIMING CHECK. You must reach the five-stage diagram by 00:32. If you are past 00:38, cut this slide entirely and go straight to the worked walkthrough. The walkthrough is the part they remember.
+- If the Activity 1 tally showed a cluster in one area, name that area here. It costs five seconds and buys attention for the next twenty minutes.
+:::
+
+## Five stages. Every week of this course.
+
+::: {.kicker .c-amber}
+The optimization workflow
+:::
+
+::: {.steps}
+::: {.step .c-teal}
+[1]{.n}[Verbal]{.h}[the problem in prose]{.d}
+:::
+::: {.step .c-amber}
+[2]{.n}[Specification]{.h}[sets, data, decisions, units]{.d}
+:::
+::: {.step .c-teal}
+[3]{.n}[Algebra]{.h}[objective and constraints]{.d}
+:::
+::: {.step .c-teal}
+[4]{.n}[Code]{.h}[Pyomo, or a worksheet]{.d}
+:::
+::: {.step .c-plum}
+[5]{.n}[Interpretation]{.h}[status, values, duals]{.d}
+:::
+:::
+
+::: {.lede}
+Each stage consumes the artifact of the one before it and produces one that is more formal and less ambiguous. They are not interchangeable and they are not optional.
+:::
+
+::: {.foot}
+::: {.punch}
+Skipping stage 2 and writing code straight from a paragraph is the commonest cause of a model that runs, returns a number, and is wrong.
+:::
+:::
+
+::: {.notes}
+**[00:14 – 00:20] · THE FIVE-STAGE WORKFLOW**
+
+**SAY —**
+
+"This is the spine of the course. Five stages, and every week returns to them.
+
+One, the verbal problem: what decision is being made, and by whom. Two, the structured specification: sets, data, decisions, one goal and numbered restrictions, every one of them carrying a unit. Three, the algebra. Four, the code. Five, the solution and what it actually means.
+
+Each stage eats the artifact of the previous one and produces something more formal and less ambiguous. They are not interchangeable, and none of them is optional.
+
+Now the sentence I want you to carry out of this room. Skipping stage two, and writing code straight from a paragraph of English, is the commonest cause of a model that runs, returns a number, and is wrong.
+
+Almost every serious error in applied optimization can be located at one specific stage. Naming the stage is how you find the error."
+
+**DO —**
+
+- Point at the board where the five names are written and say they stay there for the whole hour.
+- Every homework and every project deliverable in this course is one of these five artifacts. Say so.
+:::
+
+## What each stage produces, and how each one fails
+
+::: {.kicker .c-teal}
+The workflow, in a table
+:::
+
+| Stage | Artifact it produces | Characteristic failure |
+|---|---|---|
+| **1 Verbal** | Prose, plus a data source for every number in it | Optimizing the wrong thing, or a decision the plant cannot execute |
+| **2 Specification** | Sets, parameters with units, variables with units, one objective, numbered restrictions | Missing constraint, unstated assumption, a parameter treated as a variable |
+| **3 Algebra** | min *f*(*x*) subject to *g*(*x*) ≤ 0, *h*(*x*) = 0, every symbol defined | Units that do not balance, an index on one side only, accidental nonlinearity |
+| **4 Code** | A Pyomo `ConcreteModel`, or a worksheet layout | Data typed into model logic, an off-by-one index, a sign error |
+| **5 Interpretation** | Status, values, duals, a figure, one actionable sentence | Reporting numbers without reading the status |
+
+::: {.foot}
+::: {.flag}
+Three rules: stage 2 before any algebra; every symbol carries a unit; no number is quoted until the termination condition has been read.
+:::
+:::
+
+::: {.notes}
+**[00:20 – 00:23] · ARTIFACTS AND FAILURES**
+
+**SAY —**
+
+"Same five stages, with the artifact and the characteristic failure of each.
+
+Read the right-hand column. Every one of those is a failure I have seen in a thesis, and none of them is a failure of arithmetic.
+
+Three rules come out of this table, and I will hold you to all three. Stage two is written before any algebra. Every symbol carries a unit at the moment it is introduced. And no number is quoted until the termination condition has been read."
+
+**DO —** Do not read the table aloud row by row. Give them fifteen seconds on the right-hand column, then move.
+:::
+
+## Stage 1 · a plant that makes two things
+
+::: {.kicker .c-amber}
+The verbal problem
+:::
+
+A unit supplying the zinc-air battery industry makes two products on shared equipment: an electrolyte **Additive** that suppresses zinc dendrite growth, and a **Binder** solution for air-cathode coating. Both pass through a reactor train, then separation and drying, then finishing and packaging. The plant plans one week at a time.
+
+| Resource | Additive, h/t | Binder, h/t | Available, h/week |
+|---|---|---|---|
+| Reactor train | 3 | 2 | 24 |
+| Separation and drying | 1 | 2 | 16 |
+| Finishing and packaging | 1 | 1 | 9 |
+| **Contribution margin, USD/t** | **400** | **300** | |
+
+::: {.foot}
+::: {.note}
+The reactor train is shared with other campaigns, which is why only 24 h/week are allocated. Contribution margin is selling price minus variable cost. Everything produced can be sold. Choose the weekly plan with the largest total contribution margin.
+:::
+:::
+
+::: {.notes}
+**[00:23 – 00:27] · STAGE 1, THE VERBAL PROBLEM**
+
+**SAY —**
+
+"One small problem, and we walk all five stages on it, so that you see the whole pipeline once before we break it into pieces.
+
+A specialty unit supplying the zinc-air battery industry makes two things on shared equipment. An Additive that suppresses dendrite growth, and a Binder for the air cathode. Three shared resources: a reactor train, separation and drying, and finishing and packaging.
+
+The table is the data. Three hours of reactor per tonne of Additive, two per tonne of Binder, twenty-four hours a week available because the reactor is shared with other campaigns. Margins of four hundred and three hundred US dollars a tonne.
+
+That is all of stage one. Notice what it already contains: a unit on every number, and a reason for every limit."
+
+**DO —**
+
+- Say the last sentence of the footnote out loud: everything produced can be sold. It is an assumption, and in three slides they will see it written down as a numbered restriction so that it can be challenged.
+- This is the same model that runs in the Week 1 notebook and in the solution workbook. If a slide and a file ever disagree, the file is authoritative.
+:::
+
+## Stage 2 · the structured specification {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Written before any algebra
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+| Object | Symbol | Meaning | Units |
+|---|---|---|---|
+| set | *p* ∈ *P* | product on the shared equipment | – |
+| set | *r* ∈ *R* | shared resource | – |
+| parameter | *c*<sub>*p*</sub> | contribution margin | USD/t |
+| parameter | *a*<sub>*rp*</sub> | use of resource *r* per tonne of *p* | h/t |
+| parameter | *b*<sub>*r*</sub> | hours of *r* available | h/week |
+| decision | *x*<sub>*p*</sub> ≥ 0 | tonnes of *p* made | t/week |
+:::
+
+::: {.column width="42%"}
+::: {.spec}
+[Objective, in words]{.eyebrow}
+
+Maximize total weekly contribution margin, in USD per week.
+:::
+
+::: {.cards}
+::: {.card .c-amber}
+**Restrictions, in words**
+
+1. Hours used on each resource cannot exceed hours available.
+2. Production cannot be negative.
+3. Everything produced can be sold, so there is no demand limit.
+:::
+:::
+:::
+::::
+
+::: {.foot}
+::: {.note}
+R3 is an assumption. Writing it down as a numbered restriction is exactly what makes it possible to challenge it later.
+:::
+:::
+
+::: {.notes}
+**[00:27 – 00:31] · STAGE 2, THE SPECIFICATION**
+
+**SAY —**
+
+"Stage two. No algebra yet, and that is the point.
+
+On the left, every object in the problem with a symbol, a meaning and a unit. Two index sets, three parameters, one decision. On the right, the goal in one sentence, and the restrictions numbered in plain English.
+
+Look at restriction three. Everything produced can be sold. That is not a fact about the plant; it is an assumption I have made. Writing it down and giving it a number is what makes it possible for somebody to walk in next week and say, actually, we cannot sell more than five tonnes of Binder.
+
+An assumption that is not written down cannot be challenged. It just quietly determines your answer."
+
+**DO —** If the room is with you, ask which of the three restrictions is the one that could be wrong. Somebody will say R3. If nobody does, say it yourself and move on.
+:::
+
+## Stage 3 · the algebra, and the units check
+
+::: {.kicker .c-amber}
+The mathematics, and the thirty-second habit
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+::: {.spec}
+[General form]{.eyebrow}
+
+maximize &nbsp; Σ<sub>*p*</sub> *c*<sub>*p*</sub> *x*<sub>*p*</sub> &nbsp; over *x* ≥ 0
+
+subject to &nbsp; Σ<sub>*p*</sub> *a*<sub>*rp*</sub> *x*<sub>*p*</sub> ≤ *b*<sub>*r*</sub> &nbsp; for every *r*
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[This week's data, written out]{.eyebrow}
+
+max &nbsp; z = 400 x₁ + 300 x₂ &nbsp;&nbsp; [USD/week]
+
+s.t. &nbsp; 3x₁ + 2x₂ ≤ 24 &nbsp;&nbsp; reactor
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ + 2x₂ ≤ 16 &nbsp;&nbsp; separation
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ + x₂ ≤ 9 &nbsp;&nbsp; packaging
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x₁ ≥ 0, x₂ ≥ 0
+:::
+:::
+:::
+
+::: {.column width="44%"}
+::: {.cards}
+::: {.card .c-amber}
+**The units check**
+
+On every constraint, [h/t] · [t/week] = [h/week], which matches the right-hand side.
+
+In the objective, [USD/t] · [t/week] = [USD/week].
+:::
+:::
+
+::: {.punch}
+A units check catches more modeling errors than any other single habit, and it costs thirty seconds.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:31 – 00:35] · STAGE 3, THE ALGEBRA**
+
+**SAY —**
+
+"Stage three. Now the mathematics, and it writes itself, because stage two did the work.
+
+The general form at the top. The same thing with this week's numbers underneath. Three constraints, two variables, non-negativity.
+
+And then the reason stage three exists as a separate stage at all. The units check. On every constraint, hours per tonne times tonnes per week gives hours per week, which is what the right-hand side is. In the objective, dollars per tonne times tonnes per week gives dollars per week.
+
+Thirty seconds. It catches more modeling errors than any other habit I know. Do it on every model you write this semester, including the ones you are sure about."
+
+**DO —** Write the units cancellation on the board while you say it. Watching it cancel is worth more than seeing it printed.
+:::
+
+## Stage 4 · the same model in two dialects {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Code
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.cards}
+::: {.card .c-sage}
+[Spreadsheet · W01_product_mix]{.eyebrow}
+
+`B5:C5` changing cells, tonnes per week
+
+`B8:C8` margins, blue: given data
+
+`B12:C14` the coefficient block
+
+`D12:D14` `=SUMPRODUCT($B$5:$C$5,B12:C12)`
+
+`F12:F14` right-hand sides, own column
+
+`D9` objective cell, Set Objective, To: Max
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {.cards}
+::: {.card .c-teal}
+[Pyomo · W01_introduction_first_model]{.eyebrow}
+
+`m.P = pyo.Set(...)`, `m.R = pyo.Set(...)`
+
+`m.margin = pyo.Param(m.P, ...)`
+
+`m.use = pyo.Param(m.R, m.P, ...)`
+
+`m.avail = pyo.Param(m.R, ...)`
+
+`m.x = pyo.Var(m.P, domain=NonNegativeReals)`
+
+`m.resource = pyo.Constraint(m.R, rule=...)`
+
+`m.profit = pyo.Objective(..., sense=maximize)`
+:::
+:::
+:::
+::::
+
+::: {.foot}
+::: {.punch}
+One named component per algebraic object. Never type a number inside a formula, in either dialect.
+:::
+:::
+
+::: {.notes}
+**[00:35 – 00:39] · STAGE 4, CODE**
+
+**SAY —**
+
+"Stage four, in two dialects, because this course uses both.
+
+On the left the worksheet. On the right Pyomo. Look at how they line up. A set of products is a row of column headers, or it is a `Set`. The margins are a row of blue cells, or they are a `Param`. The changing cells are green, or they are a `Var` with a domain. One spreadsheet row per resource is exactly one `Constraint` index.
+
+They are the same object wearing different clothes.
+
+And one rule that holds in both. One named component per algebraic object, and never, ever type a number inside a formula. Data lives in cells with a colour, or in a `Param`. The moment a four hundred appears inside a `SUMPRODUCT`, the model has stopped being maintainable."
+
+**DO —** Blue for given data, green for changing cells. Say the convention out loud; it is used in every workbook in this course.
+:::
+
+## Stage 5 · the solution, and what it actually says
+
+::: {.kicker .c-amber}
+Read the status first, then the numbers
+:::
+
+| Resource | Used, h | Available, h | Slack, h | Status | Shadow price, USD/h |
+|---|---|---|---|---|---|
+| Reactor train | 24 | 24 | 0 | binding | 100 |
+| Separation and drying | 12 | 16 | 4 | slack | 0 |
+| Finishing and packaging | 9 | 9 | 0 | binding | 100 |
+
+:::: {.columns}
+::: {.column width="46%"}
+::: {.cards}
+::: {.card .c-teal}
+**The answer**
+
+**x\* = (6, 3)** t/week,&nbsp; **z\* = 3,300.00** USD/week.
+
+Make 6 t of Additive and 3 t of Binder. Two resources are fully used; separation has 4 h/week to spare.
+:::
+:::
+:::
+
+::: {.column width="52%"}
+::: {.cards}
+::: {.card .c-amber}
+**The identity that is not a coincidence**
+
+100(24) + 0(16) + 100(9) = 3,300, which is exactly z\*.
+
+That is strong duality, and it is Week 8.
+:::
+:::
+:::
+::::
+
+::: {.notes}
+**[00:39 – 00:43] · STAGE 5, THE SOLUTION**
+
+**SAY —**
+
+"Stage five. And it begins with the status, not with the objective value. We come back to why in the next block.
+
+The plan is six tonnes of Additive and three of Binder, worth three thousand three hundred dollars a week. Two of the three resources are fully used, the reactor and the packaging line. Separation and drying has four hours a week spare.
+
+Now look at the last column. One extra reactor hour per week is worth a hundred dollars. One extra packaging hour is also worth a hundred. And one extra hour of separation is worth nothing at all, because separation is not what is stopping you.
+
+And here is something that will look like a coincidence until Week 8. A hundred times twenty-four, plus zero times sixteen, plus a hundred times nine, is three thousand three hundred. Exactly the optimal value. That is the strong duality theorem, and it is not an accident."
+
+**DO —** Numbers to have in your mouth: 24/24, 12/16, 9/9 hours; shadow prices 100, 0, 100 USD per hour. They recur in the summary and in Week 8.
+:::
+
+## Optimal, infeasible, unbounded {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Three outcomes, read in this order
+:::
+
+::: {.cards}
+::: {.card .c-sage}
+[]{.dot}
+
+### Optimal
+
+A feasible solution exists and cannot be improved. Read the plan, then the constraint activity, then the duals, then write one sentence an engineer can act on.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### Infeasible
+
+No plan satisfies every constraint at once. The feasible region is empty. This is a statement about the **model**.
+:::
+
+::: {.card .c-plum}
+[]{.dot}
+
+### Unbounded
+
+The region is non-empty but the objective improves without limit. In a physical problem this always means a **constraint has been forgotten**.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+Read `solver.termination_condition`, not the coarse status. In Pyomo, assert it after every solve. In Excel, read the Solver Results dialog before you look at the sheet. Both broken models leave numbers on the screen if you do not check.
+:::
+:::
+
+::: {.notes}
+**[00:43 – 00:47] · THREE OUTCOMES**
+
+**SAY —**
+
+"Three things a solver can tell you, and you read them in this order.
+
+Optimal: a solution exists and cannot be improved. Then, and only then, you read the plan, the constraint activity, the duals, and you write one sentence somebody can act on.
+
+Infeasible: nothing satisfies all the constraints at once.
+
+Unbounded: the objective improves forever.
+
+And here is the sentence I want you to remember. Infeasible and unbounded almost always mean the model is wrong, not that the problem is impossible. No real plant earns infinite margin, so unbounded is never news about the world.
+
+One practical point. On a broken model the coarse status field often reads only error, which tells you nothing. The informative field is the termination condition, and it separates infeasible from unbounded. Assert it after every solve. In Excel, read the Solver Results dialog before you look at the sheet, because both of these leave numbers sitting on the worksheet."
+
+**DO —** Write the Pyomo assertion on the board: `assert res.solver.termination_condition == pyo.TerminationCondition.optimal`. It appears in every notebook from here on.
+:::
+
+## How you are graded
+
+::: {.kicker .c-teal}
+Assessment, homework, project
+:::
+
+:::: {.columns}
+::: {.column width="36%"}
+::: {.spec}
+[Weights]{.eyebrow}
+
+Final examination
+:   35 %
+
+Midterm examination
+:   25 %
+
+Assignments, HW1 to HW4
+:   15 %
+
+Computational project
+:   15 %
+
+Participation and quizzes
+:   10 %
+:::
+
+::: {.note}
+The midterm sits after Week 8 and contains no nonlinear programming.
+:::
+:::
+
+::: {.column width="62%"}
+| Homework | Out | Due |
+|---|---|---|
+| HW1 linear and network models | W2 | W4 |
+| HW2 blending, discrete, audit | W4 | W6 |
+| HW3 LP theory and duality | W7 | W9 |
+| HW4 NLP and MILP | W10 | W12 |
+
+| Project milestone | When |
+|---|---|
+| Group registration and candidate topics | W4 |
+| **Proposal due**: a structured specification | W6 |
+| Formulation checkpoint: algebra, size, tests | W9 |
+| **Preliminary results** and full test suite | W12 |
+| Presentations, 12 min plus 3 of questions | W14, W15 |
+| Report, code, tests, disclosure section | end W15 |
+:::
+::::
+
+::: {.notes}
+**[00:47 – 00:50] · ASSESSMENT**
+
+**SAY —**
+
+"Five components. Final thirty-five, midterm twenty-five, four homework sets fifteen, the computational project fifteen, participation and quizzes ten.
+
+The homework comes out in weeks two, four, seven and ten, and is due two weeks after each. Note that HW1 is released next week, not today.
+
+The project has real milestones, not one deadline at the end. Groups register in week four. The proposal in week six is a structured specification, which is stage two of the workflow you saw this morning, and nothing else. The formulation checkpoint is week nine. Preliminary results and a full test suite in week twelve. Presentations in weeks fourteen and fifteen, twelve minutes plus three of questions.
+
+And the cards you handed in an hour ago are where the topic list comes from."
+
+**DO —** Answer the two questions that always come: yes, the project may use their own thesis problem, and yes, groups may be formed across research groups. Then hold the rest for the AI slide.
+:::
+
+## What the AI policy actually says {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Read this before you ask
+:::
+
+::: {.cards}
+::: {.card .c-sage}
+[]{.dot}
+
+### Permitted, and expected
+
+Generative AI is permitted for assignments and for the project. Using it to **draft** models is expected rather than merely tolerated. Week 6 is a three-hour workshop on how to do it well.
+:::
+
+::: {.card .c-teal}
+[]{.dot}
+
+### What is graded is verification
+
+Disclose which parts were AI-drafted and which tests validated them. The disclosure section is part of the project report.
+:::
+
+::: {.card .c-rust}
+[]{.dot}
+
+### No credit without it
+
+An unverified generated model earns **no credit for model correctness**, however good it looks.
+:::
+
+::: {.card .c-slate}
+[]{.dot}
+
+### Prohibited in examinations
+
+Both the midterm and the final. No exceptions, and no ambiguity.
+:::
+:::
+
+::: {.foot}
+::: {.punch}
+A solver answers the question you asked. So does a language model. In both cases the verification is your job, and in this course it is the part that carries the marks.
+:::
+:::
+
+::: {.notes}
+**[00:50 – 00:53] · THE AI POLICY**
+
+**SAY —**
+
+"Somebody is going to ask whether they may use ChatGPT for the homework, so I will answer it before it is asked, completely.
+
+Yes. Generative AI is permitted for assignments and for the project, and drafting a model with it is expected rather than merely tolerated. Week six is a three-hour workshop on how to do exactly that.
+
+What is graded is verification. You disclose which parts were AI-drafted and which tests validated them, and that disclosure is part of the report.
+
+An unverified generated model earns no credit for model correctness. It can be beautifully formatted and confidently wrong, and it will score zero on that criterion.
+
+And it is prohibited in both examinations. That is not ambiguous.
+
+Notice that this is the same rule as the first slide of today. A solver answers the question you asked. So does a language model. The verification is your job either way, and in this course it is the part that carries the marks."
+
+**DO —** Answer this directly and completely. It will be asked in the corridor otherwise, and the corridor answer travels further than the lecture one.
+:::
+
+## Your two hours, and what to hand in {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Before we meet again
+:::
+
+::: {.agenda}
+- [40 min]{.chip .c-teal} **A** Install Python, Pyomo and HiGHS. Switch on Excel Solver. Run the check cell
+- [25 min]{.chip .c-sky} **B** Read the rest of the Week 1 slides — anatomy, classification, geometry — and answer three questions
+- [35 min]{.chip .c-teal} **C** Solve the product mix model in the worksheet, then in Pyomo, and compare the two answers
+- [15 min]{.chip .c-amber} **D** Your own research problem, in five lines
+- [5 min]{.chip .c-slate} **E** Four lines introducing yourself
+:::
+
+::: {.foot}
+::: {.punch}
+One PDF, on myCourseVille, before midnight this Friday, 14 August. It is graded as participation, and Week 2 opens with the two things most of you got wrong.
+:::
+:::
+
+::: {.notes}
+**[00:53 – 00:58] · THE SELF-STUDY PACK**
+
+**SAY —**
+
+"Here are your two hours. The sheet in your hand has all of it, and the same sheet is on the course page.
+
+Part A is the installation. Forty minutes, and if it fights you, stop — write down the error, move on, and we fix it at the start of Week 2. Do not lose the whole evening to a solver that will not install.
+
+Part B is the rest of today's slides. Same deck, same link, press E if you would rather read it as pages. Three questions at the end.
+
+Part C is the model we just walked through, but this time you build it — once in the worksheet, once in Pyomo, and you check that the two agree. When they disagree, one of them is wrong, and finding out which is the entire skill of this course.
+
+Part D is your own research problem in five lines. That list becomes the menu of project topics, so make it a real decision, not a textbook one.
+
+Part E is four lines about yourself, because we did not get to introduce ourselves today.
+
+One PDF, myCourseVille, before midnight on Friday — this Friday, the fourteenth. Not Monday: I need the weekend to read them, because Monday opens with the two things most of you got wrong. It is participation, not a test — an honest wrong answer is worth more to me than a right one you copied."
+
+**DO —**
+
+- Hand out the printed pack before you start speaking, not after.
+- Show the course page on screen while you talk, so they see where the files are.
+- Say the deadline twice, and say the day out loud: Friday, not Monday. Once here, once at the door.
+:::
+
+{{< include _feedback.qmd >}}

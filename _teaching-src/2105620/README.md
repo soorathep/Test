@@ -33,6 +33,21 @@ Verify before committing:
 grep -c 'class="notes"' ../../teaching/2105620/w01.html    # must print 0
 ```
 
+### PowerPoint with the spoken script
+
+```bash
+quarto render                      # private build — notes must be present
+python3 tools/build_pptx.py w03    # -> dist/… w03_slides_with_script.pptx
+```
+
+Each slide is captured from the rendered deck at 2x and placed full-bleed, so
+the PowerPoint looks exactly like the website version. The `::: {.notes}` text
+lands in PowerPoint's speaker-notes pane, which is what Presenter View shows.
+
+Text on the slides is a picture and cannot be edited in PowerPoint — edit the
+`.qmd` and re-run. **These files carry the answer keys in their notes: keep them
+out of `teaching/` and off the website.**
+
 ### One-file copy for teaching
 
 For a laptop with no network, or to email a deck to a co-teacher:
