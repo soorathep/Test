@@ -33,7 +33,7 @@ Today
 - [5 min]{.chip .c-sky} One plant problem, read together. Two questions, no answers yet
 - [26 min]{.chip .c-teal} The specification, and the four patterns every linear model is built from
 - [7 min]{.chip .c-sky} Back to the same problem — specified, solved, and read
-- [11 min]{.chip .c-teal} The time index and the inventory balance, in the sheet
+- [14 min]{.chip .c-teal} Why one week is not enough — then the time index and the inventory balance
 - [7 min]{.chip .c-amber} HW1, and your two hours — the self-study pack
 :::
 
@@ -67,7 +67,9 @@ We start with a problem, not with a method. Look at it, answer two questions in 
 Start here. We come back to this in half an hour
 :::
 
-A finishing shop attached to the electrolyte plant packages two grades for zinc-air cell assembly, a **Standard** grade and a **HighPurity** grade. Both pass through the same three operations in order: mixing, ion-exchange purification, and filling. The three operations have different weekly hour allocations because they are shared with other campaigns. HighPurity is worth more per tonne but spends four times as long in purification. Everything finished is sold.
+A finishing shop packages two grades of electrolyte for zinc-air cell assembly, **Standard** and **HighPurity**, on the same three operations: mixing, ion-exchange purification, filling. The hours available differ because the operations are shared with other campaigns. HighPurity earns more per tonne but spends four times as long in purification. Everything finished is sold, and the shop plans **one week at a time** — a single period, nothing carried over.
+
+**The goal: the weekly plan with the largest total contribution margin, in USD per week.**
 
 | Operation | Standard, h/t | HighPurity, h/t | Available, h/week |
 |---|---|---|---|
@@ -87,7 +89,7 @@ Two questions, in your head, no writing: what exactly is under your control here
 
 **SAY —**
 
-"Before any method, one problem. Read it. Thirty seconds."
+"Before any method, one problem. One shop, two grades, one week — a single week, with nothing carried over into the next one. The goal is the last line: the weekly plan with the largest total contribution margin, in dollars per week. Read it. Thirty seconds."
 
 *[ silence, thirty seconds — do not fill it ]*
 
@@ -103,6 +105,7 @@ Second: what would make a plan illegal? Not bad, illegal. A plan the shop could 
 
 **DO —**
 
+- Read the goal sentence aloud before the silence. A room that is unsure what is being maximised, or over what horizon, cannot answer either question.
 - Take answers, do not correct them. If someone says "the hours available", that is the useful wrong answer — it is a parameter, not a decision, and you pay it off on the parameters slide at 00:16 by name.
 - Expected right answers: tonnes of each grade per week; and a plan is illegal if it uses more hours than any operation has.
 - If the room is silent, ask the second question again pointing at the Filling row: 44 hours, both grades, one hour each. Somebody will say it.
@@ -760,6 +763,52 @@ Here is what is wrong with this model. It has no memory. It plans one week, in i
 - Ninety times a hundred and four, plus four hundred and thirty times forty-four, is twenty-eight thousand two hundred and eighty. If a strong student notices, confirm it and say Week 8.
 :::
 
+## The same shop, four weeks {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-sky}
+Now the plant hands you an order book
+:::
+
+Same shop, same three operations. But the orders are now firm for **four weeks**, and **filling is down to 30 hours in week 3** for planned maintenance. Finished goods can be stored at **5 USD per tonne per week**.
+
+| Week | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| Orders, t | 30 | 32 | **50** | 36 |
+| Filling hours available | 44 | 44 | **30** | 44 |
+
+::: {.foot}
+::: {.punch}
+Plan week 3 on its own. Can you meet the order? If not, which week has to do something about it — and what does that do to the plan you just wrote?
+:::
+:::
+
+::: {.notes}
+**[00:41 – 00:44] · WHY ONE WEEK IS NOT ENOUGH**
+
+**SAY —**
+
+"Same shop. But now the orders are firm for four weeks, and filling drops to thirty hours in week three for maintenance.
+
+Look at week three on its own. Fifty tonnes ordered, thirty hours of filling, one hour per tonne. Thirty tonnes is the most that can leave the shop that week."
+
+*[ pause — let somebody say it ]*
+
+"So week three, planned by itself, is infeasible. It cannot be fixed inside week three, because there is nothing in week three left to change.
+
+Which week fixes it? Week one and week two, by making more than they ship and putting the difference in store. Twenty tonnes have to be built early, and storage is not free.
+
+And now look at what that does. The plan you wrote for week one is no longer a week-one decision. It depends on a maintenance shutdown three weeks later. Four weeks that each looked like their own problem have become **one** problem, and the thing that joined them is stock.
+
+That is the whole reason for the next two slides. A time index, so I can write the four weeks once instead of four times. And a balance equation, so the stock leaving one week is the stock entering the next."
+
+**DO —**
+
+- Do the arithmetic out loud and slowly: fifty ordered, thirty hours, one hour per tonne, thirty tonnes maximum. Twenty short. Everyone must see the number before the words.
+- Ask "which week fixes it?" and wait. Somebody says week two. Ask what it costs them — five dollars a tonne a week is on the slide, so they can price it: twelve tonnes from week two and eight from week one is 140 USD.
+- Say the sentence in bold: *the week-one decision now depends on a shutdown three weeks later.* That single sentence is the argument for everything after the break in the full version of this session.
+- If you are behind, this slide still runs — cut *Four domains* and the sheet layout instead. Without this slide the time index arrives as a technique with no problem attached, which is exactly the failure we removed from the first half.
+:::
+
 ## A time index turns one decision into a plan
 
 ::: {.kicker .c-teal}
@@ -797,11 +846,11 @@ The amber arrows are the **linking constraint** of pattern 4. Everything a multi
 ::::
 
 ::: {.notes}
-**[00:41 – 00:44] · WHAT A TIME INDEX DOES**
+**[00:44 – 00:47] · WHAT A TIME INDEX DOES**
 
 **SAY —**
 
-"Six periods. Into each one, production. Out of each one, demand. And between them, the amber arrows.
+"You have just seen why four weeks are one problem. Now the machinery for writing it. Six periods. Into each one, production. Out of each one, demand. And between them, the amber arrows.
 
 Cover the amber arrows with your hand and look at what is left. Six boxes with nothing joining them. Six completely independent problems, each of which you would solve on its own, and solving them together would gain you exactly nothing. That is not optimization. That is arithmetic done six times.
 
@@ -857,7 +906,7 @@ with *I*<sub>0</sub> given and *B*<sub>0</sub> = 0.
 ::::
 
 ::: {.notes}
-**[00:44 – 00:48] · THE INVENTORY BALANCE**
+**[00:47 – 00:51] · THE INVENTORY BALANCE**
 
 **SAY —**
 
@@ -933,7 +982,7 @@ The sheet you are about to complete
 ::::
 
 ::: {.notes}
-**[00:48 – 00:51] · THE SPREADSHEET LAYOUT**
+**[00:51 – 00:53] · THE SPREADSHEET LAYOUT**
 
 **SAY —**
 
@@ -991,7 +1040,7 @@ A unit on every symbol, and a bound on every variable. Both are checkable by a r
 ::::
 
 ::: {.notes}
-**[00:51 – 00:53] · HW1**
+**[00:53 – 00:54] · HW1**
 
 **SAY —**
 
@@ -1031,7 +1080,7 @@ One PDF, on myCourseVille, before midnight this Friday, 21 August. Week 3 opens 
 :::
 
 ::: {.notes}
-**[00:53 – 00:58] · THE SELF-STUDY PACK**
+**[00:54 – 00:58] · THE SELF-STUDY PACK**
 
 **SAY —**
 
