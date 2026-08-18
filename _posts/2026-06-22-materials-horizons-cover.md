@@ -3,6 +3,7 @@ title: "Our nanoconfinement Opinion is on the cover of Materials Horizons"
 date: 2026-06-22
 description: "The Opinion appears in issue 13(12) and was chosen for the cover."
 tag: Cover
+kind: news
 ---
 
 Our Opinion, *Nanoconfinement as an electrolyte-state selector in hard carbon for sodium
