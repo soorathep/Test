@@ -12,7 +12,6 @@ one is for talks that are not part of a course.
 | File | Talk |
 |------|------|
 | `conferences.qmd` | Making Conferences Work for You — 17 August 2026 |
-| `review-articles.qmd` | Beyond the Summary: writing a high-impact review article — 9 September 2026 (MMS3 Talk) |
 
 ---
 
@@ -100,6 +99,22 @@ error. Use `.numbered`, `.dots` or `.steps` on dark backgrounds — those style
 their own `strong` in ink and survive the override. The closing slide of
 `conferences.qmd` was built the wrong way first.
 
+Two more, learned while building `review-articles.qmd`:
+
+**`.numbered` costs about 90 px a row.** Each `<li>` is a padded white card
+with a 38 px disc, and `strong` inside it is `display: block`, so every item is
+two lines minimum. Seven or eight items will not fit in 720 px once a title and
+a `.punch` are on the slide. Use `.dots` instead and fold the ordinal into the
+label — `- **1. Collection** …`. A `.dots` row is a 34 % / 1fr grid at roughly
+48 px, so eight of them fit with room to spare. Accents are defined for
+`nth-child(1)` to `(8)`; a ninth item falls back to teal.
+
+**Inline markup breaks the `.dots` grid.** Every in-flow child of a grid
+container becomes a grid item, so `- **Label** text *emphasis*` produces three
+items, and the emphasis wraps onto the next row in the label column. Wrap the
+whole right-hand side in one span — `- **Label** [text *emphasis*]{.dd}` —
+whenever it contains `*`, `**` or a link.
+
 ---
 
 ## Adding a seminar
@@ -110,20 +125,6 @@ cp conferences.qmd 2026-09-09-review-articles.qmd
 
 Edit the front matter and body, render, publish, then add an entry to
 `_data/seminars.yml` — the talk appears on `/teaching/seminars/` by itself.
-
-### Shipping a handout with a talk
-
-Drop the PDF into `teaching/seminars/` next to the rendered deck and add one
-key to the entry in `_data/seminars.yml`:
-
-```yaml
-  handout: Beyond_the_Summary_Handout.pdf
-```
-
-`teaching/seminars/index.html` prints a "Participant handout (PDF)" link under
-the note whenever that key is present. A deck can also link its own handout
-with a plain relative href, since the PDF is a sibling of the rendered HTML —
-`review-articles.qmd` does both.
 
 ---
 
