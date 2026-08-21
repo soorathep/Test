@@ -216,6 +216,29 @@ section.divider::after {
 .cards.feature .card h3 { font-size: 1.22em; margin-bottom: 0.28em; }
 .cards.feature .card p { font-size: 0.64em; }
 
+/* ---------- inline SVG figures ----------
+   Drawn on a fixed viewBox and scaled to the column, so the geometry is the
+   same at every projector resolution. Never give the svg a height. */
+.chart { margin-top: 0.45em; }
+.chart svg { display: block; width: 100%; height: auto; }
+.chart + .foot .source { margin-top: 0; }
+
+/* ---------- roomy ----------
+   `center: false` anchors every title at the same height, which is right for a
+   talk but leaves a short slide hanging from the top of an empty frame. Adding
+   `.roomy` to such a section grows the blocks instead of moving them, so the
+   slide fills and the text is readable from the back of the room. */
+section.roomy .cards { gap: 26px; margin-top: 0.5em; }
+section.roomy .cards + .cards { margin-top: 26px; }
+section.roomy .card { padding: 34px 36px; }
+section.roomy .card h3 { font-size: 1.16em; margin-bottom: 0.4em; }
+section.roomy .card p, section.roomy .card li { font-size: 0.74em; line-height: 1.5; }
+section.roomy .lede { font-size: 0.9em; }
+section.roomy .punch, section.roomy .flag { font-size: 0.74em; margin-top: 0.7em; }
+.reveal section.roomy .card .eyebrow { font-size: 15px; }
+.reveal section.roomy .numbered ol > li { padding: 19px 28px 19px 86px; margin-bottom: 17px; font-size: 0.72em; }
+.reveal section.roomy .dots ul > li { margin-bottom: 24px; font-size: 0.70em; }
+
 /* ---------- chips ---------- */
 .chip {
   display: inline-block; background: var(--accent); color: $white;

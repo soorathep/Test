@@ -229,13 +229,13 @@ Being systematic tells you how reliably the literature was collected. Being crit
 ข้อสามทำให้รูปแบบที่คนในห้องนี้ควรเขียนที่สุดถูกลดค่าอย่างไม่เป็นธรรม
 :::
 
-## SALSA: the four dials behind every review type
+## SALSA: the four dials behind every review type {.roomy}
 
 ::: {.kicker .c-amber}
 Part 1
 :::
 
-::: {.cards .g3}
+::: {.cards}
 ::: {.card .c-teal}
 [S]{.eyebrow}
 
@@ -251,7 +251,9 @@ How much of the literature did you look for, and can someone repeat it?
 
 Did you judge the quality of what you found, or accept every paper equally?
 :::
+:::
 
+::: {.cards}
 ::: {.card .c-sky}
 [S]{.eyebrow}
 
@@ -259,15 +261,13 @@ Did you judge the quality of what you found, or accept every paper equally?
 
 How did you bring the studies together: narrative, tabular, or statistical?
 :::
-:::
 
-::: {.cards}
 ::: {.card .c-rust}
 [A]{.eyebrow}
 
 ### Analysis
 
-What new understanding did you produce that no single paper contains? This is the dial people skip, and the only one that produces a contribution.
+What new understanding did you produce that no single paper contains? The dial people skip, and the only one that produces a contribution.
 :::
 :::
 
@@ -419,46 +419,58 @@ tutorial review อาจอยู่ในเลกเชอร์ของเ�
 Part 1
 :::
 
-::: {.cards}
-::: {.card .c-teal}
-[Low systematic · high critical]{.eyebrow}
-
-### Critical review
-
-Insight, no documented search
+::: {.lede}
+Two independent questions. How well did you gather the literature, and what new understanding did you produce? Neither one ranks above the other.
 :::
 
-::: {.card .c-amber}
-[High systematic · high critical]{.eyebrow}
+::: {.chart}
+```{=html}
+<svg viewBox="0 0 1180 420" role="img" aria-label="Two-by-two map of review types by systematic rigour and critical synthesis">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#66727C"/>
+    </marker>
+  </defs>
 
-### Systematic critical review
+  <rect x="64"  y="4"   width="553" height="180" rx="10" fill="#EAF2F1"/>
+  <rect x="623" y="4"   width="553" height="180" rx="10" fill="#FCF3E4" stroke="#E29A2D" stroke-width="2"/>
+  <rect x="64"  y="190" width="553" height="180" rx="10" fill="#F3F0EB"/>
+  <rect x="623" y="190" width="553" height="180" rx="10" fill="#EEF3F8"/>
 
-Documented search, then real synthesis. The strongest combination available to a junior author.
-:::
-:::
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6">
+    <text x="94"  y="40"  fill="#0F6E6B">LOW SYSTEMATIC &#183; HIGH CRITICAL</text>
+    <text x="653" y="40"  fill="#E29A2D">HIGH SYSTEMATIC &#183; HIGH CRITICAL</text>
+    <text x="94"  y="226" fill="#66727C">LOW &#183; LOW</text>
+    <text x="653" y="226" fill="#5A91BE">HIGH SYSTEMATIC &#183; LOW CRITICAL</text>
+  </g>
 
-::: {.cards}
-::: {.card .c-slate}
-[Low · low]{.eyebrow}
+  <g font-family="'Source Serif 4', 'Noto Serif Thai', Georgia, serif" font-size="27" font-weight="700" fill="#1C242B">
+    <text x="94"  y="83">Critical review</text>
+    <text x="653" y="83">Systematic critical review</text>
+    <text x="94"  y="269">Narrative review</text>
+    <text x="653" y="269">Descriptive systematic review</text>
+  </g>
 
-### Narrative review
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="16" fill="#333F4A">
+    <text x="94"  y="117">A real argument, no documented search.</text>
+    <text x="94"  y="142" fill="#66727C">Believable in proportion to your standing.</text>
+    <text x="653" y="117">Documented search, then real synthesis.</text>
+    <text x="653" y="142" fill="#66727C">The strongest combination open to a junior author.</text>
+    <text x="94"  y="303">Expert commentary, no protocol.</text>
+    <text x="94"  y="328" fill="#66727C">You may not claim the evidence shows anything.</text>
+    <text x="653" y="303">Rigorous search, thin synthesis.</text>
+    <text x="653" y="328" fill="#66727C">Scoping and mapping reviews sit here by design.</text>
+  </g>
 
-Expert commentary, no protocol
-:::
-
-::: {.card .c-slate}
-[High systematic · low critical]{.eyebrow}
-
-### Descriptive systematic review
-
-Rigorous search, thin synthesis
-:::
-:::
-
-::: {.foot}
-::: {.note}
-**Where does meta-analysis go?** Nowhere on this map. It attaches to the right-hand column when the outcomes are commensurable. It sharpens a quantitative claim; it does not move a review upward. And the bottom right is not a failure: a scoping or mapping review belongs there by design.
-:::
+  <line x1="64" y1="392" x2="1176" y2="392" stroke="#B9C1C6" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="44" y1="370" x2="44"   y2="4"   stroke="#B9C1C6" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="620" y="414" text-anchor="middle" font-family="'Source Sans 3', Sarabun, Arial, sans-serif"
+        font-size="13" font-weight="700" letter-spacing="2.4" fill="#66727C">SYSTEMATIC RIGOUR</text>
+  <text x="22" y="187" text-anchor="middle" transform="rotate(-90 22 187)"
+        font-family="'Source Sans 3', Sarabun, Arial, sans-serif"
+        font-size="13" font-weight="700" letter-spacing="2.4" fill="#66727C">CRITICAL SYNTHESIS</text>
+</svg>
+```
 :::
 
 ::: {.notes}
@@ -469,7 +481,43 @@ Rigorous search, thin synthesis
 อย่าให้ใครออกจากห้องโดยคิดว่า scoping review เป็นของชั้นสอง
 :::
 
-## Do not import the clinical evidence hierarchy
+## The three names people confuse
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.lede}
+Not three grades of the same paper. They differ in what they promise the reader.
+:::
+
+|  | Systematic review | Meta-analysis | Critical review |
+|---|---|---|---|
+| **The promise** | "Everything that met my stated criteria is here." | "Here is one pooled number, with its uncertainty." | "The field believes X. Here is why that is only partly right." |
+| **What it is** | a **protocol** for finding and selecting | a **statistic**, computed inside a systematic review | an **argument**, built on evidence you chose |
+| **Search** | written protocol, multi-database, reproducible | inherited from the systematic review it sits in | purposive: you choose what serves the argument, and say so |
+| **Appraisal** | formal and tool-based: RoB, AMSTAR 2, GRADE | mandatory: heterogeneity, publication bias, sensitivity | explicit but informal: you argue why a result is weak |
+| **What comes out** | an evidence map and a verdict per question | an effect size, a confidence interval, an *I*² | a framework, a taxonomy, or a reconciliation |
+| **Where novelty lives** | completeness and reproducibility | precision | the idea |
+| **It fails when** | it never appraises: a bibliography with a protocol | it pools studies that do not measure the same thing | the argument outruns the evidence shown |
+
+::: {.flag .c-amber}
+Meta-analysis is not a higher grade of systematic review. It is one optional step inside one, and in engineering usually an unavailable one.
+:::
+
+::: {.notes}
+[11:20 – 11:23] สไลด์นี้ตอบคำถามที่ค้างในใจคนฟังตั้งแต่ต้น สามชื่อนี้ต่างกันยังไง
+
+อ่านแถวแรกออกเสียงทีละคอลัมน์ เพราะมันคือคำสัญญาที่เปเปอร์ให้กับผู้อ่าน ไม่ใช่ระดับคุณภาพ
+
+จุดที่ต้องย้ำที่สุดคือ meta-analysis ไม่ใช่รีวิวชนิดหนึ่ง แต่เป็นสถิติที่ทำอยู่ข้างใน systematic review ถ้าผลลัพธ์ของงานที่รวบรวมมาวัดกันคนละหน่วย คนละเงื่อนไขทดสอบ ก็ pool ไม่ได้ และไม่ควรฝืน
+
+ตัวอย่างแบตเตอรี่ ถ้างานหนึ่งรายงาน capacity retention ที่ 100 รอบ 1C อีกงานที่ 500 รอบ 0.2C อีกงานรายงาน Coulombic efficiency อย่างเดียว สามงานนี้ pool ไม่ได้ ไม่ใช่เพราะข้อมูลไม่ดี แต่เพราะมันไม่ได้วัดสิ่งเดียวกัน
+
+แถวสุดท้ายคือแถวที่ผู้ฟังจะจำได้นานที่สุด systematic review ที่ไม่ appraise คือบรรณานุกรมที่มี protocol
+:::
+
+## Do not import the clinical evidence hierarchy {.roomy}
 
 ::: {.kicker .c-amber}
 Part 1
@@ -502,7 +550,7 @@ The right review methodology is set by the scientific question, not by a hierarc
 :::
 
 ::: {.notes}
-[11:20 – 11:22] อธิบายที่มาของความสับสนก่อน PRISMA และพีระมิดหลักฐานถูกสร้างมาสำหรับคำถามคลินิกและใช้ได้ดีมากที่นั่น จึงถูกยกมาทั้งชุด
+[11:23 – 11:25] อธิบายที่มาของความสับสนก่อน PRISMA และพีระมิดหลักฐานถูกสร้างมาสำหรับคำถามคลินิกและใช้ได้ดีมากที่นั่น จึงถูกยกมาทั้งชุด
 
 ตัวอย่างจริง สมมติ pool เปเปอร์ coating ของ zinc anode ร้อยเรื่อง ได้ว่าเคลือบแล้วอายุยาวกว่า 2.4 เท่า ถามห้องว่าเลขนี้แปลว่าอะไร
 
@@ -513,7 +561,7 @@ critical review บนกองเดียวกันอาจพบว่า 
 อย่าอ้างเกินจริง meta-analysis ไม่ได้ไร้ประโยชน์ แต่มีเงื่อนไข
 :::
 
-## So which one should you write?
+## So which one should you write? {.roomy}
 
 ::: {.kicker .c-amber}
 Part 1
@@ -544,7 +592,7 @@ Three questions, four honest answers. None of them is "write the most comprehens
 :::
 
 ::: {.notes}
-[11:22 – 11:24] สไลด์ที่คนจะถ่ายรูป หยุดให้เขาถ่าย
+[11:25 – 11:27] สไลด์ที่คนจะถ่ายรูป หยุดให้เขาถ่าย
 
 ไล่กิ่งซ้ายก่อนด้วยน้ำเสียงให้กำลังใจ การยังไม่มี thesis คือจุดเริ่มต้นปกติ scoping review คือวิธีที่จะได้ thesis มา
 
@@ -580,7 +628,7 @@ Miranda & García-Carpintero, *J. Informetr.* **12**, 1015 (2018); the 1990 shar
 :::
 
 ::: {.notes}
-[11:24 – 11:25] กลไกสำคัญกว่าตัวเลข รีวิวสะสม citation เพราะเป็นของที่สะดวกจะอ้างเวลาต้องการอ้างอิงเดียวแทนทั้ง subfield ใน introduction
+[11:27 – 11:28] กลไกสำคัญกว่าตัวเลข รีวิวสะสม citation เพราะเป็นของที่สะดวกจะอ้างเวลาต้องการอ้างอิงเดียวแทนทั้ง subfield ใน introduction
 
 ข้อสามมีประโยชน์เชิงกลยุทธ์ ถ้า subfield มีรีวิวแล้วสิบห้าฉบับ premium ถูกใช้ไปหมดแล้ว
 :::
@@ -608,7 +656,7 @@ McMahan & McFarland, *Am. Sociol. Rev.* **86**, 341 (2021) · Ioannidis, *Milban
 :::
 
 ::: {.notes}
-[11:25 – 11:27] สไลด์นี้คือกระดูกสันหลังเชิงจริยธรรม และทำให้สัมมนานี้ต่างจากสัมมนาเพิ่ม h-index
+[11:28 – 11:30] สไลด์นี้คือกระดูกสันหลังเชิงจริยธรรม และทำให้สัมมนานี้ต่างจากสัมมนาเพิ่ม h-index
 
 รีวิวไม่ได้สร้าง citation จากอากาศ มันรวบความสนใจ และความสนใจนั้นถูกดูดมาจากวรรณกรรมปฐมภูมิ
 
@@ -630,7 +678,7 @@ Part 2
 :::
 
 ::: {.notes}
-[11:27 – 11:29] ใช้เวลากับข้อ 1 มากที่สุด agenda setting วัดได้ วรรณกรรม bibliometric แสดงว่ารีวิวจัดโครงสร้างสาขาใหม่รอบชุดงานคลาสสิกจำนวนน้อย
+[11:30 – 11:32] ใช้เวลากับข้อ 1 มากที่สุด agenda setting วัดได้ วรรณกรรม bibliometric แสดงว่ารีวิวจัดโครงสร้างสาขาใหม่รอบชุดงานคลาสสิกจำนวนน้อย
 
 การตั้งชื่อ framework ทำให้คนอื่นมีคำศัพท์ใช้ และคำศัพท์คือสิ่งที่ถูกอ้างอิง
 
@@ -683,7 +731,7 @@ Chang & Wu, *Scientometrics* **130**, 4995 (2025) — carried out in library and
 :::
 
 ::: {.notes}
-[11:29 – 11:30] ส่งการ์ดแดงสามใบเร็ว แล้วอยู่กับกล่องเขียวนาน เพราะตอบคำถามที่ทุกคนคิดอยู่ว่าอาวุโสพอหรือยัง
+[11:32 – 11:33] ส่งการ์ดแดงสามใบเร็ว แล้วอยู่กับกล่องเขียวนาน เพราะตอบคำถามที่ทุกคนคิดอยู่ว่าอาวุโสพอหรือยัง
 
 ข้อควรระวังสองข้อ งาน 1,102 ฉบับทำในสาขา LIS เป็นข้อบ่งชี้ ไม่ใช่ข้อพิสูจน์
 
@@ -696,7 +744,7 @@ Chang & Wu, *Scientometrics* **130**, 4995 (2025) — carried out in library and
 Five gates, the contribution ladder, and the question everyone asks: what am I contributing if I have no new data?
 :::
 
-## Gate 1 and Gate 2: is the field ready, and is it taken?
+## Gate 1 and Gate 2: is the field ready, and is it taken? {.roomy}
 
 ::: {.kicker .c-amber}
 Part 3
@@ -726,14 +774,14 @@ Those two counts give you Gate 1 and Gate 2 in fifteen minutes.
 :::
 
 ::: {.notes}
-[11:30 – 11:32] ทำให้ปฏิบัติได้จริง ให้ทุกคนนึกภาพเปิด Scopus แล้วรันสองคำค้นตามลำดับนี้
+[11:33 – 11:35] ทำให้ปฏิบัติได้จริง ให้ทุกคนนึกภาพเปิด Scopus แล้วรันสองคำค้นตามลำดับนี้
 
 ถ้าคำค้น A เจอรีวิวครอบคลุมปี 2025 จากกลุ่มที่แข็ง และคำค้น B เจอสี่สิบเปเปอร์ เราไม่เขียนรีวิวครอบคลุม เราเขียน critical review เฉพาะจุดบนยี่สิบเปเปอร์ที่ออกหลังจากของเขา
 
 การ reframe แบบนี้คือสิ่งที่มีประโยชน์ที่สุดในสัมมนา
 :::
 
-## Gates 3 to 5: standing, thesis, capacity
+## Gates 3 to 5: standing, thesis, capacity {.roomy}
 
 ::: {.kicker .c-amber}
 Part 3
@@ -760,14 +808,14 @@ Part 3
 :::
 
 ::: {.notes}
-[11:32 – 11:34] Gate 4 ต้องอยู่นาน อ่านสองประโยคตัวอย่างออกเสียง แล้วปล่อยให้ความต่างชัดเอง
+[11:35 – 11:37] Gate 4 ต้องอยู่นาน อ่านสองประโยคตัวอย่างออกเสียง แล้วปล่อยให้ความต่างชัดเอง
 
 เกณฑ์ของ thesis คือผู้เชี่ยวชาญในห้องนี้ไม่เห็นด้วยได้ไหม ถ้าไม่ได้ มันคือคำบรรยาย และคำบรรยายไม่ถูกอ้างอิง
 
 Gate 3 เจ็บสำหรับ นศ. ป.เอก พูดตรง ๆ ว่าถ้ายังไม่มี primary paper แปลว่าไม่ได้เขียนคนเดียว ซึ่งเป็นเรื่องปกติ
 :::
 
-## The contribution ladder
+## The contribution ladder {.roomy}
 
 ::: {.kicker .c-amber}
 Part 3
@@ -793,7 +841,7 @@ The referee's test: remove the reference list. What is left? A review with 500 r
 :::
 
 ::: {.notes}
-[11:34 – 11:36] สไลด์ที่แยกการบรรยายเรื่องการจัดรูปแบบออกจากการบรรยายเรื่องวิชาการ อย่ารีบ
+[11:37 – 11:39] สไลด์ที่แยกการบรรยายเรื่องการจัดรูปแบบออกจากการบรรยายเรื่องวิชาการ อย่ารีบ
 
 ปล่อยให้ผู้ฟังสังเกตเองว่าขั้น 1 ถึง 3 ไม่ต้องใช้วิจารณญาณเลย ใครมีบัญชี Scopus และวันหยุดพอก็ทำได้
 
@@ -877,7 +925,7 @@ You connect two communities that work on the same problem and never cite each ot
 :::
 
 ::: {.notes}
-[11:36 – 11:39] สไลด์นี้ตอบคำถามที่จะถูกถามแน่นอน ผมไม่มีผลการทดลองใหม่ แล้วผมมี contribution อะไร
+[11:39 – 11:42] สไลด์นี้ตอบคำถามที่จะถูกถามแน่นอน ผมไม่มีผลการทดลองใหม่ แล้วผมมี contribution อะไร
 
 ในเปเปอร์วิจัย ความใหม่คือข้อมูล ในรีวิว ความใหม่คือโครงสร้าง รีวิวคือการก่อสร้าง ไม่ใช่การรวบรวม
 
@@ -907,7 +955,7 @@ If you cannot write line 1, you do not yet have a critical review. If you cannot
 :::
 
 ::: {.notes}
-[11:39 – 11:42] ให้เงียบจริง ๆ สองนาที อย่าพูดแทรก อย่าเติมช่องว่าง
+[11:42 – 11:45] ให้เงียบจริง ๆ สองนาที อย่าพูดแทรก อย่าเติมช่องว่าง
 
 แล้วเรียกอาสาสมัครสองสามคน เอาบรรทัดที่ 1 มาทดสอบต่อหน้าห้องอย่างเป็นมิตร ถามห้องว่ามีใครไม่เห็นด้วยกับประโยคนี้บ้าง
 
@@ -922,7 +970,7 @@ If you cannot write line 1, you do not yet have a critical review. If you cannot
 Eight steps from idea to submission, and where AI tools legitimately fit into them.
 :::
 
-## Eight steps, and where the time actually goes
+## Eight steps, and where the time actually goes {.roomy}
 
 ::: {.kicker .c-amber}
 Part 4
@@ -944,7 +992,7 @@ Steps 2, 3 and 6 are the ones beginners skip, and the three that decide whether 
 :::
 
 ::: {.notes}
-[11:42 – 11:43] ภาพรวมอย่างเดียว บรรทัดเดียวต่อขั้น แล้วบอกว่าจะขยายสามขั้น คือ 2 3 และ 6
+[11:45 – 11:46] ภาพรวมอย่างเดียว บรรทัดเดียวต่อขั้น แล้วบอกว่าจะขยายสามขั้น คือ 2 3 และ 6
 
 gap analysis คือสิ่งที่ทำให้ proposal ผ่าน proposal คือสิ่งที่ทำให้ได้สิทธิ์ส่ง และ appraisal คือสิ่งที่แยกรีวิวออกจากบรรณานุกรม
 :::
@@ -972,14 +1020,14 @@ If you cannot fill column 5 with something specific, do not write the paper. A n
 :::
 
 ::: {.notes}
-[11:43 – 11:45] หนึ่งแถวต่อรีวิวเดิมหนึ่งฉบับ ห้าคอลัมน์ คอลัมน์ที่ห้าคือคอลัมน์ที่มีความหมาย
+[11:46 – 11:48] หนึ่งแถวต่อรีวิวเดิมหนึ่งฉบับ ห้าคอลัมน์ คอลัมน์ที่ห้าคือคอลัมน์ที่มีความหมาย
 
 ยืนกรานเรื่องวินัย ถ้ากรอกคอลัมน์ห้าด้วยอะไรที่เฉพาะเจาะจงไม่ได้ ข้อสรุปที่ซื่อสัตย์คือสาขานี้ยังไม่ต้องการรีวิวของเราปีนี้
 
 ตารางนี้ยังเป็นวิธีเร็วที่สุดในการโน้มน้าว co-author ว่าโครงการคุ้มกับชื่อของเขา
 :::
 
-## Step 3 · The proposal
+## Step 3 · The proposal {.roomy}
 
 ::: {.kicker .c-amber}
 Part 4
@@ -1012,7 +1060,7 @@ Acceptance of a proposal does not guarantee publication: full peer review still 
 :::
 
 ::: {.notes}
-[11:45 – 11:47] reframe deliverable แรกคือเอกสารสองหน้า ไม่ใช่ต้นฉบับร้อยหน้า อันนี้ควรทำให้รู้สึกโล่ง
+[11:48 – 11:50] reframe deliverable แรกคือเอกสารสองหน้า ไม่ใช่ต้นฉบับร้อยหน้า อันนี้ควรทำให้รู้สึกโล่ง
 
 ชี้ให้เห็นว่าเรามีของในสองคอลัมน์นี้อยู่แล้วจากกิจกรรมที่ 1 และตารางเทียบรีวิวเดิม
 
@@ -1060,14 +1108,14 @@ PRISMA 2020 and PRISMA-S: prisma-statement.org · Gusenbauer & Haddaway, *Res. S
 :::
 
 ::: {.notes}
-[11:47 – 11:49] ประโยคที่แบกสไลด์นี้ ถ้า reviewer ทำการค้นซ้ำตามเราไม่ได้ ข้ออ้างเรื่องความครอบคลุมก็เป็นแค่การกล่าวอ้าง
+[11:50 – 11:52] ประโยคที่แบกสไลด์นี้ ถ้า reviewer ทำการค้นซ้ำตามเราไม่ได้ ข้ออ้างเรื่องความครอบคลุมก็เป็นแค่การกล่าวอ้าง
 
 แม้แต่ narrative หรือ critical review ที่ไม่ต้องทำ PRISMA เต็มรูปแบบ การรายงานการค้นใช้ครึ่งหน้าแต่ซื้อความน่าเชื่อถือมหาศาล
 
 เทคนิค seed set ปฏิบัติได้จริงที่สุดและแทบไม่มีใครทำ มันจับกรณีที่คำสำคัญมีสองการสะกดหรือมีชื่อเก่า
 :::
 
-## Step 5 · Screening and extraction
+## Step 5 · Screening and extraction {.roomy}
 
 ::: {.kicker .c-amber}
 Part 4
@@ -1087,11 +1135,178 @@ Part 4
 :::
 
 ::: {.notes}
-[11:49 – 11:50] ทัวร์เครื่องมือให้จบในหนึ่งนาที ผู้ฟังจะไปหาอ่านเอง
+[11:52 – 11:53] ทัวร์เครื่องมือให้จบในหนึ่งนาที ผู้ฟังจะไปหาอ่านเอง
 
 ใช้เวลาที่เหลือกับกล่องเหลือง เพราะเป็นความผิดพลาดที่เสียเวลามากที่สุด
 
 ตัวอย่างสำหรับคนแบตเตอรี่ ตัดสินใจตั้งแต่ต้นว่าทุกงานต้องบอก active material loading อิเล็กโทรไลต์ C-rate จำนวนรอบ อุณหภูมิ รูปแบบเซลล์ จำนวนซ้ำ เปเปอร์ที่ไม่รายงานไม่ได้ถูกตัดออก แต่ได้คะแนนต่ำ นั่นคือขั้นที่ 6
+:::
+
+## PRISMA: a reporting standard, not a review type
+
+::: {.kicker .c-amber}
+Part 4 &#183; Step 5
+:::
+
+::: {.lede}
+Following PRISMA does not make a review good. Not following it makes a systematic review unpublishable. It governs what you must report, never what you must think.
+:::
+
+::: {.chart}
+```{=html}
+<svg viewBox="0 0 1180 236" role="img" aria-label="PRISMA flow diagram with worked numbers">
+  <defs>
+    <marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B9C1C6"/>
+    </marker>
+  </defs>
+
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif">
+    <g fill="#FFFFFF" stroke="#B9C1C6" stroke-width="1.5">
+      <rect x="0"   y="8" width="196" height="92" rx="9"/>
+      <rect x="246" y="8" width="196" height="92" rx="9"/>
+      <rect x="492" y="8" width="196" height="92" rx="9"/>
+      <rect x="738" y="8" width="196" height="92" rx="9"/>
+    </g>
+    <rect x="984" y="8" width="196" height="92" rx="9" fill="#EAF2F1" stroke="#0F6E6B" stroke-width="2"/>
+
+    <g font-size="13" font-weight="700" letter-spacing="1.4" fill="#66727C">
+      <text x="18"   y="34">IDENTIFIED</text>
+      <text x="264"  y="34">AFTER DEDUPLICATION</text>
+      <text x="510"  y="34">TITLE / ABSTRACT</text>
+      <text x="756"  y="34">FULL TEXT ASSESSED</text>
+      <text x="1002" y="34" fill="#0F6E6B">INCLUDED</text>
+    </g>
+    <g font-family="'Source Serif 4', 'Noto Serif Thai', Georgia, serif" font-size="30" font-weight="700" fill="#1C242B">
+      <text x="18"   y="70">2,148</text>
+      <text x="264"  y="70">1,502</text>
+      <text x="510"  y="70">1,502</text>
+      <text x="756"  y="70">138</text>
+      <text x="1002" y="70" fill="#0F6E6B">96</text>
+    </g>
+    <g font-size="14" fill="#66727C">
+      <text x="18"   y="90">3 databases &#183; run 12 Mar 2026</text>
+      <text x="264"  y="90">646 duplicates removed</text>
+      <text x="510"  y="90">screened by two people</text>
+      <text x="756"  y="90">read in full</text>
+      <text x="1002" y="90">in the synthesis</text>
+    </g>
+
+    <g stroke="#B9C1C6" stroke-width="2" fill="none" marker-end="url(#fa)">
+      <line x1="200" y1="54" x2="240" y2="54"/>
+      <line x1="446" y1="54" x2="486" y2="54"/>
+      <line x1="692" y1="54" x2="732" y2="54"/>
+      <line x1="938" y1="54" x2="978" y2="54"/>
+      <path d="M 590 100 L 590 138"/>
+      <path d="M 836 100 L 836 138"/>
+    </g>
+
+    <rect x="466" y="144" width="248" height="62" rx="9" fill="#F3F0EB"/>
+    <rect x="712" y="144" width="248" height="62" rx="9" fill="#FCF3E4" stroke="#E29A2D" stroke-width="1.5"/>
+    <g font-size="14" fill="#66727C">
+      <text x="484" y="168">Excluded on title / abstract</text>
+      <text x="484" y="192" font-weight="700" fill="#333F4A">1,364</text>
+      <text x="730" y="168" fill="#BE654C" font-weight="700">Excluded at full text, with reasons</text>
+      <text x="730" y="192">42 &#8212; no cycling data 18 &#183; review 13 &#183; non-aqueous 11</text>
+    </g>
+    <text x="730" y="228" font-size="13" font-style="italic" fill="#66727C">Reasons are required only at this stage. This is the box referees check first.</text>
+  </g>
+</svg>
+```
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Which document applies]{.eyebrow}
+
+**PRISMA 2020** — the 27-item checklist and the flow diagram. **PRISMA-S** — the search, reported so it can be repeated. **PRISMA-ScR** — the scoping-review variant.
+:::
+
+::: {.card .c-amber}
+[What engineering journals actually ask]{.eyebrow}
+
+Most do not require PRISMA at all. Submit the flow diagram anyway: half a page that makes the search auditable rather than asserted.
+:::
+
+::: {.card .c-rust}
+[The trap]{.eyebrow}
+
+A flow diagram with no appraisal and no synthesis is decoration. It certifies that you searched carefully, and nothing else — the bottom-right quadrant.
+:::
+:::
+
+::: {.foot}
+::: {.source}
+Page et al., *BMJ* **372**, n71 (2021) &#183; prisma-statement.org &#183; ROSES in environmental science, JBI for scoping
+:::
+:::
+
+::: {.notes}
+[11:53 – 11:55] เริ่มด้วยการแก้ความเข้าใจผิดก่อน คนจำนวนมากคิดว่า PRISMA คือชนิดของรีวิว หรือเป็นตรารับรองคุณภาพ ไม่ใช่ทั้งสองอย่าง มันคือมาตรฐานการรายงาน บอกว่าต้องรายงานอะไร ไม่ได้บอกว่าต้องคิดอะไร
+
+ชี้ที่แผนภาพแล้วเดินจากซ้ายไปขวา ตัวเลขในนี้เป็นตัวอย่างจริงระดับที่รีวิวแบตเตอรี่หนึ่งฉบับเจอ
+
+จุดที่ต้องหยุดคือกล่องเหลืองขวาล่าง PRISMA บังคับให้ระบุเหตุผลเฉพาะขั้น full text เท่านั้น ขั้น title abstract ไม่ต้อง เพราะมันเป็นไปไม่ได้ในทางปฏิบัติ กรรมการอ่านกล่องนี้ก่อนกล่องอื่น เพราะมันบอกว่าเราตัดงานทิ้งด้วยเหตุผลอะไร
+
+วารสารวิศวกรรมส่วนใหญ่ไม่บังคับ PRISMA แต่ใส่แผนภาพไปเถอะ ครึ่งหน้ากระดาษแลกกับการที่การค้นของเราตรวจสอบได้ คุ้มที่สุดในต้นฉบับ
+
+ปิดด้วยกับดัก แผนภาพสวยแต่ไม่มี appraisal ไม่มี synthesis คือช่องขวาล่างของแผนที่เมื่อกี้ ค้นดีมาก สังเคราะห์บาง
+:::
+
+## PRISMA in the wild: three you can open tonight
+
+::: {.kicker .c-amber}
+Part 4 &#183; Step 5
+:::
+
+::: {.lede}
+Do not draw the diagram from memory. Take the template, or let a tool build it from your counts.
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[The template]{.eyebrow}
+
+### prisma-statement.org
+
+The 2020 flow diagram as a free Word file, in two versions: databases only, and databases plus other sources. The 27-item checklist sits beside it. **Look at:** which boxes are compulsory, and how few they are.
+:::
+
+::: {.card .c-amber}
+[The generator]{.eyebrow}
+
+### PRISMA2020 Shiny app
+
+`estech.shinyapps.io/prisma_flowdiagram` — type your counts, download the diagram as PDF, PNG or an interactive HTML whose boxes link to the record lists. **Look at:** the interactive version. Referees like being able to click through.
+:::
+
+::: {.card .c-sky}
+[A published example]{.eyebrow}
+
+### Zhang & Strbac, *Energies* **18**, 3747 (2025)
+
+Open access, engineering, Figure 1. About 3,000 records identified, roughly 800 after title and abstract, **129 included**. **Look at:** how the exclusion reasons are worded, and how short the corresponding Methods text is.
+:::
+:::
+
+::: {.flag .c-amber}
+Covidence and Rayyan export the diagram straight from your screening decisions, so the numbers cannot drift out of step with the manuscript.
+:::
+
+::: {.foot}
+::: {.source}
+Page et al., *BMJ* **372**, n71 (2021) &#183; Haddaway et al., *Campbell Syst. Rev.* **18**, e1230 (2022) &#183; Zhang &amp; Strbac, *Energies* **18**, 3747 (2025), doi:10.3390/en18143747
+:::
+:::
+
+::: {.notes}
+[11:55 – 11:58] เปิดเว็บจริงถ้าอินเทอร์เน็ตในห้องใช้ได้ ให้เห็นว่ามันคือไฟล์ Word ธรรมดา ไม่ใช่ของศักดิ์สิทธิ์
+
+Shiny app คือสิ่งที่ผู้ฟังจะใช้จริงที่สุด กรอกตัวเลขห้าช่อง กดดาวน์โหลด จบ ไม่ต้องวาดใน PowerPoint
+
+ตัวอย่างของ Zhang กับ Strbac เลือกมาเพราะเป็นงานวิศวกรรม open access และตัวเลขใหญ่พอให้เห็นว่าการคัดกรองลดจากสามพันเหลือร้อยกว่าได้ยังไง ชี้ให้ดู Methods ว่าสั้นแค่ไหน ประมาณหน้าเดียว
+
+ย้ำข้อสุดท้าย ถ้าใช้ Covidence หรือ Rayyan ตัวเลขในแผนภาพจะตรงกับการคัดกรองจริงเสมอ คนที่นับมือมักได้ตัวเลขที่บวกไม่ลงตัว แล้วกรรมการจับได้
 :::
 
 ## AI tools: where they legitimately help
@@ -1130,7 +1345,7 @@ Never paste a manuscript you are refereeing into a public AI tool: a confidentia
 :::
 
 ::: {.notes}
-[11:50 – 11:53] วางกรอบให้เป็นการอนุญาตพร้อมขอบเขต ไม่ใช่คำเตือน ผู้ฟังใช้อยู่แล้ว สิ่งที่ขาดคือวิธีอธิบายให้บรรณาธิการยอมรับ
+[11:58 – 12:01] วางกรอบให้เป็นการอนุญาตพร้อมขอบเขต ไม่ใช่คำเตือน ผู้ฟังใช้อยู่แล้ว สิ่งที่ขาดคือวิธีอธิบายให้บรรณาธิการยอมรับ
 
 ให้ตัวเลข งานประเมินปี 2025 AI extraction ราว 81% เทียบมนุษย์ 87% บน factual field แต่ตกเหลือ 16% บน constructs of interest และ 35% บนผลลัพธ์หลัก นั่นคือเส้นแบ่งในแถว extraction
 
@@ -1139,7 +1354,7 @@ Never paste a manuscript you are refereeing into a public AI tool: a confidentia
 เหตุผลที่หนักแน่นที่สุดเป็นผลประโยชน์ตัวเอง ไม่ใช่จริยธรรม การอ้างอิงที่กุขึ้นตรวจจับง่ายมาก
 :::
 
-## Step 6 · Appraisal turns a list into a review
+## Step 6 · Appraisal turns a list into a review {.roomy}
 
 ::: {.kicker .c-amber}
 Part 4
@@ -1182,7 +1397,7 @@ If your review treats a single unreplicated result and a multi-lab reproduction 
 :::
 
 ::: {.notes}
-[11:53 – 11:56] สไลด์ที่สร้างความแตกต่างมากที่สุดในชุด ให้เวลากับมัน
+[12:01 – 12:04] สไลด์ที่สร้างความแตกต่างมากที่สุดในชุด ให้เวลากับมัน
 
 tier scheme เป็นของจริง เป็นโครงสร้างของรีวิว carbon felt ที่กำลังแก้ที่ JPS และ reviewer เข้ามาถกกับ tier แทนที่จะถกความครอบคลุม
 
@@ -1191,7 +1406,7 @@ tier scheme เป็นของจริง เป็นโครงสร้�
 อย่าตัดงาน tier ต่ำออกเงียบ ๆ ให้คะแนน รายงาน และบอกว่าทำอะไรกับมัน
 :::
 
-## Step 7 · Concept matrix, not a paper-by-paper walk
+## Step 7 · Concept matrix, not a paper-by-paper walk {.roomy}
 
 ::: {.kicker .c-amber}
 Part 4
@@ -1220,7 +1435,7 @@ Build a matrix with concepts as rows and studies as columns. Every body paragrap
 :::
 
 ::: {.notes}
-[11:56 – 11:57] อ่านข้อความฝั่งซ้ายออกเสียงด้วยน้ำเสียงราบเรียบโดยตั้งใจ ผู้ฟังจะจำได้ เพราะเป็นหน้าตาของร่างแรกเกือบทุกฉบับ
+[12:04 – 12:05] อ่านข้อความฝั่งซ้ายออกเสียงด้วยน้ำเสียงราบเรียบโดยตั้งใจ ผู้ฟังจะจำได้ เพราะเป็นหน้าตาของร่างแรกเกือบทุกฉบับ
 
 ชี้จุดสังเกต subsequently meanwhile in another study ถ้าคำพวกนี้แบกการเชื่อมย่อหน้า แปลว่าเราเขียนลำดับเหตุการณ์
 
@@ -1233,7 +1448,7 @@ concept matrix เป็นอุปกรณ์ของ Webster และ Wats
 What the finished paper looks like, how to title it, what to budget, and the seven ways it goes wrong.
 :::
 
-## The anatomy of a review article
+## The anatomy of a review article {.roomy}
 
 ::: {.kicker .c-amber}
 Part 5
@@ -1255,7 +1470,7 @@ Sections 4 and 7 distinguish a review from a summary. Draft them first.
 :::
 
 ::: {.notes}
-[11:57 – 12:00] หยุดจริงจังที่ข้อ 4 และ 7
+[12:05 – 12:08] หยุดจริงจังที่ข้อ 4 และ 7
 
 framework section ความผิดพลาดคือกระจาย taxonomy ไปทั่วเนื้อหา ให้มันมีหัวข้อของตัวเอง นิยามทุกหมวด และให้ผู้อ่านเห็นแผนที่ก่อนพาเข้าพื้นที่จริง
 
@@ -1315,14 +1530,14 @@ Mutual-exclusivity test: could a reader who has seen only your section headings 
 :::
 
 ::: {.notes}
-[12:00 – 12:01] ยกตัวอย่างละบรรทัดจากสาขาผู้ฟังเอง จะได้ไม่เป็นนามธรรม
+[12:08 – 12:09] ยกตัวอย่างละบรรทัดจากสาขาผู้ฟังเอง จะได้ไม่เป็นนามธรรม
 
 framework-based คือตัวที่ควรผลักดันสำหรับคนรุ่นใหม่ที่ทะเยอทะยาน เพราะเป็นตัวเดียวที่ผลิตของที่ตั้งชื่อได้
 
 อย่าจัดตามระบบวัสดุ เว้นแต่ระบบวัสดุคือตัวแปรที่สนใจจริง มันคือ taxonomy ที่ขี้เกียจที่สุด
 :::
 
-## The title is the first test of whether you have a thesis
+## The title is the first test of whether you have a thesis {.roomy}
 
 ::: {.kicker .c-amber}
 Part 5
@@ -1367,14 +1582,14 @@ A title that would fit on any review of the topic is not a title yet. Put the cl
 :::
 
 ::: {.notes}
-[12:01 – 12:03] อ่านคอลัมน์ซ้ายก่อนทั้งสามอันด้วยน้ำเสียงเรียบ แล้วค่อยอ่านขวา ห้องจะได้ยินความต่างเอง
+[12:09 – 12:11] อ่านคอลัมน์ซ้ายก่อนทั้งสามอันด้วยน้ำเสียงเรียบ แล้วค่อยอ่านขวา ห้องจะได้ยินความต่างเอง
 
 advances progress perspectives recent emerging เป็นคำเติมช่องว่าง ลบทิ้งได้ทุกคำโดยไม่เสียข้อมูล
 
 เขียนชื่อเรื่องเป็นอันสุดท้าย หลังมี framework section แล้ว ตรวจว่าตรงกับประโยคสุดท้ายของ abstract
 :::
 
-## Budgets, and the three tables that get you cited
+## Budgets, and the three tables that get you cited {.roomy}
 
 ::: {.kicker .c-amber}
 Part 5
@@ -1407,14 +1622,14 @@ Exceeding a journal's stated limits is a desk-rejection trigger, not a negotiati
 :::
 
 ::: {.notes}
-[12:03 – 12:05] ตารางคือหน่วยของรีวิวที่คนอื่นยกไปใส่ introduction ของตัวเองได้ และเวลาเขายกไป เขาอ้างอิงเรา
+[12:11 – 12:13] ตารางคือหน่วยของรีวิวที่คนอื่นยกไปใส่ introduction ของตัวเองได้ และเวลาเขายกไป เขาอ้างอิงเรา
 
 ตารางหลักฐานคือตัวที่ทบต้น ถ้าตีพิมพ์ corpus ที่ให้คะแนนแล้ว สามเปเปอร์ถัดไปจะอ้างรีวิวของเราแทนที่จะให้คะแนนใหม่
 
 รูป ตั้งงบทั้งเวลาและเงินจริง ๆ ภาพแนวคิดที่สรุป framework ในภาพเดียวคือของที่ถูกใช้ซ้ำมากที่สุด
 :::
 
-## Seven ways reviews get rejected
+## Seven ways reviews get rejected {.roomy}
 
 ::: {.kicker .c-amber}
 Part 5
@@ -1435,7 +1650,7 @@ Every one of these is visible in the first two pages. That is where desk rejecti
 :::
 
 ::: {.notes}
-[12:05 – 12:06] ไปเร็ว บรรทัดละข้อ แล้วหยุดที่ข้อสุดท้าย
+[12:13 – 12:14] ไปเร็ว บรรทัดละข้อ แล้วหยุดที่ข้อสุดท้าย
 
 ต้องมีการวิจัยเพิ่มเติม ควรถูกล้อเบา ๆ เพราะทุกคนเคยเขียน แทนที่ด้วยการทดลองไหน ใครทำ วัดอะไร ผลแบบไหนจะเปลี่ยนใจสาขานี้
 
@@ -1463,14 +1678,14 @@ If the honest answer to Task 2 is "a well-organised list", you now know exactly 
 :::
 
 ::: {.notes}
-[12:06 – 12:09] เงียบสองนาทีอีกครั้ง แล้วเก็บคำตอบ Task 2 สองสามคน
+[12:14 – 12:17] เงียบสองนาทีอีกครั้ง แล้วเก็บคำตอบ Task 2 สองสามคน
 
 คาดว่าส่วนใหญ่จะพบว่าอยู่ที่ขั้น 2 หรือ 3 บอกทันทีว่าไม่ใช่ความล้มเหลว มันคือจุดเริ่มต้นปกติ และดีกว่าที่จะรู้ตอนนี้แทนที่จะรู้หลังเขียนไปเก้าเดือน
 
 ถามต่อหนึ่งคำถาม อะไรต้องเป็นจริงถึงจะขยับขึ้นสองขั้น
 :::
 
-## Generative AI: what you must disclose in 2026
+## Generative AI: what you must disclose in 2026 {.roomy}
 
 ::: {.kicker .c-amber}
 Part 5
@@ -1504,7 +1719,7 @@ Disclose the tool, the model and version, the date, and the exact stage. Then st
 :::
 
 ::: {.notes}
-[12:09 – 12:11] ให้ข้อเท็จจริงและสั้น หลีกเลี่ยงการเทศน์ ผู้ฟังใช้เครื่องมือพวกนี้อยู่แล้ว
+[12:17 – 12:19] ให้ข้อเท็จจริงและสั้น หลีกเลี่ยงการเทศน์ ผู้ฟังใช้เครื่องมือพวกนี้อยู่แล้ว
 
 กฎข้อเดียว AI ช่วยหา ช่วยคัดกรอง ช่วยเรียบเรียงได้ แต่ทุกข้อเท็จจริงและทุกอ้างอิงต้องถูกตรวจกับเปเปอร์จริงโดยมนุษย์
 
@@ -1530,7 +1745,7 @@ Take-away: the one-page proposal template in your handout. Fill it in this week,
 ::::
 
 ::: {.notes}
-[12:11 – 12:13] ช้าลง สามประโยคนี้คือสิ่งที่อยากให้ผู้ฟังพูดซ้ำกับอาจารย์ที่ปรึกษาในวันพรุ่งนี้
+[12:19 – 12:21] ช้าลง สามประโยคนี้คือสิ่งที่อยากให้ผู้ฟังพูดซ้ำกับอาจารย์ที่ปรึกษาในวันพรุ่งนี้
 
 ขอให้ชัดเจน ทุกคนควรกรอกแบบฟอร์ม proposal หนึ่งหน้าให้เสร็จภายในหนึ่งสัปดาห์ เพราะส่วนที่ยากที่สุดทำไปแล้ว
 
@@ -1560,7 +1775,7 @@ Sources and further reading
 :::
 
 ::: {.notes}
-[12:13 – 12:20] เปิดค้างไว้ตลอดถาม-ตอบ ให้คนถ่ายรูป
+[12:21 – 12:28] เปิดค้างไว้ตลอดถาม-ตอบ ให้คนถ่ายรูป
 
 คำถามที่คาดว่าจะถูกถาม
 

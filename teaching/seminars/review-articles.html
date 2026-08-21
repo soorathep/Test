@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0d07dc696cef26bad78d0924887ebdcd.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-ed760059d4b07b885fe00d008e2b49ef.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -276,12 +276,12 @@ Soorathep Kheawhom
 <p>Being systematic tells you how reliably the literature was collected. Being critical tells you what new understanding was created from it.</p>
 </div>
 </section>
-<section id="salsa-the-four-dials-behind-every-review-type" class="slide level2">
+<section id="salsa-the-four-dials-behind-every-review-type" class="slide level2 roomy">
 <h2>SALSA: the four dials behind every review type</h2>
 <div class="kicker c-amber">
 <p>Part 1</p>
 </div>
-<div class="cards g3">
+<div class="cards">
 <div class="card c-teal">
 <p><span class="eyebrow">S</span></p>
 <h3 id="search">Search</h3>
@@ -292,17 +292,17 @@ Soorathep Kheawhom
 <h3 id="appraisal">Appraisal</h3>
 <p>Did you judge the quality of what you found, or accept every paper equally?</p>
 </div>
+</div>
+<div class="cards">
 <div class="card c-sky">
 <p><span class="eyebrow">S</span></p>
 <h3 id="synthesis">Synthesis</h3>
 <p>How did you bring the studies together: narrative, tabular, or statistical?</p>
 </div>
-</div>
-<div class="cards">
 <div class="card c-rust">
 <p><span class="eyebrow">A</span></p>
 <h3 id="analysis">Analysis</h3>
-<p>What new understanding did you produce that no single paper contains? This is the dial people skip, and the only one that produces a contribution.</p>
+<p>What new understanding did you produce that no single paper contains? The dial people skip, and the only one that produces a contribution.</p>
 </div>
 </div>
 <div class="foot">
@@ -400,37 +400,127 @@ Soorathep Kheawhom
 <div class="kicker c-amber">
 <p>Part 1</p>
 </div>
-<div class="cards">
-<div class="card c-teal">
-<p><span class="eyebrow">Low systematic · high critical</span></p>
-<h3 id="critical-review">Critical review</h3>
-<p>Insight, no documented search</p>
+<div class="lede">
+<p>Two independent questions. How well did you gather the literature, and what new understanding did you produce? Neither one ranks above the other.</p>
 </div>
-<div class="card c-amber">
-<p><span class="eyebrow">High systematic · high critical</span></p>
-<h3 id="systematic-critical-review">Systematic critical review</h3>
-<p>Documented search, then real synthesis. The strongest combination available to a junior author.</p>
-</div>
-</div>
-<div class="cards">
-<div class="card c-slate">
-<p><span class="eyebrow">Low · low</span></p>
-<h3 id="narrative-review">Narrative review</h3>
-<p>Expert commentary, no protocol</p>
-</div>
-<div class="card c-slate">
-<p><span class="eyebrow">High systematic · low critical</span></p>
-<h3 id="descriptive-systematic-review">Descriptive systematic review</h3>
-<p>Rigorous search, thin synthesis</p>
-</div>
-</div>
-<div class="foot">
-<div class="note">
-<p><strong>Where does meta-analysis go?</strong> Nowhere on this map. It attaches to the right-hand column when the outcomes are commensurable. It sharpens a quantitative claim; it does not move a review upward. And the bottom right is not a failure: a scoping or mapping review belongs there by design.</p>
-</div>
+<div class="chart">
+<svg viewbox="0 0 1180 420" role="img" aria-label="Two-by-two map of review types by systematic rigour and critical synthesis">
+  <defs>
+    <marker id="ar" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#66727C"></path>
+    </marker>
+  </defs>
+
+  <rect x="64" y="4" width="553" height="180" rx="10" fill="#EAF2F1"></rect>
+  <rect x="623" y="4" width="553" height="180" rx="10" fill="#FCF3E4" stroke="#E29A2D" stroke-width="2"></rect>
+  <rect x="64" y="190" width="553" height="180" rx="10" fill="#F3F0EB"></rect>
+  <rect x="623" y="190" width="553" height="180" rx="10" fill="#EEF3F8"></rect>
+
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6">
+    <text x="94" y="40" fill="#0F6E6B">LOW SYSTEMATIC · HIGH CRITICAL</text>
+    <text x="653" y="40" fill="#E29A2D">HIGH SYSTEMATIC · HIGH CRITICAL</text>
+    <text x="94" y="226" fill="#66727C">LOW · LOW</text>
+    <text x="653" y="226" fill="#5A91BE">HIGH SYSTEMATIC · LOW CRITICAL</text>
+  </g>
+
+  <g font-family="'Source Serif 4', 'Noto Serif Thai', Georgia, serif" font-size="27" font-weight="700" fill="#1C242B">
+    <text x="94" y="83">Critical review</text>
+    <text x="653" y="83">Systematic critical review</text>
+    <text x="94" y="269">Narrative review</text>
+    <text x="653" y="269">Descriptive systematic review</text>
+  </g>
+
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="16" fill="#333F4A">
+    <text x="94" y="117">A real argument, no documented search.</text>
+    <text x="94" y="142" fill="#66727C">Believable in proportion to your standing.</text>
+    <text x="653" y="117">Documented search, then real synthesis.</text>
+    <text x="653" y="142" fill="#66727C">The strongest combination open to a junior author.</text>
+    <text x="94" y="303">Expert commentary, no protocol.</text>
+    <text x="94" y="328" fill="#66727C">You may not claim the evidence shows anything.</text>
+    <text x="653" y="303">Rigorous search, thin synthesis.</text>
+    <text x="653" y="328" fill="#66727C">Scoping and mapping reviews sit here by design.</text>
+  </g>
+
+  <line x1="64" y1="392" x2="1176" y2="392" stroke="#B9C1C6" stroke-width="2" marker-end="url(#ar)"></line>
+  <line x1="44" y1="370" x2="44" y2="4" stroke="#B9C1C6" stroke-width="2" marker-end="url(#ar)"></line>
+  <text x="620" y="414" text-anchor="middle" font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4" fill="#66727C">SYSTEMATIC RIGOUR</text>
+  <text x="22" y="187" text-anchor="middle" transform="rotate(-90 22 187)" font-family="'Source Sans 3', Sarabun, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4" fill="#66727C">CRITICAL SYNTHESIS</text>
+</svg>
 </div>
 </section>
-<section id="do-not-import-the-clinical-evidence-hierarchy" class="slide level2">
+<section id="the-three-names-people-confuse" class="slide level2">
+<h2>The three names people confuse</h2>
+<div class="kicker c-amber">
+<p>Part 1</p>
+</div>
+<div class="lede">
+<p>Not three grades of the same paper. They differ in what they promise the reader.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Systematic review</th>
+<th>Meta-analysis</th>
+<th>Critical review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>The promise</strong></td>
+<td>“Everything that met my stated criteria is here.”</td>
+<td>“Here is one pooled number, with its uncertainty.”</td>
+<td>“The field believes X. Here is why that is only partly right.”</td>
+</tr>
+<tr class="even">
+<td><strong>What it is</strong></td>
+<td>a <strong>protocol</strong> for finding and selecting</td>
+<td>a <strong>statistic</strong>, computed inside a systematic review</td>
+<td>an <strong>argument</strong>, built on evidence you chose</td>
+</tr>
+<tr class="odd">
+<td><strong>Search</strong></td>
+<td>written protocol, multi-database, reproducible</td>
+<td>inherited from the systematic review it sits in</td>
+<td>purposive: you choose what serves the argument, and say so</td>
+</tr>
+<tr class="even">
+<td><strong>Appraisal</strong></td>
+<td>formal and tool-based: RoB, AMSTAR 2, GRADE</td>
+<td>mandatory: heterogeneity, publication bias, sensitivity</td>
+<td>explicit but informal: you argue why a result is weak</td>
+</tr>
+<tr class="odd">
+<td><strong>What comes out</strong></td>
+<td>an evidence map and a verdict per question</td>
+<td>an effect size, a confidence interval, an <em>I</em>²</td>
+<td>a framework, a taxonomy, or a reconciliation</td>
+</tr>
+<tr class="even">
+<td><strong>Where novelty lives</strong></td>
+<td>completeness and reproducibility</td>
+<td>precision</td>
+<td>the idea</td>
+</tr>
+<tr class="odd">
+<td><strong>It fails when</strong></td>
+<td>it never appraises: a bibliography with a protocol</td>
+<td>it pools studies that do not measure the same thing</td>
+<td>the argument outruns the evidence shown</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-amber">
+<p>Meta-analysis is not a higher grade of systematic review. It is one optional step inside one, and in engineering usually an unavailable one.</p>
+</div>
+</section>
+<section id="do-not-import-the-clinical-evidence-hierarchy" class="slide level2 roomy">
 <h2>Do not import the clinical evidence hierarchy</h2>
 <div class="kicker c-amber">
 <p>Part 1</p>
@@ -461,7 +551,7 @@ Soorathep Kheawhom
 <p>The right review methodology is set by the scientific question, not by a hierarchy borrowed from another discipline.</p>
 </div>
 </section>
-<section id="so-which-one-should-you-write" class="slide level2">
+<section id="so-which-one-should-you-write" class="slide level2 roomy">
 <h2>So which one should you write?</h2>
 <div class="kicker c-amber">
 <p>Part 1</p>
@@ -581,7 +671,7 @@ Soorathep Kheawhom
 <p>Five gates, the contribution ladder, and the question everyone asks: what am I contributing if I have no new data?</p>
 </div>
 </section>
-<section id="gate-1-and-gate-2-is-the-field-ready-and-is-it-taken" class="slide level2">
+<section id="gate-1-and-gate-2-is-the-field-ready-and-is-it-taken" class="slide level2 roomy">
 <h2>Gate 1 and Gate 2: is the field ready, and is it taken?</h2>
 <div class="kicker c-amber">
 <p>Part 3</p>
@@ -606,7 +696,7 @@ Soorathep Kheawhom
 <p>Those two counts give you Gate 1 and Gate 2 in fifteen minutes.</p>
 </div>
 </section>
-<section id="gates-3-to-5-standing-thesis-capacity" class="slide level2">
+<section id="gates-3-to-5-standing-thesis-capacity" class="slide level2 roomy">
 <h2>Gates 3 to 5: standing, thesis, capacity</h2>
 <div class="kicker c-amber">
 <p>Part 3</p>
@@ -623,7 +713,7 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
-<section id="the-contribution-ladder" class="slide level2">
+<section id="the-contribution-ladder" class="slide level2 roomy">
 <h2>The contribution ladder</h2>
 <div class="kicker c-amber">
 <p>Part 3</p>
@@ -717,7 +807,7 @@ Soorathep Kheawhom
 <p>Eight steps from idea to submission, and where AI tools legitimately fit into them.</p>
 </div>
 </section>
-<section id="eight-steps-and-where-the-time-actually-goes" class="slide level2">
+<section id="eight-steps-and-where-the-time-actually-goes" class="slide level2 roomy">
 <h2>Eight steps, and where the time actually goes</h2>
 <div class="kicker c-amber">
 <p>Part 4</p>
@@ -759,7 +849,7 @@ Soorathep Kheawhom
 <p>If you cannot fill column 5 with something specific, do not write the paper. A newer time window is not enough on its own, and referees will say so.</p>
 </div>
 </section>
-<section id="step-3-the-proposal" class="slide level2">
+<section id="step-3-the-proposal" class="slide level2 roomy">
 <h2>Step 3 · The proposal</h2>
 <div class="kicker c-amber">
 <p>Part 4</p>
@@ -814,7 +904,7 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
-<section id="step-5-screening-and-extraction" class="slide level2">
+<section id="step-5-screening-and-extraction" class="slide level2 roomy">
 <h2>Step 5 · Screening and extraction</h2>
 <div class="kicker c-amber">
 <p>Part 4</p>
@@ -831,6 +921,128 @@ Soorathep Kheawhom
 </div>
 <div class="flag c-amber">
 <p><strong>Design the extraction template from your framework, not from the papers.</strong> Decide what every included study must tell you before you open the first PDF.</p>
+</div>
+</section>
+<section id="prisma-a-reporting-standard-not-a-review-type" class="slide level2">
+<h2>PRISMA: a reporting standard, not a review type</h2>
+<div class="kicker c-amber">
+<p>Part 4 · Step 5</p>
+</div>
+<div class="lede">
+<p>Following PRISMA does not make a review good. Not following it makes a systematic review unpublishable. It governs what you must report, never what you must think.</p>
+</div>
+<div class="chart">
+<svg viewbox="0 0 1180 236" role="img" aria-label="PRISMA flow diagram with worked numbers">
+  <defs>
+    <marker id="fa" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B9C1C6"></path>
+    </marker>
+  </defs>
+
+  <g font-family="'Source Sans 3', Sarabun, Arial, sans-serif">
+    <g fill="#FFFFFF" stroke="#B9C1C6" stroke-width="1.5">
+      <rect x="0" y="8" width="196" height="92" rx="9"></rect>
+      <rect x="246" y="8" width="196" height="92" rx="9"></rect>
+      <rect x="492" y="8" width="196" height="92" rx="9"></rect>
+      <rect x="738" y="8" width="196" height="92" rx="9"></rect>
+    </g>
+    <rect x="984" y="8" width="196" height="92" rx="9" fill="#EAF2F1" stroke="#0F6E6B" stroke-width="2"></rect>
+
+    <g font-size="13" font-weight="700" letter-spacing="1.4" fill="#66727C">
+      <text x="18" y="34">IDENTIFIED</text>
+      <text x="264" y="34">AFTER DEDUPLICATION</text>
+      <text x="510" y="34">TITLE / ABSTRACT</text>
+      <text x="756" y="34">FULL TEXT ASSESSED</text>
+      <text x="1002" y="34" fill="#0F6E6B">INCLUDED</text>
+    </g>
+    <g font-family="'Source Serif 4', 'Noto Serif Thai', Georgia, serif" font-size="30" font-weight="700" fill="#1C242B">
+      <text x="18" y="70">2,148</text>
+      <text x="264" y="70">1,502</text>
+      <text x="510" y="70">1,502</text>
+      <text x="756" y="70">138</text>
+      <text x="1002" y="70" fill="#0F6E6B">96</text>
+    </g>
+    <g font-size="14" fill="#66727C">
+      <text x="18" y="90">3 databases · run 12 Mar 2026</text>
+      <text x="264" y="90">646 duplicates removed</text>
+      <text x="510" y="90">screened by two people</text>
+      <text x="756" y="90">read in full</text>
+      <text x="1002" y="90">in the synthesis</text>
+    </g>
+
+    <g stroke="#B9C1C6" stroke-width="2" fill="none" marker-end="url(#fa)">
+      <line x1="200" y1="54" x2="240" y2="54"></line>
+      <line x1="446" y1="54" x2="486" y2="54"></line>
+      <line x1="692" y1="54" x2="732" y2="54"></line>
+      <line x1="938" y1="54" x2="978" y2="54"></line>
+      <path d="M 590 100 L 590 138"></path>
+      <path d="M 836 100 L 836 138"></path>
+    </g>
+
+    <rect x="466" y="144" width="248" height="62" rx="9" fill="#F3F0EB"></rect>
+    <rect x="712" y="144" width="248" height="62" rx="9" fill="#FCF3E4" stroke="#E29A2D" stroke-width="1.5"></rect>
+    <g font-size="14" fill="#66727C">
+      <text x="484" y="168">Excluded on title / abstract</text>
+      <text x="484" y="192" font-weight="700" fill="#333F4A">1,364</text>
+      <text x="730" y="168" fill="#BE654C" font-weight="700">Excluded at full text, with reasons</text>
+      <text x="730" y="192">42 — no cycling data 18 · review 13 · non-aqueous 11</text>
+    </g>
+    <text x="730" y="228" font-size="13" font-style="italic" fill="#66727C">Reasons are required only at this stage. This is the box referees check first.</text>
+  </g>
+</svg>
+</div>
+<div class="cards">
+<div class="card c-teal">
+<p><span class="eyebrow">Which document applies</span></p>
+<p><strong>PRISMA 2020</strong> — the 27-item checklist and the flow diagram. <strong>PRISMA-S</strong> — the search, reported so it can be repeated. <strong>PRISMA-ScR</strong> — the scoping-review variant.</p>
+</div>
+<div class="card c-amber">
+<p><span class="eyebrow">What engineering journals actually ask</span></p>
+<p>Most do not require PRISMA at all. Submit the flow diagram anyway: half a page that makes the search auditable rather than asserted.</p>
+</div>
+<div class="card c-rust">
+<p><span class="eyebrow">The trap</span></p>
+<p>A flow diagram with no appraisal and no synthesis is decoration. It certifies that you searched carefully, and nothing else — the bottom-right quadrant.</p>
+</div>
+</div>
+<div class="foot">
+<div class="source">
+<p>Page et al., <em>BMJ</em> <strong>372</strong>, n71 (2021) · prisma-statement.org · ROSES in environmental science, JBI for scoping</p>
+</div>
+</div>
+</section>
+<section id="prisma-in-the-wild-three-you-can-open-tonight" class="slide level2">
+<h2>PRISMA in the wild: three you can open tonight</h2>
+<div class="kicker c-amber">
+<p>Part 4 · Step 5</p>
+</div>
+<div class="lede">
+<p>Do not draw the diagram from memory. Take the template, or let a tool build it from your counts.</p>
+</div>
+<div class="cards">
+<div class="card c-teal">
+<p><span class="eyebrow">The template</span></p>
+<h3 id="prisma-statement.org">prisma-statement.org</h3>
+<p>The 2020 flow diagram as a free Word file, in two versions: databases only, and databases plus other sources. The 27-item checklist sits beside it. <strong>Look at:</strong> which boxes are compulsory, and how few they are.</p>
+</div>
+<div class="card c-amber">
+<p><span class="eyebrow">The generator</span></p>
+<h3 id="prisma2020-shiny-app">PRISMA2020 Shiny app</h3>
+<p><code>estech.shinyapps.io/prisma_flowdiagram</code> — type your counts, download the diagram as PDF, PNG or an interactive HTML whose boxes link to the record lists. <strong>Look at:</strong> the interactive version. Referees like being able to click through.</p>
+</div>
+<div class="card c-sky">
+<p><span class="eyebrow">A published example</span></p>
+<h3 id="zhang-strbac-energies-18-3747-2025">Zhang &amp; Strbac, <em>Energies</em> <strong>18</strong>, 3747 (2025)</h3>
+<p>Open access, engineering, Figure 1. About 3,000 records identified, roughly 800 after title and abstract, <strong>129 included</strong>. <strong>Look at:</strong> how the exclusion reasons are worded, and how short the corresponding Methods text is.</p>
+</div>
+</div>
+<div class="flag c-amber">
+<p>Covidence and Rayyan export the diagram straight from your screening decisions, so the numbers cannot drift out of step with the manuscript.</p>
+</div>
+<div class="foot">
+<div class="source">
+<p>Page et al., <em>BMJ</em> <strong>372</strong>, n71 (2021) · Haddaway et al., <em>Campbell Syst. Rev.</em> <strong>18</strong>, e1230 (2022) · Zhang &amp; Strbac, <em>Energies</em> <strong>18</strong>, 3747 (2025), doi:10.3390/en18143747</p>
+</div>
 </div>
 </section>
 <section id="ai-tools-where-they-legitimately-help" class="slide level2">
@@ -861,7 +1073,7 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
-<section id="step-6-appraisal-turns-a-list-into-a-review" class="slide level2">
+<section id="step-6-appraisal-turns-a-list-into-a-review" class="slide level2 roomy">
 <h2>Step 6 · Appraisal turns a list into a review</h2>
 <div class="kicker c-amber">
 <p>Part 4</p>
@@ -899,7 +1111,7 @@ Soorathep Kheawhom
 <p>If your review treats a single unreplicated result and a multi-lab reproduction as equal evidence, it is not a review. It is a bibliography.</p>
 </div>
 </section>
-<section id="step-7-concept-matrix-not-a-paper-by-paper-walk" class="slide level2">
+<section id="step-7-concept-matrix-not-a-paper-by-paper-walk" class="slide level2 roomy">
 <h2>Step 7 · Concept matrix, not a paper-by-paper walk</h2>
 <div class="kicker c-amber">
 <p>Part 4</p>
@@ -926,7 +1138,7 @@ Soorathep Kheawhom
 <p>What the finished paper looks like, how to title it, what to budget, and the seven ways it goes wrong.</p>
 </div>
 </section>
-<section id="the-anatomy-of-a-review-article" class="slide level2">
+<section id="the-anatomy-of-a-review-article" class="slide level2 roomy">
 <h2>The anatomy of a review article</h2>
 <div class="kicker c-amber">
 <p>Part 5</p>
@@ -980,7 +1192,7 @@ Soorathep Kheawhom
 <p>Mutual-exclusivity test: could a reader who has seen only your section headings predict which section any given paper belongs in?</p>
 </div>
 </section>
-<section id="the-title-is-the-first-test-of-whether-you-have-a-thesis" class="slide level2">
+<section id="the-title-is-the-first-test-of-whether-you-have-a-thesis" class="slide level2 roomy">
 <h2>The title is the first test of whether you have a thesis</h2>
 <div class="kicker c-amber">
 <p>Part 5</p>
@@ -1016,7 +1228,7 @@ Soorathep Kheawhom
 <p>A title that would fit on any review of the topic is not a title yet. Put the claim, or the framework, into it.</p>
 </div>
 </section>
-<section id="budgets-and-the-three-tables-that-get-you-cited" class="slide level2">
+<section id="budgets-and-the-three-tables-that-get-you-cited" class="slide level2 roomy">
 <h2>Budgets, and the three tables that get you cited</h2>
 <div class="kicker c-amber">
 <p>Part 5</p>
@@ -1043,7 +1255,7 @@ Soorathep Kheawhom
 </div>
 </div>
 </section>
-<section id="seven-ways-reviews-get-rejected" class="slide level2">
+<section id="seven-ways-reviews-get-rejected" class="slide level2 roomy">
 <h2>Seven ways reviews get rejected</h2>
 <div class="kicker c-amber">
 <p>Part 5</p>
@@ -1079,7 +1291,7 @@ Soorathep Kheawhom
 <p>If the honest answer to Task 2 is “a well-organised list”, you now know exactly which rung you have to climb, and Part 4 told you how.</p>
 </div>
 </section>
-<section id="generative-ai-what-you-must-disclose-in-2026" class="slide level2">
+<section id="generative-ai-what-you-must-disclose-in-2026" class="slide level2 roomy">
 <h2>Generative AI: what you must disclose in 2026</h2>
 <div class="kicker c-amber">
 <p>Part 5</p>
