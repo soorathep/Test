@@ -44,6 +44,7 @@ class NoteExtractor(HTMLParser):
         self._in_note = 0
         self._buf = []
         self._started = False
+        self._in_skip = None
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -56,7 +57,13 @@ class NoteExtractor(HTMLParser):
             self._in_note = 1
             self._buf = []
         elif self._in_note:
-            if tag in ("p", "li", "tr", "div", "h1", "h2", "h3", "h4"):
+            if tag in ("style", "script"):
+                # a MathJax <style> block sits inside the slide; its CSS would
+                # otherwise be dumped into the speaker-notes pane
+                self._in_skip = tag
+            elif self._in_skip:
+                pass
+            elif tag in ("p", "li", "tr", "div", "h1", "h2", "h3", "h4"):
                 self._buf.append("\n")
             elif tag == "br":
                 self._buf.append("\n")
@@ -64,6 +71,10 @@ class NoteExtractor(HTMLParser):
                 self._buf.append("  ·  ")
 
     def handle_endtag(self, tag):
+        if self._in_skip:
+            if tag == self._in_skip:
+                self._in_skip = None
+            return
         if tag == "aside" and self._in_note:
             self._in_note = 0
             text = "".join(self._buf)
@@ -78,7 +89,7 @@ class NoteExtractor(HTMLParser):
             self._buf.append("\n")
 
     def handle_data(self, data):
-        if self._in_note:
+        if self._in_note and not self._in_skip:
             self._buf.append(data)
 
 
