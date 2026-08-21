@@ -19,6 +19,7 @@ description: One-off graduate seminars and invited talks by Assoc. Prof. Dr. Soo
       <div class="c-name">{% if talk.slides %}<a href="{{ site.baseurl }}/teaching/seminars/{{ talk.slides }}">{{ talk.title }}</a>{% else %}{{ talk.title }}{% endif %}</div>
       <div class="c-level mono">{{ talk.date | date: "%-d %B %Y" }}{% if talk.venue %} · {{ talk.venue }}{% endif %}</div>
       {% if talk.note %}<div class="c-note">{{ talk.note }}</div>{% endif %}
+      {% if talk.handout %}<div class="c-note"><a href="{{ site.baseurl }}/teaching/seminars/{{ talk.handout }}">Participant handout (PDF)</a></div>{% endif %}
     </div>
     {% endfor %}
   </div>

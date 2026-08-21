@@ -1,0 +1,1543 @@
+---
+title: "Beyond the Summary"
+subtitle: "How to Plan, Structure, and Place a High-Impact Review Article"
+author: "Soorathep Kheawhom"
+date: 2026-09-09
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.statement}
+Review articles earn about three times<br>the citations of a research paper.
+:::
+
+::: {.statement-hi}
+Most reviews are never cited at all.
+:::
+
+::: {.note}
+Both are true. Writing a review is not a strategy. Writing the right review, at the right moment, is.
+:::
+::::
+
+::: {.notes}
+[11:00 – 11:01] เปิด
+
+ถามห้องก่อน ใครเคยเขียนบทความรีวิวมาแล้วบ้าง ยกมือ คาดว่าจะน้อยมาก
+
+ตัวเลขซ้ายคือเหตุผลที่ทุกคนบอกให้เราเขียนรีวิว ตัวเลขขวาคือเหตุผลที่คำแนะนำนั้นมักล้มเหลว
+
+สัญญาของวันนี้ ไม่มีใครออกจากห้องพร้อมรีวิวที่เขียนเสร็จ แต่จะได้สองอย่าง คำตอบว่าควรเขียนหรือไม่ และโครงร่าง proposal หนึ่งหน้า
+:::
+
+## The two numbers {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Why this session exists
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Average]{.eyebrow}
+
+[2.95×]{.big}
+
+Citation multiplier of a review over an original research article, across all fields. Range 1.34× to 6.74× by discipline.
+:::
+
+::: {.card .c-rust}
+[Reality]{.eyebrow}
+
+[21%]{.big}
+
+Share of 538 reviews published in one field that had passed ten citations two years later. The other 79% sank without trace.
+:::
+:::
+
+::: {.foot}
+::: {.source}
+Miranda & García-Carpintero, *J. Informetr.* **12**, 1015 (2018) · Ketcham & Crawford, *Lab. Invest.* **87**, 1174 (2007)
+:::
+:::
+
+::: {.notes}
+[11:01 – 11:03] การกระจายตัวของ citation ของรีวิวเบ้มาก มีรีวิวจำนวนน้อยที่นิยามทั้งสาขาและถูกอ้างอิงสิบปี ที่เหลือไม่มีใครอ่าน
+
+หน้าที่ของชั่วโมงนี้คือทำให้รู้ว่าเรากำลังเล็งไปฝั่งไหน
+:::
+
+## Five questions {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [20 min]{.chip .c-teal} What kinds of review exist, and which one is mine?
+- [6 min]{.chip .c-teal} What does a review do to my academic profile?
+- [12 min]{.chip .c-amber} When should I write one, and what counts as a contribution?
+- [15 min]{.chip .c-teal} What is the process, and where do AI tools fit?
+- [16 min]{.chip .c-teal} What does the finished paper look like, down to the title?
+:::
+
+::: {.foot}
+::: {.note}
+Two short exercises on paper. Take-away: a one-page proposal template you can fill in this week.
+:::
+:::
+
+::: {.notes}
+[11:03 – 11:04] ลำดับนี้ตั้งใจจัด คนส่วนใหญ่กระโดดไปข้อ 5 ทันที และนั่นคือเหตุผลที่รีวิวฉบับแรกล้มเหลว
+
+ข้อ 1 ถึง 3 คือส่วนที่ตัดสินว่าควรเขียนหรือเปล่า
+:::
+
+# Part 1 · The genre map {.divider background-color="#0A4B49"}
+
+::: {.lede}
+Ten different things are called a review. This part ends with a three-question test that tells you which one is yours.
+:::
+
+## "Review" is a journal label, not a method
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.cards}
+::: {.card .c-slate}
+[What the journal calls it]{.eyebrow}
+
+Review · Critical Review · Tutorial Review · Minireview · Focus · Perspective · Survey · Roadmap · Opinion · Viewpoint
+
+::: {.note}
+Commercial format names. They set word counts and page limits. They tell you almost nothing about how to do the work.
+:::
+:::
+
+::: {.card .c-teal}
+[What you actually have to do]{.eyebrow}
+
+Narrative · Systematic · Scoping · Mapping · Critical · Integrative · Meta-analysis · Umbrella · Rapid
+
+::: {.note}
+Methodological types. They determine your search protocol, your screening burden, and whether your claims are defensible.
+:::
+:::
+:::
+
+::: {.punch}
+Choose the method first, then find a venue whose format fits it. Never the reverse.
+:::
+
+::: {.notes}
+[11:04 – 11:06] ความผิดพลาดที่พบบ่อยที่สุดของมือใหม่ เห็นวารสารดีประกาศรับ Tutorial Review ก็ตัดสินใจเขียน แล้วค่อยถามว่า tutorial review คืออะไร
+
+วารสารรับเปเปอร์ติดป้าย Critical Review ทั้งที่วิธีการเป็น narrative review ได้ ไม่ผิดกติกา แต่นั่นคือเหตุผลที่รีวิวจำนวนมากไร้ค่า
+:::
+
+## What a review article actually is
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.lede}
+If you have never written one, start by looking at the object, not at the definition.
+:::
+
+::: {.numbered .n3}
+1. **There are no new experiments in it.** Everything already exists somewhere in the literature. What does not exist yet is the arrangement, and the arrangement is what you contribute.
+2. **The figures are drawn, not measured.** The most reused item in most reviews is a single conceptual figure summarising the framework. Budget weeks for it, not an afternoon.
+3. **The section headings are the contribution.** The numbered headings of the body are the taxonomy you invented. If they could be lifted from any other review of the topic, you have not contributed anything yet.
+:::
+
+::: {.foot}
+::: {.note}
+Anatomy of the object: Title → Abstract → Introduction and prior-review table → **your framework** → body organised by that framework → **challenges and outlook** → 100+ references. The two bold sections are what make it a review rather than a summary.
+:::
+:::
+
+::: {.notes}
+[11:06 – 11:09] คนส่วนใหญ่อ่านรีวิวมาเป็นร้อยฉบับแต่ไม่เคยมองมันเป็นวัตถุ ลองถามว่ารีวิวฉบับล่าสุดที่อ่านมีกี่รูป ส่วนใหญ่ตอบไม่ได้
+
+ข้อ 3 ต้องอยู่นาน เพราะสวนสามัญสำนึกและจะกลับมาอีกสองครั้ง หัวข้อย่อยไม่ใช่การจัดระเบียบ แต่คือตัวข้อโต้แย้ง
+
+ข้อ 2 คือคำเตือนที่ไม่มีใครบอกมือใหม่ เขาจะประเมินงานทำรูปต่ำไปราวห้าเท่า
+:::
+
+## Three things that get taught wrong
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.cards .g3}
+::: {.card .c-rust}
+[Myth]{.eyebrow}
+
+**"A systematic review is better than a critical review."**
+
+Systematic describes how the evidence was found. It buys transparency and reproducibility. It does not buy insight.
+:::
+
+::: {.card .c-rust}
+[Myth]{.eyebrow}
+
+**"Meta-analysis is the highest level of review."**
+
+It is a statistical step used inside a systematic review when outcomes are commensurable. Not a rung above anything.
+:::
+
+::: {.card .c-rust}
+[Myth]{.eyebrow}
+
+**"A critical review is just an unsystematic review."**
+
+Its value is the reasoning: testing assumptions, locating contradictions, separating correlation from mechanism.
+:::
+:::
+
+::: {.punch}
+Being systematic tells you how reliably the literature was collected. Being critical tells you what new understanding was created from it.
+:::
+
+::: {.notes}
+[11:09 – 11:11] สามประโยคบนนี้ถูกพูดซ้ำอย่างมั่นใจในเวิร์กช็อปหลายแห่ง และผิดทั้งสามประโยค พูดตรง ๆ แบบนี้
+
+ข้อสองอันตรายที่สุดสำหรับผู้ฟังกลุ่มนี้ meta-analysis ไม่ใช่ชนิดของรีวิว การวาดไว้บนยอดบันไดคือการจัดหมวดหมู่ผิดประเภท
+
+ข้อสามทำให้รูปแบบที่คนในห้องนี้ควรเขียนที่สุดถูกลดค่าอย่างไม่เป็นธรรม
+:::
+
+## SALSA: the four dials behind every review type
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+[S]{.eyebrow}
+
+### Search
+
+How much of the literature did you look for, and can someone repeat it?
+:::
+
+::: {.card .c-amber}
+[A]{.eyebrow}
+
+### Appraisal
+
+Did you judge the quality of what you found, or accept every paper equally?
+:::
+
+::: {.card .c-sky}
+[S]{.eyebrow}
+
+### Synthesis
+
+How did you bring the studies together: narrative, tabular, or statistical?
+:::
+:::
+
+::: {.cards}
+::: {.card .c-rust}
+[A]{.eyebrow}
+
+### Analysis
+
+What new understanding did you produce that no single paper contains? This is the dial people skip, and the only one that produces a contribution.
+:::
+:::
+
+::: {.foot}
+::: {.source}
+Grant & Booth, *Health Info. Libr. J.* **26**, 91 (2009); extended to 48 review types by Sutton et al., *ibid.* **36**, 202 (2019)
+:::
+:::
+
+::: {.notes}
+[11:11 – 11:12] Search แบบแรก ผมอ่านเท่าที่รู้อยู่แล้ว แบบที่สอง Scopus บวก WoS บวก Compendex สตริงอยู่ใน supplementary รันวันที่เท่าไร
+
+Appraisal แบบแรก อ้าง 180 เปเปอร์เหมือนน่าเชื่อถือเท่ากันหมด แบบที่สอง ให้คะแนนว่ารายงานจำนวนรอบ areal loading และจำนวนซ้ำหรือเปล่า
+
+รีวิวที่ Search สูงแต่ Analysis ศูนย์ คือบรรณานุกรมที่มีย่อหน้า
+:::
+
+## One topic, four completely different papers
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.lede}
+Same literature, same author. The type is a decision about which question you are answering.
+:::
+
+::: {.cards}
+::: {.card .c-slate}
+[Narrative]{.eyebrow}
+
+*"Artificial Interphases for Aqueous Zinc Anodes: Progress and Prospects"*
+
+**Answers:** what has the field been doing?
+
+::: {.note}
+3–4 months · ~120 refs · one author
+:::
+:::
+
+::: {.card .c-sky}
+[Scoping]{.eyebrow}
+
+*"Mapping the Evidence for Artificial Interphases on Zinc Anodes: What Is Measured, and What Is Not"*
+
+**Answers:** what evidence exists, and where are the holes?
+
+::: {.note}
+5–6 months · documented search · two screeners
+:::
+:::
+:::
+
+::: {.cards}
+::: {.card .c-amber}
+[Critical]{.eyebrow}
+
+*"Cycling Stability of Coated Zinc Anodes Is Set by Test Conditions, Not by Coating Chemistry"*
+
+**Answers:** is the field's central claim actually supported?
+
+::: {.note}
+6–9 months · ~90 refs · a thesis and a tier scheme
+:::
+:::
+
+::: {.card .c-rust}
+[Systematic + meta]{.eyebrow}
+
+*"Do Artificial Interphases Extend Zinc Anode Life? A Systematic Review and Conditional Meta-Analysis"*
+
+**Answers:** how large is the effect, and under which conditions?
+
+::: {.note}
+9–12 months · protocol first · two or more people
+:::
+:::
+:::
+
+::: {.punch}
+None of these is more advanced than the others. They answer different questions and they fail in different ways.
+:::
+
+::: {.notes}
+[11:12 – 11:15] สไลด์นี้สอนเรื่องประเภทได้ดีกว่าตารางใด ๆ ให้เวลาเต็มสามนาที พูดจากสาขาตัวเอง
+
+หัวข้อเดียว ผู้เขียนคนเดียว กองเปเปอร์กองเดียวกัน แล้วออกมาเป็นสี่ต้นฉบับ
+
+อ่านชื่อเรื่องออกเสียงทีละอัน Progress and Prospects ประกาศว่าเป็น narrative ส่วน Is Set by Test Conditions ประกาศว่ามี thesis
+
+ชวนให้ทุกคนเอาหัวข้อตัวเองมาแทน แล้วเขียนชื่อเรื่องสี่แบบในหัว
+:::
+
+## Five types built around evidence
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.numbered}
+1. **Narrative** — *"I have read this field for years, and here is what I think matters."* Low cost. But you may never claim that the evidence shows anything.
+2. **Systematic** — *"I searched by a written protocol, and here is everything that met my criteria."* Six to twelve months, two people minimum.
+3. **Scoping** — *"Here is the shape of the evidence, and here are the holes in it."* High search, low appraisal. A realistic first review.
+4. **Mapping** — *"Here is a classification of the field, usually with a database others can search."* The output is the map itself.
+5. **Meta-analysis**, a method and not a type — *"Inside a systematic review: I pooled the numbers into one effect size."* Only possible when outcomes are commensurable.
+:::
+
+::: {.punch}
+Narrative versus systematic is not a ranking of quality. It is a ranking of what you are allowed to claim.
+:::
+
+::: {.notes}
+[11:15 – 11:17] อ่านคอลัมน์กลางออกเสียงด้วยน้ำเสียงบุรุษที่หนึ่ง แต่ละประเภทคือคำสัญญาคนละแบบที่เปเปอร์ให้กับผู้อ่าน
+
+scoping review คือตัวเลือกที่คนวิศวกรรมใช้น้อยเกินไป สำหรับรีวิวฉบับแรกคือระดับความทะเยอทะยานที่เหมาะสม บอกให้ชัด เพราะครึ่งห้องกำลังจะรับงานเกินตัว
+:::
+
+## Five types built around an argument
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.numbered}
+1. **Critical** — *"The field believes X. I will show you why that is only partly right, and what to believe instead."* The argument is the work.
+2. **State-of-the-art** — *"Here is what is actually known now, covering the last five to ten years completely."*
+3. **Tutorial** — *"Here is how this method really works, explained for someone who has never used it."* Clarity outranks completeness.
+4. **Perspective / Opinion** — *"Here is where I think this field should go next."* Little writing, but it trades on reputation. Almost always invited.
+5. **Umbrella** — *"Six reviews on this topic disagree. Here is what they collectively show."*
+:::
+
+::: {.flag .c-amber}
+Realistic first review, with a senior co-author: a scoping review, a critical review, or a tutorial review.
+:::
+
+::: {.notes}
+[11:17 – 11:18] critical review คือที่ที่รีวิว impact สูงในสายเคมีและวัสดุอยู่จริง และเป็นประเภทเดียวที่คนรุ่นใหม่แข่งได้ เพราะสกุลเงินคือไอเดีย
+
+เตือนเรื่อง Perspective กับ Opinion เกือบทั้งหมด invitation only
+
+umbrella review คือคำตอบของ หัวข้อผมมีรีวิวแล้วหกฉบับ นั่นไม่ใช่เหตุผลให้ยอมแพ้ แต่เป็นเปเปอร์คนละแบบ
+
+tutorial review อาจอยู่ในเลกเชอร์ของเขาอยู่แล้ว
+:::
+
+## Two axes, not a ladder
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Low systematic · high critical]{.eyebrow}
+
+### Critical review
+
+Insight, no documented search
+:::
+
+::: {.card .c-amber}
+[High systematic · high critical]{.eyebrow}
+
+### Systematic critical review
+
+Documented search, then real synthesis. The strongest combination available to a junior author.
+:::
+:::
+
+::: {.cards}
+::: {.card .c-slate}
+[Low · low]{.eyebrow}
+
+### Narrative review
+
+Expert commentary, no protocol
+:::
+
+::: {.card .c-slate}
+[High systematic · low critical]{.eyebrow}
+
+### Descriptive systematic review
+
+Rigorous search, thin synthesis
+:::
+:::
+
+::: {.foot}
+::: {.note}
+**Where does meta-analysis go?** Nowhere on this map. It attaches to the right-hand column when the outcomes are commensurable. It sharpens a quantitative claim; it does not move a review upward. And the bottom right is not a failure: a scoping or mapping review belongs there by design.
+:::
+:::
+
+::: {.notes}
+[11:18 – 11:20] ลากสองแกนในอากาศก่อนเปิดช่อง แกนหนึ่งคือเก็บวรรณกรรมมาน่าเชื่อถือแค่ไหน อีกแกนคือเกิดความเข้าใจใหม่อะไร สองคำถามนี้อิสระต่อกัน
+
+เอ่ยชื่อช่องขวาบนออกเสียงในฐานะทางเลือกจริง คนส่วนใหญ่ไม่เคยได้ยินการวางกรอบแบบนี้
+
+อย่าให้ใครออกจากห้องโดยคิดว่า scoping review เป็นของชั้นสอง
+:::
+
+## Do not import the clinical evidence hierarchy
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.cards}
+::: {.card .c-sky}
+[Clinical / medical]{.eyebrow}
+
+- *"Does treatment A improve outcome B compared with C?"*
+- Population and dose vary, inside a largely shared protocol
+- The unit compared is a pre-defined clinical outcome
+- Synthesis narrows the uncertainty around an effect
+- **Pooling is often meaningful**
+:::
+
+::: {.card .c-amber}
+[Materials / engineering]{.eyebrow}
+
+- *"Why does this system behave this way, when does it work, and when does it fail?"*
+- Loading, current density, cell format, electrolyte, cut-off criterion. Effectively everything varies
+- The unit compared is a number whose test conditions differ study by study
+- Synthesis produces a **mechanism** that explains why results diverge
+- **Pooling is sometimes precise and physically meaningless**
+:::
+:::
+
+::: {.punch}
+The right review methodology is set by the scientific question, not by a hierarchy borrowed from another discipline.
+:::
+
+::: {.notes}
+[11:20 – 11:22] อธิบายที่มาของความสับสนก่อน PRISMA และพีระมิดหลักฐานถูกสร้างมาสำหรับคำถามคลินิกและใช้ได้ดีมากที่นั่น จึงถูกยกมาทั้งชุด
+
+ตัวอย่างจริง สมมติ pool เปเปอร์ coating ของ zinc anode ร้อยเรื่อง ได้ว่าเคลือบแล้วอายุยาวกว่า 2.4 เท่า ถามห้องว่าเลขนี้แปลว่าอะไร
+
+แปลอะไรไม่ได้มาก เพราะความหนา zinc อิเล็กโทรไลต์ current density areal capacity DOD separator และเกณฑ์การพังต่างกันหมด
+
+critical review บนกองเดียวกันอาจพบว่า ultralong cycling กระจุกอยู่ในเงื่อนไขทดสอบที่อ่อนโยน นั่นคือการค้นพบ
+
+อย่าอ้างเกินจริง meta-analysis ไม่ได้ไร้ประโยชน์ แต่มีเงื่อนไข
+:::
+
+## So which one should you write?
+
+::: {.kicker .c-amber}
+Part 1
+:::
+
+::: {.steps}
+::: {.step .c-teal}
+[1]{.n}
+[Can you state a claim about your field that an expert would argue with?]{.h}
+[No, not yet → go to 2. This is the normal starting position, not a failure. Yes → go to 3.]{.d}
+:::
+
+::: {.step .c-sky}
+[2]{.n}
+[Is your goal to map what exists and find the gaps?]{.h}
+[Yes → scoping or mapping review. The right first review: defensible, useful, and it tells you whether a critical review is possible later. No → narrative review, fine as a thesis chapter or grant background.]{.d}
+:::
+
+::: {.step .c-amber}
+[3]{.n}
+[Are the outcomes comparable enough to pool or normalise?]{.h}
+[No → critical review. Add a documented search and it becomes a systematic critical review. Yes → systematic review, with a meta-analysis only if pooling survives scrutiny.]{.d}
+:::
+:::
+
+::: {.punch}
+Three questions, four honest answers. None of them is "write the most comprehensive review you can".
+:::
+
+::: {.notes}
+[11:22 – 11:24] สไลด์ที่คนจะถ่ายรูป หยุดให้เขาถ่าย
+
+ไล่กิ่งซ้ายก่อนด้วยน้ำเสียงให้กำลังใจ การยังไม่มี thesis คือจุดเริ่มต้นปกติ scoping review คือวิธีที่จะได้ thesis มา
+
+คำถามที่สองคือคำถามที่แยกวิศวกรรมออกจากการแพทย์ คำตอบที่ซื่อสัตย์มักคือไม่ ซึ่งพาไปที่ critical review และนั่นคือที่ที่เขาควรอยู่
+:::
+
+# Part 2 · Your academic profile {.divider background-color="#0A4B49"}
+
+::: {.lede}
+The honest version: what it buys you, what it costs the field, and what it will not do for your promotion case.
+:::
+
+## Reviews are over-represented at the top
+
+::: {.kicker .c-amber}
+Part 2
+:::
+
+::: {.numbered .n3}
+1. Among the top 0.05–0.1% most-cited papers, the review share rose from roughly **17% in 1990 to about 40% in 2010**.
+2. Reviews count as citable items in the impact-factor denominator, exactly like research papers, so a review-heavy portfolio raises a journal's IF mechanically. Seven of the ten highest-IF journals in the 2025 JCR are review journals.
+3. The multiplier is largest in fields where reviews are rarest. **In review-saturated fields the premium collapses.**
+:::
+
+::: {.punch}
+The premium is real, and it is strategic: it is largest exactly where nobody has reviewed yet.
+:::
+
+::: {.foot}
+::: {.source}
+Miranda & García-Carpintero, *J. Informetr.* **12**, 1015 (2018); the 1990 share is reported there as 16–18% · 2025 Journal Citation Reports
+:::
+:::
+
+::: {.notes}
+[11:24 – 11:25] กลไกสำคัญกว่าตัวเลข รีวิวสะสม citation เพราะเป็นของที่สะดวกจะอ้างเวลาต้องการอ้างอิงเดียวแทนทั้ง subfield ใน introduction
+
+ข้อสามมีประโยชน์เชิงกลยุทธ์ ถ้า subfield มีรีวิวแล้วสิบห้าฉบับ premium ถูกใช้ไปหมดแล้ว
+:::
+
+## The other side of the ledger
+
+::: {.kicker .c-amber}
+Part 2
+:::
+
+::: {.flag .c-rust}
+**38%** — median reduction in future citations to a primary paper after a review covers it. About 70% of reviewed papers lose citations. Analysis of ~6 million articles, 1990–2016.
+:::
+
+::: {.numbered .n3}
+1. **Your review absorbs credit that belonged to other people.** Cite the specific primary paper for a specific claim; cite the review only for context.
+2. **Referees are increasingly hostile to reviews with no contribution.** Editors in energy and materials now publish editorials asking authors to stop writing unnecessary reviews.
+3. **Volume has consequences.** Systematic reviews grew 2,728% between 1991 and 2014; roughly a third were judged redundant.
+:::
+
+::: {.foot}
+::: {.source}
+McMahan & McFarland, *Am. Sociol. Rev.* **86**, 341 (2021) · Ioannidis, *Milbank Q.* **94**, 485 (2016) · Kamat, Christopher & Jin, *ACS Energy Lett.* **10**, 5020 (2025)
+:::
+:::
+
+::: {.notes}
+[11:25 – 11:27] สไลด์นี้คือกระดูกสันหลังเชิงจริยธรรม และทำให้สัมมนานี้ต่างจากสัมมนาเพิ่ม h-index
+
+รีวิวไม่ได้สร้าง citation จากอากาศ มันรวบความสนใจ และความสนใจนั้นถูกดูดมาจากวรรณกรรมปฐมภูมิ
+
+เอ่ยชื่อบทบรรณาธิการ Should You Really be Writing A(nother) Review Manuscript? เพื่อให้รู้ว่าอารมณ์ในกองบรรณาธิการเปลี่ยนแล้ว
+:::
+
+## What a review genuinely buys you
+
+::: {.kicker .c-amber}
+Part 2
+:::
+
+::: {.numbered}
+1. **Agenda setting.** You decide which papers become the canon of your subfield. The largest and least-discussed benefit.
+2. **A research identity.** A review is where you name and defend the framework your group works under.
+3. **Invitation flow.** Editors commission people who have already written well on the topic. The first review is what makes the second one an invitation.
+4. **Reusable infrastructure.** Grant proposal backgrounds, a course module, and the fastest way to onboard a new student.
+5. **Low-risk collaboration.** A multi-institution review often precedes a joint experimental project.
+:::
+
+::: {.notes}
+[11:27 – 11:29] ใช้เวลากับข้อ 1 มากที่สุด agenda setting วัดได้ วรรณกรรม bibliometric แสดงว่ารีวิวจัดโครงสร้างสาขาใหม่รอบชุดงานคลาสสิกจำนวนน้อย
+
+การตั้งชื่อ framework ทำให้คนอื่นมีคำศัพท์ใช้ และคำศัพท์คือสิ่งที่ถูกอ้างอิง
+
+ข้อ 3 จูงใจอาจารย์รุ่นใหม่ เส้นทางไปสู่การได้รับเชิญจาก Chem Soc Rev คือเขียนรีวิวดี ๆ ที่เล็กกว่าก่อน
+:::
+
+## What a review will not do for you
+
+::: {.kicker .c-amber}
+Part 2
+:::
+
+::: {.cards .g3}
+::: {.card .c-rust}
+### Not a substitute for primary research
+
+A record heavy on reviews and thin on experimental papers reads as a group without a working laboratory.
+:::
+
+::: {.card .c-rust}
+### Not a substitute for expertise
+
+Referees notice reviews assembled from abstracts, and abstract-only reading propagates other people's errors under your name.
+:::
+
+::: {.card .c-rust}
+### Not faster than a research paper
+
+Six to twelve months, 100+ references, plus revision rounds.
+:::
+:::
+
+::: {.flag .c-teal}
+**The pattern that works for early-career authors:** junior first author, senior sponsor. A study of 1,102 reviews found junior researchers were the predominant authors and served mainly as first authors. You are senior enough to be first author. You are probably not senior enough to be sole author.
+:::
+
+::: {.foot}
+::: {.source}
+Chang & Wu, *Scientometrics* **130**, 4995 (2025) — carried out in library and information science, so indicative rather than proven for engineering
+:::
+:::
+
+::: {.notes}
+[11:29 – 11:30] ส่งการ์ดแดงสามใบเร็ว แล้วอยู่กับกล่องเขียวนาน เพราะตอบคำถามที่ทุกคนคิดอยู่ว่าอาวุโสพอหรือยัง
+
+ข้อควรระวังสองข้อ งาน 1,102 ฉบับทำในสาขา LIS เป็นข้อบ่งชี้ ไม่ใช่ข้อพิสูจน์
+
+และไม่มีข้อมูลว่ากรรมการ promotion ให้น้ำหนักรีวิวเท่าไร ให้ถือเป็นวัฒนธรรมของแต่ละภาควิชา ไปถามหัวหน้าภาคตัวเอง
+:::
+
+# Part 3 · Go / No-Go {.divider background-color="#0A4B49"}
+
+::: {.lede}
+Five gates, the contribution ladder, and the question everyone asks: what am I contributing if I have no new data?
+:::
+
+## Gate 1 and Gate 2: is the field ready, and is it taken?
+
+::: {.kicker .c-amber}
+Part 3
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Gate 1 · Field maturity]{.eyebrow}
+
+- **30+** relevant primary papers in the last 2–3 years means the topic is timely
+- **15–20** within the last 5 years is the absolute minimum
+- **< 50** significant papers overall and the topic is probably too immature
+- **> 120** and your scope is too broad. Narrow it, or split the paper
+:::
+
+::: {.card .c-amber}
+[Gate 2 · Review saturation]{.eyebrow}
+
+The editorial rule at *Chemical Reviews*: the topic must not have been comprehensively reviewed in the past **3 to 4 years**. Every RSC proposal form asks you to justify why there is room for another.
+
+**Run the review search before the primary search.** In Scopus: your terms `AND DOCTYPE(re) AND PUBYEAR > 2020`, then repeat with `DOCTYPE(ar)` for the last three years.
+:::
+:::
+
+::: {.punch}
+Those two counts give you Gate 1 and Gate 2 in fifteen minutes.
+:::
+
+::: {.notes}
+[11:30 – 11:32] ทำให้ปฏิบัติได้จริง ให้ทุกคนนึกภาพเปิด Scopus แล้วรันสองคำค้นตามลำดับนี้
+
+ถ้าคำค้น A เจอรีวิวครอบคลุมปี 2025 จากกลุ่มที่แข็ง และคำค้น B เจอสี่สิบเปเปอร์ เราไม่เขียนรีวิวครอบคลุม เราเขียน critical review เฉพาะจุดบนยี่สิบเปเปอร์ที่ออกหลังจากของเขา
+
+การ reframe แบบนี้คือสิ่งที่มีประโยชน์ที่สุดในสัมมนา
+:::
+
+## Gates 3 to 5: standing, thesis, capacity
+
+::: {.kicker .c-amber}
+Part 3
+:::
+
+::: {.steps}
+::: {.step .c-teal}
+[3]{.n}
+[Standing]{.h}
+[Do you have primary research papers on this topic from the last three years? RSC and ACS proposal forms require them by DOI. If not, your route is a co-authored review with someone who has them.]{.d}
+:::
+
+::: {.step .c-amber}
+[4]{.n}
+[A thesis]{.h}
+[Can you state, in one sentence, a claim an expert would argue with? "Advances in X" is not a thesis. "The reported cycle-life gains in X are an artefact of test protocol, not of materials chemistry" is a thesis.]{.d}
+:::
+
+::: {.step .c-teal}
+[5]{.n}
+[Capacity]{.h}
+[Six to twelve months, a co-author, and a student who will not be derailed. A review is a project, not a gap-filler between experiments.]{.d}
+:::
+:::
+
+::: {.notes}
+[11:32 – 11:34] Gate 4 ต้องอยู่นาน อ่านสองประโยคตัวอย่างออกเสียง แล้วปล่อยให้ความต่างชัดเอง
+
+เกณฑ์ของ thesis คือผู้เชี่ยวชาญในห้องนี้ไม่เห็นด้วยได้ไหม ถ้าไม่ได้ มันคือคำบรรยาย และคำบรรยายไม่ถูกอ้างอิง
+
+Gate 3 เจ็บสำหรับ นศ. ป.เอก พูดตรง ๆ ว่าถ้ายังไม่มี primary paper แปลว่าไม่ได้เขียนคนเดียว ซึ่งเป็นเรื่องปกติ
+:::
+
+## The contribution ladder
+
+::: {.kicker .c-amber}
+Part 3
+:::
+
+::: {.lede}
+Every rung is still called a review. Only the lower half of this list is a contribution.
+:::
+
+::: {.numbered}
+1. **Collection** — *"What papers exist on this topic?"*
+2. **Classification** — *"How can they be grouped?"*
+3. **Comparison** — *"How do they differ from one another?"*
+4. **Synthesis** — *"What does the evidence collectively say?"*
+5. **Critique** — *"What is unreliable, inconsistent or missing?"*
+6. **Reconciliation** — *"Why do these studies appear to disagree?"*
+7. **Framework or mechanism** — *"Can one concept account for all of it?"*
+8. **Design rules and hypotheses** — *"What should we build or test next?"*
+:::
+
+::: {.punch}
+The referee's test: remove the reference list. What intellectual contribution from the authors is left? A review with 500 references can sit on rung 1. A critical review with 80 can sit on rung 8.
+:::
+
+::: {.notes}
+[11:34 – 11:36] สไลด์ที่แยกการบรรยายเรื่องการจัดรูปแบบออกจากการบรรยายเรื่องวิชาการ อย่ารีบ
+
+ปล่อยให้ผู้ฟังสังเกตเองว่าขั้น 1 ถึง 3 ไม่ต้องใช้วิจารณญาณเลย ใครมีบัญชี Scopus และวันหยุดพอก็ทำได้
+
+ขั้น 6 reconciliation คือที่ที่รีวิว impact สูงในสายวัสดุอยู่จริง
+
+ตัวอย่าง zinc interface กลุ่มหนึ่งบอก hydrophobic ดีกว่าเพราะลด water activity อีกกลุ่มบอก hydrophilic ดีกว่าเพราะเพิ่มการเคลื่อนที่ของ Zn ion รีวิวที่อ่อนเลือกข้าง รีวิวที่แข็งถามว่าทำไมทั้งสองดูถูก แล้วเสนอว่า interface ที่ดีที่สุดคือจุดสมดุลระหว่างการเคลื่อนที่ของไอออน การหลุด solvation การกันน้ำ และการเกิดนิวเคลียส นั่นคือขั้น 7
+:::
+
+## What counts as novelty in a review?
+
+::: {.kicker .c-amber}
+Part 3
+:::
+
+::: {.lede}
+Novelty in a review is not new data. It is new structure imposed on data that already exists.
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+### A taxonomy or framework
+
+You name the categories the field then uses to talk about itself.
+:::
+
+::: {.card .c-teal}
+### An evidence standard
+
+You define how claims should be graded, and re-score the corpus.
+:::
+
+::: {.card .c-teal}
+### A reconciliation
+
+You explain why two bodies of literature that disagree both appear to be right.
+:::
+:::
+
+::: {.cards .g3}
+::: {.card .c-teal}
+### A quantitative synthesis
+
+You normalise incomparable reported conditions into one comparable dataset.
+:::
+
+::: {.card .c-amber}
+### A negative finding about the field
+
+You show that a widely believed claim rests on very thin evidence.
+:::
+
+::: {.card .c-teal}
+### A translation
+
+You connect two communities that work on the same problem and never cite each other.
+:::
+:::
+
+::: {.foot}
+::: {.note}
+**Not a contribution:** a newer time window on its own · more references than the last review · a different material system · a bibliometric map with no question behind it. **The naming test:** if your contribution cannot be given a name another author could put into their own paper, it is not a contribution yet.
+:::
+:::
+
+::: {.notes}
+[11:36 – 11:39] สไลด์นี้ตอบคำถามที่จะถูกถามแน่นอน ผมไม่มีผลการทดลองใหม่ แล้วผมมี contribution อะไร
+
+ในเปเปอร์วิจัย ความใหม่คือข้อมูล ในรีวิว ความใหม่คือโครงสร้าง รีวิวคือการก่อสร้าง ไม่ใช่การรวบรวม
+
+ยกตัวอย่างจากงานตัวเอง evidence tier ของ carbon felt และการแปลงรีวิว alloy zinc anode เป็น applied meta-analysis จาก 27 งาน
+
+เราครอบคลุม 2021 ถึง 2026 ในขณะที่รีวิวก่อนหน้าหยุดที่ 2021 คือการอัปเดต ไม่ใช่ contribution
+:::
+
+## Exercise 1 · Write two lines on paper {.dark background-color="#E29A2D"}
+
+::: {.cards}
+::: {.card}
+[Line 1]{.eyebrow}
+
+One sentence stating a claim about your topic that an expert would argue with.
+:::
+
+::: {.card}
+[Line 2]{.eyebrow}
+
+The titles of the three most recent reviews on your topic, and one clause each on what they missed.
+:::
+:::
+
+::: {.punch}
+If you cannot write line 1, you do not yet have a critical review. If you cannot write line 2, you have not done the gap analysis.
+:::
+
+::: {.notes}
+[11:39 – 11:42] ให้เงียบจริง ๆ สองนาที อย่าพูดแทรก อย่าเติมช่องว่าง
+
+แล้วเรียกอาสาสมัครสองสามคน เอาบรรทัดที่ 1 มาทดสอบต่อหน้าห้องอย่างเป็นมิตร ถามห้องว่ามีใครไม่เห็นด้วยกับประโยคนี้บ้าง
+
+ถ้าไม่มีใครไม่เห็นด้วย แปลว่ายังไม่ใช่ thesis ช่วยกันเหลาสด ๆ
+
+บรรทัดที่ 1 จะกลายเป็นประโยคสุดท้ายของ abstract บรรทัดที่ 2 จะกลายเป็นย่อหน้า gap ใน proposal
+:::
+
+# Part 4 · The process {.divider background-color="#0A4B49"}
+
+::: {.lede}
+Eight steps from idea to submission, and where AI tools legitimately fit into them.
+:::
+
+## Eight steps, and where the time actually goes
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.numbered}
+1. **Scope** — define the question with PCC: Population, Concept, Context. Write down what is excluded and which years you cover.
+2. **Gap analysis** — build the prior-review comparison table first.
+3. **Proposal** — two to five pages to the editor before you write anything.
+4. **Search** — multi-database, documented, validated against a seed set.
+5. **Screen and extract** — two screeners, a written inclusion rule, one template.
+6. **Appraise** — grade the evidence. This is where reviews win.
+7. **Synthesise** — concept matrix, not a paper-by-paper walk.
+8. **Write** — figures first, then the prose around them.
+:::
+
+::: {.flag .c-rust}
+Steps 2, 3 and 6 are the ones beginners skip, and they are the three that decide whether the review is publishable. Steps 1 to 3 take about a month and cost almost nothing.
+:::
+
+::: {.notes}
+[11:42 – 11:43] ภาพรวมอย่างเดียว บรรทัดเดียวต่อขั้น แล้วบอกว่าจะขยายสามขั้น คือ 2 3 และ 6
+
+gap analysis คือสิ่งที่ทำให้ proposal ผ่าน proposal คือสิ่งที่ทำให้ได้สิทธิ์ส่ง และ appraisal คือสิ่งที่แยกรีวิวออกจากบรรณานุกรม
+:::
+
+## Step 2 · The prior-review comparison table
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.lede}
+Build this before you write anything else. It is the artefact that gets a proposal accepted.
+:::
+
+::: {.numbered .n4}
+1. **Prior review** — author, year, journal. One row each.
+2. **Window** — the years it covered.
+3. **Organising logic** — materials-by-materials, application-driven, bibliometric, and so on.
+4. **What it does not do** — the specific omission, not a vague complaint.
+5. **What we add** — the column that matters.
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+### Three things this table does
+
+It answers the mandatory question on every RSC and ACS proposal form. It becomes a real table in the published introduction, and readers cite tables like this. And it tells you honestly whether column 5 is empty.
+:::
+
+::: {.card .c-rust}
+### If column 5 is empty
+
+Do not write the paper. A newer time window is not enough on its own, and referees will say so.
+:::
+:::
+
+::: {.notes}
+[11:43 – 11:45] หนึ่งแถวต่อรีวิวเดิมหนึ่งฉบับ ห้าคอลัมน์ คอลัมน์ที่ห้าคือคอลัมน์ที่มีความหมาย
+
+ยืนกรานเรื่องวินัย ถ้ากรอกคอลัมน์ห้าด้วยอะไรที่เฉพาะเจาะจงไม่ได้ ข้อสรุปที่ซื่อสัตย์คือสาขานี้ยังไม่ต้องการรีวิวของเราปีนี้
+
+ตารางนี้ยังเป็นวิธีเร็วที่สุดในการโน้มน้าว co-author ว่าโครงการคุ้มกับชื่อของเขา
+:::
+
+## Step 3 · The proposal
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.flag .c-rust}
+At *Chemical Reviews*, a manuscript sent without an invitation or an approved proposal is not reviewed. It is returned.
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Chemical Reviews (ACS) · max 5 pages]{.eyebrow}
+
+Title, authors and affiliations · a detailed topical outline of 2–3 pages · a list of previous reviews · five closely related papers by the authors · estimated reference and page count · tentative submission date · at least five suggested referees
+
+::: {.note}
+Decision usually within two months.
+:::
+:::
+
+::: {.card .c-teal}
+[RSC journals · under 2 pages]{.eyebrow}
+
+Proposed title, authors, submission date · why the field matters now · comments on other reviews on a similar topic, justifying why there is room for another · section outline with ten or more core references with DOIs · a CV of three pages or less highlighting your last-three-years papers
+
+::: {.note}
+Acceptance of a proposal does not guarantee publication: full peer review still applies.
+:::
+:::
+:::
+
+::: {.notes}
+[11:45 – 11:47] reframe deliverable แรกคือเอกสารสองหน้า ไม่ใช่ต้นฉบับร้อยหน้า อันนี้ควรทำให้รู้สึกโล่ง
+
+ชี้ให้เห็นว่าเรามีของในสองคอลัมน์นี้อยู่แล้วจากกิจกรรมที่ 1 และตารางเทียบรีวิวเดิม
+
+ACS อยากได้หลักฐานว่าเราทำสำเร็จได้ RSC อยากได้หลักฐานว่าสาขาต้องการและเราคือคนที่เหมาะสม
+
+ส่งแล้วรอ อย่าเขียนต้นฉบับเผื่อ แต่ให้รันการค้นเลย
+:::
+
+## Step 4 · The search: reproducible, or it does not count
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Databases, in this order]{.eyebrow}
+
+Scopus and Web of Science Core Collection as the two primary systems · Engineering Village (Compendex + Inspec) for the only real controlled vocabulary in engineering · **Google Scholar as a supplement only** — not reproducible, unsuitable as a principal search system
+
+::: {.note}
+Grey literature matters in engineering and is invisible to Scopus: standards (ASTM, IEC, IEEE), patents, national-laboratory reports, preprints.
+:::
+:::
+
+::: {.card .c-amber}
+[Record this, per database]{.eyebrow}
+
+Platform and interface · the full search string verbatim · the date you ran it and the coverage years · every filter · number of records retrieved · who designed and who checked the string · forward and backward citation chasing as a separate arm · deduplication counts before and after
+
+::: {.note}
+That is the PRISMA-S checklist, condensed. Put it in the supplementary information.
+:::
+:::
+:::
+
+::: {.punch}
+Validate before you screen: pick 10 to 30 papers you already know must be included. If your string misses any of them, the string is not finished.
+:::
+
+::: {.foot}
+::: {.source}
+PRISMA 2020 and PRISMA-S: prisma-statement.org · Gusenbauer & Haddaway, *Res. Synth. Methods* **11**, 181 (2020)
+:::
+:::
+
+::: {.notes}
+[11:47 – 11:49] ประโยคที่แบกสไลด์นี้ ถ้า reviewer ทำการค้นซ้ำตามเราไม่ได้ ข้ออ้างเรื่องความครอบคลุมก็เป็นแค่การกล่าวอ้าง
+
+แม้แต่ narrative หรือ critical review ที่ไม่ต้องทำ PRISMA เต็มรูปแบบ การรายงานการค้นใช้ครึ่งหน้าแต่ซื้อความน่าเชื่อถือมหาศาล
+
+เทคนิค seed set ปฏิบัติได้จริงที่สุดและแทบไม่มีใครทำ มันจับกรณีที่คำสำคัญมีสองการสะกดหรือมีชื่อเก่า
+:::
+
+## Step 5 · Screening and extraction
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.numbered}
+1. **Rayyan** — free tier, fast blinded dual screening. Weaker deduplication than Covidence; opaque AI ranking.
+2. **Covidence** — end-to-end: dedupe, screen, extract, PRISMA diagram. Paid; check for a university licence.
+3. **ASReview** — free and open source; active learning ranks likely-relevant records first. Prioritisation is not exclusion, and you must justify when you stopped.
+4. **Elicit and similar LLM tools** — a second extractor for factual fields. Accuracy collapses on interpretive fields.
+5. **Connected Papers, ResearchRabbit, Litmaps** — orientation and checking that your string missed no cluster. Not reproducible, so not a search arm.
+6. **Zotero / EndNote** — reference management and deduplication. No blinded dual screening, so not a screening system of record.
+:::
+
+::: {.flag .c-amber}
+**Design the extraction template from your framework, not from the papers.** Decide what every included study must tell you before you open the first PDF.
+:::
+
+::: {.notes}
+[11:49 – 11:50] ทัวร์เครื่องมือให้จบในหนึ่งนาที ผู้ฟังจะไปหาอ่านเอง
+
+ใช้เวลาที่เหลือกับกล่องเหลือง เพราะเป็นความผิดพลาดที่เสียเวลามากที่สุด
+
+ตัวอย่างสำหรับคนแบตเตอรี่ ตัดสินใจตั้งแต่ต้นว่าทุกงานต้องบอก active material loading อิเล็กโทรไลต์ C-rate จำนวนรอบ อุณหภูมิ รูปแบบเซลล์ จำนวนซ้ำ เปเปอร์ที่ไม่รายงานไม่ได้ถูกตัดออก แต่ได้คะแนนต่ำ นั่นคือขั้นที่ 6
+:::
+
+## AI tools: where they legitimately help
+
+::: {.kicker .c-amber}
+Part 4 · Step 5b
+:::
+
+::: {.numbered}
+1. **Scoping and gaps** — Connected Papers, ResearchRabbit, Litmaps surface clusters your string missed. *Never report them as a search arm: not reproducible.*
+2. **Search strings** — litsearchr, or an LLM for synonyms and legacy terms. *Never skip the seed-set recall check.*
+3. **Screening** — ASReview, Rayyan ranking, an LLM pre-filter can rank records or act as a declared second screener. *Never the sole screener. Humans adjudicate every disagreement.*
+4. **Data extraction** — Elicit, Covidence suggestions pre-fill factual fields. *Never interpretive fields: accuracy collapses there.*
+5. **Claim checking** — Scite citation statements and retraction flags show whether a claim is contested. *Never accept it without reading the source.*
+6. **Language** — any general LLM can improve the clarity of sentences you wrote. *Never generate synthesis prose or citations.*
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+### The three-line ethical test
+
+**Provenance.** Can you point to the primary source for every claim, because you read it? **Accountability.** Would you defend every sentence in a referee report as your own? **Disclosure.** Are the tool, model version, date and stage written into the manuscript?
+:::
+
+::: {.card .c-rust}
+### Two hard prohibitions
+
+Never paste a manuscript you are refereeing into a public AI tool: that is a confidentiality breach at every publisher. And never submit a citation you have not opened yourself.
+:::
+:::
+
+::: {.notes}
+[11:50 – 11:53] วางกรอบให้เป็นการอนุญาตพร้อมขอบเขต ไม่ใช่คำเตือน ผู้ฟังใช้อยู่แล้ว สิ่งที่ขาดคือวิธีอธิบายให้บรรณาธิการยอมรับ
+
+ให้ตัวเลข งานประเมินปี 2025 AI extraction ราว 81% เทียบมนุษย์ 87% บน factual field แต่ตกเหลือ 16% บน constructs of interest และ 35% บนผลลัพธ์หลัก นั่นคือเส้นแบ่งในแถว extraction
+
+การคัดกรอง meta-analysis ของ LLM screening ราว 81% sensitivity AUROC 0.92 ดีพอจะจัดอันดับ ไม่ดีพอจะตัดออก
+
+เหตุผลที่หนักแน่นที่สุดเป็นผลประโยชน์ตัวเอง ไม่ใช่จริยธรรม การอ้างอิงที่กุขึ้นตรวจจับง่ายมาก
+:::
+
+## Step 6 · Appraisal turns a list into a review
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.lede}
+Almost no engineering review does this. It is the cheapest available way to be distinctive.
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[A worked example: evidence tiers]{.eyebrow}
+
+- **Tier 0** — claim asserted; conditions not reported
+- **Tier 1** — single measurement, idealised conditions
+- **Tier 2** — replicated, conditions fully reported
+- **Tier 3** — independently reproduced under a stated protocol
+
+::: {.note}
+Publish the tier assignment for every study. It becomes the table people cite.
+:::
+:::
+
+::: {.card .c-rust}
+[Clinical appraisal logic, translated]{.eyebrow}
+
+- **Risk of bias** — uncontrolled test conditions, author-run comparisons against untuned baselines
+- **Indirectness** — coin cell versus pouch, lab coupon versus field component
+- **Imprecision** — n = 1, no replicates, no error bars
+- **Publication bias** — the record-efficiency ratchet: only improvements are ever published
+
+::: {.note}
+From the GRADE downgrade domains. Borrow the logic, drop the clinical vocabulary.
+:::
+:::
+:::
+
+::: {.punch}
+If your review treats a single unreplicated result and a multi-lab reproduction as equal evidence, it is not a review. It is a bibliography.
+:::
+
+::: {.notes}
+[11:53 – 11:56] สไลด์ที่สร้างความแตกต่างมากที่สุดในชุด ให้เวลากับมัน
+
+tier scheme เป็นของจริง เป็นโครงสร้างของรีวิว carbon felt ที่กำลังแก้ที่ JPS และ reviewer เข้ามาถกกับ tier แทนที่จะถกความครอบคลุม
+
+ระบบให้เกรดหลักฐานคือ contribution ที่คิดได้ในบ่ายเดียว แล้วคนอื่นเอาไปใช้ต่อ การใช้ต่อคือสิ่งที่สร้าง citation
+
+อย่าตัดงาน tier ต่ำออกเงียบ ๆ ให้คะแนน รายงาน และบอกว่าทำอะไรกับมัน
+:::
+
+## Step 7 · Concept matrix, not a paper-by-paper walk
+
+::: {.kicker .c-amber}
+Part 4
+:::
+
+::: {.cards}
+::: {.card .c-rust}
+[Author-centric — wrong]{.eyebrow}
+
+*"Zhang et al. reported X. Subsequently, Lee et al. found Y. In a related study, Kumar et al. observed Z…"*
+
+One paragraph per paper. "Subsequently", "meanwhile", "in another study". The reader learns what happened, in what order, and nothing else.
+:::
+
+::: {.card .c-teal}
+[Concept-centric — right]{.eyebrow}
+
+*"Three mechanisms are invoked for the observed capacity fade. The first, supported by Tier 2 evidence in four independent studies, is… The second is asserted widely but rests on a single unreplicated measurement…"*
+
+One paragraph per concept, several papers per paragraph, and a verdict at the end of each.
+:::
+:::
+
+::: {.punch}
+Build a matrix with concepts as rows and studies as columns. Every body paragraph is one row. A row with one entry is not a concept yet; a column in no row is a paper that does not belong.
+:::
+
+::: {.notes}
+[11:56 – 11:57] อ่านข้อความฝั่งซ้ายออกเสียงด้วยน้ำเสียงราบเรียบโดยตั้งใจ ผู้ฟังจะจำได้ เพราะเป็นหน้าตาของร่างแรกเกือบทุกฉบับ
+
+ชี้จุดสังเกต subsequently meanwhile in another study ถ้าคำพวกนี้แบกการเชื่อมย่อหน้า แปลว่าเราเขียนลำดับเหตุการณ์
+
+concept matrix เป็นอุปกรณ์ของ Webster และ Watson ปี 2002 และยังใช้ได้ มันคือ spreadsheet ธรรมดา
+:::
+
+# Part 5 · Structure and craft {.divider background-color="#0A4B49"}
+
+::: {.lede}
+What the finished paper looks like, how to title it, what to budget, and the seven ways it goes wrong.
+:::
+
+## The anatomy of a review article
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.numbered}
+1. **Title** — descriptive and specific. It should carry the framework, not just the topic.
+2. **Abstract** — a miniature of the whole review, not an introduction to the topic. It must state the main conclusions.
+3. **Introduction** — problem, gap, hook. State the scope and the years covered, and place the prior-review table here.
+4. **Framework** — your taxonomy, tier scheme or conceptual model, defined in its own numbered section before it is used. *This is the contribution.*
+5. **Body** — organised by the framework, never by chronology or by author. One concept per section, a verdict at the end of each.
+6. **Cross-cutting** — standards, datasets, scale-up, safety, cost, reproducibility.
+7. **Challenges and outlook** — three to five named challenges, each with a specific actionable milestone. *Not "more research is needed".*
+8. **Conclusion** — short. What the field should now believe that it did not believe before.
+:::
+
+::: {.flag .c-rust}
+Sections 4 and 7 are what distinguish a review from a summary. Draft them first.
+:::
+
+::: {.notes}
+[11:57 – 12:00] หยุดจริงจังที่ข้อ 4 และ 7
+
+framework section ความผิดพลาดคือกระจาย taxonomy ไปทั่วเนื้อหา ให้มันมีหัวข้อของตัวเอง นิยามทุกหมวด และให้ผู้อ่านเห็นแผนที่ก่อนพาเข้าพื้นที่จริง
+
+outlook เป็นจุดที่รีวิวขี้เกียจที่สุด ทุกทิศทางอนาคตควรบอกว่าใครทำ ด้วยวิธีอะไร วัดอะไร และผลแบบไหนจะยุติคำถาม
+
+abstract ข้อร้องเรียนที่พบบ่อยที่สุดคือแนะนำหัวข้อแต่ไม่บอกว่าสรุปอะไร ประโยคสุดท้ายควรเป็น thesis จากกิจกรรมที่ 1
+:::
+
+## Four ways to organise the body
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+### Function-centric
+
+By what the work does: synthesis, characterisation, modelling, deployment. Good when methods differ more than materials do.
+:::
+
+::: {.card .c-sky}
+### System-oriented
+
+By layer: electrode, electrolyte, interface, cell, pack, system. Good when the field has a natural physical hierarchy.
+:::
+:::
+
+::: {.cards}
+::: {.card .c-sage}
+### Application-driven
+
+By end use: grid storage, transport, portable, off-grid. Good when the same technology faces very different requirements.
+:::
+
+::: {.card .c-amber}
+### Framework-based
+
+You propose a conceptual framework and organise everything under it. Highest risk, highest reward, and the only one of the four that produces something nameable.
+:::
+:::
+
+::: {.punch}
+Mutual-exclusivity test: could a reader who has seen only your section headings predict which section any given paper belongs in?
+:::
+
+::: {.notes}
+[12:00 – 12:01] ยกตัวอย่างละบรรทัดจากสาขาผู้ฟังเอง จะได้ไม่เป็นนามธรรม
+
+framework-based คือตัวที่ควรผลักดันสำหรับคนรุ่นใหม่ที่ทะเยอทะยาน เพราะเป็นตัวเดียวที่ผลิตของที่ตั้งชื่อได้
+
+อย่าจัดตามระบบวัสดุ เว้นแต่ระบบวัสดุคือตัวแปรที่สนใจจริง มันคือ taxonomy ที่ขี้เกียจที่สุด
+:::
+
+## The title is the first test of whether you have a thesis
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.lede}
+Left: could sit on any review of the topic. Right: could only sit on yours.
+:::
+
+::: {.cards}
+::: {.card .c-rust}
+*"Recent Advances in Zinc-Ion Battery Cathodes"*
+:::
+
+::: {.card .c-teal}
+*"Why Capacity Fade in Zinc-Ion Cathodes Is a Dissolution Problem, Not a Structural One"*
+:::
+:::
+
+::: {.cards}
+::: {.card .c-rust}
+*"A Review of Machine Learning for Materials Discovery"*
+:::
+
+::: {.card .c-teal}
+*"Machine Learning for Materials Discovery: Five Benchmarks That Do Not Test Generalisation"*
+:::
+:::
+
+::: {.cards}
+::: {.card .c-rust}
+*"Progress and Perspectives on Solid Electrolytes"*
+:::
+
+::: {.card .c-teal}
+*"Reported Critical Current Densities in Solid Electrolytes: A Tier-Based Reassessment"*
+:::
+:::
+
+::: {.punch}
+A title that would fit on any review of the topic is not a title yet. Put the claim, or the framework, into it.
+:::
+
+::: {.notes}
+[12:01 – 12:03] อ่านคอลัมน์ซ้ายก่อนทั้งสามอันด้วยน้ำเสียงเรียบ แล้วค่อยอ่านขวา ห้องจะได้ยินความต่างเอง
+
+advances progress perspectives recent emerging เป็นคำเติมช่องว่าง ลบทิ้งได้ทุกคำโดยไม่เสียข้อมูล
+
+เขียนชื่อเรื่องเป็นอันสุดท้าย หลังมี framework section แล้ว ตรวจว่าตรงกับประโยคสุดท้ายของ abstract
+:::
+
+## Budgets, and the three tables that get you cited
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Rules of thumb]{.eyebrow}
+
+- **~25** references per 1,000 words
+- **max 7** display items in a *Nature Reviews*-style Review
+- **100–120** references for a comprehensive engineering survey
+- **3–5** named challenges in the outlook
+- **1** framework, defined once, used everywhere
+
+::: {.note}
+Exceeding a journal's stated limits is a desk-rejection trigger, not a negotiating position.
+:::
+:::
+
+::: {.card .c-amber}
+[The three tables]{.eyebrow}
+
+**The prior-review table** — what existed, what it missed, what you add. Editors read it first.
+
+**The evidence table** — every included study, its conditions and its tier. The artefact other authors reuse, and reuse is citation.
+
+**The gap table** — what is not known, why, and what experiment would settle it.
+:::
+:::
+
+::: {.notes}
+[12:03 – 12:05] ตารางคือหน่วยของรีวิวที่คนอื่นยกไปใส่ introduction ของตัวเองได้ และเวลาเขายกไป เขาอ้างอิงเรา
+
+ตารางหลักฐานคือตัวที่ทบต้น ถ้าตีพิมพ์ corpus ที่ให้คะแนนแล้ว สามเปเปอร์ถัดไปจะอ้างรีวิวของเราแทนที่จะให้คะแนนใหม่
+
+รูป ตั้งงบทั้งเวลาและเงินจริง ๆ ภาพแนวคิดที่สรุป framework ในภาพเดียวคือของที่ถูกใช้ซ้ำมากที่สุด
+:::
+
+## Seven ways reviews get rejected
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.numbered}
+1. **The laundry list** — one paragraph per paper, joined by "subsequently" and "meanwhile".
+2. **No thesis** — the reader finishes and cannot say what the authors think.
+3. **Undefined scope** — no statement of what is included, excluded, or what years are covered.
+4. **Cherry-picked evidence** — no selection criteria, so the reader cannot tell what was left out.
+5. **Self-citation bloat** — the authors' own work singled out for emphasis. Referees always notice.
+6. **Stale coverage** — the most recent references are two years old, or a newer review already exists.
+7. **Generic outlook** — *"Further research is needed."* This sentence has never helped anyone.
+:::
+
+::: {.punch}
+Every one of these is visible in the first two pages. That is where desk rejections happen.
+:::
+
+::: {.notes}
+[12:05 – 12:06] ไปเร็ว บรรทัดละข้อ แล้วหยุดที่ข้อสุดท้าย
+
+ต้องมีการวิจัยเพิ่มเติม ควรถูกล้อเบา ๆ เพราะทุกคนเคยเขียน แทนที่ด้วยการทดลองไหน ใครทำ วัดอะไร ผลแบบไหนจะเปลี่ยนใจสาขานี้
+
+เชื่อมกลับ ข้อ 1 แก้ด้วย concept matrix ข้อ 2 แก้ด้วยกิจกรรมที่ 1 ข้อ 3 แก้ด้วยการระบุ scope ข้อ 4 แก้ด้วยการรายงานการค้น ข้อ 6 แก้ด้วยด่านที่ 2
+:::
+
+## Exercise 2 · Locate your own review {.dark background-color="#E29A2D"}
+
+::: {.cards}
+::: {.card}
+[Task 1]{.eyebrow}
+
+On the two-axis map, mark where the review you are planning sits today. Be honest about the horizontal axis.
+:::
+
+::: {.card}
+[Task 2]{.eyebrow}
+
+Apply the referee's test to it. Remove the reference list. Write down what is left.
+:::
+:::
+
+::: {.punch}
+If the honest answer to Task 2 is "a well-organised list", you now know exactly which rung you have to climb, and Part 4 told you how.
+:::
+
+::: {.notes}
+[12:06 – 12:09] เงียบสองนาทีอีกครั้ง แล้วเก็บคำตอบ Task 2 สองสามคน
+
+คาดว่าส่วนใหญ่จะพบว่าอยู่ที่ขั้น 2 หรือ 3 บอกทันทีว่าไม่ใช่ความล้มเหลว มันคือจุดเริ่มต้นปกติ และดีกว่าที่จะรู้ตอนนี้แทนที่จะรู้หลังเขียนไปเก้าเดือน
+
+ถามต่อหนึ่งคำถาม อะไรต้องเป็นจริงถึงจะขยับขึ้นสองขั้น
+:::
+
+## Generative AI: what you must disclose in 2026
+
+::: {.kicker .c-amber}
+Part 5
+:::
+
+::: {.cards}
+::: {.card .c-teal}
+[Universal across ACS, RSC, Elsevier, Springer Nature, Wiley, IEEE, ICMJE and COPE]{.eyebrow}
+
+- AI cannot be an author
+- Authors remain fully accountable for every sentence and every citation
+- Referees must not upload manuscripts to public AI tools
+- Grammar and spell checking normally needs no declaration
+
+::: {.note}
+Where the declaration goes — Elsevier: immediately before the reference list. ACS and IEEE: the Acknowledgement. Springer Nature: Introduction or Acknowledgements. ICMJE: also in the cover letter.
+:::
+:::
+
+::: {.card .c-rust}
+[Specific to review articles]{.eyebrow}
+
+ACS states that editors may reject or require revision where AI use appears excessive, and names generated literature reviews explicitly. Publishers now diverge on whether AI-assisted literature reviews are permitted at all.
+
+The three highest-risk uses are AI-written synthesis prose, AI-suggested citations, and AI-only screening with no human verification.
+
+::: {.note}
+Disclose the tool, the model and version, the date, and the exact stage. Then state that every citation was verified against the primary source. Because you did verify them.
+:::
+:::
+:::
+
+::: {.notes}
+[12:09 – 12:11] ให้ข้อเท็จจริงและสั้น หลีกเลี่ยงการเทศน์ ผู้ฟังใช้เครื่องมือพวกนี้อยู่แล้ว
+
+กฎข้อเดียว AI ช่วยหา ช่วยคัดกรอง ช่วยเรียบเรียงได้ แต่ทุกข้อเท็จจริงและทุกอ้างอิงต้องถูกตรวจกับเปเปอร์จริงโดยมนุษย์
+
+นโยบายแต่ละสำนักพิมพ์กำลังแยกทางกัน สำนักพิมพ์ที่ผมใช้ประจำอนุญาต ใช้เป็นข้อแก้ตัวที่วารสารอื่นไม่ได้
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+::: {.statement}
+If you remember three things
+:::
+
+::: {.numbered-stack}
+1. **A review is an argument, not a summary.** If an expert could not disagree with your central claim, you have not written a review.
+2. **The proposal comes before the manuscript.** Two pages, sent to an editor, decides whether the next twelve months are worth spending.
+3. **Grade your evidence.** The cheapest way to be the review people cite instead of the review people skim.
+:::
+
+::: {.note}
+Take-away: the one-page proposal template in your handout. Fill it in this week, while the topic is still hot.
+:::
+::::
+
+::: {.notes}
+[12:11 – 12:13] ช้าลง สามประโยคนี้คือสิ่งที่อยากให้ผู้ฟังพูดซ้ำกับอาจารย์ที่ปรึกษาในวันพรุ่งนี้
+
+ขอให้ชัดเจน ทุกคนควรกรอกแบบฟอร์ม proposal หนึ่งหน้าให้เสร็จภายในหนึ่งสัปดาห์ เพราะส่วนที่ยากที่สุดทำไปแล้ว
+
+ถ้าเต็มใจ เสนอว่าจะอ่าน proposal หนึ่งหน้าของใครก็ได้ในห้องนี้และให้ feedback สิบห้านาที ข้อเสนอเดียวนี้คือสิ่งที่เปลี่ยนสัมมนาให้กลายเป็นนิสัย
+:::
+
+## Questions {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Sources and further reading
+:::
+
+::: {.numbered}
+1. **Typology** — Grant & Booth, *Health Info. Libr. J.* **26**, 91 (2009) · Sutton, Clowes, Preston & Booth, *ibid.* **36**, 202 (2019)
+2. **Reporting standards** — PRISMA 2020, PRISMA-ScR and PRISMA-S: prisma-statement.org · JBI Manual: synthesismanual.jbi.global · ROSES: roses-reporting.com
+3. **Engineering method** — Kitchenham & Charters, EBSE-2007-01 · Petersen, Vakkalanka & Kuzniarz, *Inf. Softw. Technol.* **64**, 1 (2015) · Niyato et al., arXiv:2509.25828 (2025)
+4. **Searching** — Gusenbauer & Haddaway, *Res. Synth. Methods* **11**, 181 (2020) · Gusenbauer & Gauster, *Technol. Forecast. Soc. Change* **212**, 123833 (2025)
+5. **Appraisal** — GRADE Handbook: gradepro.org/handbook · Shea et al. (AMSTAR 2), *BMJ* **358**, j4008 (2017)
+6. **Craft** — Pautasso, *PLoS Comput. Biol.* **9**, e1003149 (2013) · Webster & Watson, *MIS Quarterly* **26**, xiii (2002) · *Nat. Rev. Bioeng.* **2**, 907 (2024)
+7. **The debate** — Miranda & García-Carpintero (2018) · McMahan & McFarland (2021) · Ioannidis (2016) · Kamat, Christopher & Jin (2025)
+:::
+
+::: {.foot}
+::: {.note}
+**[Download the participant handout (PDF, 10 pages)](Beyond_the_Summary_Handout.pdf)** — the genre map, the two-axis figure, the contribution ladder, the eight-step process, Worksheet A and B, and the pre-submission checklist.
+
+soorathep.k@chula.ac.th · Energy Storage Innovation Laboratory, Chulalongkorn University
+:::
+:::
+
+::: {.notes}
+[12:13 – 12:20] เปิดค้างไว้ตลอดถาม-ตอบ ให้คนถ่ายรูป
+
+คำถามที่คาดว่าจะถูกถาม
+
+หนึ่ง กี่อ้างอิง ราว 100 ถึง 120 สำหรับ survey ครอบคลุม ราว 35 สำหรับ tutorial ถ้าทั้งสาขามีเปเปอร์สำคัญไม่ถึง 50 แปลว่ายังเร็วเกินไป
+
+สอง นิสิตปีหนึ่งเขียนได้ไหม เป็น first author โดยมี co-author อาวุโสได้ เขียนคนเดียวไม่ได้
+
+สาม ยิงวารสารไหน วารสารที่รับ proposal จากเรา ส่งทีละที่ ไม่ส่งพร้อมกัน
+
+สี่ นับใน promotion ไหม ไปถามภาควิชาตัวเอง ผมหาหลักฐานหนักแน่นไม่เจอ อย่าสร้าง track record ด้วยรีวิวอย่างเดียว
+
+ห้า ใช้เวลาจริงเท่าไร หกถึงสิบสองเดือน บวกรอบแก้อีกสองสามรอบ
+:::

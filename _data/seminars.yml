@@ -1,14 +1,23 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # Standalone seminars and invited talks, shown on /teaching/seminars/.
 # One entry per talk, newest first is handled by the page (sorted by date).
-#   title   required.
-#   date    required. YYYY-MM-DD — drives the ordering and the displayed date.
-#   venue   optional. Where it was given.
-#   note    optional one line.
-#   slides  optional. Filename of the rendered deck in teaching/seminars/.
-#           Present = the title becomes a link. Source lives in
-#           _teaching-src/seminars/.
+#   title    required.
+#   date     required. YYYY-MM-DD — drives the ordering and the displayed date.
+#   venue    optional. Where it was given.
+#   note     optional one line.
+#   slides   optional. Filename of the rendered deck in teaching/seminars/.
+#            Present = the title becomes a link. Source lives in
+#            _teaching-src/seminars/.
+#   handout  optional. Filename of a PDF sitting in teaching/seminars/.
+#            Present = a "Participant handout (PDF)" link appears under the note.
 # ─────────────────────────────────────────────────────────────────────────────
+
+- title: "Beyond the Summary: How to Plan, Structure, and Place a High-Impact Review Article"
+  date: 2026-09-09
+  venue: MMS3 Talk, Department of Chemical Engineering, Chulalongkorn University
+  slides: review-articles.html
+  handout: Beyond_the_Summary_Handout.pdf
+  note: For researchers writing their first review. The ten things called a review and how they actually differ, what a review does and does not do for an early-career profile, a five-gate test for deciding whether a topic is ready, what counts as a contribution when you have no new data, the eight-step process from idea to submission, where AI tools legitimately fit, and the structure of the finished paper down to the title.
 
 - title: Making Conferences Work for You
   date: 2026-08-17

@@ -12,6 +12,7 @@ one is for talks that are not part of a course.
 | File | Talk |
 |------|------|
 | `conferences.qmd` | Making Conferences Work for You — 17 August 2026 |
+| `review-articles.qmd` | Beyond the Summary: writing a high-impact review article — 9 September 2026 (MMS3 Talk) |
 
 ---
 
@@ -109,6 +110,20 @@ cp conferences.qmd 2026-09-09-review-articles.qmd
 
 Edit the front matter and body, render, publish, then add an entry to
 `_data/seminars.yml` — the talk appears on `/teaching/seminars/` by itself.
+
+### Shipping a handout with a talk
+
+Drop the PDF into `teaching/seminars/` next to the rendered deck and add one
+key to the entry in `_data/seminars.yml`:
+
+```yaml
+  handout: Beyond_the_Summary_Handout.pdf
+```
+
+`teaching/seminars/index.html` prints a "Participant handout (PDF)" link under
+the note whenever that key is present. A deck can also link its own handout
+with a plain relative href, since the PDF is a sibling of the rendered HTML —
+`review-articles.qmd` does both.
 
 ---
 
