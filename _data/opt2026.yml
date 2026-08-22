@@ -103,11 +103,36 @@ weeks:
         desc: The four parts to work through on your own after the shortened session. Due Friday 21 August, midnight
         kind: PDF
         file: w02/w02-self-study-pack.pdf
+      - name: "Week 2 answers"
+        desc: What the pack was testing, and what it answers to. Issued in Week 3
+        kind: PDF
+        file: w03/w02-feedback.pdf
   - n: 3
     title: "Modeling II: networks, flows and process superstructures"
     dates: 24 Aug
     block: Model construction
     tool: OpenSolver
+    files:
+      - name: "Week 3 self-study pack"
+        desc: No lecture this week. The five parts to work through on your own, in order. Due Friday 28 August, midnight
+        kind: PDF
+        file: w03/w03-self-study-pack.pdf
+      - name: "Week 3 slides"
+        desc: Networks and the node balance, paths and cuts, and process superstructures. Thirty-two slides
+        kind: PDF
+        file: w03/w03-slides.pdf
+      - name: Transportation workbook
+        desc: Two sheets, transportation and transshipment. Complete the yellow cells, then solve each one
+        kind: XLSX
+        file: w03/w03-transportation.xlsx
+      - name: Modeling II notebook
+        desc: The same networks in Pyomo, plus shortest path, maximum flow, the minimum cut, and the superstructure
+        kind: Notebook
+        file: w03/w03-modeling2-networks.ipynb
+      - name: "Week 2 answers"
+        desc: What the Week 2 pack was testing, and what it answers to. Read it with your own submission next to you
+        kind: PDF
+        file: w03/w02-feedback.pdf
   - n: 4
     title: "Modeling III: blending, pooling and quality specifications"
     dates: 31 Aug
