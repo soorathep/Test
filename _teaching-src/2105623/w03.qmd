@@ -1,0 +1,1395 @@
+---
+title: "Modeling II: networks, flows and process superstructures"
+subtitle: "Week 3 · 2105623 Optimization of Chemical Processes"
+author: "Soorathep Kheawhom"
+date: 2026-08-24
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Three lectures {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+Outline
+:::
+
+::: {.numbered .n3}
+1. **Networks and the node balance** — one template, four classical problems, transportation and transshipment
+2. **Paths, cuts and integrality** — shortest path, maximum flow, the minimum cut, total unimodularity
+3. **Process superstructures** — the same mathematics with units for nodes, and where a binary variable becomes unavoidable
+:::
+
+::: {.notes}
+Three blocks, and they are in this order for a reason: the third one is the first time all afternoon that the network is not a map.
+:::
+
+## Session plan, 180 minutes {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [10 min]{.chip .c-slate} Opening: recap of Week 2, one question from HW1, today's objectives
+- [30 min]{.chip .c-teal} Lecture 1: networks as a modeling language, the node balance, transportation and transshipment
+- [20 min]{.chip .c-amber} Activity 1 — draw the network
+- [30 min]{.chip .c-teal} Lecture 2: shortest path, maximum flow, the minimum cut, total unimodularity
+- [15 min]{.chip .c-mist} Break
+- [25 min]{.chip .c-amber} Activity 2 — transportation in OpenSolver
+- [25 min]{.chip .c-teal} Lecture 3: process superstructures, continuous route splits, where binaries would enter
+- [20 min]{.chip .c-amber} Activity 3 — sketch a superstructure
+- [5 min]{.chip .c-slate} Wrap-up, and what is due next week
+:::
+
+::: {.foot}
+::: {.note}
+Tools today: **OpenSolver** for the matrix models, **Pyomo** for the graph models. Notebook `w03-modeling2-networks.ipynb`; workbook `w03-transportation.xlsx`.
+:::
+:::
+
+::: {.notes}
+**[00:00 – 00:10] · OPENING**
+
+**SAY —**
+
+"Week 2 gave you four patterns: an index set, a balance equation, a capacity constraint, a linking constraint. Today you find out that a very large class of engineering problems is those four patterns applied to a graph — and that when you do that, three things come free that you would otherwise have to pay for."
+
+**DO —**
+
+- Name the three now, so they have somewhere to file the afternoon: integral answers with no integer variables, duals with an immediate physical reading, and algorithms orders of magnitude faster than general LP.
+- Say the split out loud: spreadsheet for the two problems whose data is a table, Python for the two whose data is a graph.
+:::
+
+## By the end you should be able to {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Learning objectives
+:::
+
+::: {.numbered .n5}
+1. **Write the node balance** that every network flow model shares, and recognise the node-arc incidence matrix *E* behind it.
+2. **Formulate four problems as one template** — transportation, transshipment, shortest path and maximum flow are four choices of data inside minimum cost flow.
+3. **Explain integrality for free** using total unimodularity, and state exactly what destroys it.
+4. **Read node potentials and arc reduced costs** from the LP duals, and identify a minimum cut from a maximum flow solution.
+5. **Represent competing process routes** as a superstructure, and say which decisions are continuous and which need a binary variable.
+:::
+
+::: {.foot}
+::: {.note}
+CLO 1 (formulation) and CLO 4 (implementation and solution in Pyomo). Reference: Williams Ch. 5; Rao Ch. 3; Edgar, Himmelblau and Lasdon Ch. 7.
+:::
+:::
+
+::: {.notes}
+Objective 3 is the one they will remember, and objective 4 is the one that pays in Week 8. Say that.
+:::
+
+## From Week 2 patterns to a network
+
+::: {.kicker .c-amber}
+Why networks deserve their own week
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+
+::: {.spec}
+[The four reusable patterns of Week 2]{.eyebrow}
+
+1. index set
+2. balance equation
+3. capacity constraint
+4. linking constraint
+:::
+
+::: {.punch}
+A network model is those four patterns applied to a graph.
+:::
+
+The index set is the **arc set**. The balance equation is written **once per node**. The capacity constraint is **one bound per arc**. And the graph itself is the linking structure.
+:::
+
+::: {.column width="52%"}
+::: {.dots}
+- **A very large class is a network in disguise** Distribution, logistics, pipeline routing, assignment, project scheduling, flowsheet synthesis.
+- **The structure buys three things** Integral answers for free, duals with an immediate physical reading, and specialised algorithms orders of magnitude faster than general LP.
+- **You already know the equation** The node balance is literally a steady-state material balance. Chemical engineers have been writing it since second year.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "Nothing new is being introduced. What is new is that the balance is written around a *place* instead of around a vessel, and that once you do that, the matrix acquires a property that hands you integers for nothing."
+:::
+
+## One template: the minimum cost flow problem
+
+::: {.kicker .c-teal}
+Everything today is a choice of data inside this
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+::: {.spec}
+[Minimum cost flow]{.eyebrow}
+
+Let *G* = (*N*, *A*) be a directed graph. For arc (*i*,*j*) ∈ *A* let *f*<sub>*ij*</sub> ≥ 0 be the flow, *c*<sub>*ij*</sub> the unit cost, *u*<sub>*ij*</sub> the capacity. For node *n* ∈ *N* let *b*<sub>*n*</sub> be the net supply.
+
+**minimise** &nbsp; Σ<sub>(*i*,*j*)∈*A*</sub> *c*<sub>*ij*</sub> *f*<sub>*ij*</sub>
+
+**subject to** &nbsp; Σ<sub>*j*</sub> *f*<sub>*nj*</sub> − Σ<sub>*i*</sub> *f*<sub>*in*</sub> = *b*<sub>*n*</sub> &nbsp; for every *n* ∈ *N*
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 ≤ *f*<sub>*ij*</sub> ≤ *u*<sub>*ij*</sub>
+:::
+:::
+
+::: {.column width="44%"}
+::: {.dots}
+- **The sign of b** Positive at a source, negative at a sink, zero at a pure transit node.
+- **Feasibility of the whole class** requires the net supplies to sum to zero.
+- **In matrix form** the balance is E f = b, with E the node-arc incidence matrix.
+:::
+
+::: {.flag .c-amber}
+**The engineering reading.** Outflow − inflow = net generation. This is the steady-state material balance around a unit, written once per node instead of once per unit.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Point at the balance row and say "you have written this equation a hundred times; the only new thing is what the boundary is drawn around."
+:::
+
+## The node-arc incidence matrix
+
+::: {.kicker .c-teal}
+Rows are nodes, columns are arcs
+:::
+
+:::: {.columns}
+::: {.column width="40%"}
+::: {.spec}
+[Definition]{.eyebrow}
+
+*E*<sub>*n*,(*i*,*j*)</sub> = **+1** if *n* = *i* (arc leaves *n*)
+
+*E*<sub>*n*,(*i*,*j*)</sub> = **−1** if *n* = *j* (arc enters *n*)
+
+*E*<sub>*n*,(*i*,*j*)</sub> = **0** otherwise
+:::
+
+Every column has exactly one +1 and one −1, and therefore **sums to zero**.
+
+::: {.note}
+The rows are linearly dependent: they sum to the zero vector, which is exactly why Σ<sub>*n*</sub> *b*<sub>*n*</sub> = 0 is required.
+:::
+:::
+
+::: {.column width="58%"}
+[Four classical problems, one template]{.eyebrow}
+
+| Problem | Graph | Data choice |
+|:---|:---|:---|
+| **Transportation** | bipartite, sources to sinks | unit shipping cost, no capacities, *b* from supply and demand |
+| **Transshipment** | any graph, transit nodes allowed | unit cost, arc limits, *b*<sub>*n*</sub> = 0 at transit nodes |
+| **Shortest path** | any graph | arc length as cost, *b* = +1 at the origin and −1 at the destination |
+| **Maximum flow** | plus a super source and super sink | zero cost except −1 on a return arc, arc limits, *b* = 0 |
+:::
+::::
+
+::: {.notes}
+**SAY —** "Four problems that have separate chapters in every textbook, and separate algorithms, and separate names. One template. Choose the graph, the costs, the capacities and b."
+:::
+
+## Transportation: the bipartite special case
+
+::: {.kicker .c-teal}
+Three precursor plants, four cell gigafactories
+:::
+
+:::: {.columns}
+::: {.column width="44%"}
+::: {.spec}
+[The model]{.eyebrow}
+
+**minimise** &nbsp; Σ<sub>*i*∈*S*</sub> Σ<sub>*j*∈*D*</sub> *c*<sub>*ij*</sub> *x*<sub>*ij*</sub>
+
+**subject to** &nbsp; Σ<sub>*j*</sub> *x*<sub>*ij*</sub> ≤ *s*<sub>*i*</sub> &nbsp; for every plant *i*
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub>*i*</sub> *x*<sub>*ij*</sub> ≥ *d*<sub>*j*</sub> &nbsp; for every gigafactory *j*
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *x*<sub>*ij*</sub> ≥ 0
+:::
+
+| *c*<sub>*ij*</sub>, USD/t | G1 | G2 | G3 | G4 |
+|:---|---:|---:|---:|---:|
+| **R1** | 18 | 24 | 31 | 40 |
+| **R2** | 27 | 19 | 22 | 33 |
+| **R3** | 38 | 30 | 25 | 21 |
+
+::: {.note}
+Supplies 450, 380, 300 t/week; demands 300, 260, 330, 240. Total supply 1,130 t **equals** total demand, so the instance is balanced.
+:::
+:::
+
+::: {.column width="54%"}
+<svg viewBox="0 0 560 340" style="width:100%;max-width:620px" role="img" aria-label="A bipartite diagram with three plants on the left and four gigafactories on the right. Six teal arcs carry flow: R1 to G1 with 300 tonnes and R1 to G2 with 150, R2 to G2 with 110 and R2 to G3 with 270, R3 to G3 with 60 and R3 to G4 with 240. The remaining six lanes are drawn in pale grey and carry nothing.">
+<line x1="118" y1="70" x2="432" y2="185" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="70" x2="432" y2="265" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="165" x2="432" y2="45" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="165" x2="432" y2="265" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="260" x2="432" y2="45" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="260" x2="432" y2="125" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="118" y1="70" x2="432" y2="45" stroke="#0F6E6B" stroke-width="3.2"/>
+<line x1="118" y1="70" x2="432" y2="125" stroke="#0F6E6B" stroke-width="3.2"/>
+<line x1="118" y1="165" x2="432" y2="125" stroke="#0F6E6B" stroke-width="3.2"/>
+<line x1="118" y1="165" x2="432" y2="185" stroke="#0F6E6B" stroke-width="3.2"/>
+<line x1="118" y1="260" x2="432" y2="185" stroke="#0F6E6B" stroke-width="3.2"/>
+<line x1="118" y1="260" x2="432" y2="265" stroke="#0F6E6B" stroke-width="3.2"/>
+<text x="268" y="46" font-size="15" fill="#0F6E6B" text-anchor="middle">300</text>
+<text x="258" y="103" font-size="15" fill="#0F6E6B" text-anchor="middle">150</text>
+<text x="270" y="136" font-size="15" fill="#0F6E6B" text-anchor="middle">110</text>
+<text x="272" y="190" font-size="15" fill="#0F6E6B" text-anchor="middle">270</text>
+<text x="258" y="216" font-size="15" fill="#0F6E6B" text-anchor="middle">60</text>
+<text x="268" y="277" font-size="15" fill="#0F6E6B" text-anchor="middle">240</text>
+<circle cx="98" cy="70" r="24" fill="#0F6E6B"/><text x="98" y="76" font-size="17" fill="#fff" text-anchor="middle">R1</text>
+<circle cx="98" cy="165" r="24" fill="#0F6E6B"/><text x="98" y="171" font-size="17" fill="#fff" text-anchor="middle">R2</text>
+<circle cx="98" cy="260" r="24" fill="#0F6E6B"/><text x="98" y="266" font-size="17" fill="#fff" text-anchor="middle">R3</text>
+<circle cx="452" cy="45" r="22" fill="#E29A2D"/><text x="452" y="51" font-size="16" fill="#1C242B" text-anchor="middle">G1</text>
+<circle cx="452" cy="125" r="22" fill="#E29A2D"/><text x="452" y="131" font-size="16" fill="#1C242B" text-anchor="middle">G2</text>
+<circle cx="452" cy="185" r="22" fill="#E29A2D"/><text x="452" y="191" font-size="16" fill="#1C242B" text-anchor="middle">G3</text>
+<circle cx="452" cy="265" r="22" fill="#E29A2D"/><text x="452" y="271" font-size="16" fill="#1C242B" text-anchor="middle">G4</text>
+<text x="98" y="310" font-size="14" fill="#66727C" text-anchor="middle">supply</text>
+<text x="452" y="310" font-size="14" fill="#66727C" text-anchor="middle">demand</text>
+<text x="275" y="326" font-size="13" fill="#66727C" text-anchor="middle">teal arcs carry flow, t/week · grey arcs empty at the optimum</text>
+</svg>
+:::
+::::
+
+::: {.notes}
+**SAY —** "Twelve lanes. Six of them carry everything. Nobody chose which six — the linear program did, and the six it chose are the ones whose reduced cost is zero."
+:::
+
+## Transportation: the optimum, and what the duals say
+
+::: {.kicker .c-amber}
+The MODI potentials come free from the LP dual
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+::: {.punch}
+Minimum shipping cost = **23,570.00 USD/week**
+:::
+
+| *x*<sub>*ij*</sub>, t | G1 | G2 | G3 | G4 |
+|:---|---:|---:|---:|---:|
+| **R1** | **300** | **150** | 0 | 0 |
+| **R2** | 0 | **110** | **270** | 0 |
+| **R3** | 0 | 0 | **60** | **240** |
+
+::: {.note}
+All seven constraints bind: the instance is balanced, so nothing is left over anywhere.
+:::
+:::
+
+::: {.column width="52%"}
+::: {.spec}
+[The u–v potentials]{.eyebrow}
+
+*u* = (0, −5, −2) USD/t &nbsp;&nbsp; *v* = (18, 24, 27, 23) USD/t
+
+*c*<sub>*ij*</sub> − *u*<sub>*i*</sub> − *v*<sub>*j*</sub> = 0 on every lane carrying flow
+
+*c*<sub>*ij*</sub> − *u*<sub>*i*</sub> − *v*<sub>*j*</sub> ≥ 0 on every empty lane
+:::
+
+::: {.dots}
+- **v is a delivered value** What one extra tonne at a gigafactory is worth; u is one more tonne of capacity at a plant.
+- **R1 is the marginal plant** Its dual is zero although its supply row binds — a degenerate vertex, and the Week 8 hook.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "R1 is exhausted and worth nothing. Sit with that for a second, because it is the thing people get wrong for the rest of their careers: a constraint that binds is not automatically worth money."
+
+**DO —** Ask the room what one more tonne of demand at G3 would cost. Take 27. Then say: try it on the sheet later — the model goes infeasible, because there is no tonne anywhere to move. That is Week 8, arriving early.
+:::
+
+## Transshipment: transit nodes and arc capacities {.smaller}
+
+::: {.kicker .c-teal}
+The same template, written verbatim on a bigger graph
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+<svg viewBox="0 0 560 320" style="width:100%;max-width:620px" role="img" aria-label="Three refineries on the left feed two coastal terminals in the middle, which feed four gigafactories on the right. Two direct lanes bypass the terminals. Teal arcs carry flow at the optimum, grey arcs are empty.">
+<path d="M118 60 C 200 60 200 120 232 128" fill="none" stroke="#0F6E6B" stroke-width="3.4"/>
+<path d="M118 60 C 210 70 210 210 232 214" fill="none" stroke="#0F6E6B" stroke-width="2.4"/>
+<path d="M118 160 C 190 150 200 140 232 136" fill="none" stroke="#0F6E6B" stroke-width="2.8"/>
+<path d="M118 160 C 190 175 200 205 232 210" fill="none" stroke="#0F6E6B" stroke-width="2.8"/>
+<path d="M118 258 C 190 250 200 230 232 222" fill="none" stroke="#0F6E6B" stroke-width="3.2"/>
+<path d="M118 258 C 195 250 205 155 232 145" fill="none" stroke="#B9C1C6" stroke-width="1.4"/>
+<line x1="272" y1="128" x2="272" y2="200" stroke="#B9C1C6" stroke-width="1.4"/>
+<path d="M292 132 C 380 90 390 62 418 56" fill="none" stroke="#0F6E6B" stroke-width="3.2"/>
+<path d="M292 138 C 380 130 390 118 418 116" fill="none" stroke="#0F6E6B" stroke-width="3.0"/>
+<path d="M292 142 C 380 160 390 176 418 180" fill="none" stroke="#B9C1C6" stroke-width="1.4"/>
+<path d="M292 146 C 380 200 390 236 418 244" fill="none" stroke="#B9C1C6" stroke-width="1.4"/>
+<path d="M292 206 C 380 170 390 70 418 60" fill="none" stroke="#B9C1C6" stroke-width="1.4"/>
+<path d="M292 210 C 380 190 390 128 418 120" fill="none" stroke="#B9C1C6" stroke-width="1.4"/>
+<path d="M292 214 C 380 200 390 184 418 184" fill="none" stroke="#0F6E6B" stroke-width="3.1"/>
+<path d="M292 220 C 380 230 390 240 418 246" fill="none" stroke="#0F6E6B" stroke-width="3.0"/>
+<path d="M118 52 C 250 6 340 12 418 46" fill="none" stroke="#B9C1C6" stroke-width="1.4" stroke-dasharray="5 4"/>
+<path d="M118 266 C 250 306 340 300 418 256" fill="none" stroke="#B9C1C6" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="170" y="78" font-size="14" fill="#0F6E6B" text-anchor="middle">400</text>
+<text x="352" y="82" font-size="14" fill="#0F6E6B" text-anchor="middle">300</text>
+<text x="352" y="118" font-size="14" fill="#0F6E6B" text-anchor="middle">260</text>
+<text x="352" y="196" font-size="14" fill="#0F6E6B" text-anchor="middle">330</text>
+<text x="352" y="248" font-size="14" fill="#0F6E6B" text-anchor="middle">240</text>
+<circle cx="98" cy="60" r="22" fill="#0F6E6B"/><text x="98" y="66" font-size="16" fill="#fff" text-anchor="middle">R1</text>
+<circle cx="98" cy="160" r="22" fill="#0F6E6B"/><text x="98" y="166" font-size="16" fill="#fff" text-anchor="middle">R2</text>
+<circle cx="98" cy="258" r="22" fill="#0F6E6B"/><text x="98" y="264" font-size="16" fill="#fff" text-anchor="middle">R3</text>
+<rect x="240" y="110" width="64" height="42" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.4"/>
+<text x="272" y="137" font-size="16" fill="#1C242B" text-anchor="middle">H1</text>
+<rect x="240" y="192" width="64" height="42" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.4"/>
+<text x="272" y="219" font-size="16" fill="#1C242B" text-anchor="middle">H2</text>
+<circle cx="438" cy="46" r="20" fill="#E29A2D"/><text x="438" y="52" font-size="15" fill="#1C242B" text-anchor="middle">G1</text>
+<circle cx="438" cy="116" r="20" fill="#E29A2D"/><text x="438" y="122" font-size="15" fill="#1C242B" text-anchor="middle">G2</text>
+<circle cx="438" cy="184" r="20" fill="#E29A2D"/><text x="438" y="190" font-size="15" fill="#1C242B" text-anchor="middle">G3</text>
+<circle cx="438" cy="250" r="20" fill="#E29A2D"/><text x="438" y="256" font-size="15" fill="#1C242B" text-anchor="middle">G4</text>
+<text x="98" y="302" font-size="13" fill="#66727C" text-anchor="middle">refineries</text>
+<text x="272" y="306" font-size="13" fill="#66727C" text-anchor="middle">terminals, b = 0</text>
+<text x="438" y="302" font-size="13" fill="#66727C" text-anchor="middle">gigafactories</text>
+</svg>
+:::
+
+::: {.column width="46%"}
+Two coastal terminals **H1** and **H2**. Material moves plant to terminal, terminal to terminal, and terminal to gigafactory. **Two direct lanes remain.**
+
+::: {.spec}
+[The instance]{.eyebrow}
+
+9 nodes, 18 arcs. Every arc now has a capacity, and the terminals are **pure transit nodes** with *b*<sub>*n*</sub> = 0.
+
+*b* = (450, 380, 300, 0, 0, −300, −260, −330, −240)
+:::
+
+::: {.punch}
+Optimal cost = **25,850.00 USD/week**
+:::
+
+::: {.note}
+R1 → H1 saturates at 400 t and R3 → H2 at 300 t. **The plan is not unique** — several flow patterns cost exactly this much.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "Same template. Literally the same template — one balance per node, one bound per arc. The only thing that changed is the graph."
+
+**DO —** Flag the non-uniqueness now, because the students who build this in the sheet will get a different picture from this one and think they are wrong. They are not. The total is the check.
+:::
+
+## The two totals are not comparable, and that matters
+
+::: {.kicker .c-rust}
+A comparison students always try to make
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+Transportation **23,570.00** against transshipment **25,850.00** USD/week. The obvious conclusion — *terminals cost money* — is **wrong**, because the two models are not two options for the same system.
+
+::: {.dots}
+- **The direct problem** has unlimited lane capacity and no terminal handling.
+- **The transshipment network** puts a capacity on every arc and forces most flow through a terminal.
+- **The comparison that means something** is between transshipment options: for example, what widening R1 → H1 is worth.
+:::
+
+::: {.flag .c-rust}
+**Modeling rule.** State what a model does *not* include before comparing its objective with anything.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.spec}
+[Node potentials and arc reduced costs]{.eyebrow}
+
+*c̄*<sub>*ij*</sub> = *c*<sub>*ij*</sub> − (*π*<sub>*i*</sub> − *π*<sub>*j*</sub>)
+
+*c̄*<sub>*ij*</sub> > 0 &nbsp; the arc must be **empty**
+
+*c̄*<sub>*ij*</sub> < 0 &nbsp; the arc must be **saturated**
+
+*c̄*<sub>*ij*</sub> = 0 &nbsp; any flow between the bounds
+:::
+
+These are the optimality conditions of the minimum cost flow problem, and they are read directly off the LP duals of the node balances.
+
+::: {.note}
+*π* is fixed only up to an added constant — only the difference *π*<sub>*i*</sub> − *π*<sub>*j*</sub> ever appears. Two solvers can report two different potential vectors and agree on every reduced cost.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "This is the single most common bad slide in an industrial optimisation report: two objective values from two different models, side by side, with an arrow between them."
+:::
+
+## Activity 1 · draw the network {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+20 min · pairs · paper
+:::
+
+::: {.note}
+**Two refineries, two consolidation hubs, four gigafactories.** R1 ships 450 t/week, R2 380. G1 needs 200, G2 190, G3 260, G4 180 — total supply equals total demand at **830 t/week**. Refineries ship only to hubs, except one surviving direct lane R1 → G1. The hubs may re-ship to each other in either direction, and each may ship to any gigafactory. **Hubs hold no stock.**
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+[Arc data: cost in USD/t, capacity in t/week]{.eyebrow}
+
+| arc | *c* | *u* | arc | *c* | *u* | arc | *c* | *u* |
+|:--|--:|--:|:--|--:|--:|:--|--:|--:|
+| R1→H1 | 12 | 400 | H1→H2 | 5 | 200 | H2→G1 | 22 | 250 |
+| R1→H2 | 20 | 250 | H2→H1 | 5 | 200 | H2→G2 | 13 | 300 |
+| R2→H1 | 16 | 300 | H1→G1 | 8 | 350 | H2→G3 | 9 | 350 |
+| R2→H2 | 14 | 350 | H1→G2 | 11 | 300 | H2→G4 | 12 | 300 |
+| R1→G1 | 30 | 150 | H1→G3 | 17 | 250 | H1→G4 | 26 | 200 |
+:::
+
+::: {.column width="42%"}
+[Your task]{.eyebrow}
+
+::: {.numbered .n3}
+1. **Draw the node-arc diagram** by hand. Label every arc with its cost and capacity.
+2. **Mark each node** with its net supply *b*<sub>*n*</sub>.
+3. **Write the node balance for hub H1** in full algebra, in the convention *outflow − inflow = b*<sub>*n*</sub>.
+:::
+
+::: {.note}
+**Pairs.** At 15 min, three diagrams are held up and compared. **Hand back** one sheet per pair.
+:::
+:::
+::::
+
+::: {.notes}
+**[00:40 – 01:00] · ACTIVITY 1**
+
+**DO —**
+
+- Walk. Do not answer "is this right?" — answer "does every arc in the table appear exactly once in your picture?"
+- At 15 minutes pick three diagrams that look *different from each other* and hold them up. That is the whole point of the debrief.
+- Two errors to hunt for: b at a hub written as a supply because the hub sits in the middle, and the reverse arc H2→H1 drawn as negative flow on H1→H2.
+:::
+
+## Activity 1 · [ANSWER] · the balances are the model
+
+::: {.kicker .c-amber}
+Different pictures, one incidence structure
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+<svg viewBox="0 0 520 300" style="width:100%;max-width:560px" role="img" aria-label="The activity network drawn as a graph: two refineries with net supply plus 450 and plus 380 on the left, two hubs with net supply zero in the middle, and four gigafactories with net supplies minus 200, minus 190, minus 260 and minus 180 on the right.">
+<line x1="112" y1="70" x2="212" y2="105" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="112" y1="70" x2="212" y2="200" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="112" y1="215" x2="212" y2="115" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="112" y1="215" x2="212" y2="205" stroke="#0F6E6B" stroke-width="2.4"/>
+<path d="M246 130 C 236 155 236 155 246 178" fill="none" stroke="#333F4A" stroke-width="2"/>
+<path d="M266 178 C 276 155 276 155 266 130" fill="none" stroke="#333F4A" stroke-width="2"/>
+<line x1="290" y1="106" x2="396" y2="42" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="112" x2="396" y2="102" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="118" x2="396" y2="172" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="124" x2="396" y2="242" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="188" x2="396" y2="48" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="196" x2="396" y2="108" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="204" x2="396" y2="178" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="290" y1="212" x2="396" y2="246" stroke="#0F6E6B" stroke-width="2.2"/>
+<path d="M112 58 C 230 4 330 8 396 34" fill="none" stroke="#E29A2D" stroke-width="2.2" stroke-dasharray="6 4"/>
+<circle cx="90" cy="70" r="22" fill="#0F6E6B"/><text x="90" y="76" font-size="15" fill="#fff" text-anchor="middle">R1</text>
+<circle cx="90" cy="215" r="22" fill="#0F6E6B"/><text x="90" y="221" font-size="15" fill="#fff" text-anchor="middle">R2</text>
+<text x="90" y="112" font-size="14" fill="#0F6E6B" text-anchor="middle">b = +450</text>
+<text x="90" y="257" font-size="14" fill="#0F6E6B" text-anchor="middle">b = +380</text>
+<rect x="200" y="88" width="56" height="38" rx="6" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.2"/>
+<text x="228" y="112" font-size="15" fill="#1C242B" text-anchor="middle">H1</text>
+<rect x="200" y="182" width="56" height="38" rx="6" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.2"/>
+<text x="228" y="206" font-size="15" fill="#1C242B" text-anchor="middle">H2</text>
+<text x="186" y="82" font-size="13" fill="#66727C" text-anchor="end">b = 0</text>
+<text x="186" y="230" font-size="13" fill="#66727C" text-anchor="end">b = 0</text>
+<circle cx="414" cy="38" r="18" fill="#E29A2D"/><text x="414" y="44" font-size="14" fill="#1C242B" text-anchor="middle">G1</text>
+<circle cx="414" cy="105" r="18" fill="#E29A2D"/><text x="414" y="111" font-size="14" fill="#1C242B" text-anchor="middle">G2</text>
+<circle cx="414" cy="175" r="18" fill="#E29A2D"/><text x="414" y="181" font-size="14" fill="#1C242B" text-anchor="middle">G3</text>
+<circle cx="414" cy="245" r="18" fill="#E29A2D"/><text x="414" y="251" font-size="14" fill="#1C242B" text-anchor="middle">G4</text>
+<text x="470" y="43" font-size="13" fill="#66727C">−200</text>
+<text x="470" y="110" font-size="13" fill="#66727C">−190</text>
+<text x="470" y="180" font-size="13" fill="#66727C">−260</text>
+<text x="470" y="250" font-size="13" fill="#66727C">−180</text>
+<text x="260" y="288" font-size="13" fill="#66727C" text-anchor="middle">8 nodes, 15 arcs, Σ b = 830 − 830 = 0</text>
+</svg>
+:::
+
+::: {.column width="52%"}
+::: {.spec}
+[Node balance at H1]{.eyebrow}
+
+*f*<sub>H1,H2</sub> + *f*<sub>H1,G1</sub> + *f*<sub>H1,G2</sub> + *f*<sub>H1,G3</sub> + *f*<sub>H1,G4</sub>
+
+&nbsp;&nbsp;&nbsp;− ( *f*<sub>R1,H1</sub> + *f*<sub>R2,H1</sub> + *f*<sub>H2,H1</sub> ) &nbsp;=&nbsp; **0**
+:::
+
+::: {.punch}
+The diagram is a communication device. **The balance equations are the mathematics.**
+:::
+
+Different pairs drew the same network with different layouts, orderings and crossings. **None of that is the model.** The model is the incidence structure: which arcs exist, and which nodes each one joins.
+
+::: {.flag .c-rust}
+**Two errors to look for.** Writing *b*<sub>H1</sub> as a supply because the hub is drawn in the middle. And forgetting the reverse arc H2 → H1, which is a **separate arc with its own non-negative flow**, not a negative flow on H1 → H2.
+:::
+:::
+::::
+
+::: {.notes}
+If a pair solved it as well: the optimum is **19,570.00 USD/week**, and the inter-terminal arc H1 → H2 carries **40 t** — the arc most pairs forget to draw is one the optimum actually uses. Worth saying out loud.
+:::
+
+## Shortest path is a minimum cost flow
+
+::: {.kicker .c-teal}
+The only thing that changes is *b*
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.spec}
+[Send exactly one unit]{.eyebrow}
+
+Interpret *c*<sub>*ij*</sub> as **length**, and drop the capacities:
+
+*b*<sub>origin</sub> = +1, &nbsp; *b*<sub>dest</sub> = −1, &nbsp; *b*<sub>*n*</sub> = 0 elsewhere.
+:::
+
+Nothing else changes. The optimal flow is a **single path**, because the incidence matrix forces an integral basic optimal solution, and the only integral unit flows are paths.
+
+::: {.flag .c-amber}
+**First payoff of total unimodularity.** An inherently combinatorial object — a path — comes out of a *linear* program.
+:::
+:::
+
+::: {.column width="50%"}
+[Worked instance: fastest route R1 → G4]{.eyebrow}
+
+Arc costs re-read as transit times in hours.
+
+| Route | hours |
+|:---|---:|
+| R1 → H1 → H2 → G4 | **29** |
+| R1 → H2 → G4 | 32 |
+| R1 → H1 → G4 | 38 |
+
+::: {.punch}
+LP optimal length **29 h** on R1 → H1 → H2 → G4
+:::
+
+Matching a from-scratch Dijkstra implementation exactly. The cheap inter-terminal arc (5 h) beats both direct terminal routes — and the LP produced a 0–1 flow **without being told to**.
+:::
+::::
+
+::: {.notes}
+**SAY —** "Nobody told it the answer had to be a path. Nobody added a binary. The matrix did it."
+:::
+
+## Maximum flow: a capacity question, not a cost question
+
+::: {.kicker .c-teal}
+Both terminals are under berth maintenance
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Construction]{.eyebrow}
+
+Add a **super source** SRC with an arc to each plant of capacity equal to its supply, and a **super sink** SNK with an arc from each gigafactory of capacity equal to its demand.
+
+**maximise** &nbsp; Σ<sub>*j*</sub> *t*<sub>*j*</sub>
+
+**s.t.** inflow(*n*) + *s*<sub>*n*</sub> = outflow(*n*) + *t*<sub>*n*</sub>
+
+0 ≤ *f*<sub>*ij*</sub> ≤ *u*<sub>*ij*</sub>, &nbsp; 0 ≤ *s*<sub>*i*</sub> ≤ supply<sub>*i*</sub>, &nbsp; 0 ≤ *t*<sub>*j*</sub> ≤ *d*<sub>*j*</sub>
+:::
+
+::: {.note}
+**The scenario.** Berth maintenance halves the capacity of every terminal-to-gigafactory arc. How much can the network still deliver?
+:::
+:::
+
+::: {.column width="48%"}
+::: {.punch}
+Maximum weekly throughput **1,100 t** against **1,130 t** of demand
+:::
+
+| t/week | G1 | G2 | G3 | G4 |
+|:---|---:|---:|---:|---:|
+| demand | 300 | 260 | 330 | 240 |
+| delivered | 300 | 260 | **300** | 240 |
+
+::: {.flag .c-rust}
+The entire **30 t** shortfall lands on **G3**, and only on G3.
+:::
+
+::: {.dots}
+- **Max-flow min-cut** The maximum flow equals the minimum capacity of a cut separating SRC from SNK: LP duality specialised to a network.
+- **Read off the duals** The cut is identified from the capacity duals.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Ask before revealing: where does the shortfall land, and is it spread or concentrated? Most rooms guess "spread". It is entirely on G3.
+:::
+
+## The minimum cut, and the only investment that helps
+
+::: {.kicker .c-rust}
+The cut is the list of assets worth money
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+<svg viewBox="0 0 560 310" style="width:100%;max-width:600px" role="img" aria-label="The minimum cut drawn as a vertical dashed line. On the left, the source side holds the super source, the three refineries, the two terminals and gigafactories G1, G2 and G4. On the right, the sink side holds G3 and the super sink. Five rust arcs cross the line with capacities 125, 175, 300, 260 and 240, totalling 1,100 tonnes.">
+<line x1="336" y1="24" x2="336" y2="262" stroke="#BE654C" stroke-width="2.4" stroke-dasharray="8 6"/>
+<text x="336" y="18" font-size="13" fill="#BE654C" text-anchor="middle">the cut</text>
+<text x="168" y="282" font-size="13" fill="#66727C" text-anchor="middle">source side</text>
+<text x="450" y="282" font-size="13" fill="#BE654C" text-anchor="middle">sink side</text>
+<line x1="52" y1="150" x2="76" y2="90" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="52" y1="150" x2="76" y2="150" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="52" y1="150" x2="76" y2="210" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="106" y1="90" x2="150" y2="112" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="106" y1="150" x2="150" y2="120" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="106" y1="150" x2="150" y2="188" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="106" y1="210" x2="150" y2="196" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="196" y1="112" x2="242" y2="62" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="196" y1="122" x2="242" y2="142" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="196" y1="196" x2="242" y2="240" stroke="#B9C1C6" stroke-width="1.5"/>
+<path d="M196 128 C 260 190 300 200 386 204" fill="none" stroke="#BE654C" stroke-width="2.8"/>
+<path d="M196 200 C 260 220 300 214 386 210" fill="none" stroke="#BE654C" stroke-width="2.8"/>
+<path d="M262 62 C 340 40 430 60 476 96" fill="none" stroke="#BE654C" stroke-width="2.8"/>
+<path d="M262 142 C 340 130 430 108 474 104" fill="none" stroke="#BE654C" stroke-width="2.8"/>
+<path d="M262 240 C 340 254 440 190 480 122" fill="none" stroke="#BE654C" stroke-width="2.8"/>
+<text x="300" y="182" font-size="13" fill="#BE654C" text-anchor="middle">125</text>
+<text x="300" y="234" font-size="13" fill="#BE654C" text-anchor="middle">175</text>
+<text x="366" y="46" font-size="13" fill="#BE654C" text-anchor="middle">300</text>
+<text x="368" y="112" font-size="13" fill="#BE654C" text-anchor="middle">260</text>
+<text x="392" y="252" font-size="13" fill="#BE654C" text-anchor="middle">240</text>
+<circle cx="34" cy="150" r="17" fill="#333F4A"/><text x="34" y="155" font-size="11" fill="#fff" text-anchor="middle">SRC</text>
+<circle cx="90" cy="90" r="16" fill="#0F6E6B"/><text x="90" y="95" font-size="12" fill="#fff" text-anchor="middle">R1</text>
+<circle cx="90" cy="150" r="16" fill="#0F6E6B"/><text x="90" y="155" font-size="12" fill="#fff" text-anchor="middle">R2</text>
+<circle cx="90" cy="210" r="16" fill="#0F6E6B"/><text x="90" y="215" font-size="12" fill="#fff" text-anchor="middle">R3</text>
+<rect x="150" y="98" width="46" height="30" rx="6" fill="#fff" stroke="#333F4A" stroke-width="2"/><text x="173" y="118" font-size="12" fill="#1C242B" text-anchor="middle">H1</text>
+<rect x="150" y="182" width="46" height="30" rx="6" fill="#fff" stroke="#333F4A" stroke-width="2"/><text x="173" y="202" font-size="12" fill="#1C242B" text-anchor="middle">H2</text>
+<circle cx="252" cy="62" r="16" fill="#E29A2D"/><text x="252" y="67" font-size="12" fill="#1C242B" text-anchor="middle">G1</text>
+<circle cx="252" cy="142" r="16" fill="#E29A2D"/><text x="252" y="147" font-size="12" fill="#1C242B" text-anchor="middle">G2</text>
+<circle cx="252" cy="240" r="16" fill="#E29A2D"/><text x="252" y="245" font-size="12" fill="#1C242B" text-anchor="middle">G4</text>
+<circle cx="402" cy="207" r="16" fill="#BE654C"/><text x="402" y="212" font-size="12" fill="#fff" text-anchor="middle">G3</text>
+<circle cx="492" cy="110" r="18" fill="#333F4A"/><text x="492" y="115" font-size="11" fill="#fff" text-anchor="middle">SNK</text>
+<text x="280" y="306" font-size="12" fill="#66727C" text-anchor="middle">125 + 175 + 300 + 260 + 240 = 1,100 t</text>
+</svg>
+:::
+
+::: {.column width="46%"}
+::: {.punch}
+Adding capacity anywhere except on an arc of the cut changes **nothing at all**.
+:::
+
+To recover the missing 30 t you must widen **H1 → G3** or **H2 → G3**. No other investment will do it.
+
+::: {.flag .c-teal}
+**Why this is the useful output.** A debottlenecking study that reports only the throughput number has thrown away the answer. The cut is the list of assets worth money, and **everything not in the cut is worth exactly zero at the margin**.
+:::
+
+::: {.note}
+Confirmed both from the LP duals and by enumerating all 512 cuts of the nine-node network.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "If you take one slide from today into industry, take this one. Somebody will show you a throughput number. Ask them for the cut."
+:::
+
+## Total unimodularity: integers for free
+
+::: {.kicker .c-teal}
+A property of the matrix, not of the costs
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.spec}
+[Definition and theorem]{.eyebrow}
+
+*E* is **totally unimodular** (TU) if every square submatrix has determinant 0, +1 or −1. The node-arc incidence matrix of a directed graph is TU.
+
+**Hoffman and Kruskal.** If *E* is TU and *b*, *u* are integral, then every basic feasible solution of { *f* : *E f* = *b*, 0 ≤ *f* ≤ *u* } is **integral**. The simplex method returns a basic solution, so it returns an integer answer.
+:::
+
+::: {.note}
+**Why.** A basic solution solves *B f*<sub>*B*</sub> = *b*′ for a nonsingular square submatrix *B*. By Cramer's rule *f*<sub>*B*</sub> = *B*<sup>−1</sup>*b*′ with det *B* = ±1, so *B*<sup>−1</sup> has integer entries.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.dots}
+- **No integer variables, ever** Transportation, transshipment, shortest path, maximum flow and assignment never need them. Solve the LP, get integers, at LP speed.
+- **It belongs to the constraint matrix** Not to the costs. Changing the costs cannot make the answer fractional.
+- **Everything so far** Every flow reported this afternoon came out integral from a pure LP solve.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Say the practical version plainly: if somebody hands you a network model with binary variables on the flows, they have paid for something they were being given for free.
+:::
+
+## TU is fragile: one innocuous side constraint
+
+::: {.kicker .c-rust}
+Terminal H1 may handle at most 35 % of everything leaving the plants
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[The added requirement]{.eyebrow}
+
+Σ<sub>(*i*,H1)∈*A*</sub> *f*<sub>*i*,H1</sub> &nbsp;≤&nbsp; 0.35 · Σ<sub>*i*∈*S*</sub> Σ<sub>(*i*,*j*)∈*A*</sub> *f*<sub>*ij*</sub>
+:::
+
+This row is **not part of the incidence structure**: it has coefficients 1 and −0.35 spread across arcs that share no node.
+
+::: {.punch}
+Cost rises from 25,850.00 to **26,195.00** USD/week — and four arcs come out at exactly **half a tonne**.
+:::
+
+::: {.note}
+*f*<sub>R1,H1</sub> = 365.5 &nbsp; *f*<sub>R1,H2</sub> = 84.5 &nbsp; *f*<sub>H1,G2</sub> = 95.5 &nbsp; *f*<sub>H2,G2</sub> = 164.5
+:::
+:::
+
+::: {.column width="48%"}
+[What destroys total unimodularity]{.eyebrow}
+
+::: {.dots}
+- **A percentage-share** or blending-ratio constraint across arcs.
+- **A fixed-charge binary** linked to a flow.
+- **A joint capacity** shared by arcs that do not meet at a node.
+- **Any row** whose coefficients are not {0, +1, −1} in the incidence pattern.
+:::
+
+::: {.flag .c-rust}
+**The modeling consequence.** If half a tonne is physically meaningless you now need integer variables, and the model changes class from LP to **MILP**: Week 5 for the formulation, Week 11 for the algorithm. **Know before adding a row whether you are about to pay that price.**
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "One row. One innocuous, entirely reasonable business rule. And the model has changed complexity class."
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+Break
+:::
+
+::: {.lede}
+15 minutes.
+:::
+
+::: {.foot}
+::: {.note}
+Next: open **w03-transportation.xlsx** and have OpenSolver loaded. Activity 2 starts at 1:45. You will reproduce a stated optimum, then break the supply–demand balance on purpose.
+:::
+:::
+
+::: {.notes}
+Put the file name on the board before you let them go. Two people will not have OpenSolver, and the break is when you fix that, not the activity.
+:::
+
+## Activity 2 · transportation in OpenSolver {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+25 min · computer · individual
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+[Part 1 — reproduce the optimum]{.eyebrow}
+
+Open **w03-transportation.xlsx**, sheet **Transportation**. Complete the yellow cells: row sums `G12:G14`, column sums `C15:F15`, objective `C19` as one SUMPRODUCT.
+
+OpenSolver with **CBC**: objective `$C$19`, **Min**, changing `$C$12:$F$14`, constraints `$G$12:$G$14 <= $I$12:$I$14` and `$C$15:$F$15 >= $C$17:$F$17`.
+
+::: {.punch}
+The objective cell must read **23,570.00** USD/week.
+:::
+
+If it does not, you have a formula error — and that is the point.
+:::
+
+::: {.column width="48%"}
+[Part 2 — break the balance on purpose]{.eyebrow}
+
+::: {.numbered .n2}
+1. **Reduce total supply below total demand** — for example set R2 to 200 t. Re-solve, and record exactly what the solver reports.
+2. **Add a dummy source** with a large penalty cost on every lane, give it the missing tonnage, and re-solve. Record the new objective and which gigafactory the dummy serves.
+:::
+
+::: {.note}
+Tick **Sensitivity Analysis** — *u*<sub>*i*</sub> and *v*<sub>*j*</sub> are the MODI potentials, free from the LP dual. **Individual**, 25 min, hand back nothing.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:45 – 02:10] · ACTIVITY 2**
+
+**DO —**
+
+- Part 1 is a formula check, not a modelling exercise. Anyone still at zero after ten minutes has a range wrong, almost always the SUMPRODUCT shape.
+- Part 2 is the real content. Do not let anyone skip it because Part 1 took too long — the infeasibility message is the thing they need to see with their own eyes.
+- The missing tonnage is 1,130 − 950 = 180 t. Give it to anyone who is stuck on arithmetic rather than on modelling.
+:::
+
+## Activity 2 · [ANSWER] · the dummy source {.smaller}
+
+::: {.kicker .c-amber}
+The cost of not serving a customer, previously implicit
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+[Part 1]{.eyebrow}
+
+Objective `C19` = **23,570.00 USD/week**, identical to the notebook. R1 ships 300 to G1 and 150 to G2; R2 ships 110 to G2 and 270 to G3; R3 ships 60 to G3 and 240 to G4.
+
+::: {.spec}
+[Sensitivity report]{.eyebrow}
+
+*u* = (0, −5, −2) &nbsp;&nbsp; *v* = (18, 24, 27, 23) USD/t
+
+Dual objective = 23,570.00 → **strong duality holds**
+:::
+:::
+
+::: {.column width="50%"}
+[Part 2]{.eyebrow}
+
+**Supply below demand.** With Σ*s*<sub>*i*</sub> < Σ*d*<sub>*j*</sub> and demand written with ≥, the model is **infeasible** — no plan exists, because the model has been told that *every* tonne of demand must be served.
+
+**Dummy source.** A fictitious plant whose shipping cost is a penalty *M* restores feasibility. Its shipments are the tonnes **not served**: 19,610.00 + 180*M*, and the dummy serves **G3** — all 180 t, for every value of *M*.
+
+::: {.flag .c-amber}
+**What does the dummy cost represent?** The cost of not serving a customer, previously implicit. Choosing *M* is a business decision. And the dummy reveals **which customer is cheapest to disappoint** — often more useful than the cost itself.
+:::
+:::
+::::
+
+::: {.notes}
+Why G3, and why it does not depend on *M*: with a uniform penalty the destination is decided entirely by the real network, and G3 carries the largest demand dual, *v*<sub>3</sub> = 27 USD/t. It is the most expensive customer to serve and therefore the cheapest to disappoint.
+
+A student who notices that the dummy has *identified* something, rather than merely repaired the model, has read the exercise correctly.
+:::
+
+## From places to units: the process superstructure
+
+::: {.kicker .c-teal}
+Same mathematics, different meaning of the objects
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.punch}
+Nodes are **process units**. Arcs are **material streams**.
+:::
+
+It is the standard way to pose a process *synthesis* question — "which flowsheet should we build" — rather than an *operating* question, "how should we run the flowsheet we have".
+
+::: {.spec}
+[The idea]{.eyebrow}
+
+Build **one network that contains every candidate route at once**, and let the optimizer decide how much material goes down each route. A route that is not worth using simply receives **zero flow**.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.flag .c-amber}
+**Nothing here needs a binary variable.** The split of a stream between competing units is a continuous variable bounded below by zero, and the optimizer drives the uninteresting splits to zero by itself.
+:::
+
+[The Week 2 vocabulary covers it]{.eyebrow}
+
+::: {.dots}
+- **index set** over units and streams
+- **balance** around every unit and every mixing or splitting node
+- **capacity constraint** on every unit
+- **linking constraint** wherever two routes share a downstream unit
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "A route that is not worth using receives zero flow. That zero *is the answer* — it is not an omission, and it is not the optimizer failing to consider it."
+:::
+
+## The hydrogen superstructure {.smaller}
+
+::: {.kicker .c-teal}
+100 t/day of purified hydrogen for cathode-precursor reduction
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+**SMR** and **ATR** produce a crude stream that must be purified; **ELY** produces hydrogen already pure enough. Two purifiers: **PSA**, which recovers more but costs more to run, and a **membrane** (MEM), cheaper and recovering less. Crude from either reformer may go to either purifier **in any proportion**.
+
+| Unit | *F*<sub>*u*</sub><sup>max</sup> t/d | *k*<sub>*u*</sub> USD/t | *η*<sub>*u*</sub> |
+|:---|---:|---:|---:|
+| SMR | 90 | 1300 | — |
+| ATR | 70 | 1550 | — |
+| ELY | 40 | 3400 | — |
+| PSA | 100 | 200 | 0.88 |
+| MEM | 80 | 100 | 0.80 |
+:::
+
+::: {.column width="52%"}
+<svg viewBox="0 0 560 300" style="width:100%;max-width:600px" role="img" aria-label="A flowsheet with three production units on the left — SMR at 90 tonnes per day, ATR at 25, and ELY at zero — feeding two purifiers in the middle, PSA at 100 tonnes per day and MEM at 15, which together with the electrolysis route feed a single product node at 100 tonnes per day.">
+<line x1="118" y1="60" x2="252" y2="86" stroke="#0F6E6B" stroke-width="3.6"/>
+<line x1="118" y1="60" x2="252" y2="186" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="118" y1="150" x2="252" y2="96" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="118" y1="150" x2="252" y2="180" stroke="#0F6E6B" stroke-width="2.4"/>
+<path d="M118 240 C 260 250 360 220 402 172" fill="none" stroke="#B9C1C6" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="348" y1="92" x2="398" y2="130" stroke="#0F6E6B" stroke-width="3.6"/>
+<line x1="348" y1="186" x2="398" y2="152" stroke="#0F6E6B" stroke-width="2.4"/>
+<rect x="40" y="38" width="78" height="44" rx="7" fill="#0F6E6B"/><text x="79" y="60" font-size="15" fill="#fff" text-anchor="middle">SMR</text><text x="79" y="76" font-size="12" fill="#CFE3E2" text-anchor="middle">90 t/d</text>
+<rect x="40" y="128" width="78" height="44" rx="7" fill="#0F6E6B"/><text x="79" y="150" font-size="15" fill="#fff" text-anchor="middle">ATR</text><text x="79" y="166" font-size="12" fill="#CFE3E2" text-anchor="middle">25 t/d</text>
+<rect x="40" y="218" width="78" height="44" rx="7" fill="#F3F0EB" stroke="#B9C1C6" stroke-width="2"/><text x="79" y="240" font-size="15" fill="#66727C" text-anchor="middle">ELY</text><text x="79" y="256" font-size="12" fill="#66727C" text-anchor="middle">0 t/d</text>
+<rect x="252" y="64" width="96" height="46" rx="7" fill="#E29A2D"/><text x="300" y="87" font-size="15" fill="#1C242B" text-anchor="middle">PSA</text><text x="300" y="103" font-size="12" fill="#5C4212" text-anchor="middle">100 t/d</text>
+<rect x="252" y="160" width="96" height="46" rx="7" fill="#E29A2D"/><text x="300" y="183" font-size="15" fill="#1C242B" text-anchor="middle">MEM</text><text x="300" y="199" font-size="12" fill="#5C4212" text-anchor="middle">15 t/d</text>
+<rect x="398" y="112" width="118" height="58" rx="7" fill="#333F4A"/><text x="457" y="137" font-size="14" fill="#fff" text-anchor="middle">PRODUCT</text><text x="457" y="155" font-size="12" fill="#B9C1C6" text-anchor="middle">100 t/d</text>
+<text x="79" y="20" font-size="13" fill="#66727C" text-anchor="middle">production</text>
+<text x="300" y="42" font-size="13" fill="#66727C" text-anchor="middle">purification</text>
+<text x="457" y="94" font-size="13" fill="#66727C" text-anchor="middle">requirement</text>
+<text x="186" y="290" font-size="13" fill="#66727C" text-anchor="middle">crude H₂</text>
+<text x="380" y="290" font-size="13" fill="#66727C" text-anchor="middle">pure H₂</text>
+</svg>
+
+::: {.note}
+Throughputs are the LP optimum. **ELY is present in the model and receives zero flow — that is the answer, not an omission.**
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Point at the greyed ELY box. "It is in the model. It was considered. It lost."
+:::
+
+## The algebraic model, and why there is no split fraction
+
+::: {.kicker .c-teal}
+The cheapest lesson of superstructure modeling
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.spec}
+[Linear superstructure]{.eyebrow}
+
+**minimise** &nbsp; Σ<sub>*u*∈*U*</sub> *k*<sub>*u*</sub> *F*<sub>*u*</sub> &nbsp;&nbsp; [USD/day]
+
+**s.t.** &nbsp; *F*<sub>SMR</sub> + *F*<sub>ATR</sub> = *F*<sub>PSA</sub> + *F*<sub>MEM</sub> &nbsp;&nbsp; crude balance
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *η*<sub>PSA</sub>*F*<sub>PSA</sub> + *η*<sub>MEM</sub>*F*<sub>MEM</sub> + *F*<sub>ELY</sub> = *D* &nbsp;&nbsp; product balance
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 ≤ *F*<sub>*u*</sub> ≤ *F*<sub>*u*</sub><sup>max</sup> &nbsp;&nbsp; for every *u* ∈ *U*
+:::
+:::
+
+::: {.column width="46%"}
+::: {.punch}
+There is no split fraction in this formulation, and there does not need to be one.
+:::
+
+The split of crude between PSA and MEM is *F*<sub>PSA</sub> / (*F*<sub>SMR</sub> + *F*<sub>ATR</sub>), and it is **recovered after the solve, not imposed before it**. Writing splits as ratios introduces a division and makes the model nonlinear for no gain.
+
+::: {.flag .c-amber}
+**The two balances are the linking constraints.** The crude balance links the reformer block to the purifier block; the product balance links all three routes to the single requirement. Delete them and the model separates into five unrelated one-variable problems with no feasible answer.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "Every year somebody writes the split as a ratio, and every year that person's model becomes nonlinear for absolutely no reason. Divide *after* the solve."
+:::
+
+## The LP selects routes with no binary variable
+
+::: {.kicker .c-teal}
+The answer can be predicted before it is produced
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+[Cost of one tonne of purified hydrogen, by route]{.eyebrow}
+
+| Route | USD per t pure |
+|:---|---:|
+| **SMR → PSA** | **1704.55** |
+| SMR → MEM | 1750.00 |
+| ATR → PSA | 1988.64 |
+| **ATR → MEM** | **2062.50** |
+| ELY (no purification) | 3400.00 |
+
+::: {.note}
+Computed by hand as ( *k*<sub>prod</sub> + *k*<sub>pur</sub> ) / *η*<sub>pur</sub>, so the LP answer can be predicted before it is produced.
+:::
+:::
+
+::: {.column width="52%"}
+::: {.punch}
+Minimum operating cost = **177,250.00 USD/day** — that is 1,772.50 USD per tonne of purified hydrogen.
+:::
+
+SMR runs full at 90 t/day; all of that plus 10 t/day of ATR crude goes through PSA at its full 100 t/day; the remaining 15 t/day of ATR crude goes through MEM; ELY stays at zero. The recovered split of crude is **100/115 to PSA and 15/115 to MEM**.
+
+::: {.flag .c-amber}
+**The dual of the product balance is 2,062.50 USD/t** — exactly the cost of the ATR → MEM route, the most expensive route *actually carrying flow*. The marginal tonne of product is made by the marginal route: a Week 2 shadow price transferred to a flowsheet.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Give the room the route-cost table before the LP result and ask them to predict the answer. They can. That is the point of the table.
+:::
+
+## Where binaries would enter, and what they cost
+
+::: {.kicker .c-rust}
+Capital charges change the flowsheet, not just the cost
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Unit selection: the fixed-charge pair]{.eyebrow}
+
+*y*<sub>*u*</sub> = 1 if unit *u* is built, 0 otherwise.
+
+**minimise** &nbsp; Σ<sub>*u*</sub> *k*<sub>*u*</sub>*F*<sub>*u*</sub> + Σ<sub>*u*</sub> *f*<sub>*u*</sub>*y*<sub>*u*</sub>
+
+**s.t.** &nbsp; *F*<sub>*u*</sub> ≤ *F*<sub>*u*</sub><sup>max</sup> *y*<sub>*u*</sub>, &nbsp; *y*<sub>*u*</sub> ∈ {0,1}
+
+plus the balances and bounds as before.
+:::
+
+::: {.note}
+Equivalent daily capital charge *f*<sub>*u*</sub> (USD/day): SMR 22,000 · ATR 15,000 · ELY 9,000 · PSA 12,000 · MEM 30,000.
+:::
+:::
+
+::: {.column width="48%"}
+| | USD/day |
+|:---|---:|
+| **MILP optimum** | **248,720.00** |
+| LP relaxation of it | 222,232.14 |
+| **integrality gap** | 26,487.86 (10.65 %) |
+
+::: {.punch}
+The MILP builds **SMR, PSA and ELY only.**
+:::
+
+ATR and the membrane are dropped, and electrolysis — which the LP refused to use at all — is switched on to make up the 20.8 t/day that SMR and PSA cannot cover.
+
+::: {.flag .c-teal}
+**The point of process synthesis.** A route with a high running cost can still be correct if it avoids a large capital commitment. Formulation strength is Week 5; branch and bound is Week 11.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "The cheap model and the expensive model do not disagree about numbers. They disagree about *which plant to build*. That is why you do not stop at the LP."
+:::
+
+## One nonlinearity, and the class changes again
+
+::: {.kicker .c-rust}
+Verification is not optional
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Load-dependent recovery]{.eyebrow}
+
+A real adsorber or membrane recovers a larger fraction when run **below** design, because contact time per tonne is longer. A first-order representation:
+
+*η*<sub>*u*</sub>(*F*<sub>*u*</sub>) = *η*<sub>*u*</sub><sup>0</sup> − *s*<sub>*u*</sub>*F*<sub>*u*</sub> &nbsp;&nbsp;→&nbsp;&nbsp; *η*<sub>*u*</sub>*F*<sub>*u*</sub> = *η*<sub>*u*</sub><sup>0</sup>*F*<sub>*u*</sub> − *s*<sub>*u*</sub>*F*<sub>*u*</sub><sup>2</sup>
+:::
+
+::: {.note}
+Coefficients reproduce the design values exactly: 0.92 − 0.0004(100) = 0.88 for PSA, 0.84 − 0.0005(80) = 0.80 for MEM.
+:::
+:::
+
+::: {.column width="48%"}
+The product balance becomes a **quadratic equality**, so the feasible set is **not convex** — an NLP with no global guarantee, or with binaries a **nonconvex MINLP**, the hardest class in this course.
+
+::: {.punch}
+MINLP optimum = **247,496.00 USD/day**
+:::
+
+Marginally *below* the MILP value: PSA at 90 t/day rather than its design 100 recovers 0.884 instead of 0.880, so it needs less electrolysis behind it.
+
+::: {.flag .c-rust}
+**A nonconvex MINLP solver can return a local solution and report it as optimal.** The notebook therefore enumerates all 32 selection patterns and solves the NLP behind each. Week 4 is where this becomes the whole lesson.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "Notice how small the improvement is — about half a percent — and how much mathematical machinery it cost. That trade is the subject of the second half of this course."
+:::
+
+## Activity 3 · sketch a superstructure {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+20 min · groups of 3 to 4 · one sheet
+:::
+
+::: {.note}
+A site must deliver **100 t/day of purified hydrogen**. Three production routes are candidates — steam methane reforming, autothermal reforming and water electrolysis. The first two produce a crude stream; electrolysis produces hydrogen already pure enough. Two purification technologies are candidates for the crude stream: pressure swing adsorption and a membrane unit. **Crude from either reformer may go to either purifier in any proportion.**
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+[Your task, on one sheet]{.eyebrow}
+
+::: {.numbered .n3}
+1. **Draw the superstructure** — every unit, every candidate stream, the mixing and splitting nodes, and the product node.
+2. **Mark every decision** as continuous (how much through each route) or discrete (whether to build a unit at all), with two clearly different symbols.
+3. **State which constraints change** if unit selection is added, and write the one new constraint family in algebra.
+:::
+:::
+
+::: {.column width="44%"}
+::: {.flag .c-rust}
+**Do not compute anything.** The deliverable is the structure and the classification of the decisions.
+:::
+
+::: {.note}
+**Groups of 3 to 4.** Two groups present at the board at 15 min. **Hand back** one sketch per group.
+:::
+:::
+::::
+
+::: {.notes}
+**[02:35 – 02:55] · ACTIVITY 3**
+
+**DO —**
+
+- The failure mode is a group that starts sizing units. Stop that early: no arithmetic today.
+- Look for whether the splitting node is drawn at all. Groups that draw SMR going straight to PSA with no split point have not represented "in any proportion".
+:::
+
+## Activity 3 · [ANSWER] · the one row that adds a binary {.smaller}
+
+::: {.kicker .c-amber}
+5 units, 7 candidate streams, 2 balances
+:::
+
+:::: {.columns}
+::: {.column width="44%"}
+<svg viewBox="0 0 480 290" style="width:100%;max-width:520px" role="img" aria-label="The superstructure with a binary variable marked on each unit: SMR, ATR and ELY on the left, PSA and MEM in the middle, and a product node on the right, with seven candidate streams and a small y symbol on every unit box.">
+<line x1="106" y1="56" x2="216" y2="80" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="106" y1="56" x2="216" y2="166" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="106" y1="140" x2="216" y2="90" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="106" y1="140" x2="216" y2="176" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="300" y1="86" x2="352" y2="122" stroke="#0F6E6B" stroke-width="2.4"/>
+<line x1="300" y1="172" x2="352" y2="140" stroke="#0F6E6B" stroke-width="2.4"/>
+<path d="M106 224 C 240 236 320 200 350 152" fill="none" stroke="#0F6E6B" stroke-width="2.4"/>
+<rect x="30" y="34" width="76" height="42" rx="7" fill="#0F6E6B"/><text x="68" y="60" font-size="14" fill="#fff" text-anchor="middle">SMR</text>
+<rect x="30" y="118" width="76" height="42" rx="7" fill="#0F6E6B"/><text x="68" y="144" font-size="14" fill="#fff" text-anchor="middle">ATR</text>
+<rect x="30" y="202" width="76" height="42" rx="7" fill="#0F6E6B"/><text x="68" y="228" font-size="14" fill="#fff" text-anchor="middle">ELY</text>
+<rect x="216" y="62" width="84" height="44" rx="7" fill="#E29A2D"/><text x="258" y="89" font-size="14" fill="#1C242B" text-anchor="middle">PSA</text>
+<rect x="216" y="150" width="84" height="44" rx="7" fill="#E29A2D"/><text x="258" y="177" font-size="14" fill="#1C242B" text-anchor="middle">MEM</text>
+<rect x="352" y="104" width="106" height="52" rx="7" fill="#333F4A"/><text x="405" y="135" font-size="13" fill="#fff" text-anchor="middle">PRODUCT</text>
+<circle cx="30" cy="34" r="9" fill="#BE654C"/><text x="30" y="39" font-size="11" fill="#fff" text-anchor="middle">y</text>
+<circle cx="30" cy="118" r="9" fill="#BE654C"/><text x="30" y="123" font-size="11" fill="#fff" text-anchor="middle">y</text>
+<circle cx="30" cy="202" r="9" fill="#BE654C"/><text x="30" y="207" font-size="11" fill="#fff" text-anchor="middle">y</text>
+<circle cx="216" cy="62" r="9" fill="#BE654C"/><text x="216" y="67" font-size="11" fill="#fff" text-anchor="middle">y</text>
+<circle cx="216" cy="150" r="9" fill="#BE654C"/><text x="216" y="155" font-size="11" fill="#fff" text-anchor="middle">y</text>
+<text x="240" y="276" font-size="13" fill="#66727C" text-anchor="middle">rust markers: one binary y per unit</text>
+</svg>
+:::
+
+::: {.column width="54%"}
+::: {.dots}
+- **Continuous** Every unit throughput, and therefore every split. Splits are outputs of the solve, not inputs.
+- **Discrete** Only whether a unit is built at all. Nothing else here is discrete.
+:::
+
+::: {.spec}
+[What changes when selection is added]{.eyebrow}
+
+**New:** *F*<sub>*u*</sub> ≤ *F*<sub>*u*</sub><sup>max</sup> *y*<sub>*u*</sub>, &nbsp; *y*<sub>*u*</sub> ∈ {0,1} — one row per unit
+
+**Objective** gains Σ<sub>*u*</sub> *f*<sub>*u*</sub>*y*<sub>*u*</sub> — a cost that does not scale with throughput
+
+**Unchanged:** both balances and the bounds.
+:::
+
+::: {.note}
+**Revisited twice.** Week 5 formulates the discrete version and asks how tight the link should be; Week 11 shows how branch and bound closes the gap — **10.65 %** here.
+:::
+:::
+::::
+
+::: {.notes}
+The commonest wrong answer is a binary on the *stream* rather than on the *unit*. Ask that group what it would mean to "not build" a pipe that costs nothing.
+:::
+
+## Summary {.smaller}
+
+::: {.kicker .c-teal}
+What today established
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+[Concepts]{.eyebrow}
+
+::: {.dots}
+- **One template covers the family** Choose the graph, the costs, the capacities and the net supplies, and all four classical problems follow.
+- **The node balance is the model** the same conservation law as a material balance around a unit.
+- **Integers for free** by total unimodularity — and the property belongs to the matrix, not to the costs.
+- **TU is fragile** One share constraint or one fixed-charge binary, and fractional vertices reappear.
+- **Duals carry the engineering content** Node potentials price material by location; the minimum cut is the only place extra capacity is worth anything.
+- **A superstructure is a network of units** Route choice is continuous; only "build or not" is discrete.
+:::
+:::
+
+::: {.column width="44%"}
+[Numbers established today]{.eyebrow}
+
+| | |
+|:---|---:|
+| Transportation optimum | 23,570.00 USD/wk |
+| Transshipment optimum | 25,850.00 USD/wk |
+| Shortest path R1 → G4 | 29 h |
+| Maximum flow / demand | 1,100 / 1,130 t |
+| Minimum cut capacity | 1,100 t, 5 arcs |
+| With a 35 % share limit | 26,195.00 USD/wk |
+| Superstructure LP | 177,250.00 USD/d |
+| Product balance dual | 2,062.50 USD/t |
+| Superstructure MILP | 248,720.00 USD/d |
+| Its LP relaxation | 222,232.14 USD/d |
+| Integrality gap | 26,487.86 (10.65 %) |
+| Superstructure MINLP | 247,496.00 USD/d |
+
+::: {.note}
+**Next:** Week 4 — blending, pooling and quality specifications.
+:::
+:::
+::::
+
+::: {.notes}
+Read the two right-hand MILP/MINLP lines aloud together. The gap between them is half a percent; the gap in difficulty is enormous. That is the hook for Week 4.
+:::
+
+## Before next week {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Reading, homework, and one installation
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+[Reading]{.eyebrow}
+
+::: {.dots}
+- **Williams** Model Building in Mathematical Programming, Ch. 5, network models.
+- **Edgar, Himmelblau and Lasdon** Ch. 7, the sections on transportation and network flow.
+- **Rao** Ch. 3, the transportation problem as a special-structure LP.
+:::
+
+[Notebook to finish]{.eyebrow}
+
+`w03-modeling2-networks.ipynb`, plus Exercises 1, 2 and 4. **Exercise 4** re-verifies max-flow min-cut on a modified instance and is the one that repays the effort.
+:::
+
+::: {.column width="50%"}
+::: {.punch}
+HW1 is due at the start of Week 4, **Monday 31 August**.
+:::
+
+It covers Weeks 1 to 3 — linear and network model construction. Its Problem 5 asks for the transshipment model of Problem 2 in Pyomo, over an arc set.
+
+::: {.flag .c-rust}
+**Install before Week 4.** Week 4 crosses from the spreadsheet to Python and needs a **nonlinear** solver. Install `ipopt` now with
+
+`conda install -c conda-forge ipopt`
+
+or run the IDAES extensions installer. You will also want `pip install highspy` for the linear solves. Test before the session with `SolverFactory('ipopt').available()`.
+:::
+:::
+::::
+
+::: {.notes}
+Say the install twice. Every year a third of the room arrives at Week 4 without a nonlinear solver, and Week 4 cannot start without one.
+:::
+
+## Further reading
+
+::: {.kicker .c-slate}
+Where to go deeper
+:::
+
+::: {.dots}
+- **Williams** Model Building in Mathematical Programming, 5th ed., Ch. 5 and 6. Network formulations, and the conditions under which a formulation retains integrality.
+- **Ahuja, Magnanti and Orlin** Network Flows. The standard reference for the specialised algorithms, network simplex and preflow-push, that beat general LP on these problems by orders of magnitude.
+- **Edgar, Himmelblau and Lasdon** Optimization of Chemical Processes, 2nd ed., Ch. 7 and 11. Network models and flowsheet optimization in process applications.
+- **Biegler, Grossmann and Westerberg** Systematic Methods of Chemical Process Design, for superstructure representation and process synthesis.
+- **Rao** Engineering Optimization, 4th ed., Ch. 3, on special-structure linear programs.
+:::
+
+::: {.foot}
+::: {.note}
+**Forward references made today.** Total unimodularity breaks in **Week 5** (binaries) and the resulting search is **Week 11**; degenerate duals and shadow prices are **Week 8**; the nonconvexity that appeared in the last superstructure is the whole of **Week 4**.
+:::
+:::
+
+::: {.notes}
+Ahuja–Magnanti–Orlin is the one to name for anyone whose project turns out to be a network. It is the book.
+:::
+
+{{< include _feedback.qmd >}}

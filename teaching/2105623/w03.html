@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-08-24">
+  <title>2105623 – Modeling II: networks, flows and process superstructures</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-adebb5cf30333392721641149eb81241.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Modeling II: networks, flows and process superstructures</h1>
+  <p class="subtitle">Week 3 · 2105623 Optimization of Chemical Processes</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">24 August 2026</p>
+</section>
+<section id="three-lectures" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Three lectures</h2>
+<div class="kicker c-amber">
+<p>Outline</p>
+</div>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Networks and the node balance</strong> — one template, four classical problems, transportation and transshipment</li>
+<li><strong>Paths, cuts and integrality</strong> — shortest path, maximum flow, the minimum cut, total unimodularity</li>
+<li><strong>Process superstructures</strong> — the same mathematics with units for nodes, and where a binary variable becomes unavoidable</li>
+</ol>
+</div>
+</section>
+<section id="session-plan-180-minutes" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Session plan, 180 minutes</h2>
+<div class="kicker c-amber">
+<p>Today</p>
+</div>
+<div class="agenda">
+<ul>
+<li><span class="chip c-slate">10 min</span> Opening: recap of Week 2, one question from HW1, today’s objectives</li>
+<li><span class="chip c-teal">30 min</span> Lecture 1: networks as a modeling language, the node balance, transportation and transshipment</li>
+<li><span class="chip c-amber">20 min</span> Activity 1 — draw the network</li>
+<li><span class="chip c-teal">30 min</span> Lecture 2: shortest path, maximum flow, the minimum cut, total unimodularity</li>
+<li><span class="chip c-mist">15 min</span> Break</li>
+<li><span class="chip c-amber">25 min</span> Activity 2 — transportation in OpenSolver</li>
+<li><span class="chip c-teal">25 min</span> Lecture 3: process superstructures, continuous route splits, where binaries would enter</li>
+<li><span class="chip c-amber">20 min</span> Activity 3 — sketch a superstructure</li>
+<li><span class="chip c-slate">5 min</span> Wrap-up, and what is due next week</li>
+</ul>
+</div>
+<div class="foot">
+<div class="note">
+<p>Tools today: <strong>OpenSolver</strong> for the matrix models, <strong>Pyomo</strong> for the graph models. Notebook <code>w03-modeling2-networks.ipynb</code>; workbook <code>w03-transportation.xlsx</code>.</p>
+</div>
+</div>
+</section>
+<section id="by-the-end-you-should-be-able-to" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>By the end you should be able to</h2>
+<div class="kicker c-teal">
+<p>Learning objectives</p>
+</div>
+<div class="numbered n5">
+<ol type="1">
+<li><strong>Write the node balance</strong> that every network flow model shares, and recognise the node-arc incidence matrix <em>E</em> behind it.</li>
+<li><strong>Formulate four problems as one template</strong> — transportation, transshipment, shortest path and maximum flow are four choices of data inside minimum cost flow.</li>
+<li><strong>Explain integrality for free</strong> using total unimodularity, and state exactly what destroys it.</li>
+<li><strong>Read node potentials and arc reduced costs</strong> from the LP duals, and identify a minimum cut from a maximum flow solution.</li>
+<li><strong>Represent competing process routes</strong> as a superstructure, and say which decisions are continuous and which need a binary variable.</li>
+</ol>
+</div>
+<div class="foot">
+<div class="note">
+<p>CLO 1 (formulation) and CLO 4 (implementation and solution in Pyomo). Reference: Williams Ch. 5; Rao Ch. 3; Edgar, Himmelblau and Lasdon Ch. 7.</p>
+</div>
+</div>
+</section>
+<section id="from-week-2-patterns-to-a-network" class="slide level2">
+<h2>From Week 2 patterns to a network</h2>
+<div class="kicker c-amber">
+<p>Why networks deserve their own week</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="spec">
+<p><span class="eyebrow">The four reusable patterns of Week 2</span></p>
+<ol type="1">
+<li>index set</li>
+<li>balance equation</li>
+<li>capacity constraint</li>
+<li>linking constraint</li>
+</ol>
+</div>
+<div class="punch">
+<p>A network model is those four patterns applied to a graph.</p>
+</div>
+<p>The index set is the <strong>arc set</strong>. The balance equation is written <strong>once per node</strong>. The capacity constraint is <strong>one bound per arc</strong>. And the graph itself is the linking structure.</p>
+</div><div class="column" style="width:52%;">
+<div class="dots">
+<ul>
+<li><strong>A very large class is a network in disguise</strong> Distribution, logistics, pipeline routing, assignment, project scheduling, flowsheet synthesis.</li>
+<li><strong>The structure buys three things</strong> Integral answers for free, duals with an immediate physical reading, and specialised algorithms orders of magnitude faster than general LP.</li>
+<li><strong>You already know the equation</strong> The node balance is literally a steady-state material balance. Chemical engineers have been writing it since second year.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="one-template-the-minimum-cost-flow-problem" class="slide level2">
+<h2>One template: the minimum cost flow problem</h2>
+<div class="kicker c-teal">
+<p>Everything today is a choice of data inside this</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<div class="spec">
+<p><span class="eyebrow">Minimum cost flow</span></p>
+<p>Let <em>G</em> = (<em>N</em>, <em>A</em>) be a directed graph. For arc (<em>i</em>,<em>j</em>) ∈ <em>A</em> let <em>f</em><sub><em>ij</em></sub> ≥ 0 be the flow, <em>c</em><sub><em>ij</em></sub> the unit cost, <em>u</em><sub><em>ij</em></sub> the capacity. For node <em>n</em> ∈ <em>N</em> let <em>b</em><sub><em>n</em></sub> be the net supply.</p>
+<p><strong>minimise</strong> &nbsp; Σ<sub>(<em>i</em>,<em>j</em>)∈<em>A</em></sub> <em>c</em><sub><em>ij</em></sub> <em>f</em><sub><em>ij</em></sub></p>
+<p><strong>subject to</strong> &nbsp; Σ<sub><em>j</em></sub> <em>f</em><sub><em>nj</em></sub> − Σ<sub><em>i</em></sub> <em>f</em><sub><em>in</em></sub> = <em>b</em><sub><em>n</em></sub> &nbsp; for every <em>n</em> ∈ <em>N</em></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 ≤ <em>f</em><sub><em>ij</em></sub> ≤ <em>u</em><sub><em>ij</em></sub></p>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="dots">
+<ul>
+<li><strong>The sign of b</strong> Positive at a source, negative at a sink, zero at a pure transit node.</li>
+<li><strong>Feasibility of the whole class</strong> requires the net supplies to sum to zero.</li>
+<li><strong>In matrix form</strong> the balance is E f = b, with E the node-arc incidence matrix.</li>
+</ul>
+</div>
+<div class="flag c-amber">
+<p><strong>The engineering reading.</strong> Outflow − inflow = net generation. This is the steady-state material balance around a unit, written once per node instead of once per unit.</p>
+</div>
+</div></div>
+</section>
+<section id="the-node-arc-incidence-matrix" class="slide level2">
+<h2>The node-arc incidence matrix</h2>
+<div class="kicker c-teal">
+<p>Rows are nodes, columns are arcs</p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="spec">
+<p><span class="eyebrow">Definition</span></p>
+<p><em>E</em><sub><em>n</em>,(<em>i</em>,<em>j</em>)</sub> = <strong>+1</strong> if <em>n</em> = <em>i</em> (arc leaves <em>n</em>)</p>
+<p><em>E</em><sub><em>n</em>,(<em>i</em>,<em>j</em>)</sub> = <strong>−1</strong> if <em>n</em> = <em>j</em> (arc enters <em>n</em>)</p>
+<p><em>E</em><sub><em>n</em>,(<em>i</em>,<em>j</em>)</sub> = <strong>0</strong> otherwise</p>
+</div>
+<p>Every column has exactly one +1 and one −1, and therefore <strong>sums to zero</strong>.</p>
+<div class="note">
+<p>The rows are linearly dependent: they sum to the zero vector, which is exactly why Σ<sub><em>n</em></sub> <em>b</em><sub><em>n</em></sub> = 0 is required.</p>
+</div>
+</div><div class="column" style="width:58%;">
+<p><span class="eyebrow">Four classical problems, one template</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Problem</th>
+<th style="text-align: left;">Graph</th>
+<th style="text-align: left;">Data choice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Transportation</strong></td>
+<td style="text-align: left;">bipartite, sources to sinks</td>
+<td style="text-align: left;">unit shipping cost, no capacities, <em>b</em> from supply and demand</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Transshipment</strong></td>
+<td style="text-align: left;">any graph, transit nodes allowed</td>
+<td style="text-align: left;">unit cost, arc limits, <em>b</em><sub><em>n</em></sub> = 0 at transit nodes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Shortest path</strong></td>
+<td style="text-align: left;">any graph</td>
+<td style="text-align: left;">arc length as cost, <em>b</em> = +1 at the origin and −1 at the destination</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Maximum flow</strong></td>
+<td style="text-align: left;">plus a super source and super sink</td>
+<td style="text-align: left;">zero cost except −1 on a return arc, arc limits, <em>b</em> = 0</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="transportation-the-bipartite-special-case" class="slide level2">
+<h2>Transportation: the bipartite special case</h2>
+<div class="kicker c-teal">
+<p>Three precursor plants, four cell gigafactories</p>
+</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<div class="spec">
+<p><span class="eyebrow">The model</span></p>
+<p><strong>minimise</strong> &nbsp; Σ<sub><em>i</em>∈<em>S</em></sub> Σ<sub><em>j</em>∈<em>D</em></sub> <em>c</em><sub><em>ij</em></sub> <em>x</em><sub><em>ij</em></sub></p>
+<p><strong>subject to</strong> &nbsp; Σ<sub><em>j</em></sub> <em>x</em><sub><em>ij</em></sub> ≤ <em>s</em><sub><em>i</em></sub> &nbsp; for every plant <em>i</em></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub><em>i</em></sub> <em>x</em><sub><em>ij</em></sub> ≥ <em>d</em><sub><em>j</em></sub> &nbsp; for every gigafactory <em>j</em></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>x</em><sub><em>ij</em></sub> ≥ 0</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><em>c</em><sub><em>ij</em></sub>, USD/t</th>
+<th style="text-align: right;">G1</th>
+<th style="text-align: right;">G2</th>
+<th style="text-align: right;">G3</th>
+<th style="text-align: right;">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>R1</strong></td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>R2</strong></td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>R3</strong></td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">21</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Supplies 450, 380, 300 t/week; demands 300, 260, 330, 240. Total supply 1,130 t <strong>equals</strong> total demand, so the instance is balanced.</p>
+</div>
+</div><div class="column" style="width:54%;">
+<svg viewbox="0 0 560 340" style="width:100%;max-width:620px" role="img" aria-label="A bipartite diagram with three plants on the left and four gigafactories on the right. Six teal arcs carry flow: R1 to G1 with 300 tonnes and R1 to G2 with 150, R2 to G2 with 110 and R2 to G3 with 270, R3 to G3 with 60 and R3 to G4 with 240. The remaining six lanes are drawn in pale grey and carry nothing.">
+<line x1="118" y1="70" x2="432" y2="185" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="70" x2="432" y2="265" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="165" x2="432" y2="45" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="165" x2="432" y2="265" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="260" x2="432" y2="45" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="260" x2="432" y2="125" stroke="#B9C1C6" stroke-width="1.4"></line> <line x1="118" y1="70" x2="432" y2="45" stroke="#0F6E6B" stroke-width="3.2"></line> <line x1="118" y1="70" x2="432" y2="125" stroke="#0F6E6B" stroke-width="3.2"></line> <line x1="118" y1="165" x2="432" y2="125" stroke="#0F6E6B" stroke-width="3.2"></line> <line x1="118" y1="165" x2="432" y2="185" stroke="#0F6E6B" stroke-width="3.2"></line> <line x1="118" y1="260" x2="432" y2="185" stroke="#0F6E6B" stroke-width="3.2"></line> <line x1="118" y1="260" x2="432" y2="265" stroke="#0F6E6B" stroke-width="3.2"></line> <text x="268" y="46" font-size="15" fill="#0F6E6B" text-anchor="middle">300</text> <text x="258" y="103" font-size="15" fill="#0F6E6B" text-anchor="middle">150</text> <text x="270" y="136" font-size="15" fill="#0F6E6B" text-anchor="middle">110</text> <text x="272" y="190" font-size="15" fill="#0F6E6B" text-anchor="middle">270</text> <text x="258" y="216" font-size="15" fill="#0F6E6B" text-anchor="middle">60</text> <text x="268" y="277" font-size="15" fill="#0F6E6B" text-anchor="middle">240</text> <circle cx="98" cy="70" r="24" fill="#0F6E6B"></circle><text x="98" y="76" font-size="17" fill="#fff" text-anchor="middle">R1</text> <circle cx="98" cy="165" r="24" fill="#0F6E6B"></circle><text x="98" y="171" font-size="17" fill="#fff" text-anchor="middle">R2</text> <circle cx="98" cy="260" r="24" fill="#0F6E6B"></circle><text x="98" y="266" font-size="17" fill="#fff" text-anchor="middle">R3</text> <circle cx="452" cy="45" r="22" fill="#E29A2D"></circle><text x="452" y="51" font-size="16" fill="#1C242B" text-anchor="middle">G1</text> <circle cx="452" cy="125" r="22" fill="#E29A2D"></circle><text x="452" y="131" font-size="16" fill="#1C242B" text-anchor="middle">G2</text> <circle cx="452" cy="185" r="22" fill="#E29A2D"></circle><text x="452" y="191" font-size="16" fill="#1C242B" text-anchor="middle">G3</text> <circle cx="452" cy="265" r="22" fill="#E29A2D"></circle><text x="452" y="271" font-size="16" fill="#1C242B" text-anchor="middle">G4</text> <text x="98" y="310" font-size="14" fill="#66727C" text-anchor="middle">supply</text> <text x="452" y="310" font-size="14" fill="#66727C" text-anchor="middle">demand</text> <text x="275" y="326" font-size="13" fill="#66727C" text-anchor="middle">teal arcs carry flow, t/week · grey arcs empty at the optimum</text>
+</svg>
+</div></div>
+</section>
+<section id="transportation-the-optimum-and-what-the-duals-say" class="slide level2">
+<h2>Transportation: the optimum, and what the duals say</h2>
+<div class="kicker c-amber">
+<p>The MODI potentials come free from the LP dual</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="punch">
+<p>Minimum shipping cost = <strong>23,570.00 USD/week</strong></p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><em>x</em><sub><em>ij</em></sub>, t</th>
+<th style="text-align: right;">G1</th>
+<th style="text-align: right;">G2</th>
+<th style="text-align: right;">G3</th>
+<th style="text-align: right;">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>R1</strong></td>
+<td style="text-align: right;"><strong>300</strong></td>
+<td style="text-align: right;"><strong>150</strong></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>R2</strong></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>110</strong></td>
+<td style="text-align: right;"><strong>270</strong></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>R3</strong></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>60</strong></td>
+<td style="text-align: right;"><strong>240</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>All seven constraints bind: the instance is balanced, so nothing is left over anywhere.</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">The u–v potentials</span></p>
+<p><em>u</em> = (0, −5, −2) USD/t &nbsp;&nbsp; <em>v</em> = (18, 24, 27, 23) USD/t</p>
+<p><em>c</em><sub><em>ij</em></sub> − <em>u</em><sub><em>i</em></sub> − <em>v</em><sub><em>j</em></sub> = 0 on every lane carrying flow</p>
+<p><em>c</em><sub><em>ij</em></sub> − <em>u</em><sub><em>i</em></sub> − <em>v</em><sub><em>j</em></sub> ≥ 0 on every empty lane</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>v is a delivered value</strong> What one extra tonne at a gigafactory is worth; u is one more tonne of capacity at a plant.</li>
+<li><strong>R1 is the marginal plant</strong> Its dual is zero although its supply row binds — a degenerate vertex, and the Week 8 hook.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="transshipment-transit-nodes-and-arc-capacities" class="slide level2 smaller">
+<h2>Transshipment: transit nodes and arc capacities</h2>
+<div class="kicker c-teal">
+<p>The same template, written verbatim on a bigger graph</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<svg viewbox="0 0 560 320" style="width:100%;max-width:620px" role="img" aria-label="Three refineries on the left feed two coastal terminals in the middle, which feed four gigafactories on the right. Two direct lanes bypass the terminals. Teal arcs carry flow at the optimum, grey arcs are empty.">
+<path d="M118 60 C 200 60 200 120 232 128" fill="none" stroke="#0F6E6B" stroke-width="3.4"></path> <path d="M118 60 C 210 70 210 210 232 214" fill="none" stroke="#0F6E6B" stroke-width="2.4"></path> <path d="M118 160 C 190 150 200 140 232 136" fill="none" stroke="#0F6E6B" stroke-width="2.8"></path> <path d="M118 160 C 190 175 200 205 232 210" fill="none" stroke="#0F6E6B" stroke-width="2.8"></path> <path d="M118 258 C 190 250 200 230 232 222" fill="none" stroke="#0F6E6B" stroke-width="3.2"></path> <path d="M118 258 C 195 250 205 155 232 145" fill="none" stroke="#B9C1C6" stroke-width="1.4"></path> <line x1="272" y1="128" x2="272" y2="200" stroke="#B9C1C6" stroke-width="1.4"></line> <path d="M292 132 C 380 90 390 62 418 56" fill="none" stroke="#0F6E6B" stroke-width="3.2"></path> <path d="M292 138 C 380 130 390 118 418 116" fill="none" stroke="#0F6E6B" stroke-width="3.0"></path> <path d="M292 142 C 380 160 390 176 418 180" fill="none" stroke="#B9C1C6" stroke-width="1.4"></path> <path d="M292 146 C 380 200 390 236 418 244" fill="none" stroke="#B9C1C6" stroke-width="1.4"></path> <path d="M292 206 C 380 170 390 70 418 60" fill="none" stroke="#B9C1C6" stroke-width="1.4"></path> <path d="M292 210 C 380 190 390 128 418 120" fill="none" stroke="#B9C1C6" stroke-width="1.4"></path> <path d="M292 214 C 380 200 390 184 418 184" fill="none" stroke="#0F6E6B" stroke-width="3.1"></path> <path d="M292 220 C 380 230 390 240 418 246" fill="none" stroke="#0F6E6B" stroke-width="3.0"></path> <path d="M118 52 C 250 6 340 12 418 46" fill="none" stroke="#B9C1C6" stroke-width="1.4" stroke-dasharray="5 4"></path> <path d="M118 266 C 250 306 340 300 418 256" fill="none" stroke="#B9C1C6" stroke-width="1.4" stroke-dasharray="5 4"></path> <text x="170" y="78" font-size="14" fill="#0F6E6B" text-anchor="middle">400</text> <text x="352" y="82" font-size="14" fill="#0F6E6B" text-anchor="middle">300</text> <text x="352" y="118" font-size="14" fill="#0F6E6B" text-anchor="middle">260</text> <text x="352" y="196" font-size="14" fill="#0F6E6B" text-anchor="middle">330</text> <text x="352" y="248" font-size="14" fill="#0F6E6B" text-anchor="middle">240</text> <circle cx="98" cy="60" r="22" fill="#0F6E6B"></circle><text x="98" y="66" font-size="16" fill="#fff" text-anchor="middle">R1</text> <circle cx="98" cy="160" r="22" fill="#0F6E6B"></circle><text x="98" y="166" font-size="16" fill="#fff" text-anchor="middle">R2</text> <circle cx="98" cy="258" r="22" fill="#0F6E6B"></circle><text x="98" y="264" font-size="16" fill="#fff" text-anchor="middle">R3</text> <rect x="240" y="110" width="64" height="42" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.4"></rect> <text x="272" y="137" font-size="16" fill="#1C242B" text-anchor="middle">H1</text> <rect x="240" y="192" width="64" height="42" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.4"></rect> <text x="272" y="219" font-size="16" fill="#1C242B" text-anchor="middle">H2</text> <circle cx="438" cy="46" r="20" fill="#E29A2D"></circle><text x="438" y="52" font-size="15" fill="#1C242B" text-anchor="middle">G1</text> <circle cx="438" cy="116" r="20" fill="#E29A2D"></circle><text x="438" y="122" font-size="15" fill="#1C242B" text-anchor="middle">G2</text> <circle cx="438" cy="184" r="20" fill="#E29A2D"></circle><text x="438" y="190" font-size="15" fill="#1C242B" text-anchor="middle">G3</text> <circle cx="438" cy="250" r="20" fill="#E29A2D"></circle><text x="438" y="256" font-size="15" fill="#1C242B" text-anchor="middle">G4</text> <text x="98" y="302" font-size="13" fill="#66727C" text-anchor="middle">refineries</text> <text x="272" y="306" font-size="13" fill="#66727C" text-anchor="middle">terminals, b = 0</text> <text x="438" y="302" font-size="13" fill="#66727C" text-anchor="middle">gigafactories</text>
+</svg>
+</div><div class="column" style="width:46%;">
+<p>Two coastal terminals <strong>H1</strong> and <strong>H2</strong>. Material moves plant to terminal, terminal to terminal, and terminal to gigafactory. <strong>Two direct lanes remain.</strong></p>
+<div class="spec">
+<p><span class="eyebrow">The instance</span></p>
+<p>9 nodes, 18 arcs. Every arc now has a capacity, and the terminals are <strong>pure transit nodes</strong> with <em>b</em><sub><em>n</em></sub> = 0.</p>
+<p><em>b</em> = (450, 380, 300, 0, 0, −300, −260, −330, −240)</p>
+</div>
+<div class="punch">
+<p>Optimal cost = <strong>25,850.00 USD/week</strong></p>
+</div>
+<div class="note">
+<p>R1 → H1 saturates at 400 t and R3 → H2 at 300 t. <strong>The plan is not unique</strong> — several flow patterns cost exactly this much.</p>
+</div>
+</div></div>
+</section>
+<section id="the-two-totals-are-not-comparable-and-that-matters" class="slide level2">
+<h2>The two totals are not comparable, and that matters</h2>
+<div class="kicker c-rust">
+<p>A comparison students always try to make</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>Transportation <strong>23,570.00</strong> against transshipment <strong>25,850.00</strong> USD/week. The obvious conclusion — <em>terminals cost money</em> — is <strong>wrong</strong>, because the two models are not two options for the same system.</p>
+<div class="dots">
+<ul>
+<li><strong>The direct problem</strong> has unlimited lane capacity and no terminal handling.</li>
+<li><strong>The transshipment network</strong> puts a capacity on every arc and forces most flow through a terminal.</li>
+<li><strong>The comparison that means something</strong> is between transshipment options: for example, what widening R1 → H1 is worth.</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>Modeling rule.</strong> State what a model does <em>not</em> include before comparing its objective with anything.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">Node potentials and arc reduced costs</span></p>
+<p><em>c̄</em><sub><em>ij</em></sub> = <em>c</em><sub><em>ij</em></sub> − (<em>π</em><sub><em>i</em></sub> − <em>π</em><sub><em>j</em></sub>)</p>
+<p><em>c̄</em><sub><em>ij</em></sub> &gt; 0 &nbsp; the arc must be <strong>empty</strong></p>
+<p><em>c̄</em><sub><em>ij</em></sub> &lt; 0 &nbsp; the arc must be <strong>saturated</strong></p>
+<p><em>c̄</em><sub><em>ij</em></sub> = 0 &nbsp; any flow between the bounds</p>
+</div>
+<p>These are the optimality conditions of the minimum cost flow problem, and they are read directly off the LP duals of the node balances.</p>
+<div class="note">
+<p><em>π</em> is fixed only up to an added constant — only the difference <em>π</em><sub><em>i</em></sub> − <em>π</em><sub><em>j</em></sub> ever appears. Two solvers can report two different potential vectors and agree on every reduced cost.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-1-draw-the-network" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Activity 1 · draw the network</h2>
+<div class="kicker c-amber">
+<p>20 min · pairs · paper</p>
+</div>
+<div class="note">
+<p><strong>Two refineries, two consolidation hubs, four gigafactories.</strong> R1 ships 450 t/week, R2 380. G1 needs 200, G2 190, G3 260, G4 180 — total supply equals total demand at <strong>830 t/week</strong>. Refineries ship only to hubs, except one surviving direct lane R1 → G1. The hubs may re-ship to each other in either direction, and each may ship to any gigafactory. <strong>Hubs hold no stock.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p><span class="eyebrow">Arc data: cost in USD/t, capacity in t/week</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">arc</th>
+<th style="text-align: right;"><em>c</em></th>
+<th style="text-align: right;"><em>u</em></th>
+<th style="text-align: left;">arc</th>
+<th style="text-align: right;"><em>c</em></th>
+<th style="text-align: right;"><em>u</em></th>
+<th style="text-align: left;">arc</th>
+<th style="text-align: right;"><em>c</em></th>
+<th style="text-align: right;"><em>u</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">R1→H1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: left;">H1→H2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">H2→G1</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">250</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R1→H2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: left;">H2→H1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">H2→G2</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2→H1</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: left;">H1→G1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: left;">H2→G3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2→H2</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: left;">H1→G2</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: left;">H2→G4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R1→G1</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: left;">H1→G3</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: left;">H1→G4</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:42%;">
+<p><span class="eyebrow">Your task</span></p>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Draw the node-arc diagram</strong> by hand. Label every arc with its cost and capacity.</li>
+<li><strong>Mark each node</strong> with its net supply <em>b</em><sub><em>n</em></sub>.</li>
+<li><strong>Write the node balance for hub H1</strong> in full algebra, in the convention <em>outflow − inflow = b</em><sub><em>n</em></sub>.</li>
+</ol>
+</div>
+<div class="note">
+<p><strong>Pairs.</strong> At 15 min, three diagrams are held up and compared. <strong>Hand back</strong> one sheet per pair.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-1-answer-the-balances-are-the-model" class="slide level2">
+<h2>Activity 1 · [ANSWER] · the balances are the model</h2>
+<div class="kicker c-amber">
+<p>Different pictures, one incidence structure</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<svg viewbox="0 0 520 300" style="width:100%;max-width:560px" role="img" aria-label="The activity network drawn as a graph: two refineries with net supply plus 450 and plus 380 on the left, two hubs with net supply zero in the middle, and four gigafactories with net supplies minus 200, minus 190, minus 260 and minus 180 on the right.">
+<line x1="112" y1="70" x2="212" y2="105" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="112" y1="70" x2="212" y2="200" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="112" y1="215" x2="212" y2="115" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="112" y1="215" x2="212" y2="205" stroke="#0F6E6B" stroke-width="2.4"></line> <path d="M246 130 C 236 155 236 155 246 178" fill="none" stroke="#333F4A" stroke-width="2"></path> <path d="M266 178 C 276 155 276 155 266 130" fill="none" stroke="#333F4A" stroke-width="2"></path> <line x1="290" y1="106" x2="396" y2="42" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="112" x2="396" y2="102" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="118" x2="396" y2="172" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="124" x2="396" y2="242" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="188" x2="396" y2="48" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="196" x2="396" y2="108" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="204" x2="396" y2="178" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="290" y1="212" x2="396" y2="246" stroke="#0F6E6B" stroke-width="2.2"></line> <path d="M112 58 C 230 4 330 8 396 34" fill="none" stroke="#E29A2D" stroke-width="2.2" stroke-dasharray="6 4"></path> <circle cx="90" cy="70" r="22" fill="#0F6E6B"></circle><text x="90" y="76" font-size="15" fill="#fff" text-anchor="middle">R1</text> <circle cx="90" cy="215" r="22" fill="#0F6E6B"></circle><text x="90" y="221" font-size="15" fill="#fff" text-anchor="middle">R2</text> <text x="90" y="112" font-size="14" fill="#0F6E6B" text-anchor="middle">b = +450</text> <text x="90" y="257" font-size="14" fill="#0F6E6B" text-anchor="middle">b = +380</text> <rect x="200" y="88" width="56" height="38" rx="6" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.2"></rect> <text x="228" y="112" font-size="15" fill="#1C242B" text-anchor="middle">H1</text> <rect x="200" y="182" width="56" height="38" rx="6" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.2"></rect> <text x="228" y="206" font-size="15" fill="#1C242B" text-anchor="middle">H2</text> <text x="186" y="82" font-size="13" fill="#66727C" text-anchor="end">b = 0</text> <text x="186" y="230" font-size="13" fill="#66727C" text-anchor="end">b = 0</text> <circle cx="414" cy="38" r="18" fill="#E29A2D"></circle><text x="414" y="44" font-size="14" fill="#1C242B" text-anchor="middle">G1</text> <circle cx="414" cy="105" r="18" fill="#E29A2D"></circle><text x="414" y="111" font-size="14" fill="#1C242B" text-anchor="middle">G2</text> <circle cx="414" cy="175" r="18" fill="#E29A2D"></circle><text x="414" y="181" font-size="14" fill="#1C242B" text-anchor="middle">G3</text> <circle cx="414" cy="245" r="18" fill="#E29A2D"></circle><text x="414" y="251" font-size="14" fill="#1C242B" text-anchor="middle">G4</text> <text x="470" y="43" font-size="13" fill="#66727C">−200</text> <text x="470" y="110" font-size="13" fill="#66727C">−190</text> <text x="470" y="180" font-size="13" fill="#66727C">−260</text> <text x="470" y="250" font-size="13" fill="#66727C">−180</text> <text x="260" y="288" font-size="13" fill="#66727C" text-anchor="middle">8 nodes, 15 arcs, Σ b = 830 − 830 = 0</text>
+</svg>
+</div><div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">Node balance at H1</span></p>
+<p><em>f</em><sub>H1,H2</sub> + <em>f</em><sub>H1,G1</sub> + <em>f</em><sub>H1,G2</sub> + <em>f</em><sub>H1,G3</sub> + <em>f</em><sub>H1,G4</sub></p>
+<p>&nbsp;&nbsp;&nbsp;− ( <em>f</em><sub>R1,H1</sub> + <em>f</em><sub>R2,H1</sub> + <em>f</em><sub>H2,H1</sub> ) &nbsp;=&nbsp; <strong>0</strong></p>
+</div>
+<div class="punch">
+<p>The diagram is a communication device. <strong>The balance equations are the mathematics.</strong></p>
+</div>
+<p>Different pairs drew the same network with different layouts, orderings and crossings. <strong>None of that is the model.</strong> The model is the incidence structure: which arcs exist, and which nodes each one joins.</p>
+<div class="flag c-rust">
+<p><strong>Two errors to look for.</strong> Writing <em>b</em><sub>H1</sub> as a supply because the hub is drawn in the middle. And forgetting the reverse arc H2 → H1, which is a <strong>separate arc with its own non-negative flow</strong>, not a negative flow on H1 → H2.</p>
+</div>
+</div></div>
+</section>
+<section id="shortest-path-is-a-minimum-cost-flow" class="slide level2">
+<h2>Shortest path is a minimum cost flow</h2>
+<div class="kicker c-teal">
+<p>The only thing that changes is <em>b</em></p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="spec">
+<p><span class="eyebrow">Send exactly one unit</span></p>
+<p>Interpret <em>c</em><sub><em>ij</em></sub> as <strong>length</strong>, and drop the capacities:</p>
+<p><em>b</em><sub>origin</sub> = +1, &nbsp; <em>b</em><sub>dest</sub> = −1, &nbsp; <em>b</em><sub><em>n</em></sub> = 0 elsewhere.</p>
+</div>
+<p>Nothing else changes. The optimal flow is a <strong>single path</strong>, because the incidence matrix forces an integral basic optimal solution, and the only integral unit flows are paths.</p>
+<div class="flag c-amber">
+<p><strong>First payoff of total unimodularity.</strong> An inherently combinatorial object — a path — comes out of a <em>linear</em> program.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Worked instance: fastest route R1 → G4</span></p>
+<p>Arc costs re-read as transit times in hours.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Route</th>
+<th style="text-align: right;">hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">R1 → H1 → H2 → G4</td>
+<td style="text-align: right;"><strong>29</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R1 → H2 → G4</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R1 → H1 → G4</td>
+<td style="text-align: right;">38</td>
+</tr>
+</tbody>
+</table>
+<div class="punch">
+<p>LP optimal length <strong>29 h</strong> on R1 → H1 → H2 → G4</p>
+</div>
+<p>Matching a from-scratch Dijkstra implementation exactly. The cheap inter-terminal arc (5 h) beats both direct terminal routes — and the LP produced a 0–1 flow <strong>without being told to</strong>.</p>
+</div></div>
+</section>
+<section id="maximum-flow-a-capacity-question-not-a-cost-question" class="slide level2">
+<h2>Maximum flow: a capacity question, not a cost question</h2>
+<div class="kicker c-teal">
+<p>Both terminals are under berth maintenance</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">Construction</span></p>
+<p>Add a <strong>super source</strong> SRC with an arc to each plant of capacity equal to its supply, and a <strong>super sink</strong> SNK with an arc from each gigafactory of capacity equal to its demand.</p>
+<p><strong>maximise</strong> &nbsp; Σ<sub><em>j</em></sub> <em>t</em><sub><em>j</em></sub></p>
+<p><strong>s.t.</strong> inflow(<em>n</em>) + <em>s</em><sub><em>n</em></sub> = outflow(<em>n</em>) + <em>t</em><sub><em>n</em></sub></p>
+<p>0 ≤ <em>f</em><sub><em>ij</em></sub> ≤ <em>u</em><sub><em>ij</em></sub>, &nbsp; 0 ≤ <em>s</em><sub><em>i</em></sub> ≤ supply<sub><em>i</em></sub>, &nbsp; 0 ≤ <em>t</em><sub><em>j</em></sub> ≤ <em>d</em><sub><em>j</em></sub></p>
+</div>
+<div class="note">
+<p><strong>The scenario.</strong> Berth maintenance halves the capacity of every terminal-to-gigafactory arc. How much can the network still deliver?</p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="punch">
+<p>Maximum weekly throughput <strong>1,100 t</strong> against <strong>1,130 t</strong> of demand</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">t/week</th>
+<th style="text-align: right;">G1</th>
+<th style="text-align: right;">G2</th>
+<th style="text-align: right;">G3</th>
+<th style="text-align: right;">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">demand</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">330</td>
+<td style="text-align: right;">240</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">delivered</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;"><strong>300</strong></td>
+<td style="text-align: right;">240</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p>The entire <strong>30 t</strong> shortfall lands on <strong>G3</strong>, and only on G3.</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Max-flow min-cut</strong> The maximum flow equals the minimum capacity of a cut separating SRC from SNK: LP duality specialised to a network.</li>
+<li><strong>Read off the duals</strong> The cut is identified from the capacity duals.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="the-minimum-cut-and-the-only-investment-that-helps" class="slide level2">
+<h2>The minimum cut, and the only investment that helps</h2>
+<div class="kicker c-rust">
+<p>The cut is the list of assets worth money</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<svg viewbox="0 0 560 310" style="width:100%;max-width:600px" role="img" aria-label="The minimum cut drawn as a vertical dashed line. On the left, the source side holds the super source, the three refineries, the two terminals and gigafactories G1, G2 and G4. On the right, the sink side holds G3 and the super sink. Five rust arcs cross the line with capacities 125, 175, 300, 260 and 240, totalling 1,100 tonnes.">
+<line x1="336" y1="24" x2="336" y2="262" stroke="#BE654C" stroke-width="2.4" stroke-dasharray="8 6"></line> <text x="336" y="18" font-size="13" fill="#BE654C" text-anchor="middle">the cut</text> <text x="168" y="282" font-size="13" fill="#66727C" text-anchor="middle">source side</text> <text x="450" y="282" font-size="13" fill="#BE654C" text-anchor="middle">sink side</text> <line x1="52" y1="150" x2="76" y2="90" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="52" y1="150" x2="76" y2="150" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="52" y1="150" x2="76" y2="210" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="106" y1="90" x2="150" y2="112" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="106" y1="150" x2="150" y2="120" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="106" y1="150" x2="150" y2="188" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="106" y1="210" x2="150" y2="196" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="196" y1="112" x2="242" y2="62" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="196" y1="122" x2="242" y2="142" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="196" y1="196" x2="242" y2="240" stroke="#B9C1C6" stroke-width="1.5"></line> <path d="M196 128 C 260 190 300 200 386 204" fill="none" stroke="#BE654C" stroke-width="2.8"></path> <path d="M196 200 C 260 220 300 214 386 210" fill="none" stroke="#BE654C" stroke-width="2.8"></path> <path d="M262 62 C 340 40 430 60 476 96" fill="none" stroke="#BE654C" stroke-width="2.8"></path> <path d="M262 142 C 340 130 430 108 474 104" fill="none" stroke="#BE654C" stroke-width="2.8"></path> <path d="M262 240 C 340 254 440 190 480 122" fill="none" stroke="#BE654C" stroke-width="2.8"></path> <text x="300" y="182" font-size="13" fill="#BE654C" text-anchor="middle">125</text> <text x="300" y="234" font-size="13" fill="#BE654C" text-anchor="middle">175</text> <text x="366" y="46" font-size="13" fill="#BE654C" text-anchor="middle">300</text> <text x="368" y="112" font-size="13" fill="#BE654C" text-anchor="middle">260</text> <text x="392" y="252" font-size="13" fill="#BE654C" text-anchor="middle">240</text> <circle cx="34" cy="150" r="17" fill="#333F4A"></circle><text x="34" y="155" font-size="11" fill="#fff" text-anchor="middle">SRC</text> <circle cx="90" cy="90" r="16" fill="#0F6E6B"></circle><text x="90" y="95" font-size="12" fill="#fff" text-anchor="middle">R1</text> <circle cx="90" cy="150" r="16" fill="#0F6E6B"></circle><text x="90" y="155" font-size="12" fill="#fff" text-anchor="middle">R2</text> <circle cx="90" cy="210" r="16" fill="#0F6E6B"></circle><text x="90" y="215" font-size="12" fill="#fff" text-anchor="middle">R3</text> <rect x="150" y="98" width="46" height="30" rx="6" fill="#fff" stroke="#333F4A" stroke-width="2"></rect><text x="173" y="118" font-size="12" fill="#1C242B" text-anchor="middle">H1</text> <rect x="150" y="182" width="46" height="30" rx="6" fill="#fff" stroke="#333F4A" stroke-width="2"></rect><text x="173" y="202" font-size="12" fill="#1C242B" text-anchor="middle">H2</text> <circle cx="252" cy="62" r="16" fill="#E29A2D"></circle><text x="252" y="67" font-size="12" fill="#1C242B" text-anchor="middle">G1</text> <circle cx="252" cy="142" r="16" fill="#E29A2D"></circle><text x="252" y="147" font-size="12" fill="#1C242B" text-anchor="middle">G2</text> <circle cx="252" cy="240" r="16" fill="#E29A2D"></circle><text x="252" y="245" font-size="12" fill="#1C242B" text-anchor="middle">G4</text> <circle cx="402" cy="207" r="16" fill="#BE654C"></circle><text x="402" y="212" font-size="12" fill="#fff" text-anchor="middle">G3</text> <circle cx="492" cy="110" r="18" fill="#333F4A"></circle><text x="492" y="115" font-size="11" fill="#fff" text-anchor="middle">SNK</text> <text x="280" y="306" font-size="12" fill="#66727C" text-anchor="middle">125 + 175 + 300 + 260 + 240 = 1,100 t</text>
+</svg>
+</div><div class="column" style="width:46%;">
+<div class="punch">
+<p>Adding capacity anywhere except on an arc of the cut changes <strong>nothing at all</strong>.</p>
+</div>
+<p>To recover the missing 30 t you must widen <strong>H1 → G3</strong> or <strong>H2 → G3</strong>. No other investment will do it.</p>
+<div class="flag c-teal">
+<p><strong>Why this is the useful output.</strong> A debottlenecking study that reports only the throughput number has thrown away the answer. The cut is the list of assets worth money, and <strong>everything not in the cut is worth exactly zero at the margin</strong>.</p>
+</div>
+<div class="note">
+<p>Confirmed both from the LP duals and by enumerating all 512 cuts of the nine-node network.</p>
+</div>
+</div></div>
+</section>
+<section id="total-unimodularity-integers-for-free" class="slide level2">
+<h2>Total unimodularity: integers for free</h2>
+<div class="kicker c-teal">
+<p>A property of the matrix, not of the costs</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">Definition and theorem</span></p>
+<p><em>E</em> is <strong>totally unimodular</strong> (TU) if every square submatrix has determinant 0, +1 or −1. The node-arc incidence matrix of a directed graph is TU.</p>
+<p><strong>Hoffman and Kruskal.</strong> If <em>E</em> is TU and <em>b</em>, <em>u</em> are integral, then every basic feasible solution of { <em>f</em> : <em>E f</em> = <em>b</em>, 0 ≤ <em>f</em> ≤ <em>u</em> } is <strong>integral</strong>. The simplex method returns a basic solution, so it returns an integer answer.</p>
+</div>
+<div class="note">
+<p><strong>Why.</strong> A basic solution solves <em>B f</em><sub><em>B</em></sub> = <em>b</em>′ for a nonsingular square submatrix <em>B</em>. By Cramer’s rule <em>f</em><sub><em>B</em></sub> = <em>B</em><sup>−1</sup><em>b</em>′ with det <em>B</em> = ±1, so <em>B</em><sup>−1</sup> has integer entries.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="dots">
+<ul>
+<li><strong>No integer variables, ever</strong> Transportation, transshipment, shortest path, maximum flow and assignment never need them. Solve the LP, get integers, at LP speed.</li>
+<li><strong>It belongs to the constraint matrix</strong> Not to the costs. Changing the costs cannot make the answer fractional.</li>
+<li><strong>Everything so far</strong> Every flow reported this afternoon came out integral from a pure LP solve.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="tu-is-fragile-one-innocuous-side-constraint" class="slide level2">
+<h2>TU is fragile: one innocuous side constraint</h2>
+<div class="kicker c-rust">
+<p>Terminal H1 may handle at most 35 % of everything leaving the plants</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">The added requirement</span></p>
+<p>Σ<sub>(<em>i</em>,H1)∈<em>A</em></sub> <em>f</em><sub><em>i</em>,H1</sub> &nbsp;≤&nbsp; 0.35 · Σ<sub><em>i</em>∈<em>S</em></sub> Σ<sub>(<em>i</em>,<em>j</em>)∈<em>A</em></sub> <em>f</em><sub><em>ij</em></sub></p>
+</div>
+<p>This row is <strong>not part of the incidence structure</strong>: it has coefficients 1 and −0.35 spread across arcs that share no node.</p>
+<div class="punch">
+<p>Cost rises from 25,850.00 to <strong>26,195.00</strong> USD/week — and four arcs come out at exactly <strong>half a tonne</strong>.</p>
+</div>
+<div class="note">
+<p><em>f</em><sub>R1,H1</sub> = 365.5 &nbsp; <em>f</em><sub>R1,H2</sub> = 84.5 &nbsp; <em>f</em><sub>H1,G2</sub> = 95.5 &nbsp; <em>f</em><sub>H2,G2</sub> = 164.5</p>
+</div>
+</div><div class="column" style="width:48%;">
+<p><span class="eyebrow">What destroys total unimodularity</span></p>
+<div class="dots">
+<ul>
+<li><strong>A percentage-share</strong> or blending-ratio constraint across arcs.</li>
+<li><strong>A fixed-charge binary</strong> linked to a flow.</li>
+<li><strong>A joint capacity</strong> shared by arcs that do not meet at a node.</li>
+<li><strong>Any row</strong> whose coefficients are not {0, +1, −1} in the incidence pattern.</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>The modeling consequence.</strong> If half a tonne is physically meaningless you now need integer variables, and the model changes class from LP to <strong>MILP</strong>: Week 5 for the formulation, Week 11 for the algorithm. <strong>Know before adding a row whether you are about to pay that price.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="section" class="slide level2 dark break c-mist" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="break-circle">
+<p>Break</p>
+</div>
+<div class="lede">
+<p>15 minutes.</p>
+</div>
+<div class="foot">
+<div class="note">
+<p>Next: open <strong>w03-transportation.xlsx</strong> and have OpenSolver loaded. Activity 2 starts at 1:45. You will reproduce a stated optimum, then break the supply–demand balance on purpose.</p>
+</div>
+</div>
+</section>
+<section id="activity-2-transportation-in-opensolver" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Activity 2 · transportation in OpenSolver</h2>
+<div class="kicker c-amber">
+<p>25 min · computer · individual</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="eyebrow">Part 1 — reproduce the optimum</span></p>
+<p>Open <strong>w03-transportation.xlsx</strong>, sheet <strong>Transportation</strong>. Complete the yellow cells: row sums <code>G12:G14</code>, column sums <code>C15:F15</code>, objective <code>C19</code> as one SUMPRODUCT.</p>
+<p>OpenSolver with <strong>CBC</strong>: objective <code>$C$19</code>, <strong>Min</strong>, changing <code>$C$12:$F$14</code>, constraints <code>$G$12:$G$14 &lt;= $I$12:$I$14</code> and <code>$C$15:$F$15 &gt;= $C$17:$F$17</code>.</p>
+<div class="punch">
+<p>The objective cell must read <strong>23,570.00</strong> USD/week.</p>
+</div>
+<p>If it does not, you have a formula error — and that is the point.</p>
+</div><div class="column" style="width:48%;">
+<p><span class="eyebrow">Part 2 — break the balance on purpose</span></p>
+<div class="numbered n2">
+<ol type="1">
+<li><strong>Reduce total supply below total demand</strong> — for example set R2 to 200 t. Re-solve, and record exactly what the solver reports.</li>
+<li><strong>Add a dummy source</strong> with a large penalty cost on every lane, give it the missing tonnage, and re-solve. Record the new objective and which gigafactory the dummy serves.</li>
+</ol>
+</div>
+<div class="note">
+<p>Tick <strong>Sensitivity Analysis</strong> — <em>u</em><sub><em>i</em></sub> and <em>v</em><sub><em>j</em></sub> are the MODI potentials, free from the LP dual. <strong>Individual</strong>, 25 min, hand back nothing.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-2-answer-the-dummy-source" class="slide level2 smaller">
+<h2>Activity 2 · [ANSWER] · the dummy source</h2>
+<div class="kicker c-amber">
+<p>The cost of not serving a customer, previously implicit</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Part 1</span></p>
+<p>Objective <code>C19</code> = <strong>23,570.00 USD/week</strong>, identical to the notebook. R1 ships 300 to G1 and 150 to G2; R2 ships 110 to G2 and 270 to G3; R3 ships 60 to G3 and 240 to G4.</p>
+<div class="spec">
+<p><span class="eyebrow">Sensitivity report</span></p>
+<p><em>u</em> = (0, −5, −2) &nbsp;&nbsp; <em>v</em> = (18, 24, 27, 23) USD/t</p>
+<p>Dual objective = 23,570.00 → <strong>strong duality holds</strong></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Part 2</span></p>
+<p><strong>Supply below demand.</strong> With Σ<em>s</em><sub><em>i</em></sub> &lt; Σ<em>d</em><sub><em>j</em></sub> and demand written with ≥, the model is <strong>infeasible</strong> — no plan exists, because the model has been told that <em>every</em> tonne of demand must be served.</p>
+<p><strong>Dummy source.</strong> A fictitious plant whose shipping cost is a penalty <em>M</em> restores feasibility. Its shipments are the tonnes <strong>not served</strong>: 19,610.00 + 180<em>M</em>, and the dummy serves <strong>G3</strong> — all 180 t, for every value of <em>M</em>.</p>
+<div class="flag c-amber">
+<p><strong>What does the dummy cost represent?</strong> The cost of not serving a customer, previously implicit. Choosing <em>M</em> is a business decision. And the dummy reveals <strong>which customer is cheapest to disappoint</strong> — often more useful than the cost itself.</p>
+</div>
+</div></div>
+</section>
+<section id="from-places-to-units-the-process-superstructure" class="slide level2">
+<h2>From places to units: the process superstructure</h2>
+<div class="kicker c-teal">
+<p>Same mathematics, different meaning of the objects</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="punch">
+<p>Nodes are <strong>process units</strong>. Arcs are <strong>material streams</strong>.</p>
+</div>
+<p>It is the standard way to pose a process <em>synthesis</em> question — “which flowsheet should we build” — rather than an <em>operating</em> question, “how should we run the flowsheet we have”.</p>
+<div class="spec">
+<p><span class="eyebrow">The idea</span></p>
+<p>Build <strong>one network that contains every candidate route at once</strong>, and let the optimizer decide how much material goes down each route. A route that is not worth using simply receives <strong>zero flow</strong>.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="flag c-amber">
+<p><strong>Nothing here needs a binary variable.</strong> The split of a stream between competing units is a continuous variable bounded below by zero, and the optimizer drives the uninteresting splits to zero by itself.</p>
+</div>
+<p><span class="eyebrow">The Week 2 vocabulary covers it</span></p>
+<div class="dots">
+<ul>
+<li><strong>index set</strong> over units and streams</li>
+<li><strong>balance</strong> around every unit and every mixing or splitting node</li>
+<li><strong>capacity constraint</strong> on every unit</li>
+<li><strong>linking constraint</strong> wherever two routes share a downstream unit</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="the-hydrogen-superstructure" class="slide level2 smaller">
+<h2>The hydrogen superstructure</h2>
+<div class="kicker c-teal">
+<p>100 t/day of purified hydrogen for cathode-precursor reduction</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<p><strong>SMR</strong> and <strong>ATR</strong> produce a crude stream that must be purified; <strong>ELY</strong> produces hydrogen already pure enough. Two purifiers: <strong>PSA</strong>, which recovers more but costs more to run, and a <strong>membrane</strong> (MEM), cheaper and recovering less. Crude from either reformer may go to either purifier <strong>in any proportion</strong>.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Unit</th>
+<th style="text-align: right;"><em>F</em><sub><em>u</em></sub><sup>max</sup> t/d</th>
+<th style="text-align: right;"><em>k</em><sub><em>u</em></sub> USD/t</th>
+<th style="text-align: right;"><em>η</em><sub><em>u</em></sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SMR</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">1300</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ATR</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">1550</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ELY</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PSA</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">0.88</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MEM</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:52%;">
+<svg viewbox="0 0 560 300" style="width:100%;max-width:600px" role="img" aria-label="A flowsheet with three production units on the left — SMR at 90 tonnes per day, ATR at 25, and ELY at zero — feeding two purifiers in the middle, PSA at 100 tonnes per day and MEM at 15, which together with the electrolysis route feed a single product node at 100 tonnes per day.">
+<line x1="118" y1="60" x2="252" y2="86" stroke="#0F6E6B" stroke-width="3.6"></line> <line x1="118" y1="60" x2="252" y2="186" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="118" y1="150" x2="252" y2="96" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="118" y1="150" x2="252" y2="180" stroke="#0F6E6B" stroke-width="2.4"></line> <path d="M118 240 C 260 250 360 220 402 172" fill="none" stroke="#B9C1C6" stroke-width="1.5" stroke-dasharray="6 4"></path> <line x1="348" y1="92" x2="398" y2="130" stroke="#0F6E6B" stroke-width="3.6"></line> <line x1="348" y1="186" x2="398" y2="152" stroke="#0F6E6B" stroke-width="2.4"></line> <rect x="40" y="38" width="78" height="44" rx="7" fill="#0F6E6B"></rect><text x="79" y="60" font-size="15" fill="#fff" text-anchor="middle">SMR</text><text x="79" y="76" font-size="12" fill="#CFE3E2" text-anchor="middle">90 t/d</text> <rect x="40" y="128" width="78" height="44" rx="7" fill="#0F6E6B"></rect><text x="79" y="150" font-size="15" fill="#fff" text-anchor="middle">ATR</text><text x="79" y="166" font-size="12" fill="#CFE3E2" text-anchor="middle">25 t/d</text> <rect x="40" y="218" width="78" height="44" rx="7" fill="#F3F0EB" stroke="#B9C1C6" stroke-width="2"></rect><text x="79" y="240" font-size="15" fill="#66727C" text-anchor="middle">ELY</text><text x="79" y="256" font-size="12" fill="#66727C" text-anchor="middle">0 t/d</text> <rect x="252" y="64" width="96" height="46" rx="7" fill="#E29A2D"></rect><text x="300" y="87" font-size="15" fill="#1C242B" text-anchor="middle">PSA</text><text x="300" y="103" font-size="12" fill="#5C4212" text-anchor="middle">100 t/d</text> <rect x="252" y="160" width="96" height="46" rx="7" fill="#E29A2D"></rect><text x="300" y="183" font-size="15" fill="#1C242B" text-anchor="middle">MEM</text><text x="300" y="199" font-size="12" fill="#5C4212" text-anchor="middle">15 t/d</text> <rect x="398" y="112" width="118" height="58" rx="7" fill="#333F4A"></rect><text x="457" y="137" font-size="14" fill="#fff" text-anchor="middle">PRODUCT</text><text x="457" y="155" font-size="12" fill="#B9C1C6" text-anchor="middle">100 t/d</text> <text x="79" y="20" font-size="13" fill="#66727C" text-anchor="middle">production</text> <text x="300" y="42" font-size="13" fill="#66727C" text-anchor="middle">purification</text> <text x="457" y="94" font-size="13" fill="#66727C" text-anchor="middle">requirement</text> <text x="186" y="290" font-size="13" fill="#66727C" text-anchor="middle">crude H₂</text> <text x="380" y="290" font-size="13" fill="#66727C" text-anchor="middle">pure H₂</text>
+</svg>
+<div class="note">
+<p>Throughputs are the LP optimum. <strong>ELY is present in the model and receives zero flow — that is the answer, not an omission.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="the-algebraic-model-and-why-there-is-no-split-fraction" class="slide level2">
+<h2>The algebraic model, and why there is no split fraction</h2>
+<div class="kicker c-teal">
+<p>The cheapest lesson of superstructure modeling</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">Linear superstructure</span></p>
+<p><strong>minimise</strong> &nbsp; Σ<sub><em>u</em>∈<em>U</em></sub> <em>k</em><sub><em>u</em></sub> <em>F</em><sub><em>u</em></sub> &nbsp;&nbsp; [USD/day]</p>
+<p><strong>s.t.</strong> &nbsp; <em>F</em><sub>SMR</sub> + <em>F</em><sub>ATR</sub> = <em>F</em><sub>PSA</sub> + <em>F</em><sub>MEM</sub> &nbsp;&nbsp; crude balance</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>η</em><sub>PSA</sub><em>F</em><sub>PSA</sub> + <em>η</em><sub>MEM</sub><em>F</em><sub>MEM</sub> + <em>F</em><sub>ELY</sub> = <em>D</em> &nbsp;&nbsp; product balance</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 ≤ <em>F</em><sub><em>u</em></sub> ≤ <em>F</em><sub><em>u</em></sub><sup>max</sup> &nbsp;&nbsp; for every <em>u</em> ∈ <em>U</em></p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="punch">
+<p>There is no split fraction in this formulation, and there does not need to be one.</p>
+</div>
+<p>The split of crude between PSA and MEM is <em>F</em><sub>PSA</sub> / (<em>F</em><sub>SMR</sub> + <em>F</em><sub>ATR</sub>), and it is <strong>recovered after the solve, not imposed before it</strong>. Writing splits as ratios introduces a division and makes the model nonlinear for no gain.</p>
+<div class="flag c-amber">
+<p><strong>The two balances are the linking constraints.</strong> The crude balance links the reformer block to the purifier block; the product balance links all three routes to the single requirement. Delete them and the model separates into five unrelated one-variable problems with no feasible answer.</p>
+</div>
+</div></div>
+</section>
+<section id="the-lp-selects-routes-with-no-binary-variable" class="slide level2">
+<h2>The LP selects routes with no binary variable</h2>
+<div class="kicker c-teal">
+<p>The answer can be predicted before it is produced</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<p><span class="eyebrow">Cost of one tonne of purified hydrogen, by route</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Route</th>
+<th style="text-align: right;">USD per t pure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>SMR → PSA</strong></td>
+<td style="text-align: right;"><strong>1704.55</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SMR → MEM</td>
+<td style="text-align: right;">1750.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ATR → PSA</td>
+<td style="text-align: right;">1988.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ATR → MEM</strong></td>
+<td style="text-align: right;"><strong>2062.50</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ELY (no purification)</td>
+<td style="text-align: right;">3400.00</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Computed by hand as ( <em>k</em><sub>prod</sub> + <em>k</em><sub>pur</sub> ) / <em>η</em><sub>pur</sub>, so the LP answer can be predicted before it is produced.</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="punch">
+<p>Minimum operating cost = <strong>177,250.00 USD/day</strong> — that is 1,772.50 USD per tonne of purified hydrogen.</p>
+</div>
+<p>SMR runs full at 90 t/day; all of that plus 10 t/day of ATR crude goes through PSA at its full 100 t/day; the remaining 15 t/day of ATR crude goes through MEM; ELY stays at zero. The recovered split of crude is <strong>100/115 to PSA and 15/115 to MEM</strong>.</p>
+<div class="flag c-amber">
+<p><strong>The dual of the product balance is 2,062.50 USD/t</strong> — exactly the cost of the ATR → MEM route, the most expensive route <em>actually carrying flow</em>. The marginal tonne of product is made by the marginal route: a Week 2 shadow price transferred to a flowsheet.</p>
+</div>
+</div></div>
+</section>
+<section id="where-binaries-would-enter-and-what-they-cost" class="slide level2">
+<h2>Where binaries would enter, and what they cost</h2>
+<div class="kicker c-rust">
+<p>Capital charges change the flowsheet, not just the cost</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">Unit selection: the fixed-charge pair</span></p>
+<p><em>y</em><sub><em>u</em></sub> = 1 if unit <em>u</em> is built, 0 otherwise.</p>
+<p><strong>minimise</strong> &nbsp; Σ<sub><em>u</em></sub> <em>k</em><sub><em>u</em></sub><em>F</em><sub><em>u</em></sub> + Σ<sub><em>u</em></sub> <em>f</em><sub><em>u</em></sub><em>y</em><sub><em>u</em></sub></p>
+<p><strong>s.t.</strong> &nbsp; <em>F</em><sub><em>u</em></sub> ≤ <em>F</em><sub><em>u</em></sub><sup>max</sup> <em>y</em><sub><em>u</em></sub>, &nbsp; <em>y</em><sub><em>u</em></sub> ∈ {0,1}</p>
+<p>plus the balances and bounds as before.</p>
+</div>
+<div class="note">
+<p>Equivalent daily capital charge <em>f</em><sub><em>u</em></sub> (USD/day): SMR 22,000 · ATR 15,000 · ELY 9,000 · PSA 12,000 · MEM 30,000.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">USD/day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>MILP optimum</strong></td>
+<td style="text-align: right;"><strong>248,720.00</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LP relaxation of it</td>
+<td style="text-align: right;">222,232.14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>integrality gap</strong></td>
+<td style="text-align: right;">26,487.86 (10.65 %)</td>
+</tr>
+</tbody>
+</table>
+<div class="punch">
+<p>The MILP builds <strong>SMR, PSA and ELY only.</strong></p>
+</div>
+<p>ATR and the membrane are dropped, and electrolysis — which the LP refused to use at all — is switched on to make up the 20.8 t/day that SMR and PSA cannot cover.</p>
+<div class="flag c-teal">
+<p><strong>The point of process synthesis.</strong> A route with a high running cost can still be correct if it avoids a large capital commitment. Formulation strength is Week 5; branch and bound is Week 11.</p>
+</div>
+</div></div>
+</section>
+<section id="one-nonlinearity-and-the-class-changes-again" class="slide level2">
+<h2>One nonlinearity, and the class changes again</h2>
+<div class="kicker c-rust">
+<p>Verification is not optional</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">Load-dependent recovery</span></p>
+<p>A real adsorber or membrane recovers a larger fraction when run <strong>below</strong> design, because contact time per tonne is longer. A first-order representation:</p>
+<p><em>η</em><sub><em>u</em></sub>(<em>F</em><sub><em>u</em></sub>) = <em>η</em><sub><em>u</em></sub><sup>0</sup> − <em>s</em><sub><em>u</em></sub><em>F</em><sub><em>u</em></sub> &nbsp;&nbsp;→&nbsp;&nbsp; <em>η</em><sub><em>u</em></sub><em>F</em><sub><em>u</em></sub> = <em>η</em><sub><em>u</em></sub><sup>0</sup><em>F</em><sub><em>u</em></sub> − <em>s</em><sub><em>u</em></sub><em>F</em><sub><em>u</em></sub><sup>2</sup></p>
+</div>
+<div class="note">
+<p>Coefficients reproduce the design values exactly: 0.92 − 0.0004(100) = 0.88 for PSA, 0.84 − 0.0005(80) = 0.80 for MEM.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<p>The product balance becomes a <strong>quadratic equality</strong>, so the feasible set is <strong>not convex</strong> — an NLP with no global guarantee, or with binaries a <strong>nonconvex MINLP</strong>, the hardest class in this course.</p>
+<div class="punch">
+<p>MINLP optimum = <strong>247,496.00 USD/day</strong></p>
+</div>
+<p>Marginally <em>below</em> the MILP value: PSA at 90 t/day rather than its design 100 recovers 0.884 instead of 0.880, so it needs less electrolysis behind it.</p>
+<div class="flag c-rust">
+<p><strong>A nonconvex MINLP solver can return a local solution and report it as optimal.</strong> The notebook therefore enumerates all 32 selection patterns and solves the NLP behind each. Week 4 is where this becomes the whole lesson.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-3-sketch-a-superstructure" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Activity 3 · sketch a superstructure</h2>
+<div class="kicker c-amber">
+<p>20 min · groups of 3 to 4 · one sheet</p>
+</div>
+<div class="note">
+<p>A site must deliver <strong>100 t/day of purified hydrogen</strong>. Three production routes are candidates — steam methane reforming, autothermal reforming and water electrolysis. The first two produce a crude stream; electrolysis produces hydrogen already pure enough. Two purification technologies are candidates for the crude stream: pressure swing adsorption and a membrane unit. <strong>Crude from either reformer may go to either purifier in any proportion.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><span class="eyebrow">Your task, on one sheet</span></p>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Draw the superstructure</strong> — every unit, every candidate stream, the mixing and splitting nodes, and the product node.</li>
+<li><strong>Mark every decision</strong> as continuous (how much through each route) or discrete (whether to build a unit at all), with two clearly different symbols.</li>
+<li><strong>State which constraints change</strong> if unit selection is added, and write the one new constraint family in algebra.</li>
+</ol>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="flag c-rust">
+<p><strong>Do not compute anything.</strong> The deliverable is the structure and the classification of the decisions.</p>
+</div>
+<div class="note">
+<p><strong>Groups of 3 to 4.</strong> Two groups present at the board at 15 min. <strong>Hand back</strong> one sketch per group.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-3-answer-the-one-row-that-adds-a-binary" class="slide level2 smaller">
+<h2>Activity 3 · [ANSWER] · the one row that adds a binary</h2>
+<div class="kicker c-amber">
+<p>5 units, 7 candidate streams, 2 balances</p>
+</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<svg viewbox="0 0 480 290" style="width:100%;max-width:520px" role="img" aria-label="The superstructure with a binary variable marked on each unit: SMR, ATR and ELY on the left, PSA and MEM in the middle, and a product node on the right, with seven candidate streams and a small y symbol on every unit box.">
+<line x1="106" y1="56" x2="216" y2="80" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="106" y1="56" x2="216" y2="166" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="106" y1="140" x2="216" y2="90" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="106" y1="140" x2="216" y2="176" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="300" y1="86" x2="352" y2="122" stroke="#0F6E6B" stroke-width="2.4"></line> <line x1="300" y1="172" x2="352" y2="140" stroke="#0F6E6B" stroke-width="2.4"></line> <path d="M106 224 C 240 236 320 200 350 152" fill="none" stroke="#0F6E6B" stroke-width="2.4"></path> <rect x="30" y="34" width="76" height="42" rx="7" fill="#0F6E6B"></rect><text x="68" y="60" font-size="14" fill="#fff" text-anchor="middle">SMR</text> <rect x="30" y="118" width="76" height="42" rx="7" fill="#0F6E6B"></rect><text x="68" y="144" font-size="14" fill="#fff" text-anchor="middle">ATR</text> <rect x="30" y="202" width="76" height="42" rx="7" fill="#0F6E6B"></rect><text x="68" y="228" font-size="14" fill="#fff" text-anchor="middle">ELY</text> <rect x="216" y="62" width="84" height="44" rx="7" fill="#E29A2D"></rect><text x="258" y="89" font-size="14" fill="#1C242B" text-anchor="middle">PSA</text> <rect x="216" y="150" width="84" height="44" rx="7" fill="#E29A2D"></rect><text x="258" y="177" font-size="14" fill="#1C242B" text-anchor="middle">MEM</text> <rect x="352" y="104" width="106" height="52" rx="7" fill="#333F4A"></rect><text x="405" y="135" font-size="13" fill="#fff" text-anchor="middle">PRODUCT</text> <circle cx="30" cy="34" r="9" fill="#BE654C"></circle><text x="30" y="39" font-size="11" fill="#fff" text-anchor="middle">y</text> <circle cx="30" cy="118" r="9" fill="#BE654C"></circle><text x="30" y="123" font-size="11" fill="#fff" text-anchor="middle">y</text> <circle cx="30" cy="202" r="9" fill="#BE654C"></circle><text x="30" y="207" font-size="11" fill="#fff" text-anchor="middle">y</text> <circle cx="216" cy="62" r="9" fill="#BE654C"></circle><text x="216" y="67" font-size="11" fill="#fff" text-anchor="middle">y</text> <circle cx="216" cy="150" r="9" fill="#BE654C"></circle><text x="216" y="155" font-size="11" fill="#fff" text-anchor="middle">y</text> <text x="240" y="276" font-size="13" fill="#66727C" text-anchor="middle">rust markers: one binary y per unit</text>
+</svg>
+</div><div class="column" style="width:54%;">
+<div class="dots">
+<ul>
+<li><strong>Continuous</strong> Every unit throughput, and therefore every split. Splits are outputs of the solve, not inputs.</li>
+<li><strong>Discrete</strong> Only whether a unit is built at all. Nothing else here is discrete.</li>
+</ul>
+</div>
+<div class="spec">
+<p><span class="eyebrow">What changes when selection is added</span></p>
+<p><strong>New:</strong> <em>F</em><sub><em>u</em></sub> ≤ <em>F</em><sub><em>u</em></sub><sup>max</sup> <em>y</em><sub><em>u</em></sub>, &nbsp; <em>y</em><sub><em>u</em></sub> ∈ {0,1} — one row per unit</p>
+<p><strong>Objective</strong> gains Σ<sub><em>u</em></sub> <em>f</em><sub><em>u</em></sub><em>y</em><sub><em>u</em></sub> — a cost that does not scale with throughput</p>
+<p><strong>Unchanged:</strong> both balances and the bounds.</p>
+</div>
+<div class="note">
+<p><strong>Revisited twice.</strong> Week 5 formulates the discrete version and asks how tight the link should be; Week 11 shows how branch and bound closes the gap — <strong>10.65 %</strong> here.</p>
+</div>
+</div></div>
+</section>
+<section id="summary" class="slide level2 smaller">
+<h2>Summary</h2>
+<div class="kicker c-teal">
+<p>What today established</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<p><span class="eyebrow">Concepts</span></p>
+<div class="dots">
+<ul>
+<li><strong>One template covers the family</strong> Choose the graph, the costs, the capacities and the net supplies, and all four classical problems follow.</li>
+<li><strong>The node balance is the model</strong> the same conservation law as a material balance around a unit.</li>
+<li><strong>Integers for free</strong> by total unimodularity — and the property belongs to the matrix, not to the costs.</li>
+<li><strong>TU is fragile</strong> One share constraint or one fixed-charge binary, and fractional vertices reappear.</li>
+<li><strong>Duals carry the engineering content</strong> Node potentials price material by location; the minimum cut is the only place extra capacity is worth anything.</li>
+<li><strong>A superstructure is a network of units</strong> Route choice is continuous; only “build or not” is discrete.</li>
+</ul>
+</div>
+</div><div class="column" style="width:44%;">
+<p><span class="eyebrow">Numbers established today</span></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Transportation optimum</td>
+<td style="text-align: right;">23,570.00 USD/wk</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transshipment optimum</td>
+<td style="text-align: right;">25,850.00 USD/wk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shortest path R1 → G4</td>
+<td style="text-align: right;">29 h</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum flow / demand</td>
+<td style="text-align: right;">1,100 / 1,130 t</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Minimum cut capacity</td>
+<td style="text-align: right;">1,100 t, 5 arcs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">With a 35 % share limit</td>
+<td style="text-align: right;">26,195.00 USD/wk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Superstructure LP</td>
+<td style="text-align: right;">177,250.00 USD/d</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Product balance dual</td>
+<td style="text-align: right;">2,062.50 USD/t</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Superstructure MILP</td>
+<td style="text-align: right;">248,720.00 USD/d</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Its LP relaxation</td>
+<td style="text-align: right;">222,232.14 USD/d</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Integrality gap</td>
+<td style="text-align: right;">26,487.86 (10.65 %)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Superstructure MINLP</td>
+<td style="text-align: right;">247,496.00 USD/d</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p><strong>Next:</strong> Week 4 — blending, pooling and quality specifications.</p>
+</div>
+</div></div>
+</section>
+<section id="before-next-week" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Before next week</h2>
+<div class="kicker c-amber">
+<p>Reading, homework, and one installation</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Reading</span></p>
+<div class="dots">
+<ul>
+<li><strong>Williams</strong> Model Building in Mathematical Programming, Ch. 5, network models.</li>
+<li><strong>Edgar, Himmelblau and Lasdon</strong> Ch. 7, the sections on transportation and network flow.</li>
+<li><strong>Rao</strong> Ch. 3, the transportation problem as a special-structure LP.</li>
+</ul>
+</div>
+<p><span class="eyebrow">Notebook to finish</span></p>
+<p><code>w03-modeling2-networks.ipynb</code>, plus Exercises 1, 2 and 4. <strong>Exercise 4</strong> re-verifies max-flow min-cut on a modified instance and is the one that repays the effort.</p>
+</div><div class="column" style="width:50%;">
+<div class="punch">
+<p>HW1 is due at the start of Week 4, <strong>Monday 31 August</strong>.</p>
+</div>
+<p>It covers Weeks 1 to 3 — linear and network model construction. Its Problem 5 asks for the transshipment model of Problem 2 in Pyomo, over an arc set.</p>
+<div class="flag c-rust">
+<p><strong>Install before Week 4.</strong> Week 4 crosses from the spreadsheet to Python and needs a <strong>nonlinear</strong> solver. Install <code>ipopt</code> now with</p>
+<p><code>conda install -c conda-forge ipopt</code></p>
+<p>or run the IDAES extensions installer. You will also want <code>pip install highspy</code> for the linear solves. Test before the session with <code>SolverFactory('ipopt').available()</code>.</p>
+</div>
+</div></div>
+</section>
+<section id="further-reading" class="slide level2">
+<h2>Further reading</h2>
+<div class="kicker c-slate">
+<p>Where to go deeper</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Williams</strong> Model Building in Mathematical Programming, 5th ed., Ch. 5 and 6. Network formulations, and the conditions under which a formulation retains integrality.</li>
+<li><strong>Ahuja, Magnanti and Orlin</strong> Network Flows. The standard reference for the specialised algorithms, network simplex and preflow-push, that beat general LP on these problems by orders of magnitude.</li>
+<li><strong>Edgar, Himmelblau and Lasdon</strong> Optimization of Chemical Processes, 2nd ed., Ch. 7 and 11. Network models and flowsheet optimization in process applications.</li>
+<li><strong>Biegler, Grossmann and Westerberg</strong> Systematic Methods of Chemical Process Design, for superstructure representation and process synthesis.</li>
+<li><strong>Rao</strong> Engineering Optimization, 4th ed., Ch. 3, on special-structure linear programs.</li>
+</ul>
+</div>
+<div class="foot">
+<div class="note">
+<p><strong>Forward references made today.</strong> Total unimodularity breaks in <strong>Week 5</strong> (binaries) and the resulting search is <strong>Week 11</strong>; degenerate duals and shadow prices are <strong>Week 8</strong>; the nonconvexity that appeared in the last superstructure is the whole of <strong>Week 4</strong>.</p>
+</div>
+</div>
+<!-- Shared closing slide. Every week's deck ends with an include of this file
+     (see the last line of w01.qmd). One QR serves all fifteen weeks; the
+     submission timestamp separates the sessions. -->
+</section>
+<section id="section-1" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="columns">
+<div class="column" style="width:58%;">
+<div class="kicker">
+<p>Before you go · 45 seconds</p>
+</div>
+<h3 id="how-was-today">How was today?</h3>
+<div class="lede">
+<p>Five questions. Anonymous — no name, no email, no login.</p>
+</div>
+<div class="flag">
+<p>The fourth question is the one I actually use.</p>
+</div>
+<div class="statement-sub">
+<p>The two most common answers open next week’s session.</p>
+</div>
+<div class="source">
+<p>oxidized-challenge-ed9.notion.site</p>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="qr-card">
+<p><img data-src="assets/qr_feedback.png" alt="QR code linking to the weekly feedback form"></p>
+</div>
+<div class="flag center">
+<p>Scan now — I will wait</p>
+</div>
+</div></div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.5e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
