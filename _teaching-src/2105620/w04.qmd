@@ -1,0 +1,932 @@
+---
+title: "Reverse-engineering I — IMRaD architecture"
+subtitle: "Week 4 · 2105620 Research Communication Skills for Chemical Engineers"
+author: "Soorathep Kheawhom"
+date: 2026-08-27
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## This week has no classroom {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+How Week 4 works
+:::
+
+::: {.numbered .n3}
+1. **Watch** three recordings, about fifteen minutes each. Watch them in order
+2. **Do** the reverse outline of the paper you already chose. One page
+3. **Submit** before Week 5. It is the front half of Assignment 1, not extra work
+:::
+
+::: {.foot}
+::: {.punch}
+There is no session on 27 and 30 August. The work is not cancelled — it moved onto your desk.
+:::
+:::
+
+::: {.notes}
+This week there is no classroom session. I am away, and rather than ask a colleague to deliver material he did not design, we are doing it a better way. You watch three recordings in your own time, and you submit one page of work before Week 5.
+
+Three things about how this runs.
+
+First, watch the three recordings in order. The second one depends on the first, and the third one depends on the second. They are about fifteen minutes each, so the whole week is under an hour of viewing.
+
+Second, the work is a reverse outline of a paper. Not any paper. The paper you already chose in Week 3, the one you are appraising for Assignment 1. You are not being given a new task; you are being given the first half of the task you already have.
+
+Third, submit before Week 5. Week 5 takes the Introduction apart in detail, and it assumes you arrive with this outline in your hand.
+
+Let me be direct about what has and has not been cancelled. The session is cancelled. The work is not. In a normal week you would spend three hours in a room doing this with me looking over your shoulder. This week you spend one hour watching and one hour working, and nobody is looking over your shoulder. That is a smaller cost in time and a larger cost in discipline.
+:::
+
+## What the three recordings do
+
+::: {.kicker .c-teal}
+Segment map
+:::
+
+::: {.cards .g3}
+::: {.card}
+[]{.dot .c-teal}
+
+### One
+
+**What each section is for**
+
+The four jobs of a paper, and the promises the sections make to each other
+:::
+
+::: {.card}
+[]{.dot .c-amber}
+
+### Two
+
+**The reverse outline**
+
+How to see a structure you cannot see while reading forward
+:::
+
+::: {.card}
+[]{.dot .c-rust}
+
+### Three
+
+**Where arguments break**
+
+Five failures that are invisible in the text and obvious in the outline
+:::
+:::
+
+::: {.foot}
+::: {.note}
+Recording one is conceptual. Two is a procedure you will copy. Three is the diagnostic work, and it is what you submit.
+:::
+:::
+
+::: {.notes}
+Here is the shape of the week.
+
+Recording one asks what each section of a paper is actually for. Not what goes in it, which you already know, but what job it does in an argument, and what it promises the other sections.
+
+Recording two teaches a single procedure called the reverse outline. It is the most useful editing tool I know, it takes twenty minutes to learn, and almost nobody in this department has been taught it.
+
+Recording three is where the two come together. I will show you five ways an argument breaks, all of them invisible when you read a paper forwards, and all of them obvious the moment you have an outline in front of you.
+
+Recording three is the one your submission comes from, so if you are short of time this week, do not skip to it. It will not make sense without the other two.
+:::
+
+## What each section is for {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Segment one · about 15 minutes
+:::
+
+::: {.lede}
+Four sections, four jobs — and four promises the sections make to each other.
+:::
+
+::: {.notes}
+Segment one. What each section is for.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+A paper is not a report of what<br>you did, in the order you did it.
+:::
+
+::: {.statement-sub}
+It is an argument, assembled so that a stranger can check it.
+:::
+
+::: {.notes}
+Let me start with the thing that most first drafts get wrong, and it is not a matter of style.
+
+A paper is not a report of what you did in the order you did it. If it were, the honest structure of most research would be: I tried something, it failed, I tried something else, that also failed, then I read a paper from nineteen ninety-four and tried a third thing, and that worked but only on Tuesdays.
+
+That is the history of the work. Nobody wants it, and more importantly nobody can check it.
+
+What a paper is, is an argument. A claim about the world, with the evidence for that claim, arranged so that a reader who has never met you and does not trust you can decide whether to believe it.
+
+Everything about IMRaD follows from that one sentence. The four sections are not four boxes to fill. They are four jobs in a single argument, and each one exists because a sceptical reader needs it.
+:::
+
+## Four sections, four jobs
+
+::: {.kicker .c-teal}
+IMRaD
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **Introduction** | Establishes that a specific question is worth answering, and that it is not yet answered |
+| **Methods** | Makes the answer checkable. Someone else could do this and find out whether you are right |
+| **Results** | States what was observed. Nothing about what it means |
+| **Discussion** | Converts observation into claim, and states the boundary of that claim |
+:::
+
+::: {.foot}
+::: {.note}
+Read the right-hand column as job descriptions. A section that does a different job is a structural fault, however well written it is.
+:::
+:::
+
+::: {.notes}
+Here are the four jobs.
+
+The Introduction establishes that a specific question is worth answering and that it has not been answered yet. Notice both halves. Worth answering, and not yet answered. An introduction that only does the first half tells the reader your field is important. It does not tell them why this paper needs to exist.
+
+The Methods make the answer checkable. That is the whole job. The test of a Methods section is not whether it describes what you did; it is whether a competent stranger with your equipment could do it again and find out whether you are right. If they cannot, the paper is not science, it is testimony.
+
+The Results state what was observed. Nothing about what it means. This is the hardest discipline in the four, and I will come back to it.
+
+The Discussion converts observation into claim, and it states the boundary of that claim. Both halves again. What you now believe, and where you stop believing it.
+
+Hold on to the idea that these are job descriptions. Most structural problems in a manuscript are one section doing another section's job, and they survive review by copy-editors and supervisors because each individual sentence is fine.
+:::
+
+## The sections make promises to each other {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Dependencies
+:::
+
+::: {.numbered .n4}
+1. Every **aim** stated in the Introduction is answered in the Results
+2. Every **number** in the Results is produced by something in the Methods
+3. Every **claim** in the Discussion traces back to a specific Result
+4. Nothing **new** appears in the Discussion — no new data, no new method
+:::
+
+::: {.foot}
+::: {.punch}
+These four are checkable by a reader who does not understand your chemistry. That is exactly why reviewers check them first.
+:::
+:::
+
+::: {.notes}
+Now the part that matters more than the job descriptions: the sections make promises to each other, and those promises can be audited.
+
+One. Every aim stated in the Introduction is answered in the Results. If your introduction ends by saying you will investigate three things, a reader will count three answers. If there are two, that is a broken promise, and it is a broken promise whether you ran out of time, ran out of samples, or simply forgot.
+
+Two. Every number in the Results is produced by something described in the Methods. A reader encountering a value in your Results should be able to go back and find the instrument, the sample, the calculation.
+
+Three. Every claim in the Discussion traces back to a specific Result. Not to the literature, not to what everybody knows, and not to what you believe about your own system. To a result in this paper.
+
+Four. Nothing new appears in the Discussion. No new data, no new measurement, no method you did not mention.
+
+Here is what makes these four powerful. You can check every one of them without understanding the chemistry. A reviewer in a hurry, and every reviewer is in a hurry, checks these before they check anything technical. So can you, on your own draft, before you send it.
+:::
+
+## Where sections do each other's jobs
+
+::: {.kicker .c-rust}
+The three common trespasses
+:::
+
+::: {.dots}
+- **Results that interpret** — "the improvement is attributed to a more uniform interphase". Nothing was observed. That belongs in the Discussion
+- **A Discussion that reports** — three paragraphs restating the figures. The reader has already read the figures
+- **Methods that argue** — "this technique was chosen because it is superior to X". Justification, not procedure
+:::
+
+::: {.foot}
+::: {.note}
+All three read perfectly well sentence by sentence. That is why they survive to submission.
+:::
+:::
+
+::: {.notes}
+Three trespasses, in order of how often I see them.
+
+Results that interpret. A sentence like: the improvement is attributed to a more uniform interphase. Read it carefully. Nothing was observed. Attribution is an act of interpretation, and it belongs in the Discussion, where a reader knows to be sceptical of it. Put it in Results and you have smuggled a claim past the reader while they were reading data.
+
+A Discussion that reports. Three paragraphs that walk through the figures again in the same order. The reader has already read the figures. A Discussion that restates them has no job; it takes up two pages and answers no question. This is the single most common weakness in the drafts I read in this department.
+
+Methods that argue. This technique was chosen because it is superior to the alternative. That is a justification, and justifications live in the Introduction. The Methods answer how, not why.
+
+And notice the property all three share: every individual sentence is fine. Grammatically correct, technically accurate, professionally phrased. You cannot catch these by reading carefully. You catch them by looking at structure, which is what the next recording is about.
+:::
+
+## The abstract is the same argument, compressed
+
+::: {.kicker .c-teal}
+One paragraph, four moves
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Sentence 1–2 | The context, and the specific problem — the Introduction |
+| Sentence 3 | What was done — the Methods |
+| Sentence 4–5 | What was found, with numbers — the Results |
+| Sentence 6 | What it means, and how far — the Discussion |
+:::
+
+::: {.foot}
+::: {.punch}
+If you cannot compress a paper into these six sentences, the problem is usually not the abstract.
+:::
+:::
+
+::: {.notes}
+One more thing before the procedure, and it is a useful shortcut.
+
+The abstract is the same argument compressed into one paragraph. Two sentences of context and problem, one sentence of method, two sentences of findings with numbers in them, and one sentence of meaning with a boundary on it.
+
+That is why a well-built abstract is a fast way to test a paper's architecture, including your own. If you sit down to compress your paper into those six sentences and you cannot do it, the problem is almost never the abstract. It is that one of the four jobs is not being done anywhere in the paper.
+
+Try this on the paper you chose. If you find yourself unable to write the fourth and fifth sentences without vague words like improved or enhanced, that paper may not have a result you can state. That is worth knowing before you spend a week appraising it.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+You cannot see a structure<br>while you are reading forward.
+:::
+
+::: {.statement-sub}
+Which is why the next fifteen minutes exist.
+:::
+
+::: {.notes}
+So that is segment one. Four jobs, four promises, three trespasses.
+
+And now the problem. Everything I have just described is a property of the whole paper, and you cannot see a property of the whole paper while you are reading it forward, one sentence at a time. Reading is sequential and structure is not.
+
+That is why the next fifteen minutes exist. There is a procedure that makes structure visible, it is simple enough to describe in one slide, and it will change how you read for the rest of your career.
+
+Take a break here if you want one. Then start segment two.
+:::
+
+## The reverse outline {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Segment two · about 15 minutes
+:::
+
+::: {.lede}
+One line per paragraph, recording what the paragraph does. Five steps, and you will use it for the rest of your career.
+:::
+
+::: {.notes}
+Segment two. The reverse outline.
+:::
+
+## An outline written backwards, from a finished text {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Definition
+:::
+
+::: {.lede}
+One line per paragraph, recording **what the paragraph does** — not what it says.
+:::
+
+::: {.dots}
+- A **summary** compresses content. It tells you the paragraph is about zinc dendrites
+- A **reverse outline** records function. It tells you the paragraph *narrows a general problem to a specific one*
+- Only the second one lets you see whether the argument holds together
+:::
+
+::: {.notes}
+Here is the definition, and the distinction inside it is the whole point.
+
+A reverse outline is an outline you write backwards, from a text that already exists. One line per paragraph. And that line records what the paragraph does, not what it says.
+
+The difference sounds small and it is not. If I summarise a paragraph, I write something like: this paragraph is about zinc dendrite formation. That is content. It tells me the topic. It tells me nothing about whether the paragraph is in the right place, or whether it duplicates the one before it.
+
+If I record function, I write: narrows a general problem to a specific one. Now I have something structural. And when I look at the next line and it says, narrows a general problem to a specific one, I have found a duplicated move, which I could never have seen by reading.
+
+So the discipline is: every line starts with a verb, and the verb describes the paragraph's job in the argument.
+:::
+
+## Five steps
+
+::: {.kicker .c-amber}
+The procedure
+:::
+
+::: {.numbered .n4}
+1. **Number the paragraphs** — in the margin, or as a list. You will refer to them by number from here on
+2. **Write the function in ten words or fewer** — start with a verb. If it will not fit, the paragraph has more than one job
+3. **Tag each line with the job it serves** — Introduction, Methods, Results or Discussion, regardless of the section it is printed in
+4. **Collapse to section level** — read the lines for one section together and write a single line for the section
+5. **Read only the outline** — close the paper. Everything wrong with the architecture is now on one page
+:::
+
+::: {.foot}
+::: {.note}
+Step five is the one people skip, and it is the step where the work pays off.
+:::
+:::
+
+::: {.notes}
+Five steps. Write these down, because you are going to do them this week.
+
+Step one. Number the paragraphs. In the margin of a printout, or as a numbered list in a document. From here on you refer to paragraphs by number, and that alone changes how precisely you can talk about a text.
+
+Step two. For each paragraph, write its function in ten words or fewer, starting with a verb. The ten-word limit is not decoration. If you cannot say what a paragraph does in ten words, that is diagnostic information: the paragraph is doing more than one job, and it should probably be two paragraphs.
+
+Step three. Tag each line with which of the four jobs it serves. Introduction, Methods, Results or Discussion. And here is the important part: tag it by the job it actually does, not by the section heading it happens to be printed under. A paragraph in the Results section that interprets gets tagged Discussion. That mismatch is the finding.
+
+Step four. Collapse. Take all the lines for one section, read them together, and write a single line for the section as a whole. If you cannot, the section does not have one job.
+
+Step five. Close the paper and read only your outline. This is the step people skip, and it is the step where the work pays off. Everything wrong with the architecture is now on one page in front of you, and none of it is hidden behind good prose.
+:::
+
+## Verbs that describe a job
+
+::: {.kicker .c-teal}
+Vocabulary
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| `establishes` `situates` | Puts the work in a context the reader already accepts |
+| `narrows` `specifies` | Moves from a general area to a particular question |
+| `reports` `quantifies` | States an observation, with or without numbers |
+| `justifies` `motivates` | Gives a reason for a choice |
+| `contrasts` `reconciles` | Sets two findings against each other, or resolves them |
+| `concedes` `bounds` | Admits a limit on what can be claimed |
+| `claims` `attributes` | Asserts a mechanism or an explanation |
+:::
+
+::: {.notes}
+You will need verbs, so here is a working vocabulary. Seven pairs.
+
+Establishes, or situates. The paragraph puts the work in a context the reader already accepts.
+
+Narrows, or specifies. It moves from a general area to a particular question. In a healthy Introduction you should see this verb two or three times, each time getting tighter.
+
+Reports, or quantifies. It states an observation.
+
+Justifies, or motivates. It gives a reason for a choice.
+
+Contrasts, or reconciles. It sets two findings against each other, or resolves a disagreement between them.
+
+Concedes, or bounds. It admits a limit.
+
+Claims, or attributes. It asserts a mechanism or an explanation.
+
+Two notes on using these. If your only verbs are discusses, describes and presents, you are summarising, not outlining. Those three words fit any paragraph ever written, which is exactly why they are useless. And if you find yourself writing claims against a paragraph inside the Results section, stop and mark it, because you have just found a trespass.
+:::
+
+## Worked example — an Introduction, outlined {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Constructed for this exercise
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **P1** | Establishes that grid storage demand is growing |
+| **P2** | Narrows to aqueous zinc as a low-cost option |
+| **P3** | Reports that dendrites limit zinc anode lifetime |
+| **P4** | Reviews electrolyte additives as a mitigation |
+| **P5** | Narrows to aqueous zinc as a low-cost option |
+| **P6** | States the aim: screen four additives at high current density |
+:::
+
+::: {.foot}
+::: {.note}
+Six lines. Nothing about chemistry. One of them is a problem, and you found it in four seconds.
+:::
+:::
+
+::: {.notes}
+Let me do one. This is an Introduction I constructed for this exercise, six paragraphs, and all you are seeing is the outline.
+
+Paragraph one establishes that grid storage demand is growing.
+
+Paragraph two narrows to aqueous zinc as a low-cost option.
+
+Paragraph three reports that dendrites limit zinc anode lifetime.
+
+Paragraph four reviews electrolyte additives as a mitigation.
+
+Paragraph five narrows to aqueous zinc as a low-cost option.
+
+Paragraph six states the aim: screen four additives at high current density.
+
+Now stop and look at that list rather than listening to me. Six lines, no chemistry in any of them, and one of them is a problem.
+
+Paragraph five has the same function as paragraph two. The argument has already narrowed to aqueous zinc; narrowing to it again means the paper walks the reader back up the funnel and down it a second time.
+
+Here is what I want you to notice about how you found it. You did not need to know anything about zinc. You did not read a single sentence of the actual paper. You looked at a list of six verbs and you saw a repeat. That took about four seconds, and no amount of careful reading would have surfaced it, because paragraph five is probably beautifully written and full of citations.
+:::
+
+## What a healthy Introduction looks like in outline
+
+::: {.kicker .c-teal}
+The shape
+:::
+
+::: {.numbered .n4}
+1. **Establishes** a context the reader already accepts
+2. **Narrows**, once or twice, each time tighter
+3. **Reports** what is known, and then what is not
+4. **States the gap** — as a cost, not as an absence
+5. **States the aim**, in terms that the Results can answer
+:::
+
+::: {.foot}
+::: {.punch}
+Five moves, in that order, and the gap is one of them. In most drafts the gap is missing, buried, or written as "little work has been done".
+:::
+:::
+
+::: {.notes}
+So what should the outline of a healthy Introduction look like? Five moves, in this order.
+
+Establishes a context the reader already accepts. Not a context you have to argue for. If your first paragraph is already controversial, the reader has nowhere to stand.
+
+Narrows, once or twice, each time tighter. Once is often too fast. Four times is a review article.
+
+Reports what is known, and then what is not. Those are two different moves and they usually take two paragraphs.
+
+States the gap. And here is where I want you to be strict with yourself, because this is the same distinction that broke sentence two of your sixty-second pitch in Week 1 and the same one we used on the evidence matrix last week. A gap is a cost, not an absence. Not: little work has been done on this. But: because nobody has measured this, we cannot predict that.
+
+States the aim, in terms the Results can actually answer. If the aim says understand the mechanism, no result can settle it. If the aim says determine which of four additives sustains capacity at ten milliamps per square centimetre, every result either does or does not.
+
+When you outline your chosen paper this week, check it against these five. Most published introductions have all five. The ones that do not are usually missing number four.
+:::
+
+## Worked example — a Discussion, outlined
+
+::: {.kicker .c-amber}
+The section you also have to submit
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **P1** | Restates the main finding |
+| **P2** | Attributes the effect to a more uniform interphase |
+| **P3** | Compares the result with two earlier studies |
+| **P4** | Restates the main finding, with different wording |
+| **P5** | Concedes that only symmetric cells were tested |
+| **P6** | Proposes future work on full cells |
+:::
+
+::: {.foot}
+::: {.punch}
+Two findings, from six lines: P4 doubles P1, and P2 claims a mechanism that no Result measures.
+:::
+:::
+
+::: {.notes}
+Now the same procedure on a Discussion, because the Discussion is the other section you have to submit, and it fails in different ways from an Introduction.
+
+Six paragraphs again. Paragraph one restates the main finding. Paragraph two attributes the effect to a more uniform interphase. Paragraph three compares the result with two earlier studies. Paragraph four restates the main finding, with different wording. Paragraph five concedes that only symmetric cells were tested. Paragraph six proposes future work on full cells.
+
+Look at the list before I say anything else.
+
+There are two findings in it.
+
+The first is a doubled move. Paragraph four does the same job as paragraph one. In a Discussion this is extremely common, and there is a reason for it: paragraph one was written first, then the author wrote the comparison, and by the time they reached paragraph four they had lost track and restated the headline again. The paper is a page longer than it needs to be and the reader is being told the same thing twice in the same section.
+
+The second is subtler and more serious. Paragraph two attributes the effect to a uniform interphase. If you tag that line honestly, the verb is attributes, which is a claim. Now ask the question from segment one: which Result does that claim rest on? If the paper never measured the interphase, the answer is none, and you have found an unsupported claim.
+
+Notice that paragraphs five and six are doing their jobs properly. Concedes, and proposes. A Discussion that ends with a real concession and a specific piece of future work is a Discussion whose author knew where their evidence stopped.
+:::
+
+## When a paragraph will not fit in ten words {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+The most useful thing the limit does
+:::
+
+::: {.dots}
+- **Two verbs in your line** — the paragraph is doing two jobs. It should usually be two paragraphs
+- **No verb you are happy with** — the paragraph may be doing no job at all. Ask what would be lost by deleting it
+- **The line is longer than the paragraph deserves** — a common sign of a literature-review paragraph that wandered in
+:::
+
+::: {.foot}
+::: {.note}
+Do not fight the limit. When a line will not fit, that is the outline telling you something about the text, not about your writing.
+:::
+:::
+
+::: {.notes}
+One practical point before we move on, because everybody hits it within the first ten paragraphs.
+
+Sometimes the line will not fit in ten words. Do not fight it, and do not stretch the limit. When a line refuses to fit, the outline is telling you something about the text.
+
+Three versions of this.
+
+If your line has two verbs in it — establishes the context and reviews the additives — the paragraph is doing two jobs. In a well-built paper it would be two paragraphs. Write both verbs down, on two lines, with the same paragraph number, and mark it. That is a finding in itself.
+
+If you cannot find a verb you are happy with at all, the paragraph may be doing no job. This sounds harsh and it happens more than you would expect, usually in the third or fourth paragraph of an Introduction. Ask yourself directly: what would be lost if this paragraph were deleted? If the honest answer is nothing, you have found something worth reporting.
+
+And if your line ends up longer and more detailed than the paragraph seems to deserve, that is often a literature-review paragraph that wandered into the argument. It has content but no function.
+
+In every one of these three cases the useful move is the same. Write down what happened, and keep going. Do not stop to fix the paper; you are diagnosing, not editing.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+Ten words. A verb.<br>Function, not content.
+:::
+
+::: {.statement-sub}
+Everything in segment three depends on you doing it that way.
+:::
+
+::: {.notes}
+That is the procedure. It is genuinely this simple, and the two rules that make it work are the two people most often break.
+
+Ten words or fewer. And start with a verb that names a job, not a topic.
+
+If you outline your paper with lines like, this paragraph discusses the electrolyte, you will finish the exercise and find nothing, and you will conclude that reverse outlining does not work. It works. Summaries do not.
+
+Segment three is where we use the outline to find things. Fifteen minutes. Then you do it on your own paper.
+:::
+
+## Where arguments break {.dark .divider .c-rust background-color="#1C242B"}
+
+::: {.kicker}
+Segment three · about 15 minutes
+:::
+
+::: {.lede}
+Five failures that are invisible in the text and obvious in the outline. This segment is where your submission comes from.
+:::
+
+::: {.notes}
+Segment three. Where arguments break.
+:::
+
+## Five breaks, all invisible in the text {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+The diagnostic list
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **The orphan aim** | An aim in the Introduction with no matching Result |
+| **The unsupported claim** | A Discussion claim with no Result behind it |
+| **The invisible method** | A number in the Results that no Method produces |
+| **The doubled move** | Two paragraphs with the same function |
+| **The buried gap** | The gap arrives late, or never arrives at all |
+:::
+
+::: {.foot}
+::: {.note}
+Each one is a broken promise from the earlier list. That is not a coincidence — it is where the list came from.
+:::
+:::
+
+::: {.notes}
+Five breaks. Look at them next to the four promises from segment one and you will see that they are the same list, seen from the other side. The promises are what a paper owes its reader; the breaks are what happens when it does not pay.
+
+The orphan aim. An aim stated in the Introduction that no Result answers.
+
+The unsupported claim. A claim in the Discussion with no Result behind it.
+
+The invisible method. A number in the Results that nothing in the Methods produces.
+
+The doubled move. Two paragraphs doing the same job, which you saw four minutes ago.
+
+And the buried gap. The gap arrives in paragraph five of the Introduction, or in the Discussion, or never.
+
+I am going to take the first three properly, because they are the ones that matter in review, and the ones you are most likely to commit yourself.
+:::
+
+## The orphan aim
+
+::: {.kicker .c-rust}
+Break one
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Introduction, P6 | *States three aims: screen additives, identify the mechanism, assess full-cell viability* |
+| Results | *Reports screening. Reports post-mortem imaging.* |
+| Discussion | *Claims a mechanism. Says nothing about full cells.* |
+:::
+
+::: {.foot}
+::: {.punch}
+Aim three is an orphan. It was promised on page two and abandoned by page nine — and the paper never admits it.
+:::
+:::
+
+::: {.notes}
+Break one. The orphan aim, and this is the most common structural fault in published work.
+
+Look at the outline. The Introduction, paragraph six, states three aims: screen the additives, identify the mechanism, and assess full-cell viability.
+
+Go to the Results. Screening is reported. Post-mortem imaging is reported. Nothing on full cells.
+
+Go to the Discussion. It claims a mechanism, and it says nothing about full cells either.
+
+Aim three is an orphan. It was promised on page two and abandoned by page nine, and nowhere does the paper say so.
+
+Two things worth understanding here. First, this is almost never dishonesty. It is what happens when the Introduction is written early, the experiment does not finish, and nobody goes back to align the Introduction with what the paper ended up containing. Second, it takes a reviewer about ninety seconds to find, because they read the aims, then the figure captions, and count.
+
+So the practical instruction is: before you submit anything, put the aims from your Introduction next to your figure list and check that each aim has an answer. If one does not, either cut the aim or admit the gap explicitly. Cutting it is usually right.
+:::
+
+## The unsupported claim
+
+::: {.kicker .c-rust}
+Break two
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Discussion, P3 | *Attributes the improvement to a more uniform interphase* |
+| Results | *Reports cycle life, voltage hysteresis, and surface images* |
+| The problem | No measurement of the interphase exists anywhere in the paper |
+:::
+
+::: {.foot}
+::: {.note}
+The claim may well be true. It is still not supported by this paper, and that is a different thing.
+:::
+:::
+
+::: {.notes}
+Break two. The unsupported claim.
+
+The Discussion, paragraph three, attributes the improvement to a more uniform interphase.
+
+Go back to the Results. Cycle life is reported. Voltage hysteresis is reported. Surface images are reported. No measurement of the interphase exists anywhere in the paper.
+
+So where did the claim come from? Usually from three places: the literature, the author's physical intuition, and the fact that it is probably true.
+
+And I want to be careful here, because this is a point students often mishear. The claim may well be correct. Uniform interphases really do improve cycling. That is not the issue. The issue is that this paper does not contain the evidence for it, and a Discussion is only allowed to spend evidence the paper has actually earned.
+
+The fix is not to delete the idea. The fix is to change its grammar. Not: the improvement is attributed to a more uniform interphase. But: the improvement is consistent with a more uniform interphase, which we did not measure directly. That sentence is honest, it is publishable, and it costs you nothing except the illusion of certainty.
+
+When you outline the Discussion of your chosen paper, draw an arrow from every claim back to the Result it rests on. The claims with no arrow are your finding.
+:::
+
+## The invisible method
+
+::: {.kicker .c-rust}
+Break three
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Results | *Reports coulombic efficiency of 99.4 % over 400 cycles* |
+| Methods | *Describes cell assembly, electrolyte preparation, and cycling protocol* |
+| The problem | No definition of how efficiency was calculated, and no statement of what counts as failure |
+:::
+
+::: {.foot}
+::: {.punch}
+Two papers can report the same number and mean different things by it. That is not a small problem; it is why half the literature does not compare.
+:::
+:::
+
+::: {.notes}
+Break three. The invisible method, and this one connects directly to the evidence matrix you built last week.
+
+The Results report a coulombic efficiency of ninety-nine point four percent over four hundred cycles.
+
+The Methods describe cell assembly, electrolyte preparation, and the cycling protocol.
+
+What is missing is how efficiency was calculated and what counts as failure. Averaged over all cycles or measured at the end. Failure at eighty percent of initial capacity or at a short circuit.
+
+Why this matters more than it looks: two papers can report the same number and mean genuinely different things by it. When you tried to put paper C into your matrix last week and found the cells would not fill, this is the mechanism behind that experience. Not carelessness. A missing definition in the Methods.
+
+So when you outline the Methods, do it differently from the other sections. Instead of one line per paragraph, write one line per number that appears in the Results, and ask whether the Methods tell you how that number was produced. The lines you cannot complete are the invisible methods.
+:::
+
+## How to write a finding
+
+::: {.kicker .c-amber}
+The form your submission must use
+:::
+
+::: {.spec}
+**Location** · **Function** · **What is missing**
+:::
+
+::: {.dots}
+- ✅ *Introduction P6 states an aim on full-cell viability. No Result addresses it and the Discussion does not acknowledge the omission.*
+- ❌ *The introduction is not very well connected to the results.*
+:::
+
+::: {.foot}
+::: {.punch}
+The first sentence can be checked in one minute. The second cannot be checked at all — and it is what most appraisals contain.
+:::
+:::
+
+::: {.notes}
+Now, how to write one of these down. This matters, because it is what your submission is marked on.
+
+A finding has three parts. Where it is. What the paragraph was doing. And what is missing.
+
+Here is a good one. Introduction paragraph six states an aim on full-cell viability. No Result addresses it, and the Discussion does not acknowledge the omission.
+
+Read that again and notice what it does. It gives a location, so I can go and look. It names the function, so I know what the paragraph was supposed to do. And it says precisely what is absent. I can verify the whole thing in about a minute.
+
+Here is a bad one, and it is the sentence most student appraisals are made of. The introduction is not very well connected to the results.
+
+That cannot be checked. It cannot be acted on. If I were the author receiving it, I would not know what to change. And, less obviously, it does not demonstrate that you found anything, because you could write that sentence about any paper without reading it.
+
+So the rule for your submission is: location, function, what is missing. Three parts, one sentence, every time.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+Outline your own draft<br>before a reviewer does.
+:::
+
+::: {.statement-sub}
+The five breaks are cheap to fix at outline stage and expensive after submission.
+:::
+
+::: {.notes}
+One last thing before the assignment, and it is the reason this week exists at all.
+
+Everything I have shown you is a diagnostic you run on somebody else's paper. But the real use is on your own.
+
+When you have a draft, do not reread it. You cannot read your own draft; you already know what it was supposed to say, and your eye supplies the argument even where the page does not. Outline it instead. Ten words per paragraph, verbs, function not content. Then look at the outline and ask the five questions.
+
+Every one of these breaks is cheap to fix at outline stage. A doubled move is a deletion. An orphan aim is one sentence cut from the Introduction. An unsupported claim is a change of verb.
+
+After submission, the same five things come back as reviewer comments, and then they cost you three months.
+:::
+
+## What you submit
+
+::: {.kicker .c-amber}
+Due before Week 5 · one page
+:::
+
+::: {.numbered .n4}
+1. **The outline** — numbered lines for the Introduction and the Discussion of your chosen paper. Ten words, verb first
+2. **The collapse** — one line for each of those two sections
+3. **Two findings** — written as location, function, what is missing
+4. **The AI declaration** — attached, as for every assignment from Week 3 onwards
+:::
+
+::: {.foot}
+::: {.note}
+Same paper you chose for Assignment 1. This page becomes the front half of that appraisal — it is not additional work.
+:::
+:::
+
+::: {.notes}
+Here is what you submit, and it is one page.
+
+One. The outline itself. Numbered lines for the Introduction and the Discussion of the paper you already chose in Week 3. You do not need to outline the whole paper. Ten words per line, verb first.
+
+Two. The collapse. One line for the Introduction as a whole and one for the Discussion as a whole.
+
+Three. Two findings, written in the three-part form. Location, function, what is missing. Two is the number. Not one, and not eight.
+
+Four. The AI declaration form attached, as with every assignment from Week Three onwards. The form is on the course page.
+
+And to say it once more, because someone always asks: this is the same paper you are appraising for Assignment One. This page becomes the front half of that appraisal. You are not being given extra work because the class was cancelled. You are being given the first part of the work you already had, with a deadline attached so that it actually gets done.
+
+What scores nothing: a summary of the paper. If your lines say discusses, describes, or presents, you have written a summary, and a summary tells me you did not do the exercise.
+:::
+
+## Before Week 5 {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Three things
+:::
+
+::: {.dots}
+- **Submit the outline.** Before the Week 5 session, not during it
+- **Keep the paper.** Week 5 takes an Introduction apart move by move, using yours
+- **Bring the matrix too.** Week 5 asks you to write the gap statement your matrix implies
+:::
+
+::: {.foot}
+::: {.punch}
+Week 5 is a working session. It assumes you arrive with an outline and a matrix. Without them you will watch other people work.
+:::
+:::
+
+::: {.notes}
+Three things before Week 5.
+
+Submit the outline before the Week 5 session, not during it. I will have read them.
+
+Keep the paper, and bring it printed. Week 5 takes an Introduction apart move by move, and it is far better with a paper you have already outlined than with one handed to you cold.
+
+And bring the evidence matrix from Week 3 as well, because Week 5 asks you to write the gap statement your matrix implies. Those two pieces of paper, the outline and the matrix, are the input to that session.
+
+I want to be honest about the risk in an asynchronous week. The material is not harder than a normal week. But nobody will notice on the twenty-seventh if you have not started, and the first moment it becomes visible is when you sit in the Week 5 room without an outline. Do it in the week it belongs to.
+
+That is Week 4. Three recordings, one page, one deadline. See you in Week 5.
+:::
+
+## Reverse-engineering II — the Introduction and the gap {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Next · Week 5 · 3 and 6 September
+:::
+
+::: {.lede}
+Bring the outline you submitted and the evidence matrix from Week 3. Week 5 is a working session.
+:::
+
+::: {.notes}
+Week 5. Reverse-engineering two. The Introduction and the gap.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+:::: {.vcenter}
+:::: {.columns}
+::: {.column width="58%"}
+::: {.kicker}
+Before you close the video · 45 seconds
+:::
+
+### How was this week?
+
+::: {.lede}
+Five questions. Anonymous — no name, no email, no login.
+:::
+
+::: {.flag}
+The fourth question is the one I actually use.
+:::
+
+::: {.statement-sub}
+An asynchronous week is the one I can see least. This form is the only signal I get.
+:::
+
+::: {.source}
+oxidized-challenge-ed9.notion.site
+:::
+:::
+
+::: {.column width="42%"}
+::: {.qr-card}
+![](assets/qr_feedback.png){fig-alt="QR code linking to the weekly feedback form"}
+:::
+
+::: {.flag .center}
+Scan it before you close the tab
+:::
+:::
+::::
+::::
+
+::: {.notes}
+One last thing, and it takes forty-five seconds.
+
+The same feedback form as every week. Anonymous, no name, no email, no login. Five questions, and the fourth asks what is still muddiest for you.
+
+I use that fourth answer. In a normal week I open the next session by answering the two most common ones. This week I want it more than usual, because an asynchronous week is the one I can see least. I cannot watch your faces while I explain the reverse outline, and if the procedure did not land, this form is the only way I will find out before Week 5.
+
+Scan the code, or the link is on the course page next to the recordings. Do it now, before you close the tab.
+:::
