@@ -1,0 +1,1320 @@
+---
+title: "Modeling III: blending, pooling and quality specifications"
+subtitle: "Week 4 · 2105623 Optimization of Chemical Processes"
+author: "Soorathep Kheawhom"
+date: 2026-08-31
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Three lectures {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+Outline
+:::
+
+::: {.numbered .n3}
+1. **Linear blending and quality specifications** — why a ratio constraint is an LP in disguise, and the three conditions under which that is exactly true
+2. **The pooling problem** — one shared tank, bilinear terms, and the end of every guarantee linear programming gave you
+3. **Local versus global in practice** — multistart, relaxation bounds, and when a plant engineer should distrust a converged answer
+:::
+
+::: {.notes}
+This is the crossover session: OpenSolver before the break, Python and ipopt after it. Say that at the start, because the second half is where the course changes character.
+:::
+
+## Session plan, 180 minutes {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [25 min]{.chip .c-rust} Opening: HW1 collected, the Week 3 answers, the ipopt clinic, today's objectives
+- [30 min]{.chip .c-teal} Lecture 1: blending as a linear model, quality specifications, the multiply-through rule
+- [18 min]{.chip .c-amber} Activity 1 — specification negotiation
+- [30 min]{.chip .c-teal} Lecture 2: the pooling problem, bilinear terms, p- and q-formulations, nonconvexity
+- [12 min]{.chip .c-mist} Break
+- [25 min]{.chip .c-amber} Activity 2 — blend it, in OpenSolver
+- [22 min]{.chip .c-teal} Lecture 3: local versus global, multistart, when to distrust a converged answer
+- [15 min]{.chip .c-amber} Activity 3 — the pooling trap
+- [3 min]{.chip .c-slate} Wrap-up, and what is due next week
+:::
+
+::: {.foot}
+::: {.note}
+**The designed crossover session:** OpenSolver before the break, Python and `ipopt` after it. Notebook `w04-modeling3-blending-pooling.ipynb`; workbook `w04-blending.xlsx`.
+:::
+:::
+
+::: {.notes}
+**[00:00 – 00:25] · OPENING — this is a longer opening than usual, and it is all necessary**
+
+**DO, in this order —**
+
+1. **Collect HW1.** Do it first, while everyone is still sitting down.
+2. **The ipopt clinic, 10 minutes.** Ask for hands: whose `SolverFactory('ipopt').available()` printed False? Fix them now, or pair them with someone whose works. Today's second half does not run without it. If someone reports section 7.2 of the Week 3 notebook failing with "ipopt is not available" — that is Pyomo falling back to MindtPy and is not a broken install; the Part F check is the authority.
+3. **The Week 3 answers, 8 minutes.** Hand out the written version, then put ONE thing on the board: "saturated, and worth nothing" against "narrow it and it costs 5". Let them argue for two minutes before you resolve it. That is the most transferable idea of the last fortnight and it sets up today exactly.
+4. **Today's objectives, 3 minutes.** Say the sentence: today a solver will report `optimal` twice, on the same model with the same data, and give two different answers.
+:::
+
+## By the end you should be able to {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Learning objectives
+:::
+
+::: {.numbered .n5}
+1. **Formulate a blending problem** with quality specifications as a linear program, and explain why the specification rows must be written in unnormalized form.
+2. **Apply the multiply-through rule**, state the three conditions under which it is exact, and recognise where each one fails.
+3. **Explain why a pool introduces bilinear terms**, and write both the p-formulation and the q-formulation.
+4. **Demonstrate that a local NLP solver** returns different answers from different starting points, and quantify the penalty of accepting a local solution.
+5. **Compare the McCormick relaxations** of the two formulations and report the bound each one delivers.
+:::
+
+::: {.foot}
+::: {.note}
+CLO 1 (formulation) and CLO 4 (implementation and solution in Pyomo). Reference: Rao Ch. 1 and Ch. 10; Edgar, Himmelblau and Lasdon Ch. 7; Haverly (1978); Tawarmalani and Sahinidis Ch. 9.
+:::
+:::
+
+::: {.notes}
+Objective 4 is the one they will remember for the rest of their careers. Objective 2 is the one that will save them the most time next month.
+:::
+
+## Blending: the most common linear program in the process industries
+
+::: {.kicker .c-teal}
+Where the money actually is
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.punch}
+Choose the least costly mixture of purchased component streams that still meets every quality specification of every finished product.
+:::
+
+::: {.dots}
+- **Gasoline and diesel blending** the classic case, and still the largest single LP application in refining.
+- **Feed blending** animal nutrition, cement raw meal.
+- **Electrolyte formulation** salt concentration, water content, conductivity, viscosity.
+- **Cathode precursor blending** metal ratios, impurity ceilings.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.flag .c-amber}
+**The one modeling assumption that makes it linear.** Properties blend **linearly on a mass basis**. Good for sulfur and density, acceptable for RVP if a blending index is used, and only rough for octane, where real blending is measurably nonlinear.
+:::
+
+::: {.spec}
+[The second, usually unstated, assumption]{.eyebrow}
+
+Every component reaches the blender as a **separate stream**, perfectly segregated up to the blend header.
+:::
+
+**Lecture 2 removes exactly this assumption, and the model stops being linear.**
+:::
+::::
+
+::: {.notes}
+**SAY —** "Two assumptions. The first one everybody states. The second one nobody states, and it is the one that breaks."
+:::
+
+## The instance used all session
+
+::: {.kicker .c-teal}
+Five component streams, two finished grades
+:::
+
+:::: {.columns}
+::: {.column width="56%"}
+| Component | RON | RVP kPa | S ppm | cost USD/t | avail t |
+|:---|---:|---:|---:|---:|---:|
+| Reformate | 98.0 | 3.0 | 110 | 760 | 3200 |
+| FCC naphtha | 92.0 | 6.5 | 380 | 730 | 4000 |
+| Alkylate | 95.0 | 4.5 | 15 | 805 | 2000 |
+| Butane | 93.0 | 62.0 | 5 | 510 | 900 |
+| Straight-run naphtha | 68.0 | 9.0 | 520 | 695 | 2600 |
+:::
+
+::: {.column width="42%"}
+| | Regular | Premium |
+|:---|---:|---:|
+| RON minimum | 91.0 | 95.0 |
+| RVP maximum, kPa | 9.0 | 8.5 |
+| Sulfur maximum, ppm | 290 | 190 |
+| Price, USD/t | 742 | 806 |
+| Minimum volume, t | 4000 | 2500 |
+| Maximum volume, t | 7000 | 5000 |
+
+::: {.note}
+The same instance appears in the notebook (Section 1) and in the solution workbook. **The two routes must agree to the cent.**
+:::
+:::
+::::
+
+::: {.notes}
+Leave this slide up while you write the model on the next one. They will look back at it a dozen times today.
+:::
+
+## The linear blending model {.smaller}
+
+::: {.kicker .c-teal}
+Nine constraint families, and one of them is doing something unusual
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+::: {.spec}
+[Decision variables]{.eyebrow}
+
+*x*<sub>*cg*</sub> ≥ 0 tonnes of component *c* sent to grade *g* &nbsp;·&nbsp; *y*<sub>*g*</sub> ≥ 0 tonnes of grade *g* produced
+
+[The model]{.eyebrow}
+
+**max** &nbsp; Σ<sub>*g*</sub> price<sub>*g*</sub> *y*<sub>*g*</sub> − Σ<sub>*c*</sub> Σ<sub>*g*</sub> cost<sub>*c*</sub> *x*<sub>*cg*</sub>
+
+**s.t.** &nbsp; Σ<sub>*c*</sub> *x*<sub>*cg*</sub> = *y*<sub>*g*</sub>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub>*g*</sub> *x*<sub>*cg*</sub> ≤ avail<sub>*c*</sub>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *d*<sub>*g*</sub><sup>min</sup> ≤ *y*<sub>*g*</sub> ≤ *d*<sub>*g*</sub><sup>max</sup>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub>*c*</sub> ron<sub>*c*</sub> *x*<sub>*cg*</sub> ≥ ron<sub>*g*</sub><sup>min</sup> *y*<sub>*g*</sub>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub>*c*</sub> rvp<sub>*c*</sub> *x*<sub>*cg*</sub> ≤ rvp<sub>*g*</sub><sup>max</sup> *y*<sub>*g*</sub>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub>*c*</sub> sul<sub>*c*</sub> *x*<sub>*cg*</sub> ≤ sul<sub>*g*</sub><sup>max</sup> *y*<sub>*g*</sub>
+:::
+:::
+
+::: {.column width="44%"}
+::: {.dots}
+- **objective** revenue minus component purchase cost, in USD
+- **grade material balance** what goes in comes out
+- **component availability** what is on site
+- **contract volume window** the commercial envelope
+- **octane floor, RVP ceiling, sulfur ceiling** the three specifications, per grade
+:::
+
+::: {.flag .c-rust}
+**Look at the last three rows.** Every specification row has the decision variable *y*<sub>*g*</sub> **on its right-hand side**. That is not an accident, and the next slide explains it.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Point at the *y* on the right-hand side and pause. Someone will ask. If nobody does, ask them: "what is wrong with that row, from a spreadsheet point of view?"
+:::
+
+## Quality specifications are ratios, and the ratio is removed by hand {.smaller}
+
+::: {.kicker .c-amber}
+The single manipulation that makes blending an LP
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.spec}
+[The physical requirement]{.eyebrow}
+
+( Σ<sub>*c*</sub> ron<sub>*c*</sub> *x*<sub>*cg*</sub> ) ⁄ ( Σ<sub>*c*</sub> *x*<sub>*cg*</sub> ) &nbsp;≥&nbsp; ron<sub>*g*</sub><sup>min</sup>
+
+is a **ratio of decision variables**, and therefore nonlinear.
+:::
+
+::: {.spec}
+[The rule]{.eyebrow}
+
+Multiply through by the denominator, which is *y*<sub>*g*</sub> and is non-negative:
+
+Σ<sub>*c*</sub> ron<sub>*c*</sub> *x*<sub>*cg*</sub> − ron<sub>*g*</sub><sup>min</sup> *y*<sub>*g*</sub> ≥ 0
+
+or equivalently &nbsp; Σ<sub>*c*</sub> ( ron<sub>*c*</sub> − ron<sub>*g*</sub><sup>min</sup> ) *x*<sub>*cg*</sub> ≥ 0
+:::
+:::
+
+::: {.column width="50%"}
+::: {.punch}
+The linear form is not a linearization. It is the same feasible set, intersected with *y*<sub>*g*</sub> > 0.
+:::
+
+Solving the ratio form with `ipopt` returns the same optimum to within solver tolerance — while the constraint reports a polynomial degree of `None` instead of `1`.
+
+::: {.flag .c-amber}
+**On a spreadsheet.** The specification RHS cell contains a *changing cell*: `=C11*C26`. That is what "multiply the ratio through by its denominator" looks like on a sheet, and the plain RHS-column convention does not anticipate it.
+:::
+:::
+::::
+
+::: {.notes}
+**SAY —** "This one manipulation is why an entire industry runs its blending on linear programs instead of nonlinear ones. It is worth ten minutes of your attention."
+:::
+
+## Three conditions, and each of them fails somewhere {.smaller}
+
+::: {.kicker .c-rust}
+When the rule is exact, and when it quietly is not
+:::
+
+::: {.spec}
+Let *a*, *b* be data vectors and *x* the decision vector. Then (*a*ᵀ*x*) ⁄ (*b*ᵀ*x*) ≤ β is equivalent to *a*ᵀ*x* − β *b*ᵀ*x* ≤ 0 **provided that *b*ᵀ*x* > 0 at every point of interest.**
+:::
+
+::: {.numbered .n3}
+1. **Sign.** Multiplying an inequality by a negative number reverses it. The rule needs *b*ᵀ*x* > 0, not merely *b*ᵀ*x* ≠ 0. In blending the denominator is a total mass and the contract window forces it strictly positive.
+2. **Zero denominator.** If *b*ᵀ*x* = 0 is attainable the ratio is undefined, while the multiplied-through form reads 0 ≤ 0 and is satisfied trivially. The linear model is then a **strict relaxation** — it permits a blend of size zero whose quality is meaningless. A grade that may be shut off honestly needs a disjunction, and a binary variable: Week 5.
+3. **Same balance.** The denominator must be a linear function of the **same variables that appear in the numerator**. When the denominator belongs to a different balance, as in a pool, the product of two decision variables survives and the model is genuinely nonlinear.
+:::
+
+::: {.flag .c-amber}
+**The practical test, one question.** Is the denominator the same aggregate that the numerator is normalised by, in the same balance? If yes, the constraint is linear in disguise. If no, expect bilinear terms.
+:::
+
+::: {.notes}
+Condition 2 is the one that bites in industry: a model that is allowed to produce zero of a grade will happily do so and report meaningless quality. Condition 3 is the whole of the rest of today.
+:::
+
+## Translation table: worth copying into your notes {.smaller}
+
+::: {.kicker .c-teal}
+Reusable, and the last row is the rest of this session
+:::
+
+| Engineering requirement | Natural form | Linear equivalent | Condition |
+|:---|:---|:---|:---|
+| average property at most β | Σ*q*<sub>*c*</sub>*x*<sub>*c*</sub> ⁄ Σ*x*<sub>*c*</sub> ≤ β | Σ(*q*<sub>*c*</sub>−β)*x*<sub>*c*</sub> ≤ 0 | Σ*x*<sub>*c*</sub> > 0 |
+| average property at least β | Σ*q*<sub>*c*</sub>*x*<sub>*c*</sub> ⁄ Σ*x*<sub>*c*</sub> ≥ β | Σ(*q*<sub>*c*</sub>−β)*x*<sub>*c*</sub> ≥ 0 | Σ*x*<sub>*c*</sub> > 0 |
+| recycle ratio at most *r* | *R* ⁄ (*R*+*F*) ≤ *r* | (1−*r*)*R* − *rF* ≤ 0 | *R*+*F* > 0 |
+| conversion at least η | (*F*<sub>in</sub>−*F*<sub>out</sub>) ⁄ *F*<sub>in</sub> ≥ η | *F*<sub>out</sub> ≤ (1−η)*F*<sub>in</sub> | *F*<sub>in</sub> > 0 |
+| fixed split fraction θ | *S*₁ ⁄ (*S*₁+*S*₂) = θ | (1−θ)*S*₁ − θ*S*₂ = 0 | *S*₁+*S*₂ > 0 |
+| purity of a mixed stream at least π | *m*<sub>key</sub> ⁄ *m*<sub>tot</sub> ≥ π | *m*<sub>key</sub> − π *m*<sub>tot</sub> ≥ 0 | *m*<sub>tot</sub> > 0 |
+| ratio objective | max (*c*ᵀ*x*+*c*₀) ⁄ (*d*ᵀ*x*+*d*₀) | Charnes–Cooper LP | *d*ᵀ*x*+*d*₀ > 0 |
+| **property of a stream leaving a pool** | *p* = Σ*q*<sub>*i*</sub>*F*<sub>*i*</sub> ⁄ Σ*P*<sub>*g*</sub>, and *p* multiplies *P*<sub>*g*</sub> | **no linear equivalent** | denominator is in another balance |
+
+::: {.notes}
+Tell them to photograph this slide. Seven of the eight rows will save them an argument with a solver at some point; the eighth is why the course continues past today.
+:::
+
+## A ratio in the objective is a different objective
+
+::: {.kicker .c-rust}
+Charnes–Cooper, and a plant that deliberately makes less
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[Charnes–Cooper]{.eyebrow}
+
+Maximising (*c*ᵀ*x*+*c*₀) ⁄ (*d*ᵀ*x*+*d*₀) over {*Ax* ≤ *b*, *x* ≥ 0} with *d*ᵀ*x*+*d*₀ > 0 is a **linear-fractional program**. Substituting
+
+*t* = 1 ⁄ (*d*ᵀ*x*+*d*₀) > 0, &nbsp;&nbsp; *x*′ = *t x*
+
+gives the equivalent LP &nbsp; max *c*ᵀ*x*′ + *c*₀*t*
+
+s.t. *Ax*′ − *bt* ≤ 0, &nbsp; *d*ᵀ*x*′ + *d*₀*t* = 1, &nbsp; *x*′, *t* ≥ 0
+
+and *x* = *x*′⁄*t* recovers the original solution.
+:::
+:::
+
+::: {.column width="48%"}
+[On this instance]{.eyebrow}
+
+| | |
+|:---|---:|
+| Total margin (Section 1 LP) | **413,439.75** USD |
+| Margin per tonne (CC LP) | **45.8708** USD/t |
+| its plan | 4,000.00 t Regular |
+| | 5,000.00 t Premium |
+| its total margin | 412,837.10 USD |
+| **margin given up** | **602.65** USD |
+
+::: {.flag .c-rust}
+**Read this carefully.** The plant that maximises the *ratio* deliberately declines the last 80.6 t of Regular, because that increment earns less than the current average. Which objective is correct is a **business** question, not a mathematical one — but the two must never be confused.
+:::
+:::
+::::
+
+::: {.notes}
+**DO —** Ask which objective the plant manager is paid on, and which one the CFO looks at. There is no right answer and that is the point.
+:::
+
+## The linear optimum, and why binding specifications are the real output {.smaller}
+
+::: {.kicker .c-amber}
+Quality above specification is quality given away
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.punch}
+Optimum: **413,439.75 USD**
+:::
+
+| Component, t | Regular | Premium | slack |
+|:---|---:|---:|---:|
+| Reformate | 107.63 | 3092.37 | 0 |
+| FCC naphtha | 2623.63 | 1376.37 | 0 |
+| Alkylate | 833.01 | 0 | 1166.99 |
+| Butane | 206.67 | 367.83 | 325.50 |
+| Straight-run naphtha | 309.67 | 163.42 | 2126.91 |
+| **Volume *y*<sub>*g*</sub>, t** | **4080.60** | **5000.00** | |
+
+::: {.note}
+**This recipe is one of several.** The optimum is degenerate: your solver will very likely report different numbers in this table at exactly the same margin. Compare objectives, not recipes.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.flag .c-teal}
+**All six quality rows bind exactly.** Regular sits at RON 91.00, RVP 9.00 kPa, 290.00 ppm sulfur; Premium at RON 95.00, RVP 8.50, 190.00 ppm.
+:::
+
+That is normal, and it is the point of a blending model: **quality above specification is quality given away**, so the optimizer gives away nothing.
+
+::: {.spec}
+[Marginal values]{.eyebrow}
+
+Availability duals: reformate **41.9412**, FCC naphtha **13.3609** USD/t.
+
+Alkylate, butane and straight-run have slack and a dual of **zero**.
+:::
+:::
+::::
+
+::: {.notes}
+The degeneracy note matters: in Activity 2 they will get a different recipe from CBC and think their sheet is broken. Say it now and say it again at 1:55.
+:::
+
+## Activity 1 · specification negotiation {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+18 min · two halves of the room · paper
+:::
+
+::: {.note}
+The refinery blends the five component streams of slide 6 into Regular and Premium. Component costs, availabilities and properties as tabulated. Regular sells at 742, Premium at 806 USD/t. Contractual volumes: Regular 4,000–7,000 t, Premium 2,500–5,000 t. **The plan must cover one month.**
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+[Brief for the **Production** half]{.eyebrow}
+
+Your objective is **minimum cost**, that is maximum blending margin. You are accountable for meeting the contracted volumes from the components actually on site, and for not buying more of the expensive streams than you must.
+
+Write down the constraint set you would insist the model contain. **Anything you leave out, you are agreeing to give away.**
+:::
+
+::: {.column width="49%"}
+[Brief for the **Quality Control** half]{.eyebrow}
+
+The product must meet three named specifications per grade. Regular: RON ≥ 91.0, RVP ≤ 9.0 kPa, sulfur ≤ 290 ppm. Premium: RON ≥ 95.0, RVP ≤ 8.5, sulfur ≤ 190 ppm.
+
+The **octane floor is a customer contract term**: a delivery below it is a rejected cargo. The RVP and sulfur ceilings are **internal laboratory targets**, set inside the legal limits with a deliberate margin.
+:::
+::::
+
+::: {.foot}
+::: {.note}
+**Two halves, working in pairs within each half.** 10 min separately, then compare and agree one constraint set, **explicitly labelling each constraint hard or soft**. Hand back the agreed list, one sheet per side, with H or S against every row.
+:::
+:::
+
+::: {.notes}
+**[00:55 – 01:13] · ACTIVITY 1**
+
+**DO —**
+
+- Do not let either half see the other's brief before the 10-minute mark.
+- The argument you want is over the RVP and sulfur ceilings. QC will call them hard. Production will not. Neither is wrong, and the answer slide prices the disagreement.
+- If a pair asks whether non-negativity is hard or soft, that is a good sign; the answer is hard, and it is physics, not policy.
+:::
+
+## Activity 1 · [ANSWER] · hard and soft is a modeling decision {.smaller}
+
+::: {.kicker .c-amber}
+Nothing in the physics distinguishes the octane floor from the sulfur ceiling
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+| Constraint | H/S |
+|:---|:---|
+| grade material balance | H (physics) |
+| component availability | H (physics) |
+| contract volume window | H (contract) |
+| octane floor | H (contract) |
+| vapour pressure ceiling | **S** (internal target) |
+| sulfur ceiling | **S** (internal target) |
+| non-negativity | H |
+
+::: {.spec}
+[A soft constraint belongs in the objective]{.eyebrow}
+
+Σ<sub>*c*</sub> sul<sub>*c*</sub>*x*<sub>*cg*</sub> − sul<sub>*g*</sub><sup>max</sup>*y*<sub>*g*</sub> ≤ *v*<sub>*g*</sub>, &nbsp; *v*<sub>*g*</sub> ≥ 0, &nbsp; objective − π<sub>*g*</sub>*v*<sub>*g*</sub>
+:::
+:::
+
+::: {.column width="52%"}
+::: {.punch}
+What distinguishes them is who wrote them down, and what happens when they are missed.
+:::
+
+[What the numbers say once all three are hard]{.eyebrow}
+
+Margin **413,439.75** USD, all six quality rows binding. The value of relaxing each row by one unit — the LP dual of the multiplied-through row, **identical for both grades** — is
+
+| row | USD |
+|:---|---:|
+| octane | 0.69276 |
+| **vapour pressure** | **5.12983** |
+| sulfur | 0.13507 |
+
+::: {.flag .c-rust}
+So the internal **RVP target is by far the most expensive of the three to hold** — and it is precisely the one nobody in the room called a contract term.
+:::
+:::
+::::
+
+::: {.notes}
+The penalty π is the price of the violation, and choosing it is an engineering judgement that must be **written down, not hidden**. That sentence is the mark of the activity.
+
+The RVP number is the punchline. Let it land before you move on.
+:::
+
+## Real plants do not have that many tanks
+
+::: {.kicker .c-rust}
+One physical fact destroys linearity
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+[Segregated: **linear**]{.eyebrow}
+
+<svg viewBox="0 0 420 220" style="width:100%;max-width:460px" role="img" aria-label="Three feed streams A, B and C each connect directly to both products X and Y, so every product sees the individual feed qualities.">
+<line x1="86" y1="40" x2="316" y2="70" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="86" y1="40" x2="316" y2="150" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="86" y1="105" x2="316" y2="74" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="86" y1="105" x2="316" y2="154" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="86" y1="170" x2="316" y2="78" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="86" y1="170" x2="316" y2="158" stroke="#0F6E6B" stroke-width="2.2"/>
+<circle cx="64" cy="40" r="20" fill="#0F6E6B"/><text x="64" y="46" font-size="15" fill="#fff" text-anchor="middle">A</text>
+<circle cx="64" cy="105" r="20" fill="#0F6E6B"/><text x="64" y="111" font-size="15" fill="#fff" text-anchor="middle">B</text>
+<circle cx="64" cy="170" r="20" fill="#0F6E6B"/><text x="64" y="176" font-size="15" fill="#fff" text-anchor="middle">C</text>
+<circle cx="338" cy="74" r="20" fill="#E29A2D"/><text x="338" y="80" font-size="15" fill="#1C242B" text-anchor="middle">X</text>
+<circle cx="338" cy="154" r="20" fill="#E29A2D"/><text x="338" y="160" font-size="15" fill="#1C242B" text-anchor="middle">Y</text>
+<text x="210" y="208" font-size="13" fill="#66727C" text-anchor="middle">each product sees the individual feed qualities</text>
+</svg>
+
+Quality delivered to X is Σ<sub>*i*</sub> *q*<sub>*i*</sub>*x*<sub>*iX*</sub>, a **linear** function. Multiply the ratio through by Σ<sub>*i*</sub> *x*<sub>*iX*</sub> and the model is an LP.
+:::
+
+::: {.column width="50%"}
+[Pooled: **bilinear**]{.eyebrow}
+
+<svg viewBox="0 0 440 220" style="width:100%;max-width:470px" role="img" aria-label="Feeds A and B run into a common pool tank whose quality p is itself a variable; the pool then feeds both products X and Y, while feed C bypasses the pool. The two arcs leaving the pool carry the product of the pool quality and the flow.">
+<line x1="82" y1="46" x2="176" y2="86" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="82" y1="110" x2="176" y2="96" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="266" y1="82" x2="336" y2="62" stroke="#BE654C" stroke-width="3.4"/>
+<line x1="266" y1="100" x2="336" y2="152" stroke="#BE654C" stroke-width="3.4"/>
+<line x1="82" y1="176" x2="336" y2="72" stroke="#0F6E6B" stroke-width="2.2"/>
+<line x1="82" y1="176" x2="336" y2="162" stroke="#0F6E6B" stroke-width="2.2"/>
+<circle cx="60" cy="46" r="19" fill="#0F6E6B"/><text x="60" y="52" font-size="14" fill="#fff" text-anchor="middle">A</text>
+<circle cx="60" cy="110" r="19" fill="#0F6E6B"/><text x="60" y="116" font-size="14" fill="#fff" text-anchor="middle">B</text>
+<circle cx="60" cy="176" r="19" fill="#0F6E6B"/><text x="60" y="182" font-size="14" fill="#fff" text-anchor="middle">C</text>
+<rect x="176" y="62" width="90" height="58" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.6"/>
+<text x="221" y="86" font-size="14" fill="#1C242B" text-anchor="middle">POOL</text>
+<text x="221" y="106" font-size="13" fill="#BE654C" text-anchor="middle">quality p</text>
+<circle cx="358" cy="62" r="19" fill="#E29A2D"/><text x="358" y="68" font-size="14" fill="#1C242B" text-anchor="middle">X</text>
+<circle cx="358" cy="158" r="19" fill="#E29A2D"/><text x="358" y="164" font-size="14" fill="#1C242B" text-anchor="middle">Y</text>
+<text x="300" y="46" font-size="12" fill="#BE654C" text-anchor="middle">p·P<tspan baseline-shift="sub" font-size="9">X</tspan></text>
+<text x="316" y="196" font-size="12" fill="#BE654C" text-anchor="middle">p·P<tspan baseline-shift="sub" font-size="9">Y</tspan></text>
+<text x="220" y="212" font-size="13" fill="#66727C" text-anchor="middle">rust arcs carry variable × variable</text>
+</svg>
+
+Everything drawn from the tank has the **same composition *p***, whatever it is fed by. *p* is a **decision**, and it multiplies flows.
+:::
+::::
+
+::: {.flag .c-rust}
+Streams are collected in a common pool. The pool quality satisfies *p* Σ<sub>*g*</sub>*P*<sub>*g*</sub> = Σ<sub>*i*</sub>*q*<sub>*i*</sub>*F*<sub>*i*</sub>, and the quality delivered to product *g* is *p P*<sub>*g*</sub>. **Both expressions contain the product of two decision variables.**
+:::
+
+::: {.notes}
+**SAY —** "The left picture is a refinery with unlimited tankage. The right picture is every refinery that has ever existed."
+:::
+
+## Why multiplying through does not rescue it
+
+::: {.kicker .c-rust}
+Condition 3 of slide 9, failing
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[The pool quality is a ratio]{.eyebrow}
+
+*p* = Σ<sub>*i*</sub> *q*<sub>*i*</sub>*F*<sub>*i*</sub> ⁄ Σ<sub>*g*</sub> *P*<sub>*g*</sub>
+:::
+
+Its denominator is the **total pool throughput**. But the quantity that has to be constrained is the pool's contribution to the balance of a **different** stream, namely product *g*:
+
+::: {.spec}
+*p P*<sub>*g*</sub> + *q*<sub>*C*</sub>*C*<sub>*g*</sub> ≤ spec<sub>*g*</sub> ( *P*<sub>*g*</sub> + *C*<sub>*g*</sub> )
+:::
+
+Multiplying by Σ<sub>*g*</sub>*P*<sub>*g*</sub> clears the ratio and **leaves *p P*<sub>*g*</sub> untouched**.
+:::
+
+::: {.column width="48%"}
+::: {.punch}
+The feasible set is no longer convex.
+:::
+
+A nonconvex NLP with bilinear terms, and every guarantee that came with linear programming is gone:
+
+::: {.dots}
+- **no vertex theorem** the optimum need not be at a corner
+- **no duality certificate** nothing proves the point is best
+- **no reason** a converged point is the best one
+:::
+
+::: {.flag .c-amber}
+**Where this bites in practice.** Refinery gasoline pools, crude tank farms, LPG caverns, hydrogen headers, and any electrolyte make-up tank feeding more than one cell chemistry.
+:::
+:::
+::::
+
+::: {.notes}
+The last line is the one that makes it their problem rather than a refinery's problem. Say it slowly.
+:::
+
+## Haverly's instance, 1978 {.smaller}
+
+::: {.kicker .c-teal}
+Seven variables, three bilinear rows, and it has defeated people for fifty years
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+| Stream | route | S % | USD |
+|:---|:---|---:|---:|
+| Feed A | into the pool | 3.0 | 6 |
+| Feed B | into the pool | 1.0 | 16 |
+| Feed C | bypasses the pool | 2.0 | 10 |
+| Product X | ≤ 2.5 % S | | 9 |
+| Product Y | ≤ 1.5 % S | | 15 |
+
+::: {.note}
+Feeds are costs, products are prices. Demand limits X ≤ 100, Y ≤ 200. **Seven variables:** *A*, *B* into the pool; *P*<sub>*X*</sub>, *P*<sub>*Y*</sub> out; *C*<sub>*X*</sub>, *C*<sub>*Y*</sub> direct; and the pool sulfur *p*. The bounds 1 ≤ *p* ≤ 3 are physical.
+:::
+:::
+
+::: {.column width="52%"}
+::: {.spec}
+[The p-formulation]{.eyebrow}
+
+**max** 9(*P*<sub>*X*</sub>+*C*<sub>*X*</sub>) + 15(*P*<sub>*Y*</sub>+*C*<sub>*Y*</sub>) − 6*A* − 16*B* − 10(*C*<sub>*X*</sub>+*C*<sub>*Y*</sub>)
+
+**s.t.** &nbsp; *A* + *B* = *P*<sub>*X*</sub> + *P*<sub>*Y*</sub>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3*A* + *B* = **p** (*P*<sub>*X*</sub>+*P*<sub>*Y*</sub>)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **p** *P*<sub>*X*</sub> + 2*C*<sub>*X*</sub> ≤ 2.5(*P*<sub>*X*</sub>+*C*<sub>*X*</sub>)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **p** *P*<sub>*Y*</sub> + 2*C*<sub>*Y*</sub> ≤ 1.5(*P*<sub>*Y*</sub>+*C*<sub>*Y*</sub>)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *P*<sub>*X*</sub>+*C*<sub>*X*</sub> ≤ 100, &nbsp; *P*<sub>*Y*</sub>+*C*<sub>*Y*</sub> ≤ 200
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 ≤ *p* ≤ 3, &nbsp; all flows ≥ 0
+:::
+
+::: {.note}
+**Three of these rows are bilinear**, and each contains a product of two decision variables.
+:::
+:::
+::::
+
+::: {.notes}
+Seven variables. Write that on the board. Everything that goes wrong today goes wrong on a problem you could solve by hand if you knew which hand to use.
+:::
+
+## The q-formulation: carry proportions instead of quality {.smaller}
+
+::: {.kicker .c-teal}
+Same feasible set, same global optimum, different relaxation
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.spec}
+[Change of variables]{.eyebrow}
+
+Let *q*<sub>*i*</sub> be the fraction of the pool inlet contributed by feed *i*, so Σ<sub>*i*</sub>*q*<sub>*i*</sub> = 1 and 0 ≤ *q*<sub>*i*</sub> ≤ 1. Then *F*<sub>*i*</sub> = *q*<sub>*i*</sub> Σ<sub>*g*</sub>*P*<sub>*g*</sub>, and the amount of feed *i* reaching product *g* is *q*<sub>*i*</sub>*P*<sub>*g*</sub>.
+
+**max** 9(*P*<sub>*X*</sub>+*C*<sub>*X*</sub>) + 15(*P*<sub>*Y*</sub>+*C*<sub>*Y*</sub>) − 6*q*<sub>*A*</sub>(*P*<sub>*X*</sub>+*P*<sub>*Y*</sub>) − 16*q*<sub>*B*</sub>(*P*<sub>*X*</sub>+*P*<sub>*Y*</sub>) − 10(*C*<sub>*X*</sub>+*C*<sub>*Y*</sub>)
+
+**s.t.** &nbsp; *q*<sub>*A*</sub> + *q*<sub>*B*</sub> = 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3*q*<sub>*A*</sub>+*q*<sub>*B*</sub>)*P*<sub>*X*</sub> + 2*C*<sub>*X*</sub> ≤ 2.5(*P*<sub>*X*</sub>+*C*<sub>*X*</sub>)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3*q*<sub>*A*</sub>+*q*<sub>*B*</sub>)*P*<sub>*Y*</sub> + 2*C*<sub>*Y*</sub> ≤ 1.5(*P*<sub>*Y*</sub>+*C*<sub>*Y*</sub>)
+:::
+:::
+
+::: {.column width="46%"}
+::: {.dots}
+- **Every bilinear term is now** a product of a bounded proportion and a flow.
+- **The pool mass balance disappears** it is implied by the proportions summing to one.
+- **Same feasible set, same global optimum** since the pool quality is recovered as the proportion-weighted sulfur.
+:::
+
+::: {.flag .c-rust}
+**But they are not the same relaxation.** And that, not the algebra, is the whole reason for preferring one over the other. **Reparametrizing a nonconvex problem does not make it convex.**
+:::
+:::
+::::
+
+::: {.notes}
+If someone asks why anyone would bother: the answer is on slide 30, and it is a factor of two on the bound.
+:::
+
+## Nonconvexity: what a solver can and cannot promise you
+
+::: {.kicker .c-rust}
+"Optimal" is a statement about a point, not about the problem
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.punch}
+A termination status of `optimal` from a local NLP solver is a statement about the KKT conditions at the point it stopped.
+:::
+
+It is not, and never was, a statement about global optimality.
+
+::: {.dots}
+- **Two runs of the same solver** on the same model, differing only in the starting values, can converge to two different objective values, both reported optimal.
+- **There is no gap, no bound** and no warning in the output to tell them apart.
+- **A spreadsheet is worse, not better** Solver silently abandons Simplex LP for GRG Nonlinear and reports "Solver found a solution. All constraints and optimality conditions are satisfied." That sentence is true and misleading.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.flag .c-teal}
+**What a global solver adds.** A spatial branch-and-bound code (`couenne`, BARON, ANTIGONE) maintains a convex relaxation of the nonconvex problem, so it can report an incumbent **and a bound**, and therefore a **gap**. That is the only kind of guarantee available here.
+:::
+
+[The discipline this forces]{.eyebrow}
+
+::: {.numbered .n4}
+1. Never report a single local solve as the optimum.
+2. Always report the starting point with the answer.
+3. Run a multistart.
+4. Report the relaxation bound alongside the incumbent, so the reader knows how much room is left.
+:::
+:::
+::::
+
+::: {.notes}
+Point 2 is the one they will resist. Make it concrete: a result without its starting point is not reproducible, and an irreproducible number is not a result.
+:::
+
+## McCormick envelopes: how a bilinear term is relaxed {.smaller}
+
+::: {.kicker .c-teal}
+Turn the nonconvex problem into an LP whose optimum is a valid bound
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[The construction]{.eyebrow}
+
+Replace a product *w* = *uv* with *u* ∈ [*u*<sup>L</sup>, *u*<sup>U</sup>], *v* ∈ [*v*<sup>L</sup>, *v*<sup>U</sup>] by a new variable *w* and **four linear inequalities**:
+
+*w* ≥ *u*<sup>L</sup>*v* + *v*<sup>L</sup>*u* − *u*<sup>L</sup>*v*<sup>L</sup>
+
+*w* ≥ *u*<sup>U</sup>*v* + *v*<sup>U</sup>*u* − *u*<sup>U</sup>*v*<sup>U</sup>
+
+*w* ≤ *u*<sup>U</sup>*v* + *v*<sup>L</sup>*u* − *u*<sup>U</sup>*v*<sup>L</sup>
+
+*w* ≤ *u*<sup>L</sup>*v* + *v*<sup>U</sup>*u* − *u*<sup>L</sup>*v*<sup>U</sup>
+:::
+
+This is exactly the **convex hull** of the graph of *uv* over the box, so it is the tightest possible relaxation of one product in isolation.
+:::
+
+::: {.column width="48%"}
+::: {.spec}
+[Reformulation–linearization (RLT)]{.eyebrow}
+
+In the q-formulation the bilinear variables *v*<sub>*ig*</sub> = *q*<sub>*i*</sub>*P*<sub>*g*</sub> inherit the identity Σ<sub>*i*</sub>*q*<sub>*i*</sub> = 1. Multiplying it by *P*<sub>*g*</sub> and by the pool throughput limit gives
+
+Σ<sub>*i*</sub> *v*<sub>*ig*</sub> = *P*<sub>*g*</sub> &nbsp; ∀*g*, &nbsp;&nbsp; Σ<sub>*g*</sub> *v*<sub>*ig*</sub> ≤ Cap · *q*<sub>*i*</sub> &nbsp; ∀*i*
+:::
+
+These rows are **redundant for the nonlinear model but not for its relaxation**.
+
+::: {.flag .c-amber}
+**Why this is the practical lever.** The bound is what a spatial branch-and-bound tree spends its time closing, so **choosing the formulation with the tighter relaxation is worth more than any solver setting**.
+:::
+:::
+::::
+
+::: {.notes}
+Four inequalities per product. That is the entire trick, and it is worth more than every tuning parameter in the solver's manual.
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+Break
+:::
+
+::: {.lede}
+12 minutes.
+:::
+
+::: {.foot}
+::: {.note}
+Next: open **w04-blending.xlsx** with OpenSolver loaded, **and check that `ipopt` is on your path.** Activity 2 starts on the spreadsheet. Activity 3, after Lecture 3, is the reason this course leaves the spreadsheet behind.
+:::
+:::
+
+::: {.notes}
+Use the break to finish any ipopt installs that survived the opening clinic. Activity 3 does not work without it.
+:::
+
+## Activity 2 · blend it, in OpenSolver {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+25 min · computer · individual
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+[Part 1 — reproduce the optimum and read off what binds]{.eyebrow}
+
+Open **w04-blending.xlsx**, sheet **Model**. Complete the yellow cells: the availability VALUE column `E19:E23`, the constraint VALUE column `E33:E44` — **every quality row in multiplied-through form, so its RHS is 0** — and the objective `C29`.
+
+OpenSolver with **CBC**: objective `$C$29` set to **Max**, changing cells `$C$19:$D$24`, constraints as listed on the Readme sheet, and tick **Get sensitivity report**.
+
+::: {.punch}
+The objective cell must read **413,439.75 USD**.
+:::
+
+Then write down, from the check block in rows 46–51, **which specifications bind**.
+:::
+
+::: {.column width="48%"}
+[Part 2 — predict before you solve]{.eyebrow}
+
+Change one specification by a small amount — for example tighten the Regular sulfur ceiling from **290 to 250 ppm**.
+
+**Before re-solving**, write on paper: will the margin rise or fall, and roughly by how much? Use the sensitivity report from Part 1 to justify the number. Then re-solve and compare.
+
+::: {.flag .c-rust}
+**Your recipe will probably not match slide 12**, and that is not an error. The optimum is degenerate: several recipes achieve the same margin. **Check the objective and the binding set, not the recipe.**
+:::
+
+::: {.note}
+**Individual.** Hand back nothing — the instructor walks the room. Anyone whose objective differs has a formula error.
+:::
+:::
+::::
+
+::: {.notes}
+**[01:55 – 02:20] · ACTIVITY 2**
+
+**DO —**
+
+- Say the degeneracy warning out loud before they start. Last cohort lost ten minutes to it.
+- The prediction in Part 2 is the graded idea. Walk the room and ask to see the number on paper *before* they re-solve.
+- The missing arithmetic, if anyone is stuck: the sulfur dual is 0.13507 and the Regular volume is 4,080.6 t, so 40 ppm × 4,080.6 × 0.13507 ≈ 22,047 USD.
+:::
+
+## Activity 2 · [ANSWER] · the binding set is the interesting output {.smaller}
+
+::: {.kicker .c-amber}
+And the linear prediction is not a bound in the direction you expect
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+[Part 1]{.eyebrow}
+
+Objective `C29` = **413,439.75 USD**, matching the Pyomo model to the cent (413,439.749277).
+
+**Binding:** all six quality rows; the Premium volume ceiling at 5,000 t; and the availability rows for reformate (3,200 t) and FCC naphtha (4,000 t).
+
+**Not binding:** the Regular volume window — it settles at 4,080.60 t, above its floor and below its ceiling — and the availability of alkylate, butane and straight-run naphtha.
+
+::: {.note}
+The optimum is **degenerate**: several different recipes achieve the same margin, and a different solver reports a different one. **The binding set and the objective are stable; the recipe is not.**
+:::
+:::
+
+::: {.column width="50%"}
+[Part 2 — the prediction rule, and its direction]{.eyebrow}
+
+Predicted change = (dual of the row) × (change in the row). Tightening a ceiling that binds can only **reduce** the margin, so the sign is known before any arithmetic.
+
+| Regular S ceiling | actual | linear prediction |
+|:---|---:|---:|
+| 290 → 250 ppm | **−27,445** | −22,047 |
+| 290 → 200 ppm | **−63,231** | −49,606 |
+| 290 → 150 ppm | **−110,056** | −77,164 |
+
+::: {.flag .c-rust}
+**The linear prediction under-states the loss, and always will.** The LP value function is *concave* in the right-hand side for a maximisation, so the tangent lies above it. Push the specification far enough and a different set of constraints binds, the dual rises, and the real cost runs away from the prediction.
+:::
+:::
+::::
+
+::: {.notes}
+**This is the correction worth making out loud.** The intuitive guess is that a linear extrapolation over-states the damage. It does the opposite. Concavity of the value function guarantees the true loss is at least the predicted loss, and here it is 25 to 43 percent worse.
+
+Notebook Exercise 2 makes exactly this comparison at 290 → 150 ppm.
+:::
+
+## What a nonconvex landscape looks like
+
+::: {.kicker .c-rust}
+And why a gradient method cannot see across it
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+<svg viewBox="0 0 460 250" style="width:100%;max-width:520px" role="img" aria-label="A schematic objective profile with a tall global hill on the left, a flat valley in the middle, and a lower local hill on the right. Both summits are marked as points where a local solver reports optimal.">
+<line x1="46" y1="212" x2="440" y2="212" stroke="#B9C1C6" stroke-width="1.6"/>
+<line x1="46" y1="212" x2="46" y2="26" stroke="#B9C1C6" stroke-width="1.6"/>
+<text x="20" y="34" font-size="13" fill="#66727C">objective</text>
+<text x="380" y="238" font-size="13" fill="#66727C">a decision variable</text>
+<path d="M60 206 C 96 196 108 60 140 52 C 172 60 186 190 214 206 L 300 206 C 322 200 336 120 366 112 C 396 120 410 198 428 206" fill="none" stroke="#0F6E6B" stroke-width="3"/>
+<line x1="214" y1="206" x2="300" y2="206" stroke="#BE654C" stroke-width="4"/>
+<circle cx="140" cy="52" r="7" fill="#0F6E6B"/>
+<circle cx="366" cy="112" r="7" fill="#E29A2D"/>
+<text x="140" y="38" font-size="14" fill="#0F6E6B" text-anchor="middle">global</text>
+<text x="366" y="98" font-size="14" fill="#E29A2D" text-anchor="middle">local</text>
+<text x="257" y="230" font-size="12.5" fill="#BE654C" text-anchor="middle">a valley a gradient method will not cross</text>
+</svg>
+
+::: {.note}
+Schematic. **Every marked point satisfies the KKT conditions**, and a local solver reports `optimal` at each.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.spec}
+[The mechanism]{.eyebrow}
+
+A gradient-based method **climbs the hill it starts on**. It has no information about the landscape beyond the neighbourhood it has visited, and no mechanism for crossing a valley of infeasible or worse points.
+:::
+
+::: {.punch}
+The starting point selects the answer.
+:::
+
+On a nonconvex problem the initial values are not a numerical detail — they are **part of the specification of what you computed**. A result reported without them is not reproducible.
+:::
+::::
+
+::: {.notes}
+Trace the curve with your finger, starting from the right-hand side, and stop at the local summit. "From here, every direction is downhill. The solver is not lying to you. It simply cannot see the left half of this picture."
+:::
+
+## Multistart: the poor person's global search
+
+::: {.kicker .c-teal}
+Evidence, and a good incumbent. Not a proof.
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[The procedure]{.eyebrow}
+
+1. Sample *N* starting points over the **physically meaningful** ranges of the variables that drive the nonconvexity.
+2. Solve from each, and keep **every** terminal point, not just the best.
+3. Report the histogram of terminal objective values, the best, the worst, and the **fraction of starts reaching the best**.
+:::
+
+::: {.flag .c-rust}
+**It gives no bound**, so it cannot prove optimality. A multistart that always returns the same value has found either a convex problem or a badly chosen sampling range.
+:::
+:::
+
+::: {.column width="48%"}
+[Practical advice]{.eyebrow}
+
+::: {.dots}
+- **Prefer a physical starting point** Initialising a pool quality from the actual current plant operation is worth a hundred random draws.
+- **Sample the quality and split variables** Sampling flows alone often lands in the same basin every time.
+- **Fix the random seed and record it** Otherwise the run is not reproducible.
+- **If the problem is small** use a global solver and stop guessing.
+:::
+:::
+::::
+
+::: {.notes}
+The second bullet is the one people get wrong. Sampling the flows feels natural and does almost nothing, because the flows are not what separates the basins.
+:::
+
+## When a plant engineer should distrust a converged answer {.smaller}
+
+::: {.kicker .c-rust}
+Six warning signs
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.dots}
+- **A product of two decision variables** appears anywhere in the model, including in a spreadsheet cell.
+- **A quality, composition, temperature or split fraction** is itself a variable.
+- **A recycle or a shared tank** connects two balances.
+- **The solver engine changed** from linear to nonlinear without you asking.
+- **The answer moves** when you change only the initial values.
+- **The solution is much better** than anything operations has ever achieved.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.punch}
+A blend recipe from a local optimum is not infeasible. It meets every specification.
+:::
+
+It is wrong in the sense of **leaving margin on the table, silently, every day**, with no signal that it is doing so.
+
+::: {.note}
+**And for electrolyte blending:** the same structure appears whenever one make-up tank feeds more than one cell chemistry. The tank composition is a variable, and it multiplies every draw from the tank.
+:::
+:::
+::::
+
+::: {.notes}
+Sign 6 is the one that has saved real money. If the model beats the plant's best-ever month by 8 percent, the model is wrong far more often than the plant is bad.
+:::
+
+## Activity 3 · the pooling trap {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+15 min · computer · groups of 3 to 4
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+[What to do]{.eyebrow}
+
+Open **w04-modeling3-blending-pooling.ipynb** and run everything up to and including the **Haverly** section. The model builder is `build_haverly(p0=...)`, where `p0` is the starting value of the pool sulfur *p*, and the solver is `ipopt`.
+
+::: {.punch}
+Solve the same model twice: once from *p*₀ = 1.0, once from *p*₀ = 3.0.
+:::
+
+**Nothing else changes.** Same data, same constraints, same solver, same tolerances.
+:::
+
+::: {.column width="46%"}
+[Record, for each of the two runs]{.eyebrow}
+
+::: {.numbered .n4}
+1. the solver's **termination status**,
+2. the **objective value**,
+3. the final **pool quality *p***,
+4. the six flows *A*, *B*, *P*<sub>*X*</sub>, *P*<sub>*Y*</sub>, *C*<sub>*X*</sub>, *C*<sub>*Y*</sub>.
+:::
+
+::: {.flag .c-rust}
+**Do not compare with the group next to you until the poll.** When both columns are on the board, the question to the room is simply: **which one is right?**
+:::
+
+::: {.note}
+Groups of 3 to 4, one machine per group. Hand back nothing written — each group reports its two numbers out loud when polled.
+:::
+:::
+::::
+
+::: {.notes}
+**[02:42 – 02:57] · ACTIVITY 3 — fifteen minutes, so drive it**
+
+**DO —**
+
+- Two solves. That is all. Anyone still building a model at minute five has not run the notebook from the top.
+- Poll at minute 11 at the latest. The poll IS the activity; the solving is just what produces the data.
+- Write the two columns on the board yourself, in silence. Let them see the split before anyone speaks.
+:::
+
+## Activity 3 · [ANSWER] 1 of 2 · both are right, and that is the problem {.smaller}
+
+::: {.kicker .c-rust}
+Same model, same solver, same tolerances
+:::
+
+:::: {.columns}
+::: {.column width="42%"}
+| | start *p*₀ = 1.0 | start *p*₀ = 3.0 |
+|:---|---:|---:|
+| termination | `optimal` | `optimal` |
+| **profit, USD** | **400.00** | **100.00** |
+| final *p*, % S | 1.000 | 3.000 |
+| *A* | 0 | 50 |
+| *B* | 100 | 0 |
+| *P*<sub>*X*</sub> | 0 | 50 |
+| *P*<sub>*Y*</sub> | 100 | 0 |
+| *C*<sub>*X*</sub> | 0 | 50 |
+| *C*<sub>*Y*</sub> | 100 | 0 |
+
+::: {.flag .c-rust}
+**300 USD out of 400 — 75 percent of the achievable margin**, on a problem with seven variables. Both points genuinely satisfy the KKT conditions, so **both status words are honest**.
+:::
+:::
+
+::: {.column width="56%"}
+<svg viewBox="0 0 470 260" style="width:100%;max-width:520px" role="img" aria-label="Profit against pool sulfur p. The curve starts at 400 USD when p is 1, falls steeply to zero at p about 1.5, stays flat at zero until p about 2.4, then rises to 100 USD at p equals 3. Two separated hills with a flat valley between them.">
+<line x1="56" y1="206" x2="452" y2="206" stroke="#B9C1C6" stroke-width="1.5"/>
+<line x1="56" y1="206" x2="56" y2="24" stroke="#B9C1C6" stroke-width="1.5"/>
+<text x="56" y="16" font-size="12" fill="#66727C" text-anchor="middle">profit, USD</text>
+<text x="42" y="40" font-size="11" fill="#66727C" text-anchor="end">400</text>
+<line x1="52" y1="36" x2="60" y2="36" stroke="#B9C1C6" stroke-width="1.5"/>
+<text x="42" y="129" font-size="11" fill="#66727C" text-anchor="end">200</text>
+<line x1="52" y1="125" x2="60" y2="125" stroke="#B9C1C6" stroke-width="1.5"/>
+<text x="42" y="211" font-size="11" fill="#66727C" text-anchor="end">0</text>
+<text x="56" y="226" font-size="11" fill="#66727C" text-anchor="middle">1.0</text>
+<text x="155" y="226" font-size="11" fill="#66727C" text-anchor="middle">1.5</text>
+<text x="254" y="226" font-size="11" fill="#66727C" text-anchor="middle">2.0</text>
+<text x="353" y="226" font-size="11" fill="#66727C" text-anchor="middle">2.5</text>
+<text x="452" y="226" font-size="11" fill="#66727C" text-anchor="middle">3.0</text>
+<text x="254" y="246" font-size="12.5" fill="#66727C" text-anchor="middle">pool sulfur p, % S</text>
+<line x1="160" y1="206" x2="333" y2="206" stroke="#BE654C" stroke-width="5"/>
+<polyline fill="none" stroke="#0F6E6B" stroke-width="3"
+ points="56,36 66,38 76,41 85,44 95,47 105,51 115,55 125,60 135,66 144,73 154,81 160,206 174,206 184,206 194,206 204,206 214,206 224,206 234,206 244,206 254,206 264,206 274,206 284,206 293,206 303,206 313,206 323,206 333,206 343,195 353,184 363,180 373,176 382,173 392,171 402,169 412,167 422,166 432,164 442,163 452,162"/>
+<circle cx="56" cy="36" r="6" fill="#0F6E6B"/><text x="76" y="30" font-size="13" fill="#0F6E6B">global, 400</text>
+<circle cx="452" cy="162" r="6" fill="#E29A2D"/><text x="446" y="152" font-size="13" fill="#E29A2D" text-anchor="end">local, 100</text>
+<text x="246" y="198" font-size="12" fill="#BE654C" text-anchor="middle">flat zero valley</text>
+</svg>
+
+::: {.note}
+Fixing *p* turns the pooling problem back into an ordinary LP, so **sweeping *p* traces the true profile**. Two separated hills, and a valley over which no feasible plan makes any money.
+:::
+:::
+::::
+
+::: {.notes}
+Put the two student columns on the board first. Only then show this curve. The moment the curve appears is the moment the session lands.
+:::
+
+## Activity 3 · [ANSWER] 2 of 2 · the split was not random
+
+::: {.kicker .c-rust}
+Four of nine starts reach the better solution, and every run reports `optimal`
+:::
+
+:::: {.columns}
+::: {.column width="42%"}
+| starting *p*₀ | profit | final *p* |
+|---:|---:|---:|
+| 1.00 | **400.00** | 1.00 |
+| 1.25 | **400.00** | 1.00 |
+| 1.50 | **400.00** | 1.00 |
+| 1.75 | **400.00** | 1.00 |
+| 2.00 | 100.00 | 3.00 |
+| 2.25 | 100.00 | 3.00 |
+| 2.50 | 100.00 | 3.00 |
+| 2.75 | 100.00 | 3.00 |
+| 3.00 | 100.00 | 3.00 |
+:::
+
+::: {.column width="56%"}
+::: {.punch}
+On the 81-point sweep the profit is **exactly zero for *p* from 1.525 to 2.400**.
+:::
+
+That flat valley is the **boundary between the two basins of attraction**, and it is why no gradient step crosses it.
+
+::: {.dots}
+- **The left hill** is reached by feeding the pool with the low-sulfur stream B and selling the high-value product Y.
+- **The right hill** is reached by feeding the pool with the cheap high-sulfur stream A and selling only the low-value product X.
+:::
+
+::: {.flag .c-rust}
+**The closing point of the session.** A spreadsheet solver would have returned one of these two numbers and never mentioned the other. No message, no bound, no gap. That is why the course moves to Python from here — **and the reason is not size. It is that a spreadsheet cannot tell you its answer is local.**
+:::
+:::
+::::
+
+::: {.notes}
+The valley endpoints 1.525 and 2.400 are exact, from the sweep in the notebook. If a group reports a start inside the valley reaching 400, that is real: from a flat region the first step is decided by the other variables' initial values, not by *p*.
+:::
+
+## Closing the loop: what a bound would have told the room {.smaller}
+
+::: {.kicker .c-teal}
+"Profit 400" is an opinion. Here is what a result looks like.
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+| Instance | form | global | bound | gap |
+|:---|:---|---:|---:|---:|
+| Haverly, 2 feeds, no pool limit | p | 400 | 500.00 | 25.0 % |
+| Haverly, 2 feeds, no pool limit | q | 400 | 500.00 | 25.0 % |
+| extended, 4 feeds, pool ≤ 150 | p | 400 | 555.56 | 38.9 % |
+| extended, 4 feeds, pool ≤ 150 | **q** | 400 | **466.67** | **16.7 %** |
+
+::: {.dots}
+- **On Haverly the two bounds coincide** a single pool fed by two streams and limited only by product demand leaves the RLT constraints nothing to add.
+- **On the extended instance** the q-formulation cuts the gap from 38.9 to 16.7 percent, for the cost of extra rows. That is why global solvers build the pq-formulation internally.
+:::
+:::
+
+::: {.column width="44%"}
+::: {.flag .c-teal}
+**The honest report.**
+
+"Profit 400" is an opinion.
+
+"Profit 400, from *p*₀ = 1.0, with a valid upper bound of 500 from the McCormick relaxation, and a multistart over nine starts in which four reached 400 and five reached 100" **is a result.**
+:::
+
+::: {.spec}
+[Forward]{.eyebrow}
+
+**Week 10** supplies the KKT theory behind the word *optimal*. **Week 11** supplies the branch-and-bound machinery that closes a gap. **Week 13** returns to what to do when the model is not known at all.
+:::
+:::
+::::
+
+::: {.notes}
+Read the two quoted sentences aloud, one after the other. That contrast is the single most useful thing they can carry into a job.
+:::
+
+## Summary {.smaller}
+
+::: {.kicker .c-teal}
+What today established
+:::
+
+:::: {.columns}
+::: {.column width="54%"}
+::: {.dots}
+- **A quality specification is naturally a ratio** Multiplying by the blend volume, which belongs to the same balance, makes it linear. That single manipulation is why blending is an LP.
+- **The rule is exact only** when the denominator is strictly positive and lives in the same balance as the numerator.
+- **A ratio objective is a different objective** Charnes-Cooper turns it into an LP, and its plan is generally not the plan that maximises the total.
+- **A pool forces every product drawn from it** to see the same composition, the pool quality multiplies flows belonging to other balances, and the feasible set stops being convex.
+- **Optimal from a local NLP solver** asserts the KKT conditions, not global optimality.
+- **The p- and q-formulations** share a feasible set and a global optimum but not a relaxation. The bound is what a global solver works to close.
+- **Report the bound with the incumbent** An answer to a nonconvex problem without a bound is an opinion.
+:::
+:::
+
+::: {.column width="44%"}
+[Numbers established today]{.eyebrow}
+
+| | |
+|:---|---:|
+| Linear blending margin | 413,439.75 USD |
+| Regular / Premium volume | 4,080.60 / 5,000.00 t |
+| Binding quality rows | all six |
+| Availability duals, reformate / FCC | 41.9412 / 13.3609 |
+| Spec duals, RON / RVP / S | 0.69276 / 5.12983 / 0.13507 |
+| Margin per tonne (Charnes-Cooper) | 45.8708 USD/t |
+| margin given up | 602.65 USD |
+| Haverly from *p*₀ = 1.0 | 400.00 USD, *p* = 1 |
+| Haverly from *p*₀ = 3.0 | 100.00 USD, *p* = 3 |
+| Multistart, 9 starts | 4 reach 400, 5 reach 100 |
+| Flat zero valley | *p* ∈ [1.525, 2.400] |
+| McCormick, Haverly p / q | 500.00 / 500.00 |
+| McCormick, extended p / q | 555.56 / 466.67 |
+
+::: {.note}
+**Next:** Week 5 — logical and discrete decisions, big-M versus convex hull, and formulation strength.
+:::
+:::
+::::
+
+::: {.notes}
+Every number on this slide was re-solved independently before the deck was built. If a student's sheet disagrees with one of them, the sheet is wrong.
+:::
+
+## Before next week {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Reading, notebook, and HW2
+:::
+
+:::: {.columns}
+::: {.column width="48%"}
+[Reading]{.eyebrow}
+
+::: {.dots}
+- **Edgar, Himmelblau and Lasdon** Ch. 7, blending and refinery planning models.
+- **Rao** Ch. 1 for problem classification and Ch. 10 for the nonlinear background.
+- **Haverly (1978)** the original two-page note that named the pooling problem.
+- **Tawarmalani and Sahinidis** Convexification and Global Optimization, Ch. 9, for the p- and q-formulations.
+:::
+:::
+
+::: {.column width="50%"}
+[Notebook to finish]{.eyebrow}
+
+`w04-modeling3-blending-pooling.ipynb`, all sections, plus **Exercises 2, 4 and 6**. Exercise 4 is the proper 100-point multistart on Haverly and is the one that settles the argument started today.
+
+::: {.punch}
+HW1 was due today. **HW2 is released today, due in Week 6.**
+:::
+
+It covers blending, pooling, and logical and discrete modeling, and it includes a **model-audit task**: you receive a plausible but wrong generated model and must find and correct its errors.
+:::
+::::
+
+::: {.notes}
+Say the model-audit task out loud. It is the piece of HW2 that people leave to the last day, and it is the piece that takes longest.
+:::
+
+## Further reading
+
+::: {.kicker .c-slate}
+Where to go deeper
+:::
+
+::: {.dots}
+- **Haverly, C. A. (1978)** Studies of the behaviour of recursion for the pooling problem, ACM SIGMAP Bulletin. The instance used in Activity 3, and still the standard minimal counterexample.
+- **Tawarmalani and Sahinidis** Convexification and Global Optimization in Continuous and Mixed-Integer Nonlinear Programming, Ch. 9: the p-, q- and pq-formulations and the relaxations they induce.
+- **Biegler, L. T.** Nonlinear Programming: Concepts, Algorithms and Applications to Chemical Processes, for what ipopt is actually doing.
+- **Edgar, Himmelblau and Lasdon** Optimization of Chemical Processes, 2nd ed., Ch. 7, for blending in its industrial setting.
+- **Misener and Floudas** Advances for the pooling problem: modeling, global optimization and computational studies, for where the field stands now.
+:::
+
+::: {.foot}
+::: {.note}
+**Forward references made today.** The disjunction that a shut-off grade really needs is **Week 5**; the KKT conditions behind the word *optimal* are **Week 10**; the branch-and-bound machinery that closes a relaxation gap is **Week 11**.
+:::
+:::
+
+::: {.notes}
+Misener and Floudas is the review to hand anyone whose project turns out to contain a pool. It is long, and it is the right long.
+:::
+
+{{< include _feedback.qmd >}}

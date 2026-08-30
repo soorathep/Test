@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-08-31">
+  <title>2105623 – Modeling III: blending, pooling and quality specifications</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-adebb5cf30333392721641149eb81241.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Modeling III: blending, pooling and quality specifications</h1>
+  <p class="subtitle">Week 4 · 2105623 Optimization of Chemical Processes</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">31 August 2026</p>
+</section>
+<section id="three-lectures" class="slide level2 dark divider c-teal" data-background-color="#1C242B">
+<h2>Three lectures</h2>
+<div class="kicker c-amber">
+<p>Outline</p>
+</div>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Linear blending and quality specifications</strong> — why a ratio constraint is an LP in disguise, and the three conditions under which that is exactly true</li>
+<li><strong>The pooling problem</strong> — one shared tank, bilinear terms, and the end of every guarantee linear programming gave you</li>
+<li><strong>Local versus global in practice</strong> — multistart, relaxation bounds, and when a plant engineer should distrust a converged answer</li>
+</ol>
+</div>
+</section>
+<section id="session-plan-180-minutes" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Session plan, 180 minutes</h2>
+<div class="kicker c-amber">
+<p>Today</p>
+</div>
+<div class="agenda">
+<ul>
+<li><span class="chip c-rust">15 min</span> Opening: HW1 and the Week 3 pack released, the ipopt clinic, today’s objectives</li>
+<li><span class="chip c-teal">30 min</span> Lecture 1: blending as a linear model, quality specifications, the multiply-through rule</li>
+<li><span class="chip c-amber">20 min</span> Activity 1 — specification negotiation</li>
+<li><span class="chip c-teal">30 min</span> Lecture 2: the pooling problem, bilinear terms, p- and q-formulations, nonconvexity</li>
+<li><span class="chip c-mist">12 min</span> Break</li>
+<li><span class="chip c-amber">25 min</span> Activity 2 — blend it, in OpenSolver</li>
+<li><span class="chip c-teal">23 min</span> Lecture 3: local versus global, multistart, when to distrust a converged answer</li>
+<li><span class="chip c-amber">20 min</span> Activity 3 — the pooling trap</li>
+<li><span class="chip c-slate">5 min</span> Wrap-up, and what is due when</li>
+</ul>
+</div>
+<div class="foot">
+<div class="note">
+<p><strong>The designed crossover session:</strong> OpenSolver before the break, Python and <code>ipopt</code> after it. Notebook <code>w04-modeling3-blending-pooling.ipynb</code>; workbook <code>w04-blending.xlsx</code>.</p>
+</div>
+</div>
+</section>
+<section id="by-the-end-you-should-be-able-to" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>By the end you should be able to</h2>
+<div class="kicker c-teal">
+<p>Learning objectives</p>
+</div>
+<div class="numbered n5">
+<ol type="1">
+<li><strong>Formulate a blending problem</strong> with quality specifications as a linear program, and explain why the specification rows must be written in unnormalized form.</li>
+<li><strong>Apply the multiply-through rule</strong>, state the three conditions under which it is exact, and recognise where each one fails.</li>
+<li><strong>Explain why a pool introduces bilinear terms</strong>, and write both the p-formulation and the q-formulation.</li>
+<li><strong>Demonstrate that a local NLP solver</strong> returns different answers from different starting points, and quantify the penalty of accepting a local solution.</li>
+<li><strong>Compare the McCormick relaxations</strong> of the two formulations and report the bound each one delivers.</li>
+</ol>
+</div>
+<div class="foot">
+<div class="note">
+<p>CLO 1 (formulation) and CLO 4 (implementation and solution in Pyomo). Reference: Rao Ch. 1 and Ch. 10; Edgar, Himmelblau and Lasdon Ch. 7; Haverly (1978); Tawarmalani and Sahinidis Ch. 9.</p>
+</div>
+</div>
+</section>
+<section id="blending-the-most-common-linear-program-in-the-process-industries" class="slide level2">
+<h2>Blending: the most common linear program in the process industries</h2>
+<div class="kicker c-teal">
+<p>Where the money actually is</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="punch">
+<p>Choose the least costly mixture of purchased component streams that still meets every quality specification of every finished product.</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Gasoline and diesel blending</strong> the classic case, and still the largest single LP application in refining.</li>
+<li><strong>Feed blending</strong> animal nutrition, cement raw meal.</li>
+<li><strong>Electrolyte formulation</strong> salt concentration, water content, conductivity, viscosity.</li>
+<li><strong>Cathode precursor blending</strong> metal ratios, impurity ceilings.</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="flag c-amber">
+<p><strong>The one modeling assumption that makes it linear.</strong> Properties blend <strong>linearly on a mass basis</strong>. Good for sulfur and density, acceptable for RVP if a blending index is used, and only rough for octane, where real blending is measurably nonlinear.</p>
+</div>
+<div class="spec">
+<p><span class="eyebrow">The second, usually unstated, assumption</span></p>
+<p>Every component reaches the blender as a <strong>separate stream</strong>, perfectly segregated up to the blend header.</p>
+</div>
+<p><strong>Lecture 2 removes exactly this assumption, and the model stops being linear.</strong></p>
+</div></div>
+</section>
+<section id="the-instance-used-all-session" class="slide level2">
+<h2>The instance used all session</h2>
+<div class="kicker c-teal">
+<p>Five component streams, two finished grades</p>
+</div>
+<div class="columns">
+<div class="column" style="width:56%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: right;">RON</th>
+<th style="text-align: right;">RVP kPa</th>
+<th style="text-align: right;">S ppm</th>
+<th style="text-align: right;">cost USD/t</th>
+<th style="text-align: right;">avail t</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reformate</td>
+<td style="text-align: right;">98.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">760</td>
+<td style="text-align: right;">3200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCC naphtha</td>
+<td style="text-align: right;">92.0</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">380</td>
+<td style="text-align: right;">730</td>
+<td style="text-align: right;">4000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alkylate</td>
+<td style="text-align: right;">95.0</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">805</td>
+<td style="text-align: right;">2000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Butane</td>
+<td style="text-align: right;">93.0</td>
+<td style="text-align: right;">62.0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">510</td>
+<td style="text-align: right;">900</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Straight-run naphtha</td>
+<td style="text-align: right;">68.0</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">520</td>
+<td style="text-align: right;">695</td>
+<td style="text-align: right;">2600</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:42%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Regular</th>
+<th style="text-align: right;">Premium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">RON minimum</td>
+<td style="text-align: right;">91.0</td>
+<td style="text-align: right;">95.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RVP maximum, kPa</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">8.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sulfur maximum, ppm</td>
+<td style="text-align: right;">290</td>
+<td style="text-align: right;">190</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Price, USD/t</td>
+<td style="text-align: right;">742</td>
+<td style="text-align: right;">806</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Minimum volume, t</td>
+<td style="text-align: right;">4000</td>
+<td style="text-align: right;">2500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum volume, t</td>
+<td style="text-align: right;">7000</td>
+<td style="text-align: right;">5000</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>The same instance appears in the notebook (Section 1) and in the solution workbook. <strong>The two routes must agree to the cent.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="the-linear-blending-model" class="slide level2 smaller">
+<h2>The linear blending model</h2>
+<div class="kicker c-teal">
+<p>Nine constraint families, and one of them is doing something unusual</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<div class="spec">
+<p><span class="eyebrow">Decision variables</span></p>
+<p><em>x</em><sub><em>cg</em></sub> ≥ 0 tonnes of component <em>c</em> sent to grade <em>g</em> &nbsp;·&nbsp; <em>y</em><sub><em>g</em></sub> ≥ 0 tonnes of grade <em>g</em> produced</p>
+<p><span class="eyebrow">The model</span></p>
+<p><strong>max</strong> &nbsp; Σ<sub><em>g</em></sub> price<sub><em>g</em></sub> <em>y</em><sub><em>g</em></sub> − Σ<sub><em>c</em></sub> Σ<sub><em>g</em></sub> cost<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub></p>
+<p><strong>s.t.</strong> &nbsp; Σ<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> = <em>y</em><sub><em>g</em></sub></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub><em>g</em></sub> <em>x</em><sub><em>cg</em></sub> ≤ avail<sub><em>c</em></sub></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>d</em><sub><em>g</em></sub><sup>min</sup> ≤ <em>y</em><sub><em>g</em></sub> ≤ <em>d</em><sub><em>g</em></sub><sup>max</sup></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub><em>c</em></sub> ron<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> ≥ ron<sub><em>g</em></sub><sup>min</sup> <em>y</em><sub><em>g</em></sub></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub><em>c</em></sub> rvp<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> ≤ rvp<sub><em>g</em></sub><sup>max</sup> <em>y</em><sub><em>g</em></sub></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Σ<sub><em>c</em></sub> sul<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> ≤ sul<sub><em>g</em></sub><sup>max</sup> <em>y</em><sub><em>g</em></sub></p>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="dots">
+<ul>
+<li><strong>objective</strong> revenue minus component purchase cost, in USD</li>
+<li><strong>grade material balance</strong> what goes in comes out</li>
+<li><strong>component availability</strong> what is on site</li>
+<li><strong>contract volume window</strong> the commercial envelope</li>
+<li><strong>octane floor, RVP ceiling, sulfur ceiling</strong> the three specifications, per grade</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>Look at the last three rows.</strong> Every specification row has the decision variable <em>y</em><sub><em>g</em></sub> <strong>on its right-hand side</strong>. That is not an accident, and the next slide explains it.</p>
+</div>
+</div></div>
+</section>
+<section id="quality-specifications-are-ratios-and-the-ratio-is-removed-by-hand" class="slide level2 smaller">
+<h2>Quality specifications are ratios, and the ratio is removed by hand</h2>
+<div class="kicker c-amber">
+<p>The single manipulation that makes blending an LP</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="spec">
+<p><span class="eyebrow">The physical requirement</span></p>
+<p>( Σ<sub><em>c</em></sub> ron<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> ) ⁄ ( Σ<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> ) &nbsp;≥&nbsp; ron<sub><em>g</em></sub><sup>min</sup></p>
+<p>is a <strong>ratio of decision variables</strong>, and therefore nonlinear.</p>
+</div>
+<div class="spec">
+<p><span class="eyebrow">The rule</span></p>
+<p>Multiply through by the denominator, which is <em>y</em><sub><em>g</em></sub> and is non-negative:</p>
+<p>Σ<sub><em>c</em></sub> ron<sub><em>c</em></sub> <em>x</em><sub><em>cg</em></sub> − ron<sub><em>g</em></sub><sup>min</sup> <em>y</em><sub><em>g</em></sub> ≥ 0</p>
+<p>or equivalently &nbsp; Σ<sub><em>c</em></sub> ( ron<sub><em>c</em></sub> − ron<sub><em>g</em></sub><sup>min</sup> ) <em>x</em><sub><em>cg</em></sub> ≥ 0</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="punch">
+<p>The linear form is not a linearization. It is the same feasible set, intersected with <em>y</em><sub><em>g</em></sub> &gt; 0.</p>
+</div>
+<p>Solving the ratio form with <code>ipopt</code> returns the same optimum to within solver tolerance — while the constraint reports a polynomial degree of <code>None</code> instead of <code>1</code>.</p>
+<div class="flag c-amber">
+<p><strong>On a spreadsheet.</strong> The specification RHS cell contains a <em>changing cell</em>: <code>=C11*C26</code>. That is what “multiply the ratio through by its denominator” looks like on a sheet, and the plain RHS-column convention does not anticipate it.</p>
+</div>
+</div></div>
+</section>
+<section id="three-conditions-and-each-of-them-fails-somewhere" class="slide level2 smaller">
+<h2>Three conditions, and each of them fails somewhere</h2>
+<div class="kicker c-rust">
+<p>When the rule is exact, and when it quietly is not</p>
+</div>
+<div class="spec">
+<p>Let <em>a</em>, <em>b</em> be data vectors and <em>x</em> the decision vector. Then (<em>a</em>ᵀ<em>x</em>) ⁄ (<em>b</em>ᵀ<em>x</em>) ≤ β is equivalent to <em>a</em>ᵀ<em>x</em> − β <em>b</em>ᵀ<em>x</em> ≤ 0 <strong>provided that <em>b</em>ᵀ<em>x</em> &gt; 0 at every point of interest.</strong></p>
+</div>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Sign.</strong> Multiplying an inequality by a negative number reverses it. The rule needs <em>b</em>ᵀ<em>x</em> &gt; 0, not merely <em>b</em>ᵀ<em>x</em> ≠ 0. In blending the denominator is a total mass and the contract window forces it strictly positive.</li>
+<li><strong>Zero denominator.</strong> If <em>b</em>ᵀ<em>x</em> = 0 is attainable the ratio is undefined, while the multiplied-through form reads 0 ≤ 0 and is satisfied trivially. The linear model is then a <strong>strict relaxation</strong> — it permits a blend of size zero whose quality is meaningless. A grade that may be shut off honestly needs a disjunction, and a binary variable: Week 5.</li>
+<li><strong>Same balance.</strong> The denominator must be a linear function of the <strong>same variables that appear in the numerator</strong>. When the denominator belongs to a different balance, as in a pool, the product of two decision variables survives and the model is genuinely nonlinear.</li>
+</ol>
+</div>
+<div class="flag c-amber">
+<p><strong>The practical test, one question.</strong> Is the denominator the same aggregate that the numerator is normalised by, in the same balance? If yes, the constraint is linear in disguise. If no, expect bilinear terms.</p>
+</div>
+</section>
+<section id="translation-table-worth-copying-into-your-notes" class="slide level2 smaller">
+<h2>Translation table: worth copying into your notes</h2>
+<div class="kicker c-teal">
+<p>Reusable, and the last row is the rest of this session</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Engineering requirement</th>
+<th style="text-align: left;">Natural form</th>
+<th style="text-align: left;">Linear equivalent</th>
+<th style="text-align: left;">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">average property at most β</td>
+<td style="text-align: left;">Σ<em>q</em><sub><em>c</em></sub><em>x</em><sub><em>c</em></sub> ⁄ Σ<em>x</em><sub><em>c</em></sub> ≤ β</td>
+<td style="text-align: left;">Σ(<em>q</em><sub><em>c</em></sub>−β)<em>x</em><sub><em>c</em></sub> ≤ 0</td>
+<td style="text-align: left;">Σ<em>x</em><sub><em>c</em></sub> &gt; 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">average property at least β</td>
+<td style="text-align: left;">Σ<em>q</em><sub><em>c</em></sub><em>x</em><sub><em>c</em></sub> ⁄ Σ<em>x</em><sub><em>c</em></sub> ≥ β</td>
+<td style="text-align: left;">Σ(<em>q</em><sub><em>c</em></sub>−β)<em>x</em><sub><em>c</em></sub> ≥ 0</td>
+<td style="text-align: left;">Σ<em>x</em><sub><em>c</em></sub> &gt; 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">recycle ratio at most <em>r</em></td>
+<td style="text-align: left;"><em>R</em> ⁄ (<em>R</em>+<em>F</em>) ≤ <em>r</em></td>
+<td style="text-align: left;">(1−<em>r</em>)<em>R</em> − <em>rF</em> ≤ 0</td>
+<td style="text-align: left;"><em>R</em>+<em>F</em> &gt; 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">conversion at least η</td>
+<td style="text-align: left;">(<em>F</em><sub>in</sub>−<em>F</em><sub>out</sub>) ⁄ <em>F</em><sub>in</sub> ≥ η</td>
+<td style="text-align: left;"><em>F</em><sub>out</sub> ≤ (1−η)<em>F</em><sub>in</sub></td>
+<td style="text-align: left;"><em>F</em><sub>in</sub> &gt; 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fixed split fraction θ</td>
+<td style="text-align: left;"><em>S</em>₁ ⁄ (<em>S</em>₁+<em>S</em>₂) = θ</td>
+<td style="text-align: left;">(1−θ)<em>S</em>₁ − θ<em>S</em>₂ = 0</td>
+<td style="text-align: left;"><em>S</em>₁+<em>S</em>₂ &gt; 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">purity of a mixed stream at least π</td>
+<td style="text-align: left;"><em>m</em><sub>key</sub> ⁄ <em>m</em><sub>tot</sub> ≥ π</td>
+<td style="text-align: left;"><em>m</em><sub>key</sub> − π <em>m</em><sub>tot</sub> ≥ 0</td>
+<td style="text-align: left;"><em>m</em><sub>tot</sub> &gt; 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ratio objective</td>
+<td style="text-align: left;">max (<em>c</em>ᵀ<em>x</em>+<em>c</em>₀) ⁄ (<em>d</em>ᵀ<em>x</em>+<em>d</em>₀)</td>
+<td style="text-align: left;">Charnes–Cooper LP</td>
+<td style="text-align: left;"><em>d</em>ᵀ<em>x</em>+<em>d</em>₀ &gt; 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>property of a stream leaving a pool</strong></td>
+<td style="text-align: left;"><em>p</em> = Σ<em>q</em><sub><em>i</em></sub><em>F</em><sub><em>i</em></sub> ⁄ Σ<em>P</em><sub><em>g</em></sub>, and <em>p</em> multiplies <em>P</em><sub><em>g</em></sub></td>
+<td style="text-align: left;"><strong>no linear equivalent</strong></td>
+<td style="text-align: left;">denominator is in another balance</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-ratio-in-the-objective-is-a-different-objective" class="slide level2">
+<h2>A ratio in the objective is a different objective</h2>
+<div class="kicker c-rust">
+<p>Charnes–Cooper, and a plant that deliberately makes less</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">Charnes–Cooper</span></p>
+<p>Maximising (<em>c</em>ᵀ<em>x</em>+<em>c</em>₀) ⁄ (<em>d</em>ᵀ<em>x</em>+<em>d</em>₀) over {<em>Ax</em> ≤ <em>b</em>, <em>x</em> ≥ 0} with <em>d</em>ᵀ<em>x</em>+<em>d</em>₀ &gt; 0 is a <strong>linear-fractional program</strong>. Substituting</p>
+<p><em>t</em> = 1 ⁄ (<em>d</em>ᵀ<em>x</em>+<em>d</em>₀) &gt; 0, &nbsp;&nbsp; <em>x</em>′ = <em>t x</em></p>
+<p>gives the equivalent LP &nbsp; max <em>c</em>ᵀ<em>x</em>′ + <em>c</em>₀<em>t</em></p>
+<p>s.t. <em>Ax</em>′ − <em>bt</em> ≤ 0, &nbsp; <em>d</em>ᵀ<em>x</em>′ + <em>d</em>₀<em>t</em> = 1, &nbsp; <em>x</em>′, <em>t</em> ≥ 0</p>
+<p>and <em>x</em> = <em>x</em>′⁄<em>t</em> recovers the original solution.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<p><span class="eyebrow">On this instance</span></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total margin (Section 1 LP)</td>
+<td style="text-align: right;"><strong>413,439.75</strong> USD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Margin per tonne (CC LP)</td>
+<td style="text-align: right;"><strong>45.8708</strong> USD/t</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">its plan</td>
+<td style="text-align: right;">4,000.00 t Regular</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">5,000.00 t Premium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">its total margin</td>
+<td style="text-align: right;">412,837.10 USD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>margin given up</strong></td>
+<td style="text-align: right;"><strong>602.65</strong> USD</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p><strong>Read this carefully.</strong> The plant that maximises the <em>ratio</em> deliberately declines the last 80.6 t of Regular, because that increment earns less than the current average. Which objective is correct is a <strong>business</strong> question, not a mathematical one — but the two must never be confused.</p>
+</div>
+</div></div>
+</section>
+<section id="the-linear-optimum-and-why-binding-specifications-are-the-real-output" class="slide level2 smaller">
+<h2>The linear optimum, and why binding specifications are the real output</h2>
+<div class="kicker c-amber">
+<p>Quality above specification is quality given away</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="punch">
+<p>Optimum: <strong>413,439.75 USD</strong></p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component, t</th>
+<th style="text-align: right;">Regular</th>
+<th style="text-align: right;">Premium</th>
+<th style="text-align: right;">slack</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reformate</td>
+<td style="text-align: right;">107.63</td>
+<td style="text-align: right;">3092.37</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCC naphtha</td>
+<td style="text-align: right;">2623.63</td>
+<td style="text-align: right;">1376.37</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alkylate</td>
+<td style="text-align: right;">833.01</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1166.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Butane</td>
+<td style="text-align: right;">206.67</td>
+<td style="text-align: right;">367.83</td>
+<td style="text-align: right;">325.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Straight-run naphtha</td>
+<td style="text-align: right;">309.67</td>
+<td style="text-align: right;">163.42</td>
+<td style="text-align: right;">2126.91</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Volume <em>y</em><sub><em>g</em></sub>, t</strong></td>
+<td style="text-align: right;"><strong>4080.60</strong></td>
+<td style="text-align: right;"><strong>5000.00</strong></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p><strong>This recipe is one of several.</strong> The optimum is degenerate: your solver will very likely report different numbers in this table at exactly the same margin. Compare objectives, not recipes.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="flag c-teal">
+<p><strong>All six quality rows bind exactly.</strong> Regular sits at RON 91.00, RVP 9.00 kPa, 290.00 ppm sulfur; Premium at RON 95.00, RVP 8.50, 190.00 ppm.</p>
+</div>
+<p>That is normal, and it is the point of a blending model: <strong>quality above specification is quality given away</strong>, so the optimizer gives away nothing.</p>
+<div class="spec">
+<p><span class="eyebrow">Marginal values</span></p>
+<p>Availability duals: reformate <strong>41.9412</strong>, FCC naphtha <strong>13.3609</strong> USD/t.</p>
+<p>Alkylate, butane and straight-run have slack and a dual of <strong>zero</strong>.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-1-specification-negotiation" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>Activity 1 · specification negotiation</h2>
+<div class="kicker c-amber">
+<p>18 min · two halves of the room · paper</p>
+</div>
+<div class="note">
+<p>The refinery blends the five component streams of slide 6 into Regular and Premium. Component costs, availabilities and properties as tabulated. Regular sells at 742, Premium at 806 USD/t. Contractual volumes: Regular 4,000–7,000 t, Premium 2,500–5,000 t. <strong>The plan must cover one month.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><span class="eyebrow">Brief for the <strong>Production</strong> half</span></p>
+<p>Your objective is <strong>minimum cost</strong>, that is maximum blending margin. You are accountable for meeting the contracted volumes from the components actually on site, and for not buying more of the expensive streams than you must.</p>
+<p>Write down the constraint set you would insist the model contain. <strong>Anything you leave out, you are agreeing to give away.</strong></p>
+</div><div class="column" style="width:49%;">
+<p><span class="eyebrow">Brief for the <strong>Quality Control</strong> half</span></p>
+<p>The product must meet three named specifications per grade. Regular: RON ≥ 91.0, RVP ≤ 9.0 kPa, sulfur ≤ 290 ppm. Premium: RON ≥ 95.0, RVP ≤ 8.5, sulfur ≤ 190 ppm.</p>
+<p>The <strong>octane floor is a customer contract term</strong>: a delivery below it is a rejected cargo. The RVP and sulfur ceilings are <strong>internal laboratory targets</strong>, set inside the legal limits with a deliberate margin.</p>
+</div></div>
+<div class="foot">
+<div class="note">
+<p><strong>Two halves, working in pairs within each half.</strong> 10 min separately, then compare and agree one constraint set, <strong>explicitly labelling each constraint hard or soft</strong>. Hand back the agreed list, one sheet per side, with H or S against every row.</p>
+</div>
+</div>
+</section>
+<section id="activity-1-answer-hard-and-soft-is-a-modeling-decision" class="slide level2 smaller">
+<h2>Activity 1 · [ANSWER] · hard and soft is a modeling decision</h2>
+<div class="kicker c-amber">
+<p>Nothing in the physics distinguishes the octane floor from the sulfur ceiling</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Constraint</th>
+<th style="text-align: left;">H/S</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">grade material balance</td>
+<td style="text-align: left;">H (physics)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">component availability</td>
+<td style="text-align: left;">H (physics)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">contract volume window</td>
+<td style="text-align: left;">H (contract)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">octane floor</td>
+<td style="text-align: left;">H (contract)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vapour pressure ceiling</td>
+<td style="text-align: left;"><strong>S</strong> (internal target)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sulfur ceiling</td>
+<td style="text-align: left;"><strong>S</strong> (internal target)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">non-negativity</td>
+<td style="text-align: left;">H</td>
+</tr>
+</tbody>
+</table>
+<div class="spec">
+<p><span class="eyebrow">A soft constraint belongs in the objective</span></p>
+<p>Σ<sub><em>c</em></sub> sul<sub><em>c</em></sub><em>x</em><sub><em>cg</em></sub> − sul<sub><em>g</em></sub><sup>max</sup><em>y</em><sub><em>g</em></sub> ≤ <em>v</em><sub><em>g</em></sub>, &nbsp; <em>v</em><sub><em>g</em></sub> ≥ 0, &nbsp; objective − π<sub><em>g</em></sub><em>v</em><sub><em>g</em></sub></p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="punch">
+<p>What distinguishes them is who wrote them down, and what happens when they are missed.</p>
+</div>
+<p><span class="eyebrow">What the numbers say once all three are hard</span></p>
+<p>Margin <strong>413,439.75</strong> USD, all six quality rows binding. The value of relaxing each row by one unit — the LP dual of the multiplied-through row, <strong>identical for both grades</strong> — is</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">row</th>
+<th style="text-align: right;">USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">octane</td>
+<td style="text-align: right;">0.69276</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>vapour pressure</strong></td>
+<td style="text-align: right;"><strong>5.12983</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sulfur</td>
+<td style="text-align: right;">0.13507</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p>So the internal <strong>RVP target is by far the most expensive of the three to hold</strong> — and it is precisely the one nobody in the room called a contract term.</p>
+</div>
+</div></div>
+</section>
+<section id="real-plants-do-not-have-that-many-tanks" class="slide level2">
+<h2>Real plants do not have that many tanks</h2>
+<div class="kicker c-rust">
+<p>One physical fact destroys linearity</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Segregated: <strong>linear</strong></span></p>
+<svg viewbox="0 0 420 220" style="width:100%;max-width:460px" role="img" aria-label="Three feed streams A, B and C each connect directly to both products X and Y, so every product sees the individual feed qualities.">
+<line x1="86" y1="40" x2="316" y2="70" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="86" y1="40" x2="316" y2="150" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="86" y1="105" x2="316" y2="74" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="86" y1="105" x2="316" y2="154" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="86" y1="170" x2="316" y2="78" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="86" y1="170" x2="316" y2="158" stroke="#0F6E6B" stroke-width="2.2"></line> <circle cx="64" cy="40" r="20" fill="#0F6E6B"></circle><text x="64" y="46" font-size="15" fill="#fff" text-anchor="middle">A</text> <circle cx="64" cy="105" r="20" fill="#0F6E6B"></circle><text x="64" y="111" font-size="15" fill="#fff" text-anchor="middle">B</text> <circle cx="64" cy="170" r="20" fill="#0F6E6B"></circle><text x="64" y="176" font-size="15" fill="#fff" text-anchor="middle">C</text> <circle cx="338" cy="74" r="20" fill="#E29A2D"></circle><text x="338" y="80" font-size="15" fill="#1C242B" text-anchor="middle">X</text> <circle cx="338" cy="154" r="20" fill="#E29A2D"></circle><text x="338" y="160" font-size="15" fill="#1C242B" text-anchor="middle">Y</text> <text x="210" y="208" font-size="13" fill="#66727C" text-anchor="middle">each product sees the individual feed qualities</text>
+</svg>
+<p>Quality delivered to X is Σ<sub><em>i</em></sub> <em>q</em><sub><em>i</em></sub><em>x</em><sub><em>iX</em></sub>, a <strong>linear</strong> function. Multiply the ratio through by Σ<sub><em>i</em></sub> <em>x</em><sub><em>iX</em></sub> and the model is an LP.</p>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Pooled: <strong>bilinear</strong></span></p>
+<svg viewbox="0 0 440 220" style="width:100%;max-width:470px" role="img" aria-label="Feeds A and B run into a common pool tank whose quality p is itself a variable; the pool then feeds both products X and Y, while feed C bypasses the pool. The two arcs leaving the pool carry the product of the pool quality and the flow.">
+<line x1="82" y1="46" x2="176" y2="86" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="82" y1="110" x2="176" y2="96" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="266" y1="82" x2="336" y2="62" stroke="#BE654C" stroke-width="3.4"></line> <line x1="266" y1="100" x2="336" y2="152" stroke="#BE654C" stroke-width="3.4"></line> <line x1="82" y1="176" x2="336" y2="72" stroke="#0F6E6B" stroke-width="2.2"></line> <line x1="82" y1="176" x2="336" y2="162" stroke="#0F6E6B" stroke-width="2.2"></line> <circle cx="60" cy="46" r="19" fill="#0F6E6B"></circle><text x="60" y="52" font-size="14" fill="#fff" text-anchor="middle">A</text> <circle cx="60" cy="110" r="19" fill="#0F6E6B"></circle><text x="60" y="116" font-size="14" fill="#fff" text-anchor="middle">B</text> <circle cx="60" cy="176" r="19" fill="#0F6E6B"></circle><text x="60" y="182" font-size="14" fill="#fff" text-anchor="middle">C</text> <rect x="176" y="62" width="90" height="58" rx="7" fill="#F3F0EB" stroke="#333F4A" stroke-width="2.6"></rect> <text x="221" y="86" font-size="14" fill="#1C242B" text-anchor="middle">POOL</text> <text x="221" y="106" font-size="13" fill="#BE654C" text-anchor="middle">quality p</text> <circle cx="358" cy="62" r="19" fill="#E29A2D"></circle><text x="358" y="68" font-size="14" fill="#1C242B" text-anchor="middle">X</text> <circle cx="358" cy="158" r="19" fill="#E29A2D"></circle><text x="358" y="164" font-size="14" fill="#1C242B" text-anchor="middle">Y</text> <text x="300" y="46" font-size="12" fill="#BE654C" text-anchor="middle">p·P<tspan baseline-shift="sub" font-size="9">X</tspan></text> <text x="316" y="196" font-size="12" fill="#BE654C" text-anchor="middle">p·P<tspan baseline-shift="sub" font-size="9">Y</tspan></text> <text x="220" y="212" font-size="13" fill="#66727C" text-anchor="middle">rust arcs carry variable × variable</text>
+</svg>
+<p>Everything drawn from the tank has the <strong>same composition <em>p</em></strong>, whatever it is fed by. <em>p</em> is a <strong>decision</strong>, and it multiplies flows.</p>
+</div></div>
+<div class="flag c-rust">
+<p>Streams are collected in a common pool. The pool quality satisfies <em>p</em> Σ<sub><em>g</em></sub><em>P</em><sub><em>g</em></sub> = Σ<sub><em>i</em></sub><em>q</em><sub><em>i</em></sub><em>F</em><sub><em>i</em></sub>, and the quality delivered to product <em>g</em> is <em>p P</em><sub><em>g</em></sub>. <strong>Both expressions contain the product of two decision variables.</strong></p>
+</div>
+</section>
+<section id="why-multiplying-through-does-not-rescue-it" class="slide level2">
+<h2>Why multiplying through does not rescue it</h2>
+<div class="kicker c-rust">
+<p>Condition 3 of slide 9, failing</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">The pool quality is a ratio</span></p>
+<p><em>p</em> = Σ<sub><em>i</em></sub> <em>q</em><sub><em>i</em></sub><em>F</em><sub><em>i</em></sub> ⁄ Σ<sub><em>g</em></sub> <em>P</em><sub><em>g</em></sub></p>
+</div>
+<p>Its denominator is the <strong>total pool throughput</strong>. But the quantity that has to be constrained is the pool’s contribution to the balance of a <strong>different</strong> stream, namely product <em>g</em>:</p>
+<div class="spec">
+<p><em>p P</em><sub><em>g</em></sub> + <em>q</em><sub><em>C</em></sub><em>C</em><sub><em>g</em></sub> ≤ spec<sub><em>g</em></sub> ( <em>P</em><sub><em>g</em></sub> + <em>C</em><sub><em>g</em></sub> )</p>
+</div>
+<p>Multiplying by Σ<sub><em>g</em></sub><em>P</em><sub><em>g</em></sub> clears the ratio and <strong>leaves <em>p P</em><sub><em>g</em></sub> untouched</strong>.</p>
+</div><div class="column" style="width:48%;">
+<div class="punch">
+<p>The feasible set is no longer convex.</p>
+</div>
+<p>A nonconvex NLP with bilinear terms, and every guarantee that came with linear programming is gone:</p>
+<div class="dots">
+<ul>
+<li><strong>no vertex theorem</strong> the optimum need not be at a corner</li>
+<li><strong>no duality certificate</strong> nothing proves the point is best</li>
+<li><strong>no reason</strong> a converged point is the best one</li>
+</ul>
+</div>
+<div class="flag c-amber">
+<p><strong>Where this bites in practice.</strong> Refinery gasoline pools, crude tank farms, LPG caverns, hydrogen headers, and any electrolyte make-up tank feeding more than one cell chemistry.</p>
+</div>
+</div></div>
+</section>
+<section id="haverlys-instance-1978" class="slide level2 smaller">
+<h2>Haverly’s instance, 1978</h2>
+<div class="kicker c-teal">
+<p>Seven variables, three bilinear rows, and it has defeated people for fifty years</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stream</th>
+<th style="text-align: left;">route</th>
+<th style="text-align: right;">S %</th>
+<th style="text-align: right;">USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Feed A</td>
+<td style="text-align: left;">into the pool</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Feed B</td>
+<td style="text-align: left;">into the pool</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Feed C</td>
+<td style="text-align: left;">bypasses the pool</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Product X</td>
+<td style="text-align: left;">≤ 2.5 % S</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Product Y</td>
+<td style="text-align: left;">≤ 1.5 % S</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Feeds are costs, products are prices. Demand limits X ≤ 100, Y ≤ 200. <strong>Seven variables:</strong> <em>A</em>, <em>B</em> into the pool; <em>P</em><sub><em>X</em></sub>, <em>P</em><sub><em>Y</em></sub> out; <em>C</em><sub><em>X</em></sub>, <em>C</em><sub><em>Y</em></sub> direct; and the pool sulfur <em>p</em>. The bounds 1 ≤ <em>p</em> ≤ 3 are physical.</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">The p-formulation</span></p>
+<p><strong>max</strong> 9(<em>P</em><sub><em>X</em></sub>+<em>C</em><sub><em>X</em></sub>) + 15(<em>P</em><sub><em>Y</em></sub>+<em>C</em><sub><em>Y</em></sub>) − 6<em>A</em> − 16<em>B</em> − 10(<em>C</em><sub><em>X</em></sub>+<em>C</em><sub><em>Y</em></sub>)</p>
+<p><strong>s.t.</strong> &nbsp; <em>A</em> + <em>B</em> = <em>P</em><sub><em>X</em></sub> + <em>P</em><sub><em>Y</em></sub></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<em>A</em> + <em>B</em> = <strong>p</strong> (<em>P</em><sub><em>X</em></sub>+<em>P</em><sub><em>Y</em></sub>)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>p</strong> <em>P</em><sub><em>X</em></sub> + 2<em>C</em><sub><em>X</em></sub> ≤ 2.5(<em>P</em><sub><em>X</em></sub>+<em>C</em><sub><em>X</em></sub>)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>p</strong> <em>P</em><sub><em>Y</em></sub> + 2<em>C</em><sub><em>Y</em></sub> ≤ 1.5(<em>P</em><sub><em>Y</em></sub>+<em>C</em><sub><em>Y</em></sub>)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>P</em><sub><em>X</em></sub>+<em>C</em><sub><em>X</em></sub> ≤ 100, &nbsp; <em>P</em><sub><em>Y</em></sub>+<em>C</em><sub><em>Y</em></sub> ≤ 200</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 ≤ <em>p</em> ≤ 3, &nbsp; all flows ≥ 0</p>
+</div>
+<div class="note">
+<p><strong>Three of these rows are bilinear</strong>, and each contains a product of two decision variables.</p>
+</div>
+</div></div>
+</section>
+<section id="the-q-formulation-carry-proportions-instead-of-quality" class="slide level2 smaller">
+<h2>The q-formulation: carry proportions instead of quality</h2>
+<div class="kicker c-teal">
+<p>Same feasible set, same global optimum, different relaxation</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">Change of variables</span></p>
+<p>Let <em>q</em><sub><em>i</em></sub> be the fraction of the pool inlet contributed by feed <em>i</em>, so Σ<sub><em>i</em></sub><em>q</em><sub><em>i</em></sub> = 1 and 0 ≤ <em>q</em><sub><em>i</em></sub> ≤ 1. Then <em>F</em><sub><em>i</em></sub> = <em>q</em><sub><em>i</em></sub> Σ<sub><em>g</em></sub><em>P</em><sub><em>g</em></sub>, and the amount of feed <em>i</em> reaching product <em>g</em> is <em>q</em><sub><em>i</em></sub><em>P</em><sub><em>g</em></sub>.</p>
+<p><strong>max</strong> 9(<em>P</em><sub><em>X</em></sub>+<em>C</em><sub><em>X</em></sub>) + 15(<em>P</em><sub><em>Y</em></sub>+<em>C</em><sub><em>Y</em></sub>) − 6<em>q</em><sub><em>A</em></sub>(<em>P</em><sub><em>X</em></sub>+<em>P</em><sub><em>Y</em></sub>) − 16<em>q</em><sub><em>B</em></sub>(<em>P</em><sub><em>X</em></sub>+<em>P</em><sub><em>Y</em></sub>) − 10(<em>C</em><sub><em>X</em></sub>+<em>C</em><sub><em>Y</em></sub>)</p>
+<p><strong>s.t.</strong> &nbsp; <em>q</em><sub><em>A</em></sub> + <em>q</em><sub><em>B</em></sub> = 1</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3<em>q</em><sub><em>A</em></sub>+<em>q</em><sub><em>B</em></sub>)<em>P</em><sub><em>X</em></sub> + 2<em>C</em><sub><em>X</em></sub> ≤ 2.5(<em>P</em><sub><em>X</em></sub>+<em>C</em><sub><em>X</em></sub>)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3<em>q</em><sub><em>A</em></sub>+<em>q</em><sub><em>B</em></sub>)<em>P</em><sub><em>Y</em></sub> + 2<em>C</em><sub><em>Y</em></sub> ≤ 1.5(<em>P</em><sub><em>Y</em></sub>+<em>C</em><sub><em>Y</em></sub>)</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="dots">
+<ul>
+<li><strong>Every bilinear term is now</strong> a product of a bounded proportion and a flow.</li>
+<li><strong>The pool mass balance disappears</strong> it is implied by the proportions summing to one.</li>
+<li><strong>Same feasible set, same global optimum</strong> since the pool quality is recovered as the proportion-weighted sulfur.</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>But they are not the same relaxation.</strong> And that, not the algebra, is the whole reason for preferring one over the other. <strong>Reparametrizing a nonconvex problem does not make it convex.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="nonconvexity-what-a-solver-can-and-cannot-promise-you" class="slide level2">
+<h2>Nonconvexity: what a solver can and cannot promise you</h2>
+<div class="kicker c-rust">
+<p>“Optimal” is a statement about a point, not about the problem</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="punch">
+<p>A termination status of <code>optimal</code> from a local NLP solver is a statement about the KKT conditions at the point it stopped.</p>
+</div>
+<p>It is not, and never was, a statement about global optimality.</p>
+<div class="dots">
+<ul>
+<li><strong>Two runs of the same solver</strong> on the same model, differing only in the starting values, can converge to two different objective values, both reported optimal.</li>
+<li><strong>There is no gap, no bound</strong> and no warning in the output to tell them apart.</li>
+<li><strong>A spreadsheet is worse, not better</strong> Solver silently abandons Simplex LP for GRG Nonlinear and reports “Solver found a solution. All constraints and optimality conditions are satisfied.” That sentence is true and misleading.</li>
+</ul>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="flag c-teal">
+<p><strong>What a global solver adds.</strong> A spatial branch-and-bound code (<code>couenne</code>, BARON, ANTIGONE) maintains a convex relaxation of the nonconvex problem, so it can report an incumbent <strong>and a bound</strong>, and therefore a <strong>gap</strong>. That is the only kind of guarantee available here.</p>
+</div>
+<p><span class="eyebrow">The discipline this forces</span></p>
+<div class="numbered n4">
+<ol type="1">
+<li>Never report a single local solve as the optimum.</li>
+<li>Always report the starting point with the answer.</li>
+<li>Run a multistart.</li>
+<li>Report the relaxation bound alongside the incumbent, so the reader knows how much room is left.</li>
+</ol>
+</div>
+</div></div>
+</section>
+<section id="mccormick-envelopes-how-a-bilinear-term-is-relaxed" class="slide level2 smaller">
+<h2>McCormick envelopes: how a bilinear term is relaxed</h2>
+<div class="kicker c-teal">
+<p>Turn the nonconvex problem into an LP whose optimum is a valid bound</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">The construction</span></p>
+<p>Replace a product <em>w</em> = <em>uv</em> with <em>u</em> ∈ [<em>u</em><sup>L</sup>, <em>u</em><sup>U</sup>], <em>v</em> ∈ [<em>v</em><sup>L</sup>, <em>v</em><sup>U</sup>] by a new variable <em>w</em> and <strong>four linear inequalities</strong>:</p>
+<p><em>w</em> ≥ <em>u</em><sup>L</sup><em>v</em> + <em>v</em><sup>L</sup><em>u</em> − <em>u</em><sup>L</sup><em>v</em><sup>L</sup></p>
+<p><em>w</em> ≥ <em>u</em><sup>U</sup><em>v</em> + <em>v</em><sup>U</sup><em>u</em> − <em>u</em><sup>U</sup><em>v</em><sup>U</sup></p>
+<p><em>w</em> ≤ <em>u</em><sup>U</sup><em>v</em> + <em>v</em><sup>L</sup><em>u</em> − <em>u</em><sup>U</sup><em>v</em><sup>L</sup></p>
+<p><em>w</em> ≤ <em>u</em><sup>L</sup><em>v</em> + <em>v</em><sup>U</sup><em>u</em> − <em>u</em><sup>L</sup><em>v</em><sup>U</sup></p>
+</div>
+<p>This is exactly the <strong>convex hull</strong> of the graph of <em>uv</em> over the box, so it is the tightest possible relaxation of one product in isolation.</p>
+</div><div class="column" style="width:48%;">
+<div class="spec">
+<p><span class="eyebrow">Reformulation–linearization (RLT)</span></p>
+<p>In the q-formulation the bilinear variables <em>v</em><sub><em>ig</em></sub> = <em>q</em><sub><em>i</em></sub><em>P</em><sub><em>g</em></sub> inherit the identity Σ<sub><em>i</em></sub><em>q</em><sub><em>i</em></sub> = 1. Multiplying it by <em>P</em><sub><em>g</em></sub> and by the pool throughput limit gives</p>
+<p>Σ<sub><em>i</em></sub> <em>v</em><sub><em>ig</em></sub> = <em>P</em><sub><em>g</em></sub> &nbsp; ∀<em>g</em>, &nbsp;&nbsp; Σ<sub><em>g</em></sub> <em>v</em><sub><em>ig</em></sub> ≤ Cap · <em>q</em><sub><em>i</em></sub> &nbsp; ∀<em>i</em></p>
+</div>
+<p>These rows are <strong>redundant for the nonlinear model but not for its relaxation</strong>.</p>
+<div class="flag c-amber">
+<p><strong>Why this is the practical lever.</strong> The bound is what a spatial branch-and-bound tree spends its time closing, so <strong>choosing the formulation with the tighter relaxation is worth more than any solver setting</strong>.</p>
+</div>
+</div></div>
+</section>
+<section id="section" class="slide level2 dark break c-mist" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="break-circle">
+<p>Break</p>
+</div>
+<div class="lede">
+<p>12 minutes.</p>
+</div>
+<div class="foot">
+<div class="note">
+<p>Next: open <strong>w04-blending.xlsx</strong> with OpenSolver loaded, <strong>and check that <code>ipopt</code> is on your path.</strong> Activity 2 starts on the spreadsheet. Activity 3, after Lecture 3, is the reason this course leaves the spreadsheet behind.</p>
+</div>
+</div>
+</section>
+<section id="activity-2-blend-it-in-opensolver" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Activity 2 · blend it, in OpenSolver</h2>
+<div class="kicker c-amber">
+<p>25 min · computer · individual</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="eyebrow">Part 1 — reproduce the optimum and read off what binds</span></p>
+<p>Open <strong>w04-blending.xlsx</strong>, sheet <strong>Model</strong>. Complete the yellow cells: the availability VALUE column <code>E19:E23</code>, the constraint VALUE column <code>E33:E44</code> — <strong>every quality row in multiplied-through form, so its RHS is 0</strong> — and the objective <code>C29</code>.</p>
+<p>OpenSolver with <strong>CBC</strong>: objective <code>$C$29</code> set to <strong>Max</strong>, changing cells <code>$C$19:$D$24</code>, constraints as listed on the Readme sheet, and tick <strong>Get sensitivity report</strong>.</p>
+<div class="punch">
+<p>The objective cell must read <strong>413,439.75 USD</strong>.</p>
+</div>
+<p>Then write down, from the check block in rows 46–51, <strong>which specifications bind</strong>.</p>
+</div><div class="column" style="width:48%;">
+<p><span class="eyebrow">Part 2 — predict before you solve</span></p>
+<p>Change one specification by a small amount — for example tighten the Regular sulfur ceiling from <strong>290 to 250 ppm</strong>.</p>
+<p><strong>Before re-solving</strong>, write on paper: will the margin rise or fall, and roughly by how much? Use the sensitivity report from Part 1 to justify the number. Then re-solve and compare.</p>
+<div class="flag c-rust">
+<p><strong>Your recipe will probably not match slide 12</strong>, and that is not an error. The optimum is degenerate: several recipes achieve the same margin. <strong>Check the objective and the binding set, not the recipe.</strong></p>
+</div>
+<div class="note">
+<p><strong>Individual.</strong> Hand back nothing — the instructor walks the room. Anyone whose objective differs has a formula error.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-2-answer-the-binding-set-is-the-interesting-output" class="slide level2 smaller">
+<h2>Activity 2 · [ANSWER] · the binding set is the interesting output</h2>
+<div class="kicker c-amber">
+<p>And the linear prediction is not a bound in the direction you expect</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Part 1</span></p>
+<p>Objective <code>C29</code> = <strong>413,439.75 USD</strong>, matching the Pyomo model to the cent (413,439.749277).</p>
+<p><strong>Binding:</strong> all six quality rows; the Premium volume ceiling at 5,000 t; and the availability rows for reformate (3,200 t) and FCC naphtha (4,000 t).</p>
+<p><strong>Not binding:</strong> the Regular volume window — it settles at 4,080.60 t, above its floor and below its ceiling — and the availability of alkylate, butane and straight-run naphtha.</p>
+<div class="note">
+<p>The optimum is <strong>degenerate</strong>: several different recipes achieve the same margin, and a different solver reports a different one. <strong>The binding set and the objective are stable; the recipe is not.</strong></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Part 2 — the prediction rule, and its direction</span></p>
+<p>Predicted change = (dual of the row) × (change in the row). Tightening a ceiling that binds can only <strong>reduce</strong> the margin, so the sign is known before any arithmetic.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regular S ceiling</th>
+<th style="text-align: right;">actual</th>
+<th style="text-align: right;">linear prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">290 → 250 ppm</td>
+<td style="text-align: right;"><strong>−27,445</strong></td>
+<td style="text-align: right;">−22,047</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">290 → 200 ppm</td>
+<td style="text-align: right;"><strong>−63,231</strong></td>
+<td style="text-align: right;">−49,606</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">290 → 150 ppm</td>
+<td style="text-align: right;"><strong>−110,056</strong></td>
+<td style="text-align: right;">−77,164</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p><strong>The linear prediction under-states the loss, and always will.</strong> The LP value function is <em>concave</em> in the right-hand side for a maximisation, so the tangent lies above it. Push the specification far enough and a different set of constraints binds, the dual rises, and the real cost runs away from the prediction.</p>
+</div>
+</div></div>
+</section>
+<section id="what-a-nonconvex-landscape-looks-like" class="slide level2">
+<h2>What a nonconvex landscape looks like</h2>
+<div class="kicker c-rust">
+<p>And why a gradient method cannot see across it</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<svg viewbox="0 0 460 250" style="width:100%;max-width:520px" role="img" aria-label="A schematic objective profile with a tall global hill on the left, a flat valley in the middle, and a lower local hill on the right. Both summits are marked as points where a local solver reports optimal.">
+<line x1="46" y1="212" x2="440" y2="212" stroke="#B9C1C6" stroke-width="1.6"></line> <line x1="46" y1="212" x2="46" y2="26" stroke="#B9C1C6" stroke-width="1.6"></line> <text x="20" y="34" font-size="13" fill="#66727C">objective</text> <text x="380" y="238" font-size="13" fill="#66727C">a decision variable</text> <path d="M60 206 C 96 196 108 60 140 52 C 172 60 186 190 214 206 L 300 206 C 322 200 336 120 366 112 C 396 120 410 198 428 206" fill="none" stroke="#0F6E6B" stroke-width="3"></path> <line x1="214" y1="206" x2="300" y2="206" stroke="#BE654C" stroke-width="4"></line> <circle cx="140" cy="52" r="7" fill="#0F6E6B"></circle> <circle cx="366" cy="112" r="7" fill="#E29A2D"></circle> <text x="140" y="38" font-size="14" fill="#0F6E6B" text-anchor="middle">global</text> <text x="366" y="98" font-size="14" fill="#E29A2D" text-anchor="middle">local</text> <text x="257" y="230" font-size="12.5" fill="#BE654C" text-anchor="middle">a valley a gradient method will not cross</text>
+</svg>
+<div class="note">
+<p>Schematic. <strong>Every marked point satisfies the KKT conditions</strong>, and a local solver reports <code>optimal</code> at each.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="spec">
+<p><span class="eyebrow">The mechanism</span></p>
+<p>A gradient-based method <strong>climbs the hill it starts on</strong>. It has no information about the landscape beyond the neighbourhood it has visited, and no mechanism for crossing a valley of infeasible or worse points.</p>
+</div>
+<div class="punch">
+<p>The starting point selects the answer.</p>
+</div>
+<p>On a nonconvex problem the initial values are not a numerical detail — they are <strong>part of the specification of what you computed</strong>. A result reported without them is not reproducible.</p>
+</div></div>
+</section>
+<section id="multistart-the-poor-persons-global-search" class="slide level2">
+<h2>Multistart: the poor person’s global search</h2>
+<div class="kicker c-teal">
+<p>Evidence, and a good incumbent. Not a proof.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">The procedure</span></p>
+<ol type="1">
+<li>Sample <em>N</em> starting points over the <strong>physically meaningful</strong> ranges of the variables that drive the nonconvexity.</li>
+<li>Solve from each, and keep <strong>every</strong> terminal point, not just the best.</li>
+<li>Report the histogram of terminal objective values, the best, the worst, and the <strong>fraction of starts reaching the best</strong>.</li>
+</ol>
+</div>
+<div class="flag c-rust">
+<p><strong>It gives no bound</strong>, so it cannot prove optimality. A multistart that always returns the same value has found either a convex problem or a badly chosen sampling range.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<p><span class="eyebrow">Practical advice</span></p>
+<div class="dots">
+<ul>
+<li><strong>Prefer a physical starting point</strong> Initialising a pool quality from the actual current plant operation is worth a hundred random draws.</li>
+<li><strong>Sample the quality and split variables</strong> Sampling flows alone often lands in the same basin every time.</li>
+<li><strong>Fix the random seed and record it</strong> Otherwise the run is not reproducible.</li>
+<li><strong>If the problem is small</strong> use a global solver and stop guessing.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="when-a-plant-engineer-should-distrust-a-converged-answer" class="slide level2 smaller">
+<h2>When a plant engineer should distrust a converged answer</h2>
+<div class="kicker c-rust">
+<p>Six warning signs</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="dots">
+<ul>
+<li><strong>A product of two decision variables</strong> appears anywhere in the model, including in a spreadsheet cell.</li>
+<li><strong>A quality, composition, temperature or split fraction</strong> is itself a variable.</li>
+<li><strong>A recycle or a shared tank</strong> connects two balances.</li>
+<li><strong>The solver engine changed</strong> from linear to nonlinear without you asking.</li>
+<li><strong>The answer moves</strong> when you change only the initial values.</li>
+<li><strong>The solution is much better</strong> than anything operations has ever achieved.</li>
+</ul>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="punch">
+<p>A blend recipe from a local optimum is not infeasible. It meets every specification.</p>
+</div>
+<p>It is wrong in the sense of <strong>leaving margin on the table, silently, every day</strong>, with no signal that it is doing so.</p>
+<div class="note">
+<p><strong>And for electrolyte blending:</strong> the same structure appears whenever one make-up tank feeds more than one cell chemistry. The tank composition is a variable, and it multiplies every draw from the tank.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-3-the-pooling-trap" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Activity 3 · the pooling trap</h2>
+<div class="kicker c-amber">
+<p>15 min · computer · groups of 3 to 4</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p><span class="eyebrow">What to do</span></p>
+<p>Open <strong>w04-modeling3-blending-pooling.ipynb</strong> and run everything up to and including the <strong>Haverly</strong> section. The model builder is <code>build_haverly(p0=...)</code>, where <code>p0</code> is the starting value of the pool sulfur <em>p</em>, and the solver is <code>ipopt</code>.</p>
+<div class="punch">
+<p>Solve the same model twice: once from <em>p</em>₀ = 1.0, once from <em>p</em>₀ = 3.0.</p>
+</div>
+<p><strong>Nothing else changes.</strong> Same data, same constraints, same solver, same tolerances.</p>
+</div><div class="column" style="width:46%;">
+<p><span class="eyebrow">Record, for each of the two runs</span></p>
+<div class="numbered n4">
+<ol type="1">
+<li>the solver’s <strong>termination status</strong>,</li>
+<li>the <strong>objective value</strong>,</li>
+<li>the final <strong>pool quality <em>p</em></strong>,</li>
+<li>the six flows <em>A</em>, <em>B</em>, <em>P</em><sub><em>X</em></sub>, <em>P</em><sub><em>Y</em></sub>, <em>C</em><sub><em>X</em></sub>, <em>C</em><sub><em>Y</em></sub>.</li>
+</ol>
+</div>
+<div class="flag c-rust">
+<p><strong>Do not compare with the group next to you until the poll.</strong> When both columns are on the board, the question to the room is simply: <strong>which one is right?</strong></p>
+</div>
+<div class="note">
+<p>Groups of 3 to 4, one machine per group. Hand back nothing written — each group reports its two numbers out loud when polled.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-3-answer-1-of-2-both-are-right-and-that-is-the-problem" class="slide level2 smaller">
+<h2>Activity 3 · [ANSWER] 1 of 2 · both are right, and that is the problem</h2>
+<div class="kicker c-rust">
+<p>Same model, same solver, same tolerances</p>
+</div>
+<div class="columns">
+<div class="column" style="width:42%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">start <em>p</em>₀ = 1.0</th>
+<th style="text-align: right;">start <em>p</em>₀ = 3.0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">termination</td>
+<td style="text-align: right;"><code>optimal</code></td>
+<td style="text-align: right;"><code>optimal</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>profit, USD</strong></td>
+<td style="text-align: right;"><strong>400.00</strong></td>
+<td style="text-align: right;"><strong>100.00</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">final <em>p</em>, % S</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">3.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>A</em></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>B</em></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>P</em><sub><em>X</em></sub></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>P</em><sub><em>Y</em></sub></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>C</em><sub><em>X</em></sub></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>C</em><sub><em>Y</em></sub></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p><strong>300 USD out of 400 — 75 percent of the achievable margin</strong>, on a problem with seven variables. Both points genuinely satisfy the KKT conditions, so <strong>both status words are honest</strong>.</p>
+</div>
+</div><div class="column" style="width:56%;">
+<svg viewbox="0 0 470 260" style="width:100%;max-width:520px" role="img" aria-label="Profit against pool sulfur p. The curve starts at 400 USD when p is 1, falls steeply to zero at p about 1.5, stays flat at zero until p about 2.4, then rises to 100 USD at p equals 3. Two separated hills with a flat valley between them.">
+<line x1="56" y1="206" x2="452" y2="206" stroke="#B9C1C6" stroke-width="1.5"></line> <line x1="56" y1="206" x2="56" y2="24" stroke="#B9C1C6" stroke-width="1.5"></line> <text x="56" y="16" font-size="12" fill="#66727C" text-anchor="middle">profit, USD</text> <text x="42" y="40" font-size="11" fill="#66727C" text-anchor="end">400</text> <line x1="52" y1="36" x2="60" y2="36" stroke="#B9C1C6" stroke-width="1.5"></line> <text x="42" y="129" font-size="11" fill="#66727C" text-anchor="end">200</text> <line x1="52" y1="125" x2="60" y2="125" stroke="#B9C1C6" stroke-width="1.5"></line> <text x="42" y="211" font-size="11" fill="#66727C" text-anchor="end">0</text> <text x="56" y="226" font-size="11" fill="#66727C" text-anchor="middle">1.0</text> <text x="155" y="226" font-size="11" fill="#66727C" text-anchor="middle">1.5</text> <text x="254" y="226" font-size="11" fill="#66727C" text-anchor="middle">2.0</text> <text x="353" y="226" font-size="11" fill="#66727C" text-anchor="middle">2.5</text> <text x="452" y="226" font-size="11" fill="#66727C" text-anchor="middle">3.0</text> <text x="254" y="246" font-size="12.5" fill="#66727C" text-anchor="middle">pool sulfur p, % S</text> <line x1="160" y1="206" x2="333" y2="206" stroke="#BE654C" stroke-width="5"></line> <polyline fill="none" stroke="#0F6E6B" stroke-width="3" points="56,36 66,38 76,41 85,44 95,47 105,51 115,55 125,60 135,66 144,73 154,81 160,206 174,206 184,206 194,206 204,206 214,206 224,206 234,206 244,206 254,206 264,206 274,206 284,206 293,206 303,206 313,206 323,206 333,206 343,195 353,184 363,180 373,176 382,173 392,171 402,169 412,167 422,166 432,164 442,163 452,162"></polyline> <circle cx="56" cy="36" r="6" fill="#0F6E6B"></circle><text x="76" y="30" font-size="13" fill="#0F6E6B">global, 400</text> <circle cx="452" cy="162" r="6" fill="#E29A2D"></circle><text x="446" y="152" font-size="13" fill="#E29A2D" text-anchor="end">local, 100</text> <text x="246" y="198" font-size="12" fill="#BE654C" text-anchor="middle">flat zero valley</text>
+</svg>
+<div class="note">
+<p>Fixing <em>p</em> turns the pooling problem back into an ordinary LP, so <strong>sweeping <em>p</em> traces the true profile</strong>. Two separated hills, and a valley over which no feasible plan makes any money.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-3-answer-2-of-2-the-split-was-not-random" class="slide level2">
+<h2>Activity 3 · [ANSWER] 2 of 2 · the split was not random</h2>
+<div class="kicker c-rust">
+<p>Four of nine starts reach the better solution, and every run reports <code>optimal</code></p>
+</div>
+<div class="columns">
+<div class="column" style="width:42%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">starting <em>p</em>₀</th>
+<th style="text-align: right;">profit</th>
+<th style="text-align: right;">final <em>p</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;"><strong>400.00</strong></td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;"><strong>400.00</strong></td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;"><strong>400.00</strong></td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.75</td>
+<td style="text-align: right;"><strong>400.00</strong></td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.25</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.50</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.75</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:56%;">
+<div class="punch">
+<p>On the 81-point sweep the profit is <strong>exactly zero for <em>p</em> from 1.525 to 2.400</strong>.</p>
+</div>
+<p>That flat valley is the <strong>boundary between the two basins of attraction</strong>, and it is why no gradient step crosses it.</p>
+<div class="dots">
+<ul>
+<li><strong>The left hill</strong> is reached by feeding the pool with the low-sulfur stream B and selling the high-value product Y.</li>
+<li><strong>The right hill</strong> is reached by feeding the pool with the cheap high-sulfur stream A and selling only the low-value product X.</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>The closing point of the session.</strong> A spreadsheet solver would have returned one of these two numbers and never mentioned the other. No message, no bound, no gap. That is why the course moves to Python from here — <strong>and the reason is not size. It is that a spreadsheet cannot tell you its answer is local.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="closing-the-loop-what-a-bound-would-have-told-the-room" class="slide level2 smaller">
+<h2>Closing the loop: what a bound would have told the room</h2>
+<div class="kicker c-teal">
+<p>“Profit 400” is an opinion. Here is what a result looks like.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Instance</th>
+<th style="text-align: left;">form</th>
+<th style="text-align: right;">global</th>
+<th style="text-align: right;">bound</th>
+<th style="text-align: right;">gap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Haverly, 2 feeds, no pool limit</td>
+<td style="text-align: left;">p</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">500.00</td>
+<td style="text-align: right;">25.0 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Haverly, 2 feeds, no pool limit</td>
+<td style="text-align: left;">q</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">500.00</td>
+<td style="text-align: right;">25.0 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">extended, 4 feeds, pool ≤ 150</td>
+<td style="text-align: left;">p</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">555.56</td>
+<td style="text-align: right;">38.9 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">extended, 4 feeds, pool ≤ 150</td>
+<td style="text-align: left;"><strong>q</strong></td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;"><strong>466.67</strong></td>
+<td style="text-align: right;"><strong>16.7 %</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="dots">
+<ul>
+<li><strong>On Haverly the two bounds coincide</strong> a single pool fed by two streams and limited only by product demand leaves the RLT constraints nothing to add.</li>
+<li><strong>On the extended instance</strong> the q-formulation cuts the gap from 38.9 to 16.7 percent, for the cost of extra rows. That is why global solvers build the pq-formulation internally.</li>
+</ul>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="flag c-teal">
+<p><strong>The honest report.</strong></p>
+<p>“Profit 400” is an opinion.</p>
+<p>“Profit 400, from <em>p</em>₀ = 1.0, with a valid upper bound of 500 from the McCormick relaxation, and a multistart over nine starts in which four reached 400 and five reached 100” <strong>is a result.</strong></p>
+</div>
+<div class="spec">
+<p><span class="eyebrow">Forward</span></p>
+<p><strong>Week 10</strong> supplies the KKT theory behind the word <em>optimal</em>. <strong>Week 11</strong> supplies the branch-and-bound machinery that closes a gap. <strong>Week 13</strong> returns to what to do when the model is not known at all.</p>
+</div>
+</div></div>
+</section>
+<section id="summary" class="slide level2 smaller">
+<h2>Summary</h2>
+<div class="kicker c-teal">
+<p>What today established</p>
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<div class="dots">
+<ul>
+<li><strong>A quality specification is naturally a ratio</strong> Multiplying by the blend volume, which belongs to the same balance, makes it linear. That single manipulation is why blending is an LP.</li>
+<li><strong>The rule is exact only</strong> when the denominator is strictly positive and lives in the same balance as the numerator.</li>
+<li><strong>A ratio objective is a different objective</strong> Charnes-Cooper turns it into an LP, and its plan is generally not the plan that maximises the total.</li>
+<li><strong>A pool forces every product drawn from it</strong> to see the same composition, the pool quality multiplies flows belonging to other balances, and the feasible set stops being convex.</li>
+<li><strong>Optimal from a local NLP solver</strong> asserts the KKT conditions, not global optimality.</li>
+<li><strong>The p- and q-formulations</strong> share a feasible set and a global optimum but not a relaxation. The bound is what a global solver works to close.</li>
+<li><strong>Report the bound with the incumbent</strong> An answer to a nonconvex problem without a bound is an opinion.</li>
+</ul>
+</div>
+</div><div class="column" style="width:44%;">
+<p><span class="eyebrow">Numbers established today</span></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Linear blending margin</td>
+<td style="text-align: right;">413,439.75 USD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regular / Premium volume</td>
+<td style="text-align: right;">4,080.60 / 5,000.00 t</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Binding quality rows</td>
+<td style="text-align: right;">all six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Availability duals, reformate / FCC</td>
+<td style="text-align: right;">41.9412 / 13.3609</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spec duals, RON / RVP / S</td>
+<td style="text-align: right;">0.69276 / 5.12983 / 0.13507</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Margin per tonne (Charnes-Cooper)</td>
+<td style="text-align: right;">45.8708 USD/t</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">margin given up</td>
+<td style="text-align: right;">602.65 USD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Haverly from <em>p</em>₀ = 1.0</td>
+<td style="text-align: right;">400.00 USD, <em>p</em> = 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Haverly from <em>p</em>₀ = 3.0</td>
+<td style="text-align: right;">100.00 USD, <em>p</em> = 3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Multistart, 9 starts</td>
+<td style="text-align: right;">4 reach 400, 5 reach 100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Flat zero valley</td>
+<td style="text-align: right;"><em>p</em> ∈ [1.525, 2.400]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">McCormick, Haverly p / q</td>
+<td style="text-align: right;">500.00 / 500.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">McCormick, extended p / q</td>
+<td style="text-align: right;">555.56 / 466.67</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p><strong>Next:</strong> Week 5 — logical and discrete decisions, big-M versus convex hull, and formulation strength.</p>
+</div>
+</div></div>
+</section>
+<section id="before-next-week" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Before next week</h2>
+<div class="kicker c-amber">
+<p>Reading, notebook, and HW2</p>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Reading</span></p>
+<div class="dots">
+<ul>
+<li><strong>Edgar, Himmelblau and Lasdon</strong> Ch. 7, blending and refinery planning models.</li>
+<li><strong>Rao</strong> Ch. 1 for problem classification and Ch. 10 for the nonlinear background.</li>
+<li><strong>Haverly (1978)</strong> the original two-page note that named the pooling problem.</li>
+<li><strong>Tawarmalani and Sahinidis</strong> Convexification and Global Optimization, Ch. 9, for the p- and q-formulations.</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Notebook to finish</span></p>
+<p><code>w04-modeling3-blending-pooling.ipynb</code>, all sections, plus <strong>Exercises 2, 4 and 6</strong>. Exercise 4 is the proper 100-point multistart on Haverly and is the one that settles the argument started today.</p>
+<div class="punch">
+<p><strong>HW1 is released today, due Monday 7 September</strong> — the start of Week 5.</p>
+</div>
+<p>The <strong>Week 3 self-study pack</strong> is released today too, <strong>due Friday 11 September, midnight</strong> — the session I was away for. The files have been on the course page without a deadline; the deadline starts now.</p>
+<p><strong>HW2 is not released today.</strong> It comes in Week 5, so you meet these one at a time.</p>
+</div></div>
+</section>
+<section id="further-reading" class="slide level2">
+<h2>Further reading</h2>
+<div class="kicker c-slate">
+<p>Where to go deeper</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Haverly, C. A. (1978)</strong> Studies of the behaviour of recursion for the pooling problem, ACM SIGMAP Bulletin. The instance used in Activity 3, and still the standard minimal counterexample.</li>
+<li><strong>Tawarmalani and Sahinidis</strong> Convexification and Global Optimization in Continuous and Mixed-Integer Nonlinear Programming, Ch. 9: the p-, q- and pq-formulations and the relaxations they induce.</li>
+<li><strong>Biegler, L. T.</strong> Nonlinear Programming: Concepts, Algorithms and Applications to Chemical Processes, for what ipopt is actually doing.</li>
+<li><strong>Edgar, Himmelblau and Lasdon</strong> Optimization of Chemical Processes, 2nd ed., Ch. 7, for blending in its industrial setting.</li>
+<li><strong>Misener and Floudas</strong> Advances for the pooling problem: modeling, global optimization and computational studies, for where the field stands now.</li>
+</ul>
+</div>
+<div class="foot">
+<div class="note">
+<p><strong>Forward references made today.</strong> The disjunction that a shut-off grade really needs is <strong>Week 5</strong>; the KKT conditions behind the word <em>optimal</em> are <strong>Week 10</strong>; the branch-and-bound machinery that closes a relaxation gap is <strong>Week 11</strong>.</p>
+</div>
+</div>
+<!-- Shared closing slide. Every week's deck ends with an include of this file
+     (see the last line of w01.qmd). One QR serves all fifteen weeks; the
+     submission timestamp separates the sessions. -->
+</section>
+<section id="section-1" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="columns">
+<div class="column" style="width:58%;">
+<div class="kicker">
+<p>Before you go · 45 seconds</p>
+</div>
+<h3 id="how-was-today">How was today?</h3>
+<div class="lede">
+<p>Five questions. Anonymous — no name, no email, no login.</p>
+</div>
+<div class="flag">
+<p>The fourth question is the one I actually use.</p>
+</div>
+<div class="statement-sub">
+<p>The two most common answers open next week’s session.</p>
+</div>
+<div class="source">
+<p>oxidized-challenge-ed9.notion.site</p>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="qr-card">
+<p><img data-src="assets/qr_feedback.png" alt="QR code linking to the weekly feedback form"></p>
+</div>
+<div class="flag center">
+<p>Scan now — I will wait</p>
+</div>
+</div></div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.5e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

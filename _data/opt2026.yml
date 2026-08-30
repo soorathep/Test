@@ -96,7 +96,7 @@ weeks:
         kind: Notebook
         file: w02/w02-modeling1.ipynb
       - name: Homework 1
-        desc: Linear and network model construction. Due Week 4, Monday 31 August
+        desc: Linear and network model construction. Released Week 4, due Monday 7 September
         kind: PDF
         file: w02/hw1.pdf
       - name: "Week 2 self-study pack"
@@ -115,7 +115,7 @@ weeks:
     slides: w03.html
     files:
       - name: "Week 3 self-study pack"
-        desc: No lecture this week. The five parts to work through on your own, in order. Due Friday 28 August, midnight
+        desc: The session of 24 August, to work through on your own in five parts. Due Friday 11 September, midnight
         kind: PDF
         file: w03/w03-self-study-pack.pdf
       - name: "Week 3 slides, PDF"
@@ -139,6 +139,20 @@ weeks:
     dates: 31 Aug
     block: Model construction
     tool: Excel, then Python
+    slides: w04.html
+    files:
+      - name: Blending workbook
+        desc: Five component streams into two grades. Complete the yellow cells, then solve with OpenSolver and take the sensitivity report
+        kind: XLSX
+        file: w04/w04-blending.xlsx
+      - name: Modeling III notebook
+        desc: The same blend in Pyomo, then Haverly's pooling instance, multistart, and the McCormick relaxation bounds
+        kind: Notebook
+        file: w04/w04-modeling3-blending-pooling.ipynb
+      - name: "Week 4 slides, PDF"
+        desc: The printable version of the deck above, with the same slide numbering
+        kind: PDF
+        file: w04/w04-slides.pdf
   - n: 5
     title: "Modeling IV: logical and discrete decisions"
     dates: 7 Sep
