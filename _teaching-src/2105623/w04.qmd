@@ -139,10 +139,16 @@ Every component reaches the blender as a **separate stream**, perfectly segregat
 **SAY —** "Two assumptions. The first one everybody states. The second one nobody states, and it is the one that breaks."
 :::
 
-## The instance used all session
+## The problem we solve all session {.smaller}
 
 ::: {.kicker .c-teal}
-Five component streams, two finished grades
+The situation, what you are given, and what you must decide
+:::
+
+::: {.spec}
+[The situation]{.eyebrow}
+
+You are the planning engineer at a refinery. Next month you must deliver two gasoline grades, **Regular** and **Premium**, against contracts that are already signed. Five component streams are on site in the quantities below, each with its own cost, octane, vapour pressure and sulfur. **Decide how many tonnes of each component to put into each grade, so that the blending margin — what the grades sell for, minus what the components cost — is as large as possible**, with every grade inside its contracted volume range and passing all three quality tests.
 :::
 
 :::: {.columns}
@@ -167,13 +173,15 @@ Five component streams, two finished grades
 | Maximum volume, t | 7000 | 5000 |
 
 ::: {.note}
-The same instance appears in the notebook (Section 1) and in the solution workbook. **The two routes must agree to the cent.**
+The same instance appears in the notebook (Section 1) and in the blending workbook, `w04-blending.xlsx`. **The two routes must agree to the cent.**
 :::
 :::
 ::::
 
 ::: {.notes}
-Leave this slide up while you write the model on the next one. They will look back at it a dozen times today.
+**Read the situation panel out loud, once, slowly, before anything else.** It is the only place in the deck where the scenario is stated: who they are, what month it is, what is already signed, and what they must decide. Without it the tables are just numbers.
+
+**Then leave this slide up while you build the model on the board.** Do not advance to the model slide yet. They will look back at this data a dozen times today.
 :::
 
 ## The linear blending model {.smaller}
@@ -223,7 +231,21 @@ Nine constraint families, and one of them is doing something unusual
 ::::
 
 ::: {.notes}
-**DO —** Point at the *y* on the right-hand side and pause. Someone will ask. If nobody does, ask them: "what is wrong with that row, from a spreadsheet point of view?"
+**DO NOT PUT THIS SLIDE UP YET.** Stay on the data slide and build the model on the board. Eight minutes, five questions, in this order. They will write eight of the nine families themselves.
+
+**1. What do you choose?** ASK: "You are the planner on Monday morning. The tanks are full, the contracts are signed. What is actually under your control?" — They converge on: how much of each component into each grade. Name it x(c,g). Make them say the units out loud: tonnes per month. BOARD: five components times two grades. ASK: "So how many numbers is this whole problem?" TEN. Say it out loud — by this afternoon a solver will disagree with itself on a problem with seven.
+
+**2. What is true no matter how clever you are?** ASK: "Forget optimization. What must hold in any plan at all, good or bad?" — Mass is conserved. BOARD: sum over c of x(c,g) = y(g). SAY: "Nobody negotiates this row. It is physics." That phrase matters: Activity 1 turns on the difference between rows that are physics and rows that are somebody's opinion.
+
+**3. What can you not have more of?** BOARD: sum over g of x(c,g) <= avail(c). SAY: "What is on site."
+
+**4. What has somebody already promised?** BOARD: the volume window. SAY: "This one is not physics. It is a signature on a contract, and a different person signed it."
+
+**5. What does the customer measure when the truck arrives?** Octane, vapour pressure, sulfur. STOP. Write nothing. ASK: "Write me the octane requirement for Regular. Two minutes, on paper, in whatever form comes out." — They will write the RATIO. That is the correct instinct and you must let them own it: it is how the property is actually defined, and it is nonlinear. Take it from a student, write it on the board, leave it there.
+
+**6. The objective, last.** ASK: "Of all the plans that satisfy those five, which one do you want?" Revenue minus component cost.
+
+**NOW put this slide up.** Point at the y on the right-hand side of the last three rows and say nothing for five seconds. Someone will ask. If nobody does: "What is wrong with that row, from a spreadsheet point of view?" That question is what the next slide answers.
 :::
 
 ## Quality specifications are ratios, and the ratio is removed by hand {.smaller}
@@ -267,7 +289,11 @@ Solving the ratio form with `ipopt` returns the same optimum to within solver to
 ::::
 
 ::: {.notes}
-**SAY —** "This one manipulation is why an entire industry runs its blending on linear programs instead of nonlinear ones. It is worth ten minutes of your attention."
+**Do the algebra on the board, under the ratio they already wrote.** Three lines: (1) their ratio; (2) multiply both sides by the denominator, which is y(g); (3) the linear row. SAY: "You are allowed to do that because the denominator is a total mass, and the contract window forces it strictly positive."
+
+**THE SENTENCE THAT HAS TO LAND —** "This is not a linearization. It is not an approximation. It is the same feasible set, intersected with y(g) > 0. You have lost nothing."
+
+Then: "This one manipulation is why an entire industry runs its blending on linear programs instead of nonlinear ones. It is worth ten minutes of your attention." If they leave with one thing from Lecture 1, this is it.
 :::
 
 ## Three conditions, and each of them fails somewhere {.smaller}
@@ -291,7 +317,13 @@ Let *a*, *b* be data vectors and *x* the decision vector. Then (*a*ᵀ*x*) ⁄ (
 :::
 
 ::: {.notes}
-Condition 2 is the one that bites in industry: a model that is allowed to produce zero of a grade will happily do so and report meaningless quality. Condition 3 is the whole of the rest of today.
+**Teach these as three failures, not three conditions.** Ask for the physical situation before you show the text.
+
+**1. Sign.** ASK: "What happens if I multiply an inequality by a negative number?" It flips. So the rule needs the denominator strictly positive, not merely nonzero.
+
+**2. Zero denominator.** ASK: "What if we decide to make none of Premium this month?" The ratio is undefined, the multiplied form reads 0 <= 0, and the model cheerfully ships a blend of size zero with meaningless quality. This is the one that bites in industry. SAY: "The honest model is a disjunction, and it needs a binary variable. That is Week 5, and it is why Homework 2 spans three weeks."
+
+**3. Same balance.** SAY: "Hold on to this one. The whole second half of today is condition 3 failing."
 :::
 
 ## Translation table: worth copying into your notes {.smaller}
@@ -563,7 +595,15 @@ Streams are collected in a common pool. The pool quality satisfies *p* Σ<sub>*g
 :::
 
 ::: {.notes}
-**SAY —** "The left picture is a refinery with unlimited tankage. The right picture is every refinery that has ever existed."
+**Do not open with tanks. Open by pointing at the board.**
+
+SAY: "I am going to remove exactly one of the five things you wrote this morning. Not the physics, not the contract. One hidden assumption you did not know you had made."
+
+ASK: "When I wrote the sum of x(c,g), what did I quietly assume about the plant?" — That every component reaches the blender as its own segregated stream.
+
+Draw the two pictures side by side BEFORE showing the slide. ASK: "What changed?" Everything drawn from the tank has ONE composition, and that composition is not data, it is a decision.
+
+Then: "The left picture is a refinery with unlimited tankage. The right picture is every refinery that has ever existed."
 :::
 
 ## Why multiplying through does not rescue it
@@ -659,7 +699,11 @@ Feeds are costs, products are prices. Demand limits X ≤ 100, Y ≤ 200. **Seve
 ::::
 
 ::: {.notes}
-Seven variables. Write that on the board. Everything that goes wrong today goes wrong on a problem you could solve by hand if you knew which hand to use.
+**Walk the picture before the formulation.** Seven variables — put the number on the board. Name each one against the diagram: A and B into the pool, C around it, P(X) and P(Y) out of it, and p, the thing nobody can measure until the plan is chosen. THEN show the formulation.
+
+Students who can point at all seven on the picture will follow Activity 3. Students who cannot, will not — this is the slide that decides it.
+
+SAY: "Everything that goes wrong this afternoon goes wrong on a problem small enough to solve by hand, if you knew which hand to use."
 :::
 
 ## The q-formulation: carry proportions instead of quality {.smaller}
