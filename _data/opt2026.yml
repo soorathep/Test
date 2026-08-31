@@ -149,8 +149,12 @@ weeks:
         desc: Five component streams into two grades. Complete the yellow cells, then solve with OpenSolver and take the sensitivity report
         kind: XLSX
         file: w04/w04-blending.xlsx
+      - name: Pyomo quickstart
+        desc: One page. Python starts this week and you do not need to install anything - open the notebook in Google Colab, run the first cell, and read the five lines of Pyomo you need
+        kind: PDF
+        file: w04/w04-pyomo-quickstart.pdf
       - name: Modeling III notebook
-        desc: The same blend in Pyomo, then Haverly's pooling instance, multistart, and the McCormick relaxation bounds
+        desc: The same blend in Pyomo, then Haverly's pooling instance, multistart, and the McCormick relaxation bounds. Run the first cell to get Pyomo and ipopt, on Colab or locally
         kind: Notebook
         file: w04/w04-modeling3-blending-pooling.ipynb
       - name: Homework 2

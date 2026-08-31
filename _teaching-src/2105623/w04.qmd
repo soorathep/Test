@@ -46,30 +46,32 @@ Today
 :::
 
 ::: {.agenda}
-- [25 min]{.chip .c-rust} Opening: HW1 collected, the Week 3 answers, the ipopt clinic, today's objectives
+- [20 min]{.chip .c-rust} Opening: the Week 3 answers, the ipopt clinic, HW1 released, today's objectives
 - [30 min]{.chip .c-teal} Lecture 1: blending as a linear model, quality specifications, the multiply-through rule
-- [18 min]{.chip .c-amber} Activity 1 — specification negotiation
+- [20 min]{.chip .c-amber} Activity 1 — specification negotiation
 - [30 min]{.chip .c-teal} Lecture 2: the pooling problem, bilinear terms, p- and q-formulations, nonconvexity
 - [12 min]{.chip .c-mist} Break
 - [25 min]{.chip .c-amber} Activity 2 — blend it, in OpenSolver
-- [22 min]{.chip .c-teal} Lecture 3: local versus global, multistart, when to distrust a converged answer
-- [15 min]{.chip .c-amber} Activity 3 — the pooling trap
-- [3 min]{.chip .c-slate} Wrap-up, and what is due next week
+- [20 min]{.chip .c-teal} Lecture 3: local versus global, multistart, when to distrust a converged answer
+- [18 min]{.chip .c-amber} Activity 3 — the pooling trap
+- [5 min]{.chip .c-slate} Wrap-up, and what is due when
 :::
 
 ::: {.foot}
 ::: {.note}
-**The designed crossover session:** OpenSolver before the break, Python and `ipopt` after it. Notebook `w04-modeling3-blending-pooling.ipynb`; workbook `w04-blending.xlsx`.
+**The designed crossover session:** OpenSolver before the break, Python and `ipopt` after it. Notebook `w04-modeling3-blending-pooling.ipynb`; workbook `w04-blending.xlsx`. **Nothing installed? Open the notebook in Google Colab and run the first cell** — one page of instructions in `w04-pyomo-quickstart.pdf`.
 :::
 :::
 
 ::: {.notes}
-**[00:00 – 00:25] · OPENING — this is a longer opening than usual, and it is all necessary**
+**[00:00 – 00:20] · OPENING — this is a longer opening than usual, and it is all necessary**
+
+**Nothing is collected this morning.** HW1 has been on the course page since Week 2 but was never given a deadline; it is released today, due Monday 7 September.
 
 **DO, in this order —**
 
-1. **Collect HW1.** Do it first, while everyone is still sitting down.
-2. **The ipopt clinic, 10 minutes.** Ask for hands: whose `SolverFactory('ipopt').available()` printed False? Fix them now, or pair them with someone whose works. Today's second half does not run without it. If someone reports section 7.2 of the Week 3 notebook failing with "ipopt is not available" — that is Pyomo falling back to MindtPy and is not a broken install; the Part F check is the authority.
+1. **The ipopt clinic, 8 minutes.** Ask for hands: whose `SolverFactory('ipopt').available()` printed False? Today's second half does not run without it. **Do not spend the clinic debugging local installs.** Send anyone who is stuck to Colab — open the notebook there, run the first cell, and `ipopt` is available in about two minutes. It is the same on every machine, so it is also the fastest thing to say from the front. This is the first session that uses Python at all, so expect the gap to be wide: one working machine per group of three or four is enough for Activity 3. If someone reports section 7.2 of the Week 3 notebook failing with "ipopt is not available" — that is Pyomo falling back to MindtPy and is not a broken install; the Part F check is the authority.
+2. **Release HW1, 2 minutes.** Due Monday 7 September, the start of Week 5. Say it twice, and say plainly that the deadline starts today so nobody is behind.
 3. **The Week 3 answers, 8 minutes.** Hand out the written version, then put ONE thing on the board: "saturated, and worth nothing" against "narrow it and it costs 5". Let them argue for two minutes before you resolve it. That is the most transferable idea of the last fortnight and it sets up today exactly.
 4. **Today's objectives, 3 minutes.** Say the sentence: today a solver will report `optimal` twice, on the same model with the same data, and give two different answers.
 :::
@@ -1020,14 +1022,14 @@ Sign 6 is the one that has saved real money. If the model beats the plant's best
 ## Activity 3 · the pooling trap {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-amber}
-15 min · computer · groups of 3 to 4
+18 min · computer · groups of 3 to 4
 :::
 
 :::: {.columns}
 ::: {.column width="52%"}
 [What to do]{.eyebrow}
 
-Open **w04-modeling3-blending-pooling.ipynb** and run everything up to and including the **Haverly** section. The model builder is `build_haverly(p0=...)`, where `p0` is the starting value of the pool sulfur *p*, and the solver is `ipopt`.
+**The instance is Haverly's, from the slide above** — the six flows you record are defined there. Open **w04-modeling3-blending-pooling.ipynb** and run everything up to and including the **Haverly** section. The model builder is `build_haverly(p0=...)`, where `p0` is the starting value of the pool sulfur *p*, and the solver is `ipopt`.
 
 ::: {.punch}
 Solve the same model twice: once from *p*₀ = 1.0, once from *p*₀ = 3.0.
@@ -1258,7 +1260,7 @@ What today established
 Every number on this slide was re-solved independently before the deck was built. If a student's sheet disagrees with one of them, the sheet is wrong.
 :::
 
-## Before next week {.tint background-color="#F3F0EB"}
+## Before next week {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-amber}
 Reading, notebook, and HW2
@@ -1282,10 +1284,12 @@ Reading, notebook, and HW2
 `w04-modeling3-blending-pooling.ipynb`, all sections, plus **Exercises 2, 4 and 6**. Exercise 4 is the proper 100-point multistart on Haverly and is the one that settles the argument started today.
 
 ::: {.punch}
-HW1 was due today. **HW2 is released today, due in Week 6.**
+**HW1 is released today, due Monday 7 September** — the start of Week 5.
 :::
 
-It covers blending, pooling, and logical and discrete modeling, and it includes a **model-audit task**: you receive a plausible but wrong generated model and must find and correct its errors.
+It covers Weeks 1 to 3. The file has been on the course page since Week 2; the deadline starts today.
+
+**HW2 is also released today, due in Week 6.** It covers blending, pooling, and logical and discrete modeling, and it includes a **model-audit task**: you receive a plausible but wrong generated model and must find and correct its errors.
 :::
 ::::
 
