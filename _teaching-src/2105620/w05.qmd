@@ -1,0 +1,864 @@
+---
+title: "Reverse-engineering II — the Introduction and the gap"
+subtitle: "Week 5 · 2105620 Research Communication Skills for Chemical Engineers"
+author: "Soorathep Kheawhom"
+date: 2026-09-03
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Three hours, and one sentence to leave with {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [12 min]{.chip .c-teal} What we need from the last two weeks — and nothing else
+- [23 min]{.chip .c-teal} The Introduction as five moves
+- [25 min]{.chip .c-amber} Activity 1 — label the moves
+- [10 min]{.chip .c-teal} Debrief
+- [10 min]{.chip .c-mist} Break
+- [25 min]{.chip .c-teal} Absence is not a gap · claim strength
+- [25 min]{.chip .c-amber} Activity 2 — your gap in three sentences
+- [15 min]{.chip .c-teal} Debrief
+- [10 min]{.chip .c-mist} Break
+- [15 min]{.chip .c-teal} From gap to aim to Methods
+- [10 min]{.chip .c-amber} Activity 3 · close
+:::
+
+::: {.notes}
+**[00:00 – 00:02] · AGENDA**
+
+**SAY —**
+
+"Everything you need today is on the sheet in front of you. You do not need the paper you chose, you do not need your outline, and you do not need your matrix. If you brought them, good. If you did not, this session runs exactly the same.
+
+Two activities matter, and both are about your own work, not about anybody else's paper."
+
+**DO —**
+
+- Write the two break return times on the board now.
+- Do not open with anything about submissions. If someone asks, answer it plainly and move on — see the run sheet.
+:::
+
+## What we need from the last two weeks {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+12 minutes · and then we leave it alone
+:::
+
+::: {.lede}
+Two ideas. One from the matrix, one from the recordings. If you missed either, you are not behind after the next ten minutes.
+:::
+
+::: {.notes}
+**[00:02] · RECAP DIVIDER**
+
+**SAY —**
+
+"Ten minutes of recap, and I am only taking the two things today actually needs. One from Week 3, one from Week 4. If you missed either week entirely, you will not be behind when this block ends."
+:::
+
+## From Week 3 — three shapes of gap
+
+::: {.kicker .c-teal}
+The one thing the matrix was for
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Two rows **contradict** | An unresolved question |
+| A column is **empty** for every row | Nobody has measured it |
+| Every row shares **one condition** | The field has tested only one regime |
+:::
+
+::: {.foot}
+::: {.punch}
+A gap is a property of a table, not a feeling you get while reading.
+:::
+:::
+
+::: {.notes}
+**[00:02 – 00:07] · RECAP 1**
+
+**SAY —**
+
+"Week three. You built a table — claims down one side, evidence across the other. The reason for the table was not tidiness. It was that a table has features a pile of PDFs does not.
+
+Three features, three kinds of gap.
+
+Two rows that contradict each other. That is an unresolved question, and it is the strongest of the three, because you are not claiming nobody looked — you are claiming the field does not agree.
+
+A column that is empty for every row. Nobody has measured that thing.
+
+And every row sharing one condition. Everybody works at low current density, or at ambient pressure, or on the same feedstock. Nobody has gone outside it.
+
+Hold on to those three. Activity two comes straight out of them."
+
+**DO —** Do not re-teach the matrix itself. Three shapes, five minutes, move on.
+:::
+
+## From Week 4 — an Introduction is five moves
+
+::: {.kicker .c-teal}
+The one thing the recordings were for
+:::
+
+::: {.numbered .n4}
+1. **Establishes** a context the reader already accepts
+2. **Narrows** once or twice, each time tighter
+3. **Reports** what is known — and then what is not
+4. **States the gap** — as a cost, not as an absence
+5. **States an aim** the Results can answer
+:::
+
+::: {.foot}
+::: {.note}
+Five moves, in this order. Almost every published Introduction has all five. The ones that fail usually fail at four.
+:::
+:::
+
+::: {.notes}
+**[00:07 – 00:12] · RECAP 2**
+
+**SAY —**
+
+"Week four. An Introduction is not four paragraphs of background. It is five moves, in this order.
+
+Establishes a context the reader already accepts. Not one you have to argue for — if your first paragraph is already controversial, the reader has nowhere to stand.
+
+Narrows. Once or twice, each time tighter. Once is usually too fast, four times is a review article.
+
+Reports what is known, and then what is not. Two different moves, usually two paragraphs.
+
+States the gap. As a cost, not as an absence — and we will spend most of today on that one word.
+
+And states an aim the Results can answer.
+
+That is the whole recap. Everything else today builds on those two slides."
+
+**DO —** Photograph-this-slide moment. Say so.
+:::
+
+## The five moves {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 2 · 23 minutes
+:::
+
+::: {.lede}
+Now the same five moves, slowly, and where each one fails.
+:::
+
+::: {.notes}
+**[00:12] · SECTION DIVIDER**
+:::
+
+## Move 1 — establish something they already accept {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Where the reader stands
+:::
+
+::: {.dots}
+- **Good** — a fact of the field nobody argues with. Emissions are large. Zinc is cheap. The reader nods and reads on
+- **Bad** — a claim you will have to defend. Now the reader is arguing before you have said what you did
+- **Also bad** — so general it belongs in any paper. "Energy storage is important" opens ten thousand papers a year
+:::
+
+::: {.foot}
+::: {.punch}
+One paragraph. Sometimes two sentences. The commonest fault is that it goes on for a page.
+:::
+:::
+
+::: {.notes}
+**[00:12 – 00:16] · MOVE 1**
+
+**SAY —**
+
+"Move one. Establish a context the reader already accepts.
+
+The word that matters is accepts. This paragraph is where the reader gets to stand. If it contains something they might argue with, they are arguing before you have told them what you did.
+
+The second failure is length. In a first draft this move takes a page, because it feels like the safe part to write. It is one paragraph. Sometimes two sentences.
+
+And the third — 'energy storage is important' — is true, and opens ten thousand papers a year, which means it distinguishes yours from none of them."
+:::
+
+## Move 2 — narrow, and mean it
+
+::: {.kicker .c-teal}
+The funnel
+:::
+
+::: {.spec}
+Field  →  approach  →  the specific system you work on
+:::
+
+::: {.dots}
+- Once is often too fast. Four times is a review article
+- Each narrowing must **exclude** something. If nothing is excluded, it is not a narrowing
+- Narrowing twice to the same place is the commonest structural fault in a draft Introduction
+:::
+
+::: {.notes}
+**[00:16 – 00:20] · MOVE 2**
+
+**SAY —**
+
+"Move two. Narrow.
+
+Field, then approach, then the particular system you work on. Two steps is usually right.
+
+Here is the test of a real narrowing: it excludes something. After the sentence, a set of papers is no longer in scope. If nothing has been excluded, you have not narrowed, you have restated.
+
+And watch for narrowing twice to the same place. It is the single commonest structural fault I see, it is invisible when you read forwards, and you will find one in about four minutes on the sheet in front of you."
+
+**DO —** Do not say which paragraph it is. They find it in Activity 1.
+:::
+
+## Move 3 — known, then not known
+
+::: {.kicker .c-teal}
+Two moves that look like one
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **What is known** | The state of the art, with numbers. What has been achieved, and by roughly what means |
+| **What is not known** | Where that work stops. Not everything it fails to do — the *one* thing your paper is about |
+:::
+
+::: {.foot}
+::: {.note}
+Most drafts do the first and skip the second, then jump straight to the aim. The reader is never told why the aim is worth pursuing.
+:::
+:::
+
+::: {.notes}
+**[00:20 – 00:24] · MOVE 3**
+
+**SAY —**
+
+"Move three is really two moves that beginners write as one.
+
+What is known. The state of the art, and where possible with numbers in it — three point five to four point two gigajoules per tonne is worth more than 'considerable energy'.
+
+Then what is not known. And here, be selective. Not everything the field fails to do. The one thing your paper is about.
+
+The common draft does the first half well, because reading produces it, and then jumps straight to 'the aim of this study is'. The reader has been given a state of the art and then an aim, with nothing in between telling them why the aim is worth anything."
+:::
+
+## Move 4 — the gap {.dark background-color="#1C242B"}
+
+::: {.kicker .c-amber}
+The move everything today is about
+:::
+
+::: {.statement}
+An absence is a fact<br>about the literature.
+:::
+
+::: {.statement-sub}
+A gap is a claim about what that absence costs us.
+:::
+
+::: {.notes}
+**[00:24 – 00:28] · MOVE 4**
+
+**SAY —**
+
+"Move four, and this is the one the whole session is about, so I am going to say it slowly and then say it again in an hour.
+
+'Little work has been done on X' is an absence. It is a fact about the literature — about what people have and have not published.
+
+A gap is a claim about what that absence costs us. What we cannot do, or predict, or explain, because of it.
+
+Those are different sentences with different jobs. The first tells me about a library. The second tells me about the world.
+
+Some of you have heard a version of this in Week One, when I asked for a sixty-second pitch and most of the room could not finish sentence two. It is the same sentence, and today you are going to finish it."
+
+**DO —** Slow down. Pause after the two statements. This is the spine of the session.
+:::
+
+## What the difference looks like {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+Same field, two sentences
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| [✗]{.c-red} *Absence* | Comparatively little work has been done on the degradation of blended amine solvents |
+| [✓]{.c-green} *Cost* | Because degradation rates for blended solvents are not reported under realistic flue-gas conditions, the operating cost of a retrofit cannot be estimated before it is built |
+:::
+
+::: {.foot}
+::: {.punch}
+The second sentence tells a reviewer why to fund it. The first tells them a search returned few results.
+:::
+:::
+
+::: {.notes}
+**[00:28 – 00:32] · THE CONTRAST**
+
+**SAY —**
+
+"Here they are next to each other, in the same field.
+
+The first says: not much has been written about this.
+
+The second says: because this is not known, a decision cannot be made. There is a plant that cannot be costed. Somebody has to guess.
+
+Read them again and ask which one you would fund.
+
+And notice something practical. The second sentence is longer, and it is harder to write, and that is precisely why it is worth marks. Anybody can write the first one after a search. The second requires that you know what the field is for."
+
+**DO —** This is the sentence pair to put on the board and leave there for the rest of the session.
+:::
+
+## Move 5 — an aim a result can answer
+
+::: {.kicker .c-teal}
+The test
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| [✗]{.c-red} | to **understand** the mechanism of ___ |
+| [✗]{.c-red} | to **investigate** the behaviour of ___ |
+| [✓]{.c-green} | to **determine which** of four ___ sustains ___ at ___ |
+| [✓]{.c-green} | to **establish whether** ___ changes when ___ |
+:::
+
+::: {.foot}
+::: {.note}
+Name the measurement that would tell you whether you achieved it. If you cannot, it is not yet an aim.
+:::
+:::
+
+::: {.notes}
+**[00:32 – 00:35] · MOVE 5**
+
+**SAY —**
+
+"Move five. An aim the Results can answer.
+
+Here is the test, and it takes ten seconds. Name the measurement that would tell you whether you achieved the aim.
+
+'To understand the mechanism' — what measurement settles that? None. You could work for three years and nobody could say whether you succeeded, including you.
+
+'To determine which of four additives sustains capacity at ten milliamps per square centimetre' — one table settles it.
+
+Understanding is what happens to you. It is not a deliverable. Aims must be things a result can close."
+:::
+
+## Label the moves {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 1 · 25 minutes · the sheet in front of you
+:::
+
+::: {.notes}
+**[00:35] · ACTIVITY 1 DIVIDER**
+:::
+
+## What to do
+
+::: {.kicker .c-amber}
+Activity 1
+:::
+
+::: {.numbered .n3}
+1. **8 minutes alone.** Six paragraphs on the sheet. Write what each one *does* — ten words, verb first
+2. **7 minutes in pairs.** Compare. Where you disagree, decide which of you is right
+3. **Then the three questions** at the foot of the page
+:::
+
+::: {.foot}
+::: {.punch}
+The paragraphs were written for this exercise. They are not a real paper — do not cite them and do not go looking for them.
+:::
+:::
+
+::: {.notes}
+**[00:35 – 01:00] · ACTIVITY 1 — RUN**
+
+**SAY —**
+
+"Eight minutes on your own, then seven in pairs, then the three questions.
+
+Write what the paragraph does, not what it is about. 'Discusses amine solvents' is a summary and it will not help you. 'Narrows to post-combustion capture' is a function.
+
+Say the warning twice: these six paragraphs were written for this exercise. Not a real paper. Do not cite them, do not search for them.
+
+Go."
+
+**DO —**
+
+- Circulate. Two things to look for: lines that summarise instead of naming a function, and anyone stuck on P1 after three minutes.
+- At 4 minutes call out: "If your line starts with 'discusses' or 'describes', cross it out and start with a different verb."
+- Do not tell anyone where the doubled move is.
+:::
+
+## What you found
+
+::: {.kicker .c-amber}
+Debrief 1
+:::
+
+::: {.numbered .n3}
+1. **P2 and P5 do the same job.** Both narrow to post-combustion amine scrubbing. The argument walks back up the funnel and down it again
+2. **P6 states an absence, not a gap.** "Little work has been done" — on its own that is a fact about a search
+3. **The aim cannot be settled.** "To better understand the degradation mechanisms" — name the measurement. There isn't one
+:::
+
+::: {.foot}
+::: {.note}
+Three faults, six paragraphs, no chemistry required to find any of them.
+:::
+:::
+
+::: {.notes}
+**[01:00 – 01:10] · DEBRIEF 1**
+
+**SAY —**
+
+"Take the doubled move first. Who found two paragraphs doing the same job?
+
+P2 and P5. Both narrow to post-combustion amine scrubbing. P5 adds nothing that P2 did not already establish, and it is probably the best-written sentence in the piece, which is why it survived to submission.
+
+Now the important one. P6. It says comparatively little work has been done on degradation of blended amines under realistic conditions. Hands up — is that a gap?
+
+It is an absence. And here is the question that turns it into a gap: what does that absence cost somebody? Take answers. The answer we want is roughly — you cannot estimate the operating cost of a retrofit before you build it.
+
+Third, the aim. To better understand the degradation mechanisms. Name the measurement that closes it. There isn't one, and that is why we are spending the next hour on this."
+
+**DO —**
+
+- Take the doubled move fast, two minutes. It is the confidence-builder.
+- Spend the time on P6. Push the room to produce the cost sentence themselves rather than giving it.
+- If nobody gets there, give the one from the slide earlier and say where it came from.
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+10
+:::
+
+::: {.kicker .center}
+Break · back at the time on the board
+:::
+
+::: {.notes}
+**[01:10 – 01:20] · BREAK 1**
+
+**DO —** Return time is already on the board from the start of the session. Do not restate the agenda when they come back; go straight into the gap block.
+:::
+
+## Absence is not a gap {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Block 3 · 25 minutes
+:::
+
+::: {.lede}
+The same three shapes from your matrix, turned into sentences a reviewer can act on.
+:::
+
+::: {.notes}
+**[01:20] · SECTION DIVIDER**
+:::
+
+## Three shapes, three sentences {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+From the table to the page
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| Two rows **contradict** | *Reports disagree on whether ___. Under X the effect is ___, whereas under Y ___* |
+| A column is **empty** | *No study to date reports ___ under ___ conditions* |
+| One shared **condition** | *Existing work is confined to ___; behaviour under ___ remains uncharacterised* |
+:::
+
+::: {.foot}
+::: {.punch}
+Each of these is defensible, because the table is the evidence. "Little work has been done" is defensible only until somebody runs your search.
+:::
+:::
+
+::: {.notes}
+**[01:20 – 01:26] · THREE SHAPES**
+
+**SAY —**
+
+"Your matrix produces three different kinds of statement, and they are three different sentences.
+
+Two rows contradict — reports disagree on whether. This is the strongest, because you are not claiming nobody looked.
+
+A column empty for every row — no study to date reports. Be careful here: make sure it is genuinely unmeasured, not merely unreported in the four papers you happened to pick.
+
+Every row sharing one condition — existing work is confined to. Everybody works at low rate; nobody has gone high. That is often the easiest gap to fill, and the easiest to defend, because you can point at the column.
+
+What all three share: you can defend them, because the table is the evidence."
+:::
+
+## But that is still only half a gap
+
+::: {.kicker .c-rust}
+The second half
+:::
+
+::: {.numbered .n3}
+1. **What is known** — it is established that ___
+2. **What is not known** — what has not been ___ is ___
+3. **What that costs us** — because of this, we cannot ___
+:::
+
+::: {.foot}
+::: {.punch}
+Sentence three is the one that is missing from almost every draft I read, and it is the only one a reviewer cares about.
+:::
+:::
+
+::: {.notes}
+**[01:26 – 01:32] · THE THREE SENTENCES**
+
+**SAY —**
+
+"The three shapes give you sentence two. They do not give you sentence three.
+
+Here is the full shape, and it is what Activity two asks you to write.
+
+One. What is known. Something the reader accepts.
+
+Two. What is not known. One of your three shapes.
+
+Three. What that costs us. Because of this, we cannot do, predict, or explain something.
+
+Sentence three is missing from almost every draft I read, and it is the only one a reviewer actually cares about, because it is the only one that says why the work should exist.
+
+Three sentences. That is the whole of Activity two, and I am giving you twenty-five minutes for it, which tells you something about how hard it is."
+:::
+
+## How strong is your claim, exactly? {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Hedging
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| ***is*** | Measured directly, in this work |
+| ***indicates*** | Measured, and the reading points one way |
+| ***is consistent with*** | Not measured. Compatible with what was |
+| ***suggests*** | Inference from someone else's result |
+| ***may*** | Speculation, and labelled as such |
+:::
+
+::: {.foot}
+::: {.note}
+Overclaiming is the fastest route to a hostile review. Underclaiming loses you the contribution. The verb has to match the evidence exactly.
+:::
+:::
+
+::: {.notes}
+**[01:32 – 01:40] · HEDGING**
+
+**SAY —**
+
+"One more tool before you write, because it applies to sentence three as much as to a Discussion.
+
+Five levels of claim strength, and they are not decoration. Each one names a different relationship to evidence.
+
+Is — you measured it, here, in this work.
+
+Indicates — you measured something and the reading points one way.
+
+Is consistent with — you did not measure it. What you did measure is compatible with it. This is the honest verb for a mechanism you infer.
+
+Suggests — the inference comes from somebody else's result.
+
+May — speculation, and you are labelling it as such, which is entirely allowed.
+
+Two failures. Overclaiming — using 'is' for something you inferred — is the fastest route to a hostile review, because a reviewer who catches one stops trusting the rest. Underclaiming is quieter and costs you the contribution: if you write 'may suggest' about something you measured directly, you have given your own result away."
+
+**DO —** If time is short, this is the block to compress, not Activity 2.
+:::
+
+## Your gap, in three sentences {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 2 · 25 minutes · your own topic
+:::
+
+::: {.notes}
+**[01:45] · ACTIVITY 2 DIVIDER**
+:::
+
+## What to do
+
+::: {.kicker .c-amber}
+Activity 2
+:::
+
+::: {.numbered .n3}
+1. **10 minutes alone.** Three sentences on your own area. Known · not known · what it costs. No reading, no searching
+2. **10 minutes in pairs.** Swap sheets. Ask the two questions printed under the box
+3. **5 minutes.** Rewrite yours after your partner has finished with it
+:::
+
+::: {.foot}
+::: {.note}
+No topic yet? Use the area your laboratory works in. Nobody is committing to anything today.
+:::
+:::
+
+::: {.notes}
+**[01:45 – 02:10] · ACTIVITY 2 — RUN**
+
+**SAY —**
+
+"Ten minutes on your own. Three sentences about the area you already work in. You do not need to read anything and you do not need to search for anything — write what you already know.
+
+Then swap sheets and ask your partner's three sentences the two questions on the page. Does sentence three name a cost, or only an absence? And could you disagree with sentence one?
+
+Then five minutes to rewrite yours.
+
+If you have no topic yet, use whatever your laboratory works on. Nobody commits to anything today."
+
+**DO —**
+
+- Circulate hard in the first five minutes. The failure is always sentence three collapsing back into an absence.
+- One-line intervention, used repeatedly: "who is worse off because nobody knows this?"
+- At minute 8 announce: "one minute left on your own, then swap."
+- Do not let the pair phase become a conversation about the topics. It is a test, with two questions.
+:::
+
+## Sentence three, out loud
+
+::: {.kicker .c-amber}
+Debrief 2
+:::
+
+::: {.statement-hi}
+Read me sentence three only.
+:::
+
+::: {.dots}
+- The room decides: **a cost**, or **an absence** wearing longer words
+- "Has not been systematically investigated" is an absence with a suit on
+- If it names something we cannot do, predict, or explain — it is a gap, and it is yours
+:::
+
+::: {.notes}
+**[02:10 – 02:25] · DEBRIEF 2**
+
+**SAY —**
+
+"Three volunteers. Read me sentence three only — not the whole thing, just the third sentence.
+
+And the room judges. Is that a cost, or is it an absence wearing longer words?
+
+Watch out for the disguises. 'Has not been systematically investigated' is an absence in a suit. 'Remains poorly understood' is an absence in a suit. The test is whether somebody is worse off, and at what."
+
+**DO —**
+
+- Take three, not more. Pick from different research areas if you can — it shows the shape is general.
+- After each, ask the room before giving your own verdict.
+- If all three are good, say so and stop early. Do not manufacture a correction.
+- Close the block by pointing at the sentence pair still on the board from 00:28.
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+10
+:::
+
+::: {.kicker .center}
+Break · back at the time on the board
+:::
+
+::: {.notes}
+**[02:25 – 02:35] · BREAK 2**
+
+**DO —** Debrief 2 happens *before* this break, at 02:10. Do not swap them: the debrief loses everything if the room has had ten minutes to cool.
+:::
+
+## From gap to aim to Methods {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 4 · 15 minutes
+:::
+
+::: {.lede}
+The gap decides the aim. The aim decides what the Methods have to contain.
+:::
+
+::: {.notes}
+**[02:35] · SECTION DIVIDER**
+:::
+
+## The chain {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Each link constrains the next
+:::
+
+::: {.spec}
+Gap  →  Aim  →  Method  →  Result
+:::
+
+::: {.dots}
+- The **gap** says what we cannot currently do
+- The **aim** says what this paper will settle — in terms a measurement can close
+- The **method** must contain something that produces that measurement
+- The **result** must report it. Every aim, one answer
+:::
+
+::: {.foot}
+::: {.punch}
+Week 4 called the broken version an orphan aim: promised on page two, abandoned by page nine. This chain is how it happens, and where to catch it.
+:::
+:::
+
+::: {.notes}
+**[02:35 – 02:42] · THE CHAIN**
+
+**SAY —**
+
+"One chain, four links, and each one constrains the next.
+
+The gap says what we cannot currently do. The aim says what this paper settles about it. The method has to contain something that produces the measurement the aim needs. And the result has to report it.
+
+Every aim gets exactly one answer.
+
+In the recordings I called the broken version an orphan aim — an aim promised on page two and abandoned by page nine. This chain is how the break happens, and it happens at the joint between aim and method, almost always because the aim was written before the experiment was finished and nobody went back."
+:::
+
+## Operational definitions
+
+::: {.kicker .c-teal}
+Where two papers stop being comparable
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| *Failure* | At 80 % of initial capacity? At a short circuit? At a voltage threshold? |
+| *Efficiency* | Averaged over all cycles, or measured at the end? |
+| *Stable* | Over what duration, and within what band? |
+:::
+
+::: {.foot}
+::: {.note}
+This is why cells in your matrix would not fill last week. Not carelessness — a missing definition in somebody's Methods.
+:::
+:::
+
+::: {.notes}
+**[02:42 – 02:50] · OPERATIONAL DEFINITIONS**
+
+**SAY —**
+
+"One more thing the Methods owe the reader, and it connects directly to the matrix.
+
+Every term that carries a number needs an operational definition — a statement of how it was decided.
+
+Failure. At eighty percent of initial capacity, at a short circuit, at a voltage threshold? Three different numbers from the same experiment.
+
+Efficiency. Averaged over all cycles, or measured at the end?
+
+Stable. Over what duration, within what band?
+
+When you tried to fill your matrix in Week three and some cells would not fill — this is the mechanism behind that experience. Not that the authors were careless. A definition missing from their Methods, which makes their number incomparable with anybody else's.
+
+Which means the fix, in your own paper, costs one sentence."
+:::
+
+## One aim sentence {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 3 · 7 minutes
+:::
+
+::: {.lede}
+Turn your gap into an aim a result could settle. Name the measurement.
+:::
+
+::: {.notes}
+**[02:50 – 02:57] · ACTIVITY 3**
+
+**SAY —**
+
+"Last thing, and it is short. Take the gap you have just written and turn it into one aim sentence. There are two columns on your sheet — the verbs that fail and the verbs that work.
+
+Two minutes to write it. Then I will take three, and for each one the room names the measurement that would settle it. If nobody can name the measurement, it goes back."
+
+**DO —** Keep this tight. If the room is tired, take two rather than three and finish early — goodwill is worth more than the third example.
+:::
+
+## Before Week 6
+
+::: {.kicker .c-teal}
+Three things
+:::
+
+::: {.dots}
+- **Keep this sheet.** Week 7 builds a manuscript blueprint and it starts from your three sentences and your aim
+- **Assignment 1 and the Week 4 outline** — if either is still outstanding, submit before Sunday. No penalty
+- **The evidence map** — 10 to 15 sources, due before Week 7. Start it from the four rows you already have
+:::
+
+::: {.foot}
+::: {.note}
+Week 6 · 10 and 13 September — Reverse-engineering III: Methods, Results, and evidence.
+:::
+:::
+
+::: {.notes}
+**[02:57 – 03:00] · CLOSE**
+
+**SAY —**
+
+"Three things before you go.
+
+Keep the sheet. Week seven builds a manuscript blueprint and it starts from exactly those three sentences and that aim.
+
+If Assignment one or the Week four outline is still outstanding, get it in before Sunday and there is no penalty. I would rather have the work than the deadline.
+
+And the evidence map — ten to fifteen sources, due before Week seven. Start it from the four rows you already built. It is the same work continued, not a new piece of work.
+
+Week six is Methods, Results and evidence."
+
+**DO —** Say the no-penalty line plainly. A quarter of the room is worrying about it and will not hear anything else until you do.
+:::
+
+{{< include _feedback.qmd >}}
