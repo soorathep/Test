@@ -170,6 +170,23 @@ weeks:
     dates: 7 Sep
     block: Model construction
     tool: OpenSolver and Pyomo
+    files:
+      - name: "Week 5 activity sheet"
+        desc: The three activities written out in full. Print it or keep it open beside the workbook - you work on this sheet all session
+        kind: PDF
+        file: w05/w05-activity-sheet.pdf
+      - name: Fixed-charge workbook
+        desc: Six candidate units, three intermediates. Complete the yellow cells, then change the single big-M cell and watch what happens
+        kind: XLSX
+        file: w05/w05-fixed-charge.xlsx
+      - name: Modeling IV notebook
+        desc: Logical constraints as linear inequalities, big-M selection and its two failures, and the convex hull formulation. Seven sections
+        kind: Notebook
+        file: w05/w05-modeling4-logical-discrete.ipynb
+      - name: "Week 5 slides, PDF"
+        desc: The printable version of the deck, with the same slide numbering
+        kind: PDF
+        file: w05/w05-slides.pdf
   - n: 6
     title: AI-assisted modeling and model debugging
     dates: 14 Sep
