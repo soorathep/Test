@@ -1,0 +1,926 @@
+---
+title: "Modeling IV: logical and discrete decisions"
+subtitle: "Week 5 · 2105623 Optimization of Chemical Processes"
+author: "Soorathep Kheawhom"
+date: 2026-09-07
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Session plan, three hours {.smaller}
+
+::: {.kicker .c-teal}
+The shape of today
+:::
+
+| Time | Block | Duration |
+|:---|:---|---:|
+| 0:00 – 0:10 | Opening: recap of Week 4, one question from HW1, today's objectives | 10 min |
+| 0:10 – 0:40 | **Lecture 1**: binaries as modeling devices, logic as linear constraints | 30 min |
+| 0:40 – 1:00 | **Activity 1**: logic to linear, board race (pairs, paper) | 20 min |
+| 1:00 – 1:30 | **Lecture 2**: big-M, how to choose it, and its two failures | 30 min |
+| 1:30 – 1:45 | Break | 15 min |
+| 1:45 – 2:10 | **Activity 2**: big-M roulette (computer, groups of 3 to 4) | 25 min |
+| 2:10 – 2:35 | **Lecture 3**: convex hull versus big-M, formulation strength | 25 min |
+| 2:35 – 2:55 | **Activity 3**: tighten it (groups of 3 to 4) | 20 min |
+| 2:55 – 3:00 | Wrap-up, takeaways, what is due next week | 5 min |
+
+::: {.foot}
+::: {.note}
+**Bring:** the notebook `w05-modeling4-logical-discrete.ipynb`, the workbook `w05-fixed-charge.xlsx`, OpenSolver with the CBC engine, and one sheet of paper per pair. The three activities are written out in full on `w05-activity-sheet.pdf`.
+:::
+:::
+
+::: {.notes}
+**Collect HW1 first**, while they are still sitting down. Then take one question from it — the one most people got wrong — and spend three minutes on it, no more.
+:::
+
+## By the end you should be able to {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+Learning objectives
+:::
+
+::: {.numbered .n5}
+1. **Use a binary as a modeling device** — yes/no decision, fixed charge, minimum run rate, semicontinuous variable.
+2. **Translate a propositional statement** into linear constraints, and verify the translation against its truth table.
+3. **Choose a big-M that is valid and tight**, and state the two distinct numerical failures caused by an oversized M.
+4. **Write the convex hull form** of a disjunction and explain why its relaxation is the tightest possible.
+5. **Measure formulation strength** as an integrality gap, and use it rather than the row count to predict effort.
+:::
+
+::: {.foot}
+::: {.source}
+CLO 1 (formulation) and CLO 4 (implementation and solution). Reference: Williams, Ch. 9 and 10; Rao, Ch. 10.
+:::
+:::
+
+## Where we are {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+[Weeks 2 to 4]{.eyebrow}
+
+::: {.dots}
+- **Modeling I** linear models, multiperiod planning, inventory.
+- **Modeling II** networks, transportation, superstructures.
+- **Modeling III** blending, pooling, quality specifications.
+- **All continuous** every question was how much.
+:::
+
+[This week]{.eyebrow}
+
+::: {.dots}
+- **Whether, not how much** install or not, run or not.
+- **At least k of these** and this only if that.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.spec}
+[The scope boundary]{.eyebrow}
+
+This week is about **formulating** discrete decisions, and about how the formulation changes the linear relaxation.
+
+How a solver **searches** the resulting model — branch and bound, cutting planes, node selection — is Week 11.
+:::
+
+::: {.flag .c-rust}
+**The one sentence.** Two formulations of the same discrete problem give the same answer, and can differ by orders of magnitude in the effort needed to prove it.
+:::
+:::
+::::
+
+::: {.notes}
+Say the one sentence twice. Everything today is a demonstration of it.
+:::
+
+## Four patterns cover most process models {.smaller}
+
+::: {.kicker .c-teal}
+A continuous variable answers *how much*. A binary answers *whether*.
+:::
+
+| Pattern | Meaning | Algebra |
+|:---|:---|:---|
+| **Yes/no decision** | z = 1 if the unit is installed, the stream lined up, the contract signed | z ∈ {0, 1}, priced in the objective |
+| **Fixed charge** | cost F paid if and only if the activity happens at all | F z in the objective, plus u ≤ M z |
+| **Minimum run rate** | a pump that runs at all must run above L | u ≥ L z |
+| **Semicontinuous** | the two above, together | u ∈ {0} ∪ [L, M] |
+
+::: {.flag .c-rust}
+**Why the link constraint is not optional.** Without u ≤ M z the solver sets z = 0, pays no fixed charge, and still uses u > 0. The binary must be wired to the continuous variable, or it decorates the model instead of constraining it.
+:::
+
+::: {.notes}
+This is the single commonest error in student models all term. Say it now and say it again at the checklist.
+:::
+
+## The semicontinuous set is a disjunction, not an interval {.smaller}
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.spec}
+[The set]{.eyebrow}
+
+**u ∈ {0} ∪ [L, M]**
+
+the smallest nonconvex set that appears in process models.
+:::
+
+::: {.dots}
+- **Not an interval** it is not 0 ≤ u ≤ M, because the band between 0 and L is forbidden.
+- **Not convex** u = 0 and u = M are both feasible and their midpoint is not.
+- **The binary is what makes it expressible** L z ≤ u ≤ M z with z ∈ {0, 1}.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.spec}
+[What relaxing z does]{.eyebrow}
+
+Relax z to the interval [0, 1] and the pair of rows
+
+L z ≤ u ≤ M z
+
+sweeps out the wedge between the two lines u = L z and u = M z.
+
+That wedge is the convex hull of the two pieces — the point z = 0, u = 0 and the segment z = 1, L ≤ u ≤ M.
+:::
+
+::: {.note}
+The wedge is where every difficulty in this session begins. A fractional z buys a fraction of the fixed charge.
+:::
+:::
+::::
+
+## Worked example: refinery blending with operating reality {.smaller}
+
+Five component streams blended into two gasoline grades — **the Week 4 instance**. Three operating realities were ignored there.
+
+:::: {.columns}
+::: {.column width="52%"}
+| Stream | cost USD/t | avail. t | fixed F<sub>c</sub> USD | min run L<sub>c</sub> t |
+|:---|---:|---:|---:|---:|
+| Reformate | 760 | 3200 | 12 000 | 800 |
+| FCC naphtha | 730 | 4000 | 9 000 | 1000 |
+| Alkylate | 805 | 2000 | 15 000 | 500 |
+| Butane | 510 | 900 | 4 000 | 200 |
+| Straight run | 695 | 2600 | 7 000 | 600 |
+:::
+
+::: {.column width="46%"}
+::: {.dots}
+- **Lining up a stream costs money** a tank, a pump and a transfer line, whether 1 t or 3000 t moves.
+- **A running line has a minimum rate** below it the pump cavitates and the metering is unreliable.
+- **The tank farm is limited** at most four streams at once, and butane moves only while the straight-run splitter runs.
+:::
+
+::: {.spec}
+[The model]{.eyebrow}
+
+max Σ<sub>g</sub> p<sub>g</sub> y<sub>g</sub> − Σ<sub>c</sub> c<sub>c</sub> u<sub>c</sub> − Σ<sub>c</sub> F<sub>c</sub> z<sub>c</sub>
+
+s.t. L<sub>c</sub> z<sub>c</sub> ≤ u<sub>c</sub> ≤ avail<sub>c</sub> z<sub>c</sub>, z<sub>c</sub> ∈ {0, 1}
+
+plus every Week 4 row: grade balances, volume windows, octane, vapour pressure, sulfur.
+:::
+:::
+::::
+
+## What the discrete structure costs {.smaller}
+
+:::: {.columns}
+::: {.column width="47%"}
+| Margin | USD |
+|:---|---:|
+| A. LP, no discrete decisions | 413 439.75 |
+| B. + fixed charges and minimum runs | **342 092.31** |
+| cost of the discrete structure | 71 347.44 |
+| &nbsp;&nbsp;of which fixed charges paid | 47 000.00 |
+| &nbsp;&nbsp;of which minimum run rates | 24 347.44 |
+:::
+
+::: {.column width="51%"}
+| Stream | L<sub>c</sub> | LP u<sub>c</sub> | MILP u<sub>c</sub> |
+|:---|---:|---:|---:|
+| Reformate | 800 | 3200.0 | 3200.0 |
+| FCC naphtha | 1000 | 4000.0 | 4000.0 |
+| Alkylate | 500 | 833.0 | 1533.0 |
+| Butane | 200 | 574.5 | 633.9 |
+| Straight run | 600 | 473.1 | **600.0** |
+:::
+::::
+
+::: {.flag .c-rust}
+**Read the last column.** Straight run was used at 473.1 t in the LP. A minimum run rate of 600 t forces the plant either to move 600 t of a stream it did not want that much of, or to shut the line down entirely. The optimizer chose to run it and paid the difference — and the minimum run rates cost **half as much again** as all five fixed charges combined.
+:::
+
+## Translation table, part 1: propositions over binaries {.smaller}
+
+::: {.kicker .c-teal}
+Exact and dimensionless — no constant is required
+:::
+
+| Statement in words | Logic | Linear constraint |
+|:---|:---|:---|
+| a implies b | a ⇒ b | z<sub>a</sub> ≤ z<sub>b</sub> |
+| a and b are equivalent | a ⇔ b | z<sub>a</sub> = z<sub>b</sub> |
+| at least one of a, b | a ∨ b | z<sub>a</sub> + z<sub>b</sub> ≥ 1 |
+| not both | ¬(a ∧ b) | z<sub>a</sub> + z<sub>b</sub> ≤ 1 |
+| exactly one of a set S | | Σ<sub>j∈S</sub> z<sub>j</sub> = 1 |
+| at least k of S | | Σ<sub>j∈S</sub> z<sub>j</sub> ≥ k |
+| at most k of S | | Σ<sub>j∈S</sub> z<sub>j</sub> ≤ k |
+| a and b together imply c | a ∧ b ⇒ c | z<sub>a</sub> + z<sub>b</sub> − 1 ≤ z<sub>c</sub> |
+| a implies b or c | a ⇒ b ∨ c | z<sub>a</sub> ≤ z<sub>b</sub> + z<sub>c</sub> |
+
+::: {.note}
+Every propositional statement over finitely many binaries can be written this way. These nine are the ones worth memorizing.
+:::
+
+## Translation table, part 2, and how to check one {.smaller}
+
+:::: {.columns}
+::: {.column width="52%"}
+[Definitional equivalences need three rows each]{.eyebrow}
+
+| Statement | Linear constraints |
+|:---|:---|
+| c ⇔ a ∧ b | z<sub>c</sub> ≤ z<sub>a</sub>, z<sub>c</sub> ≤ z<sub>b</sub>, z<sub>c</sub> ≥ z<sub>a</sub> + z<sub>b</sub> − 1 |
+| c ⇔ a ∨ b | z<sub>c</sub> ≥ z<sub>a</sub>, z<sub>c</sub> ≥ z<sub>b</sub>, z<sub>c</sub> ≤ z<sub>a</sub> + z<sub>b</sub> |
+
+[Where continuous variables enter, and M appears]{.eyebrow}
+
+| Statement | Linear constraint |
+|:---|:---|
+| if a then u ≤ U<sub>1</sub>, else u ≤ U<sub>2</sub> | u ≤ U<sub>1</sub> z<sub>a</sub> + U<sub>2</sub>(1 − z<sub>a</sub>) |
+| if a then g(x) ≤ 0 | g(x) ≤ M(1 − z<sub>a</sub>) |
+
+::: {.note}
+Everything above this line is exact. Everything below depends on a numerical constant, which is Lecture 2.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.spec}
+[Verify, do not remember]{.eyebrow}
+
+Enumerate all 2<sup>n</sup> assignments, evaluate the proposition, evaluate the inequalities, and confirm they agree on every row. All ten translations in the notebook pass on every assignment.
+:::
+
+::: {.flag .c-rust}
+**The control case.** Writing a ⇒ b as z<sub>a</sub> + z<sub>b</sub> ≤ 1 fails the same harness: it is the translation of *not both*, and it forbids the assignment (1, 1) that the implication permits.
+
+**A wrong translation is silent.** The model still solves, still reports `optimal`, and answers a different question. That is the Week 6 theme arriving early.
+:::
+:::
+::::
+
+## Activity 1 · logic to linear {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+20 min · pairs · paper, then the board
+:::
+
+Translate all eight statements into **linear** constraints in binary variables. Use z<sub>A</sub>, z<sub>B</sub>, z<sub>C</sub>, z<sub>D</sub> for the units, z<sub>1</sub>, z<sub>2</sub>, z<sub>3</sub> for the technologies, u<sub>C</sub> for the run rate of unit C, and z<sub>W</sub> for the warehouse lease.
+
+:::: {.columns}
+::: {.column width="49%"}
+1. If unit A is built, unit B must also be built.
+2. At most two of the four units may be built.
+3. Exactly one of the three technologies must be chosen.
+4. If unit A is built, unit B must **not** be built.
+:::
+
+::: {.column width="49%"}
+5. Unit C runs at a rate of at least 20 t per day, or it does not run at all.
+6. If total production exceeds 100 t, the second warehouse must be leased.
+7. Unit D may be built only if **both** A and B are built.
+8. At least one of A, B, C must be built, and if all three are built a supervisor must be hired.
+:::
+::::
+
+::: {.punch}
+No products of binaries are permitted. At 12 minutes, eight pairs are called to the board, one statement each.
+:::
+
+::: {.notes}
+Walk the room during the first 12 minutes and look for item 7 written as z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub>. It is the commonest error and you want it on the board, not corrected privately.
+:::
+
+## Activity 1 · [ANSWER] · the eight translations {.smaller}
+
+| | Statement | Linear constraints |
+|---:|:---|:---|
+| 1 | A implies B | z<sub>A</sub> ≤ z<sub>B</sub> |
+| 2 | at most two of four | z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> + z<sub>D</sub> ≤ 2 |
+| 3 | exactly one technology | z<sub>1</sub> + z<sub>2</sub> + z<sub>3</sub> = 1 |
+| 4 | A implies not B | z<sub>A</sub> + z<sub>B</sub> ≤ 1 |
+| 5 | run at least 20 t/d or not at all | 20 z<sub>C</sub> ≤ u<sub>C</sub> ≤ U<sub>C</sub> z<sub>C</sub>, with U<sub>C</sub> the physical capacity |
+| 6 | production over 100 t forces the lease | Σ<sub>j</sub> p<sub>j</sub> ≤ 100 + M z<sub>W</sub>, M = P<sup>max</sup> − 100 |
+| 7 | D only if both A and B | z<sub>D</sub> ≤ z<sub>A</sub> **and** z<sub>D</sub> ≤ z<sub>B</sub> |
+| 8 | at least one of A, B, C; all three force a supervisor | z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> ≥ 1 **and** z<sub>S</sub> ≥ z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> − 2 |
+
+:::: {.columns}
+::: {.column width="49%"}
+::: {.note}
+**The two that generate argument.** 5 and 6 are the only ones needing a constant. 5 is the semicontinuous pattern; 6 is the bridge into Lecture 2. Note 6 is one-way — it does not forbid leasing at low production.
+:::
+:::
+
+::: {.column width="49%"}
+::: {.flag .c-rust}
+**The commonest error.** 7 written as z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub> admits z<sub>D</sub> = 1 with only A built. The pair is correct; the single row 2 z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub> is also correct but relaxes more weakly.
+:::
+:::
+::::
+
+## First, what the logic costs on the blend {.smaller}
+
+Two conditions on the tank farm: **Σ<sub>c</sub> z<sub>c</sub> ≤ 4** (cardinality), and **z<sub>Butane</sub> ≤ z<sub>Straight run</sub>** (implication).
+
+:::: {.columns}
+::: {.column width="57%"}
+| Model | margin, USD | streams on |
+|:---|---:|:---|
+| B. fixed charge + min run | 342 092.31 | all five |
+| C1. + cardinality only | 335 539.13 | Ref, FCC, Alk, But |
+| C2. + implication only | 342 092.31 | all five |
+| C3. + both | **281 361.41** | Ref, FCC, But, SR |
+:::
+
+::: {.column width="41%"}
+| Cost of | USD |
+|:---|---:|
+| cardinality alone | 6 553.18 |
+| implication alone | 0.00 |
+| both together | **60 730.89** |
+:::
+::::
+
+::: {.flag .c-rust}
+**Restrictions interact, and the interaction is not additive.** The implication alone costs nothing, because the unrestricted optimum already runs straight run. Once cardinality removes straight run, the implication also removes butane, and together they cost 60 731 USD — an order of magnitude more than the sum of their individual costs. Total cost of discrete reality: 413 439.75 − 281 361.41 = **132 078.33 USD, 31.9 percent of the LP margin**.
+:::
+
+## The big-M pattern: valid and tight are different words {.smaller}
+
+::: {.spec}
+[A constraint that applies only when a binary is 1]{.eyebrow}
+
+g(x) ≤ M (1 − z),&nbsp;&nbsp; z ∈ {0, 1}
+
+**z = 1** — the row reads g(x) ≤ 0 and is enforced.
+**z = 0** — the row reads g(x) ≤ M and must be non-binding.
+:::
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.spec}
+[The definition]{.eyebrow}
+
+Any M large enough to make the row non-binding when z = 0 is **valid**, and every valid M gives the same integer optimum. Only the smallest such value is **tight**:
+
+M\* = max { g(x) : x feasible for the other alternatives }
+
+which is itself an optimization problem, usually a small LP.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.flag .c-rust}
+**What never to do.** Pick a round number such as 10<sup>6</sup> because it looks big enough.
+
+Two different things then go wrong, and they fail in different ways. The next two slides are one each.
+:::
+:::
+::::
+
+## Three recipes for M, in decreasing order of quality {.smaller}
+
+::: {.numbered .n3}
+1. **Solve the little LP.** M\* = max g(x) over the rest of the feasible set. Exact, row by row, and what a good modeling layer does automatically.
+2. **Use variable bounds.** If g(x) = a<sup>T</sup>x − b with x<sup>L</sup> ≤ x ≤ x<sup>U</sup>, then M = Σ<sub>i</sub> max(a<sub>i</sub> x<sub>i</sub><sup>U</sup>, a<sub>i</sub> x<sub>i</sub><sup>L</sup>) − b is valid. Cheap, no LP, usually loose by a factor of a few.
+3. **Use a physical cap already in the model.** In the blending problem the availability limit caps stream usage, so M<sub>c</sub> = avail<sub>c</sub> is both valid and tight for u<sub>c</sub> ≤ M<sub>c</sub> z<sub>c</sub>.
+:::
+
+::: {.flag .c-amber}
+**A useful habit.** Write M as a named expression in the units of the row it appears in — `M_c = avail[c]` — never as a bare literal. A big-M with units attached is a big-M somebody can check. In the workbook it gets its own visible cell, `Model!$C$36`.
+:::
+
+## Failure 1: the relaxation collapses {.smaller}
+
+Relaxing z to [0, 1] in u ≤ M z gives **z ≥ u / M**. A large M lets the relaxation buy the stream for a small fraction of its fixed charge.
+
+| Formulation (same 34 rows in every case) | MILP optimum | LP bound | gap, USD | Σ<sub>c</sub> z<sub>c</sub> in LP |
+|:---|---:|---:|---:|---:|
+| tight M<sub>c</sub> = avail<sub>c</sub> | 281 361.41 | 379 170.50 | 97 809.08 | 3.6932 |
+| loose M = 50 000 | 281 361.41 | 411 575.46 | 130 214.04 | 0.1836 |
+| very loose M = 10<sup>7</sup> | 281 361.41 | 413 430.43 | 132 069.01 | **0.0009** |
+
+::: {.flag .c-rust}
+**Read the last column.** With M = 10<sup>7</sup> the relaxation switches on all five streams for a total z-mass of 0.0009, so it pays 0.09 percent of the fixed charges and its bound is essentially the pure LP value.
+
+**A loose M does not change the answer. It changes how long the search takes to prove it**, because the bound is what branch and bound must close. You will measure this yourself in Activity 2.
+:::
+
+## Failure 2: the integrality tolerance becomes a hole {.smaller}
+
+Solvers accept z as integral within an absolute tolerance, typically ε = 10<sup>−6</sup>. A value z = 10<sup>−6</sup> is reported as z = 0, while u ≤ M z still permits **u ≤ M ε**.
+
+:::: {.columns}
+::: {.column width="45%"}
+| M | flow allowed, t | charge paid, USD |
+|---:|---:|---:|
+| 3 200 | 0.0032 | 0.012 |
+| 50 000 | 0.05 | 0.012 |
+| 10<sup>7</sup> | 10 | 0.012 |
+| 10<sup>10</sup> | **10 000** | 0.012 |
+:::
+
+::: {.column width="53%"}
+::: {.spec}
+[Made concrete]{.eyebrow}
+
+Set M = 10<sup>10</sup> and fix every z<sub>c</sub> = 10<sup>−6</sup>, which the solver reports as *off*:
+
+- margin obtained: **413 439.70 USD**
+- fixed charges actually paid: **0.047 USD**
+- true MILP optimum: **342 092.31 USD**
+:::
+:::
+::::
+
+::: {.flag .c-rust}
+**Whose fault.** The plan moves ten thousand tonnes through five lines the solution claims are switched off, and it looks 71 347 USD better than the true optimum. The model is not wrong in exact arithmetic. It is wrong in floating-point arithmetic, which is the only kind a solver has. **M × ε is a modeling decision, not a solver defect.**
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+Break
+:::
+
+::: {.lede}
+15 minutes.
+:::
+
+::: {.statement-sub}
+Next: **Activity 2, big-M roulette**, at the computer, in groups of 3 to 4. Open `w05-fixed-charge.xlsx` and check that OpenSolver finds CBC.
+:::
+
+::: {.note}
+Before you leave the room: form your group and collect your assigned value of M from the front. Every group solves the same model with a different M.
+:::
+
+## The Activity 2 instance: a zinc-air materials plant {.smaller}
+
+Three intermediates must be supplied; six candidate units are offered. This is the workbook model, and it is solved with Pyomo in section 6 of the notebook.
+
+:::: {.columns}
+::: {.column width="49%"}
+| Unit | fixed kUSD/yr | hours h/yr | min thru. t/yr |
+|:---|---:|---:|---:|
+| U1 mixer-extruder | 180 | 3500 | 500 |
+| U2 roll press | 240 | 3400 | 450 |
+| U3 slot-die coater | 300 | 3600 | 600 |
+| U4 spray dryer | 150 | 3200 | 350 |
+| U5 calciner | 260 | 3300 | 550 |
+| U6 calender line | 210 | 3400 | 400 |
+
+Rates r<sub>up</sub>, t/h (dash = not possible):
+
+| Unit | anode | cathode | separator |
+|:---|---:|---:|---:|
+| U1 | 0.42 | – | – |
+| U2 | 0.30 | 0.55 | – |
+| U3 | – | 0.62 | 0.48 |
+| U4 | 0.36 | – | 0.40 |
+| U5 | – | 0.50 | 0.30 |
+| U6 | – | 0.44 | 0.52 |
+:::
+
+::: {.column width="49%"}
+::: {.spec}
+[The model]{.eyebrow}
+
+min Σ<sub>u</sub> F<sub>u</sub> z<sub>u</sub> + Σ<sub>(u,p)</sub> c<sub>up</sub> x<sub>up</sub> / 1000
+
+Σ<sub>u</sub> x<sub>up</sub> = d<sub>p</sub> &nbsp;— demand
+
+Σ<sub>p</sub> x<sub>up</sub> / r<sub>up</sub> ≤ H<sub>u</sub> &nbsp;— hours
+
+Σ<sub>p</sub> x<sub>up</sub> ≤ M z<sub>u</sub> &nbsp;— **on/off link, the big-M**
+
+Σ<sub>p</sub> x<sub>up</sub> ≥ L<sub>u</sub> z<sub>u</sub> &nbsp;— minimum throughput
+
+z<sub>U2</sub> + z<sub>U6</sub> = 1 &nbsp;— competing licences
+
+z<sub>U4</sub> ≤ z<sub>U3</sub> &nbsp;— shared solvent recovery
+
+Σ<sub>u</sub> z<sub>u</sub> ≤ 4 &nbsp;— commissioning crew
+:::
+
+::: {.punch}
+Demand, t/yr: anode paste 1800, cathode sheet 2400, separator film 1500. The single number you change is the big-M in `Model!$C$36`.
+:::
+:::
+::::
+
+## Activity 2 · big-M roulette {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+25 min · groups of 3 to 4 · computer
+:::
+
+Every group solves the **same** model in `w05-fixed-charge.xlsx`. Complete the yellow cells, set `Model!$C$36` to your group's M, and record three numbers: the **LP relaxation** objective (replace the `bin` constraint on `$H$40:$H$45` by ≤ 1 and re-solve), the **integer optimum** with `bin` restored, and the **solve time**.
+
+:::: {.columns}
+::: {.column width="38%"}
+| Group | multiple | M, t/yr |
+|---:|:---|---:|
+| 1 | M\*, tightest | 2 232 |
+| 2 | 2 M\* | 4 464 |
+| 3 | 10 M\* | 22 320 |
+| 4 | 10<sup>3</sup> M\* | 2 232 000 |
+| 5 | 10<sup>6</sup> M\* | 2 232 000 000 |
+:::
+
+::: {.column width="60%"}
+| Group | M | LP bound | integer opt. | time, s |
+|---:|---:|:---:|:---:|:---:|
+| 1 | 2 232 | | | |
+| 2 | 4 464 | | | |
+| 3 | 22 320 | | | |
+| 4 | 2.232 × 10<sup>6</sup> | | | |
+| 5 | 2.232 × 10<sup>9</sup> | | | |
+
+::: {.note}
+This table goes on the board and is filled in from the floor.
+:::
+:::
+::::
+
+::: {.punch}
+Predict, before you solve, which of the three columns will differ between groups.
+:::
+
+## Activity 2 · [ANSWER] · the board table {.smaller}
+
+| Group | M, t/yr | LP bound, kUSD/yr | integer optimum | gap % | CBC time |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 2 232 (M\*) | 2 203.148 | 2 533.226 | 13.030 | < 0.05 s |
+| 2 | 4 464 | 1 974.134 | 2 533.226 | 22.070 | < 0.05 s |
+| 3 | 22 320 | 1 879.765 | 2 533.226 | 25.796 | < 0.05 s |
+| 4 | 2 232 000 | 1 844.009 | 2 533.226 | 27.207 | < 0.05 s |
+| 5 | 2 232 000 000 | 1 843.620 | 2 533.226 | 27.222 | < 0.05 s |
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.numbered .n3}
+1. **The integer optimum is 2 533.226 in every row.** Every valid M describes the same set of integer points.
+2. **The LP bound degrades monotonically**, by 359.5 kUSD across the table, then saturates once it has collapsed to the no-fixed-charge LP.
+3. **Solve time does not move.** Six binaries is too small to time. On the 20-unit instance in section 3 of the notebook, loose M takes 4.28 s and tight M takes 0.078 s — a factor of 55. The bound is the cause, the time is the symptom.
+:::
+:::
+
+::: {.column width="46%"}
+::: {.flag .c-rust}
+**Two instructive wrong answers.**
+
+A group that never changed `$C$36` reports the shipped default M = 2 500, LP bound 2 143.300, gap 15.39 percent.
+
+A per-unit M<sub>u</sub> (1470, 1870, 2232, 1280, 1650, 1726.8) beats every row of the table: LP bound 2 403.382, gap 5.126 percent. One number for six different units is already loose, and Lecture 3 goes further still.
+:::
+:::
+::::
+
+## A disjunction, written two ways {.smaller}
+
+::: {.spec}
+[The disjunction]{.eyebrow}
+
+⋁<sub>k</sub> [ Y<sub>k</sub> ; A<sub>k</sub> x ≤ b<sub>k</sub> ] &nbsp;&nbsp;with exactly one Y<sub>k</sub> true.
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+[Big-M]{.eyebrow}
+
+::: {.spec}
+A<sub>k</sub> x ≤ b<sub>k</sub> + M<sub>k</sub>(1 − z<sub>k</sub>), &nbsp; Σ<sub>k</sub> z<sub>k</sub> = 1
+:::
+
+::: {.dots}
+- **Compact** one copy of x, one row per original row.
+- **Weak** a fractional z relaxes every alternative at once, by a large amount.
+:::
+:::
+
+::: {.column width="49%"}
+[Convex hull, disaggregated (Balas)]{.eyebrow}
+
+::: {.spec}
+x = Σ<sub>k</sub> x<sup>k</sup>, &nbsp; A<sub>k</sub> x<sup>k</sup> ≤ b<sub>k</sub> z<sub>k</sub>
+
+0 ≤ x<sup>k</sup> ≤ x<sup>U</sup> z<sub>k</sub>, &nbsp; Σ<sub>k</sub> z<sub>k</sub> = 1
+:::
+
+::: {.dots}
+- **One copy of the continuous variables per alternative** which is where the extra columns come from.
+- **With z relaxed** the projection onto x is exactly the convex hull of the union of the alternatives.
+:::
+:::
+::::
+
+::: {.punch}
+The hull form is the tightest linear relaxation any formulation of that disjunction can have.
+:::
+
+## The instance: a reactor section, two configurations {.smaller}
+
+:::: {.columns}
+::: {.column width="48%"}
+x<sub>1</sub> = feed rate, x<sub>2</sub> = product rate.
+
+::: {.spec}
+[Configuration A, small continuous unit]{.eyebrow}
+
+10 ≤ x<sub>1</sub> ≤ 40, &nbsp; 0.3 x<sub>1</sub> ≤ x<sub>2</sub> ≤ 0.5 x<sub>1</sub>
+
+annualized fixed cost 120 kUSD.
+:::
+
+::: {.spec}
+[Configuration B, large unit]{.eyebrow}
+
+60 ≤ x<sub>1</sub> ≤ 90, &nbsp; 0.5 x<sub>1</sub> ≤ x<sub>2</sub> ≤ 0.7 x<sub>1</sub>
+
+annualized fixed cost 260 kUSD.
+:::
+
+Operating cost 1.8 kUSD per unit feed and 3.2 kUSD per unit product in either configuration; the section must deliver at least 25 units of product.
+:::
+
+::: {.column width="50%"}
+[Row-wise tightest M, by LP]{.eyebrow}
+
+| A row | M\* | B row | M\* |
+|:---|---:|:---|---:|
+| x<sub>1</sub> ≥ 10 | 0 | x<sub>1</sub> ≥ 60 | 50 |
+| x<sub>1</sub> ≤ 40 | 50 | x<sub>1</sub> ≤ 90 | 0 |
+| x<sub>2</sub> ≤ 0.5 x<sub>1</sub> | 18 | x<sub>2</sub> ≤ 0.7 x<sub>1</sub> | 0 |
+| x<sub>2</sub> ≥ 0.3 x<sub>1</sub> | 0 | x<sub>2</sub> ≥ 0.5 x<sub>1</sub> | 8 |
+
+::: {.flag .c-amber}
+A zero means the row is already implied by the other alternative, so it needs no relaxation at all. **Four of the eight rows are in that class**, which no round-number M would ever discover.
+:::
+:::
+::::
+
+## The two relaxation regions {.smaller}
+
+::: {.kicker .c-teal}
+Same disjunction, two formulations, two different relaxations
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.spec}
+[What the picture shows]{.eyebrow}
+
+The true feasible set is the **union** of the two boxes-with-slopes, A near the origin and B further out along x<sub>1</sub>.
+
+The **convex hull** is the smallest convex set containing both — area **1100**.
+
+The **tightest big-M** region is strictly larger — area **1137.5**.
+:::
+:::
+
+::: {.column width="48%"}
+::: {.flag .c-rust}
+**A point that separates them.** (x<sub>1</sub>, x<sub>2</sub>) = (22.5, 15.75) lies in the big-M relaxation and **not** in the hull.
+
+It is in neither configuration: x<sub>1</sub> = 22.5 is too large for A only in combination with x<sub>2</sub> = 15.75, which exceeds 0.5 x<sub>1</sub> = 11.25, and it is far below B's floor of 60.
+:::
+
+::: {.note}
+Draw the two regions on the board before showing the numbers on the next slide. The ordering of the areas is the whole argument.
+:::
+:::
+::::
+
+## The same picture as numbers {.smaller}
+
+::: {.kicker .c-teal}
+Four formulations of one disjunction, same integer optimum 464.0
+:::
+
+| Formulation | rows | cols | LP bound | gap % | relaxation area |
+|:---|---:|---:|---:|---:|---:|
+| big-M, M = 500 | 10 | 4 | 207.000 | 55.39 | 9600.00 |
+| big-M, M = 120 (from bounds) | 10 | 4 | 229.167 | 50.61 | 9133.33 |
+| big-M, row-wise tightest | 10 | 4 | 298.744 | 35.62 | 1137.50 |
+| convex hull (disaggregated) | 16 | 8 | 298.744 | 35.62 | **1100.00** |
+
+::: {.dots}
+- **The hull region is contained in every big-M region** and the ordering of the areas matches the ordering of the bounds.
+- **Tightening M is the cheapest improvement available** going from a round 500 to the row-wise tightest costs nothing in rows and buys 91.7 units of bound.
+- **Domination guarantees never worse, not always strictly better** here the hull and the tightest big-M give the same bound in the direction the objective points, even though the hull region is strictly smaller.
+:::
+
+## Formulation strength as a measurable quantity {.smaller}
+
+::: {.spec}
+[Definition]{.eyebrow}
+
+integrality gap = (z<sub>MILP</sub> − z<sub>LP</sub>) / z<sub>MILP</sub> &nbsp;for a minimization,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(z<sub>LP</sub> − z<sub>MILP</sub>) / z<sub>MILP</sub> &nbsp;for a maximization.
+:::
+
+::: {.dots}
+- **Two formulations of the same problem have the same integer optimum by definition** as Activity 2 demonstrated. They differ only in their LP relaxation.
+- **F1 dominates F2** if the feasible set of its relaxation is contained in that of F2 on every instance. Domination implies a gap that is never worse.
+- **The convex hull formulation dominates every big-M formulation** of the same disjunction, because its projection is the smallest convex set containing the alternatives.
+:::
+
+::: {.flag .c-rust}
+**Why the gap and not the row count.** Branch and bound stops when the incumbent and the best remaining bound meet, so the work is roughly a function of how far apart they start. An extra thousand rows that halve the gap are usually a bargain, and the number of rows is a poor proxy for difficulty.
+:::
+
+## Every formulation in this session, one measure {.smaller}
+
+::: {.kicker .c-teal}
+Smaller is better in the last column, and it is the only column that predicts effort
+:::
+
+| Instance | Formulation | rows | LP bound | MILP optimum | gap % |
+|:---|:---|---:|---:|---:|---:|
+| 20 units, 40 orders | big-M, M = 10 000 | 80 | 864.168 | 3548.408 | 75.6463 |
+| 20 units, 40 orders | big-M, M = capacity | 60 | 3509.477 | 3548.408 | 1.0971 |
+| 20 units, 40 orders | disaggregated (hull-derived) | 860 | 3548.340 | 3548.408 | **0.0019** |
+| two-config. reactor | big-M, M = 500 | 10 | 207.000 | 464.000 | 55.3880 |
+| two-config. reactor | big-M, row-wise tightest | 10 | 298.744 | 464.000 | 35.6150 |
+| two-config. reactor | convex hull (disaggregated) | 16 | 298.744 | 464.000 | 35.6150 |
+| blending, fixed charges | tight M<sub>c</sub> = avail<sub>c</sub> | 34 | 379 170.50 | 281 361.41 | 34.7628 |
+| blending, fixed charges | very loose M = 10<sup>7</sup> | 34 | 413 430.43 | 281 361.41 | 46.9393 |
+| zinc-air plant (Activity 2) | big-M on hours only | 18 | 2402.903 | 2533.226 | 5.1450 |
+| zinc-air plant (Activity 2) | disaggregated (hull) | 29 | 2412.448 | 2533.226 | 4.7680 |
+
+::: {.punch}
+The row count moves by a factor of 86 across this table while the gap moves by a factor of 40 000. They are not the same quantity and they are not correlated.
+:::
+
+## Activity 3 · tighten it {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+20 min · groups of 3 to 4 · paper
+:::
+
+Each constraint is written with a lazy M = 10<sup>6</sup>. For each, derive the **tightest valid M** and give the one-line argument — an upper bound on the left-hand side over the rest of the feasible set.
+
+::: {.numbered .n3}
+1. **Zinc-air plant, on/off link for the slot-die coater U3.** x<sub>U3,cath</sub> + x<sub>U3,sep</sub> ≤ M z<sub>U3</sub>. U3 has 3600 h/yr, makes cathode sheet at 0.62 t/h and separator film at 0.48 t/h, and separator demand is 1500 t/yr.
+2. **Refinery blend, the second tank-farm bay is leased only above 8000 t.** Σ<sub>c</sub> u<sub>c</sub> ≤ 8000 + M z<sub>lease</sub>. Availabilities total 12 700 t; the grade volume windows are [4000, 7000] and [2500, 5000] t; the octane, vapour pressure and sulfur specifications also apply.
+3. **Rented external storage, usable only if the contract is signed.** R<sub>t</sub> ≤ M y<sub>contract</sub>, R<sub>t</sub> ≥ 0. It appears in I<sub>t</sub> ≤ W + R<sub>t</sub> and in the objective at 450 USD per tonne-month, and carries no upper bound anywhere in the model.
+:::
+
+::: {.punch}
+One of the three has **no finite valid M**. Identify it and say what has to be added to the model.
+:::
+
+## Activity 3 · [ANSWER] · the three tightest values {.smaller}
+
+::: {.flag .c-teal}
+**(a) M\* = 2 232 t/yr — the lazy M was 448 times too large.** Maximize the left-hand side over the rest of the feasible set. Cathode sheet is the faster product, so all-cathode gives 3600 × 0.62 = 2232 t/yr; separator film is capped at 1500 t/yr by demand and needs 1500/0.48 = 3125 h to make less product, so no mix beats all-cathode.
+:::
+
+**(b) M\* = 2 782.5 t — and the two cheaper recipes are both loose.**
+
+| recipe | M, t | source of the bound |
+|:---|---:|:---|
+| availability sum | 4 700.0 | 12 700 − 8 000, ignores the volume windows |
+| grade volume caps | 4 000.0 | 7 000 + 5 000 − 8 000, ignores the quality rows |
+| LP over the feasible set | **2 782.5** | max Σ<sub>c</sub> u<sub>c</sub> = 10 782.47, so M\* = 10 782.47 − 8 000 |
+
+The blender cannot reach 12 000 t because the octane floor on Premium and the vapour pressure and sulfur caps limit how much of the cheap high-RVP, high-sulfur streams may enter.
+
+::: {.flag .c-rust}
+**(c) No finite valid M exists, and a bigger number is not the fix.** R<sub>t</sub> has no upper bound, so max R<sub>t</sub> is +∞ and no finite M leaves the row non-binding when y = 1. Whatever number you write becomes a silent, undocumented capacity limit on rented storage. The fix is physical: the contract offers at most 500 t per month, so add R<sub>t</sub> ≤ 500, and then M\* = 500 t.
+:::
+
+## Practice checklist {.tint .smaller background-color="#F3F0EB"}
+
+::: {.kicker .c-teal}
+When you add a binary to a model
+:::
+
+::: {.numbered .n6}
+1. **State the disjunction in words first.** If you cannot say what becomes impossible when z = 1, the constraint is not ready to be written.
+2. **Wire every binary to a continuous variable**, in both directions if there is a minimum: L z ≤ u ≤ M z.
+3. **Give every M a name and a unit**, derived from a bound already in the model.
+4. **Verify every logical translation on its truth table**, not from memory.
+5. **Solve the LP relaxation and record the gap.** One extra solve, and it is the number that tells you whether the formulation is worth improving.
+6. **If the gap is large and the model is slow, disaggregate** before buying a faster computer.
+:::
+
+::: {.flag .c-rust}
+**Two smells.** A declared parameter that no constraint references — a forgotten constraint. And a binary whose relaxed value is 10<sup>−3</sup> at the LP optimum — a big-M that is too large.
+:::
+
+## Summary {.smaller}
+
+:::: {.columns}
+::: {.column width="52%"}
+[Takeaways]{.eyebrow}
+
+::: {.dots}
+- **A binary models a disjunction** and {0} ∪ [L, M] is the smallest nonconvex set in process models.
+- **Every propositional statement is a set of linear inequalities** and the translation is checkable on a truth table.
+- **A big-M must be valid and tight** too large costs the bound, and M times epsilon opens a hole in the model.
+- **The convex hull form is the tightest relaxation** of a disjunction and dominates every big-M form.
+- **Formulation strength is the integrality gap** and it, not the row count, predicts effort.
+:::
+:::
+
+::: {.column width="46%"}
+[Numbers established today]{.eyebrow}
+
+| | |
+|:---|---:|
+| Blending LP / MILP margin | 413 439.75 / 342 092.31 |
+| Fixed charges / min runs | 47 000 / 24 347.44 |
+| Full discrete model | 281 361.41 (−31.9%) |
+| Big-M bound, tight / 10<sup>7</sup> | 379 171 / 413 430 |
+| M = 10<sup>10</sup>, z = ε | margin 413 439.70 |
+| Hull / tight big-M area | 1100 / 1137.5 |
+| 20 units, gap loose/tight/hull | 75.6 / 1.10 / 0.002 % |
+| Activity 2 optimum | 2533.226 kUSD/yr |
+| A2 bound, M\* / 10<sup>6</sup>M\* | 2203.1 / 1843.6 |
+:::
+::::
+
+## Before next week {.tint .smaller background-color="#F3F0EB"}
+
+:::: {.columns}
+::: {.column width="48%"}
+[Finish]{.eyebrow}
+
+::: {.dots}
+- **The notebook** all seven sections of `w05-modeling4-logical-discrete.ipynb`, including the exercises. Sections 4 and 5 are the ones Activity 2 could not do in a spreadsheet.
+- **The workbook** `w05-fixed-charge.xlsx`, if your group did not reach the integer optimum 2533.226 kUSD/yr.
+:::
+
+[Read]{.eyebrow}
+
+Williams Ch. 9 (fixed charges, logical conditions, semicontinuous variables) and Ch. 10 (formulation strength). Rao Ch. 10 for the integer-programming vocabulary.
+:::
+
+::: {.column width="50%"}
+::: {.punch}
+**HW2 is due at the start of Week 6.** Blending, pooling, logical and discrete modeling, plus the model-audit task.
+:::
+
+::: {.spec}
+[Coming next: Week 6]{.eyebrow}
+
+A three-hour workshop. A language model drafts, the engineer verifies.
+
+You will audit three generated models that all solve to `optimal` and are all wrong, and you will quantify what each error would have cost.
+
+**Bring a laptop with Pyomo and a solver working.**
+:::
+:::
+::::
+
+::: {.notes}
+Say the model-audit task out loud. It is the piece of HW2 that people leave to the last day, and it is the piece that takes longest.
+:::
+
+## Further reading {.smaller}
+
+::: {.dots}
+- **Williams, Model Building in Mathematical Programming, 5th ed.** Ch. 9 on building integer models — fixed charges, logical conditions, semicontinuous variables — and Ch. 10 on formulation strength and why reformulation beats computation.
+- **Rao, Engineering Optimization, 4th ed., Ch. 10** for the standard integer-programming vocabulary and worked formulations.
+- **Balas (1985)** Disjunctive programming and a hierarchy of relaxations for discrete optimization problems, SIAM J. Alg. Disc. Meth. 6(3) — the source of the disaggregated hull formulation used in Lecture 3.
+- **Grossmann and Trespalacios (2013)** Systematic modeling of discrete continuous optimization models through generalized disjunctive programming, AIChE J. 59(9) — GDP as the process systems engineering framing, and the automatic reformulations available in pyomo.gdp.
+- **Edgar, Himmelblau and Lasdon, 2nd ed., Ch. 9** for process-scale mixed-integer applications.
+:::
+
+{{< include _feedback.qmd >}}

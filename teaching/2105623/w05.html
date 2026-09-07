@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-09-07">
+  <title>2105623 – Modeling IV: logical and discrete decisions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-adebb5cf30333392721641149eb81241.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Modeling IV: logical and discrete decisions</h1>
+  <p class="subtitle">Week 5 · 2105623 Optimization of Chemical Processes</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom 
+</div>
+</div>
+</div>
+
+  <p class="date">7 September 2026</p>
+</section>
+<section id="session-plan-three-hours" class="slide level2 smaller">
+<h2>Session plan, three hours</h2>
+<div class="kicker c-teal">
+<p>The shape of today</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Block</th>
+<th style="text-align: right;">Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0:00 – 0:10</td>
+<td style="text-align: left;">Opening: recap of Week 4, one question from HW1, today’s objectives</td>
+<td style="text-align: right;">10 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0:10 – 0:40</td>
+<td style="text-align: left;"><strong>Lecture 1</strong>: binaries as modeling devices, logic as linear constraints</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0:40 – 1:00</td>
+<td style="text-align: left;"><strong>Activity 1</strong>: logic to linear, board race (pairs, paper)</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1:00 – 1:30</td>
+<td style="text-align: left;"><strong>Lecture 2</strong>: big-M, how to choose it, and its two failures</td>
+<td style="text-align: right;">30 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1:30 – 1:45</td>
+<td style="text-align: left;">Break</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1:45 – 2:10</td>
+<td style="text-align: left;"><strong>Activity 2</strong>: big-M roulette (computer, groups of 3 to 4)</td>
+<td style="text-align: right;">25 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2:10 – 2:35</td>
+<td style="text-align: left;"><strong>Lecture 3</strong>: convex hull versus big-M, formulation strength</td>
+<td style="text-align: right;">25 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2:35 – 2:55</td>
+<td style="text-align: left;"><strong>Activity 3</strong>: tighten it (groups of 3 to 4)</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2:55 – 3:00</td>
+<td style="text-align: left;">Wrap-up, takeaways, what is due next week</td>
+<td style="text-align: right;">5 min</td>
+</tr>
+</tbody>
+</table>
+<div class="foot">
+<div class="note">
+<p><strong>Bring:</strong> the notebook <code>w05-modeling4-logical-discrete.ipynb</code>, the workbook <code>w05-fixed-charge.xlsx</code>, OpenSolver with the CBC engine, and one sheet of paper per pair. The three activities are written out in full on <code>w05-activity-sheet.pdf</code>.</p>
+</div>
+</div>
+</section>
+<section id="by-the-end-you-should-be-able-to" class="slide level2 tint" data-background-color="#F3F0EB">
+<h2>By the end you should be able to</h2>
+<div class="kicker c-teal">
+<p>Learning objectives</p>
+</div>
+<div class="numbered n5">
+<ol type="1">
+<li><strong>Use a binary as a modeling device</strong> — yes/no decision, fixed charge, minimum run rate, semicontinuous variable.</li>
+<li><strong>Translate a propositional statement</strong> into linear constraints, and verify the translation against its truth table.</li>
+<li><strong>Choose a big-M that is valid and tight</strong>, and state the two distinct numerical failures caused by an oversized M.</li>
+<li><strong>Write the convex hull form</strong> of a disjunction and explain why its relaxation is the tightest possible.</li>
+<li><strong>Measure formulation strength</strong> as an integrality gap, and use it rather than the row count to predict effort.</li>
+</ol>
+</div>
+<div class="foot">
+<div class="source">
+<p>CLO 1 (formulation) and CLO 4 (implementation and solution). Reference: Williams, Ch. 9 and 10; Rao, Ch. 10.</p>
+</div>
+</div>
+</section>
+<section id="where-we-are" class="slide level2 smaller">
+<h2>Where we are</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="eyebrow">Weeks 2 to 4</span></p>
+<div class="dots">
+<ul>
+<li><strong>Modeling I</strong> linear models, multiperiod planning, inventory.</li>
+<li><strong>Modeling II</strong> networks, transportation, superstructures.</li>
+<li><strong>Modeling III</strong> blending, pooling, quality specifications.</li>
+<li><strong>All continuous</strong> every question was how much.</li>
+</ul>
+</div>
+<p><span class="eyebrow">This week</span></p>
+<div class="dots">
+<ul>
+<li><strong>Whether, not how much</strong> install or not, run or not.</li>
+<li><strong>At least k of these</strong> and this only if that.</li>
+</ul>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="spec">
+<p><span class="eyebrow">The scope boundary</span></p>
+<p>This week is about <strong>formulating</strong> discrete decisions, and about how the formulation changes the linear relaxation.</p>
+<p>How a solver <strong>searches</strong> the resulting model — branch and bound, cutting planes, node selection — is Week 11.</p>
+</div>
+<div class="flag c-rust">
+<p><strong>The one sentence.</strong> Two formulations of the same discrete problem give the same answer, and can differ by orders of magnitude in the effort needed to prove it.</p>
+</div>
+</div></div>
+</section>
+<section id="four-patterns-cover-most-process-models" class="slide level2 smaller">
+<h2>Four patterns cover most process models</h2>
+<div class="kicker c-teal">
+<p>A continuous variable answers <em>how much</em>. A binary answers <em>whether</em>.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">Algebra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Yes/no decision</strong></td>
+<td style="text-align: left;">z = 1 if the unit is installed, the stream lined up, the contract signed</td>
+<td style="text-align: left;">z ∈ {0, 1}, priced in the objective</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Fixed charge</strong></td>
+<td style="text-align: left;">cost F paid if and only if the activity happens at all</td>
+<td style="text-align: left;">F z in the objective, plus u ≤ M z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Minimum run rate</strong></td>
+<td style="text-align: left;">a pump that runs at all must run above L</td>
+<td style="text-align: left;">u ≥ L z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Semicontinuous</strong></td>
+<td style="text-align: left;">the two above, together</td>
+<td style="text-align: left;">u ∈ {0} ∪ [L, M]</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p><strong>Why the link constraint is not optional.</strong> Without u ≤ M z the solver sets z = 0, pays no fixed charge, and still uses u &gt; 0. The binary must be wired to the continuous variable, or it decorates the model instead of constraining it.</p>
+</div>
+</section>
+<section id="the-semicontinuous-set-is-a-disjunction-not-an-interval" class="slide level2 smaller">
+<h2>The semicontinuous set is a disjunction, not an interval</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">The set</span></p>
+<p><strong>u ∈ {0} ∪ [L, M]</strong></p>
+<p>the smallest nonconvex set that appears in process models.</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Not an interval</strong> it is not 0 ≤ u ≤ M, because the band between 0 and L is forbidden.</li>
+<li><strong>Not convex</strong> u = 0 and u = M are both feasible and their midpoint is not.</li>
+<li><strong>The binary is what makes it expressible</strong> L z ≤ u ≤ M z with z ∈ {0, 1}.</li>
+</ul>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="spec">
+<p><span class="eyebrow">What relaxing z does</span></p>
+<p>Relax z to the interval [0, 1] and the pair of rows</p>
+<p>L z ≤ u ≤ M z</p>
+<p>sweeps out the wedge between the two lines u = L z and u = M z.</p>
+<p>That wedge is the convex hull of the two pieces — the point z = 0, u = 0 and the segment z = 1, L ≤ u ≤ M.</p>
+</div>
+<div class="note">
+<p>The wedge is where every difficulty in this session begins. A fractional z buys a fraction of the fixed charge.</p>
+</div>
+</div></div>
+</section>
+<section id="worked-example-refinery-blending-with-operating-reality" class="slide level2 smaller">
+<h2>Worked example: refinery blending with operating reality</h2>
+<p>Five component streams blended into two gasoline grades — <strong>the Week 4 instance</strong>. Three operating realities were ignored there.</p>
+<div class="columns">
+<div class="column" style="width:52%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stream</th>
+<th style="text-align: right;">cost USD/t</th>
+<th style="text-align: right;">avail. t</th>
+<th style="text-align: right;">fixed F<sub>c</sub> USD</th>
+<th style="text-align: right;">min run L<sub>c</sub> t</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reformate</td>
+<td style="text-align: right;">760</td>
+<td style="text-align: right;">3200</td>
+<td style="text-align: right;">12 000</td>
+<td style="text-align: right;">800</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCC naphtha</td>
+<td style="text-align: right;">730</td>
+<td style="text-align: right;">4000</td>
+<td style="text-align: right;">9 000</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alkylate</td>
+<td style="text-align: right;">805</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">15 000</td>
+<td style="text-align: right;">500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Butane</td>
+<td style="text-align: right;">510</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">4 000</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Straight run</td>
+<td style="text-align: right;">695</td>
+<td style="text-align: right;">2600</td>
+<td style="text-align: right;">7 000</td>
+<td style="text-align: right;">600</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:46%;">
+<div class="dots">
+<ul>
+<li><strong>Lining up a stream costs money</strong> a tank, a pump and a transfer line, whether 1 t or 3000 t moves.</li>
+<li><strong>A running line has a minimum rate</strong> below it the pump cavitates and the metering is unreliable.</li>
+<li><strong>The tank farm is limited</strong> at most four streams at once, and butane moves only while the straight-run splitter runs.</li>
+</ul>
+</div>
+<div class="spec">
+<p><span class="eyebrow">The model</span></p>
+<p>max Σ<sub>g</sub> p<sub>g</sub> y<sub>g</sub> − Σ<sub>c</sub> c<sub>c</sub> u<sub>c</sub> − Σ<sub>c</sub> F<sub>c</sub> z<sub>c</sub></p>
+<p>s.t. L<sub>c</sub> z<sub>c</sub> ≤ u<sub>c</sub> ≤ avail<sub>c</sub> z<sub>c</sub>, z<sub>c</sub> ∈ {0, 1}</p>
+<p>plus every Week 4 row: grade balances, volume windows, octane, vapour pressure, sulfur.</p>
+</div>
+</div></div>
+</section>
+<section id="what-the-discrete-structure-costs" class="slide level2 smaller">
+<h2>What the discrete structure costs</h2>
+<div class="columns">
+<div class="column" style="width:47%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Margin</th>
+<th style="text-align: right;">USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A. LP, no discrete decisions</td>
+<td style="text-align: right;">413 439.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B. + fixed charges and minimum runs</td>
+<td style="text-align: right;"><strong>342 092.31</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cost of the discrete structure</td>
+<td style="text-align: right;">71 347.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">&nbsp;&nbsp;of which fixed charges paid</td>
+<td style="text-align: right;">47 000.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">&nbsp;&nbsp;of which minimum run rates</td>
+<td style="text-align: right;">24 347.44</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:51%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stream</th>
+<th style="text-align: right;">L<sub>c</sub></th>
+<th style="text-align: right;">LP u<sub>c</sub></th>
+<th style="text-align: right;">MILP u<sub>c</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reformate</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">3200.0</td>
+<td style="text-align: right;">3200.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCC naphtha</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">4000.0</td>
+<td style="text-align: right;">4000.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alkylate</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">833.0</td>
+<td style="text-align: right;">1533.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Butane</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">574.5</td>
+<td style="text-align: right;">633.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Straight run</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">473.1</td>
+<td style="text-align: right;"><strong>600.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="flag c-rust">
+<p><strong>Read the last column.</strong> Straight run was used at 473.1 t in the LP. A minimum run rate of 600 t forces the plant either to move 600 t of a stream it did not want that much of, or to shut the line down entirely. The optimizer chose to run it and paid the difference — and the minimum run rates cost <strong>half as much again</strong> as all five fixed charges combined.</p>
+</div>
+</section>
+<section id="translation-table-part-1-propositions-over-binaries" class="slide level2 smaller">
+<h2>Translation table, part 1: propositions over binaries</h2>
+<div class="kicker c-teal">
+<p>Exact and dimensionless — no constant is required</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statement in words</th>
+<th style="text-align: left;">Logic</th>
+<th style="text-align: left;">Linear constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">a implies b</td>
+<td style="text-align: left;">a ⇒ b</td>
+<td style="text-align: left;">z<sub>a</sub> ≤ z<sub>b</sub></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a and b are equivalent</td>
+<td style="text-align: left;">a ⇔ b</td>
+<td style="text-align: left;">z<sub>a</sub> = z<sub>b</sub></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">at least one of a, b</td>
+<td style="text-align: left;">a ∨ b</td>
+<td style="text-align: left;">z<sub>a</sub> + z<sub>b</sub> ≥ 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">not both</td>
+<td style="text-align: left;">¬(a ∧ b)</td>
+<td style="text-align: left;">z<sub>a</sub> + z<sub>b</sub> ≤ 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">exactly one of a set S</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Σ<sub>j∈S</sub> z<sub>j</sub> = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">at least k of S</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Σ<sub>j∈S</sub> z<sub>j</sub> ≥ k</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">at most k of S</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Σ<sub>j∈S</sub> z<sub>j</sub> ≤ k</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a and b together imply c</td>
+<td style="text-align: left;">a ∧ b ⇒ c</td>
+<td style="text-align: left;">z<sub>a</sub> + z<sub>b</sub> − 1 ≤ z<sub>c</sub></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a implies b or c</td>
+<td style="text-align: left;">a ⇒ b ∨ c</td>
+<td style="text-align: left;">z<sub>a</sub> ≤ z<sub>b</sub> + z<sub>c</sub></td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Every propositional statement over finitely many binaries can be written this way. These nine are the ones worth memorizing.</p>
+</div>
+</section>
+<section id="translation-table-part-2-and-how-to-check-one" class="slide level2 smaller">
+<h2>Translation table, part 2, and how to check one</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p><span class="eyebrow">Definitional equivalences need three rows each</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statement</th>
+<th style="text-align: left;">Linear constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">c ⇔ a ∧ b</td>
+<td style="text-align: left;">z<sub>c</sub> ≤ z<sub>a</sub>, z<sub>c</sub> ≤ z<sub>b</sub>, z<sub>c</sub> ≥ z<sub>a</sub> + z<sub>b</sub> − 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c ⇔ a ∨ b</td>
+<td style="text-align: left;">z<sub>c</sub> ≥ z<sub>a</sub>, z<sub>c</sub> ≥ z<sub>b</sub>, z<sub>c</sub> ≤ z<sub>a</sub> + z<sub>b</sub></td>
+</tr>
+</tbody>
+</table>
+<p><span class="eyebrow">Where continuous variables enter, and M appears</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statement</th>
+<th style="text-align: left;">Linear constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">if a then u ≤ U<sub>1</sub>, else u ≤ U<sub>2</sub></td>
+<td style="text-align: left;">u ≤ U<sub>1</sub> z<sub>a</sub> + U<sub>2</sub>(1 − z<sub>a</sub>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">if a then g(x) ≤ 0</td>
+<td style="text-align: left;">g(x) ≤ M(1 − z<sub>a</sub>)</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>Everything above this line is exact. Everything below depends on a numerical constant, which is Lecture 2.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="spec">
+<p><span class="eyebrow">Verify, do not remember</span></p>
+<p>Enumerate all 2<sup>n</sup> assignments, evaluate the proposition, evaluate the inequalities, and confirm they agree on every row. All ten translations in the notebook pass on every assignment.</p>
+</div>
+<div class="flag c-rust">
+<p><strong>The control case.</strong> Writing a ⇒ b as z<sub>a</sub> + z<sub>b</sub> ≤ 1 fails the same harness: it is the translation of <em>not both</em>, and it forbids the assignment (1, 1) that the implication permits.</p>
+<p><strong>A wrong translation is silent.</strong> The model still solves, still reports <code>optimal</code>, and answers a different question. That is the Week 6 theme arriving early.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-1-logic-to-linear" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Activity 1 · logic to linear</h2>
+<div class="kicker c-amber">
+<p>20 min · pairs · paper, then the board</p>
+</div>
+<p>Translate all eight statements into <strong>linear</strong> constraints in binary variables. Use z<sub>A</sub>, z<sub>B</sub>, z<sub>C</sub>, z<sub>D</sub> for the units, z<sub>1</sub>, z<sub>2</sub>, z<sub>3</sub> for the technologies, u<sub>C</sub> for the run rate of unit C, and z<sub>W</sub> for the warehouse lease.</p>
+<div class="columns">
+<div class="column" style="width:49%;">
+<ol type="1">
+<li>If unit A is built, unit B must also be built.</li>
+<li>At most two of the four units may be built.</li>
+<li>Exactly one of the three technologies must be chosen.</li>
+<li>If unit A is built, unit B must <strong>not</strong> be built.</li>
+</ol>
+</div><div class="column" style="width:49%;">
+<ol start="5" type="1">
+<li>Unit C runs at a rate of at least 20 t per day, or it does not run at all.</li>
+<li>If total production exceeds 100 t, the second warehouse must be leased.</li>
+<li>Unit D may be built only if <strong>both</strong> A and B are built.</li>
+<li>At least one of A, B, C must be built, and if all three are built a supervisor must be hired.</li>
+</ol>
+</div></div>
+<div class="punch">
+<p>No products of binaries are permitted. At 12 minutes, eight pairs are called to the board, one statement each.</p>
+</div>
+</section>
+<section id="activity-1-answer-the-eight-translations" class="slide level2 smaller">
+<h2>Activity 1 · [ANSWER] · the eight translations</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Statement</th>
+<th style="text-align: left;">Linear constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">A implies B</td>
+<td style="text-align: left;">z<sub>A</sub> ≤ z<sub>B</sub></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">at most two of four</td>
+<td style="text-align: left;">z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> + z<sub>D</sub> ≤ 2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">exactly one technology</td>
+<td style="text-align: left;">z<sub>1</sub> + z<sub>2</sub> + z<sub>3</sub> = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">A implies not B</td>
+<td style="text-align: left;">z<sub>A</sub> + z<sub>B</sub> ≤ 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">run at least 20 t/d or not at all</td>
+<td style="text-align: left;">20 z<sub>C</sub> ≤ u<sub>C</sub> ≤ U<sub>C</sub> z<sub>C</sub>, with U<sub>C</sub> the physical capacity</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">production over 100 t forces the lease</td>
+<td style="text-align: left;">Σ<sub>j</sub> p<sub>j</sub> ≤ 100 + M z<sub>W</sub>, M = P<sup>max</sup> − 100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">D only if both A and B</td>
+<td style="text-align: left;">z<sub>D</sub> ≤ z<sub>A</sub> <strong>and</strong> z<sub>D</sub> ≤ z<sub>B</sub></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">at least one of A, B, C; all three force a supervisor</td>
+<td style="text-align: left;">z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> ≥ 1 <strong>and</strong> z<sub>S</sub> ≥ z<sub>A</sub> + z<sub>B</sub> + z<sub>C</sub> − 2</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column" style="width:49%;">
+<div class="note">
+<p><strong>The two that generate argument.</strong> 5 and 6 are the only ones needing a constant. 5 is the semicontinuous pattern; 6 is the bridge into Lecture 2. Note 6 is one-way — it does not forbid leasing at low production.</p>
+</div>
+</div><div class="column" style="width:49%;">
+<div class="flag c-rust">
+<p><strong>The commonest error.</strong> 7 written as z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub> admits z<sub>D</sub> = 1 with only A built. The pair is correct; the single row 2 z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub> is also correct but relaxes more weakly.</p>
+</div>
+</div></div>
+</section>
+<section id="first-what-the-logic-costs-on-the-blend" class="slide level2 smaller">
+<h2>First, what the logic costs on the blend</h2>
+<p>Two conditions on the tank farm: <strong>Σ<sub>c</sub> z<sub>c</sub> ≤ 4</strong> (cardinality), and <strong>z<sub>Butane</sub> ≤ z<sub>Straight run</sub></strong> (implication).</p>
+<div class="columns">
+<div class="column" style="width:57%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: right;">margin, USD</th>
+<th style="text-align: left;">streams on</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">B. fixed charge + min run</td>
+<td style="text-align: right;">342 092.31</td>
+<td style="text-align: left;">all five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C1. + cardinality only</td>
+<td style="text-align: right;">335 539.13</td>
+<td style="text-align: left;">Ref, FCC, Alk, But</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C2. + implication only</td>
+<td style="text-align: right;">342 092.31</td>
+<td style="text-align: left;">all five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C3. + both</td>
+<td style="text-align: right;"><strong>281 361.41</strong></td>
+<td style="text-align: left;">Ref, FCC, But, SR</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:41%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Cost of</th>
+<th style="text-align: right;">USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">cardinality alone</td>
+<td style="text-align: right;">6 553.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">implication alone</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">both together</td>
+<td style="text-align: right;"><strong>60 730.89</strong></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="flag c-rust">
+<p><strong>Restrictions interact, and the interaction is not additive.</strong> The implication alone costs nothing, because the unrestricted optimum already runs straight run. Once cardinality removes straight run, the implication also removes butane, and together they cost 60 731 USD — an order of magnitude more than the sum of their individual costs. Total cost of discrete reality: 413 439.75 − 281 361.41 = <strong>132 078.33 USD, 31.9 percent of the LP margin</strong>.</p>
+</div>
+</section>
+<section id="the-big-m-pattern-valid-and-tight-are-different-words" class="slide level2 smaller">
+<h2>The big-M pattern: valid and tight are different words</h2>
+<div class="spec">
+<p><span class="eyebrow">A constraint that applies only when a binary is 1</span></p>
+<p>g(x) ≤ M (1 − z),&nbsp;&nbsp; z ∈ {0, 1}</p>
+<p><strong>z = 1</strong> — the row reads g(x) ≤ 0 and is enforced. <strong>z = 0</strong> — the row reads g(x) ≤ M and must be non-binding.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="spec">
+<p><span class="eyebrow">The definition</span></p>
+<p>Any M large enough to make the row non-binding when z = 0 is <strong>valid</strong>, and every valid M gives the same integer optimum. Only the smallest such value is <strong>tight</strong>:</p>
+<p>M* = max { g(x) : x feasible for the other alternatives }</p>
+<p>which is itself an optimization problem, usually a small LP.</p>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="flag c-rust">
+<p><strong>What never to do.</strong> Pick a round number such as 10<sup>6</sup> because it looks big enough.</p>
+<p>Two different things then go wrong, and they fail in different ways. The next two slides are one each.</p>
+</div>
+</div></div>
+</section>
+<section id="three-recipes-for-m-in-decreasing-order-of-quality" class="slide level2 smaller">
+<h2>Three recipes for M, in decreasing order of quality</h2>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Solve the little LP.</strong> M* = max g(x) over the rest of the feasible set. Exact, row by row, and what a good modeling layer does automatically.</li>
+<li><strong>Use variable bounds.</strong> If g(x) = a<sup>T</sup>x − b with x<sup>L</sup> ≤ x ≤ x<sup>U</sup>, then M = Σ<sub>i</sub> max(a<sub>i</sub> x<sub>i</sub><sup>U</sup>, a<sub>i</sub> x<sub>i</sub><sup>L</sup>) − b is valid. Cheap, no LP, usually loose by a factor of a few.</li>
+<li><strong>Use a physical cap already in the model.</strong> In the blending problem the availability limit caps stream usage, so M<sub>c</sub> = avail<sub>c</sub> is both valid and tight for u<sub>c</sub> ≤ M<sub>c</sub> z<sub>c</sub>.</li>
+</ol>
+</div>
+<div class="flag c-amber">
+<p><strong>A useful habit.</strong> Write M as a named expression in the units of the row it appears in — <code>M_c = avail[c]</code> — never as a bare literal. A big-M with units attached is a big-M somebody can check. In the workbook it gets its own visible cell, <code>Model!$C$36</code>.</p>
+</div>
+</section>
+<section id="failure-1-the-relaxation-collapses" class="slide level2 smaller">
+<h2>Failure 1: the relaxation collapses</h2>
+<p>Relaxing z to [0, 1] in u ≤ M z gives <strong>z ≥ u / M</strong>. A large M lets the relaxation buy the stream for a small fraction of its fixed charge.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Formulation (same 34 rows in every case)</th>
+<th style="text-align: right;">MILP optimum</th>
+<th style="text-align: right;">LP bound</th>
+<th style="text-align: right;">gap, USD</th>
+<th style="text-align: right;">Σ<sub>c</sub> z<sub>c</sub> in LP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">tight M<sub>c</sub> = avail<sub>c</sub></td>
+<td style="text-align: right;">281 361.41</td>
+<td style="text-align: right;">379 170.50</td>
+<td style="text-align: right;">97 809.08</td>
+<td style="text-align: right;">3.6932</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">loose M = 50 000</td>
+<td style="text-align: right;">281 361.41</td>
+<td style="text-align: right;">411 575.46</td>
+<td style="text-align: right;">130 214.04</td>
+<td style="text-align: right;">0.1836</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">very loose M = 10<sup>7</sup></td>
+<td style="text-align: right;">281 361.41</td>
+<td style="text-align: right;">413 430.43</td>
+<td style="text-align: right;">132 069.01</td>
+<td style="text-align: right;"><strong>0.0009</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-rust">
+<p><strong>Read the last column.</strong> With M = 10<sup>7</sup> the relaxation switches on all five streams for a total z-mass of 0.0009, so it pays 0.09 percent of the fixed charges and its bound is essentially the pure LP value.</p>
+<p><strong>A loose M does not change the answer. It changes how long the search takes to prove it</strong>, because the bound is what branch and bound must close. You will measure this yourself in Activity 2.</p>
+</div>
+</section>
+<section id="failure-2-the-integrality-tolerance-becomes-a-hole" class="slide level2 smaller">
+<h2>Failure 2: the integrality tolerance becomes a hole</h2>
+<p>Solvers accept z as integral within an absolute tolerance, typically ε = 10<sup>−6</sup>. A value z = 10<sup>−6</sup> is reported as z = 0, while u ≤ M z still permits <strong>u ≤ M ε</strong>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">M</th>
+<th style="text-align: right;">flow allowed, t</th>
+<th style="text-align: right;">charge paid, USD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3 200</td>
+<td style="text-align: right;">0.0032</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50 000</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10<sup>7</sup></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10<sup>10</sup></td>
+<td style="text-align: right;"><strong>10 000</strong></td>
+<td style="text-align: right;">0.012</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:53%;">
+<div class="spec">
+<p><span class="eyebrow">Made concrete</span></p>
+<p>Set M = 10<sup>10</sup> and fix every z<sub>c</sub> = 10<sup>−6</sup>, which the solver reports as <em>off</em>:</p>
+<ul>
+<li>margin obtained: <strong>413 439.70 USD</strong></li>
+<li>fixed charges actually paid: <strong>0.047 USD</strong></li>
+<li>true MILP optimum: <strong>342 092.31 USD</strong></li>
+</ul>
+</div>
+</div></div>
+<div class="flag c-rust">
+<p><strong>Whose fault.</strong> The plan moves ten thousand tonnes through five lines the solution claims are switched off, and it looks 71 347 USD better than the true optimum. The model is not wrong in exact arithmetic. It is wrong in floating-point arithmetic, which is the only kind a solver has. <strong>M × ε is a modeling decision, not a solver defect.</strong></p>
+</div>
+</section>
+<section id="section" class="slide level2 dark break c-mist" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="break-circle">
+<p>Break</p>
+</div>
+<div class="lede">
+<p>15 minutes.</p>
+</div>
+<div class="statement-sub">
+<p>Next: <strong>Activity 2, big-M roulette</strong>, at the computer, in groups of 3 to 4. Open <code>w05-fixed-charge.xlsx</code> and check that OpenSolver finds CBC.</p>
+</div>
+<div class="note">
+<p>Before you leave the room: form your group and collect your assigned value of M from the front. Every group solves the same model with a different M.</p>
+</div>
+</section>
+<section id="the-activity-2-instance-a-zinc-air-materials-plant" class="slide level2 smaller">
+<h2>The Activity 2 instance: a zinc-air materials plant</h2>
+<p>Three intermediates must be supplied; six candidate units are offered. This is the workbook model, and it is solved with Pyomo in section 6 of the notebook.</p>
+<div class="columns">
+<div class="column" style="width:49%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Unit</th>
+<th style="text-align: right;">fixed kUSD/yr</th>
+<th style="text-align: right;">hours h/yr</th>
+<th style="text-align: right;">min thru. t/yr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U1 mixer-extruder</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3500</td>
+<td style="text-align: right;">500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U2 roll press</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">450</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U3 slot-die coater</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">3600</td>
+<td style="text-align: right;">600</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U4 spray dryer</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3200</td>
+<td style="text-align: right;">350</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U5 calciner</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">3300</td>
+<td style="text-align: right;">550</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U6 calender line</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">400</td>
+</tr>
+</tbody>
+</table>
+<p>Rates r<sub>up</sub>, t/h (dash = not possible):</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Unit</th>
+<th style="text-align: right;">anode</th>
+<th style="text-align: right;">cathode</th>
+<th style="text-align: right;">separator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U1</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U2</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U3</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U4</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U5</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U6</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.52</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:49%;">
+<div class="spec">
+<p><span class="eyebrow">The model</span></p>
+<p>min Σ<sub>u</sub> F<sub>u</sub> z<sub>u</sub> + Σ<sub>(u,p)</sub> c<sub>up</sub> x<sub>up</sub> / 1000</p>
+<p>Σ<sub>u</sub> x<sub>up</sub> = d<sub>p</sub> &nbsp;— demand</p>
+<p>Σ<sub>p</sub> x<sub>up</sub> / r<sub>up</sub> ≤ H<sub>u</sub> &nbsp;— hours</p>
+<p>Σ<sub>p</sub> x<sub>up</sub> ≤ M z<sub>u</sub> &nbsp;— <strong>on/off link, the big-M</strong></p>
+<p>Σ<sub>p</sub> x<sub>up</sub> ≥ L<sub>u</sub> z<sub>u</sub> &nbsp;— minimum throughput</p>
+<p>z<sub>U2</sub> + z<sub>U6</sub> = 1 &nbsp;— competing licences</p>
+<p>z<sub>U4</sub> ≤ z<sub>U3</sub> &nbsp;— shared solvent recovery</p>
+<p>Σ<sub>u</sub> z<sub>u</sub> ≤ 4 &nbsp;— commissioning crew</p>
+</div>
+<div class="punch">
+<p>Demand, t/yr: anode paste 1800, cathode sheet 2400, separator film 1500. The single number you change is the big-M in <code>Model!$C$36</code>.</p>
+</div>
+</div></div>
+</section>
+<section id="activity-2-big-m-roulette" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Activity 2 · big-M roulette</h2>
+<div class="kicker c-amber">
+<p>25 min · groups of 3 to 4 · computer</p>
+</div>
+<p>Every group solves the <strong>same</strong> model in <code>w05-fixed-charge.xlsx</code>. Complete the yellow cells, set <code>Model!$C$36</code> to your group’s M, and record three numbers: the <strong>LP relaxation</strong> objective (replace the <code>bin</code> constraint on <code>$H$40:$H$45</code> by ≤ 1 and re-solve), the <strong>integer optimum</strong> with <code>bin</code> restored, and the <strong>solve time</strong>.</p>
+<div class="columns">
+<div class="column" style="width:38%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Group</th>
+<th style="text-align: left;">multiple</th>
+<th style="text-align: right;">M, t/yr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">M*, tightest</td>
+<td style="text-align: right;">2 232</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">2 M*</td>
+<td style="text-align: right;">4 464</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">10 M*</td>
+<td style="text-align: right;">22 320</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">10<sup>3</sup> M*</td>
+<td style="text-align: right;">2 232 000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">10<sup>6</sup> M*</td>
+<td style="text-align: right;">2 232 000 000</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:60%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Group</th>
+<th style="text-align: right;">M</th>
+<th style="text-align: center;">LP bound</th>
+<th style="text-align: center;">integer opt.</th>
+<th style="text-align: center;">time, s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2 232</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4 464</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22 320</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.232 × 10<sup>6</sup></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.232 × 10<sup>9</sup></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<p>This table goes on the board and is filled in from the floor.</p>
+</div>
+</div></div>
+<div class="punch">
+<p>Predict, before you solve, which of the three columns will differ between groups.</p>
+</div>
+</section>
+<section id="activity-2-answer-the-board-table" class="slide level2 smaller">
+<h2>Activity 2 · [ANSWER] · the board table</h2>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Group</th>
+<th style="text-align: right;">M, t/yr</th>
+<th style="text-align: right;">LP bound, kUSD/yr</th>
+<th style="text-align: right;">integer optimum</th>
+<th style="text-align: right;">gap %</th>
+<th style="text-align: right;">CBC time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2 232 (M*)</td>
+<td style="text-align: right;">2 203.148</td>
+<td style="text-align: right;">2 533.226</td>
+<td style="text-align: right;">13.030</td>
+<td style="text-align: right;">&lt; 0.05 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4 464</td>
+<td style="text-align: right;">1 974.134</td>
+<td style="text-align: right;">2 533.226</td>
+<td style="text-align: right;">22.070</td>
+<td style="text-align: right;">&lt; 0.05 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22 320</td>
+<td style="text-align: right;">1 879.765</td>
+<td style="text-align: right;">2 533.226</td>
+<td style="text-align: right;">25.796</td>
+<td style="text-align: right;">&lt; 0.05 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2 232 000</td>
+<td style="text-align: right;">1 844.009</td>
+<td style="text-align: right;">2 533.226</td>
+<td style="text-align: right;">27.207</td>
+<td style="text-align: right;">&lt; 0.05 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2 232 000 000</td>
+<td style="text-align: right;">1 843.620</td>
+<td style="text-align: right;">2 533.226</td>
+<td style="text-align: right;">27.222</td>
+<td style="text-align: right;">&lt; 0.05 s</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="numbered n3">
+<ol type="1">
+<li><strong>The integer optimum is 2 533.226 in every row.</strong> Every valid M describes the same set of integer points.</li>
+<li><strong>The LP bound degrades monotonically</strong>, by 359.5 kUSD across the table, then saturates once it has collapsed to the no-fixed-charge LP.</li>
+<li><strong>Solve time does not move.</strong> Six binaries is too small to time. On the 20-unit instance in section 3 of the notebook, loose M takes 4.28 s and tight M takes 0.078 s — a factor of 55. The bound is the cause, the time is the symptom.</li>
+</ol>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="flag c-rust">
+<p><strong>Two instructive wrong answers.</strong></p>
+<p>A group that never changed <code>$C$36</code> reports the shipped default M = 2 500, LP bound 2 143.300, gap 15.39 percent.</p>
+<p>A per-unit M<sub>u</sub> (1470, 1870, 2232, 1280, 1650, 1726.8) beats every row of the table: LP bound 2 403.382, gap 5.126 percent. One number for six different units is already loose, and Lecture 3 goes further still.</p>
+</div>
+</div></div>
+</section>
+<section id="a-disjunction-written-two-ways" class="slide level2 smaller">
+<h2>A disjunction, written two ways</h2>
+<div class="spec">
+<p><span class="eyebrow">The disjunction</span></p>
+<p>⋁<sub>k</sub> [ Y<sub>k</sub> ; A<sub>k</sub> x ≤ b<sub>k</sub> ] &nbsp;&nbsp;with exactly one Y<sub>k</sub> true.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><span class="eyebrow">Big-M</span></p>
+<div class="spec">
+<p>A<sub>k</sub> x ≤ b<sub>k</sub> + M<sub>k</sub>(1 − z<sub>k</sub>), &nbsp; Σ<sub>k</sub> z<sub>k</sub> = 1</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Compact</strong> one copy of x, one row per original row.</li>
+<li><strong>Weak</strong> a fractional z relaxes every alternative at once, by a large amount.</li>
+</ul>
+</div>
+</div><div class="column" style="width:49%;">
+<p><span class="eyebrow">Convex hull, disaggregated (Balas)</span></p>
+<div class="spec">
+<p>x = Σ<sub>k</sub> x<sup>k</sup>, &nbsp; A<sub>k</sub> x<sup>k</sup> ≤ b<sub>k</sub> z<sub>k</sub></p>
+<p>0 ≤ x<sup>k</sup> ≤ x<sup>U</sup> z<sub>k</sub>, &nbsp; Σ<sub>k</sub> z<sub>k</sub> = 1</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>One copy of the continuous variables per alternative</strong> which is where the extra columns come from.</li>
+<li><strong>With z relaxed</strong> the projection onto x is exactly the convex hull of the union of the alternatives.</li>
+</ul>
+</div>
+</div></div>
+<div class="punch">
+<p>The hull form is the tightest linear relaxation any formulation of that disjunction can have.</p>
+</div>
+</section>
+<section id="the-instance-a-reactor-section-two-configurations" class="slide level2 smaller">
+<h2>The instance: a reactor section, two configurations</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>x<sub>1</sub> = feed rate, x<sub>2</sub> = product rate.</p>
+<div class="spec">
+<p><span class="eyebrow">Configuration A, small continuous unit</span></p>
+<p>10 ≤ x<sub>1</sub> ≤ 40, &nbsp; 0.3 x<sub>1</sub> ≤ x<sub>2</sub> ≤ 0.5 x<sub>1</sub></p>
+<p>annualized fixed cost 120 kUSD.</p>
+</div>
+<div class="spec">
+<p><span class="eyebrow">Configuration B, large unit</span></p>
+<p>60 ≤ x<sub>1</sub> ≤ 90, &nbsp; 0.5 x<sub>1</sub> ≤ x<sub>2</sub> ≤ 0.7 x<sub>1</sub></p>
+<p>annualized fixed cost 260 kUSD.</p>
+</div>
+<p>Operating cost 1.8 kUSD per unit feed and 3.2 kUSD per unit product in either configuration; the section must deliver at least 25 units of product.</p>
+</div><div class="column" style="width:50%;">
+<p><span class="eyebrow">Row-wise tightest M, by LP</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">A row</th>
+<th style="text-align: right;">M*</th>
+<th style="text-align: left;">B row</th>
+<th style="text-align: right;">M*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">x<sub>1</sub> ≥ 10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">x<sub>1</sub> ≥ 60</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">x<sub>1</sub> ≤ 40</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: left;">x<sub>1</sub> ≤ 90</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">x<sub>2</sub> ≤ 0.5 x<sub>1</sub></td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">x<sub>2</sub> ≤ 0.7 x<sub>1</sub></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">x<sub>2</sub> ≥ 0.3 x<sub>1</sub></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">x<sub>2</sub> ≥ 0.5 x<sub>1</sub></td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+<div class="flag c-amber">
+<p>A zero means the row is already implied by the other alternative, so it needs no relaxation at all. <strong>Four of the eight rows are in that class</strong>, which no round-number M would ever discover.</p>
+</div>
+</div></div>
+</section>
+<section id="the-two-relaxation-regions" class="slide level2 smaller">
+<h2>The two relaxation regions</h2>
+<div class="kicker c-teal">
+<p>Same disjunction, two formulations, two different relaxations</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="spec">
+<p><span class="eyebrow">What the picture shows</span></p>
+<p>The true feasible set is the <strong>union</strong> of the two boxes-with-slopes, A near the origin and B further out along x<sub>1</sub>.</p>
+<p>The <strong>convex hull</strong> is the smallest convex set containing both — area <strong>1100</strong>.</p>
+<p>The <strong>tightest big-M</strong> region is strictly larger — area <strong>1137.5</strong>.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="flag c-rust">
+<p><strong>A point that separates them.</strong> (x<sub>1</sub>, x<sub>2</sub>) = (22.5, 15.75) lies in the big-M relaxation and <strong>not</strong> in the hull.</p>
+<p>It is in neither configuration: x<sub>1</sub> = 22.5 is too large for A only in combination with x<sub>2</sub> = 15.75, which exceeds 0.5 x<sub>1</sub> = 11.25, and it is far below B’s floor of 60.</p>
+</div>
+<div class="note">
+<p>Draw the two regions on the board before showing the numbers on the next slide. The ordering of the areas is the whole argument.</p>
+</div>
+</div></div>
+</section>
+<section id="the-same-picture-as-numbers" class="slide level2 smaller">
+<h2>The same picture as numbers</h2>
+<div class="kicker c-teal">
+<p>Four formulations of one disjunction, same integer optimum 464.0</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Formulation</th>
+<th style="text-align: right;">rows</th>
+<th style="text-align: right;">cols</th>
+<th style="text-align: right;">LP bound</th>
+<th style="text-align: right;">gap %</th>
+<th style="text-align: right;">relaxation area</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">big-M, M = 500</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">207.000</td>
+<td style="text-align: right;">55.39</td>
+<td style="text-align: right;">9600.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">big-M, M = 120 (from bounds)</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">229.167</td>
+<td style="text-align: right;">50.61</td>
+<td style="text-align: right;">9133.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">big-M, row-wise tightest</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">298.744</td>
+<td style="text-align: right;">35.62</td>
+<td style="text-align: right;">1137.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">convex hull (disaggregated)</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">298.744</td>
+<td style="text-align: right;">35.62</td>
+<td style="text-align: right;"><strong>1100.00</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="dots">
+<ul>
+<li><strong>The hull region is contained in every big-M region</strong> and the ordering of the areas matches the ordering of the bounds.</li>
+<li><strong>Tightening M is the cheapest improvement available</strong> going from a round 500 to the row-wise tightest costs nothing in rows and buys 91.7 units of bound.</li>
+<li><strong>Domination guarantees never worse, not always strictly better</strong> here the hull and the tightest big-M give the same bound in the direction the objective points, even though the hull region is strictly smaller.</li>
+</ul>
+</div>
+</section>
+<section id="formulation-strength-as-a-measurable-quantity" class="slide level2 smaller">
+<h2>Formulation strength as a measurable quantity</h2>
+<div class="spec">
+<p><span class="eyebrow">Definition</span></p>
+<p>integrality gap = (z<sub>MILP</sub> − z<sub>LP</sub>) / z<sub>MILP</sub> &nbsp;for a minimization,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(z<sub>LP</sub> − z<sub>MILP</sub>) / z<sub>MILP</sub> &nbsp;for a maximization.</p>
+</div>
+<div class="dots">
+<ul>
+<li><strong>Two formulations of the same problem have the same integer optimum by definition</strong> as Activity 2 demonstrated. They differ only in their LP relaxation.</li>
+<li><strong>F1 dominates F2</strong> if the feasible set of its relaxation is contained in that of F2 on every instance. Domination implies a gap that is never worse.</li>
+<li><strong>The convex hull formulation dominates every big-M formulation</strong> of the same disjunction, because its projection is the smallest convex set containing the alternatives.</li>
+</ul>
+</div>
+<div class="flag c-rust">
+<p><strong>Why the gap and not the row count.</strong> Branch and bound stops when the incumbent and the best remaining bound meet, so the work is roughly a function of how far apart they start. An extra thousand rows that halve the gap are usually a bargain, and the number of rows is a poor proxy for difficulty.</p>
+</div>
+</section>
+<section id="every-formulation-in-this-session-one-measure" class="slide level2 smaller">
+<h2>Every formulation in this session, one measure</h2>
+<div class="kicker c-teal">
+<p>Smaller is better in the last column, and it is the only column that predicts effort</p>
+</div>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Instance</th>
+<th style="text-align: left;">Formulation</th>
+<th style="text-align: right;">rows</th>
+<th style="text-align: right;">LP bound</th>
+<th style="text-align: right;">MILP optimum</th>
+<th style="text-align: right;">gap %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">20 units, 40 orders</td>
+<td style="text-align: left;">big-M, M = 10 000</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">864.168</td>
+<td style="text-align: right;">3548.408</td>
+<td style="text-align: right;">75.6463</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20 units, 40 orders</td>
+<td style="text-align: left;">big-M, M = capacity</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">3509.477</td>
+<td style="text-align: right;">3548.408</td>
+<td style="text-align: right;">1.0971</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20 units, 40 orders</td>
+<td style="text-align: left;">disaggregated (hull-derived)</td>
+<td style="text-align: right;">860</td>
+<td style="text-align: right;">3548.340</td>
+<td style="text-align: right;">3548.408</td>
+<td style="text-align: right;"><strong>0.0019</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">two-config. reactor</td>
+<td style="text-align: left;">big-M, M = 500</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">207.000</td>
+<td style="text-align: right;">464.000</td>
+<td style="text-align: right;">55.3880</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">two-config. reactor</td>
+<td style="text-align: left;">big-M, row-wise tightest</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">298.744</td>
+<td style="text-align: right;">464.000</td>
+<td style="text-align: right;">35.6150</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">two-config. reactor</td>
+<td style="text-align: left;">convex hull (disaggregated)</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">298.744</td>
+<td style="text-align: right;">464.000</td>
+<td style="text-align: right;">35.6150</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blending, fixed charges</td>
+<td style="text-align: left;">tight M<sub>c</sub> = avail<sub>c</sub></td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">379 170.50</td>
+<td style="text-align: right;">281 361.41</td>
+<td style="text-align: right;">34.7628</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blending, fixed charges</td>
+<td style="text-align: left;">very loose M = 10<sup>7</sup></td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">413 430.43</td>
+<td style="text-align: right;">281 361.41</td>
+<td style="text-align: right;">46.9393</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">zinc-air plant (Activity 2)</td>
+<td style="text-align: left;">big-M on hours only</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">2402.903</td>
+<td style="text-align: right;">2533.226</td>
+<td style="text-align: right;">5.1450</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">zinc-air plant (Activity 2)</td>
+<td style="text-align: left;">disaggregated (hull)</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2412.448</td>
+<td style="text-align: right;">2533.226</td>
+<td style="text-align: right;">4.7680</td>
+</tr>
+</tbody>
+</table>
+<div class="punch">
+<p>The row count moves by a factor of 86 across this table while the gap moves by a factor of 40 000. They are not the same quantity and they are not correlated.</p>
+</div>
+</section>
+<section id="activity-3-tighten-it" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Activity 3 · tighten it</h2>
+<div class="kicker c-amber">
+<p>20 min · groups of 3 to 4 · paper</p>
+</div>
+<p>Each constraint is written with a lazy M = 10<sup>6</sup>. For each, derive the <strong>tightest valid M</strong> and give the one-line argument — an upper bound on the left-hand side over the rest of the feasible set.</p>
+<div class="numbered n3">
+<ol type="1">
+<li><strong>Zinc-air plant, on/off link for the slot-die coater U3.</strong> x<sub>U3,cath</sub> + x<sub>U3,sep</sub> ≤ M z<sub>U3</sub>. U3 has 3600 h/yr, makes cathode sheet at 0.62 t/h and separator film at 0.48 t/h, and separator demand is 1500 t/yr.</li>
+<li><strong>Refinery blend, the second tank-farm bay is leased only above 8000 t.</strong> Σ<sub>c</sub> u<sub>c</sub> ≤ 8000 + M z<sub>lease</sub>. Availabilities total 12 700 t; the grade volume windows are [4000, 7000] and [2500, 5000] t; the octane, vapour pressure and sulfur specifications also apply.</li>
+<li><strong>Rented external storage, usable only if the contract is signed.</strong> R<sub>t</sub> ≤ M y<sub>contract</sub>, R<sub>t</sub> ≥ 0. It appears in I<sub>t</sub> ≤ W + R<sub>t</sub> and in the objective at 450 USD per tonne-month, and carries no upper bound anywhere in the model.</li>
+</ol>
+</div>
+<div class="punch">
+<p>One of the three has <strong>no finite valid M</strong>. Identify it and say what has to be added to the model.</p>
+</div>
+</section>
+<section id="activity-3-answer-the-three-tightest-values" class="slide level2 smaller">
+<h2>Activity 3 · [ANSWER] · the three tightest values</h2>
+<div class="flag c-teal">
+<p><strong>(a) M* = 2 232 t/yr — the lazy M was 448 times too large.</strong> Maximize the left-hand side over the rest of the feasible set. Cathode sheet is the faster product, so all-cathode gives 3600 × 0.62 = 2232 t/yr; separator film is capped at 1500 t/yr by demand and needs 1500/0.48 = 3125 h to make less product, so no mix beats all-cathode.</p>
+</div>
+<p><strong>(b) M* = 2 782.5 t — and the two cheaper recipes are both loose.</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">recipe</th>
+<th style="text-align: right;">M, t</th>
+<th style="text-align: left;">source of the bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">availability sum</td>
+<td style="text-align: right;">4 700.0</td>
+<td style="text-align: left;">12 700 − 8 000, ignores the volume windows</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">grade volume caps</td>
+<td style="text-align: right;">4 000.0</td>
+<td style="text-align: left;">7 000 + 5 000 − 8 000, ignores the quality rows</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LP over the feasible set</td>
+<td style="text-align: right;"><strong>2 782.5</strong></td>
+<td style="text-align: left;">max Σ<sub>c</sub> u<sub>c</sub> = 10 782.47, so M* = 10 782.47 − 8 000</td>
+</tr>
+</tbody>
+</table>
+<p>The blender cannot reach 12 000 t because the octane floor on Premium and the vapour pressure and sulfur caps limit how much of the cheap high-RVP, high-sulfur streams may enter.</p>
+<div class="flag c-rust">
+<p><strong>(c) No finite valid M exists, and a bigger number is not the fix.</strong> R<sub>t</sub> has no upper bound, so max R<sub>t</sub> is +∞ and no finite M leaves the row non-binding when y = 1. Whatever number you write becomes a silent, undocumented capacity limit on rented storage. The fix is physical: the contract offers at most 500 t per month, so add R<sub>t</sub> ≤ 500, and then M* = 500 t.</p>
+</div>
+</section>
+<section id="practice-checklist" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Practice checklist</h2>
+<div class="kicker c-teal">
+<p>When you add a binary to a model</p>
+</div>
+<div class="numbered n6">
+<ol type="1">
+<li><strong>State the disjunction in words first.</strong> If you cannot say what becomes impossible when z = 1, the constraint is not ready to be written.</li>
+<li><strong>Wire every binary to a continuous variable</strong>, in both directions if there is a minimum: L z ≤ u ≤ M z.</li>
+<li><strong>Give every M a name and a unit</strong>, derived from a bound already in the model.</li>
+<li><strong>Verify every logical translation on its truth table</strong>, not from memory.</li>
+<li><strong>Solve the LP relaxation and record the gap.</strong> One extra solve, and it is the number that tells you whether the formulation is worth improving.</li>
+<li><strong>If the gap is large and the model is slow, disaggregate</strong> before buying a faster computer.</li>
+</ol>
+</div>
+<div class="flag c-rust">
+<p><strong>Two smells.</strong> A declared parameter that no constraint references — a forgotten constraint. And a binary whose relaxed value is 10<sup>−3</sup> at the LP optimum — a big-M that is too large.</p>
+</div>
+</section>
+<section id="summary" class="slide level2 smaller">
+<h2>Summary</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p><span class="eyebrow">Takeaways</span></p>
+<div class="dots">
+<ul>
+<li><strong>A binary models a disjunction</strong> and {0} ∪ [L, M] is the smallest nonconvex set in process models.</li>
+<li><strong>Every propositional statement is a set of linear inequalities</strong> and the translation is checkable on a truth table.</li>
+<li><strong>A big-M must be valid and tight</strong> too large costs the bound, and M times epsilon opens a hole in the model.</li>
+<li><strong>The convex hull form is the tightest relaxation</strong> of a disjunction and dominates every big-M form.</li>
+<li><strong>Formulation strength is the integrality gap</strong> and it, not the row count, predicts effort.</li>
+</ul>
+</div>
+</div><div class="column" style="width:46%;">
+<p><span class="eyebrow">Numbers established today</span></p>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Blending LP / MILP margin</td>
+<td style="text-align: right;">413 439.75 / 342 092.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fixed charges / min runs</td>
+<td style="text-align: right;">47 000 / 24 347.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Full discrete model</td>
+<td style="text-align: right;">281 361.41 (−31.9%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Big-M bound, tight / 10<sup>7</sup></td>
+<td style="text-align: right;">379 171 / 413 430</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M = 10<sup>10</sup>, z = ε</td>
+<td style="text-align: right;">margin 413 439.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hull / tight big-M area</td>
+<td style="text-align: right;">1100 / 1137.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20 units, gap loose/tight/hull</td>
+<td style="text-align: right;">75.6 / 1.10 / 0.002 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Activity 2 optimum</td>
+<td style="text-align: right;">2533.226 kUSD/yr</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A2 bound, M* / 10<sup>6</sup>M*</td>
+<td style="text-align: right;">2203.1 / 1843.6</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="before-next-week" class="slide level2 tint smaller" data-background-color="#F3F0EB">
+<h2>Before next week</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="eyebrow">Finish</span></p>
+<div class="dots">
+<ul>
+<li><strong>The notebook</strong> all seven sections of <code>w05-modeling4-logical-discrete.ipynb</code>, including the exercises. Sections 4 and 5 are the ones Activity 2 could not do in a spreadsheet.</li>
+<li><strong>The workbook</strong> <code>w05-fixed-charge.xlsx</code>, if your group did not reach the integer optimum 2533.226 kUSD/yr.</li>
+</ul>
+</div>
+<p><span class="eyebrow">Read</span></p>
+<p>Williams Ch. 9 (fixed charges, logical conditions, semicontinuous variables) and Ch. 10 (formulation strength). Rao Ch. 10 for the integer-programming vocabulary.</p>
+</div><div class="column" style="width:50%;">
+<div class="punch">
+<p><strong>HW2 is due at the start of Week 6.</strong> Blending, pooling, logical and discrete modeling, plus the model-audit task.</p>
+</div>
+<div class="spec">
+<p><span class="eyebrow">Coming next: Week 6</span></p>
+<p>A three-hour workshop. A language model drafts, the engineer verifies.</p>
+<p>You will audit three generated models that all solve to <code>optimal</code> and are all wrong, and you will quantify what each error would have cost.</p>
+<p><strong>Bring a laptop with Pyomo and a solver working.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="further-reading" class="slide level2 smaller">
+<h2>Further reading</h2>
+<div class="dots">
+<ul>
+<li><strong>Williams, Model Building in Mathematical Programming, 5th ed.</strong> Ch. 9 on building integer models — fixed charges, logical conditions, semicontinuous variables — and Ch. 10 on formulation strength and why reformulation beats computation.</li>
+<li><strong>Rao, Engineering Optimization, 4th ed., Ch. 10</strong> for the standard integer-programming vocabulary and worked formulations.</li>
+<li><strong>Balas (1985)</strong> Disjunctive programming and a hierarchy of relaxations for discrete optimization problems, SIAM J. Alg. Disc. Meth. 6(3) — the source of the disaggregated hull formulation used in Lecture 3.</li>
+<li><strong>Grossmann and Trespalacios (2013)</strong> Systematic modeling of discrete continuous optimization models through generalized disjunctive programming, AIChE J. 59(9) — GDP as the process systems engineering framing, and the automatic reformulations available in pyomo.gdp.</li>
+<li><strong>Edgar, Himmelblau and Lasdon, 2nd ed., Ch. 9</strong> for process-scale mixed-integer applications.</li>
+</ul>
+</div>
+<!-- Shared closing slide. Every week's deck ends with an include of this file
+     (see the last line of w01.qmd). One QR serves all fifteen weeks; the
+     submission timestamp separates the sessions. -->
+</section>
+<section id="section-1" class="slide level2 dark mid" data-background-color="#1C242B">
+<h2>&nbsp;</h2>
+<div class="vcenter">
+<div class="columns">
+<div class="column" style="width:58%;">
+<div class="kicker">
+<p>Before you go · 45 seconds</p>
+</div>
+<h3 id="how-was-today">How was today?</h3>
+<div class="lede">
+<p>Five questions. Anonymous — no name, no email, no login.</p>
+</div>
+<div class="flag">
+<p>The fourth question is the one I actually use.</p>
+</div>
+<div class="statement-sub">
+<p>The two most common answers open next week’s session.</p>
+</div>
+<div class="source">
+<p>oxidized-challenge-ed9.notion.site</p>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="qr-card">
+<p><img data-src="assets/qr_feedback.png" alt="QR code linking to the weekly feedback form"></p>
+</div>
+<div class="flag center">
+<p>Scan now — I will wait</p>
+</div>
+</div></div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'speaker',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.5e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
