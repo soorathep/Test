@@ -48,8 +48,25 @@ The shape of today
 :::
 
 ::: {.notes}
-**Collect HW1 first**, while they are still sitting down. Then take one question from it — the one most people got wrong — and spend three minutes on it, no more.
+**[00:00 – 00:10] OPENING**
+
+**Do this first:** collect HW1 while they are still sitting down. Do not let it drift to the end of the session.
+
+Take **one question** from HW1 — the one most people got wrong — and spend three minutes on it, no more. Then bridge into today: last week every question was *how much*. Today it becomes *whether*.
+
+Tell them to keep `w05-activity-sheet.pdf` beside them all session. All three activities are written out there, so nobody has to read a task off the screen.
+
+---
+
+**[00:00 – 00:10] เปิดคาบ**
+
+**ทำก่อนอย่างอื่น** เก็บ HW1 ทันทีตอนนิสิตยังนั่งลงไม่เสร็จ อย่าปล่อยไปท้ายคาบ
+
+หยิบ **หนึ่งข้อ** จาก HW1 ที่ผิดกันมากที่สุด ใช้เวลาสามนาที ไม่เกินนี้ แล้วเชื่อมเข้าวันนี้ด้วยประโยคว่า สัปดาห์ที่แล้วทุกคำถามคือ *เท่าไร* วันนี้เปลี่ยนเป็น *ทำหรือไม่ทำ*
+
+บอกให้เปิด `w05-activity-sheet.pdf` วางไว้ข้างตัวตลอดคาบ กิจกรรมทั้งสามเขียนไว้ครบในนั้น จะได้ไม่ต้องอ่านจากจอ
 :::
+
 
 ## By the end you should be able to {.tint background-color="#F3F0EB"}
 
@@ -70,6 +87,19 @@ Learning objectives
 CLO 1 (formulation) and CLO 4 (implementation and solution). Reference: Williams, Ch. 9 and 10; Rao, Ch. 10.
 :::
 :::
+
+::: {.notes}
+Read these quickly. One minute at most.
+
+Point at objectives 3 and 5 specifically. Those two are why this session exists: 3 is what a loose big-M breaks, 5 is the number that tells you whether a reformulation was worth it.
+
+---
+
+อ่านผ่าน ๆ ไม่ต้องลงรายละเอียด ใช้เวลาไม่เกินหนึ่งนาที
+
+ชี้ที่ข้อ 3 และ 5 เป็นพิเศษ สองข้อนี้คือสิ่งที่คาบนี้มีอยู่เพื่อมัน ข้อ 3 คือ big-M ที่หลวมทำอะไรพัง ข้อ 5 คือเราจะวัดว่า formulation ดีขึ้นจริงไหมด้วยตัวเลขอะไร
+:::
+
 
 ## Where we are {.smaller}
 
@@ -108,8 +138,17 @@ How a solver **searches** the resulting model — branch and bound, cutting plan
 ::::
 
 ::: {.notes}
-Say the one sentence twice. Everything today is a demonstration of it.
+**Say the one sentence in the red box twice.** The whole session is a demonstration of it. If they remember one sentence, this is the one.
+
+Reinforce the scope boundary. This week is about how you *write* the model, not how the solver *searches* it. Branch and bound is Week 11. If someone asks about the search, park it and write the question in the corner of the board.
+
+---
+
+**พูดประโยคเดียวในกรอบสีแดงสองครั้ง** ทั้งคาบคือการสาธิตประโยคนี้ ถ้านิสิตจำได้แค่ประโยคเดียว ขอให้เป็นประโยคนี้
+
+ย้ำขอบเขต สัปดาห์นี้เราสนใจว่า *เขียน* อย่างไร ไม่ใช่ว่า solver *ค้นหา* อย่างไร branch and bound เป็นเรื่องของ Week 11 ถ้ามีคนถามเรื่องการค้นหา ให้บอกว่าเก็บไว้ก่อน แล้วเขียนคำถามไว้ที่มุมกระดาน
 :::
+
 
 ## Four patterns cover most process models {.smaller}
 
@@ -129,8 +168,21 @@ A continuous variable answers *how much*. A binary answers *whether*.
 :::
 
 ::: {.notes}
-This is the single commonest error in student models all term. Say it now and say it again at the checklist.
+**This is the commonest error in student models all term.** Say it now, and say it again at the checklist slide.
+
+Ask the room: what happens if you leave out u ≤ M·z? Wait for an answer, do not supply it. The answer: the solver sets z = 0, pays no fixed charge, and still runs the unit at full rate. The binary becomes decoration.
+
+The line to make stick: a binary that is not wired to a continuous variable constrains nothing.
+
+---
+
+**นี่คือข้อผิดพลาดที่พบบ่อยที่สุดตลอดเทอม** พูดตอนนี้ แล้วพูดซ้ำอีกครั้งที่สไลด์ checklist
+
+ถามห้อง: ถ้าไม่ใส่ u ≤ M·z จะเกิดอะไรขึ้น รอให้มีคนตอบ อย่าเฉลยเอง คำตอบคือ solver ตั้ง z = 0 ไม่จ่ายค่าใช้จ่ายคงที่ แล้วยังเดินเครื่องได้เต็มที่ ไบนารีกลายเป็นของประดับ
+
+ประโยคที่อยากให้ติดหู: ไบนารีที่ไม่ได้ผูกกับตัวแปรต่อเนื่อง ไม่ได้บังคับอะไรเลย
 :::
+
 
 ## The semicontinuous set is a disjunction, not an interval {.smaller}
 
@@ -170,6 +222,27 @@ The wedge is where every difficulty in this session begins. A fractional z buys 
 :::
 ::::
 
+::: {.notes}
+**Draw it on the board before showing the slide.** z horizontal, u vertical. Mark the point (0,0) and the segment at z = 1 between L and M. That is the real set.
+
+Then draw u = L·z and u = M·z, so they see the wedge between them is what the relaxation gives you.
+
+Ask what z = 0.5 means physically. Nothing. But the LP thinks it is fine, and that is the source of every difficulty in the next two hours.
+
+**This wedge is the heart of the session.** Get it here and Lectures 2 and 3 follow on their own.
+
+---
+
+**วาดบนกระดานก่อนขึ้นสไลด์** วาดแกน z แนวนอน แกน u แนวตั้ง จุดที่ (0,0) และเส้นตรงที่ z = 1 ระหว่าง L ถึง M นั่นคือเซตจริง
+
+แล้วลากเส้น u = L·z กับ u = M·z ให้เห็นว่ารูปลิ่มระหว่างสองเส้นคือสิ่งที่ relaxation ให้มา
+
+ถามว่า จุดที่ z = 0.5 แปลว่าอะไรในทางกายภาพ คำตอบคือไม่มีความหมาย แต่ LP มองว่าใช้ได้ และนั่นคือที่มาของปัญหาทั้งหมดในสองชั่วโมงข้างหน้า
+
+**ลิ่มนี้คือหัวใจของทั้งคาบ** ถ้าเข้าใจตรงนี้ Lecture 2 กับ 3 จะตามได้เอง
+:::
+
+
 ## Worked example: refinery blending with operating reality {.smaller}
 
 Five component streams blended into two gasoline grades — **the Week 4 instance**. Three operating realities were ignored there.
@@ -204,6 +277,23 @@ plus every Week 4 row: grade balances, volume windows, octane, vapour pressure, 
 :::
 ::::
 
+::: {.notes}
+Back to the Week 4 instance they already solved. Say plainly that last week cheated on three things.
+
+Ask before revealing the right column: what does it actually take to line up one stream in a real refinery? You want tank, pump, transfer line — paid the same whether 1 t or 3000 t moves.
+
+Explain the second reality physically: a pump below its minimum rate cavitates and the metering is unreliable. This is an engineering reason, not an invented constraint.
+
+---
+
+กลับไปที่โจทย์ Week 4 ที่นิสิตแก้ไปแล้ว บอกตรง ๆ ว่าสัปดาห์ที่แล้วเราโกงสามเรื่อง
+
+ถามห้องก่อนเปิดคอลัมน์ขวา: การจะเปิดใช้สตรีมหนึ่งสตรีมในโรงกลั่นจริง ต้องมีอะไรบ้าง คำตอบที่อยากได้คือ ถัง ปั๊ม ท่อ ซึ่งจ่ายเท่ากันไม่ว่าจะส่ง 1 ตันหรือ 3000 ตัน
+
+เรื่องที่สองอธิบายเชิงกายภาพ ปั๊มที่เดินต่ำกว่าอัตราขั้นต่ำจะเกิด cavitation และมิเตอร์วัดไม่แม่น นี่คือเหตุผลทางวิศวกรรม ไม่ใช่ข้อจำกัดที่คิดขึ้นมาลอย ๆ
+:::
+
+
 ## What the discrete structure costs {.smaller}
 
 :::: {.columns}
@@ -232,6 +322,23 @@ plus every Week 4 row: grade balances, volume windows, octane, vapour pressure, 
 **Read the last column.** Straight run was used at 473.1 t in the LP. A minimum run rate of 600 t forces the plant either to move 600 t of a stream it did not want that much of, or to shut the line down entirely. The optimizer chose to run it and paid the difference — and the minimum run rates cost **half as much again** as all five fixed charges combined.
 :::
 
+::: {.notes}
+**Spend your time on the last column of the right-hand table** — straight run.
+
+The LP used 473.1 t. The minimum run rate is 600 t. So the plant either moves 600 t of a stream it did not want that much of, or shuts the line down entirely. The optimizer chose to run it and paid the difference.
+
+The number to say out loud: minimum run rates cost 24 347 USD while all five fixed charges together cost 47 000 USD. The constraint that looks smaller costs half as much as the one that looks bigger.
+
+---
+
+**ให้เวลากับคอลัมน์สุดท้ายของตารางขวา** straight run
+
+LP ใช้ 473.1 ตัน แต่อัตราขั้นต่ำคือ 600 ตัน โรงงานจึงมีทางเลือกสองทาง คือส่ง 600 ตันของสตรีมที่ไม่ได้อยากใช้ขนาดนั้น หรือปิดสายทิ้งไปเลย optimizer เลือกเดินเครื่องและยอมจ่ายส่วนต่าง
+
+ตัวเลขที่ต้องพูดออกมาดัง ๆ: อัตราเดินเครื่องขั้นต่ำมีต้นทุน 24 347 USD ขณะที่ค่าใช้จ่ายคงที่ทั้งห้าสตรีมรวมกันเป็น 47 000 USD ข้อจำกัดที่ดูเล็กกว่ากลับมีราคาครึ่งหนึ่งของอีกอันหนึ่ง
+:::
+
+
 ## Translation table, part 1: propositions over binaries {.smaller}
 
 ::: {.kicker .c-teal}
@@ -253,6 +360,23 @@ Exact and dimensionless — no constant is required
 ::: {.note}
 Every propositional statement over finitely many binaries can be written this way. These nine are the ones worth memorizing.
 :::
+
+::: {.notes}
+Do not read row by row. Give them two minutes to read it silently, then ask which rows are unclear.
+
+Emphasise **exact and dimensionless**. None of these nine needs a constant. No M, no units, so there is nothing to set wrongly — unlike the next slide, where M appears.
+
+Say these nine are worth memorising. The rest you can look up.
+
+---
+
+ไม่ต้องอ่านทีละแถว ให้เวลานิสิตอ่านเงียบ ๆ สองนาที แล้วถามว่าแถวไหนไม่ชัด
+
+เน้นคำว่า **exact และ dimensionless** เก้าแถวนี้ไม่ต้องใช้ค่าคงที่ใดเลย ไม่มี M ไม่มีหน่วย จึงไม่มีทางตั้งค่าผิด ต่างจากสไลด์ถัดไปที่ M เริ่มโผล่มา
+
+บอกว่าเก้าแถวนี้คุ้มที่จะจำ ที่เหลือเปิดตารางเอาได้
+:::
+
 
 ## Translation table, part 2, and how to check one {.smaller}
 
@@ -292,6 +416,23 @@ Enumerate all 2<sup>n</sup> assignments, evaluate the proposition, evaluate the 
 :::
 ::::
 
+::: {.notes}
+**The point of this slide is the control case in the red box.**
+
+Writing a ⇒ b as z_a + z_b ≤ 1 is wrong: that is *not both*, and it forbids (1,1), which the implication permits. Run the four-row truth table on the board. It takes under a minute and it lands.
+
+The sentence to say: **a wrong translation is silent.** The model still solves, still reports `optimal`, and answers a different question. That is the Week 6 theme arriving early.
+
+---
+
+**ประเด็นสำคัญคือ control case ในกรอบสีแดง**
+
+เขียน a ⇒ b เป็น z_a + z_b ≤ 1 ผิด เพราะนั่นคือ *not both* มันห้ามกรณี (1,1) ที่ implication อนุญาต ให้ลองไล่ truth table บนกระดานสี่แถว ใช้เวลาไม่ถึงหนึ่งนาทีและได้ผลมาก
+
+ประโยคที่ต้องพูด: **การแปลงที่ผิดจะเงียบ** แบบจำลองยังแก้ได้ ยังรายงาน optimal แต่ตอบคนละคำถาม นี่คือธีมของ Week 6 ที่มาถึงก่อนกำหนด
+:::
+
+
 ## Activity 1 · logic to linear {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-amber}
@@ -321,8 +462,21 @@ No products of binaries are permitted. At 12 minutes, eight pairs are called to 
 :::
 
 ::: {.notes}
-Walk the room during the first 12 minutes and look for item 7 written as z<sub>D</sub> ≤ z<sub>A</sub> + z<sub>B</sub>. It is the commonest error and you want it on the board, not corrected privately.
+**Walk the room during the first 12 minutes.** What you are looking for is item 7 written as z_D ≤ z_A + z_B.
+
+That is the commonest error, and you want it on the board rather than corrected pair by pair. Seeing where it fails teaches more than being told.
+
+Items 5 and 6 are the only two that need a constant. If a pair finishes early, ask them what M should be in item 6 and how they know.
+
+---
+
+**เดินดูรอบห้องช่วง 12 นาทีแรก** สิ่งที่ต้องมองหาคือข้อ 7 ที่เขียนเป็น z_D ≤ z_A + z_B
+
+นั่นคือข้อผิดพลาดที่พบบ่อยที่สุด และอาจารย์ต้องการให้มันขึ้นกระดาน ไม่ใช่ไปแก้เป็นรายคู่ เพราะการเห็นว่าผิดตรงไหนบนกระดานสอนได้มากกว่า
+
+ข้อ 5 และ 6 คือสองข้อเดียวที่ต้องใช้ค่าคงที่ ถ้ามีคู่ไหนทำเสร็จเร็ว ให้ถามต่อว่า M ในข้อ 6 ควรเป็นเท่าไรและรู้ได้อย่างไร
 :::
+
 
 ## Activity 1 · [ANSWER] · the eight translations {.smaller}
 
@@ -351,6 +505,23 @@ Walk the room during the first 12 minutes and look for item 7 written as z<sub>D
 :::
 ::::
 
+::: {.notes}
+**Walk the room during the first 12 minutes.** What you are looking for is item 7 written as z_D ≤ z_A + z_B.
+
+That is the commonest error, and you want it on the board rather than corrected pair by pair. Seeing where it fails teaches more than being told.
+
+Items 5 and 6 are the only two that need a constant. If a pair finishes early, ask them what M should be in item 6 and how they know.
+
+---
+
+**เดินดูรอบห้องช่วง 12 นาทีแรก** สิ่งที่ต้องมองหาคือข้อ 7 ที่เขียนเป็น z_D ≤ z_A + z_B
+
+นั่นคือข้อผิดพลาดที่พบบ่อยที่สุด และอาจารย์ต้องการให้มันขึ้นกระดาน ไม่ใช่ไปแก้เป็นรายคู่ เพราะการเห็นว่าผิดตรงไหนบนกระดานสอนได้มากกว่า
+
+ข้อ 5 และ 6 คือสองข้อเดียวที่ต้องใช้ค่าคงที่ ถ้ามีคู่ไหนทำเสร็จเร็ว ให้ถามต่อว่า M ในข้อ 6 ควรเป็นเท่าไรและรู้ได้อย่างไร
+:::
+
+
 ## First, what the logic costs on the blend {.smaller}
 
 Two conditions on the tank farm: **Σ<sub>c</sub> z<sub>c</sub> ≤ 4** (cardinality), and **z<sub>Butane</sub> ≤ z<sub>Straight run</sub>** (implication).
@@ -377,6 +548,27 @@ Two conditions on the tank farm: **Σ<sub>c</sub> z<sub>c</sub> ≤ 4** (cardina
 ::: {.flag .c-rust}
 **Restrictions interact, and the interaction is not additive.** The implication alone costs nothing, because the unrestricted optimum already runs straight run. Once cardinality removes straight run, the implication also removes butane, and together they cost 60 731 USD — an order of magnitude more than the sum of their individual costs. Total cost of discrete reality: 413 439.75 − 281 361.41 = **132 078.33 USD, 31.9 percent of the LP margin**.
 :::
+
+::: {.notes}
+**The number to explain is 60 730.89.**
+
+Ask before revealing: cardinality alone costs 6 553, implication alone costs 0. What should both together cost? Most will say about 6 553.
+
+It is 60 731, ten times the sum. The reason: the implication is free while the optimum already runs straight run. Once cardinality removes straight run, the implication removes butane too.
+
+**Restrictions interact, and the interaction is not additive.** Close on 31.9 percent of the LP margin lost to discrete reality.
+
+---
+
+**ตัวเลขที่ต้องอธิบายคือ 60 730.89**
+
+ถามห้องก่อนเฉลย: cardinality อย่างเดียวมีราคา 6 553 implication อย่างเดียวมีราคา 0 แล้วรวมกันควรมีราคาเท่าไร นิสิตส่วนมากจะตอบราว 6 553
+
+คำตอบจริงคือ 60 731 มากกว่าผลรวมสิบเท่า เหตุผลคือ implication ไม่มีราคาเมื่อ optimum เดิมใช้ straight run อยู่แล้ว แต่พอ cardinality ตัด straight run ออก implication ก็ตัด butane ตามไปด้วย
+
+**ข้อจำกัดมีปฏิสัมพันธ์กัน และปฏิสัมพันธ์นั้นไม่ใช่การบวก** จบด้วยตัวเลข 31.9 เปอร์เซ็นต์ของกำไร LP หายไปเพราะความเป็นจริงเชิงจำนวนเต็ม
+:::
+
 
 ## The big-M pattern: valid and tight are different words {.smaller}
 
@@ -411,6 +603,23 @@ Two different things then go wrong, and they fail in different ways. The next tw
 :::
 ::::
 
+::: {.notes}
+Walk both cases slowly on the board. z = 1: the row reads g(x) ≤ 0 and is enforced. z = 0: the row reads g(x) ≤ M and must not bind.
+
+**Separate valid from tight clearly.** Every valid M gives the same integer optimum — Activity 2 will prove that in front of them. Only the smallest is tight.
+
+Finish on the red box: never pick a round number like 10⁶ because it looks big enough. The next two slides are the two ways it fails, and they fail differently.
+
+---
+
+ไล่สองกรณีบนกระดานช้า ๆ z = 1 แถวอ่านว่า g(x) ≤ 0 บังคับใช้ z = 0 แถวอ่านว่า g(x) ≤ M ต้องไม่ผูกมัด
+
+**แยกคำว่า valid กับ tight ให้ชัด** ทุกค่าที่ valid ให้คำตอบจำนวนเต็มเท่ากันหมด นี่คือสิ่งที่ Activity 2 จะพิสูจน์ให้เห็นกับตา แต่มีเพียงค่าที่เล็กที่สุดที่ tight
+
+ปิดท้ายด้วยกรอบสีแดง อย่าเลือกเลขกลม ๆ อย่าง 10⁶ เพราะดูใหญ่พอ สองสไลด์ถัดไปคือสองวิธีที่มันพัง และมันพังคนละแบบ
+:::
+
+
 ## Three recipes for M, in decreasing order of quality {.smaller}
 
 ::: {.numbered .n3}
@@ -422,6 +631,23 @@ Two different things then go wrong, and they fail in different ways. The next tw
 ::: {.flag .c-amber}
 **A useful habit.** Write M as a named expression in the units of the row it appears in — `M_c = avail[c]` — never as a bare literal. A big-M with units attached is a big-M somebody can check. In the workbook it gets its own visible cell, `Model!$C$36`.
 :::
+
+::: {.notes}
+This slide compresses if you are behind, but **do not cut the amber box.**
+
+The habit worth building: write M as a named expression in the units of its own row — `M_c = avail[c]` — never a bare number.
+
+Why: a big-M with units attached is one somebody else can check. A raw number in the middle of a model has no traceable origin. In the workbook it gets its own visible cell, Model!\$C\$36.
+
+---
+
+ถ้าเวลาไม่พอ สไลด์นี้ย่อได้ แต่ **อย่าตัดกรอบสีเหลืองท้ายสไลด์**
+
+นิสัยที่อยากให้ติดตัวคือ เขียน M เป็นนิพจน์ที่มีชื่อและมีหน่วยของแถวที่มันอยู่ เช่น `M_c = avail[c]` ไม่ใช่ตัวเลขดิบ
+
+เหตุผล: big-M ที่มีหน่วยติดอยู่คือ big-M ที่คนอื่นตรวจได้ ส่วนตัวเลขดิบที่โผล่มากลางแบบจำลอง ไม่มีใครรู้ว่ามาจากไหนและถูกหรือเปล่า ในไฟล์ workbook มันมีเซลล์ของตัวเองคือ Model!\$C\$36
+:::
+
 
 ## Failure 1: the relaxation collapses {.smaller}
 
@@ -438,6 +664,29 @@ Relaxing z to [0, 1] in u ≤ M z gives **z ≥ u / M**. A large M lets the rela
 
 **A loose M does not change the answer. It changes how long the search takes to prove it**, because the bound is what branch and bound must close. You will measure this yourself in Activity 2.
 :::
+
+::: {.notes}
+**Make them look at the last column, Σz in the LP.**
+
+At tight M, Σz = 3.69: the relaxation pays for nearly four whole streams.
+At M = 10⁷, Σz = 0.0009: it switches on all five and pays 0.09 percent.
+
+The sentence: **a loose M does not change the answer, it changes how long you wait for it**, because the bound is what branch and bound has to close.
+
+Flag that Activity 2 after the break is where they measure this themselves.
+
+---
+
+**ให้ดูคอลัมน์สุดท้าย Σz ใน LP**
+
+ที่ M แน่น Σz = 3.69 หมายความว่า relaxation ยอมจ่ายค่าใช้จ่ายคงที่เกือบสี่สตรีมเต็ม ๆ
+ที่ M = 10⁷ Σz = 0.0009 หมายความว่ามันเปิดทั้งห้าสตรีมโดยจ่ายแค่ 0.09 เปอร์เซ็นต์
+
+ประโยคที่ต้องพูด: **M ที่หลวมไม่ได้เปลี่ยนคำตอบ มันเปลี่ยนเวลาที่ต้องรอ** เพราะขอบเขตคือสิ่งที่ branch and bound ต้องปิด
+
+บอกล่วงหน้าว่า Activity 2 หลังพักคือการที่นิสิตจะวัดเรื่องนี้ด้วยตัวเอง
+:::
+
 
 ## Failure 2: the integrality tolerance becomes a hole {.smaller}
 
@@ -470,6 +719,27 @@ Set M = 10<sup>10</sup> and fix every z<sub>c</sub> = 10<sup>−6</sup>, which t
 **Whose fault.** The plan moves ten thousand tonnes through five lines the solution claims are switched off, and it looks 71 347 USD better than the true optimum. The model is not wrong in exact arithmetic. It is wrong in floating-point arithmetic, which is the only kind a solver has. **M × ε is a modeling decision, not a solver defect.**
 :::
 
+::: {.notes}
+**This is the slide they will remember longest. Give it the time.**
+
+Explain ε first: solvers accept z as integral within about 10⁻⁶, so z = 10⁻⁶ is reported as off, while u ≤ M·z still permits u ≤ M·ε.
+
+Walk down the table. At M = 10¹⁰ it is 10 000 t. Stop there and ask what this plan is claiming. It moves ten thousand tonnes through five lines it says are shut, and looks 71 347 USD better than the truth.
+
+**Closing line:** the model is correct in exact arithmetic and wrong in floating point, which is the only kind a solver has. M times ε is a modeling decision, not a solver defect.
+
+---
+
+**นี่คือสไลด์ที่นิสิตจะจำได้นานที่สุด ให้เวลามันเต็มที่**
+
+อธิบาย ε ก่อน solver ยอมรับ z เป็นจำนวนเต็มภายในความคลาดเคลื่อนราว 10⁻⁶ ดังนั้น z = 10⁻⁶ ถูกรายงานว่าปิด แต่ u ≤ M·z ยังยอมให้ u ≤ M·ε
+
+ไล่ตารางลงมาทีละแถว ที่ M = 10¹⁰ ได้ 10 000 ตัน ให้หยุดตรงนี้แล้วถามว่า แผนนี้กำลังบอกอะไร คำตอบคือส่งของหมื่นตันผ่านสายห้าสายที่อ้างว่าปิดอยู่ และดูดีกว่าคำตอบจริง 71 347 USD
+
+**ประโยคปิด** แบบจำลองนี้ไม่ผิดในเลขคณิตแม่นตรง แต่ผิดในเลขคณิตทศนิยม ซึ่งเป็นชนิดเดียวที่ solver มี M คูณ ε เป็นการตัดสินใจเชิงแบบจำลอง ไม่ใช่ข้อบกพร่องของ solver
+:::
+
+
 ## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
 
 ::: {.break-circle}
@@ -487,6 +757,23 @@ Next: **Activity 2, big-M roulette**, at the computer, in groups of 3 to 4. Open
 ::: {.note}
 Before you leave the room: form your group and collect your assigned value of M from the front. Every group solves the same model with a different M.
 :::
+
+::: {.notes}
+**Before they leave:** form groups of 3 to 4 and collect the group's value of M from the front. Do not let grouping happen after the break — it costs five minutes.
+
+Use the break to finish any OpenSolver and CBC installs still outstanding.
+
+If a group cannot open the workbook at all, pair them with a group that can. One working machine per group is enough.
+
+---
+
+**ก่อนปล่อยพัก** ให้จับกลุ่ม 3 ถึง 4 คน แล้วมารับค่า M ของกลุ่มที่หน้าห้อง อย่าปล่อยให้ไปจับกลุ่มตอนกลับมา จะเสียเวลาห้านาที
+
+ใช้เวลาช่วงพักเก็บงานติดตั้ง OpenSolver กับ CBC ที่ยังไม่เรียบร้อย
+
+ถ้ากลุ่มไหนเปิด workbook ไม่ได้เลย ให้จับคู่กับกลุ่มที่เปิดได้ หนึ่งเครื่องต่อกลุ่มก็พอ
+:::
+
 
 ## The Activity 2 instance: a zinc-air materials plant {.smaller}
 
@@ -542,6 +829,27 @@ Demand, t/yr: anode paste 1800, cathode sheet 2400, separator film 1500. The sin
 :::
 ::::
 
+::: {.notes}
+This is a zinc-air battery materials plant, closer to home than a refinery. Three minutes to set the picture before the activity.
+
+Walk the rate table. A dash means that unit *cannot* make that product, not that it makes it slowly.
+
+Point at the three constraints that are not capacity: competing licences (one or the other), shared solvent recovery (U4 needs U3), and the commissioning crew (at most four units). All three are Lecture 1 doing real work.
+
+**Stress that exactly one number changes:** Model!\$C\$36.
+
+---
+
+โจทย์นี้เป็นโรงงานวัสดุแบตเตอรี่สังกะสีอากาศ ใกล้ตัวกว่าโรงกลั่น ใช้เวลาสามนาทีอธิบายให้เห็นภาพก่อนเข้ากิจกรรม
+
+ไล่ตารางอัตราการผลิต ขีดกลางแปลว่าหน่วยนั้นทำผลิตภัณฑ์นั้นไม่ได้ ไม่ใช่ทำได้ช้า
+
+ชี้ข้อจำกัดสามข้อล่างที่ไม่ใช่เรื่องกำลังการผลิต competing licenses คือใช้ได้ทีละใบ shared solvent recovery คือ U4 ต้องมี U3 ก่อน และ commissioning crew จำกัดที่สี่หน่วย ทั้งสามข้อนี้คือ Lecture 1 ที่กลับมาใช้งานจริง
+
+**ย้ำว่ามีเลขตัวเดียวที่ต้องเปลี่ยน** คือ Model!\$C\$36
+:::
+
+
 ## Activity 2 · big-M roulette {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-amber}
@@ -580,6 +888,27 @@ This table goes on the board and is filled in from the floor.
 Predict, before you solve, which of the three columns will differ between groups.
 :::
 
+::: {.notes}
+**Force the prediction before they solve.** Ask every group which column will differ between groups and which will be identical. Written down, before touching the solver.
+
+Most will predict the integer optimum differs. It does not, and being wrong about that is the point of the activity.
+
+Walk the room. A group that forgets to change \$C\$36 gets the shipped default of 2 500. Leave them — it becomes a useful extra row on the board.
+
+Copy the table onto the board now, so they see the blanks waiting.
+
+---
+
+**บังคับให้ทำนายก่อนแก้** ถามทุกกลุ่มว่าคอลัมน์ไหนจะต่างกันระหว่างกลุ่ม และคอลัมน์ไหนจะเหมือนกันหมด ให้เขียนลงกระดาษก่อน
+
+ส่วนใหญ่จะทายว่า integer optimum ต่างกัน ซึ่งผิด และการผิดตรงนี้คือจุดประสงค์ของกิจกรรม
+
+เดินดูรอบห้อง กลุ่มที่ลืมเปลี่ยน \$C\$36 จะได้ค่า default ที่ 2 500 ให้ปล่อยไว้ แล้วใช้เป็นแถวพิเศษบนกระดานตอนเฉลย
+
+ลอกตารางขึ้นกระดานตั้งแต่ตอนนี้ นิสิตจะได้เห็นช่องว่างรอเติม
+:::
+
+
 ## Activity 2 · [ANSWER] · the board table {.smaller}
 
 | Group | M, t/yr | LP bound, kUSD/yr | integer optimum | gap % | CBC time |
@@ -609,6 +938,33 @@ A per-unit M<sub>u</sub> (1470, 1870, 2232, 1280, 1650, 1726.8) beats every row 
 :::
 :::
 ::::
+
+::: {.notes}
+**Fill the board from the floor, group by group. Do not read the slide.**
+
+Once it is full, ask three questions.
+One: what happened to the integer optimum column? Identical in all five rows, 2 533.226.
+Two: what happened to the LP bound? Degrades by 359.5 kUSD, then saturates.
+Three: what happened to the time? It did not move.
+
+**Explain the third properly.** Six binaries is too small to time. On the 20-unit instance in the notebook, loose M takes 4.28 s and tight M takes 0.078 s — a factor of 55. **The bound is the cause, the time is the symptom.**
+
+If a group tried a per-unit M, put it on the board and credit it: it beats every row in the table, and it is the bridge into Lecture 3.
+
+---
+
+**เติมกระดานจากพื้นห้อง ทีละกลุ่ม อย่าอ่านจากสไลด์**
+
+พอเติมครบแล้วค่อยถามสามคำถาม
+หนึ่ง คอลัมน์ integer optimum เป็นอย่างไร ตอบ เท่ากันหมดทั้งห้าแถว 2 533.226
+สอง คอลัมน์ LP bound เป็นอย่างไร ตอบ แย่ลงเรื่อย ๆ 359.5 kUSD แล้วอิ่มตัว
+สาม คอลัมน์เวลาเป็นอย่างไร ตอบ ไม่ขยับ
+
+**อธิบายข้อสามให้ชัด** หกไบนารีเล็กเกินกว่าจะจับเวลาได้ ที่โจทย์ 20 หน่วยในโน้ตบุ๊ก M หลวมใช้ 4.28 วินาที M แน่นใช้ 0.078 วินาที ต่างกัน 55 เท่า **ขอบเขตคือสาเหตุ เวลาคืออาการ**
+
+ถ้ามีกลุ่มที่ลองใช้ M ต่อหน่วย ให้ยกย่องขึ้นกระดาน เพราะมันชนะทุกแถวในตาราง และเป็นสะพานเข้า Lecture 3 พอดี
+:::
+
 
 ## A disjunction, written two ways {.smaller}
 
@@ -652,6 +1008,27 @@ x = Σ<sub>k</sub> x<sup>k</sup>, &nbsp; A<sub>k</sub> x<sup>k</sup> ≤ b<sub>k
 The hull form is the tightest linear relaxation any formulation of that disjunction can have.
 :::
 
+::: {.notes}
+Write the disjunction on the board in words first: choose one alternative, and once chosen you obey that alternative's constraints.
+
+Compare the two forms directly. Big-M is compact — one copy of x — but weak, because a fractional z relaxes every alternative at once by a large amount.
+
+The hull form gives each alternative its own copy of x, so it costs columns, and in exchange its projection back onto x is exactly the convex hull.
+
+The sentence: the hull is the tightest linear relaxation any formulation of that disjunction can have. Nobody can do better.
+
+---
+
+เขียน disjunction บนกระดานก่อน ในรูปคำพูด: เลือกทางใดทางหนึ่ง และเมื่อเลือกแล้วต้องทำตามข้อจำกัดชุดนั้น
+
+เปรียบเทียบสองรูปแบบตรง ๆ big-M กระชับ ใช้ x ชุดเดียว แต่อ่อน เพราะ z ที่เป็นเศษส่วนผ่อนปรนทุกทางเลือกพร้อมกันเป็นจำนวนมาก
+
+hull ให้แต่ละทางเลือกมีสำเนา x ของตัวเอง จึงมีคอลัมน์เพิ่ม แลกกับการที่ภาพฉายกลับมาบน x เป็น convex hull พอดี
+
+ประโยคที่ต้องพูด: hull คือ relaxation เชิงเส้นที่แน่นที่สุดเท่าที่ formulation ใดของ disjunction นั้นจะเป็นได้ ไม่มีใครทำได้ดีกว่านี้
+:::
+
+
 ## The instance: a reactor section, two configurations {.smaller}
 
 :::: {.columns}
@@ -693,6 +1070,27 @@ A zero means the row is already implied by the other alternative, so it needs no
 :::
 ::::
 
+::: {.notes}
+The right-hand table is the interesting thing on this slide.
+
+**Ask the room what the four zeros mean.** They mean the row is already implied by the other alternative, so it needs no relaxation at all: M = 0.
+
+Four of the eight rows are in that class, and no round-number M would ever discover it.
+
+This is why recipe 1 on slide 15 is to solve a little LP row by row. It is not fussiness — it finds things the other methods cannot.
+
+---
+
+ตารางขวาคือสิ่งที่น่าสนใจที่สุดในสไลด์นี้
+
+**ถามห้องว่าเลขศูนย์สี่ตัวหมายความว่าอะไร** คำตอบคือแถวนั้นถูกบังคับโดยทางเลือกอีกทางอยู่แล้ว จึงไม่ต้องผ่อนปรนเลย M = 0
+
+สี่ในแปดแถวอยู่ในกลุ่มนี้ และไม่มีทางที่การเลือกเลขกลม ๆ จะค้นพบเรื่องนี้ได้
+
+นี่คือเหตุผลที่ recipe แรกในสไลด์ 15 คือแก้ LP เล็ก ๆ ทีละแถว มันไม่ใช่ความพิถีพิถันเกินเหตุ มันหาเจอสิ่งที่วิธีอื่นหาไม่เจอ
+:::
+
+
 ## The two relaxation regions {.smaller}
 
 ::: {.kicker .c-teal}
@@ -725,6 +1123,27 @@ Draw the two regions on the board before showing the numbers on the next slide. 
 :::
 ::::
 
+::: {.notes}
+**Draw both regions on the board before the numbers on the next slide.** The ordering of the areas is the entire argument.
+
+Box A near the origin, box B further right, the hull wrapped around both, then the big-M region slightly larger still.
+
+Point at (22.5, 15.75) and ask which configuration it is in. Neither: x₁ = 22.5 is far below B's floor of 60, and x₂ = 15.75 exceeds 0.5x₁ = 11.25 for A.
+
+**Big-M admits this point. The hull does not.** That is the whole difference.
+
+---
+
+**วาดสองบริเวณบนกระดานก่อนขึ้นตัวเลขในสไลด์ถัดไป** ลำดับของพื้นที่คือข้อโต้แย้งทั้งหมด
+
+วาดกล่อง A ใกล้จุดกำเนิด กล่อง B ออกไปทางขวา แล้ววาด hull ครอบทั้งสอง จากนั้นวาดบริเวณ big-M ที่ใหญ่กว่าเล็กน้อย
+
+ชี้จุด (22.5, 15.75) แล้วถามว่าจุดนี้อยู่ใน configuration ไหน คำตอบคือไม่อยู่ในทั้งสอง x₁ = 22.5 เล็กเกินไปสำหรับ B และ x₂ = 15.75 เกิน 0.5x₁ ของ A
+
+**big-M ยอมรับจุดนี้ hull ไม่ยอมรับ** นั่นคือความต่างทั้งหมด
+:::
+
+
 ## The same picture as numbers {.smaller}
 
 ::: {.kicker .c-teal}
@@ -743,6 +1162,23 @@ Four formulations of one disjunction, same integer optimum 464.0
 - **Tightening M is the cheapest improvement available** going from a round 500 to the row-wise tightest costs nothing in rows and buys 91.7 units of bound.
 - **Domination guarantees never worse, not always strictly better** here the hull and the tightest big-M give the same bound in the direction the objective points, even though the hull region is strictly smaller.
 :::
+
+::: {.notes}
+Work down the table and note that the ordering of the areas matches the ordering of the bounds exactly.
+
+**The number to stress:** going from M = 500 to the row-wise tightest M adds no rows at all and buys 91.7 units of bound. Tightening M is the cheapest improvement available.
+
+**And the caveat, said out loud:** here the hull and the tightest big-M give the same bound, 298.744, even though the hull area is genuinely smaller. Domination guarantees never worse, not always strictly better. Do not let them remember it wrongly.
+
+---
+
+ไล่ตารางจากบนลงล่าง ให้สังเกตว่าลำดับของพื้นที่ตรงกับลำดับของขอบเขตพอดี
+
+**ตัวเลขที่ต้องเน้น** จาก M = 500 ไปเป็น M แน่นรายแถว ไม่เพิ่มแถวเลยสักแถว แต่ได้ขอบเขตดีขึ้น 91.7 หน่วย การทำให้ M แน่นคือการปรับปรุงที่ถูกที่สุดที่มีอยู่
+
+**และข้อควรระวังที่ต้องพูดออกมา** ในโจทย์นี้ hull กับ big-M ที่แน่นที่สุดให้ขอบเขตเท่ากันคือ 298.744 ทั้งที่พื้นที่ hull เล็กกว่าจริง การครอบงำรับประกันว่าไม่แย่ลง ไม่ได้รับประกันว่าดีขึ้นเสมอ อย่าให้นิสิตจำผิด
+:::
+
 
 ## Formulation strength as a measurable quantity {.smaller}
 
@@ -763,6 +1199,23 @@ integrality gap = (z<sub>MILP</sub> − z<sub>LP</sub>) / z<sub>MILP</sub> &nbsp
 ::: {.flag .c-rust}
 **Why the gap and not the row count.** Branch and bound stops when the incumbent and the best remaining bound meet, so the work is roughly a function of how far apart they start. An extra thousand rows that halve the gap are usually a bargain, and the number of rows is a poor proxy for difficulty.
 :::
+
+::: {.notes}
+Give the definition cleanly, then stress the three bullets.
+
+The first is what Activity 2 just proved: two formulations of the same problem have the same integer optimum by definition. They differ only in the relaxation.
+
+**The question to ask:** if a thousand extra rows halve the gap, is it worth it? Usually yes, because branch and bound stops when the incumbent and the bound meet, so the work is a function of how far apart they start — not of the row count.
+
+---
+
+นิยาม integrality gap ให้ชัด แล้วเน้นสามบรรทัดในกรอบ
+
+บรรทัดแรกคือสิ่งที่ Activity 2 เพิ่งพิสูจน์ให้เห็น formulation สองแบบมี integer optimum เท่ากันโดยนิยาม ต่างกันแค่ relaxation
+
+**คำถามที่ควรถามห้อง** ถ้าเพิ่มแถวอีกพันแถวแล้ว gap ลดครึ่งหนึ่ง คุ้มไหม คำตอบคือมักคุ้ม เพราะ branch and bound หยุดเมื่อ incumbent กับขอบเขตมาบรรจบกัน งานจึงเป็นฟังก์ชันของระยะห่างตอนเริ่ม ไม่ใช่ของจำนวนแถว
+:::
+
 
 ## Every formulation in this session, one measure {.smaller}
 
@@ -787,6 +1240,27 @@ Smaller is better in the last column, and it is the only column that predicts ef
 The row count moves by a factor of 86 across this table while the gap moves by a factor of 40 000. They are not the same quantity and they are not correlated.
 :::
 
+::: {.notes}
+**This is the summary slide of the whole session. Do not rush it.**
+
+Have them look at the rows column and the gap column together, and ask whether they see a relationship.
+
+Row count moves by a factor of 86 across this table. The gap moves by a factor of 40 000. **They are not correlated.**
+
+Point at the 20-unit rows as the clearest case: loose M needs a separate capacity row, so it has *more* rows than the tight version and a bound four times worse. More is not worse and fewer is not better.
+
+---
+
+**นี่คือสไลด์สรุปของทั้งคาบ อย่ารีบ**
+
+ให้นิสิตมองสองคอลัมน์พร้อมกันคือ rows กับ gap แล้วถามว่าเห็นความสัมพันธ์ไหม
+
+จำนวนแถวขยับ 86 เท่าตลอดตาราง gap ขยับ 40 000 เท่า **สองปริมาณนี้ไม่สัมพันธ์กัน**
+
+ชี้แถวโจทย์ 20 หน่วยเป็นตัวอย่างที่ชัดที่สุด M หลวมต้องเพิ่มแถวกำลังการผลิตอีกต่างหาก จึงมีแถว *มากกว่า* M แน่น และได้ขอบเขตแย่กว่าสี่เท่า มากกว่าไม่ได้แปลว่าแย่กว่า และน้อยกว่าไม่ได้แปลว่าดีกว่า
+:::
+
+
 ## Activity 3 · tighten it {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-amber}
@@ -804,6 +1278,23 @@ Each constraint is written with a lazy M = 10<sup>6</sup>. For each, derive the 
 ::: {.punch}
 One of the three has **no finite valid M**. Identify it and say what has to be added to the model.
 :::
+
+::: {.notes}
+Paper only, no computers. If you are short of time, do (a) and (c) and drop (b).
+
+**Item (c) is the one that matters. Do not cut it.** Walk the room — any group still trying to compute a number for (c) has not understood yet. Ask them where R_t has an upper bound in the model.
+
+Do not tell them which item has no answer. Let them find it.
+
+---
+
+กิจกรรมนี้ทำบนกระดาษ ไม่ต้องใช้เครื่อง ถ้าเวลาเหลือน้อยให้ทำเฉพาะข้อ (a) และ (c)
+
+**ข้อ (c) คือข้อที่สำคัญที่สุด อย่าตัด** เดินดูรอบห้อง กลุ่มที่พยายามหาเลขให้ข้อ (c) คือกลุ่มที่ยังไม่เข้าใจ ให้ถามว่า R_t มีขอบเขตบนที่ไหนในแบบจำลอง
+
+อย่าเฉลยว่าข้อไหนคือข้อที่ไม่มีคำตอบ ปล่อยให้หาเอง
+:::
+
 
 ## Activity 3 · [ANSWER] · the three tightest values {.smaller}
 
@@ -825,6 +1316,27 @@ The blender cannot reach 12 000 t because the octane floor on Premium and the va
 **(c) No finite valid M exists, and a bigger number is not the fix.** R<sub>t</sub> has no upper bound, so max R<sub>t</sub> is +∞ and no finite M leaves the row non-binding when y = 1. Whatever number you write becomes a silent, undocumented capacity limit on rented storage. The fix is physical: the contract offers at most 500 t per month, so add R<sub>t</sub> ≤ 500, and then M\* = 500 t.
 :::
 
+::: {.notes}
+(a) M drops from 10⁶ to 2 232 — a factor of 448 — from one line of reasoning.
+
+(b) shows that the easier recipes give looser values. 4 700 comes from the availability sum and ignores the volume windows; 4 000 ignores the quality rows. The true value, 2 782.5, needs an LP.
+
+**(c) is the point of the whole activity.** R_t has no upper bound, so max R_t is infinite and no finite M leaves the row non-binding.
+
+The sentence: **whatever number you write becomes a capacity limit nobody knows is there.** The fix is not a bigger number, it is a physical fact — the contract offers at most 500 t per month, so add R_t ≤ 500 and then M\* = 500.
+
+---
+
+ข้อ (a) M ลดจาก 10⁶ เหลือ 2 232 คือเล็กลง 448 เท่า จากการคิดหนึ่งบรรทัด
+
+ข้อ (b) แสดงให้เห็นว่าสูตรที่ง่ายกว่าให้ค่าที่หลวมกว่า 4 700 มาจากผลรวม availability ซึ่งมองข้าม volume window ส่วน 4 000 มองข้ามข้อกำหนดคุณภาพ ค่าจริงคือ 2 782.5 ซึ่งต้องแก้ LP ถึงจะได้
+
+**ข้อ (c) คือประเด็นของทั้งกิจกรรม** R_t ไม่มีขอบเขตบน max R_t จึงเป็นอนันต์ และไม่มี M จำกัดค่าใดที่ทำให้แถวไม่ผูกมัดได้
+
+ประโยคที่ต้องพูด: **เลขที่คุณเขียนลงไปจะกลายเป็นขีดจำกัดความจุที่ไม่มีใครรู้ว่ามีอยู่** ทางแก้ไม่ใช่เลขที่ใหญ่กว่า แต่เป็นข้อเท็จจริงทางกายภาพ สัญญาให้เช่าได้ไม่เกิน 500 ตันต่อเดือน ใส่ R_t ≤ 500 เข้าไป แล้ว M* = 500
+:::
+
+
 ## Practice checklist {.tint .smaller background-color="#F3F0EB"}
 
 ::: {.kicker .c-teal}
@@ -843,6 +1355,27 @@ When you add a binary to a model
 ::: {.flag .c-rust}
 **Two smells.** A declared parameter that no constraint references — a forgotten constraint. And a binary whose relaxed value is 10<sup>−3</sup> at the LP optimum — a big-M that is too large.
 :::
+
+::: {.notes}
+Read the six quickly, then stop on 2 and 5.
+
+Item 2 is what you said at the start of the session. Say it the second time here, as planned.
+
+Item 5 is the habit worth building: solve the LP relaxation once and record the gap. One extra solve, and it is the number that tells you whether the formulation is worth improving.
+
+**The two smells at the bottom:** a declared parameter no constraint references is a forgotten constraint; a binary sitting at 10⁻³ in the LP optimum is a big-M that is too large. Both are ten-second checks.
+
+---
+
+อ่านหกข้อเร็ว ๆ แล้วหยุดที่ข้อ 2 กับข้อ 5
+
+ข้อ 2 คือสิ่งที่พูดไว้ตอนต้นคาบ ไบนารีต้องผูกกับตัวแปรต่อเนื่อง พูดซ้ำอีกครั้งตรงนี้ตามที่ตั้งใจไว้
+
+ข้อ 5 คือสิ่งที่อยากให้ติดเป็นนิสัย แก้ LP relaxation หนึ่งครั้งแล้วจด gap ไว้ เป็นการแก้เพิ่มครั้งเดียวและได้ตัวเลขที่บอกว่าควรลงแรงปรับ formulation หรือไม่
+
+**สองกลิ่นในกรอบท้ายสไลด์** พารามิเตอร์ที่ประกาศแล้วไม่มีข้อจำกัดไหนอ้างถึง คือข้อจำกัดที่ลืม และไบนารีที่ค่า relaxed เป็น 10⁻³ คือ big-M ที่ใหญ่เกิน สองอย่างนี้ตรวจได้ในสิบวินาที
+:::
+
 
 ## Summary {.smaller}
 
@@ -875,6 +1408,29 @@ When you add a binary to a model
 | A2 bound, M\* / 10<sup>6</sup>M\* | 2203.1 / 1843.6 |
 :::
 ::::
+
+::: {.notes}
+Let them read the left column. Read only items 3 and 5 aloud.
+
+The right column is every number built today. Say that each was verified independently — if a student's sheet disagrees, the sheet is wrong.
+
+**If you have five minutes left**, say these three and stop.
+One: a binary is only real once it is wired to a continuous variable.
+Two: a loose M does not change the answer, it changes how long you wait, and past a point it silently breaks the model.
+Three: the gap, not the row count, tells you whether a reformulation is worth it.
+
+---
+
+ให้นิสิตอ่านคอลัมน์ซ้ายเอง อ่านออกเสียงเฉพาะข้อสามและข้อห้า
+
+คอลัมน์ขวาคือตัวเลขทุกตัวที่สร้างขึ้นวันนี้ บอกว่าทุกตัวตรวจสอบมาแล้วอย่างเป็นอิสระ ถ้าคำตอบของใครไม่ตรง ให้ถือว่าของตัวเองผิด
+
+**ถ้าเหลือเวลาห้านาที** พูดสามข้อนี้แล้วจบ
+หนึ่ง ไบนารีมีผลจริงต่อเมื่อผูกกับตัวแปรต่อเนื่องแล้ว
+สอง M ที่หลวมไม่เปลี่ยนคำตอบ แต่เปลี่ยนเวลาที่ต้องรอ และเมื่อเกินจุดหนึ่งจะทำให้แบบจำลองพังอย่างเงียบ
+สาม gap ไม่ใช่จำนวนแถว คือตัวบอกว่าการเขียนใหม่คุ้มหรือไม่
+:::
+
 
 ## Before next week {.tint .smaller background-color="#F3F0EB"}
 
@@ -910,8 +1466,21 @@ You will audit three generated models that all solve to `optimal` and are all wr
 ::::
 
 ::: {.notes}
-Say the model-audit task out loud. It is the piece of HW2 that people leave to the last day, and it is the piece that takes longest.
+**Say the HW2 model-audit task out loud.** It is the piece people leave to the last day and the piece that takes longest.
+
+Remind them HW2 spans Weeks 4 to 6, so some of it is not yet taught. Problems 1 to 5 can be started tonight.
+
+Set up Week 6 clearly: a language model drafts, the engineer verifies. They will audit three generated models that all solve to `optimal` and are all wrong. **Bring a laptop with Pyomo and a solver working.** Anyone still stuck on the install should see you after class.
+
+---
+
+**พูดเรื่อง model-audit ของ HW2 ออกมาดัง ๆ** เป็นส่วนที่คนทิ้งไว้วันสุดท้าย และเป็นส่วนที่ใช้เวลานานที่สุด
+
+ย้ำว่า HW2 ครอบคลุม Week 4 ถึง 6 จึงมีข้อที่ยังเรียนไม่ถึง ให้เริ่มจากข้อ 1 ถึง 5 ได้เลยตั้งแต่คืนนี้
+
+เกริ่น Week 6 ให้ชัด language model ร่าง วิศวกรตรวจ นิสิตจะได้ตรวจแบบจำลองที่ทั้งสามอันแก้ได้และรายงาน optimal และทั้งสามอันผิด **ให้เตรียมเครื่องที่มี Pyomo กับ solver ใช้งานได้มาด้วย** ถ้าวันนี้ยังติดตั้งไม่ได้ ให้มาหาหลังคาบ
 :::
+
 
 ## Further reading {.smaller}
 
@@ -922,5 +1491,26 @@ Say the model-audit task out loud. It is the piece of HW2 that people leave to t
 - **Grossmann and Trespalacios (2013)** Systematic modeling of discrete continuous optimization models through generalized disjunctive programming, AIChE J. 59(9) — GDP as the process systems engineering framing, and the automatic reformulations available in pyomo.gdp.
 - **Edgar, Himmelblau and Lasdon, 2nd ed., Ch. 9** for process-scale mixed-integer applications.
 :::
+
+::: {.notes}
+Do not read this aloud. Point at two entries.
+
+Williams Ch. 9 and 10 is the book that matches this session most closely, and it can be read straight after class.
+
+Balas (1985) is the source of the hull form used in Lecture 3, for anyone who wants to know where it came from.
+
+Mention that `pyomo.gdp` performs both the big-M and hull reformulations automatically — see Grossmann and Trespalacios.
+
+---
+
+ไม่ต้องอ่านออกเสียง ชี้สองรายการพอ
+
+Williams บทที่ 9 และ 10 คือหนังสือที่ตรงกับคาบนี้ที่สุด อ่านได้ทันทีหลังคาบ
+
+Balas (1985) คือต้นทางของรูปแบบ hull ที่ใช้ใน Lecture 3 สำหรับคนที่อยากรู้ว่ามันมาจากไหน
+
+บอกว่า pyomo.gdp ทำ reformulation ทั้ง big-M และ hull ให้อัตโนมัติ ใครสนใจลองดูใน Grossmann and Trespalacios
+:::
+
 
 {{< include _feedback.qmd >}}
