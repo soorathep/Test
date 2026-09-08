@@ -10,14 +10,49 @@
 #            _teaching-src/seminars/.
 #   handout  optional. Filename of a PDF sitting in teaching/seminars/.
 #            Present = a "Participant handout (PDF)" link appears under the note.
+#   package  optional. Complete download with file, label and note.
+#   download_groups  optional. Named groups of links, each with label and file.
+#   source_files     optional. Editable sources with label and raw download URL.
 # ─────────────────────────────────────────────────────────────────────────────
 
 - title: "Beyond the Summary: How to Plan, Structure, and Place a High-Impact Review Article"
   date: 2026-09-09
   venue: MMS3 Talk, Department of Chemical Engineering, Chulalongkorn University
   slides: review-articles.html
-  handout: Beyond_the_Summary_Handout.pdf
-  note: For researchers writing their first review. The ten things called a review and how they actually differ, systematic review against meta-analysis against critical review side by side, what a review does and does not do for an early-career profile, a five-gate test for deciding whether a topic is ready, what counts as a contribution when you have no new data, the eight-step process from idea to submission, what PRISMA governs and what it does not, where AI tools legitimately fit, and the structure of the finished paper down to the title.
+  handout: Beyond_the_Summary_Handout_Updated.pdf
+  note: Plan a review that adds understanding beyond a summary. Compare review types, choose a viable question, document searching and selection with PRISMA, build an evidence matrix, and connect the evidence to defensible research gaps and review novelty. Includes two recently published review examples, participant worksheets, and the full Thai speaker script.
+  package:
+    file: MMS3_Quarto_Package.zip
+    label: Download the complete MMS3 package
+    note: ZIP · 7.4 MB · PDF and HTML materials, editable Quarto sources, fonts and graphics.
+  download_groups:
+    - title: Slides
+      links:
+        - label: View slides online
+          file: review-articles.html
+        - label: Slide deck (PDF · 50 pages)
+          file: Beyond_the_Summary_Updated.pdf
+    - title: Participant handout & worksheets
+      links:
+        - label: Complete handout (PDF · 14 pages)
+          file: Beyond_the_Summary_Handout_Updated.pdf
+        - label: Worksheets A & B — prior reviews and proposal (p. 9)
+          file: Beyond_the_Summary_Handout_Updated.pdf#page=9
+        - label: Worksheet C — evidence, gaps and novelty (p. 13)
+          file: Beyond_the_Summary_Handout_Updated.pdf#page=13
+        - label: Worked evidence-matrix example (p. 12)
+          file: Beyond_the_Summary_Handout_Updated.pdf#page=12
+    - title: Thai speaker script · บทบรรยายภาษาไทย
+      links:
+        - label: Full Thai script (PDF · 29 pages)
+          file: Beyond_the_Summary_TH_Script_Updated.pdf
+        - label: Read the Thai script online
+          file: Beyond_the_Summary_TH_Script_Updated.html
+  source_files:
+    - label: Slide source (.qmd)
+      url: https://raw.githubusercontent.com/soorathep/Test/main/teaching/seminars/Beyond_the_Summary_Updated.qmd
+    - label: Thai script source (.qmd)
+      url: https://raw.githubusercontent.com/soorathep/Test/main/teaching/seminars/Beyond_the_Summary_TH_Script_Updated.qmd
 
 - title: Making Conferences Work for You
   date: 2026-08-17

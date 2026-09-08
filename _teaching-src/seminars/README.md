@@ -12,6 +12,7 @@ one is for talks that are not part of a course.
 | File | Talk |
 |------|------|
 | `conferences.qmd` | Making Conferences Work for You — 17 August 2026 |
+| `review-articles.qmd` | Beyond the Summary — MMS3, 9 September 2026 |
 
 ---
 
@@ -136,3 +137,18 @@ Edit the front matter and body, render, publish, then add an entry to
 - Rendering writes into `teaching/seminars/`, which is committed. The site
   build does not run Quarto, so the published deck is exactly what was
   rendered here.
+
+## MMS3 materials — updated 8 September 2026
+
+The MMS3 presenter has explicitly published the full Thai speaking script and
+editable sources with the slides. The MMS3 HTML therefore retains speaker notes.
+This is an exception to the public-note stripping convention above; other seminars
+keep their existing publication settings.
+
+The verified 50-slide HTML and PDF, 29-page Thai script, 14-page handout and complete
+Quarto ZIP are in `teaching/seminars/`. The editable master is `review-articles.qmd`;
+its updated theme is isolated in `theme/mms3/` so other decks retain their appearance.
+The ZIP includes both original Quarto filenames, themes, assets and build instructions.
+
+Worksheet A and B are on handout PDF page 9; the worked evidence matrix is on page 12;
+Worksheet C is on page 13. Existing deck and handout URLs remain usable.
