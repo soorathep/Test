@@ -47,3 +47,7 @@ quarto render Beyond_the_Summary_TH_Script_Updated.qmd --to html
 ```
 
 PDF บทบรรยายใช้หน้ากระดาษ A4 พร้อมเลขหน้าและสีพื้นหลัง เมื่อแก้เนื้อหา ให้ปรับบทพูดในต้นฉบับบทบรรยายและ speaker notes ของสไลด์ให้ตรงกัน ส่วน handout เป็นเอกสารประกอบที่จัดหน้าแยกไว้
+
+## Worked worksheets - added 9 September 2026
+
+`worksheets/MMS3_Battery_Recycling_Worked_Worksheets.pdf` provides five completed Thai example pages on battery recycling: A on page 1, B on page 2, C on pages 3-4, and facilitation notes/references on page 5. Quarto, HTML and the embedded-font stylesheet are included alongside the PDF. This is a retrospective teaching example based on the published Green Chemistry paper, with illustrative proposal planning clearly labeled.
