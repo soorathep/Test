@@ -1,0 +1,515 @@
+---
+title: "Reverse-engineering III — Methods, Results, and evidence"
+subtitle: "Week 6 · 2105620 Research Communication Skills for Chemical Engineers"
+author: "Soorathep Kheawhom"
+date: 2026-09-10
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Two hours, and the last one before the examination {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Today
+:::
+
+::: {.agenda}
+- [8 min]{.chip .c-rust} What the midterm covers, so we can stop thinking about it
+- [20 min]{.chip .c-teal} Reporting and interpreting: where the line is
+- [20 min]{.chip .c-amber} Activity 1 — report, or interpret?
+- [10 min]{.chip .c-mist} Break
+- [20 min]{.chip .c-teal} Six ways a figure misleads
+- [25 min]{.chip .c-amber} Activity 2 — figure forensics
+- [12 min]{.chip .c-teal} Debrief and close
+:::
+
+::: {.foot}
+::: {.note}
+Everything used today is on the sheet. Nothing needed to be brought.
+:::
+:::
+
+::: {.notes}
+**[00:00 – 00:02] · AGENDA**
+
+**SAY —**
+
+"Two hours today rather than three, and it is the last session before the examination period.
+
+I am going to deal with the examination first, in the next eight minutes, so that it stops sitting at the back of the room."
+
+**DO —**
+
+- Write the break return time on the board now.
+- Do not run this session at three-hour pace. If you finish at 105 minutes, finish.
+:::
+
+## The examination {.dark .divider .c-rust background-color="#1C242B"}
+
+::: {.kicker}
+24 September to 4 October · Weeks 1 to 6 only
+:::
+
+::: {.lede}
+Analysis of published work. Not recall of definitions.
+:::
+
+::: {.notes}
+**[00:02] · MIDTERM DIVIDER**
+
+**SAY —**
+
+"The examination period runs from the twenty-fourth of September to the fourth of October. It covers weeks one to six. Nothing after week six is examinable.
+
+And the form matters more than the scope: it asks you to analyse published work, not to give definitions back to me."
+:::
+
+## What it asks you to be able to do
+
+::: {.kicker .c-teal}
+Six capabilities, one per week
+:::
+
+::: {.numbered .n4}
+1. Name what an article type is for, and who reads it
+2. Apply the authorship criteria and the AI policy to a case
+3. Write a reproducible search, and read a gap out of a matrix
+4. Reverse-outline a section and name a structural break
+5. Tell an absence from a gap, and write an aim a result can settle
+6. Separate reporting from interpretation, and find a distortion in a figure
+:::
+
+::: {.foot}
+::: {.punch}
+Every one of these is something you did in a room with your hands. None of them is a definition.
+:::
+:::
+
+::: {.notes}
+**[00:02 – 00:10] · MIDTERM SCOPE**
+
+**SAY —**
+
+"Six capabilities, one from each week, and they are on your sheet so nobody has to remember this.
+
+Look at the verbs. Name, apply, write, outline, tell apart, separate. Every one of them is something you have already done in this room with your hands.
+
+There is no question that asks what IMRaD stands for. There is a question that gives you an introduction and asks which move is missing.
+
+That is all I am going to say about the examination. If you have a question, ask it now, and then we start."
+
+**DO —**
+
+- Take questions here, for two or three minutes, and then genuinely close the topic.
+- If someone asks about Assignment 1 or the evidence map, answer briefly: where they stand, when they come back, and that the map is due before Week 7.
+:::
+
+## Where the line is {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 2 · 20 minutes
+:::
+
+::: {.lede}
+The Results section reports what was observed. Everything else belongs somewhere else.
+:::
+
+::: {.notes}
+**[00:10] · SECTION DIVIDER**
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+Could a machine with no knowledge<br>of chemistry have written this sentence<br>from the raw data?
+:::
+
+::: {.statement-sub}
+If yes, it reports. If it needed a person to decide something, it interprets.
+:::
+
+::: {.notes}
+**[00:10 – 00:14] · THE TEST**
+
+**SAY —**
+
+"Here is the test, and it is the only tool you need for the first half of today.
+
+Take any sentence in a Results section and ask: could a machine with no knowledge of chemistry have produced this from the raw data?
+
+The capacity was 448 milliamp hours per gram. A machine can write that. It reports.
+
+The improvement is attributed to a more uniform interphase. No machine produces that from the data. Somebody decided it. It interprets.
+
+That is the whole distinction, and it takes ten seconds per sentence."
+
+**DO —** Write the test on the board. It stays up for Activity 1.
+:::
+
+## The four verbs that give it away {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+Words that smuggle a claim into the Results
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **attributed to** | Names a cause. Nothing was observed |
+| **indicating** | An inference. Usually true, usually not measured here |
+| **confirming** | The strongest verb available, and one micrograph does not earn it |
+| **excellent, superior, remarkable** | Judgements. Excellent against what, reported by whom? |
+:::
+
+::: {.foot}
+::: {.note}
+None of these is dishonest. All of them belong two sections further on, where the reader knows to be sceptical.
+:::
+:::
+
+::: {.notes}
+**[00:14 – 00:20] · THE FOUR VERBS**
+
+**SAY —**
+
+"Four words to search your own Results section for.
+
+Attributed to. It names a cause, and causes are not observed.
+
+Indicating. An inference, usually correct, usually not measured in this work.
+
+Confirming. The strongest verb in the language. One micrograph never earns it, because the absence of dendrites in one image is not the absence of dendrites.
+
+And the judgement words. Excellent, superior, remarkable. Excellent against what, reported by whom, under what conditions?
+
+I want to be careful here, because students mishear this as a rule about honesty. None of these is dishonest. They belong in the Discussion, where the reader knows they are reading a claim rather than a measurement. Put them in the Results and you have moved a claim past the reader while they thought they were reading data."
+
+**DO —** Ask the room for a fifth word. Someone always offers "clearly" or "obviously", and both qualify.
+:::
+
+## Report, or interpret? {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 1 · 20 minutes · five sentences on your sheet
+:::
+
+::: {.notes}
+**[00:20] · ACTIVITY 1 DIVIDER**
+:::
+
+## What to do
+
+::: {.kicker .c-amber}
+Activity 1
+:::
+
+::: {.numbered .n3}
+1. **10 minutes alone.** Five sentences. Mark each: reports, interprets, or both
+2. **Where it interprets,** rewrite it so the Results can keep it, or say where it should move
+3. **5 minutes in pairs.** Compare. One of the five splits the room every year
+:::
+
+::: {.foot}
+::: {.punch}
+All five read well. Four of them would pass a supervisor and a language check. That is the point.
+:::
+:::
+
+::: {.notes}
+**[00:20 – 00:40] · ACTIVITY 1 — RUN**
+
+**SAY —**
+
+"Ten minutes on your own, then five in pairs.
+
+Mark each sentence: reports, interprets, or both. Where it interprets, either rewrite it so the Results section can keep it, or say which section it belongs to.
+
+And a warning: all five of these read perfectly well. Four of them would get past a supervisor and past a language check. You are not looking for bad writing."
+
+**DO —**
+
+- Circulate. The common error is marking sentence 3 as a report because it contains a number. It does both, and that is what makes it the interesting one.
+- Take the debrief in this order: 1, then 2, then 5, then 4, then 3. End on the one that splits the room.
+- Sentence 4 is worth pushing on: absence in one image is not absence.
+:::
+
+## &nbsp; {.dark .break .c-mist background-color="#1C242B"}
+
+::: {.break-circle}
+10
+:::
+
+::: {.kicker .center}
+Break · back at the time on the board
+:::
+
+::: {.notes}
+**[00:48 – 00:58] · BREAK**
+:::
+
+## Six ways a figure misleads {.dark .divider .c-teal background-color="#1C242B"}
+
+::: {.kicker}
+Block 3 · 20 minutes
+:::
+
+::: {.lede}
+None of these looks like a mistake. Every one of them is a default setting somebody failed to override.
+:::
+
+::: {.notes}
+**[00:58] · SECTION DIVIDER**
+
+**SAY —**
+
+"Six distortions. And the thing I want you to notice as we go is that none of them looks like a mistake. Every one is what plotting software gives you unless you deliberately override it."
+:::
+
+## The six {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-rust}
+In roughly the order you will meet them
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **Truncated axis** | A bar chart not starting at zero. A 2 % difference fills the panel |
+| **Dual axes** | Two quantities, two scales chosen by hand. Any two curves can be made to agree |
+| **No uncertainty** | No error bars, no n. The difference may be inside the scatter |
+| **Selective range** | The measurement continued. The axis did not |
+| **False resolution** | A smooth curve through four points, with a feature labelled between them |
+| **Image reuse** | The same micrograph, rotated, in two panels. This one ends careers |
+:::
+
+::: {.notes}
+**[00:58 – 01:06] · THE SIX**
+
+**SAY —**
+
+"Truncated axis. A bar chart that does not start at zero. Your eye reads bar height as quantity, and the software has just rescaled quantity without telling anybody.
+
+Dual axes. Two quantities, two scales, both chosen by hand. Given freedom over two ranges I can make almost any pair of curves appear to agree.
+
+No uncertainty. No error bars, no replicate count. The reader cannot tell whether the difference is real.
+
+Selective range. The measurement ran to nine hundred cycles and the axis stops at five hundred. This is the one that troubles me most, because the data existed and a decision was taken not to show it.
+
+False resolution. A smooth curve through four measured points, with an optimum marked between two of them. The curve is an assumption drawn in the same ink as the data.
+
+And image reuse. The same micrograph appearing twice, rotated or cropped. That is not a presentation fault, it is misconduct, and it ends careers. It is also, in most cases, an honest filing error made at two in the morning, which is exactly why you should keep your raw images organised."
+
+**DO —** Do not dwell on the sixth. Name it, say why it is different in kind, move on.
+:::
+
+## Two of them, side by side
+
+::: {.kicker .c-rust}
+Same data, two axis choices
+:::
+
+:::: {.columns}
+::: {.column width="49%"}
+![](assets/w06/f1.png){fig-alt="Bar chart of coulombic efficiency with a truncated y axis"}
+:::
+::: {.column width="49%"}
+![](assets/w06/f1_fixed.png){fig-alt="The same bar chart with the y axis starting at zero"}
+:::
+::::
+
+::: {.foot}
+::: {.punch}
+Nothing was fabricated. One number was changed: where the axis begins.
+:::
+:::
+
+::: {.notes}
+**[01:06 – 01:10] · THE WORKED EXAMPLE**
+
+**SAY —**
+
+"Same three numbers. Same chart type. Same colours. One difference: where the vertical axis begins.
+
+On the left the additives look transformative. On the right you can see what actually happened, which is an improvement of about two and a half percentage points.
+
+Now, two and a half points of coulombic efficiency is a real result. It might be a very good result. The left-hand version is not wrong because the improvement is small. It is wrong because it makes the reader see something that is not the size of the effect.
+
+Every figure in your activity is like this. Nothing is fabricated in any of them."
+
+**DO —** This is the only figure you work for them. The other four are theirs.
+:::
+
+## Figure forensics {.dark .divider .c-amber background-color="#1C242B"}
+
+::: {.kicker}
+Activity 2 · 25 minutes · in pairs
+:::
+
+::: {.notes}
+**[01:10] · ACTIVITY 2 DIVIDER**
+:::
+
+## What to do
+
+::: {.kicker .c-amber}
+Activity 2
+:::
+
+::: {.numbered .n3}
+1. **Five figures on your sheet.** Each contains one distortion
+2. **For each, two answers.** What is wrong · what a reader would wrongly conclude because of it
+3. **Then the three questions** at the end. The third one is the one that matters
+:::
+
+::: {.foot}
+::: {.note}
+Drawn for this exercise, in our own figure style, with invented data. Not from any published paper.
+:::
+:::
+
+::: {.notes}
+**[01:10 – 01:35] · ACTIVITY 2 — RUN**
+
+**SAY —**
+
+"Five figures, in pairs, twenty-five minutes.
+
+Two answers for each. What is wrong, and — this is the one that carries the marks — what would a reader wrongly conclude because of it. A fault that misleads nobody is a style preference, not a finding.
+
+We have done Figure 1 together, so four are yours.
+
+And say it with me: these were drawn for this exercise. Invented data. Not from any published paper. They are drawn in our own house style deliberately, so that they do not look like traps."
+
+**DO —**
+
+- Circulate. The common failure is aesthetic criticism: the colours, the font, the legend position. Redirect with one question: "what would a reader believe that is not true?"
+- Nobody finds Figure 4 without prompting in the first ten minutes. At minute twelve, say to the room: "for Figure 4, ask what the x axis is not showing you."
+- Keep an eye on the clock. This block overruns easily.
+:::
+
+## What you found {.tint background-color="#F3F0EB"}
+
+::: {.kicker .c-amber}
+Debrief
+:::
+
+::: {.evidence}
+|   |   |
+|---|---|
+| **1** | Axis starts at 96.5 %. A 2.6-point difference fills the panel |
+| **2** | Twin axes, right one inverted, ranges chosen so the curves overlay |
+| **3** | No error bars and no n. The difference sits inside the scatter |
+| **4** | Measured to 900 cycles, plotted to 500. It fails at 520 |
+| **5** | Four measured points, a smooth curve, an optimum labelled between two of them |
+:::
+
+::: {.foot}
+::: {.punch}
+Four of these mislead using data that is entirely present. One withholds data that was collected.
+:::
+:::
+
+::: {.notes}
+**[01:35 – 01:45] · DEBRIEF**
+
+**SAY —**
+
+"Quickly through the five, and then the question that matters.
+
+One, the truncated axis. Two, the twin axes — and notice the right-hand axis is inverted, which is what makes the curves lie on top of each other. Three, no error bars and no n; with a spread of about forty cycles those two groups overlap almost completely. Four, plotted to five hundred, measured to nine hundred, and it falls off a cliff at five hundred and twenty. Five, four points and a curve, with an optimum marked where nothing was measured.
+
+Now: which is the most serious?
+
+There is no single right answer and the disagreement is the useful part. My own view is Figure 4, because in the other four everything the reader needs is on the page and they are being led to misread it. In Figure 4 the data was collected and withheld.
+
+Before you argue about the ranking, say what your criterion is."
+
+**DO —**
+
+- Project the corrected versions from the answer key as you go.
+- Insist on a criterion before a ranking. It is the transferable part.
+:::
+
+## &nbsp; {.dark .mid background-color="#1C242B"}
+
+::: {.statement}
+Have you drawn any of<br>these five yourself?
+:::
+
+::: {.statement-sub}
+I have. Twice.
+:::
+
+::: {.notes}
+**[01:45 – 01:50] · THE LAST QUESTION**
+
+**SAY —**
+
+"Last question, and then we finish.
+
+Have you drawn any of these five yourself?
+
+Wait. Let the hands go up.
+
+I have. Figure one, more than once, and figure five in a paper that is published.
+
+That is the point of the whole session. This is not a lecture about other people being dishonest. Every one of these six is what the software gives you by default, at eleven at night, when the figure needs to be in the draft by morning. They have to be corrected on purpose, by someone who knows to look."
+
+**DO —**
+
+- Ask it and then be quiet. The silence is the teaching.
+- Answer it honestly about your own work first if nobody moves.
+:::
+
+## Before the examination
+
+::: {.kicker .c-teal}
+Three things
+:::
+
+::: {.dots}
+- **The evidence map** is due before Week 7, which is next week. Start from the four rows you already have
+- **Assignment 1 and the Week 4 outline** come back to you before the examination period
+- **Week 7 is Prof. Supareak** — the manuscript blueprint. Bring the three sentences and the aim from last week
+:::
+
+::: {.foot}
+::: {.note}
+Examination 24 September to 4 October, Weeks 1 to 6. Week 8 resumes on 8 October.
+:::
+:::
+
+::: {.notes}
+**[01:50 – 01:55] · CLOSE**
+
+**SAY —**
+
+"Three things.
+
+The evidence map is due before Week seven, which is next week. Ten to fifteen sources. Start from the four rows you already built for Assignment one — it is the same work continued.
+
+Assignment one and the week four outline come back to you before the examination period, with comments.
+
+And week seven is Professor Supareak, on the manuscript blueprint. Bring the three sentences and the aim you wrote last week; the session starts from them.
+
+After that the examination period, weeks one to six, and we resume on the eighth of October."
+
+**DO —** Confirm the return date for the marked work only if you are confident you will meet it.
+:::
+
+{{< include _feedback.qmd >}}
