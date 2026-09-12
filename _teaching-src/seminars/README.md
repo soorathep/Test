@@ -11,6 +11,7 @@ one is for talks that are not part of a course.
 
 | File | Talk |
 |------|------|
+| `acssi-2026-plenary.qmd` | Beyond Ionic Conductivity, ACSSI 2026 Plenary Lecture 2, 14 September 2026 |
 | `conferences.qmd` | Making Conferences Work for You — 17 August 2026 |
 | `review-articles.qmd` | Beyond the Summary — MMS3, 9 September 2026 |
 
@@ -152,3 +153,23 @@ The ZIP includes both original Quarto filenames, themes, assets and build instru
 
 Worksheet A and B are on handout PDF page 9; the worked evidence matrix is on page 12;
 Worksheet C is on page 13. Existing deck and handout URLs remain usable.
+
+## ACSSI 2026 plenary lecture
+
+`acssi-2026-plenary.qmd` is the 24-slide Revision 6 presentation. Its styles and
+images are isolated in `theme/acssi2026/` and `assets/acssi2026/`. It preserves
+the approved 1280 × 720 slide design and embeds its resources in one HTML file.
+
+Render only this deck with `quarto render acssi-2026-plenary.qmd --profile public`,
+then copy the checked output with `python3 tools/publish.py acssi-2026-plenary.html`.
+This repository copy contains source references only in the notes. The spoken
+script and delivery cues are omitted from both the source and the website at
+the presenter's request. The public profile removes the reference-note blocks
+from the rendered HTML. The complete presenter version remains in the local
+ACSSI project, Chair_Plenary_Talk/Revision_6. This does not regenerate the
+separately authored PowerPoint or PDF.
+
+The news announcement is `_posts/2026-09-13-plenary-acssi-2026.md` at the repository
+root. The schedule is September 14, 2026, 11:00–11:40 AM, Rajamontien 4,
+Montien Hotel Surawong, Bangkok (UTC+7). The HTML and PDF in `teaching/seminars/`
+are ready for GitHub Pages; the website build does not require Quarto.

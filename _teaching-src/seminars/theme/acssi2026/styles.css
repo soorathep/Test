@@ -1,0 +1,18 @@
+/* Editable 1280 × 720 academic presentation. Text and tables remain live HTML. */
+:root { --r-main-font: Arial, sans-serif; --r-heading-font: Arial, sans-serif; --r-main-color: #243b42; --r-background-color: #ffffff; --r-link-color: #147d80; }
+.reveal .slides {text-align:left;}
+.reveal .slides > section {padding:0!important;width:1280px!important;height:720px!important;box-sizing:border-box;}
+.reveal .slides > section > h2 {display:none;}
+.slide-canvas {position:absolute;inset:0;width:1280px;height:720px;font-family:Arial,sans-serif;}
+.slide-canvas .tx {position:absolute;line-height:1.15;box-sizing:border-box;white-space:normal;margin:0;padding:0;overflow:visible;}
+.figure-crop {position:absolute;overflow:hidden;}
+.slide-canvas img {border:none;box-shadow:none;max-width:none!important;max-height:none!important;}
+.data-chart {position:absolute;margin:0!important;}
+.reveal table.native-table {position:absolute;table-layout:fixed;border-collapse:collapse;margin:0;line-height:1.15;font-family:Arial,sans-serif;}
+.reveal .native-table th,.reveal .native-table td {border:1px solid #d6e1de;padding:14px 18px 10px;box-sizing:border-box;vertical-align:middle;text-align:left;}
+.reveal .native-table th {background:#082f36;color:white;}
+.reveal .native-table td {background:white;color:#243b42;}
+.reveal .native-table tr:nth-child(odd) td {background:#eaf2ef;}
+.reveal .controls {right:6px;bottom:27px;font-size:7px;color:#147d80;}
+.reveal .progress {height:3px;color:#147d80;}
+@media print { .reveal .controls {display:none;} }
