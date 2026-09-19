@@ -139,7 +139,7 @@
         - label: "Python script: cellpose_sem_count.py"
           file: cellpose_sem_count.py
           kind: PY
-          desc: "Segment, filter by shape, measure. Outputs a per-particle CSV plus an outline overlay and size distribution in the lab palette. Run it with the imaging environment at ~/.venvs/vision/bin/python and pass --pixel-size in nm per pixel."
+          desc: "Segment, filter by shape, measure. Outputs a per-particle CSV plus an outline overlay and size distribution in the lab palette. Install with: pip install cellpose scikit-image pandas matplotlib. Pass --pixel-size in nm per pixel; without it the numbers are in pixels."
     - title: Molecular simulation &amp; cloud computing
       howto: computational
 

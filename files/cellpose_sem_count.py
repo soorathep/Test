@@ -6,8 +6,11 @@ Count and size particles in an SEM micrograph.
 Cellpose-SAM segments the particles without any training, scikit-image turns the
 masks into measurements, and a shape filter keeps only the particles you mean.
 
-Usage
-    ~/.venvs/vision/bin/python cellpose_sem_count.py micrograph.tif \
+Install the requirements once
+    pip install cellpose scikit-image pandas matplotlib
+
+Then run
+    python cellpose_sem_count.py micrograph.tif \
         --pixel-size 4.88 --crop-bottom 60 --min-circularity 0.7
 
 Outputs, written next to the image
@@ -15,7 +18,10 @@ Outputs, written next to the image
     <stem>_analysis.pdf    outline overlay and size distribution
     <stem>_analysis.png    the same figure at 600 dpi
 
-Requires the imaging environment: cellpose, scikit-image, matplotlib, pandas.
+The first run downloads the Cellpose-SAM model weights, so it needs a network
+connection and takes longer than later runs. A GPU is used automatically when one is
+available; pass --cpu to force the processor.
+
 Tested with cellpose 4.2.1 (Cellpose-SAM).
 """
 
