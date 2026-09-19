@@ -32,11 +32,11 @@
         Use the AI prompt pack to think a design through — or to check a write-up. Worked case
         studies will be added here over time.
       files:
-        - label: AI prompt pack — design &amp; reporting
+        - label: "AI prompt pack: design &amp; reporting"
           file: skh-experiment-design-ai-prompt.md
           kind: MD
           desc: Paste into ChatGPT / Claude to plan an experiment ("design mode") or check a draft against the reporting checklist ("report mode").
-    - title: Battery reporting checklist — what to report, what to do
+    - title: "Battery reporting checklist: what to report, what to do"
       howto: batterychecklist
       description: >
         Before you plot a battery result, make sure it can be trusted and compared. This is a simple
@@ -48,7 +48,7 @@
           file: battery-reporting-checklist.md
           kind: MD
           desc: The full checklist with journal notes and sources — print it or keep it open while you write up.
-    - title: GITT &amp; PITT — what they measure, how to run &amp; calculate
+    - title: "GITT &amp; PITT: what they measure, how to run &amp; calculate"
       howto: gittpitt
       description: >
         Two intermittent titration techniques for insertion electrodes. What each one answers
@@ -60,11 +60,11 @@
           file: gitt-pitt-guide.md
           kind: MD
           desc: Full write-up with equations, design conditions, reporting, caveats, and a reading list.
-        - label: gitt_pitt.py — analysis script
+        - label: "gitt_pitt.py: analysis script"
           file: gitt_pitt.py
           kind: PY
           desc: "Loads a GITT run, finds each pulse, computes D vs SOC (Weppner–Huggins) and plots it; PITT long-time D too. Runs a demo out of the box: python gitt_pitt.py"
-    - title: Galvanostatic charge–discharge (GCD) — run, calculate &amp; report
+    - title: "Galvanostatic charge–discharge (GCD): run, calculate &amp; report"
       howto: gcd
       description: >
         Constant-current cycling, the workhorse test: specific capacity, Coulombic efficiency, the
@@ -76,11 +76,11 @@
           file: gcd-guide.md
           kind: MD
           desc: Full write-up — parameters, equations, multi-cycle/multi-sample reporting, caveats, reading list.
-        - label: gcd.py — analysis script
+        - label: "gcd.py: analysis script"
           file: gcd.py
           kind: PY
           desc: "Specific capacity, CE, energy, retention, and supercapacitor C/ESR, with a voltage-profile + capacity/CE-vs-cycle plot. Demo: python gcd.py"
-    - title: Cyclic voltammetry (CV) — run, calculate &amp; report
+    - title: "Cyclic voltammetry (CV): run, calculate &amp; report"
       howto: cv
       description: >
         Sweep the potential and read the current: redox potentials, reversibility, whether the
@@ -93,11 +93,11 @@
           file: cv-guide.md
           kind: MD
           desc: Full write-up — parameters, equations, multi-cycle/multi-sample reporting, caveats, reading list.
-        - label: cv.py — analysis script
+        - label: "cv.py: analysis script"
           file: cv.py
           kind: PY
           desc: "D (Randles–Ševčík), b-value, Dunn capacitive/diffusive split, capacitance, and a CV overlay + i_p-vs-√v plot. Demo: python cv.py"
-    - title: EIS &amp; DRT — measure, analyse, plot &amp; report
+    - title: "EIS &amp; DRT: measure, analyse, plot &amp; report"
       howto: eisdrt
       description: >
         Impedance spectroscopy and the distribution of relaxation times, kept simple: what each
@@ -109,15 +109,15 @@
           file: eis-drt-guide.md
           kind: MD
           desc: Full guide with equations, validation, plotting rules, multi-sample reporting, caveats, and a reading list.
-        - label: eis.py — plotting &amp; reading script
+        - label: "eis.py: plotting &amp; reading script"
           file: eis.py
           kind: PY
           desc: "Draws a correct Nyquist (equal axes) + Bode, reads R_s and R_ct, and shows an illustrative DRT; points to pyDRTtools for the real DRT. Runs a demo: python eis.py"
-        - label: eis_fit.py — equivalent-circuit fit
+        - label: "eis_fit.py: equivalent-circuit fit"
           file: eis_fit.py
           kind: PY
           desc: "Fits Rs–(R∥CPE)–…–Warburg circuits (complex least-squares) with values ± uncertainty and χ², plus a data-vs-fit + residual plot and model-selection guidance. Demo: python eis_fit.py"
-        - label: drt_pyDRTtools.py — real DRT
+        - label: "drt_pyDRTtools.py: real DRT"
           file: drt_pyDRTtools.py
           kind: PY
           desc: "A real DRT pipeline with pyDRTtools: load EIS → compute the DRT with λ chosen by the L-curve → find the peaks (τ, f, R) → plot. Demo: python drt_pyDRTtools.py (pip install pyDRTtools cvxopt scikit-learn)"
@@ -125,13 +125,28 @@
 - category: Computational modelling
   blurb: Molecular simulation and centrally managed cloud computing for defined mechanistic questions across the CTI chain.
   items:
+    - title: Counting particles in SEM images with Cellpose
+      description: >
+        Counting particles by hand is slow and drifts between operators, which is why two
+        people rarely report the same size distribution from one micrograph. Cellpose-SAM
+        segments particles without any training, and scikit-image turns the masks into
+        measurements. The script runs the whole path: it removes the instrument banner,
+        segments, filters by circularity so that only the particles you mean are counted,
+        and writes a CSV of per-particle measurements together with a figure in the lab
+        palette. Always record the pixel size. Without it the numbers are pixels rather
+        than nanometres, and nothing can be compared between images.
+      files:
+        - label: "Python script: cellpose_sem_count.py"
+          file: cellpose_sem_count.py
+          kind: PY
+          desc: "Segment, filter by shape, measure. Outputs a per-particle CSV plus an outline overlay and size distribution in the lab palette. Install with: pip install cellpose scikit-image pandas matplotlib. Pass --pixel-size in nm per pixel; without it the numbers are in pixels."
     - title: Molecular simulation &amp; cloud computing
       howto: computational
 
 - category: Figures &amp; design
   blurb: Colour, style, and templates for figures, posters, and slide decks.
   items:
-    - title: Lab figure palette — Teal &amp; Amber
+    - title: "Lab figure palette: Teal &amp; Amber"
       howto: palette
       description: >
         The colour system for every figure we publish: papers, theses, posters, and slides.
@@ -149,7 +164,7 @@
           file: lab_palette_sheet.pdf
           kind: PDF
           desc: One-page swatch card with every value and rule — print it and pin it up by your desk.
-        - label: Python module — labpalette.py
+        - label: "Python module: labpalette.py"
           file: labpalette.py
           kind: PY
           desc: "matplotlib / seaborn house style in one call: import labpalette as lp; lp.apply(). Colour cycle, colormaps, fonts, and 600 dpi export."
