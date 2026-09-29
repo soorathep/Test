@@ -1,0 +1,41 @@
+{
+  "problem": 11,
+  "topic": "scheduling",
+  "level": 2,
+  "termination": "optimal",
+  "max_violation": 1.687538997430238e-14,
+  "domain_check": "passed",
+  "objective": 12.999999999999998,
+  "units": "h",
+  "rows": [
+    {
+      "Job": "A1",
+      "Start (h)": -0.0,
+      "Finish (h)": 2.0,
+      "Tardiness (h)": 0
+    },
+    {
+      "Job": "A2",
+      "Start (h)": 2.0,
+      "Finish (h)": 5.0,
+      "Tardiness (h)": 0
+    },
+    {
+      "Job": "B1",
+      "Start (h)": 5.999999999999998,
+      "Finish (h)": 7.999999999999998,
+      "Tardiness (h)": 0.9999999999999982
+    },
+    {
+      "Job": "C1",
+      "Start (h)": 9.000000000000004,
+      "Finish (h)": 13.000000000000004,
+      "Tardiness (h)": 0
+    }
+  ],
+  "metrics": {
+    "Sequence": "A1 > A2 > B1 > C1",
+    "Makespan (h)": 13.000000000000004,
+    "Cleaning (h)": 2
+  }
+}

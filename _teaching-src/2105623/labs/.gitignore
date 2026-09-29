@@ -1,0 +1,33 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# node and cloudflare
+node_modules/
+dist/
+.wrangler/
+
+# supabase
+supabase/.temp/
+supabase/.branches/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
+
+# raw data never belongs in git
+data/raw/
+*.mpr
+*.mpt
+*.nda
+*.ndax
+
+/.quarto/
+**/*.quarto_ipynb

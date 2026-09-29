@@ -1,0 +1,67 @@
+---
+pagetitle: "Optimization Lab | 2105623 | SKH Research Group"
+---
+
+```{=html}
+<header class="lab-nav">
+  <a class="brand" href="https://www.skhgroup.net/">SKH <span>Research Group</span></a>
+  <nav aria-label="Course navigation"><a href="https://www.skhgroup.net/teaching/2105623/">2105623 · Course</a><a href="../books/volume-1/">Volume 1</a><a href="../books/volume-2/">Volume 2</a></nav>
+</header>
+
+<main class="lab-page">
+  <div class="lab-heading">
+    <p class="mono eyebrow">Teaching / 2105623 / Interactive companion</p>
+    <h1>Optimization Lab<span class="heading-dot">.</span></h1>
+    <p class="lab-lede">Make a prediction. Change an assumption. Explain the decision.</p>
+    <p class="mode-note"><span class="status-dot"></span>72 verified Pyomo cases · Exact prepared results · No interpolation</p>
+  </div>
+
+  <div class="lab-tabs" role="tablist" aria-label="Choose an experiment">
+    <button type="button" role="tab" id="tab-food" aria-selected="true" aria-controls="experiment" data-lab="food"><span>01 / VOLUME 1</span>Food manufacture</button>
+    <button type="button" role="tab" id="tab-blend" aria-selected="false" aria-controls="experiment" data-lab="blend"><span>02 / VOLUME 2</span>Robust blending</button>
+    <button type="button" role="tab" id="tab-hydrogen" aria-selected="false" aria-controls="experiment" data-lab="hydrogen"><span>03 / VOLUME 2</span>Hydrogen storage</button>
+  </div>
+
+  <div id="loading" role="status">Loading the checked case library…</div>
+  <div id="experiment" role="tabpanel" aria-labelledby="tab-food" hidden>
+    <div class="experiment-intro"><div><p class="mono" id="experiment-tag"></p><h2 id="experiment-title"></h2><p id="experiment-description"></p></div><a id="chapter-link" class="chapter-link" href="../books/volume-1/">Read the worked chapter ↗</a></div>
+    <div class="experiment-grid">
+      <aside class="control-panel" aria-label="Experiment controls">
+        <p class="step-label">01 · Predict</p><h3>Before you reveal</h3>
+        <label for="prediction" id="prediction-label">How will the objective change?</label>
+        <select id="prediction"><option value="">Choose a prediction</option><option value="up">Higher than baseline</option><option value="same">Approximately unchanged</option><option value="down">Lower than baseline</option></select>
+        <p class="control-help">A prediction is for reflection, not a grade.</p>
+        <div class="control-divider"></div>
+        <p class="step-label">02 · Experiment</p><h3>Change the assumptions</h3>
+        <div id="parameter-controls"></div>
+        <button type="button" class="primary-button" id="reveal">Show prepared result →</button>
+        <button type="button" class="text-button" id="reset">Reset to baseline</button>
+        <p class="control-help">Every selectable combination was solved with Pyomo + HiGHS. This prototype retrieves that exact result; it does not run a live solver.</p>
+      </aside>
+      <div class="result-panel">
+        <div class="result-heading"><p class="step-label">03 · Observe</p><span id="case-status" role="status" aria-live="polite">Baseline shown</span></div>
+        <div class="lab-metrics">
+          <div class="lab-metric primary-metric"><p id="objective-label"></p><strong id="objective-value"></strong><span id="objective-delta"></span></div>
+          <div class="lab-metric"><p id="secondary-label"></p><strong id="secondary-value"></strong></div>
+          <div class="lab-metric"><p id="tertiary-label"></p><strong id="tertiary-value"></strong></div>
+        </div>
+        <div class="chart-card"><div class="chart-toolbar"><label for="chart-choice">Explore the plan</label><select id="chart-choice"></select></div><div id="chart" role="img" aria-label="Baseline and selected case comparison"></div><p class="chart-caption" id="baseline-description"></p></div>
+        <p id="prediction-feedback" class="feedback" role="status" hidden></p>
+        <div class="interpretation"><p class="step-label">04 · Interpret</p><p id="interpretation"></p></div>
+      </div>
+    </div>
+
+    <div class="lower-grid">
+      <div>
+        <details open><summary>Check the solution</summary><div id="checks"></div><p class="control-help">Checks use a 10⁻⁶ tolerance in model units. Solver optimality applies to the stated assumptions.</p></details>
+        <details><summary>Read the equations</summary><div id="equations"></div></details>
+        <details><summary>Data and assumptions</summary><p id="assumptions"></p><div id="result-table" class="table-scroll"></div></details>
+      </div>
+      <div class="reflection-panel"><p class="step-label">05 · Explain</p><h3>A question to take away</h3><p id="challenge"></p><label for="reflection">Your explanation</label><textarea id="reflection" rows="4" placeholder="What changed, which constraint matters, and why?"></textarea><div class="export-actions"><button type="button" id="export">Download experiment</button><a href="assets/lab-models.zip" download>Get the Python models ↗</a></div><p class="control-help">Notes stay in this page. Download before switching experiments, resetting, or leaving. The file contains the displayed inputs and outputs.</p></div>
+    </div>
+  </div>
+
+  <div class="book-strip"><div><p class="mono">Continue reading</p><h2>Two volumes. One modeling workflow.</h2></div><a href="../books/volume-1/">Volume 1 <span>29 worked problems ↗</span></a><a href="../books/volume-2/">Volume 2 <span>18 process challenges ↗</span></a></div>
+  <footer class="lab-footer">Energy Storage Innovation Laboratory · Chemical Engineering · Chulalongkorn University<br>Prototype companion to the Quarto workbooks. Prepared cases are reproducible from the downloadable Python sources.</footer>
+</main>
+```

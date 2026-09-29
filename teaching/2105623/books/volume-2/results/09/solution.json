@@ -1,0 +1,54 @@
+{
+  "problem": 9,
+  "topic": "heat",
+  "level": 3,
+  "termination": "optimal",
+  "max_violation": 0,
+  "domain_check": "passed",
+  "objective": 112.5,
+  "units": "USD/d",
+  "rows": [
+    {
+      "State": "low",
+      "Match": "H1 to C1",
+      "Installed": 1,
+      "Heat (kW)": 100.0
+    },
+    {
+      "State": "low",
+      "Match": "H1 to C2",
+      "Installed": 0,
+      "Heat (kW)": 0.0
+    },
+    {
+      "State": "low",
+      "Match": "H2 to C2",
+      "Installed": 1,
+      "Heat (kW)": 70.0
+    },
+    {
+      "State": "high",
+      "Match": "H1 to C1",
+      "Installed": 1,
+      "Heat (kW)": 100.0
+    },
+    {
+      "State": "high",
+      "Match": "H1 to C2",
+      "Installed": 0,
+      "Heat (kW)": 0.0
+    },
+    {
+      "State": "high",
+      "Match": "H2 to C2",
+      "Installed": 1,
+      "Heat (kW)": 70.0
+    }
+  ],
+  "metrics": {
+    "low: hot utility (kW)": 10.0,
+    "high: hot utility (kW)": 60.0,
+    "low: cold utility (kW)": 30.0,
+    "high: cold utility (kW)": 30.0
+  }
+}

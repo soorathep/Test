@@ -1,0 +1,197 @@
+{
+  "problems": [
+    {
+      "problem": 1,
+      "topic": "blending",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 8.881784197001252e-16,
+      "domain_check": "passed",
+      "objective": 8125.000000000001,
+      "units": "USD/d"
+    },
+    {
+      "problem": 2,
+      "topic": "blending",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 8771.42857142857,
+      "units": "USD/d"
+    },
+    {
+      "problem": 3,
+      "topic": "blending",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 1.1102230246251565e-16,
+      "domain_check": "passed",
+      "objective": 8526.315789473685,
+      "units": "USD/d"
+    },
+    {
+      "problem": 4,
+      "topic": "reactors",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 2.842170943040401e-14,
+      "domain_check": "passed",
+      "objective": 180.62605839197528,
+      "units": "USD/h"
+    },
+    {
+      "problem": 5,
+      "topic": "reactors",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 5.684341886080802e-14,
+      "domain_check": "passed",
+      "objective": 202.98962057910327,
+      "units": "USD/h"
+    },
+    {
+      "problem": 6,
+      "topic": "reactors",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 2.842170943040401e-14,
+      "domain_check": "passed",
+      "objective": 170.60594281752296,
+      "units": "USD/h"
+    },
+    {
+      "problem": 7,
+      "topic": "heat",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 11.5,
+      "units": "USD/d"
+    },
+    {
+      "problem": 8,
+      "topic": "heat",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 74.5,
+      "units": "USD/d"
+    },
+    {
+      "problem": 9,
+      "topic": "heat",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 112.5,
+      "units": "USD/d"
+    },
+    {
+      "problem": 10,
+      "topic": "scheduling",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 9.999999992515995e-07,
+      "domain_check": "passed",
+      "objective": 10.999999,
+      "units": "h"
+    },
+    {
+      "problem": 11,
+      "topic": "scheduling",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 1.687538997430238e-14,
+      "domain_check": "passed",
+      "objective": 12.999999999999998,
+      "units": "h"
+    },
+    {
+      "problem": 12,
+      "topic": "scheduling",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 3.552713678800501e-15,
+      "domain_check": "passed",
+      "objective": 4.999999999999995,
+      "units": "USD"
+    },
+    {
+      "problem": 13,
+      "topic": "hydrogen",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 2287.5,
+      "units": "USD/d"
+    },
+    {
+      "problem": 14,
+      "topic": "hydrogen",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 1635.5,
+      "units": "USD/d"
+    },
+    {
+      "problem": 15,
+      "topic": "hydrogen",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 2.842170943040401e-14,
+      "domain_check": "passed",
+      "objective": 1785.0499999999997,
+      "units": "USD/d"
+    },
+    {
+      "problem": 16,
+      "topic": "water",
+      "level": 1,
+      "termination": "optimal",
+      "max_violation": 7.105427357601002e-15,
+      "domain_check": "passed",
+      "objective": 21.25,
+      "units": "USD/h"
+    },
+    {
+      "problem": 17,
+      "topic": "water",
+      "level": 2,
+      "termination": "optimal",
+      "max_violation": 7.105427357601002e-15,
+      "domain_check": "passed",
+      "objective": 9.5,
+      "units": "USD/h"
+    },
+    {
+      "problem": 18,
+      "topic": "water",
+      "level": 3,
+      "termination": "optimal",
+      "max_violation": 0,
+      "domain_check": "passed",
+      "objective": 20.823529411764707,
+      "units": "USD/h"
+    }
+  ],
+  "independent_checks": {
+    "heat_level_2_all_8_patterns": true,
+    "heat_level_3_all_8_patterns": true,
+    "water_all_3_technologies": true,
+    "robust_budget_endpoints_and_monotonicity": true,
+    "fixed_capacity_sweep": true
+  },
+  "versions": {
+    "pyomo": "6.10.1",
+    "highspy": "1.15.1",
+    "matplotlib": "3.11.2",
+    "pandas": "3.0.6"
+  }
+}

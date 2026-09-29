@@ -1,0 +1,30 @@
+{
+  "problem": 1,
+  "topic": "blending",
+  "level": 1,
+  "termination": "optimal",
+  "max_violation": 8.881784197001252e-16,
+  "domain_check": "passed",
+  "objective": 8125.000000000001,
+  "units": "USD/d",
+  "rows": [
+    {
+      "Feed": "A",
+      "Flow (t/d)": 58.333333333333336
+    },
+    {
+      "Feed": "B",
+      "Flow (t/d)": 0.0
+    },
+    {
+      "Feed": "C",
+      "Flow (t/d)": 41.66666666666667
+    }
+  ],
+  "metrics": {
+    "Nominal impurity (%)": 7.000000000000002,
+    "Full-box impurity (%)": 8.833333333333334,
+    "Protected impurity (%)": 7.000000000000002,
+    "Gamma": 0
+  }
+}

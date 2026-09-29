@@ -1,0 +1,1260 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "",
+    "text": "Preface\nThis second volume develops modeling judgment through 18 original teaching problems for graduate students in chemical engineering. Six process themes each progress from a guided model, through an extension, to an open-ended engineering challenge. The data are synthetic and internally defined. These problems are not additional exercises or answer keys from the Williams textbook used in Volume 1.\nThe central question is not only “What is the optimum?” but also “What assumptions make that answer meaningful?” Students should identify the decision, establish the system boundary and units, predict behavior, solve, and independently check the result.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-sequence",
+    "href": "index.html#learning-sequence",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "Learning sequence",
+    "text": "Learning sequence\n\n\n\n\n\n\n\n\nProblems\nProcess theme\nNew modeling decisions\n\n\n\n\n1-3\nBlending\nNominal, box-robust, and budget-robust quality\n\n\n4-6\nReactors\nThroughput, finite operating menus, and static robust operation\n\n\n7-9\nHeat recovery\nDispatch, exchanger selection, and shared design across states\n\n\n10-12\nBatch scheduling\nRelease times, directed cleaning, and service penalties\n\n\n13-15\nHydrogen\nInventory, tank sizing, and design with operational recourse\n\n\n16-18\nWater reuse\nDilution, contaminant removal, and treatment selection\n\n\n\nRead the data afresh in each problem: the worked instance may change objective terms, information timing, or uncertain parameters. A difference between objectives is meaningful only after those changes are accounted for.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-work",
+    "href": "index.html#how-to-work",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "How to work",
+    "text": "How to work\n\nAnswer Before you code without a solver.\nFormulate the model with variable domains and units. Draw your process boundary.\nImplement the model and inspect termination before loading a solution.\nComplete Check your solution using arithmetic or an independent method.\nExplain one active constraint, one model limitation, and one practical implication.\nInvestigate the extension. For the open-ended levels, defend a recommendation rather than treating the reference policy as the only acceptable answer.\n\nThe intended prerequisites are material and energy balances, introductory linear programming, basic integer programming, and Python. Volume 1 provides worked practice with those tools. Each theme can also be used independently because its data are repeated where needed.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#suggested-assessment",
+    "href": "index.html#suggested-assessment",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "Suggested assessment",
+    "text": "Suggested assessment\nAllocate 35% to formulation and assumptions, 25% to reproducible implementation, 20% to independent verification, and 20% to interpretation. A numerical match without correct units or information timing is not a complete solution. An alternative feasible design may earn full credit when its objective, scope, and tradeoffs are correctly explained.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#scope-of-optimality",
+    "href": "index.html#scope-of-optimality",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "Scope of optimality",
+    "text": "Scope of optimality\nAll reference problems use linear or mixed-integer linear Pyomo models solved by HiGHS. Reactor kinetics are evaluated over a finite menu: optimality applies to that menu, not to a continuous nonlinear reactor design. The water problems assume segregated treatment paths and fixed removal fractions. They explain the bilinear terms in a more general pooling problem, but do not claim to solve that unrestricted problem.\nThe heat problems use fixed-temperature surrogates. The hydrogen problems assume uniform production and withdrawal within each four-hour period. These assumptions are deliberately visible so that students can challenge them. None of the numerical instances is a validated industrial design.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#worked-edition-and-reproducibility",
+    "href": "index.html#worked-edition-and-reproducibility",
+    "title": "Optimization Modeling for Chemical Engineers",
+    "section": "Worked edition and reproducibility",
+    "text": "Worked edition and reproducibility\nEach worked chapter follows Problem Statement, Model Formulation, Pyomo Implementation, Optimal Solution, and Brief Discussion. Reference solutions are regenerated from the same Python sources that supply the printed model code. There are 18 reproducible Python figures, exported as SVG, embedded-font PDF, and 600 dpi PNG using the lab palette.\nDownload the complete editable Quarto and Python source. Run ./scripts/build.sh from its root to rebuild the worked HTML/PDF and the separate student PDF. Setup instructions are in README.md. The optimization interpreter is ~/.venvs/optim/bin/python.\nThe numerical audit checks active constraints, variable bounds, and integrality at a tolerance of 1e-6 in model units. Additional checks include all robust blend corners, independent reactor-mode enumeration, all batch permutations, heat-network investment patterns, water-treatment alternatives, and physical balances. These checks validate the implementation of the stated model; they do not establish that every process assumption is suitable for a real plant.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html",
+    "href": "chapters/01-blending.html",
+    "title": "1  A nominal blend",
+    "section": "",
+    "text": "1.1 Problem Statement\nProblem 01 | Blending with Uncertain Feed Composition | Level 1: Guided problem\nA plant blends 100 t/d of a liquid intermediate. Impurity must not exceed 7 wt%. Costs and available flows are deterministic. Impurity has no beneficial role, so only upward deviations matter for the quality upper bound. There are no volume changes, storage, or blending losses.\nAll fractions are mass fractions. Deviations of 0.01 mean one percentage point, not a 1% relative change.\nYour task. Find the least-cost blend using nominal compositions. Then evaluate that same blend when every impurity takes its upper value. Do not re-optimize during this stress test.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html#problem-statement",
+    "href": "chapters/01-blending.html#problem-statement",
+    "title": "1  A nominal blend",
+    "section": "",
+    "text": "Feed\nCost (USD/t)\nAvailable (t/d)\nNominal impurity\nMaximum upward deviation\n\n\n\n\nA\n100\n60\n0.02\n0.01\n\n\nB\n80\n60\n0.08\n0.02\n\n\nC\n55\n60\n0.14\n0.03\n\n\n\n\n\n\n1.1.1 Before you code\nWhich feed is cheapest? Why can it not supply the entire blend? Will a minimum-cost solution necessarily leave a quality margin?\n\n\n1.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html#model-formulation",
+    "href": "chapters/01-blending.html#model-formulation",
+    "title": "1  A nominal blend",
+    "section": "1.2 Model Formulation",
+    "text": "1.2 Model Formulation\nLet \\(x_i\\) be feed \\(i\\) in t/d, with \\(0\\le x_i\\le60\\). Define \\(c_i\\) as cost, \\(a_i\\) as nominal impurity, and \\(d_i\\) as maximum upward deviation. Let \\(Q=100\\) t/d and \\(L=0.07\\).\nThe mass balance and cost objective are \\[\\sum_i x_i=Q,\\qquad \\min C=\\sum_i c_i x_i.\\] The impurity constraint compares impurity mass flow with \\(LQ\\). Multiplying a fixed quality limit by the fixed product rate avoids a ratio.\nAt nominal composition, enforce \\[\\sum_i a_i x_i\\le LQ.\\] This is an LP: all coefficients are known constants. A binding quality constraint means the nominal design has no headroom for upward composition errors.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html#pyomo-implementation",
+    "href": "chapters/01-blending.html#pyomo-implementation",
+    "title": "1  A nominal blend",
+    "section": "1.3 Pyomo Implementation",
+    "text": "1.3 Pyomo Implementation\nThe code below is the model-building portion of models/blending.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.blending 1\n\"\"\"Blend design: nominal, box-robust, and budget-robust quality.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value, solve\n\nCOST = {\"A\": 100, \"B\": 80, \"C\": 55}  # USD/t\nNOMINAL = {\"A\": 0.02, \"B\": 0.08, \"C\": 0.14}  # mass fraction\nDELTA = {\"A\": 0.01, \"B\": 0.02, \"C\": 0.03}\nCAP = {\"A\": 60, \"B\": 60, \"C\": 60}  # t/d\nTOTAL = 100  # t/d\nLIMIT = 0.07  # maximum impurity mass fraction\n\n\ndef build(level, gamma=1.5):\n    m = pyo.ConcreteModel(name=\"Blend quality\")\n    m.I = pyo.Set(initialize=list(COST))\n    m.x = pyo.Var(m.I, domain=pyo.NonNegativeReals, bounds=lambda m, i: (0, CAP[i]))\n    m.mass = pyo.Constraint(expr=sum(m.x[i] for i in m.I) == TOTAL)\n    nominal = sum(NOMINAL[i] * m.x[i] for i in m.I)\n    if level == 1:\n        m.quality = pyo.Constraint(expr=nominal &lt;= LIMIT * TOTAL)\n    elif level == 2:\n        m.quality = pyo.Constraint(\n            expr=nominal + sum(DELTA[i] * m.x[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    else:\n        m.p = pyo.Var(domain=pyo.NonNegativeReals)\n        m.q = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n        m.support = pyo.Constraint(\n            m.I, rule=lambda m, i: m.p + m.q[i] &gt;= DELTA[i] * m.x[i]\n        )\n        m.quality = pyo.Constraint(\n            expr=nominal + gamma * m.p + sum(m.q[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    m.cost = pyo.Objective(expr=sum(COST[i] * m.x[i] for i in m.I))\n    m._gamma = gamma\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html#optimal-solution",
+    "href": "chapters/01-blending.html#optimal-solution",
+    "title": "1  A nominal blend",
+    "section": "1.4 Optimal Solution",
+    "text": "1.4 Optimal Solution\nThe reference objective is 8,125.0000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nFeed\nFlow (t/d)\n\n\n\n\nA\n58.3333\n\n\nB\n0.0000\n\n\nC\n41.6667\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nNominal impurity (%)\n7.0000\n\n\nFull-box impurity (%)\n8.8333\n\n\nProtected impurity (%)\n7.0000\n\n\nGamma\n0.0000\n\n\n\n\n\n\n\n\n\nFigure 1.1: Blending with Uncertain Feed Composition: reference solution for level 1.\n\n\n\n\n1.4.1 Check your solution\nIndependently calculate both total flow and impurity mass flow. Report the stressed composition even though the nominal solver reports an optimal solution.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 8.88e-16 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-blending.html#brief-discussion",
+    "href": "chapters/01-blending.html#brief-discussion",
+    "title": "1  A nominal blend",
+    "section": "1.5 Brief Discussion",
+    "text": "1.5 Brief Discussion\nThe nominal blend costs 8,125.00 USD/d but reaches 8.833% impurity at the full upper corner. An optimal nominal solution can therefore violate the specification under uncertainty.\n\n1.5.1 Extension to investigate\nPredict the effect of reducing feed C availability to 20 t/d, then solve. Explain whether availability or quality now drives the result.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>A nominal blend</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html",
+    "href": "chapters/02-blending.html",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "",
+    "text": "2.1 Problem Statement\nProblem 02 | Blending with Uncertain Feed Composition | Level 2: Model extension\nA plant blends 100 t/d of a liquid intermediate. Impurity must not exceed 7 wt%. Costs and available flows are deterministic. Impurity has no beneficial role, so only upward deviations matter for the quality upper bound. There are no volume changes, storage, or blending losses.\nAll fractions are mass fractions. Deviations of 0.01 mean one percentage point, not a 1% relative change.\nYour task. Keep the same production target, prices, and availability. Require the specification to hold for every composition in the box \\(a_i\\le\\tilde a_i\\le a_i+d_i\\). Find the robust blend and the cost premium relative to Problem 1.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html#problem-statement",
+    "href": "chapters/02-blending.html#problem-statement",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "",
+    "text": "Feed\nCost (USD/t)\nAvailable (t/d)\nNominal impurity\nMaximum upward deviation\n\n\n\n\nA\n100\n60\n0.02\n0.01\n\n\nB\n80\n60\n0.08\n0.02\n\n\nC\n55\n60\n0.14\n0.03\n\n\n\n\n\n\n2.1.1 Before you code\nIs testing only the average of the upper and lower compositions enough to guarantee quality? Which box corner is worst when all flows are nonnegative?\n\n\n2.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html#model-formulation",
+    "href": "chapters/02-blending.html#model-formulation",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "2.2 Model Formulation",
+    "text": "2.2 Model Formulation\nLet \\(x_i\\) be feed \\(i\\) in t/d, with \\(0\\le x_i\\le60\\). Define \\(c_i\\) as cost, \\(a_i\\) as nominal impurity, and \\(d_i\\) as maximum upward deviation. Let \\(Q=100\\) t/d and \\(L=0.07\\).\nThe mass balance and cost objective are \\[\\sum_i x_i=Q,\\qquad \\min C=\\sum_i c_i x_i.\\] The impurity constraint compares impurity mass flow with \\(LQ\\). Multiplying a fixed quality limit by the fixed product rate avoids a ratio.\nBecause \\(x_i\\ge0\\), the maximum impurity occurs at the upper corner: \\[\\max_{0\\le u_i\\le1}\\sum_i(a_i+d_i u_i)x_i=\\sum_i(a_i+d_i)x_i.\\] Thus the robust counterpart is simply \\[\\sum_i(a_i+d_i)x_i\\le LQ.\\] No probabilities are needed. The guarantee is conditional on the stated bounds being valid.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html#pyomo-implementation",
+    "href": "chapters/02-blending.html#pyomo-implementation",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "2.3 Pyomo Implementation",
+    "text": "2.3 Pyomo Implementation\nThe code below is the model-building portion of models/blending.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.blending 2\n\"\"\"Blend design: nominal, box-robust, and budget-robust quality.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value, solve\n\nCOST = {\"A\": 100, \"B\": 80, \"C\": 55}  # USD/t\nNOMINAL = {\"A\": 0.02, \"B\": 0.08, \"C\": 0.14}  # mass fraction\nDELTA = {\"A\": 0.01, \"B\": 0.02, \"C\": 0.03}\nCAP = {\"A\": 60, \"B\": 60, \"C\": 60}  # t/d\nTOTAL = 100  # t/d\nLIMIT = 0.07  # maximum impurity mass fraction\n\n\ndef build(level, gamma=1.5):\n    m = pyo.ConcreteModel(name=\"Blend quality\")\n    m.I = pyo.Set(initialize=list(COST))\n    m.x = pyo.Var(m.I, domain=pyo.NonNegativeReals, bounds=lambda m, i: (0, CAP[i]))\n    m.mass = pyo.Constraint(expr=sum(m.x[i] for i in m.I) == TOTAL)\n    nominal = sum(NOMINAL[i] * m.x[i] for i in m.I)\n    if level == 1:\n        m.quality = pyo.Constraint(expr=nominal &lt;= LIMIT * TOTAL)\n    elif level == 2:\n        m.quality = pyo.Constraint(\n            expr=nominal + sum(DELTA[i] * m.x[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    else:\n        m.p = pyo.Var(domain=pyo.NonNegativeReals)\n        m.q = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n        m.support = pyo.Constraint(\n            m.I, rule=lambda m, i: m.p + m.q[i] &gt;= DELTA[i] * m.x[i]\n        )\n        m.quality = pyo.Constraint(\n            expr=nominal + gamma * m.p + sum(m.q[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    m.cost = pyo.Objective(expr=sum(COST[i] * m.x[i] for i in m.I))\n    m._gamma = gamma\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html#optimal-solution",
+    "href": "chapters/02-blending.html#optimal-solution",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "2.4 Optimal Solution",
+    "text": "2.4 Optimal Solution\nThe reference objective is 8,771.4286 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nFeed\nFlow (t/d)\n\n\n\n\nA\n60.0000\n\n\nB\n22.8571\n\n\nC\n17.1429\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nNominal impurity (%)\n5.4286\n\n\nFull-box impurity (%)\n7.0000\n\n\nProtected impurity (%)\n7.0000\n\n\nGamma\n3.0000\n\n\n\n\n\n\n\n\n\nFigure 2.1: Blending with Uncertain Feed Composition: reference solution for level 2.\n\n\n\n\n2.4.1 Check your solution\nCheck all eight corners of the uncertainty box. Calculate the cost premium as \\((C_{box}-C_{nominal})/C_{nominal}\\), using the nominal optimum as the denominator.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-blending.html#brief-discussion",
+    "href": "chapters/02-blending.html#brief-discussion",
+    "title": "2  A blend protected against all upper deviations",
+    "section": "2.5 Brief Discussion",
+    "text": "2.5 Brief Discussion\nThe protected design costs 8,771.43 USD/d, a premium of 646.43 USD/d (7.96%) over the nominal optimum. Full-box impurity is 7.000%. Protection at a smaller budget must not be described as full-box protection.\n\n2.5.1 Extension to investigate\nReduce the allowable impurity to 6 wt%. Determine whether the available low-impurity feed still makes the robust model feasible.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>A blend protected against all upper deviations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html",
+    "href": "chapters/03-blending.html",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "",
+    "text": "3.1 Problem Statement\nProblem 03 | Blending with Uncertain Feed Composition | Level 3: Open-ended challenge\nA plant blends 100 t/d of a liquid intermediate. Impurity must not exceed 7 wt%. Costs and available flows are deterministic. Impurity has no beneficial role, so only upward deviations matter for the quality upper bound. There are no volume changes, storage, or blending losses.\nAll fractions are mass fractions. Deviations of 0.01 mean one percentage point, not a 1% relative change.\nYour task. Use \\(\\tilde a_i=a_i+d_i u_i\\), \\(0\\le u_i\\le1\\), and \\(\\sum_i u_i\\le\\Gamma\\). Solve the reference case \\(\\Gamma=1.5\\), then evaluate \\(\\Gamma=0,0.5,1,1.5,2,2.5,3\\). Recommend a budget and state what evidence would justify it. There is no unique correct recommendation.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html#problem-statement",
+    "href": "chapters/03-blending.html#problem-statement",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "",
+    "text": "Feed\nCost (USD/t)\nAvailable (t/d)\nNominal impurity\nMaximum upward deviation\n\n\n\n\nA\n100\n60\n0.02\n0.01\n\n\nB\n80\n60\n0.08\n0.02\n\n\nC\n55\n60\n0.14\n0.03\n\n\n\n\n\n\n3.1.1 Before you code\nDoes a budget of 1.5 mean that a constraint has a 50% chance of failure? Why should cost be nondecreasing as the budget grows?\n\n\n3.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html#model-formulation",
+    "href": "chapters/03-blending.html#model-formulation",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "3.2 Model Formulation",
+    "text": "3.2 Model Formulation\nLet \\(x_i\\) be feed \\(i\\) in t/d, with \\(0\\le x_i\\le60\\). Define \\(c_i\\) as cost, \\(a_i\\) as nominal impurity, and \\(d_i\\) as maximum upward deviation. Let \\(Q=100\\) t/d and \\(L=0.07\\).\nThe mass balance and cost objective are \\[\\sum_i x_i=Q,\\qquad \\min C=\\sum_i c_i x_i.\\] The impurity constraint compares impurity mass flow with \\(LQ\\). Multiplying a fixed quality limit by the fixed product rate avoids a ratio.\nThe worst additional impurity is the support function \\[W(x,\\Gamma)=\\max_u\\left\\{\\sum_i d_i x_i u_i:0\\le u_i\\le1,\\ \\sum_i u_i\\le\\Gamma\\right\\}.\\] Its LP dual introduces \\(p\\ge0\\) and \\(q_i\\ge0\\), both in t/d of impurity: \\[p+q_i\\ge d_i x_i,\\qquad\n\\sum_i a_i x_i+\\Gamma p+\\sum_i q_i\\le LQ.\\] Minimizing cost subject to these inequalities is the exact robust counterpart for this uncertainty set. For an independent check, sort \\(d_i x_i\\) from largest to smallest, add the largest \\(\\lfloor\\Gamma\\rfloor\\) terms, and add the fractional part times the next term. \\(\\Gamma=0\\) gives nominal protection; \\(\\Gamma=3\\) gives full-box protection. A budget alone does not establish a probability of failure.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html#pyomo-implementation",
+    "href": "chapters/03-blending.html#pyomo-implementation",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "3.3 Pyomo Implementation",
+    "text": "3.3 Pyomo Implementation\nThe code below is the model-building portion of models/blending.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.blending 3\n\"\"\"Blend design: nominal, box-robust, and budget-robust quality.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value, solve\n\nCOST = {\"A\": 100, \"B\": 80, \"C\": 55}  # USD/t\nNOMINAL = {\"A\": 0.02, \"B\": 0.08, \"C\": 0.14}  # mass fraction\nDELTA = {\"A\": 0.01, \"B\": 0.02, \"C\": 0.03}\nCAP = {\"A\": 60, \"B\": 60, \"C\": 60}  # t/d\nTOTAL = 100  # t/d\nLIMIT = 0.07  # maximum impurity mass fraction\n\n\ndef build(level, gamma=1.5):\n    m = pyo.ConcreteModel(name=\"Blend quality\")\n    m.I = pyo.Set(initialize=list(COST))\n    m.x = pyo.Var(m.I, domain=pyo.NonNegativeReals, bounds=lambda m, i: (0, CAP[i]))\n    m.mass = pyo.Constraint(expr=sum(m.x[i] for i in m.I) == TOTAL)\n    nominal = sum(NOMINAL[i] * m.x[i] for i in m.I)\n    if level == 1:\n        m.quality = pyo.Constraint(expr=nominal &lt;= LIMIT * TOTAL)\n    elif level == 2:\n        m.quality = pyo.Constraint(\n            expr=nominal + sum(DELTA[i] * m.x[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    else:\n        m.p = pyo.Var(domain=pyo.NonNegativeReals)\n        m.q = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n        m.support = pyo.Constraint(\n            m.I, rule=lambda m, i: m.p + m.q[i] &gt;= DELTA[i] * m.x[i]\n        )\n        m.quality = pyo.Constraint(\n            expr=nominal + gamma * m.p + sum(m.q[i] for i in m.I) &lt;= LIMIT * TOTAL\n        )\n    m.cost = pyo.Objective(expr=sum(COST[i] * m.x[i] for i in m.I))\n    m._gamma = gamma\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html#optimal-solution",
+    "href": "chapters/03-blending.html#optimal-solution",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "3.4 Optimal Solution",
+    "text": "3.4 Optimal Solution\nThe reference objective is 8,526.3158 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nFeed\nFlow (t/d)\n\n\n\n\nA\n52.6316\n\n\nB\n26.3158\n\n\nC\n21.0526\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nNominal impurity (%)\n6.1053\n\n\nFull-box impurity (%)\n7.7895\n\n\nProtected impurity (%)\n7.0000\n\n\nGamma\n1.5000\n\n\n\n\n\n\n\n\n\nFigure 3.1: Blending with Uncertain Feed Composition: reference solution for level 3.\n\n\n\n\n3.4.1 Check your solution\nCheck the sorted-term worst case independently of the dual variables. Confirm the two endpoints match Problems 1 and 2.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 1.11e-16 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.\n\n\n3.4.2 Uncertainty-budget experiment\n\n\n\ngamma\ncost\n\n\n\n\n0.0000\n8125.0000\n\n\n0.5000\n8333.3333\n\n\n1.0000\n8437.5000\n\n\n1.5000\n8526.3158\n\n\n2.0000\n8608.1081\n\n\n2.5000\n8695.6522\n\n\n3.0000\n8771.4286",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-blending.html#brief-discussion",
+    "href": "chapters/03-blending.html#brief-discussion",
+    "title": "3  Choosing an uncertainty budget",
+    "section": "3.5 Brief Discussion",
+    "text": "3.5 Brief Discussion\nThe protected design costs 8,526.32 USD/d, a premium of 401.32 USD/d (4.94%) over the nominal optimum. Full-box impurity is 7.789%. Protection at a smaller budget must not be described as full-box protection.\n\n3.5.1 Extension to investigate\nPropose how historical feed assays could inform the uncertainty set. Discuss correlation and whether the box contains physically implausible combinations.",
+    "crumbs": [
+      "Blending under Uncertainty",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Choosing an uncertainty budget</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html",
+    "href": "chapters/04-reactors.html",
+    "title": "4  Residence time and throughput",
+    "section": "",
+    "text": "4.1 Problem Statement\nProblem 04 | Reactor Selection and Operating Conditions | Level 1: Guided problem\nConsider the parallel first-order reactions \\(A\\to D\\) and \\(A\\to U\\). Desired product \\(D\\) sells for 5 USD/kmol and byproduct \\(U\\) for 1 USD/kmol. Feed costs 1.2 USD/kmol. Fresh feed rate \\(F\\) is at most 100 kmol/h; at least 35 kmol/h of \\(D\\) must be produced. Unreacted feed has no recovery value. Constant density, constant temperature, and equal stoichiometric molar yields are assumed.\nThe synthetic kinetic functions are \\[k_D=0.5a\\exp[0.025(T-330)],\\qquad\nk_U=0.08\\exp[0.055(T-330)]\\quad (\\mathrm{h}^{-1}),\\] where \\(T\\) is in K and \\(a\\) is a dimensionless activity factor. These functions are teaching data, not measured kinetics or a full Arrhenius model.\nHeating costs \\(0.006(T-320)\\) USD per kmol of feed. The hourly equipment charge is 20 USD for a PFR or 10 USD for a CSTR. Available feed-equivalent holdup is \\(F\\tau\\le250\\) kmol. If inlet concentration is fixed at 1 kmol/m\\(^3\\), this corresponds to an equivalent volume limit of 250 m\\(^3\\). No pressure-drop, heat-transfer, or safety feasibility calculation is included.\nYour task. Use a PFR at 330 K with activity \\(a=1\\). Choose residence time from 1, 2, 3, or 4 h and optimize feed rate and profit.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html#problem-statement",
+    "href": "chapters/04-reactors.html#problem-statement",
+    "title": "4  Residence time and throughput",
+    "section": "",
+    "text": "4.1.1 Before you code\nWould maximizing conversion necessarily maximize profit when holdup is limited? Compare the throughput limits at residence times of 2 h and 4 h.\n\n\n4.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html#model-formulation",
+    "href": "chapters/04-reactors.html#model-formulation",
+    "title": "4  Residence time and throughput",
+    "section": "4.2 Model Formulation",
+    "text": "4.2 Model Formulation\nFor a mode \\(j=(r_j,T_j,\\tau_j)\\), compute \\(k=k_D+k_U\\) and \\[X_j=\\begin{cases}1-e^{-k\\tau_j}&r_j=\\mathrm{PFR},\\\\\nk\\tau_j/(1+k\\tau_j)&r_j=\\mathrm{CSTR},\\end{cases}\n\\qquad y_{Dj}=X_j k_D/k,\\quad y_{Uj}=X_j k_U/k.\\] Let \\(z_j\\in\\{0,1\\}\\) select a mode and \\(f_j\\ge0\\) be its feed in kmol/h. Require \\[\\sum_jz_j=1,\\quad f_j\\le100z_j,\\quad\\sum_j\\tau_j f_j\\le250,\\quad\\sum_j y_{Dj}f_j\\ge35.\\] The profit for a fixed activity is \\[\\Pi=\\sum_j\\left[5y_{Dj}+y_{Uj}-1.2-0.006(T_j-320)\\right]f_j-\\sum_j K_{r_j}z_j.\\] Although the kinetics are nonlinear in temperature and residence time, their values are constants for each listed mode. This gives a MILP that is globally optimal only over the stated finite menu, not over all continuous operating conditions.\nEvaluate four modes and maximize \\(\\Pi\\). Longer residence time raises conversion but reduces the throughput bound \\(f_j\\le250/\\tau_j\\). For a fixed mode the profit is linear in feed. Its feasible feed interval is \\([35/y_{Dj},\\min(100,250/\\tau_j)]\\). An empty interval means the mode cannot meet demand.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html#pyomo-implementation",
+    "href": "chapters/04-reactors.html#pyomo-implementation",
+    "title": "4  Residence time and throughput",
+    "section": "4.3 Pyomo Implementation",
+    "text": "4.3 Pyomo Implementation\nThe code below is the model-building portion of models/reactors.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.reactors 1\n\"\"\"Finite operating-menu reactor design with explicit kinetic assumptions.\"\"\"\n\nimport math\nimport pyomo.environ as pyo\nfrom models.common import value\n\nFEED_MAX = 100.0  # kmol/h\nVOLUME_MAX = 250.0  # flow-residence surrogate in kmol\nDEMAND = 35.0  # kmol/h desired product\n\n\ndef yields(kind, temp, tau, activity=1.0):\n    kd = activity * 0.5 * math.exp(0.025 * (temp - 330))\n    ku = 0.08 * math.exp(0.055 * (temp - 330))\n    k = kd + ku\n    conversion = 1 - math.exp(-k * tau) if kind == \"PFR\" else k * tau / (1 + k * tau)\n    return conversion * kd / k, conversion * ku / k\n\n\ndef menu(level):\n    return [\n        (kind, t, tau)\n        for kind in ([\"PFR\"] if level == 1 else [\"PFR\", \"CSTR\"])\n        for t in ([330] if level == 1 else [320, 330, 340, 350])\n        for tau in ([1, 2, 3, 4] if level == 1 else [0.5, 1, 2, 3, 4])\n    ]\n\n\ndef build(level):\n    modes = menu(level)\n    states = (\n        {\"nominal\": 1.0} if level &lt; 3 else {\"low_activity\": 0.8, \"high_activity\": 1.2}\n    )\n    m = pyo.ConcreteModel(name=\"Reactor operating menu\")\n    m.J = pyo.RangeSet(0, len(modes) - 1)\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.J, domain=pyo.Binary)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.one = pyo.Constraint(expr=sum(m.z[j] for j in m.J) == 1)\n    m.bound = pyo.Constraint(m.J, rule=lambda m, j: m.f[j] &lt;= FEED_MAX * m.z[j])\n    m.holdup = pyo.Constraint(expr=sum(modes[j][2] * m.f[j] for j in m.J) &lt;= VOLUME_MAX)\n    yd = {(s, j): yields(*modes[j], states[s])[0] for s in states for j in m.J}\n    yu = {(s, j): yields(*modes[j], states[s])[1] for s in states for j in m.J}\n    m.product = pyo.Constraint(\n        m.S, rule=lambda m, s: sum(yd[s, j] * m.f[j] for j in m.J) &gt;= DEMAND\n    )\n\n    def profit(m, s):\n        return sum(\n            (5 * yd[s, j] + yu[s, j] - 1.2 - 0.006 * (modes[j][1] - 320)) * m.f[j]\n            - (20 if modes[j][0] == \"PFR\" else 10) * m.z[j]\n            for j in m.J\n        )\n\n    m.profit = pyo.Expression(m.S, rule=profit)\n    m.eta = pyo.Var(bounds=(-1000, 1000))\n    m.floor = pyo.Constraint(m.S, rule=lambda m, s: m.eta &lt;= m.profit[s])\n    m.obj = pyo.Objective(expr=m.eta, sense=pyo.maximize)\n    m._modes = modes\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html#optimal-solution",
+    "href": "chapters/04-reactors.html#optimal-solution",
+    "title": "4  Residence time and throughput",
+    "section": "4.4 Optimal Solution",
+    "text": "4.4 Optimal Solution\nThe reference objective is 180.6261 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\nState\nDesired (kmol/h)\nUndesired (kmol/h)\nProfit (USD/h)\n\n\n\n\nnominal\n59.2299\n9.4768\n180.6261\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nReactor\nPFR\n\n\nTemperature (K)\n330.0000\n\n\nResidence time (h)\n3.0000\n\n\nFeed (kmol/h)\n83.3333\n\n\nHoldup (kmol)\n250.0000\n\n\n\n\n\n\n\n\n\nFigure 4.1: Reactor Selection and Operating Conditions: reference solution for level 1.\n\n\n\n\n4.4.1 Check your solution\nEnumerate the four modes independently and calculate the optimal endpoint of each feasible feed interval. Confirm \\(D+U+\\text{unreacted A}=F\\).\nThe automated residual, bound, and integrality audit passed with a maximum violation of 2.84e-14 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/04-reactors.html#brief-discussion",
+    "href": "chapters/04-reactors.html#brief-discussion",
+    "title": "4  Residence time and throughput",
+    "section": "4.5 Brief Discussion",
+    "text": "4.5 Brief Discussion\nThe selected PFR operates at 330 K and 3.0 h with feed 83.333 kmol/h. The objective is 180.626 USD/h. The feed-holdup tradeoff, product selectivity, and operating cost are included in this choice. Enumerating the same menu independently reproduces the optimum. Refining the menu is a different model, not a stronger claim about this result.\n\n4.5.1 Extension to investigate\nChange the desired-product price to 4 USD/kmol. Explain why the preferred residence time may or may not change.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Residence time and throughput</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html",
+    "href": "chapters/05-reactors.html",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "",
+    "text": "5.1 Problem Statement\nProblem 05 | Reactor Selection and Operating Conditions | Level 2: Model extension\nConsider the parallel first-order reactions \\(A\\to D\\) and \\(A\\to U\\). Desired product \\(D\\) sells for 5 USD/kmol and byproduct \\(U\\) for 1 USD/kmol. Feed costs 1.2 USD/kmol. Fresh feed rate \\(F\\) is at most 100 kmol/h; at least 35 kmol/h of \\(D\\) must be produced. Unreacted feed has no recovery value. Constant density, constant temperature, and equal stoichiometric molar yields are assumed.\nThe synthetic kinetic functions are \\[k_D=0.5a\\exp[0.025(T-330)],\\qquad\nk_U=0.08\\exp[0.055(T-330)]\\quad (\\mathrm{h}^{-1}),\\] where \\(T\\) is in K and \\(a\\) is a dimensionless activity factor. These functions are teaching data, not measured kinetics or a full Arrhenius model.\nHeating costs \\(0.006(T-320)\\) USD per kmol of feed. The hourly equipment charge is 20 USD for a PFR or 10 USD for a CSTR. Available feed-equivalent holdup is \\(F\\tau\\le250\\) kmol. If inlet concentration is fixed at 1 kmol/m\\(^3\\), this corresponds to an equivalent volume limit of 250 m\\(^3\\). No pressure-drop, heat-transfer, or safety feasibility calculation is included.\nYour task. Allow both PFR and CSTR designs. Use temperatures 320, 330, 340, and 350 K and residence times 0.5, 1, 2, 3, and 4 h. Activity remains 1. Optimize the 40-mode design.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html#problem-statement",
+    "href": "chapters/05-reactors.html#problem-statement",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "",
+    "text": "5.1.1 Before you code\nThe undesired reaction accelerates more sharply with temperature. Does a higher temperature always improve the desired-product yield? Can a cheaper CSTR offset lower conversion?\n\n\n5.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html#model-formulation",
+    "href": "chapters/05-reactors.html#model-formulation",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "5.2 Model Formulation",
+    "text": "5.2 Model Formulation\nFor a mode \\(j=(r_j,T_j,\\tau_j)\\), compute \\(k=k_D+k_U\\) and \\[X_j=\\begin{cases}1-e^{-k\\tau_j}&r_j=\\mathrm{PFR},\\\\\nk\\tau_j/(1+k\\tau_j)&r_j=\\mathrm{CSTR},\\end{cases}\n\\qquad y_{Dj}=X_j k_D/k,\\quad y_{Uj}=X_j k_U/k.\\] Let \\(z_j\\in\\{0,1\\}\\) select a mode and \\(f_j\\ge0\\) be its feed in kmol/h. Require \\[\\sum_jz_j=1,\\quad f_j\\le100z_j,\\quad\\sum_j\\tau_j f_j\\le250,\\quad\\sum_j y_{Dj}f_j\\ge35.\\] The profit for a fixed activity is \\[\\Pi=\\sum_j\\left[5y_{Dj}+y_{Uj}-1.2-0.006(T_j-320)\\right]f_j-\\sum_j K_{r_j}z_j.\\] Although the kinetics are nonlinear in temperature and residence time, their values are constants for each listed mode. This gives a MILP that is globally optimal only over the stated finite menu, not over all continuous operating conditions.\nUse the same MILP with 40 candidate modes and their corresponding equipment charges. The binary choice makes reactor selection mutually exclusive. Feed is disaggregated by mode, so no product of a binary variable and a continuous feed variable is needed in the objective or holdup constraint.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html#pyomo-implementation",
+    "href": "chapters/05-reactors.html#pyomo-implementation",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "5.3 Pyomo Implementation",
+    "text": "5.3 Pyomo Implementation\nThe code below is the model-building portion of models/reactors.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.reactors 2\n\"\"\"Finite operating-menu reactor design with explicit kinetic assumptions.\"\"\"\n\nimport math\nimport pyomo.environ as pyo\nfrom models.common import value\n\nFEED_MAX = 100.0  # kmol/h\nVOLUME_MAX = 250.0  # flow-residence surrogate in kmol\nDEMAND = 35.0  # kmol/h desired product\n\n\ndef yields(kind, temp, tau, activity=1.0):\n    kd = activity * 0.5 * math.exp(0.025 * (temp - 330))\n    ku = 0.08 * math.exp(0.055 * (temp - 330))\n    k = kd + ku\n    conversion = 1 - math.exp(-k * tau) if kind == \"PFR\" else k * tau / (1 + k * tau)\n    return conversion * kd / k, conversion * ku / k\n\n\ndef menu(level):\n    return [\n        (kind, t, tau)\n        for kind in ([\"PFR\"] if level == 1 else [\"PFR\", \"CSTR\"])\n        for t in ([330] if level == 1 else [320, 330, 340, 350])\n        for tau in ([1, 2, 3, 4] if level == 1 else [0.5, 1, 2, 3, 4])\n    ]\n\n\ndef build(level):\n    modes = menu(level)\n    states = (\n        {\"nominal\": 1.0} if level &lt; 3 else {\"low_activity\": 0.8, \"high_activity\": 1.2}\n    )\n    m = pyo.ConcreteModel(name=\"Reactor operating menu\")\n    m.J = pyo.RangeSet(0, len(modes) - 1)\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.J, domain=pyo.Binary)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.one = pyo.Constraint(expr=sum(m.z[j] for j in m.J) == 1)\n    m.bound = pyo.Constraint(m.J, rule=lambda m, j: m.f[j] &lt;= FEED_MAX * m.z[j])\n    m.holdup = pyo.Constraint(expr=sum(modes[j][2] * m.f[j] for j in m.J) &lt;= VOLUME_MAX)\n    yd = {(s, j): yields(*modes[j], states[s])[0] for s in states for j in m.J}\n    yu = {(s, j): yields(*modes[j], states[s])[1] for s in states for j in m.J}\n    m.product = pyo.Constraint(\n        m.S, rule=lambda m, s: sum(yd[s, j] * m.f[j] for j in m.J) &gt;= DEMAND\n    )\n\n    def profit(m, s):\n        return sum(\n            (5 * yd[s, j] + yu[s, j] - 1.2 - 0.006 * (modes[j][1] - 320)) * m.f[j]\n            - (20 if modes[j][0] == \"PFR\" else 10) * m.z[j]\n            for j in m.J\n        )\n\n    m.profit = pyo.Expression(m.S, rule=profit)\n    m.eta = pyo.Var(bounds=(-1000, 1000))\n    m.floor = pyo.Constraint(m.S, rule=lambda m, s: m.eta &lt;= m.profit[s])\n    m.obj = pyo.Objective(expr=m.eta, sense=pyo.maximize)\n    m._modes = modes\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html#optimal-solution",
+    "href": "chapters/05-reactors.html#optimal-solution",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "5.4 Optimal Solution",
+    "text": "5.4 Optimal Solution\nThe reference objective is 202.9896 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\nState\nDesired (kmol/h)\nUndesired (kmol/h)\nProfit (USD/h)\n\n\n\n\nnominal\n68.2202\n19.8888\n202.9896\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nReactor\nPFR\n\n\nTemperature (K)\n350.0000\n\n\nResidence time (h)\n2.0000\n\n\nFeed (kmol/h)\n100.0000\n\n\nHoldup (kmol)\n200.0000\n\n\n\n\n\n\n\n\n\nFigure 5.1: Reactor Selection and Operating Conditions: reference solution for level 2.\n\n\n\n\n5.4.1 Check your solution\nCheck the winning mode against independent enumeration of all 40 one-dimensional feed problems. State the grid limitation in the conclusion.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 5.68e-14 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-reactors.html#brief-discussion",
+    "href": "chapters/05-reactors.html#brief-discussion",
+    "title": "5  Selecting reactor type and temperature",
+    "section": "5.5 Brief Discussion",
+    "text": "5.5 Brief Discussion\nThe selected PFR operates at 350 K and 2.0 h with feed 100.000 kmol/h. The objective is 202.990 USD/h. The feed-holdup tradeoff, product selectivity, and operating cost are included in this choice. Enumerating the same menu independently reproduces the optimum. Refining the menu is a different model, not a stronger claim about this result.\n\n5.5.1 Extension to investigate\nRefine the temperature and residence-time grids near the selected mode. Quantify the profit change, and distinguish grid convergence from a proof of the continuous global optimum.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Selecting reactor type and temperature</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html",
+    "href": "chapters/06-reactors.html",
+    "title": "6  A design robust to catalyst activity",
+    "section": "",
+    "text": "6.1 Problem Statement\nProblem 06 | Reactor Selection and Operating Conditions | Level 3: Open-ended challenge\nConsider the parallel first-order reactions \\(A\\to D\\) and \\(A\\to U\\). Desired product \\(D\\) sells for 5 USD/kmol and byproduct \\(U\\) for 1 USD/kmol. Feed costs 1.2 USD/kmol. Fresh feed rate \\(F\\) is at most 100 kmol/h; at least 35 kmol/h of \\(D\\) must be produced. Unreacted feed has no recovery value. Constant density, constant temperature, and equal stoichiometric molar yields are assumed.\nThe synthetic kinetic functions are \\[k_D=0.5a\\exp[0.025(T-330)],\\qquad\nk_U=0.08\\exp[0.055(T-330)]\\quad (\\mathrm{h}^{-1}),\\] where \\(T\\) is in K and \\(a\\) is a dimensionless activity factor. These functions are teaching data, not measured kinetics or a full Arrhenius model.\nHeating costs \\(0.006(T-320)\\) USD per kmol of feed. The hourly equipment charge is 20 USD for a PFR or 10 USD for a CSTR. Available feed-equivalent holdup is \\(F\\tau\\le250\\) kmol. If inlet concentration is fixed at 1 kmol/m\\(^3\\), this corresponds to an equivalent volume limit of 250 m\\(^3\\). No pressure-drop, heat-transfer, or safety feasibility calculation is included.\nYour task. Keep the 40-mode menu. Activity is either 0.8 or 1.2. Choose one common reactor, temperature, residence time, and feed rate before activity is known. Meet the product requirement in both cases and maximize the smaller hourly profit. Explain whether fixed operation or adjustable operation is more appropriate for a real plant.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html#problem-statement",
+    "href": "chapters/06-reactors.html#problem-statement",
+    "title": "6  A design robust to catalyst activity",
+    "section": "",
+    "text": "6.1.1 Before you code\nIf the plant can measure activity before selecting feed rate, which decision would become scenario dependent? Would that provide a different guarantee?\n\n\n6.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html#model-formulation",
+    "href": "chapters/06-reactors.html#model-formulation",
+    "title": "6  A design robust to catalyst activity",
+    "section": "6.2 Model Formulation",
+    "text": "6.2 Model Formulation\nFor a mode \\(j=(r_j,T_j,\\tau_j)\\), compute \\(k=k_D+k_U\\) and \\[X_j=\\begin{cases}1-e^{-k\\tau_j}&r_j=\\mathrm{PFR},\\\\\nk\\tau_j/(1+k\\tau_j)&r_j=\\mathrm{CSTR},\\end{cases}\n\\qquad y_{Dj}=X_j k_D/k,\\quad y_{Uj}=X_j k_U/k.\\] Let \\(z_j\\in\\{0,1\\}\\) select a mode and \\(f_j\\ge0\\) be its feed in kmol/h. Require \\[\\sum_jz_j=1,\\quad f_j\\le100z_j,\\quad\\sum_j\\tau_j f_j\\le250,\\quad\\sum_j y_{Dj}f_j\\ge35.\\] The profit for a fixed activity is \\[\\Pi=\\sum_j\\left[5y_{Dj}+y_{Uj}-1.2-0.006(T_j-320)\\right]f_j-\\sum_j K_{r_j}z_j.\\] Although the kinetics are nonlinear in temperature and residence time, their values are constants for each listed mode. This gives a MILP that is globally optimal only over the stated finite menu, not over all continuous operating conditions.\nFor each state \\(s\\), calculate \\(y_{Djs}\\) and \\(y_{Ujs}\\). Introduce a guaranteed-profit variable \\(\\eta\\) and solve \\[\\max\\eta,\\qquad \\eta\\le\\Pi_s\\quad\\forall s,\\qquad \\sum_j y_{Djs}f_j\\ge35\\quad\\forall s.\\] All \\(z_j\\) and \\(f_j\\) are shared across states, giving a static robust design. There are no scenario probabilities. Independent enumeration remains possible because the equipment charge for a mode is the same in both states and the lower profit slope determines its worst-case profit.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html#pyomo-implementation",
+    "href": "chapters/06-reactors.html#pyomo-implementation",
+    "title": "6  A design robust to catalyst activity",
+    "section": "6.3 Pyomo Implementation",
+    "text": "6.3 Pyomo Implementation\nThe code below is the model-building portion of models/reactors.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.reactors 3\n\"\"\"Finite operating-menu reactor design with explicit kinetic assumptions.\"\"\"\n\nimport math\nimport pyomo.environ as pyo\nfrom models.common import value\n\nFEED_MAX = 100.0  # kmol/h\nVOLUME_MAX = 250.0  # flow-residence surrogate in kmol\nDEMAND = 35.0  # kmol/h desired product\n\n\ndef yields(kind, temp, tau, activity=1.0):\n    kd = activity * 0.5 * math.exp(0.025 * (temp - 330))\n    ku = 0.08 * math.exp(0.055 * (temp - 330))\n    k = kd + ku\n    conversion = 1 - math.exp(-k * tau) if kind == \"PFR\" else k * tau / (1 + k * tau)\n    return conversion * kd / k, conversion * ku / k\n\n\ndef menu(level):\n    return [\n        (kind, t, tau)\n        for kind in ([\"PFR\"] if level == 1 else [\"PFR\", \"CSTR\"])\n        for t in ([330] if level == 1 else [320, 330, 340, 350])\n        for tau in ([1, 2, 3, 4] if level == 1 else [0.5, 1, 2, 3, 4])\n    ]\n\n\ndef build(level):\n    modes = menu(level)\n    states = (\n        {\"nominal\": 1.0} if level &lt; 3 else {\"low_activity\": 0.8, \"high_activity\": 1.2}\n    )\n    m = pyo.ConcreteModel(name=\"Reactor operating menu\")\n    m.J = pyo.RangeSet(0, len(modes) - 1)\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.J, domain=pyo.Binary)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.one = pyo.Constraint(expr=sum(m.z[j] for j in m.J) == 1)\n    m.bound = pyo.Constraint(m.J, rule=lambda m, j: m.f[j] &lt;= FEED_MAX * m.z[j])\n    m.holdup = pyo.Constraint(expr=sum(modes[j][2] * m.f[j] for j in m.J) &lt;= VOLUME_MAX)\n    yd = {(s, j): yields(*modes[j], states[s])[0] for s in states for j in m.J}\n    yu = {(s, j): yields(*modes[j], states[s])[1] for s in states for j in m.J}\n    m.product = pyo.Constraint(\n        m.S, rule=lambda m, s: sum(yd[s, j] * m.f[j] for j in m.J) &gt;= DEMAND\n    )\n\n    def profit(m, s):\n        return sum(\n            (5 * yd[s, j] + yu[s, j] - 1.2 - 0.006 * (modes[j][1] - 320)) * m.f[j]\n            - (20 if modes[j][0] == \"PFR\" else 10) * m.z[j]\n            for j in m.J\n        )\n\n    m.profit = pyo.Expression(m.S, rule=profit)\n    m.eta = pyo.Var(bounds=(-1000, 1000))\n    m.floor = pyo.Constraint(m.S, rule=lambda m, s: m.eta &lt;= m.profit[s])\n    m.obj = pyo.Objective(expr=m.eta, sense=pyo.maximize)\n    m._modes = modes\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html#optimal-solution",
+    "href": "chapters/06-reactors.html#optimal-solution",
+    "title": "6  A design robust to catalyst activity",
+    "section": "6.4 Optimal Solution",
+    "text": "6.4 Optimal Solution\nThe reference objective is 170.6059 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\nState\nDesired (kmol/h)\nUndesired (kmol/h)\nProfit (USD/h)\n\n\n\n\nlow_activity\n56.9690\n20.7609\n170.6059\n\n\nhigh_activity\n65.3684\n15.8812\n207.7233\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nReactor\nPFR\n\n\nTemperature (K)\n350.0000\n\n\nResidence time (h)\n3.0000\n\n\nFeed (kmol/h)\n83.3333\n\n\nHoldup (kmol)\n250.0000\n\n\n\n\n\n\n\n\n\nFigure 6.1: Reactor Selection and Operating Conditions: reference solution for level 3.\n\n\n\n\n6.4.1 Check your solution\nCheck mass balance and minimum desired-product rate in both states. Compare the nominal optimum evaluated under low activity with the robust optimum evaluated under that same activity.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 2.84e-14 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-reactors.html#brief-discussion",
+    "href": "chapters/06-reactors.html#brief-discussion",
+    "title": "6  A design robust to catalyst activity",
+    "section": "6.5 Brief Discussion",
+    "text": "6.5 Brief Discussion\nThe selected PFR operates at 350 K and 3.0 h with feed 83.333 kmol/h. The objective is 170.606 USD/h. This is the guaranteed profit across the two activity states; state-specific profit can be higher. Enumerating the same menu independently reproduces the optimum. Refining the menu is a different model, not a stronger claim about this result.\n\n6.5.1 Extension to investigate\nFormulate adjustable feed rates \\(f_{js}\\) with a shared mode \\(z_j\\). Explain how the information timing changes the feasible set and whether the worst-case value can decrease.",
+    "crumbs": [
+      "Reactor Design and Operation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>A design robust to catalyst activity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html",
+    "href": "chapters/07-heat.html",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "",
+    "text": "7.1 Problem Statement\nProblem 07 | Heat Recovery Network Design | Level 1: Guided problem\nTwo fixed-temperature heat sources provide 120 kW at 180 °C (H1) and 80 kW at 110 °C (H2). Heat users require 100 kW at 150 °C (C1) and 100 kW at 80 °C (C2). A minimum approach of 20 °C allows H1-C1, H1-C2, and H2-C2; H2-C1 is forbidden. These are isothermal source/sink surrogates, not sensible-heat streams with temperature profiles.\nHot utility costs 1 USD/(kW d); cold utility costs 0.15 USD/(kW d). These coefficients already convert a constant daily heat rate to a daily cost. Do not multiply by 24 again. Utilities are available at suitable temperatures without capacity limits. All unused source heat must be rejected.\nYour task. Assume all three exchangers are already installed and their installation charges are sunk. Minimize daily utility cost.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html#problem-statement",
+    "href": "chapters/07-heat.html#problem-statement",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "",
+    "text": "Match\nMaximum recovered heat (kW)\nDaily installation charge (USD/d)\n\n\n\n\nH1-C1\n100\n25\n\n\nH1-C2\n90\n20\n\n\nH2-C2\n70\n18\n\n\n\n\n\n\n7.1.1 Before you code\nTotal source heat equals total demand. Does that guarantee zero hot utility when match capacities and temperature feasibility are respected?\n\n\n7.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html#model-formulation",
+    "href": "chapters/07-heat.html#model-formulation",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "7.2 Model Formulation",
+    "text": "7.2 Model Formulation\nLet \\(q_{hcs}\\ge0\\) be recovered heat on an allowed match, \\(u_{cs}\\ge0\\) hot utility, and \\(v_{hs}\\ge0\\) rejected heat, all in kW. Let \\(z_{hc}\\in\\{0,1\\}\\) select an exchanger. For each operating state \\(s\\), \\[\\sum_c q_{hcs}+v_{hs}=H_h,\\qquad\n\\sum_h q_{hcs}+u_{cs}=D_{cs},\\qquad\nq_{hcs}\\le\\overline Q_{hc}z_{hc}.\\] Only allowed matches appear in the sums. The first balance accounts for surplus heat, while the second prevents counting recovered heat twice. Installation charges are daily equivalents of ownership costs, not one-time capital expenses.\nFix every \\(z_{hc}=1\\) and solve the LP \\[\\min C=\\sum_c u_c+0.15\\sum_h v_h.\\] The network has 200 kW on each side, but the H2-C2 limit prevents full recovery. Simultaneous hot and cold utility is therefore possible even with equal aggregate supply and demand.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html#pyomo-implementation",
+    "href": "chapters/07-heat.html#pyomo-implementation",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "7.3 Pyomo Implementation",
+    "text": "7.3 Pyomo Implementation\nThe code below is the model-building portion of models/heat.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.heat 1\n\"\"\"Heat recovery between fixed-temperature utility-like streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nHOT = {\"H1\": 120, \"H2\": 80}  # kW available\nARCS = [(\"H1\", \"C1\"), (\"H1\", \"C2\"), (\"H2\", \"C2\")]\nCAP = {(\"H1\", \"C1\"): 100, (\"H1\", \"C2\"): 90, (\"H2\", \"C2\"): 70}\nFIXED = {(\"H1\", \"C1\"): 25, (\"H1\", \"C2\"): 20, (\"H2\", \"C2\"): 18}  # USD/d\n\n\ndef build(level):\n    states = (\n        {\"normal\": (100, 100, 1.0, 1.0)}\n        if level &lt; 3\n        else {\"low\": (100, 80, 1.0, 0.5), \"high\": (100, 130, 2.0, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Fixed-temperature heat recovery\")\n    m.A = pyo.Set(initialize=ARCS, dimen=2)\n    m.H = pyo.Set(initialize=list(HOT))\n    m.C = pyo.Set(initialize=[\"C1\", \"C2\"])\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.A, domain=pyo.Binary)\n    if level == 1:\n        for a in m.A:\n            m.z[a].fix(1)\n    m.q = pyo.Var(m.S, m.A, domain=pyo.NonNegativeReals)\n    m.hu = pyo.Var(m.S, m.C, domain=pyo.NonNegativeReals)\n    m.cu = pyo.Var(m.S, m.H, domain=pyo.NonNegativeReals)\n    m.hot = pyo.Constraint(\n        m.S,\n        m.H,\n        rule=lambda m, s, h: (\n            sum(m.q[s, i, j] for i, j in m.A if i == h) + m.cu[s, h] == HOT[h]\n        ),\n    )\n    m.cold = pyo.Constraint(\n        m.S,\n        m.C,\n        rule=lambda m, s, c: (\n            sum(m.q[s, i, j] for i, j in m.A if j == c) + m.hu[s, c]\n            == states[s][0 if c == \"C1\" else 1]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.S, m.A, rule=lambda m, s, h, c: m.q[s, h, c] &lt;= CAP[h, c] * m.z[h, c]\n    )\n    if level == 3:\n        m.budget = pyo.Constraint(expr=sum(FIXED[a] * m.z[a] for a in m.A) &lt;= 45)\n    fixed = 0 if level == 1 else sum(FIXED[a] * m.z[a] for a in m.A)\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][3]\n            * (\n                states[s][2] * sum(m.hu[s, c] for c in m.C)\n                + 0.15 * sum(m.cu[s, h] for h in m.H)\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html#optimal-solution",
+    "href": "chapters/07-heat.html#optimal-solution",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "7.4 Optimal Solution",
+    "text": "7.4 Optimal Solution\nThe reference objective is 11.5000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nMatch\nInstalled\nHeat (kW)\n\n\n\n\nnormal\nH1 to C1\n1\n100.0000\n\n\nnormal\nH1 to C2\n1\n20.0000\n\n\nnormal\nH2 to C2\n1\n70.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nnormal: hot utility (kW)\n10.0000\n\n\nnormal: cold utility (kW)\n10.0000\n\n\n\n\n\n\n\n\n\nFigure 7.1: Heat Recovery Network Design: reference solution for level 1.\n\n\n\n\n7.4.1 Check your solution\nCalculate recovered heat and both utility totals. Confirm \\(\\text{hot utility}-\\text{cold utility}=\\text{total demand}-\\text{total source heat}\\).\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-heat.html#brief-discussion",
+    "href": "chapters/07-heat.html#brief-discussion",
+    "title": "7  Dispatch through existing exchangers",
+    "section": "7.5 Brief Discussion",
+    "text": "7.5 Brief Discussion\nThe objective is 11.50 USD/d. The existing system still needs 10 kW of hot utility and rejects 10 kW because the match limits prevent full recovery. For a physical exchanger network with varying stream temperatures, stagewise temperature balances and minimum approaches would need to replace this fixed-temperature representation.\n\n7.5.1 Extension to investigate\nIncrease the H2-C2 capacity from 70 to 80 kW. Predict the change in both utilities and daily cost before solving.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dispatch through existing exchangers</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html",
+    "href": "chapters/08-heat.html",
+    "title": "8  Selecting which exchangers to install",
+    "section": "",
+    "text": "8.1 Problem Statement\nProblem 08 | Heat Recovery Network Design | Level 2: Model extension\nTwo fixed-temperature heat sources provide 120 kW at 180 °C (H1) and 80 kW at 110 °C (H2). Heat users require 100 kW at 150 °C (C1) and 100 kW at 80 °C (C2). A minimum approach of 20 °C allows H1-C1, H1-C2, and H2-C2; H2-C1 is forbidden. These are isothermal source/sink surrogates, not sensible-heat streams with temperature profiles.\nHot utility costs 1 USD/(kW d); cold utility costs 0.15 USD/(kW d). These coefficients already convert a constant daily heat rate to a daily cost. Do not multiply by 24 again. Utilities are available at suitable temperatures without capacity limits. All unused source heat must be rejected.\nYour task. Now treat every exchanger as a new investment. Minimize installation charges plus utility cost. Compare the chosen design with the existing-network result without interpreting sunk-cost and investment objectives as identical.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html#problem-statement",
+    "href": "chapters/08-heat.html#problem-statement",
+    "title": "8  Selecting which exchangers to install",
+    "section": "",
+    "text": "Match\nMaximum recovered heat (kW)\nDaily installation charge (USD/d)\n\n\n\n\nH1-C1\n100\n25\n\n\nH1-C2\n90\n20\n\n\nH2-C2\n70\n18\n\n\n\n\n\n\n8.1.1 Before you code\nCan an exchanger with a small heat duty still pay for its fixed charge? What must be compared to judge its value?\n\n\n8.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html#model-formulation",
+    "href": "chapters/08-heat.html#model-formulation",
+    "title": "8  Selecting which exchangers to install",
+    "section": "8.2 Model Formulation",
+    "text": "8.2 Model Formulation\nLet \\(q_{hcs}\\ge0\\) be recovered heat on an allowed match, \\(u_{cs}\\ge0\\) hot utility, and \\(v_{hs}\\ge0\\) rejected heat, all in kW. Let \\(z_{hc}\\in\\{0,1\\}\\) select an exchanger. For each operating state \\(s\\), \\[\\sum_c q_{hcs}+v_{hs}=H_h,\\qquad\n\\sum_h q_{hcs}+u_{cs}=D_{cs},\\qquad\nq_{hcs}\\le\\overline Q_{hc}z_{hc}.\\] Only allowed matches appear in the sums. The first balance accounts for surplus heat, while the second prevents counting recovered heat twice. Installation charges are daily equivalents of ownership costs, not one-time capital expenses.\nRelease the binaries and minimize \\[C=\\sum_{(h,c)}K_{hc}z_{hc}+\\sum_c u_c+0.15\\sum_h v_h.\\] The capacity implication is exact because the exchanger maximum is a physical upper bound. No arbitrary large constant is needed. A zero-duty exchanger may be excluded to avoid a positive fixed charge.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html#pyomo-implementation",
+    "href": "chapters/08-heat.html#pyomo-implementation",
+    "title": "8  Selecting which exchangers to install",
+    "section": "8.3 Pyomo Implementation",
+    "text": "8.3 Pyomo Implementation\nThe code below is the model-building portion of models/heat.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.heat 2\n\"\"\"Heat recovery between fixed-temperature utility-like streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nHOT = {\"H1\": 120, \"H2\": 80}  # kW available\nARCS = [(\"H1\", \"C1\"), (\"H1\", \"C2\"), (\"H2\", \"C2\")]\nCAP = {(\"H1\", \"C1\"): 100, (\"H1\", \"C2\"): 90, (\"H2\", \"C2\"): 70}\nFIXED = {(\"H1\", \"C1\"): 25, (\"H1\", \"C2\"): 20, (\"H2\", \"C2\"): 18}  # USD/d\n\n\ndef build(level):\n    states = (\n        {\"normal\": (100, 100, 1.0, 1.0)}\n        if level &lt; 3\n        else {\"low\": (100, 80, 1.0, 0.5), \"high\": (100, 130, 2.0, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Fixed-temperature heat recovery\")\n    m.A = pyo.Set(initialize=ARCS, dimen=2)\n    m.H = pyo.Set(initialize=list(HOT))\n    m.C = pyo.Set(initialize=[\"C1\", \"C2\"])\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.A, domain=pyo.Binary)\n    if level == 1:\n        for a in m.A:\n            m.z[a].fix(1)\n    m.q = pyo.Var(m.S, m.A, domain=pyo.NonNegativeReals)\n    m.hu = pyo.Var(m.S, m.C, domain=pyo.NonNegativeReals)\n    m.cu = pyo.Var(m.S, m.H, domain=pyo.NonNegativeReals)\n    m.hot = pyo.Constraint(\n        m.S,\n        m.H,\n        rule=lambda m, s, h: (\n            sum(m.q[s, i, j] for i, j in m.A if i == h) + m.cu[s, h] == HOT[h]\n        ),\n    )\n    m.cold = pyo.Constraint(\n        m.S,\n        m.C,\n        rule=lambda m, s, c: (\n            sum(m.q[s, i, j] for i, j in m.A if j == c) + m.hu[s, c]\n            == states[s][0 if c == \"C1\" else 1]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.S, m.A, rule=lambda m, s, h, c: m.q[s, h, c] &lt;= CAP[h, c] * m.z[h, c]\n    )\n    if level == 3:\n        m.budget = pyo.Constraint(expr=sum(FIXED[a] * m.z[a] for a in m.A) &lt;= 45)\n    fixed = 0 if level == 1 else sum(FIXED[a] * m.z[a] for a in m.A)\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][3]\n            * (\n                states[s][2] * sum(m.hu[s, c] for c in m.C)\n                + 0.15 * sum(m.cu[s, h] for h in m.H)\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html#optimal-solution",
+    "href": "chapters/08-heat.html#optimal-solution",
+    "title": "8  Selecting which exchangers to install",
+    "section": "8.4 Optimal Solution",
+    "text": "8.4 Optimal Solution\nThe reference objective is 74.5000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nMatch\nInstalled\nHeat (kW)\n\n\n\n\nnormal\nH1 to C1\n1\n90.0000\n\n\nnormal\nH1 to C2\n1\n30.0000\n\n\nnormal\nH2 to C2\n1\n70.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nnormal: hot utility (kW)\n10.0000\n\n\nnormal: cold utility (kW)\n10.0000\n\n\n\n\n\n\n\n\n\nFigure 8.1: Heat Recovery Network Design: reference solution for level 2.\n\n\n\n\n8.4.1 Check your solution\nEnumerate the eight installation patterns and solve the residual heat-allocation LP for each. Compare the best value with the MILP.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-heat.html#brief-discussion",
+    "href": "chapters/08-heat.html#brief-discussion",
+    "title": "8  Selecting which exchangers to install",
+    "section": "8.5 Brief Discussion",
+    "text": "8.5 Brief Discussion\nThe objective is 74.50 USD/d. The objective includes ownership charges, so its increase relative to the existing-system LP is not an efficiency loss. For a physical exchanger network with varying stream temperatures, stagewise temperature balances and minimum approaches would need to replace this fixed-temperature representation.\n\n8.5.1 Extension to investigate\nRaise the H1-C2 daily charge. Find the threshold at which that exchanger is no longer economic and verify the two neighboring designs.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Selecting which exchangers to install</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html",
+    "href": "chapters/09-heat.html",
+    "title": "9  A shared design for two operating states",
+    "section": "",
+    "text": "9.1 Problem Statement\nProblem 09 | Heat Recovery Network Design | Level 3: Open-ended challenge\nTwo fixed-temperature heat sources provide 120 kW at 180 °C (H1) and 80 kW at 110 °C (H2). Heat users require 100 kW at 150 °C (C1) and 100 kW at 80 °C (C2). A minimum approach of 20 °C allows H1-C1, H1-C2, and H2-C2; H2-C1 is forbidden. These are isothermal source/sink surrogates, not sensible-heat streams with temperature profiles.\nHot utility costs 1 USD/(kW d); cold utility costs 0.15 USD/(kW d). These coefficients already convert a constant daily heat rate to a daily cost. Do not multiply by 24 again. Utilities are available at suitable temperatures without capacity limits. All unused source heat must be rejected.\nYour task. Choose exchangers before the operating state is known. In the low state, C2 requires 80 kW and hot utility costs 1 USD/(kW d). In the high state, C2 requires 130 kW and hot utility costs 2 USD/(kW d). Both states have probability 0.5. C1 remains at 100 kW. Limit total daily installation charges to 45 USD/d. Operating flows may adapt after the state is observed.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html#problem-statement",
+    "href": "chapters/09-heat.html#problem-statement",
+    "title": "9  A shared design for two operating states",
+    "section": "",
+    "text": "Match\nMaximum recovered heat (kW)\nDaily installation charge (USD/d)\n\n\n\n\nH1-C1\n100\n25\n\n\nH1-C2\n90\n20\n\n\nH2-C2\n70\n18\n\n\n\n\n\n\n9.1.1 Before you code\nWhich variables must be shared across states? Why is solving each state independently and averaging the costs too optimistic for one physical network?\n\n\n9.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html#model-formulation",
+    "href": "chapters/09-heat.html#model-formulation",
+    "title": "9  A shared design for two operating states",
+    "section": "9.2 Model Formulation",
+    "text": "9.2 Model Formulation\nLet \\(q_{hcs}\\ge0\\) be recovered heat on an allowed match, \\(u_{cs}\\ge0\\) hot utility, and \\(v_{hs}\\ge0\\) rejected heat, all in kW. Let \\(z_{hc}\\in\\{0,1\\}\\) select an exchanger. For each operating state \\(s\\), \\[\\sum_c q_{hcs}+v_{hs}=H_h,\\qquad\n\\sum_h q_{hcs}+u_{cs}=D_{cs},\\qquad\nq_{hcs}\\le\\overline Q_{hc}z_{hc}.\\] Only allowed matches appear in the sums. The first balance accounts for surplus heat, while the second prevents counting recovered heat twice. Installation charges are daily equivalents of ownership costs, not one-time capital expenses.\nUse shared \\(z_{hc}\\), state-specific heat and utilities, and \\[\\sum_{h,c}K_{hc}z_{hc}\\le45,\\] \\[\\min C=\\sum_{h,c}K_{hc}z_{hc}+\\sum_s\\pi_s\\left(c_s^H\\sum_c u_{cs}+0.15\\sum_hv_{hs}\\right).\\] The fixed charge appears once. The objective includes expected operating cost, while the two sets of heat balances ensure feasibility in both states. This is a two-stage stochastic MILP for a finite set of states.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html#pyomo-implementation",
+    "href": "chapters/09-heat.html#pyomo-implementation",
+    "title": "9  A shared design for two operating states",
+    "section": "9.3 Pyomo Implementation",
+    "text": "9.3 Pyomo Implementation\nThe code below is the model-building portion of models/heat.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.heat 3\n\"\"\"Heat recovery between fixed-temperature utility-like streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nHOT = {\"H1\": 120, \"H2\": 80}  # kW available\nARCS = [(\"H1\", \"C1\"), (\"H1\", \"C2\"), (\"H2\", \"C2\")]\nCAP = {(\"H1\", \"C1\"): 100, (\"H1\", \"C2\"): 90, (\"H2\", \"C2\"): 70}\nFIXED = {(\"H1\", \"C1\"): 25, (\"H1\", \"C2\"): 20, (\"H2\", \"C2\"): 18}  # USD/d\n\n\ndef build(level):\n    states = (\n        {\"normal\": (100, 100, 1.0, 1.0)}\n        if level &lt; 3\n        else {\"low\": (100, 80, 1.0, 0.5), \"high\": (100, 130, 2.0, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Fixed-temperature heat recovery\")\n    m.A = pyo.Set(initialize=ARCS, dimen=2)\n    m.H = pyo.Set(initialize=list(HOT))\n    m.C = pyo.Set(initialize=[\"C1\", \"C2\"])\n    m.S = pyo.Set(initialize=list(states))\n    m.z = pyo.Var(m.A, domain=pyo.Binary)\n    if level == 1:\n        for a in m.A:\n            m.z[a].fix(1)\n    m.q = pyo.Var(m.S, m.A, domain=pyo.NonNegativeReals)\n    m.hu = pyo.Var(m.S, m.C, domain=pyo.NonNegativeReals)\n    m.cu = pyo.Var(m.S, m.H, domain=pyo.NonNegativeReals)\n    m.hot = pyo.Constraint(\n        m.S,\n        m.H,\n        rule=lambda m, s, h: (\n            sum(m.q[s, i, j] for i, j in m.A if i == h) + m.cu[s, h] == HOT[h]\n        ),\n    )\n    m.cold = pyo.Constraint(\n        m.S,\n        m.C,\n        rule=lambda m, s, c: (\n            sum(m.q[s, i, j] for i, j in m.A if j == c) + m.hu[s, c]\n            == states[s][0 if c == \"C1\" else 1]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.S, m.A, rule=lambda m, s, h, c: m.q[s, h, c] &lt;= CAP[h, c] * m.z[h, c]\n    )\n    if level == 3:\n        m.budget = pyo.Constraint(expr=sum(FIXED[a] * m.z[a] for a in m.A) &lt;= 45)\n    fixed = 0 if level == 1 else sum(FIXED[a] * m.z[a] for a in m.A)\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][3]\n            * (\n                states[s][2] * sum(m.hu[s, c] for c in m.C)\n                + 0.15 * sum(m.cu[s, h] for h in m.H)\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html#optimal-solution",
+    "href": "chapters/09-heat.html#optimal-solution",
+    "title": "9  A shared design for two operating states",
+    "section": "9.4 Optimal Solution",
+    "text": "9.4 Optimal Solution\nThe reference objective is 112.5000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nMatch\nInstalled\nHeat (kW)\n\n\n\n\nlow\nH1 to C1\n1\n100.0000\n\n\nlow\nH1 to C2\n0\n0.0000\n\n\nlow\nH2 to C2\n1\n70.0000\n\n\nhigh\nH1 to C1\n1\n100.0000\n\n\nhigh\nH1 to C2\n0\n0.0000\n\n\nhigh\nH2 to C2\n1\n70.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nlow: hot utility (kW)\n10.0000\n\n\nhigh: hot utility (kW)\n60.0000\n\n\nlow: cold utility (kW)\n30.0000\n\n\nhigh: cold utility (kW)\n30.0000\n\n\n\n\n\n\n\n\n\nFigure 9.1: Heat Recovery Network Design: reference solution for level 3.\n\n\n\n\n9.4.1 Check your solution\nCheck energy balances separately in both states and verify the shared design fits the budget. Enumerate budget-feasible installation patterns.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-heat.html#brief-discussion",
+    "href": "chapters/09-heat.html#brief-discussion",
+    "title": "9  A shared design for two operating states",
+    "section": "9.5 Brief Discussion",
+    "text": "9.5 Brief Discussion\nThe objective is 112.50 USD/d. The objective includes ownership charges, so its increase relative to the existing-system LP is not an efficiency loss. For a physical exchanger network with varying stream temperatures, stagewise temperature balances and minimum approaches would need to replace this fixed-temperature representation.\n\n9.5.1 Extension to investigate\nRecommend a design criterion if the high state becomes rare but disruptive. Compare expected cost with a worst-case criterion and explain what stakeholder preference each expresses.",
+    "crumbs": [
+      "Heat Recovery",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>A shared design for two operating states</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html",
+    "href": "chapters/10-scheduling.html",
+    "title": "10  An idealized vessel schedule",
+    "section": "",
+    "text": "10.1 Problem Statement\nProblem 10 | Batch Production with Sequence-Dependent Cleaning | Level 1: Guided problem\nFour nonpreemptive batches must be processed on one vessel. The vessel is clean and available at time zero. A release time is the earliest processing start, not the earliest cleaning start. Cleaning may occur while the next batch awaits release. Initial and final cleaning times are zero.\nCleaning times depend on product family, denoted by the first letter of the job name:\nAll cleaning times are in hours. Normal shift length is 12 h. For the reference models, processing starts lie between 0 and 30 h and the final completion time between 0 and 40 h.\nYour task. Ignore cleaning times. Minimize the time at which all four jobs finish while respecting release times. Due times are reported but are not restrictions in this first model.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html#problem-statement",
+    "href": "chapters/10-scheduling.html#problem-statement",
+    "title": "10  An idealized vessel schedule",
+    "section": "",
+    "text": "Job\nProcessing time (h)\nRelease (h)\nDue time (h)\nTardiness charge (USD/h)\n\n\n\n\nA1\n2\n0\n6\n4\n\n\nA2\n3\n2\n12\n2\n\n\nB1\n2\n1\n7\n5\n\n\nC1\n4\n0\n14\n1\n\n\n\n\n\n\n\nFrom / to\nA\nB\nC\n\n\n\n\nA\n0\n1\n2\n\n\nB\n3\n0\n1\n\n\nC\n1\n2\n0\n\n\n\n\n\n\n10.1.1 Before you code\nCalculate the total processing time as a lower bound. Can the jobs be ordered to attain it without waiting for a release?\n\n\n10.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html#model-formulation",
+    "href": "chapters/10-scheduling.html#model-formulation",
+    "title": "10  An idealized vessel schedule",
+    "section": "10.2 Model Formulation",
+    "text": "10.2 Model Formulation\nLet \\(x_{ij}=1\\) if job \\(j\\) immediately follows \\(i\\), with dummy nodes start and end. Let \\(s_j\\) be processing start and \\(C_{max}\\) final completion. Each job has exactly one predecessor and one successor; start has one outgoing arc and end one incoming arc. There is no direct start-end arc.\nFor job-to-job arcs, \\[s_j\\ge s_i+p_i+t_{ij}-M(1-x_{ij}),\\qquad s_j\\ge r_j.\\] For job-to-end arcs, replace \\(s_j\\) by \\(C_{max}\\) and set cleaning to zero. Use \\(M=50\\) h. This is sufficient because starts are at most 30 h, processing at most 4 h, and cleaning at most 3 h; a deactivated inequality is redundant. Positive processing times rule out disconnected directed cycles: summing the time inequalities around a cycle would imply a strictly positive duration is at most zero.\nSet \\(t_{ij}=0\\) for every arc and minimize \\(C_{max}\\). Due times do not enter the objective, so a makespan-optimal sequence can still deliver some jobs late. Multiple optimal sequences are possible.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html#pyomo-implementation",
+    "href": "chapters/10-scheduling.html#pyomo-implementation",
+    "title": "10  An idealized vessel schedule",
+    "section": "10.3 Pyomo Implementation",
+    "text": "10.3 Pyomo Implementation\nThe code below is the model-building portion of models/scheduling.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.scheduling 1\n\"\"\"Single-vessel sequencing with release times and directed cleaning.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value\n\nJOBS = [\"A1\", \"A2\", \"B1\", \"C1\"]\nDURATION = {\"A1\": 2, \"A2\": 3, \"B1\": 2, \"C1\": 4}  # h\nRELEASE = {\"A1\": 0, \"A2\": 2, \"B1\": 1, \"C1\": 0}\nDUE = {\"A1\": 6, \"A2\": 12, \"B1\": 7, \"C1\": 14}\nWEIGHT = {\"A1\": 4, \"A2\": 2, \"B1\": 5, \"C1\": 1}  # USD/(h of tardiness)\nCLEAN = {\n    (\"A\", \"B\"): 1,\n    (\"A\", \"C\"): 2,\n    (\"B\", \"A\"): 3,\n    (\"B\", \"C\"): 1,\n    (\"C\", \"A\"): 1,\n    (\"C\", \"B\"): 2,\n}\n\n\ndef cleaning(i, j, level):\n    return 0 if level == 1 or i == \"start\" or j == \"end\" else CLEAN.get((i[0], j[0]), 0)\n\n\ndef build(level):\n    arcs = [\n        (i, j)\n        for i in [\"start\"] + JOBS\n        for j in JOBS + [\"end\"]\n        if i != j and (i, j) != (\"start\", \"end\")\n    ]\n    m = pyo.ConcreteModel(name=\"Batch vessel schedule\")\n    m.J = pyo.Set(initialize=JOBS)\n    m.A = pyo.Set(initialize=arcs, dimen=2)\n    m.x = pyo.Var(m.A, domain=pyo.Binary)\n    m.s = pyo.Var(m.J, bounds=(0, 30))\n    m.finish = pyo.Var(bounds=(0, 40))\n    m.out = pyo.Constraint(\n        [\"start\"] + JOBS,\n        rule=lambda m, i: sum(m.x[i, j] for a, j in m.A if a == i) == 1,\n    )\n    m.inc = pyo.Constraint(\n        JOBS + [\"end\"], rule=lambda m, j: sum(m.x[i, j] for i, b in m.A if b == j) == 1\n    )\n    m.release = pyo.Constraint(m.J, rule=lambda m, j: m.s[j] &gt;= RELEASE[j])\n    m.time = pyo.ConstraintList()\n    for i, j in arcs:\n        if i == \"start\":\n            continue\n        target = m.finish if j == \"end\" else m.s[j]\n        m.time.add(\n            target\n            &gt;= m.s[i] + DURATION[i] + cleaning(i, j, level) - 50 * (1 - m.x[i, j])\n        )\n    m.tardy = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.late = pyo.Constraint(\n        m.J, rule=lambda m, j: m.tardy[j] &gt;= m.s[j] + DURATION[j] - DUE[j]\n    )\n    m.overtime = pyo.Var(domain=pyo.NonNegativeReals)\n    m.over = pyo.Constraint(expr=m.overtime &gt;= m.finish - 12)\n    objective = (\n        m.finish\n        if level &lt; 3\n        else sum(WEIGHT[j] * m.tardy[j] for j in m.J) + 0.5 * m.overtime\n    )\n    m.obj = pyo.Objective(expr=objective)\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html#optimal-solution",
+    "href": "chapters/10-scheduling.html#optimal-solution",
+    "title": "10  An idealized vessel schedule",
+    "section": "10.4 Optimal Solution",
+    "text": "10.4 Optimal Solution\nThe reference objective is 11.0000 h. This value is optimal for the explicitly stated model and data.\n\n\n\nJob\nStart (h)\nFinish (h)\nTardiness (h)\n\n\n\n\nA1\n0.0000\n2.0000\n0.0000\n\n\nC1\n2.0000\n6.0000\n0.0000\n\n\nB1\n6.0000\n8.0000\n1.0000\n\n\nA2\n8.0000\n11.0000\n0.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nSequence\nA1 &gt; C1 &gt; B1 &gt; A2\n\n\nMakespan (h)\n11.0000\n\n\nCleaning (h)\n0.0000\n\n\n\n\n\n\n\n\n\nFigure 10.1: Batch Production with Sequence-Dependent Cleaning: reference solution for level 1.\n\n\n\n\n10.4.1 Check your solution\nEnumerate all 24 permutations. For each one, place every job at its earliest feasible start and calculate makespan. Check that processing intervals do not overlap.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 1.00e-06 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-scheduling.html#brief-discussion",
+    "href": "chapters/10-scheduling.html#brief-discussion",
+    "title": "10  An idealized vessel schedule",
+    "section": "10.5 Brief Discussion",
+    "text": "10.5 Brief Discussion\nOne optimal sequence is A1 &gt; C1 &gt; B1 &gt; A2, with makespan 11.00 h and 0.00 h of cleaning. The makespan is 0.00 h above the idealized no-cleaning lower bound. Equivalent optimal sequences may differ across solver versions; the objective and feasibility checks are the comparison criteria.\n\n10.5.1 Extension to investigate\nIncrease the release time of A2 to 10 h. Determine whether idle time becomes unavoidable and identify a sequence that attains the new lower bound.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>An idealized vessel schedule</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html",
+    "href": "chapters/11-scheduling.html",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "",
+    "text": "11.1 Problem Statement\nProblem 11 | Batch Production with Sequence-Dependent Cleaning | Level 2: Model extension\nFour nonpreemptive batches must be processed on one vessel. The vessel is clean and available at time zero. A release time is the earliest processing start, not the earliest cleaning start. Cleaning may occur while the next batch awaits release. Initial and final cleaning times are zero.\nCleaning times depend on product family, denoted by the first letter of the job name:\nAll cleaning times are in hours. Normal shift length is 12 h. For the reference models, processing starts lie between 0 and 30 h and the final completion time between 0 and 40 h.\nYour task. Include the directed cleaning-time matrix and again minimize makespan. Compare the result with the idealized schedule.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html#problem-statement",
+    "href": "chapters/11-scheduling.html#problem-statement",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "",
+    "text": "Job\nProcessing time (h)\nRelease (h)\nDue time (h)\nTardiness charge (USD/h)\n\n\n\n\nA1\n2\n0\n6\n4\n\n\nA2\n3\n2\n12\n2\n\n\nB1\n2\n1\n7\n5\n\n\nC1\n4\n0\n14\n1\n\n\n\n\n\n\n\nFrom / to\nA\nB\nC\n\n\n\n\nA\n0\n1\n2\n\n\nB\n3\n0\n1\n\n\nC\n1\n2\n0\n\n\n\n\n\n\n11.1.1 Before you code\nIs the setup between A and B symmetric? Why must cleaning be charged only between immediate neighbors rather than every ordered pair?\n\n\n11.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html#model-formulation",
+    "href": "chapters/11-scheduling.html#model-formulation",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "11.2 Model Formulation",
+    "text": "11.2 Model Formulation\nLet \\(x_{ij}=1\\) if job \\(j\\) immediately follows \\(i\\), with dummy nodes start and end. Let \\(s_j\\) be processing start and \\(C_{max}\\) final completion. Each job has exactly one predecessor and one successor; start has one outgoing arc and end one incoming arc. There is no direct start-end arc.\nFor job-to-job arcs, \\[s_j\\ge s_i+p_i+t_{ij}-M(1-x_{ij}),\\qquad s_j\\ge r_j.\\] For job-to-end arcs, replace \\(s_j\\) by \\(C_{max}\\) and set cleaning to zero. Use \\(M=50\\) h. This is sufficient because starts are at most 30 h, processing at most 4 h, and cleaning at most 3 h; a deactivated inequality is redundant. Positive processing times rule out disconnected directed cycles: summing the time inequalities around a cycle would imply a strictly positive duration is at most zero.\nRetain the time inequalities using the specified \\(t_{ij}\\). The arc formulation is essential: a pairwise before/after indicator alone does not identify which batches are adjacent. The reference objective remains \\(\\min C_{max}\\), so late deliveries are still not penalized.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html#pyomo-implementation",
+    "href": "chapters/11-scheduling.html#pyomo-implementation",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "11.3 Pyomo Implementation",
+    "text": "11.3 Pyomo Implementation\nThe code below is the model-building portion of models/scheduling.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.scheduling 2\n\"\"\"Single-vessel sequencing with release times and directed cleaning.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value\n\nJOBS = [\"A1\", \"A2\", \"B1\", \"C1\"]\nDURATION = {\"A1\": 2, \"A2\": 3, \"B1\": 2, \"C1\": 4}  # h\nRELEASE = {\"A1\": 0, \"A2\": 2, \"B1\": 1, \"C1\": 0}\nDUE = {\"A1\": 6, \"A2\": 12, \"B1\": 7, \"C1\": 14}\nWEIGHT = {\"A1\": 4, \"A2\": 2, \"B1\": 5, \"C1\": 1}  # USD/(h of tardiness)\nCLEAN = {\n    (\"A\", \"B\"): 1,\n    (\"A\", \"C\"): 2,\n    (\"B\", \"A\"): 3,\n    (\"B\", \"C\"): 1,\n    (\"C\", \"A\"): 1,\n    (\"C\", \"B\"): 2,\n}\n\n\ndef cleaning(i, j, level):\n    return 0 if level == 1 or i == \"start\" or j == \"end\" else CLEAN.get((i[0], j[0]), 0)\n\n\ndef build(level):\n    arcs = [\n        (i, j)\n        for i in [\"start\"] + JOBS\n        for j in JOBS + [\"end\"]\n        if i != j and (i, j) != (\"start\", \"end\")\n    ]\n    m = pyo.ConcreteModel(name=\"Batch vessel schedule\")\n    m.J = pyo.Set(initialize=JOBS)\n    m.A = pyo.Set(initialize=arcs, dimen=2)\n    m.x = pyo.Var(m.A, domain=pyo.Binary)\n    m.s = pyo.Var(m.J, bounds=(0, 30))\n    m.finish = pyo.Var(bounds=(0, 40))\n    m.out = pyo.Constraint(\n        [\"start\"] + JOBS,\n        rule=lambda m, i: sum(m.x[i, j] for a, j in m.A if a == i) == 1,\n    )\n    m.inc = pyo.Constraint(\n        JOBS + [\"end\"], rule=lambda m, j: sum(m.x[i, j] for i, b in m.A if b == j) == 1\n    )\n    m.release = pyo.Constraint(m.J, rule=lambda m, j: m.s[j] &gt;= RELEASE[j])\n    m.time = pyo.ConstraintList()\n    for i, j in arcs:\n        if i == \"start\":\n            continue\n        target = m.finish if j == \"end\" else m.s[j]\n        m.time.add(\n            target\n            &gt;= m.s[i] + DURATION[i] + cleaning(i, j, level) - 50 * (1 - m.x[i, j])\n        )\n    m.tardy = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.late = pyo.Constraint(\n        m.J, rule=lambda m, j: m.tardy[j] &gt;= m.s[j] + DURATION[j] - DUE[j]\n    )\n    m.overtime = pyo.Var(domain=pyo.NonNegativeReals)\n    m.over = pyo.Constraint(expr=m.overtime &gt;= m.finish - 12)\n    objective = (\n        m.finish\n        if level &lt; 3\n        else sum(WEIGHT[j] * m.tardy[j] for j in m.J) + 0.5 * m.overtime\n    )\n    m.obj = pyo.Objective(expr=objective)\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html#optimal-solution",
+    "href": "chapters/11-scheduling.html#optimal-solution",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "11.4 Optimal Solution",
+    "text": "11.4 Optimal Solution\nThe reference objective is 13.0000 h. This value is optimal for the explicitly stated model and data.\n\n\n\nJob\nStart (h)\nFinish (h)\nTardiness (h)\n\n\n\n\nA1\n-0.0000\n2.0000\n0.0000\n\n\nA2\n2.0000\n5.0000\n0.0000\n\n\nB1\n6.0000\n8.0000\n1.0000\n\n\nC1\n9.0000\n13.0000\n0.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nSequence\nA1 &gt; A2 &gt; B1 &gt; C1\n\n\nMakespan (h)\n13.0000\n\n\nCleaning (h)\n2.0000\n\n\n\n\n\n\n\n\n\nFigure 11.1: Batch Production with Sequence-Dependent Cleaning: reference solution for level 2.\n\n\n\n\n11.4.1 Check your solution\nIndependently total processing, cleaning, and idle time on the chosen path. Compare with exhaustive permutation enumeration.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 1.69e-14 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-scheduling.html#brief-discussion",
+    "href": "chapters/11-scheduling.html#brief-discussion",
+    "title": "11  Cleaning changes the preferred sequence",
+    "section": "11.5 Brief Discussion",
+    "text": "11.5 Brief Discussion\nOne optimal sequence is A1 &gt; A2 &gt; B1 &gt; C1, with makespan 13.00 h and 2.00 h of cleaning. The makespan is 2.00 h above the idealized no-cleaning lower bound. Equivalent optimal sequences may differ across solver versions; the objective and feasibility checks are the comparison criteria.\n\n11.5.1 Extension to investigate\nAdd a restriction forbidding a direct transition from B to A. Determine whether the optimal makespan changes.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Cleaning changes the preferred sequence</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html",
+    "href": "chapters/12-scheduling.html",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "",
+    "text": "12.1 Problem Statement\nProblem 12 | Batch Production with Sequence-Dependent Cleaning | Level 3: Open-ended challenge\nFour nonpreemptive batches must be processed on one vessel. The vessel is clean and available at time zero. A release time is the earliest processing start, not the earliest cleaning start. Cleaning may occur while the next batch awaits release. Initial and final cleaning times are zero.\nCleaning times depend on product family, denoted by the first letter of the job name:\nAll cleaning times are in hours. Normal shift length is 12 h. For the reference models, processing starts lie between 0 and 30 h and the final completion time between 0 and 40 h.\nYour task. Use the cleaning matrix and due times. Minimize total weighted tardiness plus overtime charged at 0.5 USD/h beyond the 12 h shift. Recommend whether these penalty rates represent a defensible service policy, and propose an alternative if some due times are contractual.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html#problem-statement",
+    "href": "chapters/12-scheduling.html#problem-statement",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "",
+    "text": "Job\nProcessing time (h)\nRelease (h)\nDue time (h)\nTardiness charge (USD/h)\n\n\n\n\nA1\n2\n0\n6\n4\n\n\nA2\n3\n2\n12\n2\n\n\nB1\n2\n1\n7\n5\n\n\nC1\n4\n0\n14\n1\n\n\n\n\n\n\n\nFrom / to\nA\nB\nC\n\n\n\n\nA\n0\n1\n2\n\n\nB\n3\n0\n1\n\n\nC\n1\n2\n0\n\n\n\n\n\n\n12.1.1 Before you code\nCan the least-cost schedule have a longer makespan than the fastest schedule? Which late delivery is most expensive per hour?\n\n\n12.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html#model-formulation",
+    "href": "chapters/12-scheduling.html#model-formulation",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "12.2 Model Formulation",
+    "text": "12.2 Model Formulation\nLet \\(x_{ij}=1\\) if job \\(j\\) immediately follows \\(i\\), with dummy nodes start and end. Let \\(s_j\\) be processing start and \\(C_{max}\\) final completion. Each job has exactly one predecessor and one successor; start has one outgoing arc and end one incoming arc. There is no direct start-end arc.\nFor job-to-job arcs, \\[s_j\\ge s_i+p_i+t_{ij}-M(1-x_{ij}),\\qquad s_j\\ge r_j.\\] For job-to-end arcs, replace \\(s_j\\) by \\(C_{max}\\) and set cleaning to zero. Use \\(M=50\\) h. This is sufficient because starts are at most 30 h, processing at most 4 h, and cleaning at most 3 h; a deactivated inequality is redundant. Positive processing times rule out disconnected directed cycles: summing the time inequalities around a cycle would imply a strictly positive duration is at most zero.\nIntroduce \\(T_j\\ge0\\) and \\(O\\ge0\\) with \\[T_j\\ge s_j+p_j-d_j,\\qquad O\\ge C_{max}-12.\\] Minimize \\[\\sum_j w_jT_j+0.5O.\\] Positive coefficients make tardiness and overtime tight at optimum. This is a monetary objective, not lexicographic optimization. A hard due date would instead require \\(s_j+p_j\\le d_j\\) and could make the model infeasible.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html#pyomo-implementation",
+    "href": "chapters/12-scheduling.html#pyomo-implementation",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "12.3 Pyomo Implementation",
+    "text": "12.3 Pyomo Implementation\nThe code below is the model-building portion of models/scheduling.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.scheduling 3\n\"\"\"Single-vessel sequencing with release times and directed cleaning.\"\"\"\n\nimport itertools\nimport pyomo.environ as pyo\nfrom models.common import value\n\nJOBS = [\"A1\", \"A2\", \"B1\", \"C1\"]\nDURATION = {\"A1\": 2, \"A2\": 3, \"B1\": 2, \"C1\": 4}  # h\nRELEASE = {\"A1\": 0, \"A2\": 2, \"B1\": 1, \"C1\": 0}\nDUE = {\"A1\": 6, \"A2\": 12, \"B1\": 7, \"C1\": 14}\nWEIGHT = {\"A1\": 4, \"A2\": 2, \"B1\": 5, \"C1\": 1}  # USD/(h of tardiness)\nCLEAN = {\n    (\"A\", \"B\"): 1,\n    (\"A\", \"C\"): 2,\n    (\"B\", \"A\"): 3,\n    (\"B\", \"C\"): 1,\n    (\"C\", \"A\"): 1,\n    (\"C\", \"B\"): 2,\n}\n\n\ndef cleaning(i, j, level):\n    return 0 if level == 1 or i == \"start\" or j == \"end\" else CLEAN.get((i[0], j[0]), 0)\n\n\ndef build(level):\n    arcs = [\n        (i, j)\n        for i in [\"start\"] + JOBS\n        for j in JOBS + [\"end\"]\n        if i != j and (i, j) != (\"start\", \"end\")\n    ]\n    m = pyo.ConcreteModel(name=\"Batch vessel schedule\")\n    m.J = pyo.Set(initialize=JOBS)\n    m.A = pyo.Set(initialize=arcs, dimen=2)\n    m.x = pyo.Var(m.A, domain=pyo.Binary)\n    m.s = pyo.Var(m.J, bounds=(0, 30))\n    m.finish = pyo.Var(bounds=(0, 40))\n    m.out = pyo.Constraint(\n        [\"start\"] + JOBS,\n        rule=lambda m, i: sum(m.x[i, j] for a, j in m.A if a == i) == 1,\n    )\n    m.inc = pyo.Constraint(\n        JOBS + [\"end\"], rule=lambda m, j: sum(m.x[i, j] for i, b in m.A if b == j) == 1\n    )\n    m.release = pyo.Constraint(m.J, rule=lambda m, j: m.s[j] &gt;= RELEASE[j])\n    m.time = pyo.ConstraintList()\n    for i, j in arcs:\n        if i == \"start\":\n            continue\n        target = m.finish if j == \"end\" else m.s[j]\n        m.time.add(\n            target\n            &gt;= m.s[i] + DURATION[i] + cleaning(i, j, level) - 50 * (1 - m.x[i, j])\n        )\n    m.tardy = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.late = pyo.Constraint(\n        m.J, rule=lambda m, j: m.tardy[j] &gt;= m.s[j] + DURATION[j] - DUE[j]\n    )\n    m.overtime = pyo.Var(domain=pyo.NonNegativeReals)\n    m.over = pyo.Constraint(expr=m.overtime &gt;= m.finish - 12)\n    objective = (\n        m.finish\n        if level &lt; 3\n        else sum(WEIGHT[j] * m.tardy[j] for j in m.J) + 0.5 * m.overtime\n    )\n    m.obj = pyo.Objective(expr=objective)\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html#optimal-solution",
+    "href": "chapters/12-scheduling.html#optimal-solution",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "12.4 Optimal Solution",
+    "text": "12.4 Optimal Solution\nThe reference objective is 5.0000 USD. This value is optimal for the explicitly stated model and data.\n\n\n\nJob\nStart (h)\nFinish (h)\nTardiness (h)\n\n\n\n\nA1\n0.0000\n2.0000\n0.0000\n\n\nB1\n3.0000\n5.0000\n0.0000\n\n\nC1\n6.0000\n10.0000\n0.0000\n\n\nA2\n11.0000\n14.0000\n2.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nSequence\nA1 &gt; B1 &gt; C1 &gt; A2\n\n\nMakespan (h)\n14.0000\n\n\nCleaning (h)\n3.0000\n\n\n\n\n\n\n\n\n\nFigure 12.1: Batch Production with Sequence-Dependent Cleaning: reference solution for level 3.\n\n\n\n\n12.4.1 Check your solution\nCalculate tardiness from the actual finish times rather than trusting a displayed auxiliary variable. Independently enumerate all 24 sequences for the monetary objective.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 3.55e-15 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-scheduling.html#brief-discussion",
+    "href": "chapters/12-scheduling.html#brief-discussion",
+    "title": "12  Balancing late deliveries and overtime",
+    "section": "12.5 Brief Discussion",
+    "text": "12.5 Brief Discussion\nOne optimal sequence is A1 &gt; B1 &gt; C1 &gt; A2, with makespan 14.00 h and 3.00 h of cleaning. Total tardiness and overtime cost is 5.00 USD. The cost-optimal schedule need not be the fastest schedule. Equivalent optimal sequences may differ across solver versions; the objective and feasibility checks are the comparison criteria.\n\n12.5.1 Extension to investigate\nSweep the overtime charge over 0, 0.5, 2, and 10 USD/h. Discuss when service and makespan objectives agree and when they conflict.",
+    "crumbs": [
+      "Batch Scheduling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Balancing late deliveries and overtime</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html",
+    "href": "chapters/13-hydrogen.html",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "",
+    "text": "13.1 Problem Statement\nProblem 13 | Hydrogen Production and Storage | Level 1: Guided problem\nAn electrolyzer operates over six four-hour periods, representing one day. Electricity use is constant at 0.05 MWh/kg of hydrogen. Power is limited to 4 MW. Initial hydrogen inventory is 50 kg, and final inventory must also be 50 kg. Storage has no leakage and no charging-rate restriction. Production and withdrawal rates are each uniform within a period. Inventory therefore varies linearly between period boundaries.\nCapacity is enforced at every period boundary, including the 50 kg initial stock. Under the uniform-rate assumption, this also bounds inventory throughout each period. If deliveries are discrete or rates vary within a period, an additional inventory profile or shorter time steps is necessary for physical sizing. A daily capacity charge of 0.15 USD/(kg d) is used where investment is optimized. It is an assumed daily equivalent, not a full capital-cost model.\nYour task. Fix the tank at 150 kg and minimize daily electricity cost. Meet every period demand without purchases from an external supplier.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html#problem-statement",
+    "href": "chapters/13-hydrogen.html#problem-statement",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "",
+    "text": "Period\nElectricity price (USD/MWh)\nHydrogen demand (kg/period)\n\n\n\n\n1\n30\n120\n\n\n2\n25\n150\n\n\n3\n80\n180\n\n\n4\n100\n220\n\n\n5\n45\n180\n\n\n6\n35\n140\n\n\n\n\n\n\n13.1.1 Before you code\nWhich hours are cheapest? Why might the electrolyzer still need to operate in an expensive period despite cheap electricity earlier?\n\n\n13.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html#model-formulation",
+    "href": "chapters/13-hydrogen.html#model-formulation",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "13.2 Model Formulation",
+    "text": "13.2 Model Formulation\nLet \\(P_{st}\\) be power in MW, \\(I_{st}\\) end inventory in kg, and \\(K\\) capacity in kg. With \\(\\Delta t=4\\) h and \\(e=0.05\\) MWh/kg, \\[I_{st}=I_{s,t-1}+\\frac{\\Delta t}{e}P_{st}-D_{st},\\qquad\n0\\le P_{st}\\le4,\\quad0\\le I_{st}\\le K.\\] Use \\(I_{s0}=50\\) before the first period and \\(I_{s6}=50\\) at the end. Total production must equal total demand. The electricity cost is \\(\\sum_t c_t\\Delta t P_{st}\\) USD/d. Omitting \\(\\Delta t\\) would understate cost by a factor of four.\nFix \\(K=150\\) kg and minimize electricity cost under the inventory balances. Initial inventory is not free net supply because the terminal condition returns the same amount. The LP does not impose a minimum operating load or a startup charge.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html#pyomo-implementation",
+    "href": "chapters/13-hydrogen.html#pyomo-implementation",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "13.3 Pyomo Implementation",
+    "text": "13.3 Pyomo Implementation\nThe code below is the model-building portion of models/hydrogen.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.hydrogen 1\n\"\"\"Daily hydrogen dispatch, tank design, and scenario-dependent operation.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nPRICE = [30, 25, 80, 100, 45, 35]  # USD/MWh\nDEMAND = [120, 150, 180, 220, 180, 140]  # kg per four-hour period\nDT = 4  # h\nSPECIFIC_ENERGY = 0.05  # MWh/kg\nTANK_CHARGE = 0.15  # USD/(kg capacity d)\n\n\ndef build(level):\n    states = (\n        {\"nominal\": (1, 1)} if level &lt; 3 else {\"low\": (0.9, 0.5), \"high\": (1.15, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Hydrogen production and storage\")\n    m.S = pyo.Set(initialize=list(states))\n    m.T = pyo.RangeSet(0, 5)\n    m.k = pyo.Var(bounds=(50, 500))\n    if level == 1:\n        m.k.fix(150)\n    m.power = pyo.Var(m.S, m.T, bounds=(0, 4))\n    m.stock = pyo.Var(m.S, m.T, domain=pyo.NonNegativeReals)\n    m.balance = pyo.Constraint(\n        m.S,\n        m.T,\n        rule=lambda m, s, t: (\n            m.stock[s, t]\n            == (50 if t == 0 else m.stock[s, t - 1])\n            + DT * m.power[s, t] / SPECIFIC_ENERGY\n            - DEMAND[t] * states[s][0]\n        ),\n    )\n    m.capacity = pyo.Constraint(m.S, m.T, rule=lambda m, s, t: m.stock[s, t] &lt;= m.k)\n    m.terminal = pyo.Constraint(m.S, rule=lambda m, s: m.stock[s, 5] == 50)\n    if level == 3:\n        m.on = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.start = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.upper = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &lt;= 4 * m.on[s, t]\n        )\n        m.lower = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &gt;= m.on[s, t]\n        )\n        m.startup = pyo.Constraint(\n            m.S,\n            m.T,\n            rule=lambda m, s, t: (\n                m.start[s, t] &gt;= m.on[s, t] - (0 if t == 0 else m.on[s, t - 1])\n            ),\n        )\n    fixed = 0 if level == 1 else TANK_CHARGE * m.k\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][1]\n            * sum(\n                DT * PRICE[t] * m.power[s, t]\n                + (10 * m.start[s, t] if level == 3 else 0)\n                for t in m.T\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html#optimal-solution",
+    "href": "chapters/13-hydrogen.html#optimal-solution",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "13.4 Optimal Solution",
+    "text": "13.4 Optimal Solution\nThe reference objective is 2,287.5000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nPeriod\nPower (MW)\nDemand (kg)\nEnd stock (kg)\n\n\n\n\nnominal\n1\n0.8750\n120\n0.0000\n\n\nnominal\n2\n3.7500\n150\n150.0000\n\n\nnominal\n3\n2.2500\n180\n150.0000\n\n\nnominal\n4\n0.8750\n220\n0.0000\n\n\nnominal\n5\n2.2500\n180\n0.0000\n\n\nnominal\n6\n2.3750\n140\n50.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nTank capacity (kg)\n150.0000\n\n\nExpected electricity (MWh/d)\n49.5000\n\n\n\n\n\n\n\n\n\nFigure 13.1: Hydrogen Production and Storage: reference solution for level 1.\n\n\n\n\n13.4.1 Check your solution\nCheck daily production equals 990 kg and electricity use equals 49.5 MWh. Verify nonnegative inventory in all periods and the 50 kg terminal stock.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-hydrogen.html#brief-discussion",
+    "href": "chapters/13-hydrogen.html#brief-discussion",
+    "title": "13  Dispatch with a fixed tank",
+    "section": "13.5 Brief Discussion",
+    "text": "13.5 Brief Discussion\nDaily electricity costs 2287.50 USD. Total energy is 49.50 MWh: the storage benefit comes from purchase timing, not reduced energy use.\n\n13.5.1 Extension to investigate\nRemove the terminal condition and quantify the apparent savings. Explain why consuming starting stock is not a repeatable daily operating policy.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dispatch with a fixed tank</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html",
+    "href": "chapters/14-hydrogen.html",
+    "title": "14  Choosing tank capacity",
+    "section": "",
+    "text": "14.1 Problem Statement\nProblem 14 | Hydrogen Production and Storage | Level 2: Model extension\nAn electrolyzer operates over six four-hour periods, representing one day. Electricity use is constant at 0.05 MWh/kg of hydrogen. Power is limited to 4 MW. Initial hydrogen inventory is 50 kg, and final inventory must also be 50 kg. Storage has no leakage and no charging-rate restriction. Production and withdrawal rates are each uniform within a period. Inventory therefore varies linearly between period boundaries.\nCapacity is enforced at every period boundary, including the 50 kg initial stock. Under the uniform-rate assumption, this also bounds inventory throughout each period. If deliveries are discrete or rates vary within a period, an additional inventory profile or shorter time steps is necessary for physical sizing. A daily capacity charge of 0.15 USD/(kg d) is used where investment is optimized. It is an assumed daily equivalent, not a full capital-cost model.\nYour task. Choose \\(50\\le K\\le500\\) kg and minimize electricity cost plus the daily capacity charge. Compare with the 150 kg tank, charging that fixed tank the same daily capacity rate for a fair total-cost comparison.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html#problem-statement",
+    "href": "chapters/14-hydrogen.html#problem-statement",
+    "title": "14  Choosing tank capacity",
+    "section": "",
+    "text": "Period\nElectricity price (USD/MWh)\nHydrogen demand (kg/period)\n\n\n\n\n1\n30\n120\n\n\n2\n25\n150\n\n\n3\n80\n180\n\n\n4\n100\n220\n\n\n5\n45\n180\n\n\n6\n35\n140\n\n\n\n\n\n\n14.1.1 Before you code\nCan additional storage change total daily electricity use in this constant-efficiency model? If not, where do the savings come from?\n\n\n14.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html#model-formulation",
+    "href": "chapters/14-hydrogen.html#model-formulation",
+    "title": "14  Choosing tank capacity",
+    "section": "14.2 Model Formulation",
+    "text": "14.2 Model Formulation\nLet \\(P_{st}\\) be power in MW, \\(I_{st}\\) end inventory in kg, and \\(K\\) capacity in kg. With \\(\\Delta t=4\\) h and \\(e=0.05\\) MWh/kg, \\[I_{st}=I_{s,t-1}+\\frac{\\Delta t}{e}P_{st}-D_{st},\\qquad\n0\\le P_{st}\\le4,\\quad0\\le I_{st}\\le K.\\] Use \\(I_{s0}=50\\) before the first period and \\(I_{s6}=50\\) at the end. Total production must equal total demand. The electricity cost is \\(\\sum_t c_t\\Delta t P_{st}\\) USD/d. Omitting \\(\\Delta t\\) would understate cost by a factor of four.\nSolve \\[\\min C=0.15K+\\sum_t c_t\\Delta tP_t.\\] The lower bound of 50 kg accommodates initial and final stock. This LP values the timing of production, not a change in thermodynamic efficiency. The comparison with Problem 13 must add \\(0.15(150)\\) USD/d to its electricity-only objective.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html#pyomo-implementation",
+    "href": "chapters/14-hydrogen.html#pyomo-implementation",
+    "title": "14  Choosing tank capacity",
+    "section": "14.3 Pyomo Implementation",
+    "text": "14.3 Pyomo Implementation\nThe code below is the model-building portion of models/hydrogen.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.hydrogen 2\n\"\"\"Daily hydrogen dispatch, tank design, and scenario-dependent operation.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nPRICE = [30, 25, 80, 100, 45, 35]  # USD/MWh\nDEMAND = [120, 150, 180, 220, 180, 140]  # kg per four-hour period\nDT = 4  # h\nSPECIFIC_ENERGY = 0.05  # MWh/kg\nTANK_CHARGE = 0.15  # USD/(kg capacity d)\n\n\ndef build(level):\n    states = (\n        {\"nominal\": (1, 1)} if level &lt; 3 else {\"low\": (0.9, 0.5), \"high\": (1.15, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Hydrogen production and storage\")\n    m.S = pyo.Set(initialize=list(states))\n    m.T = pyo.RangeSet(0, 5)\n    m.k = pyo.Var(bounds=(50, 500))\n    if level == 1:\n        m.k.fix(150)\n    m.power = pyo.Var(m.S, m.T, bounds=(0, 4))\n    m.stock = pyo.Var(m.S, m.T, domain=pyo.NonNegativeReals)\n    m.balance = pyo.Constraint(\n        m.S,\n        m.T,\n        rule=lambda m, s, t: (\n            m.stock[s, t]\n            == (50 if t == 0 else m.stock[s, t - 1])\n            + DT * m.power[s, t] / SPECIFIC_ENERGY\n            - DEMAND[t] * states[s][0]\n        ),\n    )\n    m.capacity = pyo.Constraint(m.S, m.T, rule=lambda m, s, t: m.stock[s, t] &lt;= m.k)\n    m.terminal = pyo.Constraint(m.S, rule=lambda m, s: m.stock[s, 5] == 50)\n    if level == 3:\n        m.on = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.start = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.upper = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &lt;= 4 * m.on[s, t]\n        )\n        m.lower = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &gt;= m.on[s, t]\n        )\n        m.startup = pyo.Constraint(\n            m.S,\n            m.T,\n            rule=lambda m, s, t: (\n                m.start[s, t] &gt;= m.on[s, t] - (0 if t == 0 else m.on[s, t - 1])\n            ),\n        )\n    fixed = 0 if level == 1 else TANK_CHARGE * m.k\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][1]\n            * sum(\n                DT * PRICE[t] * m.power[s, t]\n                + (10 * m.start[s, t] if level == 3 else 0)\n                for t in m.T\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html#optimal-solution",
+    "href": "chapters/14-hydrogen.html#optimal-solution",
+    "title": "14  Choosing tank capacity",
+    "section": "14.4 Optimal Solution",
+    "text": "14.4 Optimal Solution\nThe reference objective is 1,635.5000 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nPeriod\nPower (MW)\nDemand (kg)\nEnd stock (kg)\n\n\n\n\nnominal\n1\n4.0000\n120\n250.0000\n\n\nnominal\n2\n4.0000\n150\n420.0000\n\n\nnominal\n3\n0.0000\n180\n240.0000\n\n\nnominal\n4\n0.0000\n220\n20.0000\n\n\nnominal\n5\n2.0000\n180\n0.0000\n\n\nnominal\n6\n2.3750\n140\n50.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nTank capacity (kg)\n420.0000\n\n\nExpected electricity (MWh/d)\n49.5000\n\n\n\n\n\n\n\n\n\nFigure 14.1: Hydrogen Production and Storage: reference solution for level 2.\n\n\n\n\n14.4.1 Check your solution\nCheck the chosen tank is large enough for every reported end stock. Re-solve with fixed capacity values and verify that electricity savings eventually cease as capacity grows.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.\n\n\n14.4.2 Fixed-capacity experiment\n\n\n\ncapacity_kg\ntotal_cost\nelectricity_cost\n\n\n\n\n50.0000\n2670.0000\n2662.5000\n\n\n100.0000\n2490.0000\n2475.0000\n\n\n150.0000\n2310.0000\n2287.5000\n\n\n200.0000\n2137.5000\n2107.5000\n\n\n300.0000\n1882.5000\n1837.5000\n\n\n400.0000\n1647.5000\n1587.5000\n\n\n420.0000\n1635.5000\n1572.5000\n\n\n450.0000\n1640.0000\n1572.5000\n\n\n500.0000\n1647.5000\n1572.5000",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-hydrogen.html#brief-discussion",
+    "href": "chapters/14-hydrogen.html#brief-discussion",
+    "title": "14  Choosing tank capacity",
+    "section": "14.5 Brief Discussion",
+    "text": "14.5 Brief Discussion\nThe selected tank is 420.0 kg. Total daily cost is 1635.50 USD versus 2310.00 USD for the fixed 150 kg tank with the same ownership charge, saving 674.50 USD/d (29.20%). This is a daily-equivalent planning result under uniform within-period flows.\n\n14.5.1 Extension to investigate\nEstimate the break-even daily capacity charge for increasing the tank beyond 150 kg. Describe how finer time resolution might alter the design.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Choosing tank capacity</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html",
+    "href": "chapters/15-hydrogen.html",
+    "title": "15  Design before demand is known",
+    "section": "",
+    "text": "15.1 Problem Statement\nProblem 15 | Hydrogen Production and Storage | Level 3: Open-ended challenge\nAn electrolyzer operates over six four-hour periods, representing one day. Electricity use is constant at 0.05 MWh/kg of hydrogen. Power is limited to 4 MW. Initial hydrogen inventory is 50 kg, and final inventory must also be 50 kg. Storage has no leakage and no charging-rate restriction. Production and withdrawal rates are each uniform within a period. Inventory therefore varies linearly between period boundaries.\nCapacity is enforced at every period boundary, including the 50 kg initial stock. Under the uniform-rate assumption, this also bounds inventory throughout each period. If deliveries are discrete or rates vary within a period, an additional inventory profile or shorter time steps is necessary for physical sizing. A daily capacity charge of 0.15 USD/(kg d) is used where investment is optimized. It is an assumed daily equivalent, not a full capital-cost model.\nYour task. Keep one shared tank capacity. Daily demand is either 0.9 or 1.15 times the table, each with probability 0.5. The demand state is fully observed before the first dispatch decision. In either state, the electrolyzer is initially off, consumes at least 1 MW when on, and incurs 10 USD per startup. Minimize capacity cost plus expected electricity and startup cost.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html#problem-statement",
+    "href": "chapters/15-hydrogen.html#problem-statement",
+    "title": "15  Design before demand is known",
+    "section": "",
+    "text": "Period\nElectricity price (USD/MWh)\nHydrogen demand (kg/period)\n\n\n\n\n1\n30\n120\n\n\n2\n25\n150\n\n\n3\n80\n180\n\n\n4\n100\n220\n\n\n5\n45\n180\n\n\n6\n35\n140\n\n\n\n\n\n\n15.1.1 Before you code\nWhy may dispatch depend on the state while tank capacity may not? Would the same model be valid if the demand state were revealed only halfway through the day?\n\n\n15.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html#model-formulation",
+    "href": "chapters/15-hydrogen.html#model-formulation",
+    "title": "15  Design before demand is known",
+    "section": "15.2 Model Formulation",
+    "text": "15.2 Model Formulation\nLet \\(P_{st}\\) be power in MW, \\(I_{st}\\) end inventory in kg, and \\(K\\) capacity in kg. With \\(\\Delta t=4\\) h and \\(e=0.05\\) MWh/kg, \\[I_{st}=I_{s,t-1}+\\frac{\\Delta t}{e}P_{st}-D_{st},\\qquad\n0\\le P_{st}\\le4,\\quad0\\le I_{st}\\le K.\\] Use \\(I_{s0}=50\\) before the first period and \\(I_{s6}=50\\) at the end. Total production must equal total demand. The electricity cost is \\(\\sum_t c_t\\Delta t P_{st}\\) USD/d. Omitting \\(\\Delta t\\) would understate cost by a factor of four.\nUse state-specific binaries \\(y_{st}\\) for operation and \\(b_{st}\\) for startup: \\[y_{st}\\le P_{st}\\le4y_{st},\\qquad b_{st}\\ge y_{st}-y_{s,t-1},\\quad y_{s0}=0.\\] The minimum-load coefficient is 1 MW. Minimize \\[0.15K+\\sum_s\\pi_s\\sum_t\\left(c_t\\Delta tP_{st}+10b_{st}\\right).\\] The positive startup cost makes unnecessary startups unattractive. Capacity is shared across the two states; dispatch is recourse after full daily demand revelation. There is no minimum up/down time, ramp limit, or commitment carried to the next day. The terminal stock is restored separately in both states.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html#pyomo-implementation",
+    "href": "chapters/15-hydrogen.html#pyomo-implementation",
+    "title": "15  Design before demand is known",
+    "section": "15.3 Pyomo Implementation",
+    "text": "15.3 Pyomo Implementation\nThe code below is the model-building portion of models/hydrogen.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.hydrogen 3\n\"\"\"Daily hydrogen dispatch, tank design, and scenario-dependent operation.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nPRICE = [30, 25, 80, 100, 45, 35]  # USD/MWh\nDEMAND = [120, 150, 180, 220, 180, 140]  # kg per four-hour period\nDT = 4  # h\nSPECIFIC_ENERGY = 0.05  # MWh/kg\nTANK_CHARGE = 0.15  # USD/(kg capacity d)\n\n\ndef build(level):\n    states = (\n        {\"nominal\": (1, 1)} if level &lt; 3 else {\"low\": (0.9, 0.5), \"high\": (1.15, 0.5)}\n    )\n    m = pyo.ConcreteModel(name=\"Hydrogen production and storage\")\n    m.S = pyo.Set(initialize=list(states))\n    m.T = pyo.RangeSet(0, 5)\n    m.k = pyo.Var(bounds=(50, 500))\n    if level == 1:\n        m.k.fix(150)\n    m.power = pyo.Var(m.S, m.T, bounds=(0, 4))\n    m.stock = pyo.Var(m.S, m.T, domain=pyo.NonNegativeReals)\n    m.balance = pyo.Constraint(\n        m.S,\n        m.T,\n        rule=lambda m, s, t: (\n            m.stock[s, t]\n            == (50 if t == 0 else m.stock[s, t - 1])\n            + DT * m.power[s, t] / SPECIFIC_ENERGY\n            - DEMAND[t] * states[s][0]\n        ),\n    )\n    m.capacity = pyo.Constraint(m.S, m.T, rule=lambda m, s, t: m.stock[s, t] &lt;= m.k)\n    m.terminal = pyo.Constraint(m.S, rule=lambda m, s: m.stock[s, 5] == 50)\n    if level == 3:\n        m.on = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.start = pyo.Var(m.S, m.T, domain=pyo.Binary)\n        m.upper = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &lt;= 4 * m.on[s, t]\n        )\n        m.lower = pyo.Constraint(\n            m.S, m.T, rule=lambda m, s, t: m.power[s, t] &gt;= m.on[s, t]\n        )\n        m.startup = pyo.Constraint(\n            m.S,\n            m.T,\n            rule=lambda m, s, t: (\n                m.start[s, t] &gt;= m.on[s, t] - (0 if t == 0 else m.on[s, t - 1])\n            ),\n        )\n    fixed = 0 if level == 1 else TANK_CHARGE * m.k\n    m.obj = pyo.Objective(\n        expr=fixed\n        + sum(\n            states[s][1]\n            * sum(\n                DT * PRICE[t] * m.power[s, t]\n                + (10 * m.start[s, t] if level == 3 else 0)\n                for t in m.T\n            )\n            for s in m.S\n        )\n    )\n    m._states = states\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html#optimal-solution",
+    "href": "chapters/15-hydrogen.html#optimal-solution",
+    "title": "15  Design before demand is known",
+    "section": "15.4 Optimal Solution",
+    "text": "15.4 Optimal Solution\nThe reference objective is 1,785.0500 USD/d. This value is optimal for the explicitly stated model and data.\n\n\n\nState\nPeriod\nPower (MW)\nDemand (kg)\nEnd stock (kg)\n\n\n\n\nlow\n1\n3.9375\n108.0000\n257.0000\n\n\nlow\n2\n4.0000\n135.0000\n442.0000\n\n\nlow\n3\n0.0000\n162.0000\n280.0000\n\n\nlow\n4\n-0.0000\n198.0000\n82.0000\n\n\nlow\n5\n1.0000\n162.0000\n0.0000\n\n\nlow\n6\n2.2000\n126.0000\n50.0000\n\n\nhigh\n1\n4.0000\n138.0000\n232.0000\n\n\nhigh\n2\n4.0000\n172.5000\n379.5000\n\n\nhigh\n3\n1.0062\n207.0000\n253.0000\n\n\nhigh\n4\n0.0000\n253.0000\n0.0000\n\n\nhigh\n5\n2.5875\n207.0000\n0.0000\n\n\nhigh\n6\n2.6375\n161.0000\n50.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nTank capacity (kg)\n442.0000\n\n\nExpected electricity (MWh/d)\n50.7375\n\n\n\n\n\n\n\n\n\nFigure 15.1: Hydrogen Production and Storage: reference solution for level 3.\n\n\n\n\n15.4.1 Check your solution\nCheck power is either zero or between 1 and 4 MW. Check mass balance and terminal stock in each state. Count startups directly from the on/off sequence.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 2.84e-14 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-hydrogen.html#brief-discussion",
+    "href": "chapters/15-hydrogen.html#brief-discussion",
+    "title": "15  Design before demand is known",
+    "section": "15.5 Brief Discussion",
+    "text": "15.5 Brief Discussion\nThe shared tank is 442.0 kg and expected daily cost is 1785.05 USD. Expected demand is 1.025 times the original profile, so the change from the deterministic case combines a higher mean demand, uncertainty, and commitment costs. It is not a pure value-of-uncertainty comparison.\n\n15.5.1 Extension to investigate\nFormulate the nonanticipativity constraints required if the state is learned after period 2. State which decisions must coincide before that time, and explain how uncertainty in earlier withdrawals affects the scenario definition.",
+    "crumbs": [
+      "Hydrogen and Electricity",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Design before demand is known</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html",
+    "href": "chapters/16-water.html",
+    "title": "16  Direct reuse without treatment",
+    "section": "",
+    "text": "16.1 Problem Statement\nProblem 16 | Wastewater Treatment and Reuse | Level 1: Guided problem\nTwo independent wastewater sources supply S1 = 60 m\\(^3\\)/h at 40 mg/L and S2 = 50 m\\(^3\\)/h at 120 mg/L of one contaminant. Users U1 and U2 need 50 and 40 m\\(^3\\)/h, with maximum inlet concentrations of 30 and 60 mg/L. Freshwater contains no contaminant and costs 1 USD/m\\(^3\\). Unused source water is discharged at 0.10 USD/m\\(^3\\). User outlet streams are outside the model boundary; this is a one-pass reuse allocation.\nTreatment conserves water volume and transfers removed contaminant to a separate captured-residue stream. Residue handling is included in the assumed treatment cost. Each source remains segregated through treatment, or equivalently uses source-specific modules with a shared total hydraulic capacity. Fixed removal fractions do not depend on loading. These assumptions avoid a common mixed treatment inlet with an unknown concentration.\nYour task. Allow direct reuse and freshwater only. Minimize freshwater and disposal costs while meeting both user quality limits.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html#problem-statement",
+    "href": "chapters/16-water.html#problem-statement",
+    "title": "16  Direct reuse without treatment",
+    "section": "",
+    "text": "Treatment\nRemoval fraction\nCapacity (m3/h)\nVariable cost (USD/m3)\nHourly ownership charge (USD/h)\n\n\n\n\nModerate\n0.75\n40\n0.25\n3\n\n\nAdvanced\n0.95\n80\n0.45\n12\n\n\n\n\n\n\n16.1.1 Before you code\nCan source S1 be sent directly to U1 without dilution? Why might some S2 still be useful to U2?\n\n\n16.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html#model-formulation",
+    "href": "chapters/16-water.html#model-formulation",
+    "title": "16  Direct reuse without treatment",
+    "section": "16.2 Model Formulation",
+    "text": "16.2 Model Formulation\nLet \\(x_{ij}\\ge0\\) be direct reuse, \\(y_{ijk}\\ge0\\) treated reuse through technology \\(k\\), \\(f_j\\ge0\\) freshwater, and \\(d_i\\ge0\\) discharge, all in m\\(^3\\)/h. A binary \\(z_k\\) selects a treatment option when required. With source supply \\(S_i\\), user demand \\(D_j\\), source concentration \\(c_i\\), user limit \\(L_j\\), and removal \\(r_k\\), \\[\\sum_j\\left(x_{ij}+\\sum_ky_{ijk}\\right)+d_i=S_i,\\] \\[\\sum_i\\left(x_{ij}+\\sum_ky_{ijk}\\right)+f_j=D_j,\\] \\[\\sum_i c_i\\left[x_{ij}+\\sum_k(1-r_k)y_{ijk}\\right]\\le L_jD_j,\\] \\[\\sum_{i,j}y_{ijk}\\le\\overline Q_k z_k.\\] Concentration-times-flow products have units mg/L times m\\(^3\\)/h. Multiplying every term by 1000 gives mg/h, so the common factor cancels in the quality inequality. Concentrations are fixed input coefficients, which keeps this formulation linear.\nRemove all treatment variables and minimize \\[C=\\sum_j f_j+0.10\\sum_i d_i.\\] The quality limits are concentration limits at fixed total user demand, so they can be written as linear contaminant-load inequalities. Mixing at each user is permitted, but no unknown intermediate pool feeds multiple users.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html#pyomo-implementation",
+    "href": "chapters/16-water.html#pyomo-implementation",
+    "title": "16  Direct reuse without treatment",
+    "section": "16.3 Pyomo Implementation",
+    "text": "16.3 Pyomo Implementation\nThe code below is the model-building portion of models/water.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.water 1\n\"\"\"Segregated wastewater reuse with fixed-quality source streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nSUPPLY = {\"S1\": 60, \"S2\": 50}  # m3/h\nNOMINAL = {\"S1\": 40, \"S2\": 120}  # mg/L\nHIGH = {\"S1\": 60, \"S2\": 160}\nDEMAND = {\"U1\": 50, \"U2\": 40}  # m3/h\nLIMIT = {\"U1\": 30, \"U2\": 60}  # mg/L\nTECH = {\"moderate\": (0.75, 40, 0.25, 3), \"advanced\": (0.95, 80, 0.45, 12)}\n# removal fraction, hydraulic capacity m3/h, variable USD/m3, fixed USD/h\n\n\ndef build(level):\n    conc = HIGH if level == 3 else NOMINAL\n    techs = [] if level == 1 else [\"moderate\"] if level == 2 else list(TECH)\n    m = pyo.ConcreteModel(name=\"Segregated water reuse\")\n    m.I = pyo.Set(initialize=list(SUPPLY))\n    m.J = pyo.Set(initialize=list(DEMAND))\n    m.K = pyo.Set(initialize=techs)\n    m.x = pyo.Var(m.I, m.J, domain=pyo.NonNegativeReals)\n    m.y = pyo.Var(m.I, m.J, m.K, domain=pyo.NonNegativeReals)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.d = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n    m.z = pyo.Var(m.K, domain=pyo.Binary)\n    if level == 2:\n        m.z[\"moderate\"].fix(1)\n    if level == 3:\n        m.choose = pyo.Constraint(expr=sum(m.z[k] for k in m.K) &lt;= 1)\n    m.source = pyo.Constraint(\n        m.I,\n        rule=lambda m, i: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for j in m.J) + m.d[i]\n            == SUPPLY[i]\n        ),\n    )\n    m.sink = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for i in m.I) + m.f[j]\n            == DEMAND[j]\n        ),\n    )\n    m.quality = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(\n                conc[i]\n                * (m.x[i, j] + sum((1 - TECH[k][0]) * m.y[i, j, k] for k in m.K))\n                for i in m.I\n            )\n            &lt;= LIMIT[j] * DEMAND[j]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.K,\n        rule=lambda m, k: (\n            sum(m.y[i, j, k] for i in m.I for j in m.J) &lt;= TECH[k][1] * m.z[k]\n        ),\n    )\n    m.obj = pyo.Objective(\n        expr=sum(m.f[j] for j in m.J)\n        + 0.1 * sum(m.d[i] for i in m.I)\n        + sum(TECH[k][2] * m.y[i, j, k] for i in m.I for j in m.J for k in m.K)\n        + (sum(TECH[k][3] * m.z[k] for k in m.K) if level == 3 else 0)\n    )\n    m._conc = conc\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(1))",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html#optimal-solution",
+    "href": "chapters/16-water.html#optimal-solution",
+    "title": "16  Direct reuse without treatment",
+    "section": "16.4 Optimal Solution",
+    "text": "16.4 Optimal Solution\nThe reference objective is 21.2500 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\n\nUser\nFresh (m3/h)\nDirect reuse (m3/h)\nTreated reuse (m3/h)\nConcentration (mg/L)\n\n\n\n\nU1\n12.5000\n37.5000\n0\n30.0000\n\n\nU2\n5.0000\n35.0000\n0\n60.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nFreshwater (m3/h)\n17.5000\n\n\nDisposal (m3/h)\n37.5000\n\n\nTechnology\nnone\n\n\n\n\n\n\n\n\n\nFigure 16.1: Wastewater Treatment and Reuse: reference solution for level 1.\n\n\n\n\n16.4.1 Check your solution\nCheck the overall water balance \\(110+\\sum_j f_j=90+\\sum_i d_i\\). Independently calculate each user concentration from incoming contaminant load.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 7.11e-15 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-water.html#brief-discussion",
+    "href": "chapters/16-water.html#brief-discussion",
+    "title": "16  Direct reuse without treatment",
+    "section": "16.5 Brief Discussion",
+    "text": "16.5 Brief Discussion\nThe solution uses 17.500 m3/h of freshwater and discharges 37.500 m3/h, at 21.250 USD/h. Treatment choice: none. Contaminant removed by treatment must leave in the captured-residue stream. Fixed removal and segregated paths are substantive process assumptions, not just numerical conveniences.\n\n16.5.1 Extension to investigate\nRaise the U1 concentration limit from 30 to 40 mg/L and predict the freshwater reduction before solving.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Direct reuse without treatment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html",
+    "href": "chapters/17-water.html",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "",
+    "text": "17.1 Problem Statement\nProblem 17 | Wastewater Treatment and Reuse | Level 2: Model extension\nTwo independent wastewater sources supply S1 = 60 m\\(^3\\)/h at 40 mg/L and S2 = 50 m\\(^3\\)/h at 120 mg/L of one contaminant. Users U1 and U2 need 50 and 40 m\\(^3\\)/h, with maximum inlet concentrations of 30 and 60 mg/L. Freshwater contains no contaminant and costs 1 USD/m\\(^3\\). Unused source water is discharged at 0.10 USD/m\\(^3\\). User outlet streams are outside the model boundary; this is a one-pass reuse allocation.\nTreatment conserves water volume and transfers removed contaminant to a separate captured-residue stream. Residue handling is included in the assumed treatment cost. Each source remains segregated through treatment, or equivalently uses source-specific modules with a shared total hydraulic capacity. Fixed removal fractions do not depend on loading. These assumptions avoid a common mixed treatment inlet with an unknown concentration.\nYour task. Add the moderate treatment option with capacity 40 m\\(^3\\)/h and removal fraction 0.75. Its ownership cost is sunk, so charge only variable treatment, freshwater, and disposal costs.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html#problem-statement",
+    "href": "chapters/17-water.html#problem-statement",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "",
+    "text": "Treatment\nRemoval fraction\nCapacity (m3/h)\nVariable cost (USD/m3)\nHourly ownership charge (USD/h)\n\n\n\n\nModerate\n0.75\n40\n0.25\n3\n\n\nAdvanced\n0.95\n80\n0.45\n12\n\n\n\n\n\n\n17.1.1 Before you code\nFor a given treated volume, which source yields a larger contaminant reduction? Does that automatically mean all treatment should serve that source?\n\n\n17.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html#model-formulation",
+    "href": "chapters/17-water.html#model-formulation",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "17.2 Model Formulation",
+    "text": "17.2 Model Formulation\nLet \\(x_{ij}\\ge0\\) be direct reuse, \\(y_{ijk}\\ge0\\) treated reuse through technology \\(k\\), \\(f_j\\ge0\\) freshwater, and \\(d_i\\ge0\\) discharge, all in m\\(^3\\)/h. A binary \\(z_k\\) selects a treatment option when required. With source supply \\(S_i\\), user demand \\(D_j\\), source concentration \\(c_i\\), user limit \\(L_j\\), and removal \\(r_k\\), \\[\\sum_j\\left(x_{ij}+\\sum_ky_{ijk}\\right)+d_i=S_i,\\] \\[\\sum_i\\left(x_{ij}+\\sum_ky_{ijk}\\right)+f_j=D_j,\\] \\[\\sum_i c_i\\left[x_{ij}+\\sum_k(1-r_k)y_{ijk}\\right]\\le L_jD_j,\\] \\[\\sum_{i,j}y_{ijk}\\le\\overline Q_k z_k.\\] Concentration-times-flow products have units mg/L times m\\(^3\\)/h. Multiplying every term by 1000 gives mg/h, so the common factor cancels in the quality inequality. Concentrations are fixed input coefficients, which keeps this formulation linear.\nFix \\(z_{moderate}=1\\) and minimize \\[C=\\sum_jf_j+0.10\\sum_id_i+0.25\\sum_{i,j}y_{ij,moderate}.\\] Removed contaminant is \\[R=\\sum_{i,j}c_i r_{moderate}y_{ij,moderate}.\\] Include this captured load when checking the contaminant balance. A treatment model that reduces concentration while conserving water but has no contaminant outlet is physically incomplete.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html#pyomo-implementation",
+    "href": "chapters/17-water.html#pyomo-implementation",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "17.3 Pyomo Implementation",
+    "text": "17.3 Pyomo Implementation\nThe code below is the model-building portion of models/water.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.water 2\n\"\"\"Segregated wastewater reuse with fixed-quality source streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nSUPPLY = {\"S1\": 60, \"S2\": 50}  # m3/h\nNOMINAL = {\"S1\": 40, \"S2\": 120}  # mg/L\nHIGH = {\"S1\": 60, \"S2\": 160}\nDEMAND = {\"U1\": 50, \"U2\": 40}  # m3/h\nLIMIT = {\"U1\": 30, \"U2\": 60}  # mg/L\nTECH = {\"moderate\": (0.75, 40, 0.25, 3), \"advanced\": (0.95, 80, 0.45, 12)}\n# removal fraction, hydraulic capacity m3/h, variable USD/m3, fixed USD/h\n\n\ndef build(level):\n    conc = HIGH if level == 3 else NOMINAL\n    techs = [] if level == 1 else [\"moderate\"] if level == 2 else list(TECH)\n    m = pyo.ConcreteModel(name=\"Segregated water reuse\")\n    m.I = pyo.Set(initialize=list(SUPPLY))\n    m.J = pyo.Set(initialize=list(DEMAND))\n    m.K = pyo.Set(initialize=techs)\n    m.x = pyo.Var(m.I, m.J, domain=pyo.NonNegativeReals)\n    m.y = pyo.Var(m.I, m.J, m.K, domain=pyo.NonNegativeReals)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.d = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n    m.z = pyo.Var(m.K, domain=pyo.Binary)\n    if level == 2:\n        m.z[\"moderate\"].fix(1)\n    if level == 3:\n        m.choose = pyo.Constraint(expr=sum(m.z[k] for k in m.K) &lt;= 1)\n    m.source = pyo.Constraint(\n        m.I,\n        rule=lambda m, i: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for j in m.J) + m.d[i]\n            == SUPPLY[i]\n        ),\n    )\n    m.sink = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for i in m.I) + m.f[j]\n            == DEMAND[j]\n        ),\n    )\n    m.quality = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(\n                conc[i]\n                * (m.x[i, j] + sum((1 - TECH[k][0]) * m.y[i, j, k] for k in m.K))\n                for i in m.I\n            )\n            &lt;= LIMIT[j] * DEMAND[j]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.K,\n        rule=lambda m, k: (\n            sum(m.y[i, j, k] for i in m.I for j in m.J) &lt;= TECH[k][1] * m.z[k]\n        ),\n    )\n    m.obj = pyo.Objective(\n        expr=sum(m.f[j] for j in m.J)\n        + 0.1 * sum(m.d[i] for i in m.I)\n        + sum(TECH[k][2] * m.y[i, j, k] for i in m.I for j in m.J for k in m.K)\n        + (sum(TECH[k][3] * m.z[k] for k in m.K) if level == 3 else 0)\n    )\n    m._conc = conc\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(2))",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html#optimal-solution",
+    "href": "chapters/17-water.html#optimal-solution",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "17.4 Optimal Solution",
+    "text": "17.4 Optimal Solution\nThe reference objective is 9.5000 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\n\nUser\nFresh (m3/h)\nDirect reuse (m3/h)\nTreated reuse (m3/h)\nConcentration (mg/L)\n\n\n\n\nU1\n0.0000\n20.0000\n30.0000\n30.0000\n\n\nU2\n0.0000\n40.0000\n0.0000\n60.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nFreshwater (m3/h)\n0.0000\n\n\nDisposal (m3/h)\n20.0000\n\n\nTechnology\nmoderate\n\n\n\n\n\n\n\n\n\nFigure 17.1: Wastewater Treatment and Reuse: reference solution for level 2.\n\n\n\n\n17.4.1 Check your solution\nCheck source contaminant input equals load sent to users plus load in discharge plus captured contaminant. Convert the final quantities to kg/h using 0.001 kg per mg/L times m3.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 7.11e-15 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-water.html#brief-discussion",
+    "href": "chapters/17-water.html#brief-discussion",
+    "title": "17  Reuse with an existing treatment unit",
+    "section": "17.5 Brief Discussion",
+    "text": "17.5 Brief Discussion\nThe solution uses 0.000 m3/h of freshwater and discharges 20.000 m3/h, at 9.500 USD/h. Treatment choice: moderate. Even when freshwater falls to zero, 20 m3/h must leave the system because source supply exceeds user demand. Fixed removal and segregated paths are substantive process assumptions, not just numerical conveniences.\n\n17.5.1 Extension to investigate\nLower treatment removal to 0.50 and determine whether zero freshwater remains feasible at the same capacity.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Reuse with an existing treatment unit</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html",
+    "href": "chapters/18-water.html",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "",
+    "text": "18.1 Problem Statement\nProblem 18 | Wastewater Treatment and Reuse | Level 3: Open-ended challenge\nTwo independent wastewater sources supply S1 = 60 m\\(^3\\)/h at 40 mg/L and S2 = 50 m\\(^3\\)/h at 120 mg/L of one contaminant. Users U1 and U2 need 50 and 40 m\\(^3\\)/h, with maximum inlet concentrations of 30 and 60 mg/L. Freshwater contains no contaminant and costs 1 USD/m\\(^3\\). Unused source water is discharged at 0.10 USD/m\\(^3\\). User outlet streams are outside the model boundary; this is a one-pass reuse allocation.\nTreatment conserves water volume and transfers removed contaminant to a separate captured-residue stream. Residue handling is included in the assumed treatment cost. Each source remains segregated through treatment, or equivalently uses source-specific modules with a shared total hydraulic capacity. Fixed removal fractions do not depend on loading. These assumptions avoid a common mixed treatment inlet with an unknown concentration.\nYour task. Choose at most one new treatment option, or none. Source concentrations can independently rise to 60 mg/L for S1 and 160 mg/L for S2. Require all user quality limits to hold throughout these intervals, using one fixed allocation. Minimize the deterministic cost including the selected hourly ownership charge. Explain when the segregated treatment assumption would be defensible.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html#problem-statement",
+    "href": "chapters/18-water.html#problem-statement",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "",
+    "text": "Treatment\nRemoval fraction\nCapacity (m3/h)\nVariable cost (USD/m3)\nHourly ownership charge (USD/h)\n\n\n\n\nModerate\n0.75\n40\n0.25\n3\n\n\nAdvanced\n0.95\n80\n0.45\n12\n\n\n\n\n\n\n18.1.1 Before you code\nWhich concentrations create the worst load? What nonlinear term appears if an intermediate mixed pool has both unknown flow and unknown concentration?\n\n\n18.1.2 Deliverables\n\nDefine decision variables, units, objective, and constraints. State which data and assumptions are fixed.\nPredict one feature of the solution and explain why it should occur.\nBuild and solve a Pyomo model. Check balances and bounds independently.\nInterpret the result and investigate the follow-up question below. For an open-ended challenge, state and defend your chosen policy separately from the reference solution.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html#model-formulation",
+    "href": "chapters/18-water.html#model-formulation",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "18.2 Model Formulation",
+    "text": "18.2 Model Formulation\nLet \\(x_{ij}\\ge0\\) be direct reuse, \\(y_{ijk}\\ge0\\) treated reuse through technology \\(k\\), \\(f_j\\ge0\\) freshwater, and \\(d_i\\ge0\\) discharge, all in m\\(^3\\)/h. A binary \\(z_k\\) selects a treatment option when required. With source supply \\(S_i\\), user demand \\(D_j\\), source concentration \\(c_i\\), user limit \\(L_j\\), and removal \\(r_k\\), \\[\\sum_j\\left(x_{ij}+\\sum_ky_{ijk}\\right)+d_i=S_i,\\] \\[\\sum_i\\left(x_{ij}+\\sum_ky_{ijk}\\right)+f_j=D_j,\\] \\[\\sum_i c_i\\left[x_{ij}+\\sum_k(1-r_k)y_{ijk}\\right]\\le L_jD_j,\\] \\[\\sum_{i,j}y_{ijk}\\le\\overline Q_k z_k.\\] Concentration-times-flow products have units mg/L times m\\(^3\\)/h. Multiplying every term by 1000 gives mg/h, so the common factor cancels in the quality inequality. Concentrations are fixed input coefficients, which keeps this formulation linear.\nUse the upper concentrations in every quality inequality, since all flows and residual fractions are nonnegative. Require \\(\\sum_kz_k\\le1\\) and minimize \\[C=\\sum_jf_j+0.10\\sum_id_i+\\sum_{i,j,k}v_ky_{ijk}+\\sum_kK_kz_k.\\] This is a robust MILP for fixed-quality, segregated treatment paths. In a general pooling model, a pool concentration \\(c_P\\) and outgoing flow \\(q_{Pj}\\) are both variables, producing the bilinear load \\(c_Pq_{Pj}\\). The present solution is not a global solution to that unrestricted nonlinear pooling problem. A separate nonlinear model and suitable solver would be required for it.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html#pyomo-implementation",
+    "href": "chapters/18-water.html#pyomo-implementation",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "18.3 Pyomo Implementation",
+    "text": "18.3 Pyomo Implementation\nThe code below is the model-building portion of models/water.py. The level argument selects this problem’s assumptions. Run the complete module from the source bundle to reproduce the solution, including its independent checks:\n~/.venvs/optim/bin/python -m models.water 3\n\"\"\"Segregated wastewater reuse with fixed-quality source streams.\"\"\"\n\nimport pyomo.environ as pyo\nfrom models.common import value\n\nSUPPLY = {\"S1\": 60, \"S2\": 50}  # m3/h\nNOMINAL = {\"S1\": 40, \"S2\": 120}  # mg/L\nHIGH = {\"S1\": 60, \"S2\": 160}\nDEMAND = {\"U1\": 50, \"U2\": 40}  # m3/h\nLIMIT = {\"U1\": 30, \"U2\": 60}  # mg/L\nTECH = {\"moderate\": (0.75, 40, 0.25, 3), \"advanced\": (0.95, 80, 0.45, 12)}\n# removal fraction, hydraulic capacity m3/h, variable USD/m3, fixed USD/h\n\n\ndef build(level):\n    conc = HIGH if level == 3 else NOMINAL\n    techs = [] if level == 1 else [\"moderate\"] if level == 2 else list(TECH)\n    m = pyo.ConcreteModel(name=\"Segregated water reuse\")\n    m.I = pyo.Set(initialize=list(SUPPLY))\n    m.J = pyo.Set(initialize=list(DEMAND))\n    m.K = pyo.Set(initialize=techs)\n    m.x = pyo.Var(m.I, m.J, domain=pyo.NonNegativeReals)\n    m.y = pyo.Var(m.I, m.J, m.K, domain=pyo.NonNegativeReals)\n    m.f = pyo.Var(m.J, domain=pyo.NonNegativeReals)\n    m.d = pyo.Var(m.I, domain=pyo.NonNegativeReals)\n    m.z = pyo.Var(m.K, domain=pyo.Binary)\n    if level == 2:\n        m.z[\"moderate\"].fix(1)\n    if level == 3:\n        m.choose = pyo.Constraint(expr=sum(m.z[k] for k in m.K) &lt;= 1)\n    m.source = pyo.Constraint(\n        m.I,\n        rule=lambda m, i: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for j in m.J) + m.d[i]\n            == SUPPLY[i]\n        ),\n    )\n    m.sink = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(m.x[i, j] + sum(m.y[i, j, k] for k in m.K) for i in m.I) + m.f[j]\n            == DEMAND[j]\n        ),\n    )\n    m.quality = pyo.Constraint(\n        m.J,\n        rule=lambda m, j: (\n            sum(\n                conc[i]\n                * (m.x[i, j] + sum((1 - TECH[k][0]) * m.y[i, j, k] for k in m.K))\n                for i in m.I\n            )\n            &lt;= LIMIT[j] * DEMAND[j]\n        ),\n    )\n    m.cap = pyo.Constraint(\n        m.K,\n        rule=lambda m, k: (\n            sum(m.y[i, j, k] for i in m.I for j in m.J) &lt;= TECH[k][1] * m.z[k]\n        ),\n    )\n    m.obj = pyo.Objective(\n        expr=sum(m.f[j] for j in m.J)\n        + 0.1 * sum(m.d[i] for i in m.I)\n        + sum(TECH[k][2] * m.y[i, j, k] for i in m.I for j in m.J for k in m.K)\n        + (sum(TECH[k][3] * m.z[k] for k in m.K) if level == 3 else 0)\n    )\n    m._conc = conc\n    return m\nThe common solve function calls appsi_highs, checks optimal termination before loading a solution, and checks constraint residuals, bounds, and integer domains. After building the model, use:\nfrom models.common import solve\nm = solve(build(3))",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html#optimal-solution",
+    "href": "chapters/18-water.html#optimal-solution",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "18.4 Optimal Solution",
+    "text": "18.4 Optimal Solution\nThe reference objective is 20.8235 USD/h. This value is optimal for the explicitly stated model and data.\n\n\n\n\n\n\n\n\n\n\nUser\nFresh (m3/h)\nDirect reuse (m3/h)\nTreated reuse (m3/h)\nConcentration (mg/L)\n\n\n\n\nU1\n5.2941\n4.7059\n40.0000\n30.0000\n\n\nU2\n0.0000\n40.0000\n0.0000\n60.0000\n\n\n\n\n\n\nQuantity\nValue\n\n\n\n\nFreshwater (m3/h)\n5.2941\n\n\nDisposal (m3/h)\n25.2941\n\n\nTechnology\nmoderate\n\n\n\n\n\n\n\n\n\nFigure 18.1: Wastewater Treatment and Reuse: reference solution for level 3.\n\n\n\n\n18.4.1 Check your solution\nCheck the worst-case water and contaminant balances. Fix each of the three choices (none, moderate, advanced), solve its allocation LP, and compare the feasible costs.\nThe automated residual, bound, and integrality audit passed with a maximum violation of 0.00e+00 in model units. Domain-specific checks passed. Model units differ across equations, so this numerical audit does not replace dimensional analysis.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-water.html#brief-discussion",
+    "href": "chapters/18-water.html#brief-discussion",
+    "title": "18  Selecting treatment under composition uncertainty",
+    "section": "18.5 Brief Discussion",
+    "text": "18.5 Brief Discussion\nThe solution uses 5.294 m3/h of freshwater and discharges 25.294 m3/h, at 20.824 USD/h. Treatment choice: moderate. Contaminant removed by treatment must leave in the captured-residue stream. Fixed removal and segregated paths are substantive process assumptions, not just numerical conveniences.\n\n18.5.1 Extension to investigate\nPropose an unrestricted pool formulation with flow and concentration variables. Identify its bilinear equations and explain what additional measurements or bounds would be required before solving.",
+    "crumbs": [
+      "Water Reuse",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting treatment under composition uncertainty</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Sources and Further Reading",
+    "section": "",
+    "text": "All process data, kinetic coefficients, costs, uncertainty bounds, and operating scenarios in this volume are synthetic teaching assumptions. They are fully specified in the problem statements and Python modules. The examples are original instructional instances; no industrial performance or safety guarantee is implied.\nSoftware references:\n\nPyomo, APPSI HiGHS interface. Official solver documentation. Used for the linear and mixed-integer reference models.\nQuarto, Book Structure. Official book documentation. Used to organize the six parts and separate editions.\nQuarto, PDF Basics. Official PDF documentation. Used for the A4 XeLaTeX publication output.\n\nThe robust blending counterpart follows directly from the LP dual of the stated uncertainty support function. The scheduling check follows exhaustive enumeration of four-job permutations. The reactor formulas follow the stated first-order, constant-density, isothermal assumptions. Students should derive these relationships from the balances and assumptions shown in the relevant chapter rather than treat them as universal process laws.",
+    "crumbs": [
+      "Sources and Further Reading"
+    ]
+  }
+]

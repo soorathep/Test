@@ -1,0 +1,100 @@
+{
+  "problem": 15,
+  "topic": "hydrogen",
+  "level": 3,
+  "termination": "optimal",
+  "max_violation": 2.842170943040401e-14,
+  "domain_check": "passed",
+  "objective": 1785.0499999999997,
+  "units": "USD/d",
+  "rows": [
+    {
+      "State": "low",
+      "Period": 1,
+      "Power (MW)": 3.9375,
+      "Demand (kg)": 108.0,
+      "End stock (kg)": 257.0
+    },
+    {
+      "State": "low",
+      "Period": 2,
+      "Power (MW)": 4.0,
+      "Demand (kg)": 135.0,
+      "End stock (kg)": 442.0
+    },
+    {
+      "State": "low",
+      "Period": 3,
+      "Power (MW)": 0.0,
+      "Demand (kg)": 162.0,
+      "End stock (kg)": 280.0
+    },
+    {
+      "State": "low",
+      "Period": 4,
+      "Power (MW)": -1.7763568394002506e-16,
+      "Demand (kg)": 198.0,
+      "End stock (kg)": 81.99999999999999
+    },
+    {
+      "State": "low",
+      "Period": 5,
+      "Power (MW)": 1.0000000000000002,
+      "Demand (kg)": 162.0,
+      "End stock (kg)": 0.0
+    },
+    {
+      "State": "low",
+      "Period": 6,
+      "Power (MW)": 2.2,
+      "Demand (kg)": 126.0,
+      "End stock (kg)": 50.0
+    },
+    {
+      "State": "high",
+      "Period": 1,
+      "Power (MW)": 4.0,
+      "Demand (kg)": 138.0,
+      "End stock (kg)": 232.0
+    },
+    {
+      "State": "high",
+      "Period": 2,
+      "Power (MW)": 4.0,
+      "Demand (kg)": 172.5,
+      "End stock (kg)": 379.5
+    },
+    {
+      "State": "high",
+      "Period": 3,
+      "Power (MW)": 1.0062499999999992,
+      "Demand (kg)": 206.99999999999997,
+      "End stock (kg)": 252.99999999999997
+    },
+    {
+      "State": "high",
+      "Period": 4,
+      "Power (MW)": 0.0,
+      "Demand (kg)": 252.99999999999997,
+      "End stock (kg)": 0.0
+    },
+    {
+      "State": "high",
+      "Period": 5,
+      "Power (MW)": 2.5874999999999995,
+      "Demand (kg)": 206.99999999999997,
+      "End stock (kg)": 0.0
+    },
+    {
+      "State": "high",
+      "Period": 6,
+      "Power (MW)": 2.6375,
+      "Demand (kg)": 161.0,
+      "End stock (kg)": 50.0
+    }
+  ],
+  "metrics": {
+    "Tank capacity (kg)": 442.0,
+    "Expected electricity (MWh/d)": 50.7375
+  }
+}

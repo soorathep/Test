@@ -1,0 +1,31 @@
+{
+  "problem": 6,
+  "topic": "reactors",
+  "level": 3,
+  "termination": "optimal",
+  "max_violation": 2.842170943040401e-14,
+  "domain_check": "passed",
+  "objective": 170.60594281752296,
+  "units": "USD/h",
+  "rows": [
+    {
+      "State": "low_activity",
+      "Desired (kmol/h)": 56.969015962503605,
+      "Undesired (kmol/h)": 20.760863005004968,
+      "Profit (USD/h)": 170.60594281752293
+    },
+    {
+      "State": "high_activity",
+      "Desired (kmol/h)": 65.36841888083568,
+      "Undesired (kmol/h)": 15.881203332609681,
+      "Profit (USD/h)": 207.723297736788
+    }
+  ],
+  "metrics": {
+    "Reactor": "PFR",
+    "Temperature (K)": 350,
+    "Residence time (h)": 3,
+    "Feed (kmol/h)": 83.33333333333333,
+    "Holdup (kmol)": 250.0
+  }
+}

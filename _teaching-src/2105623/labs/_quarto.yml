@@ -1,0 +1,24 @@
+project:
+  type: default
+  output-dir: ../../../teaching/2105623/labs
+  render:
+    - index.qmd
+  resources:
+    - assets/**
+format:
+  html:
+    theme: none
+    toc: false
+    anchor-sections: false
+    title-block-style: none
+    html-math-method: plain
+    css: assets/lab.css
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../../../assets/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+    include-after-body:
+      text: |
+        <script src="assets/plotly.min.js"></script>
+        <script src="assets/lab.js"></script>
+lang: en-US

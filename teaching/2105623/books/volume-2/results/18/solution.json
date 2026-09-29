@@ -1,0 +1,31 @@
+{
+  "problem": 18,
+  "topic": "water",
+  "level": 3,
+  "termination": "optimal",
+  "max_violation": 0,
+  "domain_check": "passed",
+  "objective": 20.823529411764707,
+  "units": "USD/h",
+  "rows": [
+    {
+      "User": "U1",
+      "Fresh (m3/h)": 5.294117647058825,
+      "Direct reuse (m3/h)": 4.7058823529411775,
+      "Treated reuse (m3/h)": 40.0,
+      "Concentration (mg/L)": 30.0
+    },
+    {
+      "User": "U2",
+      "Fresh (m3/h)": 0.0,
+      "Direct reuse (m3/h)": 40.0,
+      "Treated reuse (m3/h)": 0.0,
+      "Concentration (mg/L)": 60.0
+    }
+  ],
+  "metrics": {
+    "Freshwater (m3/h)": 5.294117647058825,
+    "Disposal (m3/h)": 25.294117647058822,
+    "Technology": "moderate"
+  }
+}
