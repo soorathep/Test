@@ -2,8 +2,8 @@
 (async () => {
   'use strict';
   const el = id => document.getElementById(id);
-  const fmt = x => typeof x === 'number' ? x.toLocaleString('en-US', {maximumFractionDigits: 2}) : x;
-  let data, labId='food', shownKey, submittedPrediction='', submittedNotes='';
+  const fmt = x => typeof x === 'number' ? x.toLocaleString('en-US', {maximumFractionDigits: 4}) : x;
+  let data, labId='v1-01', shownKey, submittedPrediction='', submittedNotes='';
   const lab = () => data.labs[labId];
   const current = () => lab().cases[shownKey];
   const controlKey = () => lab().controls.map(c => Number(el('control-'+c.id).value).toString()).join('|');
@@ -17,7 +17,7 @@
   function chart() {
     const name=el('chart-choice').value, fig=current().figures[name];
     Plotly.react('chart',structuredClone(fig.data),structuredClone(fig.layout),{responsive:true,displayModeBar:false,scrollZoom:false});
-    el('chart').setAttribute('aria-label',`${lab().title}: ${lab().charts[name]}, baseline compared with the displayed case. Exact numbers are in Data and assumptions.`);
+    el('chart').setAttribute('aria-label',name==='sensitivity'?`${lab().title}: all prepared objective values compared with the original objective.`:`${lab().title}: ${lab().charts[name]}, baseline compared with the displayed case. Exact numbers are in Data and assumptions.`);
   }
   function renderCase() {
     const l=lab(), c=current(), baseline=l.cases[l.baseline], delta=c.objective-baseline.objective;
@@ -31,15 +31,21 @@
     el('interpretation').textContent=c.interpretation;
     const checks=el('checks');checks.replaceChildren();
     c.checks.forEach(check=>{const row=document.createElement('div');row.className='check-row';const a=document.createElement('span'),b=document.createElement('span');a.textContent=check.name;b.textContent=check.value;if(check.value.startsWith('Fails'))b.className='stress-fail';row.append(a,b);checks.append(row);});
-    table(el('result-table'),c.table.rows,c.table.columns);
+    el('result-table').replaceChildren();
+    (c.tables||[c.table]).forEach(t=>{const section=document.createElement('section');if(t.title){const h=document.createElement('h4');h.textContent=t.title;section.append(h);}const box=document.createElement('div');table(box,t.rows,t.columns);section.append(box);el('result-table').append(section);});
     const feedback=el('prediction-feedback');feedback.hidden=!submittedPrediction;
-    if(submittedPrediction){const actual=Math.abs(delta)<.01?'same':delta>0?'up':'down';feedback.textContent=(submittedPrediction===actual?'Your prediction matches this case. ':'This case differs from your prediction. ')+(actual==='same'?'The objective is unchanged.':`The objective is ${actual==='up'?'higher':'lower'} than baseline by ${fmt(Math.abs(delta))} ${l.unit}. `)+'Which changed assumption explains it?';}
+    if(submittedPrediction){const actual=Math.abs(delta)<1e-6?'same':delta>0?'up':'down';feedback.textContent=(submittedPrediction===actual?'Your prediction matches this case. ':'This case differs from your prediction. ')+(actual==='same'?'The objective is unchanged.':`The objective is ${actual==='up'?'higher':'lower'} than baseline by ${fmt(Math.abs(delta))} ${l.unit}. `)+'Which changed assumption explains it?';}
     chart();
+  }
+  function populateProblems(volume){
+    const select=el('problem-choice');select.replaceChildren();
+    Object.entries(data.labs).filter(([id,l])=>l.volume===Number(volume)).forEach(([id,l])=>{const option=document.createElement('option');option.value=id;option.textContent=String(l.problem).padStart(2,'0')+' · '+l.title;select.append(option);});
   }
   function selectLab(id) {
     labId=id;const l=lab();shownKey=l.baseline;submittedPrediction='';submittedNotes='';
-    document.querySelectorAll('[data-lab]').forEach(b=>{b.setAttribute('aria-selected',String(b.dataset.lab===id));b.tabIndex=b.dataset.lab===id?0:-1;});
-    el('experiment').setAttribute('aria-labelledby','tab-'+id);
+    el('volume-choice').value=String(l.volume);
+    populateProblems(l.volume);el('problem-choice').value=id;
+    const ids=Object.keys(data.labs);el('previous-problem').disabled=ids.indexOf(id)===0;el('next-problem').disabled=ids.indexOf(id)===ids.length-1;
     el('experiment-tag').textContent=l.eyebrow;el('experiment-title').textContent=l.question;el('experiment-description').textContent=l.intro;
     el('chapter-link').href=l.book;el('assumptions').textContent=l.assumptions;el('challenge').textContent=l.challenge;
     el('prediction-label').textContent=`Compared with baseline, will ${l.objectiveLabel.toLowerCase()} be…?`;
@@ -53,17 +59,20 @@
   try {
     const response=await fetch('assets/cases.json');if(!response.ok)throw new Error('Case library unavailable');
     data=await response.json();el('loading').hidden=true;el('experiment').hidden=false;
-    const initial=new URL(location.href).searchParams.get('lab');selectLab(data.labs[initial]?initial:'food');
-    document.querySelectorAll('[data-lab]').forEach(button=>{
-      button.addEventListener('click',()=>{selectLab(button.dataset.lab);const url=new URL(location.href);url.searchParams.set('lab',labId);history.replaceState(null,'',url);});
-      button.addEventListener('keydown',event=>{const ids=Object.keys(data.labs);let index=ids.indexOf(labId);if(event.key==='ArrowRight')index=(index+1)%ids.length;else if(event.key==='ArrowLeft')index=(index+ids.length-1)%ids.length;else return;event.preventDefault();el('tab-'+ids[index]).click();el('tab-'+ids[index]).focus();});
-    });
+    el('library-count').textContent=`${data.problemCount} problems · ${data.caseCount} verified Pyomo cases`;
+    const aliases={food:'v1-01',blend:'v2-03',hydrogen:'v2-14'};
+    const requested=new URL(location.href).searchParams.get('lab');
+    const initial=aliases[requested]||requested;selectLab(data.labs[initial]?initial:'v1-01');
+    function navigate(id){selectLab(id);const url=new URL(location.href);url.searchParams.set('lab',id);history.replaceState(null,'',url);}
+    el('volume-choice').addEventListener('change',()=>navigate(Object.keys(data.labs).find(id=>data.labs[id].volume===Number(el('volume-choice').value))));
+    el('problem-choice').addEventListener('change',()=>navigate(el('problem-choice').value));
+    ['previous','next'].forEach(direction=>el(direction+'-problem').addEventListener('click',()=>{const ids=Object.keys(data.labs);navigate(ids[ids.indexOf(labId)+(direction==='next'?1:-1)]);}));
     el('reveal').addEventListener('click',()=>{shownKey=controlKey();submittedPrediction=el('prediction').value;submittedNotes=el('reflection').value;renderCase();});
     el('reset').addEventListener('click',()=>selectLab(labId));
     el('chart-choice').addEventListener('change',chart);
     el('export').addEventListener('click',()=>{
       const record={experiment:lab().title,mode:data.mode,parameters:current().parameters,objective:current().objective,units:lab().unit,baseline:lab().cases[lab().baseline].parameters,baselineObjective:lab().cases[lab().baseline].objective,
-        prediction:submittedPrediction||null,reflection:el('reflection').value,checks:current().checks,table:current().table,versions:data.versions};
+        variables:current().variables||null,tables:current().tables||[current().table],prediction:submittedPrediction||null,reflection:el('reflection').value,checks:current().checks,table:current().table,versions:data.versions};
       const url=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`optimization-${labId}-${shownKey.replaceAll('|','-')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
     });
   } catch(error) {el('loading').hidden=false;el('loading').textContent='The case library could not load. Serve this page over HTTP and reload. '+error.message;el('experiment').hidden=true;}

@@ -61,17 +61,17 @@ ul.task-list li input[type="checkbox"] {
     <p class="mono eyebrow">Teaching / 2105623 / Interactive companion</p>
     <h1>Optimization Lab<span class="heading-dot">.</span></h1>
     <p class="lab-lede">Make a prediction. Change an assumption. Explain the decision.</p>
-    <p class="mode-note"><span class="status-dot"></span>72 verified Pyomo cases · Exact prepared results · No interpolation</p>
+    <p class="mode-note"><span class="status-dot"></span><span id="library-count">47 problems · Loading verified cases</span> · Exact prepared results · No interpolation</p>
   </div>
 
-  <div class="lab-tabs" role="tablist" aria-label="Choose an experiment">
-    <button type="button" role="tab" id="tab-food" aria-selected="true" aria-controls="experiment" data-lab="food"><span>01 / VOLUME 1</span>Food manufacture</button>
-    <button type="button" role="tab" id="tab-blend" aria-selected="false" aria-controls="experiment" data-lab="blend"><span>02 / VOLUME 2</span>Robust blending</button>
-    <button type="button" role="tab" id="tab-hydrogen" aria-selected="false" aria-controls="experiment" data-lab="hydrogen"><span>03 / VOLUME 2</span>Hydrogen storage</button>
-  </div>
+  <section class="problem-browser" aria-label="Choose a workbook problem">
+    <div><label for="volume-choice">Volume</label><select id="volume-choice"><option value="1">Volume 1 · 29 problems</option><option value="2">Volume 2 · 18 problems</option></select></div>
+    <div class="problem-select"><label for="problem-choice">Problem</label><select id="problem-choice"></select></div>
+    <div class="problem-actions"><button id="previous-problem" type="button">← Previous</button><button id="next-problem" type="button">Next →</button></div>
+  </section>
 
   <div id="loading" role="status">Loading the checked case library…</div>
-  <div id="experiment" role="tabpanel" aria-labelledby="tab-food" hidden="">
+  <div id="experiment" role="region" aria-labelledby="experiment-title" hidden="">
     <div class="experiment-intro"><div><p class="mono" id="experiment-tag"></p><h2 id="experiment-title"></h2><p id="experiment-description"></p></div><a id="chapter-link" class="chapter-link" href="../books/volume-1/">Read the worked chapter ↗</a></div>
     <div class="experiment-grid">
       <aside class="control-panel" aria-label="Experiment controls">
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
         <div id="parameter-controls"></div>
         <button type="button" class="primary-button" id="reveal">Show prepared result →</button>
         <button type="button" class="text-button" id="reset">Reset to baseline</button>
-        <p class="control-help">Every selectable combination was solved with Pyomo + HiGHS. This prototype retrieves that exact result; it does not run a live solver.</p>
+        <p class="control-help">Every selectable combination was solved with Pyomo + HiGHS. This lab retrieves that exact result; it does not run a live solver.</p>
       </aside>
       <div class="result-panel">
         <div class="result-heading"><p class="step-label">03 · Observe</p><span id="case-status" role="status" aria-live="polite">Baseline shown</span></div>
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 
     <div class="lower-grid">
       <div>
-        <details open=""><summary>Check the solution</summary><div id="checks"></div><p class="control-help">Checks use a 10⁻⁶ tolerance in model units. Solver optimality applies to the stated assumptions.</p></details>
+        <details open=""><summary>Check the solution</summary><div id="checks"></div><p class="control-help">Binding inequalities exclude equalities and variable bounds. Changed variables may reflect alternative optima. Checks use a 10⁻⁶ tolerance in model units. Solver optimality applies to the stated assumptions.</p></details>
         <details><summary>Read the equations</summary><div id="equations"></div></details>
         <details><summary>Data and assumptions</summary><p id="assumptions"></p><div id="result-table" class="table-scroll"></div></details>
       </div>
@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 
   <div class="book-strip"><div><p class="mono">Continue reading</p><h2>Two volumes. One modeling workflow.</h2></div><a href="../books/volume-1/">Volume 1 <span>29 worked problems ↗</span></a><a href="../books/volume-2/">Volume 2 <span>18 process challenges ↗</span></a></div>
-  <footer class="lab-footer">Energy Storage Innovation Laboratory · Chemical Engineering · Chulalongkorn University<br>Prototype companion to the Quarto workbooks. Prepared cases are reproducible from the downloadable Python sources.</footer>
+  <footer class="lab-footer">Energy Storage Innovation Laboratory · Chemical Engineering · Chulalongkorn University<br>Interactive companion to the Quarto workbooks. Prepared cases are reproducible from the downloadable Python sources.</footer>
 </main>
 
 <script id="quarto-html-after-body" type="application/javascript">

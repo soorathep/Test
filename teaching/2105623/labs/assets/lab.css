@@ -15,3 +15,5 @@ body{margin:0;background:var(--paper,#F4F5F3);color:var(--ink,#101418)}
 /* Plotly uses percentage-height inner containers; reserve their real height. */
 #chart{height:370px;width:100%;min-width:0;position:relative}
 .check-row .stress-fail{color:var(--lab-graphite)!important;border-left:3px solid var(--lab-amber);padding-left:8px}
+
+.problem-browser{display:flex;gap:20px;align-items:end;padding:22px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin-bottom:32px}.problem-browser label{display:block;font-size:.8rem;margin-bottom:7px}.problem-browser select{width:100%;min-width:0;padding:10px;font:inherit}.problem-select{flex:1;min-width:0}.problem-actions{display:flex;gap:8px}.problem-actions button{padding:10px;border:1px solid #ccc;background:transparent;cursor:pointer}.problem-actions button:disabled{opacity:.4;cursor:default}@media(max-width:760px){.problem-browser{flex-wrap:wrap}.problem-browser>div{width:100%}.problem-select{flex-basis:100%}.problem-browser select{font-size:.85rem}.problem-actions{justify-content:space-between}}
