@@ -1,0 +1,36 @@
+{
+  "version": "2026-09-29.1",
+  "systems": {
+    "synthetic": {
+      "label": "Teaching binary · synthetic",
+      "kind": "synthetic",
+      "rangeK": [300, 390],
+      "defaultT": 350,
+      "defaultP": 95000,
+      "description": "Invented components A and B with constant vaporization enthalpies. Designed for learning, not fitted to a chemical mixture.",
+      "components": [
+        {"id":"A","name":"Component A","equation":"clausius","Tref":350,"PrefPa":150000,"HvapJmol":30000,"rangeK":[300,390]},
+        {"id":"B","name":"Component B","equation":"clausius","Tref":350,"PrefPa":60000,"HvapJmol":35000,"rangeK":[300,390]}
+      ],
+      "sources": [{"title":"Synthetic teaching definitions in this data record","url":null}]
+    },
+    "benzene-toluene": {
+      "label":"Benzene / toluene · ideal approximation",
+      "kind":"real-properties",
+      "rangeK":[308.52,354.07],
+      "defaultT":350,
+      "defaultP":60000,
+      "description":"NIST pure-component vapor pressures with an ideal-liquid mixture approximation. Changing Margules A is a hypothetical perturbation, not a fitted benzene/toluene model. No experimental mixture validation is claimed.",
+      "components":[
+        {"id":"71-43-2","name":"Benzene","equation":"antoine","A":4.01814,"B":1203.835,"C":-53.226,"pressureUnit":"bar","temperatureUnit":"K","rangeK":[287.70,354.07]},
+        {"id":"108-88-3","name":"Toluene","equation":"antoine","A":4.07827,"B":1343.943,"C":-53.773,"pressureUnit":"bar","temperatureUnit":"K","rangeK":[308.52,384.66]}
+      ],
+      "sources":[
+        {"title":"NIST Chemistry WebBook: benzene Antoine parameters (1945 dataset)","url":"https://webbook.nist.gov/cgi/cbook.cgi?ID=C71432&Mask=4&Type=ANTOINE"},
+        {"title":"NIST Chemistry WebBook: toluene Antoine parameters (1945 dataset)","url":"https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4&Type=ANTOINE"},
+        {"title":"Willingham et al., Vapor Pressures and Boiling Points, J. Res. NBS 35 (1945), 219–244","url":"https://doi.org/10.6028/jres.035.009"}
+      ]
+    }
+  },
+  "interactionModel":{"name":"Two-suffix Margules","parameter":"A = gE/(RT x1 x2), dimensionless","range":[-1,1.8],"temperatureDependence":"Held constant over each calculation; a teaching assumption, not a fit.","referenceState":"Pure liquid at system temperature; ideal vapor; Poynting and saturated-vapor fugacity corrections set to one."}
+}

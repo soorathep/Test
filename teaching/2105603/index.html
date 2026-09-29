@@ -36,6 +36,13 @@ description: Graduate course on advanced chemical engineering thermodynamics —
 
   <p class="lede" style="margin-bottom:30px">{{ c.description }}</p>
 
+  <div class="note" style="margin-bottom:30px">
+    <strong>Interactive Thermodynamics Lab.</strong>
+    Explore binary VLE, bubble and dew points, and TP flash in the browser.
+    Compare ideal and Margules models, inspect the equations, and export your experiment.
+    <a href="{{ site.baseurl }}/teaching/2105603/labs/">Open the lab →</a>
+  </div>
+
   <div class="facts" style="margin-bottom:44px">
     <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }}</div></div>
     <div class="fact"><div class="k">Term</div><div>{{ c.semester }}</div></div>
@@ -171,6 +178,16 @@ description: Graduate course on advanced chemical engineering thermodynamics —
           <span class="rf-desc">Opens in the browser</span>
         </span>
         <span class="rf-get">Open →</span>
+      </a>
+      {% endif %}
+      {% if m.lab %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105603/{{ m.lab }}">
+        <span class="rf-kind">Lab</span>
+        <span class="rf-body">
+          <span class="rf-label">Interactive VLE and flash</span>
+          <span class="rf-desc">Predict, calculate, verify, and export. Runs in your browser.</span>
+        </span>
+        <span class="rf-get">Explore →</span>
       </a>
       {% endif %}
       {% for f in m.files %}
