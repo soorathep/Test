@@ -1,3 +1,4 @@
+import {stringifyStudy} from './study-state.js';
 import * as engine from './case-study.js';
 import {palette as c} from './palette.js';
 const $=id=>document.getElementById(id),fmt=(v,n=4)=>v==null?'—':Number(v).toFixed(n);
@@ -58,7 +59,7 @@ async function fitNow(){
  }catch(e){$('case-error').hidden=false;$('case-error').textContent=e.message;}
  finally{$('fit-button').disabled=false;}
 }
-function download(){if(!lastExport)return;const blob=new Blob([JSON.stringify({...lastExport,reflection:$('case-reflection').value},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`ipa-water-${selected().pressureKPa}kPa-study.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function download(){if(!lastExport)return;const blob=new Blob([stringifyStudy({...lastExport,reflection:$('case-reflection').value},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`ipa-water-${selected().pressureKPa}kPa-study.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 try{
  const response=await fetch('assets/ipa-water.json');if(!response.ok)throw new Error('Could not load the study data.');data=await response.json();
  $('case-app').hidden=false;$('case-loading').hidden=true;

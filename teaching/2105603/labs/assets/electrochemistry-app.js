@@ -1,3 +1,4 @@
+import {stringifyStudy} from './study-state.js';
 import * as e from './electrochemistry.js';
 import {palette as c} from './palette.js';
 const $=k=>document.getElementById('ec-'+k),fmt=v=>v===null?'Outside floating-point range':Number(v).toPrecision(8);
@@ -17,6 +18,6 @@ if(rev===revision){result=r;$('export').disabled=false;$('status').textContent='
 function reset(concentration=false){for(const [k,v] of Object.entries(e.example(concentration)))$(k).value=v;run();}
 for(const el of document.querySelectorAll('#ec-experiment input,#ec-experiment textarea,#ec-experiment select'))el.addEventListener('input',()=>{clear();$('error').hidden=true;});
 $('run').addEventListener('click',run);$('reset').addEventListener('click',()=>reset());$('concentration').addEventListener('click',()=>reset(true));
-$('export').addEventListener('click',()=>{if(!result)return;const url=URL.createObjectURL(new Blob([JSON.stringify({kind:'electrochemistry',...result,reflection:$('reflection').value},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='electrochemistry-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});reset();
+$('export').addEventListener('click',()=>{if(!result)return;const url=URL.createObjectURL(new Blob([stringifyStudy({kind:'electrochemistry',...result,reflection:$('reflection').value},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='electrochemistry-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});reset();
 
 $('restore').addEventListener('change',async()=>{try{const f=$('restore').files[0];if(!f)return;if(f.size>1000000)throw new Error('Study file exceeds 1 MB.');const saved=JSON.parse(await f.text());if(saved.kind!=='electrochemistry'||!saved.input)throw new Error('Choose a electrochemistry study export.');const s=saved.input;if(Object.entries(e.example()).some(([k,v])=>typeof s[k]!==typeof v))throw new Error('Study input fields have missing or incorrect types.');e.calculate(s);for(const k of Object.keys(e.example())){if(k==='equilibrium')$(k).checked=s[k];else $(k).value=s[k];}$('reflection').value=typeof saved.reflection==='string'?saved.reflection:'';await run();}catch(error){$('error').hidden=false;$('error').textContent='Restore failed: '+error.message;}finally{$('restore').value='';}});

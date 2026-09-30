@@ -1,11 +1,14 @@
+import {mountEvidence} from './model-evidence-panel.js';
+import {stringifyStudy} from './study-state.js';
 import * as e from './lle-fit.js';
 import * as s from './stability.js';
 import {palette as c} from './palette.js';
 const $=id=>document.getElementById(id),fmt=(v,n=5)=>v==null?'N/A':v!==0&&Math.abs(v)<1e-4?v.toExponential(2):Number(v).toFixed(n);
+let evidence;
 let data,set,result=null,worker=null;
 const line=(x,y,name,color,dash='solid',mode='lines')=>({x,y,name,mode,line:{color,width:2,dash},marker:{color,size:7},connectgaps:false});
 function stop(){if(worker)worker.terminate();worker=null;}
-function clear(){stop();result=null;$('lf-results').hidden=true;$('lf-placeholder').hidden=false;$('lf-export').disabled=true;$('lf-runs').textContent='Run a fit to compare starts.';$('lf-fit').disabled=!data;$('lf-status').textContent='Inputs changed. Fit again to update the result.';}
+function clear(){evidence?.invalidate();stop();result=null;$('lf-results').hidden=true;$('lf-placeholder').hidden=false;$('lf-export').disabled=true;$('lf-runs').textContent='Run a fit to compare starts.';$('lf-fit').disabled=!data;$('lf-status').textContent='Inputs changed. Fit again to update the result.';}
 function num(id){if($(id).value.trim()==='')throw new Error('Enter all active numerical inputs.');const n=Number($(id).value);if(!Number.isFinite(n))throw new Error('Numerical inputs must be finite.');return n;}
 function settings(){const alpha=num('lf-alpha'),start=[num('lf-tau12'),num('lf-tau21')];s.parameters({model:'nrtl',alpha,tau12:start[0],tau21:start[1]});return{alpha,start,multistart:$('lf-multistart').checked};}
 function readSet(){if($('lf-data').value==='imported')return e.importRows($('lf-input-text').value,{names:[$('lf-name1').value,$('lf-name2').value],source:$('lf-source').value,temperatureUnit:$('lf-input-unit').value,pressureKPa:num('lf-input-pressure')});return $('lf-data').value==='synthetic'?e.synthetic(num('lf-noise'),num('lf-seed')):e.experimental(data,num('lf-temperature'));}
@@ -60,5 +63,7 @@ for(const id of ['lf-name1','lf-name2','lf-source','lf-input-unit','lf-input-pre
 $('lf-noise-range').addEventListener('input',()=>{$('lf-noise').value=$('lf-noise-range').value;inputsChanged();});$('lf-noise').addEventListener('input',()=>{$('lf-noise-range').value=$('lf-noise').value;});
 $('lf-fit').addEventListener('click',run);for(const id of ['lf-chart','lf-phase'])$(id).addEventListener('change',()=>chart().catch(fail));
 $('lf-reset').addEventListener('click',()=>{$('lf-data').value='synthetic';$('lf-noise').value=0;$('lf-noise-range').value=0;$('lf-seed').value=42;$('lf-alpha').value=.3;$('lf-tau12').value=1;$('lf-tau21').value=1;$('lf-multistart').checked=true;inputsChanged();});
-$('lf-export').addEventListener('click',()=>{if(!result)return;const blob=new Blob([JSON.stringify({version:e.LLE_FIT_VERSION,dataset:set,result,reflection:$('lf-reflection').value},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lle-regression-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+$('lf-export').addEventListener('click',()=>{if(!result)return;const blob=new Blob([stringifyStudy({version:e.LLE_FIT_VERSION,dataset:set,result,evidence:evidence?.snapshot(),reflection:$('lf-reflection').value},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lle-regression-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 try{const response=await fetch('./assets/cyclohexane-methanol-lle.json');if(!response.ok)throw new Error('Experimental source data could not be loaded.');data=await response.json();$('lf-temperature').replaceChildren(...data.rows.map(r=>new Option(String(r.T),String(r.T))));$('lf-temperature').value='298.15';inputsChanged();$('lf-status').textContent='Ready. Select Fit & verify to begin.';}catch(err){fail(err);}
+
+evidence=mountEvidence({lab:'lle',getInput:()=>{const dataset=readSet();return{rows:dataset.rows,fitOptions:settings()};}});

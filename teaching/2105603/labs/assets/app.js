@@ -1,3 +1,4 @@
+import {stringifyStudy} from './study-state.js';
 import {VERSION, flash, bubbleT, dewT, diagram, rrValue, azeotropes, gamma, psat} from './thermo.js';
 import {palette} from './palette.js';
 const el = id => document.getElementById(id);
@@ -184,9 +185,25 @@ async function start(){
   for(const id of ['chart-kind','compare'])el(id).addEventListener('change',calculate);
   el('system').addEventListener('change',()=>{writeControls(defaults(el('system').value));calculate();});
   el('reset').addEventListener('click',()=>{writeControls(defaults(el('system').value));el('prediction').value='';calculate();});
-  el('export-json').addEventListener('click',()=>{save('thermodynamics-experiment.json',JSON.stringify(snapshot(),null,2),'application/json');el('export-status').textContent='Exported inputs, results, curves, sources, prediction, and reflection.';});
+  el('export-json').addEventListener('click',()=>{save('thermodynamics-experiment.json',stringifyStudy(snapshot(),null,2),'application/json');el('export-status').textContent='Exported inputs, results, curves, sources, prediction, and reflection.';});
   el('export-csv').addEventListener('click',()=>{if(!chartRows.length){el('export-status').textContent='No curve to export for this state.';return;}const keys=Object.keys(chartRows[0]);save(`thermodynamics-${state.chart}.csv`,[keys.join(','),...chartRows.map(p=>keys.map(k=>p[k]??'').join(','))].join('\n'),'text/csv');el('export-status').textContent='Exported selected-model curve. JSON includes the reference curve and full context.';});
   el('share').addEventListener('click',async()=>{const url=new URL(location.href);url.search='';url.searchParams.set('module','vle');for(const [k,v] of Object.entries(state))url.searchParams.set(k,k==='compare'?(v?'1':'0'):String(v));try{await navigator.clipboard.writeText(url.href);el('export-status').textContent='Link copied. Your prediction and reflection are not included.';}catch{el('export-status').textContent=url.href;}});
   await calculate();
 }
 start().catch(error=>{el('loading').textContent=`Unable to start: ${error.message}`;el('loading').className='error';});
+
+// Restore the fixed-temperature property context before restoring visible controls.
+document.addEventListener('thermo-study-restore-context',({detail})=>{
+ const w=detail.study.workspace;if(w.lab!=='index'||!catalog)return;
+ if(w.controls.system==='fit-transfer'){
+  const T=Number(w.controls.referenceT),kind=w.context?.fitKind==='experimental'?'experimental':'synthetic';
+  if(!(T>0&&T<2000)){detail.error='Invalid transferred fit temperature.';return;}
+  fitTransfer={T,kind};const names=kind==='experimental'?['Cyclohexane','Methanol']:['Hypothetical component 1','Hypothetical component 2'];
+  catalog.systems['fit-transfer']={label:'Restored LLE fit · fixed T',description:`${names.join(' / ')}; fixed-T LLE fit at ${T} K. User-supplied vapor pressures.`,rangeK:[T,T],defaultT:T,defaultP:95000,components:names.map(name=>({name,equation:'fixed',rangeK:[T,T],pressurePa:null})),sources:[{title:'Restored Lab 05 fit; user-supplied vapor pressures',url:null}]};
+  if(![...el('system').options].some(o=>o.value==='fit-transfer'))el('system').append(new Option('Restored LLE fit · fixed T','fit-transfer'));
+  el('fit-note').textContent=catalog.systems['fit-transfer'].description;
+ }else fitTransfer=null;
+ el('fit-controls').hidden=!fitTransfer;el('system').disabled=!!fitTransfer;el('temperatureMode').disabled=!!fitTransfer;el('referenceT').readOnly=!!fitTransfer;for(const id of ['T','T-range'])el(id).disabled=!!fitTransfer;
+});
+
+document.addEventListener('thermo-study-capture-context',({detail})=>{if(fitTransfer)detail.fitKind=fitTransfer.kind;});

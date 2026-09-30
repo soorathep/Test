@@ -1,9 +1,12 @@
+import {mountEvidence} from './model-evidence-panel.js';
+import {stringifyStudy} from './study-state.js';
 import * as e from './vle-input.js';import {palette as c} from './palette.js';
 const $=id=>document.getElementById(id),fmt=v=>v===null||!Number.isFinite(v)?'N/A':Number(v).toPrecision(6);
+let evidence;
 let set=null,diagnostics=null,fit=null,worker=null,raw='',revision=0;
 const table=(headers,rows)=>{const t=document.createElement('table'),h=t.createTHead().insertRow();for(const label of headers){const th=document.createElement('th');th.textContent=label;h.append(th);}const b=t.createTBody();for(const values of rows){const r=b.insertRow();for(const v of values)r.insertCell().textContent=String(v);}return t;};
 function stop(){if(worker)worker.terminate();worker=null;$('vi-fit').disabled=false;}
-function clearFit(){stop();fit=null;$('vi-fit-results').replaceChildren();$('vi-csv').disabled=true;$('vi-fit-status').textContent='Fit settings changed. Fit again to update the result.';}
+function clearFit(){evidence?.invalidate();stop();fit=null;$('vi-fit-results').replaceChildren();$('vi-csv').disabled=true;$('vi-fit-status').textContent='Fit settings changed. Fit again to update the result.';}
 function invalidate(){revision++;clearFit();set=null;diagnostics=null;$('vi-results').hidden=true;$('vi-placeholder').hidden=false;$('vi-table').replaceChildren();$('vi-status').textContent='Inputs changed. Validate again to use these observations.';}
 function error(err){$('vi-error').hidden=false;$('vi-error').textContent=err.message;}
 function save(name,text,type){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([text],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -28,5 +31,7 @@ $('vi-file').addEventListener('change',async()=>{invalidate();const rev=revision
 $('vi-example').addEventListener('click',()=>{invalidate();$('vi-data').value=e.exampleAntoineCSV();$('vi-name1').value='Synthetic A';$('vi-name2').value='Synthetic B';$('vi-source').value='Synthetic teaching data, NRTL tau12=0.8, tau21=1.2, alpha=0.3; Synthetic Antoine definitions reproduce Psat1=150 kPa, Psat2=60 kPa at 350 K; declared range 300–390 K. Not real-compound Antoine constants. Not experimental measurements.';e.exampleAntoine().forEach((c,i)=>{for(const [key,value] of Object.entries(c))$(`vi-c${i+1}-${key}`).value=value;});showAntoine();$('vi-path').value='isothermal';$('vi-Tunit').value='K';$('vi-Punit').value='kPa';$('vi-extension').value='none';$('vi-status').textContent='Synthetic example loaded. Select Validate & inspect data.';});
 $('vi-template').addEventListener('click',()=>save('synthetic-vle-template.csv',e.exampleAntoineCSV(),'text/csv'));
 $('vi-import').addEventListener('click',importData);$('vi-fit').addEventListener('click',runFit);$('vi-extension').addEventListener('change',diagnose);$('vi-chart').addEventListener('change',()=>chart().catch(error));
-$('vi-export').addEventListener('click',()=>{if(!set||!diagnostics)return;save('vle-data-study.json',JSON.stringify({version:e.INPUT_VERSION,rawTable:raw,set,diagnostics,fit,reflection:$('vi-reflection').value},null,2),'application/json');});
+$('vi-export').addEventListener('click',()=>{if(!set||!diagnostics)return;save('vle-data-study.json',stringifyStudy({version:e.INPUT_VERSION,rawTable:raw,set,diagnostics,fit,evidence:evidence?.snapshot(),reflection:$('vi-reflection').value},null,2),'application/json');});
 $('vi-csv').addEventListener('click',()=>{if(!fit)return;save('vle-fit-residuals.csv',['T_K,P_kPa,x1,y1,Pcalc_kPa,ycalc,pressure_error_percent,y_error',...fit.points.map(r=>[r.T,r.PkPa,r.x,r.y,r.Pcalc,r.ycalc,r.pressureResidual,r.yResidual].join(','))].join('\n'),'text/csv');});
+
+evidence=mountEvidence({lab:'vle',getInput:()=>{if(!set)throw new Error('Validate the observations first.');return{set,fitOptions:{model:$('vi-model').value,alpha:$('vi-model').value==='nrtl'?Number($('vi-alpha').value):.3,temperatureDependent:$('vi-model').value==='nrtl'&&$('vi-dependent').checked}};}});

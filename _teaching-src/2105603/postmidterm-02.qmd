@@ -165,10 +165,10 @@ A lower scalar error may accompany biased residuals near an endpoint or a narrow
 
 Compare residuals against composition and temperature. Report parameter bounds and temperature convention.
 
-If a test set is available, keep it independent of fitting. Lab 08 does not provide automated cross-validation or confidence intervals.
+Lab 08 compares three models on one fixed held-out split. Its pairs bootstrap reports conditional fit spread, not a new-measurement prediction interval.
 
 ::: {.notes}
-Separate a proposed student procedure from an implemented feature. In-class comparison can use one shared synthetic dataset; real data require provenance.
+Fix the split before tuning. Repeated tuning turns the holdout into model-selection data. Bootstrap uses full-data pairs with fixed alpha and properties; inspect failure and boundary counts. Exact synthetic data can produce degenerate spread.
 :::
 
 ## Class demonstration · Labs 03 and 08
@@ -177,7 +177,7 @@ Separate a proposed student procedure from an implemented feature. In-class comp
 
 1. Compare a clean dataset with a controlled defect in Lab 03.
 2. Load Lab 08’s synthetic example and inspect its Antoine convention.
-3. Fit two models to identical observations and compare residuals.
+3. Compare held-out errors on a fixed split; inspect conditional bootstrap spread.
 
 Synthetic examples are training data, not experimental validation.
 
@@ -222,6 +222,8 @@ Expected: compensating errors, endpoint coverage, wrong Psat or vapor approximat
 :::
 
 ## Independent practice · suggested 60–90 minutes
+
+[Assessment set 2 and rubric](labs/assessments.html#session-2) · [Offline package](files/thermodynamics-offline.zip)
 
 One dataset, at least two activity models, residuals and a justified validity statement.
 

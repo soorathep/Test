@@ -1,0 +1,2 @@
+import {validateVLE,bootstrapVLE,bootstrapLLE} from './model-evidence.js';
+self.onmessage=({data:d})=>{try{const progress=(done,total)=>self.postMessage({progress:{done,total}});const result=d.action==='validation'?validateVLE(d.set,d.options,progress):d.action==='vle-bootstrap'?bootstrapVLE(d.set,d.fitOptions,d.options,progress):d.action==='lle-bootstrap'?bootstrapLLE(d.rows,d.fitOptions,d.options,progress):(()=>{throw new Error('Unknown evidence action.');})();self.postMessage({result});}catch(e){self.postMessage({error:e.message});}};

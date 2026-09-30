@@ -1,3 +1,4 @@
+import {stringifyStudy} from './study-state.js';
 import * as e from './consistency.js';
 import {palette as c} from './palette.js';
 const $=id=>document.getElementById(id),f=(x,n=3)=>x==null?'undefined':Number(x).toFixed(n);
@@ -63,7 +64,7 @@ function fit(){
 }
 function exportResults(){
  const payload={version:e.CONSISTENCY_VERSION,articleSource:data,settings:{dataset:$('ct-dataset').value,extension:$('ct-extension').value,heatCorrection:$('ct-heat').checked},set,area,differential:local,modeling:model,reflection:$('ct-reflection').value};
- const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='thermodynamic-consistency-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ const url=URL.createObjectURL(new Blob([stringifyStudy(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='thermodynamic-consistency-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 try{const response=await fetch('assets/ipa-water.json');if(!response.ok)throw new Error('Data could not be loaded.');data=await response.json();$('ct-app').hidden=false;$('ct-loading').hidden=true;
  for(const id of ['ct-dataset','ct-scenario','ct-count'])$(id).addEventListener('change',update);
