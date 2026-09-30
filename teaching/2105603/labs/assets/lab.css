@@ -22,3 +22,5 @@
 @media(max-width:760px){.ct-scorecards{grid-template-columns:1fr}#ct-plot{height:340px}}
 #lle-plot{width:100%;height:390px}.metrics .lle-state{font-size:1.25rem;letter-spacing:0;overflow-wrap:anywhere}.lle-lever{display:flex;width:100%;height:16px;border-radius:3px;overflow:hidden;margin:15px 0 8px}.lle-lever:empty{display:none}.lle-lever span{display:block;min-width:0}
 @media(max-width:760px){#lle-plot{height:340px}.metrics .lle-state{font-size:1rem}#lle-checks .check-row{flex-wrap:wrap}}
+
+@media(max-width:480px){#lle-results .metrics{grid-template-columns:1fr 1fr}#lle-results .metrics>div:first-child{grid-column:1/-1}}

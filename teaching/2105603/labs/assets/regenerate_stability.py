@@ -15,12 +15,26 @@ fig,axes=plt.subplots(1,2,figsize=(10,4.5),layout='constrained')
 for key,label,color,style in [('ideal','Ideal reference','teal','-'),('g','Homogeneous liquid','amber','-'),('hull','Equilibrium envelope','graphite','--')]:
  axes[0].plot([v['x'] for v in rows],[v[key] for v in rows],color=skh.C[color],lw=1.5,ls=style,label=label)
 axes[0].plot(r['z'],r['homogeneousG'],'D',ms=5,color=skh.C['amber'],label='Homogeneous feed')
-if r['binodal']:
- b=r['binodal'];axes[0].plot([b['xAlpha'],b['xBeta']],[b['g'],b['g']],'o-',ms=5,lw=1.5,color=skh.C['graphite'],label='Common tangent')
-for key,label,color,style in [('xAlpha','Binodal','amber','-'),('xBeta',None,'amber','-'),('spinodalAlpha','Spinodal','graphite','--'),('spinodalBeta',None,'graphite','--')]:
- axes[1].plot([v[key] for v in m],[v['A'] for v in m],color=skh.C[color],lw=1.5,ls=style,label=label)
-axes[1].plot(r['z'],r['A'],'o',ms=5,color=skh.C['teal'],label='Current feed')
+for i,b in enumerate(r.get('gaps',[r['binodal']] if r['binodal'] else [])):
+ axes[0].plot([b['xAlpha'],b['xBeta']],[b.get('gAlpha',b['g']),b.get('gBeta',b['g'])],'o-',ms=5,lw=1.5,color=skh.C['graphite'],label='Common tangent' if i==0 else None)
+A=r['A']
+if isinstance(A,dict):
+ title=(f"NRTL: τ₁₂={A['tau12']:g}, τ₂₁={A['tau21']:g}, α={A['alpha']:g}" if A.get('model')=='nrtl' else f"Margules: A₁₂={A['A12']:g}, A₂₁={A['A21']:g}")
+else:
+ title=f"Symmetric Margules: A={A:g}"
+if m is not None:
+ for key,label,color,style in [('xAlpha','Binodal','amber','-'),('xBeta',None,'amber','-'),('spinodalAlpha','Spinodal','graphite','--'),('spinodalBeta',None,'graphite','--')]:
+  axes[1].plot([v[key] for v in m],[v['A'] for v in m],color=skh.C[color],lw=1.5,ls=style,label=label)
+ level=A['A12'] if isinstance(A,dict) else A
+ axes[1].plot(r['z'],level,'o',ms=5,color=skh.C['teal'],label='Current feed')
+ axes[1].set(ylabel=f"A₁₂ (A₂₁={A['A21']:g} fixed)" if isinstance(A,dict) else 'Interaction parameter A',ylim=(0,6.1))
+else:
+ t=r['tpd'];axes[1].axhline(0,color=skh.C['graphite'],lw=1.5,ls='--')
+ axes[1].plot([v['x'] for v in t['points']],[v['tpd'] for v in t['points']],color=skh.C['amber'],lw=1.5,label='Feed TPD')
+ if t['minimum'] is not None:axes[1].plot(t['w'],t['minimum'],'o',ms=5,color=skh.C['graphite'],label='Global minimum')
+ else:axes[1].text(.5,.5,'TPD undefined for pure feeds',ha='center',transform=axes[1].transAxes)
+ axes[1].set_ylabel('TPD / RT')
 for ax in axes:ax.set_xlim(0,1);ax.set_xlabel('Mole fraction of component 1');ax.legend(frameon=False,fontsize=8)
-axes[0].set_ylabel('Mixing Gibbs energy / RT');axes[1].set(ylabel='Interaction parameter A',ylim=(0,6.1))
-fig.suptitle(f"Symmetric Margules: A = {r['A']:g}, z₁ = {r['z']:g} | {r['state']} homogeneous feed",fontsize=11)
+axes[0].set_ylabel('Mixing Gibbs energy / RT')
+fig.suptitle(f"{title}, z₁={r['z']:g} | {r['state']} homogeneous feed",fontsize=11)
 fig.savefig(p.with_suffix('.pdf'));fig.savefig(p.with_suffix('.png'),dpi=600)
