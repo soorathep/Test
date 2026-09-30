@@ -1,23 +1,25 @@
-import {VERSION, flash, bubbleT, dewT, diagram, rrValue, azeotropes, gamma} from './thermo.js';
+import {VERSION, flash, bubbleT, dewT, diagram, rrValue, azeotropes, gamma, psat} from './thermo.js';
 import {palette} from './palette.js';
 const el = id => document.getElementById(id);
-let catalog, state, result, curves, chartRows, renderVersion=0;
+let catalog, state, result, curves, chartRows, fitTransfer=null, renderVersion=0;
 const format = (v,n=4) => v===null || !Number.isFinite(v) ? 'Not present' : v.toFixed(n);
 const labels={'liquid':'Liquid only','vapor':'Vapor only','two-phase':'Liquid + vapor','bubble-boundary':'Bubble boundary','dew-boundary':'Dew boundary','indeterminate':'Saturated · β undetermined'};
-const defaults = system => ({system,model:'ideal',T:catalog.systems[system].defaultT,P:catalog.systems[system].defaultP/1000,z:.5,A:1,A12:1.5,A21:0.5,chart:'pxy',compare:true});
+const defaults = system => ({system,model:'ideal',T:catalog.systems[system].defaultT,P:catalog.systems[system].defaultP/1000,z:.5,A:1,A12:1.5,A21:0.5,chart:'pxy',compare:true,tau12:.5,tau21:.5,alpha:.3,temperatureMode:'fixed',referenceT:catalog.systems[system].defaultT});
 function writeControls(s) {
   el('system').value=s.system; el('model').value=s.model; el('chart-kind').value=s.chart; el('compare').checked=s.compare;
   const sys=catalog.systems[s.system];
-  for(const id of ['T','P','z','A','A12','A21']) { el(id).value=s[id]; el(`${id}-range`).value=s[id]; }
+  for(const id of ['T','P','z','A','A12','A21','tau12','tau21','alpha']) { el(id).value=s[id]; el(`${id}-range`).value=s[id]; }
   for (const id of ['T','T-range']) {el(id).min=sys.rangeK[0];el(id).max=sys.rangeK[1];el(id).value=s.T;}
   el('a-control').hidden=s.model!=='margules';el('two-a-control').hidden=s.model!=='margules2';
+  el('nrtl-control').hidden=s.model!=='nrtl';el('temperatureMode').value=s.temperatureMode;el('referenceT').value=s.referenceT;
   el('system-note').textContent=sys.description;
   el('t-domain').textContent=`Valid for both components: ${sys.rangeK[0]}–${sys.rangeK[1]} K.`;
 }
 function readControls() {
   const s={system:el('system').value,model:el('model').value,chart:el('chart-kind').value,compare:el('compare').checked};
-  const active=new Set(['T','P','z',...(s.model==='margules'?['A']:s.model==='margules2'?['A12','A21']:[])]);
-  for(const id of ['T','P','z','A','A12','A21']) {
+  s.temperatureMode=el('temperatureMode').value;s.referenceT=Number(el('referenceT').value);
+  const active=new Set(['T','P','z',...(s.model==='margules'?['A']:s.model==='margules2'?['A12','A21']:s.model==='nrtl'?['tau12','tau21','alpha']:[])]);
+  for(const id of ['T','P','z','A','A12','A21','tau12','tau21','alpha']) {
     if(el(id).value.trim()==='') {
       if(active.has(id)) throw new Error(`${id} is required.`);
       s[id]=defaults(s.system)[id];
@@ -64,17 +66,17 @@ function updateText(sys) {
     check('Liquid model',f.model.name),
     check('Minimum scaled liquid curvature',f.convexity.minScaledCurvature.toFixed(5)+' > 0'),
     check('Activity coefficients at liquid x₁',f.x===null?'No liquid phase':gamma(f.x,f.A).map((g,i)=>`γ${i===0?'₁':'₂'} = ${g.toFixed(4)}`).join(', ')),
-    check('General TPD stability test','Not implemented')
+    check('Global binary tangent support',f.stability.verified?'Verified':'Unresolved'),check('Liquid / vapor tangent minima',f.stability.pure?'Pure-component saturation check':`${f.stability.liquidMinimum.toExponential(2)} / ${f.stability.vaporMinimum.toExponential(2)}`)
   );
-  const hist=f.history.map(h=>['Liquid x₁',h.iteration,h.value.toFixed(10),h.residual.toExponential(3)]).concat(f.rrHistory.map(h=>['Vapor β',h.iteration,h.value.toFixed(10),h.residual.toExponential(3)]));
+  const hist=f.history.map(h=>['Liquid x₁',h.iteration,h.value.toFixed(10),h.residual.toExponential(3),h.gamma.map(v=>v.toFixed(5)).join(', '),h.K.map(v=>v.toFixed(5)).join(', ')]).concat(f.rrHistory.map(h=>['Vapor β',h.iteration,h.value.toFixed(10),h.residual.toExponential(3),'Fixed at converged x','Fixed at converged x']));
   el('iteration-summary').textContent=hist.length?`${f.history.length} composition iterations and ${f.rrHistory.length} Rachford–Rice iterations. Values are dimensionless; composition residual is Pbubble/P − 1.`:'No two-phase iteration is needed at this state. Absent-phase equilibrium residuals are not reported.';
-  el('iterations').replaceChildren(table(['Solve','Iteration','Trial value','Residual'],hist));
-  const temps=[];
+  el('iterations').replaceChildren(table(['Solve','Iteration','Trial value','Residual','γ₁, γ₂','K₁, K₂'],hist));
+  const temps=[],boundaryTrace=f.dew.history.map(h=>['Dew P: liquid x',h.iteration,h.value.toFixed(8),h.residual.toExponential(3)]);f.boundaryCalculations={bubbleP:f.bubble,dewP:f.dew};
   for(const [label,fn] of [['Bubble',bubbleT],['Dew',dewT]]){
-    try {temps.push(`${label}: ${fn(sys,f.P,state.z,f.A).T.toFixed(3)} K`);}
-    catch(e){if(e instanceof RangeError && e.message.startsWith('No root'))temps.push(`${label}: outside the joint correlation range`);else throw e;}
+    try {const q=fn(sys,f.P,state.z,f.A);f.boundaryCalculations[label+'T']=q;temps.push(`${label}: ${q.T.toFixed(3)} K`);boundaryTrace.push(...q.history.map(h=>[label+' T',h.iteration,h.value.toFixed(8),h.residual.toExponential(3)]));}
+    catch(e){if(e.code==='FIXED_T')temps.push(`${label}: disabled in fixed-temperature mode`);else if(e instanceof RangeError && e.message.startsWith('No root'))temps.push(`${label}: outside the joint correlation range`);else throw e;}
   }
-  el('boundary-temperatures').textContent=temps.join(' · ');
+  el('boundary-temperatures').textContent=temps.join(' · ');el('boundary-summary').textContent=`Bubble P is a direct sum of xᵢγᵢPᵢsat = ${f.bubble.P.toFixed(3)} Pa. Dew P solves ycalc − yspecified = 0 on x∈[0,1]. Temperature roots use Pbubble/P − 1 or Pdew/P − 1. All traces are exported.`;el('boundary-trace').replaceChildren(table(['Solve','Iteration','Trial x or T / K','Residual'],boundaryTrace));
 }
 function line(x,y,name,color,dash='solid') {return {x,y,name,type:'scatter',mode:'lines',line:{color,width:2.2,dash},connectgaps:false,hovertemplate:'%{x:.4f}, %{y:.4f}<extra>%{fullData.name}</extra>'};}
 async function plot(sys,version) {
@@ -135,15 +137,17 @@ function enableExports(enabled){for(const id of ['export-json','export-csv','sha
 async function calculate(){
   const version=++renderVersion;enableExports(false);
   try {
-    state=readControls();el('export-status').textContent='';const sys=catalog.systems[state.system];
-    result=flash(sys,state.T,state.P*1000,state.z,state.model==='ideal'?0:state.model==='margules2'?{A12:state.A12,A21:state.A21}:state.A);
-    el('error').hidden=true;el('result-content').hidden=false;
+    state=readControls();if(fitTransfer){const sys=catalog.systems['fit-transfer'];for(const [i,id] of ['fit-p1','fit-p2'].entries()){if(el(id).value.trim()===''||!(Number(el(id).value)>0))throw new Error('Enter both pure-component saturation pressures at the fit temperature before calculating.');sys.components[i].pressurePa=1000*Number(el(id).value);}state.fitP1=Number(el('fit-p1').value);state.fitP2=Number(el('fit-p2').value);state.fitKind=fitTransfer.kind;}el('stability-route').hidden=true;el('export-status').textContent='';const sys=catalog.systems[state.system];
+    result=flash(sys,state.T,state.P*1000,state.z,state.model==='nrtl'?{model:'nrtl',tau12:state.tau12,tau21:state.tau21,alpha:state.alpha,temperatureMode:state.temperatureMode,referenceT:state.referenceT}:state.model==='ideal'?0:state.model==='margules2'?{A12:state.A12,A21:state.A21}:state.A);
+    if(state.chart==='txy'&&(fitTransfer||(state.model==='nrtl'&&state.temperatureMode==='fixed'))){state.chart='pxy';el('chart-kind').value='pxy';el('export-status').textContent='T–x–y is unavailable with fixed-temperature parameters. Showing P–x–y.';}el('error').hidden=true;el('result-content').hidden=false;
     updateText(sys);showSources(sys);await plot(sys,version);
     if(version===renderVersion)enableExports(true);
   }catch(error){
     if(version!==renderVersion)return;
+    if(error.code==='LIQUID_STABILITY'&&state.model!=='nrtl'){el('stability-route').hidden=false;el('route-lle').href='stability.html';el('route-vlle').href='vlle.html';el('route-vlle').hidden=false;el('route-note').textContent='Choose the same Margules parameters in the stability lab. Parameters are not transferred by these links.';}
+    if(error.code==='LIQUID_STABILITY'&&state.model==='nrtl'){el('stability-route').hidden=false;const q=new URLSearchParams({model:'nrtl',tau12:state.tau12,tau21:state.tau21,alpha:state.alpha,z:state.z});el('route-lle').href=`stability.html?${q}#lle-experiment`;const sat=catalog.systems[state.system].components.map(c=>psat(c,state.T)/1000);const supported=sat.every(v=>v>=10&&v<=200);el('route-vlle').hidden=!supported;if(supported){q.set('p1',sat[0]);q.set('p2',sat[1]);q.set('P',state.P);q.set('T',state.T);q.set('source','lab01');el('route-vlle').href=`vlle.html?${q}#vl-experiment`;}el('route-note').textContent=supported?'Lab 06 receives these parameters and saturation pressures at the current T. It treats them as a fixed-temperature model study.':'Lab 06 accepts saturation pressures from 10 to 200 kPa. This state is outside that teaching range; use Lab 04 to inspect liquid stability.';}
     result=null;curves=null;chartRows=[];el('error').textContent=error.message;el('error').hidden=false;el('result-content').hidden=true;
-    for(const id of ['checks','iteration-summary','iterations','boundary-temperatures','curve-table'])el(id).replaceChildren();
+    for(const id of ['checks','iteration-summary','iterations','boundary-temperatures','curve-table','boundary-trace','boundary-summary'])el(id).replaceChildren();
     el('export-status').textContent='Correct the inputs and calculate again before exporting.';
   }
 }
@@ -152,22 +156,31 @@ function snapshot(){return {schema:'skh-thermo-experiment/1',engineVersion:VERSI
 async function start(){
   const response=await fetch('assets/systems.json');if(!response.ok)throw new Error('Property records could not be loaded. Reload the page.');catalog=await response.json();
   for(const [id,sys] of Object.entries(catalog.systems)){const o=document.createElement('option');o.value=id;o.textContent=sys.label;el('system').append(o);}
-  const params=new URLSearchParams(location.search),system=params.get('system')||'synthetic';
+  const params=new URLSearchParams(location.search);let system=params.get('system')||'synthetic';
+  if(params.get('source')==='lab05'||system==='fit-transfer'){
+   const T=Number(params.get('referenceT')),kind=params.get('fitKind')==='experimental'?'experimental':'synthetic';if(!(T>0&&T<2000))throw new Error('Invalid fit temperature.');fitTransfer={T,kind};
+   const names=kind==='experimental'?['Cyclohexane','Methanol']:['Hypothetical component 1','Hypothetical component 2'];
+   catalog.systems['fit-transfer']={label:'Transferred LLE fit · fixed T',description:`${names.join(' / ')}; LLE fit at ${T} K. Vapor pressures must be supplied at this temperature.`,rangeK:[T,T],defaultT:T,defaultP:95000,components:names.map(name=>({name,equation:'fixed',rangeK:[T,T],pressurePa:null})),sources:[{title:'Parameters transferred from Lab 05; user-supplied saturation pressures',url:null}]};
+   const o=new Option('Transferred LLE fit · fixed T','fit-transfer');el('system').append(o);system='fit-transfer';el('fit-controls').hidden=false;el('fit-note').textContent=catalog.systems[system].description;el('system').disabled=true;el('temperatureMode').disabled=true;el('referenceT').readOnly=true;for(const id of ['T','T-range'])el(id).disabled=true;
+   for(const [id,key] of [['fit-p1','fitP1'],['fit-p2','fitP2']])if(params.has(key))el(id).value=params.get(key);
+  }
   if(!catalog.systems[system])throw new Error('The link names an unknown system. Remove the query string to reset.');
   const initial=defaults(system);
-  for(const id of ['T','P','z','A','A12','A21'])if(params.has(id))initial[id]=Number(params.get(id));
-  if(params.has('model')){if(!['ideal','margules','margules2'].includes(params.get('model')))throw new Error('Unknown model in link.');initial.model=params.get('model');}
+  for(const id of ['T','P','z','A','A12','A21','tau12','tau21','alpha'])if(params.has(id))initial[id]=Number(params.get(id));
+  for(const id of ['referenceT'])if(params.has(id))initial[id]=Number(params.get(id));if(params.has('temperatureMode'))initial.temperatureMode=params.get('temperatureMode');if(fitTransfer){initial.temperatureMode='fixed';initial.referenceT=fitTransfer.T;}
+  if(params.has('model')){if(!['ideal','margules','margules2','nrtl'].includes(params.get('model')))throw new Error('Unknown model in link.');initial.model=params.get('model');}
   if(params.has('chart')){if(!['pxy','txy','xy','rr','gamma'].includes(params.get('chart')))throw new Error('Unknown diagram in link.');initial.chart=params.get('chart');}
   if(params.has('compare'))initial.compare=params.get('compare')!=='0';
   writeControls(initial);el('loading').hidden=true;el('app').hidden=false;
   el('run').addEventListener('click',calculate);
-  for(const id of ['T','P','z','A','A12','A21']){
+  for(const id of ['T','P','z','A','A12','A21','tau12','tau21','alpha']){
     el(`${id}-range`).addEventListener('input',()=>{el(id).value=el(`${id}-range`).value;calculate();});
-    el(id).addEventListener('input',()=>{++renderVersion;enableExports(false);el('phase').textContent='Inputs changed';el('result-content').hidden=true;el('export-status').textContent='Inputs changed. Calculate to update results.';for(const target of ['checks','iterations','iteration-summary','boundary-temperatures','curve-table'])el(target).replaceChildren();});
+    el(id).addEventListener('input',()=>{++renderVersion;enableExports(false);el('stability-route').hidden=true;el('phase').textContent='Inputs changed';el('result-content').hidden=true;el('export-status').textContent='Inputs changed. Calculate to update results.';for(const target of ['checks','iterations','iteration-summary','boundary-temperatures','curve-table'])el(target).replaceChildren();});
     el(id).addEventListener('change',()=>{el(`${id}-range`).value=el(id).value;calculate();});
     el(id).addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
   }
-  el('model').addEventListener('change',()=>{el('a-control').hidden=el('model').value!=='margules';el('two-a-control').hidden=el('model').value!=='margules2';calculate();});
+  el('model').addEventListener('change',()=>{el('a-control').hidden=el('model').value!=='margules';el('two-a-control').hidden=el('model').value!=='margules2';el('nrtl-control').hidden=el('model').value!=='nrtl';calculate();});
+  for(const id of ['referenceT','temperatureMode','fit-p1','fit-p2'])el(id).addEventListener('input',()=>{enableExports(false);el('result-content').hidden=true;el('stability-route').hidden=true;for(const target of ['checks','iterations','boundary-trace','boundary-summary','boundary-temperatures'])el(target).replaceChildren();});
   for(const id of ['chart-kind','compare'])el(id).addEventListener('change',calculate);
   el('system').addEventListener('change',()=>{writeControls(defaults(el('system').value));calculate();});
   el('reset').addEventListener('click',()=>{writeControls(defaults(el('system').value));el('prediction').value='';calculate();});

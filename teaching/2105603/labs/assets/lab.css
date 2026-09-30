@@ -32,3 +32,6 @@
 
 #vl-plot{width:100%;height:410px}#vl-details>div{min-width:0}#vl-family-control{padding:18px 0}#vl-family-control label{display:block;font-family:Archivo,sans-serif;font-size:.8rem}#vl-choice{width:100%;accent-color:var(--lab-teal)}#vl-fraction-bar{display:flex;height:16px;margin-top:15px;border-radius:3px;overflow:hidden}#vl-fraction-bar span{display:block;min-width:0}#vl-results .metrics{grid-template-columns:1fr 1fr 1fr}#vl-results .metrics strong{font-size:1.8rem}
 @media(max-width:760px){#vl-plot{height:350px}#vl-results .metrics{grid-template-columns:1fr 1fr}#vl-results .metrics>div:last-child{grid-column:1/-1}#vl-checks .check-row{flex-wrap:wrap}}
+
+#af-plot{height:380px;min-width:0} #af-experiment .controls input[type=number]{max-width:100%;width:100%} #af-results .metrics strong{font-size:clamp(1.1rem,3vw,1.9rem)}
+.thermo-lab .lower-grid>div{min-width:0} #af-results .phase-badge{white-space:normal;display:inline-block} #nrtl-control input[type=number],#fit-controls input[type=number]{max-width:100%}
