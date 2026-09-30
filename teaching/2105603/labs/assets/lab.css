@@ -15,3 +15,6 @@
 .chart-legend{display:flex;flex-wrap:wrap;gap:8px 15px;margin:10px 0 16px;font-family:Archivo,sans-serif;font-size:.66rem;color:var(--palette-graphite)}
 .chart-legend>span{display:flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:25px;border-top:2px solid}.chart-legend .legend-marker{width:8px;height:8px;border:2px solid;transform:rotate(45deg);margin:0 8px}
 @media(max-width:760px){.phase-badge{white-space:normal;max-width:130px}.chart-legend{font-size:.66rem;gap:9px 12px}}
+/* Experimental case study uses the same shell and palette. */
+#case-plot{height:390px;width:100%;margin-top:15px}#synthetic-plot{height:270px;width:100%}#bias{width:100%;accent-color:var(--lab-amber)}#synthetic-summary{font-variant-numeric:tabular-nums}.detail-body a{overflow-wrap:anywhere}
+@media(max-width:760px){#case-plot{height:330px}#synthetic-plot{height:260px}#case-heading{font-size:1.3rem}}

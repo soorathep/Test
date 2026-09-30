@@ -1,0 +1,343 @@
+{
+  "id": "barbieri-2024-ipa-water",
+  "version": "2026-09-30.1",
+  "title": "Vapor-liquid equilibrium data for the binary system isopropanol+water at 60 kPa and 80 kPa",
+  "authors": [
+    "Camilla Barbieri",
+    "Giorgia De Guido",
+    "Stefania Moioli"
+  ],
+  "doi": "10.1016/j.jct.2024.107342",
+  "source": "https://doi.org/10.1016/j.jct.2024.107342",
+  "journal": "The Journal of Chemical Thermodynamics 198 (2024) 107342",
+  "provenance": "Numerical facts transcribed from Tables 4\u20137, page 7 of the user-supplied article; verified against rendered page. Original PDF is not redistributed.",
+  "components": [
+    "2-Propanol",
+    "Water"
+  ],
+  "compositionBasis": "Mole fraction of component 1 (2-propanol)",
+  "datasets": [
+    {
+      "pressureKPa": 60,
+      "table": 4,
+      "rows": [
+        {
+          "PkPa": 60,
+          "T": 342.85,
+          "x": 1.0,
+          "y": 1.0
+        },
+        {
+          "PkPa": 60,
+          "T": 342.0,
+          "x": 0.8986,
+          "y": 0.8922
+        },
+        {
+          "PkPa": 60,
+          "T": 341.14,
+          "x": 0.7865,
+          "y": 0.7613
+        },
+        {
+          "PkPa": 60,
+          "T": 340.94,
+          "x": 0.714,
+          "y": 0.6898
+        },
+        {
+          "PkPa": 60,
+          "T": 340.92,
+          "x": 0.6461,
+          "y": 0.6492
+        },
+        {
+          "PkPa": 60,
+          "T": 341.05,
+          "x": 0.5895,
+          "y": 0.5998
+        },
+        {
+          "PkPa": 60,
+          "T": 341.25,
+          "x": 0.4943,
+          "y": 0.569
+        },
+        {
+          "PkPa": 60,
+          "T": 341.42,
+          "x": 0.4139,
+          "y": 0.5347
+        },
+        {
+          "PkPa": 60,
+          "T": 341.88,
+          "x": 0.3452,
+          "y": 0.525
+        },
+        {
+          "PkPa": 60,
+          "T": 342.02,
+          "x": 0.2951,
+          "y": 0.5056
+        },
+        {
+          "PkPa": 60,
+          "T": 342.92,
+          "x": 0.1401,
+          "y": 0.4769
+        },
+        {
+          "PkPa": 60,
+          "T": 344.12,
+          "x": 0.0902,
+          "y": 0.4638
+        },
+        {
+          "PkPa": 60,
+          "T": 346.57,
+          "x": 0.069,
+          "y": 0.3998
+        },
+        {
+          "PkPa": 60,
+          "T": 348.3,
+          "x": 0.0371,
+          "y": 0.3473
+        },
+        {
+          "PkPa": 60,
+          "T": 350.29,
+          "x": 0.0323,
+          "y": 0.2924
+        },
+        {
+          "PkPa": 60,
+          "T": 352.72,
+          "x": 0.017,
+          "y": 0.2499
+        },
+        {
+          "PkPa": 60,
+          "T": 354.75,
+          "x": 0.0145,
+          "y": 0.1655
+        },
+        {
+          "PkPa": 60,
+          "T": 356.52,
+          "x": 0.011,
+          "y": 0.1327
+        },
+        {
+          "PkPa": 60,
+          "T": 358.68,
+          "x": 0.0063,
+          "y": 0.0418
+        },
+        {
+          "PkPa": 60,
+          "T": 359.01,
+          "x": 0.0,
+          "y": 0.0
+        }
+      ],
+      "averageExpandedUncertainty": {
+        "PkPa": 0.5,
+        "T": 0.073,
+        "x": 0.0215,
+        "y": 0.0278
+      },
+      "coverageFactor": 2,
+      "paperConsistency": {
+        "value": -4.83377669,
+        "tolerancePercent": 10,
+        "result": "Passed",
+        "method": "Redlich\u2013Kister area test as reported; not independently reproduced"
+      }
+    },
+    {
+      "pressureKPa": 80,
+      "table": 5,
+      "rows": [
+        {
+          "PkPa": 80,
+          "T": 349.57,
+          "x": 1.0,
+          "y": 1.0
+        },
+        {
+          "PkPa": 80,
+          "T": 349.45,
+          "x": 0.9848,
+          "y": 0.9787
+        },
+        {
+          "PkPa": 80,
+          "T": 349.26,
+          "x": 0.9709,
+          "y": 0.9578
+        },
+        {
+          "PkPa": 80,
+          "T": 349.01,
+          "x": 0.9504,
+          "y": 0.9286
+        },
+        {
+          "PkPa": 80,
+          "T": 348.44,
+          "x": 0.8929,
+          "y": 0.8607
+        },
+        {
+          "PkPa": 80,
+          "T": 347.83,
+          "x": 0.8069,
+          "y": 0.7683
+        },
+        {
+          "PkPa": 80,
+          "T": 347.61,
+          "x": 0.7055,
+          "y": 0.6948
+        },
+        {
+          "PkPa": 80,
+          "T": 347.6,
+          "x": 0.6757,
+          "y": 0.6784
+        },
+        {
+          "PkPa": 80,
+          "T": 347.62,
+          "x": 0.654,
+          "y": 0.6641
+        },
+        {
+          "PkPa": 80,
+          "T": 347.66,
+          "x": 0.6064,
+          "y": 0.6422
+        },
+        {
+          "PkPa": 80,
+          "T": 347.83,
+          "x": 0.5141,
+          "y": 0.6067
+        },
+        {
+          "PkPa": 80,
+          "T": 348.42,
+          "x": 0.3835,
+          "y": 0.5797
+        },
+        {
+          "PkPa": 80,
+          "T": 348.8,
+          "x": 0.2795,
+          "y": 0.5662
+        },
+        {
+          "PkPa": 80,
+          "T": 349.36,
+          "x": 0.1719,
+          "y": 0.5476
+        },
+        {
+          "PkPa": 80,
+          "T": 350.68,
+          "x": 0.0941,
+          "y": 0.4943
+        },
+        {
+          "PkPa": 80,
+          "T": 353.49,
+          "x": 0.0441,
+          "y": 0.4294
+        },
+        {
+          "PkPa": 80,
+          "T": 356.69,
+          "x": 0.0209,
+          "y": 0.3541
+        },
+        {
+          "PkPa": 80,
+          "T": 359.73,
+          "x": 0.0153,
+          "y": 0.2527
+        },
+        {
+          "PkPa": 80,
+          "T": 362.78,
+          "x": 0.0095,
+          "y": 0.1685
+        },
+        {
+          "PkPa": 80,
+          "T": 366.57,
+          "x": 0.0,
+          "y": 0.0
+        }
+      ],
+      "averageExpandedUncertainty": {
+        "PkPa": 0.5,
+        "T": 0.036,
+        "x": 0.03,
+        "y": 0.0286
+      },
+      "coverageFactor": 2,
+      "paperConsistency": {
+        "value": -0.654151307,
+        "tolerancePercent": 10,
+        "result": "Passed",
+        "method": "Redlich\u2013Kister area test as reported; not independently reproduced"
+      }
+    }
+  ],
+  "nrtl": {
+    "alpha": 0.47,
+    "a12": -1.39470283,
+    "a21": 4.50009825,
+    "b12": 627.160288,
+    "b21": -791.079743,
+    "convention": "tau_ij = a_ij + b_ij/T; G_ij = exp(-alpha*tau_ij)",
+    "unitNote": "b has units K by Eq. (2); Table 7 prints 1/K. Values are retained as printed."
+  },
+  "properties": [
+    {
+      "name": "2-Propanol",
+      "A": 4.861,
+      "B": 1357.427,
+      "C": -75.814,
+      "rangeK": [
+        329.92,
+        362.41
+      ],
+      "source": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Mask=4&Units=SI",
+      "reference": "Biddiscombe, Collerson, et al. (1963), NIST Antoine fit",
+      "accessed": "2026-09-30"
+    },
+    {
+      "name": "Water",
+      "A": 5.0768,
+      "B": 1659.793,
+      "C": -45.854,
+      "rangeK": [
+        334,
+        363
+      ],
+      "source": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=4&Units=SI",
+      "reference": "Bridgeman and Aldrich (1964), NIST Antoine fit",
+      "accessed": "2026-09-30"
+    }
+  ],
+  "propertyConvention": "log10(P/bar) = A - B/(T/K + C); domain intersection 334\u2013362.41 K. No extrapolation.",
+  "assumptions": [
+    "Ideal vapor",
+    "Negligible Poynting correction",
+    "Pure-liquid standard states",
+    "Educational calculation, not a reproduction of Aspen regression or Table 6"
+  ]
+}
