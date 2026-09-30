@@ -1,0 +1,304 @@
+{
+  "version": 1,
+  "timeBlocks": [
+    [
+      "Recall and prediction",
+      10
+    ],
+    [
+      "Concepts and derivation",
+      45
+    ],
+    [
+      "Worked example",
+      30
+    ],
+    [
+      "Break",
+      10
+    ],
+    [
+      "Instructor lab demonstration",
+      25
+    ],
+    [
+      "Guided student exploration",
+      35
+    ],
+    [
+      "Discussion and interpretation",
+      15
+    ],
+    [
+      "Exit question and independent task",
+      10
+    ]
+  ],
+  "sessions": [
+    {
+      "number": 1,
+      "title": "VLE and flash calculations",
+      "module": "vle",
+      "claim": "Bubble/dew boundaries and flash are different questions.",
+      "core": [
+        "index",
+        "virial"
+      ],
+      "extension": [
+        "adiabatic"
+      ],
+      "outcome": "Predict a two-phase state, solve it, then check both component balances.",
+      "deliverable": "One baseline and one changed vapor model; report phase, x, y, vapor fraction and balance residual.",
+      "preparation": "Review chemical potential, fugacity and activity standards in Modules 2–3.",
+      "deck": "postmidterm-01.html"
+    },
+    {
+      "number": 2,
+      "title": "Experimental VLE, consistency and fitting",
+      "module": "vle",
+      "claim": "A small fitting error does not validate the observations.",
+      "core": [
+        "consistency",
+        "vle-input"
+      ],
+      "extension": [
+        "case-study"
+      ],
+      "outcome": "Separate vapor-pressure inputs, consistency evidence and fitted-model error.",
+      "deliverable": "One dataset, at least two activity models, residuals and a justified validity statement.",
+      "preparation": "Bring T, P, x1, y1 data or use the explicitly synthetic example; obtain Antoine equation forms, units and validity ranges.",
+      "deck": "postmidterm-02.html"
+    },
+    {
+      "number": 3,
+      "title": "Liquid stability, LLE and VLLE",
+      "module": "stability",
+      "claim": "Fugacity equality alone does not establish a stable phase split.",
+      "core": [
+        "stability",
+        "lle-fit"
+      ],
+      "extension": [
+        "vlle"
+      ],
+      "outcome": "Use global Gibbs-energy support to assess candidate liquid phases.",
+      "deliverable": "A common-tangent result, one lever-rule check and one limitation of the fitted parameters.",
+      "preparation": "Review gmix, local curvature and the distinction between stationary and globally stable states.",
+      "deck": "postmidterm-03.html"
+    },
+    {
+      "number": 4,
+      "title": "Solid equilibria and adsorption",
+      "module": "stability",
+      "claim": "The relevant equilibrium condition depends on the phases and vessel constraints.",
+      "core": [
+        "solids",
+        "adsorption"
+      ],
+      "extension": [],
+      "outcome": "Distinguish pure-solid SLE, bulk sublimation and surface adsorption.",
+      "deliverable": "Compare a bulk gas–solid result with adsorption; close the appropriate inventory balance and state assumptions.",
+      "preparation": "Review chemical potentials, fusion/sublimation data and absolute versus excess adsorption.",
+      "deck": "postmidterm-04.html"
+    },
+    {
+      "number": 5,
+      "title": "Chemical equilibrium and routes to K",
+      "module": "reaction",
+      "claim": "K is tied to a reaction basis, temperature and standard states.",
+      "core": [
+        "reaction"
+      ],
+      "extension": [],
+      "outcome": "Reconcile independent thermodynamic routes to K and then solve composition.",
+      "deliverable": "Compare constant-property and heat-capacity routes; report ln K, Q and one extent/material-balance check.",
+      "preparation": "Review formation Gibbs energies, reaction enthalpy/entropy and integration of heat capacity.",
+      "deck": "postmidterm-05.html"
+    },
+    {
+      "number": 6,
+      "title": "Electrochemical equilibrium",
+      "module": "reaction",
+      "claim": "The Nernst potential expresses the cell reaction driving force.",
+      "core": [
+        "electrochemistry"
+      ],
+      "extension": [],
+      "outcome": "Connect balanced half-reactions, activities, potential and Gibbs energy.",
+      "deliverable": "Two concentration-cell states, a reversal check and a reaction-scaling check, with consistent reference electrodes.",
+      "preparation": "Review reaction stoichiometry, ΔrG and dimensionless reaction quotients.",
+      "deck": "postmidterm-06.html"
+    }
+  ],
+  "labs": {
+    "index": {
+      "title": "01 · VLE and TP flash",
+      "session": 1,
+      "anchor": "experiment",
+      "predict": "Predict whether a fixed-T mixture is liquid, vapor or two-phase before calculating.",
+      "steps": [
+        "Run the default case and record T, P, z, model and phase.",
+        "Change pressure across the bubble/dew boundaries at the same T and z.",
+        "For a two-phase state, verify z=(1−β)x+βy independently."
+      ],
+      "check": "Report units, both component balances and why a boundary calculation differs from a TP flash.",
+      "limit": "The VLE solver excludes nonconvex liquid states. A temperature sweep needs an applicable temperature model."
+    },
+    "case-study": {
+      "title": "02 · Experimental case study",
+      "session": 2,
+      "anchor": "",
+      "predict": "Predict which parts of a published dataset most strongly constrain the model.",
+      "steps": [
+        "Inspect the original observations and source notes.",
+        "Compare a model fit with the observations and residuals.",
+        "Explain how data coverage limits use beyond the measured interval."
+      ],
+      "check": "Distinguish transcribed evidence, fitted parameters and model predictions.",
+      "limit": "A fit to one dataset is not independent validation."
+    },
+    "consistency": {
+      "title": "03 · Consistency tests",
+      "session": 2,
+      "anchor": "",
+      "predict": "Predict whether a localized defect could pass an area test.",
+      "steps": [
+        "Start with the clean synthetic dataset and record the selected assumptions.",
+        "Add a controlled defect; compare area and local/model-based diagnostics.",
+        "Change an endpoint or temperature assumption and explain the change in verdict."
+      ],
+      "check": "Give evidence from more than one diagnostic and state which assumptions each needs.",
+      "limit": "Herington is empirical; isobaric corrections need suitable excess-enthalpy information."
+    },
+    "stability": {
+      "title": "04 · Stability and LLE",
+      "session": 3,
+      "anchor": "",
+      "predict": "Predict how a nonconvex mixing Gibbs curve changes the phase state.",
+      "steps": [
+        "Inspect a stable liquid and a parameter set that permits liquid splitting.",
+        "Locate coexisting compositions and compare the common tangent with the entire Gibbs curve.",
+        "Change overall composition and check the lever rule without moving the fixed-condition tie-line ends."
+      ],
+      "check": "Distinguish local curvature, metastability and global support.",
+      "limit": "A root with equal chemical potentials is only a candidate until stability is checked."
+    },
+    "lle-fit": {
+      "title": "05 · LLE fitting",
+      "session": 3,
+      "anchor": "lf-experiment",
+      "predict": "Predict whether one tie line uniquely identifies the parameters.",
+      "steps": [
+        "Use the supplied example or paste supported tie-line observations with metadata.",
+        "Fit at fixed temperature and inspect both liquid compositions.",
+        "Compare parameter changes with composition error and the global stability check."
+      ],
+      "check": "Report fit temperature, model convention, parameter bounds and a stability result.",
+      "limit": "A fixed-T fit does not establish a temperature law or reliable extrapolation."
+    },
+    "vlle": {
+      "title": "06 · VLLE",
+      "session": 3,
+      "anchor": "vl-experiment",
+      "predict": "Predict whether T and P fix all three phase amounts in this binary example.",
+      "steps": [
+        "Find a supported vapor–liquid–liquid state.",
+        "Inspect the phase compositions and fugacity equality.",
+        "Vary feasible phase amounts and independently close the feed balance."
+      ],
+      "check": "Separate phase compositions from the feasible family of phase fractions.",
+      "limit": "Three-phase amount degeneracy is physical; it is not necessarily solver failure."
+    },
+    "adiabatic": {
+      "title": "07 · Adiabatic flash",
+      "session": 1,
+      "anchor": "af-experiment",
+      "predict": "Predict whether a pressure change can alter temperature at fixed feed enthalpy.",
+      "steps": [
+        "Record feed enthalpy, pressure and the synthetic caloric definitions.",
+        "Solve the adiabatic flash and compare with a fixed-temperature calculation.",
+        "Check both material and energy residuals."
+      ],
+      "check": "Include an energy balance with units as well as phase equilibrium.",
+      "limit": "Caloric data are synthetic; this is not a general real-mixture enthalpy package."
+    },
+    "vle-input": {
+      "title": "08 · Your experimental VLE",
+      "session": 2,
+      "anchor": "vi-experiment",
+      "predict": "Predict the effect of an incorrect Antoine pressure unit on inferred activities.",
+      "steps": [
+        "Enter sources, component order, units and each exact Antoine form; verify Psat at one measured T.",
+        "Validate the table and inspect coverage before choosing endpoint assumptions.",
+        "Fit at least two supported models to the same data and compare residual patterns."
+      ],
+      "check": "Export the study and residuals; describe a region where the data do not justify a prediction.",
+      "limit": "This import/fitting lab assumes ideal vapor. Lab 09 compares vapor corrections but does not automatically refit this dataset."
+    },
+    "virial": {
+      "title": "09 · Virial vapor correction",
+      "session": 1,
+      "anchor": "vr-experiment",
+      "predict": "Predict how zero Bij should compare with the ideal-vapor calculation.",
+      "steps": [
+        "Start with zero coefficients to establish the ideal-vapor limit.",
+        "Change B12 while keeping the liquid model and standard-state convention fixed.",
+        "Compare phase results and inspect the truncation guard."
+      ],
+      "check": "Report coefficient units and validity range; compare the correction with plausible measurement uncertainty.",
+      "limit": "The guard is a teaching restriction, not a rigorous accuracy bound. PR/SRK and dense-vapor calculations are not implemented here."
+    },
+    "solids": {
+      "title": "10 · SLE and gas–solid equilibrium",
+      "session": 4,
+      "anchor": "so-experiment",
+      "predict": "Predict whether added solid changes equilibrium gas pressure before the solid is exhausted.",
+      "steps": [
+        "Explore pure-solid solubility and the binary eutectic assumptions.",
+        "Use the gas–solid vessel example; vary total inventory through the solid-depletion boundary.",
+        "Check phase amounts and identify whether Gibbs or Helmholtz energy matches the imposed constraints."
+      ],
+      "check": "Name each phase, specify fixed T/P or T/V, and close the inventory balance.",
+      "limit": "Bulk gas–solid equilibrium is distinct from surface adsorption; no solid solution or chemical reaction is included."
+    },
+    "adsorption": {
+      "title": "11 · Adsorption",
+      "session": 4,
+      "anchor": "ad-experiment",
+      "predict": "Predict which isotherms approach a finite monolayer capacity.",
+      "steps": [
+        "Compare Henry, Langmuir, Freundlich and BET over their stated domains.",
+        "Use supported isotherm data or the synthetic example; compare fit residuals.",
+        "Inspect a closed-vessel balance; use isosteric heat only over common measured loading."
+      ],
+      "check": "State uptake basis, units, model domain and the distinction between fit and mechanism.",
+      "limit": "BET needs saturation pressure and a defensible window. Absolute and excess uptake are not interchangeable."
+    },
+    "reaction": {
+      "title": "12 · Chemical equilibrium",
+      "session": 5,
+      "anchor": "rx-experiment",
+      "predict": "Predict which routes to K remain usable when temperature changes.",
+      "steps": [
+        "Reconcile the supplied thermodynamic inputs at the reference temperature.",
+        "Change T; compare constant-property and ΔCp routes and point-data applicability.",
+        "Change pressure at fixed T; compare K, Q and the ideal-gas equilibrium extent."
+      ],
+      "check": "Check the reaction basis, standard states, lnQ−lnK and atom balances.",
+      "limit": "The extent solver admits one neutral ideal-gas reaction. An observed Q is not automatically K."
+    },
+    "electrochemistry": {
+      "title": "13 · Electrochemistry",
+      "session": 6,
+      "anchor": "ec-experiment",
+      "predict": "Predict the sign of the concentration-cell potential before calculating.",
+      "steps": [
+        "Load the concentration cell and record both activities and reduction potentials.",
+        "Exchange the concentrations; then set them equal.",
+        "Double all reaction coefficients and electron counts; compare E, ΔG and ln K."
+      ],
+      "check": "Verify atom/charge balances, E=Eright−Eleft and ΔrG=−nFE.",
+      "limit": "Both E° values need the same reference and temperature. Junction potentials, kinetics and loaded-cell voltage are excluded."
+    }
+  }
+}

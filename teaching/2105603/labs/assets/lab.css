@@ -98,3 +98,15 @@
 #ec-values table { table-layout:fixed; }
 #ec-values th, #ec-values td { white-space:normal; overflow-wrap:anywhere; }
 #ec-values th:first-child { width:58%; }
+
+.learning-guide { margin:22px 0; padding:22px; border:1px solid var(--line); background:var(--paper); }
+.learning-guide p, .learning-guide li { font-size:.9rem; line-height:1.6; }
+.learning-guide ol { padding-left:24px; }
+.learning-guide label { display:block; margin-top:16px; font-weight:600; }
+.learning-guide textarea { width:100%; box-sizing:border-box; font:inherit; }
+.learning-guide button { margin:12px 8px 12px 0; }
+.learning-guide input { max-width:100%; }
+.learning-session { margin:30px 0; padding:24px 0; border-top:1px solid var(--line); }
+.learning-session p, .learning-session li { line-height:1.65; }
+.learning-session ul { padding-left:24px; }
+.learning-path-table th, .learning-path-table td { white-space:normal; text-align:left; }

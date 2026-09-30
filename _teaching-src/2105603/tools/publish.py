@@ -38,6 +38,7 @@ DST = pathlib.Path(__file__).resolve().parents[3] / "teaching" / "2105603"
 # Every deck in the folder, unless the caller names one. Hard-coding a single
 # file meant the second module was rendered, checked, and then not copied.
 DECKS = [
+    *[f"postmidterm-{i:02d}.html" for i in range(1,7)],
     "eos.html",        # Module 1  Evolution of Equations of State
     "fugacity.html",   # Module 2  Fugacity and the Equilibrium Criterion
     "solution.html",   # Module 3  Solution Thermodynamics
@@ -45,7 +46,7 @@ DECKS = [
     "stability.html",  # Module 5  Phase Stability and Complex Equilibria
     "reaction.html",   # Module 6  Chemical Equilibrium
 ]
-MERGE_DIRS = ["site_libs", "figures"]
+MERGE_DIRS = ["site_libs", "figures", "assets"]
 NEVER = {"index.html", "search.json"}   # would clobber the Jekyll course page
 
 

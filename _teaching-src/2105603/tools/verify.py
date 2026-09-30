@@ -95,7 +95,7 @@ else:
 
 # ------------------------------------------------------------------- decks --
 print("\ndecks")
-for m in modules:
+for m in modules + [{"id": f"session-{i}", "slides": f"postmidterm-{i:02d}.html"} for i in range(1, 7)]:
     name = m.get("slides")
     if not name:
         fail(f"module {m['id']} has no `slides:` key")
@@ -117,7 +117,7 @@ for m in modules:
     # Every local asset the deck asks for must be on disk. A renamed figure is
     # the usual cause and it shows as a blank panel, not as an error.
     missing = []
-    for ref in set(re.findall(r'(?:src|href)="((?:figures|site_libs)/[^"?#]+)"', html)):
+    for ref in set(re.findall(r'(?:src|href)="((?:figures|site_libs|assets)/[^"?#]+)"', html)):
         if not (PUB / ref).exists():
             missing.append(ref)
     if missing:
@@ -154,6 +154,11 @@ for m in modules:
             fail(f"module {m['id']} lists files/{f}, which does not exist")
 if not fails:
     ok(f"{len(listed)} download files, all present")
+
+for i in range(1,7):
+    name=f"postmidterm-{i:02d}-slides.pdf"
+    listed.add(name)
+    if not (files_dir/name).is_file(): fail(f"missing session PDF: {name}")
 
 present = {p.name for p in files_dir.iterdir() if p.is_file()} if files_dir.is_dir() else set()
 for extra in sorted(present - listed):

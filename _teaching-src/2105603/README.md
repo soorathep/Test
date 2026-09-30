@@ -13,12 +13,12 @@ One file per module, not per week.
 | `eos.qmd` | 1 · Evolution of Equations of State | 56 | Chanon |
 | `fugacity.qmd` | 2 · Fugacity, Chemical Potential and the Equilibrium Criterion | 22 | Chanon |
 | `solution.qmd` | 3 · Solution Thermodynamics | 25 | Chanon |
-| `vle.qmd` | 4 · Vapour-Liquid Equilibrium of Mixtures | 41 + 5 appendix | Soorathep |
-| `stability.qmd` | 5 · Phase Stability and Complex Equilibria | 24 | Soorathep |
-| `reaction.qmd` | 6 · Chemical Equilibrium | 29 | Soorathep |
+| `vle.qmd` | 4 · Vapour-Liquid Equilibrium of Mixtures | 81 + 5 appendix | Soorathep |
+| `stability.qmd` | 5 · Phase Stability and Complex Equilibria | 25 | Soorathep |
+| `reaction.qmd` | 6 · Chemical Equilibrium | 30 | Soorathep |
 
 The five appendix slides in `vle.qmd` carry `visibility="uncounted"`: they are
-reachable but do not advance the slide counter, so the deck reads as 41 slides
+reachable but do not advance the slide counter, so the deck reads as 81 slides
 and the extra material is there if a question needs it.
 
 ---
@@ -34,16 +34,16 @@ quarto preview vle.qmd
 
 # publish to the website
 quarto render --profile public --output-dir _site   # all six decks
-python3 tools/vendor-katex.py _site
-python3 tools/publish.py                 # copies _site into ../../teaching/2105603/
+~/.venvs/research/bin/python tools/vendor-katex.py _site
+~/.venvs/research/bin/python tools/publish.py                 # copies _site into ../../teaching/2105603/
 ```
 
 To rebuild one module only, name it in both commands:
 
 ```bash
 quarto render vle.qmd --profile public --output-dir _site
-python3 tools/vendor-katex.py _site
-python3 tools/publish.py vle.html
+~/.venvs/research/bin/python tools/vendor-katex.py _site
+~/.venvs/research/bin/python tools/publish.py vle.html
 ```
 
 Three steps, and all three matter.
@@ -73,7 +73,7 @@ loaded unstyled with no error at all. Same argument for `figures/`.
 Verify before committing — from the repository root:
 
 ```bash
-python3 _teaching-src/2105603/tools/verify.py
+~/.venvs/research/bin/python _teaching-src/2105603/tools/verify.py
 ```
 
 That checks all six decks for leftover speaker notes and CDN links, confirms the
@@ -139,7 +139,7 @@ blocks at a natural `=` or `+`. Four slides in Modules 2 and 3 needed this.
 the rendered deck headless and measures every element against the slide box:
 
 ```bash
-python3 tools/check-overflow.py _site/vle.html
+~/.venvs/research/bin/python tools/check-overflow.py _site/vle.html
 ```
 
 Three things in that script are not obvious and are commented in place: hidden
@@ -179,7 +179,7 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
 
 - Fonts are bundled as base64 in `theme/_fonts-embedded.scss` — Source Serif 4
   and Source Sans 3 for Latin, Sarabun and Noto Serif Thai for Thai. Nothing is
-  fetched from Google. Re-run `python3 build_fonts.py` from inside `theme/` only
+  fetched from Google. Re-run `~/.venvs/research/bin/python build_fonts.py` from inside `theme/` only
   if you change a font file.
 - Equations are live LaTeX rendered by KaTeX, not images. They stay sharp at any
   zoom, they can be copied, and a screen reader can read them.
@@ -188,3 +188,34 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
 - `_data/act2026.yml` deliberately carries no weekly schedule and no assessment
   table. Both stay off the public page until they come from the registered
   syllabus rather than from a draft.
+
+
+## After-midterm teaching sequence (18 hours)
+
+The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` are the classroom
+route through Modules 4–6, including solid/surface and electrochemical topics.
+Each session has a 180-minute plan with a 10-minute break, 25-minute lab
+ demonstration and 35-minute guided exercise. `labs/learning-path.html` holds
+the student tasks; the module decks remain extended references. No registered
+assessment weights or calendar dates are changed.
+
+Render the six session decks and the three updated reference decks using the
+existing public-profile, vendored-KaTeX and publish workflow. Use the research
+interpreter by absolute path, `~/.venvs/research/bin/python`, for every tool.
+Public PDF copies are `files/postmidterm-01-slides.pdf` through
+`files/postmidterm-06-slides.pdf`. Private teaching notes remain in the QMD
+sources and are stripped from published HTML and PDFs.
+
+
+Session validation/export helpers use Node.js and Playwright (the bundled runtime
+path is documented in each script):
+
+```sh
+node tools/check-postmidterm.mjs
+node tools/export-postmidterm-pdf.mjs
+```
+
+The PDF exporter rewrites local preview links to the public website. The session
+CSS embeds a DejaVu symbol fallback so scientific Unicode remains portable;
+regenerate it with `~/.venvs/research/bin/python tools/build-postmidterm-fonts.py`.
+The font license travels with the CSS in `assets/`.
