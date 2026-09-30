@@ -73,3 +73,12 @@
 #ad-heat-table table {width:100%;table-layout:fixed;}
 #ad-heat-table th {white-space:normal;overflow-wrap:anywhere;}
 #ad-heat-table td {font-size:.7rem;white-space:nowrap;padding-left:4px;padding-right:4px;}
+
+#rx-experiment input:not([type="checkbox"]),#rx-experiment select,#rx-experiment textarea {width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:3px;background:white;color:var(--ink);padding:9px 10px;font-size:.78rem;}
+#rx-experiment .controls label {margin-top:12px;} #rx-experiment .controls {min-width:0;}
+#rx-reactionText,#rx-activityText {font-family:'IBM Plex Mono',monospace;font-size:.7rem;}
+#rx-plot,#rx-gplot {width:100%;height:500px;}
+#rx-experiment .table-scroll {max-height:none;}
+#rx-methods table {min-width:700px;} #rx-extent table {min-width:560px;} #rx-formation table {min-width:450px;}
+#rx-q td:last-child {white-space:nowrap;} #rx-q td:first-child {white-space:normal;width:55%;}
+#rx-title,#rx-source-note {overflow-wrap:anywhere;}
