@@ -68,10 +68,10 @@ export function derivative(a,b,c,key){
 }
 export function differential(set,correctHeat=true){
  const rows=set.valid.map(r=>({...r,g:r.x*r.ln[0]+(1-r.x)*r.ln[1]}));
- const assessed=set.path==='isothermal'||(set.synthetic&&correctHeat);
+ const assessed=set.path==='isothermal'||((set.synthetic||set.heatKnown)&&correctHeat);
  const points=rows.slice(1,-1).map((r,i)=>{
   const a=rows[i],c=rows[i+2],slope=derivative(a,r,c,'g'),dTdx=derivative(a,r,c,'T');
-  const heat=(set.path==='isobaric'&&set.synthetic&&correctHeat)?r.HE/(R*r.T*r.T)*dTdx:0;
+  const heat=(set.path==='isobaric'&&(set.synthetic||set.heatKnown)&&correctHeat)?r.HE/(R*r.T*r.T)*dTdx:0;
   return {x:r.x,raw:slope-r.f,residual:slope-r.f+heat,heat,dTdx};
  });
  const score=100*mean(points.map(r=>Math.abs(r.residual)));
@@ -79,7 +79,7 @@ export function differential(set,correctHeat=true){
   criterion:'100 × mean |d(gE/RT)/dx − ln(γ1/γ2) + H^E/(RT²) dT/dx| < 5 (teaching threshold)',
   reason:assessed?'Local finite differences, not the NIST Padé-based Kojima point-test implementation. Derivatives amplify noise and depend on spacing.':'Isobaric heat correction unavailable or disabled; the raw residual is not a consistency verdict.'};
 }
-function nelder(fn,start,bounds){
+export function nelder(fn,start,bounds){
  const clamp=v=>v.map((x,i)=>Math.max(bounds[i][0],Math.min(bounds[i][1],x))),make=v=>{v=clamp(v);return{v,f:fn(v)};},n=start.length;
  let s=[make(start),...start.map((_,i)=>make(start.map((v,j)=>v+(i===j?.3:0))))];
  for(let iter=0;iter<1600;iter++){
