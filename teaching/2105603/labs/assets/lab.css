@@ -38,3 +38,15 @@
 
 #vi-plot{width:100%;height:420px}#vi-experiment .controls input[type=text],#vi-experiment .controls input[type=file],#vi-experiment textarea{width:100%;max-width:100%;box-sizing:border-box}#vi-experiment .controls label{margin-top:15px}#vi-experiment button{margin:8px 0}#vi-experiment select{max-width:100%}#vi-diagnostics,#vi-fit-results{overflow-x:auto}#vi-diagnostics td,#vi-fit-results td{white-space:normal;overflow-wrap:anywhere}#vi-dependent{margin:12px 5px 12px 0}#vi-nrtl label{display:block}#vi-results{min-width:0}#vi-data{font-family:'IBM Plex Mono',monospace;font-size:.75rem}#vi-fit-results table,#vi-diagnostics table{table-layout:fixed;width:100%}
 .vi-antoine{min-width:0;border:1px solid var(--line);margin:18px 0;padding:12px}.vi-antoine legend{font-family:Archivo,sans-serif;font-size:.8rem}.vi-antoine input[type=number]{width:100%;box-sizing:border-box}
+
+/* Student-supplied second-virial comparison. */
+#vr-experiment input:not([type="checkbox"]), #vr-experiment select, #vr-experiment textarea {width:100%;min-width:0;box-sizing:border-box;}
+#vr-experiment .controls {min-width:0;}
+#vr-experiment fieldset {min-width:0;margin:1rem 0;padding:.7rem;}
+#vr-experiment .results {min-width:0;}
+#vr-plot {width:100%;height:430px;}
+#vr-experiment th,#vr-experiment td {overflow-wrap:anywhere;}
+#vr-experiment [hidden] {display:none!important;}
+#vr-experiment .controls input:not([type="checkbox"]),#vr-experiment textarea {border:1px solid var(--line);border-radius:3px;background:white;color:var(--ink);padding:9px 10px;font-size:.78rem;}
+#vr-experiment .controls label {margin-top:12px;}
+#vr-checks.table-scroll,#vr-comparison.table-scroll {max-height:none;}
