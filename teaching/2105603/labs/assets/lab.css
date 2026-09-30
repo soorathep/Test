@@ -24,3 +24,8 @@
 @media(max-width:760px){#lle-plot{height:340px}.metrics .lle-state{font-size:1rem}#lle-checks .check-row{flex-wrap:wrap}}
 
 @media(max-width:480px){#lle-results .metrics{grid-template-columns:1fr 1fr}#lle-results .metrics>div:first-child{grid-column:1/-1}}
+
+#lf-plot{height:410px;width:100%}#lf-checks{margin-bottom:25px}.lf-checkbox{display:flex!important;gap:8px;align-items:center;margin-top:20px}.lf-checkbox input{accent-color:var(--lab-teal)}#lf-stability-link{display:inline-block;text-decoration:none}#lf-runs th,#lf-runs td{white-space:nowrap}#lf-results .metrics strong{font-size:1.8rem}#lf-results .metrics{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:760px){#lf-plot{height:350px}#lf-results .metrics{grid-template-columns:1fr 1fr}#lf-results .metrics>div:last-child{grid-column:1/-1}#lf-checks .check-row{flex-wrap:wrap}}
+
+#lf-details>div{min-width:0}

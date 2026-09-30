@@ -51,4 +51,10 @@ $('lle-run').addEventListener('click',run);$('lle-chart').addEventListener('chan
 $('lle-reset').addEventListener('click',()=>{$('lle-model').value='symmetric';$('lle-A').value=3;$('lle-z').value=.35;$('lle-preset').value='';run();});
 $('lle-preset').addEventListener('change',()=>{const v={stable:[3,.02],meta:[3,.12],unstable:[3,.5],critical:[2,.5],ideal:[0,.5]}[$('lle-preset').value];if(v){$('lle-model').value='symmetric';$('lle-A').value=v[0];$('lle-z').value=v[1];run();}});
 $('lle-export').addEventListener('click',()=>{if(!result)return;const data={version:e.STABILITY_VERSION,result,curve,phaseMap:map,prediction:$('lle-prediction').value,reflection:$('lle-reflection').value},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='liquid-stability-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+// Lab 05 passes dimensionless NRTL parameters at its selected fixed temperature.
+const query=new URLSearchParams(location.search);
+if(query.get('model')==='nrtl'){
+ $('lle-model').value='nrtl';
+ for(const key of ['tau12','tau21','alpha','z'])if(query.has(key))$(`lle-${key}`).value=query.get(key);
+}
 run();

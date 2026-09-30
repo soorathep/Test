@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "name": "Cyclohexane (1) + methanol (2)",
+  "components": [
+    "cyclohexane",
+    "methanol"
+  ],
+  "kind": "experimental",
+  "pressureKPa": 100,
+  "pressureNote": "ThermoML constraint: 100 kPa, 1 significant digit; article describes atmospheric pressure.",
+  "source": {
+    "doi": "10.1021/je8001688",
+    "citation": "Atik and Kerboub, J. Chem. Eng. Data 2008, 53, 1669\u20131671.",
+    "url": "https://trc.nist.gov/ThermoML/10.1021/je8001688.html",
+    "jsonURL": "https://trc.nist.gov/ThermoML/10.1021/je8001688.json",
+    "license": "https://www.nist.gov/open/license",
+    "sha256": "b8062d3ce147db5cab7799abbd7690c7c353a466a69f1e827f6eeaa908501abc",
+    "datasets": [
+      6,
+      7
+    ],
+    "retrieved": "2026-09-30"
+  },
+  "convention": "x is cyclohexane mole fraction. Alpha is cyclohexane-poor (ThermoML liquid mixture 2); beta is cyclohexane-rich (liquid mixture 1). Rows paired by identical T, no interpolation.",
+  "uncertainty": "Expanded mole-fraction uncertainties at 95% confidence, evaluated by the ThermoML data-file compiler; displayed for context, not used as regression weights.",
+  "rows": [
+    {
+      "T": 278.15,
+      "xAlpha": 0.104,
+      "xBeta": 0.942,
+      "expandedUncertaintyAlpha": 0.008,
+      "expandedUncertaintyBeta": 0.007
+    },
+    {
+      "T": 283.15,
+      "xAlpha": 0.125,
+      "xBeta": 0.939,
+      "expandedUncertaintyAlpha": 0.009,
+      "expandedUncertaintyBeta": 0.007
+    },
+    {
+      "T": 288.15,
+      "xAlpha": 0.135,
+      "xBeta": 0.922,
+      "expandedUncertaintyAlpha": 0.01,
+      "expandedUncertaintyBeta": 0.007
+    },
+    {
+      "T": 293.15,
+      "xAlpha": 0.158,
+      "xBeta": 0.892,
+      "expandedUncertaintyAlpha": 0.011,
+      "expandedUncertaintyBeta": 0.009
+    },
+    {
+      "T": 298.15,
+      "xAlpha": 0.177,
+      "xBeta": 0.876,
+      "expandedUncertaintyAlpha": 0.012,
+      "expandedUncertaintyBeta": 0.009
+    },
+    {
+      "T": 303.15,
+      "xAlpha": 0.19,
+      "xBeta": 0.841,
+      "expandedUncertaintyAlpha": 0.012,
+      "expandedUncertaintyBeta": 0.011
+    },
+    {
+      "T": 308.15,
+      "xAlpha": 0.218,
+      "xBeta": 0.812,
+      "expandedUncertaintyAlpha": 0.014,
+      "expandedUncertaintyBeta": 0.012
+    },
+    {
+      "T": 313.15,
+      "xAlpha": 0.261,
+      "xBeta": 0.758,
+      "expandedUncertaintyAlpha": 0.016,
+      "expandedUncertaintyBeta": 0.015
+    },
+    {
+      "T": 316.15,
+      "xAlpha": 0.301,
+      "xBeta": 0.702,
+      "expandedUncertaintyAlpha": 0.019,
+      "expandedUncertaintyBeta": 0.019
+    }
+  ]
+}
