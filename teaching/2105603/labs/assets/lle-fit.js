@@ -1,6 +1,6 @@
 /** Isothermal binary LLE regression: fit chemical-potential equality, then verify stability. */
 import * as s from './stability.js';
-export const LLE_FIT_VERSION='1.0.0';
+export const LLE_FIT_VERSION='1.1.0';
 export const TRUTH=Object.freeze({model:'nrtl',tau12:3,tau21:2,alpha:.3});
 const mean=a=>a.reduce((v,x)=>v+x,0)/a.length;
 export function validateRows(rows){
@@ -53,4 +53,16 @@ export function fit(rows,{alpha=.3,start=[1,1],multistart=true,maxIterations=500
  for(const r of runs){const d=diagnose(rows,r.parameters);r.diagnostic={resolved:d.resolved,compositionRMSE:d.compositionRMSE,gaps:d.gaps.length,message:d.message};}
  const diagnostics=diagnose(rows,best.parameters);
  return {version:LLE_FIT_VERSION,T:rows[0].T,parameters:best.parameters,objective:best.objective,chemicalPotentialRMSE:Math.sqrt(best.objective),converged:best.converged,atBound:best.atBound,iterations:best.iterations,runs,diagnostics,sensitivity:sensitivity(rows,best.parameters),initial:{parameters:{model:'nrtl',alpha,tau12:start[0],tau21:start[1]},objective:objective(rows,{model:'nrtl',alpha,tau12:start[0],tau21:start[1]})},method:'Bounded Nelder–Mead; tau in [-2,6], fixed alpha. Unweighted mean squared dimensionless chemical-potential differences across the observed liquids. Lowest objective among converged starts is selected, before stability verification. A small simplex is numerical convergence, not a global parameter optimum or a physical-equilibrium guarantee.'};
+}
+
+/** Explicit single-temperature student input; replicates are retained without averaging. */
+export function importRows(text,{names,source,temperatureUnit='K',pressureKPa}={}){
+ if(typeof text!=='string'||text.length>100000)throw new Error('Paste at most 100 kB of data.');
+ if(!Array.isArray(names)||names.length!==2||names.some(v=>typeof v!=='string'||!v.trim())||typeof source!=='string'||!source.trim())throw new Error('Name both components and provide the data source.');
+ if(!['K','C'].includes(temperatureUnit)||!Number.isFinite(pressureKPa)||pressureKPa<=0)throw new Error('Specify temperature units and positive pressure / kPa.');
+ const lines=text.trim().split(/\r?\n/).filter(v=>v.trim()),sep=lines[0]?.includes('\t')?'\t':',';
+ if(lines[0]?.split(sep).map(v=>v.trim()).join(',')!=='T,xAlpha,xBeta')throw new Error('Required header: T,xAlpha,xBeta (CSV or TSV; mole fractions of component 1).');
+ if(lines.length<2||lines.length>501)throw new Error('Supply 1–500 coexistence pairs.');
+ const rows=lines.slice(1).map((line,i)=>{const a=line.split(sep).map(v=>v.trim());if(a.length!==3||a.some(v=>v===''||!Number.isFinite(Number(v))))throw new Error(`Invalid row ${i+2}: three finite numbers required.`);const [t,xAlpha,xBeta]=a.map(Number);return{T:t+(temperatureUnit==='C'?273.15:0),xAlpha,xBeta};});
+ validateRows(rows);return{name:names.join(' + '),names:names.map(v=>v.trim()),source:source.trim(),kind:'imported',rows,pressureKPa,originalText:text,temperatureUnit,uncertainty:'User-supplied compositions. No uncertainties assumed. All replicates retained; unweighted fit. One temperature and pressure per dataset.'};
 }

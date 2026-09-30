@@ -50,3 +50,26 @@
 #vr-experiment .controls input:not([type="checkbox"]),#vr-experiment textarea {border:1px solid var(--line);border-radius:3px;background:white;color:var(--ink);padding:9px 10px;font-size:.78rem;}
 #vr-experiment .controls label {margin-top:12px;}
 #vr-checks.table-scroll,#vr-comparison.table-scroll {max-height:none;}
+
+#so-experiment input,#so-experiment select,#so-experiment textarea,#lf-imported input,#lf-imported textarea,#lf-imported select {width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:3px;background:white;color:var(--ink);padding:9px 10px;font-size:.78rem;}
+#so-experiment .controls label,#lf-imported label {margin-top:12px;}
+#so-plot {width:100%;height:480px;} #so-table.table-scroll {max-height:none;}
+#so-table td,#so-family td {white-space:normal;overflow-wrap:anywhere;}
+#so-experiment .controls,#so-experiment .results {min-width:0;}
+#so-table td:last-child {white-space:nowrap;overflow-wrap:normal;}
+#so-table td:first-child {width:58%;}
+
+#ad-experiment input,#ad-experiment select,#ad-data input,#ad-data select,#ad-data textarea {width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:3px;background:white;color:var(--ink);padding:9px 10px;font-size:.78rem;}
+#ad-experiment label,#ad-data label {margin-top:12px;}
+#ad-experiment .controls,#ad-data .controls {min-width:0;}
+#ad-csv {font-family:'IBM Plex Mono',monospace;font-size:.7rem;}
+#ad-plot,#ad-fit-plot,#ad-heat-plot {width:100%;height:470px;}
+#ad-vessel.table-scroll,#ad-fit-table.table-scroll,#ad-heat-table.table-scroll {max-height:none;}
+#ad-fit-table table {table-layout:fixed;width:100%;} #ad-fit-table td,#ad-fit-table th {white-space:normal;overflow-wrap:anywhere;}
+#ad-vessel td:last-child {white-space:nowrap;} #ad-vessel td:first-child {width:58%;white-space:normal;}
+.section-heading {margin:38px 0 20px;} #ad-fit-notes p {margin:8px 0;}
+
+#ad-fit-table td:last-child {white-space:nowrap;overflow-wrap:normal;}
+#ad-heat-table table {width:100%;table-layout:fixed;}
+#ad-heat-table th {white-space:normal;overflow-wrap:anywhere;}
+#ad-heat-table td {font-size:.7rem;white-space:nowrap;padding-left:4px;padding-right:4px;}
