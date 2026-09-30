@@ -82,3 +82,19 @@
 #rx-methods table {min-width:700px;} #rx-extent table {min-width:560px;} #rx-formation table {min-width:450px;}
 #rx-q td:last-child {white-space:nowrap;} #rx-q td:first-child {white-space:normal;width:55%;}
 #rx-title,#rx-source-note {overflow-wrap:anywhere;}
+
+/* Lab 13: keep long chemical input and output tables inside their panels. */
+#ec-experiment > *, #ec-results { min-width: 0; }
+#ec-experiment textarea { width: 100%; box-sizing: border-box; font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#ec-experiment input, #ec-experiment select { max-width: 100%; box-sizing: border-box; }
+#ec-plot { height: 470px; width: 100%; }
+#ec-error { color: var(--palette-rust); overflow-wrap: anywhere; }
+#ec-reaction, #ec-note { overflow-wrap: anywhere; }
+
+#ec-experiment .controls input, #ec-experiment .controls textarea { width:100%; border:1px solid var(--line); border-radius:3px; background:white; color:var(--ink); padding:9px 10px; font-size:.78rem; }
+#ec-experiment .controls label { margin-top:14px; }
+#ec-experiment button { width:100%; margin-top:12px; }
+#ec-values { max-height:none; }
+#ec-values table { table-layout:fixed; }
+#ec-values th, #ec-values td { white-space:normal; overflow-wrap:anywhere; }
+#ec-values th:first-child { width:58%; }
