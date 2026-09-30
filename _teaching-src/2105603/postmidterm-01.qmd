@@ -26,75 +26,24 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## Session outcome
+## The question for today
 
-Predict a two-phase state, solve it, then check both component balances.
+How does pressure change the phase split at fixed temperature?
 
-**Before class:** Review chemical potential, fugacity and activity standards in Modules 2–3.
-
-[Learning path and all labs](labs/learning-path.html#session-1)
-
-::: {.notes}
-This sequence uses the existing pre-midterm Modules 1–3 as prerequisites. Use questions to identify missing concepts rather than repeating the full reference decks.
-:::
+Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
 
 ## The 180-minute class
 
-| In class | Minutes |
+| Activity | Minutes |
 |---|---:|
-| Recall and prediction | 10 |
-| Concepts and derivation | 45 |
-| Worked example | 30 |
+| Opening question and essential concepts | 30 |
+| One hand calculation | 20 |
+| One lab demonstration | 20 |
 | Break | 10 |
-| Instructor lab demonstration | 25 |
-| Guided student exploration | 35 |
-| Discussion and interpretation | 15 |
-| Exit question and independent task | 10 |
+| Student pair investigation | 70 |
+| Discussion and exit question | 30 |
 
-::: {.notes}
-Includes a 10-minute break. The 60 minutes of demonstration and guided work are part of the 180 minutes. If discussion runs long, move the optional extension to independent practice; do not remove the balance/interpretation check.
-:::
-
-## The equilibrium problem
-
-At fixed temperature and pressure, a stable equilibrium minimizes total Gibbs energy subject to material conservation.
-
-$$\mu_i^L=\mu_i^V\quad\Longleftrightarrow\quad \hat f_i^L=\hat f_i^V$$
-
-A calculation also needs a phase model, composition constraints and a stability check.
-
-::: {.notes}
-Recall Modules 2–3 rather than reteaching EOS history. Ask which equality a mass balance cannot establish.
-:::
-
-## Liquid and vapor descriptions
-
-$$y_i\hat\phi_i P=x_i\gamma_i P_i^{sat}\phi_i^{sat}\Pi_i$$
-
-- Ideal vapor, ideal liquid: all correction factors are one.
-- Modified Raoult: retain liquid activity coefficients.
-- Gamma–phi: also retain vapor and reference-state corrections.
-
-Lab 01 uses ideal vapor. Lab 09 adds second-virial vapor corrections.
-
-::: {.notes}
-Explain pure-liquid standard state and saturation reference. Phi–phi with PR/SRK remains reference-deck theory; it is not a supported lab option.
-:::
-
-## Four boundary calculations
-
-| Specified | Unknown boundary | Composition supplied |
-|---|---|---|
-| T | Bubble P | Liquid x |
-| T | Dew P | Vapor y |
-| P | Bubble T | Liquid x |
-| P | Dew T | Vapor y |
-
-A dew calculation generally needs an inner liquid-composition iteration because γ depends on x.
-
-::: {.notes}
-Have students identify degrees of freedom before choosing a calculator panel.
-:::
+The 70-minute investigation is student work with instructor support.
 
 ## Ideal-mixture boundary equations
 
@@ -103,20 +52,12 @@ $$\frac{1}{P_{dew}}=\sum_i\frac{y_i}{P_i^{sat}}$$
 
 Both equations are for fixed T, ideal liquid and ideal vapor. Using the same numerical composition in each equation describes different incipient-phase states.
 
-::: {.notes}
-Derive by substituting y_i=x_i Psat_i/P and applying normalization. Do not carry these closed forms unchanged into composition-dependent gamma.
-:::
-
 ## TP flash includes a material balance
 
 $$z_i=(1-\beta)x_i+\beta y_i,\qquad y_i=K_i x_i$$
 $$\sum_i\frac{z_i(K_i-1)}{1+\beta(K_i-1)}=0$$
 
 Here β is vapor mole fraction. In a nonideal liquid, K depends on the unknown x, so composition and phase fraction must be solved together.
-
-::: {.notes}
-Derive Rachford–Rice by eliminating x and y. Emphasize β in [0,1], single-phase checks and convergence of the outer iteration.
-:::
 
 ## A reproducible ideal baseline
 
@@ -131,131 +72,49 @@ Lab 01 synthetic binary at 350 K: $P_1^{sat}=150$ kPa and $P_2^{sat}=60$ kPa. Ch
 
 The values are synthetic definitions, not real-fluid measurements.
 
-::: {.notes}
-Allocate the worked-example block here and on the next slide. Let pairs calculate before revealing the full table. Verify using Lab 01 ideal mode, not default nonideal settings.
-:::
+## An independent check
 
-## A check independent of the solver
+Independently close both component balances and confirm that all phase compositions sum to one. Explain the phase state using bubble and dew pressures.
 
-$$0.5=(1-0.493506)(0.388889)+(0.493506)(0.614035)$$
+## One demonstration · 20 minutes
 
-The rounded result closes the component-1 balance. Component 2 must close as well.
+[Open the core lab](labs/#experiment)
 
-Also check $x_1+x_2=y_1+y_2=1$ and equality of component fugacities. A small balance residual alone does not validate the physical model.
+Use the synthetic ideal mixture at T=350 K, P=95 kPa and z1=0.5. Save the baseline, then change only P to 110 kPa. Predict the phase before calculating.
 
-::: {.notes}
-Have students recompute from displayed values and discuss rounding. Pressure between ideal dew and bubble bounds establishes the two-phase regime in this example.
-:::
+Keep one saved baseline for the pair investigation.
 
-## Activity models change the liquid
+## Pair investigation · 70 minutes
 
-One-parameter Margules, two-parameter Margules and NRTL share the same equilibrium criterion but predict different γ(x).
+- 10 min: predict and record the baseline.
+- 25 min: change one input and calculate.
+- 20 min: exchange roles and check the result by hand.
+- 15 min: prepare one plot or table and a short explanation.
 
-Hold the synthetic component properties and T fixed. Change only the liquid model or one interaction parameter.
+In Lab 01, save one ideal two-phase baseline and one changed pressure at the same T and z. Predict the change, report phase amounts and check one component balance by hand.
 
-A nonconvex liquid needs an LLE/VLLE stability analysis; it cannot simply be accepted as a stable VLE flash.
+## Discussion and exit question · 30 minutes
 
-::: {.notes}
-Use the model restrictions as a conceptual link to Session 3. Do not interpret a synthetic parameter change as measured mixture data.
-:::
+Use 20 minutes to compare results and discuss unexpected behavior.
 
-## Vapor corrections need a reference
+How does pressure change the phase split at fixed temperature?
 
-$$\ln\hat\phi_i=\frac{P}{RT}\left(2\sum_j y_j B_{ij}-B_{mix}\right)$$
-$$B_{mix}=\sum_i\sum_j y_i y_j B_{ij}$$
+Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-Lab 09 also evaluates pure saturated-vapor φ consistently. With all Bᵢⱼ=0, the ideal-vapor limit must be recovered.
+## Required practice · 45–60 minutes
 
-::: {.notes}
-Source: Lab 09 implementation and its linked DeVoe gas-mixture reference. Coefficients are volume per mole. A small Z−1 can hide cancellation and is not an accuracy guarantee.
-:::
+In Lab 01, save one ideal two-phase baseline and one changed pressure at the same T and z. Predict the change, report phase amounts and check one component balance by hand.
 
-## A model comparison has controlled inputs
+[Assessment 1 and independent checkpoint](labs/assessments.html#session-1)
 
-Compare the same T, P, feed and liquid model. Change only the vapor description first.
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
 
-Record differences in boundary pressures, phase compositions and β. Then examine the declared B(T) range and the truncation guard.
+## Optional study
 
-PR/SRK, dense vapor and virial adiabatic flash are outside these lab solvers.
+Choose one extension: compare liquid activity models, examine zero versus nonzero virial coefficients in Lab 09, or add the energy balance in Lab 07.
 
-::: {.notes}
-Separate numerical support from broader thermodynamic theory. The reference VLE/EOS decks contain extensions students can read later.
-:::
+[Session appendix](postmidterm-01-appendix.html) · [Module reference](vle.html)
 
-## Class demonstration · Labs 01 and 09
+[Learning path](labs/learning-path.html#session-1) · [Offline package](files/thermodynamics-offline.zip)
 
-[Open Lab 01](labs/?system=synthetic&model=ideal&T=350&P=95&z=0.5#experiment) · [Open Lab 09](labs/virial.html#vr-experiment)
-
-1. Reproduce the ideal baseline and save its results.
-2. Cross a phase boundary by changing pressure.
-3. In Lab 09, first use zero Bᵢⱼ, then change only B₁₂.
-
-Before each run, predict the direction of change.
-
-::: {.notes}
-25 minutes: 10 baseline, 5 boundary crossing, 10 vapor comparison. Explain that Lab 09 has its own synthetic property input and does not automatically inherit Lab 01 state.
-:::
-
-## Guided exploration · 35 minutes
-
-In pairs, choose one baseline state and one controlled change.
-
-- One student predicts; the other records units and model settings.
-- Recalculate and independently check a component balance.
-- Exchange roles and explain any unexpected result.
-
-Use the guided worksheet in the lab and save the calculator export separately.
-
-::: {.notes}
-Circulate for 20 minutes, then invite two contrasting cases. Students should distinguish a solver rejection from evidence of physical impossibility.
-:::
-
-## Adiabatic flash as an extension
-
-$$H_{feed}=(1-\beta)H^L(T,x)+\beta H^V(T,y)$$
-
-At specified pressure and feed enthalpy, T is another unknown. A TP flash at the feed temperature does not impose this energy balance.
-
-[Lab 07](labs/adiabatic.html#af-experiment) uses synthetic caloric data. Independent practice only if the core TP calculation is secure.
-
-::: {.notes}
-Do not attempt a second full demonstration. Assign as optional extension and require an energy residual, not only a phase split.
-:::
-
-## Exit question
-
-Two calculations have the same T and P. One returns a bubble-point vapor composition; the other returns a flash vapor fraction.
-
-What additional information distinguishes these problems?
-
-What evidence would make a converged flash result unsuitable for use?
-
-::: {.notes}
-Expected: bubble uses specified liquid composition and incipient vapor; flash needs overall feed and amounts; inappropriate physical model, stability, range or source issues remain after numerical convergence.
-:::
-
-## Independent practice · suggested 60–90 minutes
-
-[Assessment set 1 and rubric](labs/assessments.html#session-1) · [Offline package](files/thermodynamics-offline.zip)
-
-One baseline and one changed vapor model; report phase, x, y, vapor fraction and balance residual.
-
-Retain the calculator export, your worksheet, a comparison plot/table and one independent check. State an assumption that limits your conclusion.
-
-Use the core labs on the [learning path](labs/learning-path.html#session-1). Optional extensions are additional work.
-
-::: {.notes}
-No new grading weights or due dates are announced here. Apply the official course assessment arrangements. Feedback focuses on reproducibility, controlled comparison, verification and interpretation.
-:::
-
-## References and further study
-
-[Module reference deck](vle.html) · [Lab sources and equations](labs/learning-path.html#session-1)
-
-Derivations and original figure references remain in the corresponding module deck. Each lab records its implemented equations and assumptions.
-
-Synthetic worked examples illustrate calculations; they are not evidence of real-system accuracy.
-
-::: {.notes}
-Use optional reference slides for questions or further reading. Public decks omit instructor notes; present from a local non-public render for prompts and teaching notes.
-:::
+Optional work is additional. Complete the required investigation first.

@@ -1,0 +1,99 @@
+---
+title: "Appendix: Experimental VLE, consistency and fitting"
+subtitle: "Session 2 · optional reference"
+author: "Soorathep Kheawhom"
+date: 2026-09-30
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    css: assets/postmidterm.css
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Optional reference material
+
+Return to the [12-slide classroom deck](postmidterm-02.html).
+
+Use these details when a question from your investigation needs them. They are outside the required 45–60 minute practice.
+
+Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.
+
+## The measurement-to-model chain
+
+Measured T, P, x and y → pure-component vapor pressures → inferred activity coefficients → consistency diagnostics → regression → prediction within a stated domain.
+
+Each arrow adds assumptions. A fitted curve does not remove errors introduced earlier.
+
+## Antoine inputs are part of the model
+
+A common form is
+$$\log_{10}P^{sat}=A-\frac{B}{T+C}$$
+
+A, B and C belong to a specific equation, logarithm base, T unit and pressure unit. Lab 08 supports several forms; changing the selection does not convert constants.
+
+Check Pˢᵃᵗ at one measured temperature and verify the source range.
+
+## Gibbs–Duhem constrains activities
+
+At constant T and P for a binary liquid,
+$$x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0$$
+
+A VLE path may change P or T. Pressure/excess-volume and temperature/excess-enthalpy terms need appropriate treatment or an explicit approximation.
+
+## Area cancellation is not a local test
+
+![Module 4 reference illustration: a signed integral can hide compensating local errors.](figures/f4_03_area_test.png){width="78%"}
+
+## Isobaric data need temperature information
+
+At approximately constant P,
+$$\sum_i x_i\,d\ln\gamma_i=-\frac{h^E}{RT^2}\,dT$$
+
+Independent excess-enthalpy data can support the temperature correction. An empirical range correction does not replace measured hᴱ.
+
+Missing endpoints require an explicit extrapolation assumption.
+
+## Fitting objective and parameter convention
+
+Lab 08 minimizes the mean of
+$$\left(100\frac{P_{pred}-P_{obs}}{P_{obs}}\right)^2+[100(y_{pred}-y_{obs})]^2$$
+
+Compare one-parameter Margules, two-parameter Margules and NRTL on the same rows. NRTL α is fixed. This objective has no measurement-uncertainty weighting.
+
+## Residual structure matters
+
+A lower scalar error may accompany biased residuals near an endpoint or a narrow temperature interval.
+
+Compare residuals against composition and temperature. Report parameter bounds and temperature convention.
+
+Lab 08 compares three models on one fixed held-out split. Its pairs bootstrap reports conditional fit spread, not a new-measurement prediction interval.
+
+## A fitted model has a domain
+
+A single-temperature fit supplies composition dependence at that temperature. It does not establish dγ/dT.
+
+A VLE fit need not identify LLE accurately. Similar VLE residuals can conceal different liquid Gibbs-energy curvature.
+
+Session 3 adds stability and liquid coexistence evidence.
+
+## Sources and further reading
+
+[Module reference deck](vle.html) · [Lab assumptions and sources](labs/learning-path.html#session-2)
+
+The worked examples use synthetic inputs. Each lab states its supported models and validity limits.

@@ -158,92 +158,53 @@ Soorathep Kheawhom
 
   <p class="date">30 September 2026</p>
 </section>
-<section id="session-outcome" class="slide level2">
-<h2>Session outcome</h2>
-<p>Separate vapor-pressure inputs, consistency evidence and fitted-model error.</p>
-<p><strong>Before class:</strong> Bring T, P, x1, y1 data or use the explicitly synthetic example; obtain Antoine equation forms, units and validity ranges.</p>
-<p><a href="labs/learning-path.html#session-2">Learning path and all labs</a></p>
+<section id="the-question-for-today" class="slide level2">
+<h2>The question for today</h2>
+<p>Does a small fitting error mean the data and model are trustworthy?</p>
+<p>Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.</p>
 </section>
 <section id="the-180-minute-class" class="slide level2">
 <h2>The 180-minute class</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>In class</th>
+<th>Activity</th>
 <th style="text-align: right;">Minutes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Recall and prediction</td>
-<td style="text-align: right;">10</td>
+<td>Opening question and essential concepts</td>
+<td style="text-align: right;">30</td>
 </tr>
 <tr class="even">
-<td>Concepts and derivation</td>
-<td style="text-align: right;">45</td>
+<td>One hand calculation</td>
+<td style="text-align: right;">20</td>
 </tr>
 <tr class="odd">
-<td>Worked example</td>
-<td style="text-align: right;">30</td>
+<td>One lab demonstration</td>
+<td style="text-align: right;">20</td>
 </tr>
 <tr class="even">
 <td>Break</td>
 <td style="text-align: right;">10</td>
 </tr>
 <tr class="odd">
-<td>Instructor lab demonstration</td>
-<td style="text-align: right;">25</td>
+<td>Student pair investigation</td>
+<td style="text-align: right;">70</td>
 </tr>
 <tr class="even">
-<td>Guided student exploration</td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr class="odd">
-<td>Discussion and interpretation</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="even">
-<td>Exit question and independent task</td>
-<td style="text-align: right;">10</td>
+<td>Discussion and exit question</td>
+<td style="text-align: right;">30</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="the-measurement-to-model-chain" class="slide level2">
-<h2>The measurement-to-model chain</h2>
-<p>Measured T, P, x and y → pure-component vapor pressures → inferred activity coefficients → consistency diagnostics → regression → prediction within a stated domain.</p>
-<p>Each arrow adds assumptions. A fitted curve does not remove errors introduced earlier.</p>
+<p>The 70-minute investigation is student work with instructor support.</p>
 </section>
 <section id="activities-inferred-from-vle" class="slide level2">
 <h2>Activities inferred from VLE</h2>
 <p>Under the ideal-vapor approximation with neglected Poynting correction, <span class="math display">\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}</span></p>
 <p>The absent component at a pure endpoint has no finite measured γ from this ratio. Small x or y amplifies measurement error.</p>
-</section>
-<section id="antoine-inputs-are-part-of-the-model" class="slide level2">
-<h2>Antoine inputs are part of the model</h2>
-<p>A common form is <span class="math display">\log_{10}P^{sat}=A-\frac{B}{T+C}</span></p>
-<p>A, B and C belong to a specific equation, logarithm base, T unit and pressure unit. Lab 08 supports several forms; changing the selection does not convert constants.</p>
-<p>Check Pˢᵃᵗ at one measured temperature and verify the source range.</p>
-</section>
-<section id="a-vapor-pressure-error-becomes-an-activity-error" class="slide level2">
-<h2>A vapor-pressure error becomes an activity error</h2>
-<p>Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.</p>
-<p><span class="math display">\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25</span></p>
-<p>Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.</p>
-</section>
-<section id="gibbsduhem-constrains-activities" class="slide level2">
-<h2>Gibbs–Duhem constrains activities</h2>
-<p>At constant T and P for a binary liquid, <span class="math display">x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0</span></p>
-<p>A VLE path may change P or T. Pressure/excess-volume and temperature/excess-enthalpy terms need appropriate treatment or an explicit approximation.</p>
-</section>
-<section id="area-cancellation-is-not-a-local-test" class="slide level2">
-<h2>Area cancellation is not a local test</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/f4_03_area_test.png" style="width:78.0%"></p>
-<figcaption>Module 4 reference illustration: a signed integral can hide compensating local errors.</figcaption>
-</figure>
-</div>
 </section>
 <section id="different-tests-answer-different-questions" class="slide level2">
 <h2>Different tests answer different questions</h2>
@@ -275,63 +236,50 @@ Soorathep Kheawhom
 </table>
 <p>Agreement across tests strengthens a diagnosis but does not prove the data are correct.</p>
 </section>
-<section id="isobaric-data-need-temperature-information" class="slide level2">
-<h2>Isobaric data need temperature information</h2>
-<p>At approximately constant P, <span class="math display">\sum_i x_i\,d\ln\gamma_i=-\frac{h^E}{RT^2}\,dT</span></p>
-<p>Independent excess-enthalpy data can support the temperature correction. An empirical range correction does not replace measured hᴱ.</p>
-<p>Missing endpoints require an explicit extrapolation assumption.</p>
+<section id="a-vapor-pressure-error-becomes-an-activity-error" class="slide level2">
+<h2>A vapor-pressure error becomes an activity error</h2>
+<p>Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.</p>
+<p><span class="math display">\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25</span></p>
+<p>Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.</p>
 </section>
-<section id="fitting-objective-and-parameter-convention" class="slide level2">
-<h2>Fitting objective and parameter convention</h2>
-<p>Lab 08 minimizes the mean of <span class="math display">\left(100\frac{P_{pred}-P_{obs}}{P_{obs}}\right)^2+[100(y_{pred}-y_{obs})]^2</span></p>
-<p>Compare one-parameter Margules, two-parameter Margules and NRTL on the same rows. NRTL α is fixed. This objective has no measurement-uncertainty weighting.</p>
+<section id="an-independent-check" class="slide level2">
+<h2>An independent check</h2>
+<p>Check one Antoine saturation pressure and one inferred activity coefficient by hand. Keep the same observations and property convention when comparing models.</p>
 </section>
-<section id="residual-structure-matters" class="slide level2">
-<h2>Residual structure matters</h2>
-<p>A lower scalar error may accompany biased residuals near an endpoint or a narrow temperature interval.</p>
-<p>Compare residuals against composition and temperature. Report parameter bounds and temperature convention.</p>
-<p>Lab 08 compares three models on one fixed held-out split. Its pairs bootstrap reports conditional fit spread, not a new-measurement prediction interval.</p>
+<section id="one-demonstration-20-minutes" class="slide level2">
+<h2>One demonstration · 20 minutes</h2>
+<p><a href="labs/vle-input.html#vi-experiment">Open the core lab</a></p>
+<p>Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Record the residual pattern and one limitation.</p>
+<p>Keep one saved baseline for the pair investigation.</p>
 </section>
-<section id="class-demonstration-labs-03-and-08" class="slide level2">
-<h2>Class demonstration · Labs 03 and 08</h2>
-<p><a href="labs/consistency.html">Consistency diagnostics</a> · <a href="labs/vle-input.html#vi-experiment">Student VLE input</a></p>
-<ol type="1">
-<li>Compare a clean dataset with a controlled defect in Lab 03.</li>
-<li>Load Lab 08’s synthetic example and inspect its Antoine convention.</li>
-<li>Compare held-out errors on a fixed split; inspect conditional bootstrap spread.</li>
-</ol>
-<p>Synthetic examples are training data, not experimental validation.</p>
+<section id="pair-investigation-70-minutes" class="slide level2">
+<h2>Pair investigation · 70 minutes</h2>
+<ul>
+<li>10 min: predict and record the baseline.</li>
+<li>25 min: change one input and calculate.</li>
+<li>20 min: exchange roles and check the result by hand.</li>
+<li>15 min: prepare one plot or table and a short explanation.</li>
+</ul>
+<p>In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.</p>
 </section>
-<section id="guided-exploration-35-minutes" class="slide level2">
-<h2>Guided exploration · 35 minutes</h2>
-<p>Use your dataset or the provided synthetic example.</p>
-<p>Record source, component order, units and valid range. Compare two models. Explain one residual pattern and one unsupported extrapolation.</p>
-<p>Save the study JSON, residual CSV and worksheet. If real data are unavailable, clearly label the synthetic case.</p>
+<section id="discussion-and-exit-question-30-minutes" class="slide level2">
+<h2>Discussion and exit question · 30 minutes</h2>
+<p>Use 20 minutes to compare results and discuss unexpected behavior.</p>
+<p>Does a small fitting error mean the data and model are trustworthy?</p>
+<p>Use the final 10 minutes to explain your answer individually and name one assumption that limits it.</p>
 </section>
-<section id="a-fitted-model-has-a-domain" class="slide level2">
-<h2>A fitted model has a domain</h2>
-<p>A single-temperature fit supplies composition dependence at that temperature. It does not establish dγ/dT.</p>
-<p>A VLE fit need not identify LLE accurately. Similar VLE residuals can conceal different liquid Gibbs-energy curvature.</p>
-<p>Session 3 adds stability and liquid coexistence evidence.</p>
+<section id="required-practice-4560-minutes" class="slide level2">
+<h2>Required practice · 45–60 minutes</h2>
+<p>In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.</p>
+<p><a href="labs/assessments.html#session-2">Assessment 2 and independent checkpoint</a></p>
+<p>Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.</p>
 </section>
-<section id="exit-question" class="slide level2">
-<h2>Exit question</h2>
-<p>A dataset passes an area criterion and NRTL gives a small pressure error.</p>
-<p>Give two reasons why this is insufficient to claim accurate LLE predictions.</p>
-<p>What additional observation or check would reduce each uncertainty?</p>
-</section>
-<section id="independent-practice-suggested-6090-minutes" class="slide level2">
-<h2>Independent practice · suggested 60–90 minutes</h2>
-<p><a href="labs/assessments.html#session-2">Assessment set 2 and rubric</a> · <a href="files/thermodynamics-offline.zip">Offline package</a></p>
-<p>One dataset, at least two activity models, residuals and a justified validity statement.</p>
-<p>Retain the calculator export, your worksheet, a comparison plot/table and one independent check. State an assumption that limits your conclusion.</p>
-<p>Use the core labs on the <a href="labs/learning-path.html#session-2">learning path</a>. Optional extensions are additional work.</p>
-</section>
-<section id="references-and-further-study" class="slide level2">
-<h2>References and further study</h2>
-<p><a href="vle.html">Module reference deck</a> · <a href="labs/learning-path.html#session-2">Lab sources and equations</a></p>
-<p>Derivations and original figure references remain in the corresponding module deck. Each lab records its implemented equations and assumptions.</p>
-<p>Synthetic worked examples illustrate calculations; they are not evidence of real-system accuracy.</p>
+<section id="optional-study" class="slide level2">
+<h2>Optional study</h2>
+<p>Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.</p>
+<p><a href="postmidterm-02-appendix.html">Session appendix</a> · <a href="vle.html">Module reference</a></p>
+<p><a href="labs/learning-path.html#session-2">Learning path</a> · <a href="files/thermodynamics-offline.zip">Offline package</a></p>
+<p>Optional work is additional. Complete the required investigation first.</p>
 
 
 </section>

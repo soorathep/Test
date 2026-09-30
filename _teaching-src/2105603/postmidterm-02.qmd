@@ -26,44 +26,24 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## Session outcome
+## The question for today
 
-Separate vapor-pressure inputs, consistency evidence and fitted-model error.
+Does a small fitting error mean the data and model are trustworthy?
 
-**Before class:** Bring T, P, x1, y1 data or use the explicitly synthetic example; obtain Antoine equation forms, units and validity ranges.
-
-[Learning path and all labs](labs/learning-path.html#session-2)
-
-::: {.notes}
-This sequence uses the existing pre-midterm Modules 1–3 as prerequisites. Use questions to identify missing concepts rather than repeating the full reference decks.
-:::
+Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
 
 ## The 180-minute class
 
-| In class | Minutes |
+| Activity | Minutes |
 |---|---:|
-| Recall and prediction | 10 |
-| Concepts and derivation | 45 |
-| Worked example | 30 |
+| Opening question and essential concepts | 30 |
+| One hand calculation | 20 |
+| One lab demonstration | 20 |
 | Break | 10 |
-| Instructor lab demonstration | 25 |
-| Guided student exploration | 35 |
-| Discussion and interpretation | 15 |
-| Exit question and independent task | 10 |
+| Student pair investigation | 70 |
+| Discussion and exit question | 30 |
 
-::: {.notes}
-Includes a 10-minute break. The 60 minutes of demonstration and guided work are part of the 180 minutes. If discussion runs long, move the optional extension to independent practice; do not remove the balance/interpretation check.
-:::
-
-## The measurement-to-model chain
-
-Measured T, P, x and y → pure-component vapor pressures → inferred activity coefficients → consistency diagnostics → regression → prediction within a stated domain.
-
-Each arrow adds assumptions. A fitted curve does not remove errors introduced earlier.
-
-::: {.notes}
-Recall Session 1 standards. Lab 08 uses ideal vapor; corrections assessed in Lab 09 are not silently applied to its regression.
-:::
+The 70-minute investigation is student work with instructor support.
 
 ## Activities inferred from VLE
 
@@ -71,54 +51,6 @@ Under the ideal-vapor approximation with neglected Poynting correction,
 $$\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}$$
 
 The absent component at a pure endpoint has no finite measured γ from this ratio. Small x or y amplifies measurement error.
-
-::: {.notes}
-Discuss both components, component ordering and pure-endpoint singularities. Do not substitute a fabricated endpoint activity.
-:::
-
-## Antoine inputs are part of the model
-
-A common form is
-$$\log_{10}P^{sat}=A-\frac{B}{T+C}$$
-
-A, B and C belong to a specific equation, logarithm base, T unit and pressure unit. Lab 08 supports several forms; changing the selection does not convert constants.
-
-Check Pˢᵃᵗ at one measured temperature and verify the source range.
-
-::: {.notes}
-Have a student explain why Kelvin constants cannot be pasted into a Celsius form merely because the same A/B/C symbols are used.
-:::
-
-## A vapor-pressure error becomes an activity error
-
-Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.
-
-$$\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25$$
-
-Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.
-
-::: {.notes}
-Use as a hand calculation. Ask whether a better fit could repair the incorrect property input without distorting fitted parameters.
-:::
-
-## Gibbs–Duhem constrains activities
-
-At constant T and P for a binary liquid,
-$$x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0$$
-
-A VLE path may change P or T. Pressure/excess-volume and temperature/excess-enthalpy terms need appropriate treatment or an explicit approximation.
-
-::: {.notes}
-State constant-T/P condition carefully. Isothermal VLE often varies P, so neglecting excess volume is an assumption, not an exact identity for that data path.
-:::
-
-## Area cancellation is not a local test
-
-![Module 4 reference illustration: a signed integral can hide compensating local errors.](figures/f4_03_area_test.png){width="78%"}
-
-::: {.notes}
-Spend time interpreting sign cancellation rather than teaching a threshold as a universal verdict.
-:::
 
 ## Different tests answer different questions
 
@@ -131,118 +63,57 @@ Spend time interpreting sign cancellation rather than teaching a threshold as a 
 
 Agreement across tests strengthens a diagnosis but does not prove the data are correct.
 
-::: {.notes}
-Use Lab 03 labels as implemented. Explain why no vote-counting rule or single percentage threshold is scientifically universal.
-:::
+## A vapor-pressure error becomes an activity error
 
-## Isobaric data need temperature information
+Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.
 
-At approximately constant P,
-$$\sum_i x_i\,d\ln\gamma_i=-\frac{h^E}{RT^2}\,dT$$
+$$\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25$$
 
-Independent excess-enthalpy data can support the temperature correction. An empirical range correction does not replace measured hᴱ.
+Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.
 
-Missing endpoints require an explicit extrapolation assumption.
+## An independent check
 
-::: {.notes}
-Sign follows the excess-Gibbs differential relation. Lab 08 only enables its HE correction when suitable input is supplied. Do not infer HE from a convenient fit and call it independent evidence.
-:::
+Check one Antoine saturation pressure and one inferred activity coefficient by hand. Keep the same observations and property convention when comparing models.
 
-## Fitting objective and parameter convention
+## One demonstration · 20 minutes
 
-Lab 08 minimizes the mean of
-$$\left(100\frac{P_{pred}-P_{obs}}{P_{obs}}\right)^2+[100(y_{pred}-y_{obs})]^2$$
+[Open the core lab](labs/vle-input.html#vi-experiment)
 
-Compare one-parameter Margules, two-parameter Margules and NRTL on the same rows. NRTL α is fixed. This objective has no measurement-uncertainty weighting.
+Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Record the residual pattern and one limitation.
 
-::: {.notes}
-Explain why a different objective can change parameters. The fixed-alpha NRTL temperature option has its own declared basis; do not confuse it with constant dimensionless tau.
-:::
+Keep one saved baseline for the pair investigation.
 
-## Residual structure matters
+## Pair investigation · 70 minutes
 
-A lower scalar error may accompany biased residuals near an endpoint or a narrow temperature interval.
+- 10 min: predict and record the baseline.
+- 25 min: change one input and calculate.
+- 20 min: exchange roles and check the result by hand.
+- 15 min: prepare one plot or table and a short explanation.
 
-Compare residuals against composition and temperature. Report parameter bounds and temperature convention.
+In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
 
-Lab 08 compares three models on one fixed held-out split. Its pairs bootstrap reports conditional fit spread, not a new-measurement prediction interval.
+## Discussion and exit question · 30 minutes
 
-::: {.notes}
-Fix the split before tuning. Repeated tuning turns the holdout into model-selection data. Bootstrap uses full-data pairs with fixed alpha and properties; inspect failure and boundary counts. Exact synthetic data can produce degenerate spread.
-:::
+Use 20 minutes to compare results and discuss unexpected behavior.
 
-## Class demonstration · Labs 03 and 08
+Does a small fitting error mean the data and model are trustworthy?
 
-[Consistency diagnostics](labs/consistency.html) · [Student VLE input](labs/vle-input.html#vi-experiment)
+Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-1. Compare a clean dataset with a controlled defect in Lab 03.
-2. Load Lab 08’s synthetic example and inspect its Antoine convention.
-3. Compare held-out errors on a fixed split; inspect conditional bootstrap spread.
+## Required practice · 45–60 minutes
 
-Synthetic examples are training data, not experimental validation.
+In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
 
-::: {.notes}
-25 minutes: 8 diagnostic defect, 7 input/units, 10 fits. Preserve model settings in the exported study.
-:::
+[Assessment 2 and independent checkpoint](labs/assessments.html#session-2)
 
-## Guided exploration · 35 minutes
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
 
-Use your dataset or the provided synthetic example.
+## Optional study
 
-Record source, component order, units and valid range. Compare two models. Explain one residual pattern and one unsupported extrapolation.
+Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.
 
-Save the study JSON, residual CSV and worksheet. If real data are unavailable, clearly label the synthetic case.
+[Session appendix](postmidterm-02-appendix.html) · [Module reference](vle.html)
 
-::: {.notes}
-Students should not invent a literature source for generated data. Work in pairs and spend the final 10 minutes on interpretation rather than another fit.
-:::
+[Learning path](labs/learning-path.html#session-2) · [Offline package](files/thermodynamics-offline.zip)
 
-## A fitted model has a domain
-
-A single-temperature fit supplies composition dependence at that temperature. It does not establish dγ/dT.
-
-A VLE fit need not identify LLE accurately. Similar VLE residuals can conceal different liquid Gibbs-energy curvature.
-
-Session 3 adds stability and liquid coexistence evidence.
-
-::: {.notes}
-Link to the existing full Module 4 uncertainty/LLE figures as optional reading.
-:::
-
-## Exit question
-
-A dataset passes an area criterion and NRTL gives a small pressure error.
-
-Give two reasons why this is insufficient to claim accurate LLE predictions.
-
-What additional observation or check would reduce each uncertainty?
-
-::: {.notes}
-Expected: compensating errors, endpoint coverage, wrong Psat or vapor approximation, parameter identifiability, wrong curvature, external validation. Tie each proposed check to a specific failure mode.
-:::
-
-## Independent practice · suggested 60–90 minutes
-
-[Assessment set 2 and rubric](labs/assessments.html#session-2) · [Offline package](files/thermodynamics-offline.zip)
-
-One dataset, at least two activity models, residuals and a justified validity statement.
-
-Retain the calculator export, your worksheet, a comparison plot/table and one independent check. State an assumption that limits your conclusion.
-
-Use the core labs on the [learning path](labs/learning-path.html#session-2). Optional extensions are additional work.
-
-::: {.notes}
-No new grading weights or due dates are announced here. Apply the official course assessment arrangements. Feedback focuses on reproducibility, controlled comparison, verification and interpretation.
-:::
-
-## References and further study
-
-[Module reference deck](vle.html) · [Lab sources and equations](labs/learning-path.html#session-2)
-
-Derivations and original figure references remain in the corresponding module deck. Each lab records its implemented equations and assumptions.
-
-Synthetic worked examples illustrate calculations; they are not evidence of real-system accuracy.
-
-::: {.notes}
-Use optional reference slides for questions or further reading. Public decks omit instructor notes; present from a local non-public render for prompts and teaching notes.
-:::
+Optional work is additional. Complete the required investigation first.

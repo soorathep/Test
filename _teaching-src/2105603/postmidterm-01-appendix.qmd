@@ -1,0 +1,109 @@
+---
+title: "Appendix: VLE and flash calculations"
+subtitle: "Session 1 · optional reference"
+author: "Soorathep Kheawhom"
+date: 2026-09-30
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    css: assets/postmidterm.css
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Optional reference material
+
+Return to the [12-slide classroom deck](postmidterm-01.html).
+
+Use these details when a question from your investigation needs them. They are outside the required 45–60 minute practice.
+
+Choose one extension: compare liquid activity models, examine zero versus nonzero virial coefficients in Lab 09, or add the energy balance in Lab 07.
+
+## The equilibrium problem
+
+At fixed temperature and pressure, a stable equilibrium minimizes total Gibbs energy subject to material conservation.
+
+$$\mu_i^L=\mu_i^V\quad\Longleftrightarrow\quad \hat f_i^L=\hat f_i^V$$
+
+A calculation also needs a phase model, composition constraints and a stability check.
+
+## Liquid and vapor descriptions
+
+$$y_i\hat\phi_i P=x_i\gamma_i P_i^{sat}\phi_i^{sat}\Pi_i$$
+
+- Ideal vapor, ideal liquid: all correction factors are one.
+- Modified Raoult: retain liquid activity coefficients.
+- Gamma–phi: also retain vapor and reference-state corrections.
+
+Lab 01 uses ideal vapor. Lab 09 adds second-virial vapor corrections.
+
+## Four boundary calculations
+
+| Specified | Unknown boundary | Composition supplied |
+|---|---|---|
+| T | Bubble P | Liquid x |
+| T | Dew P | Vapor y |
+| P | Bubble T | Liquid x |
+| P | Dew T | Vapor y |
+
+A dew calculation generally needs an inner liquid-composition iteration because γ depends on x.
+
+## A check independent of the solver
+
+$$0.5=(1-0.493506)(0.388889)+(0.493506)(0.614035)$$
+
+The rounded result closes the component-1 balance. Component 2 must close as well.
+
+Also check $x_1+x_2=y_1+y_2=1$ and equality of component fugacities. A small balance residual alone does not validate the physical model.
+
+## Activity models change the liquid
+
+One-parameter Margules, two-parameter Margules and NRTL share the same equilibrium criterion but predict different γ(x).
+
+Hold the synthetic component properties and T fixed. Change only the liquid model or one interaction parameter.
+
+A nonconvex liquid needs an LLE/VLLE stability analysis; it cannot simply be accepted as a stable VLE flash.
+
+## Vapor corrections need a reference
+
+$$\ln\hat\phi_i=\frac{P}{RT}\left(2\sum_j y_j B_{ij}-B_{mix}\right)$$
+$$B_{mix}=\sum_i\sum_j y_i y_j B_{ij}$$
+
+Lab 09 also evaluates pure saturated-vapor φ consistently. With all Bᵢⱼ=0, the ideal-vapor limit must be recovered.
+
+## A model comparison has controlled inputs
+
+Compare the same T, P, feed and liquid model. Change only the vapor description first.
+
+Record differences in boundary pressures, phase compositions and β. Then examine the declared B(T) range and the truncation guard.
+
+PR/SRK, dense vapor and virial adiabatic flash are outside these lab solvers.
+
+## Adiabatic flash as an extension
+
+$$H_{feed}=(1-\beta)H^L(T,x)+\beta H^V(T,y)$$
+
+At specified pressure and feed enthalpy, T is another unknown. A TP flash at the feed temperature does not impose this energy balance.
+
+[Lab 07](labs/adiabatic.html#af-experiment) uses synthetic caloric data. Independent practice only if the core TP calculation is secure.
+
+## Sources and further reading
+
+[Module reference deck](vle.html) · [Lab assumptions and sources](labs/learning-path.html#session-1)
+
+The worked examples use synthetic inputs. Each lab states its supported models and validity limits.

@@ -26,34 +26,24 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## Session outcome
+## The question for today
 
-Distinguish pure-solid SLE, bulk sublimation and surface adsorption.
+What happens to gas pressure when the solid inventory runs out?
 
-**Before class:** Review chemical potentials, fusion/sublimation data and absolute versus excess adsorption.
-
-[Learning path and all labs](labs/learning-path.html#session-4)
-
-::: {.notes}
-This sequence uses the existing pre-midterm Modules 1–3 as prerequisites. Use questions to identify missing concepts rather than repeating the full reference decks.
-:::
+Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
 
 ## The 180-minute class
 
-| In class | Minutes |
+| Activity | Minutes |
 |---|---:|
-| Recall and prediction | 10 |
-| Concepts and derivation | 45 |
-| Worked example | 30 |
+| Opening question and essential concepts | 30 |
+| One hand calculation | 20 |
+| One lab demonstration | 20 |
 | Break | 10 |
-| Instructor lab demonstration | 25 |
-| Guided student exploration | 35 |
-| Discussion and interpretation | 15 |
-| Exit question and independent task | 10 |
+| Student pair investigation | 70 |
+| Discussion and exit question | 30 |
 
-::: {.notes}
-Includes a 10-minute break. The 60 minutes of demonstration and guided work are part of the 180 minutes. If discussion runs long, move the optional extension to independent practice; do not remove the balance/interpretation check.
-:::
+The 70-minute investigation is student work with instructor support.
 
 ## Bulk and surface equilibria
 
@@ -65,46 +55,6 @@ Includes a 10-minute break. The 60 minutes of demonstration and guided work are 
 
 Surface uptake is not the formation of a macroscopic bulk solid phase.
 
-::: {.notes}
-Explain why the user-requested gas–solid and adsorption labs are separate. This session adds content beyond the old Module 5 reference deck.
-:::
-
-## Pure-solid solubility
-
-Neglecting fusion heat-capacity corrections for a pure solid,
-$$\ln(x_i\gamma_i)=-\frac{\Delta H_{fus,i}}{R}\left(\frac1T-\frac1{T_{m,i}}\right)$$
-
-The standard state is the subcooled pure liquid. The solid is present with unit activity. A solid solution requires a different solid-phase model.
-
-::: {.notes}
-Derive from equality of chemical potentials and integration from the melting point. Clearly state constant fusion enthalpy and no solid-solution approximation.
-:::
-
-## A solubility hand calculation
-
-Synthetic input: Tₘ=350 K, ΔHfus=10 kJ/mol and T=300 K.
-
-For an ideal liquid,
-$$x^{sat}=\exp\left[-\frac{10000}{R}\left(\frac1{300}-\frac1{350}\right)\right]\approx0.564$$
-
-A nonideal γ changes the required liquid composition. A value of xγ alone does not specify phase amounts.
-
-::: {.notes}
-Ask students to retain joules in R-consistent units. Use a hypothetical single-solute calculation; eutectic behavior needs the second solid’s properties.
-:::
-
-## Binary eutectic assumptions
-
-Each pure-solid branch imposes its own solubility equation. Their intersection gives the eutectic within the admitted model.
-
-The phase amounts follow material balances. The presence of two possible solids does not mean both occur for every overall composition.
-
-Lab 10 excludes solid solutions and chemical reactions.
-
-::: {.notes}
-Emphasize separate solubility and phase-amount tasks. Ask which assumption would fail for a substitutional crystal.
-:::
-
 ## Sublimation and vessel inventory
 
 At fixed T, a present bulk solid fixes the ideal-gas partial pressure at its sublimation pressure within the model.
@@ -113,10 +63,6 @@ In a rigid vessel,
 $$n_g^{sat}=\frac{P_{sub}(T)V}{RT}$$
 
 If total subliming-species inventory is below this amount, the solid is exhausted and pressure falls below Psub.
-
-::: {.notes}
-Call the species subliming material, not adsorbed material, in discussion. Inert gas changes total pressure but not this ideal-gas saturation partial pressure.
-:::
 
 ## A gas–solid inventory check
 
@@ -128,127 +74,49 @@ With 0.01 mol total, about 0.00599 mol remains solid. With 0.002 mol total, no s
 
 Fixed T,V equilibrium minimizes Helmholtz energy, not Gibbs energy at fixed P.
 
-::: {.notes}
-Use R in kPa L mol−1 K−1. State that these are assumed properties for arithmetic, not a named chemical.
-:::
+## An independent check
 
-## Adsorption isotherm assumptions
+Compare total inventory with Psub V/(RT). Check gas plus solid moles and distinguish partial pressure from total pressure if an inert gas is present.
 
-| Model | Form | Interpretation/domain |
-|---|---|---|
-| Henry | q=KᴴP | Dilute limit |
-| Langmuir | q=qₛbP/(1+bP) | Idealized finite sites |
-| Freundlich | q=KPᵐ | Empirical range, no plateau |
-| BET | Multilayer expression | Requires P/P₀ and a fitting window |
+## One demonstration · 20 minutes
 
-A better fit alone does not establish the microscopic mechanism.
+[Open the core lab](labs/solids.html#so-experiment)
 
-::: {.notes}
-Discuss units of Henry and Freundlich parameters. Freundlich exponent convention is m in (0,1] in this lab.
-:::
+In Lab 10 choose the gas–solid vessel mode. Keep T and V fixed and vary the subliming-species inventory across the solid-depletion threshold.
 
-## Low-pressure agreement and saturation
+Keep one saved baseline for the pair investigation.
 
-![Synthetic Henry and Langmuir curves share the low-pressure slope but differ as loading increases.](figures/postmidterm-adsorption.png){width="78%"}
+## Pair investigation · 70 minutes
 
-::: {.notes}
-The figure script fixes qs=2 mol/kg and b=0.1 kPa−1, Henry slope=0.2 mol kg−1 kPa−1. Ask students to read the units before interpreting a parameter.
-:::
+- 10 min: predict and record the baseline.
+- 25 min: change one input and calculate.
+- 20 min: exchange roles and check the result by hand.
+- 15 min: prepare one plot or table and a short explanation.
 
-## A closed adsorption vessel
+In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.
 
-For an ideal gas and absolute uptake q,
-$$n_{total}=\frac{PV_g}{RT}+m_s q(P,T)$$
+## Discussion and exit question · 30 minutes
 
-Gas amount and adsorbed amount must sum to inventory. Vg is the accessible gas volume.
+Use 20 minutes to compare results and discuss unexpected behavior.
 
-Excess adsorption needs a volume/density convention and cannot be substituted for absolute q without conversion.
+What happens to gas pressure when the solid inventory runs out?
 
-::: {.notes}
-Worked example: if P=10kPa, T=300K, Vg=1L, ms=0.01kg, Langmuir qs=2,b=.1, q=1mol/kg; total approximately .014009mol. Present as a check, not a separate root problem.
-:::
+Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-## Isosteric heat uses common loading
+## Required practice · 45–60 minutes
 
-For the ideal-gas pressure convention,
-$$Q_{st}=-R\left(\frac{\partial\ln P}{\partial(1/T)}\right)_q$$
+In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.
 
-Compare pressures at the same absolute loading across temperatures. Interpolation is limited to common measured loading.
+[Assessment 4 and independent checkpoint](labs/assessments.html#session-4)
 
-An isotherm fit does not justify extrapolated heat estimates outside overlap.
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
 
-::: {.notes}
-Explain sign: for exothermic adsorption, fixed loading generally requires higher P at higher T, yielding positive Qst with this convention.
-:::
+## Optional study
 
-## Class demonstration · Labs 10 and 11
+Choose one extension: compare Henry and Langmuir in Lab 11, check a closed adsorption vessel, or explore pure-solid solubility and the eutectic assumptions in Lab 10.
 
-[Solid equilibria](labs/solids.html#so-experiment) · [Adsorption](labs/adsorption.html#ad-experiment)
+[Session appendix](postmidterm-04-appendix.html) · [Module reference](stability.html)
 
-1. Cross the bulk-solid exhaustion boundary in a rigid vessel.
-2. Compare low-pressure Henry and Langmuir behavior.
-3. Inspect a closed adsorption-vessel inventory balance.
+[Learning path](labs/learning-path.html#session-4) · [Offline package](files/thermodynamics-offline.zip)
 
-Predict what changes before each calculation.
-
-::: {.notes}
-25 minutes: 10 solids, 10 isotherms, 5 inventory. SLE details can be explored in the independent task if time is tight.
-:::
-
-## Guided exploration · 35 minutes
-
-Use one bulk gas–solid case and one adsorption case.
-
-Record the fixed variables, remaining solid or surface loading, and material balance. Explain why the same phrase “gas–solid” does not imply the same model.
-
-If fitting, retain the selected range and uptake convention.
-
-::: {.notes}
-Pairs can split the two calculations then explain them to one another. Avoid requiring all four adsorption fits and Qst within this block.
-:::
-
-## Independent extension
-
-[Assessment set 4 and rubric](labs/assessments.html#session-4) · [Offline package](files/thermodynamics-offline.zip)
-
-Compare SLE with ideal and nonideal liquid activity. Identify how liquid nonideality changes a solubility branch.
-
-Alternatively, examine Qst only where isotherms overlap in measured loading. Report the interpolation range and do not label extrapolation as measured evidence.
-
-::: {.notes}
-Students select one extension only. No new assessment weights are implied.
-:::
-
-## Exit question
-
-Why can adding more bulk solid leave the gas pressure unchanged, while adding adsorbent to a closed vessel can change it?
-
-Which phase or capacity limit ends each behavior?
-
-::: {.notes}
-Expected: bulk coexistence fixes chemical potential while both phases remain; finite surface equilibrium responds to inventory/site loading, and gas-solid saturation no longer holds after depletion.
-:::
-
-## Independent practice · suggested 60–90 minutes
-
-Compare a bulk gas–solid result with adsorption; close the appropriate inventory balance and state assumptions.
-
-Retain the calculator export, your worksheet, a comparison plot/table and one independent check. State an assumption that limits your conclusion.
-
-Use the core labs on the [learning path](labs/learning-path.html#session-4). Optional extensions are additional work.
-
-::: {.notes}
-No new grading weights or due dates are announced here. Apply the official course assessment arrangements. Feedback focuses on reproducibility, controlled comparison, verification and interpretation.
-:::
-
-## References and further study
-
-[Module reference deck](stability.html) · [Lab sources and equations](labs/learning-path.html#session-4)
-
-Derivations and original figure references remain in the corresponding module deck. Each lab records its implemented equations and assumptions.
-
-Synthetic worked examples illustrate calculations; they are not evidence of real-system accuracy.
-
-::: {.notes}
-Use optional reference slides for questions or further reading. Public decks omit instructor notes; present from a local non-public render for prompts and teaching notes.
-:::
+Optional work is additional. Complete the required investigation first.

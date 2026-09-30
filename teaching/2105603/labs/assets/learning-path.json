@@ -2,36 +2,28 @@
   "version": 1,
   "timeBlocks": [
     [
-      "Recall and prediction",
-      10
-    ],
-    [
-      "Concepts and derivation",
-      45
-    ],
-    [
-      "Worked example",
+      "Opening question and essential concepts",
       30
+    ],
+    [
+      "One hand calculation",
+      20
+    ],
+    [
+      "One lab demonstration",
+      20
     ],
     [
       "Break",
       10
     ],
     [
-      "Instructor lab demonstration",
-      25
+      "Student pair investigation",
+      70
     ],
     [
-      "Guided student exploration",
-      35
-    ],
-    [
-      "Discussion and interpretation",
-      15
-    ],
-    [
-      "Exit question and independent task",
-      10
+      "Discussion and exit question",
+      30
     ]
   ],
   "sessions": [
@@ -41,16 +33,19 @@
       "module": "vle",
       "claim": "Bubble/dew boundaries and flash are different questions.",
       "core": [
-        "index",
-        "virial"
+        "index"
       ],
       "extension": [
+        "virial",
         "adiabatic"
       ],
       "outcome": "Predict a two-phase state, solve it, then check both component balances.",
-      "deliverable": "One baseline and one changed vapor model; report phase, x, y, vapor fraction and balance residual.",
+      "deliverable": "In Lab 01, save one ideal two-phase baseline and one changed pressure at the same T and z. Predict the change, report phase amounts and check one component balance by hand.",
       "preparation": "Review chemical potential, fugacity and activity standards in Modules 2–3.",
-      "deck": "postmidterm-01.html"
+      "deck": "postmidterm-01.html",
+      "guidingQuestion": "How does pressure change the phase split at fixed temperature?",
+      "optionalPractice": "Choose one extension: compare liquid activity models, examine zero versus nonzero virial coefficients in Lab 09, or add the energy balance in Lab 07.",
+      "appendix": "postmidterm-01-appendix.html"
     },
     {
       "number": 2,
@@ -58,16 +53,19 @@
       "module": "vle",
       "claim": "A small fitting error does not validate the observations.",
       "core": [
-        "consistency",
         "vle-input"
       ],
       "extension": [
+        "consistency",
         "case-study"
       ],
       "outcome": "Separate vapor-pressure inputs, consistency evidence and fitted-model error.",
-      "deliverable": "One dataset, at least two activity models, residuals and a justified validity statement.",
+      "deliverable": "In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.",
       "preparation": "Bring T, P, x1, y1 data or use the explicitly synthetic example; obtain Antoine equation forms, units and validity ranges.",
-      "deck": "postmidterm-02.html"
+      "deck": "postmidterm-02.html",
+      "guidingQuestion": "Does a small fitting error mean the data and model are trustworthy?",
+      "optionalPractice": "Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.",
+      "appendix": "postmidterm-02-appendix.html"
     },
     {
       "number": 3,
@@ -75,16 +73,19 @@
       "module": "stability",
       "claim": "Fugacity equality alone does not establish a stable phase split.",
       "core": [
-        "stability",
-        "lle-fit"
+        "stability"
       ],
       "extension": [
+        "lle-fit",
         "vlle"
       ],
       "outcome": "Use global Gibbs-energy support to assess candidate liquid phases.",
-      "deliverable": "A common-tangent result, one lever-rule check and one limitation of the fitted parameters.",
+      "deliverable": "In Lab 04, retain one supported tie line and compare two overall compositions inside it. Verify the lever rule by hand and explain the global stability check.",
       "preparation": "Review gmix, local curvature and the distinction between stationary and globally stable states.",
-      "deck": "postmidterm-03.html"
+      "deck": "postmidterm-03.html",
+      "guidingQuestion": "When does a calculated liquid split represent stable equilibrium?",
+      "optionalPractice": "Choose one extension: NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06.",
+      "appendix": "postmidterm-03-appendix.html"
     },
     {
       "number": 4,
@@ -92,14 +93,18 @@
       "module": "stability",
       "claim": "The relevant equilibrium condition depends on the phases and vessel constraints.",
       "core": [
-        "solids",
+        "solids"
+      ],
+      "extension": [
         "adsorption"
       ],
-      "extension": [],
       "outcome": "Distinguish pure-solid SLE, bulk sublimation and surface adsorption.",
-      "deliverable": "Compare a bulk gas–solid result with adsorption; close the appropriate inventory balance and state assumptions.",
+      "deliverable": "In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.",
       "preparation": "Review chemical potentials, fusion/sublimation data and absolute versus excess adsorption.",
-      "deck": "postmidterm-04.html"
+      "deck": "postmidterm-04.html",
+      "guidingQuestion": "What happens to gas pressure when the solid inventory runs out?",
+      "optionalPractice": "Choose one extension: compare Henry and Langmuir in Lab 11, check a closed adsorption vessel, or explore pure-solid solubility and the eutectic assumptions in Lab 10.",
+      "appendix": "postmidterm-04-appendix.html"
     },
     {
       "number": 5,
@@ -111,9 +116,12 @@
       ],
       "extension": [],
       "outcome": "Reconcile independent thermodynamic routes to K and then solve composition.",
-      "deliverable": "Compare constant-property and heat-capacity routes; report ln K, Q and one extent/material-balance check.",
+      "deliverable": "In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.",
       "preparation": "Review formation Gibbs energies, reaction enthalpy/entropy and integration of heat capacity.",
-      "deck": "postmidterm-05.html"
+      "deck": "postmidterm-05.html",
+      "guidingQuestion": "Why can composition change while the equilibrium constant stays the same?",
+      "optionalPractice": "Choose one extension: vary temperature with and without a heat-capacity correction, reverse the reaction, or scale its coefficients consistently.",
+      "appendix": "postmidterm-05-appendix.html"
     },
     {
       "number": 6,
@@ -125,9 +133,12 @@
       ],
       "extension": [],
       "outcome": "Connect balanced half-reactions, activities, potential and Gibbs energy.",
-      "deliverable": "Two concentration-cell states, a reversal check and a reaction-scaling check, with consistent reference electrodes.",
+      "deliverable": "In Lab 13, compare a concentration cell with the activities exchanged. Predict and explain the sign of E, then independently check deltaG=−nFE.",
       "preparation": "Review reaction stoichiometry, ΔrG and dimensionless reaction quotients.",
-      "deck": "postmidterm-06.html"
+      "deck": "postmidterm-06.html",
+      "guidingQuestion": "What determines the sign of a concentration-cell potential?",
+      "optionalPractice": "Choose one extension: scale the balanced reaction and electron count, examine activity corrections within the supported model, or explain why equilibrium voltage differs from voltage under load.",
+      "appendix": "postmidterm-06-appendix.html"
     }
   ],
   "labs": {

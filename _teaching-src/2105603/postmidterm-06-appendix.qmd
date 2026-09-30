@@ -1,0 +1,108 @@
+---
+title: "Appendix: Electrochemical equilibrium"
+subtitle: "Session 6 · optional reference"
+author: "Soorathep Kheawhom"
+date: 2026-09-30
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    css: assets/postmidterm.css
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Optional reference material
+
+Return to the [12-slide classroom deck](postmidterm-06.html).
+
+Use these details when a question from your investigation needs them. They are outside the required 45–60 minute practice.
+
+Choose one extension: scale the balanced reaction and electron count, examine activity corrections within the supported model, or explain why equilibrium voltage differs from voltage under load.
+
+## Chemical and electrochemical potential
+
+For an ion of charge number zᵢ,
+$$\tilde\mu_i=\mu_i+z_iF\varphi$$
+
+Chemical and electrical contributions enter the driving force. The cell potential connects that driving force to electrical work under reversible conditions.
+
+## Electron and charge bookkeeping
+
+A reduction consuming n electrons has
+$$\sum_{species}\nu_i z_i+n=0$$
+
+Lab 13 excludes electrons from the species table and adds their charge using the entered n. It checks the declared atom counts independently.
+
+Matching electron counts uses their least common multiple.
+
+## Potential, Gibbs energy and K
+
+$$\Delta_rG^\circ=-nFE^\circ,\qquad \ln K=\frac{nFE^\circ}{RT}$$
+$$\Delta_rG=-nFE$$
+
+Positive E favors the written cell reaction. At complete-cell equilibrium Q=K and E=0.
+
+These relationships refer to the written reaction basis.
+
+## Activities remain separate by compartment
+
+For identical M²⁺/M electrodes,
+$$M_L+M_R^{2+}\rightleftharpoons M_L^{2+}+M_R$$
+$$Q=\frac{a(M_L^{2+})}{a(M_R^{2+})},\qquad E^\circ=0$$
+
+The same ion in different compartments cannot be canceled when its activities differ. Pure present solids have unit activity.
+
+## Nernst sensitivity to an activity ratio
+
+![Synthetic identical-electrode cell at 298.15 K with n=2 and zero junction potential.](figures/postmidterm-cell.png){width="78%"}
+
+## Concentration is not activity
+
+For a molarity standard,
+$$a_i=\gamma_i c_i/c^\circ$$
+
+Changing γ changes the activity ratio even if both concentrations are unchanged. A molality-based γ cannot be inserted into this equation without a consistent conversion.
+
+Individual-ion activity conventions and reference states must match the potential data.
+
+## Reaction scaling leaves E unchanged
+
+Multiply the full cell reaction by two:
+
+| Quantity | Transformation |
+|---|---|
+| n, ΔrG°, ΔrG | Multiply by 2 |
+| lnK, lnQ | Multiply by 2 |
+| K, Q | Square |
+| E°, E | Unchanged |
+
+Potential is a driving force per unit charge, not a reaction energy.
+
+## Equilibrium voltage and operating voltage
+
+The lab assumes reversible electrodes and zero liquid-junction potential.
+
+It does not calculate current, kinetic overpotential, ohmic loss, mass-transfer limits or full electrolyte speciation.
+
+A nonzero open-circuit potential is compatible with local electrode equilibrium; complete cell-reaction equilibrium gives E=0.
+
+## Sources and further reading
+
+[Module reference deck](reaction.html) · [Lab assumptions and sources](labs/learning-path.html#session-6)
+
+The worked examples use synthetic inputs. Each lab states its supported models and validity limits.

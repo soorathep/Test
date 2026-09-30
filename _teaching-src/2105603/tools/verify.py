@@ -95,7 +95,7 @@ else:
 
 # ------------------------------------------------------------------- decks --
 print("\ndecks")
-for m in modules + [{"id": f"session-{i}", "slides": f"postmidterm-{i:02d}.html"} for i in range(1, 7)]:
+for m in modules + [{"id": f"session-{i}", "slides": f"postmidterm-{i:02d}.html"} for i in range(1, 7)] + [{"id": f"appendix-{i}", "slides": f"postmidterm-{i:02d}-appendix.html"} for i in range(1, 7)]:
     name = m.get("slides")
     if not name:
         fail(f"module {m['id']} has no `slides:` key")

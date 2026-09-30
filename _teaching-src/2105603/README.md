@@ -194,17 +194,20 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
 
 The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` are the classroom
 route through Modules 4–6, including solid/surface and electrochemical topics.
-Each session has a 180-minute plan with a 10-minute break, 25-minute lab
- demonstration and 35-minute guided exercise. `labs/learning-path.html` holds
+Each session has 12 classroom slides and a separate optional appendix. The
+180-minute plan includes 30 minutes of essential concepts, 20 minutes of hand
+calculation, a 20-minute demonstration, a 10-minute break, 70 minutes of pair
+work, and 30 minutes of discussion and exit reflection. Required practice takes
+45–60 minutes, including the independent checkpoint. `labs/learning-path.html` holds
 the student tasks; the module decks remain extended references. No registered
 assessment weights or calendar dates are changed.
 
-Render the six session decks and the three updated reference decks using the
+Render the six classroom decks and six session appendices using the
 existing public-profile, vendored-KaTeX and publish workflow. Use the research
 interpreter by absolute path, `~/.venvs/research/bin/python`, for every tool.
 Public PDF copies are `files/postmidterm-01-slides.pdf` through
-`files/postmidterm-06-slides.pdf`. Private teaching notes remain in the QMD
-sources and are stripped from published HTML and PDFs.
+`files/postmidterm-06-slides.pdf`. Original module teaching notes remain in the QMD sources and are stripped
+from published HTML and PDFs. Classroom activity prompts are student-facing.
 
 
 Session validation/export helpers use Node.js and Playwright (the bundled runtime

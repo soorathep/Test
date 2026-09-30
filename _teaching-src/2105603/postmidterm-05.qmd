@@ -26,45 +26,24 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## Session outcome
+## The question for today
 
-Reconcile independent thermodynamic routes to K and then solve composition.
+Why can composition change while the equilibrium constant stays the same?
 
-**Before class:** Review formation Gibbs energies, reaction enthalpy/entropy and integration of heat capacity.
-
-[Learning path and all labs](labs/learning-path.html#session-5)
-
-::: {.notes}
-This sequence uses the existing pre-midterm Modules 1–3 as prerequisites. Use questions to identify missing concepts rather than repeating the full reference decks.
-:::
+Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
 
 ## The 180-minute class
 
-| In class | Minutes |
+| Activity | Minutes |
 |---|---:|
-| Recall and prediction | 10 |
-| Concepts and derivation | 45 |
-| Worked example | 30 |
+| Opening question and essential concepts | 30 |
+| One hand calculation | 20 |
+| One lab demonstration | 20 |
 | Break | 10 |
-| Instructor lab demonstration | 25 |
-| Guided student exploration | 35 |
-| Discussion and interpretation | 15 |
-| Exit question and independent task | 10 |
+| Student pair investigation | 70 |
+| Discussion and exit question | 30 |
 
-::: {.notes}
-Includes a 10-minute break. The 60 minutes of demonstration and guided work are part of the 180 minutes. If discussion runs long, move the optional extension to independent practice; do not remove the balance/interpretation check.
-:::
-
-## Reaction equilibrium changes composition
-
-$$n_i=n_{i,0}+\nu_i\xi$$
-$$\Delta_rG=\sum_i\nu_i\mu_i=\Delta_rG^\circ+RT\ln Q$$
-
-Stoichiometric coefficients are negative for reactants and positive for products. At an interior equilibrium, ΔrG=0.
-
-::: {.notes}
-Start from differential G at fixed T,P. Feasible extent bounds follow nonnegative amounts; boundary equilibria need separate treatment.
-:::
+The 70-minute investigation is student work with instructor support.
 
 ## K and Q have different roles
 
@@ -73,25 +52,6 @@ $$\ln K=-\frac{\Delta_rG^\circ}{RT},\qquad Q=\prod_i a_i^{\nu_i}$$
 K is tied to T and the fixed reaction/standard-state convention. Q describes the supplied state.
 
 Q=K is an equilibrium condition, not an identity for every measured composition.
-
-::: {.notes}
-Use the Lab 12 equilibrium-assertion control to emphasize evidence. Do not call −RTlnQ a standard Gibbs energy unless equilibrium is justified.
-:::
-
-## Standard states keep K dimensionless
-
-| Phase | Activity used |
-|---|---|
-| Gas | φᵢ yᵢ P/p° |
-| Solute, molarity standard | γᵢ cᵢ/c° |
-| Liquid solution | γᵢ xᵢ |
-| Present pure solid/liquid | 1 |
-
-Formation data and activities must use matching phases and standards.
-
-::: {.notes}
-Discuss why a numerical Kp with pressure units is not automatically the same object as thermodynamic dimensionless K.
-:::
 
 ## Several routes to standard Gibbs energy
 
@@ -103,10 +63,6 @@ Discuss why a numerical Kp with pressure units is not automatically the same obj
 
 Independent inputs can disagree; the lab preserves the disagreement.
 
-::: {.notes}
-Use the six thermodynamic rows in Lab 12: constant-property and Cp variants create extra rows, not separate laws.
-:::
-
 ## A reference-state check
 
 Lab 12 synthetic A₂ ⇌ 2A at 350 K uses ΔrG°=−4.000 kJ/mol.
@@ -115,141 +71,49 @@ $$\ln K=\frac{4000}{R(350)}=1.37454,\qquad K\approx3.95326$$
 
 With ΔrH°=50.000 kJ/mol and ΔrS°=54000/350 J mol⁻¹ K⁻¹, the H−TS route gives the same value.
 
-::: {.notes}
-This is a synthetic thermodynamic definition, not a measured dissociation reaction. Ask students to verify the joule conversion and reference basis.
-:::
+## An independent check
 
-## Constant-enthalpy van ’t Hoff relation
+Keep the reaction basis and standard states fixed. Convert kJ to J before calculating ln K, then check ln Q−ln K for the calculated equilibrium state.
 
-$$\frac{d\ln K}{dT}=\frac{\Delta_rH^\circ(T)}{RT^2}$$
+## One demonstration · 20 minutes
 
-With constant ΔrH° over the stated interval,
-$$\ln\frac{K(T)}{K(T_r)}=\frac{\Delta_rH_r^\circ}{R}\left(\frac1{T_r}-\frac1T\right)$$
+[Open the core lab](labs/reaction.html#rx-experiment)
 
-An endothermic reaction has increasing K with T in this approximation.
+Use the synthetic Lab 12 case at its reference temperature. Compare the supplied Gibbs-energy and H−TS routes, then change only pressure and inspect K and extent.
 
-::: {.notes}
-Derive integration signs on the board. A point value of ΔG° provides no temperature derivative.
-:::
+Keep one saved baseline for the pair investigation.
 
-## Constant heat-capacity correction
+## Pair investigation · 70 minutes
 
-$$\Delta_rH^\circ(T)=\Delta_rH_r^\circ+\Delta_rC_p^\circ(T-T_r)$$
-$$\Delta_rS^\circ(T)=\Delta_rS_r^\circ+\Delta_rC_p^\circ\ln(T/T_r)$$
+- 10 min: predict and record the baseline.
+- 25 min: change one input and calculate.
+- 20 min: exchange roles and check the result by hand.
+- 15 min: prepare one plot or table and a short explanation.
 
-The integrated ln K adds
-$$\frac{\Delta_rC_p^\circ}{R}\left[\ln(T/T_r)+T_r/T-1\right]$$
+In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.
 
-to the constant-enthalpy expression.
+## Discussion and exit question · 30 minutes
 
-::: {.notes}
-Use the written formula to compare with Lab 12. Discuss the validity interval, phase transitions and why constant Cp is still an approximation.
-:::
+Use 20 minutes to compare results and discuss unexpected behavior.
 
-## Reference consistency and temperature applicability
+Why can composition change while the equilibrium constant stays the same?
 
-Changing only Kref while holding reference H and S fixed creates two independent anchors that may disagree.
+Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-Point ΔG° and formation-energy data are unavailable away from their supplied T unless an explicit temperature model exists.
+## Required practice · 45–60 minutes
 
-Keeping ln K avoids false zeros or infinities from exponent underflow/overflow.
+In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.
 
-::: {.notes}
-Ask whether apparent curve agreement at one T establishes agreement of derivatives. It does not.
-:::
+[Assessment 5 and independent checkpoint](labs/assessments.html#session-5)
 
-## Equilibrium extent and pressure
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
 
-For a neutral ideal-gas reaction,
-$$Q(\xi)=\prod_i\left[y_i(\xi)P/p^\circ\right]^{\nu_i}$$
+## Optional study
 
-Solve lnQ(ξ)−lnK=0 within nonnegative mole amounts. Pressure changes Q and equilibrium composition, not standard K at fixed T.
+Choose one extension: vary temperature with and without a heat-capacity correction, reverse the reaction, or scale its coefficients consistently.
 
-Adding inert gas at fixed total pressure differs from adding it at fixed volume.
+[Session appendix](postmidterm-05-appendix.html) · [Module reference](reaction.html)
 
-::: {.notes}
-Use a delta-nu-nonzero case and explain dilution. Lab 12 is fixed-pressure; do not extrapolate its inert response to a rigid vessel.
-:::
+[Learning path](labs/learning-path.html#session-5) · [Offline package](files/thermodynamics-offline.zip)
 
-## Gibbs energy along extent
-
-![Module 6 reference illustration: the admissible equilibrium is a constrained Gibbs-energy minimum.](figures/f6_01_gibbs_vs_extent.png){width="78%"}
-
-::: {.notes}
-Explain that the reference illustration is broader than the Lab 12 single-reaction example. The lab rejects unsupported phase/charge cases rather than claiming a general minimizer.
-:::
-
-## Class demonstration · Lab 12
-
-[Open chemical equilibrium](labs/reaction.html#rx-experiment)
-
-1. Compare all applicable routes at the synthetic reference T.
-2. Change T and compare ΔCp and constant-property results.
-3. Change pressure at fixed T; inspect extent and atom balances.
-4. Export the study and restore it to repeat the calculation.
-
-::: {.notes}
-25 minutes. Show the Q equilibrium assertion only after explaining the logical distinction. Avoid implying that clicking a checkbox proves equilibrium.
-:::
-
-## Guided exploration · 35 minutes
-
-Choose one temperature change and one pressure change.
-
-Keep a table of lnK, Q, reaction direction and equilibrium extent. Explain which quantities change for each intervention.
-
-Independently check one atom balance and one H−TS or van ’t Hoff calculation.
-
-::: {.notes}
-Use source defaults for a reproducible first comparison. Groups that finish early can perturb Kref and diagnose inconsistent anchors.
-:::
-
-## Reaction scaling changes K
-
-Reversing the reaction changes lnK to −lnK. Multiplying every coefficient by c changes lnK to c lnK.
-
-Formation sums, reaction H, S, Cp and direct ΔG must transform on the same basis.
-
-A numerical K without a written reaction is incomplete information.
-
-::: {.notes}
-Prepare the connection to electrochemistry: n scales too, so E can remain invariant even though K changes.
-:::
-
-## Exit question
-
-At the same temperature, pressure increases and equilibrium conversion changes.
-
-Does this mean the equilibrium constant changed?
-
-What additional information is needed before using one ΔG° value at a second temperature?
-
-::: {.notes}
-Expected distinction between standard K and Q/composition; need H/S/Cp or justified temperature law. Same standard states and reaction basis remain essential.
-:::
-
-## Independent practice · suggested 60–90 minutes
-
-[Assessment set 5 and rubric](labs/assessments.html#session-5) · [Offline package](files/thermodynamics-offline.zip)
-
-Compare constant-property and heat-capacity routes; report ln K, Q and one extent/material-balance check.
-
-Retain the calculator export, your worksheet, a comparison plot/table and one independent check. State an assumption that limits your conclusion.
-
-Use the core labs on the [learning path](labs/learning-path.html#session-5). Optional extensions are additional work.
-
-::: {.notes}
-No new grading weights or due dates are announced here. Apply the official course assessment arrangements. Feedback focuses on reproducibility, controlled comparison, verification and interpretation.
-:::
-
-## References and further study
-
-[Module reference deck](reaction.html) · [Lab sources and equations](labs/learning-path.html#session-5)
-
-IUPAC: [standard electromotive force](https://goldbook.iupac.org/terms/view/S05913) and [standard equilibrium constant](https://goldbook.iupac.org/terms/view/S05915).
-
-Synthetic worked examples illustrate calculations; they are not evidence of real-system accuracy.
-
-::: {.notes}
-Use optional reference slides for questions or further reading. Public decks omit instructor notes; present from a local non-public render for prompts and teaching notes.
-:::
+Optional work is additional. Complete the required investigation first.
