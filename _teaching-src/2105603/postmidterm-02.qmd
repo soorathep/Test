@@ -30,7 +30,9 @@ format:
 
 Does a small fitting error mean the data and model are trustworthy?
 
-Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
+[Before class: 3-page reading](files/preclass-week-02.pdf) · 15–20 minutes
+
+Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
 
 ## The 180-minute class
 
@@ -45,23 +47,25 @@ Write your prediction before opening the lab. By the end, support an answer with
 
 The 70-minute investigation is student work with instructor support.
 
-## Activities inferred from VLE
+## Activity and its reference
 
-Under the ideal-vapor approximation with neglected Poynting correction,
+$$\mu_i=\mu_i^\circ+RT\ln a_i,\qquad a_i=\gamma_i x_i$$
+
+The activity is dimensionless; γ is its correction relative to an ideal liquid solution using the pure-liquid standard.
+
+**Residual:** real fluid minus ideal gas at the same T, P and composition.
+
+**Excess:** real mixture minus ideal solution at the same T, P and composition.
+
+## Properties → prediction → fitting
+
+1. Verify the Antoine form, units and applicable temperature range.
+2. Predict P and y from a chosen liquid model.
+3. Infer activities from observations, then compare model fits.
+
 $$\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}$$
 
-The absent component at a pure endpoint has no finite measured γ from this ratio. Small x or y amplifies measurement error.
-
-## Different tests answer different questions
-
-| Diagnostic | Evidence and limitation |
-|---|---|
-| Area | Global signed integral; endpoint coverage matters |
-| Point/local | Local deviations; differentiation amplifies noise |
-| Model-based | Deviations relative to the chosen model |
-| Herington | Empirical temperature-range correction |
-
-Agreement across tests strengthens a diagnosis but does not prove the data are correct.
+This inversion assumes ideal vapor and negligible Poynting correction. Convergence, consistency and prediction are separate checks.
 
 ## A vapor-pressure error becomes an activity error
 
@@ -79,7 +83,7 @@ Check one Antoine saturation pressure and one inferred activity coefficient by h
 
 [Open the core lab](labs/vle-input.html#vi-experiment)
 
-Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Record the residual pattern and one limitation.
+Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Compare predicted P and y with one observed point, then inspect the residual pattern.
 
 Keep one saved baseline for the pair investigation.
 
@@ -100,13 +104,13 @@ Does a small fitting error mean the data and model are trustworthy?
 
 Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-## Required practice · 45–60 minutes
+## Follow-up practice · 30–40 minutes
 
 In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
 
 [Assessment 2 and independent checkpoint](labs/assessments.html#session-2)
 
-Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is included. With pre-class reading, independent work totals 45–60 minutes.
 
 ## Optional study
 

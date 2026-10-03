@@ -30,7 +30,9 @@ format:
 
 How does pressure change the phase split at fixed temperature?
 
-Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
+[Before class: 3-page reading](files/preclass-week-01.pdf) · 15–20 minutes
+
+Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
 
 ## The 180-minute class
 
@@ -45,19 +47,20 @@ Write your prediction before opening the lab. By the end, support an answer with
 
 The 70-minute investigation is student work with instructor support.
 
-## Ideal-mixture boundary equations
+## Read the phase diagram first
 
-$$P_{bubble}=\sum_i x_iP_i^{sat}$$
-$$\frac{1}{P_{dew}}=\sum_i\frac{y_i}{P_i^{sat}}$$
+![Synthetic ideal binary at 350 K. Horizontal: coexisting phases; vertical: fixed overall composition.](figures/preclass-vle.png){width="68%"}
 
-Both equations are for fixed T, ideal liquid and ideal vapor. Using the same numerical composition in each equation describes different incipient-phase states.
+Predict the phase at 110 kPa before calculating.
 
-## TP flash includes a material balance
+## Boundaries and amounts answer different questions
 
-$$z_i=(1-\beta)x_i+\beta y_i,\qquad y_i=K_i x_i$$
-$$\sum_i\frac{z_i(K_i-1)}{1+\beta(K_i-1)}=0$$
+$$P_{bubble}=\sum_i x_iP_i^{sat},\qquad \frac{1}{P_{dew}}=\sum_i\frac{y_i}{P_i^{sat}}$$
+$$z_i=(1-\beta)x_i+\beta y_i,\qquad y_i=K_ix_i$$
 
-Here β is vapor mole fraction. In a nonideal liquid, K depends on the unknown x, so composition and phase fraction must be solved together.
+The boundary equations assume ideal phases at fixed T. A TP flash supplies T, P and z, then finds compositions and amounts.
+
+In a nonideal liquid, K depends on the unknown liquid composition.
 
 ## A reproducible ideal baseline
 
@@ -101,13 +104,13 @@ How does pressure change the phase split at fixed temperature?
 
 Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-## Required practice · 45–60 minutes
+## Follow-up practice · 30–40 minutes
 
 In Lab 01, save one ideal two-phase baseline and one changed pressure at the same T and z. Predict the change, report phase amounts and check one component balance by hand.
 
 [Assessment 1 and independent checkpoint](labs/assessments.html#session-1)
 
-Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is included. With pre-class reading, independent work totals 45–60 minutes.
 
 ## Optional study
 

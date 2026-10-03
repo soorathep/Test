@@ -41,11 +41,12 @@
       ],
       "outcome": "Predict a two-phase state, solve it, then check both component balances.",
       "deliverable": "In Lab 01, save one ideal two-phase baseline and one changed pressure at the same T and z. Predict the change, report phase amounts and check one component balance by hand.",
-      "preparation": "Review chemical potential, fugacity and activity standards in Modules 2–3.",
+      "preparation": "Read the P-x-y example and bring a phase prediction at 110 kPa. Prepare the three short questions on page 3.",
       "deck": "postmidterm-01.html",
       "guidingQuestion": "How does pressure change the phase split at fixed temperature?",
       "optionalPractice": "Choose one extension: compare liquid activity models, examine zero versus nonzero virial coefficients in Lab 09, or add the energy balance in Lab 07.",
-      "appendix": "postmidterm-01-appendix.html"
+      "appendix": "postmidterm-01-appendix.html",
+      "prereading": "files/preclass-week-01.pdf"
     },
     {
       "number": 2,
@@ -61,11 +62,12 @@
       ],
       "outcome": "Separate vapor-pressure inputs, consistency evidence and fitted-model error.",
       "deliverable": "In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.",
-      "preparation": "Bring T, P, x1, y1 data or use the explicitly synthetic example; obtain Antoine equation forms, units and validity ranges.",
+      "preparation": "Read the activity example and bring an Antoine-input checklist; no real dataset is required. Prepare the three short questions on page 3.",
       "deck": "postmidterm-02.html",
       "guidingQuestion": "Does a small fitting error mean the data and model are trustworthy?",
       "optionalPractice": "Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.",
-      "appendix": "postmidterm-02-appendix.html"
+      "appendix": "postmidterm-02-appendix.html",
+      "prereading": "files/preclass-week-02.pdf"
     },
     {
       "number": 3,
@@ -81,11 +83,12 @@
       ],
       "outcome": "Use global Gibbs-energy support to assess candidate liquid phases.",
       "deliverable": "In Lab 04, retain one supported tie line and compare two overall compositions inside it. Verify the lever rule by hand and explain the global stability check.",
-      "preparation": "Review gmix, local curvature and the distinction between stationary and globally stable states.",
+      "preparation": "Read the common-tangent example and bring your lever-rule calculation. Prepare the three short questions on page 3.",
       "deck": "postmidterm-03.html",
       "guidingQuestion": "When does a calculated liquid split represent stable equilibrium?",
-      "optionalPractice": "Choose one extension: NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06.",
-      "appendix": "postmidterm-03-appendix.html"
+      "optionalPractice": "Choose one extension: NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06. A paper exercise connects tangent intercepts to partial molar properties (session appendix).",
+      "appendix": "postmidterm-03-appendix.html",
+      "prereading": "files/preclass-week-03.pdf"
     },
     {
       "number": 4,
@@ -100,11 +103,12 @@
       ],
       "outcome": "Distinguish pure-solid SLE, bulk sublimation and surface adsorption.",
       "deliverable": "In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.",
-      "preparation": "Review chemical potentials, fusion/sublimation data and absolute versus excess adsorption.",
+      "preparation": "Read the inventory example and classify bulk sublimation, adsorption and reaction. Prepare the three short questions on page 3.",
       "deck": "postmidterm-04.html",
       "guidingQuestion": "What happens to gas pressure when the solid inventory runs out?",
-      "optionalPractice": "Choose one extension: compare Henry and Langmuir in Lab 11, check a closed adsorption vessel, or explore pure-solid solubility and the eutectic assumptions in Lab 10.",
-      "appendix": "postmidterm-04-appendix.html"
+      "optionalPractice": "Choose one extension: compare Henry and Langmuir in Lab 11, check a closed adsorption vessel, or explore pure-solid solubility and the eutectic assumptions in Lab 10. Optional paper exercises cover Henry gas solubility and dilute-solution osmosis (session appendix).",
+      "appendix": "postmidterm-04-appendix.html",
+      "prereading": "files/preclass-week-04.pdf"
     },
     {
       "number": 5,
@@ -115,13 +119,14 @@
         "reaction"
       ],
       "extension": [],
-      "outcome": "Reconcile independent thermodynamic routes to K and then solve composition.",
+      "outcome": "Use extent and Gibbs driving force to establish equilibrium, then reconcile thermodynamic routes to K.",
       "deliverable": "In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.",
-      "preparation": "Review formation Gibbs energies, reaction enthalpy/entropy and integration of heat capacity.",
+      "preparation": "Write the species amounts and feasible extent interval before calculating K. Prepare the three short questions on page 3.",
       "deck": "postmidterm-05.html",
       "guidingQuestion": "Why can composition change while the equilibrium constant stays the same?",
       "optionalPractice": "Choose one extension: vary temperature with and without a heat-capacity correction, reverse the reaction, or scale its coefficients consistently.",
-      "appendix": "postmidterm-05-appendix.html"
+      "appendix": "postmidterm-05-appendix.html",
+      "prereading": "files/preclass-week-05.pdf"
     },
     {
       "number": 6,
@@ -134,11 +139,12 @@
       "extension": [],
       "outcome": "Connect balanced half-reactions, activities, potential and Gibbs energy.",
       "deliverable": "In Lab 13, compare a concentration cell with the activities exchanged. Predict and explain the sign of E, then independently check deltaG=−nFE.",
-      "preparation": "Review reaction stoichiometry, ΔrG and dimensionless reaction quotients.",
+      "preparation": "Balance the cell reaction and predict the potential sign before using Nernst. Prepare the three short questions on page 3.",
       "deck": "postmidterm-06.html",
       "guidingQuestion": "What determines the sign of a concentration-cell potential?",
       "optionalPractice": "Choose one extension: scale the balanced reaction and electron count, examine activity corrections within the supported model, or explain why equilibrium voltage differs from voltage under load.",
-      "appendix": "postmidterm-06-appendix.html"
+      "appendix": "postmidterm-06-appendix.html",
+      "prereading": "files/preclass-week-06.pdf"
     }
   ],
   "labs": {
@@ -291,9 +297,9 @@
       "anchor": "rx-experiment",
       "predict": "Predict which routes to K remain usable when temperature changes.",
       "steps": [
-        "Reconcile the supplied thermodynamic inputs at the reference temperature.",
-        "Change T; compare constant-property and ΔCp routes and point-data applicability.",
-        "Change pressure at fixed T; compare K, Q and the ideal-gas equilibrium extent."
+        "Write species amounts from extent, find the feasible interval and predict the sign of the Gibbs driving force.",
+        "Reconcile thermodynamic routes at the reference temperature; change pressure at fixed T and compare K, Q and extent.",
+        "As an extension, change T and compare constant-property and ΔCp routes with point-data applicability."
       ],
       "check": "Check the reaction basis, standard states, lnQ−lnK and atom balances.",
       "limit": "The extent solver admits one neutral ideal-gas reaction. An observed Q is not automatically K."

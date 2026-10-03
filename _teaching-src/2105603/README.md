@@ -198,7 +198,7 @@ Each session has 12 classroom slides and a separate optional appendix. The
 180-minute plan includes 30 minutes of essential concepts, 20 minutes of hand
 calculation, a 20-minute demonstration, a 10-minute break, 70 minutes of pair
 work, and 30 minutes of discussion and exit reflection. Required practice takes
-45–60 minutes, including the independent checkpoint. `labs/learning-path.html` holds
+45–60 minutes total: 15–20 minutes pre-class reading and 30–40 minutes follow-up, including the independent checkpoint. `labs/learning-path.html` holds
 the student tasks; the module decks remain extended references. No registered
 assessment weights or calendar dates are changed.
 
@@ -222,3 +222,28 @@ The PDF exporter rewrites local preview links to the public website. The session
 CSS embeds a DejaVu symbol fallback so scientific Unicode remains portable;
 regenerate it with `~/.venvs/research/bin/python tools/build-postmidterm-fonts.py`.
 The font license travels with the CSS in `assets/`.
+
+
+## Pre-class readings
+
+Six original three-page handouts are published as `files/preclass-week-01.pdf`
+through `files/preclass-week-06.pdf`. Each contains essential concepts, one
+synthetic worked example and three short preparation questions. The textbook
+section locators refer only to the supplied contents photographs; no book title
+or unseen chapter content is inferred. Preparation is part of the weekly time
+budget, not another assignment. The optional partial-molar, Henry-solubility
+and osmosis paper exercises do not add lab solvers.
+
+Editable prose and the PDF builder live in `prereading/`. Regenerate from this
+course-source directory (research environment with reportlab, matplotlib and
+skh_palette):
+
+```sh
+MPLCONFIGDIR=/tmp/thermo-mpl ~/.venvs/research/bin/python prereading/figures/preclass_figures.py
+MPLCONFIGDIR=/tmp/thermo-mpl ~/.venvs/research/bin/python prereading/tools/build_prereading.py --output ../../teaching/2105603/files
+```
+
+Copy the generated figure PNG/PDF pairs from `prereading/figures/generated/`
+into `figures/` before rendering slides. Inspect rendered PDF pages and run
+`pdffonts`; embedded fonts must not be Type 3. Rebuild the offline ZIP after
+publishing the readings and refreshed classroom PDFs.

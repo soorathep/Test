@@ -30,7 +30,9 @@ format:
 
 Why can composition change while the equilibrium constant stays the same?
 
-Write your prediction before opening the lab. By the end, support an answer with one controlled comparison and an independent check.
+[Before class: 3-page reading](files/preclass-week-05.pdf) · 15–20 minutes
+
+Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
 
 ## The 180-minute class
 
@@ -45,23 +47,24 @@ Write your prediction before opening the lab. By the end, support an answer with
 
 The 70-minute investigation is student work with instructor support.
 
-## K and Q have different roles
+## Start with extent and driving force
 
-$$\ln K=-\frac{\Delta_rG^\circ}{RT},\qquad Q=\prod_i a_i^{\nu_i}$$
+$$n_i=n_{i,0}+\nu_i\xi,\qquad n_i\geq0$$
+$$\left(\frac{dG}{d\xi}\right)_{T,P}=\Delta_rG=\Delta_rG^\circ+RT\ln Q$$
 
-K is tied to T and the fixed reaction/standard-state convention. Q describes the supplied state.
+Write the feasible extent interval first. A negative derivative favors increasing extent; a positive derivative favors decreasing extent.
 
-Q=K is an equilibrium condition, not an identity for every measured composition.
+An interior equilibrium has zero derivative. Boundary minima need one-sided checks.
 
-## Several routes to standard Gibbs energy
+## The equilibrium condition gives K
 
-1. Supplied ΔrG° at the evaluation T.
-2. Formation properties: ΔrG°=ΣνᵢΔfGᵢ°.
-3. Reaction enthalpy and entropy: ΔrG°=ΔrH°−TΔrS°.
-4. Reference K with integrated temperature dependence.
-5. Equilibrium activities, only when equilibrium is supported.
+$$\Delta_rG=0\ \Rightarrow\ Q=K,\qquad\ln K=-\frac{\Delta_rG^\circ}{RT}$$
 
-Independent inputs can disagree; the lab preserves the disagreement.
+Obtain standard Gibbs energy from direct data, formation properties, or H−TS at the evaluation temperature.
+
+K depends on T and the reaction/standard-state convention. Q describes the current composition and pressure.
+
+Additional K(T) routes are in the appendix and lab.
 
 ## A reference-state check
 
@@ -71,15 +74,17 @@ $$\ln K=\frac{4000}{R(350)}=1.37454,\qquad K\approx3.95326$$
 
 With ΔrH°=50.000 kJ/mol and ΔrS°=54000/350 J mol⁻¹ K⁻¹, the H−TS route gives the same value.
 
-## An independent check
+## Check the minimum and the reaction quotient
 
-Keep the reaction basis and standard states fixed. Convert kJ to J before calculating ln K, then check ln Q−ln K for the calculated equilibrium state.
+![Synthetic A₂ ⇌ 2A at 350 K and P=P°. Initial amount: one mole A₂.](figures/preclass-reaction.png){width="68%"}
+
+At ξ≈0.70503 mol, Q≈3.95326=K. Check the atom balance.
 
 ## One demonstration · 20 minutes
 
 [Open the core lab](labs/reaction.html#rx-experiment)
 
-Use the synthetic Lab 12 case at its reference temperature. Compare the supplied Gibbs-energy and H−TS routes, then change only pressure and inspect K and extent.
+Use the synthetic Lab 12 case. Write nA₂=1−ξ, nA=2ξ and 0≤ξ≤1 mol first. Compare the supplied Gibbs-energy and H−TS routes, then change only pressure and inspect K and extent.
 
 Keep one saved baseline for the pair investigation.
 
@@ -100,13 +105,13 @@ Why can composition change while the equilibrium constant stays the same?
 
 Use the final 10 minutes to explain your answer individually and name one assumption that limits it.
 
-## Required practice · 45–60 minutes
+## Follow-up practice · 30–40 minutes
 
 In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.
 
 [Assessment 5 and independent checkpoint](labs/assessments.html#session-5)
 
-Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is part of this time budget.
+Retain one study JSON, one comparison and a short explanation. Continue from your classroom case. The hand checkpoint is included. With pre-class reading, independent work totals 45–60 minutes.
 
 ## Optional study
 
