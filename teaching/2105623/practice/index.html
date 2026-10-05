@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimization Practice Test | 2105623 | SKH Research Group</title>
+<meta name="description" content="A 25-question optimization practice test with shuffled questions and choices, worked explanations, and local progress saving.">
+<link rel="stylesheet" href="quiz.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+<header><a class="brand" href="/">SKH <span>Research Group</span></a><a href="/teaching/2105623/">Back to course</a></header>
+<main>
+<p class="eyebrow">2105623 · Optimization of Chemical Processes</p>
+<section id="welcome">
+<h1>Test your formulation skills.</h1>
+<p class="lede">25 questions. One best answer each. Think through the model before choosing.</p>
+<div class="facts"><div><strong>25 points</strong><span>1 point per question</span></div><div><strong>Your own order</strong><span>Questions and choices shuffle</span></div><div><strong>Learn from mistakes</strong><span>Explanations after submission</span></div></div>
+<div class="panel"><h2>Before you begin</h2><p>This practice test covers formulation, blending, supplier activation, inventory, and verification of LLM-generated models. LP and MILP questions concern variables and constraints only. No optimization algorithms are tested. All cases are teaching examples.</p><p>Work independently and write down your reasoning. There is no time limit or penalty for incorrect answers. You can change answers and flag questions before submitting.</p><p>Your progress stays in this browser when storage is available. Scores are not sent to your instructor. On a shared device, start a new attempt for the next student.</p><p id="resume-info" hidden></p><div class="actions"><button id="start">Start practice test</button><button id="resume" class="secondary" hidden>Continue saved attempt</button></div></div>
+</section>
+<section id="test" hidden>
+<div class="test-heading"><div><p class="eyebrow" id="attempt-id"></p><h1>Optimization practice</h1></div><p id="progress" role="status" aria-live="polite"></p></div>
+<progress id="progressbar" value="0" max="25" aria-label="Questions answered"></progress>
+<div class="test-layout"><article class="panel question"><p class="eyebrow" id="question-number"></p><h2 id="stem" tabindex="-1"></h2><fieldset id="choices"><legend class="sr-only">Select one answer</legend></fieldset><div class="question-tools"><button id="clear" class="text-button">Clear answer</button><label><input id="flag" type="checkbox"> Flag for review</label></div><div class="actions"><button id="previous" class="secondary">Previous</button><button id="next">Next question</button></div></article><aside class="panel"><h2>Question navigator</h2><p class="small">Filled = answered · ! = flagged</p><nav id="navigator" aria-label="Questions"></nav><p class="small">You can revisit any question before submitting.</p><button id="submit" class="full">Review and submit</button></aside></div>
+</section>
+<section id="results" hidden><p class="eyebrow">Practice complete</p><h1>Your result</h1><div id="score" class="score" role="status"></div><p id="result-meta"></p><p>Your score is saved only in this browser. It has not been sent to your instructor.</p><div class="actions"><button id="retake">Start a new shuffled attempt</button><button id="download" class="secondary">Download result</button><button id="print" class="secondary">Print result</button></div><div class="panel"><h2>Topics to revisit</h2><div id="topics"></div></div><h2>Answers and explanations</h2><div id="review"></div></section>
+<p id="storage-status" class="small" role="status"></p>
+<noscript><p class="panel">Please enable JavaScript to use the practice test.</p></noscript>
+</main>
+<dialog id="confirm"><h2 id="confirm-title"></h2><p id="confirm-text"></p><div class="actions"><button id="confirm-action"></button><button id="cancel" class="secondary">Go back</button></div></dialog>
+<footer>SKH Research Group · Practice assessment · <a href="/teaching/2105623/labs/">Explore the Optimization Lab</a></footer>
+</body></html>
