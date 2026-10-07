@@ -1,0 +1,15 @@
+body { color: #333F4A; }
+main { max-width: 960px; margin: auto; }
+h2 { margin-top: 2.5rem; }
+textarea { width:100%; min-height:110px; padding:12px; border:1px solid #66727C; border-radius:6px; font:inherit; margin:6px 0 20px; }
+.answer-label { font-weight:600; display:block; }
+.table-wrap { overflow-x:auto; margin:20px 0; }
+table { width:100%; border-collapse:collapse; }
+th,td { border:1px solid #B9C1C6; padding:12px; vertical-align:top; min-width:150px; }
+td textarea { min-width:140px; min-height:80px; }
+.case-figure { width:100%; max-width:760px; }
+.worksheet-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:16px 0; }
+button { border-radius:6px; padding:10px 16px; cursor:pointer; }
+#save-status { font-size:.9rem; }
+.print-answer { display:none; }
+@media print { .worksheet-actions, textarea { display:none; } .print-answer { display:block; white-space:pre-wrap; min-height:80px; border-bottom:1px solid #B9C1C6; } table { page-break-inside:avoid; } }
