@@ -22,7 +22,7 @@
       70
     ],
     [
-      "Discussion and exit question",
+      "Discussion, exit ticket and feedback",
       30
     ]
   ],
@@ -46,7 +46,8 @@
       "guidingQuestion": "How does pressure change the phase split at fixed temperature?",
       "optionalPractice": "Choose one extension: compare liquid activity models, examine zero versus nonzero virial coefficients in Lab 09, or add the energy balance in Lab 07.",
       "appendix": "postmidterm-01-appendix.html",
-      "prereading": "files/preclass-week-01.pdf"
+      "prereading": "files/preclass-week-01.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=1"
     },
     {
       "number": 2,
@@ -67,7 +68,8 @@
       "guidingQuestion": "Does a small fitting error mean the data and model are trustworthy?",
       "optionalPractice": "Choose one extension: a controlled consistency defect in Lab 03, a fixed held-out comparison, bootstrap fit spread, or your own sourced VLE data. Exact synthetic bootstrap spread does not quantify real measurement uncertainty.",
       "appendix": "postmidterm-02-appendix.html",
-      "prereading": "files/preclass-week-02.pdf"
+      "prereading": "files/preclass-week-02.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2"
     },
     {
       "number": 3,
@@ -88,7 +90,8 @@
       "guidingQuestion": "When does a calculated liquid split represent stable equilibrium?",
       "optionalPractice": "Choose one extension: NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06. A paper exercise connects tangent intercepts to partial molar properties (session appendix).",
       "appendix": "postmidterm-03-appendix.html",
-      "prereading": "files/preclass-week-03.pdf"
+      "prereading": "files/preclass-week-03.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3"
     },
     {
       "number": 4,
@@ -108,7 +111,8 @@
       "guidingQuestion": "What happens to gas pressure when the solid inventory runs out?",
       "optionalPractice": "Choose one extension: compare Henry and Langmuir in Lab 11, check a closed adsorption vessel, or explore pure-solid solubility and the eutectic assumptions in Lab 10. Optional paper exercises cover Henry gas solubility and dilute-solution osmosis (session appendix).",
       "appendix": "postmidterm-04-appendix.html",
-      "prereading": "files/preclass-week-04.pdf"
+      "prereading": "files/preclass-week-04.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4"
     },
     {
       "number": 5,
@@ -126,7 +130,8 @@
       "guidingQuestion": "Why can composition change while the equilibrium constant stays the same?",
       "optionalPractice": "Choose one extension: vary temperature with and without a heat-capacity correction, reverse the reaction, or scale its coefficients consistently.",
       "appendix": "postmidterm-05-appendix.html",
-      "prereading": "files/preclass-week-05.pdf"
+      "prereading": "files/preclass-week-05.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5"
     },
     {
       "number": 6,
@@ -144,7 +149,8 @@
       "guidingQuestion": "What determines the sign of a concentration-cell potential?",
       "optionalPractice": "Choose one extension: scale the balanced reaction and electron count, examine activity corrections within the supported model, or explain why equilibrium voltage differs from voltage under load.",
       "appendix": "postmidterm-06-appendix.html",
-      "prereading": "files/preclass-week-06.pdf"
+      "prereading": "files/preclass-week-06.pdf",
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=6"
     }
   ],
   "labs": {
@@ -317,5 +323,23 @@
       "check": "Verify atom/charge balances, E=Eright−Eleft and ΔrG=−nFE.",
       "limit": "Both E° values need the same reference and temperature. Junction potentials, kinetics and loaded-cell voltage are excluded."
     }
-  }
+  },
+  "closingTimeBlocks": [
+    [
+      "Discussion",
+      20
+    ],
+    [
+      "Exit ticket",
+      5
+    ],
+    [
+      "Feedback survey",
+      3
+    ],
+    [
+      "Closing",
+      2
+    ]
+  ]
 }

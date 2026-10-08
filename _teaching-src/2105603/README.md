@@ -247,3 +247,19 @@ Copy the generated figure PNG/PDF pairs from `prereading/figures/generated/`
 into `figures/` before rendering slides. Inspect rendered PDF pages and run
 `pdffonts`; embedded fonts must not be Type 3. Rebuild the offline ZIP after
 publishing the readings and refreshed classroom PDFs.
+
+
+## End-of-class responses
+
+The final 30 minutes are discussion (20), exit ticket (5), feedback (3), and
+closing (2). The six core decks remain 12 slides. Their final slides contain
+a QR and clickable link to `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=N`.
+
+Responses persist in the Sites D1 table `course_responses`; the student page
+has no response-list endpoint. The instructor can ask ChatGPT to read the Sites
+database for reporting. No name, ID or email is requested. Do not add response
+exports to this public repository.
+
+Regenerate QR images with the research interpreter and
+`figures/generate_exit_qr.py`. Verify that each QR decodes to its own session.
+The offline package includes QR slides, but submitting the form needs internet.
