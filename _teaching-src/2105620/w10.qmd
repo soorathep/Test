@@ -1,0 +1,330 @@
+---
+title: "Writing the Discussion and Conclusion"
+subtitle: "Week 10 · 2105620 Research Communication Skills for Chemical Engineers · 09:00–12:00"
+author: "Soorathep Kheawhom"
+date: 2026-10-22
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss, theme/weeks08-10.scss]
+    width: 1280
+    height: 720
+    margin: 0.075
+    center: false
+    slide-number: c/t
+    show-slide-number: all
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## What can the evidence support?
+
+1. Write the main finding from the reaction case.
+2. Write one explanation that remains a hypothesis.
+3. Explain the difference to a partner.
+
+::: {.notes}
+Title slide, 09:00: ให้เปิด Results และรูปของตนเองจากสองครั้งก่อน
+
+09:00–09:08 ใช้คำตอบเพื่อหาว่ายังมีการกล่าวกลไกแบบยืนยันหรือไม่
+:::
+
+## The evidence we have
+
+![](assets/w08-10/reaction_summary.svg){height=430 fig-alt="Synthetic reaction data at 2.0 s residence time. As temperature increases from 300 to 375 degrees Celsius, mean conversion increases from 40% to 80%, while mean selectivity decreases from 90% to 65%. Error bars show standard deviation."}
+
+::: {.figure-caption}
+Synthetic means. Residence time 2.0 s, *n* = 3 per temperature. SD: X = 2 pp, S = 1 pp.
+:::
+
+::: {.notes}
+09:08–09:15 ทบทวนค่าเฉลี่ย ไม่อ้างนัยสำคัญ กราฟหน้าเดิมมีเจตนาใช้เป็นกรณีศึกษาต่อเนื่อง
+
+Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+:::
+
+## The purpose of the Discussion
+
+- Answer the research question.
+- Explain what the findings may mean.
+- Compare relevant evidence and alternative explanations.
+- Bound the claims by the study’s limitations.
+
+::: {.notes}
+09:15–09:20 ใช้เป็นแนวทางการเขียน หลายวารสารรวม Results และ Discussion ได้ แหล่งแนวทาง PLOS ใน notes
+
+References:
+https://journals.plos.org/plosone/s/submission-guidelines
+:::
+
+## A Discussion paragraph develops a claim
+
+**Claim**  
+The preferred temperature depends on the process objective.
+
+**Reasoning**  
+Higher conversion comes with lower selectivity. Both quantities affect the desired-product yield.
+
+**Boundary**  
+The present comparison covers four temperatures at one residence time.
+
+::: {.notes}
+09:20–09:25 โครงนี้เป็น scaffold ไม่ต้องใส่ครบทุกประโยคหรือทุกย่อหน้า เริ่มจากหลักฐานจริง
+:::
+
+## A claim and its supporting result
+
+**Claim:** The preferred temperature depends on the objective.
+
+**Evidence:** At 375 °C, conversion is highest among the tested conditions, but selectivity is lowest.
+
+**Boundary:** These measurements alone do not establish an industrial optimum.
+
+::: {.notes}
+09:25–09:30 ให้ชี้ว่าประโยค boundary ไม่ได้ทำให้ผลหมดคุณค่า แต่จำกัดการใช้งานอย่างถูกต้อง
+:::
+
+## Conversion and estimated yield differ
+
+::: {.teaching-table}
+| Temperature (°C) | Mean conversion (%) | Estimated yield (%) |
+|---:|---:|---:|
+| 300 | 40 | 36.0 |
+| 325 | 55 | 47.3 |
+| 350 | 70 | 54.6 |
+| 375 | 80 | 52.0 |
+:::
+
+::: {.figure-caption}
+Estimated yield = mean conversion × mean selectivity / 100. Synthetic data.
+:::
+
+::: {.notes}
+09:30–09:35 คำนวณจากผลคูณของค่าเฉลี่ยเพื่อแสดง trade-off ไม่ใช่ mean yield จาก paired runs ถามนิสิตว่าคำนวณระดับ run ต่างอย่างไร
+
+Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+:::
+
+## The best tested value has a limited scope
+
+**Observed**  
+350 °C gives the highest yield estimate among the four tested temperatures.
+
+**Unresolved**  
+Intermediate temperatures may give a different result. Uncertainty must also be considered.
+
+**Next decision**  
+Test more temperatures near 350 °C before selecting a condition for further evaluation.
+
+::: {.notes}
+09:35–09:40 หลีกเลี่ยงเรียก 350 เป็น true optimum หรือ industrial optimum ไม่ยืนยันว่าความต่าง yield 2.6 pp มีนัยสำคัญ
+:::
+
+## Alternative explanations
+
+- Could the reaction network change the observed selectivity?
+- Could transport limitations contribute to the trend?
+- Could sampling or analysis bias the measurements?
+- What observation would help distinguish these possibilities?
+
+::: {.notes}
+09:40–09:50 เป็นสมมติฐานทั่วไปสำหรับฝึกออกแบบหลักฐาน ไม่ใช่ข้อค้นพบหรือคำอธิบายที่ได้รับยืนยันของระบบจริง
+:::
+
+## Evidence that tests an explanation
+
+::: {.teaching-table}
+| Possible explanation | Useful additional evidence |
+|:---|:---|
+| Changes in product pathways | Product distributions across residence times |
+| Transport contributes | Response to mixing or particle-size changes |
+| Analysis introduces bias | Calibration checks and material-balance closure |
+:::
+
+::: {.figure-caption}
+Proposed tests for the hypothetical case. None of these outcomes has been measured.
+:::
+
+::: {.notes}
+09:50–10:00 ให้เลือกหนึ่งคู่แล้วอธิบาย prediction ที่ต่างกัน ย้ำว่าหนึ่งการทดลองอาจไม่เพียงพอสรุปกลไก
+
+Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+:::
+
+## Cautious wording still needs a reason
+
+- “May reflect competing pathways” states a hypothesis.
+- The next sentence should identify the supporting rationale.
+- A proposed test should show how the hypothesis could be challenged.
+
+::: {.notes}
+10:00–10:05 สอนว่าเติม may หรือ could อย่างเดียวไม่พอ ถ้าไม่ทราบกลไกให้กล่าวว่ายังไม่สามารถแยกคำอธิบายได้
+:::
+
+## Conditions for a fair literature comparison
+
+**Which paper would be a fair comparator?**
+
+- Check feed, catalyst, reactor and temperature range.
+- Check the definitions of conversion and selectivity.
+- List the evidence you need before writing a comparison.
+
+::: {.notes}
+10:05–10:15 ใช้แบบฝึกวางแผนค้นวรรณกรรมซึ่งทำได้โดยไม่ต้องมีบทความเฉพาะ ไม่สร้างผลการทดลองหรืออ้างอิงสมมติ หากผู้สอนมีบทความจริงให้แจกส่วน Methods และ Results ที่ตรวจแล้ว
+:::
+
+## Break {.dark .break background-color="#1C242B"}
+
+::: {.vcenter}
+::: {.break-circle .c-teal}
+[15]{.break-number}
+:::
+
+::: {.big-label}
+15 minutes
+:::
+
+Resume at **10:30**
+:::
+
+::: {.notes}
+10:15–10:30
+:::
+
+## A limitation should change the claim
+
+**4 setpoints**  
+Limits resolution. Say “highest among those tested” rather than claiming a global optimum.
+
+**2.0 s only**  
+Limits generalization. State 2.0 s when describing the temperature response.
+
+**Industrial use**  
+Without energy or stability data, the yield estimate remains a screening result.
+
+::: {.notes}
+10:30–10:35 เพิ่มข้อจำกัด n=3 ในคำอธิบาย: จำนวน runs น้อยทำให้การประเมินความแปรปรวนมีความไม่แน่นอน ให้เขียน limitation คู่กับผลต่อข้อสรุป ไม่ใช่รายการข้อเสียเฉย ๆ
+:::
+
+## Discussion connects evidence to a decision
+
+**Implication**  
+The conversion–selectivity trade-off makes the choice of temperature depend on the objective.
+
+**Support**  
+375 °C gives the highest mean conversion. At 350 °C, the yield estimate from the means is highest.
+
+**Boundary**  
+This comparison identifies a condition for further testing. It does not establish an industrial optimum.
+
+::: {.notes}
+10:35–10:40 ตัวอย่างย่อ ไม่มีวรรณกรรมหรือกลไกสมมติแฝง ถามว่าหากจะกล่าว competing pathways ต้องเพิ่มอะไร
+:::
+
+## Discussion workshop
+
+**25 minutes · 10:40–11:05**
+
+1. **First 5 min:** outline the main claim and the evidence supporting it.
+2. **Next 20 min:** draft **250–350 words** using your Results and figure.
+3. Include an alternative interpretation, a limitation and a test that could distinguish explanations.
+
+::: {.notes}
+10:40–11:05 ให้ใช้ outline 5 นาทีก่อนเขียน 20 นาที ไม่ต้องประดิษฐ์ citation ถ้ายังไม่มีแหล่งข้อมูล อนุญาตระบุ literature needed ในร่างส่วนตัว แต่ไม่ส่งเป็นคำกล่าวอ้างจริง
+:::
+
+## The Conclusion answers the original question
+
+- State the main finding and its magnitude.
+- Give the most defensible implication.
+- Keep the scope tied to the tested conditions.
+- Introduce no new result.
+
+::: {.notes}
+11:05–11:10 แตกต่างจาก Discussion ที่ขยายเหตุผล Conclusion ย่อคำตอบที่ผู้อ่านควรจำ ไม่ต้องซ้ำทุกตัวเลข
+:::
+
+## A Conclusion linked to the research question
+
+**Main finding**  
+At 2.0 s, raising temperature from 300 to 375 °C increased conversion from 40% to 80% and lowered selectivity from 90% to 65%.
+
+**Implication**  
+Conversion alone cannot determine the preferred operating condition.
+
+**Next step**  
+Testing near 350 °C could refine the yield comparison within this hypothetical system.
+
+::: {.notes}
+11:10–11:13 ตัวอย่างย่อเพื่ออธิบายหน้าที่ แต่ละคนเขียนฉบับของตนเอง 80–120 คำ ถามว่าประโยคสุดท้ายเป็น implication ที่ตามหลักฐานหรือไม่
+:::
+
+## Conclusion workshop
+
+**12 minutes · 11:13–11:25**
+
+1. Write **80–120 words** answering the original research question.
+2. Include the central numerical comparison and the tested conditions.
+3. Check every claim against Results. Remove new results and unsupported promises.
+
+::: {.notes}
+11:13–11:25 เป็นกรอบความยาวฝึกเฉพาะคาบ ไม่ใช่ข้อกำหนดวารสาร
+:::
+
+## Peer review of the argument
+
+**15 minutes · 11:25–11:40**
+
+1. Underline each paragraph’s claim and mark the evidence supporting it.
+2. Circle any untested explanation stated as fact.
+3. Suggest **two edits:** one to strengthen the reasoning and one to narrow the scope.
+
+::: {.notes}
+11:25–11:40 ให้คู่เขียน feedback อย่างน้อยสองประเด็นที่แก้ได้จริง
+:::
+
+## A revision that changes the claim
+
+**Before**
+
+“The optimal industrial temperature is 350 °C.”
+
+**After**
+
+“Among the tested temperatures, 350 °C gave the highest yield estimate calculated from the reported mean conversion and selectivity.”
+
+::: {.notes}
+11:40–11:45 ถามว่าตัด industrial กับเพิ่ม estimated และ among tested ช่วยจำกัดข้อสรุปอย่างไร
+:::
+
+## Final revision and submission
+
+**15 minutes · 11:45–12:00**
+
+1. Submit Results, figure, caption, Discussion and Conclusion.
+2. Show one revision that better matches the evidence.
+3. Propose the next experiment and an outcome that would challenge your explanation.
+
+::: {.notes}
+11:45–12:00 ให้ใช้เกณฑ์ 20 คะแนนใน teaching_plan.md ไม่ให้คะแนนตามว่าข้อสรุปตรงความเชื่อของผู้สอนหรือไม่
+:::
+
+## Writing guidance
+
+- Journal instructions determine section structure.
+- Check whether Results and Discussion are separate or combined.
+- Use the target journal’s instructions before submission.
+
+::: {.notes}
+เอกสารท้ายคาบ ไม่เพิ่มเวลาสอน
+
+References:
+https://journals.plos.org/plosone/s/submission-guidelines
+:::
+
+{{< include _feedback-w08-10.qmd >}}

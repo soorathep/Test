@@ -159,3 +159,18 @@ appears on the course page by itself.
   if you change a font file.
 - Rendering writes into `teaching/2105620/`, which is committed. The site build
   does not run Quarto, so the published decks are exactly what was rendered here.
+
+## Weeks 8–10 and the Matplotlib gallery
+
+Build this teaching block with isolated shared libraries:
+
+```sh
+for deck in w08.qmd w09.qmd w10.qmd gallery.qmd; do
+  quarto render "$deck" --profile public,w08-10 --output-dir ../../teaching/2105620
+done
+```
+
+These native sources retain editable text, tables and code. The public profile
+removes speaker notes. The gallery and its downloadable notebook contain six
+explicitly synthetic examples. The ZIP includes the complete figure-generation
+module and the lab palette.

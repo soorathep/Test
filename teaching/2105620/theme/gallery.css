@@ -1,0 +1,13 @@
+:root { --course-ink: #333F4A; --course-teal: #0F6E6B; --course-paper: #F3F0EB; }
+body { color: var(--course-ink); font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.65; }
+h1, h2, h3 { color: var(--course-teal); font-weight: 650; }
+h1 { letter-spacing: -0.025em; }
+h2 { margin-top: 3.2rem; border-top: 1px solid #DFC98F; padding-top: 1.3rem; }
+a { color: var(--course-teal); }
+.quarto-title-block .subtitle { font-size: 1.35rem; }
+.quarto-figure { margin: 1.7rem 0 0.8rem; }
+.quarto-figure img { width: 100%; height: auto; }
+figcaption { display: none; }
+pre { border: 1px solid #B9C1C6; border-radius: 0; }
+#quarto-content { padding-bottom: 4rem; }
+@media (max-width: 600px) { h1 { font-size: 2rem; } h2 { font-size: 1.5rem; } main { padding-inline: 0.2rem; } }

@@ -52,6 +52,16 @@ description: Graduate course on writing and publishing research in chemical engi
         <span class="rf-get">Open →</span>
       </a>
       {% endif %}
+      {% if w.gallery %}
+      <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/{{ w.gallery }}">
+        <span class="rf-kind">Gallery</span>
+        <span class="rf-body">
+          <span class="rf-label">Matplotlib figure gallery</span>
+          <span class="rf-desc">Six scientific plot types with runnable examples</span>
+        </span>
+        <span class="rf-get">Open →</span>
+      </a>
+      {% endif %}
       {% for f in w.files %}
       <a class="res-file" href="{{ site.baseurl }}/teaching/2105620/files/{{ f.file }}">
         <span class="rf-kind">{{ f.kind }}</span>
