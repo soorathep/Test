@@ -102,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="w08-10_libs/revealjs/dist/theme/quarto-f1af6c3c284966405772030f91c383d5.css">
+  <link rel="stylesheet" href="w08-10_libs/revealjs/dist/theme/quarto-3858f661e98f83452681e82a80054bd2.css">
   <link href="w08-10_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="w08-10_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="w08-10_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -216,10 +216,11 @@ Soorathep Kheawhom
 <section id="todays-deliverables" class="slide level2">
 <h2>Today’s deliverables</h2>
 <ul>
-<li>A figure with two panels and defined error bars</li>
-<li>A caption linked to the figure</li>
-<li>A notebook that runs from beginning to end</li>
+<li>A two-panel figure with units and defined SD bars</li>
+<li>A 40–70-word caption that matches the plotted data</li>
+<li>A notebook that recreates the figure after a restart</li>
 </ul>
+<p><strong>Today’s routine:</strong> predict a change, run the cell, check the result.</p>
 </section>
 <section id="time-series-with-an-sd-band" class="slide level2 gallery-preview">
 <h2>Time series with an SD band</h2>
@@ -266,52 +267,51 @@ Soorathep Kheawhom
 <section id="notebook-basics" class="slide level2">
 <h2>Notebook basics</h2>
 <ul>
-<li>A code cell runs Python instructions.</li>
-<li>A Markdown cell contains explanations.</li>
-<li>Shift + Enter runs the selected cell in Jupyter.</li>
-<li>Run the setup cell before the plotting cells.</li>
+<li>A <strong>code cell</strong> runs Python. A <strong>Markdown cell</strong> explains it.</li>
+<li><strong>Shift + Enter</strong> runs a cell. The Run button also works.</li>
+<li>The <strong>kernel</strong> keeps values in memory until you restart it.</li>
+<li>Run code cells from top to bottom. Wait for each to finish.</li>
 </ul>
+<p><strong>Code cell 1:</strong> setup. <strong>Code cell 2:</strong> variables and lists.</p>
 </section>
 <section id="first-run" class="slide level2">
 <h2>First run</h2>
-<ul>
-<li>Open week09_starter.ipynb.</li>
-<li>Keep the supplied CSV and skh_palette.py in the same folder.</li>
-<li>Run the first code cell, then the next one.</li>
-<li>Check that the output appears below each cell.</li>
-</ul>
-<p><a href="files/week09_lab_materials.zip">Download the lab notebook, data and palette</a></p>
+<ol type="1">
+<li>Unzip the <a href="files/week09_lab_materials.zip">lab materials</a> into one folder.</li>
+<li>Open <code>week09_starter.ipynb</code> in the prepared Jupyter environment.</li>
+<li>Keep the CSV and <code>skh_palette.py</code> beside the notebook.</li>
+<li>Run <strong>code cell 1</strong>. Look for <strong>Setup complete</strong>.</li>
+</ol>
+<p><strong>If setup is still blocked at 09:15:</strong> work with a partner and use the instructor’s running notebook.</p>
 </section>
 <section id="a-variable-stores-a-value" class="slide level2">
 <h2>A variable stores a value</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>temperature <span class="op">=</span> <span class="dv">300</span></span>
-<span id="cb1-2"><a aria-label="2"></a>conversion <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb1-3"><a aria-label="3"></a><span class="bu">print</span>(temperature, conversion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:30%;">
-<p><strong>Output</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a aria-label="1"></a>300 40</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></div>
-<p>Try it: change temperature to 325. Predict the new output, then run.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>temperature_C <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb1-2"><a aria-label="2"></a>conversion_pct <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="bu">print</span>(temperature_C, conversion_pct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected output:</strong> <code>300 40</code></p>
+<p>Change <code>temperature_C</code> to <code>325</code>. Predict, run, then check.</p>
+<p>The names record our intended units. Python stores the numbers.</p>
 </section>
 <section id="lists-preserve-the-pairing-of-values" class="slide level2">
 <h2>Lists preserve the pairing of values</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>temperature <span class="op">=</span> [<span class="dv">300</span>, <span class="dv">325</span>, <span class="dv">350</span>, <span class="dv">375</span>]</span>
-<span id="cb3-2"><a aria-label="2"></a>conversion <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">55</span>, <span class="dv">70</span>, <span class="dv">80</span>]</span>
-<span id="cb3-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">len</span>(temperature))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Expected output: 4</strong></p>
-<p>The first pair is 300 °C and 40%. Each x value needs a matching y value.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>temperature <span class="op">=</span> [<span class="dv">300</span>, <span class="dv">325</span>, <span class="dv">350</span>, <span class="dv">375</span>]</span>
+<span id="cb2-2"><a aria-label="2"></a>conversion <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">55</span>, <span class="dv">70</span>, <span class="dv">80</span>]</span>
+<span id="cb2-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">len</span>(temperature), <span class="bu">len</span>(conversion))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Expected output:</strong> <code>4 4</code></p>
+<p>Pair by position: 300 °C with 40%, then 325 °C with 55%.</p>
+<p><strong>Code cell 2:</strong> each x value needs a matching y value.</p>
 </section>
 <section id="functions-and-named-arguments" class="slide level2">
 <h2>Functions and named arguments</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-2"><a aria-label="2"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb4-3"><a aria-label="3"></a>ax.plot(temperature, conversion,</span>
-<span id="cb4-4"><a aria-label="4"></a>        marker<span class="op">=</span><span class="st">"o"</span>, linewidth<span class="op">=</span><span class="fl">1.8</span>,</span>
-<span id="cb4-5"><a aria-label="5"></a>        color<span class="op">=</span>skh.C[<span class="st">"amber"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>plot is a function called on ax.</p>
-<p>marker and linewidth control appearance.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-2"><a aria-label="2"></a>ax.plot(temperature, conversion,</span>
+<span id="cb3-3"><a aria-label="3"></a>        marker<span class="op">=</span><span class="st">"o"</span>, linewidth<span class="op">=</span><span class="fl">1.8</span>,</span>
+<span id="cb3-4"><a aria-label="4"></a>        color<span class="op">=</span>skh.C[<span class="st">"amber"</span>])</span>
+<span id="cb3-5"><a aria-label="5"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>fig</code>: the whole figure. <code>ax</code>: one plotting area.</p>
+<p><code>plot(...)</code> draws data. Named arguments set its appearance.</p>
+<p><strong>After code cells 1–2:</strong> try <code>marker="s"</code>. Check what changes.</p>
 </section>
 <section id="errors-are-clues" class="slide level2">
 <h2>Errors are clues</h2>
@@ -325,31 +325,32 @@ Soorathep Kheawhom
 <tbody>
 <tr class="odd">
 <td><code>NameError</code></td>
-<td>Was the variable defined and its cell run?</td>
+<td>Correct spelling? Definition cell already run?</td>
 </tr>
 <tr class="even">
 <td><code>FileNotFoundError</code></td>
-<td>Is the CSV in the notebook working folder?</td>
+<td>CSV beside notebook? Exact filename?</td>
 </tr>
 <tr class="odd">
 <td><code>KeyError</code></td>
-<td>Does the column name match exactly?</td>
+<td>Column name matches <code>df.columns</code>?</td>
 </tr>
 <tr class="even">
 <td><code>SyntaxError</code></td>
-<td>Check quotes, commas and brackets.</td>
+<td>Quotes, commas and brackets complete?</td>
 </tr>
 </tbody>
 </table>
+<p>Read the <strong>last error line</strong>, then the line it points to.</p>
 </section>
 <section id="reading-a-csv-file" class="slide level2">
 <h2>Reading a CSV file</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a aria-label="2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"synthetic_reaction_runs.csv"</span>)</span>
-<span id="cb5-3"><a aria-label="3"></a>display(df.head())</span>
-<span id="cb5-4"><a aria-label="4"></a><span class="bu">print</span>(df.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>One row is one independent run.</p>
-<p>Column names include units.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"synthetic_reaction_runs.csv"</span>)</span>
+<span id="cb4-2"><a aria-label="2"></a>display(df.head())</span>
+<span id="cb4-3"><a aria-label="3"></a><span class="bu">print</span>(df.columns.tolist())</span>
+<span id="cb4-4"><a aria-label="4"></a><span class="bu">print</span>(df.groupby(<span class="st">"temperature_C"</span>).size())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code cell 3:</strong> setup already imports pandas as <code>pd</code>.</p>
+<p>Check: 12 rows, 4 temperatures, 3 independent runs each.</p>
 </section>
 <section id="the-structure-of-the-teaching-data" class="slide level2">
 <h2>The structure of the teaching data</h2>
@@ -383,37 +384,39 @@ Soorathep Kheawhom
 </tr>
 </tbody>
 </table>
+<p>One row = one independent simulated run at fixed residence time, 2.0 s.</p>
 <div class="note">
-<p>First three rows of the synthetic dataset. Twelve rows in total.</p>
+<p>First 3 of 12 rows. Conversion and selectivity in the same row belong to the same run.</p>
 </div>
 </section>
 <section id="the-first-scatter-plot" class="slide level2">
 <h2>The first scatter plot</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb6-2"><a aria-label="2"></a>ax.scatter(df[<span class="st">"temperature_C"</span>],</span>
-<span id="cb6-3"><a aria-label="3"></a>           df[<span class="st">"conversion_pct"</span>],</span>
-<span id="cb6-4"><a aria-label="4"></a>           color<span class="op">=</span>skh.C[<span class="st">"amber"</span>], s<span class="op">=</span><span class="dv">36</span>)</span>
-<span id="cb6-5"><a aria-label="5"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each point represents one run.</p>
-<p>The setup cell imports skh_palette and applies skh.use().</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-2"><a aria-label="2"></a>ax.scatter(df[<span class="st">"temperature_C"</span>],</span>
+<span id="cb5-3"><a aria-label="3"></a>           df[<span class="st">"conversion_pct"</span>],</span>
+<span id="cb5-4"><a aria-label="4"></a>           color<span class="op">=</span>skh.C[<span class="st">"amber"</span>], s<span class="op">=</span><span class="dv">36</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code cell 4:</strong> brackets select a column. Each point is one run.</p>
+<p>Try <code>s=64</code>. Marker area changes. The data stay fixed.</p>
 </section>
 <section id="labels-state-the-quantity-and-unit" class="slide level2">
 <h2>Labels state the quantity and unit</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>ax.set_xlabel(<span class="st">"Temperature (°C)"</span>)</span>
-<span id="cb7-2"><a aria-label="2"></a>ax.set_ylabel(<span class="st">"Conversion (%)"</span>)</span>
-<span id="cb7-3"><a aria-label="3"></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">100</span>)</span>
-<span id="cb7-4"><a aria-label="4"></a>ax.set_xticks([<span class="dv">300</span>, <span class="dv">325</span>, <span class="dv">350</span>, <span class="dv">375</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add these lines before plt.show().</p>
-<p>What does each line change?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>ax.set_xlabel(<span class="st">"Temperature (°C)"</span>)</span>
+<span id="cb6-2"><a aria-label="2"></a>ax.set_ylabel(<span class="st">"Conversion (%)"</span>)</span>
+<span id="cb6-3"><a aria-label="3"></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb6-4"><a aria-label="4"></a>ax.set_xticks([<span class="dv">300</span>, <span class="dv">325</span>, <span class="dv">350</span>, <span class="dv">375</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In <strong>code cell 4</strong>, keep these lines <strong>before</strong> <code>plt.show()</code>.</p>
+<p>Run the whole cell again. Check quantity, unit and tick positions.</p>
 </section>
 <section id="checkpoint-before-the-break" class="slide level2">
 <h2>Checkpoint before the break</h2>
 <ul>
-<li>Every run appears as a point.</li>
-<li>The x-axis shows temperature in °C.</li>
-<li>The y-axis shows conversion in %.</li>
-<li>Explain one line of code to your partner.</li>
+<li>The figure contains <strong>12 runs</strong> at four temperatures.</li>
+<li>The axes show <strong>Temperature (°C)</strong> and <strong>Conversion (%)</strong>.</li>
+<li>Both list variables still contain four entries.</li>
+<li>Explain one changed line and its visible effect to a partner.</li>
 </ul>
+<p>If the plot fails, read the first failing cell with your partner.</p>
 </section>
 <section id="break" class="slide level2">
 <h2>Break</h2>
@@ -424,67 +427,62 @@ Soorathep Kheawhom
 </section>
 <section id="the-summary-should-match-the-original-data" class="slide level2">
 <h2>The summary should match the original data</h2>
-<div class="columns">
-<div class="column" style="width:72%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>summary <span class="op">=</span> df.groupby(<span class="st">"temperature_C"</span>).agg(</span>
-<span id="cb8-2"><a aria-label="2"></a>    mean_X<span class="op">=</span>(<span class="st">"conversion_pct"</span>, <span class="st">"mean"</span>),</span>
-<span id="cb8-3"><a aria-label="3"></a>    sd_X<span class="op">=</span>(<span class="st">"conversion_pct"</span>, <span class="st">"std"</span>),</span>
-<span id="cb8-4"><a aria-label="4"></a>    mean_S<span class="op">=</span>(<span class="st">"selectivity_pct"</span>, <span class="st">"mean"</span>),</span>
-<span id="cb8-5"><a aria-label="5"></a>    sd_S<span class="op">=</span>(<span class="st">"selectivity_pct"</span>, <span class="st">"std"</span>)</span>
-<span id="cb8-6"><a aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:28%;">
-<p><strong>At 300 °C</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a aria-label="1"></a>mean_X = 40</span>
-<span id="cb9-2"><a aria-label="2"></a>sd_X = 2</span>
-<span id="cb9-3"><a aria-label="3"></a>mean_S = 90</span>
-<span id="cb9-4"><a aria-label="4"></a>sd_S = 1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></div>
-<p>Check one temperature before trusting the whole table. SD uses n − 1.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>summary <span class="op">=</span> df.groupby(<span class="st">"temperature_C"</span>).agg(</span>
+<span id="cb7-2"><a aria-label="2"></a>    mean_X<span class="op">=</span>(<span class="st">"conversion_pct"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb7-3"><a aria-label="3"></a>    sd_X<span class="op">=</span>(<span class="st">"conversion_pct"</span>, <span class="st">"std"</span>),</span>
+<span id="cb7-4"><a aria-label="4"></a>    mean_S<span class="op">=</span>(<span class="st">"selectivity_pct"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb7-5"><a aria-label="5"></a>    sd_S<span class="op">=</span>(<span class="st">"selectivity_pct"</span>, <span class="st">"std"</span>)</span>
+<span id="cb7-6"><a aria-label="6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code cell 5, at 300 °C:</strong> X = 40 ± 2%, S = 90 ± 1% (mean ± SD).</p>
+<p>Three runs per temperature. Sample SD uses n − 1.</p>
 </section>
 <section id="error-bars-show-a-defined-quantity" class="slide level2">
 <h2>Error bars show a defined quantity</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb10-2"><a aria-label="2"></a>ax.errorbar(summary.index, summary[<span class="st">"mean_X"</span>],</span>
-<span id="cb10-3"><a aria-label="3"></a>            yerr<span class="op">=</span>summary[<span class="st">"sd_X"</span>], fmt<span class="op">=</span><span class="st">"o-"</span>,</span>
-<span id="cb10-4"><a aria-label="4"></a>            color<span class="op">=</span>skh.C[<span class="st">"amber"</span>], capsize<span class="op">=</span><span class="dv">4</span>,</span>
-<span id="cb10-5"><a aria-label="5"></a>            linewidth<span class="op">=</span><span class="fl">1.8</span>, markersize<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>yerr receives SD values calculated from runs.</p>
-<p>Check: the bar at 300 °C spans 38% to 42% conversion.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb8-2"><a aria-label="2"></a>ax.errorbar(summary.index, summary[<span class="st">"mean_X"</span>],</span>
+<span id="cb8-3"><a aria-label="3"></a>            yerr<span class="op">=</span>summary[<span class="st">"sd_X"</span>], fmt<span class="op">=</span><span class="st">"o-"</span>,</span>
+<span id="cb8-4"><a aria-label="4"></a>            color<span class="op">=</span>skh.C[<span class="st">"amber"</span>], capsize<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb8-5"><a aria-label="5"></a>            linewidth<span class="op">=</span><span class="fl">1.8</span>, markersize<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Four means and four SDs in the <strong>same temperature order</strong>.</p>
+<p><code>yerr</code> gives nonnegative distances from each mean. At 300 °C: 38–42%.</p>
 </section>
 <section id="the-summary-still-needs-a-caption" class="slide level2">
 <h2>The summary still needs a caption</h2>
 <ul>
 <li>Points: mean conversion at each temperature</li>
-<li>Bars: ±1 sample SD across independent runs</li>
+<li>Bars: ±1 sample SD across independent simulated runs</li>
 <li>Sample size: n = 3 per temperature</li>
+<li>Fixed residence time: 2.0 s</li>
 <li>Data status: synthetic, for teaching</li>
 </ul>
+<p>A reader should understand the figure without opening the code.</p>
 </section>
 <section id="two-panels-share-one-temperature-scale" class="slide level2">
 <h2>Two panels share one temperature scale</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
-<span id="cb11-2"><a aria-label="2"></a>    <span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">3.8</span>),</span>
-<span id="cb11-3"><a aria-label="3"></a>    sharex<span class="op">=</span><span class="va">True</span>, layout<span class="op">=</span><span class="st">"constrained"</span></span>
-<span id="cb11-4"><a aria-label="4"></a>)</span>
-<span id="cb11-5"><a aria-label="5"></a><span class="co"># axes[0] is the left panel</span></span>
-<span id="cb11-6"><a aria-label="6"></a><span class="co"># axes[1] is the right panel</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use the supplied plotting cell for each response.</p>
-<p>Label conversion and selectivity separately.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>fig, axes <span class="op">=</span> plt.subplots(</span>
+<span id="cb9-2"><a aria-label="2"></a>    <span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">3.8</span>),</span>
+<span id="cb9-3"><a aria-label="3"></a>    sharex<span class="op">=</span><span class="va">True</span>, layout<span class="op">=</span><span class="st">"constrained"</span></span>
+<span id="cb9-4"><a aria-label="4"></a>)</span>
+<span id="cb9-5"><a aria-label="5"></a><span class="co"># axes[0]: conversion, left panel</span></span>
+<span id="cb9-6"><a aria-label="6"></a><span class="co"># axes[1]: selectivity, right panel</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code cell 6:</strong> one figure, two plotting areas.</p>
+<p>Each panel needs its own response label and matching SD column.</p>
 </section>
 <section id="color-and-symbols-carry-meaning" class="slide level2">
 <h2>Color and symbols carry meaning</h2>
 <ul>
 <li>Amber marks the response being studied.</li>
-<li>Teal is reserved for a control or reference.</li>
-<li>Both panels can use amber with clear axis labels.</li>
-<li>Labels and symbols keep the figure readable in grayscale.</li>
+<li>Teal represents a control or reference when one exists.</li>
+<li>Both response panels use amber and distinct axis labels.</li>
+<li>Symbols and labels preserve meaning in grayscale.</li>
 </ul>
+<p>A color change needs a reason the reader can understand.</p>
 </section>
 <section id="the-expected-figure" class="slide level2">
 <h2>The expected figure</h2>
 <p><img data-src="assets/w08-10/reaction_summary.svg" class="teaching-figure" alt="Conversion rises from 40% to 80%, while selectivity falls from 90% to 65%. Error bars show sample SD." height="430"></p>
 <div class="note">
-<p>Synthetic data. Points are means, bars are ±1 sample SD, n = 3 per temperature.</p>
+<p>Synthetic data at 2.0 s. Means ±1 sample SD, n = 3 per temperature. The CSV and this figure use the same runs.</p>
 </div>
 </section>
 <section id="figure-workshop" class="slide level2">
@@ -493,10 +491,11 @@ Soorathep Kheawhom
 <p>30 min</p>
 </div>
 <ol type="1">
-<li>First 20 min: complete both panels and verify labels, units and SD bars.</li>
-<li>Next 10 min: write a caption of 40–70 words.</li>
-<li>Keep one design change you can explain. Save the notebook and figure.</li>
+<li><strong>20 min:</strong> run both panels. Verify values, units and SD bars.</li>
+<li><strong>10 min:</strong> write a 40–70-word caption with residence time and n.</li>
+<li>Keep one design change you can explain. Save the notebook.</li>
 </ol>
+<p><strong>If blocked:</strong> pair up, use the supplied plotting cell, and annotate what each line does.</p>
 </section>
 <section id="figure-review-in-pairs" class="slide level2">
 <h2>Figure review in pairs</h2>
@@ -504,83 +503,67 @@ Soorathep Kheawhom
 <p>10 min</p>
 </div>
 <ol type="1">
-<li>Read the figure before reading the caption. What finding do you see?</li>
-<li>Check the units, n and the definition of error bars.</li>
-<li>Suggest one specific change, then check whether it improves interpretation.</li>
+<li><strong>3 min:</strong> read your partner’s figure. State its main finding.</li>
+<li><strong>4 min:</strong> check units, n, SD definition and caption agreement.</li>
+<li><strong>3 min:</strong> make one specific correction and explain its benefit.</li>
 </ol>
+<p>Feedback example: “Add ‘±1 sample SD, n = 3’ to define the bars.”</p>
 </section>
 <section id="export-from-the-figure-object" class="slide level2">
 <h2>Export from the figure object</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>fig.savefig(<span class="st">"reaction_figure.pdf"</span>,</span>
-<span id="cb12-2"><a aria-label="2"></a>            bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
-<span id="cb12-3"><a aria-label="3"></a>fig.savefig(<span class="st">"reaction_figure.png"</span>,</span>
-<span id="cb12-4"><a aria-label="4"></a>            dpi<span class="op">=</span><span class="dv">600</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>PDF retains vector elements.</p>
-<p>Check the saved file at its intended display size.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>fig.savefig(<span class="st">"reaction_figure.pdf"</span>,</span>
+<span id="cb10-2"><a aria-label="2"></a>            bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb10-3"><a aria-label="3"></a>fig.savefig(<span class="st">"reaction_figure.png"</span>,</span>
+<span id="cb10-4"><a aria-label="4"></a>            dpi<span class="op">=</span><span class="dv">600</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Code cell 7:</strong> run just after the two-panel cell. <code>fig</code> must refer to it.</p>
+<p>Open both saved files. Check labels and bars at the intended size.</p>
 </section>
 <section id="a-reproducibility-check" class="slide level2">
 <h2>A reproducibility check</h2>
-<ul>
-<li>Save the notebook.</li>
-<li>Restart the kernel and run all cells in order.</li>
-<li>Confirm that the figure files are recreated.</li>
-<li>Submit the notebook, CSV, figure and caption together.</li>
-</ul>
+<ol type="1">
+<li>Save the notebook, including your caption.</li>
+<li>Restart the kernel, then run all cells from the top.</li>
+<li>Confirm that both figure files appear again.</li>
+<li>Submit the notebook, CSV, palette file, figure and caption.</li>
+</ol>
+<p>If a cell fails, fix that first error before checking later cells.</p>
 </section>
 <section id="exit-ticket" class="slide level2">
 <h2>Exit ticket</h2>
 <div class="duration">
-<p>5 min</p>
+<p>4 min</p>
 </div>
 <ol type="1">
-<li>Show a figure recreated after restarting the kernel.</li>
-<li>Explain what yerr contains and identify the source runs.</li>
+<li>Show the figure recreated after a kernel restart.</li>
+<li>Explain what <code>yerr</code> contains and which runs produced it.</li>
 <li>Justify one design choice in a sentence.</li>
 </ol>
+<p><strong>Evidence to keep:</strong> your notebook, exported figure and caption.</p>
 </section>
 <section id="documentation-for-later-use" class="slide level2">
 <h2>Documentation for later use</h2>
-<p><a href="./gallery.html">Figure gallery with runnable examples</a></p>
+<p><a href="./gallery.html">Gallery: six figures with runnable examples</a></p>
 <ul>
 <li><a href="https://matplotlib.org/stable/users/explain/quick_start.html">Matplotlib: Quick start guide</a></li>
 <li><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html">Matplotlib: errorbar</a></li>
 <li><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html">Matplotlib: Figure.savefig</a></li>
 <li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html">pandas: DataFrame.std</a></li>
 </ul>
-<!-- Shared closing slide. Every week's deck ends with an include of this file
-     (see the last line of w01.qmd). One QR serves all fourteen weeks; the
-     submission timestamp separates the sessions. -->
+<p>Start with one example. Change a single element and check its effect.</p>
 </section>
-<section id="section" class="slide level2 dark mid" data-background-color="#1C242B">
-<h2>&nbsp;</h2>
-<div class="vcenter">
+<section id="how-was-today" class="slide level2 dark" data-background-color="#1C242B">
+<h2>How was today?</h2>
 <div class="columns">
 <div class="column" style="width:58%;">
-<div class="kicker">
-<p>Before you go · 45 seconds</p>
-</div>
-<h3 id="how-was-today">How was today?</h3>
-<div class="lede">
-<p>Five questions. Anonymous : no name, no email, no login.</p>
-</div>
-<div class="flag">
-<p>The fourth question is the one I actually use.</p>
-</div>
-<div class="statement-sub">
-<p>The two most common answers open next week’s session.</p>
-</div>
-<div class="source">
-<p>oxidized-challenge-ed9.notion.site</p>
-</div>
+<p><strong>Before you leave</strong></p>
+<p>Identify one point that is still unclear.</p>
+<p>Name one change you will make in your writing or figure.</p>
+<p>Complete the short anonymous feedback form.</p>
 </div><div class="column" style="width:42%;">
 <div class="qr-card">
-<p><img data-src="assets/qr_feedback.png" alt="QR code linking to the weekly feedback form"></p>
-</div>
-<div class="flag center">
-<p>Scan now : I will wait</p>
+<p><img data-src="assets/qr_feedback.png" alt="QR code linking to the existing weekly feedback form" height="400"></p>
 </div>
 </div></div>
-</div>
 
 
 </section>

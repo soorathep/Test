@@ -25,14 +25,14 @@ format:
 
 ## Today’s deliverables
 
-- A figure with two panels and defined error bars
-- A caption linked to the figure
-- A notebook that runs from beginning to end
+- A two-panel figure with units and defined SD bars
+- A 40–70-word caption that matches the plotted data
+- A notebook that recreates the figure after a restart
+
+**Today’s routine:** predict a change, run the cell, check the result.
 
 ::: {.notes}
-Title slide: 09:00 ใช้ notebook และ CSV ที่ให้มาคู่กัน เปิด notebook ก่อนเริ่ม
-
-09:00–09:02 เป้าหมายไม่ใช่จำไวยากรณ์ ให้แก้โค้ดที่รันได้และอธิบายผลของการแก้
+09:00:30–09:02 หลังเปิดคาบ 30 วินาที เชื่อมกับ Week 8: วันนี้สร้างหลักฐานภาพด้วยโค้ด ใช้ข้อมูลสมมติ reaction case เดิม เตรียม Python, pandas, Matplotlib และ Jupyter ไว้ก่อนคาบ
 :::
 
 ## Time series with an SD band {.gallery-preview}
@@ -44,7 +44,7 @@ Synthetic runs: lines are means; sand bands show ±1 sample SD, n = 8 per condit
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:02–09:02:30 เทียบเส้นbaselineกับmodified ให้เห็นการตอบสนองตามเวลา แถบเป็น±1 SDจาก8runsต่อเงื่อนไข ไม่ใช่CI ข้อมูลสมมติแยกจากlab
 :::
 
 ## Raw observations and a summary {.gallery-preview}
@@ -56,7 +56,7 @@ Synthetic data: eight runs per temperature; diamonds and whiskers show mean ±1 
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:02:30–09:03 จุด8runsต่ออุณหภูมิเปิดให้เห็นการกระจาย ขยับแนวนอนเพื่อเลี่ยงซ้อนเท่านั้น diamondและwhiskerคือmean±SD
 :::
 
 ## Predictions against observations {.gallery-preview}
@@ -68,7 +68,7 @@ Synthetic example: 52 operating points. Equal axes and the identity line show ag
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:03–09:03:30 เส้นidentity y=x ช่วยดูความสอดคล้องของpredictionกับobservation ใช้scaleแกนเท่ากัน สีแสดงtemperatureต่อเนื่อง เป็นตัวอย่างสมมติ52จุด
 :::
 
 ## A heatmap of operating conditions {.gallery-preview}
@@ -80,7 +80,7 @@ Synthetic model: 48 operating settings. Numbers and color show conversion on the
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:03:30–09:04 แถวและคอลัมน์คือ48settingsจากแบบจำลอง สีเรียงความเข้มพร้อมค่าตัวเลขช่วยอ่านสองตัวแปร ใช้scale0–100%
 :::
 
 ## Contours of equal response {.gallery-preview}
@@ -92,7 +92,7 @@ The same assumed model on a finer grid. Smooth contours are model predictions, n
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:04–09:04:30 contourเชื่อมค่าคงที่จากแบบจำลองเดียวกับheatmap คำนวณgridละเอียดขึ้น ไม่ได้เพิ่มจำนวนการทดลอง
 :::
 
 ## Distributions beyond the mean {.gallery-preview}
@@ -104,59 +104,51 @@ Synthetic data: 30 runs per group. Dots show runs, boxes show median and IQR, an
 :::
 
 ::: {.notes}
-09:02–09:05 ช่วงชมตัวอย่างทั้งหกแบบ รวมประมาณสามนาที ชี้คำถามที่กราฟตอบและสิ่งที่ทำให้อ่านง่าย ไม่สอนไวยากรณ์ขั้นสูงในช่วงนี้ ข้อมูลเป็นข้อมูลสมมติคนละชุดกับ reaction case หลัก ให้นิสิตเลือกหนึ่งรูปที่อยากทำ
+09:04:30–09:05 จุดคือ30runsต่อกลุ่ม boxคือmedianและIQR violinคือdensityที่smooth ชวนเลือกหนึ่งรูปที่อยากทำ ไม่สอนโค้ดขั้นสูงตอนนี้
 :::
 
 ## Notebook basics
 
-- A code cell runs Python instructions.
-- A Markdown cell contains explanations.
-- Shift + Enter runs the selected cell in Jupyter.
-- Run the setup cell before the plotting cells.
+- A **code cell** runs Python. A **Markdown cell** explains it.
+- **Shift + Enter** runs a cell. The Run button also works.
+- The **kernel** keeps values in memory until you restart it.
+- Run code cells from top to bottom. Wait for each to finish.
+
+**Code cell 1:** setup. **Code cell 2:** variables and lists.
 
 ::: {.notes}
-09:05–09:10 ใช้ notebook ที่เตรียมไว้ใน Jupyter แสดง cell จริง สามารถใช้ปุ่ม Run หาก shortcut ของเครื่องต่างกัน
+09:05–09:10 แสดง code cell และ Markdown จริง ชี้หมายเลขการรันซึ่งเปลี่ยนได้ จำนวน code cell ในบทพูดนับเฉพาะ code จากบนลงล่าง ไม่ใช่ execution count ถ้า kernel ยังทำงานให้รอ
 :::
 
 ## First run
 
-- Open week09_starter.ipynb.
-- Keep the supplied CSV and skh_palette.py in the same folder.
-- Run the first code cell, then the next one.
-- Check that the output appears below each cell.
+1. Unzip the [lab materials](files/week09_lab_materials.zip) into one folder.
+2. Open `week09_starter.ipynb` in the prepared Jupyter environment.
+3. Keep the CSV and `skh_palette.py` beside the notebook.
+4. Run **code cell 1**. Look for **Setup complete**.
 
-[Download the lab notebook, data and palette](files/week09_lab_materials.zip)
+**If setup is still blocked at 09:15:** work with a partner and use the instructor’s running notebook.
 
 ::: {.notes}
-09:10–09:20 ผู้สอนเตรียม environment ล่วงหน้า หากเปิดไม่ได้ภายในห้านาทีให้จับคู่ ไม่ปล่อยให้คาบหมดไปกับการติดตั้ง
+09:10–09:20 ตรวจการเปิด notebook และข้อความ Setup complete cell นี้ import pandas, matplotlib.pyplot และ skh_palette แล้วใช้ skh.use() ก่อนพล็อต หากติดตั้งไม่สำเร็จให้จับคู่ที่ 09:15 และบันทึกปัญหาแก้หลังคาบ
 :::
 
 ## A variable stores a value
 
-:::: {.columns}
-::: {.column width="70%"}
 ```python
-temperature = 300
-conversion = 40
-print(temperature, conversion)
+temperature_C = 300
+conversion_pct = 40
+print(temperature_C, conversion_pct)
 ```
-:::
-::: {.column width="30%"}
-**Output**
 
-```text
-300 40
-```
-:::
-::::
+**Expected output:** `300 40`
 
-Try it: change temperature to 325. Predict the new output, then run.
+Change `temperature_C` to `325`. Predict, run, then check.
+
+The names record our intended units. Python stores the numbers.
 
 ::: {.notes}
-09:20–09:25 อธิบายเครื่องหมายเท่ากับเป็น assignment ชี้ว่าตัวแปรไม่มีหน่วยอัตโนมัติ
-
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+09:20–09:25 สร้าง scratch code cell หลัง setup เพื่อสาธิต ชื่อตัวแปรนี้ไม่ทับ temperature ซึ่งเป็น list ใน starter เครื่องหมาย = เก็บค่า เปลี่ยนอุณหภูมิไม่ทำให้ conversion เปลี่ยนเอง
 :::
 
 ## Lists preserve the pairing of values
@@ -164,37 +156,37 @@ https://matplotlib.org/stable/users/explain/quick_start.html
 ```python
 temperature = [300, 325, 350, 375]
 conversion = [40, 55, 70, 80]
-print(len(temperature))
+print(len(temperature), len(conversion))
 ```
 
-**Expected output: 4**
+**Expected output:** `4 4`
 
-The first pair is 300 °C and 40%. Each x value needs a matching y value.
+Pair by position: 300 °C with 40%, then 325 °C with 55%.
+
+**Code cell 2:** each x value needs a matching y value.
 
 ::: {.notes}
-09:25–09:30 ให้นิสิตนับจำนวนข้อมูล ใช้ print เพื่อดูสิ่งที่เก็บอยู่
-
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+09:25–09:30 ใช้ Variables and lists ใน starter เพิ่ม len(conversion) เพื่อเช็กความยาว อย่าให้ scalar จากสไลด์ก่อนทับ list ถ้าลองแก้รายการให้คืนค่าเดิมก่อนอ่าน CSV
 :::
 
 ## Functions and named arguments
 
 ```python
-import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 ax.plot(temperature, conversion,
         marker="o", linewidth=1.8,
         color=skh.C["amber"])
+plt.show()
 ```
 
-plot is a function called on ax.
+`fig`: the whole figure. `ax`: one plotting area.
 
-marker and linewidth control appearance.
+`plot(...)` draws data. Named arguments set its appearance.
+
+**After code cells 1–2:** try `marker="s"`. Check what changes.
 
 ::: {.notes}
-09:30–09:38 สาธิตแก้ marker และ linewidth โดยคงเส้นอย่างน้อย 1.5 pt อธิบาย fig เป็นทั้งภาพ ax เป็นพื้นที่พล็อต
-
+09:30–09:38 ใช้ scratch cell หลัง Variables and lists โดย setup นำเข้า plt และ skh แล้ว สาธิตวงเล็บ function และ named arguments เปลี่ยน marker o เป็น s ค่าข้อมูลยังเท่าเดิม
 References:
 https://matplotlib.org/stable/users/explain/quick_start.html
 :::
@@ -203,35 +195,32 @@ https://matplotlib.org/stable/users/explain/quick_start.html
 
 | Message | First check |
 | --- | --- |
-| `NameError` | Was the variable defined and its cell run? |
-| `FileNotFoundError` | Is the CSV in the notebook working folder? |
-| `KeyError` | Does the column name match exactly? |
-| `SyntaxError` | Check quotes, commas and brackets. |
+| `NameError` | Correct spelling? Definition cell already run? |
+| `FileNotFoundError` | CSV beside notebook? Exact filename? |
+| `KeyError` | Column name matches `df.columns`? |
+| `SyntaxError` | Quotes, commas and brackets complete? |
+
+Read the **last error line**, then the line it points to.
 
 ::: {.notes}
-09:38–09:45 สร้าง NameError แบบตั้งใจหนึ่งครั้ง แล้วรัน cell นิยามตัวแปรก่อน
-
-Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+09:38–09:45 สะกด conversion ผิดใน scratch cell ให้เกิด NameError แก้สะกดแล้วรันใหม่ หากไม่หายตรวจว่ารัน cell นิยามแล้ว เมื่อลบ demo error ให้ตรวจ notebook กลับมารันได้
 :::
 
 ## Reading a CSV file
 
 ```python
-import pandas as pd
 df = pd.read_csv("synthetic_reaction_runs.csv")
 display(df.head())
 print(df.columns.tolist())
+print(df.groupby("temperature_C").size())
 ```
 
-One row is one independent run.
+**Code cell 3:** setup already imports pandas as `pd`.
 
-Column names include units.
+Check: 12 rows, 4 temperatures, 3 independent runs each.
 
 ::: {.notes}
-09:45–09:52 ชี้ว่า CSV นี้เป็นข้อมูลสมมติ 12 แถว 4 อุณหภูมิ อุณหภูมิละ 3 runs
-
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+09:45–09:52 ใช้ Reading the runs ไม่พิมพ์ชื่อไฟล์ใหม่โดยเดา อธิบาย df เป็นตารางและ head แสดงเพียง 5 แถวแรก แสดง len(df) เพื่อเช็ก 12 แถว ข้อมูลสมมติทั้งหมด
 :::
 
 ## The structure of the teaching data
@@ -242,14 +231,14 @@ https://matplotlib.org/stable/users/explain/quick_start.html
 | 300 | 2 | 40 | 90 |
 | 300 | 3 | 42 | 89 |
 
+One row = one independent simulated run at fixed residence time, 2.0 s.
+
 ::: {.note}
-First three rows of the synthetic dataset. Twelve rows in total.
+First 3 of 12 rows. Conversion and selectivity in the same row belong to the same run.
 :::
 
 ::: {.notes}
-09:52–09:57 แสดง 3 แถวแรกและนิยาม run ไม่ใช่ข้อมูลใหม่จากการทดลองจริง
-
-Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+09:52–09:57 ให้ชี้ค่าที่เป็นคู่กัน เช่น run1 X38 และ S91 จำนวนซ้ำคือ 3 ต่ออุณหภูมิ ไม่ใช่ 12 ต่ออุณหภูมิ แยก gallery n8/n30 ออกจากกรณีนี้
 :::
 
 ## The first scatter plot
@@ -262,15 +251,14 @@ ax.scatter(df["temperature_C"],
 plt.show()
 ```
 
-Each point represents one run.
+**Code cell 4:** brackets select a column. Each point is one run.
 
-The setup cell imports skh_palette and applies skh.use().
+Try `s=64`. Marker area changes. The data stay fixed.
 
 ::: {.notes}
-09:57–10:05 โค้ดตั้งต้นมี palette ให้แล้ว อธิบายวงเล็บเหลี่ยมเลือกคอลัมน์ ห้ามเติม jitter โดยไม่อธิบาย
-
+09:57–10:05 starter มี labels ให้แล้ว รันทั้ง cell แล้วทดลอง s36 เป็น64 อธิบาย s เป็นพื้นที่ marker หน่วย pt² จึงไม่ใช่เส้นผ่านศูนย์กลาง ไม่มี jitter ในรูปนี้
 References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html
 :::
 
 ## Labels state the quantity and unit
@@ -282,26 +270,25 @@ ax.set_ylim(0, 100)
 ax.set_xticks([300, 325, 350, 375])
 ```
 
-Add these lines before plt.show().
+In **code cell 4**, keep these lines **before** `plt.show()`.
 
-What does each line change?
+Run the whole cell again. Check quantity, unit and tick positions.
 
 ::: {.notes}
-10:05–10:10 ให้รันทั้ง cell ใหม่ คำสั่งกำหนด tick locations ตามอุณหภูมิจริง
-
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+10:05–10:10 ป้ายในเครื่องหมายคำพูดเป็นข้อความที่คนอ่านเห็น ไม่เปลี่ยนตัวข้อมูล ชี้ set_ylim เป็นขอบเขตการแสดงผล ไม่ใช่การแก้ข้อมูล
 :::
 
 ## Checkpoint before the break
 
-- Every run appears as a point.
-- The x-axis shows temperature in °C.
-- The y-axis shows conversion in %.
-- Explain one line of code to your partner.
+- The figure contains **12 runs** at four temperatures.
+- The axes show **Temperature (°C)** and **Conversion (%)**.
+- Both list variables still contain four entries.
+- Explain one changed line and its visible effect to a partner.
+
+If the plot fails, read the first failing cell with your partner.
 
 ::: {.notes}
-10:10–10:15 ให้ผู้เรียนอธิบายด้วยคำของตัวเอง
+10:10–10:15 เดินดูกราฟจริง ไม่ใช้การยกมืออย่างเดียว ให้ผู้เรียนชี้จุดที่ 300°C ทั้งสามจุดและอธิบายการแก้ marker บันทึกปัญหาที่ต้องช่วยต่อหลังพัก
 :::
 
 ## Break
@@ -318,8 +305,6 @@ Resume at 10:30
 
 ## The summary should match the original data
 
-:::: {.columns}
-::: {.column width="72%"}
 ```python
 summary = df.groupby("temperature_C").agg(
     mean_X=("conversion_pct", "mean"),
@@ -328,24 +313,15 @@ summary = df.groupby("temperature_C").agg(
     sd_S=("selectivity_pct", "std")
 )
 ```
-:::
-::: {.column width="28%"}
-**At 300 °C**
 
-```text
-mean_X = 40
-sd_X = 2
-mean_S = 90
-sd_S = 1
-```
-:::
-::::
+**Code cell 5, at 300 °C:** X = 40 ± 2%, S = 90 ± 1% (mean ± SD).
 
-Check one temperature before trusting the whole table. SD uses n − 1.
+Three runs per temperature. Sample SD uses n − 1.
 
 ::: {.notes}
-10:30–10:38 ใช้ cell ที่มีโค้ดให้แล้ว ไม่ให้ผู้เริ่มต้นจำ groupby ตรวจสาม run ที่ 300 °C กับค่าที่คาดหวังบนจอ: X=38,40,42 ให้ mean40 SD2 และ S=91,90,89 ให้ mean90 SD1. pandas std ใช้ ddof=1 เป็นค่าเริ่มต้น
-Reference: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html
+10:30–10:38 รัน Means and sample SD แล้วตรวจแถว300°C ค่า X38,40,42 ให้mean40 SD2 percentage points และ S91,90,89 ให้mean90 SD1 percentage point ไม่ต้องจำ groupby syntax
+Reference:
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html
 :::
 
 ## Error bars show a defined quantity
@@ -358,27 +334,28 @@ ax.errorbar(summary.index, summary["mean_X"],
             linewidth=1.8, markersize=5)
 ```
 
-yerr receives SD values calculated from runs.
+Four means and four SDs in the **same temperature order**.
 
-Check: the bar at 300 °C spans 38% to 42% conversion.
+`yerr` gives nonnegative distances from each mean. At 300 °C: 38–42%.
 
 ::: {.notes}
-10:38–10:45 อธิบาย errorbar ไม่ได้เลือก SD ให้เอง ตัวผู้วิจัยต้องส่งค่าที่นิยามไว้ ห้ามใส่ค่า uncertainty โดยไม่มีที่มา
-
+10:38–10:45 สาธิต scratch cell หลัง summary หรืออ่าน errorbar บรรทัดแรกใน code cell6 ค่า sd_X เป็น4ค่าที่เรียงตรงกับmean_X ไม่ส่งค่าปลาย38และ42เป็นyerr นิยาม ±1 SD เป็นหน้าที่ผู้เขียน
 References:
-https://matplotlib.org/stable/users/explain/quick_start.html
 https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html
 :::
 
 ## The summary still needs a caption
 
 - Points: mean conversion at each temperature
-- Bars: ±1 sample SD across independent runs
+- Bars: ±1 sample SD across independent simulated runs
 - Sample size: n = 3 per temperature
+- Fixed residence time: 2.0 s
 - Data status: synthetic, for teaching
 
+A reader should understand the figure without opening the code.
+
 ::: {.notes}
-10:45–10:50 ให้ตรวจรูปกับ caption ว่าตรงกัน
+10:45–10:50 ให้นิสิตพูด caption หนึ่งประโยคก่อนเขียน ระบุ sample SD ไม่เรียก CI ช่วง38–42 คือmean±SD ไม่ใช่ขอบเขตที่ครอบคลุมทุกประชากร
 :::
 
 ## Two panels share one temperature scale
@@ -388,17 +365,16 @@ fig, axes = plt.subplots(
     1, 2, figsize=(9, 3.8),
     sharex=True, layout="constrained"
 )
-# axes[0] is the left panel
-# axes[1] is the right panel
+# axes[0]: conversion, left panel
+# axes[1]: selectivity, right panel
 ```
 
-Use the supplied plotting cell for each response.
+**Code cell 6:** one figure, two plotting areas.
 
-Label conversion and selectivity separately.
+Each panel needs its own response label and matching SD column.
 
 ::: {.notes}
-10:50–10:57 ใช้ scaffold เต็มใน notebook ไม่ให้นิสิตเขียน loop เองเป็นครั้งแรก
-
+10:50–10:56 เปิด Two panels ฉบับเต็ม ให้ชี้ axes0 ใช้mean_X/sd_X และ axes1 ใช้mean_S/sd_S ตัวเลข index เริ่ม0 ไม่ให้พิมพ์โค้ดเต็มใหม่
 References:
 https://matplotlib.org/stable/users/explain/quick_start.html
 :::
@@ -406,12 +382,14 @@ https://matplotlib.org/stable/users/explain/quick_start.html
 ## Color and symbols carry meaning
 
 - Amber marks the response being studied.
-- Teal is reserved for a control or reference.
-- Both panels can use amber with clear axis labels.
-- Labels and symbols keep the figure readable in grayscale.
+- Teal represents a control or reference when one exists.
+- Both response panels use amber and distinct axis labels.
+- Symbols and labels preserve meaning in grayscale.
+
+A color change needs a reason the reader can understand.
 
 ::: {.notes}
-10:57–11:00 ยึดความหมายสีของห้องปฏิบัติการ ไม่กำหนด selectivity เป็น control เพื่อให้ใช้สี teal
+10:56–10:59 selectivity ไม่ใช่ control ของ conversion จึงไม่เปลี่ยนเป็นtealเพียงเพื่อให้มีสองสี หากนิสิตลองสัญลักษณ์ให้คงขนาดอ่านได้และอธิบายเหตุผล
 :::
 
 ## The expected figure
@@ -419,13 +397,11 @@ https://matplotlib.org/stable/users/explain/quick_start.html
 ![](assets/w08-10/reaction_summary.svg){.teaching-figure fig-alt="Conversion rises from 40% to 80%, while selectivity falls from 90% to 65%. Error bars show sample SD." height=430}
 
 ::: {.note}
-Synthetic data. Points are means, bars are ±1 sample SD, n = 3 per temperature.
+Synthetic data at 2.0 s. Means ±1 sample SD, n = 3 per temperature. The CSV and this figure use the same runs.
 :::
 
 ::: {.notes}
-11:00 แสดงตัวอย่างก่อนเริ่ม workshop แล้วให้นิสิตรันของตนเอง รูปนี้ใช้ mean และ SD เดียวกับ CSV
-
-Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+10:59–11:00 ให้เทียบค่าปลาย conversion40→80 และselectivity90→65 ทั้งสองแกน0–100 เริ่ม workshop เวลา11:00
 :::
 
 ## Figure workshop
@@ -434,12 +410,14 @@ Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 30 min
 :::
 
-1. First 20 min: complete both panels and verify labels, units and SD bars.
-2. Next 10 min: write a caption of 40–70 words.
-3. Keep one design change you can explain. Save the notebook and figure.
+1. **20 min:** run both panels. Verify values, units and SD bars.
+2. **10 min:** write a 40–70-word caption with residence time and n.
+3. Keep one design change you can explain. Save the notebook.
+
+**If blocked:** pair up, use the supplied plotting cell, and annotate what each line does.
 
 ::: {.notes}
-11:00–11:30 ให้ 20 นาทีทำรูป 10 นาที caption ให้คนคล่องลองคำนวณ yield ต่อ run แต่เป็น optional
+11:00–11:30 ที่11:10ตรวจแถว300°C ที่11:20เปลี่ยนเป็นcaption ผู้เรียนที่รันไม่ได้ใช้เครื่องคู่แต่ต้องอธิบายบรรทัดเอง ผู้เรียนที่เสร็จเร็วเลือกลองแสดงช่วงyแคบลงแล้วให้เหตุผล ไม่เพิ่มเรื่องใหม่ที่จำเป็นต่อการส่ง
 :::
 
 ## Figure review in pairs
@@ -448,12 +426,14 @@ Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 10 min
 :::
 
-1. Read the figure before reading the caption. What finding do you see?
-2. Check the units, n and the definition of error bars.
-3. Suggest one specific change, then check whether it improves interpretation.
+1. **3 min:** read your partner’s figure. State its main finding.
+2. **4 min:** check units, n, SD definition and caption agreement.
+3. **3 min:** make one specific correction and explain its benefit.
+
+Feedback example: “Add ‘±1 sample SD, n = 3’ to define the bars.”
 
 ::: {.notes}
-11:30–11:40 ดูการอ่านกราฟไม่ให้คะแนนความสวยหรือความเร็วในการเขียนโค้ด
+11:30–11:40 ให้ผู้ตรวจอ่านรูปก่อนcaption แล้วเทียบกัน ชื่นชมการแก้ที่ช่วยตีความ ให้คำตอบเฉพาะตำแหน่งแทนคำว่าไม่สวย
 :::
 
 ## Export from the figure object
@@ -465,60 +445,58 @@ fig.savefig("reaction_figure.png",
             dpi=600, bbox_inches="tight")
 ```
 
-PDF retains vector elements.
+**Code cell 7:** run just after the two-panel cell. `fig` must refer to it.
 
-Check the saved file at its intended display size.
+Open both saved files. Check labels and bars at the intended size.
 
 ::: {.notes}
-11:40–11:46 ใช้ fig.savefig ก่อนปิด figure palette ตั้ง PDF fonttype 42 แล้ว ผู้สอนตรวจ pdffonts เพื่อไม่ให้มี Type 3
-
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
+11:40–11:46 ไฟล์อยู่ข้างnotebook ถ้ากลายเป็นรูปเดี่ยวให้รันTwo panelsแล้วExportใหม่ PDFเก็บเส้นเป็นvector ส่วนPNG600dpi ตรวจfontด้วยpdffontsก่อนคาบตามมาตรฐานห้อง
+Reference:
+https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html
 :::
 
 ## A reproducibility check
 
-- Save the notebook.
-- Restart the kernel and run all cells in order.
-- Confirm that the figure files are recreated.
-- Submit the notebook, CSV, figure and caption together.
+1. Save the notebook, including your caption.
+2. Restart the kernel, then run all cells from the top.
+3. Confirm that both figure files appear again.
+4. Submit the notebook, CSV, palette file, figure and caption.
+
+If a cell fails, fix that first error before checking later cells.
 
 ::: {.notes}
-11:46–11:55 ให้ใช้ kernel restart ของเครื่องมือที่เปิดอยู่ หากรันไม่ผ่านให้ดู error แรกที่เกิด ไม่ไล่แก้ทุก error ต่อเนื่อง
+11:46–11:52 คืนค่าlistเดิมและลบหรือแก้ scratch cell ที่จงใจทำให้errorก่อนrestart ใช้คำสั่งของJupyterที่เครื่องเตรียมไว้ ชุดส่งต้องมีskh_palette.pyซึ่งเป็นdependency หากcaptionอยู่ในnotebookไม่ต้องแยกอีกไฟล์
 :::
 
 ## Exit ticket
 
 ::: {.duration}
-5 min
+4 min
 :::
 
-1. Show a figure recreated after restarting the kernel.
-2. Explain what yerr contains and identify the source runs.
+1. Show the figure recreated after a kernel restart.
+2. Explain what `yerr` contains and which runs produced it.
 3. Justify one design choice in a sentence.
 
+**Evidence to keep:** your notebook, exported figure and caption.
+
 ::: {.notes}
-11:55–12:00 ตรวจว่าพูดว่า SD across independent runs ไม่ใช่ measurement error แบบทั่วไป
+11:52–11:56 ให้เวลาหนึ่งนาทีต่อคำตอบและหนึ่งนาทีตรวจไฟล์ คำตอบyerrต้องเป็นSD4ค่าที่จับคู่กับ4อุณหภูมิ ไม่ใช่ค่าerrorที่โปรแกรมเลือกเอง
 :::
 
 ## Documentation for later use
 
-[Figure gallery with runnable examples](gallery.qmd)
-
+[Gallery: six figures with runnable examples](gallery.qmd)
 
 - [Matplotlib: Quick start guide](https://matplotlib.org/stable/users/explain/quick_start.html)
 - [Matplotlib: errorbar](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html)
 - [Matplotlib: Figure.savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html)
 - [pandas: DataFrame.std](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html)
 
-::: {.notes}
-แหล่งอ้างอิงฉบับเต็มอยู่ใน speaker notes หน้านี้เป็นเอกสารท้ายคาบ ไม่เพิ่มเวลาสอน
+Start with one example. Change a single element and check its effect.
 
-References:
-https://matplotlib.org/stable/users/explain/quick_start.html
-https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html
-https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html
-https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.std.html
+::: {.notes}
+11:56–11:57 แนะนำให้กลับมาเลือกgalleryหนึ่งแบบหลังคาบ มีnotebookให้รันและข้อมูลสมมติแยกชุด สงวน11:57–12:00สำหรับfeedbackหน้าถัดไป
 :::
 
 {{< include _feedback-w08-10.qmd >}}

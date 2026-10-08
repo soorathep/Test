@@ -24,14 +24,16 @@ format:
 
 ## What can the evidence support?
 
-1. Write the main finding from the reaction case.
-2. Write one explanation that remains a hypothesis.
-3. Explain the difference to a partner.
+**7 minutes · 09:01–09:08**
+
+1. Write one finding with a number and a tested condition.
+2. Write one possible explanation and label it as a hypothesis.
+3. Tell a partner what evidence would separate the two.
 
 ::: {.notes}
-Title slide, 09:00: ให้เปิด Results และรูปของตนเองจากสองครั้งก่อน
+Cover 09:00–09:01: เปิด Results และรูปจากสองครั้งก่อน
 
-09:00–09:08 ใช้คำตอบเพื่อหาว่ายังมีการกล่าวกลไกแบบยืนยันหรือไม่
+09:01–09:08: เขียน 2 นาที แลกคู่ 3 นาที ฟัง 2 ตัวอย่าง 2 นาที แยก finding ออกจาก hypothesis
 :::
 
 ## The evidence we have
@@ -48,45 +50,45 @@ Synthetic means. Residence time 2.0 s, *n* = 3 per temperature. SD: X = 2 pp, S 
 Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 :::
 
-## The purpose of the Discussion
+## The research question guides the Discussion
 
-- Answer the research question.
-- Explain what the findings may mean.
-- Compare relevant evidence and alternative explanations.
-- Bound the claims by the study’s limitations.
+**Research question**  
+How does temperature affect conversion and selectivity at a residence time of 2.0 s?
+
+**Results answer**  
+Conversion rises from 40% to 80%, while selectivity falls from 90% to 65%.
+
+**Discussion task**  
+Explain what this trade-off means for choosing a condition, and what remains unresolved.
 
 ::: {.notes}
-09:15–09:20 ใช้เป็นแนวทางการเขียน หลายวารสารรวม Results และ Discussion ได้ แหล่งแนวทาง PLOS ใน notes
+09:15–09:20: ชี้คำถามเดิม ก่อนเพิ่ม implication เรื่องการเลือกเงื่อนไข ข้อมูลสมมติที่ 300–375 °C
 
-References:
-https://journals.plos.org/plosone/s/submission-guidelines
+Journal section structures vary. Reference: https://journals.plos.org/plosone/s/submission-guidelines
 :::
 
-## A Discussion paragraph develops a claim
+## Claim, evidence, reasoning and boundary
 
-**Claim**  
-The preferred temperature depends on the process objective.
+**Claim:** Conversion alone cannot determine the preferred condition.
 
-**Reasoning**  
-Higher conversion comes with lower selectivity. Both quantities affect the desired-product yield.
+**Evidence:** Higher temperature increases conversion but reduces selectivity.
 
-**Boundary**  
-The present comparison covers four temperatures at one residence time.
+**Reasoning:** Both quantities enter the desired-product yield in this case.
+
+**Boundary:** Four temperatures, one residence time, three runs per temperature.
 
 ::: {.notes}
-09:20–09:25 โครงนี้เป็น scaffold ไม่ต้องใส่ครบทุกประโยคหรือทุกย่อหน้า เริ่มจากหลักฐานจริง
+09:20–09:25: ให้ชี้ว่าส่วนใดเป็นข้อมูล ส่วนใดเชื่อมข้อมูลกับข้ออ้าง โครงนี้ช่วยตรวจตรรกะ ไม่ใช่รูปแบบบังคับของทุกย่อหน้า
 :::
 
-## A claim and its supporting result
+## A paragraph with a visible line of reasoning
 
-**Claim:** The preferred temperature depends on the objective.
+> Conversion alone cannot determine the preferred condition. At 375 °C, mean conversion is highest among the tested temperatures, but mean selectivity is lowest. Because both quantities enter the desired-product yield, the highest conversion need not give the highest yield. The comparison remains limited to the four temperatures tested at 2.0 s.
 
-**Evidence:** At 375 °C, conversion is highest among the tested conditions, but selectivity is lowest.
-
-**Boundary:** These measurements alone do not establish an industrial optimum.
+**Your check:** Which sentence connects the evidence to the claim?
 
 ::: {.notes}
-09:25–09:30 ให้ชี้ว่าประโยค boundary ไม่ได้ทำให้ผลหมดคุณค่า แต่จำกัดการใช้งานอย่างถูกต้อง
+09:25–09:30: อ่านย่อหน้าเป็นตัวอย่าง ชี้ประโยคที่ 3 เป็น reasoning ถามว่าประโยคสุดท้ายจำกัดขอบเขตอย่างไร ไม่อ้างนัยสำคัญ
 :::
 
 ## Conversion and estimated yield differ
@@ -101,11 +103,13 @@ The present comparison covers four temperatures at one residence time.
 :::
 
 ::: {.figure-caption}
-Estimated yield = mean conversion × mean selectivity / 100. Synthetic data.
+Estimate = mean conversion × mean selectivity / 100. Synthetic data.
+
+At 350 °C: product of means = 54.6000%. Mean of the three paired-run yields = 54.5867%. Both round to 54.6%.
 :::
 
 ::: {.notes}
-09:30–09:35 คำนวณจากผลคูณของค่าเฉลี่ยเพื่อแสดง trade-off ไม่ใช่ mean yield จาก paired runs ถามนิสิตว่าคำนวณระดับ run ต่างอย่างไร
+09:30–09:35: ใช้คู่จริงใน CSV ที่ 350 °C: (68,79), (70,78), (72,77) คูณแต่ละคู่ก่อนเฉลี่ยได้ 54.5867% ค่า estimate ในตารางยังเป็นผลคูณของค่าเฉลี่ย ทั้งสองค่าปัดเป็น 54.6% จึงห้ามสลับนิยาม
 
 Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 :::
@@ -125,57 +129,70 @@ Test more temperatures near 350 °C before selecting a condition for further eva
 09:35–09:40 หลีกเลี่ยงเรียก 350 เป็น true optimum หรือ industrial optimum ไม่ยืนยันว่าความต่าง yield 2.6 pp มีนัยสำคัญ
 :::
 
-## Alternative explanations
+## Competing explanations for lower selectivity
 
-- Could the reaction network change the observed selectivity?
-- Could transport limitations contribute to the trend?
-- Could sampling or analysis bias the measurements?
-- What observation would help distinguish these possibilities?
+**Hypothesis A:** The desired product undergoes further reaction to byproducts.
+
+**Hypothesis B:** A temperature-dependent sampling or analysis bias lowers the apparent selectivity.
+
+**Question:** What would each explanation predict in an additional test?
+
+::: {.figure-caption}
+These are hypotheses for the synthetic case. The existing trend establishes neither explanation.
+:::
 
 ::: {.notes}
 09:40–09:50 เป็นสมมติฐานทั่วไปสำหรับฝึกออกแบบหลักฐาน ไม่ใช่ข้อค้นพบหรือคำอธิบายที่ได้รับยืนยันของระบบจริง
 :::
 
-## Evidence that tests an explanation
+## A useful test has a predicted outcome
 
 ::: {.teaching-table}
-| Possible explanation | Useful additional evidence |
-|:---|:---|
-| Changes in product pathways | Product distributions across residence times |
-| Transport contributes | Response to mixing or particle-size changes |
-| Analysis introduces bias | Calibration checks and material-balance closure |
+| Hypothesis | Proposed test | Predicted pattern if it contributes |
+|:---|:---|:---|
+| Further reaction of the product | Vary residence time at fixed temperature | Lower selectivity and more byproducts at longer times |
+| Analysis bias | Check known mixtures through the sampling and analysis procedure | Apparent recovery changes with the procedure or condition |
+| Transport contributes | Vary mixing or particle size, controlling other factors | The response changes when transport conditions change |
 :::
 
 ::: {.figure-caption}
-Proposed tests for the hypothetical case. None of these outcomes has been measured.
+A predicted pattern can support an explanation. One test rarely excludes every alternative.
 :::
 
 ::: {.notes}
-09:50–10:00 ให้เลือกหนึ่งคู่แล้วอธิบาย prediction ที่ต่างกัน ย้ำว่าหนึ่งการทดลองอาจไม่เพียงพอสรุปกลไก
-
-Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
+09:50–10:00: ให้คู่เลือกหนึ่งแถว เขียนผลที่คาดและผลที่จะทำให้ตั้งข้อสงสัย รายการเป็น proposed tests ไม่มีผลทดลองจริง
 :::
 
 ## Cautious wording still needs a reason
 
-- “May reflect competing pathways” states a hypothesis.
-- The next sentence should identify the supporting rationale.
-- A proposed test should show how the hypothesis could be challenged.
+**Incomplete:** “The selectivity decrease may reflect a secondary reaction.”
+
+**Stronger:** “A secondary reaction is one possible explanation. A residence-time test could examine whether lower selectivity accompanies increased byproduct formation.”
+
+**Still unresolved:** The present temperature trend cannot distinguish this explanation from measurement bias.
 
 ::: {.notes}
 10:00–10:05 สอนว่าเติม may หรือ could อย่างเดียวไม่พอ ถ้าไม่ทราบกลไกให้กล่าวว่ายังไม่สามารถแยกคำอธิบายได้
 :::
 
-## Conditions for a fair literature comparison
+## A literature comparison needs comparable evidence
 
-**Which paper would be a fair comparator?**
+::: {.teaching-table}
+| Before comparing | Record from each paper |
+|:---|:---|
+| Are the systems comparable? | Feed, catalyst, reactor and operating range |
+| Do the outcomes mean the same thing? | Definitions of conversion, selectivity and yield |
+| What can explain a difference? | Measurement basis, uncertainty and study limitations |
+:::
 
-- Check feed, catalyst, reactor and temperature range.
-- Check the definitions of conversion and selectivity.
-- List the evidence you need before writing a comparison.
+**10-minute task:** Specify one comparison and the evidence you need to make it fairly.
+
+::: {.figure-caption}
+Use a verified paper when available. Without one, write a search and extraction plan, without attributing an unverified finding to the literature.
+:::
 
 ::: {.notes}
-10:05–10:15 ใช้แบบฝึกวางแผนค้นวรรณกรรมซึ่งทำได้โดยไม่ต้องมีบทความเฉพาะ ไม่สร้างผลการทดลองหรืออ้างอิงสมมติ หากผู้สอนมีบทความจริงให้แจกส่วน Methods และ Results ที่ตรวจแล้ว
+10:05–10:15: ใช้บทความจริงที่ตรวจแล้ว หรือทำแผนค้นและดึงข้อมูล ให้ระบุผลจากงานเราแยกจากผลของ paper ห้ามสร้าง citation หรือผลวรรณกรรม
 :::
 
 ## Break {.dark .break background-color="#1C242B"}
@@ -204,8 +221,11 @@ Limits resolution. Say “highest among those tested” rather than claiming a g
 **2.0 s only**  
 Limits generalization. State 2.0 s when describing the temperature response.
 
+**3 runs per temperature**  
+Variability is estimated from a small sample. Yield uncertainty needs the paired runs.
+
 **Industrial use**  
-Without energy or stability data, the yield estimate remains a screening result.
+Energy use and stability remain untested.
 
 ::: {.notes}
 10:30–10:35 เพิ่มข้อจำกัด n=3 ในคำอธิบาย: จำนวน runs น้อยทำให้การประเมินความแปรปรวนมีความไม่แน่นอน ให้เขียน limitation คู่กับผลต่อข้อสรุป ไม่ใช่รายการข้อเสียเฉย ๆ
@@ -230,9 +250,11 @@ This comparison identifies a condition for further testing. It does not establis
 
 **25 minutes · 10:40–11:05**
 
-1. **First 5 min:** outline the main claim and the evidence supporting it.
+1. **First 5 min:** outline the claim, evidence, reasoning and boundary.
 2. **Next 20 min:** draft **250–350 words** using your Results and figure.
-3. Include an alternative interpretation, a limitation and a test that could distinguish explanations.
+3. Include an alternative explanation and a test with a predicted outcome.
+
+**Success check:** A reader can trace every factual claim to evidence and see what would change your interpretation.
 
 ::: {.notes}
 10:40–11:05 ให้ใช้ outline 5 นาทีก่อนเขียน 20 นาที ไม่ต้องประดิษฐ์ citation ถ้ายังไม่มีแหล่งข้อมูล อนุญาตระบุ literature needed ในร่างส่วนตัว แต่ไม่ส่งเป็นคำกล่าวอ้างจริง
@@ -240,10 +262,13 @@ This comparison identifies a condition for further testing. It does not establis
 
 ## The Conclusion answers the original question
 
-- State the main finding and its magnitude.
-- Give the most defensible implication.
-- Keep the scope tied to the tested conditions.
-- Introduce no new result.
+**Question:** Does the paragraph answer the original research question?
+
+**Finding:** Include the central comparison and its magnitude.
+
+**Scope:** Name the tested conditions and the defensible implication.
+
+**Audit:** Every result already appears in Results. Every interpretation has support.
 
 ::: {.notes}
 11:05–11:10 แตกต่างจาก Discussion ที่ขยายเหตุผล Conclusion ย่อคำตอบที่ผู้อ่านควรจำ ไม่ต้องซ้ำทุกตัวเลข
@@ -280,9 +305,11 @@ Testing near 350 °C could refine the yield comparison within this hypothetical 
 
 **15 minutes · 11:25–11:40**
 
-1. Underline each paragraph’s claim and mark the evidence supporting it.
-2. Circle any untested explanation stated as fact.
-3. Suggest **two edits:** one to strengthen the reasoning and one to narrow the scope.
+1. **5 min:** mark the claim, evidence and reasoning in your partner’s draft.
+2. **5 min:** check numbers, definitions, uncertainty and scope against Results.
+3. **5 min:** write two edits, one for the reasoning and one for the scope.
+
+**Feedback format:** “In sentence __, change __ because the evidence shows __.”
 
 ::: {.notes}
 11:25–11:40 ให้คู่เขียน feedback อย่างน้อยสองประเด็นที่แก้ได้จริง
@@ -304,14 +331,16 @@ Testing near 350 °C could refine the yield comparison within this hypothetical 
 
 ## Final revision and submission
 
-**15 minutes · 11:45–12:00**
+**11 minutes · 11:45–11:56**
 
 1. Submit Results, figure, caption, Discussion and Conclusion.
 2. Show one revision that better matches the evidence.
 3. Propose the next experiment and an outcome that would challenge your explanation.
 
+**20-point rubric:** Data accuracy, claims and evidence, figure and caption, writing structure, transparency and reproducibility. **4 points each.**
+
 ::: {.notes}
-11:45–12:00 ให้ใช้เกณฑ์ 20 คะแนนใน teaching_plan.md ไม่ให้คะแนนตามว่าข้อสรุปตรงความเชื่อของผู้สอนหรือไม่
+11:45–11:56: แก้ไขและส่ง ใช้เกณฑ์ 5 มิติ มิติละ 4 คะแนน ไม่ให้คะแนนตามว่าข้อสรุปตรงความเชื่อผู้สอนหรือไม่
 :::
 
 ## Writing guidance
@@ -321,7 +350,7 @@ Testing near 350 °C could refine the yield comparison within this hypothetical 
 - Use the target journal’s instructions before submission.
 
 ::: {.notes}
-เอกสารท้ายคาบ ไม่เพิ่มเวลาสอน
+11:56–11:57: ย้ำให้ตรวจคำแนะนำวารสาร แล้วเปิด feedback 11:57–12:00
 
 References:
 https://journals.plos.org/plosone/s/submission-guidelines

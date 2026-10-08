@@ -29,16 +29,17 @@ format:
 Write one sentence, then discuss: **what other measurement would you want?**
 
 ::: {.notes}
-Title slide: 09:00 เริ่มด้วยคำถามในหน้าถัดไป ไม่ต้องบรรยายนำยาว
+Title slide: 09:00–09:01 ทักทายและบอกผลงานปลายคาบ
 
-09:00–09:05 ให้เขียนคนละประโยคก่อนจับคู่ หลีกเลี่ยงเฉลยว่าค่าใดดีที่สุด
+09:01–09:05 ให้เขียนคนละประโยคก่อนจับคู่ ถามว่า conversion เพียงพอต่อการตัดสิน performance หรือไม่
 :::
 
 ## The reaction case
 
+**Research question:** How do conversion of A and selectivity to B change with temperature at a residence time of **2.0 s**?
+
 - A forms desired product B and by-products.
-- Residence time is fixed at **2.0 s**.
-- Temperature varies from **300 to 375 °C**.
+- Test **300–375 °C**; assume other conditions are fixed.
 - All values are synthetic teaching data.
 
 ::: {.notes}
@@ -66,9 +67,11 @@ Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 
 ## Today’s writing task
 
-- A Results paragraph of **120–180 words**
-- A figure sketch and a caption of **40–70 words**
-- A revision based on a partner’s feedback
+By the end of class, you will:
+
+- Write Results (**120–180 words**) with a finding, magnitude and scope.
+- Sketch a figure and write a caption (**40–70 words**) that defines the marks and **n**.
+- Revise one claim using specific feedback and explain the change.
 
 ::: {.notes}
 09:15–09:18 ชี้ว่าความยาวเป็นกรอบฝึก ไม่ใช่กฎสากลของวารสาร
@@ -142,8 +145,10 @@ Conversion changes from **40% to 80%**.
 ## One quantitative sentence
 
 - Include the temperature range and the residence time.
-- State a direction and its magnitude.
+- State the direction and magnitude for **both responses**.
 - Keep the sentence within what the data show.
+
+**Check:** could your reader recover the comparison without seeing the table?
 
 ::: {.notes}
 09:37–09:40 ให้แก้ประโยคแรกโดยเพิ่มเงื่อนไขและตัวเลข แล้วขอสองตัวอย่างจากห้อง
@@ -160,6 +165,8 @@ Conversion changes from **40% to 80%**.
 ::: {.figure-note}
 Deliberately flawed example for critique.
 :::
+
+**In pairs:** underline each unsupported claim, then name the evidence it would need.
 
 ::: {.notes}
 09:40–09:50 ข้อความผิดโดยเจตนา ให้ขีดคำที่ต้องมีหลักฐานเพิ่ม ระบุ performance objective และชี้ว่าการอ้าง catalyst activity ไม่ได้มาจากข้อมูลนี้
@@ -264,10 +271,12 @@ The sampling unit belongs in the caption.
 
 Report as mean ± SD: **(40 ± 2)%**.
 
-**Meaning:** the bars describe spread across three runs. Their overlap alone does not test statistical significance.
+**SD:** spread between runs. **SE:** precision of the estimated mean; here, SD/√n ≈ 1.15 percentage points.
+
+Neither is a 95% confidence interval. SD-bar overlap alone does not test significance.
 
 ::: {.notes}
-10:40–10:42 Mean=(38+40+42)/3=40. Sample variance=[(38−40)^2+0+(42−40)^2]/(3−1)=4, SD=2 percentage points. เน้น sampling unit และไม่สรุปนัยสำคัญจาก SD bars หน้า 20 แสดงกราฟต่อในช่วง 10:42–10:44
+10:40–10:42 Mean=40, sample SD=2 percentage points, SE=2/√3≈1.15 percentage points. SD บอกการกระจายระหว่าง run ส่วน SE บอกความแม่นของค่าเฉลี่ยโดยประมาณภายใต้สมมติฐานการสุ่มอิสระ ไม่ใช้สองคำแทนกัน ไม่ตัดสินนัยสำคัญจาก SD bars
 :::
 
 ## Means with sample SD
@@ -291,8 +300,10 @@ Synthetic teaching case. Source: course worksheet and figures/build_figures.py.
 - **Display:** points are means, bars are ±1 sample SD
 - **Replication:** three independent runs per temperature
 
+**Check:** can the reader identify every mark without reading the main text?
+
 ::: {.notes}
-10:44–10:50 ให้เขียน caption หลังตัดสินใจว่ารูปแสดงอะไรจริง อย่าเขียน error bars ถ้ารูปไม่ได้แสดง
+10:44–10:47 ให้เขียน caption หลังตัดสินใจว่ารูปแสดงอะไรจริง อย่าเขียน error bars ถ้ารูปไม่ได้แสดง
 :::
 
 ## A caption linked to the marks on the figure
@@ -310,7 +321,7 @@ Points are means of three independent runs per temperature. Bars show ±1 sample
 Lines guide the eye. The data are synthetic and were constructed for teaching.
 
 ::: {.notes}
-10:47–10:50 ใช้ส่วนหนึ่งของช่วง caption เดิม ชี้ว่าคำ left และ right ตรงกับรูปก่อนหน้า และทุกคำอธิบายตรงกับ marks จริง
+10:47–10:50 ให้จับคู่ข้อความใน caption กับเครื่องหมายบนรูป ชี้ว่า left และ right ต้องตรงกับ panel จริง
 :::
 
 ## Writing workshop
@@ -321,6 +332,8 @@ Lines guide the eye. The data are synthetic and were constructed for teaching.
 2. **Next 20 min:** write Results (120–180 words) and a caption (40–70 words).
 3. **Last 5 min:** underline the finding and check every numerical claim.
 
+**Ready for review:** Figure 1 is cited; conditions, units, **n** and error-bar meaning are explicit; no untested mechanism is claimed.
+
 ::: {.notes}
 10:50–11:25 ให้ 10 นาทีร่างรูป 20 นาทีเขียน 5 นาทีตรวจตนเอง อ้างอิงใบงาน week08_student_worksheet.md เดินดูว่ามีการอ้างกลไกเกินข้อมูลหรือไม่
 :::
@@ -330,8 +343,10 @@ Lines guide the eye. The data are synthetic and were constructed for teaching.
 **20 minutes**
 
 1. Read your partner’s paragraph and figure for **5 minutes**.
-2. Write **two specific revisions:** identify the sentence and explain the issue.
-3. Discuss which revision most improves the match between claim and evidence.
+2. Check **numbers and units**, **claim strength**, and **caption–figure agreement**.
+3. Write **two specific revisions:** quote the sentence, explain the issue and propose a fix.
+
+Discuss which change most improves the match between claim and evidence.
 
 ::: {.notes}
 11:25–11:45 จับคู่ 5 นาทีอ่าน 10 นาทีเขียนข้อเสนอแนะ 5 นาทีคุย ให้ชี้ประโยคจริงแทนคำว่า good หรือ unclear ลอย ๆ
@@ -357,14 +372,14 @@ The measurements show a conversion–selectivity trade-off within the tested ran
 
 ## Exit ticket
 
-**10 minutes**
+**7 minutes**
 
 1. Submit the revised Results paragraph and caption.
 2. State **one supported finding** and **one conclusion the data cannot establish**.
 3. Identify one sentence you changed after peer review and explain why.
 
 ::: {.notes}
-11:50–12:00 ให้อธิบายหนึ่งประโยคที่เปลี่ยนหลัง peer review
+11:50–11:57 ให้อธิบายหนึ่งประโยคที่เปลี่ยนหลัง peer review และเก็บงานก่อนเปิด feedback ช่วง 11:57–12:00
 :::
 
 {{< include _feedback-w08-10.qmd >}}
