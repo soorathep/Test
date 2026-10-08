@@ -18,6 +18,7 @@ description: Graduate and undergraduate courses taught by Assoc. Prof. Dr. Soora
       <div class="c-name">{% if course.url %}<a href="{{ site.baseurl }}{{ course.url }}">{{ course.name }}</a>{% else %}{{ course.name }}{% endif %}{% if course.code %} <span class="c-code">{{ course.code }}</span>{% endif %}</div>
       <div class="c-level mono">{{ course.level }}</div>
       {% if course.note %}<div class="c-note">{{ course.note }}</div>{% endif %}
+      {% if course.quick_links %}<p>{% for link in course.quick_links %}<a href="{{ site.baseurl }}{{ link.url }}">{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>{% endif %}
     </div>
     {% endfor %}
   </div>
