@@ -263,3 +263,21 @@ exports to this public repository.
 Regenerate QR images with the research interpreter and
 `figures/generate_exit_qr.py`. Verify that each QR decodes to its own session.
 The offline package includes QR slides, but submitting the form needs internet.
+
+### Session 2 individual checks and bilingual support
+
+The opening 30-minute block includes a 12-minute VLE retrieval activity;
+70 minutes of pair investigation and the 180-minute total are unchanged.
+Session 2 includes short Thai summaries, an individual property/activity check,
+and `files/week02-practice.pdf` (two pages) for the same in-class/follow-up task.
+The worksheet source is `prereading/week02-practice.html`. With a local site running:
+
+```
+node tools/export-week02-practice.mjs
+```
+
+Set `COURSE_ORIGIN` if the preview is not on port 8766. Regenerate just the
+three-page Week 2 reading with the research Python interpreter and
+`prereading/tools/build_prereading.py --week 2 --output ../../teaching/2105603/files`.
+The Sarabun fonts are distributed with their OFL license. Private response
+reports and student records are stored outside this public repository.

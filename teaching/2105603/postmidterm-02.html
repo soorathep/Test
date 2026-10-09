@@ -32,6 +32,7 @@
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-44ab30104761961979c1939c561e7051.css">
   <link rel="stylesheet" href="assets/postmidterm.css">
+  <link rel="stylesheet" href="assets/week02-thai.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -158,11 +159,20 @@ Soorathep Kheawhom
 
   <p class="date">30 September 2026</p>
 </section>
-<section id="the-question-for-today" class="slide level2">
-<h2>The question for today</h2>
-<p>Does a small fitting error mean the data and model are trustworthy?</p>
+<section id="retrieve-and-check-first-12-minutes" class="slide level2">
+<h2>Retrieve and check · First 12 minutes</h2>
+<p>At 350 K and z₁=0.5, use Psat₁=150 and Psat₂=60 kPa.</p>
+<ul>
+<li><strong>3 min, alone:</strong> predict the phase at 80, 95 and 110 kPa.</li>
+<li><strong>5 min:</strong> at 95 kPa, check z₁=(1−β)x₁+βy₁ using x₁=0.388889, y₁=0.614035, β=0.493506. Check both composition sums.</li>
+<li><strong>2 min:</strong> each person opens <a href="labs/#experiment">Lab 01</a> and saves a baseline.</li>
+<li><strong>2 min:</strong> compare checks and summarize in Thai.</li>
+</ul>
+<div class="thai-summary">
+<p>แยกองค์ประกอบ x, y, z ออกจากสัดส่วนไอ β แล้วตรวจสมดุลมวล</p>
+</div>
 <p><a href="files/preclass-week-02.pdf">Before class: 3-page reading</a> · 15–20 minutes</p>
-<p>Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.</p>
+<p>Bring the <a href="files/week02-practice.pdf">Week 2 worksheet</a>. Today: does a small fitting error establish trust?</p>
 </section>
 <section id="the-180-minute-class" class="slide level2">
 <h2>The 180-minute class</h2>
@@ -200,14 +210,16 @@ Soorathep Kheawhom
 </tr>
 </tbody>
 </table>
-<p>The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.</p>
+<p>The opening 30 minutes include the 12-minute retrieval activity. Pair work stays 70 minutes. Final block: discussion 20, exit ticket 5, feedback 3, closing 2 minutes.</p>
 </section>
 <section id="activity-and-its-reference" class="slide level2">
 <h2>Activity and its reference</h2>
 <p><span class="math display">\mu_i=\mu_i^\circ+RT\ln a_i,\qquad a_i=\gamma_i x_i</span></p>
 <p>The activity is dimensionless; γ is its correction relative to an ideal liquid solution using the pure-liquid standard.</p>
-<p><strong>Residual:</strong> real fluid minus ideal gas at the same T, P and composition.</p>
-<p><strong>Excess:</strong> real mixture minus ideal solution at the same T, P and composition.</p>
+<p>For x₁=0.4 and γ₁=1.25, a₁=0.50. Residual and excess reference comparisons are in the reading and appendix.</p>
+<div class="thai-summary">
+<p>activity ไม่มีหน่วย และ a ไม่ใช่ γ ต้องคูณด้วยองค์ประกอบ x</p>
+</div>
 </section>
 <section id="properties-prediction-fitting" class="slide level2">
 <h2>Properties → prediction → fitting</h2>
@@ -218,29 +230,44 @@ Soorathep Kheawhom
 </ol>
 <p><span class="math display">\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}</span></p>
 <p>This inversion assumes ideal vapor and negligible Poynting correction. Convergence, consistency and prediction are separate checks.</p>
+<div class="thai-summary">
+<p>ตรวจรูปสมการ Antoine หน่วย และช่วงอุณหภูมิ ก่อนเชื่อค่าที่ fit ได้</p>
+</div>
 </section>
 <section id="a-vapor-pressure-error-becomes-an-activity-error" class="slide level2">
 <h2>A vapor-pressure error becomes an activity error</h2>
 <p>Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.</p>
 <p><span class="math display">\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25</span></p>
 <p>Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.</p>
+<p><strong>Pause:</strong> calculate a₁ for each case before comparing answers.</p>
+<div class="thai-summary">
+<p>ข้อมูลสารผสมเดิม แต่ใส่ความดันไอผิด ก็ทำให้แปลผล γ ผิดได้</p>
+</div>
 </section>
 <section id="an-independent-check" class="slide level2">
 <h2>An independent check</h2>
-<p>Check one Antoine saturation pressure and one inferred activity coefficient by hand. Keep the same observations and property convention when comparing models.</p>
+<p>Work alone first, then exchange checks using the worksheet.</p>
+<ol type="1">
+<li>Write the Antoine equation, temperature unit and pressure unit; evaluate one Psat.</li>
+<li>Substitute one observed T, P, x, y point into γ=yP/(xPsat); show units cancelling.</li>
+<li>Check x₁+x₂=1 and y₁+y₂=1. Compare the same observations and property convention.</li>
+</ol>
+<div class="thai-summary">
+<p>เขียนแทนค่าจริงหนึ่งจุด การบอกว่า “ได้ตรงกับ lab” ยังไม่แสดงวิธีตรวจ</p>
+</div>
 </section>
 <section id="one-demonstration-20-minutes" class="slide level2">
 <h2>One demonstration · 20 minutes</h2>
 <p><a href="labs/vle-input.html#vi-experiment">Open the core lab</a></p>
 <p>Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Compare predicted P and y with one observed point, then inspect the residual pattern.</p>
-<p>Keep one saved baseline for the pair investigation.</p>
+<p>Each person repeats the baseline and saves it. Pause here to resolve setup problems before model comparison.</p>
 </section>
 <section id="pair-investigation-70-minutes" class="slide level2">
 <h2>Pair investigation · 70 minutes</h2>
 <ul>
-<li>10 min: predict and record the baseline.</li>
+<li>10 min: each person loads and validates the same baseline.</li>
 <li>25 min: change one input and calculate.</li>
-<li>20 min: exchange roles and check the result by hand.</li>
+<li>20 min: calculate γ individually, then exchange checks and roles.</li>
 <li>15 min: prepare one plot or table and a short explanation.</li>
 </ul>
 <p>In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.</p>
@@ -248,13 +275,16 @@ Soorathep Kheawhom
 <section id="discussion-20-minutes" class="slide level2">
 <h2>Discussion · 20 minutes</h2>
 <p>Does a small fitting error mean the data and model are trustworthy?</p>
-<p>Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.</p>
+<p>Compare one residual pattern and one numerical check. Distinguish a converged fit, a consistency diagnostic and prediction on excluded data.</p>
+<div class="thai-summary">
+<p>fit ได้ดี ไม่ได้ยืนยันว่าข้อมูลถูกหรือทำนายนอกข้อมูลได้ดี ต้องตรวจแยกกัน</p>
+</div>
 </section>
 <section id="after-class-3040-minutes" class="slide level2">
 <h2>After class · 30–40 minutes</h2>
 <p>In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.</p>
 <p><a href="labs/assessments.html#session-2">Assessment 2 and independent checkpoint</a></p>
-<p>Retain one study JSON, one comparison and a short explanation.</p>
+<p>Retain one study JSON, one comparison and the completed <a href="files/week02-practice.pdf">worksheet</a>. Finish the in-class work; no additional dataset is required.</p>
 <p>Optional: <a href="postmidterm-02-appendix.html">Session appendix</a>.</p>
 <p><a href="labs/learning-path.html#session-2">Learning path</a> · <a href="files/thermodynamics-offline.zip">Offline package</a></p>
 </section>
@@ -263,7 +293,7 @@ Soorathep Kheawhom
 <div class="columns">
 <div class="column" style="width:60%;">
 <p><strong>5 min · Explain and check</strong></p>
-<p>Answer the session question in the form. Give one result or independent check from today’s lab, with units.</p>
+<p>Answer the session question. In the evidence box, show one substituted calculation of γ or Psat with units, not just the final number.</p>
 <p><strong>3 min · Help improve the next class</strong></p>
 <p>Rate the pace, report lab access, and suggest one improvement.</p>
 <p>Thai or English. No name, ID or email requested.</p>

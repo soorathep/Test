@@ -7,7 +7,7 @@ date-format: "D MMMM YYYY"
 format:
   revealjs:
     theme: [default, theme/teal-amber.scss]
-    css: assets/postmidterm.css
+    css: [assets/postmidterm.css, assets/week02-thai.css]
     width: 1280
     height: 720
     margin: 0.06
@@ -26,13 +26,22 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## The question for today
+## Retrieve and check · First 12 minutes
 
-Does a small fitting error mean the data and model are trustworthy?
+At 350 K and z₁=0.5, use Psat₁=150 and Psat₂=60 kPa.
+
+- **3 min, alone:** predict the phase at 80, 95 and 110 kPa.
+- **5 min:** at 95 kPa, check z₁=(1−β)x₁+βy₁ using x₁=0.388889, y₁=0.614035, β=0.493506. Check both composition sums.
+- **2 min:** each person opens [Lab 01](labs/#experiment) and saves a baseline.
+- **2 min:** compare checks and summarize in Thai.
+
+::: {.thai-summary}
+แยกองค์ประกอบ x, y, z ออกจากสัดส่วนไอ β แล้วตรวจสมดุลมวล
+:::
 
 [Before class: 3-page reading](files/preclass-week-02.pdf) · 15–20 minutes
 
-Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
+Bring the [Week 2 worksheet](files/week02-practice.pdf). Today: does a small fitting error establish trust?
 
 ## The 180-minute class
 
@@ -45,7 +54,7 @@ Bring the three preparation answers. Revisit your prediction after one controlle
 | Student pair investigation | 70 |
 | Discussion, exit ticket and feedback | 30 |
 
-The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.
+The opening 30 minutes include the 12-minute retrieval activity. Pair work stays 70 minutes. Final block: discussion 20, exit ticket 5, feedback 3, closing 2 minutes.
 
 ## Activity and its reference
 
@@ -53,9 +62,11 @@ $$\mu_i=\mu_i^\circ+RT\ln a_i,\qquad a_i=\gamma_i x_i$$
 
 The activity is dimensionless; γ is its correction relative to an ideal liquid solution using the pure-liquid standard.
 
-**Residual:** real fluid minus ideal gas at the same T, P and composition.
+For x₁=0.4 and γ₁=1.25, a₁=0.50. Residual and excess reference comparisons are in the reading and appendix.
 
-**Excess:** real mixture minus ideal solution at the same T, P and composition.
+::: {.thai-summary}
+activity ไม่มีหน่วย และ a ไม่ใช่ γ ต้องคูณด้วยองค์ประกอบ x
+:::
 
 ## Properties → prediction → fitting
 
@@ -67,6 +78,10 @@ $$\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}$$
 
 This inversion assumes ideal vapor and negligible Poynting correction. Convergence, consistency and prediction are separate checks.
 
+::: {.thai-summary}
+ตรวจรูปสมการ Antoine หน่วย และช่วงอุณหภูมิ ก่อนเชื่อค่าที่ fit ได้
+:::
+
 ## A vapor-pressure error becomes an activity error
 
 Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.
@@ -75,9 +90,23 @@ $$\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25$$
 
 Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.
 
+**Pause:** calculate a₁ for each case before comparing answers.
+
+::: {.thai-summary}
+ข้อมูลสารผสมเดิม แต่ใส่ความดันไอผิด ก็ทำให้แปลผล γ ผิดได้
+:::
+
 ## An independent check
 
-Check one Antoine saturation pressure and one inferred activity coefficient by hand. Keep the same observations and property convention when comparing models.
+Work alone first, then exchange checks using the worksheet.
+
+1. Write the Antoine equation, temperature unit and pressure unit; evaluate one Psat.
+2. Substitute one observed T, P, x, y point into γ=yP/(xPsat); show units cancelling.
+3. Check x₁+x₂=1 and y₁+y₂=1. Compare the same observations and property convention.
+
+::: {.thai-summary}
+เขียนแทนค่าจริงหนึ่งจุด การบอกว่า “ได้ตรงกับ lab” ยังไม่แสดงวิธีตรวจ
+:::
 
 ## One demonstration · 20 minutes
 
@@ -85,13 +114,13 @@ Check one Antoine saturation pressure and one inferred activity coefficient by h
 
 Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Compare predicted P and y with one observed point, then inspect the residual pattern.
 
-Keep one saved baseline for the pair investigation.
+Each person repeats the baseline and saves it. Pause here to resolve setup problems before model comparison.
 
 ## Pair investigation · 70 minutes
 
-- 10 min: predict and record the baseline.
+- 10 min: each person loads and validates the same baseline.
 - 25 min: change one input and calculate.
-- 20 min: exchange roles and check the result by hand.
+- 20 min: calculate γ individually, then exchange checks and roles.
 - 15 min: prepare one plot or table and a short explanation.
 
 In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
@@ -100,7 +129,11 @@ In Lab 08, validate the supplied synthetic example and compare one-parameter Mar
 
 Does a small fitting error mean the data and model are trustworthy?
 
-Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.
+Compare one residual pattern and one numerical check. Distinguish a converged fit, a consistency diagnostic and prediction on excluded data.
+
+::: {.thai-summary}
+fit ได้ดี ไม่ได้ยืนยันว่าข้อมูลถูกหรือทำนายนอกข้อมูลได้ดี ต้องตรวจแยกกัน
+:::
 
 ## After class · 30–40 minutes
 
@@ -108,7 +141,7 @@ In Lab 08, validate the supplied synthetic example and compare one-parameter Mar
 
 [Assessment 2 and independent checkpoint](labs/assessments.html#session-2)
 
-Retain one study JSON, one comparison and a short explanation.
+Retain one study JSON, one comparison and the completed [worksheet](files/week02-practice.pdf). Finish the in-class work; no additional dataset is required.
 
 Optional: [Session appendix](postmidterm-02-appendix.html).
 
@@ -121,7 +154,7 @@ Optional: [Session appendix](postmidterm-02-appendix.html).
 
 **5 min · Explain and check**
 
-Answer the session question in the form. Give one result or independent check from today's lab, with units.
+Answer the session question. In the evidence box, show one substituted calculation of γ or Psat with units, not just the final number.
 
 **3 min · Help improve the next class**
 

@@ -16,7 +16,7 @@ import skh_palette as skh
 C={k:colors.HexColor(v) for k,v in skh.C.items()}
 for name,weight in [('Reading','normal'),('ReadingBold','bold')]:
     pdfmetrics.registerFont(TTFont(name,findfont(FontProperties(family='DejaVu Sans',weight=weight))))
-parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT.parent/'output'/'pdf');args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT.parent/'output'/'pdf');parser.add_argument('--week',type=int,choices=range(1,7));args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
 W,H=595.28,841.89; M=48; CW=W-2*M
 styles={
  'body':ParagraphStyle('body',fontName='Reading',fontSize=10.5,leading=16,textColor=C['graphite']),
@@ -41,6 +41,7 @@ def start(week,page,label):
     return H-69
 
 for week,d in enumerate(READINGS,1):
+    if args.week and week != args.week: continue
     dest=args.output/f'preclass-week-{week:02d}.pdf';c=canvas.Canvas(str(dest),pagesize=(W,H),initialFontName="Reading")
     c.setTitle(f'Week {week}: {d["title"]}');c.setAuthor('2105603 teaching materials')
     y=start(week,1,'Concepts');y=para(d['title'],y,'title');y=para('Read and prepare: 15–20 minutes total. Bring tentative answers; uncertainty is useful for discussion.',y,'small')
