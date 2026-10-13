@@ -19,4 +19,8 @@ The discussion is anchored in deployment-relevant markers — a representative h
 
 ## Read the paper
 
-Wisan T., Tangthuam P., Chang S.-H., Chou H.-H., Lin J.-Y., In I., **Kheawhom S.** *Beyond the Lithium Template: A Solvation-First Framework for Nanoscale Sodium-Ion Interphases, Cross-Talk, and Full-Cell Translation.* **Nanoscale Horizons** (2026), Advance Article, published online 25 August 2026. [DOI 10.1039/D6NH00245E](https://doi.org/10.1039/D6NH00245E)
+Wisan T., Tangthuam P., Chang S.-H., Chou H.-H., Lin J.-Y., In I., **Kheawhom S.** *Beyond the Lithium Template: A Solvation-First Framework for Nanoscale Sodium-Ion Interphases, Cross-Talk, and Full-Cell Translation.* **Nanoscale Horizons** (2026), 11, 2478–2496. [DOI 10.1039/D6NH00245E](https://doi.org/10.1039/D6NH00245E)
+
+**Update, October 2026:** the article is featured on the front cover of *Nanoscale Horizons* Vol 11, Issue 10.
+
+![Front cover of Nanoscale Horizons, Vol 11, Issue 10, October 2026]({{ site.baseurl }}/covers/Nanoscale_Horizons_2026.jpg)
