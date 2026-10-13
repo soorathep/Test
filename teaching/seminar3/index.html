@@ -23,7 +23,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 </style>
@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -82,11 +82,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
-    
-  
-    
+
+
+
   </div>
-  
+
 
 
 </header>
@@ -109,8 +109,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="figures-and-tables" class="level3">
 <h3 class="anchored" data-anchor-id="figures-and-tables">Figures and tables</h3>
 <p>A 50-minute video lecture with worked examples</p>
-<p><strong><a href="02_figures_video.html">Watch the video lecture</a></strong> · <a href="02_figures.html">Open slides</a> · <a href="worksheet-2.html">Optional practice worksheet</a></p>
-<p>The video lecture is available now: 50 minutes 35 seconds, in English, with synchronized slides and chapter navigation. The online quiz link will be announced here. The quiz will allow unlimited attempts, with explanations after submission. Attendance will count one completed submission per student ID, with no passing score required.</p>
+<p><strong><a href="02_figures_video.html">Watch the video lecture</a></strong> · <strong><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/quiz/2">Take the 20-question quiz</a></strong> · <a href="02_figures.html">Open slides</a> · <a href="worksheet-2.html">Optional practice worksheet</a></p>
+<p>The video lecture is available now: 50 minutes 35 seconds, in English, with synchronized slides and chapter navigation. The 20-question quiz includes graphs, tables and diagrams. It allows unlimited attempts, with explanations after submission. Attendance will count one completed submission per student ID, with no passing score required.</p>
 </section>
 </section>
 <section id="october-2026-2" class="level2">
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -172,11 +172,11 @@ ul.task-list li input[type="checkbox"] {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -328,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -356,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -380,7 +380,7 @@ ul.task-list li input[type="checkbox"] {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -420,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
