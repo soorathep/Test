@@ -1,0 +1,7 @@
+#lecture { display: block; width: 100%; aspect-ratio: 16 / 9; background: #333F4A; border-radius: 6px; }
+.lecture-chapters { padding: 0; list-style: none; columns: 2; column-gap: 1rem; }
+.lecture-chapters li { break-inside: avoid; border-bottom: 1px solid #d8e2df; }
+.lecture-chapters button { font: inherit; color: #0F6E6B; background: transparent; border: 0; padding: 12px; text-align: left; width: 100%; cursor: pointer; }
+.lecture-chapters button:hover, .lecture-chapters button:focus-visible { background: #e7f0ee; }
+.lecture-chapters button span { font-variant-numeric: tabular-nums; margin-right: 8px; }
+@media (max-width: 750px) { .lecture-chapters { columns: 1; } }
