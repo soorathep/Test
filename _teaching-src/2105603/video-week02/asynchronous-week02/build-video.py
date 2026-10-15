@@ -111,7 +111,7 @@ def prepare():
     }
     (OUT / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False, indent=2) + "\n")
     with (OUT / "timeline.csv").open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(file, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     return timeline
