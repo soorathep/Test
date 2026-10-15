@@ -292,11 +292,15 @@ Every slide starts with its own audio and remains visible for the exact PCM
 length plus two seconds. `week02-video.html` offers chapters, transcripts and
 optional activity pauses, enabled by default. The downloadable MP4 requires
 students to pause manually. The 25-minute recording is part of the 180-minute
-working schedule. After the review and corrections, students submit Q1–Q6 with
+working schedule. Before viewing review solutions on Slide 26, students submit
+their own Q1–Q6 attempt with
 student ID and name at `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2`.
 The attendance form records completion, not a minimum accuracy score. Its link
 is on the video page, course index, learning path, assessment page and worksheet.
-Students retain their worksheet and Lab exports and save the submission receipt.
+After a successful save, the form reveals worked solutions. Students may submit
+corrections afterward and retain their original worksheet, Lab exports and receipt.
+The player pauses on Slide 25 with a direct submission link. This is instructional
+guidance, not an access restriction on the existing public recording or slides.
 The anonymous exit form remains separate and does not identify attendance.
 
 Video sources and reproduction instructions are in `video-week02/`. Public

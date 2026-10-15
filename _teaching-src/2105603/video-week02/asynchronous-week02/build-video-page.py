@@ -13,6 +13,15 @@ import math
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = ROOT / 'output/video/week02/week02-video.html'
 ACTIVITY_SLIDES = {3, 5, 7, 9, 11, 13, 15, 16, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28}
+# Current submission instructions are separate from the unchanged recording transcript.
+ATTENDANCE_CUES = {
+    23: 'Open worksheet page 4 and attempt Q1–Q6 yourself. Submit your original attempt in the attendance form before viewing the review solutions. The form displays worked solutions after a successful submission.',
+    24: "Pause and answer worksheet page 4, Q1–Q3 individually. Use each question's own data and show calculations. Continue to Q4–Q6 at study minute 155.",
+    25: 'Pause and complete worksheet page 4, Q4–Q6. Use your page 3, E2 results for Q6. Before continuing to Slide 26, submit your own Q1–Q6 attempt in the attendance form. Save the receipt; worked solutions appear after successful submission.',
+    26: 'After submitting your original attempt, review the worked solutions in the form or this recording. Check Q1–Q4 and add corrections beside your original calculations. Corrections are optional and do not change completion-based attendance credit.',
+    27: 'Check Q5–Q6 after submitting your original attempt. You may submit corrections using the form, while preserving your original work. Keep all four worksheet pages, Lab exports and receipt. Then complete the separate anonymous feedback form.',
+    28: 'Complete the separate Session 2 anonymous exit ticket and feedback form and wait for Response received. Retain your attendance receipt from the identified Q1–Q6 form. Finish at approximately study minute 180.',
+}
 
 def clock(seconds):
     seconds = int(seconds)
@@ -49,7 +58,7 @@ def build(manifest_path, timeline_path, output_path):
         if rows and abs(rows[-1]['end'] - start) > .1:
             raise ValueError('Timeline has a gap or overlapping slides.')
         rows.append(dict(slide=slide, title=m['title'], narration=m['narration'],
-                         cue=m['pause_instruction'], start=start, end=end,
+                         cue=ATTENDANCE_CUES.get(slide, m['pause_instruction']), start=start, end=end,
                          lesson_start=m.get('stage_start_minute'),
                          lesson_end=m.get('stage_end_minute'),
                          activity=slide in ACTIVITY_SLIDES))
@@ -84,24 +93,24 @@ TEMPLATE = r'''<!doctype html>
 <header class="site-header"><div class="wrap topbar"><a class="brand" href="./index.html">2105603 · Advanced Thermodynamics</a><a href="./labs/learning-path.html">Learning path</a></div></header>
 <main class="wrap">
 <section class="hero" aria-labelledby="page-title"><p class="eyebrow">Session 2 · Independent study</p><h1 id="page-title">Experimental VLE,<br>consistency and fitting</h1><p>Follow the narrated slides, stop to calculate, and investigate the same data in Lab 08. Start with the ideal-mixture ideas from Session 1; the activity coefficient is introduced here.</p><div class="facts"><span class="fact"><strong>180 min</strong> total study time</span><span class="fact"><strong>@@DURATION@@</strong> recording</span><span class="fact"><strong>28</strong> slides</span><span class="fact">English narration + transcript</span></div></section>
-<section class="start" aria-labelledby="start-title"><div><h2 id="start-title">Start here</h2><ol><li>Open the <a href="./files/week02-practice.pdf" target="_blank" rel="noopener">four-page worksheet</a>. Keep it beside the video, or print it.</li><li>Prepare a calculator and paper. Start the video from Slide 1.</li><li>Leave <strong>Pause for activities</strong> on. Do the work, then select <strong>Continue to next slide</strong>.</li></ol><div class="resource-links"><a href="./postmidterm-02.html" target="_blank" rel="noopener">Open slide deck</a><a href="./files/postmidterm-02-slides.pdf" target="_blank" rel="noopener">Slides PDF</a><a href="./files/preclass-week-02.pdf" target="_blank" rel="noopener">Optional reading</a><a href="#attendance-submission">Attendance submission instructions</a></div></div><div class="time-note"><h3>Video time is not lesson time</h3><p>The recording is about 25 minutes. Allow about <strong>3 hours</strong> including calculations, the Lab, a break, and review. Timing labels on the slides refer to <strong>elapsed study time</strong>. Pause as long as you need before continuing. Open <a href="./labs/vle-input.html#vi-experiment" target="_blank" rel="noopener">Lab 08</a> when you reach the Lab activity at study minute 100.</p></div></section>
+<section class="start" aria-labelledby="start-title"><div><h2 id="start-title">Start here</h2><ol><li>Open the <a href="./files/week02-practice.pdf" target="_blank" rel="noopener">four-page worksheet</a>. Keep it beside the video, or print it.</li><li>Prepare a calculator and paper. Start the video from Slide 1.</li><li>Leave <strong>Pause for activities</strong> on. Do the work, then select <strong>Continue to next slide</strong>.</li><li>For the review test, submit your own Q1–Q6 attempt before Slide 26. The form shows worked solutions after a successful submission.</li></ol><div class="resource-links"><a href="./postmidterm-02.html" target="_blank" rel="noopener">Open slide deck</a><a href="./files/postmidterm-02-slides.pdf" target="_blank" rel="noopener">Slides PDF</a><a href="./files/preclass-week-02.pdf" target="_blank" rel="noopener">Optional reading</a><a href="#attendance-submission">Attendance submission instructions</a></div></div><div class="time-note"><h3>Video time is not lesson time</h3><p>The recording is about 25 minutes. Allow about <strong>3 hours</strong> including calculations, the Lab, a break, and review. Timing labels on the slides refer to <strong>elapsed study time</strong>. Pause as long as you need before continuing. Open <a href="./labs/vle-input.html#vi-experiment" target="_blank" rel="noopener">Lab 08</a> when you reach the Lab activity at study minute 100.</p></div></section>
 <div class="lesson-layout">
 <div class="main-column">
 <section class="player-shell" id="lesson-player" aria-label="Narrated lesson video" tabindex="-1">
 <div class="video-stage" id="video-stage"><video id="lesson-video" controls playsinline preload="metadata" poster="./media/week02/week02-poster.png" aria-label="Session 2 narrated slides" aria-describedby="player-help"><source src="./media/week02/week02-lecture.mp4" type="video/mp4">Your browser cannot play this video. <a href="./media/week02/week02-lecture.mp4">Download the recording</a> and use the slide deck and worksheet.</video>
-<div class="pause-panel" id="pause-panel" hidden><h2 id="pause-heading">Pause and work</h2><p id="pause-cue"></p><div class="pause-actions"><button class="button primary" id="continue-button" type="button">Continue to next slide</button><small>Your work is not submitted by this player.</small></div></div></div>
+<div class="pause-panel" id="pause-panel" hidden><h2 id="pause-heading">Pause and work</h2><p id="pause-cue"></p><p id="pause-attendance" hidden><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2" target="_blank" rel="noopener"><strong>Submit Q1–Q6 for attendance</strong></a>. Return after the form confirms your submission.</p><div class="pause-actions"><button class="button primary" id="continue-button" type="button">Continue to next slide</button><small>Your work is not submitted by this player.</small></div></div></div>
 <div class="player-meta"><div class="player-topline"><span id="slide-counter">Slide 1 of 28</span><span id="lesson-time">Lesson introduction</span></div><p class="current-title" id="current-title">@@FIRST_TITLE@@</p><div class="player-controls"><label class="pause-toggle"><input id="auto-pause" type="checkbox" checked> Pause for activities</label><div class="control-buttons"><button class="button" type="button" id="previous-button" disabled aria-label="Go to previous slide">Previous</button><button class="button" type="button" id="next-button" aria-label="Go to next slide">Next</button><button class="button" type="button" id="fullscreen-button">Full screen</button></div></div><p class="control-note" id="player-help">Use the video controls to play, pause, or change volume. Chapter links jump directly to a slide. Activity pauses keep the current slide visible until you continue.</p></div>
 <div class="player-downloads"><a href="./media/week02/week02-lecture.mp4" download="week02-lecture.mp4">Download MP4</a><a href="./files/week02-practice.pdf" target="_blank" rel="noopener">Worksheet</a><a href="./labs/vle-input.html#vi-experiment" target="_blank" rel="noopener">Lab 08</a></div>
 <p class="error" id="video-error" hidden>The video could not be loaded. Try the download link, or use the slide deck and transcript below.</p>
 <noscript><p class="error">JavaScript is off. You can play the recording and open the documents, but automatic activity pauses and chapter navigation are unavailable. Pause manually when the narration asks you to work.</p></noscript>
 </section>
-<section class="content-card action-card" aria-labelledby="action-title"><p class="label" id="action-title">Your action on this slide</p><p id="current-cue">@@FIRST_CUE@@</p></section>
+<section class="content-card action-card" aria-labelledby="action-title"><p class="label" id="action-title">Your action on this slide</p><p id="current-cue">@@FIRST_CUE@@</p><p id="review-attendance" hidden><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2" target="_blank" rel="noopener"><strong>Open the attendance form</strong></a>: submit your own attempt first, then use its worked solutions and optional corrections.</p></section>
 <details class="content-card transcript" open><summary id="transcript-title">Transcript · Slide 1</summary><p id="transcript-text">@@FIRST_NARRATION@@</p></details>
 <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
 </div>
 <nav class="chapter-card" aria-labelledby="chapters-title"><div class="chapter-header"><h2 id="chapters-title">Chapters</h2><p>Recording timestamps. Select a slide to review it.</p></div><ol class="chapters" id="chapters">@@CHAPTERS@@</ol></nav>
 </div>
-<section class="end-note" id="attendance-submission" aria-labelledby="finish-title"><h2 id="finish-title">Submit your review test for attendance</h2><p>After correcting Q1–Q6 on worksheet page 4, open the <a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2" target="_blank" rel="noopener"><strong>Session 2 attendance submission form</strong></a>. Enter your student ID and name, transfer your six answers with calculations and corrections, and confirm completion. Use the review block (145–172 study minutes) for this step. Wait for the submission receipt and save it.</p><p>Attendance credit is for completing the activity, not a minimum test score. Keep all four worksheet pages, original answers and corrections, and the Lab exports. The form records your answers for the instructor; the video player itself does not submit work.</p><p>Then, at study minutes 172–180, open the separate <a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2" target="_blank" rel="noopener">Session 2 exit ticket and feedback form</a>. It is anonymous and <strong>does not identify attendance</strong>. Wait for “Response received.”</p></section>
+<section class="end-note" id="attendance-submission" aria-labelledby="finish-title"><h2 id="finish-title">Submit your review test for attendance</h2><p>The attendance form mentioned in the recording is linked below. Submit your own Q1–Q6 attempt before continuing to the review solutions.</p><p>Before viewing the review solutions on Slide 26, open the <a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2" target="_blank" rel="noopener"><strong>Session 2 attendance submission form</strong></a>. Enter your student ID and name, transfer your own Q1–Q6 answers with calculations from worksheet page 4, and confirm completion. Submit your original attempt first. Wait for the receipt and save it; the form then displays worked solutions. Review these and optionally submit corrections. Use the review block (145–172 study minutes) for this sequence.</p><p>Attendance credit is for completing the activity, not a minimum test score. Keep all four worksheet pages, original answers and corrections, and the Lab exports. The form records your answers for the instructor; the video player itself does not submit work.</p><p>Then, at study minutes 172–180, open the separate <a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2" target="_blank" rel="noopener">Session 2 exit ticket and feedback form</a>. It is anonymous and <strong>does not identify attendance</strong>. Wait for “Response received.”</p></section>
 </main>
 <footer><div class="wrap">2105603 · Session 2 independent lesson · English synthetic narration. The recording does not replace the time spent calculating and working in the Lab.</div></footer>
 <script id="chapter-data" type="application/json">@@DATA@@</script>
@@ -141,6 +150,7 @@ TEMPLATE = r'''<!doctype html>
     document.getElementById('current-title').textContent = c.title;
     document.getElementById('lesson-time').textContent = c.lesson_start === null ? 'Lesson introduction' : `Study time ${c.lesson_start}–${c.lesson_end} min`;
     document.getElementById('current-cue').textContent = c.cue;
+    document.getElementById('review-attendance').hidden = c.slide < 23 || c.slide > 27;
     document.getElementById('transcript-title').textContent = `Transcript · Slide ${c.slide}`;
     document.getElementById('transcript-text').textContent = c.narration;
     document.getElementById('previous-button').disabled = i === 0;
@@ -173,9 +183,10 @@ TEMPLATE = r'''<!doctype html>
     clearSchedules();
     activeGuard = guard;
     video.pause();
-    document.getElementById('pause-heading').textContent = guard.slide === 28 ? 'Complete your exit ticket and feedback' : `Pause for Slide ${guard.slide}`;
+    document.getElementById('pause-heading').textContent = guard.slide === 25 ? 'Submit your attempt before the solutions' : guard.slide === 28 ? 'Complete your exit ticket and feedback' : `Pause for Slide ${guard.slide}`;
     document.getElementById('pause-cue').textContent = guard.cue;
-    continueButton.textContent = guard.slide === 28 ? 'Finish recording' : 'Continue to next slide';
+    document.getElementById('pause-attendance').hidden = guard.slide !== 25;
+    continueButton.textContent = guard.slide === 25 ? 'Continue to review solutions' : guard.slide === 28 ? 'Finish recording' : 'Continue to next slide';
     panel.hidden = false;
     // A delayed timeupdate can arrive beyond a boundary. Rewind to the activity,
     // never accept the solution slide as though the pause had been completed.
@@ -240,7 +251,7 @@ TEMPLATE = r'''<!doctype html>
     if (guard.slide === chapters.length) {
       setInternalTime(Math.max(guard.at, chapters.at(-1).end - .05), 'finish');
       video.pause();
-      announcer.textContent = 'End of the recording. Complete the exit ticket and keep your attendance work separately.';
+      announcer.textContent = 'End of the recording. Save your attendance submission receipt and complete the separate anonymous exit ticket and feedback.';
       document.getElementById('finish-title').scrollIntoView({block:'nearest'});
       return;
     }
