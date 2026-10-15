@@ -1,4 +1,4 @@
-// Print the bilingual worksheet from the existing local course preview.
+// Print the four-page English worksheet from the existing local course preview.
 import {createRequire} from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
