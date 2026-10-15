@@ -1,8 +1,8 @@
 ---
 title: "Experimental VLE, consistency and fitting"
-subtitle: "After midterm · Session 2 of 6 · 180 minutes"
+subtitle: "Session 2: Independent study with calculations · 180 minutes"
 author: "Soorathep Kheawhom"
-date: 2026-09-30
+date: 2026-10-16
 date-format: "D MMMM YYYY"
 format:
   revealjs:
@@ -26,148 +26,454 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## Retrieve and check · First 12 minutes
-
-At 350 K and z₁=0.5, use Psat₁=150 and Psat₂=60 kPa.
-
-- **3 min, alone:** predict the phase at 80, 95 and 110 kPa.
-- **5 min:** at 95 kPa, check z₁=(1−β)x₁+βy₁ using x₁=0.388889, y₁=0.614035, β=0.493506. Check both composition sums.
-- **2 min:** each person opens [Lab 01](labs/#experiment) and saves a baseline.
-- **2 min:** compare checks and summarize in Thai.
+## A three-hour independent lesson
 
 ::: {.thai-summary}
-แยกองค์ประกอบ x, y, z ออกจากสัดส่วนไอ β แล้วตรวจสมดุลมวล
+Your action: Read this schedule, then advance. All times are elapsed lesson time, including your calculations.
 :::
 
-[Before class: 3-page reading](files/preclass-week-02.pdf) · 15–20 minutes
+This lesson replaces the class on **16 October 2026**.
 
-Bring the [Week 2 worksheet](files/week02-practice.pdf). Today: does a small fitting error establish trust?
+| Activity | Minutes | Elapsed |
+|---|---:|---:|
+| Preparation and goals | 10 | 0–10 |
+| Phase and material-balance checks | 25 | 10–35 |
+| From Raoult’s law to liquid nonideality | 30 | 35–65 |
+| Antoine conventions | 25 | 65–90 |
+| Break | 10 | 90–100 |
+| Lab 08 investigation | 45 | 100–145 |
+| Review test, corrections, exit and feedback | 35 | 145–180 |
 
-## The 180-minute class
+Times include reading and **working through calculations**. Pause before each solution.
 
-| Activity | Minutes |
-|---|---:|
-| Opening question and essential concepts | 30 |
-| One hand calculation | 20 |
-| One lab demonstration | 20 |
-| Break | 10 |
-| Student pair investigation | 70 |
-| Discussion, exit ticket and feedback | 30 |
-
-The opening 30 minutes include the 12-minute retrieval activity. Pair work stays 70 minutes. Final block: discussion 20, exit ticket 5, feedback 3, closing 2 minutes.
-
-## Activity and its reference
-
-$$\mu_i=\mu_i^\circ+RT\ln a_i,\qquad a_i=\gamma_i x_i$$
-
-The activity is dimensionless; γ is its correction relative to an ideal liquid solution using the pure-liquid standard.
-
-For x₁=0.4 and γ₁=1.25, a₁=0.50. Residual and excess reference comparisons are in the reading and appendix.
+## Preparation · 0–10 min
 
 ::: {.thai-summary}
-activity ไม่มีหน่วย และ a ไม่ใช่ γ ต้องคูณด้วยองค์ประกอบ x
+Your action: Open worksheet pages 1–4 and read this slide. Do not start the exercises or Lab yet.
 :::
 
-## Properties → prediction → fitting
+Download the [4-page worksheet](files/week02-practice.pdf). Keep this slide deck and the worksheet open side by side. A calculator and paper are enough until minute 100.
 
-1. Verify the Antoine form, units and applicable temperature range.
-2. Predict P and y from a chosen liquid model.
-3. Infer activities from observations, then compare model fits.
+Last lesson: ideal-mixture VLE and phase calculations. Today: how we describe departures from the ideal-liquid prediction.
+
+The [3-page reading](files/preclass-week-02.pdf) is optional background. Skim it if time permits. This deck contains the instructions required for today.
+
+By the end, you should be able to:
+
+- Explain the new activity coefficient and calculate it from one VLE observation.
+- Check an Antoine convention before using its constants.
+- Compare two fitted models and state what the comparison supports.
+
+
+## 1. Composition and phase amount · 10–15 min
+
+::: {.thai-summary}
+Your action: Read this slide only. No worksheet answer is required yet. The next slide starts page 1, Section A.
+:::
+
+| Symbol | Meaning |
+|---|---|
+| zᵢ | Overall mole fraction in the feed |
+| xᵢ | Mole fraction in the liquid phase |
+| yᵢ | Mole fraction in the vapor phase |
+| β = V/F | Fraction of total moles in the vapor phase |
+
+$$z_i=(1-\beta)x_i+\beta y_i$$
+
+For each existing phase, its mole fractions sum to one.
+
+
+## Pause and calculate · 15–23 min
+
+::: {.thai-summary}
+Your action: Open worksheet page 1. Complete A1–A3 using this slide and your calculator. No Lab is needed.
+:::
+
+Ideal binary mixture at 350 K: z₁=0.5, P₁ˢᵃᵗ=150 kPa, P₂ˢᵃᵗ=60 kPa.
+
+$$P_{bubble}=\sum_i z_iP_i^{sat},\qquad
+P_{dew}=\left(\sum_i\frac{z_i}{P_i^{sat}}\right)^{-1}$$
+
+1. Calculate both boundary pressures for this overall composition.
+2. Identify the phase state at 80, 95 and 110 kPa.
+3. At 110 kPa, what are β and x₁? Does a vapor composition exist?
+
+Finish A1–A3 before advancing to the solution.
+
+## Phase check · 23–27 min
+
+::: {.thai-summary}
+Your action: Compare this solution with page 1, A1–A3. Add corrections beside your original answers.
+:::
+
+$$P_{bubble}=0.5(150)+0.5(60)=105\ \mathrm{kPa}$$
+
+$$P_{dew}=[0.5/150+0.5/60]^{-1}=85.714\ \mathrm{kPa}$$
+
+| Pressure | Equilibrium state |
+|---|---|
+| 80 kPa | Vapor, below the dew boundary |
+| 95 kPa | Liquid + vapor, between the boundaries |
+| 110 kPa | Liquid, above the bubble boundary |
+
+At 110 kPa, β=0 and x₁=z₁=0.5. No vapor phase exists, so y is undefined.
+
+## Pause: material balance · 27–32 min
+
+::: {.thai-summary}
+Your action: On worksheet page 1, complete A4: material balance and composition sums. Stop before the next solution.
+:::
+
+At 95 kPa, use x₁=0.388889, y₁=0.614035 and β=0.493506.
+
+Calculate:
+
+$$z_1=(1-0.493506)(0.388889)+0.493506(0.614035)$$
+
+Then find x₂ and y₂. Check each phase sum separately.
+
+Use the numbers on this slide. No Lab is required for this calculation.
+
+
+## Material-balance check · 32–35 min
+
+::: {.thai-summary}
+Your action: Check page 1, A4 against this slide. Keep the substituted balance and correct any mismatch.
+:::
+
+$$z_1\approx0.196970+0.303030=0.500000$$
+
+x₂=0.611111 and y₂=0.385965.
+
+$$x_1+x_2=1,\qquad y_1+y_2=1$$
+
+An incorrect phase sum can reveal a transcription error even when the plotted result looks plausible.
+
+
+## 2. Starting from Raoult’s law · 35–39 min
+
+::: {.thai-summary}
+Your action: Read this slide. On scratch paper, calculate 60/48 before advancing. No new worksheet entry is required.
+:::
+
+For an ideal liquid mixture with ideal vapor:
+
+$$y_iP=x_iP_i^{sat}(T)$$
+
+The liquid mole fraction scales the pure-component vapor pressure.
+
+At x₁=0.4 and P₁ˢᵃᵗ=120 kPa, this predicts a partial pressure of **48 kPa**.
+
+Suppose the observation instead gives y₁P=0.6(100)=**60 kPa**. The ideal-liquid prediction is too low.
+
+**Think:** what factor would multiply 48 to give 60?
+
+## A new quantity: activity coefficient · 39–42 min
+
+::: {.thai-summary}
+Your action: Read this definition of gamma. Compare 1.25 with your scratch calculation. No Lab or worksheet entry is required.
+:::
+
+The factor is 60/48=**1.25**. We call it the **activity coefficient**, written γ (gamma).
+
+$$y_iP=x_i\gamma_iP_i^{sat}(T)$$
+
+- γᵢ=1 recovers Raoult’s law for the liquid.
+- γᵢ>1 gives a higher partial pressure than the ideal-liquid prediction.
+- γᵢ<1 gives a lower partial pressure under the same assumptions.
+
+We still assume ideal vapor and negligible Poynting correction. Verify the observations and vapor-pressure inputs before attributing a mismatch to liquid nonideality.
+
+## Activity and its reference · 42–45 min
+
+::: {.thai-summary}
+Your action: Read this slide and check 1.25 × 0.4 on your calculator. Keep worksheet B blank until minute 48.
+:::
+
+$$a_i=\gamma_i x_i$$
+
+Activity aᵢ represents liquid composition adjusted for nonideal behavior. Here the reference is the **pure liquid**. Both aᵢ and γᵢ are dimensionless.
+
+For an ideal liquid solution, γᵢ=1 and aᵢ=xᵢ.
+
+For x₁=0.4 and γ₁=1.25, a₁=0.50.
+
+
+## Calculating gamma from VLE · 45–48 min
+
+::: {.thai-summary}
+Your action: Read the equation and assumptions here. You will use them in worksheet page 1, B1–B3 on the next slide.
+:::
+
+Rearrange the modified Raoult equation to estimate gamma from an observation.
+
+With ideal vapor and negligible Poynting correction:
+
+$$y_iP=x_i\gamma_iP_i^{sat}(T)$$
 
 $$\gamma_i=\frac{y_iP}{x_iP_i^{sat}(T)}$$
 
-This inversion assumes ideal vapor and negligible Poynting correction. Convergence, consistency and prediction are separate checks.
+Use the same pressure units in P and Pˢᵃᵗ. The inferred γ depends on the vapor-pressure correlation and these assumptions.
+
+## Pause: one observation, two property inputs · 48–57 min
 
 ::: {.thai-summary}
-ตรวจรูปสมการ Antoine หน่วย และช่วงอุณหภูมิ ก่อนเชื่อค่าที่ fit ได้
+Your action: On worksheet page 1, complete B1–B3. Use only the observation on this slide. No Lab is needed.
 :::
 
-## A vapor-pressure error becomes an activity error
+Synthetic observation: P=100 kPa, x₁=0.4, y₁=0.6.
 
-Synthetic point: P=100 kPa, x₁=0.4, y₁=0.6 and P₁ˢᵃᵗ=120 kPa.
+1. With P₁ˢᵃᵗ=120 kPa, calculate γ₁ and a₁.
+2. Repeat using P₁ˢᵃᵗ=150 kPa.
+3. Which input changed? Did the observed mixture data change?
+4. Could fitting alone tell you which vapor pressure is correct?
 
-$$\gamma_1=\frac{0.6(100)}{0.4(120)}=1.25$$
+Show substitution and unit cancellation in B1–B3.
 
-Using 150 kPa instead yields γ₁=1.00. The measured mixture data did not change; the inferred liquid behavior did.
 
-**Pause:** calculate a₁ for each case before comparing answers.
+## A property error changes inferred activity · 57–65 min
 
 ::: {.thai-summary}
-ข้อมูลสารผสมเดิม แต่ใส่ความดันไอผิด ก็ทำให้แปลผล γ ผิดได้
+Your action: Check page 1, B1–B3 with this slide. Correct your values and finish the explanation in B3.
 :::
 
-## An independent check
+| Assumed P₁ˢᵃᵗ | γ₁ = y₁P/(x₁P₁ˢᵃᵗ) | a₁ = γ₁x₁ |
+|---|---|---|
+| 120 kPa | 60/48 = 1.25 | 0.50 |
+| 150 kPa | 60/60 = 1.00 | 0.40 |
 
-Work alone first, then exchange checks using the worksheet.
+The observations stay unchanged. Increasing the assumed vapor pressure lowers the inferred γ.
 
-1. Write the Antoine equation, temperature unit and pressure unit; evaluate one Psat.
-2. Substitute one observed T, P, x, y point into γ=yP/(xPsat); show units cancelling.
-3. Check x₁+x₂=1 and y₁+y₂=1. Compare the same observations and property convention.
+A fitted model can absorb a property error into its parameters. Check the property source independently.
+
+**Now correct your work and write one sentence explaining the difference.**
+
+## 3. Antoine conventions · 65–72 min
 
 ::: {.thai-summary}
-เขียนแทนค่าจริงหนึ่งจุด การบอกว่า “ได้ตรงกับ lab” ยังไม่แสดงวิธีตรวจ
+Your action: Read this slide. Open worksheet page 2, C, ready for the next exercise. Do not fill the Lab section D yet.
 :::
 
-## One demonstration · 20 minutes
+A common form is:
 
-[Open the core lab](labs/vle-input.html#vi-experiment)
+$$\log_{10}(P^{sat}/P_{unit})=A-\frac{B}{T_{source}+C}$$
 
-Load and validate the synthetic example in Lab 08. Inspect its Antoine form and units, then fit one-parameter Margules. Compare predicted P and y with one observed point, then inspect the residual pattern.
+Before entering constants, identify:
 
-Each person repeats the baseline and saves it. Pause here to resolve setup problems before model comparison.
+- The exact equation and log base, including the sign of C.
+- The temperature and pressure units specified by the source.
+- The valid temperature range and component identity.
 
-## Pair investigation · 70 minutes
+Changing a menu setting does not automatically convert the constants.
 
-- 10 min: each person loads and validates the same baseline.
-- 25 min: change one input and calculate.
-- 20 min: calculate γ individually, then exchange checks and roles.
-- 15 min: prepare one plot or table and a short explanation.
 
-In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
-
-## Discussion · 20 minutes
-
-Does a small fitting error mean the data and model are trustworthy?
-
-Compare one residual pattern and one numerical check. Distinguish a converged fit, a consistency diagnostic and prediction on excluded data.
+## Pause: Antoine calculation · 72–82 min
 
 ::: {.thai-summary}
-fit ได้ดี ไม่ได้ยืนยันว่าข้อมูลถูกหรือทำนายนอกข้อมูลได้ดี ต้องตรวจแยกกัน
+Your action: On worksheet page 2, answer C1–C4 using this synthetic correlation. Do not enter these constants in Lab 08.
 :::
 
-## After class · 30–40 minutes
+A **synthetic teaching correlation**, valid from 20 to 80 °C:
 
-In Lab 08, validate the supplied synthetic example and compare one-parameter Margules with NRTL at alpha=0.3 on the same observations. Report one residual pattern and verify one activity coefficient by hand.
+$$\log_{10}(P^{sat}/\mathrm{kPa})=4-\frac{1000}{T_C+200}$$
 
-[Assessment 2 and independent checkpoint](labs/assessments.html#session-2)
+1. Calculate Pˢᵃᵗ at 50 °C.
+2. Explain why entering 323.15 directly for T_C is incorrect.
+3. If the left side were ln instead of log₁₀, could the same constants be used unchanged?
+4. Should this correlation be used at 100 °C?
 
-Retain one study JSON, one comparison and the completed [worksheet](files/week02-practice.pdf). Finish the in-class work; no additional dataset is required.
+Write the equation and substitutions, not only the answer.
 
-Optional: [Session appendix](postmidterm-02-appendix.html).
+## Antoine check · 82–90 min
 
-[Learning path](labs/learning-path.html#session-2) · [Offline package](files/thermodynamics-offline.zip)
+::: {.thai-summary}
+Your action: Check page 2, C1–C4 with this slide. Write corrections and their reasons before taking the break.
+:::
 
-## Exit ticket + feedback · 8 minutes
+$$4-\frac{1000}{50+200}=0,\qquad P^{sat}=10^0\ \mathrm{kPa}=1\ \mathrm{kPa}$$
+
+- The equation expects °C. Convert 323.15 K to 50 °C first.
+- A change of log base requires corresponding constants. At this particular zero exponent, both bases happen to give 1, so this single point cannot detect the mistake.
+- 100 °C lies outside the stated valid range.
+
+**Correct your calculation before moving on.**
+
+
+## Break · 90–100 min
+
+::: {.thai-summary}
+Your action: Pause for ten minutes. Keep your worksheet. At minute 100, open Lab 08 using the link below.
+:::
+
+Take ten minutes away from the screen.
+
+Keep your calculations. Next, you will use the same checks on the synthetic dataset in Lab 08.
+
+[Open Lab 08](labs/vle-input.html#vi-experiment)
+
+## 4. Lab baseline · 100–110 min
+
+::: {.thai-summary}
+Your action: Open Lab 08 and worksheet page 2, D1–D2. Follow the four steps below. Save the baseline JSON before continuing.
+:::
+
+In [Lab 08](labs/vle-input.html#vi-experiment):
+
+1. Select **Load synthetic example**.
+2. Inspect the data units and both Antoine equation forms and constants.
+3. Select **Validate & inspect data**. Correct input errors. Keep endpoint handling at **No extrapolation**.
+4. Use **Export complete study JSON** to save your baseline.
+
+Record the convention and valid range in D1–D2. Range fields use **kelvin**. A consistency result marked “not-assessed” or “not-applicable” is not an input error.
+
+
+## Pause: an independent Lab check · 110–120 min
+
+::: {.thai-summary}
+Your action: Keep Lab 08 open. Complete page 2, D3 and page 3, E1 for component 1 at the same selected row.
+:::
+
+Choose one interior observation from **Imported observations**.
+
+Write its T, P, x₁ and y₁. The normalized table uses K and kPa.
+
+1. Convert T to the unit required by the correlation and calculate P₁ˢᵃᵗ.
+2. Convert P₁ˢᵃᵗ to kPa if needed.
+3. Calculate γ₁=y₁P/(x₁P₁ˢᵃᵗ). The table shows **ln γ₁**. Compare your result with **exp(table ln γ₁)**, allowing for display rounding.
+
+Complete D3 on page 2 and E1 on page 3.
+
+**If values disagree:** check component order, units and log base first.
+
+## Model comparison · 120–135 min
+
+::: {.thai-summary}
+Your action: In Lab 08, use Fit selected model for each model below. Complete worksheet page 3, E2 and save both model exports.
+:::
+
+Fit **Margules · 1 parameter**, then **NRTL · fixed α**, using α=0.3.
+
+Keep the observations and property inputs unchanged. Leave temperature-dependent parameters off for this comparison.
+
+For each fit, select **View: Pressure and vapor residuals**. Record:
+
+- Mean absolute pressure error (%) and vapor-composition error (percentage points).
+- One residual pattern (e.g., sign or trend with x₁) and any parameter-bound warning.
+
+Export each model's **complete study JSON** and **fitted residuals CSV** before switching models. Give the files distinct names.
+
+## Interpreting the comparison · 135–145 min
+
+::: {.thai-summary}
+Your action: Read this table, then complete worksheet page 3, F using your E2 results. No additional Lab or dataset is required.
+:::
+
+| Evidence | What it establishes |
+|---|---|
+| Solver convergence | The optimizer met its stopping criterion |
+| Small training residuals | The model reproduces the fitted observations |
+| Consistency diagnostic | Agreement with a thermodynamic constraint under stated assumptions |
+| Held-out observations | Evidence about prediction beyond the fitting data |
+
+Complete F on worksheet page 3: state one finding, its numerical evidence and one limitation.
+
+The example data were generated with NRTL. Its close fit is expected model recovery, not evidence of universal superiority. Consistency and prediction require separate checks.
+
+## Review test: purpose · 145–147 min
+
+::: {.thai-summary}
+Your action: Open worksheet page 4, Review test. Read these rules before answering. The questions appear on the next two slides.
+:::
+
+This is **practice with attendance credit**. Credit is for completing the activity, rather than a minimum accuracy score.
+
+Work individually. You may consult the lesson and your calculations.
+
+Write answers to the next six questions, then review the solutions. Preserve your original answers and corrections.
+
+The attendance submission route will be provided separately. The anonymous exit/feedback form does **not** identify attendance.
+
+
+## Review test: phase and activity · 147–155 min
+
+::: {.thai-summary}
+Your action: Write Q1–Q3 in the matching spaces on worksheet page 4. Show your calculations before advancing.
+:::
+
+**1.** Ideal binary mixture: z₁=0.5, P₁ˢᵃᵗ=160 kPa, P₂ˢᵃᵗ=80 kPa. At P=130 kPa, identify the phase and its composition. Show a boundary calculation.
+
+**2.** For a separate binary mixture in two-phase equilibrium, x₁=0.3, y₁=0.7 and z₁=0.5. Calculate β by material balance.
+
+**3.** For P=90 kPa, x₁=0.3, y₁=0.5 and P₁ˢᵃᵗ=100 kPa, calculate γ₁ and a₁. Assume ideal vapor and negligible Poynting correction.
+
+**Keep your substitutions and units.**
+
+## Review test: properties and evidence · 155–165 min
+
+::: {.thai-summary}
+Your action: Write Q4–Q6 on worksheet page 4. For Q6, reuse your page 3, E2 results. Finish before viewing solutions.
+:::
+
+**4.** A synthetic correlation is log₁₀(Pˢᵃᵗ/kPa)=5−1200/(T_C+200), valid at 20–80 °C. Find Pˢᵃᵗ at 40 °C. Can you insert 313.15 directly for T_C?
+
+**5.** NRTL gives a lower training error than Margules. Does that establish thermodynamic consistency and better prediction? Explain.
+
+**6.** From your Lab 08 results, report one comparison with its metric and units. State one limitation of your conclusion.
+
+**Finish your own answers before opening the next slide.**
+
+## Review solutions · 165–169 min
+
+::: {.thai-summary}
+Your action: Check worksheet page 4, Q1–Q4. Add corrections beside the original answers, using extra paper if needed.
+:::
+
+**1.** P_bubble=0.5(160)+0.5(80)=120 kPa. At 130 kPa the mixture is liquid, x₁=0.5 and β=0.
+
+**2.** β=(z₁−x₁)/(y₁−x₁)=(0.5−0.3)/(0.7−0.3)=0.5.
+
+**3.** γ₁=0.5(90)/[0.3(100)]=1.5 and a₁=1.5(0.3)=0.45.
+
+**4.** 5−1200/(40+200)=0, so Pˢᵃᵗ=1 kPa. Convert 313.15 K to 40 °C first.
+
+Mark any correction beside your original answer.
+
+## Review of reasoning · 169–172 min
+
+::: {.thai-summary}
+Your action: Check page 4, Q5–Q6. Explain each correction. Retain all four worksheet pages and the Lab exports for attendance submission.
+:::
+
+**5.** Lower training error alone establishes neither claim. Consistency needs an applicable thermodynamic diagnostic. Prediction needs observations excluded from fitting.
+
+**6.** A complete answer identifies the same dataset, reports both model results with the metric and units, and gives a defensible limitation.
+
+For example: “Model ___ has lower mean absolute pressure error on this dataset. I have not tested it on excluded observations.” Fill the blank using **your own result**.
+
+
+## Exit ticket and feedback · 172–180 min
+
+::: {.thai-summary}
+Your action: Open the Session 2 form using the QR code or link. Use page 3, F for reasoning, page 2, C/D for the property check, and E1 for numerical evidence.
+:::
 
 :::: {.columns}
 ::: {.column width="60%"}
 
-**5 min · Explain and check**
+**5 min: explain and check**
 
-Answer the session question. In the evidence box, show one substituted calculation of γ or Psat with units, not just the final number.
+Does a small fitting residual establish thermodynamic consistency? Explain and name one independent check of the vapor-pressure inputs. Add one substituted γ or Pˢᵃᵗ calculation.
 
-**3 min · Help improve the next class**
+**3 min: feedback on independent learning**
 
-Rate the pace, report lab access, and suggest one improvement.
+Report pace and Lab access. Use the comment box to describe any difficulty with this format.
 
-Thai or English. No name, ID or email requested.
-
-Wait for **“Response received.”** We will use the final 2 minutes to close the class.
+The form requests no name, ID or email. Wait for **“Response received.”** Keep attendance work separately.
 
 :::
 ::: {.column width="36%"}
 
-[![Scan to submit Session 2 exit ticket and feedback.](assets/exit-qr-02.png){width="100%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2)
+[![Session 2 exit ticket and feedback](assets/exit-qr-02.png){width="100%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2)
 
 [Open Session 2 form](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2)
 

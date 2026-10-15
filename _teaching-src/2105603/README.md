@@ -192,15 +192,21 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
 
 ## After-midterm teaching sequence (18 hours)
 
-The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` are the classroom
-route through Modules 4–6, including solid/surface and electrochemical topics.
-Each session has 12 classroom slides and a separate optional appendix. The
-180-minute plan includes 30 minutes of essential concepts, 20 minutes of hand
-calculation, a 20-minute demonstration, a 10-minute break, 70 minutes of pair
-work, and 30 minutes of discussion and exit reflection. Required practice takes
-45–60 minutes total: 15–20 minutes pre-class reading and 30–40 minutes follow-up, including the independent checkpoint. `labs/learning-path.html` holds
-the student tasks; the module decks remain extended references. No registered
-assessment weights or calendar dates are changed.
+The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` cover Modules 4–6,
+including solid/surface and electrochemical topics. Standard classroom sessions
+use 12 slides and an optional appendix: 30 minutes of concepts, 20 minutes of
+hand calculation, 20 minutes of demonstration, a 10-minute break, 70 minutes of
+pair work, and 30 minutes of discussion and exit reflection. Their required
+independent work is 15–20 minutes of preparation and 30–40 minutes of follow-up.
+
+Session 2 replaces the class on 16 October 2026 with a 28-slide English independent
+lesson. Its 180 minutes include preparation (10), phase/material-balance checks
+(25), activity coefficients (30), Antoine conventions (25), break (10), Lab 08
+(45), and review/corrections/exit/feedback (35). Its reading is optional; the
+worksheet and Lab work are within those 180 minutes. Students begin without
+prior knowledge of gamma. The narrated video is about 25 minutes, with deliberate
+student pauses. `week02-video.html` is the entry point, and `labs/learning-path.html`
+links the resources. Module decks remain extended references.
 
 Render the six classroom decks and six session appendices using the
 existing public-profile, vendored-KaTeX and publish workflow. Use the research
@@ -251,8 +257,9 @@ publishing the readings and refreshed classroom PDFs.
 
 ## End-of-class responses
 
-The final 30 minutes are discussion (20), exit ticket (5), feedback (3), and
-closing (2). The six core decks remain 12 slides. Their final slides contain
+In standard classroom sessions, the final 30 minutes are discussion (20), exit
+ticket (5), feedback (3), and closing (2). In Session 2, the exit ticket and
+feedback occupy study minutes 172–180, after the review and corrections. The classroom decks have 12 slides; Session 2 now has 28 slides for independent study. Their final slides contain
 a QR and clickable link to `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=N`.
 
 Responses persist in the Sites D1 table `course_responses`; the student page
@@ -264,20 +271,34 @@ Regenerate QR images with the research interpreter and
 `figures/generate_exit_qr.py`. Verify that each QR decodes to its own session.
 The offline package includes QR slides, but submitting the form needs internet.
 
-### Session 2 individual checks and bilingual support
+### Session 2 independent study and narrated video
 
-The opening 30-minute block includes a 12-minute VLE retrieval activity;
-70 minutes of pair investigation and the 180-minute total are unchanged.
-Session 2 includes short Thai summaries, an individual property/activity check,
-and `files/week02-practice.pdf` (two pages) for the same in-class/follow-up task.
-The worksheet source is `prereading/week02-practice.html`. With a local site running:
+All student-facing Session 2 content is English. The 28-slide deck introduces
+gamma from an ideal-mixture comparison, then guides every worksheet item and Lab
+step. `files/week02-practice.pdf` contains four pages: phase/activity checks,
+Antoine and baseline records, fit comparison and reasoning, and review answers.
+Its editable source is `prereading/week02-practice.html`. With a local preview:
 
 ```
 node tools/export-week02-practice.mjs
 ```
 
-Set `COURSE_ORIGIN` if the preview is not on port 8766. Regenerate just the
-three-page Week 2 reading with the research Python interpreter and
-`prereading/tools/build_prereading.py --week 2 --output ../../teaching/2105603/files`.
-The Sarabun fonts are distributed with their OFL license. Private response
-reports and student records are stored outside this public repository.
+Set `COURSE_ORIGIN` if the preview is not on port 8766. Regenerate the three-page
+Week 2 reading with `~/.venvs/research/bin/python prereading/tools/build_prereading.py
+--week 2 --output ../../teaching/2105603/files`.
+
+The video uses the same 28-slide PDF and validated male English narration.
+Every slide starts with its own audio and remains visible for the exact PCM
+length plus two seconds. `week02-video.html` offers chapters, transcripts and
+optional activity pauses, enabled by default. The downloadable MP4 requires
+students to pause manually. The 25-minute recording is part of the 180-minute
+working schedule. The anonymous exit form does not identify attendance; retain
+work for the separately announced attendance submission route.
+
+Video sources and reproduction instructions are in `video-week02/`. Public
+media are under `teaching/2105603/media/week02/`. The offline ZIP contains the
+updated documents and labs; the video is available online or as a separate MP4
+download. Rebuild the offline ZIP whenever course documents change.
+
+The Sarabun fonts retain their OFL license. Keep private response reports and
+student records outside this public repository.
