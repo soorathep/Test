@@ -10,8 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Soorathep Kheawhom">
-  <meta name="dcterms.date" content="2026-09-30">
-  <title>2105603 – Liquid stability, LLE and VLLE</title>
+  <title>2105603 – Thermodynamic consistency and liquid stability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -38,6 +37,7 @@
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5339fbbf9aa03db18226bb6b1f30c8df.css">
   <link rel="stylesheet" href="assets/postmidterm.css">
+  <link rel="stylesheet" href="assets/week03-independent.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -151,8 +151,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
-  <h1 class="title">Liquid stability, LLE and VLLE</h1>
-  <p class="subtitle">After midterm · Session 3 of 6 · 180 minutes</p>
+  <h1 class="title">Thermodynamic consistency and liquid stability</h1>
+  <p class="subtitle">Session 3: Holiday independent study · 180 minutes</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -162,126 +162,543 @@ Soorathep Kheawhom
 </div>
 </div>
 
-  <p class="date">30 September 2026</p>
 </section>
-<section id="the-question-for-today" class="slide level2">
-<h2>The question for today</h2>
-<p>When does a calculated liquid split represent stable equilibrium?</p>
-<p><a href="files/preclass-week-03.pdf">Before class: 3-page reading</a> · 15–20 minutes</p>
-<p>Bring your preparation answers. Start with the <a href="week02-clarifications.html">Week 2 clarification slides</a> and <a href="files/week02-lab-guide.pdf">Lab 08 guide</a> for a 15-minute review. Then return here for stability and LLE.</p>
+<section id="your-independent-lesson" class="slide level2">
+<h2>Your independent lesson</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Open the worksheet and guide below. Keep this deck open, then advance to the schedule. Preparation is part of minutes 0–15.</p>
+</div>
+<p>This holiday lesson takes <strong>180 minutes, including your calculations, lab work and a break</strong>. Work individually. No live demonstration or partner is required.</p>
+<ul>
+<li><a href="files/week03-practice.pdf">Practice worksheet, 4 pages</a>: complete Sections A–I in order.</li>
+<li><a href="files/week03-lab-guide.pdf">Lab guide, 3 pages</a>: exact controls and interpretation checks.</li>
+<li><a href="files/week03-solutions.pdf">Worked solutions</a>: open each section <strong>after your attempt</strong>.</li>
+</ul>
+<p><a href="week03-study.html">Start page</a> · <a href="files/postmidterm-03-slides.pdf">Printable slides</a></p>
+<p>The <a href="files/preclass-week-03.pdf">3-page background reading</a> is optional. All required instructions are here.</p>
 </section>
-<section id="the-180-minute-class" class="slide level2">
-<h2>The 180-minute class</h2>
+<section id="the-180-minute-route" class="slide level2">
+<h2>The 180-minute route</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Start a timer. Use elapsed times as a guide and pause the slides to work. All required tasks fit inside this schedule.</p>
+</div>
 <table class="caption-top">
 <thead>
 <tr class="header">
+<th>Elapsed</th>
 <th>Activity</th>
-<th style="text-align: right;">Minutes</th>
+<th>Worksheet</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Week 2 guided review</td>
-<td style="text-align: right;">15</td>
+<td>0–15</td>
+<td>Lab 08 review and one gamma calculation</td>
+<td>p.&nbsp;1, A</td>
 </tr>
 <tr class="even">
-<td>Stability question and essential concepts</td>
-<td style="text-align: right;">15</td>
+<td>15–35</td>
+<td>Gibbs–Duhem and applicability</td>
+<td>p.&nbsp;1, B</td>
 </tr>
 <tr class="odd">
-<td>One hand calculation</td>
-<td style="text-align: right;">20</td>
+<td>35–50</td>
+<td>Area calculation by hand</td>
+<td>p.&nbsp;1, C</td>
 </tr>
 <tr class="even">
-<td>One lab demonstration</td>
-<td style="text-align: right;">20</td>
+<td>50–90</td>
+<td>Lab 03 comparison and interpretation</td>
+<td>p.&nbsp;2, D–E</td>
 </tr>
 <tr class="odd">
+<td>90–100</td>
 <td>Break</td>
-<td style="text-align: right;">10</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>Student pair investigation</td>
-<td style="text-align: right;">70</td>
+<td>100–120</td>
+<td>Stability and lever rule</td>
+<td>p.&nbsp;3, F</td>
 </tr>
 <tr class="odd">
-<td>Discussion, exit ticket and feedback</td>
-<td style="text-align: right;">30</td>
+<td>120–165</td>
+<td>Lab 04 investigation</td>
+<td>p.&nbsp;3, G</td>
+</tr>
+<tr class="even">
+<td>165–180</td>
+<td>Self-review, exit ticket and feedback</td>
+<td>p.&nbsp;4, H–I</td>
 </tr>
 </tbody>
 </table>
-<p>The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.</p>
+</section>
+<section id="review-attempt-010-min" class="slide level2">
+<h2>Review attempt · 0–10 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete worksheet p.&nbsp;1, A1–A3. Use this slide and a calculator. Attempt the questions before advancing.</p>
+</div>
+<p><strong>A1.</strong> Define liquid composition <span class="math inline">x_1</span>, vapor composition <span class="math inline">y_1</span>, overall composition <span class="math inline">z_1</span> and activity coefficient <span class="math inline">\gamma_1</span>.</p>
+<p><strong>A2.</strong> For the synthetic Lab 08 observation, calculate:</p>
+<p><span class="math display">\gamma_1=\frac{y_1P}{x_1P_1^{sat}}=
+\frac{0.704857144627(158.707198211)}{0.5(150)}</span></p>
+<p>Both pressures use kPa. Assume ideal vapor and negligible Poynting correction.</p>
+<p><strong>A3.</strong> Does a small model fitting error prove thermodynamic consistency?</p>
+<p>If needed, revisit only the relevant chapter of the <a href="lab08-video.html">Lab 08 video</a> within this review time.</p>
+</section>
+<section id="review-check-1015-min" class="slide level2">
+<h2>Review check · 10–15 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Check A1–A3. Write corrections beside your first answers. If you opened the Lab 08 video, close it and continue here.</p>
+</div>
+<p><span class="math inline">x_1</span> and <span class="math inline">y_1</span> describe compositions <strong>within each phase</strong>. <span class="math inline">z_1</span> describes the overall mixture. <span class="math inline">\gamma_1</span> relates liquid activity to composition: <span class="math inline">a_1=x_1\gamma_1</span>.</p>
+<p><span class="math display">\gamma_1=1.491545\qquad
+\exp(0.399813)\approx1.491546</span></p>
+<p>The small rounding difference is expected. Gamma is dimensionless.</p>
+<p>A fit measures how well a selected model reproduces observations. A consistency test examines a thermodynamic constraint, subject to its assumptions and data coverage.</p>
+</section>
+<section id="consistency-constraint" class="slide level2">
+<h2>Gibbs–Duhem · 15–21 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Read this slide, then complete worksheet p.&nbsp;1, B1. Explain what the equation constrains in one sentence.</p>
+</div>
+<p>For a binary liquid at <strong>fixed temperature and pressure</strong>:</p>
+<p><span class="math display">x_1\,d\ln\gamma_1+(1-x_1)\,d\ln\gamma_2=0</span></p>
+<p>The activity coefficients cannot vary independently with composition.</p>
+<p>Define the dimensionless excess Gibbs energy:</p>
+<p><span class="math display">\widetilde g^E=\frac{g^E}{RT}
+=x_1\ln\gamma_1+(1-x_1)\ln\gamma_2</span></p>
+<p>At fixed <span class="math inline">T,P</span>, its slope equals <span class="math inline">\ln(\gamma_1/\gamma_2)</span>. This connects the <strong>local diagnostic</strong> to the activity data.</p>
+</section>
+<section id="the-experimental-path-2127-min" class="slide level2">
+<h2>The experimental path · 21–27 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete worksheet p.&nbsp;1, B2. State the omitted term for an isothermal path and the needed correction for an isobaric path.</p>
+</div>
+<p>For changing <span class="math inline">T</span> and <span class="math inline">P</span>, with molar excess properties:</p>
+<p><span class="math display">\sum_i x_i\,d\ln\gamma_i
+=-\frac{h^E}{RT^2}\,dT+\frac{v^E}{RT}\,dP</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data path</th>
+<th>What the diagnostic needs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Isothermal VLE, changing pressure</td>
+<td>The lab neglects the excess-volume pressure term.</td>
+</tr>
+<tr class="even">
+<td>Isobaric VLE, changing temperature</td>
+<td>A local test needs the excess-enthalpy term.</td>
+</tr>
+</tbody>
+</table>
+<p>For real isobaric data, missing independent <span class="math inline">h^E</span> prevents the lab from assigning a local consistency verdict. The synthetic correction comes from its generator.</p>
+</section>
+<section id="which-method-applies-2735-min" class="slide level2">
+<h2>Which method applies? · 27–35 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Read the comparison and complete worksheet p.&nbsp;1, B3. Use Lab guide p.&nbsp;2 if you need the definitions. No Lab calculation yet.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Evidence and limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Isothermal area</td>
+<td>Full composition range, with the pressure-term approximation. Opposite errors can cancel.</td>
+</tr>
+<tr class="even">
+<td>Local differential</td>
+<td>Checks a slope relation. Numerical differentiation amplifies noise.</td>
+</tr>
+<tr class="odd">
+<td>Herington</td>
+<td>Empirical allowance for an <strong>isobaric</strong> boiling range. It does not supply measured <span class="math inline">h^E</span>.</td>
+</tr>
+<tr class="even">
+<td>Van Ness-type</td>
+<td>Tests reproduction of <span class="math inline">P</span> and <span class="math inline">y</span> by a selected activity model.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>“Not applicable,” “not assessed” and “not run” are different from “outside this criterion.”</strong> Record the reason with the result.</p>
+</section>
+<section id="area-exercise-3543-min" class="slide level2">
+<h2>Area exercise · 35–43 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete worksheet p.&nbsp;1, C1–C3. Calculate the signed trapezoid areas, then repeat after adding 0.2 to every <span class="math inline">L</span> value. Stop before the solution.</p>
+</div>
+<p>Synthetic values, with endpoint limits supplied analytically:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span class="math inline">x_1</span></th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">0.25</th>
+<th style="text-align: right;">0.50</th>
+<th style="text-align: right;">0.75</th>
+<th style="text-align: right;">1.00</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">L=\ln(\gamma_1/\gamma_2)</span></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">−1</td>
+<td style="text-align: right;">−2</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">S\approx\sum_j\frac{L_j+L_{j+1}}{2}(x_{j+1}-x_j)</span></p>
+<p>The integral should vanish under the stated isothermal approximation and pure-liquid reference conventions. Explain why a zero value alone cannot certify real measurements.</p>
+</section>
+<section id="area-solution-4350-min" class="slide level2">
+<h2>Area solution · 43–50 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Check C1–C3. Keep the signed integral <span class="math inline">S</span> separate from the lab’s normalized score <span class="math inline">D</span>.</p>
+</div>
+<p>Baseline interval areas: <span class="math inline">0.375,\ 0.125,\ -0.125,\ -0.375</span>.</p>
+<p><span class="math display">S=0.5-0.5=0\qquad S_{\text{shifted}}=0+0.2(1-0)=0.2</span></p>
+<p>Lab 03 labels this signed integral <strong><span class="math inline">I</span></strong>. It also reports:</p>
+<p><span class="math display">D=100\frac{|A_+-A_-|}{A_++A_-}</span></p>
+<p><span class="math inline">A_-</span> is the <strong>positive magnitude</strong> below zero. The lab uses <span class="math inline">D&lt;5\%</span> for its isothermal area criterion. <span class="math inline">D</span> is undefined when both areas vanish.</p>
+<p>Real interior observations do not supply missing endpoint limits. Extrapolation remains an assumption.</p>
+</section>
+<section id="local-and-global-checks-5053-min" class="slide level2">
+<h2>Local and global checks · 50–53 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Open <a href="labs/consistency.html#consistency-experiment">Lab 03</a> and Lab guide p.&nbsp;1. Keep worksheet p.&nbsp;2 ready. Read this diagnostic before changing controls.</p>
+</div>
+<p>For the isothermal approximation:</p>
+<p><span class="math display">r(x_1)=\frac{d\widetilde g^E}{dx_1}
+-\ln\!\left(\frac{\gamma_1}{\gamma_2}\right)</span></p>
+<p>Lab 03 uses interior finite differences and the teaching score <span class="math inline">100\,\mathrm{mean}|r|</span>, with a threshold of 5.</p>
+<p>An error may have <strong>zero integrated area</strong> while leaving a nonzero local residual. A mean score can also hide a narrow defect, so inspect the plotted shape.</p>
+<p>This teaching diagnostic differs from the NIST/Kojima point test, which uses a fitted Padé slope.</p>
+</section>
+<section id="lab-03-baseline-5360-min" class="slide level2">
+<h2>Lab 03 baseline · 53–60 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Set these exact controls. Complete worksheet p.&nbsp;2, D1, then save a screenshot or click <strong>Export all results</strong>.</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Control</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data set</td>
+<td>Synthetic · isothermal, 350 K</td>
+</tr>
+<tr class="even">
+<td>Controlled perturbation</td>
+<td>Consistent reference</td>
+</tr>
+<tr class="odd">
+<td>Sampling resolution</td>
+<td><strong>41 points</strong></td>
+</tr>
+<tr class="even">
+<td>Inspect</td>
+<td>Log-activity ratio &amp; integrated area</td>
+</tr>
+</tbody>
+</table>
+<p>Record <span class="math inline">I</span>, <span class="math inline">D</span> and the area status. Change <strong>Inspect</strong> to <strong>Local Gibbs–Duhem residual</strong> and record its score and status. Save as <code>week03-reference.json</code>.</p>
+<p>Controls update automatically. The clean reference disables Amplitude. This is Lab 03’s own synthetic data, distinct from the Lab 08 example.</p>
+</section>
+<section id="canceling-errors-6067-min" class="slide level2">
+<h2>Canceling errors · 60–67 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete D2. Change only the perturbation as below, with amplitude 0.25. Inspect both plots and retain the baseline for comparison.</p>
+</div>
+<p>Set <strong>Controlled perturbation</strong> to <strong>Canceling errors · zero net area</strong>. Set <strong>Amplitude</strong> to <strong>0.25</strong>. Keep 350 K and 41 points.</p>
+<p>The generator adds opposite weighted changes to the two log activities. Its added log ratio is:</p>
+<p><span class="math display">f(x_1)=0.25\cos(2\pi x_1),\qquad \int_0^1 f(x_1)\,dx_1=0</span></p>
+<p>Record the new area and differential results. Does a small <span class="math inline">D</span> establish agreement with the local Gibbs–Duhem relation?</p>
+<p>Save this case with a distinct name, such as <code>week03-cancel.json</code>.</p>
+</section>
+<section id="a-localized-defect-6774-min" class="slide level2">
+<h2>A localized defect · 67–74 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete D3. Choose <strong>Localized defect near x₁ = 0.35</strong>. Keep amplitude 0.25, 350 K and 41 points.</p>
+</div>
+<ol type="1">
+<li>Record the area and differential scores and statuses.</li>
+<li>In <strong>Local Gibbs–Duhem residual</strong>, locate the largest departure.</li>
+<li>Compare the local shape with the single mean score.</li>
+</ol>
+<p>A criterion describes its own numerical rule. A visible localized defect can remain below an aggregate threshold.</p>
+<p>Save this case separately. If time remains, compare 161 points, then return to 41. A changed derivative score may reflect sampling resolution.</p>
+</section>
+<section id="model-reproduction-7480-min" class="slide level2">
+<h2>Model reproduction · 74–80 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete D4. Return to <strong>Consistent reference</strong> at 350 K and 41 points. Click <strong>Run modeling test</strong> once, then inspect <strong>Modeling residuals</strong>.</p>
+</div>
+<p>Record the <strong>Van Ness-type</strong> values: pressure error <span class="math inline">\Delta p</span> in percent and vapor-composition error <span class="math inline">\Delta y</span> in percentage points.</p>
+<p>The lab fits two constant NRTL parameters at 350 K, with <span class="math inline">\alpha=0.47</span>. Its criteria are <span class="math inline">\Delta p&lt;1\%</span> and <span class="math inline">\Delta y&lt;1</span> percentage point.</p>
+<p><strong>Herington reads “Not applicable”</strong> for this isothermal case. For isobaric data it uses <span class="math inline">D-J&lt;10</span>, where <span class="math inline">J=150(T_{max}-T_{min})/T_{min}</span> in kelvin.</p>
+<p>The clean fit recovers the generator within numerical error. This demonstrates selected-model reproduction. These teaching variants differ from the full NIST TDE implementations.</p>
+</section>
+<section id="area-versus-local-evidence-8085-min" class="slide level2">
+<h2>Area versus local evidence · 80–85 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Compare D1 and D2 with these plots. Answer worksheet p.&nbsp;2, E1 in your own words before advancing.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/week03-area-local.png" style="width:100.0%" alt="Two plots compare the reference and canceling-error case. Their log-activity ratios differ but both satisfy the area criterion. The reference local residual is near zero, while the canceling-error residual oscillates roughly between minus 0.25 and plus 0.25."></p>
+<figcaption>Lab 03 synthetic reference and canceling-error case at 350 K, 41 points and amplitude 0.25. Both meet the area criterion. The local residual identifies the canceling error.</figcaption>
+</figure>
+</div>
+<div class="small">
+<p>Reference: <span class="math inline">D\approx0.079\%</span>, local score <span class="math inline">\approx0.118</span>. Canceling error: <span class="math inline">D\approx0.074\%</span>, local score <span class="math inline">\approx15.599</span>.</p>
+</div>
+</section>
+<section id="interpretation-8590-min" class="slide level2">
+<h2>Interpretation · 85–90 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Check E1 and complete E2. Attempt your explanation, then compare with worked solutions Sections D–E.</p>
+</div>
+<p><strong>E1.</strong> Why can the canceling-error case meet the area criterion while the local diagnostic flags a departure?</p>
+<p><strong>E2.</strong> Write a claim, its numerical evidence, and one limitation. Include your data settings and test applicability.</p>
+<p>Useful structure: “At [settings], <span class="math inline">D=</span> … and the local score is … . These results support … under … . They do not establish … .”</p>
+<p>Before continuing, keep the baseline and changed-case results. The synthetic construction demonstrates a test limitation. It does not estimate experimental uncertainty.</p>
+</section>
+<section id="break-90100-min" class="slide level2">
+<h2>Break · 90–100 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Take a 10-minute break. Leave your files open. Return to this deck and worksheet p.&nbsp;3 at minute 100.</p>
+</div>
+<p>Next: a model can satisfy Gibbs–Duhem and still predict liquid separation.</p>
+<p>The new question is whether one liquid or a split has the <strong>lowest admissible Gibbs energy</strong>.</p>
 </section>
 <section id="phase-equilibrium-includes-stability" class="slide level2">
-<h2>Phase equilibrium includes stability</h2>
-<p>Equality of chemical potentials identifies stationary candidate states. Stable equilibrium requires the lowest admissible total Gibbs energy.</p>
-<p><span class="math display">g_{mix}/RT=\sum_i x_i\ln x_i+g^E/(RT)</span></p>
-<p>A split can lower G even when a homogeneous liquid is locally stable.</p>
+<h2>Liquid stability · 100–105 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Read the definition and complete worksheet p.&nbsp;3, F1. Explain what equality of chemical potentials leaves to check.</p>
+</div>
+<p>At fixed <span class="math inline">T,P</span>, the stable state minimizes total Gibbs energy subject to the material balance.</p>
+<p>For a binary liquid, define dimensionless mixing Gibbs energy:</p>
+<p><span class="math display">\widetilde g(x)=x\ln x+(1-x)\ln(1-x)+\widetilde g^E(x)</span></p>
+<p>Equality of chemical potentials identifies <strong>candidate</strong> coexisting phases. A candidate split must also provide a globally supporting common tangent.</p>
+<p>A model that satisfies Gibbs–Duhem can have a nonconvex mixing-energy curve. Consistency does not guarantee a homogeneous stable liquid.</p>
 </section>
-<section id="the-common-tangent-conditions" class="slide level2">
-<h2>The common-tangent conditions</h2>
-<p><span class="math display">g'(x^\alpha)=g'(x^\beta)=\frac{g(x^\beta)-g(x^\alpha)}{x^\beta-x^\alpha}</span></p>
-<p>The tangent must not lie above g(x) anywhere in the admitted composition interval.</p>
-<p>A trivial root xᵅ=xᵝ does not establish two distinct liquid phases.</p>
+<section id="common-tangent-condition-105110-min" class="slide level2">
+<h2>Common-tangent condition · 105–110 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Read this condition. Complete the hand calculation F2 on the next slide, then use this condition for F3. Lab 04 begins at minute 120.</p>
+</div>
+<p>At two distinct coexisting compositions:</p>
+<p><span class="math display">\widetilde g'(x^\alpha)=\widetilde g'(x^\beta)
+=\frac{\widetilde g(x^\beta)-\widetilde g(x^\alpha)}{x^\beta-x^\alpha}</span></p>
+<p>The line must lie <strong>at or below the Gibbs curve throughout the admitted composition interval</strong>.</p>
+<p>A line that touches twice but crosses above the curve fails this global support check. A root with <span class="math inline">x^\alpha=x^\beta</span> does not establish two distinct phases.</p>
+<p>Positive local curvature alone cannot prove global stability.</p>
 </section>
-<section id="a-lever-rule-calculation" class="slide level2">
-<h2>A lever-rule calculation</h2>
-<p>Synthetic tie line: x₁ᵅ=0.2, x₁ᵝ=0.8. Feed z₁=0.5.</p>
-<p><span class="math display">f_\beta=\frac{z_1-x_1^\alpha}{x_1^\beta-x_1^\alpha}=0.5</span></p>
-<p>For z₁=0.35, fᵝ=0.25. At the same coexistence conditions, the phase amounts change but the tie-line endpoints do not.</p>
+<section id="lever-rule-attempt-110116-min" class="slide level2">
+<h2>Lever-rule attempt · 110–116 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete worksheet p.&nbsp;3, F2. Use only these illustrative endpoints and a calculator. Attempt both feeds before advancing.</p>
+</div>
+<p>Suppose a globally supported tie line has <span class="math inline">x_1^\alpha=0.20</span> and <span class="math inline">x_1^\beta=0.80</span>.</p>
+<p><span class="math display">f_\beta=\frac{z_1-x_1^\alpha}{x_1^\beta-x_1^\alpha},
+\qquad f_\alpha=1-f_\beta</span></p>
+<p>Find both liquid fractions at <span class="math inline">z_1=0.50</span>, then at <span class="math inline">z_1=0.35</span>. Check:</p>
+<p><span class="math display">z_1=f_\alpha x_1^\alpha+f_\beta x_1^\beta</span></p>
+<p>Here <span class="math inline">\beta</span> labels the component-1-rich <strong>liquid</strong>. The supplied endpoints are a hand example, not the expected Lab 04 values.</p>
 </section>
-<section id="an-independent-check" class="slide level2">
-<h2>An independent check</h2>
-<p>Use the calculated endpoints to close the component balance independently. Check that the tangent supports the entire admitted Gibbs curve.</p>
+<section id="lever-rule-check-116120-min" class="slide level2">
+<h2>Lever-rule check · 116–120 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Correct F2, then complete F3 using the common-tangent condition. Open <a href="labs/stability.html#lle-experiment">Lab 04</a> and Lab guide p.&nbsp;3.</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Overall composition <span class="math inline">z_1</span></th>
+<th style="text-align: right;"><span class="math inline">f_\alpha</span></th>
+<th style="text-align: right;"><span class="math inline">f_\beta</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.50</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr class="even">
+<td>0.35</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+</tbody>
+</table>
+<p>For the second feed:</p>
+<p><span class="math display">0.75(0.20)+0.25(0.80)=0.35</span></p>
+<p>At unchanged coexistence conditions, moving the overall composition <strong>inside the same tie line</strong> changes the amounts. The two coexisting compositions remain fixed.</p>
 </section>
-<section id="one-demonstration-20-minutes" class="slide level2">
-<h2>One demonstration · 20 minutes</h2>
-<p><a href="labs/stability.html">Open the core lab</a></p>
-<p>In Lab 04 select a supported liquid split and save it. Change only overall composition inside the tie line. Compare phase compositions with phase fractions.</p>
-<p>Keep one saved baseline for the pair investigation.</p>
-</section>
-<section id="pair-investigation-70-minutes" class="slide level2">
-<h2>Pair investigation · 70 minutes</h2>
+<section id="lab-04-baseline-120130-min" class="slide level2">
+<h2>Lab 04 baseline · 120–130 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete worksheet p.&nbsp;3, G1. Make a prediction, then select the exact preset below and record its actual results.</p>
+</div>
+<p>In <strong>Explore a state</strong>, choose <strong>Unstable · A = 3, z₁ = 0.50</strong>. Verify:</p>
 <ul>
-<li>10 min: predict and record the baseline.</li>
-<li>25 min: change one input and calculate.</li>
-<li>20 min: exchange roles and check the result by hand.</li>
-<li>15 min: prepare one plot or table and a short explanation.</li>
+<li><strong>Liquid model:</strong> Margules · 1 parameter</li>
+<li><strong>Interaction parameter A:</strong> 3, <strong>Feed mole fraction z₁:</strong> 0.50</li>
+<li><strong>View:</strong> Gibbs energy &amp; common tangent</li>
 </ul>
-<p>In Lab 04, retain one supported tie line and compare two overall compositions inside it. Verify the lever rule by hand and explain the global stability check.</p>
+<p>Click <strong>Find equilibrium</strong> if you typed a value. Record both coexisting compositions, both liquid fractions, and Gibbs energy decrease / RT.</p>
+<p>This hypothetical fixed-<span class="math inline">T,P</span> model assigns no physical temperature. Keep its parameters unchanged throughout G1–G4.</p>
 </section>
-<section id="discussion-20-minutes" class="slide level2">
-<h2>Discussion · 20 minutes</h2>
-<p>When does a calculated liquid split represent stable equilibrium?</p>
-<p>Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.</p>
+<section id="one-changed-feed-130140-min" class="slide level2">
+<h2>One changed feed · 130–140 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete G2. First save the baseline using <strong>Export study JSON</strong>. Change only <strong>Feed mole fraction z₁</strong> to <strong>0.35</strong>, then click <strong>Find equilibrium</strong>.</p>
+</div>
+<p>Record the same outputs for the changed feed.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Compare</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">x_1^\alpha</span> and <span class="math inline">x_1^\beta</span></td>
+<td>Did the coexistence endpoints change?</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_\alpha</span> and <span class="math inline">f_\beta</span></td>
+<td>Did the amounts change?</td>
+</tr>
+<tr class="odd">
+<td>Overall balance</td>
+<td>Does the split reconstruct the new <span class="math inline">z_1</span>?</td>
+</tr>
+</tbody>
+</table>
+<p>Use the endpoints calculated by the lab. Reusing 0.20 and 0.80 from the hand example would check a different tie line.</p>
 </section>
-<section id="after-class-3040-minutes" class="slide level2">
-<h2>After class · 30–40 minutes</h2>
-<p>In Lab 04, retain one supported tie line and compare two overall compositions inside it. Verify the lever rule by hand and explain the global stability check.</p>
-<p><a href="labs/assessments.html#session-3">Assessment 3 and independent checkpoint</a></p>
-<p>Retain one study JSON, one comparison and a short explanation.</p>
-<p>Optional: <a href="postmidterm-03-appendix.html">Session appendix</a>.</p>
-<p><a href="labs/learning-path.html#session-3">Learning path</a> · <a href="files/thermodynamics-offline.zip">Offline package</a></p>
+<section id="independent-balance-140150-min" class="slide level2">
+<h2>Independent balance · 140–150 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete G3 with your calculator. Show the substituted calculation using the lab’s endpoints, then compare your fraction with the displayed value.</p>
+</div>
+<p><span class="math display">f_\beta=\frac{0.35-x_1^\alpha}{x_1^\beta-x_1^\alpha}</span></p>
+<p><span class="math display">z_{1,\mathrm{check}}=(1-f_\beta)x_1^\alpha+f_\beta x_1^\beta</span></p>
+<p>Check <span class="math inline">0\leq f_\beta\leq1</span> and <span class="math inline">f_\alpha+f_\beta=1</span>.</p>
+<p>A balance proves that amounts and compositions agree with the feed. You still need the Gibbs-energy stability check.</p>
+<p>Use additional digits from the JSON export if display rounding causes a small mismatch.</p>
 </section>
-<section id="exit-ticket-feedback-8-minutes" class="slide level2">
-<h2>Exit ticket + feedback · 8 minutes</h2>
+<section id="global-support-150160-min" class="slide level2">
+<h2>Global support · 150–160 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Complete G4. Open <strong>Verify the equilibrium</strong> in Lab 04. Inspect its numerical checks and the full <strong>Gibbs energy &amp; common tangent</strong> plot.</p>
+</div>
+<p>Explain why the calculated split qualifies as stable within this model:</p>
+<ul>
+<li>The two liquid compositions are distinct.</li>
+<li>Chemical potentials agree within the reported numerical tolerance.</li>
+<li>The common tangent supports the entire Gibbs curve.</li>
+<li>The phase amounts satisfy the feed balance.</li>
+</ul>
+<p>The homogeneous feed label describes the hypothetical single liquid at <span class="math inline">z_1</span>. The equilibrium inside the miscibility gap consists of two liquids.</p>
+</section>
+<section id="investigation-check-160165-min" class="slide level2">
+<h2>Investigation check · 160–165 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Compare G1–G4 with worked solutions Section G. Save the changed-feed JSON and one comparison table or plot. Then open worksheet p.&nbsp;4.</p>
+</div>
+<p>Your record should identify the model, <span class="math inline">A=3</span>, both feed compositions and the calculated tie-line endpoints.</p>
+<p>Check the key distinction: <strong>phase compositions describe each liquid; phase fractions describe how much of each liquid exists.</strong></p>
+<p>Keep a numerical balance and the global support evidence with your explanation.</p>
+<p>LLE fitting and VLLE are <a href="postmidterm-03-appendix.html">optional extensions</a>. They are outside this required 180-minute lesson.</p>
+</section>
+<section id="self-review-attempt-165169-min" class="slide level2">
+<h2>Self-review attempt · 165–169 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Answer worksheet p.&nbsp;4, H1–H4 without the solutions. Use one or two sentences per question, with the short calculation for H4.</p>
+</div>
+<ol type="1">
+<li>Does meeting an area criterion guarantee all local relations are satisfied?</li>
+<li>What can a differential departure mean, and which assumptions matter?</li>
+<li>What evidence does a small selected-model fitting error provide?</li>
+<li>For supported endpoints 0.20 and 0.80 with <span class="math inline">z_1=0.35</span>, find <span class="math inline">f_\beta</span>. What establishes stability beyond the balance?</li>
+</ol>
+<p>Finish your own answers before advancing.</p>
+</section>
+<section id="self-review-check-169172-min" class="slide level2">
+<h2>Self-review check · 169–172 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Correct H1–H4 in a different color or add a note. Use the separate worked solutions if you need more detail.</p>
+</div>
+<ol type="1">
+<li>Opposite local errors can cancel in an area integral.</li>
+<li>A departure prompts checks of data, property inputs, path corrections and numerical differentiation. A missing required correction prevents a verdict.</li>
+<li>A small error demonstrates reproduction by that model and those property assumptions. It does not establish general predictive accuracy.</li>
+<li><span class="math inline">f_\beta=(0.35-0.20)/(0.80-0.20)=0.25</span>. Stable coexistence also needs distinct phases and a globally supporting common tangent.</li>
+</ol>
+</section>
+<section id="exit-ticket-172177-min" class="slide level2">
+<h2>Exit ticket · 172–177 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Open the existing Session 3 form below, or scan the QR. Follow worksheet p.&nbsp;4, Section I.</p>
+</div>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>5 min · Explain and check</strong></p>
-<p>Answer the session question in the form. Give one result or independent check from today’s lab, with units.</p>
-<p><strong>3 min · Help improve the next class</strong></p>
-<p>Rate the pace, report lab access, and suggest one improvement.</p>
-<p>Thai or English. No name, ID or email requested.</p>
-<p>Wait for <strong>“Response received.”</strong> We will use the final 2 minutes to close the class.</p>
-</div><div class="column" style="width:36%;">
+<div class="column" style="width:62%;">
+<p>In the <strong>concept answer</strong>, explain when a calculated liquid split represents stable equilibrium.</p>
+<p>In the <strong>evidence answer</strong>, include your Lab 03 comparison: area versus local diagnostic, with settings and numerical results. Add your Lab 04 balance if space permits.</p>
+<p>This form is anonymous. It does not identify individual attendance.</p>
+<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3">Open Session 3 exit ticket and feedback</a></p>
+</div><div class="column" style="width:32%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3"><img data-src="assets/exit-qr-03.png" style="width:100.0%"></a></p>
-<figcaption>Scan to submit Session 3 exit ticket and feedback.</figcaption>
+<figcaption>Scan to open the Session 3 form.</figcaption>
 </figure>
 </div>
-<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3">Open Session 3 form</a></p>
 </div></div>
+</section>
+<section id="feedback-and-saved-work-177180-min" class="slide level2">
+<h2>Feedback and saved work · 177–180 min</h2>
+<div class="your-action">
+<p><strong>Your action:</strong> Finish the feedback fields in the same form and submit once. Wait for <strong>“Response received.”</strong> Then check the files listed below.</p>
+</div>
+<p>Report how the pace and lab access worked for independent study. Name one explanation or instruction that still needs improvement.</p>
+<p>Keep:</p>
+<ul>
+<li>Your completed worksheet, including original attempts and corrections.</li>
+<li>The Lab 03 comparison and exports or screenshots.</li>
+<li>The Lab 04 baseline and changed-feed evidence, with your balance.</li>
+</ul>
+<p>No additional compulsory homework follows this lesson.</p>
+<p><a href="week03-study.html">Week 3 start page</a> · <a href="labs/learning-path.html#session-3">Course learning path</a></p>
 
 
 </section>

@@ -1,5 +1,5 @@
 ---
-title: "Appendix: Liquid stability, LLE and VLLE"
+title: "Appendix: Consistency and liquid stability"
 subtitle: "Session 3 · optional reference"
 author: "Soorathep Kheawhom"
 date: 2026-09-30
@@ -28,15 +28,29 @@ format:
 
 ## Optional reference material
 
-Return to the [12-slide classroom deck](postmidterm-03.html).
+Return to the [Week 3 independent lesson](postmidterm-03.html) or [start page](week03-study.html).
 
-Use these details when a question from your investigation needs them. They are outside the required 45–60 minutes of weekly independent work.
+Use these optional details when a question from your investigation needs them. They are outside the required 180-minute holiday lesson. There is no compulsory additional homework.
 
-Choose one extension: NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06.
+Possible extensions include NRTL tie-line fitting in Lab 05, paired bootstrap from independent replicates, or feasible three-phase amounts in Lab 06. Complete the core Lab 03 and Lab 04 tasks first.
+
+## Consistency methods and scope
+
+The [Lab 03 definitions](labs/consistency.html) state the equations, thresholds, endpoint assumptions and implementation limits.
+
+- The area and Herington variants require full-range information or explicit endpoint assumptions.
+- The local finite-difference diagnostic differs from the NIST/Kojima Padé slope method.
+- The Van Ness-type fit tests selected-model reproduction. It does not certify experimental accuracy.
+
+Primary references: [NIST area and Herington](https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Herington.htm), [point test](https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Point.htm), [modeling test](https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/VanNess.htm).
 
 ## Binodal and spinodal
 
-![Module 5 reference illustration: coexistence and local instability are different boundaries.](figures/f5_01_gmix_binodal_spinodal.png){width="78%"}
+In [Lab 04](labs/stability.html#lle-experiment), select Margules · 1 parameter, A = 3. Choose **Binodal & spinodal map** in the View menu.
+
+The binodal marks coexisting compositions. The spinodal marks zero local curvature. Between a binodal and a spinodal, a homogeneous liquid can have positive curvature while a finite split lowers its Gibbs energy.
+
+These equilibrium constructions do not predict nucleation barriers or separation times.
 
 ## Tangent-plane distance
 

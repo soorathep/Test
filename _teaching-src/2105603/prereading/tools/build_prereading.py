@@ -42,6 +42,13 @@ def start(week,page,label):
 
 for week,d in enumerate(READINGS,1):
     if args.week and week != args.week: continue
+    if week == 3:
+        # Week 3 is an independent holiday lesson with optional background.
+        # Keep the legacy six-week entry point from restoring the old LLE-only PDF.
+        sys.path.insert(0, str(ROOT/'week03'))
+        from build_week03 import background
+        background(args.output)
+        continue
     dest=args.output/f'preclass-week-{week:02d}.pdf';c=canvas.Canvas(str(dest),pagesize=(W,H),initialFontName="Reading")
     c.setTitle(f'Week {week}: {d["title"]}');c.setAuthor('2105603 teaching materials')
     y=start(week,1,'Concepts');y=para(d['title'],y,'title');y=para('Read and prepare: 15–20 minutes total. Bring tentative answers; uncertainty is useful for discussion.',y,'small')

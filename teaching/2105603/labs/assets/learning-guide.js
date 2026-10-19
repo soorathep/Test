@@ -5,9 +5,15 @@ const download=(value,name)=>{const url=URL.createObjectURL(new Blob([JSON.strin
 async function init(){const response=await fetch(new URL('./learning-path.json',import.meta.url));if(!response.ok)throw new Error('Learning guide unavailable');const data=await response.json(),guide=data.labs[lab];if(!guide)return;
 const panel=el('section');panel.className='learning-guide';panel.setAttribute('aria-label','Independent lab activity');
 const link=el('a',`Session ${guide.session} · learning path and slides`);link.href='learning-path.html#session-'+guide.session;panel.append(link);
-const session=data.sessions.find(s=>s.number===guide.session),required=session.core.includes(lab);panel.append(el('p',required?'Required lab for this session. Read the pre-class PDF (15–20 minutes), then continue the classroom case in a 30–40 minute follow-up.':'Optional extension for this session. Start with the required lab on the learning path.'));
-const reading=el('a','Pre-class reading PDF · three preparation questions');reading.href='../'+session.prereading;panel.append(reading);
-const exitLink=el('a','End of class: exit ticket + feedback');exitLink.href=session.exitForm;const exitLine=el('p');exitLine.append(exitLink);panel.append(exitLine);
+const session=data.sessions.find(s=>s.number===guide.session),required=session.core.includes(lab),independent=session.delivery==='independent';
+panel.append(el('p',required?(independent?'Required lab within this session’s 180-minute independent lesson. Follow the lesson schedule and named worksheet questions; there is no additional compulsory preparation or follow-up.':'Required lab for this session. Read the pre-class PDF (15–20 minutes), then continue the classroom case in a 30–40 minute follow-up.'):'Optional extension for this session. Start with the required lab on the learning path.'));
+if(independent){
+ const start=el('a',session.video?'Open the narrated independent lesson':'Open the independent study guide');start.href='../'+(session.video||session.studyHub||session.deck);panel.append(start);
+ if(session.worksheet){const line=el('p'),worksheet=el('a',`English worksheet · ${session.worksheetPages||4} pages`);worksheet.href='../'+session.worksheet;line.append(worksheet);panel.append(line);}
+}
+const reading=el('a',independent&&session.prereadingOptional?'Optional background reading PDF':'Pre-class reading PDF · three preparation questions');reading.href='../'+session.prereading;panel.append(reading);
+const exitLink=el('a',independent?'Study minutes 172–180: exit ticket + feedback':'End of class: exit ticket + feedback');exitLink.href=session.exitForm;const exitLine=el('p');exitLine.append(exitLink);panel.append(exitLine);
+if(independent) panel.append(el('p','The exit ticket and feedback are anonymous and do not identify attendance. Follow the main lesson instructions for any separately announced submission.'));
 const details=el('details');details.open=true;details.append(el('summary','Guided activity · predict, calculate, explain'),el('p',guide.predict));const list=el('ol');guide.steps.forEach(v=>list.append(el('li',v)));details.append(list,el('p','Evidence to retain: '+guide.check),el('p','Scope: '+guide.limit));panel.append(details);
 const notes=el('details');notes.append(el('summary','My worksheet · save and continue later'));
 notes.append(el('p','These notes are separate from calculator inputs and results. Save the lab’s study export as well. “Save on this browser” stores only the five notes below on this device; no upload or grading is performed.'));
