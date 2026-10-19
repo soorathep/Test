@@ -1,0 +1,21 @@
+/* Session 3: figures support article-type decisions within the existing activity. */
+.format-figures { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin:24px 0; }
+.format-figures figure { margin:0; padding:16px; border:1px solid #B9C1C6; border-radius:8px; }
+.format-figures h3 { font-size:1.1rem; margin:0 0 16px; }
+.format-figures img { display:block; width:100%; height:260px; max-height:260px; object-fit:contain; margin:0; }
+.format-figures figcaption { font-size:.8rem; line-height:1.4; margin:12px 0; }
+.format-figures p { font-size:.94rem; line-height:1.45; margin-bottom:0; }
+.format-takeaway { font-weight:600; border-left:4px solid #0F6E6B; padding:10px 16px; }
+.format-reference { font-size:.9rem; }
+.format-case { margin-top:28px; }
+@media(max-width:720px) { .format-figures { grid-template-columns:1fr; } }
+@media print {
+  .format-figures { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; break-inside:avoid; }
+  .format-figures figure { padding:8px; }
+  .format-figures img { height:43mm; max-height:43mm; }
+  .format-figures h3 { font-size:10pt; margin-bottom:6px; }
+  .format-figures figcaption { font-size:8pt; }
+  .format-figures p { font-size:9pt; }
+  .format-case { break-inside:avoid; margin-top:14px; }
+  h2,h3,.answer-label { break-after:avoid; }
+}
