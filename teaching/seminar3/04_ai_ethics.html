@@ -30,12 +30,13 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
   <link rel="stylesheet" href="slides.css">
+  <link rel="stylesheet" href="session4.1ff0181f61.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -65,12 +66,12 @@
     }
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
     .reveal .footnotes ol li > p:first-child {
       display: inline-block;
@@ -112,19 +113,19 @@
     .reveal .slide > img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-left,
     .reveal .slide > img.r-stretch.quarto-figure-left  {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-right,
     .reveal .slide > img.r-stretch.quarto-figure-right  {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
   </style>
 </head>
@@ -135,75 +136,206 @@
 
 <section id="generative-ai-and-research-ethics" class="slide level2 cover">
 <h2>Generative AI and research ethics</h2>
-<div class="eyebrow">PhD Seminar · Chemical Engineering</div><p class="objective">A verifiable and accountable AI workflow</p><div class="metadata">28 October 2026   12:00–13:00<br>Soorathep Kheawhom</div>
+<div class="eyebrow">PhD Seminar · Chemical Engineering</div><p class="objective">Verify the output. Keep responsibility for the research.</p><div class="metadata">28 October 2026<br>English narration · Individual practice · Online attendance quiz</div>
 </section>
-<section id="tasks-and-verification-burden" class="slide level2 text">
-<h2>Tasks and verification burden</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Language editing: check meaning and quantitative claims.</p></div><div class="item"><span class="n">02</span><p>Literature support: open and verify the original sources.</p></div><div class="item"><span class="n">03</span><p>Code assistance: test units, assumptions and outputs.</p></div><div class="item"><span class="n">04</span><p>Research interpretation: retain human scientific judgment.</p></div></div>
+<section id="how-to-use-this-lesson" class="slide level2 text">
+<h2>How to use this lesson</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Watch the worked examples and complete the short pauses.</p></div><div class="item"><span class="n">02</span><p>Submit the 10-question quiz with your name and student ID.</p></div><div class="item"><span class="n">03</span><p>Finish with the exit ticket and anonymous feedback.</p></div></div>
 </section>
-<section id="human-responsibility-remains-central" class="slide level2 text">
-<h2>Human responsibility remains central</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>AI tools do not qualify as authors under COPE’s position.</p></div><div class="item"><span class="n">02</span><p>Researchers remain responsible for manuscript content.</p></div><div class="item"><span class="n">03</span><p>Journal and institutional requirements both apply.</p></div></div><div class="references"><a href="https://doi.org/10.24318/cCVRZBms" target="_blank" rel="noopener">COPE: Authorship and AI tools</a></div>
+<section id="choose-the-check-before-using-the-tool" class="slide level2 text">
+<h2>Choose the check before using the tool</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Language editing: compare meaning before and after.</p></div><div class="item"><span class="n">02</span><p>Literature support: open the original source.</p></div><div class="item"><span class="n">03</span><p>Code assistance: define an independent check.</p></div></div>
 </section>
-<section id="a-claim-can-change-during-language-editing" class="slide level2 contrast">
-<h2>A claim can change during language editing</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>Input: “Conversion was 75% for one feed at 350 °C.”</p></div><div class="item"><span class="n">02</span><p>Edited output: “The catalyst achieved superior activity under all operating conditions.”</p></div><div class="item"><span class="n">03</span><p>Audit: scope expanded, comparator missing, activity undefined.</p></div></div>
+<section id="human-responsibility" class="slide level2 text">
+<h2>Human responsibility</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>AI tools are not authors under the COPE position.</p></div><div class="item"><span class="n">02</span><p>Human authors remain responsible for the manuscript.</p></div><div class="item"><span class="n">03</span><p>An accepted output needs a named human reviewer.</p></div></div><div class="references"><a href="https://doi.org/10.24318/cCVRZBms" target="_blank" rel="noopener">COPE: Authorship and AI tools</a></div>
 </section>
-<section id="verification-before-reuse" class="slide level2 text">
-<h2>Verification before reuse</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Trace each claim to a source or measurement.</p></div><div class="item"><span class="n">02</span><p>Check numerical values, units and denominators.</p></div><div class="item"><span class="n">03</span><p>Read the cited source and confirm it supports the claim.</p></div><div class="item"><span class="n">04</span><p>Save what you accepted, changed or rejected.</p></div></div>
+<section id="the-battery-evidence-supplied" class="slide level2 table">
+<h2>The battery evidence supplied</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Item</th>
+<th data-quarto-table-cell-role="th">Supplied evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cell and temperature</td>
+<td>One LFP/graphite model; 25 °C</td>
+</tr>
+<tr class="even">
+<td>Mean retention at cycle 200</td>
+<td>Protocol A: 88%; protocol B: 94%</td>
+</tr>
+<tr class="odd">
+<td>Independent units</td>
+<td>3 cells per protocol; common diagnostic</td>
+</tr>
+<tr class="even">
+<td>Not supplied</td>
+<td>Uncertainty, lifetime endpoint, plating diagnostics</td>
+</tr>
+</tbody>
+</table>
+<p class="caption">Synthetic classroom example. No experimental or published result is claimed.</p>
 </section>
-<section id="an-example-of-publisher-specific-disclosure" class="slide level2 text">
-<h2>An example of publisher-specific disclosure</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>Elsevier requires a declaration for substantive AI help in manuscript preparation.</p></div><div class="item"><span class="n">02</span><p>Basic grammar, spelling and punctuation checks are exempt.</p></div><div class="item"><span class="n">03</span><p>AI use within the research method needs a reproducible Methods description.</p></div></div><p class="caption">Policy checked 6 October 2026. Recheck the target journal before submission.</p><div class="references"><a href="https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals" target="_blank" rel="noopener">Elsevier: Generative AI policies for journals</a></div>
+<section id="a-fluent-edit-changes-the-evidence" class="slide level2 contrast">
+<h2>A fluent edit changes the evidence</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Supplied: mean retention was 88% for A and 94% for B at cycle 200.</p></div><div class="item"><span class="n">02</span><p>Mock edit: “B extends battery lifetime by 6%, eliminates lithium plating, and works under all conditions [REF-X].”</p></div><div class="item"><span class="n">03</span><p>REF-X is an invented classroom placeholder.</p></div></div>
 </section>
-<section id="image-categories-have-different-rules" class="slide level2 text">
-<h2>Image categories have different rules</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Elsevier allows explanatory AI images with disclosure.</p></div><div class="item"><span class="n">02</span><p>Data plots must derive faithfully from data and reproducible methods.</p></div><div class="item"><span class="n">03</span><p>AI must not fabricate primary research images.</p></div><div class="item"><span class="n">04</span><p>General-purpose image generators cannot create Elsevier graphical abstracts.</p></div></div><p class="caption">Publisher-specific example, checked 6 October 2026.</p><div class="references"><a href="https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals" target="_blank" rel="noopener">Elsevier: Generative AI policies for journals</a></div>
+<section id="pause-audit-the-paragraph" class="slide level2 activity">
+<h2>Pause: audit the paragraph</h2>
+<div class="activity-body"><div class="minutes">60<small>seconds</small></div><div class="items"><div class="item"><span class="n">01</span><p>Identify the unsupported outcome, mechanism, scope and reference.</p></div><div class="item"><span class="n">02</span><p>Write one sentence that the supplied data support.</p></div><div class="item"><span class="n">03</span><p>Use Worksheet 4A or a piece of paper.</p></div></div></div>
 </section>
-<section id="confidentiality-before-a-prompt" class="slide level2 text">
-<h2>Confidentiality before a prompt</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Does the material belong to you, collaborators or a reviewer assignment?</p></div><div class="item"><span class="n">02</span><p>Do you have authority to share it with this service?</p></div><div class="item"><span class="n">03</span><p>What do the service terms say about retention and training?</p></div><div class="item"><span class="n">04</span><p>Use approved tools and the minimum necessary information.</p></div></div>
+<section id="audit-answer-retain-the-measured-outcome" class="slide level2 table">
+<h2>Audit answer: retain the measured outcome</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Claim</th>
+<th data-quarto-table-cell-role="th">Decision and reason</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Longer lifetime</td>
+<td>Revise: retention at cycle 200 was measured.</td>
+</tr>
+<tr class="even">
+<td>Eliminates plating</td>
+<td>Remove: no plating diagnostic supplied.</td>
+</tr>
+<tr class="odd">
+<td>All conditions</td>
+<td>Restrict: one cell model at 25 °C.</td>
+</tr>
+<tr class="even">
+<td>REF-X</td>
+<td>Remove: invented, unverified reference.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="a-numerical-audit-catches-a-changed-claim" class="slide level2 numbers">
-<h2>A numerical audit catches a changed claim</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>64% to 75%</p></div><div class="item"><span class="n">02</span><p>11 percentage points</p></div><div class="item"><span class="n">03</span><p>17.2% relative increase</p></div><div class="item"><span class="n">04</span><p>“An 11% increase” changes the denominator and is ambiguous.</p></div></div>
+<section id="the-number-and-its-denominator" class="slide level2 text">
+<h2>The number and its denominator</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>94% − 88% = 6 percentage points in mean retention.</p></div><div class="item"><span class="n">02</span><p>(94 − 88) / 88 × 100 ≈ 6.8% relative to A.</p></div><div class="item"><span class="n">03</span><p>Neither calculation measures a lifetime extension.</p></div></div><p class="caption">Arithmetic from synthetic teaching values; no inference about statistical significance.</p>
 </section>
-<section id="a-bounded-editing-prompt" class="slide level2 text">
-<h2>A bounded editing prompt</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>“Edit this paragraph for clarity. Preserve every numerical value, unit, comparison and limitation. Add no factual claims or references. List changes that may alter meaning.”</p></div><div class="item"><span class="n">02</span><p>The author still checks every change.</p></div></div>
+<section id="a-defensible-revised-paragraph" class="slide level2 example">
+<h2>A defensible revised paragraph</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>At cycle 200 and 25 °C, mean retention was 88% for A and 94% for B in the tested LFP/graphite cell model.</p></div><div class="item"><span class="n">02</span><p>The observed difference was 6 percentage points, with 3 independent cells per protocol.</p></div><div class="item"><span class="n">03</span><p>No uncertainty estimate or plating diagnostic is supplied.</p></div></div>
 </section>
-<section id="workshop-audit-an-ai-assisted-paragraph" class="slide level2 activity">
-<h2>Workshop: audit an AI-assisted paragraph</h2>
-<div class="activity-body"><div class="minutes">10<small>minutes</small></div><div class="items"><div class="item"><span class="n">01</span><p>Pairs, 10 minutes. Use Worksheet 4A.</p></div><div class="item"><span class="n">02</span><p>Find unsupported scope, numerical and citation claims.</p></div><div class="item"><span class="n">03</span><p>Rewrite the paragraph using only the supplied evidence.</p></div><div class="item"><span class="n">04</span><p>Record an accept, revise or reject decision for each change.</p></div></div></div>
+<section id="a-reference-needs-two-checks" class="slide level2 text">
+<h2>A reference needs two checks</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Existence: locate the original publication and verify its details.</p></div><div class="item"><span class="n">02</span><p>Support: read the passage or result relevant to your claim.</p></div><div class="item"><span class="n">03</span><p>A real DOI does not prove that the citation supports the sentence.</p></div></div>
 </section>
-<section id="code-needs-scientific-tests" class="slide level2 text">
-<h2>Code needs scientific tests</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Check dimensions and units before trusting an output.</p></div><div class="item"><span class="n">02</span><p>Test a limiting case with a known answer.</p></div><div class="item"><span class="n">03</span><p>Compare against a hand calculation or independent method.</p></div><div class="item"><span class="n">04</span><p>Record versions, dependencies and data provenance.</p></div></div>
+<section id="a-bounded-editing-request" class="slide level2 text">
+<h2>A bounded editing request</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Improve clarity while preserving values, units and scope.</p></div><div class="item"><span class="n">02</span><p>Add no mechanism, reference or factual claim.</p></div><div class="item"><span class="n">03</span><p>List changes that could alter meaning; compare the result yourself.</p></div></div>
 </section>
-<section id="three-ethics-scenarios" class="slide level2 activity">
-<h2>Three ethics scenarios</h2>
-<div class="activity-body"><div class="minutes">6<small>minutes</small></div><div class="items"><div class="item"><span class="n">01</span><p>An AI tool improves the wording but invents a reference.</p></div><div class="item"><span class="n">02</span><p>A collaborator uploads an unpublished industrial dataset.</p></div><div class="item"><span class="n">03</span><p>An image generator creates a plausible SEM micrograph.</p></div></div></div>
+<section id="confidentiality-comes-before-the-prompt" class="slide level2 text">
+<h2>Confidentiality comes before the prompt</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Identify who controls the material and who may authorize sharing.</p></div><div class="item"><span class="n">02</span><p>Check the applicable agreement, institutional rules and tool terms.</p></div><div class="item"><span class="n">03</span><p>Use an approved workflow with only the necessary information.</p></div></div>
 </section>
-<section id="a-useful-ai-use-record" class="slide level2 text">
-<h2>A useful AI use record</h2>
-<div class="items grid"><div class="item"><span class="n">01</span><p>Tool and version, date and purpose</p></div><div class="item"><span class="n">02</span><p>Material shared and the authority to share it</p></div><div class="item"><span class="n">03</span><p>Output retained and verification performed</p></div><div class="item"><span class="n">04</span><p>Required disclosure and responsible author</p></div></div>
+<section id="pause-choose-the-next-action" class="slide level2 activity">
+<h2>Pause: choose the next action</h2>
+<div class="activity-body"><div class="minutes">30<small>seconds</small></div><div class="items"><div class="item"><span class="n">01</span><p>A partner sends unpublished cycling data under a project agreement.</p></div><div class="item"><span class="n">02</span><p>A colleague removes the company name and wants to upload the file.</p></div><div class="item"><span class="n">03</span><p>Is that enough? Write the next action and a workable alternative.</p></div></div></div>
 </section>
-<section id="an-ai-use-log-records-the-check" class="slide level2 example">
-<h2>An AI use log records the check</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>Task: improve the clarity of a nonconfidential paragraph.</p></div><div class="item"><span class="n">02</span><p>Verification: checked every value, unit, comparison, limitation and cited source against the originals.</p></div><div class="item"><span class="n">03</span><p>Decision: restored the tested scope, rejected an invented reference and retained only verified edits.</p></div></div><p class="caption">Record the actual tool, date and applicable version. Disclose use as the target journal requires.</p>
+<section id="scenario-answer-permission-is-still-unresolved" class="slide level2 text">
+<h2>Scenario answer: permission is still unresolved</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Hold the upload until the sharing authority and terms are confirmed.</p></div><div class="item"><span class="n">02</span><p>Removing a name does not remove every confidentiality obligation.</p></div><div class="item"><span class="n">03</span><p>Develop the task using synthetic data or an approved local workflow.</p></div></div>
 </section>
-<section id="a-disclosure-must-describe-actual-use" class="slide level2 text">
-<h2>A disclosure must describe actual use</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>Name the tool and the task it performed.</p></div><div class="item"><span class="n">02</span><p>Describe human review and responsibility.</p></div><div class="item"><span class="n">03</span><p>Use the location and wording required by the journal.</p></div></div>
+<section id="code-test-the-meaning-of-the-result" class="slide level2 table">
+<h2>Code: test the meaning of the result</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Check</th>
+<th data-quarto-table-cell-role="th">Expected result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2.7 Ah / 3.0 Ah × 100</td>
+<td>90% retention</td>
+</tr>
+<tr class="even">
+<td>Later capacity = initial capacity</td>
+<td>100% retention</td>
+</tr>
+<tr class="odd">
+<td>Initial capacity = 0</td>
+<td>Flag an invalid denominator</td>
+</tr>
+<tr class="even">
+<td>Same formula, wrong diagnostic rows</td>
+<td>Reject the comparison; inspect data selection</td>
+</tr>
+</tbody>
+</table>
+<p class="caption">Synthetic values. Test inputs, units, known cases and the data-selection step.</p>
 </section>
-<section id="exit-ticket-anonymous-feedback" class="slide level2 exit">
-<h2>Exit ticket &amp; anonymous feedback</h2>
-<div class="exit-body"><div><p class="lead">3 minutes</p><div class="items"><div class="item"><span class="n">01</span><p>One concept check</p></div><div class="item"><span class="n">02</span><p>One evidence-based reflection</p></div><div class="item"><span class="n">03</span><p>One point that is still unclear</p></div></div></div><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4"><img class="qr" src="assets/qr_4.png" alt="QR code for session 4 exit ticket and anonymous feedback"></a></div><p class="qr-link"><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4" target="_blank" rel="noopener">seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4</a></p><p class="caption">Exit ticket: student ID optional. Feedback: no name or student ID.</p>
+<section id="images-identify-what-the-picture-represents" class="slide level2 text">
+<h2>Images: identify what the picture represents</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Conceptual illustration: an explanation of an idea.</p></div><div class="item"><span class="n">02</span><p>Data plot: a reproducible transformation of recorded values.</p></div><div class="item"><span class="n">03</span><p>Primary image: an observation, such as an SEM micrograph.</p></div></div>
+</section>
+<section id="check-the-target-journal-policy" class="slide level2 text">
+<h2>Check the target journal policy</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Identify the task: manuscript preparation, research method or image.</p></div><div class="item"><span class="n">02</span><p>Read the current official policy and the journal instructions.</p></div><div class="item"><span class="n">03</span><p>Record the policy URL and the date checked.</p></div></div><p class="caption">Elsevier journal policy example, checked 19 October 2026. Requirements are publisher-specific.</p><div class="references"><a href="https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals" target="_blank" rel="noopener">Elsevier: Generative AI policies for journals</a></div>
+</section>
+<section id="an-ai-use-log-records-decisions" class="slide level2 table">
+<h2>An AI use log records decisions</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Field</th>
+<th data-quarto-table-cell-role="th">Illustrative entry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Task and material</td>
+<td>Clarity edit; synthetic battery paragraph</td>
+</tr>
+<tr class="even">
+<td>Tool, date and reviewer</td>
+<td>Record the actual values in your project</td>
+</tr>
+<tr class="odd">
+<td>Check</td>
+<td>Compare values, units, scope and sources</td>
+</tr>
+<tr class="even">
+<td>Decision</td>
+<td>Keep wording; reject mechanism and REF-X</td>
+</tr>
+</tbody>
+</table>
+<p class="caption">Illustrative log structure, not a claim that a named tool performed this exercise.</p>
+</section>
+<section id="disclosure-describes-actual-use" class="slide level2 text">
+<h2>Disclosure describes actual use</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Name the actual tool and the task it performed.</p></div><div class="item"><span class="n">02</span><p>Explain the review that was actually completed.</p></div><div class="item"><span class="n">03</span><p>Use the location and detail required by the target journal.</p></div></div>
+</section>
+<section id="pause-plan-a-verifiable-workflow" class="slide level2 activity">
+<h2>Pause: plan a verifiable workflow</h2>
+<div class="activity-body"><div class="minutes">60<small>seconds</small></div><div class="items"><div class="item"><span class="n">01</span><p>Task: improve a nonconfidential paragraph about your own research.</p></div><div class="item"><span class="n">02</span><p>Specify what stays fixed and how you will check the output.</p></div><div class="item"><span class="n">03</span><p>State what you will record and what triggers rejection.</p></div></div></div>
+</section>
+<section id="workflow-answer" class="slide level2 text">
+<h2>Workflow answer</h2>
+<div class="items"><div class="item"><span class="n">01</span><p>Limit the task to clarity; preserve values, units and tested scope.</p></div><div class="item"><span class="n">02</span><p>Compare each change with the evidence and original sources.</p></div><div class="item"><span class="n">03</span><p>Record the accepted edit, rejected claims, reviewer and applicable disclosure.</p></div></div>
+</section>
+<section id="online-quiz-and-attendance" class="slide level2 text">
+<h2>Online quiz and attendance</h2>
+<div class="exit-body"><div><p class="lead">10 questions</p><div class="items"><div class="item"><span class="n">01</span><p>10 questions · Name and student ID required.</p></div><div class="item"><span class="n">02</span><p>Unlimited attempts; explanations after submission.</p></div><div class="item"><span class="n">03</span><p>One completed submission per student ID counts as attendance.</p></div></div></div><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/quiz/4"><img class="qr" src="assets/quiz_4.png" alt="QR code for session 4 attendance quiz"></a></div><p class="qr-link"><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/quiz/4" target="_blank" rel="noopener">seminar3-cheme-feedback.soorathep-k.chatgpt.site/quiz/4</a></p><p class="caption">Attendance is based on quiz completion, not the score or verified viewing time.</p>
+</section>
+<section id="exit-ticket-and-anonymous-feedback" class="slide level2 exit">
+<h2>Exit ticket and anonymous feedback</h2>
+<div class="exit-body"><div><p class="lead">3 minutes</p><div class="items"><div class="item"><span class="n">01</span><p>Exit ticket: name one task, one risk and one verification step.</p></div><div class="item"><span class="n">02</span><p>Student ID is optional on the exit ticket.</p></div><div class="item"><span class="n">03</span><p>Feedback asks for no name or student ID.</p></div></div></div><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4"><img class="qr" src="assets/qr_4.png" alt="QR code for session 4 exit ticket and anonymous feedback"></a></div><p class="qr-link"><a href="https://seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4" target="_blank" rel="noopener">seminar3-cheme-feedback.soorathep-k.chatgpt.site/session/4</a></p>
 </section>
 <section id="reading-and-policy-sources" class="slide level2 text">
 <h2>Reading and policy sources</h2>
-<div class="items"><div class="item"><span class="n">01</span><p>Elsevier: Generative AI policies for journals</p></div><div class="item"><span class="n">02</span><p>COPE: Authorship and AI tools</p></div></div><div class="references"><a href="https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals" target="_blank" rel="noopener">Elsevier: Generative AI policies for journals</a><a href="https://doi.org/10.24318/cCVRZBms" target="_blank" rel="noopener">COPE: Authorship and AI tools</a></div>
+<div class="items"><div class="item"><span class="n">01</span><p>COPE: Authorship and AI tools</p></div><div class="item"><span class="n">02</span><p>Elsevier: Generative AI policies for journals</p></div><div class="item"><span class="n">03</span><p>Official links and practice worksheet are on the lecture page.</p></div></div><p class="caption">Policies checked 19 October 2026. Recheck the target journal before submission.</p><div class="references"><a href="https://doi.org/10.24318/cCVRZBms" target="_blank" rel="noopener">COPE: Authorship and AI tools</a><a href="https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals" target="_blank" rel="noopener">Elsevier: Generative AI policies for journals</a></div>
 
 
 </section>
@@ -222,7 +354,7 @@
   <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="site_libs/revealjs/plugin/search/search.js"></script>
@@ -244,7 +376,7 @@
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
- 
+
         // Display controls in the bottom right corner
         controls: true,
 
@@ -430,7 +562,7 @@
         });
         const isCodeAnnotation = (el) => {
           for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
+            if (clz.startsWith('code-annotation-')) {
               return true;
             }
           }
@@ -450,11 +582,11 @@
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
             button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
+            tooltip = new bootstrap.Tooltip(button,
+              { trigger: "manual",
                 customClass: "code-copy-button-tooltip",
                 offset: [0, -8]});
-            tooltip.show();    
+            tooltip.show();
           }
           setTimeout(function() {
             if (tooltip) {
@@ -533,7 +665,7 @@
           }
             config['offset'] = [0,0];
             config['maxWidth'] = 700;
-          window.tippy(el, config); 
+          window.tippy(el, config);
         }
         const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
         for (var i=0; i<noterefs.length; i++) {
@@ -590,6 +722,6 @@
         }
       });
       </script>
-    
+
 
 </body></html>
