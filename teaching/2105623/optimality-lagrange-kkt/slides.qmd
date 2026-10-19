@@ -1,0 +1,299 @@
+---
+pagetitle: "Optimality, Lagrange and KKT"
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0
+    controls: true
+    progress: true
+    slide-number: false
+    transition: none
+    center: false
+    theme: white
+    css: slides.css
+    include-in-header: download.html
+execute:
+  enabled: false
+---
+
+
+## {.slide-image}
+
+![Optimality conditions](assets/slide-01.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Learning outcomes](assets/slide-02.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Class schedule](assets/slide-03.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Local and global optima](assets/slide-04.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![First-order condition](assets/slide-05.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Second-order conditions](assets/slide-06.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![When the second derivative is zero](assets/slide-07.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Two-variable Hessian test](assets/slide-08.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Eigenvalues: meaning and calculation](assets/slide-09.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Computing eigenvalues of a 2 × 2 Hessian](assets/slide-10.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Worked example: two positive eigenvalues](assets/slide-11.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Eigenvalue signs and local curvature](assets/slide-12.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: calculate and classify](assets/slide-13.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice solution: a saddle point](assets/slide-14.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![A saddle falls in one direction and rises in another](assets/slide-15.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Worked example: quadratic cost](assets/slide-16.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Global extrema on a closed interval](assets/slide-17.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Checkpoint: identify the missing argument](assets/slide-18.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Step 1: derivative, gradient, and the constraint](assets/slide-19.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Step 2: the objective contour touches the constraint](assets/slide-20.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Step 3: parallel gradients give the Lagrange equation](assets/slide-21.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Equality-constrained optimization](assets/slide-22.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The Lagrangian](assets/slide-23.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Lagrange multipliers: geometric meaning](assets/slide-24.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The multiplier measures sensitivity](assets/slide-25.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Worked example: minimum energy](assets/slide-26.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Equality geometry](assets/slide-27.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The gradient is perpendicular to feasible motion](assets/slide-28.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Finding both a maximum and a minimum](assets/slide-29.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: fixed total production](assets/slide-30.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Fixed total production: solution](assets/slide-31.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Lagrange example: sharing a production load](assets/slide-32.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Sharing a production load: solution](assets/slide-33.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Break](assets/slide-34.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![A consistent inequality convention](assets/slide-35.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The four KKT conditions](assets/slide-36.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![One example for all four KKT conditions](assets/slide-37.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Primal feasibility: is the point allowed?](assets/slide-38.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Stationarity: which gradients balance?](assets/slide-39.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Dual feasibility: why must μ be nonnegative?](assets/slide-40.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Complementary slackness: when does a bound matter?](assets/slide-41.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![All four conditions: one complete check](assets/slide-42.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![KKT balances the objective and constraint gradients](assets/slide-43.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Active and inactive constraints](assets/slide-44.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Worked example: an active upper bound](assets/slide-45.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Worked example: an inactive upper bound](assets/slide-46.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![An upper bound can be active or inactive](assets/slide-47.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![A practical active-set procedure](assets/slide-48.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![When KKT is necessary or sufficient](assets/slide-49.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![A constraint qualification can fail](assets/slide-50.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![KKT example: meeting a minimum delivery target](assets/slide-51.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Minimum delivery: KKT solution](assets/slide-52.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Process application: shared capacity](assets/slide-53.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Resource allocation: full KKT system](assets/slide-54.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Resource allocation: solve and verify](assets/slide-55.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Profit contours and the capacity limit](assets/slide-56.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Marginal value of capacity](assets/slide-57.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Capacity changes the optimum and its marginal value](assets/slide-58.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Maximum and minimum need different certificates](assets/slide-59.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: constrained quadratic cost](assets/slide-60.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice solution](assets/slide-61.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Common mistakes](assets/slide-62.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Exit ticket](assets/slide-63.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Class feedback](assets/slide-64.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Optional: equality second-order test](assets/slide-65.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![References and further practice](assets/slide-66.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Extra Lagrange example: a closed cylindrical tank](assets/slide-67.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Closed cylinder: Lagrange solution](assets/slide-68.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Extra KKT example: two active capacity bounds](assets/slide-69.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Two active bounds: KKT solution](assets/slide-70.png){width="1280" height="720"}
