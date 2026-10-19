@@ -8,7 +8,7 @@ const link=el('a',`Session ${guide.session} · learning path and slides`);link.h
 const session=data.sessions.find(s=>s.number===guide.session),required=session.core.includes(lab),independent=session.delivery==='independent';
 panel.append(el('p',required?(independent?'Required lab within this session’s 180-minute independent lesson. Follow the lesson schedule and named worksheet questions; there is no additional compulsory preparation or follow-up.':'Required lab for this session. Read the pre-class PDF (15–20 minutes), then continue the classroom case in a 30–40 minute follow-up.'):'Optional extension for this session. Start with the required lab on the learning path.'));
 if(independent){
- const start=el('a',session.video?'Open the narrated independent lesson':'Open the independent study guide');start.href='../'+(session.video||session.studyHub||session.deck);panel.append(start);
+ const start=el('a',session.video?'Open the narrated independent lesson':'Open the independent study guide');start.href=/^https?:\/\//.test(session.video||'')?session.video:'../'+(session.video||session.studyHub||session.deck);panel.append(start);
  if(session.worksheet){const line=el('p'),worksheet=el('a',`English worksheet · ${session.worksheetPages||4} pages`);worksheet.href='../'+session.worksheet;line.append(worksheet);panel.append(line);}
 }
 const reading=el('a',independent&&session.prereadingOptional?'Optional background reading PDF':'Pre-class reading PDF · three preparation questions');reading.href='../'+session.prereading;panel.append(reading);

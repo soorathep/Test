@@ -1,0 +1,709 @@
+{
+  "method": "Local faster-whisper tiny.en, CPU int8, beam_size3; no network; ASR transcription compared with source narration. This is not a subjective listening review.",
+  "targets": [
+    6,
+    7,
+    10,
+    14,
+    15,
+    19,
+    22,
+    29
+  ],
+  "checks": [
+    {
+      "slide": 6,
+      "slide_id": "consistency-constraint",
+      "title": "Gibbs–Duhem · 15–21 min",
+      "audio_file": "segment-06.wav",
+      "sha256": "2b5a473c9438f67e50f6667887878356b3ed7e176a69f29d812af5328e2ac96b",
+      "duration_seconds": 66.86333333333333,
+      "sample_rate": 24000,
+      "peak": 0.758056640625,
+      "clipped_samples": 0,
+      "expected_narration": "Now consider a binary liquid at fixed temperature and pressure. The Gibbs-Duhem equation connects changes in its two activity coefficients. If one coefficient changes with composition, the other cannot be chosen independently. Their mole-fraction-weighted logarithmic changes must sum to zero. This is a constraint on a collection of composition-dependent properties, rather than a test of one isolated gamma value. The second equation defines dimensionless excess Gibbs energy by weighting the two log activity coefficients. Under the same fixed conditions, the slope of that excess-energy curve equals the logarithm of gamma one divided by gamma two. That slope relationship will give us a local diagnostic. We can compare the slope inferred from the weighted properties with the log ratio at the same composition. Complete B one on page one. State the fixed conditions and explain the connection in one sentence.",
+      "recognized": "Now, consider a binary liquid at fixed temperature and pressure. The Gibbs Duam equation connects changes in its two activity coefficients. If one coefficient changes with composition, the other cannot be chosen independently. Their mole fraction weighted logarithmic changes must sum to zero. This is a constraint on a collection of composition dependent properties. Other than a test of one isolated gamma value, the second equation defines dimensionless excess Gibbs energy by weighting the two log activity coefficients under the same fixed conditions. The slope of that excess energy curve equals the logarithm of gamma 1 divided by gamma 2. That slope relationship will give us a local diagnostic. We can compare the slope inferred from the weighted properties with the log ratio at the same composition. Complete B1 on page 1. State the fixed conditions and explain the connection in one sentence.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.8,
+          "text": "Now, consider a binary liquid at fixed temperature and pressure."
+        },
+        {
+          "start": 4.8,
+          "end": 10.24,
+          "text": "The Gibbs Duam equation connects changes in its two activity coefficients."
+        },
+        {
+          "start": 10.24,
+          "end": 16.48,
+          "text": "If one coefficient changes with composition, the other cannot be chosen independently."
+        },
+        {
+          "start": 16.48,
+          "end": 21.44,
+          "text": "Their mole fraction weighted logarithmic changes must sum to zero."
+        },
+        {
+          "start": 21.44,
+          "end": 26.32,
+          "text": "This is a constraint on a collection of composition dependent properties."
+        },
+        {
+          "start": 26.32,
+          "end": 35.120000000000005,
+          "text": "Other than a test of one isolated gamma value, the second equation defines dimensionless excess Gibbs energy"
+        },
+        {
+          "start": 35.120000000000005,
+          "end": 40.8,
+          "text": "by weighting the two log activity coefficients under the same fixed conditions."
+        },
+        {
+          "start": 40.8,
+          "end": 47.84,
+          "text": "The slope of that excess energy curve equals the logarithm of gamma 1 divided by gamma 2."
+        },
+        {
+          "start": 47.84,
+          "end": 52.36,
+          "text": "That slope relationship will give us a local diagnostic."
+        },
+        {
+          "start": 52.36,
+          "end": 59.4,
+          "text": "We can compare the slope inferred from the weighted properties with the log ratio at the same composition."
+        },
+        {
+          "start": 59.4,
+          "end": 62.0,
+          "text": "Complete B1 on page 1."
+        },
+        {
+          "start": 62.0,
+          "end": 66.64,
+          "text": "State the fixed conditions and explain the connection in one sentence."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "Full conceptual sequence and B1 instruction recognized. Fixed T/P, weighted logarithmic changes summing to zero, gamma ratio and local slope all present. Minor proper-name/phrase transcription differences are not treated as confirmed pronunciation defects. No substantive omission or cut ending identified by ASR."
+    },
+    {
+      "slide": 7,
+      "slide_id": "the-experimental-path-2127-min",
+      "title": "The experimental path · 21–27 min",
+      "audio_file": "segment-07.wav",
+      "sha256": "5acdbf80b562f7c553f41d1655e7e55adfccbca44f140356797b4a4680821a6d",
+      "duration_seconds": 76.57933333333334,
+      "sample_rate": 24000,
+      "peak": 0.73699951171875,
+      "clipped_samples": 0,
+      "expected_narration": "Experimental vapor-liquid data do not always follow a path with both temperature and pressure fixed. In an isothermal experiment, temperature stays constant while the equilibrium pressure generally changes with composition. The more general relationship therefore contains a pressure term involving molar excess volume. Our teaching calculation neglects that contribution. This approximation must accompany the interpretation. In an isobaric experiment, pressure is fixed but temperature changes. The local relationship then needs an excess-enthalpy correction. For real measurements, we need independent excess-enthalpy information before assigning that corrected local verdict. A missing correction is not evidence that the measurements failed. Lab Three also supplies synthetic excess enthalpy for its generated isobaric cases. That value comes from the generator; it is not an independent calorimetric measurement. Complete B two: identify the omitted pressure contribution and the property needed for the temperature correction.",
+      "recognized": "Experimental vapor liquid data do not always follow a path with both temperature and pressure fixed. In an isothermal experiment, temperature stays constant while the equilibrium pressure generally changes with composition. The more general relationship, therefore, contains a pressure term involving molar excess volume. Our teaching calculation neglects that contribution. This approximation must accompany the interpretation. In an isobaric experiment, pressure is fixed by temperature changes. The local relationship then needs an excess enthalpy correction. For real measurements, we need independent excess enthalpy information before assigning that corrected local verdict. A missing correction is not evidence that the measurements failed. Lab 3 also supplies synthetic excess enthalpy for its generated isobaric cases. That value comes from the generator. It is not an independent calorometric measurement. Complete B2. Identify the omitted pressure contribution and the property needed for the temperature correction.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 7.0,
+          "text": "Experimental vapor liquid data do not always follow a path with both temperature and pressure fixed."
+        },
+        {
+          "start": 7.0,
+          "end": 16.0,
+          "text": "In an isothermal experiment, temperature stays constant while the equilibrium pressure generally changes with composition."
+        },
+        {
+          "start": 16.0,
+          "end": 23.0,
+          "text": "The more general relationship, therefore, contains a pressure term involving molar excess volume."
+        },
+        {
+          "start": 24.0,
+          "end": 28.0,
+          "text": "Our teaching calculation neglects that contribution."
+        },
+        {
+          "start": 28.0,
+          "end": 32.0,
+          "text": "This approximation must accompany the interpretation."
+        },
+        {
+          "start": 32.0,
+          "end": 37.0,
+          "text": "In an isobaric experiment, pressure is fixed by temperature changes."
+        },
+        {
+          "start": 37.0,
+          "end": 42.0,
+          "text": "The local relationship then needs an excess enthalpy correction."
+        },
+        {
+          "start": 42.0,
+          "end": 50.0,
+          "text": "For real measurements, we need independent excess enthalpy information before assigning that corrected local verdict."
+        },
+        {
+          "start": 50.0,
+          "end": 55.0,
+          "text": "A missing correction is not evidence that the measurements failed."
+        },
+        {
+          "start": 55.0,
+          "end": 62.0,
+          "text": "Lab 3 also supplies synthetic excess enthalpy for its generated isobaric cases."
+        },
+        {
+          "start": 62.0,
+          "end": 64.0,
+          "text": "That value comes from the generator."
+        },
+        {
+          "start": 64.0,
+          "end": 68.0,
+          "text": "It is not an independent calorometric measurement."
+        },
+        {
+          "start": 68.0,
+          "end": 70.0,
+          "text": "Complete B2."
+        },
+        {
+          "start": 70.0,
+          "end": 76.0,
+          "text": "Identify the omitted pressure contribution and the property needed for the temperature correction."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "Complete path/pressure/excess-enthalpy explanation and B2 instruction recognized. One minor ASR conjunction substitution (by versus but) in the isobaric sentence is not confirmed as an audio defect. No substantive omitted passage or cut ending detected. This remains an ASR check, not subjective listening."
+    },
+    {
+      "slide": 10,
+      "slide_id": "area-solution-4350-min",
+      "title": "Area solution · 43–50 min",
+      "audio_file": "segment-10.wav",
+      "sha256": "44920b5e5b3c48588dff6035faa389dff1e5e27bd357d0e3b64795c98ebe54c6",
+      "duration_seconds": 68.346625,
+      "sample_rate": 24000,
+      "peak": 0.645111083984375,
+      "clipped_samples": 0,
+      "expected_narration": "The four baseline contributions are zero point three seven five, zero point one two five, minus zero point one two five, and minus zero point three seven five. The positive area is one half, the signed negative area is minus one half, and the total is zero. Raising the entire curve by zero point two adds a rectangle of height zero point two over a composition interval of one. The new signed integral is therefore zero point two. Lab Three calls the signed integral I and also reports a normalized score, D. D compares the magnitudes of the positive and negative areas; it is not the signed integral itself. The teaching area criterion is D below five percent. If both magnitudes vanish, that normalization is undefined. Check your work and keep the distinction visible. Real interior measurements still cannot establish missing endpoint intervals without an extra assumption.",
+      "recognized": "The four baseline contributions are 0.375, 0.125, minus 0.125, and minus 0.375. The positive area is one half. The sine negative area is minus one half, and the total is zero. Raising the entire curve by 0.2 adds a rectangle of height, 0.2 over a composition interval of one. The new sine integral is therefore 0.2. Lab 3 calls the sine integral i, and also reports a normalized score, d. d compares the magnitudes of the positive and negative areas. It is not the sine integral itself. The teaching area criterion is d below 5%. If both magnitudes vanish, that normalization is undefined. Check your work and keep the distinction visible. Real interior measurements still cannot establish missing end point intervals without an extra assumption.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 13.280000000000001,
+          "text": "The four baseline contributions are 0.375, 0.125, minus 0.125, and minus 0.375."
+        },
+        {
+          "start": 13.280000000000001,
+          "end": 20.48,
+          "text": "The positive area is one half. The sine negative area is minus one half, and the total is zero."
+        },
+        {
+          "start": 21.12,
+          "end": 30.32,
+          "text": "Raising the entire curve by 0.2 adds a rectangle of height, 0.2 over a composition interval of one."
+        },
+        {
+          "start": 30.32,
+          "end": 40.8,
+          "text": "The new sine integral is therefore 0.2. Lab 3 calls the sine integral i, and also reports a normalized score, d."
+        },
+        {
+          "start": 40.8,
+          "end": 48.400000000000006,
+          "text": "d compares the magnitudes of the positive and negative areas. It is not the sine integral itself."
+        },
+        {
+          "start": 48.4,
+          "end": 57.76,
+          "text": "The teaching area criterion is d below 5%. If both magnitudes vanish, that normalization is undefined."
+        },
+        {
+          "start": 57.76,
+          "end": 63.519999999999996,
+          "text": "Check your work and keep the distinction visible. Real interior measurements still cannot"
+        },
+        {
+          "start": 63.52,
+          "end": 76.48,
+          "text": "establish missing end point intervals without an extra assumption."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "All four signed trapezoid contributions, zero baseline sum, shifted sum 0.2, D < 5% criterion, undefined-normalization caveat, and endpoint assumption recognized. ASR writes sine for signed, a phonetic transcription difference; no substantive omission or cut ending identified."
+    },
+    {
+      "slide": 14,
+      "slide_id": "a-localized-defect-6774-min",
+      "title": "A localized defect · 67–74 min",
+      "audio_file": "segment-14.wav",
+      "sha256": "9adc848baa9ce6ccc34af9c198d0267e25a46969b6a9159c2b648bedf817f394",
+      "duration_seconds": 66.78395833333333,
+      "sample_rate": 24000,
+      "peak": 0.716552734375,
+      "clipped_samples": 0,
+      "expected_narration": "For D three, change only the perturbation to Localized defect near x one equals zero point three five. Keep amplitude zero point two five and forty-one points. This time the discrepancy occupies a narrow part of the composition range. Locate it on the local residual plot, then compare its appearance with the single averaged score. For these exact settings, both aggregate criteria are met, even though the residual plot shows the localized defect. Do not assume that deliberately introducing a defect must make every badge change. Record what the Lab actually reports and explain the scope of the average. Save the localized case separately. If you have spare time inside this activity block, compare one hundred sixty-one points, then return to forty-one. That optional resolution check changes the numerical sampling; it does not create new experimental evidence. Pause and complete D three.",
+      "recognized": "For D3, change only the perturbation to localize defect near X1, equals 0.35. Keep amplitude 0.25 and 41 points. This time, the discrepancy occupies a narrow part of the composition range. Located on the local residual plot, then compare its appearance with a single averaged score. For these exact settings, both aggregate criteria are met. even though the residual plot shows the localized defect, do not assume that deliberately introducing a defect must make every badge change. Record what the lab actually reports and explain the scope of the average. Save the localized case separately. If you have spare time inside this activity block, compare 161 points, then return to 41. That optional resolution check changes the numerical sampling. It does not create new experimental evidence. Pause and complete D3.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 8.16,
+          "text": "For D3, change only the perturbation to localize defect near X1, equals 0.35."
+        },
+        {
+          "start": 8.16,
+          "end": 12.64,
+          "text": "Keep amplitude 0.25 and 41 points."
+        },
+        {
+          "start": 12.64,
+          "end": 18.240000000000002,
+          "text": "This time, the discrepancy occupies a narrow part of the composition range."
+        },
+        {
+          "start": 18.240000000000002,
+          "end": 24.96,
+          "text": "Located on the local residual plot, then compare its appearance with a single averaged score."
+        },
+        {
+          "start": 24.96,
+          "end": 29.76,
+          "text": "For these exact settings, both aggregate criteria are met."
+        },
+        {
+          "start": 29.92,
+          "end": 36.0,
+          "text": "even though the residual plot shows the localized defect, do not assume that deliberately"
+        },
+        {
+          "start": 36.0,
+          "end": 40.0,
+          "text": "introducing a defect must make every badge change."
+        },
+        {
+          "start": 40.0,
+          "end": 45.120000000000005,
+          "text": "Record what the lab actually reports and explain the scope of the average."
+        },
+        {
+          "start": 45.120000000000005,
+          "end": 47.120000000000005,
+          "text": "Save the localized case separately."
+        },
+        {
+          "start": 47.84,
+          "end": 55.68000000000001,
+          "text": "If you have spare time inside this activity block, compare 161 points, then return to 41."
+        },
+        {
+          "start": 56.32,
+          "end": 60.88,
+          "text": "That optional resolution check changes the numerical sampling."
+        },
+        {
+          "start": 60.88,
+          "end": 64.32,
+          "text": "It does not create new experimental evidence."
+        },
+        {
+          "start": 64.32,
+          "end": 66.8,
+          "text": "Pause and complete D3."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "0.35 location, amplitude 0.25, 41 points, BOTH aggregate criteria met despite peak, optional 161 points and return to 41, no new experimental evidence, and pause / complete D3 all recognized. No substantive omission or cut ending identified."
+    },
+    {
+      "slide": 15,
+      "slide_id": "model-reproduction-7480-min",
+      "title": "Model reproduction · 74–80 min",
+      "audio_file": "segment-15.wav",
+      "sha256": "a687d9cc1a021cc0568d40e08131f10119c7b244aba5d7667af2e97794a5a714",
+      "duration_seconds": 72.462,
+      "sample_rate": 24000,
+      "peak": 0.681427001953125,
+      "clipped_samples": 0,
+      "expected_narration": "For the one required modeling run, return to Consistent reference at three hundred fifty kelvin and forty-one points. Click Run modeling test once and wait for the convergence message. Then inspect Modeling residuals. Record the pressure error in percent and the vapor-composition error in percentage points. These are different quantities, even though both are scaled by one hundred. The Lab fits two constant N R T L parameters with the nonrandomness parameter fixed at zero point four seven. Its teaching criteria require both reported errors to be below one in their stated units. The clean fit should give near-zero errors because it reproduces its own generating model; that is a check of model reproduction, not a certificate for real measurements. Herington is not applicable because this case is isothermal. Its boiling-range allowance belongs to an isobaric path. Pause now to finish D four. If the fit does not converge, record no modeling verdict instead of guessing a result.",
+      "recognized": "For the one required modeling run, return to consistent reference at 350 kelvin and 41 points. Click Run Modeling Test once and wait for the convergence message. Then inspect Modeling residuals. Record the pressure error in percent and the vapor composition error in percentage points. These are different quantities, even though both are scaled by 100. The lab fits two constant NRT L parameters, with the non-randomness parameter fixed at 0.47. Its teaching criteria require both reported errors to be below one in their stated units. The clean fit should give near zero errors because it reproduces its own generating model. That is a check of model reproduction, not a certificate for real measurements. Rankton is not applicable because this case is isothermal. Its boiling range allowance belongs to an isobaric path, pause now to finish D4. If the fit does not converge, record no modeling verdict instead of guessing a result.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 8.72,
+          "text": "For the one required modeling run, return to consistent reference at 350 kelvin and 41 points."
+        },
+        {
+          "start": 8.72,
+          "end": 13.64,
+          "text": "Click Run Modeling Test once and wait for the convergence message."
+        },
+        {
+          "start": 13.64,
+          "end": 16.6,
+          "text": "Then inspect Modeling residuals."
+        },
+        {
+          "start": 16.6,
+          "end": 22.36,
+          "text": "Record the pressure error in percent and the vapor composition error in percentage points."
+        },
+        {
+          "start": 22.36,
+          "end": 27.16,
+          "text": "These are different quantities, even though both are scaled by 100."
+        },
+        {
+          "start": 27.16,
+          "end": 36.04,
+          "text": "The lab fits two constant NRT L parameters, with the non-randomness parameter fixed at 0.47."
+        },
+        {
+          "start": 36.04,
+          "end": 42.64,
+          "text": "Its teaching criteria require both reported errors to be below one in their stated units."
+        },
+        {
+          "start": 42.64,
+          "end": 48.72,
+          "text": "The clean fit should give near zero errors because it reproduces its own generating"
+        },
+        {
+          "start": 48.72,
+          "end": 49.72,
+          "text": "model."
+        },
+        {
+          "start": 49.72,
+          "end": 55.28,
+          "text": "That is a check of model reproduction, not a certificate for real measurements."
+        },
+        {
+          "start": 55.28,
+          "end": 59.84,
+          "text": "Rankton is not applicable because this case is isothermal."
+        },
+        {
+          "start": 59.84,
+          "end": 66.48,
+          "text": "Its boiling range allowance belongs to an isobaric path, pause now to finish D4."
+        },
+        {
+          "start": 66.48,
+          "end": 72.08,
+          "text": "If the fit does not converge, record no modeling verdict instead of guessing a result."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "Clean 350 K / 41-point fit once, units percent versus percentage points, two NRTL parameters, alpha 0.47, both thresholds < 1, near-zero reproduction caveat, Herington inapplicable to isothermal path, and D4/no-convergence instructions recognized. ASR renders Herington as Rankton; this proper-name difference alone does not confirm an audio pronunciation defect. No substantive omission or cut ending identified."
+    },
+    {
+      "slide": 19,
+      "slide_id": "phase-equilibrium-includes-stability",
+      "title": "Liquid stability · 100–105 min",
+      "audio_file": "segment-19.wav",
+      "sha256": "b548145efb1fc2ccaa826c23870a21baf635c62693da3709a2785b7596040cd5",
+      "duration_seconds": 69.926,
+      "sample_rate": 24000,
+      "peak": 0.66534423828125,
+      "clipped_samples": 0,
+      "expected_narration": "At fixed temperature and pressure, stable equilibrium is the admissible state with the lowest total Gibbs energy, subject to the material balance. For a binary mixture, the mixing-energy curve contains the ideal mixing terms plus the excess contribution. This curve can become nonconvex even when the activity model satisfies the Gibbs-Duhem identity exactly. That is why consistency does not imply a stable homogeneous liquid. Equality of chemical potentials identifies candidate coexisting phases. We must still ask whether that candidate provides the lowest energy when all allowed compositions are considered. In a binary plot, a globally supporting common tangent supplies that comparison. The line represents the energy of a mixture of the two endpoint liquids. Complete F one on page three: explain what remains to be checked after a solver has found equal chemical potentials. Pause briefly before continuing to the geometric condition.",
+      "recognized": "At fixed temperature and pressure, stable equilibrium is the admissible state with the lowest total Gibbs energy, subject to the material balance. For a binary mixture, the mixing energy curve contains the ideal mixing terms plus the excess contribution. This curve can become non-convex, even when the activity model satisfies the Gibbs-DUM identity exactly. That is why consistency does not imply a stable homogeneous liquid. Equality of chemical potentials identifies candidate coexisting phases. We must still ask whether that candidate provides the lowest energy when all allowed compositions are considered. In a binary plot, a globally supporting common tangent supplies that comparison. The line represents the energy of a mixture of the two-and-point liquids. Complete F1 on page 3. Explain what remains to be checked after a solver has found equal chemical potentials. Pause briefly before continuing to the geometric condition.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.22,
+          "text": "At fixed temperature and pressure, stable equilibrium is the"
+        },
+        {
+          "start": 4.22,
+          "end": 10.52,
+          "text": "admissible state with the lowest total Gibbs energy, subject to the material balance."
+        },
+        {
+          "start": 10.52,
+          "end": 16.240000000000002,
+          "text": "For a binary mixture, the mixing energy curve contains the ideal mixing terms plus the"
+        },
+        {
+          "start": 16.240000000000002,
+          "end": 18.240000000000002,
+          "text": "excess contribution."
+        },
+        {
+          "start": 18.240000000000002,
+          "end": 24.64,
+          "text": "This curve can become non-convex, even when the activity model satisfies the Gibbs-DUM"
+        },
+        {
+          "start": 24.64,
+          "end": 26.52,
+          "text": "identity exactly."
+        },
+        {
+          "start": 26.52,
+          "end": 32.36,
+          "text": "That is why consistency does not imply a stable homogeneous liquid."
+        },
+        {
+          "start": 32.36,
+          "end": 37.8,
+          "text": "Equality of chemical potentials identifies candidate coexisting phases."
+        },
+        {
+          "start": 37.8,
+          "end": 42.96,
+          "text": "We must still ask whether that candidate provides the lowest energy when all allowed"
+        },
+        {
+          "start": 42.96,
+          "end": 45.08,
+          "text": "compositions are considered."
+        },
+        {
+          "start": 45.08,
+          "end": 50.96,
+          "text": "In a binary plot, a globally supporting common tangent supplies that comparison."
+        },
+        {
+          "start": 50.96,
+          "end": 56.56,
+          "text": "The line represents the energy of a mixture of the two-and-point liquids."
+        },
+        {
+          "start": 56.56,
+          "end": 59.92,
+          "text": "Complete F1 on page 3."
+        },
+        {
+          "start": 59.92,
+          "end": 65.76,
+          "text": "Explain what remains to be checked after a solver has found equal chemical potentials."
+        },
+        {
+          "start": 65.76,
+          "end": 69.52,
+          "text": "Pause briefly before continuing to the geometric condition."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "Fixed T/P minimum-Gibbs statement, balance constraint, nonconvexity despite Gibbs–Duhem consistency, candidate versus global stability, supporting tangent and F1 instruction all recognized. Endpoint/name spelling variations are ASR uncertainties. No substantive omission or cut ending identified."
+    },
+    {
+      "slide": 22,
+      "slide_id": "lever-rule-check-116120-min",
+      "title": "Lever-rule check · 116–120 min",
+      "audio_file": "segment-22.wav",
+      "sha256": "a002e6747c9e0b753b2507750152165db76e63d3a11924168561eb0c8b94bc39",
+      "duration_seconds": 59.42066666666667,
+      "sample_rate": 24000,
+      "peak": 0.665130615234375,
+      "clipped_samples": 0,
+      "expected_narration": "For the central feed, the two liquid fractions are equal. For an overall composition of zero point three five, the rich-liquid fraction is one quarter and the other fraction is three quarters. The balance is three quarters times zero point two, plus one quarter times zero point eight, which returns zero point three five. The coexisting compositions remain the same because we have kept the coexistence conditions fixed and moved the feed within the same tie line. The phase amounts change instead. Correct your F two calculation, then answer F three using the global supporting-tangent condition. Touching the curve twice is not enough if the line rises above an admissible part of it. Open Lab Four and guide page three when you are ready. The next investigation uses the model's actual calculated endpoints.",
+      "recognized": "For the central feed, the two liquid fractions are equal. For an overall composition of 0.35, the rich liquid fraction is 1-quarter, and the other fraction is 3-quarters. The balance is 3-quarters times 0.2, plus 1-quarter times 0.8, which returns 0.35. The co-existing compositions remain the same because we have kept the co-existence conditions fixed and move the feed within the same tie line. The phase amounts change instead. Correct your F2 calculation. Then answer F3 using the global supporting tangent condition. Touching the curve twice is not enough if the line rises above an admissible part of it. Open Lab 4 and Guide page 3 when you are ready. Next investigation uses the model's actual calculated endpoints.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "For the central feed, the two liquid fractions are equal."
+        },
+        {
+          "start": 4.0,
+          "end": 11.0,
+          "text": "For an overall composition of 0.35, the rich liquid fraction is 1-quarter,"
+        },
+        {
+          "start": 11.0,
+          "end": 14.0,
+          "text": "and the other fraction is 3-quarters."
+        },
+        {
+          "start": 14.0,
+          "end": 20.0,
+          "text": "The balance is 3-quarters times 0.2, plus 1-quarter times 0.8,"
+        },
+        {
+          "start": 20.0,
+          "end": 23.0,
+          "text": "which returns 0.35."
+        },
+        {
+          "start": 23.0,
+          "end": 27.0,
+          "text": "The co-existing compositions remain the same because"
+        },
+        {
+          "start": 27.0,
+          "end": 30.0,
+          "text": "we have kept the co-existence conditions fixed"
+        },
+        {
+          "start": 30.0,
+          "end": 33.0,
+          "text": "and move the feed within the same tie line."
+        },
+        {
+          "start": 33.0,
+          "end": 36.0,
+          "text": "The phase amounts change instead."
+        },
+        {
+          "start": 36.0,
+          "end": 38.0,
+          "text": "Correct your F2 calculation."
+        },
+        {
+          "start": 38.0,
+          "end": 43.0,
+          "text": "Then answer F3 using the global supporting tangent condition."
+        },
+        {
+          "start": 43.0,
+          "end": 47.0,
+          "text": "Touching the curve twice is not enough if the line rises"
+        },
+        {
+          "start": 47.0,
+          "end": 50.0,
+          "text": "above an admissible part of it."
+        },
+        {
+          "start": 50.0,
+          "end": 54.0,
+          "text": "Open Lab 4 and Guide page 3 when you are ready."
+        },
+        {
+          "start": 54.0,
+          "end": 59.0,
+          "text": "Next investigation uses the model's actual calculated endpoints."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "Hand-case fractions 1/4 and 3/4, 0.2/0.8 weighted balance 0.35, unchanged endpoints, changed amounts, global tangent condition, F2/F3 and Lab 04 guide p. 3 all recognized. Actual Lab 04 endpoints explicitly differentiated from the hand example. No substantive omission or cut ending identified."
+    },
+    {
+      "slide": 29,
+      "slide_id": "self-review-check-169172-min",
+      "title": "Self-review check · 169–172 min",
+      "audio_file": "segment-29.wav",
+      "sha256": "629476f26c2ce6e171c09bd571652a111dcc21d1e0cf2430c4a70da35fb83321",
+      "duration_seconds": 63.714625,
+      "sample_rate": 24000,
+      "peak": 0.660491943359375,
+      "clipped_samples": 0,
+      "expected_narration": "For H one, opposite local errors can cancel in the integral, so a small area is not a guarantee about every point. For H two, examine the thermodynamic path, required excess-property corrections, phase and property assumptions, and the numerical differentiation. If essential information is missing, the appropriate result may be not assessed rather than a failed test. For H three, a small residual demonstrates reproduction by the selected model on those observations. It does not independently establish accuracy for new data. For H four, the rich-liquid fraction is zero point two five and the balance returns zero point three five. A stable two-liquid interpretation also needs distinct phases and a globally supporting common tangent. Correct your answers in a different color or add a note. Keep the original attempt so you can see what changed.",
+      "recognized": "For H1, opposite local errors can cancel in the integral, so a small area is not a guarantee about every point. For H2, examine the thermodynamic path, required excess property corrections, phase and property assumptions, and the numerical differentiation. If essential information is missing, the appropriate result may be not assessed rather than a failed test. For H3, a small residual demonstrates reproduction by the selected model on those observations. It does not independently establish accuracy for new data. For H4, the rich liquid fraction is 0.25, and the balance returns 0.35. A stable two-liquid interpretation also needs distinct phases, and a globally supporting common tangent. Correct your answers in a different color or add a note. Keep the original attempt so you can see what changed.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.5,
+          "text": "For H1, opposite local errors can cancel in the integral,"
+        },
+        {
+          "start": 4.5,
+          "end": 8.5,
+          "text": "so a small area is not a guarantee about every point."
+        },
+        {
+          "start": 8.5,
+          "end": 12.5,
+          "text": "For H2, examine the thermodynamic path,"
+        },
+        {
+          "start": 12.5,
+          "end": 15.0,
+          "text": "required excess property corrections,"
+        },
+        {
+          "start": 15.0,
+          "end": 17.5,
+          "text": "phase and property assumptions,"
+        },
+        {
+          "start": 17.5,
+          "end": 19.8,
+          "text": "and the numerical differentiation."
+        },
+        {
+          "start": 19.8,
+          "end": 22.3,
+          "text": "If essential information is missing,"
+        },
+        {
+          "start": 22.3,
+          "end": 27.0,
+          "text": "the appropriate result may be not assessed rather than a failed test."
+        },
+        {
+          "start": 27.0,
+          "end": 31.5,
+          "text": "For H3, a small residual demonstrates reproduction"
+        },
+        {
+          "start": 31.5,
+          "end": 34.5,
+          "text": "by the selected model on those observations."
+        },
+        {
+          "start": 34.5,
+          "end": 39.0,
+          "text": "It does not independently establish accuracy for new data."
+        },
+        {
+          "start": 39.0,
+          "end": 44.0,
+          "text": "For H4, the rich liquid fraction is 0.25,"
+        },
+        {
+          "start": 44.0,
+          "end": 47.5,
+          "text": "and the balance returns 0.35."
+        },
+        {
+          "start": 47.5,
+          "end": 52.5,
+          "text": "A stable two-liquid interpretation also needs distinct phases,"
+        },
+        {
+          "start": 52.5,
+          "end": 55.5,
+          "text": "and a globally supporting common tangent."
+        },
+        {
+          "start": 55.5,
+          "end": 59.5,
+          "text": "Correct your answers in a different color or add a note."
+        },
+        {
+          "start": 59.5,
+          "end": 63.5,
+          "text": "Keep the original attempt so you can see what changed."
+        }
+      ],
+      "review_status": "pass_asr_spot_check",
+      "review_notes": "All four review answers recognized: canceling local errors; path, correction and differentiation checks; missing information means not assessed; reproduction is not prediction; f-beta 0.25 and balance 0.35 plus distinct phases and global tangent. Closing instruction to correct while preserving the original attempt is intact. No substantive omission or cut ending identified."
+    }
+  ],
+  "summary": {
+    "status": "pass_asr_spot_checks",
+    "checked_slides": [
+      6,
+      7,
+      10,
+      14,
+      15,
+      19,
+      22,
+      29
+    ],
+    "checked_audio_seconds": 544.096542,
+    "clipped_samples": 0,
+    "maximum_peak": 0.758056640625,
+    "substantive_omissions_or_cut_endings_detected": false,
+    "confirmed_pronunciation_defects": [],
+    "asr_uncertainties": [
+      "Gibbs-Duhem and Herington proper names differ in the tiny.en transcript.",
+      "Minor signed/sine, endpoint and conjunction transcription differences do not by themselves confirm audible defects."
+    ],
+    "scope": "Eight representative technical tracks were transcribed with the local model and compared with the normalized narration. This is not a subjective listening assessment and does not claim every track was transcribed."
+  }
+}

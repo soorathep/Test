@@ -12,3 +12,8 @@
 .reveal .slides section > p, .reveal .slides section > ul,
 .reveal .slides section > ol { font-size: .91em; }
 .reveal .slides section > .math.display { margin: .45em 0; }
+/* Preserve mathematical symbols inside capitalized table headings. */
+.reveal table th .math, .reveal table th .katex {
+  text-transform: none;
+  letter-spacing: normal;
+}

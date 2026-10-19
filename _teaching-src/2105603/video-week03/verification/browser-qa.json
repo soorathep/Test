@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "method": "CUA interaction with the actual H.264/AAC recording and WebVTT track in the in-app browser",
+  "checks": [
+    "Desktop actual playback and native English captions",
+    "Chapter navigation to slide 4",
+    "Automatic pause at slide 4 retains attempt before slide 5 check",
+    "Continue advances to slide 5 and resumes playback",
+    "Chapter navigation to slide 18 while playing",
+    "Break stops on slide 18 with full 10-minute instruction",
+    "Actual lesson in a 390-pixel-wide iframe viewport",
+    "Long 183-character slide 26 caption wraps below the image without clipping",
+    "Narrow viewport full-screen playback with native captions"
+  ],
+  "scope": "One desktop browser; narrow layout is an actual 390-pixel iframe viewport, not physical-phone hardware testing. Full subjective listening was not performed."
+}

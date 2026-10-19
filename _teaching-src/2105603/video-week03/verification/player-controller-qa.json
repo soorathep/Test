@@ -1,0 +1,65 @@
+{
+  "scope": "Controller unit tests using minimal fake DOM/media; not actual rendering, audio synchronization or browser playback QA",
+  "mode": "actual timing metadata; mocked media events, no decoded-video or browser QA",
+  "script_sha256": "99a92b5f838c4cfa446474f2d155b434d4c876ed6fd78ae843310df3f4b21e55",
+  "chapters": 31,
+  "tests": [
+    {
+      "name": "Default activity pause holds each attempt before its answer (4/9/21/28)",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed timeupdate beyond a boundary rewinds and pins the previous task",
+      "status": "passed"
+    },
+    {
+      "name": "Continue advances to the next slide and resumes playback",
+      "status": "passed"
+    },
+    {
+      "name": "Intentional chapter and native seeks do not trigger skipped activities",
+      "status": "passed"
+    },
+    {
+      "name": "Replaying a completed activity resets its future pause guard",
+      "status": "passed"
+    },
+    {
+      "name": "Turning activity pauses off permits manual playback and clears a shown pause",
+      "status": "passed"
+    },
+    {
+      "name": "Timer and animation-frame guards protect boundaries without timeupdate",
+      "status": "passed"
+    },
+    {
+      "name": "The break pauses on slide 18 and Continue resumes slide 19",
+      "status": "passed"
+    },
+    {
+      "name": "Final slide 31 pauses, Finish stops and the ended fallback does not reopen it",
+      "status": "passed"
+    },
+    {
+      "name": "Final ended event also holds unfinished feedback before completion",
+      "status": "passed"
+    },
+    {
+      "name": "Wide captions remain native; narrow captions use active timed cues below the image",
+      "status": "passed"
+    },
+    {
+      "name": "Caption toggle disables both presentations and restores the appropriate narrow mode",
+      "status": "passed"
+    },
+    {
+      "name": "Native full screen uses native captions; narrow wrapper full screen retains separate captions",
+      "status": "passed"
+    },
+    {
+      "name": "Late caption loading attaches cue updates and desktop native CC changes update the toggle",
+      "status": "passed"
+    }
+  ],
+  "timing_source": "outputs/week03-video/timeline.json"
+}
