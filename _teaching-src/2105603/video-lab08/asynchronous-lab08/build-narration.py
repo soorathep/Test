@@ -195,7 +195,7 @@ def main():
     for cue in all_cues:
         lines.extend([cue['id'],f"{vtt_time(cue['start_sample'])} --> {vtt_time(cue['end_sample'])}",
                       '\n'.join(textwrap.wrap(html.escape(cue['text'], quote=False),width=70,break_long_words=False,break_on_hyphens=False)),''])
-    (args.output/'captions.vtt').write_text('\n'.join(lines)+'\n')
+    (args.output/'captions.vtt').write_text('\n'.join(lines).rstrip()+'\n')
     elapsed = time.monotonic()-start_clock
     master_float = master.astype(np.float64)/32768
     qa = {'passed':True,'sample_rate':SR,'channel_count':1,'format':'PCM_16',
