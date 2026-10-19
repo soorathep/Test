@@ -149,6 +149,12 @@ PLAYER_SCRIPT = r"""
       video.currentTime = bounded(chapter ? chapter.start_seconds : 0);
       update();
       await video.play();
+      if (thisRequest === request) {
+        video.scrollIntoView({
+          block: 'center',
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+      }
     } catch (error) {
       if (thisRequest !== request) return;
       message.textContent = 'Playback could not start. Try the video play control, or use the download link below.';
