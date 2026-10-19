@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 08: Excel to VLE model comparison | 2105603</title>
+<meta name="description" content="A 20-minute guided thermodynamics demonstration: inspect an Excel dataset, import CSV, check activity coefficients, fit Margules and NRTL, and reopen saved studies.">
+<style>
+@font-face{font-family:Sarabun;src:url('assets/Sarabun-Regular.ttf') format('truetype');font-display:swap}
+:root{--ink:#333f4a;--accent:#0f6e6b;--paper:#fff;--soft:#f3f6f5;--rule:#cbd5d2;--muted:#53616c}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Sarabun,system-ui,sans-serif}main{max-width:980px;margin:auto;padding:28px 26px 52px}a{color:var(--accent);text-underline-offset:3px}a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}h1,h2,h3{line-height:1.2;break-after:avoid}h1{font-size:clamp(2rem,5vw,3rem);margin:14px 0}h2{font-size:1.45rem;margin:0 0 12px}h3{font-size:1.08rem;margin:18px 0 7px}p{margin:9px 0}nav{font-size:.9rem}header{padding-bottom:22px;border-bottom:2px solid var(--accent)}.eyebrow,.time{font-weight:700;color:var(--accent);font-size:.88rem}.lede{font-size:1.1rem;max-width:760px}.resources{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.resources a,.print{padding:9px 14px;border:1px solid var(--accent);border-radius:5px;background:var(--paper);font:inherit;color:var(--accent)}.resources a:first-child{background:var(--accent);color:var(--paper)}.small{font-size:.9rem;color:var(--muted)}section{padding:25px 0;border-bottom:1px solid var(--rule)}ol,ul{padding-left:24px;margin:8px 0}li{margin:6px 0}.note{padding:12px 15px;background:var(--soft);border-left:3px solid var(--accent);margin:14px 0}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:13px 0;font-size:.95rem}th,td{padding:9px 11px;border:1px solid var(--rule);text-align:left;vertical-align:top}th{background:var(--soft)}code,pre{font: .9em/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}code{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:13px 15px;background:var(--soft);border:1px solid var(--rule)}.equation{font-size:1rem}.checklist{list-style:none;padding:0}.checklist li{padding-left:25px;position:relative}.checklist li::before{content:'□';position:absolute;left:0}footer{padding-top:22px;font-size:.9rem;color:var(--muted)}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:var(--paper);padding:10px;z-index:2}@media(max-width:600px){main{padding:20px 18px 35px}body{font-size:16px}th,td{padding:7px}.resources{display:grid;grid-template-columns:1fr}.print{width:100%}}@page{size:A4;margin:15mm 16mm}@media print{body{font:10pt/1.35 Sarabun,system-ui,sans-serif}main{max-width:none;padding:0}h1{font-size:23pt}h2{font-size:14pt}h3{font-size:11pt}section{padding:13px 0}.resources{display:block;margin:10px 0}.resources a{display:inline;padding:0;border:0;background:none!important;color:var(--ink)!important;margin-right:12px}.print,.skip{display:none}header{padding-bottom:10px}.lede,.equation{font-size:10.5pt}.table-wrap{overflow:visible}table{font-size:9pt}th,td{padding:5px 6px}tr,.note,pre{break-inside:avoid}thead{display:table-header-group}p,li{orphans:3;widows:3}a{color:var(--ink)}.note{padding:8px 10px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#walkthrough">Skip to the walkthrough</a>
+<main>
+<nav aria-label="Breadcrumb"><a href="./">2105603 course</a> / <a href="labs/vle-input.html#vi-experiment">Lab 08</a> / Guided demonstration</nav>
+<header>
+<p class="eyebrow">WEEK 2 FOLLOW-UP · ABOUT 20 MINUTES</p>
+<h1>From Excel to a VLE model comparison</h1>
+<p class="lede">Import a real CSV file from the supplied workbook, check one observation, compare two activity models, and reopen your saved work. Use the same synthetic dataset throughout.</p>
+<div class="resources"><a href="files/lab08-demo.xlsx" download>Download Excel workbook</a><a href="files/lab08-demo-K-kPa.csv" download>Download matching CSV</a><a href="labs/vle-input.html#vi-experiment" target="_blank" rel="noopener">Open Lab 08</a><a href="files/week02-lab-guide.pdf">Printable quick guide</a></div>
+<p class="small">The workbook has two tabs: <strong>Demo</strong> contains calculations and explanations; <strong>VLE_data</strong> contains the 19 observations to import. The separate CSV supplies that same observation table if you need a ready-to-use file.</p>
+<button class="print" type="button" onclick="window.print()">Print this walkthrough</button>
+</header>
+
+<section id="walkthrough" aria-labelledby="step1">
+<p class="time">0–3 MINUTES · PREPARE THE INPUT FILE</p>
+<h2 id="step1">1. Inspect the workbook and save one worksheet as CSV</h2>
+<ol>
+<li>Open <strong>lab08-demo.xlsx</strong>. Select <strong>VLE_data</strong>. Inspect <strong>A1:D20</strong>: four headers in row 1 and 19 data rows below them. Each row is one constructed equilibrium observation.</li>
+<li>The headers must be exactly <code>T,P,x1,y1</code>. For this dataset, T is in <strong>K</strong>, P is in <strong>kPa</strong>, and x1 and y1 are mole fractions, not percentages. Keep units and explanatory text outside this table.</li>
+<li>Keep <strong>VLE_data</strong> active. In desktop Excel, use <strong>File → Save As</strong> and select <strong>CSV UTF-8 (Comma delimited) (.csv)</strong> where available. Save a separate file, for example <code>my-lab08-data.csv</code>. If Excel asks which sheet to keep, export the active worksheet only. Preserve the original XLSX so its Demo formulas remain available.</li>
+<li>Check that the CSV starts with the four headers and contains all 19 observations. Do not export the <strong>Demo</strong> tab. Keep dot decimals and numerical precision; do not replace numbers with rounded text.</li>
+</ol>
+<p class="small">Excel wording varies by version. Select the CSV format first, then check that the filename ends in <code>.csv</code>. If you use the provided <code>lab08-demo-K-kPa.csv</code> instead, you can complete the Lab steps, but you have not yet practiced exporting from Excel.</p>
+<pre aria-label="CSV header and example observation">T,P,x1,y1
+…
+350,158.707198211,0.5,0.704857144627
+…</pre>
+<p class="small">The ellipses above are explanatory placeholders, not data to paste. Use the complete CSV. In the workbook, this observation is row 11.</p>
+</section>
+
+<section aria-labelledby="step2">
+<p class="time">3–6 MINUTES · INITIALIZE PROPERTIES, THEN IMPORT YOUR FILE</p>
+<h2 id="step2">2. Load the CSV into Lab 08</h2>
+<ol>
+<li>In Lab 08, select <strong>Load synthetic example</strong>. This fills the matching component names, source description, measured units and both Antoine definitions, as well as a table.</li>
+<li>Now use <strong>Load CSV or tab-separated text</strong> to select the CSV you actually saved in step 1. Check the selected filename and the contents of <strong>Or paste the table, including headers</strong>. Do not click Load synthetic example again after importing your file.</li>
+<li>Check <strong>Experimental path: Isothermal</strong>, <strong>Measured T column unit: K</strong>, and <strong>Measured P column unit: kPa</strong>. Both Antoine equations use <strong>log₁₀(Psat) = A − B/(T + C)</strong>, with equation temperature in <strong>K</strong>, Psat in <strong>kPa</strong>, and valid limits <strong>300–390 K</strong>.</li>
+<li>Select <strong>Validate &amp; inspect data →</strong>. Expect <strong>19 observations and 19 interior points used</strong>. Keep <strong>Unmeasured endpoint intervals → No extrapolation · no full-area verdict</strong>.</li>
+<li>Select <strong>Export complete study JSON</strong>. Keep a clearly named baseline file, for example <code>week02-baseline.json</code>.</li>
+</ol>
+<div class="note"><strong>The two actions have different jobs.</strong> Load synthetic example initializes the matching property setup for this particular teaching dataset. Selecting your CSV is the file-import step. For another dataset, supply its own sources, units and property constants. CSV alone does not restore those settings.</div>
+<p><strong>First-row check:</strong> 350 K = 76.85 °C; P ≈ 95.123102 kPa, x₁ = 0.05, y₁ ≈ 0.397542. Changing the measured T selector to °C would reinterpret 350 as 623.15 K; it would not convert the input table.</p>
+</section>
+
+<section aria-labelledby="step3">
+<p class="time">6–9 MINUTES · CHECK ONE OBSERVATION</p>
+<h2 id="step3">3. Compare the Demo calculation with the Lab</h2>
+<p>Open <strong>Imported observations</strong>. Locate <strong>x₁ = 0.5</strong>, input row 11. In Excel, use the <strong>Demo</strong> tab to inspect the formulas linked to this row of VLE_data: <strong>B5:B9</strong> contains the observation, <strong>B12:B13</strong> calculates the two saturation pressures, <strong>B14:B15</strong> calculates γ, and <strong>B16:B17</strong> calculates ln γ. The Antoine input block is <strong>B24:C30</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Quantity</th><th>Expected value</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>T; P</td><td>350 K; 158.707198211 kPa</td><td>Temperature and total mixture pressure</td></tr>
+<tr><td>x₁; y₁</td><td>0.5; 0.704857144627</td><td>Component 1 mole fractions in liquid and vapor</td></tr>
+<tr><td>P₁<sup>sat</sup>; P₂<sup>sat</sup></td><td>150 kPa; 60 kPa</td><td>Calculated pure-component saturation pressures at 350 K</td></tr>
+<tr><td>ln γ₁; ln γ₂</td><td>≈ 0.399813; ≈ 0.445568</td><td>Natural logarithms displayed in the Lab table</td></tr>
+</tbody></table></div>
+<div class="note equation">γ₁ = [0.704857144627 × 158.707198211] / [0.5 × 150] ≈ <strong>1.491545</strong><br>γ₂ = [(1 − 0.704857144627) × 158.707198211] / [(1 − 0.5) × 60] ≈ <strong>1.561377</strong></div>
+<p>Both results are dimensionless. Compare your γ values with <strong>EXP(table ln γ)</strong>, allowing for displayed rounding. For component 2, use x₂ = 1 − x₁ and y₂ = 1 − y₁.</p>
+<p class="small">These calculations use yᵢP ≈ xᵢγᵢPᵢ<sup>sat</sup>, assuming ideal vapor and negligible Poynting correction. Agreement checks the calculation with these inputs; it does not independently validate the property source.</p>
+</section>
+
+<section aria-labelledby="step4">
+<p class="time">9–15 MINUTES · FIT, INSPECT AND SAVE EACH MODEL</p>
+<h2 id="step4">4. Compare Margules and NRTL</h2>
+<ol>
+<li>Choose <strong>Model → Margules · 1 parameter</strong>, then select <strong>Fit selected model</strong>. Wait for convergence. Choose <strong>View → Pressure and vapor residuals</strong>.</li>
+<li>Record both reported errors, a residual pattern and any parameter-bound warning. Select <strong>Export complete study JSON</strong> and <strong>Export fitted residuals CSV</strong>. Rename both downloads to identify Margules before switching models.</li>
+<li>Choose <strong>Model → NRTL · fixed α</strong> and set <strong>Fixed NRTL α = 0.3</strong>. Leave <strong>Fit τᵢⱼ = cᵢⱼ + dᵢⱼ(350/T − 1)</strong> unchecked. Keep the observations and property settings unchanged.</li>
+<li>Select <strong>Fit selected model</strong> again. Inspect the same residual view and export the NRTL JSON and residuals CSV under separate names.</li>
+</ol>
+<div class="table-wrap"><table><thead><tr><th>Full 19-point baseline</th><th>Mean absolute pressure error (%)</th><th>Mean absolute vapor error (percentage points)</th></tr></thead><tbody>
+<tr><td>Margules, 1 parameter</td><td>≈ 1.14098</td><td>≈ 0.675676</td></tr>
+<tr><td>NRTL, fixed α = 0.3</td><td>≈ 1.14 × 10⁻⁶</td><td>≈ 3.83 × 10⁻⁷</td></tr>
+</tbody></table></div>
+<p class="small">Small final-digit differences are normal. For spreadsheet inspection, the exported <code>y_error</code> column is the raw mole-fraction difference y<sub>calc</sub> − y<sub>observed</sub>. Multiply it by 100 for percentage points. The <code>pressure_error_percent</code> column is already a percentage. A reported mean absolute error averages absolute residuals.</p>
+</section>
+
+<section aria-labelledby="step5">
+<p class="time">15–18 MINUTES · RESTORE A FILE AND RECALCULATE</p>
+<h2 id="step5">5. Reopen one saved study</h2>
+<ol>
+<li>Expand <strong>Study workspace · reopen and compare cases</strong> near the top of Lab 08. Set <strong>Label for the next captured case</strong> to a useful label, such as “Restored Margules”.</li>
+<li>Use <strong>Load studies or a comparison JSON</strong> to select the Margules study JSON downloaded earlier. Select its <strong>Restore [case label]</strong> button.</li>
+<li>Check the restored data, units, constants and model controls. Select <strong>Validate &amp; inspect data →</strong>, followed by <strong>Fit selected model</strong>. Inspect the fresh errors and compare them with the saved result.</li>
+</ol>
+<div class="note"><strong>Loading is not recalculation.</strong> The workspace initially displays recorded results. Restore loads the controls; validation and fitting calculate a fresh result. The observation CSV is input data, the residuals CSV is an output table, and complete study JSON preserves the setup and recorded results.</div>
+</section>
+
+<section aria-labelledby="step6">
+<p class="time">18–20 MINUTES · STATE WHAT YOU HAVE SHOWN</p>
+<h2 id="step6">6. Explain the evidence</h2>
+<p><strong>Finding:</strong> NRTL reproduces these synthetic training observations more closely than one-parameter Margules. Report both metrics with their units.</p>
+<p><strong>Limitation:</strong> NRTL generated these observations, so close recovery is expected. A low training error does not establish thermodynamic consistency, real-fluid property accuracy or prediction on new observations.</p>
+<ul>
+<li><strong>Computation:</strong> your hand/Excel calculation agrees with the Lab for the chosen row.</li>
+<li><strong>Properties:</strong> real-fluid Psat values need comparison with independent measurements or a suitable reference at the same temperature.</li>
+<li><strong>Consistency:</strong> use an applicable thermodynamic diagnostic and report its assumptions. Missing composition endpoints prevent a full-area verdict here.</li>
+<li><strong>Prediction:</strong> test observations excluded from fitting within a justified model and property range.</li>
+</ul>
+<p class="small">For its isothermal diagnostics, Lab 08 neglects excess-volume pressure effects. An isobaric differential verdict also requires independent excess-enthalpy data. The <a href="files/week02-lab-guide.pdf">quick guide</a> explains these distinctions and further troubleshooting.</p>
+</section>
+
+<section aria-labelledby="example-results">
+<h2 id="example-results">Completed demonstration files</h2>
+<p>The workflow was checked in desktop Excel and Lab 08: export the active worksheet, import all 19 points, compare both models, then load the saved JSON files and validate/refit each model. The Excel-exported CSV preserves every numeric value in the supplied data.</p>
+<p><a href="files/lab08-demo-excel-export.csv" download>CSV exported from Excel</a> · <a href="files/lab08-baseline.json" download>Validated baseline JSON</a></p>
+<table><thead><tr><th>Example model</th><th>Reopen the setup</th><th>Inspect residuals</th></tr></thead><tbody>
+<tr><td>Margules, 1 parameter</td><td><a href="files/lab08-margules-study.json" download>Study JSON</a></td><td><a href="files/lab08-margules-residuals.csv" download>Residuals CSV</a></td></tr>
+<tr><td>NRTL, α = 0.3</td><td><a href="files/lab08-nrtl-study.json" download>Study JSON</a></td><td><a href="files/lab08-nrtl-residuals.csv" download>Residuals CSV</a></td></tr>
+</tbody></table>
+<p class="small">These are synthetic worked examples, not student submissions. Practice exporting your own files first. Import one study at a time after entering a descriptive case label. Refit after restoring.</p>
+<details><summary>See the restored NRTL result</summary><img src="files/lab08-restored-nrtl.jpg" alt="Lab 08 restored NRTL fit with tau12 0.8, tau21 1.2, alpha 0.3 and near-zero reproduction errors" style="display:block;width:100%;max-width:650px;height:auto;margin:14px auto"></details>
+</section>
+<section aria-labelledby="checklist">
+<h2 id="checklist">Completion checklist</h2>
+<ul class="checklist">
+<li>I know whether I used the supplied CSV or exported the active VLE_data worksheet myself.</li>
+<li>I selected that CSV in the Lab, checked its units and properties, and validated all 19 observations.</li>
+<li>I checked row 11 and compared γ with EXP(ln γ).</li>
+<li>I saved a baseline JSON and separate study JSON/residual CSV files for both models.</li>
+<li>I reopened an actual saved JSON, restored its inputs, and validated/refitted it.</li>
+<li>I can state a numerical finding and distinguish fitting from validation.</li>
+</ul>
+<p><strong>This is a practice checklist, not a new attendance task.</strong> Keep your files and corrections with the original worksheet. If your result differs, retain the study JSON and the exact warning so the same setup can be inspected.</p>
+</section>
+<footer><a href="week02-clarifications.html">Clarification slides</a> · <a href="files/week02-practice.pdf">Original worksheet</a> · <a href="labs/learning-path.html#session-3">Session 3 learning path</a><p>2105603 · Advanced Chemical Engineering Thermodynamics · Synthetic teaching data; local calculations.</p></footer>
+</main>
+</body>
+</html>
