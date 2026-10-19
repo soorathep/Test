@@ -140,7 +140,9 @@ ul.task-list li input[type="checkbox"] {
   } catch (_) { status.textContent = 'Browser saving unavailable. Download your answers before leaving.'; }
   fields.forEach(f => f.addEventListener('input', () => {
     try {
-      localStorage.setItem(key, JSON.stringify(Object.fromEntries(fields.map(x => [x.dataset.answer, x.value]))));
+      const previous = JSON.parse(localStorage.getItem(key) || '{}') || {};
+      const current = Object.fromEntries(fields.map(x => [x.dataset.answer, x.value]));
+      localStorage.setItem(key, JSON.stringify({ ...previous, ...current }));
       status.textContent = 'Draft saved in this browser. Not submitted.';
     } catch (_) { status.textContent = 'Could not save draft. Download your answers before leaving.'; }
   }));
