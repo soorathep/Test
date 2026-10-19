@@ -310,3 +310,10 @@ download. Rebuild the offline ZIP whenever course documents change.
 
 The Sarabun fonts retain their OFL license. Keep private response reports and
 student records outside this public repository.
+
+
+### Week 2 feedback follow-up
+
+`week02-clarifications.qmd` provides 12 content slides plus a title and three optional reference slides. Use the core review for the first 15 minutes of Session 3's existing opening block; the complete class remains 180 minutes. The recorded Week 2 deck and narration retain their synchronized slide order. The video landing page, course index, Lab 08 and learning path link this follow-up.
+
+`prereading/week02-lab-guide.html` is a three-page English guide with the exact synthetic baseline, measured versus equation units, CSV and JSON workflows, model comparison, evidence limits and self-check answers. Render the slides with the public profile, vendor KaTeX, publish, then run `tools/export-week02-clarifications.mjs` against the preview specified by `COURSE_ORIGIN`. It exports the clarification PDF, guide PDF and revised Session 3 PDF. Rebuild the offline package after those exports. No student responses or identifying details belong in this public source.

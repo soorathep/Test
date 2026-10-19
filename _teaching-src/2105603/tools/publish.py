@@ -38,6 +38,7 @@ DST = pathlib.Path(__file__).resolve().parents[3] / "teaching" / "2105603"
 # Every deck in the folder, unless the caller names one. Hard-coding a single
 # file meant the second module was rendered, checked, and then not copied.
 DECKS = [
+    "week02-clarifications.html",
     *[f"postmidterm-{i:02d}.html" for i in range(1,7)],
     "eos.html",        # Module 1  Evolution of Equations of State
     "fugacity.html",   # Module 2  Fugacity and the Equilibrium Criterion

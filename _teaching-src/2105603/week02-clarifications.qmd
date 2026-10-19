@@ -1,0 +1,226 @@
+---
+title: "VLE data and model checks"
+subtitle: "Week 2 follow-up · A guided Lab 08 review"
+author: "Soorathep Kheawhom"
+date: 2026-10-19
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    css: [assets/postmidterm.css, assets/week02-clarifications.css]
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## A clearer route through Lab 08
+
+Your feedback asked for clearer unit conventions, a guided demonstration and more explanation of the results.
+
+**Open:** [Lab 08](labs/vle-input.html#vi-experiment) and the [three-page Lab guide](files/week02-lab-guide.pdf).
+
+We will use one synthetic dataset throughout this review. Follow along for **15 minutes at the start of Session 3**. The last three slides are optional reference material.
+
+Keep your original worksheet. Add corrections beside it. This review adds no attendance submission.
+
+::: {.notes}
+Thank students for explaining where the instructions were unclear. This is a learning follow-up, not a discussion of individual responses. Spend fifteen minutes within the existing thirty-minute opening block: setup and concepts 2, examples and units 3, row and hand check 3, live workflow and comparison 3, evidence and consistency 2, self-check and answers 2. Demonstrate one export live; use the guide for repeated exports and restoration. Open the actual Lab for the demonstration. Do not ask students to repeat the whole independent lesson.
+:::
+
+## What the activity coefficient describes
+
+At the same measured temperature, modified Raoult's law gives
+
+$$y_iP=x_i\gamma_iP_i^{sat},\qquad
+\gamma_i=\frac{y_iP}{x_iP_i^{sat}}.$$
+
+- $x_i$: liquid mole fraction. $y_i$: vapor mole fraction.
+- $P$: total pressure. $P_i^{sat}$: pure-component saturation pressure.
+- $\gamma_i$: departure from the ideal-liquid reference. It is dimensionless.
+
+**Assumptions here:** ideal vapor and negligible Poynting correction. Use the same pressure unit in numerator and denominator.
+
+**Your action:** Locate these quantities on guide page 1 before opening any fit.
+
+::: {.notes}
+Gamma was new in Week 2. Explain the symbols before the program. Gamma greater than one means the inferred liquid activity exceeds x under this standard state. It does not by itself establish stability or data quality.
+:::
+
+## The worksheet and Lab use different examples
+
+| | Worksheet page 2, Section C | Lab 08 synthetic example |
+|---|---|---|
+| Equilibrium temperature | 50 °C = 323.15 K | 350 K = 76.85 °C |
+| Temperature in Antoine equation | °C | K |
+| Constants | A = 4, B = 1000, C = 200 | Supplied separately for each component |
+| Purpose | Practice equation conventions | Work with a complete VLE dataset |
+
+**Your action:** Select **Load synthetic example** in Lab 08. Use its own constants. Keep the Section C constants in that paper exercise.
+
+Both examples are synthetic teaching data.
+
+## Three temperature labels
+
+| Setting or display | Meaning | Lab example |
+|---|---|---|
+| Measured-data temperature unit | Unit of the numbers in the input file | 350 with K selected |
+| Temperature inside Antoine equation | Convention attached to A, B and C | Insert 350 in this K correlation |
+| Valid temperature limits | Range fields always use K | 300–390 K |
+
+The calculated observation table always displays **K and kPa**.
+
+**Your action:** Check all three locations on guide page 2. An equivalent measured input is **76.85 with °C selected**. Merely relabeling 350 as °C changes the temperature.
+
+::: {.notes}
+Show the three controls in the browser. There is no Celsius conversion to perform inside the default Antoine equation because it uses kelvin. For another source, use that source's equation and constants together. Switching a label does not transform the constants.
+:::
+
+## One observation and its calculated properties
+
+**Your action:** After validation, locate $x_1=0.5$ in Imported observations. Use guide page 1.
+
+| Input observation | Value | Calculated property at 350 K | Value |
+|---|---:|---|---:|
+| T | 350 K | $P_1^{sat}$ | 150 kPa |
+| P | 158.707198 kPa | $P_2^{sat}$ | 60 kPa |
+| $x_1$ | 0.500000 | $\ln\gamma_1$ | 0.399813 |
+| $y_1$ | 0.704857 | $\ln\gamma_2$ | 0.445568 |
+
+$P_1^{sat}$ and $P_2^{sat}$ come from the two Antoine correlations. They are not the total mixture pressure $P$.
+
+## A hand calculation beside the Lab result
+
+$$\gamma_1=\frac{0.704857144627\,(158.707198211)}{0.5\,(150)}
+\approx 1.491545$$
+
+$$\gamma_2=\frac{(1-0.704857144627)\,(158.707198211)}{(1-0.5)\,(60)}
+\approx 1.561377$$
+
+All pressures are in kPa. Both results are dimensionless.
+
+**Your action:** Calculate $\gamma_1$ and compare it with $\exp(0.399813)$, allowing for display rounding. The table reports **ln γ**, so comparing 1.491545 directly with 0.399813 compares different quantities.
+
+Agreement checks the calculation with the chosen inputs. Real property accuracy needs an independent reference.
+
+## The demonstrated workflow
+
+**Your action:** Follow guide page 2 and repeat these steps in the open Lab.
+
+1. **Load synthetic example.** Inspect the measured units and both Antoine definitions.
+2. **Validate & inspect data.** Keep endpoint handling at **No extrapolation**. Inspect the $x_1=0.5$ row.
+3. **Export complete study JSON.** Save a baseline before changing models.
+4. Choose **Margules · 1 parameter**, then **Fit selected model**. Save JSON and residuals CSV. Repeat with **NRTL · fixed α**, α = 0.3 and temperature dependence off.
+
+Select **Pressure and vapor residuals** in View. Guide page 2 explains Excel/CSV preparation and reopening saved studies.
+
+::: {.notes}
+Do these steps live, including one export. Explain that changing model controls invalidates the old displayed fit. Show where exports go in the browser. Students do not need to code JSON. JSON records the study; CSV is a spreadsheet-friendly table.
+:::
+
+## A comparison using the same observations
+
+Default synthetic dataset: 19 observations at 350 K. Same property inputs and fitting objective.
+
+| Fitted model | Mean absolute pressure error (%) | Mean absolute $y_1$ error (percentage points) |
+|---|---:|---:|
+| Margules, one parameter | 1.14098 | 0.675676 |
+| NRTL, α = 0.3 | About $1.14\times10^{-6}$ | About $3.83\times10^{-7}$ |
+
+Small final digits may vary. The data generator uses NRTL, so near-exact recovery is expected.
+
+**Your action:** Name each metric and its unit in worksheet E2. A mole-fraction error of **0.01** equals **1 percentage point**. Near-zero training error alone does not establish consistency or prediction.
+
+## What each check can establish
+
+| Check | Evidence it supplies |
+|---|---|
+| Hand calculation versus Lab | Agreement for this calculation with the chosen equation and inputs |
+| $P^{sat}$ versus independent measurements or a trusted reference | External support for the property inputs at the same T |
+| Applicable thermodynamic diagnostic | Agreement with a constraint, under stated assumptions |
+| Data excluded from fitting | Evidence about prediction on those held-out observations |
+
+**Your action:** On guide page 3, identify which check you have actually performed. Describe any remaining checks as future work.
+
+The synthetic example has no real-fluid measurements against which to validate its property constants.
+
+## Why consistency needs more than a fit
+
+For a binary liquid at fixed T and P, Gibbs–Duhem requires
+
+$$x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0.$$
+
+The two activity coefficients are linked. A fitted model can obey this relation while only approximating inconsistent measurements.
+
+Lab 08 assumes negligible excess-volume pressure effects for its isothermal diagnostics. Isobaric diagnostics need their temperature correction and, for the differential test, independent $H^E$ data.
+
+**Your action:** Read the diagnostic's applicability message. With incomplete composition coverage and **No extrapolation**, a full-area verdict is unavailable. **Not assessed** is not a pass or a failure.
+
+::: {.notes}
+State the fixed-temperature, fixed-pressure condition. Our isothermal VLE data vary in pressure, so neglecting the excess-volume term is an additional approximation. Avoid presenting an uncorrected area rule as universal. Primary references: https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Herington.htm and https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Point.htm . The Lab uses its own finite-difference teaching diagnostic, not the NIST Padé implementation. Lab 03 is optional deeper study, not an extra task today.
+:::
+
+## A one-minute self-check
+
+**Your action:** Answer these on paper before the next slide. No form submission is required.
+
+1. The CSV contains **350**. Which measured temperature unit matches the synthetic example?
+2. The table shows **ln γ₁ = 0.399813**. What value should you compare with your hand-calculated γ₁?
+3. NRTL gives a smaller training residual. Which further checks are needed to support consistency and prediction?
+
+Use guide pages 1–2 for units and page 3 for the types of evidence. Then check the answers on the next slide.
+
+## Answers and the next question
+
+1. **K.** The equivalent Celsius input is 76.85. The example Antoine equation also uses K.
+2. **exp(0.399813) ≈ 1.49155**, dimensionless.
+3. An **applicable thermodynamic diagnostic** for consistency, and **observations excluded from fitting** for prediction. Separately validate real-fluid property inputs against an independent reference.
+
+**Your action:** Add one correction to your worksheet if needed. Return to [Session 3: liquid stability](postmidterm-03.html#/phase-equilibrium-includes-stability).
+
+Next we ask whether an equilibrium calculation gives the **lowest admissible Gibbs energy**. A good VLE fit alone does not settle that question.
+
+## Reference: Excel to CSV
+
+**Optional:** Use guide page 2 when preparing your own dataset.
+
+1. Create four columns with exact headers **T, P, x1, y1**. Each row is one equilibrium observation. Keep units out of the header and record them separately.
+2. Use mole fractions between 0 and 1, dot decimals and numeric cells. Remove titles, blank rows and extra calculated columns.
+3. Save as **CSV UTF-8**. In Lab 08, load the CSV or paste the table, then set its measured units and supply both Antoine definitions and sources.
+
+The supplied template uses **350 K and kPa**. A CSV contains observations only. It does not set or restore the Lab's units or constants. Excel workbooks (.xlsx) must first be saved as CSV.
+
+## Reference: saved files and troubleshooting
+
+| File | What it contains | How to use it |
+|---|---|---|
+| Observation CSV | Raw T, P, x1, y1 | Import as data, then set units and properties |
+| Complete study JSON | Controls, sources and recorded results | Study workspace, load JSON, Restore, then validate/refit |
+| Fitted residuals CSV | Calculated residual table | Open in a spreadsheet to inspect/export results |
+
+**If results differ:** compare the raw data, units, component order, equation form, sources and model settings first. Then check convergence and parameter-bound warnings.
+
+Keep the JSON and a screenshot of any error. Guide page 2 gives the exact restore steps. You do not need to edit JSON by hand.
+
+## Reference: an evidence-based explanation
+
+**Finding:** On the same 350 K synthetic dataset, NRTL reproduces the training observations more closely than one-parameter Margules.
+
+**Evidence:** Mean absolute pressure error decreases from about **1.14098%** to **0.00000114%**, with the same property inputs and fitting objective.
+
+**Limit:** The generator uses NRTL. This comparison establishes model recovery on these observations. Thermodynamic consistency, real-fluid property accuracy and prediction each require their own applicable evidence.
+
+**Your action:** Use this structure for worksheet F, with your own saved results. Include the metric, units, controlled inputs and a limitation.
+
+[Lab guide PDF](files/week02-lab-guide.pdf) · [Original worksheet](files/week02-practice.pdf) · [Learning path](labs/learning-path.html#session-3)

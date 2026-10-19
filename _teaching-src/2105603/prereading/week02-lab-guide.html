@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Week 2 Lab 08 quick guide</title><style>
+@font-face{font-family:Sarabun;src:url('../assets/Sarabun-Regular.ttf')}@font-face{font-family:Sarabun;src:url('../assets/Sarabun-Bold.ttf');font-weight:700}
+@page{size:A4;margin:15mm 17mm}*{box-sizing:border-box}body{font:10.5pt/1.34 Sarabun,sans-serif;color:#333f4a;margin:0}h1{font-size:19pt;line-height:1.15;margin:9px 0}h2{font-size:12.5pt;line-height:1.2;margin:12px 0 5px}p{margin:5px 0}ol,ul{margin:5px 0;padding-left:21px}li{margin:4px 0}.page{break-after:page}.page:last-child{break-after:auto}.tag{font-size:9pt;border-bottom:1px solid #999;padding-bottom:7px}.note{border-left:3px solid #999;padding:3px 0 3px 10px;margin:8px 0}.eq{margin:6px 0;padding:7px 9px;border:1px solid #aaa;font-size:10.2pt}table{width:100%;border-collapse:collapse;margin:7px 0;font-size:9.5pt}th,td{border:1px solid #aaa;padding:5px 7px;text-align:left;vertical-align:top}th{font-weight:700}a{color:inherit;text-decoration:underline}code,pre{font:9pt/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}pre{border:1px solid #aaa;padding:7px;white-space:pre-wrap;margin:6px 0}.small,footer{font-size:9pt}.line{height:23px;border-bottom:1px dotted #aaa}.compact li{margin:3px 0}footer{border-top:1px solid #aaa;padding-top:7px;margin-top:12px}b{font-weight:700}@media screen{body{max-width:800px;margin:24px auto;padding:0 20px}.page{padding-bottom:30px;margin-bottom:25px;border-bottom:1px solid #aaa}}@media print{h1,h2{break-after:avoid}tr,.eq,.note{break-inside:avoid}}
+</style></head><body>
+<section class="page"><div class="tag">2105603 / Week 2 follow-up / Lab 08 quick guide / Page 1 of 3</div>
+<h1>One row, one property check</h1>
+<p>Use this guide beside <a href="https://www.skhgroup.net/teaching/2105603/labs/vle-input.html#vi-experiment"><b>Lab 08: Your measurements. Inspect, test, fit.</b></a> Start with the built-in synthetic example. You do not need to write JSON or code.</p>
+<p class="small">Companions: <a href="https://www.skhgroup.net/teaching/2105603/week02-clarifications.html">Week 2 clarification slides</a> · <a href="https://www.skhgroup.net/teaching/2105603/files/week02-practice.pdf">Week 2 worksheet, Sections C-F</a>. This is a review aid, not a new attendance task.</p>
+<h2>1. Understand what gamma means</h2>
+<p><b>x<sub>i</sub></b> and <b>y<sub>i</sub></b> are liquid and vapor mole fractions. For the liquid reference used here, <b>a<sub>i</sub> = γ<sub>i</sub>x<sub>i</sub></b>. The activity coefficient γ<sub>i</sub> represents departure from ideal-solution behavior; γ<sub>i</sub> = 1 is the ideal limit. Mole fractions, activities and activity coefficients are dimensionless.</p>
+<div class="eq">At equilibrium, with ideal vapor and negligible Poynting correction:<br><b>y<sub>i</sub>P ≈ x<sub>i</sub>γ<sub>i</sub>P<sub>i</sub><sup>sat</sup></b>, so <b>γ<sub>i</sub> ≈ y<sub>i</sub>P / (x<sub>i</sub>P<sub>i</sub><sup>sat</sup>)</b>.<br>Use P and P<sup>sat</sup> in the same pressure unit. Do not apply this division to an absent component at a pure endpoint.</div>
+<h2>2. Keep the two teaching examples separate</h2>
+<table><tr><th>Worksheet Section C: standalone exercise</th><th>Lab 08: built-in synthetic dataset</th></tr><tr><td>At <b>50 °C</b> (323.15 K):<br>log₁₀(P<sup>sat</sup>/kPa) = 4 − 1000/(T<sub>C</sub> + 200)<br>Equation temperature is <b>°C</b>.<br>Valid at 20-80 °C; result: <b>1 kPa</b>.</td><td>At <b>350 K</b> (76.85 °C):<br>log₁₀(P<sup>sat</sup>/kPa) = A − B/(T<sub>K</sub> + C)<br>Equation temperature is <b>K</b>.<br>Declared range: 300-390 K; C = 0.</td></tr></table>
+<p><b>Do not copy Section C constants into Lab 08.</b> Both are synthetic examples, not real-compound correlations. Changing the selected equation form does not convert its constants.</p>
+<h2>3. Load and inspect the baseline</h2>
+<ol class="compact"><li>Select <b>Load synthetic example</b>, then <b>Validate &amp; inspect data →</b>. Expect <b>19 interior points</b>, with measured T = K and measured P = kPa.</li><li>For both components, verify the displayed equation is <b>log₁₀(Psat) = A − B/(T + C)</b>; equation T unit = <b>K</b>; Psat unit = <b>kPa</b>; valid range = <b>300 to 390 K</b>.</li><li>Open <b>Imported observations</b>. Find x₁ = 0.5 (input row 11, including the header).</li></ol>
+<table><tr><th>Synthetic component</th><th>A</th><th>B</th><th>C</th></tr><tr><td>1</td><td>6.653258697961224</td><td>1567.0086036169398</td><td>0</td></tr><tr><td>2</td><td>7.00151326244011</td><td>1828.176704219763</td><td>0</td></tr></table>
+<div class="eq">P₁<sup>sat</sup> = 10<sup>[6.653258697961224 − 1567.0086036169398/350]</sup> = <b>150 kPa</b>.<br>Using component 2's own constants gives P₂<sup>sat</sup> = <b>60 kPa</b>.</div>
+<p>For the chosen row: P = 158.707198211 kPa, x₁ = 0.5, y₁ = 0.704857144627.</p>
+<div class="eq">γ₁ = (0.704857144627 × 158.707198211)/(0.5 × 150) = <b>1.491545</b><br>γ₂ = [(1 − 0.704857144627) × 158.707198211]/[(1 − 0.5) × 60] = <b>1.561377</b><br>The table shows <b>ln γ₁ ≈ 0.399813</b> and <b>ln γ₂ ≈ 0.445568</b>. Compare your γ with <b>exp(table ln γ)</b>, not directly with ln γ.</div>
+<p class="small">A hand calculation checks implementation and conventions. Agreement with the same supplied correlation does not independently establish that the property source is physically accurate.</p>
+</section>
+<section class="page"><div class="tag">2105603 / Week 2 follow-up / Lab 08 quick guide / Page 2 of 3</div>
+<h1>Prepare, compare and save</h1>
+<h2>4. Move a table from Excel into the Lab</h2>
+<p>Use four numeric columns. Here is the exact header and <b>one preview row</b>:</p>
+<pre>T,P,x1,y1
+350,158.707198211,0.5,0.704857144627</pre>
+<ol class="compact"><li>Select <b>Download synthetic CSV template (K, kPa)</b>. Keep all <b>19 rows</b> for this comparison. Import requires at least five distinct interior points.</li><li>Save Excel data as <b>CSV</b>, not .xlsx. Alternatively, copy the four columns with headers into <b>Or paste the table, including headers</b>.</li><li>Use dot decimals, mole fractions (0-1), and sufficient precision. Scientific notation such as <code>1.58707198211E+2</code> is valid. No units in cells, thousands separators, blank cells or Psat columns.</li><li>Use <b>Load CSV or tab-separated text</b>. Check component order, sources, experimental path, units and both Antoine definitions. Select <b>Validate &amp; inspect data →</b>.</li></ol>
+<p class="note"><b>Loading CSV does not restore units or constants.</b> Only <b>Load synthetic example</b> fills the synthetic table and its complete property setup together.</p>
+<table><tr><th>Unit setting</th><th>Meaning</th></tr><tr><td>Measured-data T / measured P</td><td>Units of CSV numbers: baseline <b>K / kPa</b>.</td></tr><tr><td>Antoine equation T / Psat</td><td>Units required by the constants' source: baseline <b>K / kPa</b>.</td></tr><tr><td>Minimum / maximum valid T</td><td>Always <b>K</b>. Thus 20-80 °C becomes 293.15-353.15 K.</td></tr></table>
+<p class="small">The Lab converts measured T to each equation's unit. Do not convert twice. Revalidate after changing inputs; temperatures outside either correlation's range block import.</p>
+<h2>5. Fit two models to the same observations</h2>
+<ol class="compact"><li>Choose <b>Margules · 1 parameter → Fit selected model</b>. Wait for convergence. Select <b>View → Pressure and vapor residuals</b>.</li><li>Record both errors and bound warnings. Select <b>Export complete study JSON</b> and <b>Export fitted residuals CSV</b>; rename files “Margules”.</li><li>Choose <b>NRTL · fixed α</b>; set <b>Fixed NRTL α = 0.3</b>. Leave <b>Fit τᵢⱼ = cᵢⱼ + dᵢⱼ(350/T − 1)</b> unchecked. Fit and export again as “NRTL”.</li></ol>
+<table><tr><th>19-point baseline</th><th>Mean absolute pressure error / %</th><th>Mean absolute vapor error / percentage points</th></tr><tr><td>Margules, 1 parameter</td><td>≈ 1.14098</td><td>≈ 0.675676</td></tr><tr><td>NRTL, α = 0.3</td><td>≈ 1.14 × 10⁻⁶</td><td>≈ 3.83 × 10⁻⁷</td></tr></table>
+<p class="small">Keep data, properties and objective unchanged. NRTL generated these synthetic data, so near-zero training error is expected, not experimental validation.</p>
+<p class="small"><b>Residual CSV:</b> <code>y_error</code> = ycalc − y1 in mole fraction; multiply by 100 for percentage points. <code>pressure_error_percent</code> is already percent.</p>
+<h2>6. Reopen a saved study</h2>
+<p>Near the top, expand <b>Study workspace · reopen and compare cases</b>. Select <b>Load studies or a comparison JSON → Restore [case label]</b>, then <b>Validate &amp; inspect data → Fit selected model</b>. JSON preserves the setup and recorded results; restoring requires fresh validation and fitting. A residuals CSV is output, not an input dataset.</p>
+</section>
+<section class="page"><div class="tag">2105603 / Week 2 follow-up / Lab 08 quick guide / Page 3 of 3</div>
+<h1>Explain what the result establishes</h1>
+<h2>7. Separate four questions</h2>
+<table><tr><th>Question</th><th>Evidence and limits</th></tr><tr><td><b>Did the model fit?</b></td><td>Inspect training residuals, error units and warnings. Low error does not establish correct properties, consistency or prediction.</td></tr><tr><td><b>Are properties credible?</b></td><td>Check equation, log base, signs, units and range. Compare real-fluid Psat with an independent reliable source at the same T. Hand/Lab agreement checks implementation only.</td></tr><tr><td><b>Are data consistent?</b></td><td>Use an applicable Gibbs-Duhem-based diagnostic; report assumptions and coverage. A pass does not prove experimental accuracy. Missing endpoints and noisy derivatives limit conclusions.</td></tr><tr><td><b>Will it predict?</b></td><td>Test observations excluded from fitting within a justified range. A single-temperature fit does not validate temperature extrapolation.</td></tr></table>
+<p>Keep <b>Unmeasured endpoint intervals → No extrapolation · no full-area verdict</b>. A withheld verdict reflects limited evidence; do not assume endpoints merely to obtain a verdict.</p>
+<p class="small">At fixed T and P, Gibbs-Duhem links the activity coefficients. Lab 08 isothermal diagnostics neglect excess-volume pressure effects. An isobaric differential verdict needs independent H<sup>E</sup> data for the temperature correction.</p>
+<h2>8. Give a claim, a number and a limitation</h2>
+<p class="note">“For 19 synthetic points at 350 K, NRTL reduced mean absolute pressure error from 1.141% to approximately 1.14 × 10⁻⁶%. This improves training-data reproduction. Because NRTL generated the data, it does not demonstrate experimental consistency or new-temperature prediction.”</p>
+<p>Always identify the dataset, model, settings, quantity, value and unit.</p>
+<h2>9. If results differ, check in this order</h2>
+<ol class="compact"><li><b>Table:</b> 19 baseline rows; correct component order; mole fractions, precision, missing cells and repeated x₁.</li><li><b>Properties:</b> measured units, equation forms, constants, equation units and validity limits in K. Revalidate.</li><li><b>Fit:</b> correct model; NRTL α = 0.3; temperature dependence off; completed fit and warnings.</li><li><b>Evidence:</b> correct error metric and units. Save study JSON when asking for help so the setup can be inspected.</li></ol>
+<h2>10. Self-check, then read the answers</h2>
+<ol class="compact"><li>CSV <code>350</code> means 350 K, but measured T is set to °C. What temperature is interpreted?</li><li>Table ln γ₁ = 0.399813. What do you compare with hand-calculated γ₁?</li><li>Why is synthetic NRTL error near zero? What remains unproven?</li><li>Which file reopens the setup, and what do you do after restoring?</li></ol>
+<div class="line"></div>
+<h2>Answers</h2>
+<p><b>1.</b> 623.15 K, outside the baseline range. Select K for this CSV.</p>
+<p><b>2.</b> exp(0.399813) ≈ 1.49155, dimensionless; differences from page 1 are rounding.</p>
+<p><b>3.</b> NRTL generated the data. Reproduction does not prove experimental consistency or new-condition prediction.</p>
+<p><b>4.</b> <b>Export complete study JSON</b>. Load and Restore in the Study workspace, then validate and refit.</p>
+<footer>Continue worksheet Sections D-F. Keep original answers and add corrections.</footer>
+</section></body></html>
