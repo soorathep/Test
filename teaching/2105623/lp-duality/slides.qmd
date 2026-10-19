@@ -1,0 +1,203 @@
+---
+pagetitle: "Linear Programming and Duality · 26 October 2026"
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0
+    controls: true
+    progress: true
+    slide-number: false
+    transition: none
+    center: false
+    theme: white
+    css: slides.css
+    include-in-header: download.html
+execute:
+  enabled: false
+---
+
+
+## {.slide-image}
+
+![Linear programming and duality](assets/slide-01.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Plan for the three-hour class](assets/slide-02.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![What makes a model linear?](assets/slide-03.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Running example: two production routes](assets/slide-04.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The production LP](assets/slide-05.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Objective contours and the best feasible point](assets/slide-06.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Why compare extreme points?](assets/slide-07.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![An LP can have many optimal solutions](assets/slide-08.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Infeasible and unbounded are different](assets/slide-09.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Quick check: feasibility before profit](assets/slide-10.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Slack variables and standard form](assets/slide-11.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![A basis selects the variables we solve for](assets/slide-12.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The Simplex decision at each step](assets/slide-13.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Pivot 1: x enters, s₂ leaves](assets/slide-14.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Dictionary after the first pivot](assets/slide-15.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Pivot 2: y enters, s₁ leaves](assets/slide-16.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The final dictionary certifies optimality](assets/slide-17.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Degeneracy and starting feasibility](assets/slide-18.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: change the contribution](assets/slide-19.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice solution: one pivot is enough](assets/slide-20.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Break](assets/slide-21.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The dual prices the resources](assets/slide-22.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Primal and dual side by side](assets/slide-23.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Signs depend on the formulation](assets/slide-24.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Weak duality gives an upper bound](assets/slide-25.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Dual geometry: tighten the upper bound](assets/slide-26.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Solve the dual and compare](assets/slide-27.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Strong duality for linear programs](assets/slide-28.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![The duality gap separates two kinds of waste](assets/slide-29.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Complementary slackness](assets/slide-30.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![LP duality is KKT in a special form](assets/slide-31.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: a dual certificate](assets/slide-32.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice solution: zero price for unused capacity](assets/slide-33.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Shadow prices: value per extra unit](assets/slide-34.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Allowable RHS range: resource 1](assets/slide-35.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Beyond the range, the shadow price changes](assets/slide-36.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Allowable RHS range: resource 2](assets/slide-37.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Objective sensitivity rotates the contour](assets/slide-38.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Reduced cost: should we introduce a new product?](assets/slide-39.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Read solver output with the sign convention](assets/slide-40.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Practice: capacity purchase decision](assets/slide-41.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Capacity purchase: worked solution](assets/slide-42.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Exit ticket: explain, calculate, certify](assets/slide-43.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![Exit ticket: answers and reasoning](assets/slide-44.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![What an LP solution should tell us](assets/slide-45.png){width="1280" height="720"}
+
+## {.slide-image}
+
+![References and optional follow-up](assets/slide-46.png){width="1280" height="720"}
