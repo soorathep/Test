@@ -1,0 +1,456 @@
+WEBVTT
+
+NOTE Sentence cues use the original English narration. Timing derives from exact PCM samples.
+
+01-01
+00:00:00.180 --> 00:00:14.199
+In this demonstration, we will move a vapor-liquid equilibrium dataset
+from Excel into Lab Eight, check one calculation, compare two activity
+models, and save results that we can reopen.
+
+01-02
+00:00:14.379 --> 00:00:20.395
+All nineteen observations are synthetic teaching data, not
+experimental measurements.
+
+01-03
+00:00:20.575 --> 00:00:25.589
+Download the demonstration workbook and keep the walkthrough available
+beside it.
+
+01-04
+00:00:25.769 --> 00:00:34.459
+You will need Excel, or another spreadsheet application that can
+export a worksheet as CSV, and a browser for the Lab.
+
+01-05
+00:00:34.639 --> 00:00:39.801
+Watch each step, then pause and repeat it with your own copy of the
+files.
+
+02-01
+00:00:40.331 --> 00:00:43.425
+Open the workbook and select the Demo tab.
+
+02-02
+00:00:43.605 --> 00:00:49.173
+This sheet shows a worked calculation linked to one observation in the
+data sheet.
+
+02-03
+00:00:49.353 --> 00:00:58.185
+The observation appears near the top, followed by saturation
+pressures, activity coefficients, and their natural logarithms.
+
+02-04
+00:00:58.365 --> 00:01:05.703
+An activity coefficient, called gamma, adjusts the ideal-liquid
+prediction for nonideal behavior.
+
+02-05
+00:01:05.883 --> 00:01:09.126
+We will check these values against the Lab later.
+
+02-06
+00:01:09.306 --> 00:01:14.853
+For now, notice the formulas and the separate Antoine input block
+below.
+
+02-07
+00:01:15.033 --> 00:01:21.411
+Keep this workbook intact so you can return to the calculation after
+importing the data.
+
+03-01
+00:01:21.941 --> 00:01:24.821
+Now select the VLE data tab.
+
+03-02
+00:01:25.001 --> 00:01:29.247
+The import table occupies cells A one through D twenty.
+
+03-03
+00:01:29.427 --> 00:01:34.775
+Its first row contains four headers: T, P, x one, and y one.
+
+03-04
+00:01:34.955 --> 00:01:43.077
+The remaining nineteen rows contain temperature, total pressure, and
+component one's liquid and vapor mole fractions.
+
+03-05
+00:01:43.257 --> 00:01:47.567
+Temperatures are in kelvin, and pressures are in kilopascals.
+
+03-06
+00:01:47.747 --> 00:01:52.717
+Locate spreadsheet row eleven, where x one is zero point five.
+
+03-07
+00:01:52.897 --> 00:01:56.865
+This is the observation linked to the Demo calculation.
+
+03-08
+00:01:57.045 --> 00:02:01.952
+Keep the header row and all nineteen observations together when
+exporting.
+
+04-01
+00:02:02.482 --> 00:02:10.466
+With VLE data still active, choose Save As and select CSV UTF-eight,
+comma delimited.
+
+04-02
+00:02:10.646 --> 00:02:16.641
+Give the export a recognizable name and keep the original Excel
+workbook separately.
+
+04-03
+00:02:16.821 --> 00:02:25.632
+If Excel warns that only the active sheet will be saved, confirm that
+the active sheet is VLE data before proceeding.
+
+04-04
+00:02:25.812 --> 00:02:34.729
+The CSV contains the observation table; it does not preserve the Demo
+sheet, workbook formatting, or property settings.
+
+04-05
+00:02:34.909 --> 00:02:37.960
+After saving, note the file's location.
+
+04-06
+00:02:38.140 --> 00:02:44.518
+We will select this actual exported file in the browser, rather than
+stop at loading a preset.
+
+05-01
+00:02:45.048 --> 00:02:46.563
+Open Lab Eight.
+
+05-02
+00:02:46.743 --> 00:02:49.516
+First select Load synthetic example.
+
+05-03
+00:02:49.696 --> 00:02:59.830
+For this particular teaching dataset, that button initializes the
+matching component names, units, and both Antoine property
+definitions.
+
+05-04
+00:03:00.010 --> 00:03:02.612
+It also loads an example table.
+
+05-05
+00:03:02.792 --> 00:03:09.648
+Next, use Load CSV or tab-separated text to select the CSV you just
+saved.
+
+05-06
+00:03:09.828 --> 00:03:13.796
+Check the selected filename and the table in the text box.
+
+05-07
+00:03:13.976 --> 00:03:19.608
+These are two separate actions: initialize the properties, then import
+your file.
+
+05-08
+00:03:19.788 --> 00:03:27.830
+Do not press Load synthetic example again afterward, because that
+would replace your imported table with the preset.
+
+06-01
+00:03:28.360 --> 00:03:35.848
+Check that the path is isothermal, measured temperature uses kelvin,
+and measured pressure uses kilopascals.
+
+06-02
+00:03:36.028 --> 00:03:45.330
+Both Antoine definitions use log base ten of saturation pressure equal
+to A minus B divided by the quantity T plus C.
+
+06-03
+00:03:45.510 --> 00:03:55.404
+Their equation temperature uses kelvin, their pressure uses
+kilopascals, and their valid range is three hundred to three hundred
+ninety kelvin.
+
+06-04
+00:03:55.584 --> 00:04:05.291
+Three hundred fifty kelvin is seventy-six point eight five degrees
+Celsius; do not change the selector to Celsius for these numbers.
+
+06-05
+00:04:05.471 --> 00:04:08.138
+Select Validate and inspect data.
+
+06-06
+00:04:08.318 --> 00:04:13.032
+Expect nineteen observations and nineteen interior points used.
+
+06-07
+00:04:13.212 --> 00:04:15.772
+Keep No extrapolation selected.
+
+07-01
+00:04:16.302 --> 00:04:23.214
+In Imported observations, find x one equal to zero point five, input
+row eleven.
+
+07-02
+00:04:23.394 --> 00:04:28.813
+Here, x is the liquid mole fraction and y is the vapor mole fraction.
+
+07-03
+00:04:28.993 --> 00:04:39.596
+Under the ideal-vapor assumption, with negligible Poynting correction,
+y times total pressure equals x times gamma times saturation pressure.
+
+07-04
+00:04:39.776 --> 00:04:45.642
+Rearranging gives gamma from the observed compositions and our
+property inputs.
+
+07-05
+00:04:45.822 --> 00:04:50.217
+Notice that the table displays the natural logarithm of gamma.
+
+07-06
+00:04:50.397 --> 00:04:55.410
+To compare with gamma itself, take the exponential of that table
+value.
+
+07-07
+00:04:55.590 --> 00:04:57.830
+We will check this in Excel next.
+
+08-01
+00:04:58.360 --> 00:05:00.686
+Switch to the workbook's Demo tab.
+
+08-02
+00:05:00.866 --> 00:05:08.994
+Cells B twelve and B thirteen calculate saturation pressures of one
+hundred fifty and sixty kilopascals.
+
+08-03
+00:05:09.174 --> 00:05:22.321
+B fourteen and B fifteen calculate gamma one and gamma two:
+approximately one point four nine one five four five, and one point
+five six one three seven seven.
+
+08-04
+00:05:22.501 --> 00:05:28.901
+For component two, the formulas use one minus x one and one minus y
+one.
+
+08-05
+00:05:29.081 --> 00:05:33.668
+B sixteen and B seventeen take the natural logarithms.
+
+08-06
+00:05:33.848 --> 00:05:39.288
+Compare those with the Lab's log gamma values, allowing for displayed
+rounding.
+
+08-07
+00:05:39.468 --> 00:05:44.630
+Agreement checks these calculations, not the property source
+independently.
+
+09-01
+00:05:45.160 --> 00:05:52.286
+Return to Lab zero eight and save a baseline using Export complete
+study JSON.
+
+09-02
+00:05:52.466 --> 00:05:56.156
+Give it a clear name, such as week zero two baseline.
+
+09-03
+00:05:56.336 --> 00:06:06.022
+This file preserves the setup as well as recorded results; the
+observation CSV alone does not preserve the property settings.
+
+09-04
+00:06:06.202 --> 00:06:12.111
+Keep Unmeasured endpoint intervals set to No extrapolation, no
+full-area verdict.
+
+09-05
+00:06:12.291 --> 00:06:16.472
+Our observations do not cover the pure-component endpoints.
+
+09-06
+00:06:16.652 --> 00:06:22.796
+Do not turn an incomplete composition interval into a full-area
+consistency claim.
+
+09-07
+00:06:22.976 --> 00:06:27.478
+Keep that limitation with the baseline before fitting either model.
+
+10-01
+00:06:28.008 --> 00:06:32.402
+Select Margules, one parameter, and then Fit selected model.
+
+10-02
+00:06:32.582 --> 00:06:36.993
+Once fitting finishes, choose View: Pressure and vapor residuals.
+
+10-03
+00:06:37.173 --> 00:06:43.061
+Here, the mean absolute pressure error is about one point one four one
+percent.
+
+10-04
+00:06:43.241 --> 00:06:50.430
+The mean absolute vapor-composition error is about zero point six
+seven six percentage points.
+
+10-05
+00:06:50.610 --> 00:06:56.971
+Record both metrics, inspect the residual pattern, and note any
+parameter-bound warning.
+
+10-06
+00:06:57.151 --> 00:07:04.852
+Before changing models, export the complete study JSON and the fitted
+residuals CSV.
+
+10-07
+00:07:05.032 --> 00:07:10.878
+Give both files Margules names so the next fit cannot be confused with
+this result.
+
+11-01
+00:07:11.408 --> 00:07:17.104
+Now choose N R T L, fixed alpha, and set alpha to zero point three.
+
+11-02
+00:07:17.284 --> 00:07:21.166
+Leave the temperature-dependent parameter option unchecked.
+
+11-03
+00:07:21.346 --> 00:07:26.317
+Keep the observations and property settings unchanged, then fit again.
+
+11-04
+00:07:26.497 --> 00:07:39.852
+The pressure error is approximately one point one four times ten to
+the minus six percent, and the vapor error is about three point eight
+three times ten to the minus seven percentage points.
+
+11-05
+00:07:40.032 --> 00:07:47.370
+These very small training errors are expected: N R T L generated the
+synthetic observations.
+
+11-06
+00:07:47.550 --> 00:07:52.734
+This is model recovery, not evidence of universal superiority.
+
+12-01
+00:07:53.264 --> 00:08:02.800
+Export the N R T L complete study JSON and fitted residuals CSV under
+separate, clearly named files.
+
+12-02
+00:08:02.980 --> 00:08:11.087
+In the residuals CSV, y underscore error is the calculated minus
+observed vapor mole fraction.
+
+12-03
+00:08:11.267 --> 00:08:16.280
+Multiply it by one hundred to express the difference in percentage
+points.
+
+12-04
+00:08:16.460 --> 00:08:21.900
+The pressure underscore error underscore percent column is already a
+percentage.
+
+12-05
+00:08:22.080 --> 00:08:25.984
+Do not multiply that column by one hundred again.
+
+12-06
+00:08:26.164 --> 00:08:35.146
+Also distinguish individual signed residuals from the displayed mean
+absolute error, which averages their absolute values.
+
+12-07
+00:08:35.326 --> 00:08:38.995
+Keep both model exports for comparison and recovery.
+
+13-01
+00:08:39.525 --> 00:08:43.365
+Expand Study workspace, reopen and compare cases.
+
+13-02
+00:08:43.545 --> 00:08:49.326
+Enter a label such as Restored Margules in Label for the next captured
+case.
+
+13-03
+00:08:49.506 --> 00:08:56.098
+Use Load studies or a comparison JSON to select the saved Margules
+study.
+
+13-04
+00:08:56.278 --> 00:08:58.582
+Then select its Restore button.
+
+13-05
+00:08:58.762 --> 00:09:04.679
+Check the restored observations, units, property constants, and model
+controls.
+
+13-06
+00:09:04.859 --> 00:09:10.278
+Loading first displays recorded results; it does not recalculate them.
+
+13-07
+00:09:10.458 --> 00:09:12.506
+Restore loads the settings.
+
+13-08
+00:09:12.686 --> 00:09:17.848
+Now select Validate and inspect data, followed by Fit selected model.
+
+13-09
+00:09:18.028 --> 00:09:23.703
+Compare the fresh errors with the saved result to check that you
+recovered the same setup.
+
+14-01
+00:09:24.233 --> 00:09:27.838
+Finish with a finding, a number, and a limitation.
+
+14-02
+00:09:28.018 --> 00:09:38.770
+For example, N R T L reproduces these synthetic training data more
+closely than Margules: compare the two pressure-error values you
+saved.
+
+14-03
+00:09:38.950 --> 00:09:50.385
+But the generating model was N R T L, and training error alone does
+not establish thermodynamic consistency or prediction on new
+observations.
+
+14-04
+00:09:50.565 --> 00:10:01.350
+Now allow about twenty minutes to repeat the full workflow yourself:
+export, import, verify one row, fit both models, save, and restore.
+
+14-05
+00:10:01.530 --> 00:10:04.773
+Keep your files and corrections with the worksheet.
+
+14-06
+00:10:04.953 --> 00:10:07.982
+This practice adds no new attendance task.
+

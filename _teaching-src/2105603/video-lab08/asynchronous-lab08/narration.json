@@ -1,0 +1,93 @@
+[
+  {
+    "id": "01",
+    "title": "From an Excel workbook to a checked Lab study",
+    "narration": "In this demonstration, we will move a vapor-liquid equilibrium dataset from Excel into Lab Eight, check one calculation, compare two activity models, and save results that we can reopen. All nineteen observations are synthetic teaching data, not experimental measurements. Download the demonstration workbook and keep the walkthrough available beside it. You will need Excel, or another spreadsheet application that can export a worksheet as CSV, and a browser for the Lab. Watch each step, then pause and repeat it with your own copy of the files.",
+    "on_screen": "Open the demonstration workbook and walkthrough. All 19 observations are synthetic.",
+    "pause_instruction": "Download lab08-demo.xlsx and open the walkthrough before continuing."
+  },
+  {
+    "id": "02",
+    "title": "Start with the Demo worksheet",
+    "narration": "Open the workbook and select the Demo tab. This sheet shows a worked calculation linked to one observation in the data sheet. The observation appears near the top, followed by saturation pressures, activity coefficients, and their natural logarithms. An activity coefficient, called gamma, adjusts the ideal-liquid prediction for nonideal behavior. We will check these values against the Lab later. For now, notice the formulas and the separate Antoine input block below. Keep this workbook intact so you can return to the calculation after importing the data.",
+    "on_screen": "Demo tab: observation B5:B9; calculated properties B12:B17; Antoine inputs B24:C30.",
+    "pause_instruction": "Open the Demo tab and locate the observation, calculated properties, and Antoine input block."
+  },
+  {
+    "id": "03",
+    "title": "Identify the table to export",
+    "narration": "Now select the VLE data tab. The import table occupies cells A one through D twenty. Its first row contains four headers: T, P, x one, and y one. The remaining nineteen rows contain temperature, total pressure, and component one's liquid and vapor mole fractions. Temperatures are in kelvin, and pressures are in kilopascals. Locate spreadsheet row eleven, where x one is zero point five. This is the observation linked to the Demo calculation. Keep the header row and all nineteen observations together when exporting.",
+    "on_screen": "VLE_data!A1:D20 · Headers: T,P,x1,y1 · Row 11: x1 = 0.5",
+    "pause_instruction": "Select VLE_data and locate row 11. Confirm the four headers and 19 data rows."
+  },
+  {
+    "id": "04",
+    "title": "Export the active data sheet as CSV",
+    "narration": "With VLE data still active, choose Save As and select CSV UTF-eight, comma delimited. Give the export a recognizable name and keep the original Excel workbook separately. If Excel warns that only the active sheet will be saved, confirm that the active sheet is VLE data before proceeding. The CSV contains the observation table; it does not preserve the Demo sheet, workbook formatting, or property settings. After saving, note the file's location. We will select this actual exported file in the browser, rather than stop at loading a preset.",
+    "on_screen": "Save As → CSV UTF-8 · Active sheet: VLE_data · Keep the original .xlsx",
+    "pause_instruction": "Export the active VLE_data sheet as CSV UTF-8 and keep the original workbook."
+  },
+  {
+    "id": "05",
+    "title": "Initialize the properties, then import your CSV",
+    "narration": "Open Lab Eight. First select Load synthetic example. For this particular teaching dataset, that button initializes the matching component names, units, and both Antoine property definitions. It also loads an example table. Next, use Load CSV or tab-separated text to select the CSV you just saved. Check the selected filename and the table in the text box. These are two separate actions: initialize the properties, then import your file. Do not press Load synthetic example again afterward, because that would replace your imported table with the preset.",
+    "on_screen": "1. Load synthetic example → property setup. 2. Load your exported CSV → observation table.",
+    "pause_instruction": "Load the synthetic example once, then select your actual CSV and inspect its filename and table."
+  },
+  {
+    "id": "06",
+    "title": "Check conventions and validate all 19 observations",
+    "narration": "Check that the path is isothermal, measured temperature uses kelvin, and measured pressure uses kilopascals. Both Antoine definitions use log base ten of saturation pressure equal to A minus B divided by the quantity T plus C. Their equation temperature uses kelvin, their pressure uses kilopascals, and their valid range is three hundred to three hundred ninety kelvin. Three hundred fifty kelvin is seventy-six point eight five degrees Celsius; do not change the selector to Celsius for these numbers. Select Validate and inspect data. Expect nineteen observations and nineteen interior points used. Keep No extrapolation selected.",
+    "on_screen": "Isothermal · Data and Antoine units: K, kPa · log10(Psat) = A − B/(T + C) · Valid: 300–390 K · 350 K = 76.85 °C · Validate: 19/19",
+    "pause_instruction": "Check both Antoine definitions and data units, validate all 19 observations, and keep No extrapolation selected."
+  },
+  {
+    "id": "07",
+    "title": "Check one imported observation",
+    "narration": "In Imported observations, find x one equal to zero point five, input row eleven. Here, x is the liquid mole fraction and y is the vapor mole fraction. Under the ideal-vapor assumption, with negligible Poynting correction, y times total pressure equals x times gamma times saturation pressure. Rearranging gives gamma from the observed compositions and our property inputs. Notice that the table displays the natural logarithm of gamma. To compare with gamma itself, take the exponential of that table value. We will check this in Excel next.",
+    "on_screen": "Lab 08 Imported observations: highlight input row 11 with x1=0.5, T=350 K, P=158.707198211 kPa and y1=0.704857144627. Emphasize the ln gamma column headings and the relationship gamma=EXP(ln gamma)."
+  },
+  {
+    "id": "08",
+    "title": "Verify the Excel formulas",
+    "narration": "Switch to the workbook's Demo tab. Cells B twelve and B thirteen calculate saturation pressures of one hundred fifty and sixty kilopascals. B fourteen and B fifteen calculate gamma one and gamma two: approximately one point four nine one five four five, and one point five six one three seven seven. For component two, the formulas use one minus x one and one minus y one. B sixteen and B seventeen take the natural logarithms. Compare those with the Lab's log gamma values, allowing for displayed rounding. Agreement checks these calculations, not the property source independently.",
+    "on_screen": "Excel Demo: show formulas and values in B12:B17. Highlight the observation links from VLE_data row 11 and show ln gamma1 approximately 0.399813 and ln gamma2 approximately 0.445568."
+  },
+  {
+    "id": "09",
+    "title": "Save the validated baseline",
+    "narration": "Return to Lab zero eight and save a baseline using Export complete study JSON. Give it a clear name, such as week zero two baseline. This file preserves the setup as well as recorded results; the observation CSV alone does not preserve the property settings. Keep Unmeasured endpoint intervals set to No extrapolation, no full-area verdict. Our observations do not cover the pure-component endpoints. Do not turn an incomplete composition interval into a full-area consistency claim. Keep that limitation with the baseline before fitting either model.",
+    "on_screen": "Show Unmeasured endpoint intervals: No extrapolation · no full-area verdict. Select Export complete study JSON and display a distinct baseline filename, for example week02-baseline.json."
+  },
+  {
+    "id": "10",
+    "title": "Fit and save one-parameter Margules",
+    "narration": "Select Margules, one parameter, and then Fit selected model. Once fitting finishes, choose View: Pressure and vapor residuals. Here, the mean absolute pressure error is about one point one four one percent. The mean absolute vapor-composition error is about zero point six seven six percentage points. Record both metrics, inspect the residual pattern, and note any parameter-bound warning. Before changing models, export the complete study JSON and the fitted residuals CSV. Give both files Margules names so the next fit cannot be confused with this result.",
+    "on_screen": "Show Margules · 1 parameter, Fit selected model, then View: Pressure and vapor residuals. Display full precision metrics approximately 1.14098% and 0.675676 percentage points. Show both exports with Margules filenames."
+  },
+  {
+    "id": "11",
+    "title": "Fit NRTL with the same inputs",
+    "narration": "Now choose N R T L, fixed alpha, and set alpha to zero point three. Leave the temperature-dependent parameter option unchecked. Keep the observations and property settings unchanged, then fit again. The pressure error is approximately one point one four times ten to the minus six percent, and the vapor error is about three point eight three times ten to the minus seven percentage points. These very small training errors are expected: N R T L generated the synthetic observations. This is model recovery, not evidence of universal superiority.",
+    "on_screen": "Show NRTL · fixed alpha, alpha=0.3, and Fit tau_ij=c_ij+d_ij(350/T−1) unchecked. Fit and show the same residual view, approximately 1.14e-6% pressure error and 3.83e-7 percentage points vapor error."
+  },
+  {
+    "id": "12",
+    "title": "Save NRTL results and read residual units",
+    "narration": "Export the N R T L complete study JSON and fitted residuals CSV under separate, clearly named files. In the residuals CSV, y underscore error is the calculated minus observed vapor mole fraction. Multiply it by one hundred to express the difference in percentage points. The pressure underscore error underscore percent column is already a percentage. Do not multiply that column by one hundred again. Also distinguish individual signed residuals from the displayed mean absolute error, which averages their absolute values. Keep both model exports for comparison and recovery.",
+    "on_screen": "Save distinct NRTL JSON and residual CSV filenames. Inspect exported headers y_error and pressure_error_percent, with note: y_error × 100 gives percentage points; pressure_error_percent is already percent."
+  },
+  {
+    "id": "13",
+    "title": "Restore a saved study and recalculate",
+    "narration": "Expand Study workspace, reopen and compare cases. Enter a label such as Restored Margules in Label for the next captured case. Use Load studies or a comparison JSON to select the saved Margules study. Then select its Restore button. Check the restored observations, units, property constants, and model controls. Loading first displays recorded results; it does not recalculate them. Restore loads the settings. Now select Validate and inspect data, followed by Fit selected model. Compare the fresh errors with the saved result to check that you recovered the same setup.",
+    "on_screen": "Expand Study workspace · reopen and compare cases. Set case label, load the saved Margules JSON, select Restore [case label], inspect restored model and properties, then Validate & inspect data and Fit selected model."
+  },
+  {
+    "id": "14",
+    "title": "State the finding and practice the workflow",
+    "narration": "Finish with a finding, a number, and a limitation. For example, N R T L reproduces these synthetic training data more closely than Margules: compare the two pressure-error values you saved. But the generating model was N R T L, and training error alone does not establish thermodynamic consistency or prediction on new observations. Now allow about twenty minutes to repeat the full workflow yourself: export, import, verify one row, fit both models, save, and restore. Keep your files and corrections with the worksheet. This practice adds no new attendance task.",
+    "on_screen": "Show a compact checklist: export CSV; import and validate; independently check row 11; fit and export both models; restore and refit; state finding, numerical evidence and limitation. Include: about 20 minutes of practice; no new attendance task.",
+    "pause_instruction": "Pause and repeat the complete workflow in approximately 20 minutes. Keep your own exported files, numerical check, corrections and limitation statement with the original worksheet."
+  }
+]

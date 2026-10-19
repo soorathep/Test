@@ -1,0 +1,2035 @@
+{
+  "title": "Lab 08: Excel to a checked VLE model study",
+  "sample_rate": 24000,
+  "time_base": "1/24000",
+  "duration_samples": 14599975,
+  "duration_seconds": 608.3322916666667,
+  "master": "master.wav",
+  "master_sha256": "ad1e10660cfe917f87e468c380c23de983dbcac5d4b31eb6718cdc048cc83fc9",
+  "timing_convention": "End-exclusive integer PCM sample offsets. All sentence cue offsets are absolute in the master.",
+  "generation": {
+    "engine": "Kokoro ONNX",
+    "engine_version": "0.6.1",
+    "model": "Kokoro v1.0",
+    "voice": "am_michael",
+    "voice_description": "Michael, male US English",
+    "language": "en-us",
+    "speed": 0.94,
+    "sentence_pause": 0,
+    "clause_pause": 0.12,
+    "cue_gap_seconds": 0.18,
+    "leading_silence_seconds": 0.18,
+    "trailing_silence_seconds": 0.35,
+    "target_segment_rms": 0.075,
+    "peak_limit": 0.89,
+    "sample_rate": 24000,
+    "format": "WAV PCM_16 mono",
+    "pronunciation_version": 1
+  },
+  "provenance": {
+    "model_sha256": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
+    "voices_sha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+  },
+  "chapters": [
+    {
+      "id": "01",
+      "title": "From an Excel workbook to a checked Lab study",
+      "narration": "In this demonstration, we will move a vapor-liquid equilibrium dataset from Excel into Lab Eight, check one calculation, compare two activity models, and save results that we can reopen. All nineteen observations are synthetic teaching data, not experimental measurements. Download the demonstration workbook and keep the walkthrough available beside it. You will need Excel, or another spreadsheet application that can export a worksheet as CSV, and a browser for the Lab. Watch each step, then pause and repeat it with your own copy of the files.",
+      "on_screen": "Open the demonstration workbook and walkthrough. All 19 observations are synthetic.",
+      "pause_instruction": "Download lab08-demo.xlsx and open the walkthrough before continuing.",
+      "start_sample": 0,
+      "end_sample": 963631,
+      "start_seconds": 0.0,
+      "end_seconds": 40.151291666666665,
+      "duration_samples": 963631,
+      "duration_seconds": 40.151291666666665,
+      "audio": "segment-01.wav",
+      "audio_sha256": "d576350783a67a210fc68243e35265dfd534da8a2a205ffbf51bee79758cd487",
+      "narration_sha256": "08877cc8ad2734a839d0bc109757dc721963207db92accc16579dab42567b040",
+      "cues": [
+        {
+          "id": "01-01",
+          "chapter_id": "01",
+          "text": "In this demonstration, we will move a vapor-liquid equilibrium dataset from Excel into Lab Eight, check one calculation, compare two activity models, and save results that we can reopen.",
+          "start_sample": 4320,
+          "end_sample": 340784,
+          "start_seconds": 0.18,
+          "end_seconds": 14.199333333333334
+        },
+        {
+          "id": "01-02",
+          "chapter_id": "01",
+          "text": "All nineteen observations are synthetic teaching data, not experimental measurements.",
+          "start_sample": 345104,
+          "end_sample": 489488,
+          "start_seconds": 14.379333333333333,
+          "end_seconds": 20.395333333333333
+        },
+        {
+          "id": "01-03",
+          "chapter_id": "01",
+          "text": "Download the demonstration workbook and keep the walkthrough available beside it.",
+          "start_sample": 493808,
+          "end_sample": 614128,
+          "start_seconds": 20.575333333333333,
+          "end_seconds": 25.588666666666665
+        },
+        {
+          "id": "01-04",
+          "chapter_id": "01",
+          "text": "You will need Excel, or another spreadsheet application that can export a worksheet as CSV, and a browser for the Lab.",
+          "start_sample": 618448,
+          "end_sample": 827007,
+          "start_seconds": 25.768666666666668,
+          "end_seconds": 34.458625
+        },
+        {
+          "id": "01-05",
+          "chapter_id": "01",
+          "text": "Watch each step, then pause and repeat it with your own copy of the files.",
+          "start_sample": 831327,
+          "end_sample": 955231,
+          "start_seconds": 34.638625,
+          "end_seconds": 39.801291666666664
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Start with the Demo worksheet",
+      "narration": "Open the workbook and select the Demo tab. This sheet shows a worked calculation linked to one observation in the data sheet. The observation appears near the top, followed by saturation pressures, activity coefficients, and their natural logarithms. An activity coefficient, called gamma, adjusts the ideal-liquid prediction for nonideal behavior. We will check these values against the Lab later. For now, notice the formulas and the separate Antoine input block below. Keep this workbook intact so you can return to the calculation after importing the data.",
+      "on_screen": "Demo tab: observation B5:B9; calculated properties B12:B17; Antoine inputs B24:C30.",
+      "pause_instruction": "Open the Demo tab and locate the observation, calculated properties, and Antoine input block.",
+      "start_sample": 963631,
+      "end_sample": 1962271,
+      "start_seconds": 40.151291666666665,
+      "end_seconds": 81.76129166666666,
+      "duration_samples": 998640,
+      "duration_seconds": 41.61,
+      "audio": "segment-02.wav",
+      "audio_sha256": "1d61304117af1f48ebedda3c3208dc0d01be2d360fe228ddbb5b8a73996fc47c",
+      "narration_sha256": "c806bc61543348b25b880d7d5bd330b41442949b83b65c02e0d1570b90d20d61",
+      "cues": [
+        {
+          "id": "02-01",
+          "chapter_id": "02",
+          "text": "Open the workbook and select the Demo tab.",
+          "start_sample": 967951,
+          "end_sample": 1042191,
+          "start_seconds": 40.331291666666665,
+          "end_seconds": 43.424625
+        },
+        {
+          "id": "02-02",
+          "chapter_id": "02",
+          "text": "This sheet shows a worked calculation linked to one observation in the data sheet.",
+          "start_sample": 1046511,
+          "end_sample": 1180143,
+          "start_seconds": 43.604625,
+          "end_seconds": 49.172625
+        },
+        {
+          "id": "02-03",
+          "chapter_id": "02",
+          "text": "The observation appears near the top, followed by saturation pressures, activity coefficients, and their natural logarithms.",
+          "start_sample": 1184463,
+          "end_sample": 1396431,
+          "start_seconds": 49.352625,
+          "end_seconds": 58.184625
+        },
+        {
+          "id": "02-04",
+          "chapter_id": "02",
+          "text": "An activity coefficient, called gamma, adjusts the ideal-liquid prediction for nonideal behavior.",
+          "start_sample": 1400751,
+          "end_sample": 1576879,
+          "start_seconds": 58.364625,
+          "end_seconds": 65.70329166666667
+        },
+        {
+          "id": "02-05",
+          "chapter_id": "02",
+          "text": "We will check these values against the Lab later.",
+          "start_sample": 1581199,
+          "end_sample": 1659023,
+          "start_seconds": 65.88329166666666,
+          "end_seconds": 69.12595833333333
+        },
+        {
+          "id": "02-06",
+          "chapter_id": "02",
+          "text": "For now, notice the formulas and the separate Antoine input block below.",
+          "start_sample": 1663343,
+          "end_sample": 1796463,
+          "start_seconds": 69.30595833333334,
+          "end_seconds": 74.852625
+        },
+        {
+          "id": "02-07",
+          "chapter_id": "02",
+          "text": "Keep this workbook intact so you can return to the calculation after importing the data.",
+          "start_sample": 1800783,
+          "end_sample": 1953871,
+          "start_seconds": 75.032625,
+          "end_seconds": 81.41129166666667
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Identify the table to export",
+      "narration": "Now select the VLE data tab. The import table occupies cells A one through D twenty. Its first row contains four headers: T, P, x one, and y one. The remaining nineteen rows contain temperature, total pressure, and component one's liquid and vapor mole fractions. Temperatures are in kelvin, and pressures are in kilopascals. Locate spreadsheet row eleven, where x one is zero point five. This is the observation linked to the Demo calculation. Keep the header row and all nineteen observations together when exporting.",
+      "on_screen": "VLE_data!A1:D20 · Headers: T,P,x1,y1 · Row 11: x1 = 0.5",
+      "pause_instruction": "Select VLE_data and locate row 11. Confirm the four headers and 19 data rows.",
+      "start_sample": 1962271,
+      "end_sample": 2935244,
+      "start_seconds": 81.76129166666666,
+      "end_seconds": 122.30183333333333,
+      "duration_samples": 972973,
+      "duration_seconds": 40.54054166666667,
+      "audio": "segment-03.wav",
+      "audio_sha256": "6c039bb405e3a46e20b34a0d0f8200322cae2108fd31e6acad06464347e09216",
+      "narration_sha256": "41b427d37c863b63163ba68fee8a158472c7fdfd36a521366c0ef85a5a1b4323",
+      "cues": [
+        {
+          "id": "03-01",
+          "chapter_id": "03",
+          "text": "Now select the VLE data tab.",
+          "start_sample": 1966591,
+          "end_sample": 2035711,
+          "start_seconds": 81.94129166666667,
+          "end_seconds": 84.82129166666667
+        },
+        {
+          "id": "03-02",
+          "chapter_id": "03",
+          "text": "The import table occupies cells A one through D twenty.",
+          "start_sample": 2040031,
+          "end_sample": 2141919,
+          "start_seconds": 85.00129166666666,
+          "end_seconds": 89.246625
+        },
+        {
+          "id": "03-03",
+          "chapter_id": "03",
+          "text": "Its first row contains four headers: T, P, x one, and y one.",
+          "start_sample": 2146239,
+          "end_sample": 2274589,
+          "start_seconds": 89.426625,
+          "end_seconds": 94.77454166666666
+        },
+        {
+          "id": "03-04",
+          "chapter_id": "03",
+          "text": "The remaining nineteen rows contain temperature, total pressure, and component one's liquid and vapor mole fractions.",
+          "start_sample": 2278909,
+          "end_sample": 2473852,
+          "start_seconds": 94.95454166666667,
+          "end_seconds": 103.07716666666667
+        },
+        {
+          "id": "03-05",
+          "chapter_id": "03",
+          "text": "Temperatures are in kelvin, and pressures are in kilopascals.",
+          "start_sample": 2478172,
+          "end_sample": 2581596,
+          "start_seconds": 103.25716666666666,
+          "end_seconds": 107.5665
+        },
+        {
+          "id": "03-06",
+          "chapter_id": "03",
+          "text": "Locate spreadsheet row eleven, where x one is zero point five.",
+          "start_sample": 2585916,
+          "end_sample": 2705212,
+          "start_seconds": 107.7465,
+          "end_seconds": 112.71716666666667
+        },
+        {
+          "id": "03-07",
+          "chapter_id": "03",
+          "text": "This is the observation linked to the Demo calculation.",
+          "start_sample": 2709532,
+          "end_sample": 2804764,
+          "start_seconds": 112.89716666666666,
+          "end_seconds": 116.86516666666667
+        },
+        {
+          "id": "03-08",
+          "chapter_id": "03",
+          "text": "Keep the header row and all nineteen observations together when exporting.",
+          "start_sample": 2809084,
+          "end_sample": 2926844,
+          "start_seconds": 117.04516666666666,
+          "end_seconds": 121.95183333333334
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Export the active data sheet as CSV",
+      "narration": "With VLE data still active, choose Save As and select CSV UTF-eight, comma delimited. Give the export a recognizable name and keep the original Excel workbook separately. If Excel warns that only the active sheet will be saved, confirm that the active sheet is VLE data before proceeding. The CSV contains the observation table; it does not preserve the Demo sheet, workbook formatting, or property settings. After saving, note the file's location. We will select this actual exported file in the browser, rather than stop at loading a preset.",
+      "on_screen": "Save As → CSV UTF-8 · Active sheet: VLE_data · Keep the original .xlsx",
+      "pause_instruction": "Export the active VLE_data sheet as CSV UTF-8 and keep the original workbook.",
+      "start_sample": 2935244,
+      "end_sample": 3956843,
+      "start_seconds": 122.30183333333333,
+      "end_seconds": 164.86845833333334,
+      "duration_samples": 1021599,
+      "duration_seconds": 42.566625,
+      "audio": "segment-04.wav",
+      "audio_sha256": "f1acec28677d4c18c2e1624fda34e3401b61e78c3439df095f2d1d78e50b9abf",
+      "narration_sha256": "8641562d247184b25f854ee0158bfd7abd4fab7b54acff635d8d3ae397bac889",
+      "cues": [
+        {
+          "id": "04-01",
+          "chapter_id": "04",
+          "text": "With VLE data still active, choose Save As and select CSV UTF-eight, comma delimited.",
+          "start_sample": 2939564,
+          "end_sample": 3131195,
+          "start_seconds": 122.48183333333333,
+          "end_seconds": 130.46645833333332
+        },
+        {
+          "id": "04-02",
+          "chapter_id": "04",
+          "text": "Give the export a recognizable name and keep the original Excel workbook separately.",
+          "start_sample": 3135515,
+          "end_sample": 3279387,
+          "start_seconds": 130.64645833333333,
+          "end_seconds": 136.641125
+        },
+        {
+          "id": "04-03",
+          "chapter_id": "04",
+          "text": "If Excel warns that only the active sheet will be saved, confirm that the active sheet is VLE data before proceeding.",
+          "start_sample": 3283707,
+          "end_sample": 3495163,
+          "start_seconds": 136.821125,
+          "end_seconds": 145.63179166666666
+        },
+        {
+          "id": "04-04",
+          "chapter_id": "04",
+          "text": "The CSV contains the observation table; it does not preserve the Demo sheet, workbook formatting, or property settings.",
+          "start_sample": 3499483,
+          "end_sample": 3713499,
+          "start_seconds": 145.81179166666666,
+          "end_seconds": 154.729125
+        },
+        {
+          "id": "04-05",
+          "chapter_id": "04",
+          "text": "After saving, note the file's location.",
+          "start_sample": 3717819,
+          "end_sample": 3791035,
+          "start_seconds": 154.909125,
+          "end_seconds": 157.95979166666666
+        },
+        {
+          "id": "04-06",
+          "chapter_id": "04",
+          "text": "We will select this actual exported file in the browser, rather than stop at loading a preset.",
+          "start_sample": 3795355,
+          "end_sample": 3948443,
+          "start_seconds": 158.13979166666667,
+          "end_seconds": 164.51845833333334
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Initialize the properties, then import your CSV",
+      "narration": "Open Lab Eight. First select Load synthetic example. For this particular teaching dataset, that button initializes the matching component names, units, and both Antoine property definitions. It also loads an example table. Next, use Load CSV or tab-separated text to select the CSV you just saved. Check the selected filename and the table in the text box. These are two separate actions: initialize the properties, then import your file. Do not press Load synthetic example again afterward, because that would replace your imported table with the preset.",
+      "on_screen": "1. Load synthetic example → property setup. 2. Load your exported CSV → observation table.",
+      "pause_instruction": "Load the synthetic example once, then select your actual CSV and inspect its filename and table.",
+      "start_sample": 3956843,
+      "end_sample": 4996330,
+      "start_seconds": 164.86845833333334,
+      "end_seconds": 208.18041666666667,
+      "duration_samples": 1039487,
+      "duration_seconds": 43.31195833333334,
+      "audio": "segment-05.wav",
+      "audio_sha256": "2c792f0ddd5949d8aadb065b7384440b0e901a60514180e92181561da2f4feb3",
+      "narration_sha256": "41f1768f8d22a4d4c755d9d529fa8b50af7e980c28b9e7d243d667086d0a07b9",
+      "cues": [
+        {
+          "id": "05-01",
+          "chapter_id": "05",
+          "text": "Open Lab Eight.",
+          "start_sample": 3961163,
+          "end_sample": 3997515,
+          "start_seconds": 165.04845833333334,
+          "end_seconds": 166.563125
+        },
+        {
+          "id": "05-02",
+          "chapter_id": "05",
+          "text": "First select Load synthetic example.",
+          "start_sample": 4001835,
+          "end_sample": 4068395,
+          "start_seconds": 166.743125,
+          "end_seconds": 169.51645833333333
+        },
+        {
+          "id": "05-03",
+          "chapter_id": "05",
+          "text": "For this particular teaching dataset, that button initializes the matching component names, units, and both Antoine property definitions.",
+          "start_sample": 4072715,
+          "end_sample": 4315915,
+          "start_seconds": 169.69645833333334,
+          "end_seconds": 179.82979166666667
+        },
+        {
+          "id": "05-04",
+          "chapter_id": "05",
+          "text": "It also loads an example table.",
+          "start_sample": 4320235,
+          "end_sample": 4382699,
+          "start_seconds": 180.00979166666667,
+          "end_seconds": 182.61245833333334
+        },
+        {
+          "id": "05-05",
+          "chapter_id": "05",
+          "text": "Next, use Load CSV or tab-separated text to select the CSV you just saved.",
+          "start_sample": 4387019,
+          "end_sample": 4551546,
+          "start_seconds": 182.79245833333334,
+          "end_seconds": 189.64775
+        },
+        {
+          "id": "05-06",
+          "chapter_id": "05",
+          "text": "Check the selected filename and the table in the text box.",
+          "start_sample": 4555866,
+          "end_sample": 4651098,
+          "start_seconds": 189.82775,
+          "end_seconds": 193.79575
+        },
+        {
+          "id": "05-07",
+          "chapter_id": "05",
+          "text": "These are two separate actions: initialize the properties, then import your file.",
+          "start_sample": 4655418,
+          "end_sample": 4790586,
+          "start_seconds": 193.97575,
+          "end_seconds": 199.60775
+        },
+        {
+          "id": "05-08",
+          "chapter_id": "05",
+          "text": "Do not press Load synthetic example again afterward, because that would replace your imported table with the preset.",
+          "start_sample": 4794906,
+          "end_sample": 4987930,
+          "start_seconds": 199.78775,
+          "end_seconds": 207.83041666666668
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Check conventions and validate all 19 observations",
+      "narration": "Check that the path is isothermal, measured temperature uses kelvin, and measured pressure uses kilopascals. Both Antoine definitions use log base ten of saturation pressure equal to A minus B divided by the quantity T plus C. Their equation temperature uses kelvin, their pressure uses kilopascals, and their valid range is three hundred to three hundred ninety kelvin. Three hundred fifty kelvin is seventy-six point eight five degrees Celsius; do not change the selector to Celsius for these numbers. Select Validate and inspect data. Expect nineteen observations and nineteen interior points used. Keep No extrapolation selected.",
+      "on_screen": "Isothermal · Data and Antoine units: K, kPa · log10(Psat) = A − B/(T + C) · Valid: 300–390 K · 350 K = 76.85 °C · Validate: 19/19",
+      "pause_instruction": "Check both Antoine definitions and data units, validate all 19 observations, and keep No extrapolation selected.",
+      "start_sample": 4996330,
+      "end_sample": 6146938,
+      "start_seconds": 208.18041666666667,
+      "end_seconds": 256.12241666666665,
+      "duration_samples": 1150608,
+      "duration_seconds": 47.942,
+      "audio": "segment-06.wav",
+      "audio_sha256": "6f64938ddaa6dc11e9ab1a5be8e444057ecd9018ed1a0528c3af170b678aa999",
+      "narration_sha256": "c49e8ef112e3fa6d9337e14d7335cc94181dc2290437aa7964ea1ae912f02b93",
+      "cues": [
+        {
+          "id": "06-01",
+          "chapter_id": "06",
+          "text": "Check that the path is isothermal, measured temperature uses kelvin, and measured pressure uses kilopascals.",
+          "start_sample": 5000650,
+          "end_sample": 5180362,
+          "start_seconds": 208.36041666666668,
+          "end_seconds": 215.84841666666668
+        },
+        {
+          "id": "06-02",
+          "chapter_id": "06",
+          "text": "Both Antoine definitions use log base ten of saturation pressure equal to A minus B divided by the quantity T plus C.",
+          "start_sample": 5184682,
+          "end_sample": 5407914,
+          "start_seconds": 216.02841666666666,
+          "end_seconds": 225.32975
+        },
+        {
+          "id": "06-03",
+          "chapter_id": "06",
+          "text": "Their equation temperature uses kelvin, their pressure uses kilopascals, and their valid range is three hundred to three hundred ninety kelvin.",
+          "start_sample": 5412234,
+          "end_sample": 5649706,
+          "start_seconds": 225.50975,
+          "end_seconds": 235.40441666666666
+        },
+        {
+          "id": "06-04",
+          "chapter_id": "06",
+          "text": "Three hundred fifty kelvin is seventy-six point eight five degrees Celsius; do not change the selector to Celsius for these numbers.",
+          "start_sample": 5654026,
+          "end_sample": 5886986,
+          "start_seconds": 235.58441666666667,
+          "end_seconds": 245.29108333333335
+        },
+        {
+          "id": "06-05",
+          "chapter_id": "06",
+          "text": "Select Validate and inspect data.",
+          "start_sample": 5891306,
+          "end_sample": 5955306,
+          "start_seconds": 245.47108333333333,
+          "end_seconds": 248.13775
+        },
+        {
+          "id": "06-06",
+          "chapter_id": "06",
+          "text": "Expect nineteen observations and nineteen interior points used.",
+          "start_sample": 5959626,
+          "end_sample": 6072778,
+          "start_seconds": 248.31775,
+          "end_seconds": 253.03241666666668
+        },
+        {
+          "id": "06-07",
+          "chapter_id": "06",
+          "text": "Keep No extrapolation selected.",
+          "start_sample": 6077098,
+          "end_sample": 6138538,
+          "start_seconds": 253.21241666666666,
+          "end_seconds": 255.77241666666666
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "title": "Check one imported observation",
+      "narration": "In Imported observations, find x one equal to zero point five, input row eleven. Here, x is the liquid mole fraction and y is the vapor mole fraction. Under the ideal-vapor assumption, with negligible Poynting correction, y times total pressure equals x times gamma times saturation pressure. Rearranging gives gamma from the observed compositions and our property inputs. Notice that the table displays the natural logarithm of gamma. To compare with gamma itself, take the exponential of that table value. We will check this in Excel next.",
+      "on_screen": "Lab 08 Imported observations: highlight input row 11 with x1=0.5, T=350 K, P=158.707198211 kPa and y1=0.704857144627. Emphasize the ln gamma column headings and the relationship gamma=EXP(ln gamma).",
+      "pause_instruction": "",
+      "start_sample": 6146938,
+      "end_sample": 7156330,
+      "start_seconds": 256.12241666666665,
+      "end_seconds": 298.18041666666664,
+      "duration_samples": 1009392,
+      "duration_seconds": 42.058,
+      "audio": "segment-07.wav",
+      "audio_sha256": "dca617454b360ef67acf936c4bc3014d97e2c09fd11d698c7f4a1afe3a0e4c17",
+      "narration_sha256": "b64ac948a03e3018ae67b47ce462cd5a9affba8671505d0de0826a454632b857",
+      "cues": [
+        {
+          "id": "07-01",
+          "chapter_id": "07",
+          "text": "In Imported observations, find x one equal to zero point five, input row eleven.",
+          "start_sample": 6151258,
+          "end_sample": 6317146,
+          "start_seconds": 256.30241666666666,
+          "end_seconds": 263.2144166666667
+        },
+        {
+          "id": "07-02",
+          "chapter_id": "07",
+          "text": "Here, x is the liquid mole fraction and y is the vapor mole fraction.",
+          "start_sample": 6321466,
+          "end_sample": 6451514,
+          "start_seconds": 263.39441666666664,
+          "end_seconds": 268.81308333333334
+        },
+        {
+          "id": "07-03",
+          "chapter_id": "07",
+          "text": "Under the ideal-vapor assumption, with negligible Poynting correction, y times total pressure equals x times gamma times saturation pressure.",
+          "start_sample": 6455834,
+          "end_sample": 6710298,
+          "start_seconds": 268.99308333333335,
+          "end_seconds": 279.59575
+        },
+        {
+          "id": "07-04",
+          "chapter_id": "07",
+          "text": "Rearranging gives gamma from the observed compositions and our property inputs.",
+          "start_sample": 6714618,
+          "end_sample": 6855418,
+          "start_seconds": 279.77575,
+          "end_seconds": 285.6424166666667
+        },
+        {
+          "id": "07-05",
+          "chapter_id": "07",
+          "text": "Notice that the table displays the natural logarithm of gamma.",
+          "start_sample": 6859738,
+          "end_sample": 6965210,
+          "start_seconds": 285.82241666666664,
+          "end_seconds": 290.21708333333333
+        },
+        {
+          "id": "07-06",
+          "chapter_id": "07",
+          "text": "To compare with gamma itself, take the exponential of that table value.",
+          "start_sample": 6969530,
+          "end_sample": 7089850,
+          "start_seconds": 290.39708333333334,
+          "end_seconds": 295.41041666666666
+        },
+        {
+          "id": "07-07",
+          "chapter_id": "07",
+          "text": "We will check this in Excel next.",
+          "start_sample": 7094170,
+          "end_sample": 7147930,
+          "start_seconds": 295.59041666666667,
+          "end_seconds": 297.8304166666667
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Verify the Excel formulas",
+      "narration": "Switch to the workbook's Demo tab. Cells B twelve and B thirteen calculate saturation pressures of one hundred fifty and sixty kilopascals. B fourteen and B fifteen calculate gamma one and gamma two: approximately one point four nine one five four five, and one point five six one three seven seven. For component two, the formulas use one minus x one and one minus y one. B sixteen and B seventeen take the natural logarithms. Compare those with the Lab's log gamma values, allowing for displayed rounding. Agreement checks these calculations, not the property source independently.",
+      "on_screen": "Excel Demo: show formulas and values in B12:B17. Highlight the observation links from VLE_data row 11 and show ln gamma1 approximately 0.399813 and ln gamma2 approximately 0.445568.",
+      "pause_instruction": "",
+      "start_sample": 7156330,
+      "end_sample": 8279529,
+      "start_seconds": 298.18041666666664,
+      "end_seconds": 344.980375,
+      "duration_samples": 1123199,
+      "duration_seconds": 46.799958333333336,
+      "audio": "segment-08.wav",
+      "audio_sha256": "89807d0954a15a5df0c61b3566d33508f1fe6a04af07b96d493d91c50940020c",
+      "narration_sha256": "da47f8d4236972ebacca8e7d70407177c5849e5c01f76277dda5e54d1ca5b4b3",
+      "cues": [
+        {
+          "id": "08-01",
+          "chapter_id": "08",
+          "text": "Switch to the workbook's Demo tab.",
+          "start_sample": 7160650,
+          "end_sample": 7216458,
+          "start_seconds": 298.36041666666665,
+          "end_seconds": 300.68575
+        },
+        {
+          "id": "08-02",
+          "chapter_id": "08",
+          "text": "Cells B twelve and B thirteen calculate saturation pressures of one hundred fifty and sixty kilopascals.",
+          "start_sample": 7220778,
+          "end_sample": 7415850,
+          "start_seconds": 300.86575,
+          "end_seconds": 308.99375
+        },
+        {
+          "id": "08-03",
+          "chapter_id": "08",
+          "text": "B fourteen and B fifteen calculate gamma one and gamma two: approximately one point four nine one five four five, and one point five six one three seven seven.",
+          "start_sample": 7420170,
+          "end_sample": 7735705,
+          "start_seconds": 309.17375,
+          "end_seconds": 322.32104166666664
+        },
+        {
+          "id": "08-04",
+          "chapter_id": "08",
+          "text": "For component two, the formulas use one minus x one and one minus y one.",
+          "start_sample": 7740025,
+          "end_sample": 7893625,
+          "start_seconds": 322.50104166666665,
+          "end_seconds": 328.9010416666667
+        },
+        {
+          "id": "08-05",
+          "chapter_id": "08",
+          "text": "B sixteen and B seventeen take the natural logarithms.",
+          "start_sample": 7897945,
+          "end_sample": 8008025,
+          "start_seconds": 329.0810416666667,
+          "end_seconds": 333.66770833333334
+        },
+        {
+          "id": "08-06",
+          "chapter_id": "08",
+          "text": "Compare those with the Lab's log gamma values, allowing for displayed rounding.",
+          "start_sample": 8012345,
+          "end_sample": 8142905,
+          "start_seconds": 333.84770833333334,
+          "end_seconds": 339.28770833333334
+        },
+        {
+          "id": "08-07",
+          "chapter_id": "08",
+          "text": "Agreement checks these calculations, not the property source independently.",
+          "start_sample": 8147225,
+          "end_sample": 8271129,
+          "start_seconds": 339.46770833333335,
+          "end_seconds": 344.630375
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Save the validated baseline",
+      "narration": "Return to Lab zero eight and save a baseline using Export complete study JSON. Give it a clear name, such as week zero two baseline. This file preserves the setup as well as recorded results; the observation CSV alone does not preserve the property settings. Keep Unmeasured endpoint intervals set to No extrapolation, no full-area verdict. Our observations do not cover the pure-component endpoints. Do not turn an incomplete composition interval into a full-area consistency claim. Keep that limitation with the baseline before fitting either model.",
+      "on_screen": "Show Unmeasured endpoint intervals: No extrapolation · no full-area verdict. Select Export complete study JSON and display a distinct baseline filename, for example week02-baseline.json.",
+      "pause_instruction": "",
+      "start_sample": 8279529,
+      "end_sample": 9307865,
+      "start_seconds": 344.980375,
+      "end_seconds": 387.8277083333333,
+      "duration_samples": 1028336,
+      "duration_seconds": 42.84733333333333,
+      "audio": "segment-09.wav",
+      "audio_sha256": "0a61e61f32c3334ee6a7140367af25d278aed915690d063ae804f5d0b28a2ec1",
+      "narration_sha256": "fafd385bb184be4c94d9e09848b415687b85c0497a4fbc7b3b98e82dc0f207f0",
+      "cues": [
+        {
+          "id": "09-01",
+          "chapter_id": "09",
+          "text": "Return to Lab zero eight and save a baseline using Export complete study JSON.",
+          "start_sample": 8283849,
+          "end_sample": 8454857,
+          "start_seconds": 345.160375,
+          "end_seconds": 352.28570833333333
+        },
+        {
+          "id": "09-02",
+          "chapter_id": "09",
+          "text": "Give it a clear name, such as week zero two baseline.",
+          "start_sample": 8459177,
+          "end_sample": 8547753,
+          "start_seconds": 352.46570833333334,
+          "end_seconds": 356.156375
+        },
+        {
+          "id": "09-03",
+          "chapter_id": "09",
+          "text": "This file preserves the setup as well as recorded results; the observation CSV alone does not preserve the property settings.",
+          "start_sample": 8552073,
+          "end_sample": 8784521,
+          "start_seconds": 356.336375,
+          "end_seconds": 366.0217083333333
+        },
+        {
+          "id": "09-04",
+          "chapter_id": "09",
+          "text": "Keep Unmeasured endpoint intervals set to No extrapolation, no full-area verdict.",
+          "start_sample": 8788841,
+          "end_sample": 8930665,
+          "start_seconds": 366.20170833333333,
+          "end_seconds": 372.11104166666667
+        },
+        {
+          "id": "09-05",
+          "chapter_id": "09",
+          "text": "Our observations do not cover the pure-component endpoints.",
+          "start_sample": 8934985,
+          "end_sample": 9035337,
+          "start_seconds": 372.2910416666667,
+          "end_seconds": 376.472375
+        },
+        {
+          "id": "09-06",
+          "chapter_id": "09",
+          "text": "Do not turn an incomplete composition interval into a full-area consistency claim.",
+          "start_sample": 9039657,
+          "end_sample": 9187113,
+          "start_seconds": 376.652375,
+          "end_seconds": 382.796375
+        },
+        {
+          "id": "09-07",
+          "chapter_id": "09",
+          "text": "Keep that limitation with the baseline before fitting either model.",
+          "start_sample": 9191433,
+          "end_sample": 9299465,
+          "start_seconds": 382.976375,
+          "end_seconds": 387.47770833333334
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Fit and save one-parameter Margules",
+      "narration": "Select Margules, one parameter, and then Fit selected model. Once fitting finishes, choose View: Pressure and vapor residuals. Here, the mean absolute pressure error is about one point one four one percent. The mean absolute vapor-composition error is about zero point six seven six percentage points. Record both metrics, inspect the residual pattern, and note any parameter-bound warning. Before changing models, export the complete study JSON and the fitted residuals CSV. Give both files Margules names so the next fit cannot be confused with this result.",
+      "on_screen": "Show Margules · 1 parameter, Fit selected model, then View: Pressure and vapor residuals. Display full precision metrics approximately 1.14098% and 0.675676 percentage points. Show both exports with Margules filenames.",
+      "pause_instruction": "",
+      "start_sample": 9307865,
+      "end_sample": 10349464,
+      "start_seconds": 387.8277083333333,
+      "end_seconds": 431.22766666666666,
+      "duration_samples": 1041599,
+      "duration_seconds": 43.39995833333333,
+      "audio": "segment-10.wav",
+      "audio_sha256": "03815567314ce34a91907555608da37dfc321c611bfe12c218171b8f597375f4",
+      "narration_sha256": "d2b2d13c742f0dc2f28e8b6ead2a4a1bbf077c106167eb84c7acce7f2b1f5b20",
+      "cues": [
+        {
+          "id": "10-01",
+          "chapter_id": "10",
+          "text": "Select Margules, one parameter, and then Fit selected model.",
+          "start_sample": 9312185,
+          "end_sample": 9417657,
+          "start_seconds": 388.0077083333333,
+          "end_seconds": 392.402375
+        },
+        {
+          "id": "10-02",
+          "chapter_id": "10",
+          "text": "Once fitting finishes, choose View: Pressure and vapor residuals.",
+          "start_sample": 9421977,
+          "end_sample": 9527832,
+          "start_seconds": 392.582375,
+          "end_seconds": 396.993
+        },
+        {
+          "id": "10-03",
+          "chapter_id": "10",
+          "text": "Here, the mean absolute pressure error is about one point one four one percent.",
+          "start_sample": 9532152,
+          "end_sample": 9673464,
+          "start_seconds": 397.173,
+          "end_seconds": 403.061
+        },
+        {
+          "id": "10-04",
+          "chapter_id": "10",
+          "text": "The mean absolute vapor-composition error is about zero point six seven six percentage points.",
+          "start_sample": 9677784,
+          "end_sample": 9850328,
+          "start_seconds": 403.241,
+          "end_seconds": 410.43033333333335
+        },
+        {
+          "id": "10-05",
+          "chapter_id": "10",
+          "text": "Record both metrics, inspect the residual pattern, and note any parameter-bound warning.",
+          "start_sample": 9854648,
+          "end_sample": 10007304,
+          "start_seconds": 410.61033333333336,
+          "end_seconds": 416.971
+        },
+        {
+          "id": "10-06",
+          "chapter_id": "10",
+          "text": "Before changing models, export the complete study JSON and the fitted residuals CSV.",
+          "start_sample": 10011624,
+          "end_sample": 10196456,
+          "start_seconds": 417.151,
+          "end_seconds": 424.8523333333333
+        },
+        {
+          "id": "10-07",
+          "chapter_id": "10",
+          "text": "Give both files Margules names so the next fit cannot be confused with this result.",
+          "start_sample": 10200776,
+          "end_sample": 10341064,
+          "start_seconds": 425.0323333333333,
+          "end_seconds": 430.87766666666664
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Fit NRTL with the same inputs",
+      "narration": "Now choose N R T L, fixed alpha, and set alpha to zero point three. Leave the temperature-dependent parameter option unchecked. Keep the observations and property settings unchanged, then fit again. The pressure error is approximately one point one four times ten to the minus six percent, and the vapor error is about three point eight three times ten to the minus seven percentage points. These very small training errors are expected: N R T L generated the synthetic observations. This is model recovery, not evidence of universal superiority.",
+      "on_screen": "Show NRTL · fixed alpha, alpha=0.3, and Fit tau_ij=c_ij+d_ij(350/T−1) unchecked. Fit and show the same residual view, approximately 1.14e-6% pressure error and 3.83e-7 percentage points vapor error.",
+      "pause_instruction": "",
+      "start_sample": 10349464,
+      "end_sample": 11354024,
+      "start_seconds": 431.22766666666666,
+      "end_seconds": 473.08433333333335,
+      "duration_samples": 1004560,
+      "duration_seconds": 41.85666666666667,
+      "audio": "segment-11.wav",
+      "audio_sha256": "17379baf37e1aa4a3d42f90fedfdb3bc7c61ff5e9f342730ed4422f9b1462c03",
+      "narration_sha256": "57cb9e98fafe0a13158fdfaa537285aa88f299873d643c72b7db42c949498a4b",
+      "cues": [
+        {
+          "id": "11-01",
+          "chapter_id": "11",
+          "text": "Now choose N R T L, fixed alpha, and set alpha to zero point three.",
+          "start_sample": 10353784,
+          "end_sample": 10490488,
+          "start_seconds": 431.40766666666667,
+          "end_seconds": 437.10366666666664
+        },
+        {
+          "id": "11-02",
+          "chapter_id": "11",
+          "text": "Leave the temperature-dependent parameter option unchecked.",
+          "start_sample": 10494808,
+          "end_sample": 10587992,
+          "start_seconds": 437.28366666666665,
+          "end_seconds": 441.16633333333334
+        },
+        {
+          "id": "11-03",
+          "chapter_id": "11",
+          "text": "Keep the observations and property settings unchanged, then fit again.",
+          "start_sample": 10592312,
+          "end_sample": 10711608,
+          "start_seconds": 441.34633333333335,
+          "end_seconds": 446.317
+        },
+        {
+          "id": "11-04",
+          "chapter_id": "11",
+          "text": "The pressure error is approximately one point one four times ten to the minus six percent, and the vapor error is about three point eight three times ten to the minus seven percentage points.",
+          "start_sample": 10715928,
+          "end_sample": 11036440,
+          "start_seconds": 446.497,
+          "end_seconds": 459.8516666666667
+        },
+        {
+          "id": "11-05",
+          "chapter_id": "11",
+          "text": "These very small training errors are expected: N R T L generated the synthetic observations.",
+          "start_sample": 11040760,
+          "end_sample": 11216888,
+          "start_seconds": 460.0316666666667,
+          "end_seconds": 467.37033333333335
+        },
+        {
+          "id": "11-06",
+          "chapter_id": "11",
+          "text": "This is model recovery, not evidence of universal superiority.",
+          "start_sample": 11221208,
+          "end_sample": 11345624,
+          "start_seconds": 467.55033333333336,
+          "end_seconds": 472.7343333333333
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Save NRTL results and read residual units",
+      "narration": "Export the N R T L complete study JSON and fitted residuals CSV under separate, clearly named files. In the residuals CSV, y underscore error is the calculated minus observed vapor mole fraction. Multiply it by one hundred to express the difference in percentage points. The pressure underscore error underscore percent column is already a percentage. Do not multiply that column by one hundred again. Also distinguish individual signed residuals from the displayed mean absolute error, which averages their absolute values. Keep both model exports for comparison and recovery.",
+      "on_screen": "Save distinct NRTL JSON and residual CSV filenames. Inspect exported headers y_error and pressure_error_percent, with note: y_error × 100 gives percentage points; pressure_error_percent is already percent.",
+      "pause_instruction": "",
+      "start_sample": 11354024,
+      "end_sample": 12464280,
+      "start_seconds": 473.08433333333335,
+      "end_seconds": 519.345,
+      "duration_samples": 1110256,
+      "duration_seconds": 46.260666666666665,
+      "audio": "segment-12.wav",
+      "audio_sha256": "d956588b0c8e76ef6a768f351771e1e7e503a8b4b512cd63126157b15d7916d8",
+      "narration_sha256": "570573ba1e508f5823c6a6f564167059f1fd15b2f076880743370d723beee90a",
+      "cues": [
+        {
+          "id": "12-01",
+          "chapter_id": "12",
+          "text": "Export the N R T L complete study JSON and fitted residuals CSV under separate, clearly named files.",
+          "start_sample": 11358344,
+          "end_sample": 11587208,
+          "start_seconds": 473.26433333333335,
+          "end_seconds": 482.80033333333336
+        },
+        {
+          "id": "12-02",
+          "chapter_id": "12",
+          "text": "In the residuals CSV, y underscore error is the calculated minus observed vapor mole fraction.",
+          "start_sample": 11591528,
+          "end_sample": 11786088,
+          "start_seconds": 482.9803333333333,
+          "end_seconds": 491.087
+        },
+        {
+          "id": "12-03",
+          "chapter_id": "12",
+          "text": "Multiply it by one hundred to express the difference in percentage points.",
+          "start_sample": 11790408,
+          "end_sample": 11910728,
+          "start_seconds": 491.267,
+          "end_seconds": 496.2803333333333
+        },
+        {
+          "id": "12-04",
+          "chapter_id": "12",
+          "text": "The pressure underscore error underscore percent column is already a percentage.",
+          "start_sample": 11915048,
+          "end_sample": 12045608,
+          "start_seconds": 496.4603333333333,
+          "end_seconds": 501.9003333333333
+        },
+        {
+          "id": "12-05",
+          "chapter_id": "12",
+          "text": "Do not multiply that column by one hundred again.",
+          "start_sample": 12049928,
+          "end_sample": 12143624,
+          "start_seconds": 502.08033333333333,
+          "end_seconds": 505.9843333333333
+        },
+        {
+          "id": "12-06",
+          "chapter_id": "12",
+          "text": "Also distinguish individual signed residuals from the displayed mean absolute error, which averages their absolute values.",
+          "start_sample": 12147944,
+          "end_sample": 12363496,
+          "start_seconds": 506.16433333333333,
+          "end_seconds": 515.1456666666667
+        },
+        {
+          "id": "12-07",
+          "chapter_id": "12",
+          "text": "Keep both model exports for comparison and recovery.",
+          "start_sample": 12367816,
+          "end_sample": 12455880,
+          "start_seconds": 515.3256666666666,
+          "end_seconds": 518.995
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Restore a saved study and recalculate",
+      "narration": "Expand Study workspace, reopen and compare cases. Enter a label such as Restored Margules in Label for the next captured case. Use Load studies or a comparison JSON to select the saved Margules study. Then select its Restore button. Check the restored observations, units, property constants, and model controls. Loading first displays recorded results; it does not recalculate them. Restore loads the settings. Now select Validate and inspect data, followed by Fit selected model. Compare the fresh errors with the saved result to check that you recovered the same setup.",
+      "on_screen": "Expand Study workspace · reopen and compare cases. Set case label, load the saved Margules JSON, select Restore [case label], inspect restored model and properties, then Validate & inspect data and Fit selected model.",
+      "pause_instruction": "",
+      "start_sample": 12464280,
+      "end_sample": 13537271,
+      "start_seconds": 519.345,
+      "end_seconds": 564.0529583333333,
+      "duration_samples": 1072991,
+      "duration_seconds": 44.70795833333333,
+      "audio": "segment-13.wav",
+      "audio_sha256": "21c0d0289dd7b303b024d0f25f2772ac1edfe7a4949715258d8790fb5514996c",
+      "narration_sha256": "52ac77313da46891889781e548e401a8b83391933a001e827f2f38c701ab6111",
+      "cues": [
+        {
+          "id": "13-01",
+          "chapter_id": "13",
+          "text": "Expand Study workspace, reopen and compare cases.",
+          "start_sample": 12468600,
+          "end_sample": 12560760,
+          "start_seconds": 519.525,
+          "end_seconds": 523.365
+        },
+        {
+          "id": "13-02",
+          "chapter_id": "13",
+          "text": "Enter a label such as Restored Margules in Label for the next captured case.",
+          "start_sample": 12565080,
+          "end_sample": 12703832,
+          "start_seconds": 523.545,
+          "end_seconds": 529.3263333333333
+        },
+        {
+          "id": "13-03",
+          "chapter_id": "13",
+          "text": "Use Load studies or a comparison JSON to select the saved Margules study.",
+          "start_sample": 12708152,
+          "end_sample": 12866360,
+          "start_seconds": 529.5063333333334,
+          "end_seconds": 536.0983333333334
+        },
+        {
+          "id": "13-04",
+          "chapter_id": "13",
+          "text": "Then select its Restore button.",
+          "start_sample": 12870680,
+          "end_sample": 12925976,
+          "start_seconds": 536.2783333333333,
+          "end_seconds": 538.5823333333333
+        },
+        {
+          "id": "13-05",
+          "chapter_id": "13",
+          "text": "Check the restored observations, units, property constants, and model controls.",
+          "start_sample": 12930296,
+          "end_sample": 13072295,
+          "start_seconds": 538.7623333333333,
+          "end_seconds": 544.6789583333333
+        },
+        {
+          "id": "13-06",
+          "chapter_id": "13",
+          "text": "Loading first displays recorded results; it does not recalculate them.",
+          "start_sample": 13076615,
+          "end_sample": 13206663,
+          "start_seconds": 544.8589583333334,
+          "end_seconds": 550.277625
+        },
+        {
+          "id": "13-07",
+          "chapter_id": "13",
+          "text": "Restore loads the settings.",
+          "start_sample": 13210983,
+          "end_sample": 13260135,
+          "start_seconds": 550.457625,
+          "end_seconds": 552.505625
+        },
+        {
+          "id": "13-08",
+          "chapter_id": "13",
+          "text": "Now select Validate and inspect data, followed by Fit selected model.",
+          "start_sample": 13264455,
+          "end_sample": 13388359,
+          "start_seconds": 552.685625,
+          "end_seconds": 557.8482916666667
+        },
+        {
+          "id": "13-09",
+          "chapter_id": "13",
+          "text": "Compare the fresh errors with the saved result to check that you recovered the same setup.",
+          "start_sample": 13392679,
+          "end_sample": 13528871,
+          "start_seconds": 558.0282916666666,
+          "end_seconds": 563.7029583333333
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "State the finding and practice the workflow",
+      "narration": "Finish with a finding, a number, and a limitation. For example, N R T L reproduces these synthetic training data more closely than Margules: compare the two pressure-error values you saved. But the generating model was N R T L, and training error alone does not establish thermodynamic consistency or prediction on new observations. Now allow about twenty minutes to repeat the full workflow yourself: export, import, verify one row, fit both models, save, and restore. Keep your files and corrections with the worksheet. This practice adds no new attendance task.",
+      "on_screen": "Show a compact checklist: export CSV; import and validate; independently check row 11; fit and export both models; restore and refit; state finding, numerical evidence and limitation. Include: about 20 minutes of practice; no new attendance task.",
+      "pause_instruction": "Pause and repeat the complete workflow in approximately 20 minutes. Keep your own exported files, numerical check, corrections and limitation statement with the original worksheet.",
+      "start_sample": 13537271,
+      "end_sample": 14599975,
+      "start_seconds": 564.0529583333333,
+      "end_seconds": 608.3322916666667,
+      "duration_samples": 1062704,
+      "duration_seconds": 44.279333333333334,
+      "audio": "segment-14.wav",
+      "audio_sha256": "0371424a8740b61ae55d94526edc6876e70613ae36fed30428d57a9a5b87b982",
+      "narration_sha256": "2a8498b8c58edb63b208598f2ac60eb7a2c1121db38ddfa148d48ddf82b8f1bd",
+      "cues": [
+        {
+          "id": "14-01",
+          "chapter_id": "14",
+          "text": "Finish with a finding, a number, and a limitation.",
+          "start_sample": 13541591,
+          "end_sample": 13628119,
+          "start_seconds": 564.2329583333334,
+          "end_seconds": 567.8382916666667
+        },
+        {
+          "id": "14-02",
+          "chapter_id": "14",
+          "text": "For example, N R T L reproduces these synthetic training data more closely than Margules: compare the two pressure-error values you saved.",
+          "start_sample": 13632439,
+          "end_sample": 13890487,
+          "start_seconds": 568.0182916666666,
+          "end_seconds": 578.7702916666667
+        },
+        {
+          "id": "14-03",
+          "chapter_id": "14",
+          "text": "But the generating model was N R T L, and training error alone does not establish thermodynamic consistency or prediction on new observations.",
+          "start_sample": 13894807,
+          "end_sample": 14169239,
+          "start_seconds": 578.9502916666667,
+          "end_seconds": 590.3849583333333
+        },
+        {
+          "id": "14-04",
+          "chapter_id": "14",
+          "text": "Now allow about twenty minutes to repeat the full workflow yourself: export, import, verify one row, fit both models, save, and restore.",
+          "start_sample": 14173559,
+          "end_sample": 14432407,
+          "start_seconds": 590.5649583333334,
+          "end_seconds": 601.3502916666666
+        },
+        {
+          "id": "14-05",
+          "chapter_id": "14",
+          "text": "Keep your files and corrections with the worksheet.",
+          "start_sample": 14436727,
+          "end_sample": 14514551,
+          "start_seconds": 601.5302916666667,
+          "end_seconds": 604.7729583333333
+        },
+        {
+          "id": "14-06",
+          "chapter_id": "14",
+          "text": "This practice adds no new attendance task.",
+          "start_sample": 14518871,
+          "end_sample": 14591575,
+          "start_seconds": 604.9529583333333,
+          "end_seconds": 607.9822916666667
+        }
+      ]
+    }
+  ],
+  "cues": [
+    {
+      "id": "01-01",
+      "chapter_id": "01",
+      "text": "In this demonstration, we will move a vapor-liquid equilibrium dataset from Excel into Lab Eight, check one calculation, compare two activity models, and save results that we can reopen.",
+      "start_sample": 4320,
+      "end_sample": 340784,
+      "start_seconds": 0.18,
+      "end_seconds": 14.199333333333334
+    },
+    {
+      "id": "01-02",
+      "chapter_id": "01",
+      "text": "All nineteen observations are synthetic teaching data, not experimental measurements.",
+      "start_sample": 345104,
+      "end_sample": 489488,
+      "start_seconds": 14.379333333333333,
+      "end_seconds": 20.395333333333333
+    },
+    {
+      "id": "01-03",
+      "chapter_id": "01",
+      "text": "Download the demonstration workbook and keep the walkthrough available beside it.",
+      "start_sample": 493808,
+      "end_sample": 614128,
+      "start_seconds": 20.575333333333333,
+      "end_seconds": 25.588666666666665
+    },
+    {
+      "id": "01-04",
+      "chapter_id": "01",
+      "text": "You will need Excel, or another spreadsheet application that can export a worksheet as CSV, and a browser for the Lab.",
+      "start_sample": 618448,
+      "end_sample": 827007,
+      "start_seconds": 25.768666666666668,
+      "end_seconds": 34.458625
+    },
+    {
+      "id": "01-05",
+      "chapter_id": "01",
+      "text": "Watch each step, then pause and repeat it with your own copy of the files.",
+      "start_sample": 831327,
+      "end_sample": 955231,
+      "start_seconds": 34.638625,
+      "end_seconds": 39.801291666666664
+    },
+    {
+      "id": "02-01",
+      "chapter_id": "02",
+      "text": "Open the workbook and select the Demo tab.",
+      "start_sample": 967951,
+      "end_sample": 1042191,
+      "start_seconds": 40.331291666666665,
+      "end_seconds": 43.424625
+    },
+    {
+      "id": "02-02",
+      "chapter_id": "02",
+      "text": "This sheet shows a worked calculation linked to one observation in the data sheet.",
+      "start_sample": 1046511,
+      "end_sample": 1180143,
+      "start_seconds": 43.604625,
+      "end_seconds": 49.172625
+    },
+    {
+      "id": "02-03",
+      "chapter_id": "02",
+      "text": "The observation appears near the top, followed by saturation pressures, activity coefficients, and their natural logarithms.",
+      "start_sample": 1184463,
+      "end_sample": 1396431,
+      "start_seconds": 49.352625,
+      "end_seconds": 58.184625
+    },
+    {
+      "id": "02-04",
+      "chapter_id": "02",
+      "text": "An activity coefficient, called gamma, adjusts the ideal-liquid prediction for nonideal behavior.",
+      "start_sample": 1400751,
+      "end_sample": 1576879,
+      "start_seconds": 58.364625,
+      "end_seconds": 65.70329166666667
+    },
+    {
+      "id": "02-05",
+      "chapter_id": "02",
+      "text": "We will check these values against the Lab later.",
+      "start_sample": 1581199,
+      "end_sample": 1659023,
+      "start_seconds": 65.88329166666666,
+      "end_seconds": 69.12595833333333
+    },
+    {
+      "id": "02-06",
+      "chapter_id": "02",
+      "text": "For now, notice the formulas and the separate Antoine input block below.",
+      "start_sample": 1663343,
+      "end_sample": 1796463,
+      "start_seconds": 69.30595833333334,
+      "end_seconds": 74.852625
+    },
+    {
+      "id": "02-07",
+      "chapter_id": "02",
+      "text": "Keep this workbook intact so you can return to the calculation after importing the data.",
+      "start_sample": 1800783,
+      "end_sample": 1953871,
+      "start_seconds": 75.032625,
+      "end_seconds": 81.41129166666667
+    },
+    {
+      "id": "03-01",
+      "chapter_id": "03",
+      "text": "Now select the VLE data tab.",
+      "start_sample": 1966591,
+      "end_sample": 2035711,
+      "start_seconds": 81.94129166666667,
+      "end_seconds": 84.82129166666667
+    },
+    {
+      "id": "03-02",
+      "chapter_id": "03",
+      "text": "The import table occupies cells A one through D twenty.",
+      "start_sample": 2040031,
+      "end_sample": 2141919,
+      "start_seconds": 85.00129166666666,
+      "end_seconds": 89.246625
+    },
+    {
+      "id": "03-03",
+      "chapter_id": "03",
+      "text": "Its first row contains four headers: T, P, x one, and y one.",
+      "start_sample": 2146239,
+      "end_sample": 2274589,
+      "start_seconds": 89.426625,
+      "end_seconds": 94.77454166666666
+    },
+    {
+      "id": "03-04",
+      "chapter_id": "03",
+      "text": "The remaining nineteen rows contain temperature, total pressure, and component one's liquid and vapor mole fractions.",
+      "start_sample": 2278909,
+      "end_sample": 2473852,
+      "start_seconds": 94.95454166666667,
+      "end_seconds": 103.07716666666667
+    },
+    {
+      "id": "03-05",
+      "chapter_id": "03",
+      "text": "Temperatures are in kelvin, and pressures are in kilopascals.",
+      "start_sample": 2478172,
+      "end_sample": 2581596,
+      "start_seconds": 103.25716666666666,
+      "end_seconds": 107.5665
+    },
+    {
+      "id": "03-06",
+      "chapter_id": "03",
+      "text": "Locate spreadsheet row eleven, where x one is zero point five.",
+      "start_sample": 2585916,
+      "end_sample": 2705212,
+      "start_seconds": 107.7465,
+      "end_seconds": 112.71716666666667
+    },
+    {
+      "id": "03-07",
+      "chapter_id": "03",
+      "text": "This is the observation linked to the Demo calculation.",
+      "start_sample": 2709532,
+      "end_sample": 2804764,
+      "start_seconds": 112.89716666666666,
+      "end_seconds": 116.86516666666667
+    },
+    {
+      "id": "03-08",
+      "chapter_id": "03",
+      "text": "Keep the header row and all nineteen observations together when exporting.",
+      "start_sample": 2809084,
+      "end_sample": 2926844,
+      "start_seconds": 117.04516666666666,
+      "end_seconds": 121.95183333333334
+    },
+    {
+      "id": "04-01",
+      "chapter_id": "04",
+      "text": "With VLE data still active, choose Save As and select CSV UTF-eight, comma delimited.",
+      "start_sample": 2939564,
+      "end_sample": 3131195,
+      "start_seconds": 122.48183333333333,
+      "end_seconds": 130.46645833333332
+    },
+    {
+      "id": "04-02",
+      "chapter_id": "04",
+      "text": "Give the export a recognizable name and keep the original Excel workbook separately.",
+      "start_sample": 3135515,
+      "end_sample": 3279387,
+      "start_seconds": 130.64645833333333,
+      "end_seconds": 136.641125
+    },
+    {
+      "id": "04-03",
+      "chapter_id": "04",
+      "text": "If Excel warns that only the active sheet will be saved, confirm that the active sheet is VLE data before proceeding.",
+      "start_sample": 3283707,
+      "end_sample": 3495163,
+      "start_seconds": 136.821125,
+      "end_seconds": 145.63179166666666
+    },
+    {
+      "id": "04-04",
+      "chapter_id": "04",
+      "text": "The CSV contains the observation table; it does not preserve the Demo sheet, workbook formatting, or property settings.",
+      "start_sample": 3499483,
+      "end_sample": 3713499,
+      "start_seconds": 145.81179166666666,
+      "end_seconds": 154.729125
+    },
+    {
+      "id": "04-05",
+      "chapter_id": "04",
+      "text": "After saving, note the file's location.",
+      "start_sample": 3717819,
+      "end_sample": 3791035,
+      "start_seconds": 154.909125,
+      "end_seconds": 157.95979166666666
+    },
+    {
+      "id": "04-06",
+      "chapter_id": "04",
+      "text": "We will select this actual exported file in the browser, rather than stop at loading a preset.",
+      "start_sample": 3795355,
+      "end_sample": 3948443,
+      "start_seconds": 158.13979166666667,
+      "end_seconds": 164.51845833333334
+    },
+    {
+      "id": "05-01",
+      "chapter_id": "05",
+      "text": "Open Lab Eight.",
+      "start_sample": 3961163,
+      "end_sample": 3997515,
+      "start_seconds": 165.04845833333334,
+      "end_seconds": 166.563125
+    },
+    {
+      "id": "05-02",
+      "chapter_id": "05",
+      "text": "First select Load synthetic example.",
+      "start_sample": 4001835,
+      "end_sample": 4068395,
+      "start_seconds": 166.743125,
+      "end_seconds": 169.51645833333333
+    },
+    {
+      "id": "05-03",
+      "chapter_id": "05",
+      "text": "For this particular teaching dataset, that button initializes the matching component names, units, and both Antoine property definitions.",
+      "start_sample": 4072715,
+      "end_sample": 4315915,
+      "start_seconds": 169.69645833333334,
+      "end_seconds": 179.82979166666667
+    },
+    {
+      "id": "05-04",
+      "chapter_id": "05",
+      "text": "It also loads an example table.",
+      "start_sample": 4320235,
+      "end_sample": 4382699,
+      "start_seconds": 180.00979166666667,
+      "end_seconds": 182.61245833333334
+    },
+    {
+      "id": "05-05",
+      "chapter_id": "05",
+      "text": "Next, use Load CSV or tab-separated text to select the CSV you just saved.",
+      "start_sample": 4387019,
+      "end_sample": 4551546,
+      "start_seconds": 182.79245833333334,
+      "end_seconds": 189.64775
+    },
+    {
+      "id": "05-06",
+      "chapter_id": "05",
+      "text": "Check the selected filename and the table in the text box.",
+      "start_sample": 4555866,
+      "end_sample": 4651098,
+      "start_seconds": 189.82775,
+      "end_seconds": 193.79575
+    },
+    {
+      "id": "05-07",
+      "chapter_id": "05",
+      "text": "These are two separate actions: initialize the properties, then import your file.",
+      "start_sample": 4655418,
+      "end_sample": 4790586,
+      "start_seconds": 193.97575,
+      "end_seconds": 199.60775
+    },
+    {
+      "id": "05-08",
+      "chapter_id": "05",
+      "text": "Do not press Load synthetic example again afterward, because that would replace your imported table with the preset.",
+      "start_sample": 4794906,
+      "end_sample": 4987930,
+      "start_seconds": 199.78775,
+      "end_seconds": 207.83041666666668
+    },
+    {
+      "id": "06-01",
+      "chapter_id": "06",
+      "text": "Check that the path is isothermal, measured temperature uses kelvin, and measured pressure uses kilopascals.",
+      "start_sample": 5000650,
+      "end_sample": 5180362,
+      "start_seconds": 208.36041666666668,
+      "end_seconds": 215.84841666666668
+    },
+    {
+      "id": "06-02",
+      "chapter_id": "06",
+      "text": "Both Antoine definitions use log base ten of saturation pressure equal to A minus B divided by the quantity T plus C.",
+      "start_sample": 5184682,
+      "end_sample": 5407914,
+      "start_seconds": 216.02841666666666,
+      "end_seconds": 225.32975
+    },
+    {
+      "id": "06-03",
+      "chapter_id": "06",
+      "text": "Their equation temperature uses kelvin, their pressure uses kilopascals, and their valid range is three hundred to three hundred ninety kelvin.",
+      "start_sample": 5412234,
+      "end_sample": 5649706,
+      "start_seconds": 225.50975,
+      "end_seconds": 235.40441666666666
+    },
+    {
+      "id": "06-04",
+      "chapter_id": "06",
+      "text": "Three hundred fifty kelvin is seventy-six point eight five degrees Celsius; do not change the selector to Celsius for these numbers.",
+      "start_sample": 5654026,
+      "end_sample": 5886986,
+      "start_seconds": 235.58441666666667,
+      "end_seconds": 245.29108333333335
+    },
+    {
+      "id": "06-05",
+      "chapter_id": "06",
+      "text": "Select Validate and inspect data.",
+      "start_sample": 5891306,
+      "end_sample": 5955306,
+      "start_seconds": 245.47108333333333,
+      "end_seconds": 248.13775
+    },
+    {
+      "id": "06-06",
+      "chapter_id": "06",
+      "text": "Expect nineteen observations and nineteen interior points used.",
+      "start_sample": 5959626,
+      "end_sample": 6072778,
+      "start_seconds": 248.31775,
+      "end_seconds": 253.03241666666668
+    },
+    {
+      "id": "06-07",
+      "chapter_id": "06",
+      "text": "Keep No extrapolation selected.",
+      "start_sample": 6077098,
+      "end_sample": 6138538,
+      "start_seconds": 253.21241666666666,
+      "end_seconds": 255.77241666666666
+    },
+    {
+      "id": "07-01",
+      "chapter_id": "07",
+      "text": "In Imported observations, find x one equal to zero point five, input row eleven.",
+      "start_sample": 6151258,
+      "end_sample": 6317146,
+      "start_seconds": 256.30241666666666,
+      "end_seconds": 263.2144166666667
+    },
+    {
+      "id": "07-02",
+      "chapter_id": "07",
+      "text": "Here, x is the liquid mole fraction and y is the vapor mole fraction.",
+      "start_sample": 6321466,
+      "end_sample": 6451514,
+      "start_seconds": 263.39441666666664,
+      "end_seconds": 268.81308333333334
+    },
+    {
+      "id": "07-03",
+      "chapter_id": "07",
+      "text": "Under the ideal-vapor assumption, with negligible Poynting correction, y times total pressure equals x times gamma times saturation pressure.",
+      "start_sample": 6455834,
+      "end_sample": 6710298,
+      "start_seconds": 268.99308333333335,
+      "end_seconds": 279.59575
+    },
+    {
+      "id": "07-04",
+      "chapter_id": "07",
+      "text": "Rearranging gives gamma from the observed compositions and our property inputs.",
+      "start_sample": 6714618,
+      "end_sample": 6855418,
+      "start_seconds": 279.77575,
+      "end_seconds": 285.6424166666667
+    },
+    {
+      "id": "07-05",
+      "chapter_id": "07",
+      "text": "Notice that the table displays the natural logarithm of gamma.",
+      "start_sample": 6859738,
+      "end_sample": 6965210,
+      "start_seconds": 285.82241666666664,
+      "end_seconds": 290.21708333333333
+    },
+    {
+      "id": "07-06",
+      "chapter_id": "07",
+      "text": "To compare with gamma itself, take the exponential of that table value.",
+      "start_sample": 6969530,
+      "end_sample": 7089850,
+      "start_seconds": 290.39708333333334,
+      "end_seconds": 295.41041666666666
+    },
+    {
+      "id": "07-07",
+      "chapter_id": "07",
+      "text": "We will check this in Excel next.",
+      "start_sample": 7094170,
+      "end_sample": 7147930,
+      "start_seconds": 295.59041666666667,
+      "end_seconds": 297.8304166666667
+    },
+    {
+      "id": "08-01",
+      "chapter_id": "08",
+      "text": "Switch to the workbook's Demo tab.",
+      "start_sample": 7160650,
+      "end_sample": 7216458,
+      "start_seconds": 298.36041666666665,
+      "end_seconds": 300.68575
+    },
+    {
+      "id": "08-02",
+      "chapter_id": "08",
+      "text": "Cells B twelve and B thirteen calculate saturation pressures of one hundred fifty and sixty kilopascals.",
+      "start_sample": 7220778,
+      "end_sample": 7415850,
+      "start_seconds": 300.86575,
+      "end_seconds": 308.99375
+    },
+    {
+      "id": "08-03",
+      "chapter_id": "08",
+      "text": "B fourteen and B fifteen calculate gamma one and gamma two: approximately one point four nine one five four five, and one point five six one three seven seven.",
+      "start_sample": 7420170,
+      "end_sample": 7735705,
+      "start_seconds": 309.17375,
+      "end_seconds": 322.32104166666664
+    },
+    {
+      "id": "08-04",
+      "chapter_id": "08",
+      "text": "For component two, the formulas use one minus x one and one minus y one.",
+      "start_sample": 7740025,
+      "end_sample": 7893625,
+      "start_seconds": 322.50104166666665,
+      "end_seconds": 328.9010416666667
+    },
+    {
+      "id": "08-05",
+      "chapter_id": "08",
+      "text": "B sixteen and B seventeen take the natural logarithms.",
+      "start_sample": 7897945,
+      "end_sample": 8008025,
+      "start_seconds": 329.0810416666667,
+      "end_seconds": 333.66770833333334
+    },
+    {
+      "id": "08-06",
+      "chapter_id": "08",
+      "text": "Compare those with the Lab's log gamma values, allowing for displayed rounding.",
+      "start_sample": 8012345,
+      "end_sample": 8142905,
+      "start_seconds": 333.84770833333334,
+      "end_seconds": 339.28770833333334
+    },
+    {
+      "id": "08-07",
+      "chapter_id": "08",
+      "text": "Agreement checks these calculations, not the property source independently.",
+      "start_sample": 8147225,
+      "end_sample": 8271129,
+      "start_seconds": 339.46770833333335,
+      "end_seconds": 344.630375
+    },
+    {
+      "id": "09-01",
+      "chapter_id": "09",
+      "text": "Return to Lab zero eight and save a baseline using Export complete study JSON.",
+      "start_sample": 8283849,
+      "end_sample": 8454857,
+      "start_seconds": 345.160375,
+      "end_seconds": 352.28570833333333
+    },
+    {
+      "id": "09-02",
+      "chapter_id": "09",
+      "text": "Give it a clear name, such as week zero two baseline.",
+      "start_sample": 8459177,
+      "end_sample": 8547753,
+      "start_seconds": 352.46570833333334,
+      "end_seconds": 356.156375
+    },
+    {
+      "id": "09-03",
+      "chapter_id": "09",
+      "text": "This file preserves the setup as well as recorded results; the observation CSV alone does not preserve the property settings.",
+      "start_sample": 8552073,
+      "end_sample": 8784521,
+      "start_seconds": 356.336375,
+      "end_seconds": 366.0217083333333
+    },
+    {
+      "id": "09-04",
+      "chapter_id": "09",
+      "text": "Keep Unmeasured endpoint intervals set to No extrapolation, no full-area verdict.",
+      "start_sample": 8788841,
+      "end_sample": 8930665,
+      "start_seconds": 366.20170833333333,
+      "end_seconds": 372.11104166666667
+    },
+    {
+      "id": "09-05",
+      "chapter_id": "09",
+      "text": "Our observations do not cover the pure-component endpoints.",
+      "start_sample": 8934985,
+      "end_sample": 9035337,
+      "start_seconds": 372.2910416666667,
+      "end_seconds": 376.472375
+    },
+    {
+      "id": "09-06",
+      "chapter_id": "09",
+      "text": "Do not turn an incomplete composition interval into a full-area consistency claim.",
+      "start_sample": 9039657,
+      "end_sample": 9187113,
+      "start_seconds": 376.652375,
+      "end_seconds": 382.796375
+    },
+    {
+      "id": "09-07",
+      "chapter_id": "09",
+      "text": "Keep that limitation with the baseline before fitting either model.",
+      "start_sample": 9191433,
+      "end_sample": 9299465,
+      "start_seconds": 382.976375,
+      "end_seconds": 387.47770833333334
+    },
+    {
+      "id": "10-01",
+      "chapter_id": "10",
+      "text": "Select Margules, one parameter, and then Fit selected model.",
+      "start_sample": 9312185,
+      "end_sample": 9417657,
+      "start_seconds": 388.0077083333333,
+      "end_seconds": 392.402375
+    },
+    {
+      "id": "10-02",
+      "chapter_id": "10",
+      "text": "Once fitting finishes, choose View: Pressure and vapor residuals.",
+      "start_sample": 9421977,
+      "end_sample": 9527832,
+      "start_seconds": 392.582375,
+      "end_seconds": 396.993
+    },
+    {
+      "id": "10-03",
+      "chapter_id": "10",
+      "text": "Here, the mean absolute pressure error is about one point one four one percent.",
+      "start_sample": 9532152,
+      "end_sample": 9673464,
+      "start_seconds": 397.173,
+      "end_seconds": 403.061
+    },
+    {
+      "id": "10-04",
+      "chapter_id": "10",
+      "text": "The mean absolute vapor-composition error is about zero point six seven six percentage points.",
+      "start_sample": 9677784,
+      "end_sample": 9850328,
+      "start_seconds": 403.241,
+      "end_seconds": 410.43033333333335
+    },
+    {
+      "id": "10-05",
+      "chapter_id": "10",
+      "text": "Record both metrics, inspect the residual pattern, and note any parameter-bound warning.",
+      "start_sample": 9854648,
+      "end_sample": 10007304,
+      "start_seconds": 410.61033333333336,
+      "end_seconds": 416.971
+    },
+    {
+      "id": "10-06",
+      "chapter_id": "10",
+      "text": "Before changing models, export the complete study JSON and the fitted residuals CSV.",
+      "start_sample": 10011624,
+      "end_sample": 10196456,
+      "start_seconds": 417.151,
+      "end_seconds": 424.8523333333333
+    },
+    {
+      "id": "10-07",
+      "chapter_id": "10",
+      "text": "Give both files Margules names so the next fit cannot be confused with this result.",
+      "start_sample": 10200776,
+      "end_sample": 10341064,
+      "start_seconds": 425.0323333333333,
+      "end_seconds": 430.87766666666664
+    },
+    {
+      "id": "11-01",
+      "chapter_id": "11",
+      "text": "Now choose N R T L, fixed alpha, and set alpha to zero point three.",
+      "start_sample": 10353784,
+      "end_sample": 10490488,
+      "start_seconds": 431.40766666666667,
+      "end_seconds": 437.10366666666664
+    },
+    {
+      "id": "11-02",
+      "chapter_id": "11",
+      "text": "Leave the temperature-dependent parameter option unchecked.",
+      "start_sample": 10494808,
+      "end_sample": 10587992,
+      "start_seconds": 437.28366666666665,
+      "end_seconds": 441.16633333333334
+    },
+    {
+      "id": "11-03",
+      "chapter_id": "11",
+      "text": "Keep the observations and property settings unchanged, then fit again.",
+      "start_sample": 10592312,
+      "end_sample": 10711608,
+      "start_seconds": 441.34633333333335,
+      "end_seconds": 446.317
+    },
+    {
+      "id": "11-04",
+      "chapter_id": "11",
+      "text": "The pressure error is approximately one point one four times ten to the minus six percent, and the vapor error is about three point eight three times ten to the minus seven percentage points.",
+      "start_sample": 10715928,
+      "end_sample": 11036440,
+      "start_seconds": 446.497,
+      "end_seconds": 459.8516666666667
+    },
+    {
+      "id": "11-05",
+      "chapter_id": "11",
+      "text": "These very small training errors are expected: N R T L generated the synthetic observations.",
+      "start_sample": 11040760,
+      "end_sample": 11216888,
+      "start_seconds": 460.0316666666667,
+      "end_seconds": 467.37033333333335
+    },
+    {
+      "id": "11-06",
+      "chapter_id": "11",
+      "text": "This is model recovery, not evidence of universal superiority.",
+      "start_sample": 11221208,
+      "end_sample": 11345624,
+      "start_seconds": 467.55033333333336,
+      "end_seconds": 472.7343333333333
+    },
+    {
+      "id": "12-01",
+      "chapter_id": "12",
+      "text": "Export the N R T L complete study JSON and fitted residuals CSV under separate, clearly named files.",
+      "start_sample": 11358344,
+      "end_sample": 11587208,
+      "start_seconds": 473.26433333333335,
+      "end_seconds": 482.80033333333336
+    },
+    {
+      "id": "12-02",
+      "chapter_id": "12",
+      "text": "In the residuals CSV, y underscore error is the calculated minus observed vapor mole fraction.",
+      "start_sample": 11591528,
+      "end_sample": 11786088,
+      "start_seconds": 482.9803333333333,
+      "end_seconds": 491.087
+    },
+    {
+      "id": "12-03",
+      "chapter_id": "12",
+      "text": "Multiply it by one hundred to express the difference in percentage points.",
+      "start_sample": 11790408,
+      "end_sample": 11910728,
+      "start_seconds": 491.267,
+      "end_seconds": 496.2803333333333
+    },
+    {
+      "id": "12-04",
+      "chapter_id": "12",
+      "text": "The pressure underscore error underscore percent column is already a percentage.",
+      "start_sample": 11915048,
+      "end_sample": 12045608,
+      "start_seconds": 496.4603333333333,
+      "end_seconds": 501.9003333333333
+    },
+    {
+      "id": "12-05",
+      "chapter_id": "12",
+      "text": "Do not multiply that column by one hundred again.",
+      "start_sample": 12049928,
+      "end_sample": 12143624,
+      "start_seconds": 502.08033333333333,
+      "end_seconds": 505.9843333333333
+    },
+    {
+      "id": "12-06",
+      "chapter_id": "12",
+      "text": "Also distinguish individual signed residuals from the displayed mean absolute error, which averages their absolute values.",
+      "start_sample": 12147944,
+      "end_sample": 12363496,
+      "start_seconds": 506.16433333333333,
+      "end_seconds": 515.1456666666667
+    },
+    {
+      "id": "12-07",
+      "chapter_id": "12",
+      "text": "Keep both model exports for comparison and recovery.",
+      "start_sample": 12367816,
+      "end_sample": 12455880,
+      "start_seconds": 515.3256666666666,
+      "end_seconds": 518.995
+    },
+    {
+      "id": "13-01",
+      "chapter_id": "13",
+      "text": "Expand Study workspace, reopen and compare cases.",
+      "start_sample": 12468600,
+      "end_sample": 12560760,
+      "start_seconds": 519.525,
+      "end_seconds": 523.365
+    },
+    {
+      "id": "13-02",
+      "chapter_id": "13",
+      "text": "Enter a label such as Restored Margules in Label for the next captured case.",
+      "start_sample": 12565080,
+      "end_sample": 12703832,
+      "start_seconds": 523.545,
+      "end_seconds": 529.3263333333333
+    },
+    {
+      "id": "13-03",
+      "chapter_id": "13",
+      "text": "Use Load studies or a comparison JSON to select the saved Margules study.",
+      "start_sample": 12708152,
+      "end_sample": 12866360,
+      "start_seconds": 529.5063333333334,
+      "end_seconds": 536.0983333333334
+    },
+    {
+      "id": "13-04",
+      "chapter_id": "13",
+      "text": "Then select its Restore button.",
+      "start_sample": 12870680,
+      "end_sample": 12925976,
+      "start_seconds": 536.2783333333333,
+      "end_seconds": 538.5823333333333
+    },
+    {
+      "id": "13-05",
+      "chapter_id": "13",
+      "text": "Check the restored observations, units, property constants, and model controls.",
+      "start_sample": 12930296,
+      "end_sample": 13072295,
+      "start_seconds": 538.7623333333333,
+      "end_seconds": 544.6789583333333
+    },
+    {
+      "id": "13-06",
+      "chapter_id": "13",
+      "text": "Loading first displays recorded results; it does not recalculate them.",
+      "start_sample": 13076615,
+      "end_sample": 13206663,
+      "start_seconds": 544.8589583333334,
+      "end_seconds": 550.277625
+    },
+    {
+      "id": "13-07",
+      "chapter_id": "13",
+      "text": "Restore loads the settings.",
+      "start_sample": 13210983,
+      "end_sample": 13260135,
+      "start_seconds": 550.457625,
+      "end_seconds": 552.505625
+    },
+    {
+      "id": "13-08",
+      "chapter_id": "13",
+      "text": "Now select Validate and inspect data, followed by Fit selected model.",
+      "start_sample": 13264455,
+      "end_sample": 13388359,
+      "start_seconds": 552.685625,
+      "end_seconds": 557.8482916666667
+    },
+    {
+      "id": "13-09",
+      "chapter_id": "13",
+      "text": "Compare the fresh errors with the saved result to check that you recovered the same setup.",
+      "start_sample": 13392679,
+      "end_sample": 13528871,
+      "start_seconds": 558.0282916666666,
+      "end_seconds": 563.7029583333333
+    },
+    {
+      "id": "14-01",
+      "chapter_id": "14",
+      "text": "Finish with a finding, a number, and a limitation.",
+      "start_sample": 13541591,
+      "end_sample": 13628119,
+      "start_seconds": 564.2329583333334,
+      "end_seconds": 567.8382916666667
+    },
+    {
+      "id": "14-02",
+      "chapter_id": "14",
+      "text": "For example, N R T L reproduces these synthetic training data more closely than Margules: compare the two pressure-error values you saved.",
+      "start_sample": 13632439,
+      "end_sample": 13890487,
+      "start_seconds": 568.0182916666666,
+      "end_seconds": 578.7702916666667
+    },
+    {
+      "id": "14-03",
+      "chapter_id": "14",
+      "text": "But the generating model was N R T L, and training error alone does not establish thermodynamic consistency or prediction on new observations.",
+      "start_sample": 13894807,
+      "end_sample": 14169239,
+      "start_seconds": 578.9502916666667,
+      "end_seconds": 590.3849583333333
+    },
+    {
+      "id": "14-04",
+      "chapter_id": "14",
+      "text": "Now allow about twenty minutes to repeat the full workflow yourself: export, import, verify one row, fit both models, save, and restore.",
+      "start_sample": 14173559,
+      "end_sample": 14432407,
+      "start_seconds": 590.5649583333334,
+      "end_seconds": 601.3502916666666
+    },
+    {
+      "id": "14-05",
+      "chapter_id": "14",
+      "text": "Keep your files and corrections with the worksheet.",
+      "start_sample": 14436727,
+      "end_sample": 14514551,
+      "start_seconds": 601.5302916666667,
+      "end_seconds": 604.7729583333333
+    },
+    {
+      "id": "14-06",
+      "chapter_id": "14",
+      "text": "This practice adds no new attendance task.",
+      "start_sample": 14518871,
+      "end_sample": 14591575,
+      "start_seconds": 604.9529583333333,
+      "end_seconds": 607.9822916666667
+    }
+  ]
+}

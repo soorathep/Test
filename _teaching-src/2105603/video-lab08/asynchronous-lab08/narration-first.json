@@ -1,0 +1,44 @@
+[
+  {
+    "id": "01",
+    "title": "From an Excel workbook to a checked Lab study",
+    "narration": "In this demonstration, we will move a vapor-liquid equilibrium dataset from Excel into Lab Eight, check one calculation, compare two activity models, and save results that we can reopen. All nineteen observations are synthetic teaching data, not experimental measurements. Download the demonstration workbook and keep the walkthrough available beside it. You will need Excel, or another spreadsheet application that can export a worksheet as CSV, and a browser for the Lab. Watch each step, then pause and repeat it with your own copy of the files.",
+    "on_screen": "Open the demonstration workbook and walkthrough. All 19 observations are synthetic.",
+    "pause_instruction": "Download lab08-demo.xlsx and open the walkthrough before continuing."
+  },
+  {
+    "id": "02",
+    "title": "Start with the Demo worksheet",
+    "narration": "Open the workbook and select the Demo tab. This sheet shows a worked calculation linked to one observation in the data sheet. The observation appears near the top, followed by saturation pressures, activity coefficients, and their natural logarithms. An activity coefficient, called gamma, adjusts the ideal-liquid prediction for nonideal behavior. We will check these values against the Lab later. For now, notice the formulas and the separate Antoine input block below. Keep this workbook intact so you can return to the calculation after importing the data.",
+    "on_screen": "Demo tab: observation B5:B9; calculated properties B12:B17; Antoine inputs B24:C30.",
+    "pause_instruction": "Open the Demo tab and locate the observation, calculated properties, and Antoine input block."
+  },
+  {
+    "id": "03",
+    "title": "Identify the table to export",
+    "narration": "Now select the VLE data tab. The import table occupies cells A one through D twenty. Its first row contains four headers: T, P, x one, and y one. The remaining nineteen rows contain temperature, total pressure, and component one's liquid and vapor mole fractions. Temperatures are in kelvin, and pressures are in kilopascals. Locate spreadsheet row eleven, where x one is zero point five. This is the observation linked to the Demo calculation. Keep the header row and all nineteen observations together when exporting.",
+    "on_screen": "VLE_data!A1:D20 · Headers: T,P,x1,y1 · Row 11: x1 = 0.5",
+    "pause_instruction": "Select VLE_data and locate row 11. Confirm the four headers and 19 data rows."
+  },
+  {
+    "id": "04",
+    "title": "Export the active data sheet as CSV",
+    "narration": "With VLE data still active, choose Save As and select CSV UTF-eight, comma delimited. Give the export a recognizable name and keep the original Excel workbook separately. If Excel warns that only the active sheet will be saved, confirm that the active sheet is VLE data before proceeding. The CSV contains the observation table; it does not preserve the Demo sheet, workbook formatting, or property settings. After saving, note the file's location. We will select this actual exported file in the browser, rather than stop at loading a preset.",
+    "on_screen": "Save As → CSV UTF-8 · Active sheet: VLE_data · Keep the original .xlsx",
+    "pause_instruction": "Export the active VLE_data sheet as CSV UTF-8 and keep the original workbook."
+  },
+  {
+    "id": "05",
+    "title": "Initialize the properties, then import your CSV",
+    "narration": "Open Lab Eight. First select Load synthetic example. For this particular teaching dataset, that button initializes the matching component names, units, and both Antoine property definitions. It also loads an example table. Next, use Load CSV or tab-separated text to select the CSV you just saved. Check the selected filename and the table in the text box. These are two separate actions: initialize the properties, then import your file. Do not press Load synthetic example again afterward, because that would replace your imported table with the preset.",
+    "on_screen": "1. Load synthetic example → property setup. 2. Load your exported CSV → observation table.",
+    "pause_instruction": "Load the synthetic example once, then select your actual CSV and inspect its filename and table."
+  },
+  {
+    "id": "06",
+    "title": "Check conventions and validate all 19 observations",
+    "narration": "Check that the path is isothermal, measured temperature uses kelvin, and measured pressure uses kilopascals. Both Antoine definitions use log base ten of saturation pressure equal to A minus B divided by the quantity T plus C. Their equation temperature uses kelvin, their pressure uses kilopascals, and their valid range is three hundred to three hundred ninety kelvin. Three hundred fifty kelvin is seventy-six point eight five degrees Celsius; do not change the selector to Celsius for these numbers. Select Validate and inspect data. Expect nineteen observations and nineteen interior points used. Keep No extrapolation selected.",
+    "on_screen": "Isothermal · Data and Antoine units: K, kPa · log10(Psat) = A − B/(T + C) · Valid: 300–390 K · 350 K = 76.85 °C · Validate: 19/19",
+    "pause_instruction": "Check both Antoine definitions and data units, validate all 19 observations, and keep No extrapolation selected."
+  }
+]

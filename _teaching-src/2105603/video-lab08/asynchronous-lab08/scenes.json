@@ -1,0 +1,629 @@
+[
+  {
+    "chapter_id": "01",
+    "image": "assets/screens/01-resources.jpg",
+    "crop": [
+      20,
+      15,
+      840,
+      435
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.6417892326004456,
+    "label": "Download the workbook and keep the walkthrough open beside Lab 08."
+  },
+  {
+    "chapter_id": "01",
+    "image": "assets/screens/02-open-workbook.png",
+    "crop": [
+      310,
+      0,
+      1890,
+      896
+    ],
+    "start_fraction": 0.6417892326004456,
+    "end_fraction": 1,
+    "label": "Open lab08-demo.xlsx in Excel. All 19 observations are synthetic teaching data."
+  },
+  {
+    "chapter_id": "02",
+    "image": "assets/screens/02-demo-sheet.png",
+    "crop": [
+      0,
+      280,
+      1950,
+      1880
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.22113274052711687,
+    "label": "Demo worksheet: the calculation is linked to VLE_data row 11."
+  },
+  {
+    "chapter_id": "02",
+    "image": "assets/screens/08-gamma-formula.png",
+    "crop": [
+      0,
+      280,
+      1000,
+      1290
+    ],
+    "start_fraction": 0.22113274052711687,
+    "end_fraction": 0.700664904269807,
+    "label": "B5:B9 contain the observation; B12:B17 calculate saturation pressures, gamma, and ln(gamma)."
+  },
+  {
+    "chapter_id": "02",
+    "image": "assets/screens/02-demo-sheet.png",
+    "crop": [
+      0,
+      1280,
+      1000,
+      1840
+    ],
+    "start_fraction": 0.700664904269807,
+    "end_fraction": 1,
+    "label": "Antoine constants and their units are separate inputs. Preserve the original workbook."
+  },
+  {
+    "chapter_id": "03",
+    "image": "assets/screens/03-vle-data.png",
+    "crop": [
+      0,
+      280,
+      1150,
+      1390
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.6409684544175429,
+    "label": "VLE_data!A1:D20: four headers, followed by 19 observations."
+  },
+  {
+    "chapter_id": "03",
+    "image": "assets/screens/03-row11.png",
+    "crop": [
+      0,
+      280,
+      1150,
+      1390
+    ],
+    "start_fraction": 0.6409684544175429,
+    "end_fraction": 1,
+    "label": "Row 11: T = 350 K, P = 158.707198211 kPa, x1 = 0.5, y1 = 0.704857144627."
+  },
+  {
+    "chapter_id": "04",
+    "image": "assets/screens/04-save-csv.png",
+    "crop": null,
+    "start_fraction": 0,
+    "end_fraction": 0.34109567452591477,
+    "label": "Save As: select CSV UTF-8, then choose a distinct filename ending in .csv."
+  },
+  {
+    "chapter_id": "04",
+    "image": "assets/screens/04-active-sheet.png",
+    "crop": null,
+    "start_fraction": 0.34109567452591477,
+    "end_fraction": 0.5523096635764131,
+    "label": "Confirm that VLE_data is active. Only that worksheet goes into the CSV."
+  },
+  {
+    "chapter_id": "04",
+    "image": "assets/screens/04-exported-csv.png",
+    "crop": [
+      0,
+      280,
+      1160,
+      1430
+    ],
+    "start_fraction": 0.5523096635764131,
+    "end_fraction": 1,
+    "label": "The exported CSV preserves the observations. Keep the original .xlsx for formulas and properties."
+  },
+  {
+    "chapter_id": "05",
+    "image": "assets/screens/05-example.jpg",
+    "crop": [
+      45,
+      270,
+      325,
+      710
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.4138349012541763,
+    "label": "First: Load synthetic example initializes the matching property settings."
+  },
+  {
+    "chapter_id": "05",
+    "image": "assets/screens/05-csv-import.jpg",
+    "crop": [
+      45,
+      300,
+      325,
+      710
+    ],
+    "start_fraction": 0.4138349012541763,
+    "end_fraction": 0.6720382265482877,
+    "label": "Then: choose your actual Excel-exported CSV. Do not reload the preset afterward."
+  },
+  {
+    "chapter_id": "05",
+    "image": "assets/screens/05-imported-table.jpg",
+    "crop": [
+      45,
+      215,
+      320,
+      710
+    ],
+    "start_fraction": 0.6720382265482877,
+    "end_fraction": 1,
+    "label": "Inspect the imported table and its four headers before validation."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/06-validated.jpg",
+    "crop": [
+      50,
+      330,
+      315,
+      585
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.16369780151015811,
+    "label": "Measured data: isothermal path, temperature in K, total pressure in kPa."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/06-antoine.jpg",
+    "crop": [
+      65,
+      25,
+      305,
+      535
+    ],
+    "start_fraction": 0.16369780151015811,
+    "end_fraction": 0.36146454743926687,
+    "label": "Component 1: log10(Psat) = A - B/(T + C), using K and kPa."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/06-antoine2.jpg",
+    "crop": [
+      65,
+      315,
+      305,
+      700
+    ],
+    "start_fraction": 0.36146454743926687,
+    "end_fraction": 0.5716073588919945,
+    "label": "Component 2 has its own constants. Both correlations are declared valid from 300 to 390 K."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/06-units.jpg",
+    "crop": [
+      350,
+      300,
+      1200,
+      625
+    ],
+    "start_fraction": 0.5716073588919945,
+    "end_fraction": 0.7778287653136429,
+    "label": "350 K = 76.85 degrees Celsius. These Antoine constants require 350 K directly."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/13-margules-validate.jpg",
+    "crop": [
+      45,
+      180,
+      325,
+      455
+    ],
+    "start_fraction": 0.7778287653136429,
+    "end_fraction": 0.8372060684438141,
+    "label": "Select Validate & inspect data."
+  },
+  {
+    "chapter_id": "06",
+    "image": "assets/screens/06-validated.jpg",
+    "crop": [
+      350,
+      300,
+      1200,
+      695
+    ],
+    "start_fraction": 0.8372060684438141,
+    "end_fraction": 1,
+    "label": "Expected result: 19 observations, 19 interior points. Keep No extrapolation."
+  },
+  {
+    "chapter_id": "07",
+    "image": "assets/screens/07-lab-row11.jpg",
+    "crop": [
+      35,
+      220,
+      715,
+      505
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.3060218428519346,
+    "label": "Input row 11: liquid x1 = 0.5, vapor y1 = 0.704857. The shaded row is the same Excel observation."
+  },
+  {
+    "chapter_id": "07",
+    "image": "assets/screens/14-model-comparison.jpg",
+    "crop": [
+      20,
+      112,
+      840,
+      320
+    ],
+    "start_fraction": 0.3060218428519346,
+    "end_fraction": 0.7061676732131817,
+    "label": "Ideal vapor and negligible Poynting correction: gamma_i = y_i P / (x_i Psat_i)."
+  },
+  {
+    "chapter_id": "07",
+    "image": "assets/screens/07-table-headings.jpg",
+    "crop": [
+      35,
+      302,
+      715,
+      605
+    ],
+    "start_fraction": 0.7061676732131817,
+    "end_fraction": 1,
+    "label": "The Lab table reports ln(gamma). Compare gamma with EXP(ln(gamma))."
+  },
+  {
+    "chapter_id": "08",
+    "image": "assets/screens/08-psat-formula.png",
+    "crop": [
+      0,
+      280,
+      1000,
+      1290
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.23490049403534013,
+    "label": "B12 and B13: Psat1 = 150 kPa; Psat2 = 60 kPa."
+  },
+  {
+    "chapter_id": "08",
+    "image": "assets/screens/08-gamma-formula.png",
+    "crop": [
+      0,
+      280,
+      1000,
+      1290
+    ],
+    "start_fraction": 0.23490049403534013,
+    "end_fraction": 0.6602703528048013,
+    "label": "B14 and B15: gamma1 = 1.491545; gamma2 = 1.561377."
+  },
+  {
+    "chapter_id": "08",
+    "image": "assets/screens/08-ln-gamma.png",
+    "crop": [
+      0,
+      280,
+      1000,
+      1290
+    ],
+    "start_fraction": 0.6602703528048013,
+    "end_fraction": 0.7621222953368014,
+    "label": "B16 and B17: ln(gamma1) = 0.399813; ln(gamma2) = 0.445568."
+  },
+  {
+    "chapter_id": "08",
+    "image": "assets/screens/07-lab-row11.jpg",
+    "crop": [
+      35,
+      220,
+      715,
+      505
+    ],
+    "start_fraction": 0.7621222953368014,
+    "end_fraction": 1,
+    "label": "Agreement verifies the calculation with these inputs; it does not independently validate the property source."
+  },
+  {
+    "chapter_id": "09",
+    "image": "assets/screens/09-baseline-export.jpg",
+    "crop": [
+      350,
+      0,
+      1200,
+      460
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.49527780803161614,
+    "label": "Export complete study JSON before fitting. Rename the download, for example week02-baseline.json."
+  },
+  {
+    "chapter_id": "09",
+    "image": "assets/screens/09-no-extrapolation.jpg",
+    "crop": [
+      350,
+      250,
+      1200,
+      665
+    ],
+    "start_fraction": 0.49527780803161614,
+    "end_fraction": 1,
+    "label": "No extrapolation: the measured composition interval cannot establish a full-area consistency verdict."
+  },
+  {
+    "chapter_id": "10",
+    "image": "assets/screens/10-margules-fit.jpg",
+    "crop": [
+      350,
+      0,
+      1200,
+      510
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.10955463666919803,
+    "label": "Choose Margules, 1 parameter; select Fit selected model and wait for convergence."
+  },
+  {
+    "chapter_id": "10",
+    "image": "assets/screens/10-margules-chart-complete.jpg",
+    "crop": [
+      350,
+      185,
+      1200,
+      690
+    ],
+    "start_fraction": 0.10955463666919803,
+    "end_fraction": 0.21532950780482701,
+    "label": "View: Pressure and vapor residuals. Residuals are calculated minus observed."
+  },
+  {
+    "chapter_id": "10",
+    "image": "assets/screens/10-margules-fit.jpg",
+    "crop": [
+      350,
+      180,
+      1200,
+      530
+    ],
+    "start_fraction": 0.21532950780482701,
+    "end_fraction": 0.5249457804778999,
+    "label": "Margules: pressure MAE 1.14098%; vapor MAE 0.675676 percentage points."
+  },
+  {
+    "chapter_id": "10",
+    "image": "assets/screens/10-margules-chart-complete.jpg",
+    "crop": [
+      350,
+      185,
+      1200,
+      690
+    ],
+    "start_fraction": 0.5249457804778999,
+    "end_fraction": 0.675652530388374,
+    "label": "Inspect systematic residual patterns as well as the two summary metrics."
+  },
+  {
+    "chapter_id": "10",
+    "image": "assets/screens/10-margules-fit.jpg",
+    "crop": [
+      350,
+      180,
+      1200,
+      580
+    ],
+    "start_fraction": 0.675652530388374,
+    "end_fraction": 1,
+    "label": "Save both study JSON and residual CSV under distinct Margules filenames."
+  },
+  {
+    "chapter_id": "11",
+    "image": "assets/screens/11-nrtl-fit-full.jpg",
+    "crop": [
+      350,
+      319,
+      1200,
+      640
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.364800509675878,
+    "label": "Choose NRTL, fixed alpha = 0.3. Leave the temperature-dependent parameter option unchecked."
+  },
+  {
+    "chapter_id": "11",
+    "image": "assets/screens/11-nrtl-fit.jpg",
+    "crop": [
+      350,
+      160,
+      1200,
+      535
+    ],
+    "start_fraction": 0.364800509675878,
+    "end_fraction": 0.6881579995221788,
+    "label": "NRTL: pressure MAE 1.14e-6%; vapor MAE 3.83e-7 percentage points."
+  },
+  {
+    "chapter_id": "11",
+    "image": "assets/screens/11-nrtl-chart-complete.jpg",
+    "crop": [
+      350,
+      185,
+      1200,
+      690
+    ],
+    "start_fraction": 0.6881579995221788,
+    "end_fraction": 1,
+    "label": "Near-zero training errors recover the NRTL generator. They do not prove universal superiority."
+  },
+  {
+    "chapter_id": "12",
+    "image": "assets/screens/12-nrtl-export.jpg",
+    "crop": [
+      350,
+      0,
+      1200,
+      460
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.21391823147094002,
+    "label": "Export separate NRTL study JSON and residual CSV files."
+  },
+  {
+    "chapter_id": "12",
+    "image": "assets/screens/12-residual-headers.png",
+    "crop": [
+      0,
+      335,
+      1110,
+      1100
+    ],
+    "start_fraction": 0.21391823147094002,
+    "end_fraction": 0.5053104869507573,
+    "label": "y_error is a signed mole-fraction difference. Multiply by 100 for percentage points."
+  },
+  {
+    "chapter_id": "12",
+    "image": "assets/screens/12-residual-headers.png",
+    "crop": [
+      680,
+      335,
+      1110,
+      1080
+    ],
+    "start_fraction": 0.5053104869507573,
+    "end_fraction": 0.7150783242783646,
+    "label": "pressure_error_percent is already a percentage. Do not multiply it by 100 again."
+  },
+  {
+    "chapter_id": "12",
+    "image": "assets/screens/11-nrtl-fit.jpg",
+    "crop": [
+      350,
+      160,
+      1200,
+      535
+    ],
+    "start_fraction": 0.7150783242783646,
+    "end_fraction": 1,
+    "label": "Mean absolute error averages absolute residuals; individual residuals retain their signs."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/13-workspace-label.jpg",
+    "crop": [
+      45,
+      170,
+      1200,
+      510
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.37875434183511325,
+    "label": "Expand Study workspace. Label the case Restored Margules, then load the saved JSON."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/13-margules-restore.jpg",
+    "crop": [
+      45,
+      25,
+      1200,
+      435
+    ],
+    "start_fraction": 0.37875434183511325,
+    "end_fraction": 0.4343149196964373,
+    "label": "Select Restore Restored Margules. Loading recorded results does not perform a fresh fit."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/06-validated.jpg",
+    "crop": [
+      40,
+      0,
+      1200,
+      705
+    ],
+    "start_fraction": 0.4343149196964373,
+    "end_fraction": 0.5706804623710731,
+    "label": "Check the restored observations, units, properties, and model controls."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/13-margules-restore.jpg",
+    "crop": [
+      45,
+      25,
+      1200,
+      435
+    ],
+    "start_fraction": 0.5706804623710731,
+    "end_fraction": 0.7457425085578537,
+    "label": "Restore loads the settings. Recalculate to produce current results."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/13-margules-validate.jpg",
+    "crop": [
+      45,
+      180,
+      325,
+      455
+    ],
+    "start_fraction": 0.7457425085578537,
+    "end_fraction": 0.8652439768833103,
+    "label": "Next select Validate & inspect data, then Fit selected model."
+  },
+  {
+    "chapter_id": "13",
+    "image": "assets/screens/13-margules-refit.jpg",
+    "crop": [
+      350,
+      20,
+      1200,
+      590
+    ],
+    "start_fraction": 0.8652439768833103,
+    "end_fraction": 1,
+    "label": "Recovered Margules: pressure MAE 1.14098%; vapor MAE 0.675676 percentage points."
+  },
+  {
+    "chapter_id": "14",
+    "image": "assets/screens/14-metrics.jpg",
+    "crop": [
+      20,
+      315,
+      840,
+      550
+    ],
+    "start_fraction": 0,
+    "end_fraction": 0.5987443352052877,
+    "label": "State a finding, numerical evidence, and a limitation."
+  },
+  {
+    "chapter_id": "14",
+    "image": "assets/screens/14-checklist.jpg",
+    "crop": [
+      20,
+      410,
+      840,
+      740
+    ],
+    "start_fraction": 0.5987443352052877,
+    "end_fraction": 0.9236814766858881,
+    "label": "Allow about 20 minutes to repeat the complete workflow. Keep your exports and corrections."
+  },
+  {
+    "chapter_id": "14",
+    "image": "assets/screens/14-checklist.jpg",
+    "crop": [
+      20,
+      650,
+      840,
+      740
+    ],
+    "start_fraction": 0.9236814766858881,
+    "end_fraction": 1,
+    "label": "This practice adds no new attendance task."
+  }
+]
