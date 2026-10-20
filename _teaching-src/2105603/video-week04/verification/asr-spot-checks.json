@@ -1,0 +1,1727 @@
+{
+  "revision": "Final 40-slide Week 4 narration with actual Lab 10 and Lab 11 demonstrations",
+  "method": "Local faster-whisper tiny.en, CPU int8, one thread, beam size 3; model download disabled.",
+  "scope": "ASR spot check with source comparison, not a complete subjective listening review.",
+  "script_sha256": "1c9be27cbeb75c6ea72532d0c45dc0dbb2373bddcbf7abd982b399bdb0136b06",
+  "manifest_sha256": "fa39b26763936714c501addd20c9c1358e02b611528bd371a2ae5a397caffdeb",
+  "all_40_script_and_wav_hashes_verified": true,
+  "targets": [
+    6,
+    11,
+    16,
+    22,
+    28,
+    30,
+    39
+  ],
+  "status": "reviewed_no_confirmed_meaning_changing_error",
+  "checks": [
+    {
+      "slide": 6,
+      "slide_id": "pure-solid-standard-state",
+      "title": "Pure-solid standard state",
+      "focus": "Pure-solid unit activity; subcooled pure-liquid standard state; equality of chemical potentials and phase amount distinction.",
+      "audio_file": "segment-06.wav",
+      "sha256": "bfbc6a9e73181aa0d7a2e462349b863dda8879883de0477a0237eeaf54aeb639",
+      "narration_sha256": "033e678ed096aa5e13aa23ba92666f5ecb009e933d78774572ab1aeaaa847226",
+      "duration_seconds": 54.23266666666667,
+      "sample_rate": 24000,
+      "peak": 0.692108154296875,
+      "clipped_samples": 0,
+      "expected_narration": "We begin with a solid and a liquid at equilibrium. The chemical potential of the component must be the same in the two present phases. On the liquid side, we write its chemical potential as the pure-liquid reference plus R T times the natural logarithm of x times gamma. The reference is the subcooled pure liquid at the same temperature and pressure. That reference may be a hypothetical continuation below the melting temperature, but it defines the activity convention consistently. The pure solid has unit activity on its own standard state. Unit activity does not mean that its chemical potential or amount is zero. The equality determines a liquid activity. Determining how many moles occupy each phase still requires a material balance.",
+      "recognized": "We begin with a solid and a liquid at equilibrium. The chemical potential of the component must be the same in the two present phases. On the liquid side, we write its chemical potential as the pure liquid reference plus RT times the natural logarithm of X times gamma. The reference is the subcooled pure liquid at the same temperature and pressure. That reference may be a hypothetical continuation below the melting temperature. But it defines the activity convention consistently. The pure solid has unit activity on its own standard state. Unit activity does not mean that its chemical potential or amount is zero. The equality determines a liquid activity, determining how many moles occupy each phase still requires a material balance.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "We begin with a solid and a liquid at equilibrium."
+        },
+        {
+          "start": 4.0,
+          "end": 10.0,
+          "text": "The chemical potential of the component must be the same in the two present phases."
+        },
+        {
+          "start": 10.0,
+          "end": 15.0,
+          "text": "On the liquid side, we write its chemical potential as the pure liquid reference"
+        },
+        {
+          "start": 15.0,
+          "end": 20.0,
+          "text": "plus RT times the natural logarithm of X times gamma."
+        },
+        {
+          "start": 20.0,
+          "end": 25.0,
+          "text": "The reference is the subcooled pure liquid at the same temperature and pressure."
+        },
+        {
+          "start": 25.0,
+          "end": 30.0,
+          "text": "That reference may be a hypothetical continuation below the melting temperature."
+        },
+        {
+          "start": 30.0,
+          "end": 34.0,
+          "text": "But it defines the activity convention consistently."
+        },
+        {
+          "start": 34.0,
+          "end": 39.0,
+          "text": "The pure solid has unit activity on its own standard state."
+        },
+        {
+          "start": 39.0,
+          "end": 44.0,
+          "text": "Unit activity does not mean that its chemical potential or amount is zero."
+        },
+        {
+          "start": 44.0,
+          "end": 54.0,
+          "text": "The equality determines a liquid activity, determining how many moles occupy each phase still requires a material balance."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Source comparison preserves equality of chemical potentials, subcooled pure-liquid reference, unit pure-solid activity, x times gamma and the composition/amount distinction.",
+      "targeted_followups": []
+    },
+    {
+      "slide": 11,
+      "slide_id": "finite-vessel-inventory",
+      "title": "Finite-vessel inventory",
+      "focus": "Psub V/(RT), finite gas capacity and min inventory; partial versus total pressure; mu_g minus mu_s over RT equals ln(pA/Psub), negative after exhaustion.",
+      "audio_file": "segment-11.wav",
+      "sha256": "3fba6ff0ded3586007c1347efa90486cf20a58b1d771aa8a10425faaf59b22d7",
+      "narration_sha256": "1216c220986bddaae78bb18604a48123cef9544e6e98b7fedbb2ec7165ccaa6e",
+      "duration_seconds": 66.76866666666666,
+      "sample_rate": 24000,
+      "peak": 0.78765869140625,
+      "clipped_samples": 0,
+      "expected_narration": "Start the vessel calculation by finding the gas capacity at sublimation equilibrium. Multiply sublimation pressure by accessible gas volume, then divide by R T. Compare that capacity with the total amount of the subliming species. Gas moles equal the smaller of the available inventory and that capacity. Solid moles are the remaining inventory. Use gas moles in the ideal-gas equation to obtain the species partial pressure, and add the inert contribution only when calculating total pressure. With kilopascals and liters, R has the numerical value eight point three one four four six in compatible units. The gas chemical potential minus the pure-solid reference, divided by R T, is the natural logarithm of partial pressure divided by sublimation pressure. Zero applies with present solid. A negative value is allowed after solid exhaustion.",
+      "recognized": "Start the vessel calculation by finding the gas capacity at sublimation equilibrium. Multiply sublimation pressure by accessible gas volume, then divide by RT. Compare that capacity with the total amount of the subliming species. Gas moles equal the smaller of the available inventory and that capacity. Solid moles are the remaining inventory. Use gas moles in the ideal gas equation to obtain the species partial pressure. And add the inert contribution only when calculating total pressure with kilopascals and liters. R has the numerical value 8.31446 in compatible units. The gas chemical potential minus the pure solid reference divided by RT is the natural logarithm of partial pressure divided by sublimation pressure. Zero applies with present solid. A negative value is allowed after solid exhaustion.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.4,
+          "text": "Start the vessel calculation by finding the gas capacity at sublimation equilibrium."
+        },
+        {
+          "start": 6.4,
+          "end": 12.9,
+          "text": "Multiply sublimation pressure by accessible gas volume, then divide by RT."
+        },
+        {
+          "start": 12.9,
+          "end": 18.1,
+          "text": "Compare that capacity with the total amount of the subliming species."
+        },
+        {
+          "start": 18.1,
+          "end": 23.7,
+          "text": "Gas moles equal the smaller of the available inventory and that capacity."
+        },
+        {
+          "start": 23.7,
+          "end": 27.2,
+          "text": "Solid moles are the remaining inventory."
+        },
+        {
+          "start": 27.2,
+          "end": 33.5,
+          "text": "Use gas moles in the ideal gas equation to obtain the species partial pressure."
+        },
+        {
+          "start": 33.5,
+          "end": 41.1,
+          "text": "And add the inert contribution only when calculating total pressure with kilopascals and liters."
+        },
+        {
+          "start": 41.1,
+          "end": 47.5,
+          "text": "R has the numerical value 8.31446 in compatible units."
+        },
+        {
+          "start": 47.5,
+          "end": 57.1,
+          "text": "The gas chemical potential minus the pure solid reference divided by RT is the natural logarithm of partial pressure"
+        },
+        {
+          "start": 57.1,
+          "end": 59.7,
+          "text": "divided by sublimation pressure."
+        },
+        {
+          "start": 59.7,
+          "end": 62.4,
+          "text": "Zero applies with present solid."
+        },
+        {
+          "start": 62.4,
+          "end": 66.6,
+          "text": "A negative value is allowed after solid exhaustion."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Source comparison preserves capacity Psub*V/(RT), minimum inventory, partial versus total pressure, R=8.31446 and gas-minus-solid chemical-potential sign. Negative value after exhaustion is recognized.",
+      "targeted_followups": []
+    },
+    {
+      "slide": 16,
+      "slide_id": "lab10-demonstration",
+      "title": "Lab 10 demonstration",
+      "focus": "Actual Lab10 demo beginning/middle/end: three cases at 300 K, 1 L, Psub 10 kPa; volatile .010/.002 mol, inert .002 mol; temperature plots; export/import/restore/recalculate.",
+      "audio_file": "segment-16.wav",
+      "sha256": "4c5053e8e579a963cc77de8a73c7b744b364052917ed55c74bfbb64da3a324e8",
+      "narration_sha256": "24635d3614f4ab349a97a22a657300c2c5ee90f51c7f842fe404353499a684a7",
+      "duration_seconds": 578.4625833333333,
+      "sample_rate": 24000,
+      "peak": 0.82305908203125,
+      "clipped_samples": 0,
+      "expected_narration": "We are now in the real Lab ten interface. Keep worksheet page three and Lab guide pages one and two beside the browser. In the Experiment menu, choose gas solid equilibrium, sublimation in a rigid vessel. The lab initially supplies its own synthetic defaults. Those initial results are not our worksheet case, so do not copy them. Selecting an experiment may also reset the controls. Choose the experiment first, then enter every value in the guide. Our first record will be case ten A, with enough volatile material for some solid to remain. Enter a temperature of three hundred kelvin and a free gas volume of one liter. Set the total volatile inventory to zero point zero one zero mole and the inert gas inventory to zero. These are total amounts, not mole fractions. The free gas volume is the space available to the gas. In this teaching model we neglect the solid volume. Keep the declared temperature interval from two hundred fifty to three hundred fifty kelvin. The source field identifies these numbers as synthetic teaching definitions rather than measured properties of a real chemical. The reference temperature is also three hundred kelvin. Enter a reference sublimation pressure of ten kilopascals and a sublimation enthalpy of fifty thousand joules per mole. At the reference temperature the correlation therefore returns ten kilopascals directly. The enthalpy controls the temperature dependence away from that point. For real properties, the declared interval must exclude melting and solid transitions and match the source correlation. Notice that changing inputs clears the previous results and disables export. Press Calculate equilibrium only after checking the values and units. The result for case ten A is solid plus gas. The volatile partial pressure and the total pressure both equal ten kilopascals because this case contains no inert gas. Read the two amounts separately. There are about zero point zero zero four zero zero nine mole of volatile gas and zero point zero zero five nine nine one mole of solid. Their sum is the entered zero point zero one zero mole. The chemical potential difference is zero within numerical precision. That equality is appropriate because both phases are present. A small balance residual is a useful calculation check, but it does not validate the physical assumptions for an unknown real material. Change the View menu to Gas and solid amounts. Read the horizontal axis before interpreting the curves. It is temperature, not time and not added inventory. Each point is a separate equilibrium calculation at that temperature with the same total volatile inventory. As temperature rises, more of the volatile material can enter the gas. Eventually the solid amount reaches zero and all the volatile material is gaseous. The gas and solid amounts sum to the same inventory throughout the admitted range. This plot does not tell us how quickly sublimation occurs. Our selected operating point remains three hundred kelvin. Now change only the total volatile inventory to zero point zero zero two mole and calculate again. This is case ten B. The heading changes to unsaturated gas, no solid. All the volatile material is now gas, and the volatile partial pressure is about four point nine eight nine kilopascals. The sublimation pressure remains ten kilopascals because the temperature and correlation have not changed. There simply is not enough material to saturate this vessel. Do not force the gas pressure to ten kilopascals or report a negative solid amount. The negative gas minus solid chemical potential difference is compatible with the solid being absent. For case ten C, keep the volatile inventory at zero point zero zero two mole and add zero point zero zero two mole of inert gas. Calculate again without changing temperature or free volume. The volatile partial pressure remains about four point nine eight nine kilopascals, but the total gas pressure becomes about nine point nine seven seven kilopascals. The volatile gas mole fraction is one half. No solid has reappeared. The inert gas contributes its own ideal partial pressure without changing the volatile inventory or its saturation capacity under these assumptions. Always identify whether a reported pressure is partial or total. In the pressure view, distinguish the three curves using their legend labels. The sublimation pressure is a reference property at each temperature, the actual volatile partial pressure obeys the finite inventory constraint, and the total pressure includes the inert gas. At low temperatures, enough volatile material can remain solid for the partial pressure to follow the sublimation curve. After the solid is exhausted, the partial pressure falls below that reference curve. These are equilibrium states across temperature, not a time record. Use the numerical table for precise values at three hundred kelvin. Keep a separate record for each calculated case. In Your interpretation, write the phase label, the volatile balance, and the reason for any pressure change. Expand Study workspace, reopen and compare cases, and enter a clear label for the next captured case. Use Export study JSON after calculating that case. The export downloads the inputs and results and also retains the case in this temporary comparison. Here the three labels distinguish solid remaining, solid exhausted, and inert gas added. Saving current inputs only is a different action and does not contain a calculated result. Select Download comparison to preserve all three cases in one file. The comparison uses recorded field names, and some values use internal units. For example, the gas solid calculation stores pressure in pascals and volume in cubic meters, whereas the main controls display kilopascals and liters. Ten thousand pascals is ten kilopascals. Compare quantities only after checking their units and physical meaning. The comparison is recorded evidence, not a fresh calculation. Keep the downloaded file with your worksheet so that you can reproduce the result later. We will now reopen the saved file from the beginning of the restore workflow. Because our three synthetic cases have already been downloaded, I clear only this temporary comparison from memory. The downloaded file is unchanged. Under Load studies or a comparison JSON, choose the solids comparison file that was just saved. You can instead select an individual study JSON if you only need one case. Loading a file should produce case labels to restore. It does not mean the main calculator has already recalculated the imported inputs. The three case labels have returned after loading the comparison. Select Restore beside case ten A, solid remains. Check that the controls return to one liter, zero point zero one zero mole of volatile material, zero inert gas, and the correct reference pressure. The stored interpretation should return with the inputs. Keep the distinction between opening a recorded result and solving the current state. In particular, switching the experiment during restoration can briefly display default results. Always finish restoration by pressing Calculate equilibrium again. The recalculated case again reports solid plus gas, a volatile partial pressure of ten kilopascals, and the same gas and solid amounts as our original record. That is the reproducibility check we wanted. In worksheet section D, retain the three rows, your independent material balance, and one explanation of partial versus total pressure. Use the next activity stop to repeat this workflow yourself. Your evidence should show that you can identify which phase is present, apply the finite inventory constraint, and reopen the inputs without relying on a screenshot alone.",
+      "recognized": "We are now in the real lab 10 interface. Keep worksheet page 3, and lab guide pages 1 and 2 beside the browser. In the experiment menu, choose gas solid equilibrium, sublimation in a rigid vessel. The lab initially supplies its own synthetic defaults. Those initial results are not our worksheet case, so do not copy them. Selecting an experiment may also reset the controls. Choose the experiment first, then enter every value in the guide. Our first record will be case 10A, with enough volatile material for some solid to remain. Enter a temperature of 300 Kelvin, and a free gas volume of one liter. Set the total volatile inventory to 0.010 mole, and the inert gas inventory to zero. These are total amounts, not mole fractions. The free gas volume is the space available to the gas. In this teaching model, we neglect the solid volume. Keep the declared temperature interval from 250 to 350 Kelvin. The source field identifies these numbers as synthetic teaching definitions, rather than measured properties of a real chemical. The reference temperature is also 300 Kelvin. Enter a reference sublimation pressure of 10 kilopascals, and a sublimation in thalpy of 50,000 joules per mole. At the reference temperature, the correlation therefore returns 10 kilopascals directly. The enthalpy controls the temperature dependence away from that point. For real properties, the declared interval must exclude melting and solid transitions, and match the source correlation. Scientists that changing inputs clears the previous results and disables export. Press calculate equilibrium, only after checking the values and units. The result for case 10 is solid plus gas. The volatile partial pressure, and the total pressure, both equal 10 kilopascals, because this case contains no inert gas. Read the two amounts separately. There are about 0.004009 mole of volatile gas, and 0.00599, one mole of solid. There some is the entered 0.01, 0 mole. The chemical potential difference is zero within numerical precision. That equality is appropriate, because both phases are present. A small balance residual is a useful calculation check, but it does not validate the physical assumptions for an unknown real material. Change the view menu to gas and solid amounts. Read the horizontal axis before interpreting the curves. It is temperature, not time and not added inventory. Each point is a separate equilibrium calculation at that temperature, with the same total volatile inventory. As temperature rises, more of the volatile material can enter the gas. Eventually, the solid amount reaches zero, and all the volatile material is gaseous. The gas and solid amounts sum to the same inventory throughout the admitted range. This plot does not tell us how quickly sublimation occurs. Our selected operating point remains 300 Kelvin. Now change only the total volatile inventory to 0.002 mole, and calculate again. This is case 10B. The heading changes to unsaturated gas, no solid. All the volatile material is now gase, and the volatile partial pressure is about 4.989 kilopascals. The sublimation pressure remains 10 kilopascals, because the temperature and correlation have not changed. There simply is not enough material to saturate this vessel. Do not force the gas pressure to 10 kilopascals, or report a negative solid amount. The negative gas minus solid chemical potential difference is compatible with the solid being absent. For case 10C, keep the volatile inventory at 0.002 mole, and add 0.002 mole of an inert gas. Calculate again without changing temperature, or free volume. The volatile partial pressure remains about 4.989 kilopascals. But the total gas pressure becomes about 9.977 kilopascals. The volatile gas mole fraction is one half. No solid has reappeared. The inert gas contributes its own ideal partial pressure. Not changing the volatile inventory, or its saturation capacity, under these assumptions. Always identify whether a reported pressure is partial or total. In the pressure view, distinguish the three curves using their legend labels. The sublimation pressure is a reference property at each temperature. The actual volatile partial pressure obeys the finite inventory constraint, and the total pressure includes the inert gas. At low temperatures, enough volatile material can remain solid for the partial pressure to follow the sublimation curve. After the solid is exhausted, the partial pressure falls below that reference curve. These are equilibrium states across temperature, not a time record. Use the numerical table for precise values at 300 Kelvin. Step a separate record for each calculated case. In your interpretation, write the phase label, the volatile balance, and the reason for any pressure change. Expand study workspace, reopen and compare cases, and enter a clear label for the next captured case. Use export study JSON after calculating that case. The export downloads the inputs and results, and also retains the case in this temporary comparison. Here the three labels distinguish solid remaining, solid exhausted, and inert gas added. Saving current inputs only is a different action, and does not contain a calculated result. Select download comparison to preserve all three cases in one file. The comparison uses recorded field names, and some values use internal units. For example, the gas solid calculation stores pressure in Pascals and volume in cubic meters, whereas the main controls display kilopascals and liters. 10,000 Pascals is 10 kilopascals. Compare quantities only after checking their units and physical meaning. The comparison is recorded evidence, not a fresh calculation. Select the downloaded file with your worksheet, so that you can reproduce the result later. We will now reopen the saved file from the beginning of the restore workflow. Because our three synthetic cases have already been downloaded, I clear only this temporary comparison from memory. The downloaded file is unchanged. Under load studies, or a comparison JSON, choose the solid comparison file that was just saved. You can instead select an individual study JSON, if you only need one case. Loading a file should produce case labels to restore. It does not mean the main calculator has already recalculated the imported inputs. The three case labels have returned after loading the comparison. Select restore beside case 10A, solid remains. Select that the controls return to one liter, 0.01-0 mole of volatile material, 0-inert gas, and the correct reference pressure. The stored interpretation should return with the inputs. Keep the distinction between opening a recorded result and solving the current state. In particular, switching the experiment during restoration can briefly display default results, always finish restoration by pressing calculate equilibrium again. The recalculated case again reports solid plus gas, a volatile partial pressure of 10 kilopascals, and the same gas and solid amounts as our original record. That is the reproducibility check we wanted. In worksheet section D, retain the three rows, your independent material balance, and one explanation of partial versus total pressure. Use the next activity stop to repeat this workflow yourself. Your evidence should show that you can identify which phase is present. Apply the finite inventory constraint, and reopen the inputs without relying on a screenshot alone.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.64,
+          "text": "We are now in the real lab 10 interface."
+        },
+        {
+          "start": 3.64,
+          "end": 9.040000000000001,
+          "text": "Keep worksheet page 3, and lab guide pages 1 and 2 beside the browser."
+        },
+        {
+          "start": 9.040000000000001,
+          "end": 15.72,
+          "text": "In the experiment menu, choose gas solid equilibrium, sublimation in a rigid vessel."
+        },
+        {
+          "start": 15.72,
+          "end": 20.080000000000002,
+          "text": "The lab initially supplies its own synthetic defaults."
+        },
+        {
+          "start": 20.080000000000002,
+          "end": 25.48,
+          "text": "Those initial results are not our worksheet case, so do not copy them."
+        },
+        {
+          "start": 25.48,
+          "end": 29.32,
+          "text": "Selecting an experiment may also reset the controls."
+        },
+        {
+          "start": 29.32,
+          "end": 34.04,
+          "text": "Choose the experiment first, then enter every value in the guide."
+        },
+        {
+          "start": 34.04,
+          "end": 41.08,
+          "text": "Our first record will be case 10A, with enough volatile material for some solid to remain."
+        },
+        {
+          "start": 41.08,
+          "end": 46.879999999999995,
+          "text": "Enter a temperature of 300 Kelvin, and a free gas volume of one liter."
+        },
+        {
+          "start": 46.879999999999995,
+          "end": 55.32,
+          "text": "Set the total volatile inventory to 0.010 mole, and the inert gas inventory to zero."
+        },
+        {
+          "start": 55.32,
+          "end": 58.519999999999996,
+          "text": "These are total amounts, not mole fractions."
+        },
+        {
+          "start": 58.52,
+          "end": 63.0,
+          "text": "The free gas volume is the space available to the gas."
+        },
+        {
+          "start": 63.0,
+          "end": 67.12,
+          "text": "In this teaching model, we neglect the solid volume."
+        },
+        {
+          "start": 67.12,
+          "end": 73.2,
+          "text": "Keep the declared temperature interval from 250 to 350 Kelvin."
+        },
+        {
+          "start": 73.2,
+          "end": 79.28,
+          "text": "The source field identifies these numbers as synthetic teaching definitions, rather than"
+        },
+        {
+          "start": 79.28,
+          "end": 82.60000000000001,
+          "text": "measured properties of a real chemical."
+        },
+        {
+          "start": 82.60000000000001,
+          "end": 86.80000000000001,
+          "text": "The reference temperature is also 300 Kelvin."
+        },
+        {
+          "start": 86.8,
+          "end": 92.56,
+          "text": "Enter a reference sublimation pressure of 10 kilopascals, and a sublimation in thalpy"
+        },
+        {
+          "start": 92.56,
+          "end": 95.47999999999999,
+          "text": "of 50,000 joules per mole."
+        },
+        {
+          "start": 95.47999999999999,
+          "end": 101.67999999999999,
+          "text": "At the reference temperature, the correlation therefore returns 10 kilopascals directly."
+        },
+        {
+          "start": 101.67999999999999,
+          "end": 106.36,
+          "text": "The enthalpy controls the temperature dependence away from that point."
+        },
+        {
+          "start": 106.36,
+          "end": 112.52,
+          "text": "For real properties, the declared interval must exclude melting and solid transitions, and"
+        },
+        {
+          "start": 112.52,
+          "end": 115.03999999999999,
+          "text": "match the source correlation."
+        },
+        {
+          "start": 115.04,
+          "end": 120.52000000000001,
+          "text": "Scientists that changing inputs clears the previous results and disables export."
+        },
+        {
+          "start": 120.52000000000001,
+          "end": 125.48,
+          "text": "Press calculate equilibrium, only after checking the values and units."
+        },
+        {
+          "start": 125.48,
+          "end": 129.16,
+          "text": "The result for case 10 is solid plus gas."
+        },
+        {
+          "start": 129.16,
+          "end": 135.44,
+          "text": "The volatile partial pressure, and the total pressure, both equal 10 kilopascals, because"
+        },
+        {
+          "start": 135.44,
+          "end": 138.6,
+          "text": "this case contains no inert gas."
+        },
+        {
+          "start": 138.6,
+          "end": 140.88,
+          "text": "Read the two amounts separately."
+        },
+        {
+          "start": 140.88,
+          "end": 152.35999999999999,
+          "text": "There are about 0.004009 mole of volatile gas, and 0.00599, one mole of solid."
+        },
+        {
+          "start": 152.35999999999999,
+          "end": 156.51999999999998,
+          "text": "There some is the entered 0.01, 0 mole."
+        },
+        {
+          "start": 156.51999999999998,
+          "end": 161.92,
+          "text": "The chemical potential difference is zero within numerical precision."
+        },
+        {
+          "start": 161.92,
+          "end": 166.2,
+          "text": "That equality is appropriate, because both phases are present."
+        },
+        {
+          "start": 166.28000000000003,
+          "end": 172.68,
+          "text": "A small balance residual is a useful calculation check, but it does not validate the physical"
+        },
+        {
+          "start": 172.68,
+          "end": 176.60000000000002,
+          "text": "assumptions for an unknown real material."
+        },
+        {
+          "start": 176.60000000000002,
+          "end": 180.24,
+          "text": "Change the view menu to gas and solid amounts."
+        },
+        {
+          "start": 180.24,
+          "end": 184.52,
+          "text": "Read the horizontal axis before interpreting the curves."
+        },
+        {
+          "start": 184.52,
+          "end": 188.84000000000003,
+          "text": "It is temperature, not time and not added inventory."
+        },
+        {
+          "start": 188.84000000000003,
+          "end": 194.64000000000001,
+          "text": "Each point is a separate equilibrium calculation at that temperature, with the same total"
+        },
+        {
+          "start": 194.64000000000001,
+          "end": 196.88000000000002,
+          "text": "volatile inventory."
+        },
+        {
+          "start": 196.88000000000002,
+          "end": 202.16000000000003,
+          "text": "As temperature rises, more of the volatile material can enter the gas."
+        },
+        {
+          "start": 202.16000000000003,
+          "end": 208.24,
+          "text": "Eventually, the solid amount reaches zero, and all the volatile material is gaseous."
+        },
+        {
+          "start": 208.24,
+          "end": 214.12,
+          "text": "The gas and solid amounts sum to the same inventory throughout the admitted range."
+        },
+        {
+          "start": 214.12,
+          "end": 218.52,
+          "text": "This plot does not tell us how quickly sublimation occurs."
+        },
+        {
+          "start": 218.52,
+          "end": 223.20000000000002,
+          "text": "Our selected operating point remains 300 Kelvin."
+        },
+        {
+          "start": 223.20000000000002,
+          "end": 231.52,
+          "text": "Now change only the total volatile inventory to 0.002 mole, and calculate again."
+        },
+        {
+          "start": 231.52,
+          "end": 233.52,
+          "text": "This is case 10B."
+        },
+        {
+          "start": 233.52,
+          "end": 237.96,
+          "text": "The heading changes to unsaturated gas, no solid."
+        },
+        {
+          "start": 237.96,
+          "end": 245.64000000000001,
+          "text": "All the volatile material is now gase, and the volatile partial pressure is about 4.989"
+        },
+        {
+          "start": 245.64000000000001,
+          "end": 246.64000000000001,
+          "text": "kilopascals."
+        },
+        {
+          "start": 246.64000000000001,
+          "end": 252.44000000000003,
+          "text": "The sublimation pressure remains 10 kilopascals, because the temperature and correlation"
+        },
+        {
+          "start": 252.44,
+          "end": 254.24,
+          "text": "have not changed."
+        },
+        {
+          "start": 254.24,
+          "end": 258.71999999999997,
+          "text": "There simply is not enough material to saturate this vessel."
+        },
+        {
+          "start": 258.71999999999997,
+          "end": 265.16,
+          "text": "Do not force the gas pressure to 10 kilopascals, or report a negative solid amount."
+        },
+        {
+          "start": 265.16,
+          "end": 271.12,
+          "text": "The negative gas minus solid chemical potential difference is compatible with the solid"
+        },
+        {
+          "start": 271.12,
+          "end": 272.72,
+          "text": "being absent."
+        },
+        {
+          "start": 272.72,
+          "end": 282.38,
+          "text": "For case 10C, keep the volatile inventory at 0.002 mole, and add 0.002 mole of an"
+        },
+        {
+          "start": 282.38,
+          "end": 284.26,
+          "text": "inert gas."
+        },
+        {
+          "start": 284.26,
+          "end": 288.46,
+          "text": "Calculate again without changing temperature, or free volume."
+        },
+        {
+          "start": 288.46,
+          "end": 294.5,
+          "text": "The volatile partial pressure remains about 4.989 kilopascals."
+        },
+        {
+          "start": 294.5,
+          "end": 300.74,
+          "text": "But the total gas pressure becomes about 9.977 kilopascals."
+        },
+        {
+          "start": 300.74,
+          "end": 304.14,
+          "text": "The volatile gas mole fraction is one half."
+        },
+        {
+          "start": 304.14,
+          "end": 306.21999999999997,
+          "text": "No solid has reappeared."
+        },
+        {
+          "start": 306.21999999999997,
+          "end": 310.98,
+          "text": "The inert gas contributes its own ideal partial pressure."
+        },
+        {
+          "start": 310.98,
+          "end": 317.90000000000003,
+          "text": "Not changing the volatile inventory, or its saturation capacity, under these assumptions."
+        },
+        {
+          "start": 317.90000000000003,
+          "end": 322.58000000000004,
+          "text": "Always identify whether a reported pressure is partial or total."
+        },
+        {
+          "start": 322.58000000000004,
+          "end": 327.74,
+          "text": "In the pressure view, distinguish the three curves using their legend labels."
+        },
+        {
+          "start": 327.74,
+          "end": 332.22,
+          "text": "The sublimation pressure is a reference property at each temperature."
+        },
+        {
+          "start": 332.22,
+          "end": 338.34000000000003,
+          "text": "The actual volatile partial pressure obeys the finite inventory constraint, and the total"
+        },
+        {
+          "start": 338.34000000000003,
+          "end": 341.1,
+          "text": "pressure includes the inert gas."
+        },
+        {
+          "start": 341.1,
+          "end": 347.1,
+          "text": "At low temperatures, enough volatile material can remain solid for the partial pressure"
+        },
+        {
+          "start": 347.1,
+          "end": 349.90000000000003,
+          "text": "to follow the sublimation curve."
+        },
+        {
+          "start": 349.90000000000003,
+          "end": 355.70000000000005,
+          "text": "After the solid is exhausted, the partial pressure falls below that reference curve."
+        },
+        {
+          "start": 355.70000000000005,
+          "end": 360.90000000000003,
+          "text": "These are equilibrium states across temperature, not a time record."
+        },
+        {
+          "start": 360.90000000000003,
+          "end": 366.18,
+          "text": "Use the numerical table for precise values at 300 Kelvin."
+        },
+        {
+          "start": 366.18,
+          "end": 369.62,
+          "text": "Step a separate record for each calculated case."
+        },
+        {
+          "start": 369.62,
+          "end": 375.3,
+          "text": "In your interpretation, write the phase label, the volatile balance, and the reason for any"
+        },
+        {
+          "start": 375.3,
+          "end": 377.26,
+          "text": "pressure change."
+        },
+        {
+          "start": 377.26,
+          "end": 382.98,
+          "text": "Expand study workspace, reopen and compare cases, and enter a clear label for the next"
+        },
+        {
+          "start": 382.98,
+          "end": 384.62,
+          "text": "captured case."
+        },
+        {
+          "start": 384.62,
+          "end": 389.5,
+          "text": "Use export study JSON after calculating that case."
+        },
+        {
+          "start": 389.5,
+          "end": 395.34000000000003,
+          "text": "The export downloads the inputs and results, and also retains the case in this temporary"
+        },
+        {
+          "start": 395.34000000000003,
+          "end": 396.70000000000005,
+          "text": "comparison."
+        },
+        {
+          "start": 396.70000000000005,
+          "end": 403.66,
+          "text": "Here the three labels distinguish solid remaining, solid exhausted, and inert gas added."
+        },
+        {
+          "start": 403.66,
+          "end": 410.54,
+          "text": "Saving current inputs only is a different action, and does not contain a calculated result."
+        },
+        {
+          "start": 410.54,
+          "end": 415.66,
+          "text": "Select download comparison to preserve all three cases in one file."
+        },
+        {
+          "start": 415.66,
+          "end": 421.66,
+          "text": "The comparison uses recorded field names, and some values use internal units."
+        },
+        {
+          "start": 421.66,
+          "end": 427.78000000000003,
+          "text": "For example, the gas solid calculation stores pressure in Pascals and volume in cubic"
+        },
+        {
+          "start": 427.78000000000003,
+          "end": 433.22,
+          "text": "meters, whereas the main controls display kilopascals and liters."
+        },
+        {
+          "start": 433.22,
+          "end": 436.94000000000005,
+          "text": "10,000 Pascals is 10 kilopascals."
+        },
+        {
+          "start": 436.94000000000005,
+          "end": 441.38,
+          "text": "Compare quantities only after checking their units and physical meaning."
+        },
+        {
+          "start": 441.38,
+          "end": 446.5,
+          "text": "The comparison is recorded evidence, not a fresh calculation."
+        },
+        {
+          "start": 446.5,
+          "end": 452.44,
+          "text": "Select the downloaded file with your worksheet, so that you can reproduce the result later."
+        },
+        {
+          "start": 452.44,
+          "end": 458.14,
+          "text": "We will now reopen the saved file from the beginning of the restore workflow."
+        },
+        {
+          "start": 458.14,
+          "end": 464.0,
+          "text": "Because our three synthetic cases have already been downloaded, I clear only this temporary"
+        },
+        {
+          "start": 464.0,
+          "end": 465.94,
+          "text": "comparison from memory."
+        },
+        {
+          "start": 465.94,
+          "end": 468.78,
+          "text": "The downloaded file is unchanged."
+        },
+        {
+          "start": 468.78,
+          "end": 475.78,
+          "text": "Under load studies, or a comparison JSON, choose the solid comparison file that was just"
+        },
+        {
+          "start": 475.78000000000003,
+          "end": 476.98,
+          "text": "saved."
+        },
+        {
+          "start": 476.98,
+          "end": 483.98,
+          "text": "You can instead select an individual study JSON, if you only need one case."
+        },
+        {
+          "start": 483.98,
+          "end": 487.22,
+          "text": "Loading a file should produce case labels to restore."
+        },
+        {
+          "start": 487.22,
+          "end": 493.18,
+          "text": "It does not mean the main calculator has already recalculated the imported inputs."
+        },
+        {
+          "start": 493.18,
+          "end": 498.1,
+          "text": "The three case labels have returned after loading the comparison."
+        },
+        {
+          "start": 498.1,
+          "end": 502.1,
+          "text": "Select restore beside case 10A, solid remains."
+        },
+        {
+          "start": 502.1,
+          "end": 510.40000000000003,
+          "text": "Select that the controls return to one liter, 0.01-0 mole of volatile material, 0-inert"
+        },
+        {
+          "start": 510.40000000000003,
+          "end": 513.5,
+          "text": "gas, and the correct reference pressure."
+        },
+        {
+          "start": 513.5,
+          "end": 517.38,
+          "text": "The stored interpretation should return with the inputs."
+        },
+        {
+          "start": 517.38,
+          "end": 523.22,
+          "text": "Keep the distinction between opening a recorded result and solving the current state."
+        },
+        {
+          "start": 523.22,
+          "end": 529.02,
+          "text": "In particular, switching the experiment during restoration can briefly display default"
+        },
+        {
+          "start": 529.02,
+          "end": 535.66,
+          "text": "results, always finish restoration by pressing calculate equilibrium again."
+        },
+        {
+          "start": 535.66,
+          "end": 542.5799999999999,
+          "text": "The recalculated case again reports solid plus gas, a volatile partial pressure of 10"
+        },
+        {
+          "start": 542.5799999999999,
+          "end": 548.66,
+          "text": "kilopascals, and the same gas and solid amounts as our original record."
+        },
+        {
+          "start": 548.66,
+          "end": 551.98,
+          "text": "That is the reproducibility check we wanted."
+        },
+        {
+          "start": 551.98,
+          "end": 558.42,
+          "text": "In worksheet section D, retain the three rows, your independent material balance, and"
+        },
+        {
+          "start": 558.42,
+          "end": 562.3,
+          "text": "one explanation of partial versus total pressure."
+        },
+        {
+          "start": 562.3,
+          "end": 566.62,
+          "text": "Use the next activity stop to repeat this workflow yourself."
+        },
+        {
+          "start": 566.62,
+          "end": 571.18,
+          "text": "Your evidence should show that you can identify which phase is present."
+        },
+        {
+          "start": 571.18,
+          "end": 577.4599999999999,
+          "text": "Apply the finite inventory constraint, and reopen the inputs without relying on a screenshot"
+        },
+        {
+          "start": 577.4599999999999,
+          "end": 577.9799999999999,
+          "text": "alone."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Full demonstration transcript covers initial settings, 300 K/1 L/10 kPa, 0.010 and 0.002 mol volatile cases, 0.002 mol inert addition, 4.989/9.977 kPa, temperature rather than time plots, unit conversion, export/import/restore and recalculation. A spurious whole-track recognition of Notice as Scientists resolves in isolated cue16-21 without a domain prompt. Decimal punctuation variants do not establish a spoken-number error.",
+      "targeted_followups": [
+        {
+          "slide": 16,
+          "cue_id": "16-21",
+          "expected": "Notice that changing inputs clears the previous results and disables export.",
+          "audio_sha256": "4c5053e8e579a963cc77de8a73c7b744b364052917ed55c74bfbb64da3a324e8",
+          "local_start_seconds": 114.464,
+          "local_end_seconds": 120.168,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": null,
+          "recognized": "Notice that changing inputs clears the previous results and disables X-port."
+        },
+        {
+          "slide": 16,
+          "cue_id": "16-21",
+          "expected": "Notice that changing inputs clears the previous results and disables export.",
+          "audio_sha256": "4c5053e8e579a963cc77de8a73c7b744b364052917ed55c74bfbb64da3a324e8",
+          "local_start_seconds": 114.464,
+          "local_end_seconds": 120.168,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": "Thermodynamics. Langmuir, Henry, Freundlich, adsorption, adsorbent, adsorbate, equilibrium.",
+          "recognized": "Notice that changing inputs clears the previous results, and disables export."
+        }
+      ]
+    },
+    {
+      "slide": 22,
+      "slide_id": "langmuir-model",
+      "title": "Langmuir model",
+      "focus": "Langmuir denominator one plus bP; finite saturation uptake, reciprocal-pressure b and dimensionless fractional coverage.",
+      "audio_file": "segment-22.wav",
+      "sha256": "d9b6913c067af84ce7300aff4a93c5ef6f0dfca28fa6470ce5712dd34ef823a7",
+      "narration_sha256": "c864417dcf5bb61c951bf163346c045caee931008a92d1254bfb2ce83b2257bd",
+      "duration_seconds": 59.416666666666664,
+      "sample_rate": 24000,
+      "peak": 0.65960693359375,
+      "clipped_samples": 0,
+      "expected_narration": "The Langmuir equation writes uptake as the saturation uptake multiplied by b P, divided by one plus b P. Saturation uptake has units of moles per kilogram. The parameter b has reciprocal-pressure units, so the product b P is dimensionless. The ratio of uptake to saturation uptake is the fractional coverage in this model. It rises from zero toward one as pressure increases. At b P equal to one, the coverage is one half. The idealized interpretation involves a finite set of equivalent sites without lateral interactions. These assumptions help us understand the equation, but fitting the equation successfully does not establish a microscopic mechanism. Later, we will use it as a specified synthetic model and check its consequences through a vessel balance.",
+      "recognized": "The Langmuir equation writes uptake as the saturation uptake multiplied by Bp, divided by 1 plus Bp. Saturation uptake has units of moles per kilogram. The parameter B has reciprocal pressure units, so the product Bp is dimensionless. The ratio of uptake to saturation uptake is the fractional coverage in this model. It rises from zero toward one as pressure increases. At Bp equal to one, the coverage is one half. The idealized interpretation involves a finite set of equivalent sites without lateral interactions. These assumptions help us understand the equation, but fitting the equation successfully does not establish a microscopic mechanism. Later, we will use it as a specified synthetic model and check its consequences through a vessel balance.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.5,
+          "text": "The Langmuir equation writes uptake as the saturation uptake multiplied by Bp,"
+        },
+        {
+          "start": 6.5,
+          "end": 9.200000000000001,
+          "text": "divided by 1 plus Bp."
+        },
+        {
+          "start": 9.200000000000001,
+          "end": 13.5,
+          "text": "Saturation uptake has units of moles per kilogram."
+        },
+        {
+          "start": 13.5,
+          "end": 19.8,
+          "text": "The parameter B has reciprocal pressure units, so the product Bp is dimensionless."
+        },
+        {
+          "start": 19.8,
+          "end": 26.0,
+          "text": "The ratio of uptake to saturation uptake is the fractional coverage in this model."
+        },
+        {
+          "start": 26.0,
+          "end": 30.0,
+          "text": "It rises from zero toward one as pressure increases."
+        },
+        {
+          "start": 30.0,
+          "end": 34.0,
+          "text": "At Bp equal to one, the coverage is one half."
+        },
+        {
+          "start": 34.0,
+          "end": 42.0,
+          "text": "The idealized interpretation involves a finite set of equivalent sites without lateral interactions."
+        },
+        {
+          "start": 42.0,
+          "end": 52.0,
+          "text": "These assumptions help us understand the equation, but fitting the equation successfully does not establish a microscopic mechanism."
+        },
+        {
+          "start": 52.0,
+          "end": 60.0,
+          "text": "Later, we will use it as a specified synthetic model and check its consequences through a vessel balance."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Langmuir denominator one plus bP, reciprocal-pressure b, dimensionless coverage and half coverage at bP=1 are preserved.",
+      "targeted_followups": []
+    },
+    {
+      "slide": 28,
+      "slide_id": "vessel-worked-example",
+      "title": "Vessel worked example",
+      "focus": "Known-pressure 10 kPa calculation: q=1 mol/kg, gas .00400908 mol, adsorbed .010 mol, total .01400908 mol, distinct from following .010-mol inventory.",
+      "audio_file": "segment-28.wav",
+      "sha256": "172cfe54d263cd3cf1271cab760bfe829c5457adceeb39ff7a518956e1847cd4",
+      "narration_sha256": "b495475f20bab382bb81b6c053f9e7a1932e74d8be783631b21396cac46a6771",
+      "duration_seconds": 55.934,
+      "sample_rate": 24000,
+      "peak": 0.745147705078125,
+      "clipped_samples": 0,
+      "expected_narration": "This worked example starts with a known pressure, rather than a known total inventory. At ten kilopascals, with saturation uptake two and b equal to zero point one per kilopascal, the Langmuir uptake is one mole per kilogram. Ten grams is zero point zero one kilograms, so adsorbed moles equal zero point zero one. The gas amount in one liter at three hundred kelvin is about four point zero zero nine millimoles. Adding them gives a required total inventory of about zero point zero one four zero zero nine moles. The next task reduces total inventory to zero point zero one mole while keeping the other parameters fixed. Do not carry the ten-kilopascal pressure across unchanged. It must satisfy the new balance.",
+      "recognized": "This worked example starts with a known pressure, rather than a known total inventory. At 10 kilopascals, with saturation uptake 2 and be equal to 0.1 per kilopascal, the laminar uptake is 1 mole per kilogram. 10 grams is 0.01 kilograms, so it's sorbed moles equal 0.01. The gas amount in one liter at 300 kelvin is about 4.009 millimoles, adding them gives a required total inventory of about 0.014009 moles. The next task reduces total inventory to 0.01 mole, while keeping the other parameters fixed. Do not carry the 10 kilopascal pressure across unchanged. It must satisfy the new balance.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.92,
+          "text": "This worked example starts with a known pressure, rather than a known total inventory."
+        },
+        {
+          "start": 5.92,
+          "end": 13.68,
+          "text": "At 10 kilopascals, with saturation uptake 2 and be equal to 0.1 per kilopascal,"
+        },
+        {
+          "start": 13.68,
+          "end": 17.400000000000002,
+          "text": "the laminar uptake is 1 mole per kilogram."
+        },
+        {
+          "start": 17.400000000000002,
+          "end": 24.84,
+          "text": "10 grams is 0.01 kilograms, so it's sorbed moles equal 0.01."
+        },
+        {
+          "start": 25.0,
+          "end": 32.36,
+          "text": "The gas amount in one liter at 300 kelvin is about 4.009 millimoles,"
+        },
+        {
+          "start": 32.36,
+          "end": 40.76,
+          "text": "adding them gives a required total inventory of about 0.014009 moles."
+        },
+        {
+          "start": 40.76,
+          "end": 46.120000000000005,
+          "text": "The next task reduces total inventory to 0.01 mole,"
+        },
+        {
+          "start": 46.120000000000005,
+          "end": 48.84,
+          "text": "while keeping the other parameters fixed."
+        },
+        {
+          "start": 48.84,
+          "end": 53.24,
+          "text": "Do not carry the 10 kilopascal pressure across unchanged."
+        },
+        {
+          "start": 53.24,
+          "end": 55.24,
+          "text": "It must satisfy the new balance."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "The final regenerated audio clearly yields 4.009 millimoles in ASR, resolving the preliminary decimal-recognition ambiguity. Total inventory 0.014009 mol and subsequent 0.010 mol case remain distinct. Tiny.en renders the proper name Langmuir inconsistently; formula and amounts are preserved.",
+      "targeted_followups": []
+    },
+    {
+      "slide": 30,
+      "slide_id": "lab11-demonstration",
+      "title": "Lab 11 demonstration",
+      "focus": "Actual Lab11 demo beginning/middle/end: matched Langmuir/Henry; T300, V1 L, total .010 mol; 10 g/20 g mass; kPa/mol per kg units; export/import/restore/recalculate.",
+      "audio_file": "segment-30.wav",
+      "sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+      "narration_sha256": "4975834dd84b11eb931da68cc5f583ec16fc83062c3635624ba7c5b55ae2b9fe",
+      "duration_seconds": 619.7370416666666,
+      "sample_rate": 24000,
+      "peak": 0.889984130859375,
+      "clipped_samples": 0,
+      "expected_narration": "We are now in the real Lab eleven interface. Keep worksheet page five and Lab guide pages three and four open. Begin in Explore isotherms, the upper calculator. The data fitting section lower on the page is optional for this lesson. Our main task is to compare two adsorption models and close a vessel balance. The chart displays four model curves, but the model selected in the menu is the one used to solve the closed vessel. The other curves are not additional phases and are not combined into that balance. Select Langmuir and check a capacity of two moles per kilogram and an affinity of zero point one per kilopascal. Use three hundred kelvin. The pressure units matter because the product of affinity and pressure must be dimensionless. Entering a pressure in pascals while retaining an affinity per kilopascal would change that product by a factor of one thousand. Identify the parameters as synthetic definitions at this temperature. Changing the temperature field does not generate a new temperature dependent parameter set. For our first comparison, set the minimum pressure to zero and the maximum to ten kilopascals so that the lower pressure curves are easy to see. The worksheet uses zero to one hundred kilopascals for your independent investigation. All three vessel roots are below ten kilopascals, so either admitted window gives the same roots. We will widen the range later. Expand Closed vessel, fixed temperature and free gas volume. Enter one liter of free gas volume, ten grams of dry adsorbent, zero point zero one zero mole of total adsorbate, and zero inert gas. This total inventory is the one used in the Lab investigation. It is different from the earlier worked example in which a pressure of ten kilopascals was given and the required total inventory was calculated. Here the pressure is unknown. The solver must divide the specified total amount between gas and adsorbed material. Press Compare and solve vessel after checking these inputs. For case eleven A, the equilibrium adsorbate partial pressure is about six point zero eight zero kilopascals. The uptake is about zero point seven five six two moles per kilogram. To obtain the total adsorbed amount, multiply that uptake by zero point zero one zero kilogram, not by ten. The result is about zero point zero zero seven five six two mole adsorbed. The gas contains about zero point zero zero two four three eight mole. Together these recover the total zero point zero one zero mole. Record the selected model, pressure, uptake, both amounts, and residual. Before changing the model, save the calculated Langmuir case with its interpretation and label. Then select Henry in the model menu. Enter a Henry coefficient of zero point two mole per kilogram per kilopascal. This is the product of the Langmuir capacity and affinity, so the two isotherms have the same limiting slope near zero pressure. Keep ten grams of adsorbent, the same volume, and the same total inventory. Press Compare and solve vessel again. Matching the low pressure slope does not make the two models identical over the full pressure range. The Henry calculation gives about four point one six five kilopascals for case eleven B. It predicts about zero point zero zero eight three three zero mole adsorbed and zero point zero zero one six seven zero mole in the gas. Its material balance closes, but that does not establish that the approximation is physically adequate. At this pressure, the Langmuir product of affinity and pressure is about zero point four two, which is not very small. The linear model stores more material on the adsorbent at a given pressure, so it reaches the fixed inventory at a lower pressure. Save this second case separately. For case eleven C, return the selected model to Langmuir and increase the dry adsorbent mass from ten to twenty grams. Keep the capacity, affinity, temperature, gas volume, and total adsorbate inventory unchanged. Compare this case with the original Langmuir case, eleven A, so that adsorbent mass is the only physical variable being changed in that comparison. Notice that editing a field invalidates the old result. Recalculate before recording or exporting anything. We are adding adsorbent surface capacity to a vessel with the same amount of adsorbate, not adding more adsorbate. With twenty grams of adsorbent, the Langmuir pressure falls to about two point eight four five kilopascals. The total adsorbed amount increases to about zero point zero zero eight eight five nine mole. Yet the uptake per kilogram decreases to about zero point four four three zero mole per kilogram. These changes are consistent. There is more adsorbent, but the lower gas pressure leaves each kilogram less heavily loaded. Multiply uptake by zero point zero two zero kilogram to recover the adsorbed amount. Add the gas amount, about zero point zero zero one one four one mole, and check the same total inventory. Save the third case, then widen the maximum chart pressure to one hundred kilopascals and calculate again to inspect the model shapes. The Henry line continues upward without a finite capacity. The Langmuir curve bends toward the specified capacity of two moles per kilogram. This helps explain the worksheet comparison at forty kilopascals, where the two predictions differ strongly. A wider plotting range does not supply experimental validation. The Freundlich and BET curves use their own synthetic parameters and domains. They are visible for context, but fitting them and interpreting isosteric heat are optional extensions today. The Study workspace now contains three named model studies: Langmuir with ten grams, Henry with ten grams, and Langmuir with twenty grams. For each one, use Your interpretation to record the balance and the reason for the pressure change. Export model study downloads a calculated study and retains it in this temporary comparison. Do not use Export data study from the separate fitting section for this activity. The saved cases keep the original zero to ten kilopascal calculation window even though we subsequently widened the current chart to inspect the isotherm shapes. Select Download comparison to save these three model studies together. Read the recorded fields carefully. In this lab the equilibrium pressure is recorded in kilopascals, the uptake in moles per kilogram, and the gas and adsorbed amounts in moles. The vessel input mass is stored in kilograms and the volume in cubic meters. This differs from some display units and from the pressure convention in the gas solid export. Do not compare raw field values across different labs without checking their definitions. A blank field is not automatically zero. To check that the study is reusable, clear the temporary comparison only after saving the file. Under Load studies or a comparison JSON, choose the downloaded adsorption comparison file. The file is read by the browser and the saved cases become available to restore. Keep the actual file on your computer with the worksheet. An in memory comparison alone may disappear when you leave the page. Saving a screenshot is useful for discussion, but it cannot replace the inputs, units, model selection, and interpretation needed to reproduce the calculation. After import, select Restore beside case eleven A, Langmuir ten grams. Verify that the selected model, capacity, affinity, temperature, inventory, and adsorbent mass have returned correctly. The plot range should also return to the saved zero to ten kilopascals. Restoring inputs is not the final calculation step. Press Compare and solve vessel to calculate the current state. If you edit any parameter after restoration, calculate again before treating the displayed result as evidence for that new case. The restored and recalculated Langmuir case again gives approximately six point zero eight zero kilopascals and the same gas and adsorbed amounts as before. This completes the full workflow from choosing a model to saving and reopening the result. In worksheet section G, reproduce the three cases yourself and verify each balance by hand. Explain why more adsorbent can increase the total adsorbed amount while decreasing uptake per kilogram. State the absolute uptake basis and the ideal gas assumption. The next activity stop gives you time to create and check your own evidence.",
+      "recognized": "We are now in the Real Lab 11 interface. Keep worksheet page 5, and Lab Guide pages 3 and 4 open. Begin and explore isotherms the upper calculator. The data fitting section lower on the page is optional for this lesson. Our main task is to compare two adsorption models and close a vessel balance. The chart displays four model curves, but the model selected in the menu is the one used to solve the closed vessel. The other curves are not additional phases and are not combined into that balance. Select Langmuir and check a capacity of two moles per kilogram and an affinity of 0.1 per kilopascal. Use 300 Kelvin. The pressure units matter because the product of affinity and pressure must be dimensionless. Changing a pressure in Pascals while retaining an affinity per kilopascal would change that product by a factor of 1000. Identify the parameters as synthetic definitions at this temperature. Changing the temperature field does not generate a new temperature dependent parameter set. For our first comparison, set the minimum pressure to 0 and the maximum to 10 kilopascals so that the lower pressure curves are easy to see. The worksheet uses 0 to 100 kilopascals for your independent investigation. All three vessel routes are below 10 kilopascals, so either admitted window gives the same roots. We will widen the range later. Expand closed vessel, fix temperature and free gas volume. Enter one liter of free gas volume. One grams of dry at sorban, 0.01 zero mole of total at sorbet, and zero inert gas. This total inventory is the one used in the lab investigation. It is different from the earlier worked example in which a pressure of 10 kilopascals was given and the required total inventory was calculated. Here the pressure is unknown. The solver must divide the specified total amount between gas and its sorbed material. Press compare and solve vessel after checking these inputs. For case 11A, the equilibrium at sorbet partial pressure is about 6.080 kilopascals. The uptake is about 0.7562 moles per kilogram. To obtain the total at sorbed amount, multiply that uptake by 0.010 kilogram, not by 10. The result is about 0.007562 moles at sorbed. The gas contains about 0.002, 438 moles. Together these recover the total, 0.010 moles. After the selected model, pressure uptake both amounts and residual. Before changing the model, save the calculated Langmuir case with its interpretation and label. Then select Henry in the model menu. Enter a Henry coefficient of 0.2 mole per kilogram per kilopascal. This is the product of the Langmuir capacity and affinity, so the two isotherms have the same limiting slope near zero pressure. Keep 10 grams of its sorbet, the same volume, and the same total inventory. Press compare and solve vessel again. Matching the low pressure slope does not make the two models identical over the full pressure range. The Henry calculation gives about 4.165 kilopascals per case 11B. It predicts about 0.008330 moles at sorbed and 0.001670 moles in the gas. Its material balance closes, but that does not establish that the approximation is physically adequate. At this pressure, the Langmuir product of affinity and pressure is about 0.42, which is not very small. The linear model stores more material on the its sorbet at a given pressure, so it reaches the fixed inventory at a lower pressure. Save the second case separately. For case 11C, return the selected model to Langmuir and increase the dry its sorbet mass from 10 to 20 grams. Keep the capacity, affinity, temperature, gas volume, and total its sorbet inventory unchanged. Share this case with the original Langmuir case, 11A, so that its sorbet mass is the only physical variable being changed in that comparison. Notice that editing a field invalidates the old result. Recalculate before recording or exporting anything. We are adding its sorbet surface capacity to a vessel with the same amount of its sorbet, not adding more its sorbet. With 20 grams of its sorbet, the Langmuir pressure falls to about 2.845 kilopascals. The total its sorbet amount increases to about 0.008859 mole. Yet the uptake per kilogram decreases to about 0.443 0 mole per kilogram. These changes are consistent. There is more its sorbet, but the lower gas pressure leaves each kilogram less heavily loaded. Multiply uptake by 0.020 kilogram to recover the its sorbet amount. Add the gas amount, about 0.00114 1 mole and check the same total inventory. Save the third case, then widen the maximum chart pressure to 100 kilopascals and calculate again to inspect the model's shapes. The Henry line continues upward without a finite capacity. The Langmuir curve bends toward the specified capacity of 2 moles per kilogram. This helps explain the worksheet comparison at 40 kilopascals, where the 2 predictions differ strongly. A wider plotting range does not supply experimental validation. The Frundle and BET curves use their own synthetic parameters and domains. They are visible for context, but fitting them and interpreting isosteric heat are optional extensions today. The study workspace now contains three named model studies. Langmuir with 10 grams, Henry with 10 grams and Langmuir with 20 grams. For each one, use your interpretation to record the balance and the reason for the pressure change. Export model study downloads a calculated study and retains it in this temporary comparison. Do not use export data study from the separate fitting section for this activity. The saved cases keep the original 0 to 10 kilopascal calculation window, even though we subsequently widen the current chart to inspect the isotherm shapes. Download comparison to save these three model studies together. Read the recorded fields carefully. In this lab, the equilibrium pressure is recorded in kilopascals, the uptake in moles per kilogram, and the gas and its sorbed amounts in moles. The vessel input mass is stored in kilograms and the volume in cubic meters. This differs from some display units and from the pressure convention in the gas solid export. Do not compare raw field values across different labs without checking their definitions. A blank field is not automatically zero to check that the study is reusable. Clear the temporary comparison only after saving the file. Load studies or a comparison J-S-O-N choose the downloaded adsorption comparison file. The file is read by the browser and the saved cases become available to restore. Keep the actual file on your computer with the worksheet. And in memory comparison, alone may disappear when you leave the page. Saving a screenshot is useful for discussion, but it cannot replace the inputs, units, models selection, and interpretation needed to reproduce the calculation. After import, select restore beside case 11A, laying your 10 grams, verify that the selected model, capacity, affinity, temperature, inventory, and its sorbent mass have returned correctly. The plot range should also return to the saved zero to 10 kilopascals. Restoring inputs is not the final calculation step. This compare and solve vessel to calculate the current state. If you edit any parameter after restoration, calculate again before treating the displayed result as evidence for that new case. The restored and recalculated laying your case again gives approximately 6.080 kilopascals and the same gas and its sorbed amounts as before. This completes the full workflow from choosing a model to saving and reopening the result. In worksheet section G, reproduce the three cases yourself and verify each balance by hand. Explain why more its sorbent can increase the total its sorbent amount while decreasing uptake per kilogram. State the absolute uptake basis and the ideal gas assumption. The next activity stop gives you time to create and check your own evidence.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.08,
+          "text": "We are now in the Real Lab 11 interface."
+        },
+        {
+          "start": 4.08,
+          "end": 9.28,
+          "text": "Keep worksheet page 5, and Lab Guide pages 3 and 4 open."
+        },
+        {
+          "start": 9.28,
+          "end": 12.88,
+          "text": "Begin and explore isotherms the upper calculator."
+        },
+        {
+          "start": 12.88,
+          "end": 18.080000000000002,
+          "text": "The data fitting section lower on the page is optional for this lesson."
+        },
+        {
+          "start": 18.080000000000002,
+          "end": 23.84,
+          "text": "Our main task is to compare two adsorption models and close a vessel balance."
+        },
+        {
+          "start": 23.84,
+          "end": 29.6,
+          "text": "The chart displays four model curves, but the model selected in the menu is the one"
+        },
+        {
+          "start": 29.6,
+          "end": 32.32,
+          "text": "used to solve the closed vessel."
+        },
+        {
+          "start": 32.32,
+          "end": 38.24,
+          "text": "The other curves are not additional phases and are not combined into that balance."
+        },
+        {
+          "start": 38.24,
+          "end": 44.96,
+          "text": "Select Langmuir and check a capacity of two moles per kilogram and an affinity of 0.1 per"
+        },
+        {
+          "start": 44.96,
+          "end": 46.56,
+          "text": "kilopascal."
+        },
+        {
+          "start": 46.56,
+          "end": 48.64,
+          "text": "Use 300 Kelvin."
+        },
+        {
+          "start": 48.64,
+          "end": 55.32,
+          "text": "The pressure units matter because the product of affinity and pressure must be dimensionless."
+        },
+        {
+          "start": 55.32,
+          "end": 60.92,
+          "text": "Changing a pressure in Pascals while retaining an affinity per kilopascal would change"
+        },
+        {
+          "start": 60.92,
+          "end": 64.48,
+          "text": "that product by a factor of 1000."
+        },
+        {
+          "start": 64.48,
+          "end": 69.84,
+          "text": "Identify the parameters as synthetic definitions at this temperature."
+        },
+        {
+          "start": 69.84,
+          "end": 75.2,
+          "text": "Changing the temperature field does not generate a new temperature dependent parameter"
+        },
+        {
+          "start": 75.2,
+          "end": 76.28,
+          "text": "set."
+        },
+        {
+          "start": 76.28,
+          "end": 83.16,
+          "text": "For our first comparison, set the minimum pressure to 0 and the maximum to 10 kilopascals"
+        },
+        {
+          "start": 83.16,
+          "end": 86.39999999999999,
+          "text": "so that the lower pressure curves are easy to see."
+        },
+        {
+          "start": 86.39999999999999,
+          "end": 92.96,
+          "text": "The worksheet uses 0 to 100 kilopascals for your independent investigation."
+        },
+        {
+          "start": 92.96,
+          "end": 98.6,
+          "text": "All three vessel routes are below 10 kilopascals, so either admitted window gives the"
+        },
+        {
+          "start": 98.6,
+          "end": 100.03999999999999,
+          "text": "same roots."
+        },
+        {
+          "start": 100.03999999999999,
+          "end": 102.92,
+          "text": "We will widen the range later."
+        },
+        {
+          "start": 102.92,
+          "end": 107.36,
+          "text": "Expand closed vessel, fix temperature and free gas volume."
+        },
+        {
+          "start": 107.36,
+          "end": 110.19999999999999,
+          "text": "Enter one liter of free gas volume."
+        },
+        {
+          "start": 110.2,
+          "end": 119.28,
+          "text": "One grams of dry at sorban, 0.01 zero mole of total at sorbet, and zero inert gas."
+        },
+        {
+          "start": 119.28,
+          "end": 124.24000000000001,
+          "text": "This total inventory is the one used in the lab investigation."
+        },
+        {
+          "start": 124.24000000000001,
+          "end": 129.52,
+          "text": "It is different from the earlier worked example in which a pressure of 10 kilopascals"
+        },
+        {
+          "start": 129.52,
+          "end": 134.6,
+          "text": "was given and the required total inventory was calculated."
+        },
+        {
+          "start": 134.6,
+          "end": 136.72,
+          "text": "Here the pressure is unknown."
+        },
+        {
+          "start": 136.76,
+          "end": 143.16,
+          "text": "The solver must divide the specified total amount between gas and its sorbed material."
+        },
+        {
+          "start": 143.16,
+          "end": 147.28,
+          "text": "Press compare and solve vessel after checking these inputs."
+        },
+        {
+          "start": 147.28,
+          "end": 156.12,
+          "text": "For case 11A, the equilibrium at sorbet partial pressure is about 6.080 kilopascals."
+        },
+        {
+          "start": 156.12,
+          "end": 161.12,
+          "text": "The uptake is about 0.7562 moles per kilogram."
+        },
+        {
+          "start": 161.12,
+          "end": 170.4,
+          "text": "To obtain the total at sorbed amount, multiply that uptake by 0.010 kilogram, not by 10."
+        },
+        {
+          "start": 170.4,
+          "end": 176.08,
+          "text": "The result is about 0.007562 moles at sorbed."
+        },
+        {
+          "start": 176.08,
+          "end": 181.4,
+          "text": "The gas contains about 0.002, 438 moles."
+        },
+        {
+          "start": 181.4,
+          "end": 186.76,
+          "text": "Together these recover the total, 0.010 moles."
+        },
+        {
+          "start": 186.79999999999998,
+          "end": 192.16,
+          "text": "After the selected model, pressure uptake both amounts and residual."
+        },
+        {
+          "start": 192.16,
+          "end": 199.16,
+          "text": "Before changing the model, save the calculated Langmuir case with its interpretation and label."
+        },
+        {
+          "start": 199.16,
+          "end": 202.2,
+          "text": "Then select Henry in the model menu."
+        },
+        {
+          "start": 202.2,
+          "end": 208.28,
+          "text": "Enter a Henry coefficient of 0.2 mole per kilogram per kilopascal."
+        },
+        {
+          "start": 208.28,
+          "end": 213.68,
+          "text": "This is the product of the Langmuir capacity and affinity, so the two isotherms have the"
+        },
+        {
+          "start": 213.68,
+          "end": 217.12,
+          "text": "same limiting slope near zero pressure."
+        },
+        {
+          "start": 217.12,
+          "end": 223.28,
+          "text": "Keep 10 grams of its sorbet, the same volume, and the same total inventory."
+        },
+        {
+          "start": 223.28,
+          "end": 226.0,
+          "text": "Press compare and solve vessel again."
+        },
+        {
+          "start": 226.0,
+          "end": 231.76000000000002,
+          "text": "Matching the low pressure slope does not make the two models identical over the full pressure"
+        },
+        {
+          "start": 231.76000000000002,
+          "end": 232.76000000000002,
+          "text": "range."
+        },
+        {
+          "start": 232.76000000000002,
+          "end": 240.12,
+          "text": "The Henry calculation gives about 4.165 kilopascals per case 11B."
+        },
+        {
+          "start": 240.16,
+          "end": 251.0,
+          "text": "It predicts about 0.008330 moles at sorbed and 0.001670 moles in the gas."
+        },
+        {
+          "start": 251.0,
+          "end": 256.96,
+          "text": "Its material balance closes, but that does not establish that the approximation is physically"
+        },
+        {
+          "start": 256.96,
+          "end": 258.24,
+          "text": "adequate."
+        },
+        {
+          "start": 258.24,
+          "end": 264.96,
+          "text": "At this pressure, the Langmuir product of affinity and pressure is about 0.42, which is"
+        },
+        {
+          "start": 264.96,
+          "end": 266.76,
+          "text": "not very small."
+        },
+        {
+          "start": 266.8,
+          "end": 272.48,
+          "text": "The linear model stores more material on the its sorbet at a given pressure, so it reaches"
+        },
+        {
+          "start": 272.48,
+          "end": 275.8,
+          "text": "the fixed inventory at a lower pressure."
+        },
+        {
+          "start": 275.8,
+          "end": 278.03999999999996,
+          "text": "Save the second case separately."
+        },
+        {
+          "start": 278.03999999999996,
+          "end": 284.64,
+          "text": "For case 11C, return the selected model to Langmuir and increase the dry its sorbet mass"
+        },
+        {
+          "start": 284.64,
+          "end": 287.15999999999997,
+          "text": "from 10 to 20 grams."
+        },
+        {
+          "start": 287.15999999999997,
+          "end": 294.8,
+          "text": "Keep the capacity, affinity, temperature, gas volume, and total its sorbet inventory unchanged."
+        },
+        {
+          "start": 294.8,
+          "end": 301.48,
+          "text": "Share this case with the original Langmuir case, 11A, so that its sorbet mass is the only"
+        },
+        {
+          "start": 301.48,
+          "end": 305.68,
+          "text": "physical variable being changed in that comparison."
+        },
+        {
+          "start": 305.68,
+          "end": 309.6,
+          "text": "Notice that editing a field invalidates the old result."
+        },
+        {
+          "start": 309.6,
+          "end": 313.84000000000003,
+          "text": "Recalculate before recording or exporting anything."
+        },
+        {
+          "start": 313.84000000000003,
+          "end": 319.88,
+          "text": "We are adding its sorbet surface capacity to a vessel with the same amount of its sorbet,"
+        },
+        {
+          "start": 319.88,
+          "end": 322.24,
+          "text": "not adding more its sorbet."
+        },
+        {
+          "start": 322.24,
+          "end": 329.76,
+          "text": "With 20 grams of its sorbet, the Langmuir pressure falls to about 2.845 kilopascals."
+        },
+        {
+          "start": 329.76,
+          "end": 336.72,
+          "text": "The total its sorbet amount increases to about 0.008859 mole."
+        },
+        {
+          "start": 336.72,
+          "end": 344.56,
+          "text": "Yet the uptake per kilogram decreases to about 0.443 0 mole per kilogram."
+        },
+        {
+          "start": 344.56,
+          "end": 347.0,
+          "text": "These changes are consistent."
+        },
+        {
+          "start": 347.08,
+          "end": 352.2,
+          "text": "There is more its sorbet, but the lower gas pressure leaves each kilogram less heavily"
+        },
+        {
+          "start": 352.2,
+          "end": 353.2,
+          "text": "loaded."
+        },
+        {
+          "start": 353.2,
+          "end": 360.24,
+          "text": "Multiply uptake by 0.020 kilogram to recover the its sorbet amount."
+        },
+        {
+          "start": 360.24,
+          "end": 368.84,
+          "text": "Add the gas amount, about 0.00114 1 mole and check the same total inventory."
+        },
+        {
+          "start": 368.84,
+          "end": 375.68,
+          "text": "Save the third case, then widen the maximum chart pressure to 100 kilopascals and calculate"
+        },
+        {
+          "start": 375.68,
+          "end": 378.40000000000003,
+          "text": "again to inspect the model's shapes."
+        },
+        {
+          "start": 378.40000000000003,
+          "end": 383.04,
+          "text": "The Henry line continues upward without a finite capacity."
+        },
+        {
+          "start": 383.04,
+          "end": 389.0,
+          "text": "The Langmuir curve bends toward the specified capacity of 2 moles per kilogram."
+        },
+        {
+          "start": 389.0,
+          "end": 394.68,
+          "text": "This helps explain the worksheet comparison at 40 kilopascals, where the 2 predictions differ"
+        },
+        {
+          "start": 394.68,
+          "end": 396.0,
+          "text": "strongly."
+        },
+        {
+          "start": 396.0,
+          "end": 401.16,
+          "text": "A wider plotting range does not supply experimental validation."
+        },
+        {
+          "start": 401.20000000000005,
+          "end": 407.32000000000005,
+          "text": "The Frundle and BET curves use their own synthetic parameters and domains."
+        },
+        {
+          "start": 407.32000000000005,
+          "end": 413.44000000000005,
+          "text": "They are visible for context, but fitting them and interpreting isosteric heat are optional"
+        },
+        {
+          "start": 413.44000000000005,
+          "end": 415.16,
+          "text": "extensions today."
+        },
+        {
+          "start": 415.16,
+          "end": 419.44000000000005,
+          "text": "The study workspace now contains three named model studies."
+        },
+        {
+          "start": 419.44000000000005,
+          "end": 425.16,
+          "text": "Langmuir with 10 grams, Henry with 10 grams and Langmuir with 20 grams."
+        },
+        {
+          "start": 425.16,
+          "end": 430.76000000000005,
+          "text": "For each one, use your interpretation to record the balance and the reason for the pressure"
+        },
+        {
+          "start": 430.76,
+          "end": 432.48,
+          "text": "change."
+        },
+        {
+          "start": 432.48,
+          "end": 439.4,
+          "text": "Export model study downloads a calculated study and retains it in this temporary comparison."
+        },
+        {
+          "start": 439.4,
+          "end": 445.08,
+          "text": "Do not use export data study from the separate fitting section for this activity."
+        },
+        {
+          "start": 445.08,
+          "end": 452.52,
+          "text": "The saved cases keep the original 0 to 10 kilopascal calculation window, even though we subsequently"
+        },
+        {
+          "start": 452.52,
+          "end": 456.88,
+          "text": "widen the current chart to inspect the isotherm shapes."
+        },
+        {
+          "start": 456.88,
+          "end": 462.08,
+          "text": "Download comparison to save these three model studies together."
+        },
+        {
+          "start": 462.08,
+          "end": 464.68,
+          "text": "Read the recorded fields carefully."
+        },
+        {
+          "start": 464.68,
+          "end": 470.8,
+          "text": "In this lab, the equilibrium pressure is recorded in kilopascals, the uptake in moles per"
+        },
+        {
+          "start": 470.8,
+          "end": 475.44,
+          "text": "kilogram, and the gas and its sorbed amounts in moles."
+        },
+        {
+          "start": 475.44,
+          "end": 481.32,
+          "text": "The vessel input mass is stored in kilograms and the volume in cubic meters."
+        },
+        {
+          "start": 481.32,
+          "end": 486.4,
+          "text": "This differs from some display units and from the pressure convention in the gas solid"
+        },
+        {
+          "start": 486.4,
+          "end": 487.56,
+          "text": "export."
+        },
+        {
+          "start": 487.56,
+          "end": 493.8,
+          "text": "Do not compare raw field values across different labs without checking their definitions."
+        },
+        {
+          "start": 493.8,
+          "end": 499.96,
+          "text": "A blank field is not automatically zero to check that the study is reusable."
+        },
+        {
+          "start": 499.96,
+          "end": 504.32,
+          "text": "Clear the temporary comparison only after saving the file."
+        },
+        {
+          "start": 504.32,
+          "end": 511.88,
+          "text": "Load studies or a comparison J-S-O-N choose the downloaded adsorption comparison file."
+        },
+        {
+          "start": 511.88,
+          "end": 517.92,
+          "text": "The file is read by the browser and the saved cases become available to restore."
+        },
+        {
+          "start": 517.92,
+          "end": 521.72,
+          "text": "Keep the actual file on your computer with the worksheet."
+        },
+        {
+          "start": 521.72,
+          "end": 527.04,
+          "text": "And in memory comparison, alone may disappear when you leave the page."
+        },
+        {
+          "start": 527.04,
+          "end": 533.64,
+          "text": "Saving a screenshot is useful for discussion, but it cannot replace the inputs, units,"
+        },
+        {
+          "start": 533.72,
+          "end": 538.84,
+          "text": "models selection, and interpretation needed to reproduce the calculation."
+        },
+        {
+          "start": 538.84,
+          "end": 545.76,
+          "text": "After import, select restore beside case 11A, laying your 10 grams, verify that the selected"
+        },
+        {
+          "start": 545.76,
+          "end": 553.4,
+          "text": "model, capacity, affinity, temperature, inventory, and its sorbent mass have returned correctly."
+        },
+        {
+          "start": 553.4,
+          "end": 559.36,
+          "text": "The plot range should also return to the saved zero to 10 kilopascals."
+        },
+        {
+          "start": 559.36,
+          "end": 563.24,
+          "text": "Restoring inputs is not the final calculation step."
+        },
+        {
+          "start": 563.24,
+          "end": 567.48,
+          "text": "This compare and solve vessel to calculate the current state."
+        },
+        {
+          "start": 567.48,
+          "end": 573.76,
+          "text": "If you edit any parameter after restoration, calculate again before treating the displayed"
+        },
+        {
+          "start": 573.76,
+          "end": 576.5600000000001,
+          "text": "result as evidence for that new case."
+        },
+        {
+          "start": 576.5600000000001,
+          "end": 584.76,
+          "text": "The restored and recalculated laying your case again gives approximately 6.080 kilopascals"
+        },
+        {
+          "start": 584.76,
+          "end": 588.6,
+          "text": "and the same gas and its sorbed amounts as before."
+        },
+        {
+          "start": 588.64,
+          "end": 594.88,
+          "text": "This completes the full workflow from choosing a model to saving and reopening the result."
+        },
+        {
+          "start": 594.88,
+          "end": 601.76,
+          "text": "In worksheet section G, reproduce the three cases yourself and verify each balance by hand."
+        },
+        {
+          "start": 601.76,
+          "end": 607.52,
+          "text": "Explain why more its sorbent can increase the total its sorbent amount while decreasing"
+        },
+        {
+          "start": 607.52,
+          "end": 609.6,
+          "text": "uptake per kilogram."
+        },
+        {
+          "start": 609.6,
+          "end": 614.4,
+          "text": "State the absolute uptake basis and the ideal gas assumption."
+        },
+        {
+          "start": 614.4,
+          "end": 619.12,
+          "text": "The next activity stop gives you time to create and check your own evidence."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Full demonstration transcript covers both model inputs, 0–10 versus 0–100 kPa chart window, all three pressures 6.080/4.165/2.845 kPa, uptake versus adsorbed amount, 10 g/20 g masses, 0.010 kg/0.020 kg conversions, export/import/restore and recalculation. Whole-track recognition of initial ten grams as one grams resolves to ten grams in isolated cue30-19 even without a prompt. Scientific-word variants adsorbent/adsorbate resolve with a domain vocabulary prompt that contains no numerical answers.",
+      "targeted_followups": [
+        {
+          "slide": 30,
+          "cue_id": "30-19",
+          "expected": "Enter one liter of free gas volume, ten grams of dry adsorbent, zero point zero one zero mole of total adsorbate, and zero inert gas.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 106.932,
+          "local_end_seconds": 118.97929166666667,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": null,
+          "recognized": "Enter one liter of free gas volume, 10 grams of dry at sorban, 0.01 zero mole of total at sorbet, and zero inert gas."
+        },
+        {
+          "slide": 30,
+          "cue_id": "30-19",
+          "expected": "Enter one liter of free gas volume, ten grams of dry adsorbent, zero point zero one zero mole of total adsorbate, and zero inert gas.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 106.932,
+          "local_end_seconds": 118.97929166666667,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": "Thermodynamics. Langmuir, Henry, Freundlich, adsorption, adsorbent, adsorbate, equilibrium.",
+          "recognized": "Enter one liter of free gas volume. Ten grams of dry adsorbent. Zero point zero one zero mole of total adsorbate. And zero inert gas."
+        },
+        {
+          "slide": 30,
+          "cue_id": "30-50",
+          "expected": "We are adding adsorbent surface capacity to a vessel with the same amount of adsorbate, not adding more adsorbate.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 313.50983333333335,
+          "local_end_seconds": 321.8591666666667,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": null,
+          "recognized": "We are adding its sorban surface capacity to a vessel with the same amount of its sorbait, not adding more its sorbait."
+        },
+        {
+          "slide": 30,
+          "cue_id": "30-50",
+          "expected": "We are adding adsorbent surface capacity to a vessel with the same amount of adsorbate, not adding more adsorbate.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 313.50983333333335,
+          "local_end_seconds": 321.8591666666667,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": "Thermodynamics. Langmuir, Henry, Freundlich, adsorption, adsorbent, adsorbate, equilibrium.",
+          "recognized": "We are adding adsorbent surface capacity to a vessel with the same amount of adsorbate, not adding more adsorbate."
+        },
+        {
+          "slide": 30,
+          "cue_id": "30-92",
+          "expected": "Explain why more adsorbent can increase the total adsorbed amount while decreasing uptake per kilogram.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 601.5190416666667,
+          "local_end_seconds": 609.356375,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": null,
+          "recognized": "Explain why more adsorbent can increase the total adsorbed amount while decreasing uptake per kilogram."
+        },
+        {
+          "slide": 30,
+          "cue_id": "30-92",
+          "expected": "Explain why more adsorbent can increase the total adsorbed amount while decreasing uptake per kilogram.",
+          "audio_sha256": "ba87a459d3322d6c983e0dbf37ad49c5e3797ba27432ef47f25a661af55c10c0",
+          "local_start_seconds": 601.5190416666667,
+          "local_end_seconds": 609.356375,
+          "method": "Local tiny.en, CPU int8 one thread, beam size5, previous-text conditioning disabled",
+          "initial_prompt": "Thermodynamics. Langmuir, Henry, Freundlich, adsorption, adsorbent, adsorbate, equilibrium.",
+          "recognized": "Explain why Moore adsorbent can increase the total adsorbed amount, while decreasing uptake per kilogram."
+        }
+      ]
+    },
+    {
+      "slide": 39,
+      "slide_id": "exit-ticket",
+      "title": "Exit ticket and feedback",
+      "focus": "Session4 form: both Lab10 comparison and Lab11 numerical balance in evidence answer, actual study time, anonymous submission once and receipt.",
+      "audio_file": "segment-39.wav",
+      "sha256": "653fcde2c6610300c330a96cb49c30a3418c4bb2ba2260f09c87a72183fcef03",
+      "narration_sha256": "a35ba6fdf1253192e5e667c0393e1cb601e24e9eaa777d7aa7342a55553b8747",
+      "duration_seconds": 49.96066666666667,
+      "sample_rate": 24000,
+      "peak": 0.657623291015625,
+      "clipped_samples": 0,
+      "expected_narration": "Pause for about ten minutes to complete section I on worksheet page six and submit the Session four exit ticket and feedback. Use the link or scan the Q R code. Explain what happens to gas pressure when bulk solid runs out. In the evidence answer, include one Lab ten comparison and one Lab eleven numerical balance, with settings and units. Report your actual study time, including the activities, and tell me about any access problems or explanations that need improvement. The form does not ask for your name, student I D or email. Submit once and wait for the message Response received. The next slide is a receipt and saved-work check, not another submission request.",
+      "recognized": "Pause for about 10 minutes to complete section. I on worksheet page 6 and submit the session for exit ticket and feedback. Use the link or scan the QR code. Explain what happens to gas pressure when bulk solid runs out. In the evidence answer include one lab 10 comparison and one lab 11 numerical balance with settings and units. Report your actual study time, including the activities, and tell me about any access problems or explanations that need improvement. The form does not ask for your name, student ID or email. Submit once and wait for the message response received. The next slide is a receipt and saved work check, not another submission request.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.2,
+          "text": "Pause for about 10 minutes to complete section."
+        },
+        {
+          "start": 3.2,
+          "end": 9.3,
+          "text": "I on worksheet page 6 and submit the session for exit ticket and feedback."
+        },
+        {
+          "start": 9.3,
+          "end": 12.3,
+          "text": "Use the link or scan the QR code."
+        },
+        {
+          "start": 12.3,
+          "end": 16.9,
+          "text": "Explain what happens to gas pressure when bulk solid runs out."
+        },
+        {
+          "start": 16.9,
+          "end": 25.7,
+          "text": "In the evidence answer include one lab 10 comparison and one lab 11 numerical balance with settings and units."
+        },
+        {
+          "start": 25.7,
+          "end": 35.3,
+          "text": "Report your actual study time, including the activities, and tell me about any access problems or explanations that need improvement."
+        },
+        {
+          "start": 35.3,
+          "end": 39.9,
+          "text": "The form does not ask for your name, student ID or email."
+        },
+        {
+          "start": 39.9,
+          "end": 44.1,
+          "text": "Submit once and wait for the message response received."
+        },
+        {
+          "start": 44.1,
+          "end": 49.6,
+          "text": "The next slide is a receipt and saved work check, not another submission request."
+        }
+      ],
+      "review_status": "source_compared_no_confirmed_meaning_changing_error",
+      "review_notes": "Session4 submission instructions preserve both Lab10 comparison and Lab11 numerical balance in the evidence answer, settings/units, actual study time, anonymity, one submission and Response received.",
+      "targeted_followups": []
+    }
+  ],
+  "checked_at_utc": "2026-10-20T02:30:41.734329+00:00",
+  "limitations": [
+    "ASR source comparison is not a full subjective listening review.",
+    "Scientific names and repeated decimal digits may be normalized or misrecognized by tiny.en.",
+    "Targeted followups used a vocabulary-only domain prompt without numeric answers in addition to unprompted decoding.",
+    "Seven of 40 tracks were transcribed, covering both complete demonstration chapters, not every recorded chapter."
+  ],
+  "asr_source_comparison_passed": true,
+  "full_subjective_listening_review": false,
+  "selected_audio_seconds": 1484.5122916666667,
+  "reviewed_at_utc": "2026-10-20T02:31:31.501734+00:00",
+  "review_summary": "All 40 final source and WAV hashes were verified. Seven complete selected tracks, including both actual-interface demonstrations, were transcribed and compared with the source. Final slide 28 uses 4.009 millimoles and is recognized correctly. Targeted independent decoding resolved the initial 10 gram recognition variant. No further narration edit is supported by this ASR review."
+}

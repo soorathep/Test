@@ -1,0 +1,125 @@
+WEEK 4 LESSON CONTRACT
+
+Purpose: replace live class while the instructor attends the ECS meeting.
+Topic: solid equilibria and adsorption, following Week 3 liquid stability.
+Student materials and narration: US English.
+Voice: Kokoro am_michael, speed 0.94, using the existing local model files.
+
+Timing: approximately three hours in total. Ten work stops allow 120 minutes
+for calculations, investigations and reflection; slide 20 adds a 10-minute
+break. Measure the final recording separately and report the actual sum.
+The nominal 0-180 minute route is a planning guide, not video timestamps.
+Do not scale tasks or add filler silence to manufacture an exact total.
+No extra compulsory homework or preparation is assigned.
+
+Files: week04-practice.pdf (6 pages), week04-lab-guide.pdf (4 pages),
+week04-solutions.pdf (4 pages), postmidterm-04-slides.pdf (40 pages).
+preclass-week-04.pdf (3 pages) remains optional background.
+Lesson hub: week04-study.html. Narrated player: week04-video.html.
+
+Worksheet mapping:
+Page 1: A1-A3 processes and constraints; B1-B2 pure-solid solubility.
+Page 2: C1-C3 finite-inventory GSE hand calculations.
+Page 3: D1-D4 Lab 10 predictions, three cases, balances and saved studies.
+Page 4: E1-E3 Henry/Langmuir calculations; F1-F3 vessel predictions.
+Page 5: G1-G4 Lab 11 model/mass comparison, balances and saved studies.
+Page 6: H1-H4 unseen transfer; I exit ticket, reflection and feedback.
+
+Frozen numerical cases (synthetic definitions, not real property data):
+B: Tm=350 K, fusion enthalpy=10000 J/mol, T=300 K, ideal liquid.
+   Calculate saturated liquid composition, approximately 0.564, not amount.
+Worked GSE and Lab 10 D: T=Tref=300 K, V=1 L, Pref=10 kPa,
+   sublimation enthalpy=50000 J/mol, declared range 250-350 K.
+   10A: 0.010 mol volatile, no inert.
+   10B: 0.002 mol volatile, no inert.
+   10C: 0.002 mol volatile and 0.002 mol inert.
+   Volatile capacity=0.0040090785014 mol. Case 10C partial pressure=
+   4.988677571 kPa, total pressure=9.977355142 kPa.
+Independent C: T=300 K, V=2 L, Psub=8 kPa; volatile amounts 0.010/0.004
+   mol; inert=0.001 mol. This differs from the worked and Lab cases.
+E: Langmuir qs=2 mol/kg, b=0.1 /kPa; matched Henry K=0.2 mol/(kg kPa).
+   Worked pressures 1 and 10 kPa; attempted pressures 5 and 40 kPa.
+F known-pressure example: P=10 kPa, T=300 K, V=1 L, adsorbent=10 g,
+   qs=2 mol/kg, b=0.1 /kPa. q=1 mol/kg; total inventory=0.0140090785014
+   mol. This differs deliberately from the Lab 11 inventory.
+Lab 11 G: T=300 K, V=1 L, total adsorbate=0.010 mol, no inert.
+   11A: Langmuir, qs=2 mol/kg, b=0.1 /kPa, adsorbent=10 g.
+   11B: Henry K=0.2 mol/(kg kPa), adsorbent=10 g.
+   11C: same Langmuir parameters, adsorbent=20 g.
+   Worksheet range is 0-100 kPa. Demo initially uses 0-10 kPa for
+   readability; all vessel roots are below 10 kPa. It then widens to 100.
+H GSE: T=310 K, V=2 L, Psub=5 kPa; volatile amounts=0.002/0.008 mol,
+   inert=0.001 mol.
+H adsorption: qs=3 mol/kg, b=0.05 /kPa, P=20 kPa, V=2 L, m=5 g,
+   T=310 K. Calculate q, gas/adsorbed/total amounts and predict the sign
+   of the pressure change when mass doubles. No exact new root required.
+
+Scientific scope: pure solids, stated standard states, finite inventory,
+conditional phase equality, fixed T,V Helmholtz constraint, absolute uptake,
+ideal gas and fixed free gas volume. No chemical-reaction, kinetics or
+energy-balance prediction. Freundlich/BET fitting and isosteric heat are
+optional. A closed balance alone does not validate a physical model.
+
+Demonstrations: genuine Lab 10 and Lab 11 browser screenshots with verified
+inputs, calculations, named exports, comparison JSON reopening, restoration
+and fresh recalculation. demo-scenes.json maps each frame to a spoken cue.
+Predict before slides 16 and 30; investigate independently afterward.
+
+Completion: use the existing Session 4 anonymous exit-ticket/feedback form.
+Submit once at slide 39 and verify the receipt at slide 40. Include evidence
+from both Labs and actual study time. This form does not identify attendance.
+No student records are included in the teaching materials or Git repositories.
+
+SLIDE ORDER AND ACTIVITY INSTRUCTIONS
+
+01 | title-slide | Solid equilibria and adsorption
+02 | your-independent-lesson | Your independent lesson
+03 | the-study-route | The study route
+04 | process-predictions | Process predictions
+     Pause: 8 min. Pause for about 8 minutes. Complete worksheet p. 1, A1–A3 before viewing the check.
+05 | process-check | Process check
+06 | pure-solid-standard-state | Pure-solid standard state
+07 | solubility-equation | Solubility equation
+08 | solubility-attempt | Solubility attempt
+     Pause: 6 min. Pause for about 6 minutes. Complete worksheet p. 1, B1–B2 before viewing the check.
+09 | solubility-check | Solubility check
+10 | sublimation-equilibrium | Sublimation equilibrium
+11 | finite-vessel-inventory | Finite-vessel inventory
+12 | inventory-worked-example | Inventory worked example
+13 | inventory-attempt | Inventory attempt
+     Pause: 10 min. Pause for about 10 minutes. Complete worksheet p. 2, C1–C3 before viewing the check.
+14 | inventory-check | Inventory check
+15 | lab10-predict | Lab 10 predictions
+     Pause: 5 min. Pause for about 5 minutes. Complete worksheet p. 3, D1 predictions before the Lab 10 demonstration.
+16 | lab10-demonstration | Lab 10 demonstration
+17 | lab10-evidence | Lab 10 evidence
+18 | lab10-investigation | Lab 10 independent investigation
+     Pause: 22 min. Pause for about 22 minutes. Complete worksheet p. 3, D2–D4 using Lab 10 and Lab guide pp. 1–2.
+19 | lab10-check | Lab 10 check
+20 | break | Break
+     Pause: 10 min. Take a 10-minute break. Save your Lab 10 work before leaving the screen.
+21 | adsorption-is-different | Adsorption and bulk phases
+22 | langmuir-model | Langmuir model
+23 | henry-limit | Henry limit
+24 | isotherm-worked-example | Isotherm worked example
+25 | isotherm-attempt | Isotherm attempt
+     Pause: 10 min. Pause for about 10 minutes. Complete worksheet p. 4, E1–E3 before viewing the check.
+26 | isotherm-check | Isotherm check
+27 | closed-adsorption-vessel | Closed adsorption vessel
+28 | vessel-worked-example | Vessel worked example
+29 | lab11-predict | Lab 11 predictions
+     Pause: 5 min. Pause for about 5 minutes. Complete worksheet p. 4, F1–F3 predictions before the Lab 11 demonstration.
+30 | lab11-demonstration | Lab 11 demonstration
+31 | adsorption-evidence | Adsorption evidence
+32 | lab11-investigation | Lab 11 independent investigation
+     Pause: 24 min. Pause for about 24 minutes. Complete worksheet p. 5, G1–G4 using Lab 11 and Lab guide pp. 3–4.
+33 | lab11-check | Lab 11 check
+34 | model-scope | Model scope
+35 | unseen-case-brief | Unseen case brief
+36 | unseen-attempt | Unseen attempt
+     Pause: 20 min. Pause for about 20 minutes. Complete worksheet p. 6, H1–H4 before viewing the unseen-case check.
+37 | unseen-check | Unseen check
+38 | choose-the-equilibrium-description | Choosing an equilibrium description
+39 | exit-ticket | Exit ticket and feedback
+     Pause: 10 min. Pause for about 10 minutes. Complete worksheet p. 6, I and submit the Session 4 exit ticket and feedback once. Wait for Response received.
+40 | receipt-and-saved-work | Receipt and saved work

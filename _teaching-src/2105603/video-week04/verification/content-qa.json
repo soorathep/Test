@@ -1,0 +1,214 @@
+{
+  "revision": "Week 4 asynchronous ECS replacement lesson: 40 slides, Lab 10 and Lab 11 demonstrations",
+  "checked_at_utc": "2026-10-20T02:34:34.080189+00:00",
+  "status": "passed_final_staged_content_alignment",
+  "scope": {
+    "public_html": [
+      "teaching/2105603/index.html",
+      "teaching/2105603/week04-study.html",
+      "teaching/2105603/labs/learning-path.html",
+      "teaching/2105603/labs/assessments.html",
+      "teaching/2105603/postmidterm-04.html",
+      "teaching/2105603/postmidterm-04-appendix.html"
+    ],
+    "planned_video_template": "workspace/asynchronous-week04/build-video-page.py",
+    "pdfs": {
+      "postmidterm-04-slides.pdf": {
+        "pages": 40,
+        "sha256": "5a849ba0853ecae5be4c872cf92f9477a244e99e2643ab6b128f5a00e32c0e48"
+      },
+      "week04-practice.pdf": {
+        "pages": 6,
+        "sha256": "88b7d43546e0a0d76408f3fef0d762a3d267bff3d77633d9ab579db051645688"
+      },
+      "week04-lab-guide.pdf": {
+        "pages": 4,
+        "sha256": "c8c3c6aa17605416393ef8c4fbc52d75ee86258cbb31ae726969bca69b65d68b"
+      },
+      "week04-solutions.pdf": {
+        "pages": 4,
+        "sha256": "a6a767e73b1d3fdec7f07565c7d358638e0c29ba004811955a0d8e909cedf5dd"
+      },
+      "preclass-week-04.pdf": {
+        "pages": 3,
+        "sha256": "2835261e73b59d9a9943e8ad434bf88de7ba8db8b0880de165a3dcce56e16699"
+      }
+    },
+    "scientific_review": "workspace/outputs/week04-content-audit/scientific-qa.json"
+  },
+  "link_audit": {
+    "status": "pass",
+    "counts": {
+      "references": 383,
+      "external_references": 26,
+      "expected_build_references": 18,
+      "existing_local_references": 339,
+      "expected_video_fragments_validated_against_template": 2
+    },
+    "broken_links_or_anchors": [],
+    "expected_reference_count": 18,
+    "external_urls_observed": [
+      "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=1",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=2",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=6",
+      "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/attendance?session=2"
+    ],
+    "liquid_templates_resolved_from_course_yaml": [
+      "/teaching/2105603/files/{{ f.file }}",
+      "/teaching/2105603/{{ m.lab }}",
+      "/teaching/2105603/{{ m.slides }}",
+      "/teaching/2105603/{{ mod.slides }}",
+      "https://colab.research.google.com/github/soorathep/Test/blob/main/teaching/2105603/files/{{ f.file }}"
+    ],
+    "method": "Local file and fragment checks, canonical same-host URLs mapped to public paths, site.baseurl normalized to its configured empty value, course module links resolved from act2026.yml, PDF URI inspection. Video slide-1 through slide-40 fragments are handled by the player and need no matching DOM id.",
+    "counts_note": "Reference categories are existing local (339), external (26), and expected build resources (18), summing to 383. Two expected video-page fragments are additionally validated against the template.",
+    "stale_classroom_language_search": "No remaining Session 4 classroom patterns in current public/source HTML, MD, QMD, JSON or Python. Optional reading final PDF independently rechecked.",
+    "originally_expected_build_resources": [
+      "teaching/2105603/media/week04/week04-captions.vtt",
+      "teaching/2105603/media/week04/week04-lecture.mp4",
+      "teaching/2105603/media/week04/week04-poster.png",
+      "teaching/2105603/week04-video.html"
+    ],
+    "planned_resources_final_status": "All four originally expected resources are staged and verified in page-resource-qa.json."
+  },
+  "alignment": {
+    "slide_count": 40,
+    "html_ids_match_narration_order": true,
+    "activity_minutes_by_slide": {
+      "4": 8,
+      "8": 6,
+      "13": 10,
+      "15": 5,
+      "18": 22,
+      "20": 10,
+      "25": 10,
+      "29": 5,
+      "32": 24,
+      "36": 20,
+      "39": 10
+    },
+    "active_work_minutes": 120,
+    "break_minutes": 10,
+    "work_stops": [
+      4,
+      8,
+      13,
+      15,
+      18,
+      25,
+      29,
+      32,
+      36,
+      39
+    ],
+    "break_slide": 20,
+    "demos": {
+      "16": "Lab 10",
+      "30": "Lab 11"
+    },
+    "worksheet_pages": {
+      "1": "A1-A3 and B1-B2",
+      "2": "C1-C3",
+      "3": "D1-D4",
+      "4": "E1-E3 and F1-F3",
+      "5": "G1-G4",
+      "6": "H1-H4 and I"
+    },
+    "attempt_before_check": {
+      "A": "4 before 5",
+      "B": "8 before 9",
+      "C": "13 before 14",
+      "D": "15 predicts before 16 demonstration; 18 independent rerun before 19 check",
+      "E": "25 before 26",
+      "F_G": "29 predictions before 30 demonstration; 32 independent rerun before 33 check",
+      "H": "36 before 37"
+    },
+    "submission": "Slide 39: existing anonymous Session 4 form, concept + one comparison from each Lab + feedback including actual minutes; submit once. Slide 40: receipt and saved files, without resubmitting."
+  },
+  "required_optional_review": {
+    "required_labs": [
+      "Lab 10 GSE closed-vessel inventory",
+      "Lab 11 Henry and Langmuir with closed adsorption vessel"
+    ],
+    "optional": [
+      "Three-page Week 4 reading",
+      "Full module/appendix derivations",
+      "Eutectics",
+      "Freundlich/BET",
+      "Isotherm fitting and isosteric heat"
+    ],
+    "no_extra_homework": "Hub, learning path, assessment and revised course index include all required work inside the lesson.",
+    "demo_and_student_axis_ranges": "Lab 11 demonstration initially uses 0-10 kPa for readability and explicitly widens later; independent worksheet uses 0-100 kPa. All three roots lie below 10 kPa; saved example files retain their demonstrated range.",
+    "optional_reading": "All three pages explicitly optional and compatible with asynchronous ECS replacement lesson."
+  },
+  "resolved_findings": [
+    {
+      "file": "teaching/2105603/index.html",
+      "issue": "Intro described 18 classroom hours and only Session 2 independent; other sessions had additional mandatory work.",
+      "resolution": "Revised to 18 learning hours, Sessions 1/5/6 classroom and 2-4 independent, optional independent readings, and Week 4 required work inside lesson."
+    },
+    {
+      "file": "teaching/2105603/index.html",
+      "issue": "Session 3 worksheet mislabeled as four pages.",
+      "resolution": "Label revised to six pages."
+    },
+    {
+      "file": "_teaching-src/2105603/README.md",
+      "issue": "Old summary described Session 4 as classroom with 12 slides.",
+      "resolution": "Revised classroom/independent split, final form sequence and 40-slide Week 4 definition."
+    },
+    {
+      "file": "teaching/2105603/files/preclass-week-04.pdf",
+      "pages": [
+        1,
+        3
+      ],
+      "issue": "Optional reading still uses in-class preparation language and declares 15-20 minutes preparation plus 30-40 minutes follow-up required.",
+      "resolution": "All three pages revised to optional background and self-checks; no extra required preparation or follow-up. Mathematical content and numerical cases unchanged. Latest extracted text reviewed."
+    }
+  ],
+  "open_findings": [],
+  "source_sha256": {
+    "teaching/2105603/index.html": "4fcce6245cff138c8ebde3fd45fc892504336ed55c26facfe1aebe455bebd2a4",
+    "teaching/2105603/week04-study.html": "e8798d637e55188cafa81547c83ff58699236e781ce75d0ca1e984082694eaa6",
+    "teaching/2105603/labs/learning-path.html": "4b2017bfe91d12e4259420db3052594936774de18f543203dbcc416a1069f382",
+    "teaching/2105603/labs/assessments.html": "0daca2d312d17e27987c14bc826eaba8f64f217b23e82422f348702e315a8450",
+    "teaching/2105603/postmidterm-04.html": "a3a47c8fecffd15f585911050cbaf42fc051ed39d7f474a2ade58b119cc4d5a4",
+    "teaching/2105603/postmidterm-04-appendix.html": "fea1d00dce00d6b79aab8b68f627aedfeaabe036e605c98d3a94baaa63ca1371",
+    "_teaching-src/2105603/README.md": "e7978c90c54b35d49773924a838773da458eb057edf0a2857a5cd82d306bbc88",
+    "_teaching-src/2105603/postmidterm-04.qmd": "6d4ed375de233d80178187aae643a3c5bedfe536dda6259ffe038dcdcaa3a1f4",
+    "workspace/asynchronous-week04/build-video-page.py": "e06b34fac57e14c82ef35dc7b0e967052bb496b05427cc9f1937aaaf58360963",
+    "workspace/asynchronous-week04/narration.json": "1c9be27cbeb75c6ea72532d0c45dc0dbb2373bddcbf7abd982b399bdb0136b06",
+    "workspace/asynchronous-week04/lesson-contract.txt": "be6f25e70b0a9db70586420bc07ad9558363112be7795e7b50a45153b92ad93b",
+    "workspace/outputs/week04-content-audit/scientific-qa.json": "7a5b82e8f6fe0d47a8a2430c016a35a4022a3035b166f74c5cfde97a3045741b",
+    "labs/content/learning-path.json": "521d89732fd639fbe7f4546b31cdd4e3a3d03bb488aa723b19876f0181d7456f",
+    "labs/src/ui/learning-guide.js": "b7167260058fbc573ee3a217a02663d1b037571cabef3d897431561a9c346e13",
+    "workspace/asynchronous-week04/narration-draft.json": "3c485bd522f4e3c1979d33cf35275a9d0f234558ce97425b29e71506fed3aca7"
+  },
+  "limitations": [
+    "This is a static source, PDF and curriculum-alignment audit. It does not establish final media build, live deployment or physical-phone behavior.",
+    "Root separately verified the hydrated Session 4 form topic without submitting a response.",
+    "Student completion time is not measured. The final 57.486-minute recording plus 120 estimated activity minutes and a 10-minute break gives approximately 187.486 minutes; the 180-minute route is a planning guide."
+  ],
+  "final_narration_delta": {
+    "slide": 28,
+    "checked_at_utc": "2026-10-20T02:26:12.874219+00:00",
+    "change": "Spoken gas inventory now uses about 4.009 millimoles instead of 0.004009 moles.",
+    "status": "pass",
+    "gas_inventory_mol": 0.004009078501424202,
+    "gas_inventory_mmol": 4.009078501424201,
+    "scope": "Only the requested narration-unit delta verified; no broad audit rerun."
+  },
+  "final_staged_resource_verification": {
+    "report": "workspace/outputs/week04-video/page-resource-qa.json",
+    "sha256": "8a21a947433c19681c23001529a4ec312a81ada97196542223c0877bcf0880af",
+    "status": "pass",
+    "production_deployment_claimed": false,
+    "recording_seconds": 3449.157875,
+    "recording_plus_estimated_work_minutes": 187.48596458333333
+  }
+}

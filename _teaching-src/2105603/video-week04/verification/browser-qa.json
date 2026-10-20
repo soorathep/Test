@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "method": "Actual local browser playback through CUA; no form response submitted.",
+  "desktop": {
+    "demo16": "Direct link, decoded playback, native captions and full screen visually verified.",
+    "prediction15": {
+      "hold": true,
+      "paused": true,
+      "time": 877.787212,
+      "title": "Lab 10 predictions"
+    },
+    "continue15": {
+      "hold": false,
+      "paused": false,
+      "time": 883.310779,
+      "title": "Lab 10 demonstration"
+    },
+    "prediction29": {
+      "hold": true,
+      "paused": true,
+      "time": 2218.349643,
+      "title": "Lab 11 predictions"
+    },
+    "continue29": {
+      "hold": false,
+      "paused": false,
+      "time": 2225.865909,
+      "title": "Lab 11 demonstration"
+    },
+    "demo30": {
+      "duration": 3449.157875,
+      "error": null,
+      "height": 1080,
+      "paused": false,
+      "readyState": 4,
+      "time": 2218.728105,
+      "title": "Lab 11 demonstration",
+      "width": 1920
+    }
+  },
+  "narrow_screen": {
+    "width": 390,
+    "method": "Same-origin iframe constrained to390px, visually inspected; not a physical phone test.",
+    "captions": "Timed English captions visibly below the image; no visual horizontal overflow.",
+    "final_pause": "Slide39 held with form task and Continue; Continue advanced to slide40 Receipt and saved work. No form submitted."
+  },
+  "form": "Existing Session4 anonymous form and correct concept prompt verified separately.",
+  "screenshots": [
+    "browser-qa/hub-desktop.png",
+    "browser-qa/lab10-fullscreen.png",
+    "browser-qa/lab11-mobile.png",
+    "browser-qa/mobile-final-hold.png",
+    "browser-qa/session04-form.png"
+  ],
+  "logs": []
+}

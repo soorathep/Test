@@ -1,0 +1,72 @@
+{
+  "status": "pass",
+  "scope": "Final offline archive integrity and current Week 4 content; no live-server playback claim.",
+  "archive": "teaching/2105603/files/thermodynamics-offline.zip",
+  "archive_sha256": "2b0706bcebcc4e23f0161561e633726868f28e23a40b7ea75a780172bed9e609",
+  "archive_bytes": 62704005,
+  "manifest_files_verified": 486,
+  "files": [
+    {
+      "file": "teaching/2105603/files/postmidterm-04-slides.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "5a849ba0853ecae5be4c872cf92f9477a244e99e2643ab6b128f5a00e32c0e48",
+      "pages": 40
+    },
+    {
+      "file": "teaching/2105603/files/preclass-week-04.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "2835261e73b59d9a9943e8ad434bf88de7ba8db8b0880de165a3dcce56e16699",
+      "pages": 3
+    },
+    {
+      "file": "teaching/2105603/files/week04-practice.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "88b7d43546e0a0d76408f3fef0d762a3d267bff3d77633d9ab579db051645688",
+      "pages": 6
+    },
+    {
+      "file": "teaching/2105603/files/week04-lab-guide.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "c8c3c6aa17605416393ef8c4fbc52d75ee86258cbb31ae726969bca69b65d68b",
+      "pages": 4
+    },
+    {
+      "file": "teaching/2105603/files/week04-solutions.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "a6a767e73b1d3fdec7f07565c7d358638e0c29ba004811955a0d8e909cedf5dd",
+      "pages": 4
+    },
+    {
+      "file": "teaching/2105603/week04-study.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "e8798d637e55188cafa81547c83ff58699236e781ce75d0ca1e984082694eaa6",
+      "offline_sha256": "22a23eab827b722203335e571717f68fa7536dd8df41ffee59cd917cca615ebd"
+    },
+    {
+      "file": "teaching/2105603/postmidterm-04.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "a3a47c8fecffd15f585911050cbaf42fc051ed39d7f474a2ade58b119cc4d5a4",
+      "offline_sha256": "a3a47c8fecffd15f585911050cbaf42fc051ed39d7f474a2ade58b119cc4d5a4"
+    },
+    {
+      "file": "teaching/2105603/postmidterm-04-appendix.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "fea1d00dce00d6b79aab8b68f627aedfeaabe036e605c98d3a94baaa63ca1371",
+      "offline_sha256": "2661f12e63eab72b61dfa8267906d743831ca6b8b493430768fb7f2dc5f5a7d6"
+    }
+  ],
+  "online_demo_anchors_preserved": [
+    "https://www.skhgroup.net/teaching/2105603/week04-video.html#slide-16",
+    "https://www.skhgroup.net/teaching/2105603/week04-video.html#slide-30"
+  ],
+  "relative_omitted_player_links": [],
+  "media_files_in_archive": [],
+  "private_system_files": [],
+  "labs_release_manifest_byte_identical": true,
+  "session_4_core_labs": [
+    "solids",
+    "adsorption"
+  ],
+  "staged_player_sha256": "59ca3f37fec0e94c69b21caed750970838958db3ed24f758d88609688d0141dd",
+  "staged_player_chapters": 40
+}

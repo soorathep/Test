@@ -34,7 +34,8 @@ def para(text,y,kind='body',width=CW,x=M):
 
 def start(week,page,label):
     c.setFillColor(C['teal']);c.rect(0,H-13,W,13,fill=1,stroke=0)
-    c.setFont('ReadingBold',9);c.drawString(M,H-42,f'2105603  /  BEFORE CLASS  /  WEEK {week:02d}')
+    context='OPTIONAL BACKGROUND' if week == 4 else 'BEFORE CLASS'
+    c.setFont('ReadingBold',9);c.drawString(M,H-42,f'2105603  /  {context}  /  WEEK {week:02d}')
     c.setFillColor(C['graphite']);c.setFont('Reading',8)
     c.drawString(M,31,'Advanced Chemical Engineering Thermodynamics')
     c.drawRightString(W-M,31,f'{page} / 3  ·  {label}')
@@ -51,7 +52,8 @@ for week,d in enumerate(READINGS,1):
         continue
     dest=args.output/f'preclass-week-{week:02d}.pdf';c=canvas.Canvas(str(dest),pagesize=(W,H),initialFontName="Reading")
     c.setTitle(f'Week {week}: {d["title"]}');c.setAuthor('2105603 teaching materials')
-    y=start(week,1,'Concepts');y=para(d['title'],y,'title');y=para('Read and prepare: 15–20 minutes total. Bring tentative answers; uncertainty is useful for discussion.',y,'small')
+    intro=('Optional background for the independent ECS replacement lesson. Read as needed; all required calculations, Lab work and reflection are already included in the lesson.' if week == 4 else 'Read and prepare: 15–20 minutes total. Bring tentative answers; uncertainty is useful for discussion.')
+    y=start(week,1,'Concepts');y=para(d['title'],y,'title');y=para(intro,y,'small')
     y=para(d['question'],y,'heading')
     for heading,body in d['concepts']:
         y=para(heading,y,'heading');y=para(body,y)
@@ -67,8 +69,9 @@ for week,d in enumerate(READINGS,1):
         for line in ['Convergence: did the numerical algorithm satisfy its stopping criterion?', 'Consistency: are the observations compatible with thermodynamic constraints under the selected assumptions?', 'Prediction: how well does the model describe observations excluded from fitting?']:
             y=para(line,y)
     y=para('Check and interpret',y,'heading');y=para(d['check'],y)
-    c.showPage();y=start(week,3,'Preparation');y=para('Bring three short answers',y,'title')
-    y=para('A sketch, a few numbers or one sentence is enough. Do this before opening the calculator; revise your prediction in class.',y)
+    c.showPage();y=start(week,3,'Self-checks' if week == 4 else 'Preparation');y=para('Optional self-checks' if week == 4 else 'Bring three short answers',y,'title')
+    prompt_intro=('If you use this optional reading, sketch or write a short prediction before opening the calculator. Revisit it after the demonstration or your own Lab calculation.' if week == 4 else 'A sketch, a few numbers or one sentence is enough. Do this before opening the calculator; revise your prediction in class.')
+    y=para(prompt_intro,y)
     for i,q in enumerate(d['prompts'],1):
         y=para(f'{i}. {q}',y)
         c.setStrokeColor(C['mist']);c.setLineWidth(.6)
@@ -79,5 +82,6 @@ for week,d in enumerate(READINGS,1):
     y=para('Continue in the core lab',y,'heading');c.linkURL(url,(M,y-16,W-M,y+5),relative=0,thickness=0)
     y=para(url,y,'small')
     y=para('Reading locator: supplied textbook contents, sections '+d['book']+'.',y,'small')
-    y=para('Original course explanation and examples, not a reproduction of the textbook. Section numbers are based on the supplied contents pages. Required weekly independent work: 15–20 minutes preparation plus 30–40 minutes follow-up; optional extensions are additional.',y,'small')
+    workload=('This reading and its extensions are optional. All required Week 4 work is included in the approximately three-hour independent lesson; no extra preparation or follow-up assignment is required.' if week == 4 else 'Required weekly independent work: 15–20 minutes preparation plus 30–40 minutes follow-up; optional extensions are additional.')
+    y=para('Original course explanation and examples, not a reproduction of the textbook. Section numbers are based on the supplied contents pages. '+workload,y,'small')
     c.save();print(dest)

@@ -1,0 +1,16 @@
+# Recorded from the research Python 3.12 build environment.
+# Relevant direct and speech-runtime packages, not a complete transitive lockfile.
+# Local prerequisite outside PyPI: importable skh_palette (Teal-Amber Lab Palette).
+# Also required: Node.js for test-player.mjs and local Kokoro v1.0 model/voice files.
+av==19.0.1
+beautifulsoup4==4.15.0
+espeakng-loader==0.2.4
+kokoro-onnx==0.6.1
+matplotlib==3.11.2
+numpy==2.5.3
+onnxruntime==1.31.0
+phonemizer==3.4.0
+Pillow==12.3.0
+PyMuPDF==1.28.2
+scipy==1.18.1
+soundfile==0.14.0

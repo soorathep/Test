@@ -1,0 +1,2503 @@
+WEBVTT
+
+01-01
+00:00:00.180 --> 00:00:04.511
+Welcome to session four, solid equilibria and adsorption.
+
+01-02
+00:00:04.691 --> 00:00:10.621
+This independent lesson replaces our live class while I attend the E C
+S meeting.
+
+01-03
+00:00:10.801 --> 00:00:21.020
+Last week, you used thermodynamic consistency and liquid stability to
+decide whether a model and a proposed phase state were reasonable.
+
+01-04
+00:00:21.200 --> 00:00:25.445
+Today, we extend that reasoning to systems containing a solid.
+
+01-05
+00:00:25.625 --> 00:00:30.084
+We will distinguish bulk phase equilibrium from surface uptake.
+
+01-06
+00:00:30.264 --> 00:00:38.413
+We will also separate an equilibrium composition or pressure from the
+amount of material in each part of a system.
+
+01-07
+00:00:38.593 --> 00:00:46.551
+The lesson includes two actual Lab demonstrations, your own
+calculations, and independent investigations.
+
+01-08
+00:00:46.731 --> 00:00:49.845
+Keep your predictions and your first answers.
+
+01-09
+00:00:50.025 --> 00:00:55.551
+Correcting an explanation after checking evidence is an important part
+of the work.
+
+02-01
+00:00:58.081 --> 00:01:04.673
+Open the six-page practice worksheet and the four-page Lab guide using
+the links on this slide.
+
+02-02
+00:01:04.853 --> 00:01:06.773
+Keep both beside the video.
+
+02-03
+00:01:06.953 --> 00:01:13.971
+The worksheet is your working record, while the guide tells you which
+controls to use and what each result means.
+
+02-04
+00:01:14.151 --> 00:01:21.550
+The worked solutions are available for checking, but attempt each
+question before opening the corresponding answer.
+
+02-05
+00:01:21.730 --> 00:01:28.002
+Keep your original response and add a correction, rather than
+replacing it without explanation.
+
+02-06
+00:01:28.182 --> 00:01:34.731
+You will first work through Lab ten on bulk solid equilibria, then Lab
+eleven on adsorption.
+
+02-07
+00:01:34.911 --> 00:01:41.546
+The demonstrations show the workflow, and the later pauses give you
+time to reproduce it independently.
+
+02-08
+00:01:41.726 --> 00:01:48.446
+Save your calculation sheets, comparison tables and study J S O N
+files together.
+
+03-01
+00:01:50.976 --> 00:01:54.112
+This route combines watching with active work.
+
+03-02
+00:01:54.292 --> 00:01:59.817
+The fixed work budget is one hundred and twenty minutes, with a
+separate ten-minute break.
+
+03-03
+00:01:59.997 --> 00:02:04.136
+The actual recording duration appears on the video page.
+
+03-04
+00:02:04.316 --> 00:02:11.228
+Together, these make a lesson of approximately three hours, although
+your own completion time may differ.
+
+03-05
+00:02:11.408 --> 00:02:15.696
+Start a timer so you can report your actual study time later.
+
+03-06
+00:02:15.876 --> 00:02:20.057
+The table follows worksheet order, not video timestamps.
+
+03-07
+00:02:20.237 --> 00:02:27.512
+Work through the process review and solubility calculation, then the
+finite vessel balance and Lab ten.
+
+03-08
+00:02:27.692 --> 00:02:31.745
+After the break, continue with adsorption and Lab eleven.
+
+03-09
+00:02:31.925 --> 00:02:38.880
+Finish with a new case that you solve before seeing the answer, then
+submit the exit ticket and feedback.
+
+03-10
+00:02:39.060 --> 00:02:41.705
+The activities form this week's lesson.
+
+04-01
+00:02:44.235 --> 00:02:51.041
+Pause here for about eight minutes and complete questions A one
+through A three on worksheet page one.
+
+04-02
+00:02:51.221 --> 00:02:53.532
+First, classify the examples.
+
+04-03
+00:02:53.712 --> 00:02:59.301
+Ask whether material moves between bulk phases or accumulates at a
+surface.
+
+04-04
+00:02:59.481 --> 00:03:08.527
+Then identify the constraint that makes a rigid closed vessel
+different from the fixed-temperature, fixed-pressure examples in Week
+three.
+
+04-05
+00:03:08.707 --> 00:03:17.667
+For the inert-gas question, write a sentence distinguishing the
+pressure contributed by the subliming species from the total mixture
+pressure.
+
+04-06
+00:03:17.847 --> 00:03:21.068
+You do not need numerical values yet.
+
+04-07
+00:03:21.248 --> 00:03:26.944
+The purpose is to establish which physical quantities the later
+equations describe.
+
+04-08
+00:03:27.124 --> 00:03:30.111
+Keep your answers even if you are unsure.
+
+04-09
+00:03:30.291 --> 00:03:36.477
+Use the next slide as a check only after you have made an attempt, and
+explain any correction.
+
+05-01
+00:03:39.007 --> 00:03:40.906
+Check your classifications.
+
+05-02
+00:03:41.086 --> 00:03:47.763
+Dissolution of a crystal and sublimation transfer the same substance
+between bulk phases.
+
+05-03
+00:03:47.943 --> 00:03:51.997
+Adsorption describes uptake associated with a surface.
+
+05-04
+00:03:52.177 --> 00:03:59.409
+A chemical reaction would instead change species identities and
+require additional reaction constraints.
+
+05-05
+00:03:59.589 --> 00:04:03.493
+The relevant energy criterion depends on what is fixed.
+
+05-06
+00:04:03.673 --> 00:04:08.942
+At fixed temperature and pressure, a closed system minimizes Gibbs
+energy.
+
+05-07
+00:04:09.122 --> 00:04:14.903
+At fixed temperature and volume, the corresponding potential is
+Helmholtz energy.
+
+05-08
+00:04:15.083 --> 00:04:21.867
+In both cases, conserved inventories and the allowed states remain
+constraints on the minimization.
+
+05-09
+00:04:22.047 --> 00:04:27.125
+For an ideal gas mixture, total pressure is the sum of partial
+pressures.
+
+05-10
+00:04:27.305 --> 00:04:34.430
+An inert gas can therefore raise total pressure without changing the
+amount of the subliming species.
+
+05-11
+00:04:34.610 --> 00:04:39.346
+Keep that distinction visible when we later interpret the Lab output.
+
+06-01
+00:04:41.876 --> 00:04:45.823
+We begin with a solid and a liquid at equilibrium.
+
+06-02
+00:04:46.003 --> 00:04:51.400
+The chemical potential of the component must be the same in the two
+present phases.
+
+06-03
+00:04:51.580 --> 00:05:01.457
+On the liquid side, we write its chemical potential as the pure-liquid
+reference plus R T times the natural logarithm of x times gamma.
+
+06-04
+00:05:01.637 --> 00:05:06.608
+The reference is the subcooled pure liquid at the same temperature and
+pressure.
+
+06-05
+00:05:06.788 --> 00:05:15.872
+That reference may be a hypothetical continuation below the melting
+temperature, but it defines the activity convention consistently.
+
+06-06
+00:05:16.052 --> 00:05:20.404
+The pure solid has unit activity on its own standard state.
+
+06-07
+00:05:20.584 --> 00:05:26.216
+Unit activity does not mean that its chemical potential or amount is
+zero.
+
+06-08
+00:05:26.396 --> 00:05:29.404
+The equality determines a liquid activity.
+
+06-09
+00:05:29.584 --> 00:05:35.579
+Determining how many moles occupy each phase still requires a material
+balance.
+
+07-01
+00:05:38.109 --> 00:05:43.143
+The solubility equation links liquid activity to fusion properties.
+
+07-02
+00:05:43.323 --> 00:05:54.395
+Read the right-hand side as negative fusion enthalpy divided by R,
+multiplied by the quantity one over T minus one over the melting
+temperature.
+
+07-03
+00:05:54.575 --> 00:05:57.455
+That entire expression is dimensionless.
+
+07-04
+00:05:57.635 --> 00:06:02.627
+Use temperature in kelvin and fusion enthalpy in joules per mole.
+
+07-05
+00:06:02.807 --> 00:06:07.671
+With R in joules per mole per kelvin, the units cancel correctly.
+
+07-06
+00:06:07.851 --> 00:06:15.745
+The expression assumes constant fusion enthalpy and neglects the heat-
+capacity correction between solid and liquid.
+
+07-07
+00:06:15.925 --> 00:06:22.645
+It also assumes the specified pure solid, without solid solutions or
+chemical reactions.
+
+07-08
+00:06:22.825 --> 00:06:27.795
+Below the melting temperature, the reciprocal-temperature difference
+is positive.
+
+07-09
+00:06:27.975 --> 00:06:32.242
+The negative sign therefore gives a negative logarithm.
+
+07-10
+00:06:32.422 --> 00:06:37.777
+For an ideal liquid, that predicts a saturated mole fraction below
+one.
+
+08-01
+00:06:40.307 --> 00:06:46.088
+Pause for about six minutes and complete B one and B two on worksheet
+page one.
+
+08-02
+00:06:46.268 --> 00:06:50.791
+The synthetic melting temperature is three hundred and fifty kelvin.
+
+08-03
+00:06:50.971 --> 00:06:58.143
+The fusion enthalpy is ten thousand joules per mole, and the system
+temperature is three hundred kelvin.
+
+08-04
+00:06:58.323 --> 00:07:01.651
+Assume an ideal liquid, so gamma is one.
+
+08-05
+00:07:01.831 --> 00:07:10.322
+First calculate the exponent in the solubility equation, then take the
+exponential to obtain the saturated mole fraction.
+
+08-06
+00:07:10.502 --> 00:07:15.430
+Write the intermediate value so you can check the sign and units
+later.
+
+08-07
+00:07:15.610 --> 00:07:21.327
+For B two, decide whether the resulting number gives moles of
+remaining solid.
+
+08-08
+00:07:21.507 --> 00:07:27.139
+Explain what additional inventory or composition information you would
+need.
+
+08-09
+00:07:27.319 --> 00:07:32.823
+Make that distinction before continuing to the numerical check on the
+next slide.
+
+09-01
+00:07:35.353 --> 00:07:41.135
+The exponent is approximately negative zero point five seven two seven
+three.
+
+09-02
+00:07:41.315 --> 00:07:48.803
+Its exponential gives a saturated liquid mole fraction of about zero
+point five six four.
+
+09-03
+00:07:48.983 --> 00:07:52.289
+This is a composition within the liquid phase.
+
+09-04
+00:07:52.469 --> 00:08:00.789
+It does not tell us the number of moles dissolved, the total amount of
+liquid, or the remaining solid inventory.
+
+09-05
+00:08:00.969 --> 00:08:07.348
+For a nonideal liquid, the same thermodynamic relation constrains x
+times gamma.
+
+09-06
+00:08:07.528 --> 00:08:16.872
+Since gamma can depend on composition, finding the composition may
+require solving an implicit equation within the admitted phase model.
+
+09-07
+00:08:17.052 --> 00:08:21.233
+We still need material balances to determine phase amounts.
+
+09-08
+00:08:21.413 --> 00:08:27.984
+A eutectic introduces additional solid-phase conditions and a second
+solubility branch.
+
+09-09
+00:08:28.164 --> 00:08:35.595
+That extension is available in the optional appendix, but it is not
+required for today's investigation.
+
+10-01
+00:08:38.125 --> 00:08:42.499
+Now consider a pure bulk solid in equilibrium with its vapor.
+
+10-02
+00:08:42.679 --> 00:08:47.607
+Equality of chemical potential applies while both phases are present.
+
+10-03
+00:08:47.787 --> 00:08:57.984
+With the ideal-gas and solid-pressure approximations stated here, this
+gives a vapor partial pressure equal to the sublimation pressure at
+that temperature.
+
+10-04
+00:08:58.164 --> 00:09:00.980
+The phrase while solid remains matters.
+
+10-05
+00:09:01.160 --> 00:09:08.776
+A small initial solid inventory may completely enter the gas phase
+before the vapor reaches that pressure.
+
+10-06
+00:09:08.956 --> 00:09:17.468
+The final state can then have a lower partial pressure because there
+is no bulk solid left to enforce the two-phase equality.
+
+10-07
+00:09:17.648 --> 00:09:20.784
+Also note which pressure appears in the condition.
+
+10-08
+00:09:20.964 --> 00:09:24.761
+It is the partial pressure of the subliming species.
+
+10-09
+00:09:24.941 --> 00:09:32.233
+An inert gas contributes to total pressure, but it is not part of that
+species' sublimation inventory.
+
+11-01
+00:09:34.763 --> 00:09:40.950
+Start the vessel calculation by finding the gas capacity at
+sublimation equilibrium.
+
+11-02
+00:09:41.130 --> 00:09:47.423
+Multiply sublimation pressure by accessible gas volume, then divide by
+R T.
+
+11-03
+00:09:47.603 --> 00:09:52.617
+Compare that capacity with the total amount of the subliming species.
+
+11-04
+00:09:52.797 --> 00:09:58.301
+Gas moles equal the smaller of the available inventory and that
+capacity.
+
+11-05
+00:09:58.481 --> 00:10:01.766
+Solid moles are the remaining inventory.
+
+11-06
+00:10:01.946 --> 00:10:13.039
+Use gas moles in the ideal-gas equation to obtain the species partial
+pressure, and add the inert contribution only when calculating total
+pressure.
+
+11-07
+00:10:13.219 --> 00:10:21.945
+With kilopascals and liters, R has the numerical value eight point
+three one four four six in compatible units.
+
+11-08
+00:10:22.125 --> 00:10:34.007
+The gas chemical potential minus the pure-solid reference, divided by
+R T, is the natural logarithm of partial pressure divided by
+sublimation pressure.
+
+11-09
+00:10:34.187 --> 00:10:36.769
+Zero applies with present solid.
+
+11-10
+00:10:36.949 --> 00:10:41.002
+A negative value is allowed after solid exhaustion.
+
+12-01
+00:10:43.532 --> 00:10:50.913
+Follow the worked case at three hundred kelvin, one liter and a
+sublimation pressure of ten kilopascals.
+
+12-02
+00:10:51.093 --> 00:10:56.256
+The capacity is ten times one, divided by R times three hundred.
+
+12-03
+00:10:56.436 --> 00:11:02.175
+This gives approximately zero point zero zero four zero zero nine
+moles.
+
+12-04
+00:11:02.355 --> 00:11:08.200
+An inventory of zero point zero one zero moles exceeds the capacity.
+
+12-05
+00:11:08.380 --> 00:11:18.343
+About zero point zero zero five nine nine one moles therefore remain
+solid, and the vapor partial pressure is ten kilopascals.
+
+12-06
+00:11:18.523 --> 00:11:24.112
+An inventory of zero point zero zero two moles is below capacity.
+
+12-07
+00:11:24.292 --> 00:11:30.308
+All of it enters the gas phase, giving about four point nine eight
+nine kilopascals.
+
+12-08
+00:11:30.488 --> 00:11:40.003
+Adding zero point zero zero two moles of inert gas adds the same
+pressure contribution at this fixed temperature and volume.
+
+13-01
+00:11:42.533 --> 00:11:48.997
+Now pause for about ten minutes and complete C one through C three on
+worksheet page two.
+
+13-02
+00:11:49.177 --> 00:11:56.835
+This is a different vessel: two liters at three hundred kelvin, with a
+sublimation pressure of eight kilopascals.
+
+13-03
+00:11:57.015 --> 00:12:04.781
+Compare total inventories of zero point zero one zero and zero point
+zero zero four moles.
+
+13-04
+00:12:04.961 --> 00:12:11.809
+Calculate the capacity first, then gas amount, remaining solid and
+species partial pressure.
+
+13-05
+00:12:11.989 --> 00:12:19.327
+Add zero point zero zero one mole of inert gas to each case and
+calculate total pressure.
+
+13-06
+00:12:19.507 --> 00:12:26.526
+Finally, calculate the natural logarithm of partial pressure divided
+by sublimation pressure.
+
+13-07
+00:12:26.706 --> 00:12:35.410
+Explain the difference between the equality condition for a present
+solid and a valid state at the exhausted-solid boundary.
+
+13-08
+00:12:35.590 --> 00:12:39.707
+Show your substitutions and units before opening the check.
+
+14-01
+00:12:42.237 --> 00:12:48.659
+The gas capacity is approximately zero point zero zero six four one
+five moles.
+
+14-02
+00:12:48.839 --> 00:13:00.871
+Therefore, the larger inventory retains about zero point zero zero
+three five eight five moles of solid and has a species partial
+pressure of eight kilopascals.
+
+14-03
+00:13:01.051 --> 00:13:08.155
+The smaller inventory completely vaporizes and gives about four point
+nine eight nine kilopascals.
+
+14-04
+00:13:08.335 --> 00:13:13.647
+The inert contributes about one point two four seven kilopascals in
+each case.
+
+14-05
+00:13:13.827 --> 00:13:18.819
+Add that contribution to obtain the total pressures shown in the
+table.
+
+14-06
+00:13:18.999 --> 00:13:30.579
+The logarithmic chemical-potential difference is zero with solid
+present, and about negative zero point four seven two three for the
+exhausted-solid case.
+
+14-07
+00:13:30.759 --> 00:13:33.575
+A negative value is appropriate there.
+
+14-08
+00:13:33.755 --> 00:13:39.301
+Check that gas plus solid equals the volatile-species inventory in
+each row.
+
+15-01
+00:13:41.831 --> 00:13:46.610
+Pause for about five minutes and complete D one on worksheet page
+three.
+
+15-02
+00:13:46.790 --> 00:13:53.250
+Read the first two pages of the Lab guide, but make your predictions
+before running the simulation.
+
+15-03
+00:13:53.430 --> 00:13:58.017
+We will use three cases at three hundred kelvin and one liter.
+
+15-04
+00:13:58.197 --> 00:14:03.893
+Set the sublimation reference pressure to ten kilopascals at three
+hundred kelvin.
+
+15-05
+00:14:04.073 --> 00:14:11.091
+Case ten A has zero point zero one zero moles of volatile species and
+no inert.
+
+15-06
+00:14:11.271 --> 00:14:17.138
+Case ten B reduces that inventory to zero point zero zero two moles.
+
+15-07
+00:14:17.318 --> 00:14:25.915
+Case ten C keeps the smaller volatile inventory and adds zero point
+zero zero two moles of inert gas.
+
+15-08
+00:14:26.095 --> 00:14:30.938
+Predict phase presence, partial pressure and total pressure for each
+case.
+
+15-09
+00:14:31.118 --> 00:14:35.683
+Identify the one input changed between successive cases.
+
+16-01
+00:14:38.213 --> 00:14:41.307
+We are now in the real Lab ten interface.
+
+16-02
+00:14:41.487 --> 00:14:46.713
+Keep worksheet page three and Lab guide pages one and two beside the
+browser.
+
+16-03
+00:14:46.893 --> 00:14:53.315
+In the Experiment menu, choose gas solid equilibrium, sublimation in a
+rigid vessel.
+
+16-04
+00:14:53.495 --> 00:14:57.505
+The lab initially supplies its own synthetic defaults.
+
+16-05
+00:14:57.685 --> 00:15:02.699
+Those initial results are not our worksheet case, so do not copy them.
+
+16-06
+00:15:02.879 --> 00:15:06.825
+Selecting an experiment may also reset the controls.
+
+16-07
+00:15:07.005 --> 00:15:11.677
+Choose the experiment first, then enter every value in the guide.
+
+16-08
+00:15:11.857 --> 00:15:18.535
+Our first record will be case ten A, with enough volatile material for
+some solid to remain.
+
+16-09
+00:15:18.715 --> 00:15:24.496
+Enter a temperature of three hundred kelvin and a free gas volume of
+one liter.
+
+16-10
+00:15:24.676 --> 00:15:32.740
+Set the total volatile inventory to zero point zero one zero mole and
+the inert gas inventory to zero.
+
+16-11
+00:15:32.920 --> 00:15:36.141
+These are total amounts, not mole fractions.
+
+16-12
+00:15:36.321 --> 00:15:40.652
+The free gas volume is the space available to the gas.
+
+16-13
+00:15:40.832 --> 00:15:44.715
+In this teaching model we neglect the solid volume.
+
+16-14
+00:15:44.895 --> 00:15:50.953
+Keep the declared temperature interval from two hundred fifty to three
+hundred fifty kelvin.
+
+16-15
+00:15:51.133 --> 00:16:00.328
+The source field identifies these numbers as synthetic teaching
+definitions rather than measured properties of a real chemical.
+
+16-16
+00:16:00.508 --> 00:16:04.305
+The reference temperature is also three hundred kelvin.
+
+16-17
+00:16:04.485 --> 00:16:13.168
+Enter a reference sublimation pressure of ten kilopascals and a
+sublimation enthalpy of fifty thousand joules per mole.
+
+16-18
+00:16:13.348 --> 00:16:19.321
+At the reference temperature the correlation therefore returns ten
+kilopascals directly.
+
+16-19
+00:16:19.501 --> 00:16:24.088
+The enthalpy controls the temperature dependence away from that point.
+
+16-20
+00:16:24.268 --> 00:16:32.417
+For real properties, the declared interval must exclude melting and
+solid transitions and match the source correlation.
+
+16-21
+00:16:32.597 --> 00:16:38.101
+Notice that changing inputs clears the previous results and disables
+export.
+
+16-22
+00:16:38.281 --> 00:16:43.231
+Press Calculate equilibrium only after checking the values and units.
+
+16-23
+00:16:43.411 --> 00:16:46.867
+The result for case ten A is solid plus gas.
+
+16-24
+00:16:47.047 --> 00:16:56.028
+The volatile partial pressure and the total pressure both equal ten
+kilopascals because this case contains no inert gas.
+
+16-25
+00:16:56.208 --> 00:16:58.384
+Read the two amounts separately.
+
+16-26
+00:16:58.564 --> 00:17:09.935
+There are about zero point zero zero four zero zero nine mole of
+volatile gas and zero point zero zero five nine nine one mole of
+solid.
+
+16-27
+00:17:10.115 --> 00:17:14.253
+Their sum is the entered zero point zero one zero mole.
+
+16-28
+00:17:14.433 --> 00:17:19.532
+The chemical potential difference is zero within numerical precision.
+
+16-29
+00:17:19.712 --> 00:17:23.893
+That equality is appropriate because both phases are present.
+
+16-30
+00:17:24.073 --> 00:17:34.036
+A small balance residual is a useful calculation check, but it does
+not validate the physical assumptions for an unknown real material.
+
+16-31
+00:17:34.216 --> 00:17:37.715
+Change the View menu to Gas and solid amounts.
+
+16-32
+00:17:37.895 --> 00:17:42.055
+Read the horizontal axis before interpreting the curves.
+
+16-33
+00:17:42.235 --> 00:17:46.459
+It is temperature, not time and not added inventory.
+
+16-34
+00:17:46.639 --> 00:17:54.511
+Each point is a separate equilibrium calculation at that temperature
+with the same total volatile inventory.
+
+16-35
+00:17:54.691 --> 00:17:59.704
+As temperature rises, more of the volatile material can enter the gas.
+
+16-36
+00:17:59.884 --> 00:18:05.964
+Eventually the solid amount reaches zero and all the volatile material
+is gaseous.
+
+16-37
+00:18:06.144 --> 00:18:11.797
+The gas and solid amounts sum to the same inventory throughout the
+admitted range.
+
+16-38
+00:18:11.977 --> 00:18:16.095
+This plot does not tell us how quickly sublimation occurs.
+
+16-39
+00:18:16.275 --> 00:18:20.755
+Our selected operating point remains three hundred kelvin.
+
+16-40
+00:18:20.935 --> 00:18:29.148
+Now change only the total volatile inventory to zero point zero zero
+two mole and calculate again.
+
+16-41
+00:18:29.328 --> 00:18:31.248
+This is case ten B.
+
+16-42
+00:18:31.428 --> 00:18:35.503
+The heading changes to unsaturated gas, no solid.
+
+16-43
+00:18:35.683 --> 00:18:44.387
+All the volatile material is now gas, and the volatile partial
+pressure is about four point nine eight nine kilopascals.
+
+16-44
+00:18:44.567 --> 00:18:51.863
+The sublimation pressure remains ten kilopascals because the
+temperature and correlation have not changed.
+
+16-45
+00:18:52.043 --> 00:18:56.459
+There simply is not enough material to saturate this vessel.
+
+16-46
+00:18:56.639 --> 00:19:02.783
+Do not force the gas pressure to ten kilopascals or report a negative
+solid amount.
+
+16-47
+00:19:02.963 --> 00:19:10.408
+The negative gas minus solid chemical potential difference is
+compatible with the solid being absent.
+
+16-48
+00:19:10.588 --> 00:19:21.468
+For case ten C, keep the volatile inventory at zero point zero zero
+two mole and add zero point zero zero two mole of inert gas.
+
+16-49
+00:19:21.648 --> 00:19:26.149
+Calculate again without changing temperature or free volume.
+
+16-50
+00:19:26.329 --> 00:19:38.357
+The volatile partial pressure remains about four point nine eight nine
+kilopascals, but the total gas pressure becomes about nine point nine
+seven seven kilopascals.
+
+16-51
+00:19:38.537 --> 00:19:41.716
+The volatile gas mole fraction is one half.
+
+16-52
+00:19:41.896 --> 00:19:43.923
+No solid has reappeared.
+
+16-53
+00:19:44.103 --> 00:19:55.260
+The inert gas contributes its own ideal partial pressure without
+changing the volatile inventory or its saturation capacity under these
+assumptions.
+
+16-54
+00:19:55.440 --> 00:20:00.197
+Always identify whether a reported pressure is partial or total.
+
+16-55
+00:20:00.377 --> 00:20:05.455
+In the pressure view, distinguish the three curves using their legend
+labels.
+
+16-56
+00:20:05.635 --> 00:20:18.712
+The sublimation pressure is a reference property at each temperature,
+the actual volatile partial pressure obeys the finite inventory
+constraint, and the total pressure includes the inert gas.
+
+16-57
+00:20:18.892 --> 00:20:27.255
+At low temperatures, enough volatile material can remain solid for the
+partial pressure to follow the sublimation curve.
+
+16-58
+00:20:27.435 --> 00:20:33.259
+After the solid is exhausted, the partial pressure falls below that
+reference curve.
+
+16-59
+00:20:33.439 --> 00:20:38.281
+These are equilibrium states across temperature, not a time record.
+
+16-60
+00:20:38.461 --> 00:20:43.731
+Use the numerical table for precise values at three hundred kelvin.
+
+16-61
+00:20:43.911 --> 00:20:47.196
+Keep a separate record for each calculated case.
+
+16-62
+00:20:47.376 --> 00:20:54.480
+In Your interpretation, write the phase label, the volatile balance,
+and the reason for any pressure change.
+
+16-63
+00:20:54.660 --> 00:21:02.111
+Expand Study workspace, reopen and compare cases, and enter a clear
+label for the next captured case.
+
+16-64
+00:21:02.291 --> 00:21:07.219
+Use Export study JSON after calculating that case.
+
+16-65
+00:21:07.399 --> 00:21:14.333
+The export downloads the inputs and results and also retains the case
+in this temporary comparison.
+
+16-66
+00:21:14.513 --> 00:21:21.126
+Here the three labels distinguish solid remaining, solid exhausted,
+and inert gas added.
+
+16-67
+00:21:21.306 --> 00:21:28.026
+Saving current inputs only is a different action and does not contain
+a calculated result.
+
+16-68
+00:21:28.206 --> 00:21:33.390
+Select Download comparison to preserve all three cases in one file.
+
+16-69
+00:21:33.570 --> 00:21:39.394
+The comparison uses recorded field names, and some values use internal
+units.
+
+16-70
+00:21:39.574 --> 00:21:50.753
+For example, the gas solid calculation stores pressure in pascals and
+volume in cubic meters, whereas the main controls display kilopascals
+and liters.
+
+16-71
+00:21:50.933 --> 00:21:54.410
+Ten thousand pascals is ten kilopascals.
+
+16-72
+00:21:54.590 --> 00:21:59.070
+Compare quantities only after checking their units and physical
+meaning.
+
+16-73
+00:21:59.250 --> 00:22:04.002
+The comparison is recorded evidence, not a fresh calculation.
+
+16-74
+00:22:04.182 --> 00:22:10.091
+Keep the downloaded file with your worksheet so that you can reproduce
+the result later.
+
+16-75
+00:22:10.271 --> 00:22:15.626
+We will now reopen the saved file from the beginning of the restore
+workflow.
+
+16-76
+00:22:15.806 --> 00:22:23.635
+Because our three synthetic cases have already been downloaded, I
+clear only this temporary comparison from memory.
+
+16-77
+00:22:23.815 --> 00:22:26.354
+The downloaded file is unchanged.
+
+16-78
+00:22:26.534 --> 00:22:34.576
+Under Load studies or a comparison JSON, choose the solids comparison
+file that was just saved.
+
+16-79
+00:22:34.756 --> 00:22:41.284
+You can instead select an individual study JSON if you only need one
+case.
+
+16-80
+00:22:41.464 --> 00:22:44.878
+Loading a file should produce case labels to restore.
+
+16-81
+00:22:45.058 --> 00:22:50.882
+It does not mean the main calculator has already recalculated the
+imported inputs.
+
+16-82
+00:22:51.062 --> 00:22:55.520
+The three case labels have returned after loading the comparison.
+
+16-83
+00:22:55.700 --> 00:22:59.711
+Select Restore beside case ten A, solid remains.
+
+16-84
+00:22:59.891 --> 00:23:11.240
+Check that the controls return to one liter, zero point zero one zero
+mole of volatile material, zero inert gas, and the correct reference
+pressure.
+
+16-85
+00:23:11.420 --> 00:23:14.983
+The stored interpretation should return with the inputs.
+
+16-86
+00:23:15.163 --> 00:23:20.880
+Keep the distinction between opening a recorded result and solving the
+current state.
+
+16-87
+00:23:21.060 --> 00:23:27.887
+In particular, switching the experiment during restoration can briefly
+display default results.
+
+16-88
+00:23:28.067 --> 00:23:33.315
+Always finish restoration by pressing Calculate equilibrium again.
+
+16-89
+00:23:33.495 --> 00:23:46.120
+The recalculated case again reports solid plus gas, a volatile partial
+pressure of ten kilopascals, and the same gas and solid amounts as our
+original record.
+
+16-90
+00:23:46.300 --> 00:23:49.543
+That is the reproducibility check we wanted.
+
+16-91
+00:23:49.723 --> 00:23:59.764
+In worksheet section D, retain the three rows, your independent
+material balance, and one explanation of partial versus total
+pressure.
+
+16-92
+00:23:59.944 --> 00:24:04.296
+Use the next activity stop to repeat this workflow yourself.
+
+16-93
+00:24:04.476 --> 00:24:16.146
+Your evidence should show that you can identify which phase is
+present, apply the finite inventory constraint, and reopen the inputs
+without relying on a screenshot alone.
+
+17-01
+00:24:18.676 --> 00:24:22.942
+Use this list to decide what evidence belongs in your record.
+
+17-02
+00:24:23.122 --> 00:24:28.772
+Start with the active mode and inputs, because they define the problem
+being solved.
+
+17-03
+00:24:28.952 --> 00:24:36.248
+Next, record the gas amount and remaining solid, which establish
+whether both bulk phases are present.
+
+17-04
+00:24:36.428 --> 00:24:40.204
+Keep species partial pressure separate from total pressure.
+
+17-05
+00:24:40.384 --> 00:24:48.490
+Then check the volatile inventory independently: gas moles plus solid
+moles must equal the volatile total.
+
+17-06
+00:24:48.670 --> 00:24:51.358
+The inert has its own conserved amount.
+
+17-07
+00:24:51.538 --> 00:24:54.717
+The Lab plots sweep temperature, not time.
+
+17-08
+00:24:54.897 --> 00:25:01.340
+The volatile partial pressure follows the sublimation-pressure curve
+wherever solid remains.
+
+17-09
+00:25:01.520 --> 00:25:09.882
+A crossing or boundary on that plot describes a change across the
+stated conditions, rather than a measured time history.
+
+17-10
+00:25:10.062 --> 00:25:14.862
+Save the study file so that the chosen conditions can be reproduced.
+
+18-01
+00:25:17.392 --> 00:25:23.494
+Pause for about twenty-two minutes and complete D two through D four
+on worksheet page three.
+
+18-02
+00:25:23.674 --> 00:25:28.644
+Open Lab ten using the link, and follow Lab guide pages one and two.
+
+18-03
+00:25:28.824 --> 00:25:31.960
+Run all three specified cases yourself.
+
+18-04
+00:25:32.140 --> 00:25:38.028
+Record phase presence, gas and solid amounts, partial pressure and
+total pressure.
+
+18-05
+00:25:38.208 --> 00:25:45.803
+Use your calculator to check the capacity and the inert contribution,
+rather than copying the output alone.
+
+18-06
+00:25:45.983 --> 00:25:52.106
+Inspect the temperature plots and explain where the finite inventory
+becomes important.
+
+18-07
+00:25:52.286 --> 00:25:55.848
+Export your studies and reopen one saved file.
+
+18-08
+00:25:56.028 --> 00:26:00.995
+Restore its controls, verify their values, and calculate again.
+
+18-09
+00:26:01.175 --> 00:26:04.418
+Confirm that the result agrees with the saved case.
+
+18-10
+00:26:04.598 --> 00:26:08.523
+Keep the comparison table and the calculation evidence.
+
+18-11
+00:26:08.703 --> 00:26:13.994
+If a result differs from your prediction, explain the difference
+before moving on.
+
+19-01
+00:26:16.524 --> 00:26:19.020
+Check the three cases against the table.
+
+19-02
+00:26:19.200 --> 00:26:30.186
+Case ten A retains about zero point zero zero five nine nine one moles
+of solid, so its volatile partial pressure is ten kilopascals.
+
+19-03
+00:26:30.366 --> 00:26:37.193
+Case ten B has no solid left and gives about four point nine eight
+nine kilopascals.
+
+19-04
+00:26:37.373 --> 00:26:45.160
+Case ten C has the same volatile inventory and the same volatile
+partial pressure as case ten B.
+
+19-05
+00:26:45.340 --> 00:26:52.529
+The added inert gas increases total pressure to about nine point nine
+seven seven kilopascals.
+
+19-06
+00:26:52.709 --> 00:26:59.813
+This is a direct example of why total pressure cannot replace partial
+pressure in the sublimation condition.
+
+19-07
+00:26:59.993 --> 00:27:04.793
+The values describe equilibrium endpoints under the stated model.
+
+19-08
+00:27:04.973 --> 00:27:13.250
+They do not predict a sublimation rate, a transport resistance or the
+time needed for the vessel to reach equilibrium.
+
+20-01
+00:27:15.780 --> 00:27:17.850
+Take a ten-minute break here.
+
+20-02
+00:27:18.030 --> 00:27:22.531
+Save your Lab ten files and your worksheet before leaving the screen.
+
+20-03
+00:27:22.711 --> 00:27:26.359
+There is no calculation to complete during this break.
+
+20-04
+00:27:26.539 --> 00:27:31.936
+When you return, open worksheet page four and Lab guide pages three
+and four.
+
+20-05
+00:27:32.116 --> 00:27:35.956
+We will move from bulk sublimation to surface adsorption.
+
+20-06
+00:27:36.136 --> 00:27:41.427
+That change requires a new variable: uptake per unit mass of
+adsorbent.
+
+20-07
+00:27:41.607 --> 00:27:45.319
+The material-balance question will remain familiar.
+
+20-08
+00:27:45.499 --> 00:27:56.464
+We will first evaluate an equilibrium relation at a specified
+pressure, then determine the pressure that can exist in a closed
+vessel with a fixed inventory.
+
+20-09
+00:27:56.644 --> 00:28:01.380
+Keep the distinction between a state quantity and an amount in mind.
+
+20-10
+00:28:01.560 --> 00:28:05.422
+Resume when you are ready to begin the adsorption section.
+
+21-01
+00:28:07.952 --> 00:28:12.112
+Adsorption describes material associated with a surface.
+
+21-02
+00:28:12.292 --> 00:28:19.289
+An adsorption isotherm gives uptake as a function of gas pressure at a
+specified temperature.
+
+21-03
+00:28:19.469 --> 00:28:25.592
+In this lesson, q is absolute uptake measured in moles per kilogram of
+adsorbent.
+
+21-04
+00:28:25.772 --> 00:28:29.185
+The pressure is the partial pressure of the adsorbate.
+
+21-05
+00:28:29.365 --> 00:28:36.746
+To turn uptake into an amount in moles, multiply q by the adsorbent
+mass expressed in kilograms.
+
+21-06
+00:28:36.926 --> 00:28:46.630
+For example, a value of one mole per kilogram on ten grams of
+adsorbent corresponds to zero point zero one mole adsorbed.
+
+21-07
+00:28:46.810 --> 00:28:50.650
+That distinction will matter when we change adsorbent mass.
+
+21-08
+00:28:50.830 --> 00:28:57.294
+A lower uptake per kilogram does not automatically mean fewer total
+adsorbed moles.
+
+21-09
+00:28:57.474 --> 00:29:02.808
+The total amount depends on both uptake and the amount of adsorbent
+present.
+
+22-01
+00:29:05.338 --> 00:29:14.383
+The Langmuir equation writes uptake as the saturation uptake
+multiplied by b P, divided by one plus b P.
+
+22-02
+00:29:14.563 --> 00:29:18.616
+Saturation uptake has units of moles per kilogram.
+
+22-03
+00:29:18.796 --> 00:29:24.940
+The parameter b has reciprocal-pressure units, so the product b P is
+dimensionless.
+
+22-04
+00:29:25.120 --> 00:29:31.158
+The ratio of uptake to saturation uptake is the fractional coverage in
+this model.
+
+22-05
+00:29:31.338 --> 00:29:35.476
+It rises from zero toward one as pressure increases.
+
+22-06
+00:29:35.656 --> 00:29:39.411
+At b P equal to one, the coverage is one half.
+
+22-07
+00:29:39.591 --> 00:29:47.378
+The idealized interpretation involves a finite set of equivalent sites
+without lateral interactions.
+
+22-08
+00:29:47.558 --> 00:29:56.855
+These assumptions help us understand the equation, but fitting the
+equation successfully does not establish a microscopic mechanism.
+
+22-09
+00:29:57.035 --> 00:30:04.224
+Later, we will use it as a specified synthetic model and check its
+consequences through a vessel balance.
+
+23-01
+00:30:06.754 --> 00:30:11.064
+At sufficiently low pressure, b P is much smaller than one.
+
+23-02
+00:30:11.244 --> 00:30:20.417
+The denominator of the Langmuir equation is then approximately one, so
+uptake becomes saturation uptake times b times pressure.
+
+23-03
+00:30:20.597 --> 00:30:27.189
+This gives the Henry adsorption coefficient as saturation uptake
+multiplied by b.
+
+23-04
+00:30:27.369 --> 00:30:33.854
+With our chosen units, that coefficient is measured in moles per
+kilogram per kilopascal.
+
+23-05
+00:30:34.034 --> 00:30:40.648
+A matched Henry line and Langmuir curve therefore share the same slope
+as pressure approaches zero.
+
+23-06
+00:30:40.828 --> 00:30:44.284
+They do not necessarily agree at finite pressure.
+
+23-07
+00:30:44.464 --> 00:30:55.066
+The word Henry also appears in gas-solubility equations, sometimes
+written as partial pressure equals a constant times liquid mole
+fraction.
+
+23-08
+00:30:55.246 --> 00:30:58.489
+That convention defines a different constant.
+
+23-09
+00:30:58.669 --> 00:31:05.816
+Always state the equation, phases and concentration basis rather than
+relying on the name alone.
+
+24-01
+00:31:08.346 --> 00:31:16.367
+Use the synthetic saturation uptake of two moles per kilogram and b
+equal to zero point one per kilopascal.
+
+24-02
+00:31:16.547 --> 00:31:23.822
+Their product gives a Henry adsorption coefficient of zero point two
+moles per kilogram per kilopascal.
+
+24-03
+00:31:24.002 --> 00:31:27.884
+At one kilopascal, b P is zero point one.
+
+24-04
+00:31:28.064 --> 00:31:36.658
+The Langmuir uptake is about zero point one eight one eight moles per
+kilogram, while the Henry value is zero point two.
+
+24-05
+00:31:36.838 --> 00:31:40.230
+At ten kilopascals, b P equals one.
+
+24-06
+00:31:40.410 --> 00:31:47.087
+Langmuir uptake is then one mole per kilogram, exactly half of its
+saturation uptake.
+
+24-07
+00:31:47.267 --> 00:31:50.616
+The Henry line predicts two moles per kilogram.
+
+24-08
+00:31:50.796 --> 00:31:55.682
+This growing difference follows from the denominator in the Langmuir
+equation.
+
+24-09
+00:31:55.862 --> 00:32:03.136
+Ten kilopascals is already well beyond a convincing small-b-P
+approximation for these parameters.
+
+25-01
+00:32:05.666 --> 00:32:11.469
+Pause for about ten minutes and complete E one through E three on
+worksheet page four.
+
+25-02
+00:32:11.649 --> 00:32:17.857
+Keep the same synthetic parameters and compare pressures of five and
+forty kilopascals.
+
+25-03
+00:32:18.037 --> 00:32:24.778
+Calculate both Langmuir and matched Henry uptake, then calculate
+Langmuir fractional coverage.
+
+25-04
+00:32:24.958 --> 00:32:28.670
+Write the dimensionless product b P at each pressure.
+
+25-05
+00:32:28.850 --> 00:32:35.634
+Use that product to judge the low-pressure assumption rather than
+deciding from the pressure number alone.
+
+25-06
+00:32:35.814 --> 00:32:40.578
+Finally, describe what each model predicts as pressure becomes large.
+
+25-07
+00:32:40.758 --> 00:32:51.680
+Ask whether the equation contains a saturation limit and whether a
+mathematical value outside that limit is physically credible for the
+model's intended domain.
+
+25-08
+00:32:51.860 --> 00:32:54.228
+Show the substitutions and units.
+
+25-09
+00:32:54.408 --> 00:33:00.318
+Attempt the calculation before continuing to the comparison table on
+the next slide.
+
+26-01
+00:33:02.848 --> 00:33:07.093
+At five kilopascals, b P is zero point five.
+
+26-02
+00:33:07.273 --> 00:33:12.884
+Langmuir uptake is two thirds of a mole per kilogram, with coverage
+one third.
+
+26-03
+00:33:13.064 --> 00:33:16.818
+The matched Henry line predicts one mole per kilogram.
+
+26-04
+00:33:16.998 --> 00:33:20.100
+At forty kilopascals, b P is four.
+
+26-05
+00:33:20.280 --> 00:33:26.638
+Langmuir uptake is one point six moles per kilogram and coverage is
+zero point eight.
+
+26-06
+00:33:26.818 --> 00:33:30.252
+The Henry value is eight moles per kilogram.
+
+26-07
+00:33:30.432 --> 00:33:39.307
+That large value comes from extending a linear low-pressure expression
+into a range where its assumption is not satisfied.
+
+26-08
+00:33:39.487 --> 00:33:47.679
+Langmuir uptake approaches the specified saturation value of two moles
+per kilogram as pressure increases.
+
+26-09
+00:33:47.859 --> 00:33:50.568
+The Henry equation has no plateau.
+
+26-10
+00:33:50.748 --> 00:34:00.604
+The comparison illustrates model domains, rather than evidence that a
+real material actually follows either curve over this entire range.
+
+27-01
+00:34:03.134 --> 00:34:10.580
+For a closed adsorption vessel, total adsorbate inventory equals gas
+moles plus adsorbed moles.
+
+27-02
+00:34:10.760 --> 00:34:16.434
+The gas term is pressure times accessible gas volume divided by R T.
+
+27-03
+00:34:16.614 --> 00:34:22.033
+The adsorbed term is adsorbent mass multiplied by absolute uptake.
+
+27-04
+00:34:22.213 --> 00:34:31.578
+Use the accessible gas volume in the ideal-gas term and convert
+adsorbent mass to kilograms before multiplying by uptake.
+
+27-05
+00:34:31.758 --> 00:34:35.492
+The unknown pressure is the adsorbate partial pressure.
+
+27-06
+00:34:35.672 --> 00:34:43.565
+At fixed temperature, volume, mass and inventory, the isotherm and
+this balance determine pressure together.
+
+27-07
+00:34:43.745 --> 00:34:52.705
+For positive Langmuir parameters, both amount terms increase with
+nonnegative pressure, giving a single nonnegative solution.
+
+27-08
+00:34:52.885 --> 00:34:55.466
+The balance uses absolute uptake.
+
+27-09
+00:34:55.646 --> 00:35:03.113
+An excess-adsorption measurement needs a density and volume convention
+before it can replace that quantity.
+
+28-01
+00:35:05.643 --> 00:35:11.254
+This worked example starts with a known pressure, rather than a known
+total inventory.
+
+28-02
+00:35:11.434 --> 00:35:22.783
+At ten kilopascals, with saturation uptake two and b equal to zero
+point one per kilopascal, the Langmuir uptake is one mole per
+kilogram.
+
+28-03
+00:35:22.963 --> 00:35:30.238
+Ten grams is zero point zero one kilograms, so adsorbed moles equal
+zero point zero one.
+
+28-04
+00:35:30.418 --> 00:35:37.607
+The gas amount in one liter at three hundred kelvin is about four
+point zero zero nine millimoles.
+
+28-05
+00:35:37.787 --> 00:35:46.064
+Adding them gives a required total inventory of about zero point zero
+one four zero zero nine moles.
+
+28-06
+00:35:46.244 --> 00:35:54.116
+The next task reduces total inventory to zero point zero one mole
+while keeping the other parameters fixed.
+
+28-07
+00:35:54.296 --> 00:35:58.456
+Do not carry the ten-kilopascal pressure across unchanged.
+
+28-08
+00:35:58.636 --> 00:36:01.047
+It must satisfy the new balance.
+
+29-01
+00:36:03.577 --> 00:36:09.593
+Pause for about five minutes and complete F one through F three on
+worksheet page four.
+
+29-02
+00:36:09.773 --> 00:36:14.701
+Read Lab guide pages three and four before watching the demonstration.
+
+29-03
+00:36:14.881 --> 00:36:25.270
+First predict the Langmuir pressure when the inventory is zero point
+zero one mole, less than the amount needed for ten kilopascals in the
+worked example.
+
+29-04
+00:36:25.450 --> 00:36:28.885
+Next compare Langmuir with the matched Henry model.
+
+29-05
+00:36:29.065 --> 00:36:34.334
+At the same positive pressure, the Henry expression predicts greater
+uptake.
+
+29-06
+00:36:34.514 --> 00:36:42.130
+Use the closed balance to decide which model should therefore require
+a lower pressure for the same inventory.
+
+29-07
+00:36:42.310 --> 00:36:48.006
+Finally, return to Langmuir and double adsorbent mass from ten to
+twenty grams.
+
+29-08
+00:36:48.186 --> 00:36:52.880
+Keep temperature, accessible volume and total inventory fixed.
+
+29-09
+00:36:53.060 --> 00:36:56.238
+Predict the pressure direction and explain why.
+
+30-01
+00:36:58.768 --> 00:37:02.288
+We are now in the real Lab eleven interface.
+
+30-02
+00:37:02.468 --> 00:37:07.268
+Keep worksheet page five and Lab guide pages three and four open.
+
+30-03
+00:37:07.448 --> 00:37:11.182
+Begin in Explore isotherms, the upper calculator.
+
+30-04
+00:37:11.362 --> 00:37:16.268
+The data fitting section lower on the page is optional for this
+lesson.
+
+30-05
+00:37:16.448 --> 00:37:22.123
+Our main task is to compare two adsorption models and close a vessel
+balance.
+
+30-06
+00:37:22.303 --> 00:37:30.576
+The chart displays four model curves, but the model selected in the
+menu is the one used to solve the closed vessel.
+
+30-07
+00:37:30.756 --> 00:37:36.303
+The other curves are not additional phases and are not combined into
+that balance.
+
+30-08
+00:37:36.483 --> 00:37:44.654
+Select Langmuir and check a capacity of two moles per kilogram and an
+affinity of zero point one per kilopascal.
+
+30-09
+00:37:44.834 --> 00:37:46.924
+Use three hundred kelvin.
+
+30-10
+00:37:47.104 --> 00:37:53.184
+The pressure units matter because the product of affinity and pressure
+must be dimensionless.
+
+30-11
+00:37:53.364 --> 00:38:02.452
+Entering a pressure in pascals while retaining an affinity per
+kilopascal would change that product by a factor of one thousand.
+
+30-12
+00:38:02.632 --> 00:38:07.710
+Identify the parameters as synthetic definitions at this temperature.
+
+30-13
+00:38:07.890 --> 00:38:14.524
+Changing the temperature field does not generate a new temperature
+dependent parameter set.
+
+30-14
+00:38:14.704 --> 00:38:24.731
+For our first comparison, set the minimum pressure to zero and the
+maximum to ten kilopascals so that the lower pressure curves are easy
+to see.
+
+30-15
+00:38:24.911 --> 00:38:31.119
+The worksheet uses zero to one hundred kilopascals for your
+independent investigation.
+
+30-16
+00:38:31.299 --> 00:38:38.168
+All three vessel roots are below ten kilopascals, so either admitted
+window gives the same roots.
+
+30-17
+00:38:38.348 --> 00:38:40.652
+We will widen the range later.
+
+30-18
+00:38:40.832 --> 00:38:45.440
+Expand Closed vessel, fixed temperature and free gas volume.
+
+30-19
+00:38:45.620 --> 00:38:57.468
+Enter one liter of free gas volume, ten grams of dry adsorbent, zero
+point zero one zero mole of total adsorbate, and zero inert gas.
+
+30-20
+00:38:57.648 --> 00:39:02.405
+This total inventory is the one used in the Lab investigation.
+
+30-21
+00:39:02.585 --> 00:39:12.740
+It is different from the earlier worked example in which a pressure of
+ten kilopascals was given and the required total inventory was
+calculated.
+
+30-22
+00:39:12.920 --> 00:39:15.010
+Here the pressure is unknown.
+
+30-23
+00:39:15.190 --> 00:39:21.313
+The solver must divide the specified total amount between gas and
+adsorbed material.
+
+30-24
+00:39:21.493 --> 00:39:25.440
+Press Compare and solve vessel after checking these inputs.
+
+30-25
+00:39:25.620 --> 00:39:34.281
+For case eleven A, the equilibrium adsorbate partial pressure is about
+six point zero eight zero kilopascals.
+
+30-26
+00:39:34.461 --> 00:39:39.453
+The uptake is about zero point seven five six two moles per kilogram.
+
+30-27
+00:39:39.633 --> 00:39:48.684
+To obtain the total adsorbed amount, multiply that uptake by zero
+point zero one zero kilogram, not by ten.
+
+30-28
+00:39:48.864 --> 00:39:54.368
+The result is about zero point zero zero seven five six two mole
+adsorbed.
+
+30-29
+00:39:54.548 --> 00:39:59.668
+The gas contains about zero point zero zero two four three eight mole.
+
+30-30
+00:39:59.848 --> 00:40:04.712
+Together these recover the total zero point zero one zero mole.
+
+30-31
+00:40:04.892 --> 00:40:10.265
+Record the selected model, pressure, uptake, both amounts, and
+residual.
+
+30-32
+00:40:10.445 --> 00:40:17.293
+Before changing the model, save the calculated Langmuir case with its
+interpretation and label.
+
+30-33
+00:40:17.473 --> 00:40:20.289
+Then select Henry in the model menu.
+
+30-34
+00:40:20.469 --> 00:40:26.400
+Enter a Henry coefficient of zero point two mole per kilogram per
+kilopascal.
+
+30-35
+00:40:26.580 --> 00:40:35.241
+This is the product of the Langmuir capacity and affinity, so the two
+isotherms have the same limiting slope near zero pressure.
+
+30-36
+00:40:35.421 --> 00:40:41.453
+Keep ten grams of adsorbent, the same volume, and the same total
+inventory.
+
+30-37
+00:40:41.633 --> 00:40:44.193
+Press Compare and solve vessel again.
+
+30-38
+00:40:44.373 --> 00:40:50.965
+Matching the low pressure slope does not make the two models identical
+over the full pressure range.
+
+30-39
+00:40:51.145 --> 00:40:58.292
+The Henry calculation gives about four point one six five kilopascals
+for case eleven B.
+
+30-40
+00:40:58.472 --> 00:41:09.117
+It predicts about zero point zero zero eight three three zero mole
+adsorbed and zero point zero zero one six seven zero mole in the gas.
+
+30-41
+00:41:09.297 --> 00:41:16.397
+Its material balance closes, but that does not establish that the
+approximation is physically adequate.
+
+30-42
+00:41:16.577 --> 00:41:24.998
+At this pressure, the Langmuir product of affinity and pressure is
+about zero point four two, which is not very small.
+
+30-43
+00:41:25.178 --> 00:41:33.840
+The linear model stores more material on the adsorbent at a given
+pressure, so it reaches the fixed inventory at a lower pressure.
+
+30-44
+00:41:34.020 --> 00:41:36.281
+Save this second case separately.
+
+30-45
+00:41:36.461 --> 00:41:45.293
+For case eleven C, return the selected model to Langmuir and increase
+the dry adsorbent mass from ten to twenty grams.
+
+30-46
+00:41:45.473 --> 00:41:52.769
+Keep the capacity, affinity, temperature, gas volume, and total
+adsorbate inventory unchanged.
+
+30-47
+00:41:52.949 --> 00:42:03.616
+Compare this case with the original Langmuir case, eleven A, so that
+adsorbent mass is the only physical variable being changed in that
+comparison.
+
+30-48
+00:42:03.796 --> 00:42:07.998
+Notice that editing a field invalidates the old result.
+
+30-49
+00:42:08.178 --> 00:42:12.018
+Recalculate before recording or exporting anything.
+
+30-50
+00:42:12.198 --> 00:42:20.348
+We are adding adsorbent surface capacity to a vessel with the same
+amount of adsorbate, not adding more adsorbate.
+
+30-51
+00:42:20.528 --> 00:42:28.037
+With twenty grams of adsorbent, the Langmuir pressure falls to about
+two point eight four five kilopascals.
+
+30-52
+00:42:28.217 --> 00:42:34.873
+The total adsorbed amount increases to about zero point zero zero
+eight eight five nine mole.
+
+30-53
+00:42:35.053 --> 00:42:42.626
+Yet the uptake per kilogram decreases to about zero point four four
+three zero mole per kilogram.
+
+30-54
+00:42:42.806 --> 00:42:45.174
+These changes are consistent.
+
+30-55
+00:42:45.354 --> 00:42:51.452
+There is more adsorbent, but the lower gas pressure leaves each
+kilogram less heavily loaded.
+
+30-56
+00:42:51.632 --> 00:42:58.352
+Multiply uptake by zero point zero two zero kilogram to recover the
+adsorbed amount.
+
+30-57
+00:42:58.532 --> 00:43:06.916
+Add the gas amount, about zero point zero zero one one four one mole,
+and check the same total inventory.
+
+30-58
+00:43:07.096 --> 00:43:16.632
+Save the third case, then widen the maximum chart pressure to one
+hundred kilopascals and calculate again to inspect the model shapes.
+
+30-59
+00:43:16.812 --> 00:43:21.270
+The Henry line continues upward without a finite capacity.
+
+30-60
+00:43:21.450 --> 00:43:27.210
+The Langmuir curve bends toward the specified capacity of two moles
+per kilogram.
+
+30-61
+00:43:27.390 --> 00:43:34.238
+This helps explain the worksheet comparison at forty kilopascals,
+where the two predictions differ strongly.
+
+30-62
+00:43:34.418 --> 00:43:39.432
+A wider plotting range does not supply experimental validation.
+
+30-63
+00:43:39.612 --> 00:43:45.585
+The Freundlich and BET curves use their own synthetic parameters and
+domains.
+
+30-64
+00:43:45.765 --> 00:43:53.484
+They are visible for context, but fitting them and interpreting
+isosteric heat are optional extensions today.
+
+30-65
+00:43:53.664 --> 00:44:03.349
+The Study workspace now contains three named model studies: Langmuir
+with ten grams, Henry with ten grams, and Langmuir with twenty grams.
+
+30-66
+00:44:03.529 --> 00:44:10.270
+For each one, use Your interpretation to record the balance and the
+reason for the pressure change.
+
+30-67
+00:44:10.450 --> 00:44:17.640
+Export model study downloads a calculated study and retains it in this
+temporary comparison.
+
+30-68
+00:44:17.820 --> 00:44:23.324
+Do not use Export data study from the separate fitting section for
+this activity.
+
+30-69
+00:44:23.504 --> 00:44:34.917
+The saved cases keep the original zero to ten kilopascal calculation
+window even though we subsequently widened the current chart to
+inspect the isotherm shapes.
+
+30-70
+00:44:35.097 --> 00:44:40.025
+Select Download comparison to save these three model studies together.
+
+30-71
+00:44:40.205 --> 00:44:42.829
+Read the recorded fields carefully.
+
+30-72
+00:44:43.009 --> 00:44:53.718
+In this lab the equilibrium pressure is recorded in kilopascals, the
+uptake in moles per kilogram, and the gas and adsorbed amounts in
+moles.
+
+30-73
+00:44:53.898 --> 00:44:59.530
+The vessel input mass is stored in kilograms and the volume in cubic
+meters.
+
+30-74
+00:44:59.710 --> 00:45:05.812
+This differs from some display units and from the pressure convention
+in the gas solid export.
+
+30-75
+00:45:05.992 --> 00:45:12.093
+Do not compare raw field values across different labs without checking
+their definitions.
+
+30-76
+00:45:12.273 --> 00:45:15.388
+A blank field is not automatically zero.
+
+30-77
+00:45:15.568 --> 00:45:22.288
+To check that the study is reusable, clear the temporary comparison
+only after saving the file.
+
+30-78
+00:45:22.468 --> 00:45:30.190
+Under Load studies or a comparison JSON, choose the downloaded
+adsorption comparison file.
+
+30-79
+00:45:30.370 --> 00:45:35.938
+The file is read by the browser and the saved cases become available
+to restore.
+
+30-80
+00:45:36.118 --> 00:45:39.873
+Keep the actual file on your computer with the worksheet.
+
+30-81
+00:45:40.053 --> 00:45:45.024
+An in memory comparison alone may disappear when you leave the page.
+
+30-82
+00:45:45.204 --> 00:45:56.842
+Saving a screenshot is useful for discussion, but it cannot replace
+the inputs, units, model selection, and interpretation needed to
+reproduce the calculation.
+
+30-83
+00:45:57.022 --> 00:46:02.643
+After import, select Restore beside case eleven A, Langmuir ten grams.
+
+30-84
+00:46:02.823 --> 00:46:11.685
+Verify that the selected model, capacity, affinity, temperature,
+inventory, and adsorbent mass have returned correctly.
+
+30-85
+00:46:11.865 --> 00:46:17.049
+The plot range should also return to the saved zero to ten
+kilopascals.
+
+30-86
+00:46:17.229 --> 00:46:21.367
+Restoring inputs is not the final calculation step.
+
+30-87
+00:46:21.547 --> 00:46:25.643
+Press Compare and solve vessel to calculate the current state.
+
+30-88
+00:46:25.823 --> 00:46:34.869
+If you edit any parameter after restoration, calculate again before
+treating the displayed result as evidence for that new case.
+
+30-89
+00:46:35.049 --> 00:46:46.846
+The restored and recalculated Langmuir case again gives approximately
+six point zero eight zero kilopascals and the same gas and adsorbed
+amounts as before.
+
+30-90
+00:46:47.026 --> 00:46:53.106
+This completes the full workflow from choosing a model to saving and
+reopening the result.
+
+30-91
+00:46:53.286 --> 00:47:00.027
+In worksheet section G, reproduce the three cases yourself and verify
+each balance by hand.
+
+30-92
+00:47:00.207 --> 00:47:07.845
+Explain why more adsorbent can increase the total adsorbed amount
+while decreasing uptake per kilogram.
+
+30-93
+00:47:08.025 --> 00:47:12.611
+State the absolute uptake basis and the ideal gas assumption.
+
+30-94
+00:47:12.791 --> 00:47:17.975
+The next activity stop gives you time to create and check your own
+evidence.
+
+31-01
+00:47:20.505 --> 00:47:25.092
+A useful comparison needs more than a screenshot of a curve.
+
+31-02
+00:47:25.272 --> 00:47:31.949
+Record the selected model, units and temperature because they define
+the meaning of each parameter.
+
+31-03
+00:47:32.129 --> 00:47:37.271
+Then record pressure and uptake separately from the gas and adsorbed
+amounts.
+
+31-04
+00:47:37.451 --> 00:47:42.443
+The uptake is measured per kilogram, while the vessel balance uses
+moles.
+
+31-05
+00:47:42.623 --> 00:47:45.076
+Check the mass conversion explicitly.
+
+31-06
+00:47:45.256 --> 00:47:54.024
+The sum of gas moles and adsorbed moles should reproduce the chosen
+inventory, within rounding and numerical precision.
+
+31-07
+00:47:54.204 --> 00:48:01.031
+Keep a saved study and verify that reopening and recalculating it
+reproduces the result.
+
+31-08
+00:48:01.211 --> 00:48:07.355
+Remember that two models can share a low-pressure slope without
+agreeing over the full range.
+
+31-09
+00:48:07.535 --> 00:48:19.285
+Also, a correct numerical inventory balance verifies the calculation,
+but it does not prove that the chosen isotherm accurately represents a
+real material.
+
+32-01
+00:48:21.815 --> 00:48:28.535
+Pause for about twenty-four minutes and complete G one through G four
+on worksheet page five.
+
+32-02
+00:48:28.715 --> 00:48:33.238
+Open Lab eleven and follow Lab guide pages three and four.
+
+32-03
+00:48:33.418 --> 00:48:39.370
+Run three cases with the same temperature, accessible volume and total
+inventory.
+
+32-04
+00:48:39.550 --> 00:48:43.945
+Case eleven A uses Langmuir with ten grams of adsorbent.
+
+32-05
+00:48:44.125 --> 00:48:48.882
+Case eleven B uses the matched Henry model with the same mass.
+
+32-06
+00:48:49.062 --> 00:48:53.521
+Case eleven C returns to Langmuir and uses twenty grams.
+
+32-07
+00:48:53.701 --> 00:49:01.146
+Record pressure, uptake, gas moles and adsorbed moles, then check each
+balance with your calculator.
+
+32-08
+00:49:01.326 --> 00:49:05.486
+Compare the findings with your predictions and inspect the graph.
+
+32-09
+00:49:05.666 --> 00:49:11.021
+Save your studies, reopen one, verify its controls and calculate
+again.
+
+32-10
+00:49:11.201 --> 00:49:18.859
+Explain the difference between uptake per kilogram and total adsorbed
+amount when interpreting the mass change.
+
+33-01
+00:49:21.389 --> 00:49:27.448
+The Langmuir case with ten grams gives about six point zero eight zero
+kilopascals.
+
+33-02
+00:49:27.628 --> 00:49:35.564
+With the same inventory and mass, the matched Henry model gives about
+four point one six five kilopascals.
+
+33-03
+00:49:35.744 --> 00:49:43.573
+Henry predicts more uptake at a common positive pressure, so it
+reaches this fixed inventory at a lower pressure.
+
+33-04
+00:49:43.753 --> 00:49:52.415
+Returning to Langmuir and increasing mass to twenty grams lowers
+pressure to about two point eight four five kilopascals.
+
+33-05
+00:49:52.595 --> 00:49:59.503
+Uptake per kilogram decreases, but total adsorbed moles increase
+because there is more adsorbent.
+
+33-06
+00:49:59.683 --> 00:50:03.139
+Check the gas and adsorbed amounts in each row.
+
+33-07
+00:50:03.319 --> 00:50:06.369
+Their sum is zero point zero one mole.
+
+33-08
+00:50:06.549 --> 00:50:16.135
+The Henry result is useful for model sensitivity, but its finite b-P
+value requires caution about the low-pressure approximation.
+
+34-01
+00:50:18.665 --> 00:50:25.104
+The Lab includes additional models and analysis options, but they need
+their own assumptions.
+
+34-02
+00:50:25.284 --> 00:50:32.196
+Freundlich is an empirical expression over a stated pressure range and
+has no saturation plateau.
+
+34-03
+00:50:32.376 --> 00:50:39.693
+BET uses relative pressure and requires a justified fitting range and
+reference pressure.
+
+34-04
+00:50:39.873 --> 00:50:46.871
+Isosteric heat requires comparing pressures at the same absolute
+loading across temperatures.
+
+34-05
+00:50:47.051 --> 00:50:51.787
+Comparing arbitrary points on separate isotherms is not enough.
+
+34-06
+00:50:51.967 --> 00:50:58.751
+Experimental fitting also needs measured data, uncertainty, units and
+a clear objective.
+
+34-07
+00:50:58.931 --> 00:51:05.885
+Today's examples use synthetic parameters to examine equilibrium and
+inventory reasoning.
+
+34-08
+00:51:06.065 --> 00:51:11.484
+They do not establish an adsorption mechanism or validate
+extrapolation.
+
+34-09
+00:51:11.664 --> 00:51:22.672
+You can explore the extensions later, but no new fit, BET calculation
+or isosteric-heat calculation is required to complete this lesson.
+
+34-10
+00:51:22.852 --> 00:51:26.564
+Choose one relevant limitation for your reflection.
+
+35-01
+00:51:29.094 --> 00:51:33.617
+The final calculation transfers the method to new parameters.
+
+35-02
+00:51:33.797 --> 00:51:39.962
+Keep the worked solutions closed and read H one through H four on
+worksheet page six.
+
+35-03
+00:51:40.142 --> 00:51:48.803
+For the gas-solid case, use three hundred and ten kelvin, two liters
+and a sublimation pressure of five kilopascals.
+
+35-04
+00:51:48.983 --> 00:51:56.621
+Compare volatile inventories of zero point zero zero two and zero
+point zero zero eight moles.
+
+35-05
+00:51:56.801 --> 00:52:01.515
+Add zero point zero zero one mole of inert gas to each.
+
+35-06
+00:52:01.695 --> 00:52:12.746
+For adsorption, use a different synthetic material with saturation
+uptake three moles per kilogram and b equal to zero point zero five
+per kilopascal.
+
+35-07
+00:52:12.926 --> 00:52:22.526
+At twenty kilopascals and three hundred and ten kelvin, use two liters
+of accessible gas volume and five grams of adsorbent.
+
+35-08
+00:52:22.706 --> 00:52:26.269
+Calculate the inventory required by that state.
+
+36-01
+00:52:28.799 --> 00:52:33.257
+Pause for about twenty minutes and complete H one through H four.
+
+36-02
+00:52:33.437 --> 00:52:40.345
+Use the equations from the earlier slides, but make your own
+calculation before opening the answers.
+
+36-03
+00:52:40.525 --> 00:52:45.240
+For gas-solid equilibrium, determine the gas capacity first.
+
+36-04
+00:52:45.420 --> 00:52:52.567
+Then find gas and solid amounts, volatile partial pressure and total
+pressure with the inert included.
+
+36-05
+00:52:52.747 --> 00:52:55.563
+Check the species inventory in each case.
+
+36-06
+00:52:55.743 --> 00:53:00.180
+For adsorption, evaluate the isotherm at the specified pressure.
+
+36-07
+00:53:00.360 --> 00:53:07.805
+Convert five grams to kilograms, then calculate gas moles, adsorbed
+moles and total inventory.
+
+36-08
+00:53:07.985 --> 00:53:13.959
+Predict what happens to pressure if adsorbent mass doubles while that
+inventory stays fixed.
+
+36-09
+00:53:14.139 --> 00:53:16.976
+An exact new pressure is not required.
+
+36-10
+00:53:17.156 --> 00:53:25.071
+Finally, state one shared assumption and one difference between bulk
+gas-solid equilibrium and surface adsorption.
+
+37-01
+00:53:27.601 --> 00:53:34.193
+The gas capacity is approximately zero point zero zero three eight
+eight zero moles.
+
+37-02
+00:53:34.373 --> 00:53:39.023
+The smaller volatile inventory therefore completely vaporizes.
+
+37-03
+00:53:39.203 --> 00:53:51.150
+The larger inventory leaves about zero point zero zero four one two
+zero moles of solid and maintains a volatile partial pressure of five
+kilopascals.
+
+37-04
+00:53:51.330 --> 00:53:56.407
+The inert contribution is about one point two eight nine kilopascals.
+
+37-05
+00:53:56.587 --> 00:53:59.382
+Add it to obtain the total pressures shown.
+
+37-06
+00:53:59.562 --> 00:54:05.941
+For adsorption, uptake at twenty kilopascals is one point five moles
+per kilogram.
+
+37-07
+00:54:06.121 --> 00:54:15.536
+Gas moles are about zero point zero one five five one nine, and
+adsorbed moles are zero point zero zero seven five.
+
+37-08
+00:54:15.716 --> 00:54:20.473
+Their sum is about zero point zero two three zero one nine moles.
+
+37-09
+00:54:20.653 --> 00:54:24.963
+Doubling adsorbent mass at that fixed inventory lowers pressure.
+
+38-01
+00:54:27.493 --> 00:54:32.613
+Use these four questions whenever you approach a new equilibrium
+problem.
+
+38-02
+00:54:32.793 --> 00:54:35.704
+First, identify the physical process.
+
+38-03
+00:54:35.884 --> 00:54:42.135
+Bulk phase transfer, surface uptake and chemical reaction require
+different descriptions.
+
+38-04
+00:54:42.315 --> 00:54:44.357
+Second, state the constraints.
+
+38-05
+00:54:44.537 --> 00:54:51.065
+Temperature and pressure are not interchangeable with temperature and
+accessible volume.
+
+38-06
+00:54:51.245 --> 00:55:01.018
+Third, identify the model and its conventions, including standard
+states, gas ideality, uptake basis, units and pressure range.
+
+38-07
+00:55:01.198 --> 00:55:08.643
+Finally, use material balances to determine amounts and check whether
+the proposed phases are actually present.
+
+38-08
+00:55:08.823 --> 00:55:17.250
+A solubility composition, a sublimation pressure or an isotherm
+loading supplies only part of the description.
+
+38-09
+00:55:17.430 --> 00:55:20.182
+None replaces an inventory balance.
+
+38-10
+00:55:20.362 --> 00:55:29.429
+In your reflection, report a numerical result with its units, one
+supporting check and the assumptions needed for the interpretation.
+
+38-11
+00:55:29.609 --> 00:55:33.790
+That combination makes the result useful and reproducible.
+
+39-01
+00:55:36.320 --> 00:55:45.045
+Pause for about ten minutes to complete section I on worksheet page
+six and submit the Session four exit ticket and feedback.
+
+39-02
+00:55:45.225 --> 00:55:48.233
+Use the link or scan the Q R code.
+
+39-03
+00:55:48.413 --> 00:55:52.765
+Explain what happens to gas pressure when bulk solid runs out.
+
+39-04
+00:55:52.945 --> 00:56:01.585
+In the evidence answer, include one Lab ten comparison and one Lab
+eleven numerical balance, with settings and units.
+
+39-05
+00:56:01.765 --> 00:56:11.216
+Report your actual study time, including the activities, and tell me
+about any access problems or explanations that need improvement.
+
+39-06
+00:56:11.396 --> 00:56:15.812
+The form does not ask for your name, student I D or email.
+
+39-07
+00:56:15.992 --> 00:56:20.024
+Submit once and wait for the message Response received.
+
+39-08
+00:56:20.204 --> 00:56:25.751
+The next slide is a receipt and saved-work check, not another
+submission request.
+
+40-01
+00:56:28.281 --> 00:56:31.161
+Check that the form shows Response received.
+
+40-02
+00:56:31.341 --> 00:56:36.354
+If you already have that confirmation, do not submit a second
+response.
+
+40-03
+00:56:36.534 --> 00:56:46.801
+Save your completed worksheet, including the predictions, calculations
+and corrections, together with the Lab ten and Lab eleven comparison
+tables.
+
+40-04
+00:56:46.981 --> 00:56:56.560
+Keep the study J S O N exports and a note of one result that you
+reproduced by reopening and recalculating a saved case.
+
+40-05
+00:56:56.740 --> 00:56:59.577
+Record your actual study time as well.
+
+40-06
+00:56:59.757 --> 00:57:05.091
+The recording, worksheet and Lab investigations together form this
+week's lesson.
+
+40-07
+00:57:05.271 --> 00:57:09.367
+There is no additional compulsory after-class assignment.
+
+40-08
+00:57:09.547 --> 00:57:14.091
+The appendix remains available if you want to examine an extension.
+
+40-09
+00:57:14.271 --> 00:57:26.808
+In the next session, we will continue using the same habits: identify
+the process and constraints, calculate carefully, and check the
+interpretation against conserved quantities.

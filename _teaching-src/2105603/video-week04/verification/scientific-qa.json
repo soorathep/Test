@@ -1,0 +1,148 @@
+{
+  "status": "pass",
+  "checkedAtUTC": "2026-10-20T02:26:12.874219+00:00",
+  "scope": "Independent scientific review of all handouts, the 40-slide source, numerical and changed PDF slides, all 40 narration scripts, actual Lab 10 and Lab 11 exported comparisons, and scene-prefix ordering.",
+  "files": [
+    {
+      "file": "<website>/_teaching-src/2105603/prereading/week04/build_week04.py",
+      "sha256": "9fc0ea864b7357ca5419a582ae699131d660210657c231089b063402662c019b"
+    },
+    {
+      "file": "<website>/teaching/2105603/files/week04-practice.pdf",
+      "sha256": "88b7d43546e0a0d76408f3fef0d762a3d267bff3d77633d9ab579db051645688",
+      "pages": 6,
+      "review": "All extracted page text reviewed for scientific content and numerical alignment; visual QA assigned to document owner."
+    },
+    {
+      "file": "<website>/teaching/2105603/files/week04-lab-guide.pdf",
+      "sha256": "c8c3c6aa17605416393ef8c4fbc52d75ee86258cbb31ae726969bca69b65d68b",
+      "pages": 4,
+      "review": "All extracted page text reviewed for scientific content and numerical alignment; visual QA assigned to document owner."
+    },
+    {
+      "file": "<website>/teaching/2105603/files/week04-solutions.pdf",
+      "sha256": "a6a767e73b1d3fdec7f07565c7d358638e0c29ba004811955a0d8e909cedf5dd",
+      "pages": 4,
+      "review": "All extracted page text reviewed for scientific content and numerical alignment; visual QA assigned to document owner."
+    }
+  ],
+  "tests": {
+    "focusedNodeTests": {
+      "passed": 15,
+      "failed": 0
+    },
+    "independentGibbsLPStates": 96,
+    "worstGibbsGridErrorRT": 4.51e-09,
+    "independentHelmholtzMinima": 9,
+    "independentNoisyScipyFits": 12,
+    "independentVesselRoots": 4
+  },
+  "validatedTopics": [
+    "Pure-solid versus subcooled-liquid standard state",
+    "Fixed T,V Helmholtz constraint",
+    "Conditional sublimation equality and absent-phase inequality",
+    "Partial versus total pressure",
+    "Inventory thresholds and balances",
+    "Henry low-pressure slope versus full Langmuir relation",
+    "Absolute mol/kg uptake and dry mass unit conversion",
+    "Gas inventory versus adsorbed inventory",
+    "All input edits and JSON restoration require fresh calculation",
+    "Prediction, demonstration and independent-rerun exercise mapping",
+    "Existing anonymous exit ticket not attendance identification"
+  ],
+  "referenceValues": {
+    "B_ln_x": -0.5727255002034577,
+    "B_x": 0.5639861975551623,
+    "C_capacity_mol": 0.0064145256022787225,
+    "C_inertPressure_kPa": 1.247169392722986,
+    "D_capacity_mol": 0.004009078501424202,
+    "D_10C_totalPressure_kPa": 9.977355141783889,
+    "F_totalInventory_mol": 0.014009078501424202,
+    "G_langmuir10gPressure_kPa": 6.080247972142216,
+    "G_henry10gPressure_kPa": 4.165091133925364,
+    "G_langmuir20gPressure_kPa": 2.8449783275503604,
+    "H_gseCapacity_mol": 0.003879753388475034,
+    "H_adsorption_q_molPerKg": 1.5,
+    "H_adsorption_totalInventory_mol": 0.023019013553900135,
+    "H_matchedHenryCoefficient": 0.15
+  },
+  "outstandingFindings": [],
+  "deckReview": {
+    "status": "pass",
+    "sourceRead": "All40slides",
+    "pdfInspection": "All numerical and changed slides inspected from final40pagePDF extraction; visual QA owned byslidesagent",
+    "narrationRead": "All 40 narration scripts pass, including complete demonstrations 16 and 30.",
+    "files": [
+      {
+        "file": "<website>/_teaching-src/2105603/postmidterm-04.qmd",
+        "sha256": "6d4ed375de233d80178187aae643a3c5bedfe536dda6259ffe038dcdcaa3a1f4"
+      },
+      {
+        "file": "<website>/teaching/2105603/files/postmidterm-04-slides.pdf",
+        "sha256": "5a849ba0853ecae5be4c872cf92f9477a244e99e2643ab6b128f5a00e32c0e48"
+      },
+      {
+        "file": "<workspace>/asynchronous-week04/narration-draft.json",
+        "sha256": "3c485bd522f4e3c1979d33cf35275a9d0f234558ce97425b29e71506fed3aca7"
+      },
+      {
+        "file": "<workspace>/asynchronous-week04/lab10-demo-comparison.json",
+        "sha256": "d3c96cad5f433d8f8f56716919cb94804f09abadceee867629cbf399c04191e9"
+      },
+      {
+        "file": "<workspace>/asynchronous-week04/lab11-demo-comparison.json",
+        "sha256": "647fcf8d708bf45b9ca57e024154a7f34072f508e938875bfeba012030414159"
+      },
+      {
+        "file": "<workspace>/asynchronous-week04/narration.json",
+        "sha256": "1c9be27cbeb75c6ea72532d0c45dc0dbb2373bddcbf7abd982b399bdb0136b06"
+      },
+      {
+        "file": "<workspace>/asynchronous-week04/demo-scenes.json",
+        "sha256": "2fd721ff906e10fef2f8f4e64b0ecf6179244389fd582045a6d68f8018d7eea1"
+      }
+    ],
+    "resolvedClarifications": [
+      {
+        "slide": 17,
+        "fix": "Plots sweep temperature and partialpressure followsPsub(T)."
+      },
+      {
+        "slide": 25,
+        "fix": "BothLangmuirandHenrycalculationexplicit."
+      },
+      {
+        "slide": 36,
+        "fix": "Sharedassumptionandphysicaldifferenceexplicit."
+      },
+      {
+        "slide": 39,
+        "fix": "Form evidence answer requiresbothLabs."
+      }
+    ],
+    "demoComparisons": "Lab10 andLab11 capturedJSON numericoutputs matchedindependent arithmetic.",
+    "rootNarrationNote": "Resolved: chapter 30 explicitly states 0-10 kPa capture range, 0-100 kPa independent rerun, unchanged in-range roots, later wide plot and original saved range. Raw JSON unit conventions are explicitly narrated. Chapter 30 now requires each of the three balances by hand.",
+    "sceneMapping": {
+      "status": "pass",
+      "scenes": 27,
+      "distinctImages": 26,
+      "slide16Scenes": 13,
+      "slide30Scenes": 14,
+      "checks": [
+        "Every spoken sentence prefix occurs exactly once in its chapter.",
+        "Prefixes are ordered chronologically in each chapter.",
+        "Every referenced image file exists."
+      ]
+    }
+  },
+  "handoutRecheck": "Guide2/4rawJSONunitnotesverifiedagainstengine+actualexports: Lab10pressurePa,volume m3;Lab11pressurekPa,volume m3,masskg. Practice/solutionscontentunchanged;allcurrenthashesrefreshed.",
+  "finalNarrationDelta": {
+    "slide": 28,
+    "checked_at_utc": "2026-10-20T02:26:12.874219+00:00",
+    "change": "Spoken gas inventory now uses about 4.009 millimoles instead of 0.004009 moles.",
+    "status": "pass",
+    "gas_inventory_mol": 0.004009078501424202,
+    "gas_inventory_mmol": 4.009078501424201,
+    "scope": "Only the requested narration-unit delta verified; no broad audit rerun."
+  }
+}

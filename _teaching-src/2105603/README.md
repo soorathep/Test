@@ -193,11 +193,17 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
 ## After-midterm teaching sequence (18 hours)
 
 The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` cover Modules 4–6,
-including solid/surface and electrochemical topics. Sessions 1 and 4-6 are standard classroom sessions and
+including solid/surface and electrochemical topics. Sessions 1, 5 and 6 are standard classroom sessions and
 use 12 slides and an optional appendix: 30 minutes of concepts, 20 minutes of
 hand calculation, 20 minutes of demonstration, a 10-minute break, 70 minutes of
 pair work, and 30 minutes of discussion and exit reflection. Their required
 independent work is 15–20 minutes of preparation and 30–40 minutes of follow-up.
+
+Sessions 2–4 are independent lessons. Their required worksheet, Lab, review,
+exit-ticket and feedback activities are included in each lesson's study route;
+the accompanying readings are optional. Session 4 replaces the live class while
+the instructor attends the ECS meeting, with approximately three hours of total
+study and no additional required preparation or follow-up assignment.
 
 Session 2 replaces the class on 16 October 2026 with a 28-slide English independent
 lesson. Its 180 minutes include preparation (10), phase/material-balance checks
@@ -287,9 +293,12 @@ publishing the readings and refreshed classroom PDFs.
 
 ## End-of-class responses
 
-In standard classroom sessions, the final 30 minutes are discussion (20), exit
-ticket (5), feedback (3), and closing (2). In Session 2, the exit ticket and
-feedback occupy study minutes 172–180, after the review and corrections. The classroom decks have 12 slides; Session 2 now has 28 slides for independent study. Their final slides contain
+In classroom Sessions 1, 5 and 6, the final 30 minutes are discussion (20), exit
+ticket (5), feedback (3), and closing (2). Independent Sessions 2–4 include the
+exit ticket and feedback in their planned study time. In Session 2, they occupy
+study minutes 172–180, after the review and corrections. Classroom decks have
+12 core slides; the independent decks use their own guided sequences, including
+28 slides for Session 2 and 40 slides for Session 4. Their final slides contain
 a QR and clickable link to `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=N`.
 
 Responses persist in the Sites D1 table `course_responses`; the student page
@@ -347,3 +356,20 @@ student records outside this public repository.
 `week02-clarifications.qmd` provides 12 content slides plus a title and three optional reference slides. For Session 3, this is an optional reference supporting worksheet A; the revised opening review is already included in the independent lesson's approximate 180-minute route. The recorded Week 2 deck and narration retain their synchronized slide order. The video landing page, course index, Lab 08 and learning path link this follow-up.
 
 `prereading/week02-lab-guide.html` is a three-page English guide with the exact synthetic baseline, measured versus equation units, CSV and JSON workflows, model comparison, evidence limits and self-check answers. Render the slides with the public profile, vendor KaTeX, publish, then run `tools/export-week02-clarifications.mjs` against the preview specified by `COURSE_ORIGIN`. It exports the clarification PDF, guide PDF and revised Session 3 PDF. Rebuild the offline package after those exports. No student responses or identifying details belong in this public source.
+
+## Week 4 independent ECS replacement lesson
+
+`week04-study.html` is the student start page. The instructor attends the ECS
+meeting; this is not a holiday lesson. The 40-slide deck and narrated video
+cover solid equilibria and adsorption with complete Lab 10 and Lab 11 screen
+demonstrations. Both Labs are core. The lesson allocates 120 minutes of work and
+a 10-minute break; the player reports measured recording time separately and
+adds it to those budgets. No additional compulsory homework is assigned.
+
+Rebuild the six-page worksheet, four-page guide and four-page worked solutions
+with `prereading/week04/build_week04.py --output <course/files>` using the
+absolute research Python path. The existing three-page preclass PDF is optional
+background. Predictions precede demonstrations on slides 16 and 30; independent
+reruns follow on slides 18 and 32. The anonymous Session 4 form is submitted once
+on slide 39 and its receipt is checked on slide 40. No attendance identity is
+collected. Source and public hub copies must remain identical.

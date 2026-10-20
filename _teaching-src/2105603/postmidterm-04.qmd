@@ -1,13 +1,11 @@
 ---
 title: "Solid equilibria and adsorption"
-subtitle: "After midterm · Session 4 of 6 · 180 minutes"
+subtitle: "Session 4: Independent study during the ECS meeting · about 3 hours"
 author: "Soorathep Kheawhom"
-date: 2026-09-30
-date-format: "D MMMM YYYY"
 format:
   revealjs:
     theme: [default, theme/teal-amber.scss]
-    css: assets/postmidterm.css
+    css: [assets/postmidterm.css, assets/week03-independent.css]
     width: 1280
     height: 720
     margin: 0.06
@@ -26,118 +24,640 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## The question for today
+## Your independent lesson {#your-independent-lesson}
 
-What happens to gas pressure when the solid inventory runs out?
+::: {.your-action}
+**Your action:** Open the worksheet and Lab guide. Keep your first answers, then add corrections after each check.
+:::
 
-[Before class: 3-page reading](files/preclass-week-04.pdf) · 15–20 minutes
+This lesson replaces our live class while the instructor attends the **ECS meeting**.
 
-Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
+- [Practice worksheet, 6 pages](files/week04-practice.pdf): Sections A–I.
+- [Lab guide, 4 pages](files/week04-lab-guide.pdf): settings, controls and interpretation.
+- [Worked solutions](files/week04-solutions.pdf): open after your own attempt.
 
-## The 180-minute class
+Watch the **Lab 10 and Lab 11 demonstrations**, then repeat the investigations independently. Save your calculations and study JSON files.
 
-| Activity | Minutes |
-|---|---:|
-| Opening question and essential concepts | 30 |
-| One hand calculation | 20 |
-| One lab demonstration | 20 |
-| Break | 10 |
-| Student pair investigation | 70 |
-| Discussion, exit ticket and feedback | 30 |
+[Study route](week04-study.html) · [Printable slides](files/postmidterm-04-slides.pdf) · [Optional background](files/preclass-week-04.pdf)
 
-The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.
+## The study route {#the-study-route}
 
-## Name the physical process first
+::: {.your-action}
+**Your action:** Start a study timer. Have a calculator and paper ready. Follow the activities in order.
+:::
 
-| Process | What changes? |
+| Part | What you do | Worksheet |
+|---|---|---|
+| 1 | Classify processes and calculate solubility | p. 1, A–B |
+| 2 | Check a finite gas–solid inventory | p. 2, C |
+| 3 | Predict, watch and investigate Lab 10 | p. 3, D |
+| Break | Take 10 minutes away from the screen | |
+| 4 | Calculate adsorption and close the balance | p. 4, E–F |
+| 5 | Watch and investigate Lab 11 | p. 5, G |
+| 6 | Attempt a new case; submit exit ticket and feedback | p. 6, H–I |
+
+Plan **about 3 hours**: the recording, **120 minutes of work** and a **10-minute break**. The video page reports its measured duration. These are study activities, not video timestamps.
+
+## Process predictions {#process-predictions .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **8 minutes**. Complete **A1–A3, worksheet p. 1**, before viewing the next slide.
+:::
+
+**A1.** Classify dissolution of a crystal, sublimation into a vessel, and adsorption on a porous solid. Identify whether the process transfers material between bulk phases or changes surface uptake.
+
+**A2.** Week 3 used Gibbs energy at fixed $T,P$. Which thermodynamic potential is minimized for a closed, rigid vessel at fixed $T,V$?
+
+**A3.** In an ideal gas mixture, distinguish the partial pressure of the subliming species from total pressure. Predict how an inert gas contributes.
+
+For each answer, name the **process**, the **constraints**, and one quantity that a material balance must determine.
+
+## Process check {#process-check}
+
+::: {.your-action}
+**Your action:** Check **A1–A3**. Keep your first answers and record the reason for any change.
+:::
+
+| Process | Equilibrium description | Amount information |
+|---|---|---|
+| Crystal and liquid | Solid–liquid equilibrium, SLE | Dissolved and remaining solid |
+| Solid and vapor | Gas–solid equilibrium, GSE | Gas and remaining solid |
+| Surface uptake | Adsorption equilibrium | Gas and adsorbed material |
+
+At fixed **$T,P$**, equilibrium minimizes Gibbs energy. At fixed **$T,V$**, it minimizes Helmholtz energy, subject to conserved inventories.
+
+For ideal gases, $P_{tot}=p_A+p_{inert}$. Lab 10 treats nonreacting bulk equilibria. Lab 11 treats adsorption. A gas–solid chemical reaction would require species and reaction constraints beyond these demonstrations.
+
+## Pure-solid standard state {#pure-solid-standard-state}
+
+::: {.your-action}
+**Your action:** Read the two phase descriptions. Use them to set up **B1, worksheet p. 1**.
+:::
+
+For component $i$ in a liquid and its **present pure solid**:
+
+$$\mu_i^L=\mu_i^S,\qquad
+\mu_i^L=\mu_i^{L,*}+RT\ln(x_i\gamma_i)$$
+
+The liquid reference $\mu_i^{L,*}$ is the **subcooled pure liquid** at the same temperature and pressure.
+
+The present pure solid has **unit activity on its pure-solid standard state**. Unit activity does not mean zero chemical potential or a zero amount of solid.
+
+$x_i\gamma_i$ specifies a liquid activity. A material balance is still needed to determine phase amounts.
+
+## Solubility equation {#solubility-equation}
+
+::: {.your-action}
+**Your action:** Identify the units and assumptions before substituting into **B1**.
+:::
+
+For a present pure solid, with constant fusion enthalpy and negligible fusion heat-capacity correction:
+
+$$\ln(x_i\gamma_i)=-\frac{\Delta H_{fus,i}}{R}
+\left(\frac{1}{T}-\frac{1}{T_{m,i}}\right)$$
+
+Use **kelvin**, $\Delta H_{fus}$ in **J mol$^{-1}$**, and $R=8.314462618$ J mol$^{-1}$ K$^{-1}$.
+
+For $T<T_m$ and positive $\Delta H_{fus}$, the right side is negative. With an ideal liquid, $\gamma_i=1$ and the result gives $x_i^{sat}<1$.
+
+This model excludes solid solutions, chemical reactions and heat-capacity corrections. Other solid forms or transitions require additional data.
+
+## Solubility attempt {#solubility-attempt .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **6 minutes**. Complete **B1–B2, worksheet p. 1**. Calculate before advancing.
+:::
+
+Synthetic inputs:
+
+$$T_m=350\ \mathrm{K},\qquad
+\Delta H_{fus}=10000\ \mathrm{J\,mol^{-1}},\qquad T=300\ \mathrm{K}$$
+
+**B1.** Assume an ideal liquid. Calculate the saturated liquid mole fraction $x^{sat}$ using the equation on slide 7.
+
+**B2.** Does this number give the moles of solid remaining? State what additional information you would need.
+
+Before calculating, predict whether the saturated mole fraction is above or below 1.
+
+## Solubility check {#solubility-check}
+
+::: {.your-action}
+**Your action:** Check **B1–B2**. Correct units and distinguish composition from phase amount.
+:::
+
+$$x^{sat}=\exp\left[-\frac{10000}{8.314462618}
+\left(\frac{1}{300}-\frac{1}{350}\right)\right]
+=0.563986$$
+
+The result is a **liquid mole fraction**, not moles of dissolved solute or remaining solid.
+
+With a nonideal liquid, the equation constrains $x\gamma(x,T)$. The composition must satisfy that relation and the admitted phase model.
+
+Phase amounts require total composition and inventory balances. A binary eutectic adds a second solid branch; it is optional background for this lesson.
+
+## Sublimation equilibrium {#sublimation-equilibrium}
+
+::: {.your-action}
+**Your action:** Read the condition on solid presence. Begin **C1, worksheet p. 2** by identifying the gas species.
+:::
+
+For a present pure bulk solid $A$ in equilibrium with its vapor:
+
+$$\mu_A^S=\mu_A^g$$
+
+With an ideal gas, negligible solid pressure correction, and the stated sublimation-pressure model:
+
+$$p_A=P_{sub}(T)\quad\text{while solid remains}$$
+
+$p_A$ is the **partial pressure of the subliming species**. An inert gas contributes to total pressure.
+
+If all solid disappears, there is no remaining bulk-solid phase to enforce this equality. The finite inventory may give $p_A<P_{sub}$.
+
+## Finite-vessel inventory {#finite-vessel-inventory}
+
+::: {.your-action}
+**Your action:** Use this decision sequence for **C1–C3**. Write the capacity before deciding which phases are present.
+:::
+
+For a closed, rigid vessel at fixed $T,V_g$ with ideal gases:
+
+$$n_g^{sat}=\frac{P_{sub}V_g}{RT},\quad
+n_A^g=\min(n_A^{tot},n_g^{sat}),\quad n_A^s=n_A^{tot}-n_A^g$$
+
+$$p_A=\frac{n_A^gRT}{V_g},\qquad
+P_{tot}=p_A+\frac{n_{inert}RT}{V_g}$$
+
+Use $R=8.314462618$ **kPa L mol$^{-1}$ K$^{-1}$** with pressure in kPa and gas volume in L.
+
+For C3, $(\mu_A^g-\mu_A^S)/(RT)=\ln(p_A/P_{sub})$. A present solid requires zero. An exhausted-solid state may have a **negative** value.
+
+## Inventory worked example {#inventory-worked-example}
+
+::: {.your-action}
+**Your action:** Follow the arithmetic, then cover these results before attempting worksheet **C**.
+:::
+
+Synthetic case: $T=300$ K, $V_g=1$ L, $P_{sub}=10$ kPa.
+
+$$n_g^{sat}=\frac{10(1)}{8.314462618(300)}=0.00400908\ \mathrm{mol}$$
+
+| $n_A^{tot}$ (mol) | $n_A^g$ (mol) | $n_A^s$ (mol) | $p_A$ (kPa) |
+|---:|---:|---:|---:|
+| 0.010 | 0.00400908 | 0.00599092 | 10.0000 |
+| 0.002 | 0.00200000 | 0 | 4.98868 |
+
+Adding **0.002 mol inert gas** at the same $T,V_g$ adds **4.98868 kPa** to total pressure in either case. It leaves $p_A$ and the inventory threshold unchanged in this model.
+
+## Inventory attempt {#inventory-attempt .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **10 minutes**. Complete **C1–C3, worksheet p. 2**, before viewing slide 14.
+:::
+
+Use a new synthetic vessel: $T=300$ K, $V_g=2$ L and $P_{sub}=8$ kPa.
+
+**C1.** Calculate $n_g^{sat}$. Find gas moles, solid moles and $p_A$ for $n_A^{tot}=0.010$ mol and **0.004 mol**.
+
+**C2.** Add $n_{inert}=0.001$ mol to each case at the same $T,V_g$. Calculate $P_{tot}$ and identify which results change.
+
+**C3.** Calculate $\ln(p_A/P_{sub})$ for both cases. Explain why zero is required when solid remains, while a negative value can be a valid exhausted-solid boundary state.
+
+Use $R=8.314462618$ kPa L mol$^{-1}$ K$^{-1}$. Show substitutions and units.
+
+## Inventory check {#inventory-check}
+
+::: {.your-action}
+**Your action:** Check **C1–C3**. Keep enough digits in the capacity before subtracting the remaining solid.
+:::
+
+$$n_g^{sat}=0.00641453\ \mathrm{mol},\qquad
+p_{inert}=1.24717\ \mathrm{kPa}$$
+
+| $n_A^{tot}$ (mol) | $n_A^g$ (mol) | $n_A^s$ (mol) | $p_A$ (kPa) | $P_{tot}$ (kPa) |
+|---:|---:|---:|---:|---:|
+| 0.010 | 0.00641453 | 0.00358547 | 8.00000 | 9.24717 |
+| 0.004 | 0.00400000 | 0 | 4.98868 | 6.23585 |
+
+The first case retains solid and has $\ln(p_A/P_{sub})=0$. The second exhausts it and has $\ln(p_A/P_{sub})\approx-0.472271$.
+
+In each row, $n_A^g+n_A^s=n_A^{tot}$. The inert changes total pressure, while $p_A$ is unchanged at fixed $T,V_g$ in this model.
+
+## Lab 10 predictions {#lab10-predict .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **5 minutes**. Complete **D1, worksheet p. 3**. Read **Lab guide pp. 1–2**, but predict before running the Lab.
+:::
+
+[Lab 10: Solid equilibria](labs/solids.html#so-experiment)
+
+Select **GSE · sublimation in a rigid vessel** at $T=300$ K and $V_g=1$ L. Set the sublimation reference pressure to **10 kPa at 300 K**.
+
+| Case | Subliming-species inventory (mol) | Inert gas (mol) |
+|---|---:|---:|
+| 10A | 0.010 | 0 |
+| 10B | 0.002 | 0 |
+| 10C | 0.002 | 0.002 |
+
+Predict solid presence, $p_A$ and total pressure. Identify the single input changed between successive cases.
+
+## Lab 10 demonstration {#lab10-demonstration}
+
+::: {.your-action}
+**Your action:** Watch the actual Lab 10 demonstration. Follow the controls using **Lab guide pp. 1–2**. Keep D1 predictions visible.
+:::
+
+The demonstration follows this route:
+
+1. Select the gas–solid vessel mode and enter the reference state.
+2. Compare inventories above and below the solid-depletion threshold.
+3. Add inert gas and compare partial pressure with total pressure.
+4. Read the plots and check the species inventory balance.
+5. Save study JSON, reopen it, verify inputs, and calculate again.
+
+Record results during your **independent rerun at slide 18**. Verify restored controls and calculate again before trusting a displayed result.
+
+## Lab 10 evidence {#lab10-evidence}
+
+::: {.your-action}
+**Your action:** Use **Lab guide pp. 1–2** to identify the evidence you will retain for **D2–D4**.
+:::
+
+| Read or save | Explain what it establishes |
 |---|---|
-| SLE / sublimation | The same substance transfers between bulk phases |
-| Adsorption | Surface uptake changes |
-| Gas–solid reaction | Chemical species change through a reaction |
+| Inputs and active mode | Temperature, volume and inventory constraints |
+| Solid remaining and gas amount | Which phases are present at the selected point |
+| Partial and total pressure | Subliming-species and inert contributions |
+| Inventory check | Gas plus solid equals the subliming-species total |
+| Study JSON | A reproducible parameter and result record |
 
-Lab 10 covers nonreacting bulk equilibria; Lab 11 covers adsorption. General heterogeneous reaction solving is outside these labs.
+The actual volatile partial pressure follows $P_{sub}(T)$ wherever solid remains. The plots sweep **temperature, not time**. A plotted boundary does not mean every possible phase is present at the selected state.
 
-## Sublimation and vessel inventory
+## Lab 10 independent investigation {#lab10-investigation .work-stop}
 
-At fixed T, a present bulk solid fixes the ideal-gas partial pressure at its sublimation pressure within the model.
+::: {.your-action}
+**Your action:** Pause for about **22 minutes**. Complete **D2–D4, worksheet p. 3**, using **Lab guide pp. 1–2** and [Lab 10](labs/solids.html#so-experiment).
+:::
 
-In a rigid vessel,
-$$n_g^{sat}=\frac{P_{sub}(T)V}{RT}$$
+**D2.** Run cases **10A, 10B and 10C** from D1. Record phase presence, gas and solid moles, partial pressure and total pressure.
 
-If total subliming-species inventory is below this amount, the solid is exhausted and pressure falls below Psub.
+**D3.** Check gas capacity, the species inventory and the inert contribution by hand. Use the plots to explain the transition from solid present to solid exhausted.
 
-## A gas–solid inventory check
+**D4.** Export the cases. Reopen a JSON file, restore the controls, verify them, and **recalculate**. Record whether the results reproduce.
 
-Synthetic example: T=300 K, V=1 L, Psub=10 kPa.
+Retain one comparison table, your calculations and the saved files. Explain any discrepancy before advancing.
 
-$$n_g^{sat}=10/(8.31446\times300)\approx0.00401\ \mathrm{mol}$$
+## Lab 10 check {#lab10-check}
 
-With 0.01 mol total, about 0.00599 mol remains solid. With 0.002 mol total, no solid remains and P≈4.99 kPa.
+::: {.your-action}
+**Your action:** Compare **D2–D4** with these values and the worked solutions. Correct the reasoning as well as the arithmetic.
+:::
 
-Fixed T,V equilibrium minimizes Helmholtz energy, not Gibbs energy at fixed P.
+At 300 K and 1 L, the gas capacity is **0.00400908 mol**.
 
-## An independent check
+| Case | $p_A$ (kPa) | Solid (mol) | $P_{tot}$ (kPa) |
+|---|---:|---:|---:|
+| 10A: 0.010 mol $A$, no inert | 10.0000 | 0.00599092 | 10.0000 |
+| 10B: 0.002 mol $A$, no inert | 4.98868 | 0 | 4.98868 |
+| 10C: 0.002 mol $A$, 0.002 mol inert | 4.98868 | 0 | 9.97736 |
 
-Compare total inventory with Psub V/(RT). Check gas plus solid moles and distinguish partial pressure from total pressure if an inert gas is present.
+A pressure below $P_{sub}$ is the expected finite-inventory result after solid depletion. It is not a failed saturation calculation.
 
-## One demonstration · 20 minutes
+These are equilibrium endpoints. They do not give a sublimation rate or the time needed to reach equilibrium.
 
-[Open the core lab](labs/solids.html#so-experiment)
+## Break {#break .work-stop}
 
-In Lab 10 choose the gas–solid vessel mode. Keep T and V fixed and vary the subliming-species inventory across the solid-depletion threshold.
+::: {.your-action}
+**Your action:** Pause for **10 minutes**. Save your Lab 10 files and leave the screen briefly.
+:::
 
-Keep one saved baseline for the pair investigation.
+When you return, open **worksheet p. 4** and **Lab guide pp. 3–4**.
 
-## Pair investigation · 70 minutes
+The next part treats gas uptake on a surface. You will calculate an isotherm value, then solve an inventory balance for a closed vessel.
 
-- 10 min: predict and record the baseline.
-- 25 min: change one input and calculate.
-- 20 min: exchange roles and check the result by hand.
-- 15 min: prepare one plot or table and a short explanation.
+The same question remains useful: **What does equilibrium determine, and what must the material balance determine?**
 
-In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.
+## Adsorption and bulk phases {#adsorption-is-different}
 
-## Discussion · 20 minutes
+::: {.your-action}
+**Your action:** Read the definition of uptake before starting **E, worksheet p. 4**.
+:::
 
-What happens to gas pressure when the solid inventory runs out?
+Adsorption describes material associated with a surface. An isotherm gives uptake at a specified temperature and gas pressure.
 
-Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.
+$$q(P,T)=\frac{\text{moles adsorbed}}{\text{mass of adsorbent}}$$
 
-## After class · 30–40 minutes
+Here, $q$ is **absolute uptake in mol kg$^{-1}$** and $P$ is the **adsorbate partial pressure in kPa**.
 
-In Lab 10, compare inventories above and below the solid-depletion boundary at fixed T and V. Check the inventory balance and explain the resulting gas pressure.
+Adsorbed moles are $n_{ads}=m_s q$, with adsorbent mass $m_s$ in kg. The symbol $q$ itself is not an amount in moles.
 
-[Assessment 4 and independent checkpoint](labs/assessments.html#session-4)
+Bulk sublimation and surface adsorption require different state descriptions and inventory balances.
 
-Retain one study JSON, one comparison and a short explanation.
+## Langmuir model {#langmuir-model}
 
-Optional: [Session appendix](postmidterm-04-appendix.html).
+::: {.your-action}
+**Your action:** Identify the parameters and dimensionless group. Use this expression for **E1–E3**.
+:::
 
-[Learning path](labs/learning-path.html#session-4) · [Offline package](files/thermodynamics-offline.zip)
+$$q=q_s\frac{bP}{1+bP},\qquad \theta=\frac{q}{q_s}=\frac{bP}{1+bP}$$
 
-## Exit ticket + feedback · 8 minutes
+| Quantity | Meaning | Unit used here |
+|---|---|---|
+| $q_s$ | Saturation uptake | mol kg$^{-1}$ |
+| $b$ | Affinity parameter | kPa$^{-1}$ |
+| $bP$ | Dimensionless pressure group | 1 |
+| $\theta$ | Fractional coverage in the model | 1 |
+
+The idealized model assumes a finite set of equivalent sites and no lateral interactions. A good fit alone does not establish this microscopic mechanism.
+
+## Henry limit {#henry-limit}
+
+::: {.your-action}
+**Your action:** Derive the low-pressure slope from Langmuir. Retain the units when comparing the models.
+:::
+
+If $bP\ll1$:
+
+$$q\approx q_s bP=K_H P,\qquad K_H=q_s b$$
+
+$K_H$ has units **mol kg$^{-1}$ kPa$^{-1}$** for this adsorption convention.
+
+The matched Henry line and Langmuir curve share the slope at $P\rightarrow0$. The Henry line has no saturation plateau and requires a low-pressure domain.
+
+A gas-solubility convention such as $p=Hx$ defines a different constant with different units. State the equation and concentration basis whenever using the name “Henry constant.”
+
+## Isotherm worked example {#isotherm-worked-example}
+
+::: {.your-action}
+**Your action:** Follow this calculation, then use the same parameters for **E1–E3**.
+:::
+
+Synthetic parameters at fixed $T$: $q_s=2$ mol kg$^{-1}$ and $b=0.1$ kPa$^{-1}$.
+
+$$q=\frac{2(0.1)P}{1+0.1P},\qquad K_H=0.2\ \mathrm{mol\,kg^{-1}\,kPa^{-1}}$$
+
+| $P$ (kPa) | $bP$ | Langmuir $q$ (mol kg$^{-1}$) | Henry $q$ (mol kg$^{-1}$) |
+|---:|---:|---:|---:|
+| 1 | 0.1 | 0.181818 | 0.200000 |
+| 10 | 1 | 1.000000 | 2.000000 |
+
+At $P=1/b=10$ kPa, Langmuir coverage is **one half**. At this pressure, a low-pressure linear approximation is already poor.
+
+## Isotherm attempt {#isotherm-attempt .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **10 minutes**. Complete **E1–E3, worksheet p. 4**. Calculate before viewing slide 26.
+:::
+
+Keep $q_s=2$ mol kg$^{-1}$ and $b=0.1$ kPa$^{-1}$. Use matched Henry $K_H=q_s b=0.2$ mol kg$^{-1}$ kPa$^{-1}$ for comparison.
+
+**E1.** Calculate Langmuir and matched Henry uptake at **5 kPa** and **40 kPa**. Also calculate Langmuir fractional coverage.
+
+**E2.** Calculate $bP$ at each pressure and compare with the low-pressure condition $bP\ll1$.
+
+**E3.** Predict each model's high-pressure behavior. Which model can exceed $q_s$ mathematically, and what does that mean for its use?
+
+Show the substitutions and units. Compare your calculations with the matched Henry values on the next slide.
+
+## Isotherm check {#isotherm-check}
+
+::: {.your-action}
+**Your action:** Check **E1–E3**. Explain model disagreement using $bP$, not only curve shapes.
+:::
+
+| $P$ (kPa) | $bP$ | Langmuir $q$ | $\theta$ | Henry $q$ |
+|---:|---:|---:|---:|---:|
+| 5 | 0.5 | 0.666667 | 0.333333 | 1.00000 |
+| 40 | 4 | 1.60000 | 0.800000 | 8.00000 |
+
+Uptake values are in **mol kg$^{-1}$**. As pressure increases, Langmuir uptake approaches **2 mol kg$^{-1}$**. The Henry line continues increasing without a plateau.
+
+At 40 kPa, $bP=4$ is far outside $bP\ll1$. The large Henry value shows why a low-pressure approximation needs a stated domain.
+
+## Closed adsorption vessel {#closed-adsorption-vessel}
+
+::: {.your-action}
+**Your action:** Read the balance before **F1–F3, worksheet p. 4**. Identify which pressure is unknown.
+:::
+
+For an ideal gas and **absolute uptake** in a closed vessel:
+
+$$n_A^{tot}=\underbrace{\frac{PV_g}{RT}}_{n_A^g}
++\underbrace{m_s q(P,T)}_{n_A^{ads}}$$
+
+Use the **accessible gas volume** $V_g$ and adsorbent mass $m_s$ in **kg**. The unknown $P$ is adsorbate partial pressure.
+
+At fixed $T,V_g,m_s,n_A^{tot}$, the isotherm and balance determine $P$ together. Both terms increase with $P\ge0$ for positive Langmuir parameters.
+
+Excess uptake requires a gas-density and volume convention. It cannot be substituted directly for absolute uptake in this balance.
+
+## Vessel worked example {#vessel-worked-example}
+
+::: {.your-action}
+**Your action:** Follow this known-pressure calculation. Use its inventory to justify your predictions in **F1–F3**.
+:::
+
+Synthetic case at **300 K, 1 L and 10 kPa**: use $m_s=10$ g, $q_s=2$ mol kg$^{-1}$ and $b=0.1$ kPa$^{-1}$.
+
+$$q=2\frac{0.1(10)}{1+0.1(10)}=1\ \mathrm{mol\,kg^{-1}}$$
+
+$$n_A^g=\frac{10(1)}{8.314462618(300)}=0.00400908\ \mathrm{mol}$$
+
+$$n_A^{ads}=0.010(1)=0.0100000\ \mathrm{mol},\quad
+n_A^{tot}=0.01400908\ \mathrm{mol}$$
+
+The next task uses **a smaller total inventory, 0.010 mol**, with the same other parameters. That change will require a different equilibrium pressure.
+
+## Lab 11 predictions {#lab11-predict .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **5 minutes**. Complete **F1–F3, worksheet p. 4**. Read **Lab guide pp. 3–4** before watching.
+:::
+
+[Lab 11: Adsorption](labs/adsorption.html#ad-experiment)
+
+Use $T=300$ K, $V_g=1$ L, **$n_A^{tot}=0.010$ mol**, $q_s=2$ mol kg$^{-1}$, $b=0.1$ kPa$^{-1}$ and initially **10 g** adsorbent.
+
+**F1.** Compared with slide 28, predict whether Langmuir pressure is above or below 10 kPa. Explain using the smaller inventory.
+
+**F2.** Switch to matched Henry adsorption, $K_H=0.2$ mol kg$^{-1}$ kPa$^{-1}$. Predict which model gives the lower pressure at this fixed inventory.
+
+**F3.** Return to Langmuir and double adsorbent mass to **20 g**. Predict the pressure change.
+
+## Lab 11 demonstration {#lab11-demonstration}
+
+::: {.your-action}
+**Your action:** Watch the actual Lab 11 demonstration with **Lab guide pp. 3–4**. Compare results with your F1–F3 predictions.
+:::
+
+The demonstration follows this route:
+
+1. Set pressure and uptake units, model parameters and temperature.
+2. Compare the Langmuir curve with its matched Henry limit.
+3. Enter the closed-vessel inventory and accessible gas volume.
+4. Compare 10 g and 20 g of adsorbent and check the inventory balance.
+5. Export a study, reopen it, verify the controls, and calculate again.
+
+Use the **independent rerun at slide 32** to build your own comparison. Record the selected model and parameter units with every result.
+
+## Adsorption evidence {#adsorption-evidence}
+
+::: {.your-action}
+**Your action:** Prepare the columns for **G1–G4, worksheet p. 5**, using **Lab guide pp. 3–4**.
+:::
+
+| Record | Why it matters |
+|---|---|
+| Model, units and temperature | Parameters depend on the equation and convention |
+| Pressure and uptake | An isotherm point is a state, not a total amount |
+| Gas moles and adsorbed moles | Their sum must reproduce the closed inventory |
+| Adsorbent mass in kg | $m_s q$ converts uptake to moles |
+| Saved settings and recalculated output | The comparison can be reproduced |
+
+Shared low-pressure slope does not make models identical over a finite range. A good inventory balance also does not establish a model's physical validity.
+
+## Lab 11 independent investigation {#lab11-investigation .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **24 minutes**. Complete **G1–G4, worksheet p. 5**, using **Lab guide pp. 3–4** and [Lab 11](labs/adsorption.html#ad-experiment).
+:::
+
+**G1.** Run **11A: Langmuir, 10 g**; **11B: Henry, 10 g**; and **11C: Langmuir, 20 g**. Keep $T=300$ K, $V_g=1$ L and $n_A^{tot}=0.010$ mol. Use $q_s=2$, $b=0.1$ and matched $K_H=0.2$ in the stated units.
+
+**G2.** Record pressure, uptake, gas moles and adsorbed moles. Check each inventory balance independently.
+
+**G3.** Compare with your predictions and inspect the graph. Explain model choice and mass effects, including the low-pressure limitation.
+
+**G4.** Save the studies, reopen one, restore and verify settings, then recalculate. Record the reproduced result.
+
+## Lab 11 check {#lab11-check}
+
+::: {.your-action}
+**Your action:** Check **G1–G4** against these synthetic results. Use unrounded values for the balance.
+:::
+
+| Case | $P$ (kPa) | $q$ (mol kg$^{-1}$) | $n_A^g$ (mol) | $n_A^{ads}$ (mol) |
+|---|---:|---:|---:|---:|
+| 11A: Langmuir, 10 g | 6.08025 | 0.756238 | 0.00243762 | 0.00756238 |
+| 11B: Henry, 10 g | 4.16509 | 0.833018 | 0.00166982 | 0.00833018 |
+| 11C: Langmuir, 20 g | 2.84498 | 0.442971 | 0.00114057 | 0.00885943 |
+
+Each row sums to **0.010 mol**. More adsorbent lowers pressure and increases adsorbed moles, even though uptake **per kilogram** decreases.
+
+The Henry result illustrates model sensitivity. The finite value of $bP$ requires caution about treating it as a valid low-pressure approximation.
+
+## Model scope {#model-scope}
+
+::: {.your-action}
+**Your action:** Read these limitations. Choose one that matters to your interpretation. Extensions are optional.
+:::
+
+| Extension | Required qualification |
+|---|---|
+| Freundlich | Empirical pressure range; no saturation plateau |
+| BET | Relative pressure $P/P_0$, a fitting range and model assumptions |
+| Isosteric heat $Q_{st}$ | Pressures at the same absolute loading across temperatures |
+| Experimental fitting | Data, uncertainty, units and a defined fitting objective |
+
+Today's tasks use **synthetic parameters**. They do not establish a material's adsorption mechanism or validate extrapolation.
+
+The required work is the model comparisons and inventory checks. No new fit, BET calculation or isosteric-heat calculation is required.
+
+## Unseen case brief {#unseen-case-brief}
+
+::: {.your-action}
+**Your action:** Read **H1–H4, worksheet p. 6**. Use the equations from slides 11, 22 and 27. Keep the worked solutions closed.
+:::
+
+**GSE:** $T=310$ K, $V_g=2$ L and $P_{sub}=5$ kPa. Compare total inventories of **0.002 mol** and **0.008 mol** of subliming species. Add **0.001 mol inert gas** to each.
+
+**Adsorption:** A different synthetic Langmuir material has $q_s=3$ mol kg$^{-1}$ and $b=0.05$ kPa$^{-1}$. At $T=310$ K and $P=20$ kPa, use $V_g=2$ L and **5 g** adsorbent.
+
+Calculate the state and amount quantities. Then predict the pressure change if adsorbent mass doubles at the **same total inventory, temperature and accessible gas volume**.
+
+## Unseen attempt {#unseen-attempt .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **20 minutes**. Complete **H1–H4, worksheet p. 6**, before viewing slide 37.
+:::
+
+**H1.** Calculate the GSE gas capacity. Decide whether solid remains for each inventory and find gas moles, solid moles and $p_A$.
+
+**H2.** Include the inert gas. Calculate total pressure and check each species inventory.
+
+**H3.** For adsorption, calculate uptake, gas moles, adsorbed moles and the required total inventory at 20 kPa.
+
+**H4.** Predict the effect of doubling adsorbent mass at fixed inventory. Explain using the balance, then state one shared assumption and one difference between bulk GSE and adsorption. An exact new pressure is not required.
+
+## Unseen check {#unseen-check}
+
+::: {.your-action}
+**Your action:** Check **H1–H4**. Keep your original attempt and annotate corrections. The solutions show intermediate calculations.
+:::
+
+GSE gas capacity: **0.00387975 mol**. Inert contribution: **1.28874 kPa**.
+
+| $n_A^{tot}$ (mol) | $n_A^g$ (mol) | $n_A^s$ (mol) | $p_A$ (kPa) | $P_{tot}$ (kPa) |
+|---:|---:|---:|---:|---:|
+| 0.002 | 0.00200000 | 0 | 2.57748 | 3.86623 |
+| 0.008 | 0.00387975 | 0.00412025 | 5.00000 | 6.28874 |
+
+Adsorption: **$q=1.5$ mol kg$^{-1}$**, gas **0.0155190 mol**, adsorbed **0.0075000 mol**, total **0.0230190 mol**.
+
+Doubling adsorbent mass at fixed inventory lowers pressure: at the old pressure, the balance would contain too many moles.
+
+## Choosing an equilibrium description {#choose-the-equilibrium-description}
+
+::: {.your-action}
+**Your action:** Use these questions to prepare your reflection in **I, worksheet p. 6**.
+:::
+
+1. **What process occurs?** Bulk phase transfer, surface uptake or chemical reaction?
+2. **What is fixed?** Temperature, pressure, accessible volume and/or species inventory?
+3. **Which model and convention apply?** Standard states, gas ideality, uptake basis, units and pressure range?
+4. **What sets amounts?** Combine the equilibrium relation with material balances and check phase presence.
+
+A solubility composition, sublimation pressure or isotherm loading describes part of the equilibrium state. None replaces an inventory balance.
+
+Report a numerical result with its assumptions and a check that supports the interpretation.
+
+## Exit ticket and feedback {#exit-ticket .work-stop}
+
+::: {.your-action}
+**Your action:** Pause for about **10 minutes**. Complete **I, worksheet p. 6**, then submit the **Session 4 form once**.
+:::
 
 :::: {.columns}
-::: {.column width="60%"}
+::: {.column width="65%"}
 
-**5 min · Explain and check**
+Explain what happens to gas pressure when bulk solid runs out. In the **evidence answer**, include **one Lab 10 comparison and one Lab 11 numerical balance**, with settings and units.
 
-Answer the session question in the form. Give one result or independent check from today's lab, with units.
+Report your **actual study time**, access problems, and what would improve the next lesson.
 
-**3 min · Help improve the next class**
+The form asks for no name, student ID or email. Wait for **“Response received.”**
 
-Rate the pace, report lab access, and suggest one improvement.
-
-Thai or English. No name, ID or email requested.
-
-Wait for **“Response received.”** We will use the final 2 minutes to close the class.
+[Open Session 4 exit ticket and feedback](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4)
 
 :::
-::: {.column width="36%"}
+::: {.column width="30%"}
 
-[![Scan to submit Session 4 exit ticket and feedback.](assets/exit-qr-04.png){width="100%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4)
-
-[Open Session 4 form](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4)
+[![Session 4 exit ticket and feedback QR code.](assets/exit-qr-04.png){width="100%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=4)
 
 :::
 ::::
+
+## Receipt and saved work {#receipt-and-saved-work}
+
+::: {.your-action}
+**Your action:** Verify the submission receipt and save your work. If the form shows **“Response received,”** do not submit again.
+:::
+
+Keep these records together:
+
+- Completed worksheet, including predictions, calculations and corrections.
+- Lab 10 and Lab 11 comparison tables and study JSON exports.
+- One reproduced result after reopening and recalculating a saved study.
+- Your actual study time and confirmation that you submitted the form.
+
+The recording, worksheet and Lab investigations form this week's lesson. There is **no additional compulsory after-class task**.
+
+[Study route](week04-study.html) · [Optional appendix](postmidterm-04-appendix.html) · [Learning path](labs/learning-path.html#session-4)
