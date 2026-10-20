@@ -1,4 +1,4 @@
-"""Build and verify the 31-slide Session 3 video from audited PDF and PCM audio.
+"""Build and verify Session 3 video from audited PDF, actual Lab captures and PCM audio.
 
 Run with ~/.venvs/research/bin/python asynchronous-week03/build-video.py.
 No slide content or speech is regenerated. Each slide receives a two-second
@@ -37,7 +37,8 @@ TB = Fraction(1, RATE)
 TAIL = 2 * RATE
 WIDTH, HEIGHT = 1920, 1080
 SLIDE_HEIGHT = 920
-EXPECTED_PDF_SHA256 = "c07fd0b99e7703dc386db1d393922e0fa3d824240ce9e60657429baccda9770c"
+EXPECTED_PDF_SHA256 = "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a"
+SOURCES = Path(__file__).resolve().parent
 
 
 def sha(path):
@@ -55,17 +56,20 @@ def prepare():
     os.environ.setdefault('MPLCONFIGDIR',str(WORK/'matplotlib'))
     import skh_palette as skh
     skh.use()
-    assert [e["slide"] for e in entries] == list(range(1, 32))
+    assert [e["slide"] for e in entries] == list(range(1, len(entries)+1))
+    demo = json.loads((SOURCES/'demo-scenes.json').read_text())['scenes']
     pdf_hash = sha(PDF)
     assert pdf_hash == EXPECTED_PDF_SHA256, 'The audited slide PDF changed; review and freeze it before rebuilding.'
     rows, offset = [], 0
     with pymupdf.open(PDF) as document, sf.SoundFile(
         MASTER, "w", samplerate=RATE, channels=1, subtype="PCM_16"
     ) as master:
-        assert len(document) == 31
+        assert len(document) == len(entries)
         for entry, page in zip(entries, document):
             n = entry["slide"]
             source = WAVS / f"segment-{n:02}.wav"
+            audio_hash = sha(source)
+            assert audio_hash == entry["audio_sha256"], f"Slide {n}: WAV does not match its narration manifest."
             samples, rate = sf.read(source, dtype="int16")
             assert rate == RATE and samples.ndim == 1
             assert abs(len(samples) / RATE - entry["duration_seconds"]) <= 0.0051
@@ -84,6 +88,33 @@ def prepare():
             image_path = IMAGES / f"slide-{n:02}.png"
             canvas.save(image_path)
             end = offset + len(samples) + TAIL
+            scenes = [{'start_sample': offset, 'image':str(image_path.relative_to(ROOT)),
+                       'sha256':sha(image_path), 'kind':'slide', 'label':entry['title']}]
+            for view_index, view in enumerate((v for v in demo if v['slide']==n), start=1):
+                matches=[c for c in entry['cues'] if c['text'].startswith(view['sentence_prefix'])]
+                assert len(matches)==1, (n,view['sentence_prefix'])
+                relative=matches[0]['start_sample']-entry['start_sample']
+                # Do not flash the PDF for the 180 ms leading silence.
+                start=offset+(relative if relative>RATE else 0)
+                capture=SOURCES/'demo-frames'/view['file']
+                screen=Image.open(capture).convert('RGB')
+                screen.thumbnail((WIDTH,SLIDE_HEIGHT),Image.Resampling.LANCZOS)
+                # Scale the genuine interface capture without modifying its content.
+                factor=min(WIDTH/screen.width,SLIDE_HEIGHT/screen.height)
+                screen=screen.resize((round(screen.width*factor),round(screen.height*factor)),Image.Resampling.LANCZOS)
+                view_canvas=Image.new('RGB',(WIDTH,HEIGHT),'white')
+                view_canvas.paste(screen,((WIDTH-screen.width)//2,(SLIDE_HEIGHT-screen.height)//2))
+                ImageDraw.Draw(view_canvas).rectangle((0,SLIDE_HEIGHT,WIDTH,HEIGHT),fill=skh.C['graphite'])
+                view_path=IMAGES/f'demo-{n:02}-{view_index:02}.png';view_canvas.save(view_path)
+                if start==offset:scenes=[]
+                scenes.append({'start_sample':start,'image':str(view_path.relative_to(ROOT)),
+                               'sha256':sha(view_path),'kind':'actual_lab_capture','label':view['label'],
+                               'capture_source':str(capture.relative_to(ROOT)),'capture_sha256':sha(capture),
+                               'sentence_prefix':view['sentence_prefix']})
+            scenes.sort(key=lambda x:x['start_sample'])
+            for i,view in enumerate(scenes):
+                view['end_sample']=scenes[i+1]['start_sample'] if i+1<len(scenes) else end
+                assert view['end_sample']>view['start_sample']
             rows.append({
                 "slide": n, "title": entry["title"],
                 "start_sample": offset, "narration_end_sample": offset + len(samples),
@@ -100,11 +131,12 @@ def prepare():
                 "stage_start_minute": entry["stage_start_minute"],
                 "stage_end_minute": entry["stage_end_minute"],
                 "audio_source": str(source.relative_to(ROOT)),
-                "audio_source_sha256": sha(source),
+                "audio_source_sha256": audio_hash,
                 "slide_image": str(image_path.relative_to(ROOT)),
                 "slide_image_sha256": sha(image_path),
                 "pdf_source_sha256": pdf_hash,
                 "narration_text_sha256": hashlib.sha256(entry["narration"].encode()).hexdigest(),
+                "visual_scenes":scenes,
             })
             offset = end
     Image.open(IMAGES / "slide-01.png").save(OUT / "week03-poster.png")
@@ -117,7 +149,7 @@ def prepare():
         "duration_samples": offset, "duration_seconds": offset / RATE,
         "narration_duration_seconds": sum(r["narration_samples"] for r in rows) / RATE,
         "lesson_working_time_minutes": 180,
-        "timing_contract": "Slide starts at its PCM audio start. It remains visible throughout the exact WAV duration and a 2-second silent tail. Pause playback for calculation and Lab activities; the video contains no exercise-length filler silence.",
+        "timing_contract": "Each chapter starts at its PCM audio start and ends after a 2-second silent tail. Lab03 chapters switch to genuine interface captures at the matching spoken sentence. All visual transitions use exact PCM sample offsets. No exercise-length filler silence is encoded.",
         "source_pdf": str(PDF.relative_to(ROOT)), "source_pdf_sha256": pdf_hash,
         "source_manifest": str(MANIFEST.relative_to(ROOT)), "source_manifest_sha256": sha(MANIFEST),
         "audio_master_sha256": sha(MASTER), "slides": rows,
@@ -158,7 +190,7 @@ def encode(timeline):
         video.time_base = TB
         video.codec_context.time_base = TB
         video.codec_context.thread_count = 4
-        video.codec_context.gop_size = 5
+        video.codec_context.gop_size = 8
         video.codec_context.max_b_frames = 0
         video.options = {"crf": "18", "preset": "veryfast", "tune": "stillimage,zerolatency"}
         sound = output.add_stream("aac", rate=48000)
@@ -177,16 +209,17 @@ def encode(timeline):
 
         def video_packets():
             for row in timeline["slides"]:
-                frame = av.VideoFrame.from_image(Image.open(ROOT / row["slide_image"]).convert("RGB")).reformat(format="yuv420p")
-                for pts in range(row["start_sample"], row["end_sample"], RATE):
-                    length = min(RATE, row["end_sample"] - pts)
-                    frame.pts, frame.time_base, frame.duration = pts, TB, length
-                    frame.pict_type = av.video.frame.PictureType.I if pts == row["start_sample"] else av.video.frame.PictureType.NONE
-                    for packet in video.encode(frame):
-                        assert packet.pts == pts and packet.time_base == TB
-                        packet.duration = length
-                        yield packet
-                print(f"Encoded slide {row['slide']:02}/31 ({time.monotonic() - start:.1f}s)", flush=True)
+                for scene in row['visual_scenes']:
+                    frame = av.VideoFrame.from_image(Image.open(ROOT / scene['image']).convert("RGB")).reformat(format="yuv420p")
+                    for pts in range(scene['start_sample'], scene['end_sample'], 4*RATE):
+                        length = min(4*RATE, scene['end_sample'] - pts)
+                        frame.pts, frame.time_base, frame.duration = pts, TB, length
+                        frame.pict_type = av.video.frame.PictureType.I if pts == scene['start_sample'] else av.video.frame.PictureType.NONE
+                        for packet in video.encode(frame):
+                            assert packet.pts == pts and packet.time_base == TB
+                            packet.duration = length
+                            yield packet
+                print(f"Encoded slide {row['slide']:02}/{len(timeline['slides'])} ({time.monotonic() - start:.1f}s)", flush=True)
             yield from video.encode(None)
 
         def audio_packets():
@@ -260,7 +293,7 @@ def validate(timeline):
         assert sha(ROOT / row["slide_image"]) == row["slide_image_sha256"]
     assert sha(MASTER) == timeline["audio_master_sha256"]
     assert sha(VIDEO) == timeline["video_sha256"]
-    # Confirm sample-exact source placement and all 31 silent tails.
+    # Confirm sample-exact source placement and every silent tail.
     with sf.SoundFile(MASTER) as source:
         assert source.frames == timeline["duration_samples"] and source.samplerate == RATE
         for row in rows:
@@ -271,10 +304,14 @@ def validate(timeline):
             assert not np.any(source.read(TAIL, dtype="int16"))
     atoms = dict(mp4_atoms(VIDEO))
     assert atoms["moov"] < atoms["mdat"]
-    expected_images = [np.asarray(Image.open(ROOT / r["slide_image"]).convert("RGB")) for r in rows]
+    visuals = [{**v, 'slide': r['slide']} for r in rows for v in r['visual_scenes']]
+    for v in visuals:
+        assert sha(ROOT/v['image'])==v['sha256']
+        if v['kind']=='actual_lab_capture': assert sha(ROOT/v['capture_source'])==v['capture_sha256']
+    expected_images = [np.asarray(Image.open(ROOT / v['image']).convert("RGB")) for v in visuals]
     transitions, all_frames, seen = [], 0, set()
     previous_sample, previous_end, previous_image, previous_row = -1, 0, None, None
-    contact = Image.new("RGB", (480 * 4, (270 + 30) * 8), "white")
+    contact = Image.new("RGB", (480 * 4, (270 + 30) * math.ceil(len(visuals)/4)), "white")
     draw = ImageDraw.Draw(contact)
     with av.open(str(VIDEO)) as media:
         assert abs(media.duration / 1e6 - timeline["duration_seconds"]) <= .001
@@ -284,20 +321,20 @@ def validate(timeline):
         assert sound.codec_context.layout.name == "mono"
         assert video.start_time == sound.start_time == 0
         chapters = media.chapters()
-        assert len(chapters) == 31
+        assert len(chapters) == len(rows)
         for chapter, row in zip(chapters, rows):
             assert abs(float(chapter["start"] * chapter["time_base"]) - row["start_seconds"]) < .001
             assert abs(float(chapter["end"] * chapter["time_base"]) - row["end_seconds"]) < .001
-        starts = {r["start_sample"]: i for i, r in enumerate(rows)}
+        starts = {v["start_sample"]: i for i, v in enumerate(visuals)}
         row_index = 0
         for frame in media.decode(video=0):
             sample = round(float(frame.pts * frame.time_base) * RATE)
             duration = round(float(frame.duration * frame.time_base) * RATE)
             assert sample > previous_sample and sample == previous_end
             assert duration > 0
-            while row_index + 1 < len(rows) and sample >= rows[row_index]["end_sample"]:
+            while row_index + 1 < len(visuals) and sample >= visuals[row_index]["end_sample"]:
                 row_index += 1
-            assert sample + duration <= rows[row_index]["end_sample"]
+            assert sample + duration <= visuals[row_index]["end_sample"]
             all_frames += 1
             actual = frame.to_ndarray(format="rgb24")
             if sample in starts:
@@ -307,10 +344,10 @@ def validate(timeline):
                 assert score > 34, (i + 1, score)
                 prior_score = None
                 if i:
-                    assert previous_end == rows[i]["start_sample"]
+                    assert previous_end == visuals[i]["start_sample"]
                     prior_score = psnr(previous_image, expected_images[i - 1])
                     assert prior_score > 34
-                transitions.append({"slide": i + 1, "start_sample": sample,
+                transitions.append({"slide": visuals[i]['slide'], "scene":i+1, "kind":visuals[i]['kind'], "label":visuals[i]['label'], "start_sample": sample,
                                     "actual_seconds": sample / RATE, "key_frame": True,
                                     "first_frame_psnr_db": round(score, 2),
                                     "previous_last_frame_psnr_db": round(prior_score, 2) if prior_score else None})
@@ -318,12 +355,12 @@ def validate(timeline):
                 small = Image.fromarray(actual).resize((480, 270), Image.Resampling.LANCZOS)
                 x, y = (i % 4) * 480, (i // 4) * 300
                 contact.paste(small, (x, y))
-                draw.text((x + 10, y + 274), f"Slide {i + 1:02} | {sample / RATE:.3f} s", fill="#333f4a")
+                draw.text((x + 10, y + 274), f"Scene {i+1:02} / slide {visuals[i]['slide']:02} | {sample / RATE:.3f} s", fill="#333f4a")
             previous_sample, previous_end, previous_image, previous_row = sample, sample + duration, actual, row_index
-        assert seen == set(range(1, 32)) and previous_end == timeline["duration_samples"]
+        assert seen == set(range(1, len(visuals)+1)) and previous_end == timeline["duration_samples"]
     contact.save(WORK / "transition-contact-sheet.jpg", quality=90)
     # Compare decoded AAC against the PCM source near the beginning, middle and end.
-    check_points = [rows[i]["start_seconds"] + 2 for i in (0, 15, 30)]
+    check_points = [rows[i]["start_seconds"] + 2 for i in (0, len(rows)//2, len(rows)-1)]
     audio_checks = []
     for point in check_points:
         target = round(point * 48000)
@@ -358,7 +395,7 @@ def validate(timeline):
         "size_bytes": VIDEO.stat().st_size, "video_sha256": sha(VIDEO),
         "dimensions": [WIDTH, HEIGHT], "video_codec": "h264", "pixel_format": "yuv420p",
         "audio_codec": "aac", "audio_channels": 1, "audio_sample_rate": 48000,
-        "timeline_sample_rate": RATE, "chapter_count": 31, "faststart": True,
+        "timeline_sample_rate": RATE, "chapter_count": len(rows), "visual_scene_count":len(visuals), "actual_lab_capture_count":sum(v['kind']=='actual_lab_capture' for v in visuals), "faststart": True,
         "source_hashes_verified": True, "pcm_master_sample_exact": True,
         "all_silent_tails_verified": True, "all_frame_boundaries_contiguous": True,
         "no_early_slide_switches": True, "decoded_video_frames": all_frames,
@@ -367,7 +404,7 @@ def validate(timeline):
     }
     (OUT / "video-qa.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"passed": True, "file": str(VIDEO), "seconds": timeline["duration_seconds"],
-                      "megabytes": VIDEO.stat().st_size / 1e6, "chapters": 31,
+                      "megabytes": VIDEO.stat().st_size / 1e6, "chapters": len(rows),
                       "minimum_transition_psnr": min(x["first_frame_psnr_db"] for x in transitions),
                       "audio_sync_checks": audio_checks}), flush=True)
 

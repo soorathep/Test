@@ -1,0 +1,130 @@
+[
+  {
+    "number": 29,
+    "slide_id": "phase-equilibrium-includes-stability",
+    "title": "Consistency does not imply one stable liquid · 105–155 min",
+    "narration": "We now change the question. Consistency asks whether the composition dependence of the properties obeys a thermodynamic relationship. Stability asks which admissible arrangement of phases has the lowest total Gibbs energy. At fixed temperature and pressure, compare one homogeneous liquid with possible splits that preserve the total amount of each component. The mixing Gibbs energy contains the ideal mixing terms, x log x and one minus x times log one minus x, plus the excess Gibbs energy. A sufficiently unfavorable excess contribution can make the total curve nonconvex. The homogeneous liquid can then sit above a lower-energy two-liquid mixture. Nothing in that statement requires the activity model to violate Gibbs-Duhem. Indeed, a model derived consistently from one excess Gibbs-energy function can predict liquid-liquid separation. For F one, explain why checking a property identity does not tell us whether one liquid is the stable phase arrangement.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 30,
+    "slide_id": "local-curvature",
+    "title": "What local curvature tells us · 105–155 min",
+    "narration": "Local curvature describes how the homogeneous liquid responds to a small composition fluctuation. Positive curvature means that sufficiently small fluctuations increase its bulk Gibbs energy. Negative curvature means that small fluctuations can lower the energy. However, a small-fluctuation test does not compare every possible finite separation. That distinction separates stable and metastable homogeneous liquids. A stable liquid lies on the lower convex envelope. A metastable liquid has positive curvature but lies above a lower-energy combination of two liquids. An unstable liquid has negative curvature and also fails the global minimum requirement. For the one-parameter Margules model, the dimensionless excess Gibbs energy is A times x times one minus x. The curvature of the total mixing function is one divided by x times one minus x, minus two A. We will use A equal to three. This bulk equilibrium model does not calculate nucleation barriers, interfaces, or how long a metastable liquid will persist.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 31,
+    "slide_id": "supporting-common-tangent",
+    "title": "A common tangent must support the curve · 105–155 min",
+    "narration": "Imagine joining two points on the Gibbs-energy curve with a straight line. The energy of a mixture of those two liquid compositions lies on that line, because the total molar energy is the phase-fraction-weighted average. At a candidate equilibrium pair, the line has the same slope as the curve at both ends. That common-tangent condition corresponds to equality of the component chemical potentials. But finding a stationary pair is only part of the calculation. The tangent must support the whole admitted curve: nowhere may another composition lie below it. If the candidate line crosses above the curve, another admissible state can lower the energy and the candidate is not globally stable. Also check that the two compositions are distinct. A solver returning the same composition twice has not established two liquids. Complete F three by separating these checks: distinct phases, chemical-potential equality, global support, and compatible amounts. Their material balance cannot substitute for the global energy comparison.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 32,
+    "slide_id": "lever-rule-attempt",
+    "title": "Lever-rule attempt · 105–155 min",
+    "narration": "This is the hand-calculation work stop. Complete F two on worksheet page four before seeing the next slide. The supplied endpoints are zero point two zero and zero point eight zero. Treat their common tangent as globally supported for this exercise. First use an overall composition of zero point five zero. Then repeat for zero point three five. The fraction of the component-one-rich liquid, beta, equals the overall composition minus the alpha endpoint, divided by the distance between the two endpoints. Here beta is a liquid label, not a vapor fraction. These illustrative endpoints belong only to the hand exercise. They are not the endpoints that Lab Four must produce for A equal to three. Pause for about eight minutes, complete both balances, and then continue to the check.",
+    "pause_instruction": "Pause for about 8 minutes. Complete worksheet p. 4 F2 for both illustrative feeds, including both liquid fractions and the material balances. Continue only after your attempt.",
+    "activity_minutes": 8
+  },
+  {
+    "number": 33,
+    "slide_id": "lever-rule-check",
+    "title": "Lever-rule check · 105–155 min",
+    "narration": "For the feed at zero point five zero, the overall composition is halfway between the two endpoints. The two liquid fractions are therefore equal: one half each. For the feed at zero point three five, the beta fraction is zero point one five divided by zero point six zero, or one quarter. The alpha fraction is three quarters. Substituting these amounts gives three quarters times zero point two zero plus one quarter times zero point eight zero, which reconstructs zero point three five. The endpoints have not changed. Moving the overall composition inside the same tie line changes how much of each liquid is present, rather than changing the compositions of the coexisting liquids. If you insert a feed outside the endpoint interval, the expression produces a negative fraction or a fraction above one. That is a warning that this two-phase construction does not represent the feed.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 34,
+    "slide_id": "lab04-predict",
+    "title": "Predict three feeds before running · 105–155 min",
+    "narration": "Before opening a named Lab Four preset, write your G one predictions on worksheet page four. The model is one-parameter Margules, with A fixed at three. Compare overall compositions zero point zero two, zero point one two, and zero point five zero. For each, predict the homogeneous-feed classification and the number of liquids at equilibrium. These are two separate columns. You can calculate the curvature as one divided by z times one minus z, minus six. A negative value gives a useful local diagnosis. A positive value leaves a global question unresolved. It does not, by itself, distinguish a stable feed from a metastable one. Write your reasoning before the interface supplies the labels. The presets are named Stable, Metastable, and Unstable, so opening them before predicting would remove the purpose of this step.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 35,
+    "slide_id": "lab04-controls",
+    "title": "Lab 04 controls and evidence · 105–155 min",
+    "narration": "Open Lab Four using the slide link, and keep Lab guide page four available. Choose Margules, one parameter, as the liquid model, and set the interaction parameter A to three. Use the feed mole-fraction field to enter the first composition. After typing a value, press Find equilibrium. Sliders update immediately, but a typed value requires that button. Keep the Gibbs energy and common tangent view visible. Read the homogeneous-feed label separately from the equilibrium phase count. Open Verify the equilibrium to inspect the numerical evidence. We need the local curvature, the Gibbs-energy decrease, the balance, and the coexistence checks for cases with two liquids. Repeat the calculation for the other feeds without changing A. This is a hypothetical fixed-temperature-and-pressure model exercise. No physical temperature is assigned to these parameter values.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 36,
+    "slide_id": "lab04-investigation",
+    "title": "Your Lab 04 investigation · 105–155 min",
+    "narration": "Now complete your independent Lab Four investigation. Allow about twenty-eight minutes here. In G two, run all three feeds at A equal to three and record the homogeneous-feed classification and equilibrium phase count separately. For the two-liquid cases, record both actual coexistence endpoints and both fractions. Under G three, use your calculator to recompute the beta fraction from the lab endpoints, then reconstruct the overall composition from the weighted balance. Do not reuse zero point two and zero point eight from the hand example. In G four, calculate the homogeneous and split Gibbs energies at zero point one two, then compare their difference with the Lab. Inspect the entire common-tangent plot and the numerical checks, rather than treating a small balance residual as complete proof of equilibrium. For a one-liquid result, record the present liquid at the feed composition. Do not invent a second liquid just to fill the table. Save each case with Export study JSON or a clearly labeled screenshot. Continue after the records and independent balances are complete.",
+    "pause_instruction": "Pause for about 28 minutes. Complete worksheet p. 5 G2–G4 with Lab 04 and Lab guide p. 4: A = 3 at z1 = 0.02, 0.12 and 0.50; retain classifications, phase evidence, actual endpoints, independent balances and saved results.",
+    "activity_minutes": 28
+  },
+  {
+    "number": 37,
+    "slide_id": "three-feed-check",
+    "title": "Three-feed check · 105–155 min",
+    "narration": "At A equal to three, the coexistence endpoints are approximately zero point zero seven zero seven two zero one eight and zero point nine two nine two seven nine eight two. The feed at zero point zero two lies outside that interval. It is globally stable as one liquid at the feed composition. Its positive curvature is about forty-five point zero two. At zero point one two, the curvature is also positive, about three point four seven, but the homogeneous feed is metastable. It lies inside the miscibility gap, where two liquids provide a lower total Gibbs energy. At zero point five zero, the curvature is negative two and the homogeneous feed is unstable. Its stable equilibrium is also two liquids at the same coexistence endpoints. The second and third cases therefore have different homogeneous-feed labels but the same equilibrium phase compositions. This comparison is the central lesson: positive curvature does not rule out a finite lower-energy split.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 38,
+    "slide_id": "balance-and-energy-check",
+    "title": "Check amounts and the energy benefit · 105–155 min",
+    "narration": "For the feed at zero point one two, use the actual endpoint interval. Subtract about zero point zero seven zero seven two from zero point one two, then divide by the difference between about zero point nine two nine two eight and zero point zero seven zero seven two. The beta fraction is approximately zero point zero five seven three nine eight two five. The alpha fraction is approximately zero point nine four two six zero one seven five. Their weighted composition reconstructs zero point one two. For the symmetric feed at one half, the two fractions are one half. Now compare energy at zero point one two. The homogeneous mixing energy divided by R T is about minus zero point zero five zero one two five. The split value is minus zero point zero five eight three four one. Their difference is the positive decrease, approximately zero point zero zero eight two one six. The unstable feed has a larger decrease; the stable feed has none. These dimensionless differences explain the thermodynamic advantage, not the separation speed. A valid balance checks the amounts; the globally supporting tangent establishes the selected equilibrium compositions.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 39,
+    "slide_id": "unseen-review-1",
+    "title": "Unseen review: consistency · 155–170 min",
+    "narration": "The next four questions use new values, so solve them rather than copying a result from the demonstration. Open worksheet page six, section H. On this slide, H one gives dimensionless excess Gibbs energies at compositions zero point two, zero point three, and zero point four. Estimate the derivative at the center using the two neighboring values. Then subtract the supplied center log-activity ratio, zero point seven five. Explain whether the result is one local residual or the Lab's average over many points. H two concerns real isobaric VLE data without independent excess-enthalpy information. The raw local score is eight point four. Decide whether the information supports a failed consistency verdict, and explain the role of the experimental path. Read H three and H four on the next slide before beginning the main pause. Show your assumptions.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 40,
+    "slide_id": "unseen-review-2",
+    "title": "Unseen review: equilibrium and evidence · 155–170 min",
+    "narration": "H three gives candidate endpoints zero point one five and zero point seven five, with an overall composition of zero point three nine. Calculate both phase fractions and reconstruct the feed. Then state what evidence is still needed to call the candidate a stable equilibrium. The question does not supply a complete Gibbs curve, so do not claim to have checked global support numerically. H four gives a hypothetical full-range isothermal dataset. Its area percentage is one point two, its local mean score is eight point four, its pressure reproduction error is zero point three percent, and its vapor-composition error is zero point two percentage point. Apply each stated teaching threshold separately. Explain how apparently favorable area and modeling results can coexist with the local result. Pause for about twelve minutes and finish H one through H four without the solutions.",
+    "pause_instruction": "Pause for about 12 minutes. Complete worksheet p. 6 H1–H4 without solutions. Show the new residual calculation, path reasoning, candidate-split balance and separate test interpretations before continuing.",
+    "activity_minutes": 12
+  },
+  {
+    "number": 41,
+    "slide_id": "unseen-check-consistency",
+    "title": "Unseen check: consistency · 155–170 min",
+    "narration": "For H one, the center derivative is zero point four eight minus zero point three two, divided by zero point two. That is zero point eight. Subtract the supplied log ratio, zero point seven five, to obtain a local residual of zero point zero five. This is one dimensionless residual. It is not the full-dataset mean score, and the question does not provide enough interior points to reconstruct that score. For H two, the correct status is not assessed for this local verdict. The path is isobaric and temperature varies, but the necessary independent excess-enthalpy correction is missing. A raw value above the numerical threshold does not repair that missing assumption. For H four, the area criterion is met, the local criterion is outside its threshold, and both model-reproduction criteria are met. These statements can all be true. A global integral and a selected-model fit do not erase a local departure. Investigate the data path, property assumptions and numerical sensitivity before deciding its cause.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 42,
+    "slide_id": "unseen-check-equilibrium",
+    "title": "Unseen check: equilibrium · 155–170 min",
+    "narration": "For H three, subtract zero point one five from zero point three nine, giving zero point two four. Divide by the endpoint distance, zero point six zero. The beta fraction is zero point four zero, and the alpha fraction is zero point six zero. The balance is zero point six zero times zero point one five plus zero point four zero times zero point seven five, giving zero point three nine. That verifies that these amounts and compositions are compatible with the feed. It does not yet establish equilibrium. The candidate phases must be distinct and have equal component chemical potentials, and their common tangent must support the full admitted Gibbs curve. Because that curve was not supplied in this question, the correct conclusion identifies the missing global evidence rather than inventing it. We finish by submitting a short reflection supported by the evidence you generated.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 43,
+    "slide_id": "exit-ticket",
+    "title": "Exit ticket · 170–180 min",
+    "narration": "Open the existing Session Three exit-ticket and feedback form using the link or QR code. Follow section I on worksheet page six. In the concept answer, explain when a calculated liquid split represents stable equilibrium. Include the distinction between a metastable homogeneous feed and the stable two-liquid arrangement available to that feed. In the evidence answer, summarize your Lab Three area-versus-local comparison. Name the data path, perturbation, amplitude and sampling resolution, and include the relevant numerical scores. Mention what changed, and what remained visible, when you increased the localized case from forty one to one hundred sixty one points. Finish with one limitation of the conclusion. Then complete the feedback fields. Include your actual study time in minutes and whether the pace worked for you. Allow about eight minutes for the whole form. Submit once, and wait for Response received before continuing. The form is anonymous and does not identify individual attendance. Pause now to complete the reflection and feedback together.",
+    "pause_instruction": "Pause for about 8 minutes. Complete worksheet p. 6 I in the existing Session 3 form: concept answer, evidence answer and feedback. Include actual study minutes and pace, submit once, and wait for Response received. Then continue to verify saved files.",
+    "activity_minutes": 8
+  },
+  {
+    "number": 44,
+    "slide_id": "feedback-and-saved-work",
+    "title": "Feedback and saved work · 170–180 min",
+    "narration": "Check that you have seen Response received. If that confirmation is already present, do not submit again. If you have not yet submitted, return to the same form and finish the reflection and feedback once. Include your actual study minutes, how the pace worked, and one remaining difficulty before submission. Now check your saved folder. Keep the completed worksheet with original predictions and corrections, the Lab Three evidence including the sampling comparison and an annotated residual plot, and all three Lab Four cases with independent balances for the two-liquid cases. LLE fitting and VLLE remain optional extensions.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  }
+]

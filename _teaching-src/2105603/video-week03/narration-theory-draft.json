@@ -1,0 +1,146 @@
+[
+  {
+    "number": 1,
+    "slide_id": "title-slide",
+    "title": "Thermodynamic consistency and liquid stability",
+    "narration": "Welcome to session three. This week we connect two questions that arise whenever we use an activity model. First, do the data satisfy the thermodynamic relationships that a mixture must obey? Second, does the predicted liquid remain as one phase, or can it lower its Gibbs energy by separating into two liquids?\n\nWe will address consistency before liquid stability. That order matters: a convincing fit does not, by itself, establish either consistency of the measurements or stability of the predicted state. Keep your calculations, predictions, and corrections. The recording and activities replace this week's class.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 2,
+    "slide_id": "your-independent-lesson",
+    "title": "Your independent lesson",
+    "narration": "Open the six-page practice worksheet and the four-page Lab guide using the links on this slide. Keep both beside the slides.\n\nThe worked solutions are a checking resource. Attempt each task first, retain your initial answer, and add a correction afterward. The optional background document gives additional explanation, but it is not an extra required reading assignment for this session.\n\nWhen a main work checkpoint appears, stop the video and complete the specified output before resuming. There is no requirement to wait for a timer once your work is ready. The study-time ranges describe the whole lesson, including your work, rather than positions in the recording.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 3,
+    "slide_id": "the-180-minute-route",
+    "title": "The 180-minute route",
+    "narration": "The lesson is planned for about three hours. Note your start time and prepare a calculator.\n\nAfter a ten-minute break, we move to liquid stability and liquid-liquid equilibrium. Finally, you will apply the ideas to an unseen case and complete the existing exit ticket and feedback form.\n\nThe planning balance is roughly fifty-five minutes of explanation and demonstration, one hundred and fifteen minutes of active work and reflection, and the break. These are estimates; your learning time may differ. There are nine main work checkpoints across the full lesson, plus the break. Record your actual time and tell us whether the pace felt suitable in the feedback. All required tasks belong to this lesson.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 4,
+    "slide_id": "review-attempt",
+    "title": "Review attempt · 0–15 min",
+    "narration": "Start with questions A one to A three on page one of the worksheet. First, define the four quantities: liquid composition, vapor composition, overall composition, and activity coefficient. Be precise about which quantities describe a phase and which describe the entire mixture.\n\nFor A two, use the numerical observation printed on the slide. Multiply vapor composition by total pressure, then divide by liquid composition times the pure-component saturation pressure. Use the full worksheet values before rounding. The pressures use the same units, so those units cancel. The stated assumptions are ideal vapor behavior and a negligible Poynting correction.\n\nFor A three, write a short explanation of whether a small fitting error proves thermodynamic consistency. Pause the video now and attempt all three questions. Allow about nine minutes, then resume to check your work.",
+    "pause_instruction": "Pause the video. Complete worksheet page 1, A1–A3, before advancing to the review check. Suggested active work: about 9 minutes; resume when your attempt is complete.",
+    "activity_minutes": 9
+  },
+  {
+    "number": 5,
+    "slide_id": "review-check",
+    "title": "Review check · 0–15 min",
+    "narration": "Check your definitions first. Liquid composition, x one, is a mole fraction within the liquid. Vapor composition, y one, is a mole fraction within the vapor. Overall composition, z one, describes the combined feed or mixture. These do not specify phase amounts.\n\nWith the pure-liquid standard state, activity is liquid mole fraction multiplied by gamma. Gamma is dimensionless and measures the departure from the ideal-mixture activity. Your calculation should give approximately one point four nine one five four five. Its natural logarithm is approximately zero point three nine nine eight one three. Gamma is not a composition or a phase fraction.\n\nFor A three, fitting asks how well a chosen model reproduces the observations. Consistency asks whether properties inferred from those observations satisfy a thermodynamic constraint, using the appropriate assumptions. A small fitting error alone does not answer that second question.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 6,
+    "slide_id": "excess-gibbs-energy",
+    "title": "Excess Gibbs energy · 15–40 min",
+    "narration": "To understand the constraint, we need one energy function. Excess Gibbs energy measures the difference between the actual mixture and an ideal mixture at the same temperature, pressure, and composition. It is not the entire Gibbs energy of mixing. The ideal contribution will also matter when we examine stability later.\n\nThe partial molar excess Gibbs energy of a component is R T times the natural logarithm of its activity coefficient. The mixture's molar excess Gibbs energy is the composition-weighted sum of those partial molar quantities. Dividing by R T gives the dimensionless function shown here, which we will call g tilde.\n\nFor a binary mixture, take x as the mole fraction of component one. Then g tilde equals x times log gamma one, plus one minus x times log gamma two. Every log here means the natural logarithm. The weights add to one. Both activity coefficients describe partial molar information from the same energy function. They therefore cannot be selected as two unrelated curves. Use this definition to begin B one.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 7,
+    "slide_id": "consistency-constraint",
+    "title": "Gibbs–Duhem · 15–40 min",
+    "narration": "At fixed temperature and pressure, the Gibbs-Duhem equation tells us how the two activity coefficients must change together. Multiply the change in log gamma one by x. Multiply the change in log gamma two by one minus x. The sum must be zero.\n\nThese are composition-weighted changes, not an instruction that the activity coefficients themselves must add to one. At an interior composition, if one log activity coefficient increases as composition changes, the other must change in a compatible way. The weights determine the relationship between those changes.\n\nAn ideal mixture is a simple special case. Both gamma values equal one, both logarithms are zero, and the condition is satisfied. But a nonideal mixture can also satisfy Gibbs-Duhem. Large gamma values do not, by themselves, indicate inconsistent data. What matters is the relationship between their composition dependences.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 8,
+    "slide_id": "from-excess-energy-to-a-slope",
+    "title": "From excess energy to a slope · 15–40 min",
+    "narration": "Now differentiate g tilde with respect to composition. Use the product rule: both the weights and the logarithms depend on x.\n\nDifferentiating x times log gamma one produces log gamma one, plus x times the derivative of log gamma one. Differentiating one minus x times log gamma two produces minus log gamma two, plus one minus x times the derivative of log gamma two.\n\nCollect the two plain logarithms first. Their difference is the natural logarithm of gamma one divided by gamma two. We call that quantity L. The remaining terms are the composition-weighted derivatives. At fixed temperature and pressure, Gibbs-Duhem makes their sum zero.\n\nThe result is compact: the slope of g tilde equals L at the same composition. This gives us two ways to describe the same slope. We can estimate it from neighboring excess-energy values, or calculate L from the activity coefficients at the center. Their difference becomes our local residual. Write the product-rule steps in B one, rather than jumping straight to the final equation.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 9,
+    "slide_id": "experimental-path",
+    "title": "Follow the experimental path · 15–40 min",
+    "narration": "Before applying that result to measurements, ask how the measurements were collected. Temperature, pressure, or both may change. Along a general path, the weighted changes in log gamma include two additional terms.\n\nThe temperature term is minus the molar excess enthalpy divided by R times temperature squared, multiplied by the temperature change. The pressure term is molar excess volume divided by R T, multiplied by the pressure change.\n\nWhen both temperature and pressure are fixed, both terms vanish. For isothermal vapor-liquid equilibrium, pressure usually varies across the composition range. Lab zero three neglects the excess-volume pressure contribution. That is an assumption to state, not an exact consequence of holding temperature fixed.\n\nFor isobaric data, temperature varies. The excess-enthalpy correction is then needed for the local test. Real data without independent excess-enthalpy information cannot receive this lab's local consistency verdict. A synthetic generator can supply its own correction, but that is not independent calorimetry.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 10,
+    "slide_id": "method-applicability",
+    "title": "Match the method to the claim · 15–40 min",
+    "narration": "The methods in this table examine different evidence. The isothermal area method tests an integral over the full composition range. It needs suitable endpoint information and the stated pressure approximation. Positive and negative departures can cancel in that integral.\n\nThe local differential method examines the slope relationship across composition. It can reveal a localized departure, but differentiation also makes it sensitive to point spacing, rounding, and noise. Its path corrections must be appropriate.\n\nHerington uses an empirical area allowance for an isobaric boiling-temperature range. It does not provide measured excess enthalpy. A Van Ness-type test instead examines how well a selected model reproduces pressure and vapor composition. That result depends on the chosen model and the property assumptions.\n\nUse precise status words. Not applicable means the method does not match the situation. Not assessed can mean required information is missing. Not run means the calculation has not been performed. Outside this criterion means a calculated diagnostic exceeds its stated limit. In B three, identify missing information before interpreting a number.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 11,
+    "slide_id": "what-a-local-residual-measures",
+    "title": "What a local residual measures · 15–40 min",
+    "narration": "Here is the local calculation we will actually use. First, calculate g tilde at every composition using the weighted log activity coefficients. Second, estimate its slope from neighboring points. Third, subtract L, the center-point log gamma one minus log gamma two. That difference is the residual r, under fixed conditions or the stated isothermal approximation.\n\nThe residual is dimensionless. A positive value means the estimated slope exceeds the center log ratio; a negative value means it is smaller. Its sign alone does not identify a physical cause.\n\nLab zero three summarizes the absolute residuals over interior points by taking their mean and multiplying by one hundred. The teaching threshold for that scaled score is five. It is not a probability or a percentage of incorrect measurements. One residual is also not the full-data average. Our lab uses three-point finite differences, rather than the NIST or Kojima point test based on a Padé representation.\n\nPause now. Complete B one to B three on worksheet page one using Lab guide page one. Allow about fifteen minutes to finish the derivation, path table, and missing-information explanation before continuing.",
+    "pause_instruction": "Pause the video. Complete worksheet page 1, B1–B3, using Lab guide page 1. Retain the product-rule derivation, path table, and missing-information explanation. Suggested active work: about 15 minutes.",
+    "activity_minutes": 15
+  },
+  {
+    "number": 12,
+    "slide_id": "why-the-area-should-vanish",
+    "title": "Why the area should vanish · 40–65 min",
+    "narration": "We can now connect the local slope relationship to an area. Under the chosen pure-liquid standard states, the molar excess Gibbs energy becomes zero at each pure endpoint. At one endpoint only component two remains; at the other only component one remains.\n\nIntegrating L from zero to one is the same as integrating the derivative of g tilde, provided the slope relationship applies. The integral is therefore the endpoint difference in g tilde: zero minus zero. That gives a zero signed area.\n\nThis is a necessary global check under fixed temperature and pressure, or under the stated isothermal approximation. It is not sufficient to certify every measurement. Positive and negative contributions can balance even when the composition-dependent behavior contains a problem.\n\nFor the exercise, the synthetic endpoint limits are supplied analytically. In a real experiment, interior points alone would not establish the missing limits.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 13,
+    "slide_id": "area-attempt",
+    "title": "Area attempt · 40–65 min",
+    "narration": "Complete C one to C three on page two. The table supplies five compositions, with equal spacing of one quarter. For each adjacent pair, average the two L values and multiply by the composition interval. Keep the sign of each trapezoid, including the intervals below zero. Write down all four contributions before adding them.\n\nNext, add zero point two to every L value and repeat the calculation. You are changing the entire curve vertically, not changing the composition spacing.\n\nFinally, explain why a zero total does not certify the measurements. Refer both to cancellation and to the information required at the endpoints. Here, the synthetic endpoint limits were supplied.\n\nPause now and allow about eight minutes for C one to C three. Calculate both cases and write your explanation before advancing to the answer slide.",
+    "pause_instruction": "Pause the video. Complete worksheet page 2, C1–C3: both signed-area calculations and the limitations explanation. Attempt before opening the check. Suggested active work: about 8 minutes.",
+    "activity_minutes": 8
+  },
+  {
+    "number": 14,
+    "slide_id": "area-check",
+    "title": "Area check · 40–65 min",
+    "narration": "The four baseline trapezoids are zero point three seven five, zero point one two five, minus zero point one two five, and minus zero point three seven five. They cancel, so the signed sum is zero.\n\nAfter raising every L value by zero point two, each interval gains zero point zero five. The new contributions sum to zero point two. This also follows from adding a constant height of zero point two across a total composition width of one.\n\nOur worksheet calls the signed integral S; Lab zero three labels it I. The lab also reports a normalized area imbalance, D. It takes the absolute difference between the positive area and the magnitude of the negative area, divides by their sum, and multiplies by one hundred. The negative-area magnitude is entered as a positive quantity. The isothermal teaching criterion is D below five percent. If both areas vanish, that normalization is undefined.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 15,
+    "slide_id": "worked-local-table",
+    "title": "Worked local table · 40–65 min",
+    "narration": "Follow C four and Lab guide page one. We will calculate the local residual from the energy values first. These are synthetic values at fixed temperature and pressure.\n\nAt x equal to zero point four, multiply zero point four by zero point seven two, then add zero point six times zero point three two. The result is zero point four eight. At the middle composition, both logarithms are zero point five, so their weighted sum is zero point five. At x equal to zero point six, the weighted sum returns to zero point four eight.\n\nEstimate the slope at the center using the two neighboring energy values. Their difference is zero, so the centered slope is zero. The center log ratio is also zero, because the two log activity coefficients there are equal. Subtracting gives a zero residual.\n\nThe middle energy is still calculated and recorded, although this equally spaced central slope uses the two neighbors. A zero result at this one center is evidence about this calculation, not a certificate for an entire experimental data set.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 16,
+    "slide_id": "worked-local-defect",
+    "title": "Change one value · 40–65 min",
+    "narration": "Now change only the final log gamma one value, at x equal to zero point six. Increase it from zero point three two to zero point three six. Leave the other five logarithms unchanged.\n\nRecalculate the affected energy. Zero point six times zero point three six, plus zero point four times zero point seven two, gives zero point five zero four. The left-hand energy remains zero point four eight. Their difference is zero point zero two four. Divide by the composition span of zero point two, giving a slope of zero point one two.\n\nThe center log ratio is still zero, so the residual is positive zero point one two. A neighboring measurement has changed the estimated center slope, even though the center logarithms have not changed.\n\nRecord this in C four. With real measurements, a nonzero residual could reflect measurement error, numerical sensitivity, or an omitted path correction. The residual identifies a departure to investigate; it does not identify its cause by itself.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  },
+  {
+    "number": 17,
+    "slide_id": "local-attempt",
+    "title": "Local attempt · 40–65 min",
+    "narration": "Now work independently on C five and C six, still on worksheet page two. Use the new three-row table. First calculate g tilde at each of the three compositions. Then estimate the centered slope at x equal to zero point four using the left and right energy values. Subtract the log ratio at the center.\n\nFor the second calculation, change only the final log gamma two value from zero point three seven five to zero point four two five. Recalculate the affected energy, the center slope, and the residual. Do not change the center log ratio or any other entry.\n\nFor C six, state why a measured nonzero residual requires further investigation, and why one center-point result cannot stand for the full data set.\n\nPause the video now and allow about nine minutes for these two questions. Finish both calculations before opening the check.",
+    "pause_instruction": "Pause the video. Complete worksheet page 2, C5–C6, including the clean and changed local calculations and the numerical caveat. Do not advance to the check until you have attempted both. Suggested active work: about 9 minutes.",
+    "activity_minutes": 9
+  },
+  {
+    "number": 18,
+    "slide_id": "local-check",
+    "title": "Local check · 40–65 min",
+    "narration": "Check the energy values first. The clean table gives zero point three one five, zero point three six zero, and zero point three seven five. The centered slope is the right energy minus the left energy, divided by zero point two. That gives zero point three. The center log ratio is zero point five four minus zero point two four, also zero point three. The clean residual is zero.\n\nAfter changing the last log gamma two, the right-hand energy becomes zero point four. The centered slope is then zero point four two five. Subtract the unchanged center log ratio of zero point three, leaving a residual of positive zero point one two five.\n\nFinite differences depend on spacing, rounding, and noise. Our hand calculation assumes equal spacing; the lab's three-point formula also handles unequal spacing. Neither a single residual nor a small averaged score establishes a universal certificate. Keep your corrections, then open Lab guide pages two and three for the demonstration.",
+    "pause_instruction": "",
+    "activity_minutes": 0
+  }
+]

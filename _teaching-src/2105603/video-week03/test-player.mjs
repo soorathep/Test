@@ -2,7 +2,7 @@
  * Focused control-flow tests for the actual Week 3 PLAYER_SCRIPT.
  * No browser automation, rendered-video claims, or synthetic media QA.
  * Uses actual timing metadata when available; otherwise a clearly labeled
- * 31-slide synthetic timing fixture exercises only the controller branches.
+ * 44-slide synthetic timing fixture exercises only the controller branches.
  *
  * Run with an absolute Node executable. Options:
  *   --require-media-timeline  Refuse the synthetic timing fallback.
@@ -30,12 +30,15 @@ assert.equal(extraction.status,0,extraction.stderr);
 const {script,template}=JSON.parse(extraction.stdout);
 const manifestPath=path.join(root,'outputs/week03-video/audio/manifest.json');
 const timelinePath=path.join(root,'outputs/week03-video/timeline.json');
+const expectedSlides=44;
+const workStops=[4,11,13,17,26,32,36,40,43];
+const breakSlide=28;
 let mode,chapters;
 if(!args.has('--fixture')&&fs.existsSync(manifestPath)&&fs.existsSync(timelinePath)){
   const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
   const raw=JSON.parse(fs.readFileSync(timelinePath,'utf8'));
   const timeline=Array.isArray(raw)?raw:raw.slides??raw.chapters??raw.timeline;
-  assert.equal(manifest.length,31);assert.equal(timeline.length,31);
+  assert.equal(manifest.length,expectedSlides,'Stale narration manifest; rebuild revised media or explicitly use --fixture.');assert.equal(timeline.length,manifest.length);
   chapters=manifest.map((m,i)=>{
     const t=timeline[i];assert.equal(m.slide,i+1);assert.equal(t.slide,i+1);
     assert.equal(t.activity,m.activity);
@@ -46,16 +49,24 @@ if(!args.has('--fixture')&&fs.existsSync(manifestPath)&&fs.existsSync(timelinePa
   mode='actual timing metadata; mocked media events, no decoded-video or browser QA';
 }else{
   assert.ok(!args.has('--require-media-timeline'),'Actual final manifest/timeline required but unavailable.');
-  const narration=JSON.parse(fs.readFileSync(path.join(here,'narration.json'),'utf8'));
-  assert.equal(narration.length,31);
+  let narration=JSON.parse(fs.readFileSync(path.join(here,'narration.json'),'utf8'));
+  if(narration.length!==expectedSlides){
+    narration=['narration-theory-draft.json','narration-demo-draft.json','narration-lle-draft.json']
+      .flatMap(name=>JSON.parse(fs.readFileSync(path.join(here,name),'utf8')))
+      .sort((a,b)=>a.number-b.number)
+      .map(m=>({...m,slide:m.number,activity:m.activity_minutes>0}));
+  }
+  assert.equal(narration.length,expectedSlides,'The explicit fixture requires the revised 44-slide source/drafts.');
+  assert.deepEqual(narration.map(m=>m.slide),Array.from({length:expectedSlides},(_,i)=>i+1));
   chapters=narration.map((m,i)=>({slide:i+1,title:m.title,narration:m.narration,
     cue:m.pause_instruction||'Listen, then continue through the lesson.',start:i*20,end:(i+1)*20,
     lesson_start:m.stage_start_minute,lesson_end:m.stage_end_minute,activity:m.activity,activity_minutes:m.activity_minutes}));
-  mode='SYNTHETIC TIMING FIXTURE: 20 seconds per slide; control flow only, not actual media QA';
+  mode='SYNTHETIC TIMING FIXTURE: 44 revised source slides, 20 seconds per slide; control flow only, not actual media QA';
 }
-assert.deepEqual(chapters.map(c=>c.slide),Array.from({length:31},(_,i)=>i+1));
+assert.deepEqual(chapters.map(c=>c.slide),Array.from({length:expectedSlides},(_,i)=>i+1));
 assert.ok(chapters.every(c=>Number.isFinite(c.start)&&c.end>c.start+.24));
-for(const n of [4,9,18,21,28,31])assert.equal(chapters[n-1].activity,true,`Required activity ${n}`);
+assert.deepEqual(chapters.filter(c=>c.activity).map(c=>c.slide),[...workStops,breakSlide].sort((a,b)=>a-b));
+assert.equal(chapters.at(-1).activity,false,'Slide 44 checks receipt and saved work; it does not ask for another submission.');
 
 class Element {
   constructor(id){this.id=id;this.textContent='';this.hidden=false;this.disabled=false;this.checked=false;this.listeners=new Map();this.attributes=new Map();this.scrolls=[];}
@@ -137,66 +148,74 @@ async function test(name,fn){await fn();tests.push({name,status:'passed'});conso
 function near(actual,expected){assert.ok(Math.abs(actual-expected)<1e-7,`${actual} != ${expected}`);}
 function checkPause(h,slide){
   const c=chapters[slide-1];assert.equal(h.video.paused,true);assert.equal(h.el('pause-panel').hidden,false);
-  assert.equal(h.el('slide-counter').textContent,`Slide ${slide} of 31`);
+  assert.equal(h.el('slide-counter').textContent,`Slide ${slide} of ${chapters.length}`);
   assert.equal(h.el('pause-cue').textContent,c.cue);
   assert.ok(h.video.currentTime<c.end,`Activity ${slide} crossed into its successor`);
   assert.equal(h.links[slide-1].getAttribute('aria-current'),'true');
-  if(slide<31)assert.equal(h.links[slide].getAttribute('aria-current'),null);
+  if(slide<chapters.length)assert.equal(h.links[slide].getAttribute('aria-current'),null);
 }
 
-await test('Default activity pause holds each attempt before its answer (4/9/21/28)',async()=>{
-  for(const slide of [4,9,21,28]){
+await test('Default pause holds all nine revised work stops before advancing',async()=>{
+  for(const slide of workStops){
     const h=harness();assert.equal(h.el('auto-pause').checked,true);await h.jump(slide);await h.play();
     await h.advance(chapters[slide-1].end-.24);checkPause(h,slide);
-    await h.play();checkPause(h,slide); // Native Play cannot inadvertently bypass an active work pause.
+    await h.play();checkPause(h,slide);
   }
 });
-await test('Delayed timeupdate beyond a boundary rewinds and pins the previous task',async()=>{
-  const h=harness();await h.jump(9);await h.play();await h.advance(chapters[9].start+.12);
-  checkPause(h,9);near(h.video.currentTime,chapters[8].end-.24);
+await test('Delayed timeupdate beyond a boundary rewinds to the previous task',async()=>{
+  const h=harness();await h.jump(13);await h.play();await h.advance(chapters[13].start+.12);
+  checkPause(h,13);near(h.video.currentTime,chapters[12].end-.24);
 });
-await test('Continue advances to the next slide and resumes playback',async()=>{
-  const h=harness();await h.jump(21);await h.play();await h.advance(chapters[20].end-.24);await h.continueActivity();
+await test('Continue advances from the lever-rule attempt to its check and resumes',async()=>{
+  const h=harness();await h.jump(32);await h.play();await h.advance(chapters[31].end-.24);await h.continueActivity();
   assert.equal(h.el('pause-panel').hidden,true);assert.equal(h.video.paused,false);
-  near(h.video.currentTime,chapters[21].start+.025);assert.equal(h.el('slide-counter').textContent,'Slide 22 of 31');
+  near(h.video.currentTime,chapters[32].start+.025);assert.equal(h.el('slide-counter').textContent,`Slide 33 of ${chapters.length}`);
 });
-await test('Intentional chapter and native seeks do not trigger skipped activities',async()=>{
-  const h=harness();await h.play();await h.jump(15);assert.equal(h.video.paused,false);
-  await h.advance(chapters[14].start+.5);assert.equal(h.el('pause-panel').hidden,true);
-  await h.manualSeek(chapters[22].start+.5);await h.advance(chapters[22].start+1);
-  assert.equal(h.el('pause-panel').hidden,true);assert.equal(h.el('slide-counter').textContent,'Slide 23 of 31');
-  await h.advance(chapters[22].end-.24);checkPause(h,23);
+await test('Intentional chapter and native seeks do not trigger skipped work stops',async()=>{
+  const h=harness();await h.play();await h.jump(19);assert.equal(h.video.paused,false);
+  await h.advance(chapters[18].start+.5);assert.equal(h.el('pause-panel').hidden,true);
+  await h.manualSeek(chapters[28].start+.5);await h.advance(chapters[28].start+1);
+  assert.equal(h.el('pause-panel').hidden,true);assert.equal(h.el('slide-counter').textContent,`Slide 29 of ${chapters.length}`);
+  await h.advance(chapters[31].end-.24);checkPause(h,32);
 });
-await test('Replaying a completed activity resets its future pause guard',async()=>{
+await test('The demo link intentionally selects Lab 03 chapter 19',async()=>{
+  const h=harness();h.el('demo-start').click();await h.settle();
+  near(h.video.currentTime,chapters[18].start+.025);assert.equal(h.el('slide-counter').textContent,`Slide 19 of ${chapters.length}`);
+  assert.equal(h.el('pause-panel').hidden,true);
+});
+await test('Replaying a completed activity reinstates its future pause',async()=>{
   const h=harness();await h.jump(4);await h.play();await h.advance(chapters[3].end-.24);await h.continueActivity();
   await h.jump(4);await h.advance(chapters[3].end-.24);checkPause(h,4);
 });
-await test('Turning activity pauses off permits manual playback and clears a shown pause',async()=>{
+await test('Turning work pauses off permits manual playback and clears a shown pause',async()=>{
   const h=harness();await h.jump(4);await h.play();await h.advance(chapters[3].end-.24);checkPause(h,4);
   h.toggle(false);assert.equal(h.el('pause-panel').hidden,true);await h.play();await h.advance(chapters[4].start+.3);
-  assert.equal(h.video.paused,false);assert.equal(h.el('slide-counter').textContent,'Slide 5 of 31');
-  h.video.pause();assert.equal(h.video.paused,true);h.toggle(true);await h.play();await h.advance(chapters[4].end-.24);checkPause(h,5);
+  assert.equal(h.video.paused,false);assert.equal(h.el('slide-counter').textContent,`Slide 5 of ${chapters.length}`);
+  h.video.pause();h.toggle(true);await h.jump(11);await h.play();await h.advance(chapters[10].end-.24);checkPause(h,11);
 });
-await test('Timer and animation-frame guards protect boundaries without timeupdate',async()=>{
+await test('Timer and frame guards protect the unseen-review boundary without timeupdate',async()=>{
   for(const event of ['timer','frame']){
-    const h=harness();await h.jump(28);await h.play();await h.advance(chapters[27].end-.24,event);checkPause(h,28);
+    const h=harness();await h.jump(40);await h.play();await h.advance(chapters[39].end-.24,event);checkPause(h,40);
   }
 });
-await test('The break pauses on slide 18 and Continue resumes slide 19',async()=>{
-  const h=harness();await h.jump(18);await h.play();await h.advance(chapters[17].end-.24);checkPause(h,18);
-  assert.match(h.el('pause-cue').textContent,/10.minute break/i);await h.continueActivity();assert.equal(h.el('slide-counter').textContent,'Slide 19 of 31');
+await test('The ten-minute break holds slide 28 and Continue resumes slide 29',async()=>{
+  const h=harness();await h.jump(breakSlide);await h.play();await h.advance(chapters[breakSlide-1].end-.24);checkPause(h,breakSlide);
+  assert.equal(chapters[breakSlide-1].activity_minutes,10);await h.continueActivity();assert.equal(h.el('slide-counter').textContent,`Slide 29 of ${chapters.length}`);
 });
-await test('Final slide 31 pauses, Finish stops and the ended fallback does not reopen it',async()=>{
-  const h=harness();await h.jump(31);await h.play();await h.advance(chapters[30].end-.24);checkPause(h,31);
-  assert.equal(h.el('continue-button').textContent,'Finish lesson');await h.continueActivity();
-  assert.equal(h.video.paused,true);assert.equal(h.el('pause-panel').hidden,true);
-  assert.ok(h.video.currentTime<chapters[30].end);assert.equal(h.el('finish-title').scrolls.length,1);
-  assert.match(h.el('announcer').textContent,/Session 3 anonymous exit ticket/);
+await test('Final form pause 43 leads to receipt check 44 without inventing another work stop',async()=>{
+  const h=harness();await h.jump(43);await h.play();await h.advance(chapters[42].end-.24);checkPause(h,43);
+  assert.equal(h.el('continue-button').textContent,'Continue to next slide');await h.continueActivity();
+  assert.equal(h.video.paused,false);assert.equal(h.el('pause-panel').hidden,true);near(h.video.currentTime,chapters[43].start+.025);
+  h.video._time=chapters.at(-1).end;h.video.paused=true;h.video.emit('ended');await h.settle();
+  assert.equal(h.el('pause-panel').hidden,true);assert.equal(h.el('slide-counter').textContent,`Slide 44 of ${chapters.length}`);
+});
+await test('Delayed natural ended event catches unfinished form pause 43',async()=>{
+  const h=harness();await h.jump(43);await h.play();h.video._time=chapters.at(-1).end;h.video.paused=true;
+  h.video.emit('ended');await h.settle();checkPause(h,43);
+});
+await test('An intentional jump to final receipt check does not trigger skipped form work',async()=>{
+  const h=harness();await h.jump(44);await h.play();h.video._time=chapters.at(-1).end;h.video.paused=true;
   h.video.emit('ended');await h.settle();assert.equal(h.el('pause-panel').hidden,true);
-});
-await test('Final ended event also holds unfinished feedback before completion',async()=>{
-  const h=harness();await h.jump(31);await h.play();h.video._time=chapters[30].end;h.video.paused=true;
-  h.video.emit('ended');await h.settle();checkPause(h,31);
 });
 await test('Wide captions remain native; narrow captions use active timed cues below the image',async()=>{
   const h=harness();await h.settle();assert.equal(h.track.mode,'showing');assert.equal(h.el('responsive-captions').hidden,true);

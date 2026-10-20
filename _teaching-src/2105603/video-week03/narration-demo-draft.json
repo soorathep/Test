@@ -1,0 +1,82 @@
+[
+  {
+    "number": 19,
+    "slide_id": "lab03-demo-route",
+    "title": "Lab 03: follow the demonstration",
+    "narration": "We are ready to connect the hand calculations to Lab Three. Keep worksheet page three and Lab guide pages two and three beside the browser. First we establish a clean reference. Then we introduce two controlled errors, changing one setting at a time. We compare forty one and one hundred sixty one observations for the localized error. Finally, we return to the clean reference, run the model reproduction test, and save the evidence. The following views were captured from the working Lab interface. They show the actual controls and results, rather than a drawing of the application. Before each altered case, write a prediction in the appropriate row of your worksheet. If you need more time to predict, pause manually. The data are synthetic, so we know which defect was deliberately introduced. That gives us a controlled way to learn what each diagnostic can and cannot detect.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 20,
+    "slide_id": "lab03-baseline-controls",
+    "title": "Lab 03: establish the baseline",
+    "narration": "Open Lab Three from the link on the lesson page or slide. Scroll to the workbench headed Which error can you detect. In Data set, select Synthetic, isothermal, three hundred fifty kelvin. In Controlled perturbation, select Consistent reference. Set Sampling resolution to forty one points. Do not leave it at the default eighty one points, because we need the same baseline for every comparison. The amplitude control reads zero point two five but is disabled for the consistent reference. No perturbation is applied in that case. The results update when the input changes; you do not need to press the modeling button to calculate the area and differential diagnostics. Check the observation count above the scorecards. It should say forty one observations, forty one activity pairs, and zero excluded. The synthetic endpoint limits are supplied. Record those settings under D one before recording any score. Also record that this is an isothermal path using the teaching approximation that neglects the excess-volume pressure contribution.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 21,
+    "slide_id": "lab03-baseline-evidence",
+    "title": "Lab 03: read the baseline evidence",
+    "narration": "Read the area scorecard first. With these settings, the displayed area percentage is approximately zero point zero seven nine. The differential score is approximately zero point one one eight. Both meet their stated teaching criteria. Herington says Not applicable because we selected an isothermal dataset. The modeling card says Not run, which simply records that we have not fitted a model. Now use Inspect to select Log-activity ratio and integrated area. The curve crosses zero, with positive and negative contributions that almost balance. The displayed positive and negative area magnitudes are about zero point three nine three two nine and zero point three nine two six seven. Their small difference gives the reported nonzero numerical integral. Next, change Inspect to Local Gibbs-Duhem residual. The clean reference has small residuals, most visible toward low composition, rather than a perfectly flat line at zero. That is expected from finite differences on a finite grid. Keep the vertical-axis scale in view: these clean residuals are small. When you compare the next case, read both the shape and its numerical scale. Automatic plot scaling can otherwise make two very different magnitudes look deceptively similar.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 22,
+    "slide_id": "predict-the-defects",
+    "title": "Predict before changing the data",
+    "narration": "Before the next result appears, write two short predictions in D two and D three. First, imagine an error that is positive in one composition region and negative in another, with exactly zero integral over the full range. Would an area test necessarily detect it? What would you expect from a local residual plot? Second, imagine an error concentrated in a narrow region near composition zero point three five. Could an average score remain below a threshold even when the local graph shows a clear defect? Do not try to guess the exact numerical scores. Predict the type of evidence that would change, and explain why. You can revise the prediction later, but keep the original beside the correction. Pause the video manually now if you have not written both predictions. We will keep temperature, amplitude, and the number of points fixed so that the perturbation type is the only change in the first comparison.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 23,
+    "slide_id": "canceling-errors-explained",
+    "title": "Lab 03: an area can hide canceling errors",
+    "narration": "In Controlled perturbation, choose Canceling errors, zero net area. Keep amplitude at zero point two five and sampling at forty one points. The area percentage remains small, approximately zero point zero seven four. It still meets the area criterion. The differential score now rises to approximately fifteen point five nine nine, outside its teaching criterion. Select Local Gibbs-Duhem residual under Inspect. The residual has a broad negative region, a positive central region, and another negative region. Its magnitude is much larger than in the clean reference. Why do the tests disagree? The generator adds a cosine-shaped error to the log-activity ratio. Its signed integral is exactly zero over the full composition interval. At the same time, the weighted changes in the two log activity coefficients cancel in excess Gibbs energy. The energy curve therefore stays unchanged while the log ratio changes. The derivative identity is broken locally even though the extra signed area cancels globally. A small numerical area is consequently compatible with deliberately inconsistent local behavior. In your worksheet, distinguish the mathematical cancellation of the imposed error from the small integration error still present in the numerical baseline. The evidence supports a specific statement: the area criterion alone missed this constructed defect.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 24,
+    "slide_id": "localized-defect-and-sampling",
+    "title": "Lab 03: inspect a localized defect and sampling",
+    "narration": "Now select Localized defect near x one equals zero point three five. Keep the amplitude at zero point two five and begin with forty one points. The area percentage is approximately two point zero one three, and the differential score is approximately one point six seven two. Both are below five. However, the local residual graph contains a distinct negative trough near zero point three five. A criterion based on an average can dilute an error that occupies only a narrow region. That is why you must inspect the plotted residual as well as the scorecard. Record the forty one point results before changing Sampling resolution to one hundred sixty one points. The area percentage becomes approximately one point nine four two, while the differential score becomes approximately one point five six six. The trough remains, and the denser grid describes its shape with more points. Neither result changes to an automatic failure. More points do not guarantee that an aggregate threshold will flag a localized defect. This is also not a new noisy experiment: the teaching generator is being sampled more densely. A screenshot with the trough marked near zero point three five is useful evidence for E one. Avoid claiming that this finite-difference exercise validates a laboratory dataset or duplicates the NIST point-test implementation.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 25,
+    "slide_id": "model-fit-and-saved-evidence",
+    "title": "Lab 03: fit once and retain the evidence",
+    "narration": "For D five, return Controlled perturbation to Consistent reference and Sampling resolution to forty one points. Verify those settings before pressing Run modeling test. The application reports convergence using thirty nine interior points, with no fitted parameter at a bound. The two pure endpoints are excluded from this fitting step. Pressure and vapor-composition errors both round to zero point zero zero zero on the scorecard. They are very small numerical errors, not a promise of exact experimental accuracy. This synthetic reference is generated from the same family of consistent activity models, so a very close reproduction is expected. Under Inspect, choose Modeling residuals to see both pressure and vapor-composition residuals. The method fits two constant NRTL interaction parameters for this isothermal case, with the nonrandomness parameter fixed at zero point four seven. It asks whether the selected model reproduces the observations under the stated vapor-property approximation. It does not independently prove that observations obey every thermodynamic constraint. Click Export all results to download the current results and settings. Save the file beside your worksheet, and retain screenshots of the perturbed cases before returning to the clean case. Each export describes the current state; it is not a history of every case you explored. To reopen a case, expand Study workspace, reopen and compare cases, above the calculator. A freshly exported study is already listed in this workspace. For a downloaded file, use Load studies or a comparison JSON. Here I change the current controls, then select Restore Case One from the recorded case. The inputs return to the clean reference at forty one points. The modeling result must be fitted again, so I press Run modeling test and confirm convergence. Restoring inputs does not turn old saved results into a fresh calculation. Do not confuse saving evidence with uploading an assignment.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 26,
+    "slide_id": "lab03-investigation",
+    "title": "Your Lab 03 investigation",
+    "narration": "It is your turn to perform the complete investigation. Allow about eighteen minutes of independent work here. Open Lab Three in a separate tab and complete D one through D five on worksheet page three. Reproduce the clean reference at forty one points. Compare canceling errors at amplitude zero point two five. Then compare the localized defect at forty one and one hundred sixty one points. Keep the dataset and amplitude fixed during those comparisons. Finally return to the clean reference at forty one points and run the modeling test once. Record the path, settings, area percentage, local score, and the reason for any unavailable verdict. Under E one, retain a local-residual plot and annotate the composition region that matters. Under E two, write three short statements: a claim supported by the comparison, the evidence that supports it, and a limitation. If a result differs from the demonstration, first check dataset, perturbation, amplitude, and sampling resolution. Changing a setting clears a previous model fit, so do not copy an old fit result into a new case. Use the Lab guide if you lose your place. The player will pause before the check slide. Continue when your evidence is recorded, not merely when a timer expires.",
+    "activity_minutes": 18,
+    "pause_instruction": "Pause now. Open Lab 03 and the four-page Lab guide. Complete worksheet p. 3 D1\u2013D5 and E1\u2013E2: clean41, canceling41, localized41/161, clean41 fit; retain settings, scores, annotated plot, and claim/evidence/limitation. Allow about18 minutes, then continue."
+  },
+  {
+    "number": 27,
+    "slide_id": "lab03-check",
+    "title": "Check your Lab 03 interpretation",
+    "narration": "Compare your completed investigation with these conclusions. The consistent reference has small numerical residuals. The canceling-error case satisfies the area criterion while showing a much larger local residual and an outside-criterion differential score. The localized defect is a different lesson: both aggregate scores meet their teaching thresholds, while the local graph still reveals a narrow imposed error. Increasing the resolution changes the numerical scores and resolves the trough more densely; it does not erase the defect or guarantee a different threshold decision. Finally, the clean-reference NRTL fit reproduces pressure and vapor composition very closely under its assumptions. That result answers a model-reproduction question. It does not override the need to examine the data path, local evidence, or missing correction properties. A useful E two conclusion might state that an area result alone cannot rule out canceling errors, cite your area and local scores, and identify the synthetic setting and finite-difference approximation as limitations. Keep any correction beside the original attempt. We now move from checking property relationships to deciding which phase arrangement minimizes Gibbs energy.",
+    "activity_minutes": 0,
+    "pause_instruction": ""
+  },
+  {
+    "number": 28,
+    "slide_id": "break",
+    "title": "Take a ten-minute break",
+    "narration": "Take a ten-minute break now. Save your worksheet and Lab Three evidence before leaving the screen. This break is part of the approximately three-hour lesson, not an additional assignment. When you return, have worksheet page four ready. We will begin with the distinction between a locally stable homogeneous liquid and the globally stable phase arrangement. You will calculate phase amounts by hand, then use Lab Four to compare three overall compositions at the same model setting. The player will remain paused until you choose to continue.",
+    "activity_minutes": 10,
+    "pause_instruction": "Pause for a10-minute break. Keep your worksheet and Lab03 evidence saved. Return to worksheet p.4 F1\u2013F3 before continuing to liquid stability."
+  }
+]

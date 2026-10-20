@@ -1,4 +1,4 @@
-"""Generate the 31-slide Week 3 male English narration with exact PCM cue timings.
+"""Generate Week 3 male English narration with exact PCM cue timings.
 
 Run with the absolute research-environment interpreter, for example:
     "$HOME/.venvs/research/bin/python" asynchronous-week03/build-narration.py
@@ -91,12 +91,17 @@ def main():
     parser.add_argument('--model-dir', type=Path, default=ROOT/'tmp/audio/kokoro-models')
     parser.add_argument('--output', type=Path, default=ROOT/'outputs/week03-video/audio')
     parser.add_argument('--cache', type=Path, default=ROOT/'tmp/audio/week03-male')
+    parser.add_argument('--script', type=Path, default=Path(__file__).with_name('narration.json'))
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     args.cache.mkdir(parents=True, exist_ok=True)
     script_dir = Path(__file__).resolve().parent
-    entries = json.loads((script_dir/'narration.json').read_text())
-    assert [e['id'] for e in entries] == [f'{i:02d}' for i in range(1, 32)], 'Expected ordered slides 01-31.'
+    entries = json.loads(args.script.read_text())
+    for entry in entries:
+        entry.setdefault('id', f"{entry.get('number',entry.get('slide')):02d}")
+        entry['narration'] = ' '.join(entry['narration'].split())
+    first = int(entries[0]['id'])
+    assert [e['id'] for e in entries] == [f'{i:02d}' for i in range(first, first+len(entries))], 'Expected contiguous ordered slides.'
     for entry in entries:
         assert not re.search(r'[\u0e00-\u0e7f]', entry['narration']), 'Narration must be English.'
         assert '\\' not in entry['narration'], 'No raw LaTeX in spoken narration.'
@@ -204,7 +209,7 @@ def main():
           'runtime_seconds':elapsed,'generated_sentence_count':generated_count,'cached_sentence_count':cached_count,
           'master_peak':float(np.max(np.abs(master_float))),'master_rms':float(np.sqrt(np.mean(master_float**2))),
           'clipped_samples':int(np.count_nonzero((master==32767)|(master==-32768))),
-          'checks':['31 ordered slides','24000 Hz mono PCM_16','Master exactly equals concatenated delivered segments',
+          'checks':[f'{len(entries)} ordered slides','24000 Hz mono PCM_16','Master exactly equals concatenated delivered segments',
                     'Contiguous chapter intervals','Nonoverlapping sentence cues','Cue text reconstructs original narration',
                     '4320-sample lead and 8400-sample tail per chapter','4320-sample gaps between sentence cues',
                     'No clipping; peak <=0.89 within PCM quantization tolerance'],

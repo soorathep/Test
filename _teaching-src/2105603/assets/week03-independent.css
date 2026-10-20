@@ -17,3 +17,19 @@
   text-transform: none;
   letter-spacing: normal;
 }
+/* Keep UI crops illustrative; exact settings and results remain readable text. */
+.reveal .demo-slide .columns { gap: 1.1em; align-items: start; }
+.reveal .demo-slide .column > p { font-size: .88em; margin: .2em 0 .35em; }
+.reveal .demo-slide .column img { margin: .15em 0; }
+.reveal .demo-slide .column figure { margin: .1em 0; }
+.reveal .demo-slide figcaption { display: none; }
+.reveal .demo-slide table { font-size: .79em; }
+.reveal .work-stop .your-action { border-top-width: 3px; }
+
+/* Fit the modeling evidence and its limitations on one physical slide. */
+.reveal #model-fit-and-saved-evidence .column img {
+  height: 180px;
+  width: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+}

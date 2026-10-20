@@ -1,47 +1,55 @@
 {
   "scope": "Controller unit tests using minimal fake DOM/media; not actual rendering, audio synchronization or browser playback QA",
   "mode": "actual timing metadata; mocked media events, no decoded-video or browser QA",
-  "script_sha256": "99a92b5f838c4cfa446474f2d155b434d4c876ed6fd78ae843310df3f4b21e55",
-  "chapters": 31,
+  "script_sha256": "c49f684f9b4260ee03122cc7e5f858407608c4d6c16d3edff6fcf4e819cf104a",
+  "chapters": 44,
   "tests": [
     {
-      "name": "Default activity pause holds each attempt before its answer (4/9/21/28)",
+      "name": "Default pause holds all nine revised work stops before advancing",
       "status": "passed"
     },
     {
-      "name": "Delayed timeupdate beyond a boundary rewinds and pins the previous task",
+      "name": "Delayed timeupdate beyond a boundary rewinds to the previous task",
       "status": "passed"
     },
     {
-      "name": "Continue advances to the next slide and resumes playback",
+      "name": "Continue advances from the lever-rule attempt to its check and resumes",
       "status": "passed"
     },
     {
-      "name": "Intentional chapter and native seeks do not trigger skipped activities",
+      "name": "Intentional chapter and native seeks do not trigger skipped work stops",
       "status": "passed"
     },
     {
-      "name": "Replaying a completed activity resets its future pause guard",
+      "name": "The demo link intentionally selects Lab 03 chapter 19",
       "status": "passed"
     },
     {
-      "name": "Turning activity pauses off permits manual playback and clears a shown pause",
+      "name": "Replaying a completed activity reinstates its future pause",
       "status": "passed"
     },
     {
-      "name": "Timer and animation-frame guards protect boundaries without timeupdate",
+      "name": "Turning work pauses off permits manual playback and clears a shown pause",
       "status": "passed"
     },
     {
-      "name": "The break pauses on slide 18 and Continue resumes slide 19",
+      "name": "Timer and frame guards protect the unseen-review boundary without timeupdate",
       "status": "passed"
     },
     {
-      "name": "Final slide 31 pauses, Finish stops and the ended fallback does not reopen it",
+      "name": "The ten-minute break holds slide 28 and Continue resumes slide 29",
       "status": "passed"
     },
     {
-      "name": "Final ended event also holds unfinished feedback before completion",
+      "name": "Final form pause 43 leads to receipt check 44 without inventing another work stop",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed natural ended event catches unfinished form pause 43",
+      "status": "passed"
+    },
+    {
+      "name": "An intentional jump to final receipt check does not trigger skipped form work",
       "status": "passed"
     },
     {

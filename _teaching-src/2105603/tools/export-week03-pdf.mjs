@@ -11,7 +11,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..')
 const origin=process.env.COURSE_ORIGIN||'http://127.0.0.1:8813';
 const browser=await chromium.launch({headless:true,channel:'chrome'});
 try {
-  for(const [name,expected] of [['postmidterm-03',31],['week02-clarifications',null]]){
+  for(const [name,expected] of [['postmidterm-03',44]]){
     const page=await browser.newPage({viewport:{width:1280,height:720}});
     await page.goto(`${origin}/teaching/2105603/${name}.html?print-pdf`);
     await page.waitForFunction(()=>document.querySelector('.pdf-page'),{},{timeout:60000});

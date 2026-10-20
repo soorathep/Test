@@ -1,45 +1,155 @@
 {
-  "week03-practice": {
-    "pages": 4,
-    "bytes": 59676,
-    "links": 5,
-    "text_characters": 6896,
-    "all_text_bounds_inside_page": true,
-    "rendered_pages_reviewed": 4,
-    "font_check": "All fonts embedded TrueType; no Type 3"
+  "revision": "Expanded Week 3 calculations and investigations",
+  "expected_total_pages": 17,
+  "all_pages_visually_reviewed": true,
+  "renderer": "Poppler pdftoppm, 1400px longest side",
+  "hand_calculations": {
+    "C4_clean": [
+      [
+        0.48,
+        0.5,
+        0.48
+      ],
+      0.0,
+      0.0
+    ],
+    "C4_changed": [
+      [
+        0.48,
+        0.5,
+        0.504
+      ],
+      0.12000000000000013,
+      0.12000000000000013
+    ],
+    "C5_clean": [
+      [
+        0.315,
+        0.36,
+        0.375
+      ],
+      0.3,
+      -5.551115123125783e-17
+    ],
+    "C5_changed": [
+      [
+        0.315,
+        0.36,
+        0.4
+      ],
+      0.4250000000000001,
+      0.12500000000000006
+    ],
+    "G3_G4": {
+      "xAlpha": 0.07072018167994476,
+      "xBeta": 0.9292798183200552,
+      "fractionBeta": 0.05739824727016868,
+      "feedEnergy": -0.05012499127270964,
+      "splitEnergy": -0.05834134944144001,
+      "gain": 0.00821635816873037
+    },
+    "H1_residual": 0.04999999999999982,
+    "H3_fractionBeta": 0.4
   },
-  "week03-solutions": {
-    "pages": 3,
-    "bytes": 54767,
-    "links": 3,
-    "text_characters": 7898,
-    "all_text_bounds_inside_page": true,
-    "rendered_pages_reviewed": 3,
-    "font_check": "All fonts embedded TrueType; no Type 3"
+  "files": [
+    {
+      "name": "week03-practice.pdf",
+      "pages": 6,
+      "bytes": 64731,
+      "sha256": "b1e4ab520fe85f3b8ed6ea5c6cc6873d9d50300e47debc5d2f3102e31d16416b",
+      "fonts_embedded": true,
+      "type3_fonts": false,
+      "body_bottom_y": [
+        624.74,
+        662.74,
+        631.34,
+        655.74,
+        608.34,
+        652.74
+      ],
+      "link_count": 5,
+      "checked_internal_targets": true
+    },
+    {
+      "name": "week03-solutions.pdf",
+      "pages": 4,
+      "bytes": 58771,
+      "sha256": "db6bb4026e437ec4e0b9b84709583fce229bd0c6ab46a5949bea7fcec733ca71",
+      "fonts_embedded": true,
+      "type3_fonts": false,
+      "body_bottom_y": [
+        781.74,
+        679.04,
+        647.44,
+        721.54
+      ],
+      "link_count": 3,
+      "checked_internal_targets": true
+    },
+    {
+      "name": "week03-lab-guide.pdf",
+      "pages": 4,
+      "bytes": 57943,
+      "sha256": "0c33209b979abd09599e0fcba50d3b7673edd5ef7d11747ef05e321c0627a50a",
+      "fonts_embedded": true,
+      "type3_fonts": false,
+      "body_bottom_y": [
+        721.44,
+        665.44,
+        635.94,
+        621.54
+      ],
+      "link_count": 5,
+      "checked_internal_targets": true
+    },
+    {
+      "name": "preclass-week-03.pdf",
+      "pages": 3,
+      "bytes": 53985,
+      "sha256": "c01eac6ee745ab4cfb6b12c8108802e84942cad7ad22a436a1e3ab27a9e53c50",
+      "fonts_embedded": true,
+      "type3_fonts": false,
+      "body_bottom_y": [
+        656.77,
+        626.94,
+        644.94
+      ],
+      "link_count": 4,
+      "checked_internal_targets": true
+    }
+  ],
+  "lab03_checked_against_engine": {
+    "localized_41": {
+      "D": 2.01346322468344,
+      "local_score": 1.6718389636067679,
+      "peak_abs": 0.24903390884840249
+    },
+    "localized_161": {
+      "D": 1.9417238225937432,
+      "local_score": 1.5656069080700477,
+      "peak_abs": 0.24993966606048967
+    }
   },
-  "week03-lab-guide": {
-    "pages": 3,
-    "bytes": 54907,
-    "links": 5,
-    "text_characters": 7962,
-    "all_text_bounds_inside_page": true,
-    "rendered_pages_reviewed": 3,
-    "font_check": "All fonts embedded TrueType; no Type 3"
+  "lab04_checked_against_engine": {
+    "A": 3,
+    "z002": {
+      "state": "stable",
+      "phase": "one liquid",
+      "gain": 0
+    },
+    "z012": {
+      "state": "metastable",
+      "phase": "two liquids",
+      "fractionBeta": 0.05739824727016868,
+      "gain": 0.008216358168730398
+    },
+    "z050": {
+      "state": "unstable",
+      "phase": "two liquids",
+      "fractionBeta": 0.5,
+      "gain": 0.11519416888149475
+    }
   },
-  "preclass-week-03": {
-    "pages": 3,
-    "bytes": 53933,
-    "links": 4,
-    "text_characters": 7334,
-    "all_text_bounds_inside_page": true,
-    "rendered_pages_reviewed": 3,
-    "font_check": "All fonts embedded TrueType; no Type 3"
-  },
-  "prereading_entry_point": "Week 3 output matches current text exactly",
-  "practice_qr": {
-    "target": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3",
-    "verification": "Every vector module in final PDF matches the standard QR encoder matrix for this URL",
-    "matrix_size": 45,
-    "dark_modules": 700
-  }
+  "final_flow_revision": "Worksheet page 6 and solutions page 4 regenerated and visually rechecked: slide 43 completes feedback with actual minutes/pace and submits once; slide 44 verifies receipt and saves.",
+  "json_reopen_revision": "Guide page 2 and solutions page 2 regenerated and visually rechecked: optional shared Study workspace JSON load, Restore, input check and rerun modeling test. Recorded imported results are not fresh calculations."
 }

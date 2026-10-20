@@ -1,10 +1,10 @@
 {
   "passed": true,
   "video": "week03-lecture.mp4",
-  "duration_seconds": 1991.6186666666667,
-  "narration_duration_seconds": 1929.6186666666667,
-  "size_bytes": 61054417,
-  "video_sha256": "9d0fd3a4777c9f11b5918c1e9c0182604f25760e5529fffef049abafb55bde33",
+  "duration_seconds": 3340.850125,
+  "narration_duration_seconds": 3252.850125,
+  "size_bytes": 62827044,
+  "video_sha256": "d1d1cc9540f6093d455b4a288911cfa5cc5d59e5a43c77bf9d2732f746107271",
   "dimensions": [
     1920,
     1080
@@ -15,17 +15,22 @@
   "audio_channels": 1,
   "audio_sample_rate": 48000,
   "timeline_sample_rate": 24000,
-  "chapter_count": 31,
+  "chapter_count": 44,
+  "visual_scene_count": 57,
+  "actual_lab_capture_count": 17,
   "faststart": true,
   "source_hashes_verified": true,
   "pcm_master_sample_exact": true,
   "all_silent_tails_verified": true,
   "all_frame_boundaries_contiguous": true,
   "no_early_slide_switches": true,
-  "decoded_video_frames": 2007,
+  "decoded_video_frames": 864,
   "slide_transition_checks": [
     {
       "slide": 1,
+      "scene": 1,
+      "kind": "slide",
+      "label": "Thermodynamic consistency and liquid stability",
       "start_sample": 0,
       "actual_seconds": 0.0,
       "key_frame": true,
@@ -34,260 +39,636 @@
     },
     {
       "slide": 2,
-      "start_sample": 1178960,
-      "actual_seconds": 49.123333333333335,
+      "scene": 2,
+      "kind": "slide",
+      "label": "Your independent lesson",
+      "start_sample": 1120910,
+      "actual_seconds": 46.70458333333333,
       "key_frame": true,
-      "first_frame_psnr_db": 42.93,
-      "previous_last_frame_psnr_db": 50.22
+      "first_frame_psnr_db": 43.07,
+      "previous_last_frame_psnr_db": 50.29
     },
     {
       "slide": 3,
-      "start_sample": 2507488,
-      "actual_seconds": 104.47866666666667,
+      "scene": 3,
+      "kind": "slide",
+      "label": "The 180-minute route",
+      "start_sample": 2298318,
+      "actual_seconds": 95.76325,
       "key_frame": true,
-      "first_frame_psnr_db": 42.73,
-      "previous_last_frame_psnr_db": 42.82
+      "first_frame_psnr_db": 45.48,
+      "previous_last_frame_psnr_db": 43.06
     },
     {
       "slide": 4,
-      "start_sample": 4011151,
-      "actual_seconds": 167.13129166666667,
+      "scene": 4,
+      "kind": "slide",
+      "label": "Review attempt \u00b7 0\u201315 min",
+      "start_sample": 3526046,
+      "actual_seconds": 146.91858333333334,
       "key_frame": true,
-      "first_frame_psnr_db": 44.99,
-      "previous_last_frame_psnr_db": 45.83
+      "first_frame_psnr_db": 46.73,
+      "previous_last_frame_psnr_db": 45.58
     },
     {
       "slide": 5,
-      "start_sample": 5504718,
-      "actual_seconds": 229.36325,
+      "scene": 5,
+      "kind": "slide",
+      "label": "Review check \u00b7 0\u201315 min",
+      "start_sample": 5116765,
+      "actual_seconds": 213.19854166666667,
       "key_frame": true,
-      "first_frame_psnr_db": 45.21,
-      "previous_last_frame_psnr_db": 44.87
+      "first_frame_psnr_db": 41.92,
+      "previous_last_frame_psnr_db": 46.91
     },
     {
       "slide": 6,
-      "start_sample": 7100382,
-      "actual_seconds": 295.84925,
+      "scene": 6,
+      "kind": "slide",
+      "label": "Excess Gibbs energy \u00b7 15\u201340 min",
+      "start_sample": 6876941,
+      "actual_seconds": 286.5392083333333,
       "key_frame": true,
-      "first_frame_psnr_db": 45.73,
-      "previous_last_frame_psnr_db": 45.31
+      "first_frame_psnr_db": 45.79,
+      "previous_last_frame_psnr_db": 45.54
     },
     {
       "slide": 7,
-      "start_sample": 8753102,
-      "actual_seconds": 364.7125833333333,
+      "scene": 7,
+      "kind": "slide",
+      "label": "Gibbs\u2013Duhem \u00b7 15\u201340 min",
+      "start_sample": 8840540,
+      "actual_seconds": 368.35583333333335,
       "key_frame": true,
-      "first_frame_psnr_db": 45.21,
-      "previous_last_frame_psnr_db": 45.88
+      "first_frame_psnr_db": 45.62,
+      "previous_last_frame_psnr_db": 45.81
     },
     {
       "slide": 8,
-      "start_sample": 10639006,
-      "actual_seconds": 443.2919166666667,
+      "scene": 8,
+      "kind": "slide",
+      "label": "From excess energy to a slope \u00b7 15\u201340 min",
+      "start_sample": 10499020,
+      "actual_seconds": 437.45916666666665,
       "key_frame": true,
-      "first_frame_psnr_db": 44.8,
-      "previous_last_frame_psnr_db": 45.27
-    },
-    {
-      "slide": 9,
-      "start_sample": 12421373,
-      "actual_seconds": 517.5572083333333,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.58,
-      "previous_last_frame_psnr_db": 44.97
-    },
-    {
-      "slide": 10,
-      "start_sample": 13989548,
-      "actual_seconds": 582.8978333333333,
-      "key_frame": true,
-      "first_frame_psnr_db": 42.03,
+      "first_frame_psnr_db": 45.9,
       "previous_last_frame_psnr_db": 45.69
     },
     {
-      "slide": 11,
-      "start_sample": 15677867,
-      "actual_seconds": 653.2444583333333,
+      "slide": 9,
+      "scene": 9,
+      "kind": "slide",
+      "label": "Follow the experimental path \u00b7 15\u201340 min",
+      "start_sample": 12416092,
+      "actual_seconds": 517.3371666666667,
       "key_frame": true,
-      "first_frame_psnr_db": 41.91,
-      "previous_last_frame_psnr_db": 45.43
+      "first_frame_psnr_db": 45.19,
+      "previous_last_frame_psnr_db": 46.03
+    },
+    {
+      "slide": 10,
+      "scene": 10,
+      "kind": "slide",
+      "label": "Match the method to the claim \u00b7 15\u201340 min",
+      "start_sample": 14357499,
+      "actual_seconds": 598.229125,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.02,
+      "previous_last_frame_psnr_db": 45.26
+    },
+    {
+      "slide": 11,
+      "scene": 11,
+      "kind": "slide",
+      "label": "What a local residual measures \u00b7 15\u201340 min",
+      "start_sample": 16527979,
+      "actual_seconds": 688.6657916666667,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.98,
+      "previous_last_frame_psnr_db": 45.1
     },
     {
       "slide": 12,
-      "start_sample": 17319194,
-      "actual_seconds": 721.6330833333334,
+      "scene": 12,
+      "kind": "slide",
+      "label": "Why the area should vanish \u00b7 40\u201365 min",
+      "start_sample": 18787800,
+      "actual_seconds": 782.825,
       "key_frame": true,
-      "first_frame_psnr_db": 44.61,
-      "previous_last_frame_psnr_db": 45.31
+      "first_frame_psnr_db": 45.87,
+      "previous_last_frame_psnr_db": 46.0
     },
     {
       "slide": 13,
-      "start_sample": 18980696,
-      "actual_seconds": 790.8623333333334,
+      "scene": 13,
+      "kind": "slide",
+      "label": "Area attempt \u00b7 40\u201365 min",
+      "start_sample": 20505240,
+      "actual_seconds": 854.385,
       "key_frame": true,
-      "first_frame_psnr_db": 44.79,
-      "previous_last_frame_psnr_db": 44.7
-    },
-    {
-      "slide": 14,
-      "start_sample": 20576471,
-      "actual_seconds": 857.3529583333333,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.13,
-      "previous_last_frame_psnr_db": 44.81
-    },
-    {
-      "slide": 15,
-      "start_sample": 22227286,
-      "actual_seconds": 926.1369166666667,
-      "key_frame": true,
-      "first_frame_psnr_db": 44.69,
-      "previous_last_frame_psnr_db": 45.28
-    },
-    {
-      "slide": 16,
-      "start_sample": 24014374,
-      "actual_seconds": 1000.5989166666667,
-      "key_frame": true,
-      "first_frame_psnr_db": 42.3,
-      "previous_last_frame_psnr_db": 44.66
-    },
-    {
-      "slide": 17,
-      "start_sample": 25680918,
-      "actual_seconds": 1070.03825,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.13,
-      "previous_last_frame_psnr_db": 42.45
-    },
-    {
-      "slide": 18,
-      "start_sample": 27366262,
-      "actual_seconds": 1140.2609166666666,
-      "key_frame": true,
-      "first_frame_psnr_db": 44.09,
-      "previous_last_frame_psnr_db": 44.89
-    },
-    {
-      "slide": 19,
-      "start_sample": 28010693,
-      "actual_seconds": 1167.1122083333332,
-      "key_frame": true,
-      "first_frame_psnr_db": 44.97,
-      "previous_last_frame_psnr_db": 46.79
-    },
-    {
-      "slide": 20,
-      "start_sample": 29736917,
-      "actual_seconds": 1239.0382083333334,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.16,
-      "previous_last_frame_psnr_db": 45.01
-    },
-    {
-      "slide": 21,
-      "start_sample": 31252901,
-      "actual_seconds": 1302.2042083333333,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.6,
-      "previous_last_frame_psnr_db": 45.42
-    },
-    {
-      "slide": 22,
-      "start_sample": 32731893,
-      "actual_seconds": 1363.828875,
-      "key_frame": true,
-      "first_frame_psnr_db": 45.6,
+      "first_frame_psnr_db": 47.45,
       "previous_last_frame_psnr_db": 45.88
     },
     {
-      "slide": 23,
-      "start_sample": 34205989,
-      "actual_seconds": 1425.2495416666666,
+      "slide": 14,
+      "scene": 14,
+      "kind": "slide",
+      "label": "Area check \u00b7 40\u201365 min",
+      "start_sample": 22050903,
+      "actual_seconds": 918.787625,
       "key_frame": true,
-      "first_frame_psnr_db": 45.29,
-      "previous_last_frame_psnr_db": 45.94
+      "first_frame_psnr_db": 42.12,
+      "previous_last_frame_psnr_db": 47.5
+    },
+    {
+      "slide": 15,
+      "scene": 15,
+      "kind": "slide",
+      "label": "Worked local table \u00b7 40\u201365 min",
+      "start_sample": 23807671,
+      "actual_seconds": 991.9862916666667,
+      "key_frame": true,
+      "first_frame_psnr_db": 46.02,
+      "previous_last_frame_psnr_db": 45.55
+    },
+    {
+      "slide": 16,
+      "scene": 16,
+      "kind": "slide",
+      "label": "Change one value \u00b7 40\u201365 min",
+      "start_sample": 25730885,
+      "actual_seconds": 1072.1202083333333,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.27,
+      "previous_last_frame_psnr_db": 46.06
+    },
+    {
+      "slide": 17,
+      "scene": 17,
+      "kind": "slide",
+      "label": "Local attempt \u00b7 40\u201365 min",
+      "start_sample": 27619061,
+      "actual_seconds": 1150.7942083333332,
+      "key_frame": true,
+      "first_frame_psnr_db": 47.28,
+      "previous_last_frame_psnr_db": 45.3
+    },
+    {
+      "slide": 18,
+      "scene": 18,
+      "kind": "slide",
+      "label": "Local check \u00b7 40\u201365 min",
+      "start_sample": 29216628,
+      "actual_seconds": 1217.3595,
+      "key_frame": true,
+      "first_frame_psnr_db": 41.82,
+      "previous_last_frame_psnr_db": 47.32
+    },
+    {
+      "slide": 19,
+      "scene": 19,
+      "kind": "slide",
+      "label": "Lab 03: watch the complete route \u00b7 65\u201395 min",
+      "start_sample": 31137443,
+      "actual_seconds": 1297.3934583333332,
+      "key_frame": true,
+      "first_frame_psnr_db": 44.84,
+      "previous_last_frame_psnr_db": 45.37
+    },
+    {
+      "slide": 20,
+      "scene": 20,
+      "kind": "slide",
+      "label": "Demonstration: baseline controls \u00b7 65\u201395 min",
+      "start_sample": 32675699,
+      "actual_seconds": 1361.4874583333333,
+      "key_frame": true,
+      "first_frame_psnr_db": 42.06,
+      "previous_last_frame_psnr_db": 44.98
+    },
+    {
+      "slide": 20,
+      "scene": 21,
+      "kind": "actual_lab_capture",
+      "label": "Set the reference and41 observations",
+      "start_sample": 32777523,
+      "actual_seconds": 1365.730125,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.12,
+      "previous_last_frame_psnr_db": 42.32
+    },
+    {
+      "slide": 21,
+      "scene": 22,
+      "kind": "actual_lab_capture",
+      "label": "Read settings and scores",
+      "start_sample": 34527043,
+      "actual_seconds": 1438.6267916666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.39,
+      "previous_last_frame_psnr_db": 49.48
+    },
+    {
+      "slide": 21,
+      "scene": 23,
+      "kind": "actual_lab_capture",
+      "label": "Inspect the signed area",
+      "start_sample": 35229027,
+      "actual_seconds": 1467.876125,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.67,
+      "previous_last_frame_psnr_db": 49.41
+    },
+    {
+      "slide": 21,
+      "scene": 24,
+      "kind": "actual_lab_capture",
+      "label": "Inspect clean local residuals",
+      "start_sample": 35890403,
+      "actual_seconds": 1495.4334583333334,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.49,
+      "previous_last_frame_psnr_db": 49.67
+    },
+    {
+      "slide": 22,
+      "scene": 25,
+      "kind": "slide",
+      "label": "Predict the defects before seeing them \u00b7 65\u201395 min",
+      "start_sample": 36779890,
+      "actual_seconds": 1532.4954166666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.76,
+      "previous_last_frame_psnr_db": 49.53
+    },
+    {
+      "slide": 23,
+      "scene": 26,
+      "kind": "actual_lab_capture",
+      "label": "Canceling error: compare the scores",
+      "start_sample": 38425729,
+      "actual_seconds": 1601.0720416666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.19,
+      "previous_last_frame_psnr_db": 45.69
+    },
+    {
+      "slide": 23,
+      "scene": 27,
+      "kind": "actual_lab_capture",
+      "label": "Canceling error: inspect the residual",
+      "start_sample": 39078033,
+      "actual_seconds": 1628.251375,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.33,
+      "previous_last_frame_psnr_db": 49.2
     },
     {
       "slide": 24,
-      "start_sample": 35878533,
-      "actual_seconds": 1494.938875,
+      "scene": 28,
+      "kind": "actual_lab_capture",
+      "label": "Localized defect:41-point scores",
+      "start_sample": 40931457,
+      "actual_seconds": 1705.477375,
       "key_frame": true,
-      "first_frame_psnr_db": 45.45,
-      "previous_last_frame_psnr_db": 45.23
+      "first_frame_psnr_db": 49.32,
+      "previous_last_frame_psnr_db": 49.45
+    },
+    {
+      "slide": 24,
+      "scene": 29,
+      "kind": "actual_lab_capture",
+      "label": "Localized defect:41-point graph",
+      "start_sample": 41485649,
+      "actual_seconds": 1728.5687083333332,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.31,
+      "previous_last_frame_psnr_db": 49.33
+    },
+    {
+      "slide": 24,
+      "scene": 30,
+      "kind": "actual_lab_capture",
+      "label": "Change to161 points",
+      "start_sample": 42142560,
+      "actual_seconds": 1755.94,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.27,
+      "previous_last_frame_psnr_db": 49.32
+    },
+    {
+      "slide": 24,
+      "scene": 31,
+      "kind": "actual_lab_capture",
+      "label": "Inspect the denser local graph",
+      "start_sample": 42383424,
+      "actual_seconds": 1765.976,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.15,
+      "previous_last_frame_psnr_db": 49.27
     },
     {
       "slide": 25,
-      "start_sample": 37340565,
-      "actual_seconds": 1555.856875,
+      "scene": 32,
+      "kind": "actual_lab_capture",
+      "label": "Return to the clean reference",
+      "start_sample": 43377535,
+      "actual_seconds": 1807.3972916666667,
       "key_frame": true,
-      "first_frame_psnr_db": 42.4,
-      "previous_last_frame_psnr_db": 45.67
+      "first_frame_psnr_db": 49.71,
+      "previous_last_frame_psnr_db": 49.21
+    },
+    {
+      "slide": 25,
+      "scene": 33,
+      "kind": "actual_lab_capture",
+      "label": "Run the modeling test",
+      "start_sample": 43682847,
+      "actual_seconds": 1820.118625,
+      "key_frame": true,
+      "first_frame_psnr_db": 49.91,
+      "previous_last_frame_psnr_db": 49.72
+    },
+    {
+      "slide": 25,
+      "scene": 34,
+      "kind": "actual_lab_capture",
+      "label": "Inspect fitted residuals",
+      "start_sample": 44523790,
+      "actual_seconds": 1855.1579166666668,
+      "key_frame": true,
+      "first_frame_psnr_db": 44.27,
+      "previous_last_frame_psnr_db": 49.97
+    },
+    {
+      "slide": 25,
+      "scene": 35,
+      "kind": "actual_lab_capture",
+      "label": "Export the current settings and results",
+      "start_sample": 45327502,
+      "actual_seconds": 1888.6459166666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.45,
+      "previous_last_frame_psnr_db": 47.76
+    },
+    {
+      "slide": 25,
+      "scene": 36,
+      "kind": "actual_lab_capture",
+      "label": "Open the shared study workspace",
+      "start_sample": 45799630,
+      "actual_seconds": 1908.3179166666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 47.47,
+      "previous_last_frame_psnr_db": 47.84
+    },
+    {
+      "slide": 25,
+      "scene": 37,
+      "kind": "actual_lab_capture",
+      "label": "Restore the case retained by export",
+      "start_sample": 46200686,
+      "actual_seconds": 1925.0285833333332,
+      "key_frame": true,
+      "first_frame_psnr_db": 47.58,
+      "previous_last_frame_psnr_db": 47.48
+    },
+    {
+      "slide": 25,
+      "scene": 38,
+      "kind": "actual_lab_capture",
+      "label": "Refit after restoring inputs",
+      "start_sample": 46454062,
+      "actual_seconds": 1935.5859166666667,
+      "key_frame": true,
+      "first_frame_psnr_db": 47.93,
+      "previous_last_frame_psnr_db": 47.58
     },
     {
       "slide": 26,
-      "start_sample": 38802597,
-      "actual_seconds": 1616.774875,
+      "scene": 39,
+      "kind": "slide",
+      "label": "Your Lab 03 investigation \u00b7 65\u201395 min",
+      "start_sample": 46920510,
+      "actual_seconds": 1955.02125,
       "key_frame": true,
-      "first_frame_psnr_db": 41.73,
-      "previous_last_frame_psnr_db": 45.65
+      "first_frame_psnr_db": 45.76,
+      "previous_last_frame_psnr_db": 47.94
     },
     {
       "slide": 27,
-      "start_sample": 40421972,
-      "actual_seconds": 1684.2488333333333,
+      "scene": 40,
+      "kind": "slide",
+      "label": "Lab 03 check: retain the distinction \u00b7 65\u201395 min",
+      "start_sample": 49172813,
+      "actual_seconds": 2048.867208333333,
       "key_frame": true,
-      "first_frame_psnr_db": 44.74,
-      "previous_last_frame_psnr_db": 45.31
+      "first_frame_psnr_db": 44.9,
+      "previous_last_frame_psnr_db": 45.87
     },
     {
       "slide": 28,
-      "start_sample": 41930964,
-      "actual_seconds": 1747.1235,
+      "scene": 41,
+      "kind": "slide",
+      "label": "Break \u00b7 95\u2013105 min",
+      "start_sample": 51409213,
+      "actual_seconds": 2142.0505416666665,
       "key_frame": true,
-      "first_frame_psnr_db": 45.19,
-      "previous_last_frame_psnr_db": 44.82
+      "first_frame_psnr_db": 47.97,
+      "previous_last_frame_psnr_db": 44.96
     },
     {
       "slide": 29,
-      "start_sample": 43329971,
-      "actual_seconds": 1805.4154583333334,
+      "scene": 42,
+      "kind": "slide",
+      "label": "Consistency does not imply one stable liquid \u00b7 105\u2013155 min",
+      "start_sample": 52364205,
+      "actual_seconds": 2181.841875,
       "key_frame": true,
-      "first_frame_psnr_db": 44.88,
-      "previous_last_frame_psnr_db": 45.32
+      "first_frame_psnr_db": 46.82,
+      "previous_last_frame_psnr_db": 48.09
     },
     {
       "slide": 30,
-      "start_sample": 44907122,
-      "actual_seconds": 1871.1300833333332,
+      "scene": 43,
+      "kind": "slide",
+      "label": "What local curvature tells us \u00b7 105\u2013155 min",
+      "start_sample": 54180029,
+      "actual_seconds": 2257.501208333333,
       "key_frame": true,
-      "first_frame_psnr_db": 39.66,
-      "previous_last_frame_psnr_db": 44.88
+      "first_frame_psnr_db": 44.95,
+      "previous_last_frame_psnr_db": 46.82
     },
     {
       "slide": 31,
-      "start_sample": 46379905,
-      "actual_seconds": 1932.4960416666668,
+      "scene": 44,
+      "kind": "slide",
+      "label": "A common tangent must support the curve \u00b7 105\u2013155 min",
+      "start_sample": 56150621,
+      "actual_seconds": 2339.6092083333333,
       "key_frame": true,
-      "first_frame_psnr_db": 44.03,
-      "previous_last_frame_psnr_db": 43.35
+      "first_frame_psnr_db": 46.22,
+      "previous_last_frame_psnr_db": 45.03
+    },
+    {
+      "slide": 32,
+      "scene": 45,
+      "kind": "slide",
+      "label": "Lever-rule attempt \u00b7 105\u2013155 min",
+      "start_sample": 58008524,
+      "actual_seconds": 2417.0218333333332,
+      "key_frame": true,
+      "first_frame_psnr_db": 46.95,
+      "previous_last_frame_psnr_db": 46.4
+    },
+    {
+      "slide": 33,
+      "scene": 46,
+      "kind": "slide",
+      "label": "Lever-rule check \u00b7 105\u2013155 min",
+      "start_sample": 59481675,
+      "actual_seconds": 2478.403125,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.95,
+      "previous_last_frame_psnr_db": 47.09
+    },
+    {
+      "slide": 34,
+      "scene": 47,
+      "kind": "slide",
+      "label": "Predict three feeds before running \u00b7 105\u2013155 min",
+      "start_sample": 61086843,
+      "actual_seconds": 2545.285125,
+      "key_frame": true,
+      "first_frame_psnr_db": 41.5,
+      "previous_last_frame_psnr_db": 46.02
+    },
+    {
+      "slide": 35,
+      "scene": 48,
+      "kind": "slide",
+      "label": "Lab 04 controls and evidence \u00b7 105\u2013155 min",
+      "start_sample": 62653195,
+      "actual_seconds": 2610.549791666667,
+      "key_frame": true,
+      "first_frame_psnr_db": 40.82,
+      "previous_last_frame_psnr_db": 45.17
+    },
+    {
+      "slide": 36,
+      "scene": 49,
+      "kind": "slide",
+      "label": "Your Lab 04 investigation \u00b7 105\u2013155 min",
+      "start_sample": 64229080,
+      "actual_seconds": 2676.2116666666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 40.94,
+      "previous_last_frame_psnr_db": 44.95
+    },
+    {
+      "slide": 37,
+      "scene": 50,
+      "kind": "slide",
+      "label": "Three-feed check \u00b7 105\u2013155 min",
+      "start_sample": 66234792,
+      "actual_seconds": 2759.783,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.37,
+      "previous_last_frame_psnr_db": 45.94
+    },
+    {
+      "slide": 38,
+      "scene": 51,
+      "kind": "slide",
+      "label": "Check amounts and the energy benefit \u00b7 105\u2013155 min",
+      "start_sample": 68106199,
+      "actual_seconds": 2837.7582916666665,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.0,
+      "previous_last_frame_psnr_db": 45.46
+    },
+    {
+      "slide": 39,
+      "scene": 52,
+      "kind": "slide",
+      "label": "Unseen review: consistency \u00b7 155\u2013170 min",
+      "start_sample": 70289191,
+      "actual_seconds": 2928.7162916666666,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.66,
+      "previous_last_frame_psnr_db": 45.06
+    },
+    {
+      "slide": 40,
+      "scene": 53,
+      "kind": "slide",
+      "label": "Unseen review: equilibrium and evidence \u00b7 155\u2013170 min",
+      "start_sample": 71915287,
+      "actual_seconds": 2996.4702916666665,
+      "key_frame": true,
+      "first_frame_psnr_db": 41.67,
+      "previous_last_frame_psnr_db": 45.81
+    },
+    {
+      "slide": 41,
+      "scene": 54,
+      "kind": "slide",
+      "label": "Unseen check: consistency \u00b7 155\u2013170 min",
+      "start_sample": 73541799,
+      "actual_seconds": 3064.241625,
+      "key_frame": true,
+      "first_frame_psnr_db": 40.77,
+      "previous_last_frame_psnr_db": 46.45
+    },
+    {
+      "slide": 42,
+      "scene": 55,
+      "kind": "slide",
+      "label": "Unseen check: equilibrium \u00b7 155\u2013170 min",
+      "start_sample": 75470021,
+      "actual_seconds": 3144.584208333333,
+      "key_frame": true,
+      "first_frame_psnr_db": 45.38,
+      "previous_last_frame_psnr_db": 45.01
+    },
+    {
+      "slide": 43,
+      "scene": 56,
+      "kind": "slide",
+      "label": "Exit ticket \u00b7 170\u2013180 min",
+      "start_sample": 77114756,
+      "actual_seconds": 3213.1148333333335,
+      "key_frame": true,
+      "first_frame_psnr_db": 44.25,
+      "previous_last_frame_psnr_db": 45.57
+    },
+    {
+      "slide": 44,
+      "scene": 57,
+      "kind": "slide",
+      "label": "Feedback and saved work \u00b7 170\u2013180 min",
+      "start_sample": 79036995,
+      "actual_seconds": 3293.208125,
+      "key_frame": true,
+      "first_frame_psnr_db": 43.59,
+      "previous_last_frame_psnr_db": 44.17
     }
   ],
   "audio_sync_checks": [
     {
       "at_seconds": 2.0,
       "delay_samples_at_24khz": 0,
-      "correlation": 0.999894
+      "correlation": 0.999911
     },
     {
-      "at_seconds": 1002.5989166666667,
+      "at_seconds": 1603.0720416666666,
       "delay_samples_at_24khz": 0,
-      "correlation": 0.999834
+      "correlation": 0.999908
     },
     {
-      "at_seconds": 1934.4960416666668,
+      "at_seconds": 3295.208125,
       "delay_samples_at_24khz": 0,
-      "correlation": 0.999918
+      "correlation": 0.999901
     }
   ],
   "full_subjective_listening_review_performed": false

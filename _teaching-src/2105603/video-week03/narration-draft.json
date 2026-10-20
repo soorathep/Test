@@ -4,249 +4,353 @@
       "number": 1,
       "slide_id": "title-slide",
       "title": "Thermodynamic consistency and liquid stability",
-      "narration": "Welcome to Week Three. This lesson begins with a question raised by our work in Lab Eight. If a model fits the observations closely, how much confidence should we place in those observations? We will examine thermodynamic consistency first, then move to a different question: when does a liquid mixture separate into two stable liquids? The lesson replaces our classroom session during the holiday. Allow about three hours altogether, including watching, calculations, Lab investigations, a break, and the closing reflection. The recording is only one part of that time. Keep your own answers and pause whenever an activity is assigned.",
-      "activity_minutes": 0,
-      "pause_instruction": ""
+      "narration": "Welcome to session three. This week we connect two questions that arise whenever we use an activity model. First, do the data satisfy the thermodynamic relationships that a mixture must obey? Second, does the predicted liquid remain as one phase, or can it lower its Gibbs energy by separating into two liquids?\n\nWe will address consistency before liquid stability. That order matters: a convincing fit does not, by itself, establish either consistency of the measurements or stability of the predicted state. Keep your calculations, predictions, and corrections. The recording and activities replace this week's class.",
+      "pause_instruction": "",
+      "activity_minutes": 0
     },
     {
       "number": 2,
       "slide_id": "your-independent-lesson",
       "title": "Your independent lesson",
-      "narration": "Start by opening the four-page practice worksheet and the three-page Lab guide. Their links are on the lesson page and this slide. You can print the worksheet, annotate the PDF, or write in a notebook using the same question labels. Have a calculator ready. Keep the slide deck available beside the video so that you can follow its links. The worked solutions are a separate document. Open the relevant section only after you have attempted the corresponding questions. The background reading is optional; you do not need to complete another reading assignment before starting. All preparation belongs inside today's first fifteen minutes. Pause here briefly to arrange the files, then continue to the schedule. You can work through the entire lesson independently.",
-      "activity_minutes": 1,
-      "pause_instruction": "Pause briefly to open the slides, worksheet and Lab guide. Keep the solutions closed. Preparation is included in the first 15 minutes."
+      "narration": "Open the six-page practice worksheet and the four-page Lab guide using the links on this slide. Keep both beside the slides.\n\nThe worked solutions are a checking resource. Attempt each task first, retain your initial answer, and add a correction afterward. The optional background document gives additional explanation, but it is not an extra required reading assignment for this session.\n\nWhen a main work checkpoint appears, stop the video and complete the specified output before resuming. There is no requirement to wait for a timer once your work is ready. The study-time ranges describe the whole lesson, including your work, rather than positions in the recording.",
+      "pause_instruction": "",
+      "activity_minutes": 0
     },
     {
       "number": 3,
       "slide_id": "the-180-minute-route",
       "title": "The 180-minute route",
-      "narration": "The times on the slides are elapsed study time, not video timestamps. They include both listening and doing the work. During the first fifteen minutes, review Lab Eight and calculate one activity coefficient. Next, spend twenty minutes on the Gibbs-Duhem constraint and its assumptions. A fifteen-minute hand calculation prepares you for Lab Three. The Lab comparison and interpretation take you to minute ninety. Then take a ten-minute break. From minute one hundred, examine stability and the lever rule before carrying out the Lab Four investigation. The final fifteen minutes are for self-review, the exit ticket, and feedback. Use these times as approximate guides. A pause for calculation uses the remaining time in its block; it is not added on top of three hours. Move forward when you have recorded the required evidence.",
+      "narration": "The lesson is planned for about three hours. Note your start time and prepare a calculator.\n\nAfter a ten-minute break, we move to liquid stability and liquid-liquid equilibrium. Finally, you will apply the ideas to an unseen case and complete the existing exit ticket and feedback form.\n\nThe planning balance is roughly fifty-five minutes of explanation and demonstration, one hundred and fifteen minutes of active work and reflection, and the break. These are estimates; your learning time may differ. There are nine main work checkpoints across the full lesson, plus the break. Record your actual time and tell us whether the pace felt suitable in the feedback. All required tasks belong to this lesson.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 4,
+      "slide_id": "review-attempt",
+      "title": "Review attempt · 0–15 min",
+      "narration": "Start with questions A one to A three on page one of the worksheet. First, define the four quantities: liquid composition, vapor composition, overall composition, and activity coefficient. Be precise about which quantities describe a phase and which describe the entire mixture.\n\nFor A two, use the numerical observation printed on the slide. Multiply vapor composition by total pressure, then divide by liquid composition times the pure-component saturation pressure. Use the full worksheet values before rounding. The pressures use the same units, so those units cancel. The stated assumptions are ideal vapor behavior and a negligible Poynting correction.\n\nFor A three, write a short explanation of whether a small fitting error proves thermodynamic consistency. Pause the video now and attempt all three questions. Allow about nine minutes, then resume to check your work.",
+      "pause_instruction": "Pause the video. Complete worksheet page 1, A1–A3, before advancing to the review check. Suggested active work: about 9 minutes; resume when your attempt is complete.",
+      "activity_minutes": 9
+    },
+    {
+      "number": 5,
+      "slide_id": "review-check",
+      "title": "Review check · 0–15 min",
+      "narration": "Check your definitions first. Liquid composition, x one, is a mole fraction within the liquid. Vapor composition, y one, is a mole fraction within the vapor. Overall composition, z one, describes the combined feed or mixture. These do not specify phase amounts.\n\nWith the pure-liquid standard state, activity is liquid mole fraction multiplied by gamma. Gamma is dimensionless and measures the departure from the ideal-mixture activity. Your calculation should give approximately one point four nine one five four five. Its natural logarithm is approximately zero point three nine nine eight one three. Gamma is not a composition or a phase fraction.\n\nFor A three, fitting asks how well a chosen model reproduces the observations. Consistency asks whether properties inferred from those observations satisfy a thermodynamic constraint, using the appropriate assumptions. A small fitting error alone does not answer that second question.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 6,
+      "slide_id": "excess-gibbs-energy",
+      "title": "Excess Gibbs energy · 15–40 min",
+      "narration": "To understand the constraint, we need one energy function. Excess Gibbs energy measures the difference between the actual mixture and an ideal mixture at the same temperature, pressure, and composition. It is not the entire Gibbs energy of mixing. The ideal contribution will also matter when we examine stability later.\n\nThe partial molar excess Gibbs energy of a component is R T times the natural logarithm of its activity coefficient. The mixture's molar excess Gibbs energy is the composition-weighted sum of those partial molar quantities. Dividing by R T gives the dimensionless function shown here, which we will call g tilde.\n\nFor a binary mixture, take x as the mole fraction of component one. Then g tilde equals x times log gamma one, plus one minus x times log gamma two. Every log here means the natural logarithm. The weights add to one. Both activity coefficients describe partial molar information from the same energy function. They therefore cannot be selected as two unrelated curves. Use this definition to begin B one.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 7,
+      "slide_id": "consistency-constraint",
+      "title": "Gibbs–Duhem · 15–40 min",
+      "narration": "At fixed temperature and pressure, the Gibbs-Duhem equation tells us how the two activity coefficients must change together. Multiply the change in log gamma one by x. Multiply the change in log gamma two by one minus x. The sum must be zero.\n\nThese are composition-weighted changes, not an instruction that the activity coefficients themselves must add to one. At an interior composition, if one log activity coefficient increases as composition changes, the other must change in a compatible way. The weights determine the relationship between those changes.\n\nAn ideal mixture is a simple special case. Both gamma values equal one, both logarithms are zero, and the condition is satisfied. But a nonideal mixture can also satisfy Gibbs-Duhem. Large gamma values do not, by themselves, indicate inconsistent data. What matters is the relationship between their composition dependences.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 8,
+      "slide_id": "from-excess-energy-to-a-slope",
+      "title": "From excess energy to a slope · 15–40 min",
+      "narration": "Now differentiate g tilde with respect to composition. Use the product rule: both the weights and the logarithms depend on x.\n\nDifferentiating x times log gamma one produces log gamma one, plus x times the derivative of log gamma one. Differentiating one minus x times log gamma two produces minus log gamma two, plus one minus x times the derivative of log gamma two.\n\nCollect the two plain logarithms first. Their difference is the natural logarithm of gamma one divided by gamma two. We call that quantity L. The remaining terms are the composition-weighted derivatives. At fixed temperature and pressure, Gibbs-Duhem makes their sum zero.\n\nThe result is compact: the slope of g tilde equals L at the same composition. This gives us two ways to describe the same slope. We can estimate it from neighboring excess-energy values, or calculate L from the activity coefficients at the center. Their difference becomes our local residual. Write the product-rule steps in B one, rather than jumping straight to the final equation.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 9,
+      "slide_id": "experimental-path",
+      "title": "Follow the experimental path · 15–40 min",
+      "narration": "Before applying that result to measurements, ask how the measurements were collected. Temperature, pressure, or both may change. Along a general path, the weighted changes in log gamma include two additional terms.\n\nThe temperature term is minus the molar excess enthalpy divided by R times temperature squared, multiplied by the temperature change. The pressure term is molar excess volume divided by R T, multiplied by the pressure change.\n\nWhen both temperature and pressure are fixed, both terms vanish. For isothermal vapor-liquid equilibrium, pressure usually varies across the composition range. Lab zero three neglects the excess-volume pressure contribution. That is an assumption to state, not an exact consequence of holding temperature fixed.\n\nFor isobaric data, temperature varies. The excess-enthalpy correction is then needed for the local test. Real data without independent excess-enthalpy information cannot receive this lab's local consistency verdict. A synthetic generator can supply its own correction, but that is not independent calorimetry.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 10,
+      "slide_id": "method-applicability",
+      "title": "Match the method to the claim · 15–40 min",
+      "narration": "The methods in this table examine different evidence. The isothermal area method tests an integral over the full composition range. It needs suitable endpoint information and the stated pressure approximation. Positive and negative departures can cancel in that integral.\n\nThe local differential method examines the slope relationship across composition. It can reveal a localized departure, but differentiation also makes it sensitive to point spacing, rounding, and noise. Its path corrections must be appropriate.\n\nHerington uses an empirical area allowance for an isobaric boiling-temperature range. It does not provide measured excess enthalpy. A Van Ness-type test instead examines how well a selected model reproduces pressure and vapor composition. That result depends on the chosen model and the property assumptions.\n\nUse precise status words. Not applicable means the method does not match the situation. Not assessed can mean required information is missing. Not run means the calculation has not been performed. Outside this criterion means a calculated diagnostic exceeds its stated limit. In B three, identify missing information before interpreting a number.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 11,
+      "slide_id": "what-a-local-residual-measures",
+      "title": "What a local residual measures · 15–40 min",
+      "narration": "Here is the local calculation we will actually use. First, calculate g tilde at every composition using the weighted log activity coefficients. Second, estimate its slope from neighboring points. Third, subtract L, the center-point log gamma one minus log gamma two. That difference is the residual r, under fixed conditions or the stated isothermal approximation.\n\nThe residual is dimensionless. A positive value means the estimated slope exceeds the center log ratio; a negative value means it is smaller. Its sign alone does not identify a physical cause.\n\nLab zero three summarizes the absolute residuals over interior points by taking their mean and multiplying by one hundred. The teaching threshold for that scaled score is five. It is not a probability or a percentage of incorrect measurements. One residual is also not the full-data average. Our lab uses three-point finite differences, rather than the NIST or Kojima point test based on a Padé representation.\n\nPause now. Complete B one to B three on worksheet page one using Lab guide page one. Allow about fifteen minutes to finish the derivation, path table, and missing-information explanation before continuing.",
+      "pause_instruction": "Pause the video. Complete worksheet page 1, B1–B3, using Lab guide page 1. Retain the product-rule derivation, path table, and missing-information explanation. Suggested active work: about 15 minutes.",
+      "activity_minutes": 15
+    },
+    {
+      "number": 12,
+      "slide_id": "why-the-area-should-vanish",
+      "title": "Why the area should vanish · 40–65 min",
+      "narration": "We can now connect the local slope relationship to an area. Under the chosen pure-liquid standard states, the molar excess Gibbs energy becomes zero at each pure endpoint. At one endpoint only component two remains; at the other only component one remains.\n\nIntegrating L from zero to one is the same as integrating the derivative of g tilde, provided the slope relationship applies. The integral is therefore the endpoint difference in g tilde: zero minus zero. That gives a zero signed area.\n\nThis is a necessary global check under fixed temperature and pressure, or under the stated isothermal approximation. It is not sufficient to certify every measurement. Positive and negative contributions can balance even when the composition-dependent behavior contains a problem.\n\nFor the exercise, the synthetic endpoint limits are supplied analytically. In a real experiment, interior points alone would not establish the missing limits.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 13,
+      "slide_id": "area-attempt",
+      "title": "Area attempt · 40–65 min",
+      "narration": "Complete C one to C three on page two. The table supplies five compositions, with equal spacing of one quarter. For each adjacent pair, average the two L values and multiply by the composition interval. Keep the sign of each trapezoid, including the intervals below zero. Write down all four contributions before adding them.\n\nNext, add zero point two to every L value and repeat the calculation. You are changing the entire curve vertically, not changing the composition spacing.\n\nFinally, explain why a zero total does not certify the measurements. Refer both to cancellation and to the information required at the endpoints. Here, the synthetic endpoint limits were supplied.\n\nPause now and allow about eight minutes for C one to C three. Calculate both cases and write your explanation before advancing to the answer slide.",
+      "pause_instruction": "Pause the video. Complete worksheet page 2, C1–C3: both signed-area calculations and the limitations explanation. Attempt before opening the check. Suggested active work: about 8 minutes.",
+      "activity_minutes": 8
+    },
+    {
+      "number": 14,
+      "slide_id": "area-check",
+      "title": "Area check · 40–65 min",
+      "narration": "The four baseline trapezoids are zero point three seven five, zero point one two five, minus zero point one two five, and minus zero point three seven five. They cancel, so the signed sum is zero.\n\nAfter raising every L value by zero point two, each interval gains zero point zero five. The new contributions sum to zero point two. This also follows from adding a constant height of zero point two across a total composition width of one.\n\nOur worksheet calls the signed integral S; Lab zero three labels it I. The lab also reports a normalized area imbalance, D. It takes the absolute difference between the positive area and the magnitude of the negative area, divides by their sum, and multiplies by one hundred. The negative-area magnitude is entered as a positive quantity. The isothermal teaching criterion is D below five percent. If both areas vanish, that normalization is undefined.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 15,
+      "slide_id": "worked-local-table",
+      "title": "Worked local table · 40–65 min",
+      "narration": "Follow C four and Lab guide page one. We will calculate the local residual from the energy values first. These are synthetic values at fixed temperature and pressure.\n\nAt x equal to zero point four, multiply zero point four by zero point seven two, then add zero point six times zero point three two. The result is zero point four eight. At the middle composition, both logarithms are zero point five, so their weighted sum is zero point five. At x equal to zero point six, the weighted sum returns to zero point four eight.\n\nEstimate the slope at the center using the two neighboring energy values. Their difference is zero, so the centered slope is zero. The center log ratio is also zero, because the two log activity coefficients there are equal. Subtracting gives a zero residual.\n\nThe middle energy is still calculated and recorded, although this equally spaced central slope uses the two neighbors. A zero result at this one center is evidence about this calculation, not a certificate for an entire experimental data set.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 16,
+      "slide_id": "worked-local-defect",
+      "title": "Change one value · 40–65 min",
+      "narration": "Now change only the final log gamma one value, at x equal to zero point six. Increase it from zero point three two to zero point three six. Leave the other five logarithms unchanged.\n\nRecalculate the affected energy. Zero point six times zero point three six, plus zero point four times zero point seven two, gives zero point five zero four. The left-hand energy remains zero point four eight. Their difference is zero point zero two four. Divide by the composition span of zero point two, giving a slope of zero point one two.\n\nThe center log ratio is still zero, so the residual is positive zero point one two. A neighboring measurement has changed the estimated center slope, even though the center logarithms have not changed.\n\nRecord this in C four. With real measurements, a nonzero residual could reflect measurement error, numerical sensitivity, or an omitted path correction. The residual identifies a departure to investigate; it does not identify its cause by itself.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 17,
+      "slide_id": "local-attempt",
+      "title": "Local attempt · 40–65 min",
+      "narration": "Now work independently on C five and C six, still on worksheet page two. Use the new three-row table. First calculate g tilde at each of the three compositions. Then estimate the centered slope at x equal to zero point four using the left and right energy values. Subtract the log ratio at the center.\n\nFor the second calculation, change only the final log gamma two value from zero point three seven five to zero point four two five. Recalculate the affected energy, the center slope, and the residual. Do not change the center log ratio or any other entry.\n\nFor C six, state why a measured nonzero residual requires further investigation, and why one center-point result cannot stand for the full data set.\n\nPause the video now and allow about nine minutes for these two questions. Finish both calculations before opening the check.",
+      "pause_instruction": "Pause the video. Complete worksheet page 2, C5–C6, including the clean and changed local calculations and the numerical caveat. Do not advance to the check until you have attempted both. Suggested active work: about 9 minutes.",
+      "activity_minutes": 9
+    },
+    {
+      "number": 18,
+      "slide_id": "local-check",
+      "title": "Local check · 40–65 min",
+      "narration": "Check the energy values first. The clean table gives zero point three one five, zero point three six zero, and zero point three seven five. The centered slope is the right energy minus the left energy, divided by zero point two. That gives zero point three. The center log ratio is zero point five four minus zero point two four, also zero point three. The clean residual is zero.\n\nAfter changing the last log gamma two, the right-hand energy becomes zero point four. The centered slope is then zero point four two five. Subtract the unchanged center log ratio of zero point three, leaving a residual of positive zero point one two five.\n\nFinite differences depend on spacing, rounding, and noise. Our hand calculation assumes equal spacing; the lab's three-point formula also handles unequal spacing. Neither a single residual nor a small averaged score establishes a universal certificate. Keep your corrections, then open Lab guide pages two and three for the demonstration.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 19,
+      "slide_id": "lab03-demo-route",
+      "title": "Lab 03: follow the demonstration",
+      "narration": "We are ready to connect the hand calculations to Lab Three. Keep worksheet page three and Lab guide pages two and three beside the browser. First we establish a clean reference. Then we introduce two controlled errors, changing one setting at a time. We compare forty one and one hundred sixty one observations for the localized error. Finally, we return to the clean reference, run the model reproduction test, and save the evidence. The following views were captured from the working Lab interface. They show the actual controls and results, rather than a drawing of the application. Before each altered case, write a prediction in the appropriate row of your worksheet. If you need more time to predict, pause manually. The data are synthetic, so we know which defect was deliberately introduced. That gives us a controlled way to learn what each diagnostic can and cannot detect.",
       "activity_minutes": 0,
       "pause_instruction": ""
     },
     {
-      "number": 4,
-      "slide_id": "review-attempt-010-min",
-      "title": "Review attempt · 0–10 min",
-      "narration": "Turn to page one, questions A one through A three. First, define x, y, z, and gamma in your own words. Keep phase composition separate from the overall mixture composition. Next, calculate gamma one from the supplied synthetic Lab Eight observation. Multiply the vapor mole fraction by total pressure, then divide by the liquid mole fraction times the saturation pressure. Both pressures are in kilopascals, so their units cancel. Use the full values printed on the worksheet rather than trying to copy every digit from the narration. Compare your answer with the exponential given in A two. Finally, answer whether a small fitting error proves thermodynamic consistency. If you need a reminder, use one relevant chapter of the Lab Eight walkthrough within this review block. Pause now and finish your attempt before the next slide reveals the check.",
-      "activity_minutes": 6,
-      "pause_instruction": "Pause now. Complete worksheet p. 1 A1–A3 before showing the Review check slide. Use the remainder of minutes 0–10, including preparation."
-    },
-    {
-      "number": 5,
-      "slide_id": "review-check-1015-min",
-      "title": "Review check · 10–15 min",
-      "narration": "Compare these statements with your answers. X one describes component one's mole fraction in the liquid, and y one describes its mole fraction in the vapor. Z one refers to the overall mixture. Gamma one is an activity coefficient: multiplying it by the liquid mole fraction gives liquid activity on the chosen pure-liquid standard state. The calculated gamma is about one point four nine one five four five. Taking the exponential of the rounded logarithm gives essentially the same answer; the final-digit difference comes from rounding. This inference uses ideal vapor and a negligible Poynting correction. For A three, a close fit shows that the selected model reproduces the observations under its assumptions. Consistency asks whether the inferred properties obey a thermodynamic relationship. Keep any correction beside your original answer, then continue.",
-      "activity_minutes": 4,
-      "pause_instruction": "Check and correct A1–A3 on worksheet p. 1. If you opened the Lab 08 video, close it. Continue at approximately studyminute 15."
-    },
-    {
-      "number": 6,
-      "slide_id": "consistency-constraint",
-      "title": "Gibbs–Duhem · 15–21 min",
-      "narration": "Now consider a binary liquid at fixed temperature and pressure. The Gibbs-Duhem equation connects changes in its two activity coefficients. If one coefficient changes with composition, the other cannot be chosen independently. Their mole-fraction-weighted logarithmic changes must sum to zero. This is a constraint on a collection of composition-dependent properties, rather than a test of one isolated gamma value. The second equation defines dimensionless excess Gibbs energy by weighting the two log activities. Under the same fixed conditions, the slope of that excess-energy curve equals the logarithm of gamma one divided by gamma two. That slope relationship will give us a local diagnostic. We can compare the slope inferred from the weighted properties with the log ratio at the same composition. Complete B one on page one. State the fixed conditions and explain the connection in one sentence.",
-      "activity_minutes": 5,
-      "pause_instruction": "Pause to complete worksheet p. 1 B1. State fixed T and P and explain why the activity coefficients cannot vary independently."
-    },
-    {
-      "number": 7,
-      "slide_id": "the-experimental-path-2127-min",
-      "title": "The experimental path · 21–27 min",
-      "narration": "Experimental vapor-liquid data do not always follow a path with both temperature and pressure fixed. In an isothermal experiment, temperature stays constant while the equilibrium pressure generally changes with composition. The more general relationship therefore contains a pressure term involving molar excess volume. Our teaching calculation neglects that contribution. This approximation must accompany the interpretation. In an isobaric experiment, pressure is fixed but temperature changes. The local relationship then needs an excess-enthalpy correction. For real measurements, we need independent excess-enthalpy information before assigning that corrected local verdict. A missing correction is not evidence that the measurements failed. Lab Three also supplies synthetic excess enthalpy for its generated isobaric cases. That value comes from the generator; it is not an independent calorimetric measurement. Complete B two: identify the omitted pressure contribution and the property needed for the temperature correction.",
-      "activity_minutes": 5,
-      "pause_instruction": "Pause to answer worksheet p. 1 B2: the excess-volume pressure contribution and independent excess enthalpy for an isobaric local correction."
-    },
-    {
-      "number": 8,
-      "slide_id": "which-method-applies-2735-min",
-      "title": "Which method applies? · 27–35 min",
-      "narration": "The four approaches ask related but different questions. The isothermal area method integrates the log-activity ratio across the full composition range. Contributions of opposite sign can cancel. The local differential method compares a slope relationship at individual interior compositions, but numerical differentiation is sensitive to noise and spacing. Herington supplies an empirical allowance for an isobaric boiling-temperature range. That allowance does not replace measured excess enthalpy. The Van Ness-type approach asks whether a selected activity model can reproduce the observed pressure and vapor composition. Before interpreting any result, check whether the method applies to the data path and whether the required information is available. Not applicable, not assessed, and not run are not synonyms for failed. They are also not successful tests. Read the stated reason. Complete B three on page one, using guide page two if needed. You do not need to operate the Lab yet.",
-      "activity_minutes": 7,
-      "pause_instruction": "Pause to complete worksheet p. 1 B3. Review method applicability using Lab guide p. 2 if needed. Do not open a new Lab investigation yet."
-    },
-    {
-      "number": 9,
-      "slide_id": "area-exercise-3543-min",
-      "title": "Area exercise · 35–43 min",
-      "narration": "We will first make the area calculation small enough to check by hand. Page one, section C, gives five equally spaced compositions and five values of L, the natural logarithm of the activity-coefficient ratio. Treat neighboring points as the ends of a straight segment. For each interval, multiply its width by the average of the two endpoint values. Keep the sign: a segment below zero contributes a negative signed area. Add the four contributions for C one. For C two, increase every L value by zero point two and calculate the signed sum again. For C three, explain what this integral cannot establish about individual observations. These are synthetic values whose endpoint limits are supplied analytically. We are not inventing endpoint measurements. Stop the video here and complete C one through C three before opening the solution slide.",
-      "activity_minutes": 7,
-      "pause_instruction": "Pause BEFORE the Area solution. Complete worksheet p. 1 C1–C3: baseline trapezoids, uniform +0.20 shift, and the limitation."
-    },
-    {
-      "number": 10,
-      "slide_id": "area-solution-4350-min",
-      "title": "Area solution · 43–50 min",
-      "narration": "The four baseline contributions are zero point three seven five, zero point one two five, minus zero point one two five, and minus zero point three seven five. The positive area is one half, the signed negative area is minus one half, and the total is zero. Raising the entire curve by zero point two adds a rectangle of height zero point two over a composition interval of one. The new signed integral is therefore zero point two. Lab Three calls the signed integral I and also reports a normalized score, D. D compares the magnitudes of the positive and negative areas; it is not the signed integral itself. The teaching area criterion is D below five percent. If both magnitudes vanish, that normalization is undefined. Check your work and keep the distinction visible. Real interior measurements still cannot establish missing endpoint intervals without an extra assumption.",
-      "activity_minutes": 6,
-      "pause_instruction": "Check C1–C3 on worksheet p. 1. Keep signed S/I separate from normalized D. Continue to Lab 03 at approximately minute 50."
-    },
-    {
-      "number": 11,
-      "slide_id": "local-and-global-checks-5053-min",
-      "title": "Local and global checks · 50–53 min",
-      "narration": "Open Lab Three and guide page one, with worksheet page two beside them. Before changing a control, understand what the local residual represents. It subtracts the log-activity ratio from the slope of dimensionless excess Gibbs energy. Under our isothermal pressure-term approximation, a consistent continuous description makes that difference vanish. The Lab estimates slopes numerically at interior points. Its teaching score is one hundred times the mean absolute residual, with a threshold of five. That scaled score is not a probability or a percentage of incorrect observations. Numerical differentiation can create a small residual even for clean generated data. Also, an average can dilute a narrow peak. Inspect the shape as well as the score. This finite-difference diagnostic is distinct from the fitted Padé slope used in the NIST and Kojima point-test implementation.",
-      "activity_minutes": 2,
-      "pause_instruction": "Open Lab 03 and Lab guide p. 1. Keep worksheet p. 2 ready. Read the residual definition, then continue to the baseline controls."
-    },
-    {
-      "number": 12,
-      "slide_id": "lab-03-baseline-5360-min",
-      "title": "Lab 03 baseline · 53–60 min",
-      "narration": "For D one, make the initial state reproducible. Select Synthetic, isothermal, three hundred fifty kelvin. Choose Consistent reference, and explicitly select forty-one points. The page normally starts with eighty-one points, so do not skip that change. Under Inspect, choose Log-activity ratio and integrated area. Record the signed integral, the normalized D score, and the area status. Then switch Inspect to Local Gibbs-Duhem residual and record its score, status, and general shape. The results update when you change these controls. Amplitude is disabled for the clean reference, which is expected. These data use Lab Three's own generator, not the Lab Eight demonstration dataset. Save the reference evidence with Export all results or a screenshot. Rename the JSON clearly. Wait until D four to run the model fit. Pause now and complete D one before changing the perturbation.",
-      "activity_minutes": 6,
-      "pause_instruction": "Pause for worksheet p. 2 D1. Set synthetic isothermal 350 K, clean reference,41 points; inspect both diagnostics and save the baseline. Do not fit yet."
-    },
-    {
-      "number": 13,
-      "slide_id": "canceling-errors-6067-min",
-      "title": "Canceling errors · 60–67 min",
-      "narration": "For D two, keep the temperature path and forty-one-point sampling unchanged. Change Controlled perturbation to Canceling errors, zero net area. Check that the amplitude is zero point two five. This construction adds a cosine-shaped term to the log-activity ratio. Its integral across the full composition range is exactly zero, although the term is not zero at every composition. The weighted changes to the two log activities cancel in the excess-energy value. This is designed to separate a global integral from a local relationship. Inspect the area plot and then the local residual plot. Record their scores and statuses without turning them into a single overall pass or fail. Explain what each actually tests. Save this case under a different filename so that you retain the reference. Pause here and finish D two before moving to the localized defect.",
-      "activity_minutes": 6,
-      "pause_instruction": "Pause for worksheet p. 2 D2. Select Canceling errors, amplitude 0.25, keep41 points. Record both results and save a separate export."
-    },
-    {
-      "number": 14,
-      "slide_id": "a-localized-defect-6774-min",
-      "title": "A localized defect · 67–74 min",
-      "narration": "For D three, change only the perturbation to Localized defect near x one equals zero point three five. Keep amplitude zero point two five and forty-one points. This time the discrepancy occupies a narrow part of the composition range. Locate it on the local residual plot, then compare its appearance with the single averaged score. For these exact settings, both aggregate criteria are met, even though the residual plot shows the localized defect. Do not assume that deliberately introducing a defect must make every badge change. Record what the Lab actually reports and explain the scope of the average. Save the localized case separately. If you have spare time inside this activity block, compare one hundred sixty-one points, then return to forty-one. That optional resolution check changes the numerical sampling; it does not create new experimental evidence. Pause and complete D three.",
-      "activity_minutes": 6,
-      "pause_instruction": "Pause for worksheet p. 2 D3. Keep amplitude 0.25 and41 points; inspect the local peak as well as scores. The161-point comparison is optional within this block."
-    },
-    {
-      "number": 15,
-      "slide_id": "model-reproduction-7480-min",
-      "title": "Model reproduction · 74–80 min",
-      "narration": "For the one required modeling run, return to Consistent reference at three hundred fifty kelvin and forty-one points. Click Run modeling test once and wait for the convergence message. Then inspect Modeling residuals. Record the pressure error in percent and the vapor-composition error in percentage points. These are different quantities, even though both are scaled by one hundred. The Lab fits two constant N R T L parameters with the nonrandomness parameter fixed at zero point four seven. Its teaching criteria require both reported errors to be below one in their stated units. The clean fit should give near-zero errors because it reproduces its own generating model; that is a check of model reproduction, not a certificate for real measurements. Herington is not applicable because this case is isothermal. Its boiling-range allowance belongs to an isobaric path. Pause now to finish D four. If the fit does not converge, record no modeling verdict instead of guessing a result.",
-      "activity_minutes": 5,
-      "pause_instruction": "Pause for worksheet p. 2 D4. Return to clean reference, 350 K / 41 points and run the modeling test once. Record Δp, Δy, applicability and interpretation."
-    },
-    {
-      "number": 16,
-      "slide_id": "area-versus-local-evidence-8085-min",
-      "title": "Area versus local evidence · 80–85 min",
-      "narration": "Compare your D one and D two records with these two plots. The teal reference and amber canceling-error curves have different log-activity ratios, yet both meet the area criterion. Their positive and negative contributions nearly balance. The local residual tells a different story. The reference remains close to zero, while the canceling-error residual oscillates across the composition range. The reference D score is about zero point zero seven nine percent, and the canceling-case score is about zero point zero seven four percent. Those similarly small area scores conceal a large difference in the local score: roughly zero point one one eight versus fifteen point six. Read that contrast from the numerical records and the plotted shape. Complete E one in your own words. Describe how cancellation can occur globally while a local relationship is violated. Pause before continuing to the interpretation check.",
-      "activity_minutes": 4,
-      "pause_instruction": "Pause to answer worksheet p. 2 E1 using the area and local plots plus your D1 / D2 results. Explain disagreement before advancing."
-    },
-    {
-      "number": 17,
-      "slide_id": "interpretation-8590-min",
-      "title": "Interpretation · 85–90 min",
-      "narration": "Your explanation should connect the two observations rather than rank the methods as universally good or bad. The cosine perturbation integrates to zero, so the area method misses that particular discrepancy. The local relationship retains a structured departure. For E two, write a supported claim, give the numerical or graphical evidence, and state one limitation. Include the dataset, forty-one-point sampling, and perturbation amplitude so another person could reproduce the comparison. Mention the assumptions behind inferred activities or the sensitivity of derivatives to sampling. Keep the localized case in mind: even a mean local score can hide a narrow feature. After writing your own explanation, compare it with sections D and E of the worked solutions. Save the baseline and changed-case evidence. This constructed exercise demonstrates limitations of diagnostics; it does not estimate experimental uncertainty.",
-      "activity_minutes": 4,
-      "pause_instruction": "Pause to finish E2 and check E1–E2 against solutions D–E. Save the Lab 03 evidence. Finish this block at approximately minute 90."
-    },
-    {
-      "number": 18,
-      "slide_id": "break-90100-min",
-      "title": "Break · 90–100 min",
-      "narration": "Take a ten-minute break now. Save your work and leave the files open. Step away from the screen, then return to this point with worksheet page three ready. After the break, we will change the question. A model can obey Gibbs-Duhem and still favor separation into two liquids. We will use Gibbs energy to determine which liquid state is stable.",
-      "activity_minutes": 10,
-      "pause_instruction": "Stop the video and take the full 10-minute break. Resume with worksheet p. 3 at approximately study minute 100."
-    },
-    {
-      "number": 19,
-      "slide_id": "phase-equilibrium-includes-stability",
-      "title": "Liquid stability · 100–105 min",
-      "narration": "At fixed temperature and pressure, stable equilibrium is the admissible state with the lowest total Gibbs energy, subject to the material balance. For a binary mixture, the mixing-energy curve contains the ideal mixing terms plus the excess contribution. This curve can become nonconvex even when the activity model satisfies the Gibbs-Duhem identity exactly. That is why consistency does not imply a stable homogeneous liquid. Equality of chemical potentials identifies candidate coexisting phases. We must still ask whether that candidate provides the lowest energy when all allowed compositions are considered. In a binary plot, a globally supporting common tangent supplies that comparison. The line represents the energy of a mixture of the two endpoint liquids. Complete F one on page three: explain what remains to be checked after a solver has found equal chemical potentials. Pause briefly before continuing to the geometric condition.",
-      "activity_minutes": 4,
-      "pause_instruction": "Pause for worksheet p. 3 F1. State the global Gibbs-energy criterion beyond an equal-chemical-potential solution."
-    },
-    {
       "number": 20,
-      "slide_id": "common-tangent-condition-105110-min",
-      "title": "Common-tangent condition · 105–110 min",
-      "narration": "A common tangent touches the curve at two distinct compositions and has the same slope at both. Its slope must also equal the rise between the two energy values divided by the distance between the compositions. Those local equalities are necessary, but the word supporting adds a global requirement. Across the entire admitted composition range, the line must remain at or below the curve. If it crosses above the curve somewhere, another allowed state can lower the energy and the candidate is not globally stable. Similarly, a solution whose two endpoints coincide does not establish two distinct liquids. Positive curvature at one composition is only a local statement; it cannot by itself prove global stability. Keep this condition ready for F three. First, move to the next slide and attempt the lever-rule calculation in F two.",
-      "activity_minutes": 3,
-      "pause_instruction": "Read the global supporting-tangent condition. Continue to the F2 hand calculation; use this condition for F3 after the lever-rule check."
+      "slide_id": "lab03-baseline-controls",
+      "title": "Lab 03: establish the baseline",
+      "narration": "Open Lab Three from the link on the lesson page or slide. Scroll to the workbench headed Which error can you detect. In Data set, select Synthetic, isothermal, three hundred fifty kelvin. In Controlled perturbation, select Consistent reference. Set Sampling resolution to forty one points. Do not leave it at the default eighty one points, because we need the same baseline for every comparison. The amplitude control reads zero point two five but is disabled for the consistent reference. No perturbation is applied in that case. The results update when the input changes; you do not need to press the modeling button to calculate the area and differential diagnostics. Check the observation count above the scorecards. It should say forty one observations, forty one activity pairs, and zero excluded. The synthetic endpoint limits are supplied. Record those settings under D one before recording any score. Also record that this is an isothermal path using the teaching approximation that neglects the excess-volume pressure contribution.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 21,
-      "slide_id": "lever-rule-attempt-110116-min",
-      "title": "Lever-rule attempt · 110–116 min",
-      "narration": "For F two, suppose a stable tie line has already been established with liquid compositions zero point two zero and zero point eight zero. These values are supplied for a hand example; they are not the endpoints you should expect from Lab Four. Calculate the fraction of the component-one-rich liquid by subtracting the lower endpoint from the overall composition, then dividing by the distance between the endpoints. The other liquid fraction is one minus that result. Do this first for an overall composition of zero point five zero, then for zero point three five. Reconstruct each overall composition from the fractions and endpoint compositions to check your balance. Here beta names the richer liquid, not a vapor fraction. Pause now and calculate both feeds before the next slide shows the answers.",
-      "activity_minutes": 5,
-      "pause_instruction": "Pause BEFORE the Lever-rule check. Complete worksheet p. 3 F2 for illustrative endpoints 0.20 / 0.80 at z=0.50 and 0.35; show both balances."
+      "slide_id": "lab03-baseline-evidence",
+      "title": "Lab 03: read the baseline evidence",
+      "narration": "Read the area scorecard first. With these settings, the displayed area percentage is approximately zero point zero seven nine. The differential score is approximately zero point one one eight. Both meet their stated teaching criteria. Herington says Not applicable because we selected an isothermal dataset. The modeling card says Not run, which simply records that we have not fitted a model. Now use Inspect to select Log-activity ratio and integrated area. The curve crosses zero, with positive and negative contributions that almost balance. The displayed positive and negative area magnitudes are about zero point three nine three two nine and zero point three nine two six seven. Their small difference gives the reported nonzero numerical integral. Next, change Inspect to Local Gibbs-Duhem residual. The clean reference has small residuals, most visible toward low composition, rather than a perfectly flat line at zero. That is expected from finite differences on a finite grid. Keep the vertical-axis scale in view: these clean residuals are small. When you compare the next case, read both the shape and its numerical scale. Automatic plot scaling can otherwise make two very different magnitudes look deceptively similar.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 22,
-      "slide_id": "lever-rule-check-116120-min",
-      "title": "Lever-rule check · 116–120 min",
-      "narration": "For the central feed, the two liquid fractions are equal. For an overall composition of zero point three five, the rich-liquid fraction is one quarter and the other fraction is three quarters. The balance is three quarters times zero point two, plus one quarter times zero point eight, which returns zero point three five. The coexisting compositions remain the same because we have kept the coexistence conditions fixed and moved the feed within the same tie line. The phase amounts change instead. Correct your F two calculation, then answer F three using the global supporting-tangent condition. Touching the curve twice is not enough if the line rises above an admissible part of it. Open Lab Four and guide page three when you are ready. The next investigation uses the model's actual calculated endpoints.",
-      "activity_minutes": 3,
-      "pause_instruction": "Correct F2 and complete F3 on worksheet p. 3. Open Lab 04 and guide p. 3. Continue at approximately study minute 120."
+      "slide_id": "predict-the-defects",
+      "title": "Predict before changing the data",
+      "narration": "Before the next result appears, write two short predictions in D two and D three. First, imagine an error that is positive in one composition region and negative in another, with exactly zero integral over the full range. Would an area test necessarily detect it? What would you expect from a local residual plot? Second, imagine an error concentrated in a narrow region near composition zero point three five. Could an average score remain below a threshold even when the local graph shows a clear defect? Do not try to guess the exact numerical scores. Predict the type of evidence that would change, and explain why. You can revise the prediction later, but keep the original beside the correction. Pause the video manually now if you have not written both predictions. We will keep temperature, amplitude, and the number of points fixed so that the perturbation type is the only change in the first comparison.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 23,
-      "slide_id": "lab-04-baseline-120130-min",
-      "title": "Lab 04 baseline · 120–130 min",
-      "narration": "For G one, predict the phase state before reading the result. In Lab Four, open Explore a state and choose Unstable, A equals three, z one equals zero point five zero. Verify the controls: one-parameter Margules, interaction parameter three, and feed mole fraction zero point five zero. Choose Gibbs energy and common tangent in the View control. If you type values instead of selecting the preset, click Find equilibrium to apply them. Record the calculated coexisting compositions and both liquid fractions in the table. Write the Gibbs-energy decrease divided by R T beside G four or below the table. The parameters represent a hypothetical model at fixed conditions; this Lab has no physical temperature or pressure input boxes. Keep the same model throughout this comparison. Pause now to make your prediction, run the baseline, and complete G one using the actual displayed outputs.",
-      "activity_minutes": 9,
-      "pause_instruction": "Pause for worksheet p. 3 G1. Set symmetric Margules A = 3, z = 0.50, run if typed, inspect common tangent, and record actual endpoints/fractions/energy."
+      "slide_id": "canceling-errors-explained",
+      "title": "Lab 03: an area can hide canceling errors",
+      "narration": "In Controlled perturbation, choose Canceling errors, zero net area. Keep amplitude at zero point two five and sampling at forty one points. The area percentage remains small, approximately zero point zero seven four. It still meets the area criterion. The differential score now rises to approximately fifteen point five nine nine, outside its teaching criterion. Select Local Gibbs-Duhem residual under Inspect. The residual has a broad negative region, a positive central region, and another negative region. Its magnitude is much larger than in the clean reference. Why do the tests disagree? The generator adds a cosine-shaped error to the log-activity ratio. Its signed integral is exactly zero over the full composition interval. At the same time, the weighted changes in the two log activity coefficients cancel in excess Gibbs energy. The energy curve therefore stays unchanged while the log ratio changes. The derivative identity is broken locally even though the extra signed area cancels globally. A small numerical area is consequently compatible with deliberately inconsistent local behavior. In your worksheet, distinguish the mathematical cancellation of the imposed error from the small integration error still present in the numerical baseline. The evidence supports a specific statement: the area criterion alone missed this constructed defect.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 24,
-      "slide_id": "one-changed-feed-130140-min",
-      "title": "One changed feed · 130–140 min",
-      "narration": "Before changing the feed, save the baseline with Export study JSON. Give the file a name that identifies the feed as zero point five zero. For G two, change only Feed mole fraction to zero point three five, then click Find equilibrium. Leave the model and interaction parameter unchanged. Record the same outputs beside your baseline values. Compare the endpoint compositions separately from the fractions. Ask whether each liquid's composition changed, whether its amount changed, and whether the result still reconstructs the overall feed. Use the endpoints calculated by this model. Substituting zero point two and zero point eight from the earlier hand example would test a different tie line. Pause here and record the changed-feed result before checking the balance independently.",
-      "activity_minutes": 9,
-      "pause_instruction": "Pause for worksheet p. 3 G2. Save the z = 0.50 baseline, change only z to 0.35, run and record the new outputs."
+      "slide_id": "localized-defect-and-sampling",
+      "title": "Lab 03: inspect a localized defect and sampling",
+      "narration": "Now select Localized defect near x one equals zero point three five. Keep the amplitude at zero point two five and begin with forty one points. The area percentage is approximately two point zero one three, and the differential score is approximately one point six seven two. Both are below five. However, the local residual graph contains a distinct negative trough near zero point three five. A criterion based on an average can dilute an error that occupies only a narrow region. That is why you must inspect the plotted residual as well as the scorecard. Record the forty one point results before changing Sampling resolution to one hundred sixty one points. The area percentage becomes approximately one point nine four two, while the differential score becomes approximately one point five six six. The trough remains, and the denser grid describes its shape with more points. Neither result changes to an automatic failure. More points do not guarantee that an aggregate threshold will flag a localized defect. This is also not a new noisy experiment: the teaching generator is being sampled more densely. A screenshot with the trough marked near zero point three five is useful evidence for E one. Avoid claiming that this finite-difference exercise validates a laboratory dataset or duplicates the NIST point-test implementation.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 25,
-      "slide_id": "independent-balance-140150-min",
-      "title": "Independent balance · 140–150 min",
-      "narration": "Now verify G three with your calculator, not simply by copying the Lab's residual. Use the actual lower and upper coexistence compositions to calculate the rich-liquid fraction for the feed of zero point three five. Then obtain the other fraction by subtraction from one. Reconstruct the feed by weighting each endpoint composition by its phase fraction. Check that both fractions lie between zero and one and that they sum to one. If the displayed endpoints are rounded, a small final-digit mismatch is expected. You can use the additional digits in the JSON export for a tighter check. A successful balance verifies that the reported amounts and compositions match the feed. It does not establish global stability by itself. Pause now and show the substituted calculation on page three.",
-      "activity_minutes": 9,
-      "pause_instruction": "Pause for worksheet p. 3 G3. Calculate fβ and the component balance independently with the actual Lab 04 endpoints; retain substituted numbers."
+      "slide_id": "model-fit-and-saved-evidence",
+      "title": "Lab 03: fit once and retain the evidence",
+      "narration": "For D five, return Controlled perturbation to Consistent reference and Sampling resolution to forty one points. Verify those settings before pressing Run modeling test. The application reports convergence using thirty nine interior points, with no fitted parameter at a bound. The two pure endpoints are excluded from this fitting step. Pressure and vapor-composition errors both round to zero point zero zero zero on the scorecard. They are very small numerical errors, not a promise of exact experimental accuracy. This synthetic reference is generated from the same family of consistent activity models, so a very close reproduction is expected. Under Inspect, choose Modeling residuals to see both pressure and vapor-composition residuals. The method fits two constant NRTL interaction parameters for this isothermal case, with the nonrandomness parameter fixed at zero point four seven. It asks whether the selected model reproduces the observations under the stated vapor-property approximation. It does not independently prove that observations obey every thermodynamic constraint. Click Export all results to download the current results and settings. Save the file beside your worksheet, and retain screenshots of the perturbed cases before returning to the clean case. Each export describes the current state; it is not a history of every case you explored. To reopen a case, expand Study workspace, reopen and compare cases, above the calculator. A freshly exported study is already listed in this workspace. For a downloaded file, use Load studies or a comparison JSON. Here I change the current controls, then select Restore Case One from the recorded case. The inputs return to the clean reference at forty one points. The modeling result must be fitted again, so I press Run modeling test and confirm convergence. Restoring inputs does not turn old saved results into a fresh calculation. Do not confuse saving evidence with uploading an assignment.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 26,
-      "slide_id": "global-support-150160-min",
-      "title": "Global support · 150–160 min",
-      "narration": "Complete G four by combining the numerical and graphical evidence. Open Verify the equilibrium, then inspect the full Gibbs-energy and common-tangent plot. Confirm that the liquids have distinct compositions, their chemical potentials agree within the reported numerical tolerance, and the common tangent supports the whole admitted curve. Add your independent feed balance to this evidence. The Gibbs-energy decrease shows how much the equilibrium split lowers the energy relative to the hypothetical homogeneous feed. Do not confuse the homogeneous-feed label with the final equilibrium phase count. An unstable homogeneous feed can produce a stable equilibrium consisting of two liquids. Explain which quantities stayed fixed when only the feed changed and which quantities changed. Pause to write this reasoning, using the tangent and the energy comparison rather than relying only on a phase badge.",
-      "activity_minutes": 9,
-      "pause_instruction": "Pause for worksheet p. 3 G4. Inspect Verify the equilibrium and the full tangent plot; explain stability and fixed endpoints versus changed amounts."
+      "slide_id": "lab03-investigation",
+      "title": "Your Lab 03 investigation",
+      "narration": "It is your turn to perform the complete investigation. Allow about eighteen minutes of independent work here. Open Lab Three in a separate tab and complete D one through D five on worksheet page three. Reproduce the clean reference at forty one points. Compare canceling errors at amplitude zero point two five. Then compare the localized defect at forty one and one hundred sixty one points. Keep the dataset and amplitude fixed during those comparisons. Finally return to the clean reference at forty one points and run the modeling test once. Record the path, settings, area percentage, local score, and the reason for any unavailable verdict. Under E one, retain a local-residual plot and annotate the composition region that matters. Under E two, write three short statements: a claim supported by the comparison, the evidence that supports it, and a limitation. If a result differs from the demonstration, first check dataset, perturbation, amplitude, and sampling resolution. Changing a setting clears a previous model fit, so do not copy an old fit result into a new case. Use the Lab guide if you lose your place. The player will pause before the check slide. Continue when your evidence is recorded, not merely when a timer expires.",
+      "activity_minutes": 18,
+      "pause_instruction": "Pause now. Open Lab 03 and the four-page Lab guide. Complete worksheet p. 3 D1–D5 and E1–E2: clean41, canceling41, localized41/161, clean41 fit; retain settings, scores, annotated plot, and claim/evidence/limitation. Allow about18 minutes, then continue."
     },
     {
       "number": 27,
-      "slide_id": "investigation-check-160165-min",
-      "title": "Investigation check · 160–165 min",
-      "narration": "Compare G one through G four with section G of the worked solutions. Check that your record identifies one-parameter Margules with A equal to three, both overall feed compositions, and the actual coexistence endpoints. Keep phase composition separate from phase fraction: composition describes each liquid, while fraction tells us how much of that liquid is present. If a result differs, first compare the model settings, check that typed values were applied, and inspect any rounding. Save the changed-feed JSON and a comparison table or plot. Retain your balance calculation and stability explanation with those files. The required investigation ends here. LLE fitting and vapor-liquid-liquid equilibrium are optional extensions for later study. Open page four of the worksheet for the short self-review.",
-      "activity_minutes": 4,
-      "pause_instruction": "Check G1–G4 after your attempt, save both Lab 04 cases and the comparison, then open worksheet p. 4. No LLE-fit or VLLE task is required."
+      "slide_id": "lab03-check",
+      "title": "Check your Lab 03 interpretation",
+      "narration": "Compare your completed investigation with these conclusions. The consistent reference has small numerical residuals. The canceling-error case satisfies the area criterion while showing a much larger local residual and an outside-criterion differential score. The localized defect is a different lesson: both aggregate scores meet their teaching thresholds, while the local graph still reveals a narrow imposed error. Increasing the resolution changes the numerical scores and resolves the trough more densely; it does not erase the defect or guarantee a different threshold decision. Finally, the clean-reference NRTL fit reproduces pressure and vapor composition very closely under its assumptions. That result answers a model-reproduction question. It does not override the need to examine the data path, local evidence, or missing correction properties. A useful E two conclusion might state that an area result alone cannot rule out canceling errors, cite your area and local scores, and identify the synthetic setting and finite-difference approximation as limitations. Keep any correction beside the original attempt. We now move from checking property relationships to deciding which phase arrangement minimizes Gibbs energy.",
+      "activity_minutes": 0,
+      "pause_instruction": ""
     },
     {
       "number": 28,
-      "slide_id": "self-review-attempt-165169-min",
-      "title": "Self-review attempt · 165–169 min",
-      "narration": "Answer H one through H four without consulting the solutions. Use a sentence or two for each explanation and include the brief calculation in H four. First, decide whether meeting an area criterion guarantees all local relationships. Second, explain what you should check before blaming a differential discrepancy on experimental error. Third, state what a small fitting error can establish and whether that is predictive validation. Finally, return to the supplied illustrative endpoints zero point two and zero point eight, with feed composition zero point three five. Calculate the rich-liquid fraction and say what establishes stable coexistence beyond the balance. Preserve your first answers. Pause now and finish all four before continuing to the review check.",
-      "activity_minutes": 3,
-      "pause_instruction": "Pause BEFORE the Self-review check. Complete worksheet p. 4 H1–H4 without solutions; keep your original attempt."
+      "slide_id": "break",
+      "title": "Take a ten-minute break",
+      "narration": "Take a ten-minute break now. Save your worksheet and Lab Three evidence before leaving the screen. This break is part of the approximately three-hour lesson, not an additional assignment. When you return, have worksheet page four ready. We will begin with the distinction between a locally stable homogeneous liquid and the globally stable phase arrangement. You will calculate phase amounts by hand, then use Lab Four to compare three overall compositions at the same model setting. The player will remain paused until you choose to continue.",
+      "activity_minutes": 10,
+      "pause_instruction": "Pause for a10-minute break. Keep your worksheet and Lab03 evidence saved. Return to worksheet p.4 F1–F3 before continuing to liquid stability."
     },
     {
       "number": 29,
-      "slide_id": "self-review-check-169172-min",
-      "title": "Self-review check · 169–172 min",
-      "narration": "For H one, opposite local errors can cancel in the integral, so a small area is not a guarantee about every point. For H two, examine the thermodynamic path, required excess-property corrections, phase and property assumptions, and the numerical differentiation. If essential information is missing, the appropriate result may be not assessed rather than a failed test. For H three, a small residual demonstrates reproduction by the selected model on those observations. It does not independently establish accuracy for new data. For H four, the rich-liquid fraction is zero point two five and the balance returns zero point three five. A stable two-liquid interpretation also needs distinct phases and a globally supporting common tangent. Correct your answers in a different color or add a note. Keep the original attempt so you can see what changed.",
-      "activity_minutes": 2,
-      "pause_instruction": "Check and correct H1–H4 on worksheet p. 4. Preserve first answers. Continue to the exit ticket at approximately minute 172."
+      "slide_id": "phase-equilibrium-includes-stability",
+      "title": "Consistency does not imply one stable liquid · 105–155 min",
+      "narration": "We now change the question. Consistency asks whether the composition dependence of the properties obeys a thermodynamic relationship. Stability asks which admissible arrangement of phases has the lowest total Gibbs energy. At fixed temperature and pressure, compare one homogeneous liquid with possible splits that preserve the total amount of each component. The mixing Gibbs energy contains the ideal mixing terms, x log x and one minus x times log one minus x, plus the excess Gibbs energy. A sufficiently unfavorable excess contribution can make the total curve nonconvex. The homogeneous liquid can then sit above a lower-energy two-liquid mixture. Nothing in that statement requires the activity model to violate Gibbs-Duhem. Indeed, a model derived consistently from one excess Gibbs-energy function can predict liquid-liquid separation. For F one, explain why checking a property identity does not tell us whether one liquid is the stable phase arrangement.",
+      "pause_instruction": "",
+      "activity_minutes": 0
     },
     {
       "number": 30,
-      "slide_id": "exit-ticket-172177-min",
-      "title": "Exit ticket · 172–177 min",
-      "narration": "Open the existing Session Three exit-ticket and feedback form using the link or QR code. Section I on worksheet page four gives the same instructions. In the concept response, answer the LLE question: explain when a calculated split represents stable equilibrium, using your Lab Four reasoning. In the numerical-evidence response, describe the Lab Three comparison between the area and local diagnostics. Identify the case, sampling and amplitude, and include the results that support your statement. You may add your Lab Four balance if useful. Use your own explanation rather than copying the example conclusion. This form is anonymous and does not identify individual attendance. Pause to enter the exit-ticket responses, then continue to the feedback fields in the same form.",
-      "activity_minutes": 4,
-      "pause_instruction": "Pause for worksheet p. 4 I: open Session 3 form and enter the LLE concept answer plus Lab 03 numerical evidence. Continue with feedback in the same form."
+      "slide_id": "local-curvature",
+      "title": "What local curvature tells us · 105–155 min",
+      "narration": "Local curvature describes how the homogeneous liquid responds to a small composition fluctuation. Positive curvature means that sufficiently small fluctuations increase its bulk Gibbs energy. Negative curvature means that small fluctuations can lower the energy. However, a small-fluctuation test does not compare every possible finite separation. That distinction separates stable and metastable homogeneous liquids. A stable liquid lies on the lower convex envelope. A metastable liquid has positive curvature but lies above a lower-energy combination of two liquids. An unstable liquid has negative curvature and also fails the global minimum requirement. For the one-parameter Margules model, the dimensionless excess Gibbs energy is A times x times one minus x. The curvature of the total mixing function is one divided by x times one minus x, minus two A. We will use A equal to three. This bulk equilibrium model does not calculate nucleation barriers, interfaces, or how long a metastable liquid will persist.",
+      "pause_instruction": "",
+      "activity_minutes": 0
     },
     {
       "number": 31,
-      "slide_id": "feedback-and-saved-work-177180-min",
-      "title": "Feedback and saved work · 177–180 min",
-      "narration": "Finish the feedback fields and submit the form once. Tell us whether the pace and Lab access worked for independent study, and name one explanation or instruction that could be clearer. Wait for the message Response received before leaving. Then check your own saved work: the completed worksheet with corrections, the Lab Three comparison and exports or screenshots, and both Lab Four cases with the independent balance. Exporting a Lab study saves a local file; it does not submit your assignment to a server. Keep these files together and follow any separately announced submission arrangements. This completes the three-hour route. No additional compulsory homework follows this lesson. Your evidence should now distinguish model reproduction, thermodynamic consistency, and stable phase equilibrium.",
-      "activity_minutes": 2,
-      "pause_instruction": "Complete feedback, submit once, wait for Response received, and save worksheet plus Lab evidence. Finish around study minute 180; no extra compulsory task."
+      "slide_id": "supporting-common-tangent",
+      "title": "A common tangent must support the curve · 105–155 min",
+      "narration": "Imagine joining two points on the Gibbs-energy curve with a straight line. The energy of a mixture of those two liquid compositions lies on that line, because the total molar energy is the phase-fraction-weighted average. At a candidate equilibrium pair, the line has the same slope as the curve at both ends. That common-tangent condition corresponds to equality of the component chemical potentials. But finding a stationary pair is only part of the calculation. The tangent must support the whole admitted curve: nowhere may another composition lie below it. If the candidate line crosses above the curve, another admissible state can lower the energy and the candidate is not globally stable. Also check that the two compositions are distinct. A solver returning the same composition twice has not established two liquids. Complete F three by separating these checks: distinct phases, chemical-potential equality, global support, and compatible amounts. Their material balance cannot substitute for the global energy comparison.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 32,
+      "slide_id": "lever-rule-attempt",
+      "title": "Lever-rule attempt · 105–155 min",
+      "narration": "This is the hand-calculation work stop. Complete F two on worksheet page four before seeing the next slide. The supplied endpoints are zero point two zero and zero point eight zero. Treat their common tangent as globally supported for this exercise. First use an overall composition of zero point five zero. Then repeat for zero point three five. The fraction of the component-one-rich liquid, beta, equals the overall composition minus the alpha endpoint, divided by the distance between the two endpoints. Here beta is a liquid label, not a vapor fraction. These illustrative endpoints belong only to the hand exercise. They are not the endpoints that Lab Four must produce for A equal to three. Pause for about eight minutes, complete both balances, and then continue to the check.",
+      "pause_instruction": "Pause for about 8 minutes. Complete worksheet p. 4 F2 for both illustrative feeds, including both liquid fractions and the material balances. Continue only after your attempt.",
+      "activity_minutes": 8
+    },
+    {
+      "number": 33,
+      "slide_id": "lever-rule-check",
+      "title": "Lever-rule check · 105–155 min",
+      "narration": "For the feed at zero point five zero, the overall composition is halfway between the two endpoints. The two liquid fractions are therefore equal: one half each. For the feed at zero point three five, the beta fraction is zero point one five divided by zero point six zero, or one quarter. The alpha fraction is three quarters. Substituting these amounts gives three quarters times zero point two zero plus one quarter times zero point eight zero, which reconstructs zero point three five. The endpoints have not changed. Moving the overall composition inside the same tie line changes how much of each liquid is present, rather than changing the compositions of the coexisting liquids. If you insert a feed outside the endpoint interval, the expression produces a negative fraction or a fraction above one. That is a warning that this two-phase construction does not represent the feed.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 34,
+      "slide_id": "lab04-predict",
+      "title": "Predict three feeds before running · 105–155 min",
+      "narration": "Before opening a named Lab Four preset, write your G one predictions on worksheet page four. The model is one-parameter Margules, with A fixed at three. Compare overall compositions zero point zero two, zero point one two, and zero point five zero. For each, predict the homogeneous-feed classification and the number of liquids at equilibrium. These are two separate columns. You can calculate the curvature as one divided by z times one minus z, minus six. A negative value gives a useful local diagnosis. A positive value leaves a global question unresolved. It does not, by itself, distinguish a stable feed from a metastable one. Write your reasoning before the interface supplies the labels. The presets are named Stable, Metastable, and Unstable, so opening them before predicting would remove the purpose of this step.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 35,
+      "slide_id": "lab04-controls",
+      "title": "Lab 04 controls and evidence · 105–155 min",
+      "narration": "Open Lab Four using the slide link, and keep Lab guide page four available. Choose Margules, one parameter, as the liquid model, and set the interaction parameter A to three. Use the feed mole-fraction field to enter the first composition. After typing a value, press Find equilibrium. Sliders update immediately, but a typed value requires that button. Keep the Gibbs energy and common tangent view visible. Read the homogeneous-feed label separately from the equilibrium phase count. Open Verify the equilibrium to inspect the numerical evidence. We need the local curvature, the Gibbs-energy decrease, the balance, and the coexistence checks for cases with two liquids. Repeat the calculation for the other feeds without changing A. This is a hypothetical fixed-temperature-and-pressure model exercise. No physical temperature is assigned to these parameter values.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 36,
+      "slide_id": "lab04-investigation",
+      "title": "Your Lab 04 investigation · 105–155 min",
+      "narration": "Now complete your independent Lab Four investigation. Allow about twenty-eight minutes here. In G two, run all three feeds at A equal to three and record the homogeneous-feed classification and equilibrium phase count separately. For the two-liquid cases, record both actual coexistence endpoints and both fractions. Under G three, use your calculator to recompute the beta fraction from the lab endpoints, then reconstruct the overall composition from the weighted balance. Do not reuse zero point two and zero point eight from the hand example. In G four, calculate the homogeneous and split Gibbs energies at zero point one two, then compare their difference with the Lab. Inspect the entire common-tangent plot and the numerical checks, rather than treating a small balance residual as complete proof of equilibrium. For a one-liquid result, record the present liquid at the feed composition. Do not invent a second liquid just to fill the table. Save each case with Export study JSON or a clearly labeled screenshot. Continue after the records and independent balances are complete.",
+      "pause_instruction": "Pause for about 28 minutes. Complete worksheet p. 5 G2–G4 with Lab 04 and Lab guide p. 4: A = 3 at z1 = 0.02, 0.12 and 0.50; retain classifications, phase evidence, actual endpoints, independent balances and saved results.",
+      "activity_minutes": 28
+    },
+    {
+      "number": 37,
+      "slide_id": "three-feed-check",
+      "title": "Three-feed check · 105–155 min",
+      "narration": "At A equal to three, the coexistence endpoints are approximately zero point zero seven zero seven two zero one eight and zero point nine two nine two seven nine eight two. The feed at zero point zero two lies outside that interval. It is globally stable as one liquid at the feed composition. Its positive curvature is about forty-five point zero two. At zero point one two, the curvature is also positive, about three point four seven, but the homogeneous feed is metastable. It lies inside the miscibility gap, where two liquids provide a lower total Gibbs energy. At zero point five zero, the curvature is negative two and the homogeneous feed is unstable. Its stable equilibrium is also two liquids at the same coexistence endpoints. The second and third cases therefore have different homogeneous-feed labels but the same equilibrium phase compositions. This comparison is the central lesson: positive curvature does not rule out a finite lower-energy split.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 38,
+      "slide_id": "balance-and-energy-check",
+      "title": "Check amounts and the energy benefit · 105–155 min",
+      "narration": "For the feed at zero point one two, use the actual endpoint interval. Subtract about zero point zero seven zero seven two from zero point one two, then divide by the difference between about zero point nine two nine two eight and zero point zero seven zero seven two. The beta fraction is approximately zero point zero five seven three nine eight two five. The alpha fraction is approximately zero point nine four two six zero one seven five. Their weighted composition reconstructs zero point one two. For the symmetric feed at one half, the two fractions are one half. Now compare energy at zero point one two. The homogeneous mixing energy divided by R T is about minus zero point zero five zero one two five. The split value is minus zero point zero five eight three four one. Their difference is the positive decrease, approximately zero point zero zero eight two one six. The unstable feed has a larger decrease; the stable feed has none. These dimensionless differences explain the thermodynamic advantage, not the separation speed. A valid balance checks the amounts; the globally supporting tangent establishes the selected equilibrium compositions.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 39,
+      "slide_id": "unseen-review-1",
+      "title": "Unseen review: consistency · 155–170 min",
+      "narration": "The next four questions use new values, so solve them rather than copying a result from the demonstration. Open worksheet page six, section H. On this slide, H one gives dimensionless excess Gibbs energies at compositions zero point two, zero point three, and zero point four. Estimate the derivative at the center using the two neighboring values. Then subtract the supplied center log-activity ratio, zero point seven five. Explain whether the result is one local residual or the Lab's average over many points. H two concerns real isobaric VLE data without independent excess-enthalpy information. The raw local score is eight point four. Decide whether the information supports a failed consistency verdict, and explain the role of the experimental path. Read H three and H four on the next slide before beginning the main pause. Show your assumptions.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 40,
+      "slide_id": "unseen-review-2",
+      "title": "Unseen review: equilibrium and evidence · 155–170 min",
+      "narration": "H three gives candidate endpoints zero point one five and zero point seven five, with an overall composition of zero point three nine. Calculate both phase fractions and reconstruct the feed. Then state what evidence is still needed to call the candidate a stable equilibrium. The question does not supply a complete Gibbs curve, so do not claim to have checked global support numerically. H four gives a hypothetical full-range isothermal dataset. Its area percentage is one point two, its local mean score is eight point four, its pressure reproduction error is zero point three percent, and its vapor-composition error is zero point two percentage point. Apply each stated teaching threshold separately. Explain how apparently favorable area and modeling results can coexist with the local result. Pause for about twelve minutes and finish H one through H four without the solutions.",
+      "pause_instruction": "Pause for about 12 minutes. Complete worksheet p. 6 H1–H4 without solutions. Show the new residual calculation, path reasoning, candidate-split balance and separate test interpretations before continuing.",
+      "activity_minutes": 12
+    },
+    {
+      "number": 41,
+      "slide_id": "unseen-check-consistency",
+      "title": "Unseen check: consistency · 155–170 min",
+      "narration": "For H one, the center derivative is zero point four eight minus zero point three two, divided by zero point two. That is zero point eight. Subtract the supplied log ratio, zero point seven five, to obtain a local residual of zero point zero five. This is one dimensionless residual. It is not the full-dataset mean score, and the question does not provide enough interior points to reconstruct that score. For H two, the correct status is not assessed for this local verdict. The path is isobaric and temperature varies, but the necessary independent excess-enthalpy correction is missing. A raw value above the numerical threshold does not repair that missing assumption. For H four, the area criterion is met, the local criterion is outside its threshold, and both model-reproduction criteria are met. These statements can all be true. A global integral and a selected-model fit do not erase a local departure. Investigate the data path, property assumptions and numerical sensitivity before deciding its cause.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 42,
+      "slide_id": "unseen-check-equilibrium",
+      "title": "Unseen check: equilibrium · 155–170 min",
+      "narration": "For H three, subtract zero point one five from zero point three nine, giving zero point two four. Divide by the endpoint distance, zero point six zero. The beta fraction is zero point four zero, and the alpha fraction is zero point six zero. The balance is zero point six zero times zero point one five plus zero point four zero times zero point seven five, giving zero point three nine. That verifies that these amounts and compositions are compatible with the feed. It does not yet establish equilibrium. The candidate phases must be distinct and have equal component chemical potentials, and their common tangent must support the full admitted Gibbs curve. Because that curve was not supplied in this question, the correct conclusion identifies the missing global evidence rather than inventing it. We finish by submitting a short reflection supported by the evidence you generated.",
+      "pause_instruction": "",
+      "activity_minutes": 0
+    },
+    {
+      "number": 43,
+      "slide_id": "exit-ticket",
+      "title": "Exit ticket · 170–180 min",
+      "narration": "Open the existing Session Three exit-ticket and feedback form using the link or QR code. Follow section I on worksheet page six. In the concept answer, explain when a calculated liquid split represents stable equilibrium. Include the distinction between a metastable homogeneous feed and the stable two-liquid arrangement available to that feed. In the evidence answer, summarize your Lab Three area-versus-local comparison. Name the data path, perturbation, amplitude and sampling resolution, and include the relevant numerical scores. Mention what changed, and what remained visible, when you increased the localized case from forty one to one hundred sixty one points. Finish with one limitation of the conclusion. Then complete the feedback fields. Include your actual study time in minutes and whether the pace worked for you. Allow about eight minutes for the whole form. Submit once, and wait for Response received before continuing. The form is anonymous and does not identify individual attendance. Pause now to complete the reflection and feedback together.",
+      "pause_instruction": "Pause for about 8 minutes. Complete worksheet p. 6 I in the existing Session 3 form: concept answer, evidence answer and feedback. Include actual study minutes and pace, submit once, and wait for Response received. Then continue to verify saved files.",
+      "activity_minutes": 8
+    },
+    {
+      "number": 44,
+      "slide_id": "feedback-and-saved-work",
+      "title": "Feedback and saved work · 170–180 min",
+      "narration": "Check that you have seen Response received. If that confirmation is already present, do not submit again. If you have not yet submitted, return to the same form and finish the reflection and feedback once. Include your actual study minutes, how the pace worked, and one remaining difficulty before submission. Now check your saved folder. Keep the completed worksheet with original predictions and corrections, the Lab Three evidence including the sampling comparison and an annotated residual plot, and all three Lab Four cases with independent balances for the two-liquid cases. LLE fitting and VLLE remain optional extensions.",
+      "pause_instruction": "",
+      "activity_minutes": 0
     }
   ]
 }

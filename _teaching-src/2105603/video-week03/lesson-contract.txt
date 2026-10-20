@@ -1,35 +1,53 @@
-WEEK 3: Thermodynamic consistency before liquid stability and LLE
-English throughout. Holiday replacement, fully independent 180 minutes, no partner/instructor required. No date assertion needed. The Week 3 narrated video follows the same 31 slides and replaces reading those slides; it is not additional work. Pause, calculate and use the real Labs. Keep activity pauses enabled and continue manually after each task. Lab08 video is only optional targeted remedial review within the first 15 minutes, not a second full lesson. All required work fits approximately 180 minutes including narration and a ten-minute break. No compulsory extra homework/pre-reading. Existing Session 3 anonymous exit/feedback form remains valid: concept field answers the existing LLE question, evidence field includes the Lab03 area versus differential comparison. It does not identify attendance. Do not create or promise an attendance submission link.
-Schedule:
-0-15 review Lab08 concepts and gamma (worksheet p1 A1-A3)
-15-35 Gibbs-Duhem and applicability (p1 B1-B3)
-35-50 trapezoidal area hand exercise (p1 C1-C3)
-50-80 controlled Lab03 comparison (p2 D1-D4)
-80-90 interpret/correct comparison (p2 E1-E2)
-90-100 break
-100-120 Gibbs energy/common tangent + lever rule example (p3 F1-F3)
-120-165 individual Lab04 investigation (p3 G1-G4)
-165-172 self-review H1-H4 (p4); attempt before solutions
-172-177 existing Session 3 exit ticket (p4 I instructions)
-177-180 feedback and save work (p4 I)
-Documents/links:
-postmidterm-03.html (slides), files/postmidterm-03-slides.pdf
-week03-study.html (start hub root will author)
-files/week03-practice.pdf (4 pages A-I)
-files/week03-solutions.pdf (worked solutions/checks, separate, view after attempt)
-files/week03-lab-guide.pdf (3-page guide: p1 Lab03 controls, p2 diagnostics/applicability, p3 Lab04 exact steps)
-files/preclass-week-03.pdf (revised optional 3-page background reading, consistency then LLE)
-labs/consistency.html ; labs/stability.html#lle-experiment
-Exit/feedback https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=3
-Hand area exercise: synthetic L=ln(gamma1/gamma2), x=[0,.25,.5,.75,1], L=[2,1,0,-1,-2]. Trapezoid signed area S=0 (positive .5, negative -.5). Uniform shift +.2 gives S=.2; not a real-data certificate. Do not confuse signed S with normalized area D. Endpoints in hand example supplied analytically, not inferred from interior observations. Core lesson: local canceling errors can pass area but violate local relationship.
-Lab03 own independent synthetic dataset, not Lab08's parameter set. Inspect actual source/UI labels/defaults for reproducible setup. Start isothermal/clean,41 points; change only defect to canceling errors amplitude .25, then localized defect; sample resolution 41->161 optional if time. Area/differential core, Herington and Van Ness-type explain applicability and limits. Lab's differential is teaching finite-difference diagnostic, not NIST/Kojima Pade implementation. Approximate volume pressure term omitted for isothermal VLE, Herington empirical for isobaric, local isobaric residual needs independent HE before verdict, model fit not blanket consistency/prediction. Record method, inputs, result, applicability.
-LLE hand example supported endpoints .2,.8,z=.5 => fBeta .5; z=.35=>.25; balance .75*.2+.25*.8=.35. These illustrative endpoints are NOT numeric expected Lab04 outputs. Actual Lab04 use source-supported symmetric Margules A=3 split (or choose verified exact preset), change ONLY z .5->.35 holding T,P/model fixed; verify actual computed endpoints and fractions, stable common tangent. No task requires LLE fitting or VLLE, optional extensions only.
-A1 x/y/z/gamma retrieval; A2 gamma1=0.704857144627*158.707198211/(.5*150)=1.491545 and compare exp(.399813); A3 fitting vs consistency.
-B1 fixed T,P GD constraint; B2 isothermal pressure approximation and isobaric correction; B3 cannot assign verdict to not-assessed.
-C1 baseline signed area; C2 shifted area; C3 endpoints/limitations.
-D1 baseline settings/result; D2 canceling .25; D3 localized .25; D4 applicability of Herington and model fit (run model fit once if supported in 30min).
-E1 why area/local differ; E2 claim,evidence,limitation.
-F1 stable vs stationary; F2 hand lever rule .5/.35; F3 global support.
-G1 reproducible Lab04 baseline; G2 changed z; G3 independent balance; G4 interpret endpoints vs fractions and stable tangent.
-H1-H4 concise review: area pass guarantee? differential failure meaning/assumptions? small model residual evidence? lever fractions for supported .2,.8,z .35 and stability condition.
-I save worksheet+Lab exports/screenshot; exit concept LLE, evidence consistency; feedback.
+Week 3: thermodynamic consistency before liquid-liquid equilibrium
+
+All learner-facing content and narration are English. The44-slide order is
+validated against the public deck by prepare-narration.py.
+Worksheet:6pages (p1 A/B; p2 C; p3 D/E; p4 F/G1; p5 G2–G4; p6 H/I).
+Guide:4pages. Solutions:4pages. Optional background:3pages.
+
+Approximate elapsed study blocks:
+0–15 A: composition, activity and fitting review
+15–40 B: excess energy, Gibbs–Duhem and experimental path
+40–65 C: signed area and local finite-difference calculations
+65–95 D/E: actual Lab03 demonstration and independent investigation
+95–105 break
+105–155 F/G: global stability, lever rule and Lab04
+155–170 H: unseen transfer and self-review
+170–180 I: exit ticket, feedback and retained work
+
+Fixed task estimates in minutes: slide4=9,11=15,13=8,17=9,26=18,
+32=8,36=28,40=12,43=8. These sum to115 minutes of active work.
+Slide28 is a10-minute break. Recording aims for about55 minutes; report
+measured recording separately. Never scale activity budgets to force180.
+No mandatory waiting. Approximately180 minutes is a planning estimate,
+not an observed completion time.
+
+Lab03 uses r=d[gE/(RT)]/dx−ln(gamma1/gamma2) for fixedT,P examples.
+Calculate g first. C4 perturbed r=.120; C5 perturbed r=.125.
+Actual synthetic isothermal350K,41 points, amplitude.25:
+clean D=.0786915/local=.117763; cancel D=.0735519/local=15.5987;
+localized41 D=2.01346/local=1.67184;
+localized161 D=1.941724/local=1.565607.
+Clean fit uses39 interior points and NRTL alpha=.47. Export current state
+only. Shared Study workspace supports loading JSON and restoring inputs.
+Rerun the modeling fit after Restore; saved results remain recorded evidence.
+Actual CUA captures and sentence anchors are in demo-scenes.json and
+demo-frames/. The video uses these genuine interface captures.
+
+Lab04 symmetric Margules A3: xalpha=.07072018168, xbeta=.92927981832.
+z=.02: globally stable homogeneous liquid, outside coexistence range.
+z=.12: metastable homogeneous feed; final stable two-liquid arrangement,
+fBeta=.05739824727, dimensionless energy decrease=.00821635817.
+z=.50: unstable homogeneous feed; final stable two liquids, fBeta=.5.
+Never treat a negative lever fraction as a physically available split.
+
+H1 local r=.05, not an aggregate verdict.
+H2 missing independent hE means not assessed.
+H3 endpoints.15/.75 with z=.39 give fBeta=.4.
+H4 area and model criteria are met, while the local criterion is outside.
+Answers follow attempt gates. Deliberate chapter seeks allow review;
+the player is not a secure assessment system.
+
+The existing Session3 form is anonymous. Complete reflection and feedback,
+include actual study minutes and pace, and submit once at slide43.
+Slide44 verifies receipt and saved work. Do not claim individual attendance.

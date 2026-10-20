@@ -1,8 +1,82 @@
 {
   "passed": true,
-  "files_verified": 463,
-  "archive_bytes": 61279865,
-  "audited_pdf_included": true,
+  "scope": "Rebuilt portable student package; file/hash/PDF/link checks, not browser interaction QA.",
+  "lab_source_commit": "b6a6f6eef95606d5eb2c2ae67a167835c49c0158",
+  "archive_bytes": 62425421,
+  "archive_sha256": "a49594a4089cdcb1544e06b641134c65e84e44219ea8e8b0d7e09ac9147d46f4",
+  "files_verified": 482,
+  "final_slide_pdf_sha256": "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a",
+  "pdf_checks": [
+    {
+      "file": "postmidterm-03-slides.pdf",
+      "pages": 44,
+      "sha256": "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a"
+    },
+    {
+      "file": "week03-practice.pdf",
+      "pages": 6,
+      "sha256": "b1e4ab520fe85f3b8ed6ea5c6cc6873d9d50300e47debc5d2f3102e31d16416b"
+    },
+    {
+      "file": "week03-lab-guide.pdf",
+      "pages": 4,
+      "sha256": "0c33209b979abd09599e0fcba50d3b7673edd5ef7d11747ef05e321c0627a50a"
+    },
+    {
+      "file": "week03-solutions.pdf",
+      "pages": 4,
+      "sha256": "db6bb4026e437ec4e0b9b84709583fce229bd0c6ab46a5949bea7fcec733ca71"
+    },
+    {
+      "file": "preclass-week-03.pdf",
+      "pages": 3,
+      "sha256": "c01eac6ee745ab4cfb6b12c8108802e84942cad7ad22a436a1e3ab27a9e53c50"
+    }
+  ],
+  "new_lab03_images_verified": [
+    "teaching/2105603/images/week03-lab03/01-baseline-controls.png",
+    "teaching/2105603/images/week03-lab03/02-baseline-area.png",
+    "teaching/2105603/images/week03-lab03/03-baseline-local.png",
+    "teaching/2105603/images/week03-lab03/04-canceling-local.png",
+    "teaching/2105603/images/week03-lab03/05-canceling-scores.png",
+    "teaching/2105603/images/week03-lab03/06-localized41-scores.png",
+    "teaching/2105603/images/week03-lab03/07-localized41-plot.png",
+    "teaching/2105603/images/week03-lab03/08-localized161-plot.png",
+    "teaching/2105603/images/week03-lab03/09-localized161-scores.png",
+    "teaching/2105603/images/week03-lab03/10-clean-fit-scores.png",
+    "teaching/2105603/images/week03-lab03/11-clean-fit-residuals.png",
+    "teaching/2105603/images/week03-lab03/baseline-area-crop.png",
+    "teaching/2105603/images/week03-lab03/baseline-controls-crop.png",
+    "teaching/2105603/images/week03-lab03/baseline-local-crop.png",
+    "teaching/2105603/images/week03-lab03/cancel-local-crop.png",
+    "teaching/2105603/images/week03-lab03/fit-controls-crop.png",
+    "teaching/2105603/images/week03-lab03/fit-score-crop.png",
+    "teaching/2105603/images/week03-lab03/local161-crop.png",
+    "teaching/2105603/images/week03-lab03/local41-crop.png"
+  ],
+  "relative_resource_links_checked": 133,
+  "broken_relative_links": [],
+  "online_week3_video_links": [
+    {
+      "source": "teaching/2105603/week03-study.html",
+      "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html"
+    },
+    {
+      "source": "teaching/2105603/week03-study.html",
+      "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html"
+    },
+    {
+      "source": "teaching/2105603/week03-study.html",
+      "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html#slide-19"
+    },
+    {
+      "source": "teaching/2105603/labs/learning-path.html",
+      "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html"
+    }
+  ],
   "week3_dynamic_video_link": "https://www.skhgroup.net/teaching/2105603/week03-video.html",
-  "media_excluded": true
+  "media_excluded": true,
+  "private_source_and_record_paths_excluded": true,
+  "readme_stale_14_mapping_claim_found": false,
+  "focused_video_link_rewrite_cases_passed": 13
 }

@@ -1,16 +1,18 @@
 {
   "passed": true,
-  "method": "CUA interaction with the actual H.264/AAC recording and WebVTT track in the in-app browser",
+  "method": "CUA interaction with final H.264/AAC MP4 and WebVTT in the in-app browser; a temporary local harness positions playback near boundaries through explicit UI buttons.",
+  "chapter_count": 44,
+  "video_sha256": "d1d1cc9540f6093d455b4a288911cfa5cc5d59e5a43c77bf9d2732f746107271",
+  "page_sha256": "a882bfa35c07ecb3993ed935fecbdce65e604301f191b5e44d3cbe62d05973b2",
   "checks": [
-    "Desktop actual playback and native English captions",
-    "Chapter navigation to slide 4",
-    "Automatic pause at slide 4 retains attempt before slide 5 check",
-    "Continue advances to slide 5 and resumes playback",
-    "Chapter navigation to slide 18 while playing",
-    "Break stops on slide 18 with full 10-minute instruction",
-    "Actual lesson in a 390-pixel-wide iframe viewport",
-    "Long 183-character slide 26 caption wraps below the image without clipping",
-    "Narrow viewport full-screen playback with native captions"
+    "Actual final recording loads with44 chapters and55:40 display",
+    "Activity4 pauses on attempt; Continue starts check slide5",
+    "Break28 pauses with10-minute suggested break and no automatic resume",
+    "Reflection43 pauses with submit-once instructions",
+    "Longest241-character caption on44 wraps completely below video at390-pixel iframe width",
+    "Native video full screen displays complete long English captions",
+    "Actual Lab03 export/saved-case screenshot and matching caption visible during chapter25",
+    "Direct #slide-19 load selects Lab03 chapter after metadata loads"
   ],
-  "scope": "One desktop browser; narrow layout is an actual 390-pixel iframe viewport, not physical-phone hardware testing. Full subjective listening was not performed."
+  "scope": "One desktop browser. Narrow layout used a390-pixel iframe, not physical-phone hardware. Boundary positioning used a local test harness; the production controller performed the pauses. Native-fullscreen caption presentation was inspected; the harness was reset afterward. No form responses submitted. Full subjective listening was not performed."
 }

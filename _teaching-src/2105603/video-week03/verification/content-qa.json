@@ -1,0 +1,314 @@
+{
+  "revision": "Expanded Week 3 independent lesson: 44 slides, consistency before LLE",
+  "checked_at_utc": "2026-10-20T00:31:43.788748+00:00",
+  "status": "passed_content_and_frozen_source_alignment_checks",
+  "scope": {
+    "slides": "Revised postmidterm-03.qmd: 44 slides",
+    "narration": "Theory 1-18, demonstration 19-28, LLE/review 29-44 drafts; substantive content and answer ordering",
+    "handouts": {
+      "practice_pages": 6,
+      "solutions_pages": 4,
+      "guide_pages": 4,
+      "optional_background_pages": 3
+    },
+    "visual_spot_checks": [
+      "Practice page 2: local calculations",
+      "Practice page 5: balances and energy",
+      "Guide page 3: test formulas and qualifications"
+    ],
+    "methods": [
+      "Independent execution of shipped consistency and stability engines",
+      "Manual algebra and arithmetic comparison",
+      "PDF text and link inspection",
+      "Focused automated curriculum tests"
+    ]
+  },
+  "calculations": {
+    "C4": {
+      "clean_g": [
+        0.48,
+        0.5,
+        0.48
+      ],
+      "clean_residual": 0,
+      "changed_upper_log_gamma1": 0.36,
+      "changed_g_at_060": 0.504,
+      "changed_residual": 0.12
+    },
+    "C5": {
+      "clean_g": [
+        0.315,
+        0.36,
+        0.375
+      ],
+      "clean_residual": 0,
+      "changed_upper_log_gamma2": 0.425,
+      "changed_g_at_050": 0.4,
+      "changed_slope": 0.425,
+      "center_log_ratio": 0.3,
+      "changed_residual": 0.125
+    },
+    "area_hand_example": {
+      "baseline_signed_sum": 0,
+      "uniform_shift": 0.2,
+      "shifted_signed_sum": 0.2
+    },
+    "lab03": [
+      {
+        "case": "clean",
+        "points": 41,
+        "D_percent": 0.07869154658262686,
+        "local_score": 0.11776300870635709
+      },
+      {
+        "case": "canceling",
+        "points": 41,
+        "amplitude": 0.25,
+        "D_percent": 0.07355192522089608,
+        "local_score": 15.598697757390129
+      },
+      {
+        "case": "localized",
+        "points": 41,
+        "amplitude": 0.25,
+        "D_percent": 2.01346322468344,
+        "local_score": 1.6718389636067679,
+        "max_abs_residual": 0.24903390884840249
+      },
+      {
+        "case": "localized",
+        "points": 161,
+        "amplitude": 0.25,
+        "D_percent": 1.9417238225937432,
+        "local_score": 1.5656069080700477,
+        "max_abs_residual": 0.24993966606048967
+      }
+    ],
+    "clean_model_fit": {
+      "converged": true,
+      "interior_points": 39,
+      "parameter_at_bound": false,
+      "pressure_error_percent": 1.1248317129789694e-06,
+      "vapor_error_percentage_points": 6.476843234102475e-07
+    },
+    "lab04": {
+      "model": "One-parameter Margules A=3",
+      "x_alpha": 0.07072018167994476,
+      "x_beta": 0.9292798183200552,
+      "feeds": [
+        {
+          "z": 0.02,
+          "homogeneous_state": "stable",
+          "equilibrium": "one liquid",
+          "energy_decrease_over_RT": 0
+        },
+        {
+          "z": 0.12,
+          "homogeneous_state": "metastable",
+          "equilibrium": "two liquids",
+          "beta_fraction": 0.05739824727016868,
+          "energy_decrease_over_RT": 0.008216358168730398
+        },
+        {
+          "z": 0.5,
+          "homogeneous_state": "unstable",
+          "equilibrium": "two liquids",
+          "beta_fraction": 0.5,
+          "energy_decrease_over_RT": 0.11519416888149475
+        }
+      ]
+    },
+    "unseen_H1": {
+      "slope": 0.8,
+      "center_log_ratio": 0.75,
+      "residual": 0.05
+    },
+    "unseen_H3": {
+      "beta_fraction": 0.4,
+      "alpha_fraction": 0.6,
+      "reconstructed_feed": 0.39
+    }
+  },
+  "assumptions_checked": [
+    "Local operator forms gE/(RT), differences that function, then subtracts the center log-activity ratio; one point is not the dataset-average score.",
+    "Gibbs-Duhem product-rule derivation is at fixed temperature and pressure; general-path excess enthalpy and volume terms are stated.",
+    "Isothermal VLE neglects the excess-volume pressure contribution; real isobaric data require independent excess enthalpy for a corrected local verdict.",
+    "Synthetic generator excess enthalpy is not independent calorimetry; Herington empirical allowance does not replace that property.",
+    "Normalized area uses nonnegative area magnitudes and is distinct from a signed integral; missing endpoints require an explicit assumption.",
+    "Localized cases can meet both aggregate criteria while retaining a visible residual peak; denser synthetic sampling adds no experimental measurements.",
+    "Van Ness-type fit is a teaching NRTL parameterization; pressure percent and vapor-composition percentage-point units remain distinct.",
+    "Consistency, model reproduction, homogeneous-feed curvature and global equilibrium stability remain separate claims.",
+    "A globally supporting tangent, distinct phases and feasible material balances are required; phase classifications do not predict nucleation or separation speed.",
+    "Illustrative .20/.80 tie-line endpoints are not the actual A=3 coexistence endpoints.",
+    "Lab03 exports include shared workspace controls. Study workspace · reopen and compare cases accepts Load studies or a comparison JSON, then Restore beside a case; students recalculate or refit for fresh results. Recorded imported results do not substitute for a fresh calculation."
+  ],
+  "page_and_attempt_order": {
+    "worksheet": {
+      "p1": "A1-A3 and B1-B3",
+      "p2": "C1-C6",
+      "p3": "D1-D5 and E1-E2",
+      "p4": "F1-F3 and G1",
+      "p5": "G2-G4",
+      "p6": "H1-H4 and I"
+    },
+    "guide": {
+      "p1": "Path and local calculation",
+      "p2": "Lab03 controls",
+      "p3": "Lab03 method interpretation",
+      "p4": "Lab04"
+    },
+    "checks_after_attempt": {
+      "A": "4 before 5",
+      "C_area": "13 before 14",
+      "C_local": "17 before 18",
+      "F_lever": "32 before 33",
+      "G_investigation": "36 before 37-38",
+      "H_unseen": "40 before 41-42"
+    },
+    "predictions": "D2-D3 required before demonstration reveals changed cases; G1 required before named presets/results.",
+    "submission": "Existing anonymous Session3 form: submit concept, evidence and feedback once at43 with actual minutes/pace;44 verifies receipt and saved files, with no resubmission after confirmation. Final narration, QMD and current practice PDF match."
+  },
+  "planning": {
+    "nominal_blocks_minutes": [
+      [
+        0,
+        15
+      ],
+      [
+        15,
+        40
+      ],
+      [
+        40,
+        65
+      ],
+      [
+        65,
+        95
+      ],
+      [
+        95,
+        105
+      ],
+      [
+        105,
+        155
+      ],
+      [
+        155,
+        170
+      ],
+      [
+        170,
+        180
+      ]
+    ],
+    "recording_target_minutes": 55,
+    "active_work_estimate_minutes": 115,
+    "break_minutes": 10,
+    "main_work_checkpoints": 9,
+    "task_completion_not_forced_wait": true,
+    "learning_path_planning_note": "Updated from eight to nine main work checkpoints plus a break."
+  },
+  "automated_tests": {
+    "command": "node --test tests/independent-learning-path.test.mjs tests/teaching-examples.test.mjs",
+    "passed": 6,
+    "failed": 0,
+    "coverage": [
+      "Contiguous nominal180-minute route",
+      "Week3 resource and attendance separation",
+      "Week2 instructions preserved",
+      "Expanded calculations/sampling/stability/transfer",
+      "Worked examples agree with engines",
+      "Six-session curriculum coverage"
+    ]
+  },
+  "limitations": [
+    "The 55/115/10-minute allocation is an approximate plan. Student completion time is not measured; final recording duration must be measured after audio/video generation.",
+    "No complete subjective listening review of the revised44-slide audio was performed in this content audit. Earlier31-slide audio checks do not validate the revised audio.",
+    "Visual review here spot-checked three revised handout pages; the document author recorded a separate full17-page visual review.",
+    "This audit does not establish deployment completion, video synchronization, or live form submission behavior; these require separate build/browser checks.",
+    "Live shared-workspace restore/refit was verified by the root agent using the in-memory case retained on export. The downloaded-file upload path was checked in source/control labels, not exercised in that live test."
+  ],
+  "audit_corrections": [
+    {
+      "issue": "Initial audit incorrectly inferred that Lab03 had no JSON restore from the app-specific controller alone.",
+      "corrected_evidence": [
+        "src/ui/study-workspace.js imports study-state.js restoreStudy and creates the shared loader/Restore controls",
+        "consistency-app.js exports through stringifyStudy, which retains shared workspace input state"
+      ],
+      "corrected_files": [
+        "prereading/week03/README.md",
+        "outputs/week03-video/content-qa.json"
+      ],
+      "required_user_flow": "Export all results → Study workspace · reopen and compare cases → Load studies or a comparison JSON → Restore selected case → recalculate/refit",
+      "live_ui_verification": "Root verified in the actual UI: export retained Case1, change inputs, Restore Case1, observe clean41 restored and modeling reset, then rerun fit and confirm convergence. File-upload restoration was not live-tested; its visible control and implementation were verified."
+    }
+  ],
+  "lab03_live_restore": {
+    "verified": true,
+    "method": "CUA on actual Lab03 interface",
+    "steps": [
+      "Export clean350K/41 with converged NRTL fit; export automatically retains Case1",
+      "Open shared Studyworkspace",
+      "Change current perturbation to localized and sampling to161",
+      "Click Restore Case1",
+      "Observe clean reference and41points restored; model verdict reset to not run",
+      "Run modeling test again; observe39interior points converged and reported errors0.000"
+    ],
+    "file_import_scope": "Load studies or a comparison JSON control and implementation verified; live test restored the in-memory case retained by export, not a file upload.",
+    "screenshots": [
+      "12-study-workspace.png",
+      "13-restore-case.png",
+      "14-restored-refit.png"
+    ]
+  },
+  "final_alignment": {
+    "frozen_slide_count": 44,
+    "narration_ids_match_qmd": true,
+    "source_sha256": {
+      "slides": "dda09c21cb3a40f29ba2be738f41d048d664183d390ab2792953b6846cc85652",
+      "narration": "ffd20ba0c67017d4139f5ab3dd54ac74e9be42906e1450fd837b9d3349274e54",
+      "handout_source": "866f15cdf3d31ecdb777cccef50f79a73019d8415e819a930bc593885aae1f23",
+      "study_hub": "5cb46869eb4a58014cdecb25b0793cb1ef45ca3d3a285043717503e8030023c2",
+      "learning_path": "ba8dd3f382397c064b64063174133c849d50e87b49b7e65b4a40cd39ceeacb4b"
+    },
+    "pdfs": {
+      "week03-practice.pdf": {
+        "pages": 6,
+        "sha256": "b1e4ab520fe85f3b8ed6ea5c6cc6873d9d50300e47debc5d2f3102e31d16416b"
+      },
+      "week03-solutions.pdf": {
+        "pages": 4,
+        "sha256": "db6bb4026e437ec4e0b9b84709583fce229bd0c6ab46a5949bea7fcec733ca71"
+      },
+      "week03-lab-guide.pdf": {
+        "pages": 4,
+        "sha256": "0c33209b979abd09599e0fcba50d3b7673edd5ef7d11747ef05e321c0627a50a"
+      },
+      "preclass-week-03.pdf": {
+        "pages": 3,
+        "sha256": "c01eac6ee745ab4cfb6b12c8108802e84942cad7ad22a436a1e3ab27a9e53c50"
+      }
+    },
+    "active_checkpoints_minutes": {
+      "4": 9,
+      "11": 15,
+      "13": 8,
+      "17": 9,
+      "26": 18,
+      "32": 8,
+      "36": 28,
+      "40": 12,
+      "43": 8
+    },
+    "active_total_minutes": 115,
+    "break_minutes": 10,
+    "slide25": "Source, final narration and guide agree on shared Study workspace, loading a saved JSON or selecting the retained export, Restore Case 1, and rerunning the model fit. Student reopen exercise is optional; demonstration shows the flow.",
+    "slide43": "Submit concept, evidence and feedback once, including actual study minutes and pace; wait for Response received.",
+    "slide44": "Verify receipt and saved work; do not resubmit after confirmation.",
+    "hub_and_learning_path": "Nine main work checkpoints plus a break, 115 active minutes and approximate55-minute recording target; no extra compulsory follow-up.",
+    "timing": "Planned approximately180 minutes. Actual final recording duration remains pending media completion; student completion time is not measured.",
+    "result": "No blocking content alignment discrepancy found in the audited frozen sources."
+  }
+}
