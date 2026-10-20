@@ -31,7 +31,8 @@ const {script,template}=JSON.parse(extraction.stdout);
 const manifestPath=path.join(root,'outputs/week03-video/audio/manifest.json');
 const timelinePath=path.join(root,'outputs/week03-video/timeline.json');
 const expectedSlides=44;
-const workStops=[4,11,13,17,26,32,36,40,43];
+const workStops=[4,11,13,17,26,32,34,36,40,43];
+const activityMinutes={4:9,11:15,13:8,17:9,26:18,28:10,32:8,34:3,36:25,40:12,43:8};
 const breakSlide=28;
 let mode,chapters;
 if(!args.has('--fixture')&&fs.existsSync(manifestPath)&&fs.existsSync(timelinePath)){
@@ -58,14 +59,23 @@ if(!args.has('--fixture')&&fs.existsSync(manifestPath)&&fs.existsSync(timelinePa
   }
   assert.equal(narration.length,expectedSlides,'The explicit fixture requires the revised 44-slide source/drafts.');
   assert.deepEqual(narration.map(m=>m.slide),Array.from({length:expectedSlides},(_,i)=>i+1));
-  chapters=narration.map((m,i)=>({slide:i+1,title:m.title,narration:m.narration,
-    cue:m.pause_instruction||'Listen, then continue through the lesson.',start:i*20,end:(i+1)*20,
-    lesson_start:m.stage_start_minute,lesson_end:m.stage_end_minute,activity:m.activity,activity_minutes:m.activity_minutes}));
-  mode='SYNTHETIC TIMING FIXTURE: 44 revised source slides, 20 seconds per slide; control flow only, not actual media QA';
+  chapters=narration.map((m,i)=>{
+    const minutes=activityMinutes[i+1]??0;
+    // Fixtures exercise the new guard contract even while the previous media or
+    // normalized narration exists. Actual-metadata mode validates real flags.
+    const cue=minutes>0&&m.activity_minutes!==minutes
+      ? `Synthetic fixture work instruction for slide ${i+1}: about ${minutes} minutes.`
+      : m.pause_instruction||'Listen, then continue through the lesson.';
+    return {slide:i+1,title:m.title,narration:m.narration,cue,start:i*20,end:(i+1)*20,
+      lesson_start:m.stage_start_minute,lesson_end:m.stage_end_minute,activity:minutes>0,activity_minutes:minutes};
+  });
+  mode='SYNTHETIC TIMING FIXTURE: 44 source slides, revised activity contract, 20 seconds per slide; control flow only, not actual media QA';
 }
 assert.deepEqual(chapters.map(c=>c.slide),Array.from({length:expectedSlides},(_,i)=>i+1));
 assert.ok(chapters.every(c=>Number.isFinite(c.start)&&c.end>c.start+.24));
 assert.deepEqual(chapters.filter(c=>c.activity).map(c=>c.slide),[...workStops,breakSlide].sort((a,b)=>a-b));
+assert.equal(workStops.reduce((sum,n)=>sum+chapters[n-1].activity_minutes,0),115);
+for(const c of chapters)assert.equal(c.activity_minutes,activityMinutes[c.slide]??0,`Wrong activity budget at slide ${c.slide}`);
 assert.equal(chapters.at(-1).activity,false,'Slide 44 checks receipt and saved work; it does not ask for another submission.');
 
 class Element {
@@ -155,7 +165,7 @@ function checkPause(h,slide){
   if(slide<chapters.length)assert.equal(h.links[slide].getAttribute('aria-current'),null);
 }
 
-await test('Default pause holds all nine revised work stops before advancing',async()=>{
+await test('Default pause holds all ten revised work stops before advancing',async()=>{
   for(const slide of workStops){
     const h=harness();assert.equal(h.el('auto-pause').checked,true);await h.jump(slide);await h.play();
     await h.advance(chapters[slide-1].end-.24);checkPause(h,slide);
@@ -182,6 +192,18 @@ await test('The demo link intentionally selects Lab 03 chapter 19',async()=>{
   const h=harness();h.el('demo-start').click();await h.settle();
   near(h.video.currentTime,chapters[18].start+.025);assert.equal(h.el('slide-counter').textContent,`Slide 19 of ${chapters.length}`);
   assert.equal(h.el('pause-panel').hidden,true);
+});
+await test('The second demo link intentionally selects Lab 04 chapter 35',async()=>{
+  const h=harness();h.el('demo-lle-start').click();await h.settle();
+  near(h.video.currentTime,chapters[34].start+.025);assert.equal(h.el('slide-counter').textContent,`Slide 35 of ${chapters.length}`);
+  assert.equal(h.el('pause-panel').hidden,true);
+  assert.match(template,/Before opening the Lab 04 demonstration, complete G1 predictions at slide 34/);
+});
+await test('The three-minute prediction pause holds slide 34 before Lab 04 results',async()=>{
+  const h=harness();await h.jump(34);await h.play();await h.advance(chapters[33].end-.24);checkPause(h,34);
+  assert.equal(chapters[33].activity_minutes,3);await h.continueActivity();
+  near(h.video.currentTime,chapters[34].start+.025);assert.equal(h.el('slide-counter').textContent,`Slide 35 of ${chapters.length}`);
+  assert.equal(h.video.paused,false);assert.equal(chapters[35].activity_minutes,25);
 });
 await test('Replaying a completed activity reinstates its future pause',async()=>{
   const h=harness();await h.jump(4);await h.play();await h.advance(chapters[3].end-.24);await h.continueActivity();

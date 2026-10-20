@@ -1,5 +1,5 @@
 {
-  "provenance": "Actual Lab03 interface captured via CUA at http://127.0.0.1:8815/teaching/2105603/labs/consistency.html, equivalent to the course public lab. No student data. Each view follows the demonstrated control action.",
+  "provenance": "Actual Lab03 interface captured via CUA at http://127.0.0.1:8815/teaching/2105603/labs/consistency.html, equivalent to the course public lab. No student data. Each view follows the demonstrated control action. Lab04 views captured through CUA from https://www.skhgroup.net/teaching/2105603/labs/stability.html#lle-experiment on 2026-10-20, after actual inputs, calculations, exports, comparison download, file import, Restore Case 2 and fresh calculation. Only synthetic A=3 examples; no student data.",
   "scenes": [
     {
       "slide": 20,
@@ -102,6 +102,90 @@
       "sentence_prefix": "The modeling result must be fitted again",
       "file": "14-restored-refit.png",
       "label": "Refit after restoring inputs"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Open Lab Four and scroll",
+      "file": "lab04-01-stable-controls.png",
+      "label": "Set Margules A = 3 and the stable feed"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Scroll below the plot",
+      "file": "lab04-02-single-liquid-note.png",
+      "label": "Distinguish binodal boundaries from present phases"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Open Verify the equilibrium",
+      "file": "lab04-03-stable-checks.png",
+      "label": "Check and export the one-liquid result"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Return to the feed field",
+      "file": "lab04-04-metastable-gibbs.png",
+      "label": "Enter z = 0.12 and calculate"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Read the updated scorecards",
+      "file": "lab04-05-metastable-controls.png",
+      "label": "Read metastable feed and two-liquid equilibrium"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Below the plot",
+      "file": "lab04-06-metastable-fractions.png",
+      "label": "Read actual coexistence compositions and amounts"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Under Verify the equilibrium",
+      "file": "lab04-07-metastable-checks.png",
+      "label": "Inspect energy, balance and coexistence checks"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "For the third case",
+      "file": "lab04-08-unstable-controls.png",
+      "label": "Run the unstable central feed"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Read the phase-fraction bar",
+      "file": "lab04-09-unstable-fractions.png",
+      "label": "Compare equal amounts and fixed endpoints"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Open Study workspace",
+      "file": "lab04-10-saved-cases.png",
+      "label": "Compare all three saved cases"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Click Download comparison",
+      "file": "lab04-11-download-comparison.png",
+      "label": "Save the complete comparison JSON"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Use Load studies",
+      "file": "lab04-12-reopened-json.png",
+      "label": "Import the downloaded comparison and restore Case 2"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Check the restored controls",
+      "file": "lab04-13-restored-inputs.png",
+      "label": "Verify restored inputs before recalculating"
+    },
+    {
+      "slide": 35,
+      "sentence_prefix": "Now click Find equilibrium again",
+      "file": "lab04-14-restored-recalculated.png",
+      "label": "Recalculate and verify the restored case"
     }
   ]
 }

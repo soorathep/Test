@@ -37,7 +37,7 @@ TB = Fraction(1, RATE)
 TAIL = 2 * RATE
 WIDTH, HEIGHT = 1920, 1080
 SLIDE_HEIGHT = 920
-EXPECTED_PDF_SHA256 = "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a"
+EXPECTED_PDF_SHA256 = "dbd1af7fbfc74b460ac9221e74e0e9b154bd4ef9ebe71c5d3a4b7c570d552108"
 SOURCES = Path(__file__).resolve().parent
 
 
@@ -148,8 +148,8 @@ def prepare():
         "time_base": "1/24000", "silent_tail_per_slide_seconds": 2,
         "duration_samples": offset, "duration_seconds": offset / RATE,
         "narration_duration_seconds": sum(r["narration_samples"] for r in rows) / RATE,
-        "lesson_working_time_minutes": 180,
-        "timing_contract": "Each chapter starts at its PCM audio start and ends after a 2-second silent tail. Lab03 chapters switch to genuine interface captures at the matching spoken sentence. All visual transitions use exact PCM sample offsets. No exercise-length filler silence is encoded.",
+        "target_lesson_minutes": 180,
+        "timing_contract": "Each chapter starts at its PCM audio start and ends after a 2-second silent tail. Lab03 chapters 19-25 and the Lab04 demonstration in chapter35 switch to genuine interface captures at the matching spoken sentence. All visual transitions use exact PCM sample offsets. No exercise-length filler silence is encoded.",
         "source_pdf": str(PDF.relative_to(ROOT)), "source_pdf_sha256": pdf_hash,
         "source_manifest": str(MANIFEST.relative_to(ROOT)), "source_manifest_sha256": sha(MANIFEST),
         "audio_master_sha256": sha(MASTER), "slides": rows,

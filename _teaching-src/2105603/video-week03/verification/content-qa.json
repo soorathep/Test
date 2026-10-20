@@ -1,10 +1,10 @@
 {
-  "revision": "Expanded Week 3 independent lesson: 44 slides, consistency before LLE",
-  "checked_at_utc": "2026-10-20T00:31:43.788748+00:00",
-  "status": "passed_content_and_frozen_source_alignment_checks",
+  "revision": "Week 3 revision with actual Lab03 and Lab04 demonstrations: 44 slides, ten work checkpoints plus a break",
+  "checked_at_utc": "2026-10-20T01:50:35.050686+00:00",
+  "status": "passed_current_content_alignment_with_verified_final_media_and_browser_reports",
   "scope": {
     "slides": "Revised postmidterm-03.qmd: 44 slides",
-    "narration": "Theory 1-18, demonstration 19-28, LLE/review 29-44 drafts; substantive content and answer ordering",
+    "narration": "Normalized 44-slide narration; new slides3/34/35/36 independently compared with engine output, UI source and key actual Lab04 captures.",
     "handouts": {
       "practice_pages": 6,
       "solutions_pages": 4,
@@ -20,7 +20,8 @@
       "Independent execution of shipped consistency and stability engines",
       "Manual algebra and arithmetic comparison",
       "PDF text and link inspection",
-      "Focused automated curriculum tests"
+      "Focused automated curriculum tests",
+      "Read-only inspection of eight actual Lab04 CUA captures; root attestation of downloaded comparison JSON import, Restore Case2 and fresh recalculation."
     ]
   },
   "calculations": {
@@ -116,6 +117,60 @@
           "beta_fraction": 0.5,
           "energy_decrease_over_RT": 0.11519416888149475
         }
+      ],
+      "rechecked_at_utc": "2026-10-20T01:43:58.373739+00:00",
+      "current_engine_results": [
+        {
+          "z": 0.02,
+          "state": "stable",
+          "phase": "one liquid",
+          "homogeneousG": -0.03923911327973197,
+          "equilibriumG": -0.03923911327973197,
+          "gain": 0,
+          "curvature": 45.02040816326531,
+          "fractionAlpha": null,
+          "fractionBeta": null,
+          "balanceResidual": 0,
+          "chemicalPotentialResidual": null,
+          "tpdMinimum": -1.537049020068937e-17,
+          "xAlphaBoundary": 0.07072018167994476,
+          "xBetaBoundary": 0.9292798183200552,
+          "tangentResidual": 8.881784197001252e-16
+        },
+        {
+          "z": 0.12,
+          "state": "metastable",
+          "phase": "two liquids",
+          "homogeneousG": -0.05012499127270964,
+          "equilibriumG": -0.05834134944144004,
+          "gain": 0.008216358168730398,
+          "curvature": 3.4696969696969706,
+          "fractionAlpha": 0.9426017527298314,
+          "fractionBeta": 0.05739824727016868,
+          "balanceResidual": 0,
+          "chemicalPotentialResidual": 6.522560269672795e-16,
+          "tpdMinimum": -0.24463348630502144,
+          "xAlphaBoundary": 0.07072018167994476,
+          "xBetaBoundary": 0.9292798183200552,
+          "tangentResidual": 8.881784197001252e-16
+        },
+        {
+          "z": 0.5,
+          "state": "unstable",
+          "phase": "two liquids",
+          "homogeneousG": 0.056852819440054714,
+          "equilibriumG": -0.05834134944144004,
+          "gain": 0.11519416888149475,
+          "curvature": -2,
+          "fractionAlpha": 0.5,
+          "fractionBeta": 0.5,
+          "balanceResidual": 0,
+          "chemicalPotentialResidual": 6.522560269672795e-16,
+          "tpdMinimum": -0.11519416888149475,
+          "xAlphaBoundary": 0.07072018167994476,
+          "xBetaBoundary": 0.9292798183200552,
+          "tangentResidual": 8.881784197001252e-16
+        }
       ]
     },
     "unseen_H1": {
@@ -140,7 +195,11 @@
     "Consistency, model reproduction, homogeneous-feed curvature and global equilibrium stability remain separate claims.",
     "A globally supporting tangent, distinct phases and feasible material balances are required; phase classifications do not predict nucleation or separation speed.",
     "Illustrative .20/.80 tie-line endpoints are not the actual A=3 coexistence endpoints.",
-    "Lab03 exports include shared workspace controls. Study workspace · reopen and compare cases accepts Load studies or a comparison JSON, then Restore beside a case; students recalculate or refit for fresh results. Recorded imported results do not substitute for a fresh calculation."
+    "Lab03 exports include shared workspace controls. Study workspace · reopen and compare cases accepts Load studies or a comparison JSON, then Restore beside a case; students recalculate or refit for fresh results. Recorded imported results do not substitute for a fresh calculation.",
+    "Lab04 is a hypothetical fixed-temperature, fixed-pressure binary liquid model; A is dimensionless, with no assigned physical temperature, vapor calculation or kinetic prediction.",
+    "For the stable z=.02 feed, displayed .0707/.9293 values are binodal reference boundaries, not two phases present. Phase fractions and chemical-potential equality between present phases are not applicable.",
+    "For Lab04, Restore changes the input controls but can leave result cards from the previous calculation. Find equilibrium must be pressed to obtain fresh results.",
+    "Lab04 minimum tangent-plane distance is a separate diagnostic from the Gibbs-energy decrease; small numerical residuals alone do not prove global stability."
   ],
   "page_and_attempt_order": {
     "worksheet": {
@@ -163,9 +222,10 @@
       "C_local": "17 before 18",
       "F_lever": "32 before 33",
       "G_investigation": "36 before 37-38",
-      "H_unseen": "40 before 41-42"
+      "H_unseen": "40 before 41-42",
+      "G_prediction": "34 pauses3minutes before35 actualscreen demonstration;36 then provides25minutes independentG2-G4 work."
     },
-    "predictions": "D2-D3 required before demonstration reveals changed cases; G1 required before named presets/results.",
+    "predictions": "D2-D3 before changed-case results; G1 at the explicit slide34 pause before named presets and the slide35 demonstration.",
     "submission": "Existing anonymous Session3 form: submit concept, evidence and feedback once at43 with actual minutes/pace;44 verifies receipt and saved files, with no resubmission after confirmation. Final narration, QMD and current practice PDF match."
   },
   "planning": {
@@ -203,12 +263,30 @@
         180
       ]
     ],
-    "recording_target_minutes": 55,
     "active_work_estimate_minutes": 115,
     "break_minutes": 10,
-    "main_work_checkpoints": 9,
+    "main_work_checkpoints": 10,
     "task_completion_not_forced_wait": true,
-    "learning_path_planning_note": "Updated from eight to nine main work checkpoints plus a break."
+    "learning_path_planning_note": "Updated to ten work checkpoints and actual measured recording reporting; planningNote/source commit7a53c24 reported byroot and current file independently checked.",
+    "recording_expected_minutes_approximate": 60,
+    "total_work_and_break_pauses": 11,
+    "activity_checkpoints_minutes": {
+      "4": 9,
+      "11": 15,
+      "13": 8,
+      "17": 9,
+      "26": 18,
+      "32": 8,
+      "34": 3,
+      "36": 25,
+      "40": 12,
+      "43": 8
+    },
+    "measured_recording_status": "Finalvideo measured;62minutes33.5675seconds plus115estimatedworkminutes and10breakminutes gives187.55946plannedminutes.",
+    "measured_recording_seconds": 3753.5675,
+    "measured_recording_minutes": 62.55945833333333,
+    "measured_narration_seconds": 3665.5675,
+    "approximate_total_with_work_and_break_minutes": 187.55945833333334
   },
   "automated_tests": {
     "command": "node --test tests/independent-learning-path.test.mjs tests/teaching-examples.test.mjs",
@@ -224,11 +302,12 @@
     ]
   },
   "limitations": [
-    "The 55/115/10-minute allocation is an approximate plan. Student completion time is not measured; final recording duration must be measured after audio/video generation.",
-    "No complete subjective listening review of the revised44-slide audio was performed in this content audit. Earlier31-slide audio checks do not validate the revised audio.",
-    "Visual review here spot-checked three revised handout pages; the document author recorded a separate full17-page visual review.",
-    "This audit does not establish deployment completion, video synchronization, or live form submission behavior; these require separate build/browser checks.",
-    "Live shared-workspace restore/refit was verified by the root agent using the in-memory case retained on export. The downloaded-file upload path was checked in source/control labels, not exercised in that live test."
+    "Student completion time is not measured. The final62.559458-minute recording plus115estimatedworkminutes and10break gives187.559458plannedminutes, which exceeds the nominal180minute route; no activity scaling or forced waiting is used.",
+    "LocalASRchecked nine selected finalWAVs, not all44slides subjectively. No complete subjective listening review is claimed. Slide18 three-point formula is recognizedas3.4 byASR; its critical numerical calculation remains correct, and this is a term-level recognition uncertainty rather than a verified audio defect.",
+    "This content audit visually inspected eight keyLab04 captures and threehandout pages. The document author separately reviewed all17handoutpages; no completecontinuousvideo visual review is claimed here.",
+    "Root-operated browserQA covers one desktopbrowser and a390-pixel iframe, not physicalphonehardware. ChangedLab04controls/captions/pauses were checked on finalmedia; previouslypassedunchangedbrowserflows are identified as prior-revision checks in browser-qa.json. No new form response was submitted.",
+    "Lab03 live restore/refit used the in-memorycase retainedbyexport; downloaded-file upload was inspected in source/control labels. Lab04actual comparison download,clear,file import,Restoreand recalculation were liveverifiedbyroot.",
+    "This audit does not establish productiondeployment completion. Finalreport/media hashes identify the verified localbuild."
   ],
   "audit_corrections": [
     {
@@ -267,28 +346,40 @@
     "frozen_slide_count": 44,
     "narration_ids_match_qmd": true,
     "source_sha256": {
-      "slides": "dda09c21cb3a40f29ba2be738f41d048d664183d390ab2792953b6846cc85652",
-      "narration": "ffd20ba0c67017d4139f5ab3dd54ac74e9be42906e1450fd837b9d3349274e54",
-      "handout_source": "866f15cdf3d31ecdb777cccef50f79a73019d8415e819a930bc593885aae1f23",
-      "study_hub": "5cb46869eb4a58014cdecb25b0793cb1ef45ca3d3a285043717503e8030023c2",
-      "learning_path": "ba8dd3f382397c064b64063174133c849d50e87b49b7e65b4a40cd39ceeacb4b"
+      "slides": "49e5f15b5bdf9b01ca5adb40b7dba89beeb7116407bf442185b16c8ecbc0db90",
+      "narration": "ba5a180ad10e26cd43a8f56d46f35fd786dbf75023ee4d29520d3c40be5a1828",
+      "handout_source": "c33957b7e9034069a435d3450440045dab712781a94e416475ca148fcc3558d3",
+      "study_hub": "6d3edead2692f90ebd95a1ce4d9ff95eec66dd524cccf0ff80f73d293fb1402c",
+      "learning_path": "d6c2292245d3a1fa66eb31281c37924277d6b822767931ed4077a87c25682a9e",
+      "demo_scenes": "55d1064dd359d67e94cff1ea6651acf785478b8bfc35ca8e866ba3b35f166f49",
+      "source_readme": "9e17f4c0a25c60195c5ce76825cf4e5f66b31de1f4d2e217ed5ce8302a86c0f8"
     },
     "pdfs": {
       "week03-practice.pdf": {
         "pages": 6,
-        "sha256": "b1e4ab520fe85f3b8ed6ea5c6cc6873d9d50300e47debc5d2f3102e31d16416b"
+        "sha256": "6d1e1fd15883acde05e0777261a0ad4a70b06be4182bd713350868647930bb2f",
+        "snapshot_at_utc": "2026-10-20T01:44:24.082337+00:00"
       },
       "week03-solutions.pdf": {
         "pages": 4,
-        "sha256": "db6bb4026e437ec4e0b9b84709583fce229bd0c6ab46a5949bea7fcec733ca71"
+        "sha256": "db6bb4026e437ec4e0b9b84709583fce229bd0c6ab46a5949bea7fcec733ca71",
+        "snapshot_at_utc": "2026-10-20T01:44:24.082337+00:00"
       },
       "week03-lab-guide.pdf": {
         "pages": 4,
-        "sha256": "0c33209b979abd09599e0fcba50d3b7673edd5ef7d11747ef05e321c0627a50a"
+        "sha256": "9b582076c73ae0683aafe96b227328e5f5dae4d29a79df183ceb4528353470b8",
+        "snapshot_at_utc": "2026-10-20T01:44:24.082337+00:00"
       },
       "preclass-week-03.pdf": {
         "pages": 3,
-        "sha256": "c01eac6ee745ab4cfb6b12c8108802e84942cad7ad22a436a1e3ab27a9e53c50"
+        "sha256": "c01eac6ee745ab4cfb6b12c8108802e84942cad7ad22a436a1e3ab27a9e53c50",
+        "snapshot_at_utc": "2026-10-20T01:44:24.082337+00:00"
+      },
+      "postmidterm-03-slides.pdf": {
+        "pages": 44,
+        "sha256": "dbd1af7fbfc74b460ac9221e74e0e9b154bd4ef9ebe71c5d3a4b7c570d552108",
+        "snapshot_at_utc": "2026-10-20T01:44:24.082337+00:00",
+        "public_copy_matches": true
       }
     },
     "active_checkpoints_minutes": {
@@ -298,7 +389,8 @@
       "17": 9,
       "26": 18,
       "32": 8,
-      "36": 28,
+      "34": 3,
+      "36": 25,
       "40": 12,
       "43": 8
     },
@@ -307,8 +399,104 @@
     "slide25": "Source, final narration and guide agree on shared Study workspace, loading a saved JSON or selecting the retained export, Restore Case 1, and rerunning the model fit. Student reopen exercise is optional; demonstration shows the flow.",
     "slide43": "Submit concept, evidence and feedback once, including actual study minutes and pace; wait for Response received.",
     "slide44": "Verify receipt and saved work; do not resubmit after confirmation.",
-    "hub_and_learning_path": "Nine main work checkpoints plus a break, 115 active minutes and approximate55-minute recording target; no extra compulsory follow-up.",
-    "timing": "Planned approximately180 minutes. Actual final recording duration remains pending media completion; student completion time is not measured.",
-    "result": "No blocking content alignment discrepancy found in the audited frozen sources."
+    "hub_and_learning_path": "Tenworkcheckpoints plusbreak,115active minutes, explicit34prediction3minutes→35demonstration→36independent25minutes; video duration reported separately.",
+    "timing": "Measuredrecording62.559458min plus115estimatedactivework and10break=187.559458min. Nominal180minute headings remain planningguides, not measuredstudent completion or enforced waiting.",
+    "result": "No unresolved content alignment issue. Final44-source/WAV hashes match; criticalnine-slide ASR comparison completed. Automatedmedia/controller and root-operatedbrowser reports passed for matching finalmedia. Complete subjective listening and production deployment are not claimed.",
+    "snapshot_at_utc": "2026-10-20T01:50:35.050686+00:00",
+    "total_pause_count": 11,
+    "slide34": "G1 predictions on worksheetp4 pause3minutes before slide35 results.",
+    "slide35": "Complete actual Lab04 demonstration with three feeds, balance/Gibbs checks, three exports, comparison download, actual file import, Restore Case2 and fresh Find equilibrium.",
+    "slide36": "Independent G2-G4 rerun on worksheetp5 for25minutes. Separate3minute prediction preserves combined28minute activity allocation.",
+    "pdf_build_status": "Final44-page slide PDF hashdbd1af7f... matches the public copy.17handout pages and current hashes checked; full visual author review remains separately recorded.",
+    "spoken_curvature": "Slides30/34 explicitly group x(1-x) andz(1-z) denominators. All44finalWAVsource hashes matched; ASR34 preserves the product wording."
+  },
+  "lab04_live_restore": {
+    "verified": true,
+    "method": "Root-operated CUA on the actual public Lab04 interface; independent source/capture review by this subagent.",
+    "root_report": "Downloaded stability-comparison.json from three exports, cleared the in-memory comparison, selected the same downloaded file in the file chooser, restored Case2, observed inputs only, then clicked Find equilibrium and returned to metastable two-liquid result.",
+    "steps": [
+      "Run and export A3 z.02, .12 and .50",
+      "Download comparison containing three cases",
+      "Clear comparison without deleting the downloaded file",
+      "Load studies or a comparison JSON using the actual downloaded stability-comparison.json",
+      "Restore Case2",
+      "Confirm A3 andz.12 inputs while prior unstable result cards remain",
+      "Click Find equilibrium; verify metastable/two liquids,beta.0574,energy decrease.008216"
+    ],
+    "file_import_scope": "Actual downloaded-file chooser/import exercised, not only an in-memory retained case.",
+    "frame_directory": "asynchronous-week03/demo-frames",
+    "scene_count": 14,
+    "independently_viewed_frames": [
+      "lab04-02-single-liquid-note.png",
+      "lab04-03-stable-checks.png",
+      "lab04-07-metastable-checks.png",
+      "lab04-08-unstable-controls.png",
+      "lab04-10-saved-cases.png",
+      "lab04-12-reopened-json.png",
+      "lab04-13-restored-inputs.png",
+      "lab04-14-restored-recalculated.png"
+    ],
+    "all_frame_sha256": {
+      "lab04-01-stable-controls.png": "b21bb15e8aa8fe96d44d8a962de2a72f34245366a656b2b938665dfc5a39fa39",
+      "lab04-02-single-liquid-note.png": "cc92b12b3664f00e11461526bc0f077aaffe5e96e04e732f580155ae8b3e9461",
+      "lab04-03-stable-checks.png": "17f69f244f31a5a61bbaf13f5e327c306aded128a0122b61a88a94b3eeed046c",
+      "lab04-04-metastable-gibbs.png": "bf71ec3c3be6172ad02d14a40fc3c416cc1258e6ef74e8f4c393e221df3e4502",
+      "lab04-05-metastable-controls.png": "76dc4beb72baafabd4168424ec89c9dcf6535f247929af1b2e0907f8876d598e",
+      "lab04-06-metastable-fractions.png": "fb0e746c683a4d87c078a2d69e3f42e5540352d8e591ca80c075d23bf4332607",
+      "lab04-07-metastable-checks.png": "50bf416eba14af858f6dd1fe0037851e69ca54ca563145b5cfff25b000189670",
+      "lab04-08-unstable-controls.png": "4e32a60e552046c5fcb250e527fc69ed279856c34e76454e7686007637508457",
+      "lab04-09-unstable-fractions.png": "edbac4118f9f8cb1f2a992b8804260ce8d81f4a0c821207d928b756045442284",
+      "lab04-10-saved-cases.png": "9612f5396b1dd0612fa5ed39673bb879f0fb39827e230f08d238ab3bcd03641e",
+      "lab04-11-download-comparison.png": "55dd1c6a21badfbb809337c4249eeb0332c6a7ef548a0a38aef8a9989b2f9942",
+      "lab04-12-reopened-json.png": "44c5606fbf45b788cb21ef2c69167632117218e121d899fadf4d8f8c10bdab2d",
+      "lab04-13-restored-inputs.png": "fff143578e7093b20ffd0050adfa444c573e29b362bb0dfe88c278ea4a6f11bd",
+      "lab04-14-restored-recalculated.png": "3426b79004bd5011fde02baed2cb93410538fd40f1189b31dd57e6abfd8330f5"
+    }
+  },
+  "open_followups": [],
+  "final_verification": {
+    "verified_at_utc": "2026-10-20T01:50:35.050686+00:00",
+    "reference_scope": "Existing root-produced finalmedia/browser reports independently read and hash-matched here; ASRsource comparison performed by thissubagent.",
+    "video_sha256": "67e50d25e7e06d11f8a1064fbd14beea090e884315733f94212c8e44b6cdf210",
+    "video_bytes": 71965192,
+    "duration_seconds": 3753.5675,
+    "chapters": 44,
+    "actual_capture_scene_count": 31,
+    "controller_tests_passed": 18,
+    "audio_sync_sample_offsets": [
+      0,
+      0,
+      0
+    ],
+    "browser_checks": [
+      "Direct #slide-35 load selects the complete Lab04 demonstration with measured62:33 runtime and44chapters",
+      "Prediction34 pauses before the Lab04 results, visibly retaining3-minute G1 instruction",
+      "Continue advances34to35 and resumes playback",
+      "Actual metastable Lab04 workbench and matching English caption visible during35",
+      "Actual imported comparison JSON scene and timed English captions render at390-pixel narrow width",
+      "Independent-work36 pauses before check37 and visibly retains25-minute G2-G4 instruction"
+    ],
+    "browser_scope": "One desktop browser;390-pixel iframe used for narrow layout, not physical phone hardware. Harness only seeks/plays using explicit UI buttons; production controller performs pauses. No form response submitted. Full subjective listening was not performed.",
+    "asr_status": "passed_critical_content_with_one_asr_term_uncertainty",
+    "asr_checked_slides": [
+      16,
+      18,
+      24,
+      25,
+      34,
+      35,
+      36,
+      38,
+      43
+    ],
+    "asr_checked_seconds": 1177.9397083333333,
+    "report_sha256": {
+      "video-qa.json": "c9dc5dda27b55d68fd510d5e3da6d527938881183cdb584a4f0b49a1f1fa5c8a",
+      "browser-qa.json": "d87c3848794590675f223eac19b8028ccf7bbd109c0f899f7c893bd46cc4d6a8",
+      "player-controller-qa.json": "1c64fa36f696dcd0ee33ecb915199c050f87ed60e488354ed58fba518fa37fd3",
+      "study-time-qa.json": "4b2fa01d115012b6e799a6405f23de6bdb13a3111b74a165ca7fbb53144dc673",
+      "audio/spot-check-transcripts.json": "a878d5ccb7bd1c5ce2e90a9e34b04c6fcf7325ecacab7faa3d28947670a761b4"
+    },
+    "source_manifest_sha256": "8d85f97aa3656b16a143912fae777d4b458af274205bde8133ce4e899e763f18"
   }
 }

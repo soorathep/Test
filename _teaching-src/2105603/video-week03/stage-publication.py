@@ -84,4 +84,4 @@ for name in ('manifest.json', 'audio-qa.json'):
     shutil.copy2(OUT / 'audio' / name, verification / name)
 if (OUT / 'audio/spot-check-transcripts.json').is_file():
     shutil.copy2(OUT / 'audio/spot-check-transcripts.json', verification / 'asr-spot-checks.json')
-print(f'Staged {count}-slide video, actual Lab 03 demo frames, captions, poster, page and reproducible source in {args.site}.')
+print(f'Staged {count}-slide video, actual Lab 03 and Lab 04 demo frames, captions, poster, page and reproducible source in {args.site}.')

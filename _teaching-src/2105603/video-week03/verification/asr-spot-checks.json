@@ -1,15 +1,18 @@
 {
-  "revision": "Final 44-slide Week 3 narration",
+  "revision": "Final 44-slide Week 3 narration with actual Lab 03 and Lab 04 demonstrations",
   "method": "Local faster-whisper tiny.en, CPU int8, beam size 3; model download disabled.",
   "scope": "ASR spot check with source comparison, not a complete subjective listening review.",
-  "script_sha256": "ffd20ba0c67017d4139f5ab3dd54ac74e9be42906e1450fd837b9d3349274e54",
-  "manifest_sha256": "cb7f1708f1f271801866b0130abc270ecf71591d37cd3a8e19c7821828a08624",
+  "script_sha256": "ba5a180ad10e26cd43a8f56d46f35fd786dbf75023ee4d29520d3c40be5a1828",
+  "manifest_sha256": "8d85f97aa3656b16a143912fae777d4b458af274205bde8133ce4e899e763f18",
   "all_44_script_and_wav_hashes_verified": true,
   "targets": [
     16,
     18,
     24,
     25,
+    34,
+    35,
+    36,
     38,
     43
   ],
@@ -121,8 +124,8 @@
           "text": "It does not identify its cause by itself."
         }
       ],
-      "review_status": "passed_critical_content",
-      "review_notes": "ASR preserves changed log gamma1 .32→.36, weighted energy .504, difference .024, slope/residual +.120, and the path/numerical caveat. No substantive omission detected."
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "Changed loggamma1=.36, g=.504, slope/residual+.12 and path/numerical caveats are preserved."
     },
     {
       "slide": 18,
@@ -235,17 +238,8 @@
           "text": "Then open lab guide pages 2 and 3 for the demonstration."
         }
       ],
-      "review_status": "passed_critical_numbers_with_asr_term_uncertainty",
-      "secondary_asr_check": {
-        "source": "Our hand calculation assumes equal spacing; the lab's three-point formula also handles unequal spacing.",
-        "recognized": "Our hand calculation assumes equal spacing. The lab's 3.4 mula also handles unequal spacing.",
-        "local_start_seconds": 56.118625,
-        "local_end_seconds": 64.26795833333334,
-        "beam_size": 5,
-        "prompt": null,
-        "condition_on_previous_text": false
-      },
-      "review_notes": "ASR preserves clean energies .315/.360/.375, changed energy .400, slope .425 minus .300, and residual +.125. The phrase three-point formula was decoded as 3.4 in full-track ASR and 3.4 mula in isolated unprompted ASR. This may be a word-boundary recognition error; ASR alone does not establish a pronunciation defect. All remaining meaning and ending are present."
+      "review_status": "passed_critical_content_with_asr_term_uncertainty",
+      "review_notes": "All critical values .315/.360/.375, .400, .425, .300 and residual+.125 are preserved. ASR renders the spoken phrase three-point formula as3.4; this term-level uncertainty already appeared on the unchanged earlier WAV and is not evidence of a wrong computed result. No full subjective listening claim."
     },
     {
       "slide": 24,
@@ -353,8 +347,8 @@
           "text": "or duplicates the NIST point test implementation."
         }
       ],
-      "review_status": "passed_critical_content",
-      "review_notes": "ASR preserves 41 versus161 points, D≈2.013→1.942 and local score≈1.672→1.566, both aggregate thresholds met, persistent trough, and the limitation that denser synthetic sampling is not new experimental evidence."
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "41→161 point comparison, both area/local scores, localized trough, aggregate-criterion caveat and synthetic-sampling limitation are preserved."
     },
     {
       "slide": 25,
@@ -502,8 +496,735 @@
           "text": "Do not confuse saving evidence with uploading an assignment."
         }
       ],
-      "review_status": "passed_critical_content",
-      "review_notes": "ASR preserves 39 interior points, NRTL alpha .47, near-zero fit, shared Study workspace, loading a downloaded JSON, Restore Case1, restoration to clean41, and rerunning modeling for a fresh fit. Rounding 0.000 was recognized as0.00, which has the same value."
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "39interior points, fixedalpha.47, roundednearzero errors, export/currentcase, sharedworkspace RestoreCase1 and rerunfit are preserved. ASR formatting of roundedzeros differs without changing meaning."
+    },
+    {
+      "slide": 34,
+      "slide_id": "lab04-predict",
+      "title": "Predict three feeds before running · 105–155 min",
+      "focus": "Pause for three minutes to record G1 predictions before the Lab 04 demonstration reveals the three states.",
+      "audio_file": "segment-34.wav",
+      "sha256": "87afb28b31d8fec015ccc0cada9d4265b8b415e5c5456b37ec22f588890a78be",
+      "narration_sha256": "e197afdafc1a2ea485a825acf6fc81a3b49dc764256d4df6be2244c79bb3984c",
+      "duration_seconds": 77.30866666666667,
+      "sample_rate": 24000,
+      "peak": 0.8193359375,
+      "clipped_samples": 0,
+      "expected_narration": "Before opening a named Lab Four preset, write your G one predictions on worksheet page four. The model is one-parameter Margules, with A fixed at three. Compare overall compositions zero point zero two, zero point one two, and zero point five zero. For each, predict the homogeneous-feed classification and the number of liquids at equilibrium. These are two separate columns. You can calculate the curvature as one divided by the product of z and one minus z, then subtract six. A negative value gives a useful local diagnosis. A positive value leaves a global question unresolved. It does not, by itself, distinguish a stable feed from a metastable one. Write your reasoning before the interface supplies the labels. The presets are named Stable, Metastable, and Unstable, so opening them before predicting would remove the purpose of this step. Pause now for about three minutes. Complete G one before continuing to the demonstration. This prediction time is part of your Lab Four activity, not an additional assignment.",
+      "recognized": "Before opening a named lab for preset, write your G1 predictions on worksheet page 4. The model is 1-parameter-margu-less, with a fixed at 3. Compare overall compositions 0.02, 0.12, and 0.50 for each predict the homogeneous feed classification, and the number of liquids at equilibrium. These are two separate columns. You can calculate the curvature as 1 divided by the product of Z and 1-Z. Then subtract 6. A negative value gives a useful local diagnosis. A positive value leaves a global question unresolved. It does not by itself distinguish a stable feed from a metastable one. Write your reasoning before the interface supplies the labels. The presets are named stable, metastable, and unstable, so opening them before predicting would remove the purpose of this step. Pause now for about 3 minutes. Complete G1 before continuing to the demonstration. This prediction time is part of your lab for activity, not an additional assignment.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 7.0,
+          "text": "Before opening a named lab for preset, write your G1 predictions on worksheet page 4."
+        },
+        {
+          "start": 7.0,
+          "end": 11.5,
+          "text": "The model is 1-parameter-margu-less, with a fixed at 3."
+        },
+        {
+          "start": 11.5,
+          "end": 23.5,
+          "text": "Compare overall compositions 0.02, 0.12, and 0.50 for each predict the homogeneous feed classification,"
+        },
+        {
+          "start": 23.5,
+          "end": 26.400000000000002,
+          "text": "and the number of liquids at equilibrium."
+        },
+        {
+          "start": 26.400000000000002,
+          "end": 28.8,
+          "text": "These are two separate columns."
+        },
+        {
+          "start": 28.8,
+          "end": 34.8,
+          "text": "You can calculate the curvature as 1 divided by the product of Z and 1-Z."
+        },
+        {
+          "start": 34.8,
+          "end": 36.8,
+          "text": "Then subtract 6."
+        },
+        {
+          "start": 36.8,
+          "end": 40.8,
+          "text": "A negative value gives a useful local diagnosis."
+        },
+        {
+          "start": 40.8,
+          "end": 45.8,
+          "text": "A positive value leaves a global question unresolved."
+        },
+        {
+          "start": 45.8,
+          "end": 51.3,
+          "text": "It does not by itself distinguish a stable feed from a metastable one."
+        },
+        {
+          "start": 51.3,
+          "end": 55.3,
+          "text": "Write your reasoning before the interface supplies the labels."
+        },
+        {
+          "start": 55.300000000000004,
+          "end": 59.800000000000004,
+          "text": "The presets are named stable, metastable, and unstable,"
+        },
+        {
+          "start": 59.800000000000004,
+          "end": 64.4,
+          "text": "so opening them before predicting would remove the purpose of this step."
+        },
+        {
+          "start": 64.4,
+          "end": 66.9,
+          "text": "Pause now for about 3 minutes."
+        },
+        {
+          "start": 66.9,
+          "end": 71.10000000000001,
+          "text": "Complete G1 before continuing to the demonstration."
+        },
+        {
+          "start": 71.10000000000001,
+          "end": 77.30000000000001,
+          "text": "This prediction time is part of your lab for activity, not an additional assignment."
+        }
+      ],
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "All three feeds, explicit product denominator z(1-z), subtractsix, homogeneous/equilibrium distinction and three-minute prediction stop before results are preserved."
+    },
+    {
+      "slide": 35,
+      "slide_id": "lab04-controls",
+      "title": "Lab 04: setup, compare and reopen · 105–155 min",
+      "focus": "Actual Lab 04 flow: symmetric Margules A=3; z=0.02, 0.12 and 0.50; single-liquid boundary-card caveat; balances and Gibbs-energy decrease; export and shared-workspace Restore followed by Find equilibrium.",
+      "audio_file": "segment-35.wav",
+      "sha256": "973ef76ec26577ef5e15f59ed9c37f8d6b0f15311ec2cb7b653e62b8d62964b9",
+      "narration_sha256": "c392d183e33df33be11ca30b1be5398d8c19c1251bb71b9887597d3953c48c40",
+      "duration_seconds": 451.6499166666667,
+      "sample_rate": 24000,
+      "peak": 0.8558349609375,
+      "clipped_samples": 0,
+      "expected_narration": "Now watch the complete Lab Four workflow, from the first input to reopening saved results. Keep Lab guide page four beside worksheet pages four and five. Your G one predictions should already be written. These are actual views of the working lab. You will repeat the calculations yourself at the next work stop. Open Lab Four and scroll to the workbench. Select Margules, one parameter. Set A to three and the feed mole fraction to zero point zero two. Click Find equilibrium after typing. Keep the Gibbs energy and common tangent view selected. The badge says one liquid. The homogeneous feed is stable, its curvature is positive, and the Gibbs-energy decrease is zero. The beta fraction is marked not applicable. This is a hypothetical model at fixed temperature and pressure; A is dimensionless and no physical temperature is assigned. Scroll below the plot to read the boundary note. The interface still lists the binodal compositions, approximately zero point zero seven zero seven and zero point nine two nine three. Those are boundaries of the miscibility gap for these parameters. They are not two liquids present in this feed. The explicit result is one liquid at x equal to z, or zero point zero two. The common-tangent segment is a feasible two-liquid mixture only between its contact points. Open Verify the equilibrium. Here the homogeneous and equilibrium Gibbs energies coincide, at approximately negative zero point zero three nine two three nine. The balance residual is zero. A chemical-potential equality between two present phases is not applicable because only one liquid is present. Record the classification and phase count separately, then click Export study JSON to save this first case. Return to the feed field and enter zero point one two. Leave A at three and click Find equilibrium. On the plot, the homogeneous feed lies above the equilibrium envelope. A finite split can lower the bulk Gibbs energy even though a small composition fluctuation cannot. Read the updated scorecards. The homogeneous feed is metastable and the equilibrium badge says two liquids. The curvature is positive, about three point four seven. The beta fraction is about zero point zero five seven four. The energy decrease, divided by R T, is about zero point zero zero eight two one six per mole of feed. This case shows why positive curvature alone cannot establish global stability. Below the plot, read the two actual coexistence compositions and the phase-fraction bar. Alpha is the component-one-poor liquid; beta is the component-one-rich liquid. The fractions are about zero point nine four two six and zero point zero five seven four. These are amounts of phases, not their compositions. In your independent work, use the lever rule with the actual endpoints, then reconstruct the feed from the weighted balance. Keep more digits from the exported results when checking numerical agreement. Under Verify the equilibrium, inspect the supporting evidence. The homogeneous energy is approximately negative zero point zero five zero one two five; the equilibrium energy is lower, approximately negative zero point zero five eight three four one. Their difference matches the energy-decrease card. The balance is zero and the chemical-potential and common-tangent residuals are near numerical precision. Inspect the whole curve as well: a small residual alone is not proof of global stability. The minimum tangent-plane distance shown here is a separate diagnostic, not the energy decrease. Export this second study before changing the feed. For the third case, choose the unstable example under Explore a state. This preset sets A to three and z to zero point five zero, and calculates immediately. The feed has negative curvature, equal to negative two. The equilibrium is two liquids, and the Gibbs-energy decrease is about zero point one one five one nine four. Read the phase-fraction bar for this central feed. Both fractions are one half, while the coexistence compositions remain the same as in the previous two-liquid case. Changing the feed inside this fixed miscibility gap changes the amounts of the liquids. It does not change their equilibrium compositions. Export this third study. Open Study workspace, reopen and compare cases. Each calculator export has retained a case in this in-memory table. Case one has feed zero point zero two, case two has zero point one two, and case three has zero point five zero. Compare the state and phase rows. The binodal boundary fields appear even for the one-liquid case, so use the actual phase result when reporting which liquids are present. An absent phase fraction is not a zero-valued measurement. Click Download comparison to save all three cases in one JSON file. This downloaded file is the durable copy; the in-memory table alone is not your saved submission. For this demonstration, I have downloaded the file and then cleared only the in-memory comparison. The downloaded file remains unchanged. Use Load studies or a comparison JSON and choose that downloaded file. All three recorded cases return. Select Restore Case two to load its input controls. Loading a file retains recorded evidence; it does not certify that the calculator has produced fresh results. Check the restored controls before reading any result. The model is one-parameter Margules, A is three, and the feed is zero point one two. The old result cards may still describe the previous calculation. Restore does not run this calculator automatically. Now click Find equilibrium again. The fresh result returns to metastable, two liquids, with beta fraction about zero point zero five seven four and energy decrease about zero point zero zero eight two one six. This completes the save, reopen, restore and recalculate cycle. Keep the three cases, your independent balances and your explanation of local versus global stability. The next slide gives you time to do the investigation yourself.",
+      "recognized": "Now watch the complete lab for workflow, from the first input to reopening saved results. Keep lab guide page 4 beside worksheet pages 4 and 5. Your G1 predictions should already be written. These are actual views of the working lab. You will repeat the calculations yourself at the next work stop. Open lab 4 and scroll to the workbench. Select Margules 1 parameter. Set it to 3 and the feed mole fraction to 0.02. Click find equilibrium after typing. Keep the Gibbs energy and common tangent view selected. The badge says one liquid. The homogeneous feed is stable. Its curvature is positive and the Gibbs energy decrease is zero. The beta fraction is marked not applicable. This is a hypothetical model at fixed temperature and pressure. A is dimensionless and no physical temperature is assigned. Scroll below the plot to read the boundary node. The interface still lists the binado compositions. Approximately 0.0707 and 0.9293. Those are boundaries of the missability gap for these parameters. They are not two liquids present in this feed. The explicit result is one liquid at x equal to z or 0.02. The common tangent segment is a feasible two liquid mixture only between its contact points. Open verify the equilibrium. Here the homogeneous and equilibrium Gibbs energies coincide. At approximately negative 0.039239. The balance residual is zero. A chemical potential equality between two present phases is not applicable because only one liquid is present. Record the classification and phase count separately. Then click export study J-S-O-N to save this first case. Return to the feed field and enter 0.12. Leave at 3 and click find equilibrium. On the plot, the homogeneous feed lies above the equilibrium envelope. A finite split can lower the bulk Gibbs energy even though a small composition fluctuation cannot. Read the updated score cards. The homogeneous feed is metastable and the equilibrium badge says two liquids. The curvature is positive about 3.47. The beta fraction is about 0.0574. The energy decrease divided by RT is about 0.008216 per mole of feed. This case shows why positive curvature alone cannot establish global stability. Below the plot, read the two actual coexistence compositions and the phase fraction bar. Alpha is the component one poor liquid. Beta is the component one rich liquid. The fractions are about 0.9426 and 0.0574. These are amounts of phases, not their compositions. In your independent work, use the lever rule with the actual endpoints, then reconstruct the feed from the weighted balance. Keep more digits from the exported results when checking numerical agreement. Under verify the equilibrium, inspect the supporting evidence. The homogeneous energy is approximately negative 0.050125. The equilibrium energy is lower. Approximately negative 0.058341. Their difference matches the energy decrease card. The balance is zero, and the chemical potential and common tangent residuals are near numerical precision. Inspect the whole curve as well. A small residual alone is not proof of global stability. The minimum tangent plain distance shown here is a separate diagnostic, not the energy decrease. Export this second study before changing the feed. For the third case, choose the unstable example under explore a state. This preset sets it to 3 and Z to 0.50, and calculates immediately. The feed has negative curvature, equal to negative 2. The equilibrium is 2 liquids, and the Gibbs energy decrease is about 0.115194. Read the phase fraction bar for this central feed. Both fractions are one half. While the coexistence compositions remain the same as in the previous two liquid case, changing the feed inside this fixed-missibility gap changes the amounts of the liquids. It does not change their equilibrium compositions. Export this third study. Open study workspace, reopen and compare cases. Each calculator export has retained a case in this in memory table. Case 1 has feed 0.02. Case 2 has 0.12. And case 3 has 0.50. Compare the state and phase rows. The binado boundary fields appear even for the one liquid case, so use the actual phase result when reporting which liquids are present. An absent phase fraction is not a zero-valued measurement. Click download comparison to save all three cases in one JSO and file. This downloaded file is the durable copy. The in-memory table alone is not your saved submission. For this demonstration, I have downloaded the file and then cleared only the in-memory comparison. The downloaded file remains unchanged. Use load studies or a comparison JSON and choose that downloaded file. All three recorded cases return. Select restore case 2 to load its input controls. Loading a file retains recorded evidence. It does not certify that the calculator has produced fresh results. Check the restored controls before reading any result. The model is 1-parameter mar-gu-less, a is 3, and the feed is 0.12. The old result cards may still describe the previous calculation. Restore does not run this calculator automatically. Now click find equilibrium again. The fresh result returns to metastable, two liquids, with beta fraction about 0.0574, and energy decrease about 0.008216. This completes the save, reopen, restore and recalculate cycle. Keep the three cases. Your independent balances and your explanation of local versus global stability. The next slide gives you time to do the investigation yourself.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 7.0,
+          "text": "Now watch the complete lab for workflow, from the first input to reopening saved results."
+        },
+        {
+          "start": 7.0,
+          "end": 12.0,
+          "text": "Keep lab guide page 4 beside worksheet pages 4 and 5."
+        },
+        {
+          "start": 12.0,
+          "end": 15.0,
+          "text": "Your G1 predictions should already be written."
+        },
+        {
+          "start": 15.0,
+          "end": 18.0,
+          "text": "These are actual views of the working lab."
+        },
+        {
+          "start": 18.0,
+          "end": 23.0,
+          "text": "You will repeat the calculations yourself at the next work stop."
+        },
+        {
+          "start": 23.0,
+          "end": 26.0,
+          "text": "Open lab 4 and scroll to the workbench."
+        },
+        {
+          "start": 26.0,
+          "end": 29.0,
+          "text": "Select Margules 1 parameter."
+        },
+        {
+          "start": 29.0,
+          "end": 34.0,
+          "text": "Set it to 3 and the feed mole fraction to 0.02."
+        },
+        {
+          "start": 34.0,
+          "end": 37.0,
+          "text": "Click find equilibrium after typing."
+        },
+        {
+          "start": 37.0,
+          "end": 41.0,
+          "text": "Keep the Gibbs energy and common tangent view selected."
+        },
+        {
+          "start": 41.0,
+          "end": 43.0,
+          "text": "The badge says one liquid."
+        },
+        {
+          "start": 43.0,
+          "end": 46.0,
+          "text": "The homogeneous feed is stable."
+        },
+        {
+          "start": 46.0,
+          "end": 50.0,
+          "text": "Its curvature is positive and the Gibbs energy decrease is zero."
+        },
+        {
+          "start": 50.0,
+          "end": 54.0,
+          "text": "The beta fraction is marked not applicable."
+        },
+        {
+          "start": 54.0,
+          "end": 58.0,
+          "text": "This is a hypothetical model at fixed temperature and pressure."
+        },
+        {
+          "start": 58.0,
+          "end": 62.0,
+          "text": "A is dimensionless and no physical temperature is assigned."
+        },
+        {
+          "start": 62.0,
+          "end": 66.0,
+          "text": "Scroll below the plot to read the boundary node."
+        },
+        {
+          "start": 66.0,
+          "end": 69.0,
+          "text": "The interface still lists the binado compositions."
+        },
+        {
+          "start": 69.0,
+          "end": 76.0,
+          "text": "Approximately 0.0707 and 0.9293."
+        },
+        {
+          "start": 76.0,
+          "end": 81.0,
+          "text": "Those are boundaries of the missability gap for these parameters."
+        },
+        {
+          "start": 81.0,
+          "end": 84.0,
+          "text": "They are not two liquids present in this feed."
+        },
+        {
+          "start": 84.0,
+          "end": 90.0,
+          "text": "The explicit result is one liquid at x equal to z or 0.02."
+        },
+        {
+          "start": 90.0,
+          "end": 97.0,
+          "text": "The common tangent segment is a feasible two liquid mixture only between its contact points."
+        },
+        {
+          "start": 97.0,
+          "end": 99.0,
+          "text": "Open verify the equilibrium."
+        },
+        {
+          "start": 99.0,
+          "end": 104.0,
+          "text": "Here the homogeneous and equilibrium Gibbs energies coincide."
+        },
+        {
+          "start": 104.0,
+          "end": 109.0,
+          "text": "At approximately negative 0.039239."
+        },
+        {
+          "start": 109.0,
+          "end": 112.0,
+          "text": "The balance residual is zero."
+        },
+        {
+          "start": 112.0,
+          "end": 117.0,
+          "text": "A chemical potential equality between two present phases is not applicable"
+        },
+        {
+          "start": 117.0,
+          "end": 120.0,
+          "text": "because only one liquid is present."
+        },
+        {
+          "start": 120.0,
+          "end": 124.0,
+          "text": "Record the classification and phase count separately."
+        },
+        {
+          "start": 124.0,
+          "end": 129.0,
+          "text": "Then click export study J-S-O-N to save this first case."
+        },
+        {
+          "start": 129.0,
+          "end": 133.0,
+          "text": "Return to the feed field and enter 0.12."
+        },
+        {
+          "start": 133.0,
+          "end": 137.0,
+          "text": "Leave at 3 and click find equilibrium."
+        },
+        {
+          "start": 137.0,
+          "end": 143.0,
+          "text": "On the plot, the homogeneous feed lies above the equilibrium envelope."
+        },
+        {
+          "start": 143.0,
+          "end": 150.0,
+          "text": "A finite split can lower the bulk Gibbs energy even though a small composition fluctuation cannot."
+        },
+        {
+          "start": 150.0,
+          "end": 152.0,
+          "text": "Read the updated score cards."
+        },
+        {
+          "start": 152.0,
+          "end": 158.0,
+          "text": "The homogeneous feed is metastable and the equilibrium badge says two liquids."
+        },
+        {
+          "start": 158.0,
+          "end": 162.0,
+          "text": "The curvature is positive about 3.47."
+        },
+        {
+          "start": 162.0,
+          "end": 167.0,
+          "text": "The beta fraction is about 0.0574."
+        },
+        {
+          "start": 167.0,
+          "end": 176.0,
+          "text": "The energy decrease divided by RT is about 0.008216 per mole of feed."
+        },
+        {
+          "start": 176.0,
+          "end": 182.0,
+          "text": "This case shows why positive curvature alone cannot establish global stability."
+        },
+        {
+          "start": 182.0,
+          "end": 189.0,
+          "text": "Below the plot, read the two actual coexistence compositions and the phase fraction bar."
+        },
+        {
+          "start": 189.0,
+          "end": 192.0,
+          "text": "Alpha is the component one poor liquid."
+        },
+        {
+          "start": 192.0,
+          "end": 195.0,
+          "text": "Beta is the component one rich liquid."
+        },
+        {
+          "start": 195.0,
+          "end": 202.0,
+          "text": "The fractions are about 0.9426 and 0.0574."
+        },
+        {
+          "start": 202.0,
+          "end": 206.0,
+          "text": "These are amounts of phases, not their compositions."
+        },
+        {
+          "start": 206.0,
+          "end": 211.0,
+          "text": "In your independent work, use the lever rule with the actual endpoints,"
+        },
+        {
+          "start": 211.0,
+          "end": 214.0,
+          "text": "then reconstruct the feed from the weighted balance."
+        },
+        {
+          "start": 214.0,
+          "end": 219.0,
+          "text": "Keep more digits from the exported results when checking numerical agreement."
+        },
+        {
+          "start": 219.0,
+          "end": 224.0,
+          "text": "Under verify the equilibrium, inspect the supporting evidence."
+        },
+        {
+          "start": 224.0,
+          "end": 231.0,
+          "text": "The homogeneous energy is approximately negative 0.050125."
+        },
+        {
+          "start": 231.0,
+          "end": 234.0,
+          "text": "The equilibrium energy is lower."
+        },
+        {
+          "start": 234.0,
+          "end": 239.0,
+          "text": "Approximately negative 0.058341."
+        },
+        {
+          "start": 239.0,
+          "end": 243.0,
+          "text": "Their difference matches the energy decrease card."
+        },
+        {
+          "start": 243.0,
+          "end": 248.0,
+          "text": "The balance is zero, and the chemical potential and common tangent residuals"
+        },
+        {
+          "start": 248.0,
+          "end": 251.0,
+          "text": "are near numerical precision."
+        },
+        {
+          "start": 251.0,
+          "end": 253.0,
+          "text": "Inspect the whole curve as well."
+        },
+        {
+          "start": 253.0,
+          "end": 258.0,
+          "text": "A small residual alone is not proof of global stability."
+        },
+        {
+          "start": 258.0,
+          "end": 263.0,
+          "text": "The minimum tangent plain distance shown here is a separate diagnostic,"
+        },
+        {
+          "start": 263.0,
+          "end": 265.0,
+          "text": "not the energy decrease."
+        },
+        {
+          "start": 265.0,
+          "end": 269.0,
+          "text": "Export this second study before changing the feed."
+        },
+        {
+          "start": 269.0,
+          "end": 274.0,
+          "text": "For the third case, choose the unstable example under explore a state."
+        },
+        {
+          "start": 274.0,
+          "end": 280.0,
+          "text": "This preset sets it to 3 and Z to 0.50, and calculates immediately."
+        },
+        {
+          "start": 280.0,
+          "end": 285.0,
+          "text": "The feed has negative curvature, equal to negative 2."
+        },
+        {
+          "start": 285.0,
+          "end": 293.0,
+          "text": "The equilibrium is 2 liquids, and the Gibbs energy decrease is about 0.115194."
+        },
+        {
+          "start": 293.0,
+          "end": 296.0,
+          "text": "Read the phase fraction bar for this central feed."
+        },
+        {
+          "start": 296.0,
+          "end": 299.0,
+          "text": "Both fractions are one half."
+        },
+        {
+          "start": 299.0,
+          "end": 304.0,
+          "text": "While the coexistence compositions remain the same as in the previous two liquid case,"
+        },
+        {
+          "start": 304.0,
+          "end": 311.0,
+          "text": "changing the feed inside this fixed-missibility gap changes the amounts of the liquids."
+        },
+        {
+          "start": 311.0,
+          "end": 315.0,
+          "text": "It does not change their equilibrium compositions."
+        },
+        {
+          "start": 315.0,
+          "end": 317.0,
+          "text": "Export this third study."
+        },
+        {
+          "start": 317.0,
+          "end": 321.0,
+          "text": "Open study workspace, reopen and compare cases."
+        },
+        {
+          "start": 321.0,
+          "end": 326.0,
+          "text": "Each calculator export has retained a case in this in memory table."
+        },
+        {
+          "start": 326.0,
+          "end": 329.0,
+          "text": "Case 1 has feed 0.02."
+        },
+        {
+          "start": 329.0,
+          "end": 332.0,
+          "text": "Case 2 has 0.12."
+        },
+        {
+          "start": 332.0,
+          "end": 335.0,
+          "text": "And case 3 has 0.50."
+        },
+        {
+          "start": 335.0,
+          "end": 338.0,
+          "text": "Compare the state and phase rows."
+        },
+        {
+          "start": 338.0,
+          "end": 343.0,
+          "text": "The binado boundary fields appear even for the one liquid case,"
+        },
+        {
+          "start": 343.0,
+          "end": 348.0,
+          "text": "so use the actual phase result when reporting which liquids are present."
+        },
+        {
+          "start": 348.0,
+          "end": 352.0,
+          "text": "An absent phase fraction is not a zero-valued measurement."
+        },
+        {
+          "start": 352.0,
+          "end": 359.0,
+          "text": "Click download comparison to save all three cases in one JSO and file."
+        },
+        {
+          "start": 359.0,
+          "end": 362.0,
+          "text": "This downloaded file is the durable copy."
+        },
+        {
+          "start": 362.0,
+          "end": 366.0,
+          "text": "The in-memory table alone is not your saved submission."
+        },
+        {
+          "start": 366.0,
+          "end": 373.0,
+          "text": "For this demonstration, I have downloaded the file and then cleared only the in-memory comparison."
+        },
+        {
+          "start": 373.0,
+          "end": 376.0,
+          "text": "The downloaded file remains unchanged."
+        },
+        {
+          "start": 376.0,
+          "end": 383.0,
+          "text": "Use load studies or a comparison JSON and choose that downloaded file."
+        },
+        {
+          "start": 383.0,
+          "end": 385.0,
+          "text": "All three recorded cases return."
+        },
+        {
+          "start": 385.0,
+          "end": 390.0,
+          "text": "Select restore case 2 to load its input controls."
+        },
+        {
+          "start": 390.0,
+          "end": 393.0,
+          "text": "Loading a file retains recorded evidence."
+        },
+        {
+          "start": 393.0,
+          "end": 398.0,
+          "text": "It does not certify that the calculator has produced fresh results."
+        },
+        {
+          "start": 398.0,
+          "end": 402.0,
+          "text": "Check the restored controls before reading any result."
+        },
+        {
+          "start": 402.0,
+          "end": 408.0,
+          "text": "The model is 1-parameter mar-gu-less, a is 3, and the feed is 0.12."
+        },
+        {
+          "start": 408.0,
+          "end": 413.0,
+          "text": "The old result cards may still describe the previous calculation."
+        },
+        {
+          "start": 413.0,
+          "end": 417.0,
+          "text": "Restore does not run this calculator automatically."
+        },
+        {
+          "start": 417.0,
+          "end": 420.0,
+          "text": "Now click find equilibrium again."
+        },
+        {
+          "start": 420.0,
+          "end": 424.0,
+          "text": "The fresh result returns to metastable, two liquids,"
+        },
+        {
+          "start": 424.0,
+          "end": 429.0,
+          "text": "with beta fraction about 0.0574,"
+        },
+        {
+          "start": 429.0,
+          "end": 434.0,
+          "text": "and energy decrease about 0.008216."
+        },
+        {
+          "start": 434.0,
+          "end": 439.0,
+          "text": "This completes the save, reopen, restore and recalculate cycle."
+        },
+        {
+          "start": 439.0,
+          "end": 441.0,
+          "text": "Keep the three cases."
+        },
+        {
+          "start": 441.0,
+          "end": 447.0,
+          "text": "Your independent balances and your explanation of local versus global stability."
+        },
+        {
+          "start": 447.0,
+          "end": 451.0,
+          "text": "The next slide gives you time to do the investigation yourself."
+        }
+      ],
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "Complete three-feed workflow is preserved, including one-liquid boundary-card caveat, both endpoint values, phase fractions, Gibbs energies/gains, negativecurvature−2, downloaded comparison, clearingmemory, importing the samefile, RestoreCase2 changinginputs only, and Findequilibrium returningmeta. ASR spelling variants of Margules/binodal/miscibility/JSON do not show numeric or procedural omissions."
+    },
+    {
+      "slide": 36,
+      "slide_id": "lab04-investigation",
+      "title": "Your Lab 04 investigation · 105–155 min",
+      "focus": "Independent G2-G4 investigation: twenty-five minutes after the separate G1 prediction stop, not a further twenty-eight minutes.",
+      "audio_file": "segment-36.wav",
+      "sha256": "3f4ad058f4301d9977bc5ffac4c96076aa3f30b635863f9c827b974804dd378e",
+      "narration_sha256": "e589061a63089ea579c196d5e35b434022f6906e1292b69e16887e0040792934",
+      "duration_seconds": 81.678,
+      "sample_rate": 24000,
+      "peak": 0.6922607421875,
+      "clipped_samples": 0,
+      "expected_narration": "Now complete your independent Lab Four investigation. Allow about twenty-five minutes here. In G two, run all three feeds at A equal to three and record the homogeneous-feed classification and equilibrium phase count separately. For the two-liquid cases, record both actual coexistence endpoints and both fractions. Under G three, use your calculator to recompute the beta fraction from the lab endpoints, then reconstruct the overall composition from the weighted balance. Do not reuse zero point two and zero point eight from the hand example. In G four, calculate the homogeneous and split Gibbs energies at zero point one two, then compare their difference with the Lab. Inspect the entire common-tangent plot and the numerical checks, rather than treating a small balance residual as complete proof of equilibrium. For a one-liquid result, record the present liquid at the feed composition. Do not invent a second liquid just to fill the table. Save each case with Export study JSON or a clearly labeled screenshot. Continue after the records and independent balances are complete.",
+      "recognized": "Now, complete your independent lab for investigation. Allow about 25 minutes here. In G2, run all three feeds at an equal to 3, and record the homogeneous feed classification and equilibrium phase count separately. For the two liquid cases, record both actual coexistence in points and both fractions. Under G3, use your calculator to recompute the beta fraction from the lab in points. Then reconstruct the overall composition from the weighted balance. Do not reuse 0.2 and 0.8 from the hand example. In G4, calculate the homogeneous and split Gibbs energies at 0.12. Then compare their difference with the lab. Inspect the entire common tangent plot and the numerical checks, rather than treating a small balance residual as complete proof of equilibrium. For a one-liquid result, record the present liquid at the feed composition. Do not invent a second liquid just to fill the table. Save each case with export study, J-S-O-N, or a clearly labeled screenshot. Continue after the records, and independent balances are complete.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.36,
+          "text": "Now, complete your independent lab for investigation."
+        },
+        {
+          "start": 4.36,
+          "end": 7.04,
+          "text": "Allow about 25 minutes here."
+        },
+        {
+          "start": 7.04,
+          "end": 11.56,
+          "text": "In G2, run all three feeds at an equal to 3,"
+        },
+        {
+          "start": 11.56,
+          "end": 17.6,
+          "text": "and record the homogeneous feed classification and equilibrium phase count separately."
+        },
+        {
+          "start": 17.6,
+          "end": 23.88,
+          "text": "For the two liquid cases, record both actual coexistence in points and both fractions."
+        },
+        {
+          "start": 24.04,
+          "end": 30.759999999999998,
+          "text": "Under G3, use your calculator to recompute the beta fraction from the lab in points."
+        },
+        {
+          "start": 30.759999999999998,
+          "end": 35.08,
+          "text": "Then reconstruct the overall composition from the weighted balance."
+        },
+        {
+          "start": 35.08,
+          "end": 40.599999999999994,
+          "text": "Do not reuse 0.2 and 0.8 from the hand example."
+        },
+        {
+          "start": 40.599999999999994,
+          "end": 47.56,
+          "text": "In G4, calculate the homogeneous and split Gibbs energies at 0.12."
+        },
+        {
+          "start": 47.56,
+          "end": 50.120000000000005,
+          "text": "Then compare their difference with the lab."
+        },
+        {
+          "start": 50.120000000000005,
+          "end": 54.92,
+          "text": "Inspect the entire common tangent plot and the numerical checks,"
+        },
+        {
+          "start": 54.92,
+          "end": 60.60000000000001,
+          "text": "rather than treating a small balance residual as complete proof of equilibrium."
+        },
+        {
+          "start": 60.60000000000001,
+          "end": 66.04,
+          "text": "For a one-liquid result, record the present liquid at the feed composition."
+        },
+        {
+          "start": 66.04,
+          "end": 70.28,
+          "text": "Do not invent a second liquid just to fill the table."
+        },
+        {
+          "start": 70.28,
+          "end": 76.52000000000001,
+          "text": "Save each case with export study, J-S-O-N, or a clearly labeled screenshot."
+        },
+        {
+          "start": 76.52,
+          "end": 81.47999999999999,
+          "text": "Continue after the records, and independent balances are complete."
+        }
+      ],
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "Twenty-five-minute independentG2-G4 rerun, actualendpoints rather than.2/.8, balance/energy/global-support checks and evidenceexport are preserved."
     },
     {
       "slide": 38,
@@ -596,8 +1317,8 @@
           "text": "The globally supporting tangent establishes the selected equilibrium compositions."
         }
       ],
-      "review_status": "passed_critical_content",
-      "review_notes": "ASR preserves z=.12, beta .05739825, alpha .94260175, mixing energies approximately−.050125 and−.058341, positive decrease .008216, and the distinction between balance, global stability and separation speed."
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "Beta .05739825, alpha .94260175, reconstructed.12 and energydecrease .008216 are preserved."
     },
     {
       "slide": 43,
@@ -690,40 +1411,24 @@
           "text": "Pause now to complete the reflection and feedback together."
         }
       ],
-      "review_status": "passed_critical_content",
-      "review_notes": "ASR preserves concept/evidence fields, 41-versus161 comparison, feedback with actual study minutes and pace, submit once, wait for Response received, and anonymous non-attendance scope."
+      "review_status": "passed_critical_content_source_comparison",
+      "review_notes": "Existing anonymousSession3 form, bothanswers, evidence, actualminutes/pace, eightminutes, submitonce and waitreceipt are preserved; no attendanceclaim."
     }
   ],
-  "checked_at_utc": "2026-10-20T00:40:46.291735+00:00",
+  "checked_at_utc": "2026-10-20T01:49:56.690746+00:00",
   "limitations": [
     "Speech recognition can misrecognize scientific names and spoken numbers; disagreements require source comparison or listening.",
-    "Six selected slides were transcribed, not the whole 44-slide recording.",
+    "9 selected slides were transcribed, not the whole 44-slide recording.",
     "No complete subjective listening review is claimed."
   ],
-  "reviewed_at_utc": "2026-10-20T00:41:21.397064+00:00",
+  "source_comparison_completed_at_utc": "2026-10-20T01:50:35.050686+00:00",
   "summary": {
-    "selected_slides": [
-      16,
-      18,
-      24,
-      25,
-      38,
-      43
-    ],
-    "checked_audio_seconds": 567.303125,
-    "critical_calculations_and_instructions_preserved": true,
-    "confirmed_substantive_omissions": 0,
+    "checked_slide_count": 9,
+    "checked_audio_seconds": 1177.9397083333333,
     "clipped_samples": 0,
-    "max_peak": 0.889984130859375,
-    "asr_uncertainties": [
-      {
-        "slide": 18,
-        "local_start_seconds": 56.118625,
-        "local_end_seconds": 64.26795833333334,
-        "phrase": "three-point formula",
-        "assessment": "Recognition ambiguity; no confirmed audio defect. A short subjective listen can resolve the pronunciation question."
-      }
-    ],
-    "complete_subjective_listening_review": false
+    "maximum_peak": 0.889984130859375,
+    "major_omissions_or_incorrect_critical_numbers_detected": false,
+    "complete_subjective_listening_review": false,
+    "term_level_asr_uncertainty": "Slide18 three-point formula decodedas3.4; all calculation values correct. Other scientific-name spellings are normal ASR variation."
   }
 }

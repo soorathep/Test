@@ -1,18 +1,29 @@
 {
   "passed": true,
-  "method": "CUA interaction with final H.264/AAC MP4 and WebVTT in the in-app browser; a temporary local harness positions playback near boundaries through explicit UI buttons.",
+  "method": "CUA interaction with final H.264/AAC MP4 and WebVTT in the in-app browser; temporary UI harness seeks near boundaries, with production controller handling the pauses.",
   "chapter_count": 44,
-  "video_sha256": "d1d1cc9540f6093d455b4a288911cfa5cc5d59e5a43c77bf9d2732f746107271",
-  "page_sha256": "a882bfa35c07ecb3993ed935fecbdce65e604301f191b5e44d3cbe62d05973b2",
+  "video_sha256": "67e50d25e7e06d11f8a1064fbd14beea090e884315733f94212c8e44b6cdf210",
+  "page_sha256": "d0554cd1889411a975f0e7e6ae3630f3ce97c98581bd9e307ab60a195062a236",
   "checks": [
-    "Actual final recording loads with44 chapters and55:40 display",
-    "Activity4 pauses on attempt; Continue starts check slide5",
-    "Break28 pauses with10-minute suggested break and no automatic resume",
-    "Reflection43 pauses with submit-once instructions",
-    "Longest241-character caption on44 wraps completely below video at390-pixel iframe width",
-    "Native video full screen displays complete long English captions",
-    "Actual Lab03 export/saved-case screenshot and matching caption visible during chapter25",
-    "Direct #slide-19 load selects Lab03 chapter after metadata loads"
+    "Direct #slide-35 load selects the complete Lab04 demonstration with measured62:33 runtime and44chapters",
+    "Prediction34 pauses before the Lab04 results, visibly retaining3-minute G1 instruction",
+    "Continue advances34to35 and resumes playback",
+    "Actual metastable Lab04 workbench and matching English caption visible during35",
+    "Actual imported comparison JSON scene and timed English captions render at390-pixel narrow width",
+    "Independent-work36 pauses before check37 and visibly retains25-minute G2-G4 instruction"
   ],
-  "scope": "One desktop browser. Narrow layout used a390-pixel iframe, not physical-phone hardware. Boundary positioning used a local test harness; the production controller performed the pauses. Native-fullscreen caption presentation was inspected; the harness was reset afterward. No form responses submitted. Full subjective listening was not performed."
+  "prior_revision_checks": {
+    "scope": "Previously passed on prior44-slide edition; not rerun wholesale for this update. Controller unit tests cover all current stops.",
+    "checks": [
+      "Actual final recording loads with44 chapters and55:40 display",
+      "Activity4 pauses on attempt; Continue starts check slide5",
+      "Break28 pauses with10-minute suggested break and no automatic resume",
+      "Reflection43 pauses with submit-once instructions",
+      "Longest241-character caption on44 wraps completely below video at390-pixel iframe width",
+      "Native video full screen displays complete long English captions",
+      "Actual Lab03 export/saved-case screenshot and matching caption visible during chapter25",
+      "Direct #slide-19 load selects Lab03 chapter after metadata loads"
+    ]
+  },
+  "scope": "One desktop browser;390-pixel iframe used for narrow layout, not physical phone hardware. Harness only seeks/plays using explicit UI buttons; production controller performs pauses. No form response submitted. Full subjective listening was not performed."
 }

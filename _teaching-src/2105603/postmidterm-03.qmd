@@ -1,6 +1,6 @@
 ---
 title: "Thermodynamic consistency and liquid stability"
-subtitle: "Session 3: Holiday independent study · 180 minutes"
+subtitle: "Session 3: Holiday independent study · about 3 hours"
 author: "Soorathep Kheawhom"
 format:
   revealjs:
@@ -30,20 +30,20 @@ format:
 **Your action:** Open the worksheet and Lab guide. Keep them beside these slides. Complete the sections in order, checking solutions only after your attempt.
 :::
 
-This lesson combines **explanation, a real Lab 03 demonstration, your own calculations, and two Lab investigations**.
+This lesson combines **explanation, actual Lab 03 and Lab 04 demonstrations, your own calculations, and two Lab investigations**.
 
 - [Practice worksheet, 6 pages](files/week03-practice.pdf): Sections A–I.
 - [Lab guide, 4 pages](files/week03-lab-guide.pdf): exact controls and interpretation.
 - [Worked solutions](files/week03-solutions.pdf): retain your first answer, then correct it.
 
-Allow **180 minutes including the recording, independent work and a 10-minute break**. Pause at the main work stops. Slide time ranges describe elapsed **study time**, not recording timestamps.
+Allow **about 3 hours including the recording, independent work and a 10-minute break**. Pause at the **10 work stops**. Slide time ranges are a nominal **study-time route**, not recording timestamps or a fixed completion time.
 
 [Study route](week03-study.html) · [Printable slides](files/postmidterm-03-slides.pdf) · [Optional background](files/preclass-week-03.pdf)
 
-## The 180-minute route {#the-180-minute-route}
+## The nominal 180-minute route {#the-180-minute-route}
 
 ::: {.your-action}
-**Your action:** Start your study timer. Preparation and all required work are included below. Have a calculator and paper ready.
+**Your action:** Start your study timer. Use this nominal route, allowing more time if needed. Have a calculator and paper ready.
 :::
 
 | Study time | What you do | Worksheet |
@@ -593,10 +593,10 @@ Inside the same tie line at unchanged conditions, changing the feed changes the 
 
 Do not extrapolate this lever rule to a feed outside the tie-line interval; a negative fraction is not a physical split.
 
-## Predict three feeds before running · 105–155 min {#lab04-predict}
+## Predict three feeds before running · 105–155 min {#lab04-predict .work-stop}
 
 ::: {.your-action}
-**Your action:** Write **G1** predictions on worksheet p. 4 before opening a named preset in Lab 04. Keep model parameter $A=3$ for all feeds.
+**Your action:** Pause for **3 minutes**. Write **G1** predictions on worksheet p. 4 before watching the Lab 04 demonstration on the next slide. Keep $A=3$ for all feeds.
 :::
 
 Compare $z_1=0.02,\ 0.12,\ 0.50$.
@@ -611,24 +611,24 @@ Use $\widetilde g''(z)=1/[z(1-z)]-6$ for a local clue. You still need global evi
 
 The named presets contain the answers in their labels, so make your predictions first.
 
-## Lab 04 controls and evidence · 105–155 min {#lab04-controls}
+## Lab 04: setup, compare and reopen · 105–155 min {#lab04-controls}
 
 ::: {.your-action}
-**Your action:** Open [Lab 04](labs/stability.html#lle-experiment) and Lab guide p. 4. Use worksheet p. 5, G2–G4, for your results.
+**Your action:** Watch the complete [Lab 04](labs/stability.html#lle-experiment) demonstration. Keep Lab guide p. 4 and worksheet p. 5, **G2–G4**, open. Rerun it yourself at the next work stop.
 :::
 
-Set **Liquid model: Margules · 1 parameter**, **Interaction parameter A: 3**.
+1. Set **Liquid model: Margules · 1 parameter** and **Interaction parameter A: 3**.
+2. Type **Feed mole fraction z₁ = 0.02**, then **Find equilibrium**. Repeat for **0.12** and **0.50**.
+3. Compare the feed label, equilibrium phases, **phase compositions and amounts**. Inspect **Gibbs energy & common tangent** and **Verify the equilibrium** for energy and balance checks.
+4. Use **Export study JSON** for each of the three cases, with distinct filenames.
+5. Expand **Study workspace · reopen and compare cases**. Load the saved JSON files, **Restore** a case, then **Find equilibrium** for a fresh calculation.
 
-Type **Feed mole fraction z₁**, then click **Find equilibrium**. Use 0.02, 0.12 and 0.50 in turn. Sliders update automatically, but typed values require the button.
-
-In **Gibbs energy & common tangent** and **Verify the equilibrium**, inspect the feed classification, equilibrium phases, curvature, energy decrease and balance checks.
-
-This hypothetical fixed-$T,P$ model assigns no physical temperature. Keep its parameters unchanged across the comparison.
+This hypothetical fixed-$T,P$ model assigns no physical temperature. Keep its parameters unchanged. Restored records are evidence; recalculation checks the reopened inputs.
 
 ## Your Lab 04 investigation · 105–155 min {#lab04-investigation .work-stop}
 
 ::: {.your-action}
-**Your action:** Pause. Complete **G2–G4**, worksheet p. 5, with Lab guide p. 4. Save each case with **Export study JSON** or a labeled screenshot.
+**Your action:** Pause for **25 minutes**. Rerun **G2–G4** independently using worksheet p. 5 and Lab guide p. 4. Keep your **G1 predictions** and your own calculations. Save each case with **Export study JSON** or a labeled screenshot.
 :::
 
 **G2:** Record all three feeds. Keep the homogeneous-feed label separate from the final equilibrium phase count.

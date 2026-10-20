@@ -1,26 +1,26 @@
 {
   "passed": true,
   "scope": "Rebuilt portable student package; file/hash/PDF/link checks, not browser interaction QA.",
-  "lab_source_commit": "b6a6f6eef95606d5eb2c2ae67a167835c49c0158",
-  "archive_bytes": 62425421,
-  "archive_sha256": "a49594a4089cdcb1544e06b641134c65e84e44219ea8e8b0d7e09ac9147d46f4",
+  "lab_source_commit": "7a53c2453f274bce2237a319f5d3981fb6bdf1e3",
+  "archive_bytes": 62428028,
+  "archive_sha256": "79ba9748ddb6de16ea61b0f32a4e9592148fc2828cb06c9e8d48cf943ed40b8d",
   "files_verified": 482,
-  "final_slide_pdf_sha256": "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a",
+  "final_slide_pdf_sha256": "dbd1af7fbfc74b460ac9221e74e0e9b154bd4ef9ebe71c5d3a4b7c570d552108",
   "pdf_checks": [
     {
       "file": "postmidterm-03-slides.pdf",
       "pages": 44,
-      "sha256": "2011bc906a01e5209a09aae02c0ba11c4e5a41601cee594d85d1e45d748a899a"
+      "sha256": "dbd1af7fbfc74b460ac9221e74e0e9b154bd4ef9ebe71c5d3a4b7c570d552108"
     },
     {
       "file": "week03-practice.pdf",
       "pages": 6,
-      "sha256": "b1e4ab520fe85f3b8ed6ea5c6cc6873d9d50300e47debc5d2f3102e31d16416b"
+      "sha256": "6d1e1fd15883acde05e0777261a0ad4a70b06be4182bd713350868647930bb2f"
     },
     {
       "file": "week03-lab-guide.pdf",
       "pages": 4,
-      "sha256": "0c33209b979abd09599e0fcba50d3b7673edd5ef7d11747ef05e321c0627a50a"
+      "sha256": "9b582076c73ae0683aafe96b227328e5f5dae4d29a79df183ceb4528353470b8"
     },
     {
       "file": "week03-solutions.pdf",
@@ -70,12 +70,22 @@
       "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html#slide-19"
     },
     {
+      "source": "teaching/2105603/week03-study.html",
+      "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html#slide-35"
+    },
+    {
       "source": "teaching/2105603/labs/learning-path.html",
       "target": "https://www.skhgroup.net/teaching/2105603/week03-video.html"
     }
   ],
   "week3_dynamic_video_link": "https://www.skhgroup.net/teaching/2105603/week03-video.html",
   "media_excluded": true,
+  "model_weights_excluded": true,
+  "temporary_qa_harness_excluded": true,
+  "both_demo_deeplinks_verified": [
+    19,
+    35
+  ],
   "private_source_and_record_paths_excluded": true,
   "readme_stale_14_mapping_claim_found": false,
   "focused_video_link_rewrite_cases_passed": 13

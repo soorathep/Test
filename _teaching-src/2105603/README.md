@@ -213,11 +213,13 @@ Session 3 is a 44-slide English independent holiday lesson, starting at
 Gibbs-Duhem and the experimental path (B), 40-65 hand area and local-residual
 calculations (C), 65-95 the real Lab 03 demonstration and investigation (D-E),
 95-105 break, 105-155 stability and LLE (F-G), 155-170 unseen review (H), and
-170-180 exit ticket and feedback (I). The planning target is about 55 minutes
-of recorded explanation/demonstration, 115 minutes of active work and reflection,
-and a 10-minute break. These are approximate planning estimates, not measured
-student completion times or required waits. The recording replaces reading the
-same slides; it is part of the lesson rather than additional homework.
+170-180 exit ticket and feedback (I). The fixed activity budgets are 115 minutes
+of active work and reflection plus a 10-minute break. The expanded recording is
+expected to be about 60 minutes; the player reports its actual measured duration
+and the sum with those budgets. The approximately three-hour route is a planning
+guide, not a measured student completion time or required wait. The recording
+replaces reading the same slides; it is part of the lesson rather than additional
+homework.
 
 `prereading/week03/build_week03.py` generates the six-page worksheet, four-page
 Lab guide, four-page worked solutions, and optional three-page background.
@@ -225,8 +227,12 @@ Students calculate the actual Lab 03 g-first residual, predict before seeing
 changed cases, compare localized defects at 41 and 161 points, and perform one
 clean modeling test. Lab 04 compares homogeneous feeds at z=0.02, 0.12 and 0.50
 with Margules A=3, followed by independent balances and the z=0.12 energy check.
-The video uses all 44 slides, actual Lab screen evidence, English captions and
-a transcript, with nine main work checkpoints plus a break. Reproduction sources
+The video uses all 44 slides, two real-screen demonstrations, English captions
+and a transcript, with ten work checkpoints plus a break. Lab 03 starts at slide
+19. Slide 34 pauses three minutes for G1 predictions before the complete Lab 04
+demonstration on slide 35; slide 36 pauses 25 minutes for independent G2-G4
+reruns. This keeps the combined prediction/investigation budget at 28 minutes
+and total active work at 115 minutes. Reproduction sources
 are in `video-week03/`. The existing anonymous Session 3 form uses its concept
 field for LLE and its evidence field for the consistency comparison. Students
 report actual study minutes and pace in the existing feedback text; no new form

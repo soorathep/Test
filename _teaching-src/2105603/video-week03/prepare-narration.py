@@ -22,6 +22,9 @@ for expected,(r,slide) in enumerate(zip(raw,slides),1):
     entries.append({**r,'id':f'{expected:02d}','slide':expected,'narration':text,'title':title,'pause_instruction':cue,
                     'activity':r['activity_minutes']>0,
                     'stage_start_minute':int(m[1]) if m else None,'stage_end_minute':int(m[2]) if m else None})
-assert all(entries[i-1]['activity'] for i in [4,11,13,17,26,28,32,36,40,43])
+expected_activities={4:9,11:15,13:8,17:9,26:18,28:10,32:8,34:3,36:25,40:12,43:8}
+assert {e['slide']:e['activity_minutes'] for e in entries if e['activity']} == expected_activities
+assert sum(v for k,v in expected_activities.items() if k!=28)==115
+assert len(expected_activities)==11  # Ten work checkpoints plus the break.
 (folder/'narration.json').write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n')
 print(f'Validated {len(entries)} slide IDs and order; {sum(len(e["narration"].split()) for e in entries)} spoken words; {sum(e["activity"] for e in entries)} pause points.')

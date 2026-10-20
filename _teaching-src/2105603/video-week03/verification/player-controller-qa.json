@@ -1,11 +1,11 @@
 {
   "scope": "Controller unit tests using minimal fake DOM/media; not actual rendering, audio synchronization or browser playback QA",
   "mode": "actual timing metadata; mocked media events, no decoded-video or browser QA",
-  "script_sha256": "c49f684f9b4260ee03122cc7e5f858407608c4d6c16d3edff6fcf4e819cf104a",
+  "script_sha256": "e6c3deb0508221edaab20fde02a936f2acca295049f5c66b1df9b18cb5be3175",
   "chapters": 44,
   "tests": [
     {
-      "name": "Default pause holds all nine revised work stops before advancing",
+      "name": "Default pause holds all ten revised work stops before advancing",
       "status": "passed"
     },
     {
@@ -22,6 +22,14 @@
     },
     {
       "name": "The demo link intentionally selects Lab 03 chapter 19",
+      "status": "passed"
+    },
+    {
+      "name": "The second demo link intentionally selects Lab 04 chapter 35",
+      "status": "passed"
+    },
+    {
+      "name": "The three-minute prediction pause holds slide 34 before Lab 04 results",
       "status": "passed"
     },
     {

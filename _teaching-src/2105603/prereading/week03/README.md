@@ -4,11 +4,13 @@ The 44-slide independent holiday lesson places thermodynamic consistency before
 liquid stability and LLE. All student-facing material is English. Start at
 `week03-study.html`; the recording, calculations, Lab investigations, review,
 existing Session 3 exit ticket and feedback belong to the same approximately
-180-minute lesson. The planning balance is about 55 minutes of explanation and
-demonstration, 115 minutes of active work/reflection, and a 10-minute break.
-These are estimates, not measured student completion times or enforced waits.
-There are nine main work checkpoints plus the break. Background reading and the
-appendix remain optional; no additional attendance-identification form is used.
+180-minute lesson. The fixed activity budgets are 115 minutes of active
+work/reflection and a 10-minute break. The expanded recording is expected to be
+about 60 minutes, but the player reports its actual measured duration and the
+sum with those activity budgets. These are planning estimates, not measured
+student completion times or enforced waits. There are ten work checkpoints plus
+the break. Background reading and the appendix remain optional; no additional
+attendance-identification form is used.
 
 ## Build
 
@@ -85,6 +87,14 @@ Lab 03 exports JSON evidence with input controls. To reopen it, expand
 JSON**, and select **Restore** beside the loaded case. Restore loads inputs;
 recalculate or rerun **Run modeling test** to produce fresh results. Imported
 results remain recorded evidence rather than replacing a fresh calculation.
+
+There are two real-screen demonstrations: Lab 03 starts at slide 19 and the
+complete Lab 04 workflow is on slide 35. Before Lab 04, slide 34 pauses for
+three minutes of G1 predictions. Slide 36 then pauses for 25 minutes of
+independent G2-G4 reruns, replacing the previous combined 28-minute allocation.
+Students save all three cases. After restoring a saved Lab 04 case, check its
+inputs and select **Find equilibrium** for a fresh calculation; imported results
+remain recorded evidence.
 
 Lab 04 symmetric Margules A=3 gives endpoints 0.07072018168 and
 0.92927981832. The homogeneous feeds at z=0.02, 0.12 and 0.50 are stable,
