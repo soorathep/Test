@@ -1,0 +1,77 @@
+{
+  "scope": "Controller and metadata validation tests with a fake DOM/media; not rendering, narration synchronization, or real playback QA",
+  "mode": "actual timing metadata; mocked media events, no encoded-media or browser QA",
+  "script_sha256": "3f8c650489989ec0e15f4dfb5d20387be5359159cb290c3dceb873189615d091",
+  "chapters": 14,
+  "tests": [
+    {
+      "name": "The page is a Week 1 supplement with actual duration and no repeat submission",
+      "status": "passed"
+    },
+    {
+      "name": "Default optional pauses preserve chapters 3 and 13 until Continue",
+      "status": "passed"
+    },
+    {
+      "name": "Continue moves from the prediction to chapter 4 and from the attempt to check 14",
+      "status": "passed"
+    },
+    {
+      "name": "A delayed playback event rewinds to the attempt before showing its check",
+      "status": "passed"
+    },
+    {
+      "name": "Timer and animation-frame guards hold practice without a timeupdate event",
+      "status": "passed"
+    },
+    {
+      "name": "Intentional chapter and native seeks do not trigger skipped optional pauses",
+      "status": "passed"
+    },
+    {
+      "name": "Replaying a completed practice checkpoint reinstates its pause",
+      "status": "passed"
+    },
+    {
+      "name": "Turning optional pauses off clears a held pause and permits continuous playback",
+      "status": "passed"
+    },
+    {
+      "name": "A late natural end still catches an unfinished attempt; a final-check seek does not",
+      "status": "passed"
+    },
+    {
+      "name": "All labels and downloadable transcripts describe demonstration chapters",
+      "status": "passed"
+    },
+    {
+      "name": "Deep links and Previous/Next use exact chapter starts",
+      "status": "passed"
+    },
+    {
+      "name": "Wide captions stay native; narrow captions use timed text below the image",
+      "status": "passed"
+    },
+    {
+      "name": "Caption toggle disables both formats without duplicate mobile captions",
+      "status": "passed"
+    },
+    {
+      "name": "Native video full screen uses native captions; wrapper full screen keeps captions below",
+      "status": "passed"
+    },
+    {
+      "name": "Late caption loading attaches cue updates and desktop CC updates the toggle",
+      "status": "passed"
+    },
+    {
+      "name": "Caption and video load failures provide readable fallbacks",
+      "status": "passed"
+    },
+    {
+      "name": "Builder rejects unsafe pause tails, changed budgets and inconsistent timeline boundaries",
+      "status": "passed"
+    }
+  ],
+  "timing_source": "outputs/lab01-video/timeline.json"
+}

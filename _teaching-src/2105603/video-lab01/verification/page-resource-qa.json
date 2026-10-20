@@ -1,0 +1,1289 @@
+{
+  "status": "passed",
+  "playerSha256": "e3d653619e0dea35c0fac178cfd7cba4847a212ee4ef815fbfd5d73785bf2e3e",
+  "checkedReferences": 200,
+  "chapters": 14,
+  "chapterFragments": "JavaScript routes backed by data-chapter links and matching chapter-data; browser behavior checked separately",
+  "newMediaPresent": true,
+  "issues": [],
+  "deferredExistingJekyllTemplates": [
+    {
+      "source": "index.html",
+      "reference": "/teaching/2105603/{{ m.slides }}",
+      "reason": "Existing Jekyll collection template; resolves at site build."
+    },
+    {
+      "source": "index.html",
+      "reference": "/teaching/2105603/{{ m.lab }}",
+      "reason": "Existing Jekyll collection template; resolves at site build."
+    },
+    {
+      "source": "index.html",
+      "reference": "https://colab.research.google.com/github/soorathep/Test/blob/main/teaching/2105603/files/{{ f.file }}",
+      "reason": "Existing Jekyll collection template; resolves at site build."
+    },
+    {
+      "source": "index.html",
+      "reference": "/teaching/2105603/files/{{ f.file }}",
+      "reason": "Existing Jekyll collection template; resolves at site build."
+    },
+    {
+      "source": "index.html",
+      "reference": "/teaching/2105603/{{ mod.slides }}",
+      "reason": "Existing Jekyll collection template; resolves at site build."
+    }
+  ],
+  "references": [
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "/favicon.png",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "https://www.skhgroup.net/teaching/2105603/lab01-video.html",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "labs/assets/palette.css",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#lesson-player",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./index.html",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./postmidterm-01.html",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/learning-path.html#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/#experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./postmidterm-01.html",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/learning-path.html#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#full-transcript",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "poster",
+      "reference": "./media/lab01/lab01-poster.png",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "src",
+      "reference": "./media/lab01/lab01-demo.mp4",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "src",
+      "reference": "./media/lab01/lab01-captions.vtt",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./media/lab01/lab01-demo.mp4",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./media/lab01/lab01-demo.mp4",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./media/lab01/lab01-captions.vtt",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/#experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-2",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-3",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-4",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-5",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-6",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-7",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-8",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-9",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-10",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-11",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-12",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-13",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "#chapter-14",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./files/lab01-demo-comparison.json",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/#experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./postmidterm-01.html",
+      "exists": true
+    },
+    {
+      "source": "lab01-video.html",
+      "attribute": "href",
+      "reference": "./labs/learning-path.html#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-01.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-02.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-03.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-04.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-05.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-06.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/assessments.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/thermodynamics-offline.zip",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week02-clarifications.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week02-clarifications-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week02-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/lab08-demo.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/lab08-video.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-01.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-01-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-01.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/lab01-video.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week02-video.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-02.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-02-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-02.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week02-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-2",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week03-study.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week03-video.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-03.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-03-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week03-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week03-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week03-solutions.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-03.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-3",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week04-study.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/week04-video.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-04.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-04-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week04-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week04-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/week04-solutions.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-04.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-4",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-05.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-05-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-05.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-5",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/postmidterm-06.html",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/postmidterm-06-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/files/preclass-week-06.pdf",
+      "exists": true
+    },
+    {
+      "source": "index.html",
+      "attribute": "href",
+      "reference": "/teaching/2105603/labs/learning-path.html#session-6",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "/favicon.png",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/site.css",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/palette.css",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/lab.css",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "#experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "/",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "learning-path.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "vle-input.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../fugacity.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../lab01-video.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../vle.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../files/M4_VLE_regression_and_consistency.ipynb",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "stability.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "vlle.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "adiabatic.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/thermo.js",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/systems.json",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "assets/regenerate.py",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../stability.html",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "href",
+      "reference": "../",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "src",
+      "reference": "assets/plotly.min.js",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "src",
+      "reference": "assets/app.js",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "src",
+      "reference": "assets/learning-guide.js",
+      "exists": true
+    },
+    {
+      "source": "labs/index.html",
+      "attribute": "src",
+      "reference": "assets/study-workspace.js",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "/favicon.png",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assets/site.css",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assets/palette.css",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assets/lab.css",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "/",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "./",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/thermodynamics-offline.zip",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-2",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-3",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-4",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-5",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "#session-6",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../lab01-video.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week01-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-01.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-01.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-01-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../vle.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-01-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "./#experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "virial.html#vr-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "adiabatic.html#af-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-1",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week02-video.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week02-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-02.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week02-clarifications.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week02-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-02.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-02-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../vle.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-02-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "vle-input.html#vi-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "case-study.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-2",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week03-video.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week03-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week03-study.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week03-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week03-solutions.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-03.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-03.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-03-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../stability.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-03-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "consistency.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "stability.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "lle-fit.html#lf-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "vlle.html#vl-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-3",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week04-video.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week04-practice.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../week04-study.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week04-lab-guide.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/week04-solutions.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-04.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-04.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-04-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../stability.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-04-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "solids.html#so-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "adsorption.html#ad-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-4",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-05.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-05.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-05-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../reaction.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-05-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "reaction.html#rx-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-5",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/preclass-week-06.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-06.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../files/postmidterm-06-slides.pdf",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../reaction.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "../postmidterm-06-appendix.html",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "electrochemistry.html#ec-experiment",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "href",
+      "reference": "assessments.html#session-6",
+      "exists": true,
+      "fragmentExists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "src",
+      "reference": "assets/plotly.min.js",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "src",
+      "reference": "assets/learning-guide.js",
+      "exists": true
+    },
+    {
+      "source": "labs/learning-path.html",
+      "attribute": "src",
+      "reference": "assets/study-workspace.js",
+      "exists": true
+    }
+  ]
+}

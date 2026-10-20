@@ -1,0 +1,1207 @@
+{
+  "title": "Lab 01: Ideal VLE, from inputs to a saved study",
+  "video": "lab01-demo.mp4",
+  "poster": "lab01-poster.png",
+  "width": 1920,
+  "height": 1080,
+  "sample_rate": 24000,
+  "slide_height": 920,
+  "caption_band_height": 160,
+  "time_base": "1/24000",
+  "silent_tail_per_slide_seconds": 2,
+  "duration_samples": 27512949,
+  "duration_seconds": 1146.372875,
+  "narration_duration_seconds": 1118.372875,
+  "optional_practice_minutes": 7,
+  "timing_contract": "Every chapter displays an actual Lab capture at its PCM audio start. Later screenshots change at exact matching sentence sample offsets. Each chapter ends after a two-second silent tail. Optional practice pauses add no exercise-length silence to the MP4.",
+  "source_manifest": "outputs/lab01-video/audio/manifest.json",
+  "source_manifest_sha256": "e0226bcee265d6b4a6841da17ace6db38ae7bd1cdd6c0ab5dd06fbd93bc6b8de",
+  "source_hashes": {
+    "asynchronous-lab01/narration.json": "fb312db99e0bb8d9dd87fcf8b9192a8ce4d0e98e60234c99021233a6ae572299",
+    "outputs/lab01-video/audio/manifest.json": "e0226bcee265d6b4a6841da17ace6db38ae7bd1cdd6c0ab5dd06fbd93bc6b8de",
+    "outputs/lab01-video/audio/timeline.json": "5785dfba70f6b41985d926105083b1f534ffc320a29cb5907ecd25214b0bf37e",
+    "asynchronous-lab01/demo-scenes.json": "c48604114df733a2d8b74596da9706bf568e7326a306d2148d61974973c9f59f"
+  },
+  "audio_master_sha256": "03d2c27dd699c78b93637565b3716194574a130df21fc2609235f417ec0e5cf4",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Open Lab 01 and the demonstration guide",
+      "start_sample": 0,
+      "narration_end_sample": 1723440,
+      "end_sample": 1771440,
+      "narration_samples": 1723440,
+      "start_seconds": 0.0,
+      "narration_end_seconds": 71.81,
+      "end_seconds": 73.81,
+      "narration_duration_seconds": 71.81,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-01.wav",
+      "audio_source_sha256": "8f17b68dc6031ea4f1a28b6f17c398d538ee9b012549fa1825d7245031b4b5b8",
+      "slide_image": "tmp/video/lab01/scenes/chapter-01-scene-01.png",
+      "slide_image_sha256": "e2eb45db3b46dcc9b057bb7701611eaab5abd088a7d1fcf796eee87c0715e285",
+      "narration_text_sha256": "e56434159eafd2731484437d16f82304f28e718155d3efb234529c969ae4d596",
+      "narration_sha256": "e56434159eafd2731484437d16f82304f28e718155d3efb234529c969ae4d596",
+      "visual_scenes": [
+        {
+          "start_sample": 0,
+          "image": "tmp/video/lab01/scenes/chapter-01-scene-01.png",
+          "sha256": "e2eb45db3b46dcc9b057bb7701611eaab5abd088a7d1fcf796eee87c0715e285",
+          "kind": "actual_lab_capture",
+          "label": "Open the published Lab 01",
+          "capture_source": "asynchronous-lab01/demo-frames/01-lab-entry.png",
+          "capture_sha256": "83d859fe678cde61523dbe42981f62250e4e1c8f7956a87e94824960d39e2367",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Welcome to this practical demonstration of Lab One.",
+          "cue_id": "01-01",
+          "matched_cue_start_sample": 4320,
+          "end_sample": 874752
+        },
+        {
+          "start_sample": 874752,
+          "image": "tmp/video/lab01/scenes/chapter-01-scene-02.png",
+          "sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+          "kind": "actual_lab_capture",
+          "label": "One ideal synthetic mixture",
+          "capture_source": "asynchronous-lab01/demo-frames/02-ideal-baseline.png",
+          "capture_sha256": "60f3cd1e81454ffdc5948fced4aacc8ab26b0497c344514d433dc5b76063c65b",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "We will study one synthetic",
+          "cue_id": "01-08",
+          "matched_cue_start_sample": 874752,
+          "end_sample": 1771440
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "title": "Set up the synthetic ideal mixture",
+      "start_sample": 1771440,
+      "narration_end_sample": 3721584,
+      "end_sample": 3769584,
+      "narration_samples": 1950144,
+      "start_seconds": 73.81,
+      "narration_end_seconds": 155.066,
+      "end_seconds": 157.066,
+      "narration_duration_seconds": 81.256,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-02.wav",
+      "audio_source_sha256": "9da27fbfee840f20ebb69b2b1cb49e719cc0549b5a75da1806e33addd2638d6a",
+      "slide_image": "tmp/video/lab01/scenes/chapter-02-scene-01.png",
+      "slide_image_sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+      "narration_text_sha256": "d0c1363d2bfafaed1e8d079c15d7272369ce4d21fa73e2e27040bc4f6c5895e7",
+      "narration_sha256": "d0c1363d2bfafaed1e8d079c15d7272369ce4d21fa73e2e27040bc4f6c5895e7",
+      "visual_scenes": [
+        {
+          "start_sample": 1771440,
+          "image": "tmp/video/lab01/scenes/chapter-02-scene-01.png",
+          "sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+          "kind": "actual_lab_capture",
+          "label": "Select synthetic system and ideal liquid",
+          "capture_source": "asynchronous-lab01/demo-frames/02-ideal-baseline.png",
+          "capture_sha256": "60f3cd1e81454ffdc5948fced4aacc8ab26b0497c344514d433dc5b76063c65b",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Under Chemical system, choose Teaching binary, synthetic.",
+          "cue_id": "02-01",
+          "matched_cue_start_sample": 1775760,
+          "end_sample": 2168848
+        },
+        {
+          "start_sample": 2168848,
+          "image": "tmp/video/lab01/scenes/chapter-02-scene-02.png",
+          "sha256": "8439fc7aa7188034f4683e10376f2d500f04d1d2aeb9889d59a82b87f2fee0f8",
+          "kind": "actual_lab_capture",
+          "label": "Enter T, P, and feed composition",
+          "capture_source": "asynchronous-lab01/demo-frames/04-boundaries-and-inputs.png",
+          "capture_sha256": "0226c411fb3e30b0fd13a96577a2d1d46e4dcf9ebc4cc8cc74a4e19650d4af09",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Enter three hundred fifty",
+          "cue_id": "02-05",
+          "matched_cue_start_sample": 2168848,
+          "end_sample": 2649104
+        },
+        {
+          "start_sample": 2649104,
+          "image": "tmp/video/lab01/scenes/chapter-02-scene-03.png",
+          "sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+          "kind": "actual_lab_capture",
+          "label": "Synthetic property record at 350 K",
+          "capture_source": "asynchronous-lab01/demo-frames/05-pxy-and-results.png",
+          "capture_sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "At this temperature",
+          "cue_id": "02-08",
+          "matched_cue_start_sample": 2649104,
+          "end_sample": 3769584
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "title": "Predict before changing pressure",
+      "start_sample": 3769584,
+      "narration_end_sample": 5468543,
+      "end_sample": 5516543,
+      "narration_samples": 1698959,
+      "start_seconds": 157.066,
+      "narration_end_seconds": 227.85595833333332,
+      "end_seconds": 229.85595833333332,
+      "narration_duration_seconds": 70.78995833333333,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "Allow about 2 minutes. Write both predictions on guide page 1 before continuing.",
+      "activity": true,
+      "activity_minutes": 2,
+      "audio_source": "outputs/lab01-video/audio/segment-03.wav",
+      "audio_source_sha256": "23b4b7ed57aed4238ad5b468caec1d8747c86e5de3407c6ad9e71e4cafc34c3c",
+      "slide_image": "tmp/video/lab01/scenes/chapter-03-scene-01.png",
+      "slide_image_sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+      "narration_text_sha256": "aec8c63d30135c97cd2b3a74ce0083f1a8cb37cc7d2373a72cde3fe32032369d",
+      "narration_sha256": "aec8c63d30135c97cd2b3a74ce0083f1a8cb37cc7d2373a72cde3fe32032369d",
+      "visual_scenes": [
+        {
+          "start_sample": 3769584,
+          "image": "tmp/video/lab01/scenes/chapter-03-scene-01.png",
+          "sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+          "kind": "actual_lab_capture",
+          "label": "Predict pressure effects before trying them",
+          "capture_source": "asynchronous-lab01/demo-frames/03-predict-pressure.png",
+          "capture_sha256": "60f3cd1e81454ffdc5948fced4aacc8ab26b0497c344514d433dc5b76063c65b",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The lab may already display the ninety-five-kilopascal baseline when it opens.",
+          "cue_id": "03-01",
+          "matched_cue_start_sample": 3773904,
+          "end_sample": 5516543
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "title": "Read the bubble and dew boundaries",
+      "start_sample": 5516543,
+      "narration_end_sample": 7571342,
+      "end_sample": 7619342,
+      "narration_samples": 2054799,
+      "start_seconds": 229.85595833333332,
+      "narration_end_seconds": 315.4725833333333,
+      "end_seconds": 317.4725833333333,
+      "narration_duration_seconds": 85.616625,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-04.wav",
+      "audio_source_sha256": "74f1d10d6c0a46cb7e5a2bb71aba48bb7745b05aa871929f26343359579f4849",
+      "slide_image": "tmp/video/lab01/scenes/chapter-04-scene-01.png",
+      "slide_image_sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+      "narration_text_sha256": "62e39526799d55130f9125d3e587f9ec8b8823bb7a545c125515c98f6fe88727",
+      "narration_sha256": "62e39526799d55130f9125d3e587f9ec8b8823bb7a545c125515c98f6fe88727",
+      "visual_scenes": [
+        {
+          "start_sample": 5516543,
+          "image": "tmp/video/lab01/scenes/chapter-04-scene-01.png",
+          "sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+          "kind": "actual_lab_capture",
+          "label": "Read the pressure-composition diagram",
+          "capture_source": "asynchronous-lab01/demo-frames/05-pxy-and-results.png",
+          "capture_sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Select P, x, y, fixed temperature in the Diagram menu.",
+          "cue_id": "04-01",
+          "matched_cue_start_sample": 5520863,
+          "end_sample": 6121694
+        },
+        {
+          "start_sample": 6121694,
+          "image": "tmp/video/lab01/scenes/chapter-04-scene-02.png",
+          "sha256": "8439fc7aa7188034f4683e10376f2d500f04d1d2aeb9889d59a82b87f2fee0f8",
+          "kind": "actual_lab_capture",
+          "label": "Different specified compositions at the boundaries",
+          "capture_source": "asynchronous-lab01/demo-frames/04-boundaries-and-inputs.png",
+          "capture_sha256": "0226c411fb3e30b0fd13a96577a2d1d46e4dcf9ebc4cc8cc74a4e19650d4af09",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Look at the two boundary",
+          "cue_id": "04-07",
+          "matched_cue_start_sample": 6121694,
+          "end_sample": 7619342
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "title": "Read the flash result at 95 kPa",
+      "start_sample": 7619342,
+      "narration_end_sample": 9435308,
+      "end_sample": 9483308,
+      "narration_samples": 1815966,
+      "start_seconds": 317.4725833333333,
+      "narration_end_seconds": 393.13783333333333,
+      "end_seconds": 395.13783333333333,
+      "narration_duration_seconds": 75.66525,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-05.wav",
+      "audio_source_sha256": "64dce82fc3d74642bf0e1cb922d86da7c665806b22b40a1d7c75fc886ebb95d3",
+      "slide_image": "tmp/video/lab01/scenes/chapter-05-scene-01.png",
+      "slide_image_sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+      "narration_text_sha256": "48f90662b24f04abdf20a1cd7e2bb75af35e5d1e61ac033641dd4b39a620e2f1",
+      "narration_sha256": "48f90662b24f04abdf20a1cd7e2bb75af35e5d1e61ac033641dd4b39a620e2f1",
+      "visual_scenes": [
+        {
+          "start_sample": 7619342,
+          "image": "tmp/video/lab01/scenes/chapter-05-scene-01.png",
+          "sha256": "ec94671fa14ccbe717266d15a443239607d9c1eb1a72191604911bb3fdc0cba8",
+          "kind": "actual_lab_capture",
+          "label": "Read the baseline phase and compositions",
+          "capture_source": "asynchronous-lab01/demo-frames/02-ideal-baseline.png",
+          "capture_sha256": "60f3cd1e81454ffdc5948fced4aacc8ab26b0497c344514d433dc5b76063c65b",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Turn to guide page two.",
+          "cue_id": "05-01",
+          "matched_cue_start_sample": 7623662,
+          "end_sample": 8951100
+        },
+        {
+          "start_sample": 8951100,
+          "image": "tmp/video/lab01/scenes/chapter-05-scene-02.png",
+          "sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+          "kind": "actual_lab_capture",
+          "label": "Connect the coexisting compositions",
+          "capture_source": "asynchronous-lab01/demo-frames/05-pxy-and-results.png",
+          "capture_sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The horizontal tie line",
+          "cue_id": "05-12",
+          "matched_cue_start_sample": 8951100,
+          "end_sample": 9483308
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "title": "Check both component balances independently",
+      "start_sample": 9483308,
+      "narration_end_sample": 11403148,
+      "end_sample": 11451148,
+      "narration_samples": 1919840,
+      "start_seconds": 395.13783333333333,
+      "narration_end_seconds": 475.1311666666667,
+      "end_seconds": 477.1311666666667,
+      "narration_duration_seconds": 79.99333333333334,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-06.wav",
+      "audio_source_sha256": "03bf1217db0e7204fda780e1c9cbc61b4846a3a1f9cedb0b0331a83c63baab2c",
+      "slide_image": "tmp/video/lab01/scenes/chapter-06-scene-01.png",
+      "slide_image_sha256": "0a5dd33f0680816f1164cabaf4f4564fc2b88efd563a15e438cc4582a5f57209",
+      "narration_text_sha256": "118110d5546319ed270f83ffe0c6647785c90c3b373d9dc783f64df31b2ea236",
+      "narration_sha256": "118110d5546319ed270f83ffe0c6647785c90c3b373d9dc783f64df31b2ea236",
+      "visual_scenes": [
+        {
+          "start_sample": 9483308,
+          "image": "tmp/video/lab01/scenes/chapter-06-scene-01.png",
+          "sha256": "0a5dd33f0680816f1164cabaf4f4564fc2b88efd563a15e438cc4582a5f57209",
+          "kind": "actual_lab_capture",
+          "label": "Check both component balances on one mole of feed",
+          "capture_source": "asynchronous-lab01/demo-frames/06-balance-interpretation.png",
+          "capture_sha256": "ee1bf82b303fae96bb7b2399707b16925063597ffa5a7fd7d0e1944786611990",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Now check the answer independently on guide page two.",
+          "cue_id": "06-01",
+          "matched_cue_start_sample": 9487628,
+          "end_sample": 11451148
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "title": "Connect the Rachford–Rice root to the amount",
+      "start_sample": 11451148,
+      "narration_end_sample": 13580828,
+      "end_sample": 13628828,
+      "narration_samples": 2129680,
+      "start_seconds": 477.1311666666667,
+      "narration_end_seconds": 565.8678333333334,
+      "end_seconds": 567.8678333333334,
+      "narration_duration_seconds": 88.73666666666666,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-07.wav",
+      "audio_source_sha256": "10a6e1fa601d71f560311e6d93f1c91910eac499840912b4fb06245a8abce488",
+      "slide_image": "tmp/video/lab01/scenes/chapter-07-scene-01.png",
+      "slide_image_sha256": "23d4ac2fe98e0fcfbab5d5b87b17296546d43ffd99be35227f5593c04c0e46e0",
+      "narration_text_sha256": "a0efe684fbc87a0993d0694a8e92e6486cbacb152d9f44474c1cc1cce0c8e4b9",
+      "narration_sha256": "a0efe684fbc87a0993d0694a8e92e6486cbacb152d9f44474c1cc1cce0c8e4b9",
+      "visual_scenes": [
+        {
+          "start_sample": 11451148,
+          "image": "tmp/video/lab01/scenes/chapter-07-scene-01.png",
+          "sha256": "23d4ac2fe98e0fcfbab5d5b87b17296546d43ffd99be35227f5593c04c0e46e0",
+          "kind": "actual_lab_capture",
+          "label": "Find the vapor fraction at the Rachford-Rice root",
+          "capture_source": "asynchronous-lab01/demo-frames/07-rachford-rice.png",
+          "capture_sha256": "cb046eb9b4cbec425b150b79f830b6016e762cca7760e1e529673da9e711d30a",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "For a closer look at the amount calculation, choose Rachford, Rice, vapor fraction in the Diagram menu.",
+          "cue_id": "07-01",
+          "matched_cue_start_sample": 11455468,
+          "end_sample": 13410636
+        },
+        {
+          "start_sample": 13410636,
+          "image": "tmp/video/lab01/scenes/chapter-07-scene-02.png",
+          "sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+          "kind": "actual_lab_capture",
+          "label": "Return to P-x-y before exporting",
+          "capture_source": "asynchronous-lab01/demo-frames/05-pxy-and-results.png",
+          "capture_sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Return the Diagram menu",
+          "cue_id": "07-13",
+          "matched_cue_start_sample": 13410636,
+          "end_sample": 13628828
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "title": "Save the calculated baseline",
+      "start_sample": 13628828,
+      "narration_end_sample": 15611227,
+      "end_sample": 15659227,
+      "narration_samples": 1982399,
+      "start_seconds": 567.8678333333334,
+      "narration_end_seconds": 650.4677916666667,
+      "end_seconds": 652.4677916666667,
+      "narration_duration_seconds": 82.59995833333333,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-08.wav",
+      "audio_source_sha256": "e17538c0b92314a2eb5236f1d708386a9b56e764e3ccb4c8572dd047f1cfafa5",
+      "slide_image": "tmp/video/lab01/scenes/chapter-08-scene-01.png",
+      "slide_image_sha256": "bfcf52f7299a487d8bbf1f98d75967b1cd30b892c0b81b2ea133a6a79c7a8669",
+      "narration_text_sha256": "a9a5cfa7c7921ae1f4b02000f8c9e9514e078e32155b39c834c57039673604a4",
+      "narration_sha256": "a9a5cfa7c7921ae1f4b02000f8c9e9514e078e32155b39c834c57039673604a4",
+      "visual_scenes": [
+        {
+          "start_sample": 13628828,
+          "image": "tmp/video/lab01/scenes/chapter-08-scene-01.png",
+          "sha256": "bfcf52f7299a487d8bbf1f98d75967b1cd30b892c0b81b2ea133a6a79c7a8669",
+          "kind": "actual_lab_capture",
+          "label": "Give the calculated baseline a useful label",
+          "capture_source": "asynchronous-lab01/demo-frames/08-label-baseline.png",
+          "capture_sha256": "14040f9b5429b3c69863d4aa3170224187b18f2e46922a1e2a8b9c78d7f36b8a",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Before changing anything, save the calculated baseline.",
+          "cue_id": "08-01",
+          "matched_cue_start_sample": 13633148,
+          "end_sample": 14006556
+        },
+        {
+          "start_sample": 14006556,
+          "image": "tmp/video/lab01/scenes/chapter-08-scene-02.png",
+          "sha256": "d9d4f6e16e6acbe6ce4b241ac70b6c634c9d0ba888d41d562da35109dd24f3b5",
+          "kind": "actual_lab_capture",
+          "label": "Export the full calculated study",
+          "capture_source": "asynchronous-lab01/demo-frames/08-export-baseline.png",
+          "capture_sha256": "1916181a7b98a18bb3ab811bfbe898b81fed307510b93822271e250632c0ded7",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Return to the experiment export",
+          "cue_id": "08-04",
+          "matched_cue_start_sample": 14006556,
+          "end_sample": 14521276
+        },
+        {
+          "start_sample": 14521276,
+          "image": "tmp/video/lab01/scenes/chapter-08-scene-03.png",
+          "sha256": "976d18765a1aa618affc67b5341e3967d2b519ccd7604b3c76990962b8e6a19c",
+          "kind": "actual_lab_capture",
+          "label": "Locate the saved baseline result",
+          "capture_source": "asynchronous-lab01/demo-frames/08-baseline-comparison.png",
+          "capture_sha256": "b152e88b2bba7ac73186b5e275e42d317382a1411b63cb20ae678cce609c7f4c",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The case label helps",
+          "cue_id": "08-07",
+          "matched_cue_start_sample": 14521276,
+          "end_sample": 14826876
+        },
+        {
+          "start_sample": 14826876,
+          "image": "tmp/video/lab01/scenes/chapter-08-scene-04.png",
+          "sha256": "bfcf52f7299a487d8bbf1f98d75967b1cd30b892c0b81b2ea133a6a79c7a8669",
+          "kind": "actual_lab_capture",
+          "label": "Distinguish setup-only files from calculated studies",
+          "capture_source": "asynchronous-lab01/demo-frames/08-label-baseline.png",
+          "capture_sha256": "14040f9b5429b3c69863d4aa3170224187b18f2e46922a1e2a8b9c78d7f36b8a",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Download current inputs only",
+          "cue_id": "08-09",
+          "matched_cue_start_sample": 14826876,
+          "end_sample": 15659227
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "title": "Raise the pressure to 110 kPa",
+      "start_sample": 15659227,
+      "narration_end_sample": 17382379,
+      "end_sample": 17430379,
+      "narration_samples": 1723152,
+      "start_seconds": 652.4677916666667,
+      "narration_end_seconds": 724.2657916666667,
+      "end_seconds": 726.2657916666667,
+      "narration_duration_seconds": 71.798,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-09.wav",
+      "audio_source_sha256": "5ce2fb4e64ab15def006956966c6c8fdf52a1550f92913bd968df4831db0b293",
+      "slide_image": "tmp/video/lab01/scenes/chapter-09-scene-01.png",
+      "slide_image_sha256": "23da2f22f5b6ff62e89d6a98fac3ca3a2932ec4f99ef7d0d56706340870c361f",
+      "narration_text_sha256": "bd06b64c3b7b7da1b08e8d20f164e3f55d9ab9c29c6e520c9d864f00e087e6ac",
+      "narration_sha256": "bd06b64c3b7b7da1b08e8d20f164e3f55d9ab9c29c6e520c9d864f00e087e6ac",
+      "visual_scenes": [
+        {
+          "start_sample": 15659227,
+          "image": "tmp/video/lab01/scenes/chapter-09-scene-01.png",
+          "sha256": "23da2f22f5b6ff62e89d6a98fac3ca3a2932ec4f99ef7d0d56706340870c361f",
+          "kind": "actual_lab_capture",
+          "label": "Change only pressure to 110 kPa",
+          "capture_source": "asynchronous-lab01/demo-frames/09-input-110.png",
+          "capture_sha256": "020f93f97c638638a047bcb4284b36ff701def39a966297005a99cf32df6ce4d",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Now test your first prediction.",
+          "cue_id": "09-01",
+          "matched_cue_start_sample": 15663547,
+          "end_sample": 16091227
+        },
+        {
+          "start_sample": 16091227,
+          "image": "tmp/video/lab01/scenes/chapter-09-scene-02.png",
+          "sha256": "675616cfece46719ff6145a20ba5d191ef5325ce4683f406e0f2a16376235839",
+          "kind": "actual_lab_capture",
+          "label": "Interpret liquid-only result and absent vapor",
+          "capture_source": "asynchronous-lab01/demo-frames/09-liquid-110.png",
+          "capture_sha256": "a55e1e5edbe2a8e63eecb937da6bd7d40037fe7e2772d42cec5e55b0a2c0bcd3",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The pressure is above",
+          "cue_id": "09-04",
+          "matched_cue_start_sample": 16091227,
+          "end_sample": 16978779
+        },
+        {
+          "start_sample": 16978779,
+          "image": "tmp/video/lab01/scenes/chapter-09-scene-03.png",
+          "sha256": "5903fcc219b8418ad7d18b0f19bdd8c7f3639ed7dfafa45b839198ccddb30596",
+          "kind": "actual_lab_capture",
+          "label": "Label the high-pressure case",
+          "capture_source": "asynchronous-lab01/demo-frames/09-label-110.png",
+          "capture_sha256": "6883812e3dc559bc6b334ab109d4fccbf8d4b4b346e4a12d65f10d8a0a556154",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "In the workspace, enter",
+          "cue_id": "09-12",
+          "matched_cue_start_sample": 16978779,
+          "end_sample": 17138747
+        },
+        {
+          "start_sample": 17138747,
+          "image": "tmp/video/lab01/scenes/chapter-09-scene-04.png",
+          "sha256": "af03369258229386acd0d924f60c49f0a46ab775fcfd3a7c8dd78d525b7a2fc9",
+          "kind": "actual_lab_capture",
+          "label": "Save the calculated high-pressure study",
+          "capture_source": "asynchronous-lab01/demo-frames/09-export-110.png",
+          "capture_sha256": "4bd68776156566340f0522f620a3e6ced37d715b55a1993021e7f4d738a9d220",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Select Export experiment to capture",
+          "cue_id": "09-13",
+          "matched_cue_start_sample": 17138747,
+          "end_sample": 17430379
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "title": "Lower the pressure to 80 kPa",
+      "start_sample": 17430379,
+      "narration_end_sample": 19302523,
+      "end_sample": 19350523,
+      "narration_samples": 1872144,
+      "start_seconds": 726.2657916666667,
+      "narration_end_seconds": 804.2717916666667,
+      "end_seconds": 806.2717916666667,
+      "narration_duration_seconds": 78.006,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-10.wav",
+      "audio_source_sha256": "a339b1472f8321058e30a33ef745c4fbfde6d7804f71f31b911996255195cf00",
+      "slide_image": "tmp/video/lab01/scenes/chapter-10-scene-01.png",
+      "slide_image_sha256": "7498a2683c0d7a6f598e76a9bb71a600e7cff864ef36c5fb31611a1df0694be8",
+      "narration_text_sha256": "ce14794c1acfa7149c66e71d2a99de347a82bd69dc76f6f744949f3f85894e0c",
+      "narration_sha256": "ce14794c1acfa7149c66e71d2a99de347a82bd69dc76f6f744949f3f85894e0c",
+      "visual_scenes": [
+        {
+          "start_sample": 17430379,
+          "image": "tmp/video/lab01/scenes/chapter-10-scene-01.png",
+          "sha256": "7498a2683c0d7a6f598e76a9bb71a600e7cff864ef36c5fb31611a1df0694be8",
+          "kind": "actual_lab_capture",
+          "label": "Change only pressure to 80 kPa",
+          "capture_source": "asynchronous-lab01/demo-frames/10-input-80.png",
+          "capture_sha256": "efbd69b7d54e5ed9ea7b527727651dae50c31046fd12c8a60d1a984dac00ab46",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Test the second prediction by changing only Flash pressure to eighty kilopascals.",
+          "cue_id": "10-01",
+          "matched_cue_start_sample": 17434699,
+          "end_sample": 17657355
+        },
+        {
+          "start_sample": 17657355,
+          "image": "tmp/video/lab01/scenes/chapter-10-scene-02.png",
+          "sha256": "2c7a88dfe4264dc1e4d0b9d9e754e99de7cb5b3c5f0a9a41f86d2c7c30fe452f",
+          "kind": "actual_lab_capture",
+          "label": "Interpret vapor-only result and absent liquid",
+          "capture_source": "asynchronous-lab01/demo-frames/10-vapor-80.png",
+          "capture_sha256": "bf8d222e9a0d96b183ab2c2cde98564d5b44d5c67ae69b7dde4983479dfeaf50",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Eighty kilopascals is below",
+          "cue_id": "10-03",
+          "matched_cue_start_sample": 17657355,
+          "end_sample": 19075275
+        },
+        {
+          "start_sample": 19075275,
+          "image": "tmp/video/lab01/scenes/chapter-10-scene-03.png",
+          "sha256": "bfceffb44159096eb482d36a39ef95bd46abb1f7b04779e19b6d2b24a2a03692",
+          "kind": "actual_lab_capture",
+          "label": "Label the low-pressure case",
+          "capture_source": "asynchronous-lab01/demo-frames/10-label-80.png",
+          "capture_sha256": "68db16adcf065e6bb1a63f3501a8356c04bc1e5f02c44a1beb256bb5fb18b17d",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Label this case Low pressure",
+          "cue_id": "10-13",
+          "matched_cue_start_sample": 19075275,
+          "end_sample": 19214763
+        },
+        {
+          "start_sample": 19214763,
+          "image": "tmp/video/lab01/scenes/chapter-10-scene-04.png",
+          "sha256": "27a692f8abcb76df7244ed5f7407aa627303388caf6de51c39021fc59024c078",
+          "kind": "actual_lab_capture",
+          "label": "Save the third calculated study",
+          "capture_source": "asynchronous-lab01/demo-frames/10-export-80.png",
+          "capture_sha256": "32f1b24113db827a181662311680bfc5978b7d7c8af67b90bc46ad82e48190fd",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The workspace should now hold",
+          "cue_id": "10-14",
+          "matched_cue_start_sample": 19214763,
+          "end_sample": 19350523
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "title": "Compare the three cases and export curve data",
+      "start_sample": 19350523,
+      "narration_end_sample": 21462104,
+      "end_sample": 21510104,
+      "narration_samples": 2111581,
+      "start_seconds": 806.2717916666667,
+      "narration_end_seconds": 894.2543333333333,
+      "end_seconds": 896.2543333333333,
+      "narration_duration_seconds": 87.98254166666666,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-11.wav",
+      "audio_source_sha256": "a633480c37b2a43414b2d752e8698cdd33a3bcf2eb6f1a7a5a197f8d0f785b50",
+      "slide_image": "tmp/video/lab01/scenes/chapter-11-scene-01.png",
+      "slide_image_sha256": "dbde722bcf5e32a89b6d41cc20f424da1a646ab8b0947e5cab59ebb007388c28",
+      "narration_text_sha256": "4e4ebce931c2c976baae121e40a62c1345270dd8a0075d36999b468e2a9a1669",
+      "narration_sha256": "4e4ebce931c2c976baae121e40a62c1345270dd8a0075d36999b468e2a9a1669",
+      "visual_scenes": [
+        {
+          "start_sample": 19350523,
+          "image": "tmp/video/lab01/scenes/chapter-11-scene-01.png",
+          "sha256": "dbde722bcf5e32a89b6d41cc20f424da1a646ab8b0947e5cab59ebb007388c28",
+          "kind": "actual_lab_capture",
+          "label": "Compare the three recorded input sets",
+          "capture_source": "asynchronous-lab01/demo-frames/11-comparison-inputs.png",
+          "capture_sha256": "61c66f2aa840a5ce0d4dbf0306d1e20241be9477a3a911d8e075ab441e57a5de",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Open the workspace comparison and find the input pressure, phase, vapor fraction, and composition rows.",
+          "cue_id": "11-01",
+          "matched_cue_start_sample": 19354843,
+          "end_sample": 19756923
+        },
+        {
+          "start_sample": 19756923,
+          "image": "tmp/video/lab01/scenes/chapter-11-scene-02.png",
+          "sha256": "17d1891abed42105929d9a9c3440cc7abf22298e885535c50b424ee48b1cf4be",
+          "kind": "actual_lab_capture",
+          "label": "Compare phase amounts and absent compositions",
+          "capture_source": "asynchronous-lab01/demo-frames/11-comparison-results.png",
+          "capture_sha256": "265c237b0de8077b59d67a9c8f30ad35db0349b93f2beb937890a3f7f38512e5",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "The comparison displays",
+          "cue_id": "11-04",
+          "matched_cue_start_sample": 19756923,
+          "end_sample": 20225275
+        },
+        {
+          "start_sample": 20225275,
+          "image": "tmp/video/lab01/scenes/chapter-11-scene-03.png",
+          "sha256": "cb4ac5913b47916a0a4bb9c83b9e0ed9dd86fb77019455e1906edb5beff25aab",
+          "kind": "actual_lab_capture",
+          "label": "Distinguish input kPa from result Pa",
+          "capture_source": "asynchronous-lab01/demo-frames/11-comparison-units.png",
+          "capture_sha256": "44a32fdbae117494e9875b9d1fba5dfd3a59360c7490417cee12a8441858291b",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Also inspect the pressure units",
+          "cue_id": "11-08",
+          "matched_cue_start_sample": 20225275,
+          "end_sample": 20623914
+        },
+        {
+          "start_sample": 20623914,
+          "image": "tmp/video/lab01/scenes/chapter-11-scene-04.png",
+          "sha256": "e5fc14f9020f49193c639fc836cf6966f0d94475dee2cddec0279863d40042e6",
+          "kind": "actual_lab_capture",
+          "label": "Download the selected equilibrium curve",
+          "capture_source": "asynchronous-lab01/demo-frames/11-curve-export.png",
+          "capture_sha256": "1a5938c468c1bc3ffb4f0bd12652a2861b38a43258f597411c873a994e94f2c7",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Use Curve CSV",
+          "cue_id": "11-11",
+          "matched_cue_start_sample": 20623914,
+          "end_sample": 21048776
+        },
+        {
+          "start_sample": 21048776,
+          "image": "tmp/video/lab01/scenes/chapter-11-scene-05.png",
+          "sha256": "ac31d3f1cd919fcf490f237a477cebc47971768d29f24e26b9764a7d634d6401",
+          "kind": "actual_lab_capture",
+          "label": "Distinguish fixed curves from the changing flash state",
+          "capture_source": "asynchronous-lab01/demo-frames/05-pxy-and-results.png",
+          "capture_sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Because temperature and the ideal",
+          "cue_id": "11-14",
+          "matched_cue_start_sample": 21048776,
+          "end_sample": 21510104
+        }
+      ]
+    },
+    {
+      "slide": 12,
+      "title": "Download, reopen, restore, and recalculate",
+      "start_sample": 21510104,
+      "narration_end_sample": 23571590,
+      "end_sample": 23619590,
+      "narration_samples": 2061486,
+      "start_seconds": 896.2543333333333,
+      "narration_end_seconds": 982.1495833333333,
+      "end_seconds": 984.1495833333333,
+      "narration_duration_seconds": 85.89525,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-12.wav",
+      "audio_source_sha256": "93b1d86222f6d6cffb84aeb11521bed6954595b4404db0e7d946b3adb7117133",
+      "slide_image": "tmp/video/lab01/scenes/chapter-12-scene-01.png",
+      "slide_image_sha256": "d7c232d7c20f5e44484a8aef03a3207ed4df8d7ff80debd1758acd68b32e3563",
+      "narration_text_sha256": "a2d3e40ea6e19dcc2950c4fc33f1f6cdc236336f720a7bd9bbc15bf98db05bd4",
+      "narration_sha256": "a2d3e40ea6e19dcc2950c4fc33f1f6cdc236336f720a7bd9bbc15bf98db05bd4",
+      "visual_scenes": [
+        {
+          "start_sample": 21510104,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-01.png",
+          "sha256": "d7c232d7c20f5e44484a8aef03a3207ed4df8d7ff80debd1758acd68b32e3563",
+          "kind": "actual_lab_capture",
+          "label": "Save the three-case comparison JSON",
+          "capture_source": "asynchronous-lab01/demo-frames/12-download-comparison.png",
+          "capture_sha256": "9fd4d0a3ce87a02b49c4acd9e6c3d6a1a81f2f2f91da6674f0e9763f900fddbf",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Turn to guide page three.",
+          "cue_id": "12-01",
+          "matched_cue_start_sample": 21514424,
+          "end_sample": 21806424
+        },
+        {
+          "start_sample": 21806424,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-02.png",
+          "sha256": "ccf5152a2e4adb8df6f5c9ec41ab47a6faef74b1eb970952e9b37d947068f608",
+          "kind": "actual_lab_capture",
+          "label": "Clear only the saved synthetic cases in this tab",
+          "capture_source": "asynchronous-lab01/demo-frames/12-cleared-comparison.png",
+          "capture_sha256": "f53363660205d2f84abc9378174121236d7b1c59b8866a1b3e897af9a5a1f187",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "For this demonstration, Clear comparison",
+          "cue_id": "12-04",
+          "matched_cue_start_sample": 21806424,
+          "end_sample": 22012184
+        },
+        {
+          "start_sample": 22012184,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-03.png",
+          "sha256": "e1596c135e048920655579a50af56d11d88ed60f48302fc957a845950d9ea0b7",
+          "kind": "actual_lab_capture",
+          "label": "Load the downloaded comparison",
+          "capture_source": "asynchronous-lab01/demo-frames/12-reopened-cases.png",
+          "capture_sha256": "ea9046eff3998b98fc58d23e4650400b8dd678b58791e76cc9fcd606eb3ad825",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Now use Load studies",
+          "cue_id": "12-06",
+          "matched_cue_start_sample": 22012184,
+          "end_sample": 22280408
+        },
+        {
+          "start_sample": 22280408,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-04.png",
+          "sha256": "fb7d08b0e15eeb6510f0c6580cd76343d867e684b7d83b78cc865a49dfdc0919",
+          "kind": "actual_lab_capture",
+          "label": "Restore the 95 kPa controls",
+          "capture_source": "asynchronous-lab01/demo-frames/12-restored-inputs.png",
+          "capture_sha256": "694657e825512e188994d749172a2282761dd4097df4a35f307c35e4465438ab",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Choose Restore beside",
+          "cue_id": "12-08",
+          "matched_cue_start_sample": 22280408,
+          "end_sample": 22446744
+        },
+        {
+          "start_sample": 22446744,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-05.png",
+          "sha256": "ec39154ad2f8477e4d1efe7dc08d110af8bc53cd40179d3836691a1159c68074",
+          "kind": "actual_lab_capture",
+          "label": "Run Calculate equilibrium again",
+          "capture_source": "asynchronous-lab01/demo-frames/12-recalculated-controls.png",
+          "capture_sha256": "442a608c9bfd2b5e56d60f5bd81a96c7171d12d436b7523d40957428a6ee9f61",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Check the system, ideal model",
+          "cue_id": "12-10",
+          "matched_cue_start_sample": 22446744,
+          "end_sample": 22971943
+        },
+        {
+          "start_sample": 22971943,
+          "image": "tmp/video/lab01/scenes/chapter-12-scene-06.png",
+          "sha256": "5136fc49168a1b6811f9c13ecf9abdd504991f088a0e7fb1f5ee49eec34f9dda",
+          "kind": "actual_lab_capture",
+          "label": "Verify the freshly recalculated baseline",
+          "capture_source": "asynchronous-lab01/demo-frames/12-recalculated-baseline.png",
+          "capture_sha256": "f3d8e5fc687c84e4b3f672b369a9dd74df8fadd7229a864d1f5a2f74f6f2b7a6",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Verify that the fresh result",
+          "cue_id": "12-13",
+          "matched_cue_start_sample": 22971943,
+          "end_sample": 23619590
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "title": "Try 90 kPa independently",
+      "start_sample": 23619590,
+      "narration_end_sample": 25436838,
+      "end_sample": 25484838,
+      "narration_samples": 1817248,
+      "start_seconds": 984.1495833333333,
+      "narration_end_seconds": 1059.86825,
+      "end_seconds": 1061.86825,
+      "narration_duration_seconds": 75.71866666666666,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "Allow about 5 minutes. Attempt the 90 kPa calculation on guide page 3 before opening guide page 4 or the next chapter.",
+      "activity": true,
+      "activity_minutes": 5,
+      "audio_source": "outputs/lab01-video/audio/segment-13.wav",
+      "audio_source_sha256": "b61222abdd4fc21d168b73700a2bd3c916642a41c6a7f730a105b2e8716ed185",
+      "slide_image": "tmp/video/lab01/scenes/chapter-13-scene-01.png",
+      "slide_image_sha256": "5136fc49168a1b6811f9c13ecf9abdd504991f088a0e7fb1f5ee49eec34f9dda",
+      "narration_text_sha256": "b1d5a7af408eadd33a244ea6098865016f8d5e95a6f5711ec1e283e59abd34b2",
+      "narration_sha256": "b1d5a7af408eadd33a244ea6098865016f8d5e95a6f5711ec1e283e59abd34b2",
+      "visual_scenes": [
+        {
+          "start_sample": 23619590,
+          "image": "tmp/video/lab01/scenes/chapter-13-scene-01.png",
+          "sha256": "5136fc49168a1b6811f9c13ecf9abdd504991f088a0e7fb1f5ee49eec34f9dda",
+          "kind": "actual_lab_capture",
+          "label": "Keep the baseline visible while attempting a new pressure on paper",
+          "capture_source": "asynchronous-lab01/demo-frames/13-before-independent-attempt.png",
+          "capture_sha256": "f3d8e5fc687c84e4b3f672b369a9dd74df8fadd7229a864d1f5a2f74f6f2b7a6",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "You are ready for an independent attempt.",
+          "cue_id": "13-01",
+          "matched_cue_start_sample": 23623910,
+          "end_sample": 25484838
+        }
+      ]
+    },
+    {
+      "slide": 14,
+      "title": "Check the independent result",
+      "start_sample": 25484838,
+      "narration_end_sample": 27464949,
+      "end_sample": 27512949,
+      "narration_samples": 1980111,
+      "start_seconds": 1061.86825,
+      "narration_end_seconds": 1144.372875,
+      "end_seconds": 1146.372875,
+      "narration_duration_seconds": 82.504625,
+      "silent_tail_seconds": 2.0,
+      "pause_instruction": "",
+      "activity": false,
+      "activity_minutes": 0,
+      "audio_source": "outputs/lab01-video/audio/segment-14.wav",
+      "audio_source_sha256": "d3a0fc467aaa3b730cd665709d3cfa3a432bef57a5b662311224a3e79fd5f351",
+      "slide_image": "tmp/video/lab01/scenes/chapter-14-scene-01.png",
+      "slide_image_sha256": "1704922029c2543618b07a98525b177554ec2d0256f9bb9b88cda73824907330",
+      "narration_text_sha256": "9eb94548ab14080d5a5ee9cf10d929a9f82d3e5f4f2a39911610713a5a6ab342",
+      "narration_sha256": "9eb94548ab14080d5a5ee9cf10d929a9f82d3e5f4f2a39911610713a5a6ab342",
+      "visual_scenes": [
+        {
+          "start_sample": 25484838,
+          "image": "tmp/video/lab01/scenes/chapter-14-scene-01.png",
+          "sha256": "1704922029c2543618b07a98525b177554ec2d0256f9bb9b88cda73824907330",
+          "kind": "actual_lab_capture",
+          "label": "Check the 90 kPa result after the independent attempt",
+          "capture_source": "asynchronous-lab01/demo-frames/14-independent-result.png",
+          "capture_sha256": "86d44dc11fe365396781394338e80e2156307fc7fea0491202d0f083d027d298",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Now open guide page four and check your attempt.",
+          "cue_id": "14-01",
+          "matched_cue_start_sample": 25489158,
+          "end_sample": 25749702
+        },
+        {
+          "start_sample": 25749702,
+          "image": "tmp/video/lab01/scenes/chapter-14-scene-02.png",
+          "sha256": "c7069d9082b5e21bce7d572944e5c75c102e5ddc5a9acf29d9f35b36e4454ce9",
+          "kind": "actual_lab_capture",
+          "label": "Check substitutions using the 90 kPa controls",
+          "capture_source": "asynchronous-lab01/demo-frames/14-input-90.png",
+          "capture_sha256": "7d52108d7b43d6fffff9dacd968069f521b441b220afe7a0c3f493b7ef84d87c",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "From the ideal bubble relation",
+          "cue_id": "14-03",
+          "matched_cue_start_sample": 25749702,
+          "end_sample": 26627221
+        },
+        {
+          "start_sample": 26627221,
+          "image": "tmp/video/lab01/scenes/chapter-14-scene-03.png",
+          "sha256": "37f03268436b96477ab5d893ce4925fc4e164d43b006fa1a24a05f77070b7f94",
+          "kind": "actual_lab_capture",
+          "label": "Check both component balances",
+          "capture_source": "asynchronous-lab01/demo-frames/14-independent-balance.png",
+          "capture_sha256": "48c9bc4a9bc0315cd9a951c39b1c8c6dc8d73a97a81a159ebfd66b65bd4d9026",
+          "capture_dimensions": [
+            1280,
+            720
+          ],
+          "rendered_dimensions": [
+            1636,
+            920
+          ],
+          "sentence_prefix": "Component A contributes",
+          "cue_id": "14-09",
+          "matched_cue_start_sample": 26627221,
+          "end_sample": 27512949
+        }
+      ]
+    }
+  ],
+  "video_sha256": "553cf83b071ebabaefa35ecf7288bea47f9498a9077e7773659cde9cc09c4640",
+  "video_size_bytes": 23327465,
+  "encoding_wall_seconds": 6.77
+}

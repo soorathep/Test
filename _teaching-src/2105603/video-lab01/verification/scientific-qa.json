@@ -1,0 +1,465 @@
+{
+  "schema": "lab01-video-scientific-qa/1",
+  "status": "pass",
+  "checkedAt": "2026-10-20T02:46:21.438Z",
+  "scope": "Supplemental Week 1 core Lab 01 demonstration: ideal binary at fixed 350 K, no introduction of nonideal models or extensions.",
+  "basis": {
+    "system": "Teaching binary · synthetic",
+    "componentNames": [
+      "Component A",
+      "Component B"
+    ],
+    "T_K": 350,
+    "z1": 0.5,
+    "saturationPressure_kPa": [
+      150,
+      60
+    ],
+    "Pbubble_at_x1_equals_z1_kPa": 105,
+    "Pdew_at_y1_equals_z1_kPa": 85.71428571428571,
+    "model": "Ideal solution",
+    "feedBasis_mol": 1
+  },
+  "independentMethod": {
+    "bubble": "P = x1*Psat1 + (1-x1)*Psat2",
+    "dew": "1/P = y1/Psat1 + (1-y1)/Psat2",
+    "twoPhase": "x1 = (P-Psat2)/(Psat1-Psat2); y1 = x1*Psat1/P; beta = (z1-x1)/(y1-x1)",
+    "singlePhase": "Compare P with the bubble and dew boundaries evaluated at the specified overall composition. Absent-phase composition is null.",
+    "tolerance": 1e-10
+  },
+  "cases": [
+    {
+      "P_kPa": 110,
+      "phase": "liquid",
+      "beta": 0,
+      "x1": 0.5,
+      "y1": null,
+      "liquidFraction": 1,
+      "vaporFraction": 0,
+      "K": [
+        1.3636363636363635,
+        0.5454545454545454
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 1,
+        "vaporMoles": 0,
+        "liquidComponentMoles": [
+          0.5,
+          0.5
+        ],
+        "vaporComponentMoles": [
+          0,
+          0
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": null,
+      "rrResidual": null,
+      "rrEndpoints": {
+        "atZero": -0.045454545454545525,
+        "atOne": -0.28333333333333344
+      },
+      "engine": {
+        "phase": "liquid",
+        "beta": 0,
+        "x1": 0.5,
+        "y1": null,
+        "balanceResidual": 0,
+        "equilibriumResidual": null,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 95,
+      "phase": "two-phase",
+      "beta": 0.49350649350649345,
+      "x1": 0.3888888888888889,
+      "y1": 0.6140350877192983,
+      "liquidFraction": 0.5064935064935066,
+      "vaporFraction": 0.49350649350649345,
+      "K": [
+        1.5789473684210527,
+        0.631578947368421
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 0.5064935064935066,
+        "vaporMoles": 0.49350649350649345,
+        "liquidComponentMoles": [
+          0.196969696969697,
+          0.3095238095238096
+        ],
+        "vaporComponentMoles": [
+          0.303030303030303,
+          0.19047619047619044
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": [
+        0,
+        5.551115123125783e-17
+      ],
+      "rrResidual": 0,
+      "rrEndpoints": {
+        "atZero": 0.10526315789473684,
+        "atOne": -0.10833333333333334
+      },
+      "engine": {
+        "phase": "two-phase",
+        "beta": 0.49350649350651565,
+        "x1": 0.38888888888891415,
+        "y1": 0.6140350877193235,
+        "balanceResidual": 3.019806626980426e-14,
+        "equilibriumResidual": 1.4654943925052066e-14,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 80,
+      "phase": "vapor",
+      "beta": 1,
+      "x1": null,
+      "y1": 0.5,
+      "liquidFraction": 0,
+      "vaporFraction": 1,
+      "K": [
+        1.875,
+        0.75
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 0,
+        "vaporMoles": 1,
+        "liquidComponentMoles": [
+          0,
+          0
+        ],
+        "vaporComponentMoles": [
+          0.5,
+          0.5
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": null,
+      "rrResidual": null,
+      "rrEndpoints": {
+        "atZero": 0.3125,
+        "atOne": 0.06666666666666668
+      },
+      "engine": {
+        "phase": "vapor",
+        "beta": 1,
+        "x1": null,
+        "y1": 0.5,
+        "balanceResidual": 0,
+        "equilibriumResidual": null,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 90,
+      "phase": "two-phase",
+      "beta": 0.7499999999999999,
+      "x1": 0.3333333333333333,
+      "y1": 0.5555555555555556,
+      "liquidFraction": 0.2500000000000001,
+      "vaporFraction": 0.7499999999999999,
+      "K": [
+        1.6666666666666667,
+        0.6666666666666666
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 0.2500000000000001,
+        "vaporMoles": 0.7499999999999999,
+        "liquidComponentMoles": [
+          0.08333333333333337,
+          0.16666666666666677
+        ],
+        "vaporComponentMoles": [
+          0.41666666666666663,
+          0.33333333333333326
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": [
+        0,
+        5.551115123125783e-17
+      ],
+      "rrResidual": 0,
+      "rrEndpoints": {
+        "atZero": 0.16666666666666669,
+        "atOne": -0.050000000000000044
+      },
+      "engine": {
+        "phase": "two-phase",
+        "beta": 0.75,
+        "x1": 0.33333333333325754,
+        "y1": 0.5555555555554713,
+        "balanceResidual": 8.215650382226158e-14,
+        "equilibriumResidual": 4.207745263329343e-14,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 100,
+      "phase": "two-phase",
+      "beta": 0.2500000000000003,
+      "x1": 0.4444444444444444,
+      "y1": 0.6666666666666665,
+      "liquidFraction": 0.7499999999999998,
+      "vaporFraction": 0.2500000000000003,
+      "K": [
+        1.5,
+        0.6
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 0.7499999999999998,
+        "vaporMoles": 0.2500000000000003,
+        "liquidComponentMoles": [
+          0.3333333333333332,
+          0.4166666666666666
+        ],
+        "vaporComponentMoles": [
+          0.16666666666666682,
+          0.08333333333333347
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": [
+        1.1102230246251565e-16,
+        -1.6653345369377348e-16
+      ],
+      "rrResidual": -8.326672684688674e-17,
+      "rrEndpoints": {
+        "atZero": 0.04999999999999999,
+        "atOne": -0.1666666666666667
+      },
+      "engine": {
+        "phase": "two-phase",
+        "beta": 0.25,
+        "x1": 0.4444444444443434,
+        "y1": 0.6666666666665757,
+        "balanceResidual": 9.853229343548264e-14,
+        "equilibriumResidual": 6.061817714453355e-14,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 105,
+      "phase": "bubble-boundary",
+      "beta": 0,
+      "x1": 0.5,
+      "y1": 0.7142857142857143,
+      "liquidFraction": 1,
+      "vaporFraction": 0,
+      "K": [
+        1.4285714285714286,
+        0.5714285714285714
+      ],
+      "oneMolFeed": {
+        "liquidMoles": 1,
+        "vaporMoles": 0,
+        "liquidComponentMoles": [
+          0.5,
+          0.5
+        ],
+        "vaporComponentMoles": [
+          0,
+          0
+        ],
+        "componentBalanceResiduals": [
+          0,
+          0
+        ]
+      },
+      "equilibriumResiduals": [
+        0,
+        0
+      ],
+      "rrResidual": null,
+      "rrEndpoints": {
+        "atZero": 0,
+        "atOne": -0.22500000000000006
+      },
+      "engine": {
+        "phase": "bubble-boundary",
+        "beta": 0,
+        "x1": 0.5,
+        "y1": 0.7142857142857143,
+        "balanceResidual": 0,
+        "equilibriumResidual": 0,
+        "stabilityVerified": true
+      }
+    },
+    {
+      "P_kPa": 85.71428571428571,
+      "phase": "dew-boundary",
+      "beta": 1.0000000000000002,
+      "x1": 0.28571428571428564,
+      "y1": 0.49999999999999994,
+      "liquidFraction": -2.220446049250313e-16,
+      "vaporFraction": 1.0000000000000002,
+      "K": [
+        1.7500000000000002,
+        0.7000000000000001
+      ],
+      "oneMolFeed": {
+        "liquidMoles": -2.220446049250313e-16,
+        "vaporMoles": 1.0000000000000002,
+        "liquidComponentMoles": [
+          -6.344131569286607e-17,
+          -1.5860328923216525e-16
+        ],
+        "vaporComponentMoles": [
+          0.5,
+          0.5000000000000001
+        ],
+        "componentBalanceResiduals": [
+          -5.551115123125783e-17,
+          -5.551115123125783e-17
+        ]
+      },
+      "equilibriumResiduals": [
+        0,
+        1.1102230246251565e-16
+      ],
+      "rrResidual": null,
+      "rrEndpoints": {
+        "atZero": 0.22500000000000014,
+        "atOne": 1.1102230246251565e-16
+      },
+      "engine": {
+        "phase": "dew-boundary",
+        "beta": 1,
+        "x1": 0.28571428571422075,
+        "y1": 0.49999999999992045,
+        "balanceResidual": 7.954747971439247e-14,
+        "equilibriumResidual": 3.4139358007223564e-14,
+        "stabilityVerified": true
+      }
+    }
+  ],
+  "recommendation": {
+    "baseline_kPa": 95,
+    "comparisonPressures_kPa": [
+      110,
+      80
+    ],
+    "independentAttempt_kPa": 90,
+    "optionalAlternateAttempt_kPa": 100,
+    "reason": "90 kPa matches the existing Session 1 independent assessment. Its exact x1=1/3, y1=5/9 and beta=3/4 provide a clean independent check."
+  },
+  "ui": {
+    "systemLabel": "Teaching binary · synthetic",
+    "modelLabel": "Ideal solution · γᵢ = 1",
+    "calculateLabel": "Calculate equilibrium",
+    "diagramLabel": "P–x–y · fixed temperature",
+    "betaLabel": "Vapor fraction · β",
+    "liquidLabel": "Liquid · x₁",
+    "vaporLabel": "Vapor · y₁",
+    "bubbleLabel": "Bubble pressure · x₁ = z₁",
+    "dewLabel": "Dew pressure · y₁ = z₁",
+    "studyExport": "Export experiment ↓",
+    "curveExport": "Curve CSV ↓",
+    "workspace": "Study workspace · reopen and compare cases",
+    "loadLabel": "Load studies or a comparison JSON",
+    "downloadLabel": "Download comparison",
+    "restore": "Restore <case label>, then Calculate equilibrium",
+    "rawUnits": {
+      "inputs.P": "kPa",
+      "result.P": "Pa",
+      "curves.selected[].P": "Pa",
+      "chartRows[].P_Pa": "Pa",
+      "T": "K",
+      "x1,y1,z1,beta": "dimensionless molar fractions"
+    }
+  },
+  "teachingCautions": [
+    "The synthetic property record defines Psat=150 and 60 kPa at 350 K. These are not experimental fluid data and should not be entered as arbitrary pressure controls.",
+    "x1 and y1 are compositions of the individual phases; beta is the molar fraction of the feed in the vapor phase. Beta is not y1, a mass fraction, or a volume fraction.",
+    "The two boundary pressures use different specified phase compositions: x1=z1 for bubble and y1=z1 for dew. They are not the current tie-line endpoints at 95 kPa.",
+    "At fixed T and z, lowering P increases beta through the two-phase interval; beta stays zero or one in the corresponding single-phase region.",
+    "At 110 kPa there is no bulk vapor and y1 is N/A, not zero. At 80 kPa there is no bulk liquid and x1 is N/A, not zero.",
+    "At the exact bubble/dew boundary the engine may display an incipient phase composition with zero phase amount. That is different from a bulk phase being present.",
+    "P–x–y uses composition horizontally and pressure vertically. Solid line is bubble versus liquid x1; dashed line is dew versus vapor y1. The diamond is overall composition z1 at the selected flash pressure.",
+    "Lowering P at fixed T does not lower the saturation pressure. The two Psat values stay fixed in this pressure comparison.",
+    "Round only the displayed final values. Small residuals with full precision do not require a hand balance using four-decimal values to equal zero exactly.",
+    "The lab also offers other model and diagram controls and a nonideal exercise list. This supplemental first-week demonstration stays with Ideal solution and the required ideal pressure comparison.",
+    "Inputs update or invalidate displayed results on editing. Explicitly press Calculate equilibrium after restoring a study before claiming it is freshly reproduced.",
+    "Export experiment contains computed evidence and automatically captures a comparison case. Download current inputs only contains no computed result.",
+    "The comparison is held in browser memory until Download comparison is used. Restoring imported inputs does not make recorded results a fresh calculation.",
+    "Small numerical residuals establish consistency with the chosen equations, not physical validation against measurements or general validity of the ideal assumption.",
+    "Single-phase cases have no two-phase equilibrium residual or Rachford–Rice root. Do not interpret Not applicable as a failed solve.",
+    "The ideal teaching system is admitted only in 300–390 K and pressure input 1–200 kPa; remaining in that range is a software scope check, not an accuracy guarantee."
+  ],
+  "tests": {
+    "command": "<node> --test tests/engine.test.mjs tests/teaching-examples.test.mjs",
+    "passed": 18,
+    "failed": 0,
+    "output": "✔ ideal limits match closed-form bubble, dew and binary RR (1.485458ms)\n✔ single phases and pure-component saturation do not fabricate phase fractions (0.279875ms)\n✔ bubble and dew boundaries have correct limiting vapor fractions (2.990167ms)\n✔ nonideal tie lines include both sides of an azeotrope (1.145292ms)\n✔ azeotropic saturation has indeterminate beta (0.109167ms)\n✔ constant K near unity is not a fabricated two-phase split (0.049584ms)\n✔ temperature solvers reproduce an independently specified pressure (2.025541ms)\n✔ units, parameter and correlation domains are enforced (0.252458ms)\n✔ T-x-y omits unsupported compositions instead of extrapolating (0.624166ms)\n✔ liquid Gibbs curvature and numerical Gibbs-Duhem constraint (0.1165ms)\n✔ independent Gibbs-minimization fixtures agree with flash (2.957667ms)\n✔ 2-parameter Margules recovers ideal and 1-parameter limits (0.129208ms)\n✔ asymmetric coefficients match independent partial-molar differentiation and dilution limits (0.0715ms)\n✔ asymmetric bubble, dew and flash remain consistent (12.628709ms)\n✔ non-convex and malformed parameter pairs are blocked before VLE results (0.159041ms)\n✔ all azeotropes are retained for asymmetric models with two pressure extrema (0.82275ms)\n✔ published classroom worked examples agree with lab engines (3.256042ms)\n✔ six teaching sessions cover all thirteen labs with 180-minute plans (0.639625ms)\nℹ tests 18\nℹ suites 0\nℹ pass 18\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 59.359708\n"
+  },
+  "sources": {
+    "labsCommit": "427d8de0b91ae4eb277d86e3cea36ae7969b96a1",
+    "files": [
+      {
+        "repository": "labs",
+        "file": "data/systems.json",
+        "sha256": "8fdcad60fa49a8a59a3a8bda6c4798573b1aa1a3716caf843fee38d4485aed79"
+      },
+      {
+        "repository": "labs",
+        "file": "src/engine/thermo.js",
+        "sha256": "f10e27c1b99c08b3ccc64e44b4e6ee2946bf7b026d3e060c41f561f878e817c1"
+      },
+      {
+        "repository": "labs",
+        "file": "src/ui/app.js",
+        "sha256": "5a7324d83bfaa42da062817b8992ca4305afb2623de00fb7a48799aa12cc53eb"
+      },
+      {
+        "repository": "labs",
+        "file": "src/ui/study-state.js",
+        "sha256": "39dc4f7351b6c468e1146d2d48607e7956f7b7bdc8c2e6a42e6d14cdc2df5e3e"
+      },
+      {
+        "repository": "labs",
+        "file": "src/ui/study-workspace.js",
+        "sha256": "c87c6d6fc7a290ffad4bc2389a354c33e48a8600d7b71df2c0ac948fedb09795"
+      },
+      {
+        "repository": "labs",
+        "file": "tests/engine.test.mjs",
+        "sha256": "49bec9a1496d8b10d014f1a878a363f8b9163bee36ac5a3c477868edf421b8b9"
+      },
+      {
+        "repository": "labs",
+        "file": "tests/teaching-examples.test.mjs",
+        "sha256": "00be6a9c356521a028e14b30b773ff11b27bfd766ffd48b7ade1ae787a816f34"
+      },
+      {
+        "repository": "labs",
+        "file": "tools/render-assessments.mjs",
+        "sha256": "b8d3d8fc820e003ac1c9d690ac802890de3c74d388391012a49d55bebb2b11fc"
+      }
+    ],
+    "week1Deck": {
+      "repository": "website",
+      "file": "_teaching-src/2105603/postmidterm-01.qmd",
+      "sha256": "309c8674fa680da078e106e04f288591e8817ba4833209c11fe9dabe24221270"
+    }
+  },
+  "pendingReview": "Final narration and captured screen sequence are reviewed separately after production. This report does not assert browser capture or media QA."
+}

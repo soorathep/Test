@@ -1,0 +1,666 @@
+{
+  "revision": "Final 14-chapter Lab 01 ideal VLE screen demonstration",
+  "method": "Local faster-whisper tiny.en, CPU int8, one thread, beam size 3; model download disabled.",
+  "scope": "ASR spot check with source comparison, not a complete subjective listening review.",
+  "script_sha256": "fb312db99e0bb8d9dd87fcf8b9192a8ce4d0e98e60234c99021233a6ae572299",
+  "manifest_sha256": "e0226bcee265d6b4a6841da17ace6db38ae7bd1cdd6c0ab5dd06fbd93bc6b8de",
+  "all_14_script_and_wav_hashes_verified": true,
+  "targets": [
+    2,
+    4,
+    6,
+    7,
+    12,
+    14
+  ],
+  "status": "source_comparison_complete",
+  "checks": [
+    {
+      "slide": 2,
+      "slide_id": "ideal-setup",
+      "title": "Set up the synthetic ideal mixture",
+      "focus": "Ideal synthetic system at T350 K, P95 kPa, z1 .5; saturation pressures150/60 kPa; one-mole feed basis.",
+      "audio_file": "segment-02.wav",
+      "sha256": "9da27fbfee840f20ebb69b2b1cb49e719cc0549b5a75da1806e33addd2638d6a",
+      "narration_sha256": "d0c1363d2bfafaed1e8d079c15d7272369ce4d21fa73e2e27040bc4f6c5895e7",
+      "duration_seconds": 81.256,
+      "sample_rate": 24000,
+      "peak": 0.80926513671875,
+      "clipped_samples": 0,
+      "expected_narration": "Under Chemical system, choose Teaching binary, synthetic. Under Liquid model, keep Ideal solution. The extra symbols in this option belong to notation used later in the course. We only need the ideal assumption today.\n\nEnter three hundred fifty kelvin for Temperature, ninety-five kilopascals for Flash pressure, and zero point five for Feed fraction, z one. Then select Calculate equilibrium. The numerical inputs are preferable to the sliders when reproducing an exact case.\n\nAt this temperature, the selected property record defines saturation pressures of one hundred fifty kilopascals for component A and sixty kilopascals for component B. These are synthetic teaching values, not measurements of a real chemical mixture. They come from the chosen system, so there are no separate saturation-pressure boxes to fill in for this case.\n\nKeep temperature and feed composition unchanged throughout the pressure comparison. On our one-mole feed basis, the feed contains half a mole of each component. Record the system, ideal assumption, temperature, pressure, and feed composition on guide page one.",
+      "recognized": "Under Chemical System, choose Teaching Binary Synthetic. Under Liquid Model, keep Ideal Solution. The extra symbols in this option belong to notation used later in the course. We only need the Ideal Assumption today. Enter 350 Kelvin for temperature, 95 kilopascals for flash pressure, and 0.5 for feed fraction, Z1. Then select Calculate Equilibrium. The numerical inputs are preferable to the sliders when reproducing an exact case. At this temperature, the selected property record defines saturation pressures of 150 kilopascals for component, and 60 kilopascals for component B. These are synthetic teaching values, not measurements of a real chemical mixture. They come from the chosen system, so there are no separate saturation pressure boxes to fill in for this case. Keep temperature and feed composition unchanged throughout the pressure comparison. On our one mole feed basis, the feed contains half a mole of each component. Record the system, Ideal Assumption, Temperature, Pressure, and Feed Composition on Guide page 1.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.4,
+          "text": "Under Chemical System, choose Teaching Binary Synthetic."
+        },
+        {
+          "start": 4.4,
+          "end": 7.8,
+          "text": "Under Liquid Model, keep Ideal Solution."
+        },
+        {
+          "start": 7.8,
+          "end": 13.5,
+          "text": "The extra symbols in this option belong to notation used later in the course."
+        },
+        {
+          "start": 13.5,
+          "end": 16.5,
+          "text": "We only need the Ideal Assumption today."
+        },
+        {
+          "start": 16.5,
+          "end": 19.7,
+          "text": "Enter 350 Kelvin for temperature,"
+        },
+        {
+          "start": 19.7,
+          "end": 23.1,
+          "text": "95 kilopascals for flash pressure,"
+        },
+        {
+          "start": 23.1,
+          "end": 27.5,
+          "text": "and 0.5 for feed fraction, Z1."
+        },
+        {
+          "start": 27.5,
+          "end": 30.5,
+          "text": "Then select Calculate Equilibrium."
+        },
+        {
+          "start": 30.5,
+          "end": 34.0,
+          "text": "The numerical inputs are preferable to the sliders"
+        },
+        {
+          "start": 34.0,
+          "end": 36.5,
+          "text": "when reproducing an exact case."
+        },
+        {
+          "start": 36.5,
+          "end": 39.8,
+          "text": "At this temperature, the selected property record"
+        },
+        {
+          "start": 39.8,
+          "end": 45.5,
+          "text": "defines saturation pressures of 150 kilopascals for component,"
+        },
+        {
+          "start": 45.5,
+          "end": 49.0,
+          "text": "and 60 kilopascals for component B."
+        },
+        {
+          "start": 49.0,
+          "end": 51.5,
+          "text": "These are synthetic teaching values,"
+        },
+        {
+          "start": 51.5,
+          "end": 54.5,
+          "text": "not measurements of a real chemical mixture."
+        },
+        {
+          "start": 54.5,
+          "end": 56.900000000000006,
+          "text": "They come from the chosen system,"
+        },
+        {
+          "start": 56.9,
+          "end": 61.9,
+          "text": "so there are no separate saturation pressure boxes to fill in for this case."
+        },
+        {
+          "start": 61.9,
+          "end": 67.9,
+          "text": "Keep temperature and feed composition unchanged throughout the pressure comparison."
+        },
+        {
+          "start": 67.9,
+          "end": 73.4,
+          "text": "On our one mole feed basis, the feed contains half a mole of each component."
+        },
+        {
+          "start": 73.4,
+          "end": 76.6,
+          "text": "Record the system, Ideal Assumption,"
+        },
+        {
+          "start": 76.6,
+          "end": 81.4,
+          "text": "Temperature, Pressure, and Feed Composition on Guide page 1."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Recognized setup retains 350 K, 95 kPa, z1=0.5, saturation pressures 150/60 kPa, and the one-mole basis. The recognizer omits the A label after one occurrence of component; the exact source and caption retain component A. No claim of a subjective audio adjudication is made."
+    },
+    {
+      "slide": 4,
+      "slide_id": "bubble-and-dew",
+      "title": "Read the bubble and dew boundaries",
+      "focus": "Bubble x=z=.5 gives105 kPa; dew y=z=.5 gives85.714 kPa; these are not current tie-line endpoint compositions.",
+      "audio_file": "segment-04.wav",
+      "sha256": "74f1d10d6c0a46cb7e5a2bb71aba48bb7745b05aa871929f26343359579f4849",
+      "narration_sha256": "62e39526799d55130f9125d3e587f9ec8b8823bb7a545c125515c98f6fe88727",
+      "duration_seconds": 85.616625,
+      "sample_rate": 24000,
+      "peak": 0.7392578125,
+      "clipped_samples": 0,
+      "expected_narration": "Select P, x, y, fixed temperature in the Diagram menu. The horizontal axis is composition of component one. The vertical axis is pressure. The solid bubble curve uses liquid composition, x one. The dashed dew curve uses vapor composition, y one. The diamond marks the overall feed at the selected pressure.\n\nLook at the two boundary results below the diagram. Bubble pressure uses liquid composition equal to the feed composition, zero point five. Half of one hundred fifty plus half of sixty gives one hundred five kilopascals. This is where the first vapor appears when pressure is lowered from the liquid side.\n\nDew pressure instead specifies vapor composition equal to zero point five. Its reciprocal is half divided by one hundred fifty, plus half divided by sixty. Taking the reciprocal gives approximately eighty-five point seven one four kilopascals.\n\nThese boundary calculations answer different questions. Their specified compositions are not the two endpoint compositions of the current ninety-five-kilopascal tie line. Record both boundaries on guide page one and use them to classify our pressure cases.",
+      "recognized": "Select P, X, Y, fixed temperature in the diagram menu. The horizontal axis is composition of component one. The vertical axis is pressure. The solid bubble curve uses liquid composition, X1. The dash do curve uses vapor composition, Y1. The diamond marks the overall feed at the selected pressure. Look at the two boundary results below the diagram. Bubble pressure uses liquid composition equal to the feed composition. 0.5. Half of 150 plus half of 60 gives 105 kilopascals. This is where the first vapor appears when pressure is lowered from the liquid side. Do pressure instead specifies vapor composition equal to 0.5. Its reciprocal is half divided by 150. Plus half divided by 60. Taking the reciprocal gives approximately 85.71 for kilopascals. These boundary calculations answer different questions. Their specified compositions are not the two endpoint compositions of the current 95 kilopascal tie line. Record both boundaries on guide page one and use them to classify our pressure cases.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.0,
+          "text": "Select P, X, Y, fixed temperature in the diagram menu."
+        },
+        {
+          "start": 5.0,
+          "end": 9.0,
+          "text": "The horizontal axis is composition of component one."
+        },
+        {
+          "start": 9.0,
+          "end": 12.0,
+          "text": "The vertical axis is pressure."
+        },
+        {
+          "start": 12.0,
+          "end": 16.0,
+          "text": "The solid bubble curve uses liquid composition, X1."
+        },
+        {
+          "start": 16.0,
+          "end": 20.0,
+          "text": "The dash do curve uses vapor composition, Y1."
+        },
+        {
+          "start": 20.0,
+          "end": 25.0,
+          "text": "The diamond marks the overall feed at the selected pressure."
+        },
+        {
+          "start": 25.0,
+          "end": 29.0,
+          "text": "Look at the two boundary results below the diagram."
+        },
+        {
+          "start": 29.0,
+          "end": 34.0,
+          "text": "Bubble pressure uses liquid composition equal to the feed composition."
+        },
+        {
+          "start": 34.0,
+          "end": 36.0,
+          "text": "0.5."
+        },
+        {
+          "start": 36.0,
+          "end": 42.0,
+          "text": "Half of 150 plus half of 60 gives 105 kilopascals."
+        },
+        {
+          "start": 42.0,
+          "end": 47.0,
+          "text": "This is where the first vapor appears when pressure is lowered from the liquid side."
+        },
+        {
+          "start": 47.0,
+          "end": 53.0,
+          "text": "Do pressure instead specifies vapor composition equal to 0.5."
+        },
+        {
+          "start": 53.0,
+          "end": 57.0,
+          "text": "Its reciprocal is half divided by 150."
+        },
+        {
+          "start": 57.0,
+          "end": 60.0,
+          "text": "Plus half divided by 60."
+        },
+        {
+          "start": 60.0,
+          "end": 66.0,
+          "text": "Taking the reciprocal gives approximately 85.71 for kilopascals."
+        },
+        {
+          "start": 66.0,
+          "end": 70.0,
+          "text": "These boundary calculations answer different questions."
+        },
+        {
+          "start": 70.0,
+          "end": 79.0,
+          "text": "Their specified compositions are not the two endpoint compositions of the current 95 kilopascal tie line."
+        },
+        {
+          "start": 79.0,
+          "end": 85.0,
+          "text": "Record both boundaries on guide page one and use them to classify our pressure cases."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Recognized text retains the distinct x=z bubble and y=z dew specifications, 105 kPa and approximately 85.714 kPa, and the boundary/tie-line distinction. Tiny-ASR renders dew as do and the final spoken four as for in one decimal. The caption carries the exact source."
+    },
+    {
+      "slide": 6,
+      "slide_id": "check-both-balances",
+      "title": "Check both component balances independently",
+      "focus": "Separate A and B component balances on one-mole feed basis; phase amounts sum to1; retain precision.",
+      "audio_file": "segment-06.wav",
+      "sha256": "03bf1217db0e7204fda780e1c9cbc61b4846a3a1f9cedb0b0331a83c63baab2c",
+      "narration_sha256": "118110d5546319ed270f83ffe0c6647785c90c3b373d9dc783f64df31b2ea236",
+      "duration_seconds": 79.99333333333334,
+      "sample_rate": 24000,
+      "peak": 0.793365478515625,
+      "clipped_samples": 0,
+      "expected_narration": "Now check the answer independently on guide page two. Start with one mole of feed, containing zero point five moles of A and zero point five moles of B.\n\nFor component A, multiply the liquid amount by x one, then add the vapor amount multiplied by y one. The liquid contains about zero point one nine six nine seven moles of A. The vapor contains about zero point three zero three zero three moles. Their sum is zero point five moles.\n\nFor component B, use one minus x one and one minus y one. The liquid contribution is about zero point three zero nine five two moles. The vapor contribution is about zero point one nine zero four eight moles. These also sum to zero point five moles.\n\nThe two phase amounts must sum to one mole, and each phase composition must sum to one. Small differences from these totals can arise if you calculate with rounded screen values. Keep additional digits during the calculation. The lab's small residual checks its equations, while your hand calculation checks that you understand the quantities being balanced.",
+      "recognized": "Now check the answer independently on Guide page 2. Start with one mole of feed, containing 0.5 moles of a and 0.5 moles of B. For component A, multiply the liquid amount by x1. Then add the vapor amount multiplied by y1. The liquid contains about 0.19697 moles of a. The vapor contains about 0.303, 0.3 moles. There some is 0.5 moles. For component B, use 1 minus x1 and 1 minus y1. The liquid contribution is about 0.30952 moles. The vapor contribution is about 0.19048 moles. These also sum to 0.5 moles. The two phase amounts must sum to 1 mole, and each phase composition must sum to 1. Small differences from these totals can arise if you calculate with rounded screen values. Keep additional digits during the calculation. The labs small residual checks its equations, while your hand calculation checks that you understand the quantities being balanced.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "Now check the answer independently on Guide page 2."
+        },
+        {
+          "start": 4.0,
+          "end": 12.0,
+          "text": "Start with one mole of feed, containing 0.5 moles of a and 0.5 moles of B."
+        },
+        {
+          "start": 12.0,
+          "end": 16.0,
+          "text": "For component A, multiply the liquid amount by x1."
+        },
+        {
+          "start": 16.0,
+          "end": 20.0,
+          "text": "Then add the vapor amount multiplied by y1."
+        },
+        {
+          "start": 20.0,
+          "end": 25.0,
+          "text": "The liquid contains about 0.19697 moles of a."
+        },
+        {
+          "start": 25.0,
+          "end": 31.0,
+          "text": "The vapor contains about 0.303, 0.3 moles."
+        },
+        {
+          "start": 31.0,
+          "end": 34.0,
+          "text": "There some is 0.5 moles."
+        },
+        {
+          "start": 34.0,
+          "end": 39.0,
+          "text": "For component B, use 1 minus x1 and 1 minus y1."
+        },
+        {
+          "start": 39.0,
+          "end": 45.0,
+          "text": "The liquid contribution is about 0.30952 moles."
+        },
+        {
+          "start": 45.0,
+          "end": 50.0,
+          "text": "The vapor contribution is about 0.19048 moles."
+        },
+        {
+          "start": 50.0,
+          "end": 54.0,
+          "text": "These also sum to 0.5 moles."
+        },
+        {
+          "start": 54.0,
+          "end": 60.0,
+          "text": "The two phase amounts must sum to 1 mole, and each phase composition must sum to 1."
+        },
+        {
+          "start": 60.0,
+          "end": 67.0,
+          "text": "Small differences from these totals can arise if you calculate with rounded screen values."
+        },
+        {
+          "start": 67.0,
+          "end": 70.0,
+          "text": "Keep additional digits during the calculation."
+        },
+        {
+          "start": 70.0,
+          "end": 80.0,
+          "text": "The labs small residual checks its equations, while your hand calculation checks that you understand the quantities being balanced."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Both component balances, one-mole basis, phase composition sums and rounding explanation are retained. Tiny-ASR fragments the spoken 0.30303 into punctuation-separated number tokens. Source digits and exact captions are correct; ASR alone does not adjudicate every spoken digit."
+    },
+    {
+      "slide": 7,
+      "slide_id": "rachford-rice",
+      "title": "Connect the Rachford–Rice root to the amount",
+      "focus": "Dimensionless K=Psat/P; Rachford-Rice endpoint signs and beta root; composition versus amount axes.",
+      "audio_file": "segment-07.wav",
+      "sha256": "10a6e1fa601d71f560311e6d93f1c91910eac499840912b4fb06245a8abce488",
+      "narration_sha256": "a0efe684fbc87a0993d0694a8e92e6486cbacb152d9f44474c1cc1cce0c8e4b9",
+      "duration_seconds": 88.73666666666666,
+      "sample_rate": 24000,
+      "peak": 0.782989501953125,
+      "clipped_samples": 0,
+      "expected_narration": "For a closer look at the amount calculation, choose Rachford, Rice, vapor fraction in the Diagram menu. You may revisit this chapter later if you first want to complete the practical workflow.\n\nFor this ideal calculation, each K value is its saturation pressure divided by the flash pressure. Using kilopascals for both numerator and denominator gives dimensionless values. K one is one hundred fifty divided by ninety-five, approximately one point five seven eight nine five. K two is sixty divided by ninety-five, approximately zero point six three one five eight.\n\nThe plotted function combines both component balances. At beta equal to zero it is approximately positive zero point one zero five three. At beta equal to one it is approximately negative zero point one zero eight three. The crossing between them is the physical root.\n\nThat root is beta approximately zero point four nine three five, the same vapor fraction we just checked on a one-mole feed basis. The horizontal axis here is vapor fraction, unlike the composition axis of the pressure diagram. Return the Diagram menu to P, x, y, fixed temperature before saving the baseline.",
+      "recognized": "For a closer look at the amount calculation, choose Ratchford, Rice, Vapor Fraction in the Diagram menu. You may revisit this chapter later if you first want to complete the practical workflow. For this ideal calculation, each K value is its saturation pressure divided by the flash pressure. Using kilopascals for both numerator and denominator gives dimensionless values. K1 is 150 divided by 95, approximately 1.57895. K2 is 60 divided by 95, approximately 0.63158. The plotted function combines both component balances. At beta equal to 0, it is approximately positive 0.1053. At beta equal to 1, it is approximately negative 0.1083. The crossing between them is the physical root. That root is beta approximately 0.4935. The same vapor fraction we just checked on a 1 mole feed basis. The horizontal axis here is vapor fraction. Unlike the composition axis of the pressure diagram, return the Diagram menu to P, X, Y fixed temperature before saving the baseline.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 7.8,
+          "text": "For a closer look at the amount calculation, choose Ratchford, Rice, Vapor Fraction in the Diagram menu."
+        },
+        {
+          "start": 7.8,
+          "end": 13.6,
+          "text": "You may revisit this chapter later if you first want to complete the practical workflow."
+        },
+        {
+          "start": 13.6,
+          "end": 21.2,
+          "text": "For this ideal calculation, each K value is its saturation pressure divided by the flash pressure."
+        },
+        {
+          "start": 21.2,
+          "end": 27.8,
+          "text": "Using kilopascals for both numerator and denominator gives dimensionless values."
+        },
+        {
+          "start": 27.8,
+          "end": 36.2,
+          "text": "K1 is 150 divided by 95, approximately 1.57895."
+        },
+        {
+          "start": 36.2,
+          "end": 43.6,
+          "text": "K2 is 60 divided by 95, approximately 0.63158."
+        },
+        {
+          "start": 43.6,
+          "end": 47.6,
+          "text": "The plotted function combines both component balances."
+        },
+        {
+          "start": 47.6,
+          "end": 54.6,
+          "text": "At beta equal to 0, it is approximately positive 0.1053."
+        },
+        {
+          "start": 54.6,
+          "end": 61.2,
+          "text": "At beta equal to 1, it is approximately negative 0.1083."
+        },
+        {
+          "start": 61.2,
+          "end": 64.6,
+          "text": "The crossing between them is the physical root."
+        },
+        {
+          "start": 64.6,
+          "end": 69.6,
+          "text": "That root is beta approximately 0.4935."
+        },
+        {
+          "start": 69.6,
+          "end": 74.4,
+          "text": "The same vapor fraction we just checked on a 1 mole feed basis."
+        },
+        {
+          "start": 74.4,
+          "end": 78.1,
+          "text": "The horizontal axis here is vapor fraction."
+        },
+        {
+          "start": 78.1,
+          "end": 81.7,
+          "text": "Unlike the composition axis of the pressure diagram,"
+        },
+        {
+          "start": 81.7,
+          "end": 88.7,
+          "text": "return the Diagram menu to P, X, Y fixed temperature before saving the baseline."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Recognized text retains K=Psat/P, both K values, positive F(0), negative F(1), beta=0.4935, and the vapor-fraction versus composition axis distinction. Rachford is a spelling artifact."
+    },
+    {
+      "slide": 12,
+      "slide_id": "reopen-and-recalculate",
+      "title": "Download, reopen, restore, and recalculate",
+      "focus": "Comparison JSON download and reopening; restore selected saved case and calculate fresh current results.",
+      "audio_file": "segment-12.wav",
+      "sha256": "93b1d86222f6d6cffb84aeb11521bed6954595b4404db0e7d946b3adb7117133",
+      "narration_sha256": "a2d3e40ea6e19dcc2950c4fc33f1f6cdc236336f720a7bd9bbc15bf98db05bd4",
+      "duration_seconds": 85.89525,
+      "sample_rate": 24000,
+      "peak": 0.76666259765625,
+      "clipped_samples": 0,
+      "expected_narration": "Turn to guide page three. In the workspace, select Download comparison and confirm that the JSON file is saved. Keep this file before clearing anything.\n\nFor this demonstration, Clear comparison removes the three in-memory cases. It does not delete your downloaded files. Now use Load studies or a comparison JSON and select the comparison file you just downloaded. The three recorded cases return.\n\nChoose Restore beside the ninety-five-kilopascal baseline. This loads its saved controls. Check the system, ideal model, temperature, pressure, and feed composition, then explicitly select Calculate equilibrium.\n\nRestoring a file and producing a fresh result are separate steps. The comparison preserves recorded evidence, while Calculate equilibrium runs the current inputs again. Verify that the fresh result is Liquid plus vapor with beta about zero point four nine three five. Check the two phase compositions as well.\n\nRecord in the guide that you reopened the file and reproduced the baseline. A saved file becomes useful evidence when another person, or your future self, can recover the settings and obtain the same result.",
+      "recognized": "Turn to Guide page 3. In the workspace, select Download Comparison and confirm that the JSON file is saved. Keep this file before clearing anything. For this demonstration, Clear Comparison removes the three in memory cases. It does not delete your downloaded files. Now use Load Studies or a comparison JSON and select the comparison file you just downloaded. The three recorded cases return. Choose Restore beside the 95-kilopascal baseline. This loads its saved controls. Check the system. Ideal model, temperature, pressure and feed composition. Then explicitly select Calculate Equilibrium. Restoring a file and producing a fresh result are separate steps. The comparison preserves recorded evidence. While Calculate Equilibrium runs the current inputs again. Verify that the fresh result is liquid plus vapor with beta, about 0.4935. Check the two phase compositions as well. Record in the guide that you reopen the file and reproduce the baseline. A saved file becomes useful evidence when another person or your future self can recover the settings and obtain the same result.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.4,
+          "text": "Turn to Guide page 3."
+        },
+        {
+          "start": 2.4,
+          "end": 9.4,
+          "text": "In the workspace, select Download Comparison and confirm that the JSON file is saved."
+        },
+        {
+          "start": 9.4,
+          "end": 12.3,
+          "text": "Keep this file before clearing anything."
+        },
+        {
+          "start": 12.3,
+          "end": 17.900000000000002,
+          "text": "For this demonstration, Clear Comparison removes the three in memory cases."
+        },
+        {
+          "start": 17.900000000000002,
+          "end": 21.0,
+          "text": "It does not delete your downloaded files."
+        },
+        {
+          "start": 21.0,
+          "end": 25.6,
+          "text": "Now use Load Studies or a comparison JSON"
+        },
+        {
+          "start": 25.6,
+          "end": 29.3,
+          "text": "and select the comparison file you just downloaded."
+        },
+        {
+          "start": 29.3,
+          "end": 32.1,
+          "text": "The three recorded cases return."
+        },
+        {
+          "start": 32.1,
+          "end": 36.5,
+          "text": "Choose Restore beside the 95-kilopascal baseline."
+        },
+        {
+          "start": 36.5,
+          "end": 39.0,
+          "text": "This loads its saved controls."
+        },
+        {
+          "start": 39.0,
+          "end": 40.3,
+          "text": "Check the system."
+        },
+        {
+          "start": 40.3,
+          "end": 44.8,
+          "text": "Ideal model, temperature, pressure and feed composition."
+        },
+        {
+          "start": 44.8,
+          "end": 48.2,
+          "text": "Then explicitly select Calculate Equilibrium."
+        },
+        {
+          "start": 48.2,
+          "end": 53.2,
+          "text": "Restoring a file and producing a fresh result are separate steps."
+        },
+        {
+          "start": 53.2,
+          "end": 56.3,
+          "text": "The comparison preserves recorded evidence."
+        },
+        {
+          "start": 56.300000000000004,
+          "end": 60.800000000000004,
+          "text": "While Calculate Equilibrium runs the current inputs again."
+        },
+        {
+          "start": 60.800000000000004,
+          "end": 65.30000000000001,
+          "text": "Verify that the fresh result is liquid plus vapor with beta,"
+        },
+        {
+          "start": 65.30000000000001,
+          "end": 68.30000000000001,
+          "text": "about 0.4935."
+        },
+        {
+          "start": 68.30000000000001,
+          "end": 71.30000000000001,
+          "text": "Check the two phase compositions as well."
+        },
+        {
+          "start": 71.30000000000001,
+          "end": 76.30000000000001,
+          "text": "Record in the guide that you reopen the file and reproduce the baseline."
+        },
+        {
+          "start": 76.30000000000001,
+          "end": 82.30000000000001,
+          "text": "A saved file becomes useful evidence when another person or your future self"
+        },
+        {
+          "start": 82.3,
+          "end": 85.8,
+          "text": "can recover the settings and obtain the same result."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Recognized text retains download before clear, reopen comparison, Restore the 95 kPa baseline, verify controls, explicitly Calculate equilibrium, and reproduce the two-phase result. No substantive workflow omission found in the transcript comparison."
+    },
+    {
+      "slide": 14,
+      "slide_id": "independent-check",
+      "title": "Check the independent result",
+      "focus": "Independent90kPa check: x1=1/3,y1=5/9,beta=3/4; phase amounts1/4 and3/4 mol; both component sums=.5 mol.",
+      "audio_file": "segment-14.wav",
+      "sha256": "d3a0fc467aaa3b730cd665709d3cfa3a432bef57a5b662311224a3e79fd5f351",
+      "narration_sha256": "9eb94548ab14080d5a5ee9cf10d929a9f82d3e5f4f2a39911610713a5a6ab342",
+      "duration_seconds": 82.504625,
+      "sample_rate": 24000,
+      "peak": 0.72967529296875,
+      "clipped_samples": 0,
+      "expected_narration": "Now open guide page four and check your attempt. Ninety kilopascals lies between the dew and bubble pressures, so both liquid and vapor are present.\n\nFrom the ideal bubble relation, liquid x one equals ninety minus sixty, divided by one hundred fifty minus sixty. The result is one third. Vapor y one equals one hundred fifty times one third, divided by ninety, giving five ninths.\n\nThe vapor fraction is the feed composition minus x one, divided by y one minus x one. This gives three quarters. On a one-mole feed basis, the liquid amount is one quarter of a mole and the vapor amount is three quarters.\n\nComponent A contributes one twelfth of a mole in the liquid and five twelfths in the vapor, totaling half a mole. Component B contributes one sixth in the liquid and one third in the vapor, also totaling half a mole.\n\nIf your answer differs, inspect the phase compositions and amount fraction separately. Retain your original attempt and correction. You have now completed the practical cycle: predict, calculate, check independently, save the evidence, and reopen it to reproduce the result.",
+      "recognized": "Now, open guide page 4 and check your attempt. 90 kilopascals lie between the dew and bubble pressures, so both liquid and vapor are present. From the ideal bubble relation, liquid x1 equals 90 minus 60, divided by 150 minus 60. The result is one third. Vapor y1 equals 150 times one third, divided by 90, giving 5 nines. The vapor fraction is the feed composition minus x1, divided by y1 minus x1. This gives three quarters. On a one mole feed basis, the liquid amount is one quarter of a mole, and the vapor amount is three quarters. The exponent contributes one-twelfth of a mole in the liquid, and five-twelfths in the vapor, totalling half a mole. Component b contributes one-sixth in the liquid, and one-third in the vapor, also totalling half a mole. If your answer differs, inspect the phase compositions and amount fractions separately. Retain your original attempt and correction. You have now completed the practical cycle. Predict, calculate, check independently, save the evidence, and reopen it to reproduce the result.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "Now, open guide page 4 and check your attempt."
+        },
+        {
+          "start": 4.0,
+          "end": 11.0,
+          "text": "90 kilopascals lie between the dew and bubble pressures, so both liquid and vapor are present."
+        },
+        {
+          "start": 11.0,
+          "end": 20.0,
+          "text": "From the ideal bubble relation, liquid x1 equals 90 minus 60, divided by 150 minus 60."
+        },
+        {
+          "start": 20.0,
+          "end": 22.0,
+          "text": "The result is one third."
+        },
+        {
+          "start": 22.0,
+          "end": 30.0,
+          "text": "Vapor y1 equals 150 times one third, divided by 90, giving 5 nines."
+        },
+        {
+          "start": 30.0,
+          "end": 38.0,
+          "text": "The vapor fraction is the feed composition minus x1, divided by y1 minus x1."
+        },
+        {
+          "start": 38.0,
+          "end": 40.0,
+          "text": "This gives three quarters."
+        },
+        {
+          "start": 40.0,
+          "end": 48.0,
+          "text": "On a one mole feed basis, the liquid amount is one quarter of a mole, and the vapor amount is three quarters."
+        },
+        {
+          "start": 48.0,
+          "end": 56.0,
+          "text": "The exponent contributes one-twelfth of a mole in the liquid, and five-twelfths in the vapor, totalling half a mole."
+        },
+        {
+          "start": 56.0,
+          "end": 63.0,
+          "text": "Component b contributes one-sixth in the liquid, and one-third in the vapor, also totalling half a mole."
+        },
+        {
+          "start": 63.0,
+          "end": 69.0,
+          "text": "If your answer differs, inspect the phase compositions and amount fractions separately."
+        },
+        {
+          "start": 69.0,
+          "end": 72.0,
+          "text": "Retain your original attempt and correction."
+        },
+        {
+          "start": 72.0,
+          "end": 75.0,
+          "text": "You have now completed the practical cycle."
+        },
+        {
+          "start": 75.0,
+          "end": 82.0,
+          "text": "Predict, calculate, check independently, save the evidence, and reopen it to reproduce the result."
+        }
+      ],
+      "review_status": "source_comparison_complete",
+      "source_comparison": "Recognized text retains the 90 kPa relation, one-third liquid composition, three-quarters vapor fraction, phase amounts, and both half-mole component totals. Tiny-ASR renders five ninths as five nines and component A as the exponent once. Exact source captions preserve the correct terms; no complete subjective listening review is claimed."
+    }
+  ],
+  "checked_at_utc": "2026-10-20T02:55:59.814602+00:00",
+  "limitations": [
+    "Speech recognition can misrecognize scientific names and spoken numbers; disagreements require source comparison or listening.",
+    "6 selected chapters were transcribed, not the whole 14-chapter recording.",
+    "No complete subjective listening review is claimed."
+  ],
+  "full_subjective_listening_review_performed": false,
+  "source_comparison_summary": "All selected chapters retain the intended calculation/workflow structure in local ASR. Minor scientific-name, component-label and spoken-number recognition artifacts are documented individually. Exact source captions and all source/WAV hashes remain verified. ASR is not evidence that every spoken word was subjectively listened to."
+}

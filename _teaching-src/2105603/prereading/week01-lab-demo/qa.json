@@ -1,0 +1,50 @@
+{
+  "artifact": "week01-lab-guide.pdf",
+  "sha256": "7f99e2a3e74ea536c3e8fc8c739466e7ecf632e80cb314ffbb80b47e994e86fd",
+  "pages": 4,
+  "visualReview": "all four rendered pages inspected; no overlap or clipping",
+  "fontReview": "DejaVu Sans normal and bold embedded TrueType; no Type3 or unembedded fonts",
+  "pageBounds": [
+    {
+      "page": 1,
+      "textCharacters": 2046,
+      "bounds": "pass"
+    },
+    {
+      "page": 2,
+      "textCharacters": 2154,
+      "bounds": "pass"
+    },
+    {
+      "page": 3,
+      "textCharacters": 2125,
+      "bounds": "pass"
+    },
+    {
+      "page": 4,
+      "textCharacters": 2266,
+      "bounds": "pass"
+    }
+  ],
+  "links": [
+    "https://www.skhgroup.net/teaching/2105603/lab01-video.html#chapter-1",
+    "https://www.skhgroup.net/teaching/2105603/labs/#experiment",
+    "https://www.skhgroup.net/teaching/2105603/lab01-video.html#chapter-14"
+  ],
+  "selfCheckSeparation": "90 kPa attempt on page3, answers on page4",
+  "numericalChecks": {
+    "95": {
+      "x": "7/18",
+      "y": "35/57",
+      "beta": "38/77",
+      "balances": "exact rational pass"
+    },
+    "90": {
+      "x": "1/3",
+      "y": "5/9",
+      "beta": "3/4",
+      "balances": "exact rational pass"
+    }
+  },
+  "publicationLinks": "Parent final website QA must verify new video and chapter anchors."
+}

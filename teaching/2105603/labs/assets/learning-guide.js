@@ -11,6 +11,12 @@ if(independent){
  const start=el('a',session.video?'Open the narrated independent lesson':'Open the independent study guide');start.href=/^https?:\/\//.test(session.video||'')?session.video:'../'+(session.video||session.studyHub||session.deck);panel.append(start);
  if(session.worksheet){const line=el('p'),worksheet=el('a',`English worksheet · ${session.worksheetPages||4} pages`);worksheet.href='../'+session.worksheet;line.append(worksheet);panel.append(line);}
 }
+if(required&&session.supplementalVideo){
+ const follow=el('aside');follow.className='notice';follow.append(el('p','Week 1 follow-up: complete Lab 01 video walkthrough'));
+ const video=el('a','Watch the demonstration');video.href=/^https?:\/\//.test(session.supplementalVideo)?session.supplementalVideo:'../'+session.supplementalVideo;
+ const guideLink=el('a','Printable Lab 01 guide · 4 pages');guideLink.href='../'+session.supplementalGuide;
+ const links=el('p');links.append(video,document.createTextNode(' · '),guideLink);follow.append(links,el('p',session.supplementalNote));panel.append(follow);
+}
 const reading=el('a',independent&&session.prereadingOptional?'Optional background reading PDF':'Pre-class reading PDF · three preparation questions');reading.href='../'+session.prereading;panel.append(reading);
 const exitLink=el('a',independent?`Study minutes ${session.exitWindow||'172–180'}: exit ticket + feedback`:'End of class: exit ticket + feedback');exitLink.href=session.exitForm;const exitLine=el('p');exitLine.append(exitLink);panel.append(exitLine);
 if(independent) panel.append(el('p','The exit ticket and feedback are anonymous and do not identify attendance. Follow the main lesson instructions for any separately announced submission.'));

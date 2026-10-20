@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "preview": "http://127.0.0.1:8818/teaching/2105603/lab01-video.html",
+  "tested": "2026-10-20",
+  "video": {
+    "duration_seconds": 1146.372875,
+    "readyState": 4,
+    "decoded_dimensions": [
+      1920,
+      1080
+    ],
+    "playback_advanced": true,
+    "caption_track_loaded": true
+  },
+  "optional_pauses": [
+    {
+      "chapter": 3,
+      "stopped_at_seconds": 229.612124,
+      "paused": true,
+      "prompt_minutes": 2,
+      "continue_selected": true,
+      "continues_to": 4
+    },
+    {
+      "chapter": 13,
+      "stopped_at_seconds": 1061.626774,
+      "paused": true,
+      "prompt_minutes": 5,
+      "continue_selected": true,
+      "continues_to": 14
+    }
+  ],
+  "fullscreen": {
+    "actual_playback": true,
+    "native_captions_visible": true
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "document_width": 390,
+    "scroll_width": 390,
+    "captions_below_video": true,
+    "visible_caption": "Our flash pressure is ninety-five kilopascals, between the dew and bubble pressures."
+  },
+  "console_errors_or_warnings": [],
+  "viewport_override_reset": true,
+  "evidence": [
+    "browser-qa/desktop-playing.png",
+    "browser-qa/prediction-pause.png",
+    "browser-qa/independent-pause.png",
+    "browser-qa/fullscreen.png",
+    "browser-qa/mobile-playing.png"
+  ],
+  "limits": "Browser observations establish playback, caption rendering and checkpoint behavior; they do not substitute for full subjective listening."
+}

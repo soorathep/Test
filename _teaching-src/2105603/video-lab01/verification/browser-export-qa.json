@@ -1,0 +1,194 @@
+{
+  "schema": "lab01-browser-export-qa/1",
+  "status": "pass",
+  "checkedAt": "2026-10-20T02:54:12.802222+00:00",
+  "method": "Actual UI download contents independently checked against closed-form ideal binary relations and both component balances; captured PNGs visually inspected separately.",
+  "basis": {
+    "T_K": 350,
+    "z1": 0.5,
+    "feed_mol": 1,
+    "saturationPressures_Pa": [
+      150000,
+      60000
+    ],
+    "bubblePressure_kPa": 105,
+    "dewPressure_kPa": 85.71428571428571,
+    "propertyKind": "synthetic",
+    "model": "Ideal solution"
+  },
+  "studies": [
+    {
+      "file": "baseline-95.json",
+      "sha256": "245b4f9bffec1b755c6cd248eec0957c1532ecf19d1c5c4139645d03685c7f05",
+      "savedAt": "2026-10-20T02:51:22.677Z",
+      "inputPressure_kPa": 95,
+      "resultPressure_Pa": 95000,
+      "phase": "two-phase",
+      "beta": 0.49350649350651565,
+      "x1": 0.38888888888891415,
+      "y1": 0.6140350877193235,
+      "componentBalanceResiduals_mol": [
+        3.019806626980426e-14,
+        -3.0253577421035516e-14
+      ],
+      "equilibriumResidual": 1.4654943925052066e-14,
+      "globalSupportVerified": true
+    },
+    {
+      "file": "liquid-110.json",
+      "sha256": "cba945e9950ad164422512ad5b3b0929205df9d60f5ac2f62d7c02f45935c128",
+      "savedAt": "2026-10-20T02:51:37.477Z",
+      "inputPressure_kPa": 110,
+      "resultPressure_Pa": 110000,
+      "phase": "liquid",
+      "beta": 0,
+      "x1": 0.5,
+      "y1": null,
+      "componentBalanceResiduals_mol": [
+        0.0,
+        0.0
+      ],
+      "equilibriumResidual": null,
+      "globalSupportVerified": true
+    },
+    {
+      "file": "vapor-80.json",
+      "sha256": "167d86b9ba6ed8b951218e2451a14d07d345ef26c24eadd75909480797c0f46a",
+      "savedAt": "2026-10-20T02:51:46.693Z",
+      "inputPressure_kPa": 80,
+      "resultPressure_Pa": 80000,
+      "phase": "vapor",
+      "beta": 1,
+      "x1": null,
+      "y1": 0.5,
+      "componentBalanceResiduals_mol": [
+        0.0,
+        0.0
+      ],
+      "equilibriumResidual": null,
+      "globalSupportVerified": true
+    },
+    {
+      "file": "independent-90.json",
+      "sha256": "4d2173703d077fcf7cd31f11a7666b1709afe842276556a4240d9713f9e80aac",
+      "savedAt": "2026-10-20T02:52:56.342Z",
+      "inputPressure_kPa": 90,
+      "resultPressure_Pa": 90000,
+      "phase": "two-phase",
+      "beta": 0.75,
+      "x1": 0.33333333333325754,
+      "y1": 0.5555555555554713,
+      "componentBalanceResiduals_mol": [
+        -8.215650382226158e-14,
+        8.215650382226158e-14
+      ],
+      "equilibriumResidual": 4.207745263329343e-14,
+      "globalSupportVerified": true
+    }
+  ],
+  "comparison": {
+    "file": "lab01-demo-comparison.json",
+    "sha256": "1e2ad427f59b0f2ea6eaea4071c99c34c4d2bc5b24df2158b1201791a1f8c7b8",
+    "schema": {
+      "kind": "thermo-comparison",
+      "version": 1,
+      "lab": "index"
+    },
+    "count": 3,
+    "labels": [
+      "Baseline 95 kPa",
+      "High pressure 110 kPa",
+      "Low pressure 80 kPa"
+    ],
+    "embeddedStudiesEqualIndividualDownloads": true,
+    "independentAttemptExcluded": true
+  },
+  "curveCSV": {
+    "file": "ideal-pxy.csv",
+    "sha256": "fbea7af252a649ad072c00f0cc9b6e7ccfaadbc56f16ce239f90ce328d60a796",
+    "headers": [
+      "x1",
+      "y1",
+      "T_K",
+      "P_Pa",
+      "gamma1",
+      "gamma2"
+    ],
+    "rows": 101,
+    "pressureUnit": "Pa",
+    "temperatureUnit": "K",
+    "validatedEveryRow": true,
+    "samePxyCurveAcrossAllFourStudies": true,
+    "limits": {
+      "pureBPressure_Pa": 60000.0,
+      "pureAPressure_Pa": 150000.0
+    }
+  },
+  "provenance": {
+    "studySchema": "skh-thermo-experiment/1",
+    "workspaceSchema": "thermo-controls-v1",
+    "engineVersion": "0.3.0",
+    "dataVersion": "2026-09-29.1",
+    "propertyRecordMatchesRepository": true,
+    "propertySource": "Synthetic teaching definitions in this data record",
+    "inactiveControlNote": "Saved inputs preserve inactive model parameter controls. The active model is ideal, result.A is 0, and result.model parameters are both 0 in all four studies."
+  },
+  "privacy": {
+    "status": "pass",
+    "basis": "Synthetic components, generic case labels, property definitions, solver records and export timestamps only. Prediction and reflection are empty. No student identity or submission data is present."
+  },
+  "visualReview": {
+    "status": "pass",
+    "frames": [
+      {
+        "file": "05-pxy-and-results.png",
+        "sha256": "dbc14c25ed4785dd9185fa52693dca79c72476597cff3fb2fb8d77cf8894982f",
+        "finding": "95 kPa controls, beta 0.4935, x1 0.3889, y1 0.6140, P–x–y axes and tie line visible."
+      },
+      {
+        "file": "09-liquid-110.png",
+        "sha256": "a55e1e5edbe2a8e63eecb937da6bd7d40037fe7e2772d42cec5e55b0a2c0bcd3",
+        "finding": "Liquid-only badge, beta 0.0000, x1 0.5000, y1 N/A and No vapor phase visible."
+      },
+      {
+        "file": "10-vapor-80.png",
+        "sha256": "bf8d222e9a0d96b183ab2c2cde98564d5b44d5c67ae69b7dde4983479dfeaf50",
+        "finding": "Vapor-only badge, beta 1.0000, x1 N/A and No liquid phase, y1 0.5000 visible."
+      },
+      {
+        "file": "14-independent-result.png",
+        "sha256": "86d44dc11fe365396781394338e80e2156307fc7fea0491202d0f083d027d298",
+        "finding": "Two-phase badge, beta 0.7500, x1 0.3333, y1 0.5556 visible."
+      },
+      {
+        "file": "04-boundaries-and-inputs.png",
+        "sha256": "0226c411fb3e30b0fd13a96577a2d1d46e4dcf9ebc4cc8cc74a4e19650d4af09",
+        "finding": "350 K, 95 kPa, z1 0.5 and boundary labels x1=z1 / y1=z1 with 105.000 and 85.714 kPa visible."
+      },
+      {
+        "file": "07-rachford-rice.png",
+        "sha256": "cb046eb9b4cbec425b150b79f830b6016e762cca7760e1e529673da9e711d30a",
+        "finding": "RR function has positive F(0), negative F(1), root near beta 0.4935; vapor-fraction axis is visible."
+      },
+      {
+        "file": "11-comparison-results.png",
+        "sha256": "265c237b0de8077b59d67a9c8f30ad35db0349b93f2beb937890a3f7f38512e5",
+        "finding": "Three columns show correct phases and amounts, null absent compositions displayed Not recorded."
+      },
+      {
+        "file": "11-comparison-units.png",
+        "sha256": "44a32fdbae117494e9875b9d1fba5dfd3a59360c7490417cee12a8441858291b",
+        "finding": "result.P values 95000/110000/80000 and actual Ideal solution calculation visible."
+      },
+      {
+        "file": "12-recalculated-baseline.png",
+        "sha256": "f3d8e5fc687c84e4b3f672b369a9dd74df8fadd7229a864d1f5a2f74f6f2b7a6",
+        "finding": "Fresh visible baseline 0.4935/0.3889/0.6140 matches original despite generic workspace restore-status text."
+      }
+    ]
+  },
+  "limitations": [
+    "This report validates downloaded studies and selected screenshots, not final video timing or spoken audio.",
+    "Workspace status may retain its restore message after recalculation; the current calculator result and controls establish the reproduced state."
+  ]
+}
