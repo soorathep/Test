@@ -1,0 +1,710 @@
+{
+  "voice": "en-US-GuyNeural",
+  "rate": "-5%",
+  "pitch": "+0Hz",
+  "language": "English (US)",
+  "synthetic_speech": true,
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Linear programming and duality",
+      "script": "Welcome. In this lesson, we'll solve one production problem from two perspectives. The primal chooses how much to produce. The dual assigns values to scarce resources. We'll connect the geometry, the algebra, and the solver output. Keep a notebook beside you. When you hear a practice prompt, pause and work before continuing. The companion lab lets you reproduce the calculations yourself.",
+      "file": "audio/slide-001.mp3",
+      "duration_seconds": 29.76
+    },
+    {
+      "slide": 2,
+      "title": "Plan for the three-hour class",
+      "script": "This is a three-hour classroom plan, including exercises and a break. The recording is shorter because it doesn't include your working time. Start with geometry, then learn how Simplex moves between feasible bases. After the break, we'll connect duality to optimality and sensitivity. For independent study, use the companion lab in stages. Don't try to finish the entire lesson in one uninterrupted sitting.",
+      "file": "audio/slide-002.mp3",
+      "duration_seconds": 29.016
+    },
+    {
+      "slide": 3,
+      "title": "What makes a model linear?",
+      "script": "A linear program has a linear objective and linear constraints, with continuous decision variables. Fixed coefficients can multiply variables, but variables cannot multiply each other. For example, x plus two y is linear; x times y is not. Adding a binary restriction creates a mixed-integer model. The continuous L P sensitivity arguments in this lesson should not be applied directly to that different problem.",
+      "file": "audio/slide-003.mp3",
+      "duration_seconds": 29.016
+    },
+    {
+      "slide": 4,
+      "title": "Running example: two production routes",
+      "script": "Read the table before writing equations. One tonne of route x uses one unit of resource one and two units of resource two. Route y uses one of each. Daily capacities are four and five. Contributions are three and two in units of one hundred dollars. Pause and write one resource balance yourself. Check that every term measures resource use per day.",
+      "file": "audio/slide-004.mp3",
+      "duration_seconds": 26.4
+    },
+    {
+      "slide": 5,
+      "title": "The production LP",
+      "script": "The objective is to maximize three x plus two y. Resource one gives x plus y at most four. Resource two gives two x plus y at most five. Both production quantities must be nonnegative. A feasible point must satisfy all four inequalities together. In the companion lab, enter these coefficients in the same column order: x first, then y.",
+      "file": "audio/slide-005.mp3",
+      "duration_seconds": 24.6
+    },
+    {
+      "slide": 6,
+      "title": "Objective contours and the best feasible point",
+      "script": "Each objective contour represents a constant contribution. Its equation is three x plus two y equals a chosen value. Higher parallel contours move toward larger contribution. The last feasible contact occurs at one, three. Substitution gives three plus six, or nine hundred dollars per day. Use the picture to predict the answer, but verify the coordinates with the constraint equations.",
+      "file": "audio/slide-006.mp3",
+      "duration_seconds": 28.008
+    },
+    {
+      "slide": 7,
+      "title": "Why compare extreme points?",
+      "script": "Why are the corners enough here? Every point of this bounded feasible polygon is a convex combination of its vertices. A linear objective has the same weighted-average property. It cannot beat every vertex used in that average. Calculate the objective at all four listed corners. The values are zero, seven point five, nine, and eight. The largest is nine at one, three.",
+      "file": "audio/slide-007.mp3",
+      "duration_seconds": 28.128
+    },
+    {
+      "slide": 8,
+      "title": "An LP can have many optimal solutions",
+      "script": "Now change only the objective to x plus y. The best objective line coincides with a feasible edge. Every point between zero, four and one, three gives four. Try the midpoint, zero point five and three point five. It is feasible and also gives four. Different solvers may return different points on an optimal edge. Equal optimal values do not require identical coordinates.",
+      "file": "audio/slide-008.mp3",
+      "duration_seconds": 28.464
+    },
+    {
+      "slide": 9,
+      "title": "Infeasible and unbounded are different",
+      "script": "Infeasible and unbounded describe different failures. With x at most one and at least two, there is no feasible point. With only x nonnegative, maximizing x has feasible points but no finite maximum. Always read the solver's termination status before interpreting its variables. In the lab, we'll deliberately create both situations so you can recognize them without mistaking them for valid production plans.",
+      "file": "audio/slide-009.mp3",
+      "duration_seconds": 28.152
+    },
+    {
+      "slide": 10,
+      "title": "Quick check: feasibility before profit",
+      "script": "Pause and compare the two proposed plans. Point A, two, two, gives contribution ten, but its second-resource use is six. The limit is five, so A is infeasible. Point B, one, three, uses four and five units and gives nine. Only B can be accepted. This is the first habit to develop: test feasibility before being impressed by a large objective value.",
+      "file": "audio/slide-010.mp3",
+      "duration_seconds": 26.952
+    },
+    {
+      "slide": 11,
+      "title": "Slack variables and standard form",
+      "script": "Slack means unused capacity. Add slack one to the first resource equation and slack two to the second. Both slacks must be nonnegative. The picture here shows production two point five, zero. It leaves one point five units of resource one and none of resource two. Don't confuse this pictured point with the origin, where the unused capacities would be four and five.",
+      "file": "audio/slide-011.mp3",
+      "duration_seconds": 25.968
+    },
+    {
+      "slide": 12,
+      "title": "A basis selects the variables we solve for",
+      "script": "We have two independent equations and four variables after adding slacks. A basis selects two independent columns. Set the nonbasic variables to zero, then solve for the basic variables. Start with the two slack columns: production is zero and slacks are four and five. A basic solution becomes a basic feasible solution only after every variable passes the nonnegativity check.",
+      "file": "audio/slide-012.mp3",
+      "duration_seconds": 26.52
+    },
+    {
+      "slide": 13,
+      "title": "The Simplex decision at each step",
+      "script": "Simplex chooses an improving nonbasic variable, increases it as far as feasibility allows, and exchanges basis variables. The ratio test determines the permitted step. A positive reduced cost alone doesn't guarantee a strict improvement: at a degenerate point, the allowed step can be zero. If an improving direction has no finite limiting constraint, the objective is unbounded along that direction.",
+      "file": "audio/slide-013.mp3",
+      "duration_seconds": 26.472
+    },
+    {
+      "slide": 14,
+      "title": "Pivot 1: x enters, s₂ leaves",
+      "script": "At the origin, choose x to enter. Hold y at zero. Slack one becomes four minus x, while slack two becomes five minus two x. The limits are x at most four and x at most two point five. Choose the smaller limit. Resource two is exhausted first, so slack two leaves the basis. The new plan is two point five, zero, with contribution seven point five.",
+      "file": "audio/slide-014.mp3",
+      "duration_seconds": 27.36
+    },
+    {
+      "slide": 15,
+      "title": "Dictionary after the first pivot",
+      "script": "Derive this dictionary instead of memorizing it. Solve the second resource equation for x, then substitute into the first equation and the objective. The coefficient of y in the new objective is only one half. Why not two? Because increasing y forces some x out. The dictionary measures the net contribution after that feasible exchange, not the standalone contribution of y.",
+      "file": "audio/slide-015.mp3",
+      "duration_seconds": 27.072
+    },
+    {
+      "slide": 16,
+      "title": "Pivot 2: y enters, s₁ leaves",
+      "script": "Now let y enter while slack two remains zero. The x row permits y up to five, but the slack-one row permits only three. Slack one reaches zero first and leaves. At y equals three, x equals one. Both resources are fully used and the contribution is nine. Pause and identify the boundary followed during this move: it is the second resource constraint.",
+      "file": "audio/slide-016.mp3",
+      "duration_seconds": 26.16
+    },
+    {
+      "slide": 17,
+      "title": "The final dictionary certifies optimality",
+      "script": "The final objective is nine minus slack one minus slack two. Since both slacks are nonnegative, every feasible point has objective at most nine. The plan one, three attains nine, so the bound is sharp. This is an optimality certificate, not just a numerical stopping message. Later, the coefficients of the slacks will help us interpret the values of additional resources.",
+      "file": "audio/slide-017.mp3",
+      "duration_seconds": 25.848
+    },
+    {
+      "slide": 18,
+      "title": "Degeneracy and starting feasibility",
+      "script": "A degenerate basic feasible solution has a basic variable equal to zero. With capacities four and eight, the basis containing x and y gives x equal to four and y equal to zero. A pivot can then change the basis without moving the point. Also, a feasible slack basis is not always available. More general problems may need a Phase One procedure to find a starting basis.",
+      "file": "audio/slide-018.mp3",
+      "duration_seconds": 25.896
+    },
+    {
+      "slide": 19,
+      "title": "Practice: change the contribution",
+      "script": "Practice with a new objective: maximize x plus three y, keeping the original resource limits. Start at the origin. Choose an entering variable, do the ratio test, and write a dictionary after the pivot. Pause now and work on paper. In the companion lab, solve this modified model separately so that you don't accidentally carry the new coefficients into later baseline calculations.",
+      "file": "audio/slide-019.mp3",
+      "duration_seconds": 26.592
+    },
+    {
+      "slide": 20,
+      "title": "Practice solution: one pivot is enough",
+      "script": "Choose y first. Its two resource limits are four and five, so the first resource binds at y equal to four. Substitute y equals four minus x minus slack one into the objective. You get twelve minus two x minus three slack one. This cannot exceed twelve. Production zero, four attains the bound and leaves one unit of resource two unused.",
+      "file": "audio/slide-020.mp3",
+      "duration_seconds": 24.72
+    },
+    {
+      "slide": 21,
+      "title": "Break",
+      "script": "Take a break here if you're following the full lesson. Before continuing, think about this question: if a resource is completely used, must an additional unit always have positive value? The answer requires more care than checking whether a constraint is active. We'll use dual prices and complementary slackness to make that distinction precise after the break.",
+      "file": "audio/slide-021.mp3",
+      "duration_seconds": 22.656
+    },
+    {
+      "slide": 22,
+      "title": "The dual prices the resources",
+      "script": "Return to the original objective, three x plus two y. Let u and v be resource prices in hundreds of dollars per unit. Producing one unit of x consumes resources valued at u plus two v. That value must cover its contribution of three. For y, u plus v must cover two. These inequalities build an upper bound on any feasible production contribution.",
+      "file": "audio/slide-022.mp3",
+      "duration_seconds": 26.88
+    },
+    {
+      "slide": 23,
+      "title": "Primal and dual side by side",
+      "script": "The primal maximizes contribution while respecting capacities. Its dual minimizes the total capacity value under prices that cover each product's contribution. For this example, minimize four u plus five v, with u plus two v at least three and u plus v at least two. Both prices are nonnegative. Notice the transpose: one dual constraint comes from each primal variable.",
+      "file": "audio/slide-023.mp3",
+      "duration_seconds": 26.376
+    },
+    {
+      "slide": 24,
+      "title": "Signs depend on the formulation",
+      "script": "The signs on this slide apply to a maximization primal. A less-than-or-equal resource row has a nonnegative dual variable. A greater-than-or-equal row has a nonpositive one. An equality row gives a free dual variable. Variable signs similarly control the dual constraint directions. Don't copy these rules into a minimization formulation unchanged. First identify the objective direction and the exact way each constraint is written.",
+      "file": "audio/slide-024.mp3",
+      "duration_seconds": 31.2
+    },
+    {
+      "slide": 25,
+      "title": "Weak duality gives an upper bound",
+      "script": "Weak duality says every feasible production value is at most every feasible dual value. The proof uses nonnegativity and the two feasibility conditions. For example, prices two and one cover both product contributions and give a capacity value of thirteen. Therefore no feasible production plan can exceed thirteen. The bound is valid even though it isn't the tightest available bound.",
+      "file": "audio/slide-025.mp3",
+      "duration_seconds": 26.472
+    },
+    {
+      "slide": 26,
+      "title": "Dual geometry: tighten the upper bound",
+      "script": "In the dual picture, feasible prices lie above both covering lines, in the nonnegative quadrant. We minimize total capacity value over that region. The displayed corner prices give bounds of twelve, nine, and ten. The smallest is nine at prices one, one. Remember that the axes are resource prices here, not production quantities. The primal and dual pictures represent different decision spaces.",
+      "file": "audio/slide-026.mp3",
+      "duration_seconds": 28.728
+    },
+    {
+      "slide": 27,
+      "title": "Solve the dual and compare",
+      "script": "Subtract the two tight dual equations. From u plus two v equals three and u plus v equals two, obtain v equals one, then u equals one. Their dual value is nine. The feasible primal plan one, three also gives nine. Weak duality leaves no room between these bounds, proving both solutions optimal. Verify feasibility on both sides before using this argument.",
+      "file": "audio/slide-027.mp3",
+      "duration_seconds": 27.072
+    },
+    {
+      "slide": 28,
+      "title": "Strong duality for linear programs",
+      "script": "Strong duality guarantees equal optimal values for a feasible linear program with a finite optimum and its dual. If the primal is unbounded above, the dual cannot have a feasible finite upper bound, so it is infeasible. But primal infeasibility alone does not force dual unboundedness. Both problems can be infeasible. Keep these logical directions separate when diagnosing solver statuses.",
+      "file": "audio/slide-028.mp3",
+      "duration_seconds": 27.096
+    },
+    {
+      "slide": 29,
+      "title": "The duality gap separates two kinds of waste",
+      "script": "The duality gap splits into two sums. The first is resource price times unused capacity. The second is production times the excess assigned resource value over product contribution. For feasible primal and dual points, every term is nonnegative. Zero gap therefore requires each product to be zero. This decomposition explains complementary slackness and gives you a practical numerical check in the lab.",
+      "file": "audio/slide-029.mp3",
+      "duration_seconds": 28.656
+    },
+    {
+      "slide": 30,
+      "title": "Complementary slackness",
+      "script": "Unused resource implies zero price. Positive production implies a tight corresponding dual constraint. These follow from zero products of nonnegative quantities. The converse statement about activity is not valid: a binding resource can still have zero price. To use complementary slackness as an optimality test, first check primal and dual feasibility. Zero products alone, without feasibility, are not enough.",
+      "file": "audio/slide-030.mp3",
+      "duration_seconds": 29.28
+    },
+    {
+      "slide": 31,
+      "title": "LP duality is KKT in a special form",
+      "script": "L P duality fits the K K T framework. Rewrite maximization as minimization of the negative objective. Add nonnegative multipliers for resource inequalities, and subtract nonnegative multipliers times the nonnegative production variables. Stationarity gives negative c plus A transpose u minus r equals zero. Thus r is the dual slack. Primal feasibility, multiplier signs, and complementary slackness complete the certificate.",
+      "file": "audio/slide-031.mp3",
+      "duration_seconds": 31.416
+    },
+    {
+      "slide": 32,
+      "title": "Practice: a dual certificate",
+      "script": "Pause for a dual-certificate exercise. Change the objective to x plus three y. Write its dual yourself, then test primal production zero, four and dual prices three, zero. Calculate resource slacks, dual slacks, and all four complementary products. Don't stop after finding equal objective values. The equality is meaningful only when both proposed points satisfy their own constraints.",
+      "file": "audio/slide-032.mp3",
+      "duration_seconds": 26.952
+    },
+    {
+      "slide": 33,
+      "title": "Practice solution: zero price for unused capacity",
+      "script": "The modified dual must cover contributions one and three. Prices three, zero are feasible and give twelve, matching production zero, four. Resource slack is zero, one. Dual slack is two, zero. All four complementary products vanish. The unused second resource has zero price. The unproduced first product may have positive dual slack, because its production multiplier in the complementary product is zero.",
+      "file": "audio/slide-033.mp3",
+      "duration_seconds": 30.48
+    },
+    {
+      "slide": 34,
+      "title": "Shadow prices: value per extra unit",
+      "script": "Return to the original model and prices one, one. If the same basis remains feasible and optimal, the change in optimal contribution equals u times the first capacity change plus v times the second. For this L P, that formula is exact within the basis region. One objective unit means one hundred dollars. The remaining question is how far that region extends.",
+      "file": "audio/slide-034.mp3",
+      "duration_seconds": 25.872
+    },
+    {
+      "slide": 35,
+      "title": "1. Resource 1 changes, resource 2 stays fixed",
+      "script": "Change only resource one. Keep the second capacity fixed at five and the original contributions fixed at three and two. At first capacity four, the optimal plan is one, three. We'll derive the allowable range rather than accept a sensitivity number without explanation. The key is to follow the intersection of the two binding resource constraints and check when either production quantity becomes negative.",
+      "file": "audio/slide-035.mp3",
+      "duration_seconds": 26.784
+    },
+    {
+      "slide": 36,
+      "title": "2. The intersection moves with b₁",
+      "script": "Assume both resource rows remain tight. The equations are x plus y equals b one, and two x plus y equals five. Subtract the first from the second: x equals five minus b one. Substitute back to obtain y equals two b one minus five. These formulas describe the moving intersection. They do not automatically guarantee a feasible plan.",
+      "file": "audio/slide-036.mp3",
+      "duration_seconds": 25.68
+    },
+    {
+      "slide": 37,
+      "title": "3. Nonnegativity gives the allowable range",
+      "script": "Require both production quantities to remain nonnegative. Five minus b one at least zero gives b one at most five. Two b one minus five at least zero gives b one at least two point five. Together, the range is two point five through five. At either endpoint, one basic production variable reaches zero. That is where another basis may take over.",
+      "file": "audio/slide-037.mp3",
+      "duration_seconds": 25.248
+    },
+    {
+      "slide": 38,
+      "title": "4. Inside the range: b₁ = 4.5",
+      "script": "Try first capacity four point five. The intersection gives x equal to zero point five and y equal to four. The objective is nine point five, a gain of one half from the baseline nine. That means fifty dollars per day. Check both resource uses yourself. In the companion lab, predict this answer before changing the first entry of the capacity vector.",
+      "file": "audio/slide-038.mp3",
+      "duration_seconds": 25.776
+    },
+    {
+      "slide": 39,
+      "title": "5. Duality confirms the shadow price",
+      "script": "Now certify the moving intersection. Substituting the production formulas gives contribution b one plus five. The old dual prices one, one remain feasible because only capacities changed. Their dual objective is also b one plus five. Within the nonnegative production range, primal and dual values coincide. This proves the price of one is valid throughout that interval, not merely at the baseline point.",
+      "file": "audio/slide-039.mp3",
+      "duration_seconds": 28.896
+    },
+    {
+      "slide": 40,
+      "title": "6. Below the range: b₁ = 2",
+      "script": "Below the range, try b one equal to two. The old intersection would require y equal to negative one, so it fails. The actual optimum produces two units of x and none of y, giving six. Resource two has one unused unit. On the open interval below two point five, the value is three times b one. The first resource now has price three.",
+      "file": "audio/slide-040.mp3",
+      "duration_seconds": 25.728
+    },
+    {
+      "slide": 41,
+      "title": "7. Above the range: b₁ = 6",
+      "script": "Above the range, try first capacity six. The old intersection gives x equal to negative one, which is impossible. The new optimum is zero, five and gives ten. One unit of the first resource is unused, so its local price is zero. More of resource one cannot help when resource two remains the bottleneck. The old linear prediction would overestimate the gain.",
+      "file": "audio/slide-041.mp3",
+      "duration_seconds": 26.952
+    },
+    {
+      "slide": 42,
+      "title": "8. The value function changes slope",
+      "script": "Read the value graph from left to right. Its slopes are three, then one, then zero. The middle formula is valid at both endpoints, but the left and right slopes differ there. A single two-sided derivative does not exist at these corners. A solver may return a valid endpoint dual price that should not be treated as the unique marginal value in both directions.",
+      "file": "audio/slide-042.mp3",
+      "duration_seconds": 24.648
+    },
+    {
+      "slide": 43,
+      "title": "1. Resource 2 changes, resource 1 stays fixed",
+      "script": "Now reset the first capacity to four and vary only the second capacity. The baseline second capacity is five. We'll repeat the same logic, but the allowable interval will be different. Resetting matters: varying both capacities without noticing would answer a different question. Start by writing the two binding resource equations with b two in the second right-hand side.",
+      "file": "audio/slide-043.mp3",
+      "duration_seconds": 25.632
+    },
+    {
+      "slide": 44,
+      "title": "2. The intersection as a function of b₂",
+      "script": "The tight equations are x plus y equals four and two x plus y equals b two. Subtraction gives x equals b two minus four. Then y equals eight minus b two. Check these formulas at the baseline b two equals five: they give one and three. Next, impose nonnegativity. Don't decide the valid interval from the graph alone.",
+      "file": "audio/slide-044.mp3",
+      "duration_seconds": 24.72
+    },
+    {
+      "slide": 45,
+      "title": "3. Nonnegativity gives 4 ≤ b₂ ≤ 8",
+      "script": "Nonnegative x requires b two at least four. Nonnegative y requires b two at most eight. Therefore the old basis is feasible from four through eight. Relative to the baseline five, that permits a decrease of one or an increase of three. The endpoints give zero, four and four, zero. Beyond either endpoint, continuing the intersection formula would produce a negative variable.",
+      "file": "audio/slide-045.mp3",
+      "duration_seconds": 27.312
+    },
+    {
+      "slide": 46,
+      "title": "4. Inside the range: b₂ = 6",
+      "script": "At second capacity six, production becomes two, two. Its contribution is six plus four, or ten. That is one hundred dollars per day above the baseline. The second resource increased by one, and its price was one objective unit per capacity unit. Verify resource one is still fully used. Then reproduce this case in the lab, holding the first capacity fixed at four.",
+      "file": "audio/slide-046.mp3",
+      "duration_seconds": 27.96
+    },
+    {
+      "slide": 47,
+      "title": "5. Duality confirms the price of resource 2",
+      "script": "Substitute the intersection formulas into the objective to get b two plus four. The old prices one, one give the same dual value: four plus b two. As long as production remains feasible, this equality certifies optimality. The value therefore increases by one objective unit for each additional second-resource unit throughout the allowable interval. At the boundaries, remember the distinction between value formulas and directional slopes.",
+      "file": "audio/slide-047.mp3",
+      "duration_seconds": 29.664
+    },
+    {
+      "slide": 48,
+      "title": "6. Below the range: b₂ = 3",
+      "script": "Below the interval, set second capacity to three. The old intersection has negative x. The new optimum is zero, three, giving six. Resource one now has one unused unit. In this lower-capacity regime, the value is twice b two, so the second resource has local price two. Reoptimization changes both the production plan and the economically relevant resource prices.",
+      "file": "audio/slide-048.mp3",
+      "duration_seconds": 28.032
+    },
+    {
+      "slide": 49,
+      "title": "7. Above the range: b₂ = 9",
+      "script": "Above the interval, set second capacity to nine. The old formula gives negative y. The actual optimum is four, zero, giving twelve. Resource one limits production, and one unit of resource two is unused. Throughout this upper regime, extra resource two adds no contribution. Its local price is zero, even though it had price one at the original capacities.",
+      "file": "audio/slide-049.mp3",
+      "duration_seconds": 27.168
+    },
+    {
+      "slide": 50,
+      "title": "8. The value function for resource 2",
+      "script": "The second-resource value graph has slopes two, one, and zero. At four, the slope changes from two to one. At eight, it changes from one to zero. The piecewise formulas agree at the breakpoints, so the value function is continuous. For a change that crosses a breakpoint, solve the new model or use the appropriate pieces rather than multiplying the whole change by the old price.",
+      "file": "audio/slide-050.mp3",
+      "duration_seconds": 26.04
+    },
+    {
+      "slide": 51,
+      "title": "9. Changing both resources needs a joint check",
+      "script": "When both capacities change, the one-at-a-time ranges cannot be treated as an independent rectangle. The intersection is x equals b two minus b one, and y equals two b one minus b two. Nonnegativity requires b one at most b two, and b two at most twice b one. Capacities five, four violate this joint condition, even though each coordinate belongs to its separate baseline range.",
+      "file": "audio/slide-051.mp3",
+      "duration_seconds": 25.656
+    },
+    {
+      "slide": 52,
+      "title": "1. Objective sensitivity keeps the feasible set fixed",
+      "script": "Objective sensitivity asks a different question. Keep the feasible region fixed and change only the contribution of x. The objective is c one times x plus two y. At c one equal to three, the best point is one, three. We want the coefficient range that preserves this optimum. This time the production constraints do not move; the objective contour rotates.",
+      "file": "audio/slide-052.mp3",
+      "duration_seconds": 26.424
+    },
+    {
+      "slide": 53,
+      "title": "2. Complementary slackness determines the prices",
+      "script": "At production one, three, both quantities are positive. Complementary slackness therefore makes both dual product constraints tight. Subtract u plus v equals c two from u plus two v equals c one. This gives v equal to c one minus c two. Then u equals twice c two minus c one. These prices must remain nonnegative for the candidate certificate to work.",
+      "file": "audio/slide-053.mp3",
+      "duration_seconds": 26.424
+    },
+    {
+      "slide": 54,
+      "title": "3. Nonnegative dual prices give the range",
+      "script": "Nonnegative v requires c one at least c two. Nonnegative u requires c one at most twice c two. With c two fixed at two, c one must lie between two and four. Geometrically, the objective slope lies between the slopes of the two active edges. The endpoint coefficients preserve the point as an optimum, but introduce other optimal points along an edge.",
+      "file": "audio/slide-054.mp3",
+      "duration_seconds": 24.84
+    },
+    {
+      "slide": 55,
+      "title": "4. Below the range: c₁ = 1",
+      "script": "Set c one to one. At the old plan one, three, the value is seven. At zero, four, it is eight, so the old plan loses optimality. The old price formula also gives a negative v, violating dual feasibility. Both the vertex comparison and the failed certificate tell the same story. Keep the resource limits unchanged while testing this case.",
+      "file": "audio/slide-055.mp3",
+      "duration_seconds": 26.352
+    },
+    {
+      "slide": 56,
+      "title": "5. At c₁ = 2, an entire edge is optimal",
+      "script": "At c one equal to two, the objective is two times the sum of x and y. Resource one bounds that sum by four, giving value at most eight. Every feasible point along the edge from zero, four to one, three attains eight. A solver may return either endpoint. Check value and feasibility instead of demanding one specific solution vector.",
+      "file": "audio/slide-056.mp3",
+      "duration_seconds": 22.32
+    },
+    {
+      "slide": 57,
+      "title": "6. Inside the range: c₁ = 3.5",
+      "script": "Inside the range, try c one equal to three point five. Production stays at one, three, but contribution rises to nine point five. The resource prices change to zero point five and one point five. Their capacity value also equals nine point five. This illustrates an important distinction: a production plan can remain unchanged while its resource values change.",
+      "file": "audio/slide-057.mp3",
+      "duration_seconds": 25.68
+    },
+    {
+      "slide": 58,
+      "title": "7. At c₁ = 4, the other edge is optimal",
+      "script": "At c one equal to four, the objective becomes twice the second resource expression. It is bounded above by ten. Every feasible point on the second resource edge between one, three and two point five, zero attains that value. Prices are zero and two. This is another optimal edge, different from the edge at c one equal to two.",
+      "file": "audio/slide-058.mp3",
+      "duration_seconds": 23.424
+    },
+    {
+      "slide": 59,
+      "title": "8. Above the range: c₁ = 5",
+      "script": "Set c one to five. The old plan gives eleven, but producing two point five units of x gives twelve point five. The old formula would require a negative u, so its certificate fails. Above coefficient four, the x-only corner becomes uniquely optimal for this model. The feasible polygon stays the same throughout this comparison; only how we value production changes.",
+      "file": "audio/slide-059.mp3",
+      "duration_seconds": 26.208
+    },
+    {
+      "slide": 60,
+      "title": "9. Optimal value as the coefficient changes",
+      "script": "As c one varies, the optimal-value graph has three pieces: eight, then c one plus six, then two point five times c one. On each open interval, its slope equals the optimal amount of x. At the breakpoints, optimal x is not unique. Don't confuse this objective-coefficient derivative with a shadow price, which measures a change in a constraint right-hand side.",
+      "file": "audio/slide-060.mp3",
+      "duration_seconds": 24.192
+    },
+    {
+      "slide": 61,
+      "title": "1. Return to the original production model",
+      "script": "Reset everything to the original model: contribution three and two, capacities four and five. The best plan is one, three with value nine, and resource prices are one, one. Now consider a third product, t. Before solving a larger model, we can screen its attractiveness by comparing its contribution with the resource value it consumes at the current prices.",
+      "file": "audio/slide-061.mp3",
+      "duration_seconds": 24.24
+    },
+    {
+      "slide": 62,
+      "title": "2. Price the resources used by the new product",
+      "script": "The new product contributes four objective units and uses one unit of resource one and two of resource two. At old prices one, one, those resources are valued at three. Contribution exceeds resource value by one. That difference is the candidate's reduced cost for the maximization problem. Next, we must show a feasible exchange and find how far it can continue.",
+      "file": "audio/slide-062.mp3",
+      "duration_seconds": 25.536
+    },
+    {
+      "slide": 63,
+      "title": "3. Derive reduced cost from a feasible exchange",
+      "script": "Keep both resources fully used while introducing t. The equations imply x plus t equals one, while y stays three. So each new unit of t replaces one unit of x. Substitution into the objective gives nine plus t. The gain per unit is one, exactly the reduced cost. This is a feasible exchange argument, not a claim that you can add unlimited new production.",
+      "file": "audio/slide-063.mp3",
+      "duration_seconds": 26.232
+    },
+    {
+      "slide": 64,
+      "title": "4. The feasible step ends when x reaches zero",
+      "script": "Because x equals one minus t, the current exchange is feasible only from t equal to zero through one. At t equal to one, production is zero, three, one and contribution reaches ten. Beyond that, the same formula would make x negative. Stop the old exchange there. A further change requires a different allocation rule and another optimality check.",
+      "file": "audio/slide-064.mp3",
+      "duration_seconds": 25.104
+    },
+    {
+      "slide": 65,
+      "title": "5. The new product invalidates the old certificate",
+      "script": "Adding a product adds a constraint to the dual. Its resource value, u plus two v, must now cover four. The old prices one, one give only three, so they are no longer dual feasible for the expanded model. Therefore the old upper bound of nine is invalid. The price calculation identifies exactly which new constraint breaks the old certificate.",
+      "file": "audio/slide-065.mp3",
+      "duration_seconds": 24.264
+    },
+    {
+      "slide": 66,
+      "title": "6. Reoptimize and certify the new maximum",
+      "script": "Try new prices zero, two. They cover all three contributions and value total capacity at ten. The feasible plan zero, three, one attains ten, so it is optimal. At these new prices, the maximization reduced costs are negative one, zero, and zero. Product x is no longer competitive, while y and t can appear in optimal production plans.",
+      "file": "audio/slide-066.mp3",
+      "duration_seconds": 25.44
+    },
+    {
+      "slide": 67,
+      "title": "7. More than one new production plan is optimal",
+      "script": "There is more than one optimal expanded plan. Set x to zero and use the second resource fully: y plus two t equals five. Feasibility requires t between one and two point five. Every such plan gives ten. The solver may return zero, zero, two point five instead of zero, three, one. In your checks, allow alternative optimal allocations and verify their constraints and value.",
+      "file": "audio/slide-067.mp3",
+      "duration_seconds": 27.912
+    },
+    {
+      "slide": 68,
+      "title": "8. Compare three possible product contributions",
+      "script": "Keep the new product's resource column fixed and vary its contribution. At contribution two, its reduced cost is negative and it should not enter the optimum. At contribution three, a feasible exchange can preserve value nine. At contribution four, the positive reduced cost leads to value ten after reoptimization. Zero reduced cost signals a possible neutral exchange here, not an unlimited profitable opportunity.",
+      "file": "audio/slide-068.mp3",
+      "duration_seconds": 29.16
+    },
+    {
+      "slide": 69,
+      "title": "9. A reduced-cost decision checklist",
+      "script": "For a maximization problem, reduced cost is contribution minus the current resource valuation of a column. Use it in three stages: value the column, check the allowed feasible step, then reoptimize and certify the result. At an optimal basis, nonbasic variables at their lower bounds have nonpositive maximization reduced costs. Variables at upper bounds require a different sign interpretation.",
+      "file": "audio/slide-069.mp3",
+      "duration_seconds": 27.264
+    },
+    {
+      "slide": 70,
+      "title": "1. Send a minimization model to SciPy",
+      "script": "This is the starting point for the practical lab. SciPy's linear-programming function minimizes. To maximize three x plus two y, pass coefficients negative three and negative two. Keep the resource matrix and capacities unchanged. Use nonnegative bounds and the HiGHS method. Open the guided lab, run the setup block, then solve the baseline. Pause until you have obtained your own result.",
+      "file": "audio/slide-070.mp3",
+      "duration_seconds": 28.656
+    },
+    {
+      "slide": 71,
+      "title": "2. Read the actual solver output",
+      "script": "Read the output in order. First, success must be true. Then inspect the production vector, which should be one, three. The reported objective is negative nine because we minimized negative contribution. Slacks are zero and zero. Inequality marginals are negative one and negative one. In the lab, print these fields individually rather than copying the entire result without interpreting it.",
+      "file": "audio/slide-071.mp3",
+      "duration_seconds": 28.896
+    },
+    {
+      "slide": 72,
+      "title": "3. Derive the sign instead of memorizing it",
+      "script": "Derive the sign conversion. Let F be the minimized negative contribution. SciPy's row marginal measures how F changes when a resource right-hand side changes. Our contribution z is negative F, so its sensitivity has the opposite sign. A marginal of negative one therefore means a positive contribution shadow price of one. This conversion applies to this sign-changed formulation, not every solver output automatically.",
+      "file": "audio/slide-072.mp3",
+      "duration_seconds": 29.64
+    },
+    {
+      "slide": 73,
+      "title": "4. Verify resource 1 with a small perturbation",
+      "script": "Test resource one with a small change. Increase its capacity from four to four point one, keeping resource two at five. The new plan should be zero point nine, three point two. The minimized objective becomes negative nine point one, while contribution becomes nine point one. Divide each objective change by zero point one. You should obtain negative one for the solver objective and positive one for contribution.",
+      "file": "audio/slide-073.mp3",
+      "duration_seconds": 28.176
+    },
+    {
+      "slide": 74,
+      "title": "5. Verify resource 2 independently",
+      "script": "Reset resource one to four before testing resource two. Increase the second capacity to five point one. The new production vector is one point one, two point nine. Contribution is again nine point one. The same gain comes from a different production adjustment. Always match each marginal to the corresponding row of the input matrix, and change one right-hand side at a time when checking a partial derivative.",
+      "file": "audio/slide-074.mp3",
+      "duration_seconds": 27.96
+    },
+    {
+      "slide": 75,
+      "title": "6. A marginal is not a global prediction",
+      "script": "Now deliberately leave the old range by setting first capacity to six. The old price would predict eleven, but reoptimization gives ten at zero, five. The first resource has slack one. SciPy's row marginals become zero and negative two, corresponding to contribution prices zero and two. This exercise shows why a marginal from one solve is not a global prediction rule.",
+      "file": "audio/slide-075.mp3",
+      "duration_seconds": 26.424
+    },
+    {
+      "slide": 76,
+      "title": "7. Row marginals and bound marginals differ",
+      "script": "Change the objective to x plus three y. The optimum is zero, four. Row marginals describe resource capacities, but lower-bound marginals describe variable bounds. The lower-bound marginal of x is positive two for the minimized objective. Force x to be at least zero point one, keeping all resource capacities unchanged. The minimized objective rises from negative twelve to negative eleven point eight.",
+      "file": "audio/slide-076.mp3",
+      "duration_seconds": 28.896
+    },
+    {
+      "slide": 77,
+      "title": "8. Connect the bound marginal to reduced cost",
+      "script": "For that modified objective, resource prices are three and zero. Product x has maximization reduced cost one minus three, or negative two. Forcing one tenth of x into production loses two tenths of a contribution unit, or twenty dollars per day. Its minimization lower-bound marginal is positive two. Always identify the field, the perturbed quantity, and the objective sign before interpreting a number.",
+      "file": "audio/slide-077.mp3",
+      "duration_seconds": 28.224
+    },
+    {
+      "slide": 78,
+      "title": "1. Define the baseline and the purchase offer",
+      "script": "Return to the baseline model before evaluating a purchase. Contribution is nine hundred dollars per day. Let q be additional resource-one capacity. Offer A adds half a unit for a total daily cost of thirty dollars. Our decision compares incremental contribution with this new purchase cost. Existing variable costs are already represented in the contribution coefficients and should not be subtracted again.",
+      "file": "audio/slide-078.mp3",
+      "duration_seconds": 29.16
+    },
+    {
+      "slide": 79,
+      "title": "2. Convert the shadow-price range into a purchase limit",
+      "script": "The old first-resource range ends at capacity five. Starting from four and buying q units gives four plus q. Thus the original price remains valid for purchases from zero through one. Within that interval, gross gain is one hundred times q dollars per day. Beyond one, we must reoptimize. A favorable local price does not justify buying an unlimited amount.",
+      "file": "audio/slide-079.mp3",
+      "duration_seconds": 26.568
+    },
+    {
+      "slide": 80,
+      "title": "3. Add 0.5 capacity and calculate the gross gain",
+      "script": "Offer A adds half a unit, so the new first capacity is four point five. Production becomes zero point five and four. Contribution rises to nine hundred fifty dollars per day. The gross gain is fifty dollars, agreeing with the old shadow price times the added capacity. Check the new production plan as well as the predicted financial gain.",
+      "file": "audio/slide-080.mp3",
+      "duration_seconds": 23.736
+    },
+    {
+      "slide": 81,
+      "title": "4. Subtract the purchase cost exactly once",
+      "script": "Subtract the offer's thirty-dollar daily cost once. Fifty dollars of gross gain minus thirty gives twenty dollars of net benefit. Total contribution after this new cost is nine hundred twenty dollars per day, compared with the nine hundred-dollar baseline. Under the stated model and offer, buying is worthwhile. Keep gross gain, purchase cost, and net benefit as separate quantities.",
+      "file": "audio/slide-081.mp3",
+      "duration_seconds": 25.824
+    },
+    {
+      "slide": 82,
+      "title": "5. Buying 2 units crosses the useful range",
+      "script": "Buying two extra units takes first capacity to six, beyond the useful old-price interval. Reoptimization gives a contribution of one thousand dollars, so the actual gain is only one hundred dollars. The old price would wrongly predict two hundred. For this model, gross gain rises linearly until q equals one, then stays flat because resource two prevents further improvement.",
+      "file": "audio/slide-082.mp3",
+      "duration_seconds": 24.96
+    },
+    {
+      "slide": 83,
+      "title": "6. Use a break-even price for the whole offer",
+      "script": "For a two-unit package, the maximum useful payment is one hundred dollars per day. If its total cost is one hundred fifty, net benefit is negative fifty, so reject it. At a cost of one hundred, the model is indifferent. Below one hundred, the package improves the baseline. Compare total package cost with total attainable gain, rather than valuing all units at the original marginal price.",
+      "file": "audio/slide-083.mp3",
+      "duration_seconds": 27.168
+    },
+    {
+      "slide": 84,
+      "title": "7. If capacity is divisible, choose how much to buy",
+      "script": "Now change the pricing assumption: capacity is divisible and costs sixty dollars per unit, with no fixed fee. Up to one unit, net benefit rises at forty dollars per unit. Beyond one, gross gain is flat while cost keeps increasing. Therefore the best purchase is exactly one unit, giving forty dollars per day of net benefit. This answer depends on the stated pricing rule.",
+      "file": "audio/slide-084.mp3",
+      "duration_seconds": 26.112
+    },
+    {
+      "slide": 85,
+      "title": "8. Compare complete offers by net benefit",
+      "script": "Compare the complete offers, including the option to buy nothing. Offer A gives twenty dollars of net benefit. B gives thirty. C gives only ten, despite supplying the most capacity. Choose B if at most one package may be selected. Your lab exercise will reproduce these values with reoptimization, so the recommendation doesn't rely on extrapolating a shadow price beyond its valid interval.",
+      "file": "audio/slide-085.mp3",
+      "duration_seconds": 27.912
+    },
+    {
+      "slide": 86,
+      "title": "Exit ticket 1: can an entire edge be optimal?",
+      "script": "Exit ticket one changes the objective to two x plus two y. Keep the original resource constraints. Find the full set of optimal production plans, not just one point. Pause the recording and use a resource inequality to construct an upper bound. Then identify every feasible point that attains it. The solution appears after the remaining questions.",
+      "file": "audio/slide-086.mp3",
+      "duration_seconds": 24.168
+    },
+    {
+      "slide": 87,
+      "title": "Exit ticket 2: is this a valid dual bound?",
+      "script": "Exit ticket two returns to the original objective. Test proposed dual prices one, zero. Check nonnegativity and both covering constraints, then compute the dual objective. Can that number bound every feasible primal value? Explain why or give a counterexample. Pause and write your reasoning. A small dual objective is useful only if the prices are dual feasible.",
+      "file": "audio/slide-087.mp3",
+      "duration_seconds": 27.744
+    },
+    {
+      "slide": 88,
+      "title": "Exit ticket 3: construct an optimality certificate",
+      "script": "Exit ticket three asks for a complete optimality certificate. Give a feasible production plan and feasible resource prices for the original model. Check their constraints, calculate both objective values, and explain why equality proves optimality. A solver status alone isn't the requested certificate. Try to write the bounding inequality in one sentence before looking at the solution.",
+      "file": "audio/slide-088.mp3",
+      "duration_seconds": 26.496
+    },
+    {
+      "slide": 89,
+      "title": "Exit ticket 4: when does the shadow price work?",
+      "script": "Exit ticket four concerns the valid range of a shadow price. Hold second capacity at five. First predict the result when first capacity becomes four point two, then examine a jump to six. State the allowable range and the actual optimum outside it. For each prediction, check whether the old production formulas remain nonnegative. Pause here until you have answered all four questions.",
+      "file": "audio/slide-089.mp3",
+      "duration_seconds": 27.336
+    },
+    {
+      "slide": 90,
+      "title": "Solution 1: combine a bound with an attainable edge",
+      "script": "For question one, two times the sum of x and y is at most eight because x plus y is at most four. Equality requires y equal to four minus x. Substituting into the other resource constraint gives x at most one. With nonnegativity, x ranges from zero to one. Every point on that edge is feasible and attains eight, so the whole edge is optimal.",
+      "file": "audio/slide-090.mp3",
+      "duration_seconds": 23.4
+    },
+    {
+      "slide": 91,
+      "title": "Solution 2: this dual candidate fails to give a bound",
+      "script": "For question two, prices one, zero pass nonnegativity but fail both covering constraints. Their objective is four, which is not a valid upper bound here. The feasible primal plan one, three gives nine and directly contradicts that bound. The lesson is not that every infeasible dual point must give a low number. The lesson is that weak duality requires dual feasibility.",
+      "file": "audio/slide-091.mp3",
+      "duration_seconds": 25.56
+    },
+    {
+      "slide": 92,
+      "title": "Solution 3: verify both sides before equating values",
+      "script": "For question three, primal production one, three uses resources four and five and gives value nine. Dual prices one, one cover contributions three and two and also give nine. Any feasible primal value is at most any feasible dual value. Therefore the optimal value is trapped between nine and nine. Both displayed solutions are optimal, independently of a solver's status message.",
+      "file": "audio/slide-092.mp3",
+      "duration_seconds": 26.376
+    },
+    {
+      "slide": 93,
+      "title": "Solution 4A: predict, then check at b₁=4.2",
+      "script": "At first capacity four point two, we're inside the interval from two point five to five. The gain is zero point two, so contribution is nine point two. The production formulas give zero point eight and three point four. Check resource use and calculate the objective directly. Both checks agree. This is nine hundred twenty dollars per day before any extra purchase cost.",
+      "file": "audio/slide-093.mp3",
+      "duration_seconds": 26.256
+    },
+    {
+      "slide": 94,
+      "title": "Solution 4B: expose the failed extrapolation at 6",
+      "script": "At first capacity six, the old rule predicts eleven but requires negative production of x. The actual optimum is zero, five with value ten. New prices zero, two are dual feasible and give the same value ten. This certifies the corrected answer. The failure occurs because the old basis stops being feasible when first capacity passes five, not because shadow prices are intrinsically unreliable.",
+      "file": "audio/slide-094.mp3",
+      "duration_seconds": 27.864
+    },
+    {
+      "slide": 95,
+      "title": "The big picture: one LP, four connected ideas",
+      "script": "Connect the four ideas in the diagram. The primal proposes a feasible production plan. The dual provides a valid upper bound. Complementary slackness explains how the gap closes at optimum. Shadow prices then measure resource changes within a valid region. When a change leaves that region, return to the model, reoptimize, and reconnect all four checks rather than trusting an outdated price.",
+      "file": "audio/slide-095.mp3",
+      "duration_seconds": 27.624
+    },
+    {
+      "slide": 96,
+      "title": "1. Primal proposes a plan; dual certifies its value",
+      "script": "A primal solution tells us what to produce. A dual solution tells us why no feasible plan can do better. Here, the plan one, three gives nine, and prices one, one give a bound of nine. Their objective components differ, but their totals coincide. Say the certificate aloud: feasible primal value, at most the optimal value, at most feasible dual value.",
+      "file": "audio/slide-096.mp3",
+      "duration_seconds": 25.608
+    },
+    {
+      "slide": 97,
+      "title": "2. Complementary slackness closes the duality gap",
+      "script": "Write out the four terms in the gap identity. They are u times first-resource slack, v times second-resource slack, x times its dual slack, and y times its dual slack. Feasibility makes all terms nonnegative. At optimum their sum is zero, so each vanishes. The r quantities on this slide are dual slacks; maximization reduced costs use the opposite sign.",
+      "file": "audio/slide-097.mp3",
+      "duration_seconds": 25.032
+    },
+    {
+      "slide": 98,
+      "title": "3. Dual prices become local resource values",
+      "script": "Within the current basis region, dual prices become exact coefficients for changes in capacities. For one-at-a-time changes, first capacity ranges from two point five to five, and second from four to eight. If both change, check the joint inequalities instead. The example first capacity four point two adds twenty dollars per day of gross contribution. Purchase costs still need to be considered separately.",
+      "file": "audio/slide-098.mp3",
+      "duration_seconds": 27.672
+    },
+    {
+      "slide": 99,
+      "title": "4. When capacity changes, reconnect all four ideas",
+      "script": "At capacities six and five, the new plan is zero, five and the new prices are zero, two. Both values are ten. Resource slack is one, zero and dual slack is one, zero, so every complementary product vanishes. Locally, more resource one adds nothing, while more resource two adds two objective units per unit. This completes the cycle using a different optimal basis.",
+      "file": "audio/slide-099.mp3",
+      "duration_seconds": 26.184
+    },
+    {
+      "slide": 100,
+      "title": "References and optional follow-up",
+      "script": "Use the reading references for deeper theory and the SciPy documentation for exact solver-field definitions. For practice, open the companion guided lab included with this recording. It provides executable steps, predicted outputs, exercises, and a separate answer key. Reproduce the baseline, perturb one input at a time, then explain each result in words. Being able to verify a solution matters more than simply pressing Run.",
+      "file": "audio/slide-100.mp3",
+      "duration_seconds": 29.568
+    }
+  ],
+  "total_duration_seconds": 2678.352
+}

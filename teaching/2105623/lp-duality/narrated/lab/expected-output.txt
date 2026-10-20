@@ -1,0 +1,93 @@
+STEP 1: Set up the model
+Resource matrix:
+[[1. 1.]
+ [2. 1.]]
+Contributions: [3. 2.]
+Capacities: [4. 5.]
+
+STEP 2: Solve and read the baseline
+success: True
+production: [1. 3.]
+minimized objective: -9.0
+max contribution: 9.0
+resource slack: [0. 0.]
+row marginals: [-1. -1.]
+
+STEP 3: Verify the plan without trusting the solver
+resource use: [4. 5.]
+computed slack: [0. 0.]
+computed contribution: 9.0
+candidate (2,2) resource use: [4. 6.]
+candidate feasible: False
+vertex contributions: [0.  7.5 9.  8. ]
+
+STEP 4: Solve the dual explicitly
+dual prices: [1. 1.]
+dual slack: [0. 0.]
+dual objective: 9.0
+duality gap: 0.0
+
+STEP 5: Check complementarity and signs
+complementarity products: [0. 0. 0. 0.]
+profit shadow prices: [1. 1.]
+max reduced costs: [0. 0.]
+
+STEP 6: Perturb one capacity at a time
+resource 1 production [0.9 3.2] min slope -1.0 profit slope 1.0
+resource 2 production [1.1 2.9] min slope -1.0 profit slope 1.0
+
+STEP 7: Discover the range for resource one
+b1 2 plan [2. 0.] value 6.0 old plan feasible False old predicted value 7
+b1 2.5 plan [ 2.5 -0. ] value 7.5 old plan feasible True old predicted value 7.5
+b1 4 plan [1. 3.] value 9.0 old plan feasible True old predicted value 9
+b1 4.5 plan [0.5 4. ] value 9.5 old plan feasible True old predicted value 9.5
+b1 5 plan [0. 5.] value 10.0 old plan feasible True old predicted value 10
+b1 6 plan [0. 5.] value 10.0 old plan feasible False old predicted value 11
+At 2.5 and 5, left and right slopes differ.
+
+STEP 8: Resource two and simultaneous changes
+b2 3 plan [0. 3.] value 6.0
+b2 4 plan [0. 4.] value 8.0
+b2 5 plan [1. 3.] value 9.0
+b2 6 plan [2. 2.] value 10.0
+b2 8 plan [ 4. -0.] value 12.0
+b2 9 plan [4. 0.] value 12.0
+old joint plan: [-1.  6.]
+joint range satisfied: False
+actual joint solution: [0. 4.] value 8.0
+
+STEP 9: Rotate the objective
+c1 1 plan [0. 4.] value 8.0
+c1 2 plan [0. 4.] value 8.0
+c1 3 plan [1. 3.] value 9.0
+c1 3.5 plan [1. 3.] value 9.5
+c1 4 plan [1. 3.] value 10.0
+c1 5 plan [2.5 0. ] value 12.5
+Both endpoint optimal edges verified.
+
+STEP 10: Introduce a new product and reoptimize
+ct 2 old reduced cost -1 plan [1. 3. 0.] value 9.0
+ct 3 old reduced cost 0 plan [1. 3. 0.] value 9.0
+ct 4 old reduced cost 1 plan [0.  0.  2.5] value 10.0
+Alternative new-product optima certified at value 10.
+
+STEP 11: Interpret a lower-bound marginal
+baseline plan: [0. 4.]
+row marginals: [-3. -0.]
+lower-bound marginals: [2. 0.]
+forced plan: [0.1 3.9]
+profit loss: 0.2
+
+STEP 12: Choose capacity by net benefit
+None gross gain 0.0 cost 0 net benefit 0.0
+A gross gain 50.0 cost 30 net benefit 20.0
+B gross gain 100.0 cost 70 net benefit 30.0
+C gross gain 100.0 cost 90 net benefit 10.0
+best package: B net benefit: 30.0
+divisible capacity: q = 1.0 net = 40.0
+
+STEP 13: Diagnose failures and attempt the exercises
+infeasible success/status: False 2
+unbounded success/status: False 3
+Do not interpret failed solves as optimal production plans.
+Next: complete the independent exercises, then check answers.py.

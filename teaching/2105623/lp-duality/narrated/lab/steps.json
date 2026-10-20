@@ -1,0 +1,145 @@
+[
+  {
+    "step": 1,
+    "title": "Set up the model",
+    "slide": 5,
+    "task": "Write the two resource rows yourself before copying. Which row contains the coefficient 2?",
+    "code": "import numpy as np\nfrom scipy.optimize import linprog\nnp.set_printoptions(precision=4, suppress=True)\nA = np.array([[1., 1.], [2., 1.]])\nc = np.array([3., 2.])  # Contributions, not minimization coefficients.\nb = np.array([4., 5.])\ndef solve(c=(3., 2.), b=(4., 5.), matrix=A, bounds=(0, None)):\n    result = linprog(-np.asarray(c, dtype=float),\n                     A_ub=matrix, b_ub=np.asarray(b, dtype=float),\n                     bounds=bounds, method=\"highs\")\n    if not result.success:\n        raise RuntimeError(result.message)\n    return result\nprint(\"Resource matrix:\", A, sep=\"\\n\")\nprint(\"Contributions:\", c)\nprint(\"Capacities:\", b)",
+    "script": "Open a Python editor with NumPy and SciPy available. Follow the setup instructions on this page if the imports fail. Run the blocks in order, in the same session. In the first block, enter the resource matrix with one row per constraint and one column per product. The second row is two, one. Keep positive contribution coefficients here; our helper function changes their signs when calling the minimization solver. Predict the matrix and vectors that will print, run the block, and compare. Nothing is optimized yet. This step checks that the computer model matches the problem you intended to write.",
+    "output": "Resource matrix:\n[[1. 1.]\n [2. 1.]]\nContributions: [3. 2.]\nCapacities: [4. 5.]\n",
+    "file": "audio/demo-01.mp3",
+    "duration_seconds": 42.072
+  },
+  {
+    "step": 2,
+    "title": "Solve and read the baseline",
+    "slide": 71,
+    "task": "Predict production, contribution and unused capacity. Run, then compare all three.",
+    "code": "base = solve()\nprint(\"success:\", base.success)\nprint(\"production:\", base.x)\nprint(\"minimized objective:\", base.fun)\nprint(\"max contribution:\", -base.fun)\nprint(\"resource slack:\", base.ineqlin.residual)\nprint(\"row marginals:\", base.ineqlin.marginals)\nassert np.allclose(base.x, [1, 3])\nassert np.isclose(-base.fun, 9)",
+    "script": "Run the baseline solver block. First check success. If it is false, stop and diagnose the model instead of interpreting a solution vector. With the supplied data, production should be one and three. The minimized objective is negative nine, while maximum contribution is positive nine. Both resource slacks should be zero. Notice the negative row marginals. Don't relabel them as negative resource values. They refer to the minimized negative contribution. Pause and explain each printed line in your own words before opening the expected output.",
+    "output": "success: True\nproduction: [1. 3.]\nminimized objective: -9.0\nmax contribution: 9.0\nresource slack: [0. 0.]\nrow marginals: [-1. -1.]\n",
+    "file": "audio/demo-02.mp3",
+    "duration_seconds": 40.008
+  },
+  {
+    "step": 3,
+    "title": "Verify the plan without trusting the solver",
+    "slide": 7,
+    "task": "Check the infeasible candidate (2,2). Explain why contribution 10 cannot beat the optimum.",
+    "code": "x = base.x\nuse = A @ x\nslack = b - use\nprint(\"resource use:\", use)\nprint(\"computed slack:\", slack)\nprint(\"computed contribution:\", c @ x)\nassert np.all(x >= -1e-9)\nassert np.all(slack >= -1e-9)\nbad = np.array([2., 2.])\nprint(\"candidate (2,2) resource use:\", A @ bad)\nprint(\"candidate feasible:\", bool(np.all(A @ bad <= b)))\nvertices = np.array([[0,0], [2.5,0], [1,3], [0,4]])\nprint(\"vertex contributions:\", vertices @ c)",
+    "script": "Now verify the returned plan independently. Multiply the original resource matrix by production and subtract from capacities. This should reproduce the reported slacks. Also compute contribution directly from the positive coefficients. Then test the tempting candidate two, two. Its contribution is ten, but resource two would require six units. The candidate is infeasible and must be rejected. Finally, compare the four vertex contributions. This gives a small geometric check independent of the solver's status. Use tolerances for floating-point calculations rather than expecting every computed zero to be printed identically.",
+    "output": "resource use: [4. 5.]\ncomputed slack: [0. 0.]\ncomputed contribution: 9.0\ncandidate (2,2) resource use: [4. 6.]\ncandidate feasible: False\nvertex contributions: [0.  7.5 9.  8. ]\n",
+    "file": "audio/demo-03.mp3",
+    "duration_seconds": 45.912
+  },
+  {
+    "step": 4,
+    "title": "Solve the dual explicitly",
+    "slide": 27,
+    "task": "Why do we negate both A transpose and c in the dual inequalities?",
+    "code": "dual = linprog(b, A_ub=-A.T, b_ub=-c,\n               bounds=(0, None), method=\"highs\")\nassert dual.success, dual.message\nprices = dual.x\nprint(\"dual prices:\", prices)\nprint(\"dual slack:\", A.T @ prices - c)\nprint(\"dual objective:\", dual.fun)\nprint(\"duality gap:\", dual.fun + base.fun)\nassert np.all(A.T @ prices >= c - 1e-9)\nassert np.isclose(dual.fun, -base.fun)",
+    "script": "Write the dual on paper first: minimize four u plus five v, with covering inequalities greater than or equal to the contribution coefficients. SciPy accepts the inequality rows in less-than-or-equal form. Therefore negate both sides of those covering inequalities: use negative A transpose and negative c. The dual objective stays positive b. Run the block. You should obtain resource prices one and one and dual objective nine. Verify the dual slacks and the gap. Equal feasible objective values certify optimality. Negating only one side of an inequality would create the wrong model.",
+    "output": "dual prices: [1. 1.]\ndual slack: [0. 0.]\ndual objective: 9.0\nduality gap: 0.0\n",
+    "file": "audio/demo-04.mp3",
+    "duration_seconds": 40.68
+  },
+  {
+    "step": 5,
+    "title": "Check complementarity and signs",
+    "slide": 30,
+    "task": "Explain why a zero product does not prove feasibility by itself.",
+    "code": "resource_slack = b - A @ base.x\ndual_slack = A.T @ prices - c\nproducts = np.r_[prices * resource_slack, base.x * dual_slack]\nprint(\"complementarity products:\", products)\nprint(\"profit shadow prices:\", -base.ineqlin.marginals)\nprint(\"max reduced costs:\", c - A.T @ prices)\nassert np.allclose(products, 0)\nassert np.allclose(prices, -base.ineqlin.marginals)\nassert np.allclose(c - A.T @ prices, -base.lower.marginals)",
+    "script": "Compute each complementary product separately. The first pair multiplies resource price by unused capacity. The second pair multiplies production by its dual slack. All four should vanish for this feasible primal and dual pair. Also compare the explicit dual prices with the negatives of the solver's row marginals. They agree for this formulation. The final line checks the relationship to lower-bound marginals in this example with nonnegative variables and no finite upper bounds. Don't generalize that sign test to variables at upper bounds without examining the formulation.",
+    "output": "complementarity products: [0. 0. 0. 0.]\nprofit shadow prices: [1. 1.]\nmax reduced costs: [0. 0.]\n",
+    "file": "audio/demo-05.mp3",
+    "duration_seconds": 39.48
+  },
+  {
+    "step": 6,
+    "title": "Perturb one capacity at a time",
+    "slide": 73,
+    "task": "Predict both production vectors before running. Why must each trial start from the original b?",
+    "code": "h = 0.1\nfor i in range(2):\n    changed = b.copy()  # Reset for each independent trial.\n    changed[i] += h\n    trial = solve(b=changed)\n    min_slope = (trial.fun - base.fun) / h\n    profit_slope = (-trial.fun + base.fun) / h\n    print(\"resource\", i+1, \"production\", trial.x,\n          \"min slope\", round(min_slope, 6),\n          \"profit slope\", round(profit_slope, 6))\n    assert np.isclose(profit_slope, prices[i])",
+    "script": "Before running, predict what happens when resource one increases by one tenth. Then predict an independent increase of resource two. Each trial must start from a fresh copy of the original capacities. Otherwise the second experiment measures a simultaneous change instead. The production vectors should be zero point nine, three point two, and one point one, two point nine. Both contribution gains are one tenth. The minimized-objective slope is negative one; the contribution slope is positive one. This numerical experiment makes the marginal-sign conversion visible, rather than relying on memorization.",
+    "output": "resource 1 production [0.9 3.2] min slope -1.0 profit slope 1.0\nresource 2 production [1.1 2.9] min slope -1.0 profit slope 1.0\n",
+    "file": "audio/demo-06.mp3",
+    "duration_seconds": 41.52
+  },
+  {
+    "step": 7,
+    "title": "Discover the range for resource one",
+    "slide": 42,
+    "task": "At b1=6, calculate the old prediction before reading the actual result. Explain the discrepancy.",
+    "code": "for b1 in [2, 2.5, 4, 4.5, 5, 6]:\n    r = solve(b=(b1, 5))\n    old_plan = np.array([5-b1, 2*b1-5])\n    old_prediction = 9 + (b1-4)\n    print(\"b1\", b1, \"plan\", r.x, \"value\", round(-r.fun, 4),\n          \"old plan feasible\", bool(np.all(old_plan >= 0)),\n          \"old predicted value\", old_prediction)\n    expected = min(3*b1, b1+5, 10)\n    assert np.isclose(-r.fun, expected)\nprint(\"At 2.5 and 5, left and right slopes differ.\")",
+    "script": "Sweep the first capacity while fixing the second at five. For each trial, compare the optimized plan with the old intersection formulas. At two, the old y is negative. At six, the old x is negative. Between two point five and five, the old basis remains feasible and the linear value prediction agrees with the solver. At the endpoints, don't demand a particular dual price from the solver because the directional slopes differ. Pause at the row for six and explain why the old prediction eleven must be replaced by the actual value ten.",
+    "output": "b1 2 plan [2. 0.] value 6.0 old plan feasible False old predicted value 7\nb1 2.5 plan [ 2.5 -0. ] value 7.5 old plan feasible True old predicted value 7.5\nb1 4 plan [1. 3.] value 9.0 old plan feasible True old predicted value 9\nb1 4.5 plan [0.5 4. ] value 9.5 old plan feasible True old predicted value 9.5\nb1 5 plan [0. 5.] value 10.0 old plan feasible True old predicted value 10\nb1 6 plan [0. 5.] value 10.0 old plan feasible False old predicted value 11\nAt 2.5 and 5, left and right slopes differ.\n",
+    "file": "audio/demo-07.mp3",
+    "duration_seconds": 36.792
+  },
+  {
+    "step": 8,
+    "title": "Resource two and simultaneous changes",
+    "slide": 51,
+    "task": "Explain why the separate allowable ranges do not justify capacities (5,4).",
+    "code": "for b2 in [3, 4, 5, 6, 8, 9]:\n    r = solve(b=(4, b2))\n    expected = min(2*b2, b2+4, 12)\n    assert np.isclose(-r.fun, expected)\n    print(\"b2\", b2, \"plan\", r.x, \"value\", round(-r.fun, 4))\nb1, b2 = 5., 4.\njoint_plan = np.array([b2-b1, 2*b1-b2])\njoint = solve(b=(b1,b2))\nprint(\"old joint plan:\", joint_plan)\nprint(\"joint range satisfied:\", b1 <= b2 <= 2*b1)\nprint(\"actual joint solution:\", joint.x, \"value\", -joint.fun)\nassert np.allclose(joint.x, [0,4])",
+    "script": "Reset the first capacity to four and sweep the second. The middle regime extends from four through eight. Check that the values at three and nine come from different regimes. Then change both capacities to five and four. Each coordinate belongs to its separate baseline interval, but the old joint plan has negative x. The correct joint condition is first capacity at most second capacity, with second capacity at most twice the first. Run the final trial and verify production zero, four and value eight. The one-at-a-time intervals are not an independent rectangle.",
+    "output": "b2 3 plan [0. 3.] value 6.0\nb2 4 plan [0. 4.] value 8.0\nb2 5 plan [1. 3.] value 9.0\nb2 6 plan [2. 2.] value 10.0\nb2 8 plan [ 4. -0.] value 12.0\nb2 9 plan [4. 0.] value 12.0\nold joint plan: [-1.  6.]\njoint range satisfied: False\nactual joint solution: [0. 4.] value 8.0\n",
+    "file": "audio/demo-08.mp3",
+    "duration_seconds": 39.264
+  },
+  {
+    "step": 9,
+    "title": "Rotate the objective",
+    "slide": 60,
+    "task": "At c1=2 and c1=4, verify an entire edge instead of asserting one solver vector.",
+    "code": "for c1 in [1, 2, 3, 3.5, 4, 5]:\n    r = solve(c=(c1,2))\n    expected = 8 if c1 < 2 else c1+6 if c1 <= 4 else 2.5*c1\n    assert np.isclose(-r.fun, expected)\n    print(\"c1\", c1, \"plan\", r.x, \"value\", round(-r.fun,4))\nfor point in [[0,4], [0.5,3.5], [1,3]]:\n    assert np.all(A @ point <= b + 1e-9)\n    assert np.isclose(np.dot([2,2], point), 8)\nfor point in [[1,3], [1.75,1.5], [2.5,0]]:\n    assert np.all(A @ point <= b + 1e-9)\n    assert np.isclose(np.dot([4,2], point), 10)\nprint(\"Both endpoint optimal edges verified.\")",
+    "script": "Now keep capacities fixed and change the first contribution coefficient. This rotates the objective without moving the feasible region. Predict the solution at coefficients one, three point five, and five. At two and four, several solutions are optimal. Your solver may choose different endpoints, so compare feasibility and objective rather than requiring one exact vector. The second half of this block tests three points on each optimal edge. A successful assertion confirms they all attain the bound. Notice that this experiment concerns objective coefficients, not right-hand-side shadow prices.",
+    "output": "c1 1 plan [0. 4.] value 8.0\nc1 2 plan [0. 4.] value 8.0\nc1 3 plan [1. 3.] value 9.0\nc1 3.5 plan [1. 3.] value 9.5\nc1 4 plan [1. 3.] value 10.0\nc1 5 plan [2.5 0. ] value 12.5\nBoth endpoint optimal edges verified.\n",
+    "file": "audio/demo-09.mp3",
+    "duration_seconds": 40.68
+  },
+  {
+    "step": 10,
+    "title": "Introduce a new product and reoptimize",
+    "slide": 67,
+    "task": "Compute its old reduced cost. How far can x=1-t, y=3 continue?",
+    "code": "A3 = np.column_stack([A, [1.,2.]])\nfor ct in [2,3,4]:\n    c3 = np.array([3.,2.,ct])\n    r = solve(c=c3, matrix=A3)\n    print(\"ct\", ct, \"old reduced cost\", ct-3,\n          \"plan\", r.x, \"value\", round(-r.fun,4))\n    assert np.isclose(-r.fun, 10 if ct==4 else 9)\nnew_prices = np.array([0.,2.])\nnew_c = np.array([3.,2.,4.])\nassert np.all(A3.T @ new_prices >= new_c - 1e-9)\nfor point in [[0,3,1], [0,2,1.5], [0,0,2.5]]:\n    assert np.all(A3 @ point <= b + 1e-9)\n    assert np.isclose(new_c @ point, b @ new_prices)\nprint(\"Alternative new-product optima certified at value 10.\")",
+    "script": "Add a third column to the resource matrix, not a third constraint row. The new column is one, two. At the old prices its resource value is three. Test contributions two, three, and four. The corresponding reduced costs are negative one, zero, and positive one. With contribution four, the old exchange replaces x by t only until t reaches one. After reoptimization, the optimum value is ten, and several production plans attain it. The block checks three such plans against new dual prices zero, two. Don't mark a different optimal solver allocation as an error.",
+    "output": "ct 2 old reduced cost -1 plan [1. 3. 0.] value 9.0\nct 3 old reduced cost 0 plan [1. 3. 0.] value 9.0\nct 4 old reduced cost 1 plan [0.  0.  2.5] value 10.0\nAlternative new-product optima certified at value 10.\n",
+    "file": "audio/demo-10.mp3",
+    "duration_seconds": 41.712
+  },
+  {
+    "step": 11,
+    "title": "Interpret a lower-bound marginal",
+    "slide": 77,
+    "task": "Predict the loss from forcing x>=0.1 under objective x+3y.",
+    "code": "changed_objective = solve(c=(1,3))\nforced = solve(c=(1,3), bounds=[(0.1,None),(0,None)])\nprint(\"baseline plan:\", changed_objective.x)\nprint(\"row marginals:\", changed_objective.ineqlin.marginals)\nprint(\"lower-bound marginals:\", changed_objective.lower.marginals)\nprint(\"forced plan:\", forced.x)\nprint(\"profit loss:\", round(-changed_objective.fun + forced.fun, 6))\nassert np.allclose(forced.x, [0.1,3.9])\nassert np.isclose(-changed_objective.fun + forced.fun, 0.2)",
+    "script": "This time change the objective to x plus three y. The best unconstrained plan within the resource model is zero, four. Inspect the lower-bound marginal of x, which should be positive two for the minimized objective. Now impose a lower bound of zero point one on x. The new plan is zero point one, three point nine, and contribution falls by zero point two. Multiply by one hundred to obtain a twenty-dollar daily loss. This sensitivity belongs to a variable bound. It is not the price of an extra resource row.",
+    "output": "baseline plan: [0. 4.]\nrow marginals: [-3. -0.]\nlower-bound marginals: [2. 0.]\nforced plan: [0.1 3.9]\nprofit loss: 0.2\n",
+    "file": "audio/demo-11.mp3",
+    "duration_seconds": 36.456
+  },
+  {
+    "step": 12,
+    "title": "Choose capacity by net benefit",
+    "slide": 85,
+    "task": "Choose among A, B, C and no purchase before revealing the outputs.",
+    "code": "baseline_dollars = -solve().fun * 100\noffers = [(\"None\",0,0), (\"A\",0.5,30), (\"B\",1,70), (\"C\",2,90)]\nresults = []\nfor name,q,cost in offers:\n    gross = -solve(b=(4+q,5)).fun*100 - baseline_dollars\n    net = gross - cost\n    results.append((net,name))\n    print(name, \"gross gain\", round(gross,2),\n          \"cost\", cost, \"net benefit\", round(net,2))\nbest = max(results)\nprint(\"best package:\", best[1], \"net benefit:\", round(best[0],2))\nassert best[1] == \"B\"\nqs = np.linspace(0,2,201)\nnets = np.array([-solve(b=(4+q,5)).fun*100-baseline_dollars-60*q for q in qs])\nq_best = qs[np.argmax(nets)]\nprint(\"divisible capacity: q =\", q_best, \"net =\", round(max(nets),2))\nassert np.isclose(q_best,1)",
+    "script": "Evaluate each complete offer by reoptimizing, then subtract its purchase cost exactly once. Include the no-purchase option. Offer A adds half a unit, B adds one, and C adds two. The largest package is not the best: its extra resource cannot all be used productively. The expected net benefits are twenty, thirty, and ten dollars per day, so B wins. The final calculation changes the pricing assumption to divisible capacity at sixty dollars per unit. It finds one unit as the best purchase. Explain why these are two different decision problems.",
+    "output": "None gross gain 0.0 cost 0 net benefit 0.0\nA gross gain 50.0 cost 30 net benefit 20.0\nB gross gain 100.0 cost 70 net benefit 30.0\nC gross gain 100.0 cost 90 net benefit 10.0\nbest package: B net benefit: 30.0\ndivisible capacity: q = 1.0 net = 40.0\n",
+    "file": "audio/demo-12.mp3",
+    "duration_seconds": 39.336
+  },
+  {
+    "step": 13,
+    "title": "Diagnose failures and attempt the exercises",
+    "slide": 9,
+    "task": "Run both failure cases. Then complete exercises.py before opening answers.py.",
+    "code": "infeasible = linprog([1.], A_ub=[[1.],[-1.]], b_ub=[1.,-2.],\n                     bounds=(None,None), method=\"highs\")\nunbounded = linprog([-1.], bounds=(0,None), method=\"highs\")\nprint(\"infeasible success/status:\", infeasible.success, infeasible.status)\nprint(\"unbounded success/status:\", unbounded.success, unbounded.status)\nassert not infeasible.success and infeasible.status == 2\nassert not unbounded.success and unbounded.status == 3\nprint(\"Do not interpret failed solves as optimal production plans.\")\nprint(\"Next: complete the independent exercises, then check answers.py.\")",
+    "script": "Finish by deliberately testing an infeasible problem and an unbounded problem. The first requires x at most one and at least two. The second maximizes a nonnegative x with no upper limit. Their success flags should both be false, but their statuses differ. Don't print a failed solution's variables as if they were a production plan. Then complete the independent exercise file. It checks a new capacity, a coefficient change, a new product, a valid dual certificate, and a purchase decision. Attempt them before opening the answer key, and write one sentence explaining each numerical result.",
+    "output": "infeasible success/status: False 2\nunbounded success/status: False 3\nDo not interpret failed solves as optimal production plans.\nNext: complete the independent exercises, then check answers.py.\n",
+    "file": "audio/demo-13.mp3",
+    "duration_seconds": 40.92
+  }
+]
