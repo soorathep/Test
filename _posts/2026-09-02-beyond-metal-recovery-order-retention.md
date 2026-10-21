@@ -19,4 +19,8 @@ Framed this way, order retention becomes a green-chemistry design metric: shallo
 
 ## Read the paper
 
-Eeamtak S., Tamwattana O., Kasemchainan J., Pornprasertsuk R., Noerochim L., Watanabe T., Weng J., Mohamad A.A., Zhang Y., **Kheawhom S.** *Beyond Metal Recovery in Lithium-Ion Battery Recycling: Order Retention as a Sustainability Framework from Pack Disassembly to Interphase Chemistry.* **Green Chemistry** (2026), Advance Article. [DOI 10.1039/D6GC03171D](https://doi.org/10.1039/D6GC03171D)
+Eeamtak S., Tamwattana O., Kasemchainan J., Pornprasertsuk R., Noerochim L., Watanabe T., Weng J., Mohamad A.A., Zhang Y., **Kheawhom S.** *Beyond Metal Recovery in Lithium-Ion Battery Recycling: Order Retention as a Sustainability Framework from Pack Disassembly to Interphase Chemistry.* **Green Chemistry** (2026), 28, 15843–15869. [DOI 10.1039/D6GC03171D](https://doi.org/10.1039/D6GC03171D)
+
+**Update, October 2026:** the article is featured on the front cover of *Green Chemistry* Vol 28, Issue 40.
+
+![Front cover of Green Chemistry, Vol 28, Issue 40, 19 October 2026]({{ site.baseurl }}/covers/Green_Chemistry_2026.jpg)
