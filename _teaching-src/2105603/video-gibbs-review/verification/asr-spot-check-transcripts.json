@@ -1,0 +1,768 @@
+{
+  "revision": "Final 26-slide Gibbs review with actual Lab 04 demonstrations",
+  "method": "Local faster-whisper tiny.en, CPU int8, one thread, beam size 3; model download disabled.",
+  "scope": "ASR spot check with source comparison, not a complete subjective listening review.",
+  "script_sha256": "7401b5afc54f7c05beaab3137535dee44f18201075245e2842d79e82dadea935",
+  "manifest_sha256": "b0b2fb7e95eac39a884ff64e512b7dfb026695dbbca69e75be734d21d919993b",
+  "all_26_script_and_wav_hashes_verified": true,
+  "targets": [
+    2,
+    6,
+    7,
+    8,
+    11,
+    12,
+    16,
+    18,
+    23,
+    24
+  ],
+  "status": "reviewed_no_confirmed_content_error",
+  "checks": [
+    {
+      "slide": 2,
+      "slide_id": "start",
+      "title": "Start with these two documents",
+      "focus": "Natural logarithm button L N, optional support with no attendance or exit submission; route time separated from running time.",
+      "audio_file": "segment-02.wav",
+      "sha256": "f8f65ec7fe30dc9a4557fb390caf11c3ff2ea2b1814e12a4693e16bfd6bab988",
+      "narration_sha256": "42806ea600d90a77e6b55b2371db980f0ad478bd3a692ce427b24be7c695b22c",
+      "duration_seconds": 44.13195833333333,
+      "sample_rate": 24000,
+      "peak": 0.7430419921875,
+      "clipped_samples": 0,
+      "expected_narration": "Open the four-page calculation and Lab guide using the link on this slide. Also open Lab zero four in another tab. Start with sections A and B on pages one and two. Later, use section C for the screen demonstration and section D for independent practice. Your calculator must have natural logarithms, labeled L N. The suggested times on the slide describe the original reading route. The video has its own running time, and your calculation pauses add to that time. This is optional support for your original Week three worksheet. It adds no attendance or exit-ticket submission.",
+      "recognized": "Open the 4-page calculation and lab guide using the link on this slide, also open Lab 0-4 in another tab. Start with sections and be on pages 1 and 2. Later, use Section C for the screen demonstration and Section D for independent practice. Your calculator must have natural logarithms labeled L-N. The suggested times on the slide describe the original reading route. The video has its own running time, and your calculation pauses add to that time. This is optional support for your original Week 3 worksheet. It adds no attendance or exit ticket submission.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Open the 4-page calculation and lab guide using the link on this slide, also open Lab 0-4 in another tab."
+        },
+        {
+          "start": 9.5,
+          "end": 13.200000000000001,
+          "text": "Start with sections and be on pages 1 and 2."
+        },
+        {
+          "start": 13.200000000000001,
+          "end": 20.1,
+          "text": "Later, use Section C for the screen demonstration and Section D for independent practice."
+        },
+        {
+          "start": 20.1,
+          "end": 24.900000000000002,
+          "text": "Your calculator must have natural logarithms labeled L-N."
+        },
+        {
+          "start": 24.900000000000002,
+          "end": 29.900000000000002,
+          "text": "The suggested times on the slide describe the original reading route."
+        },
+        {
+          "start": 29.900000000000002,
+          "end": 35.900000000000006,
+          "text": "The video has its own running time, and your calculation pauses add to that time."
+        },
+        {
+          "start": 35.900000000000006,
+          "end": 39.900000000000006,
+          "text": "This is optional support for your original Week 3 worksheet."
+        },
+        {
+          "start": 39.900000000000006,
+          "end": 43.900000000000006,
+          "text": "It adds no attendance or exit ticket submission."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Guide route, natural logarithms L N, optional scope and no attendance/exit submission recognized. Tiny.en drops the standalone letter A in sections A and B, a recognition ambiguity; source/slide retain the label."
+    },
+    {
+      "slide": 6,
+      "slide_id": "model",
+      "title": "One model for every calculation",
+      "focus": "Margules, first derivative as slope, second derivative as curvature; x ln x endpoint limit; synthetic model.",
+      "audio_file": "segment-06.wav",
+      "sha256": "6b4a26f75d3951f0480fb5373c8d86d1cf59c899f344cca10dc128875bae6c5d",
+      "narration_sha256": "39e1117889f5d1a91927eb6673a411a7ea64b3b9b23cf14e2ea4bad99292db51",
+      "duration_seconds": 43.07933333333333,
+      "sample_rate": 24000,
+      "peak": 0.71307373046875,
+      "clipped_samples": 0,
+      "expected_narration": "We will use the symmetric, one-parameter Margules model with A equal to three. This is a synthetic example, not a fitted real-fluid dataset. The first two terms in g describe ideal mixing. The last term describes the excess contribution. The first derivative gives the slope of the curve. The second derivative gives its local curvature. Use natural logarithms in both the energy and the slope. At a pure endpoint, evaluate the limiting value of x times natural log x, which is zero. Keep this model and A fixed while changing the feed in the later comparisons.",
+      "recognized": "We will use the symmetric 1-parameter-mar-gu-less model with equal to 3. This is a synthetic example, not a fitted real fluid data set. The first two terms in G describe ideal mixing. The last term describes the excess contribution. The first derivative gives the slope of the curve. The second derivative gives its local curvature. Use natural logarithms in both the energy and the slope. At a pure endpoint, evaluate the limiting value of x times natural log x, which is zero. Keep this model and affixed while changing the feed in the later comparisons.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.0,
+          "text": "We will use the symmetric 1-parameter-mar-gu-less model with equal to 3."
+        },
+        {
+          "start": 6.0,
+          "end": 10.8,
+          "text": "This is a synthetic example, not a fitted real fluid data set."
+        },
+        {
+          "start": 10.8,
+          "end": 14.6,
+          "text": "The first two terms in G describe ideal mixing."
+        },
+        {
+          "start": 14.6,
+          "end": 18.2,
+          "text": "The last term describes the excess contribution."
+        },
+        {
+          "start": 18.2,
+          "end": 21.7,
+          "text": "The first derivative gives the slope of the curve."
+        },
+        {
+          "start": 21.7,
+          "end": 25.3,
+          "text": "The second derivative gives its local curvature."
+        },
+        {
+          "start": 25.3,
+          "end": 30.0,
+          "text": "Use natural logarithms in both the energy and the slope."
+        },
+        {
+          "start": 30.0,
+          "end": 37.5,
+          "text": "At a pure endpoint, evaluate the limiting value of x times natural log x, which is zero."
+        },
+        {
+          "start": 37.5,
+          "end": 42.8,
+          "text": "Keep this model and affixed while changing the feed in the later comparisons."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "First/second derivative descriptions, ln limit and fixed model remain correct. Tiny.en renders Margules phonetically and misses standalone A in two places; source and displayed notation retain A=3. No semantic or numerical mismatch identified."
+    },
+    {
+      "slide": 7,
+      "slide_id": "local-curvature",
+      "title": "Step 1: test local curvature",
+      "focus": "Curvature calculation at z=.12 gives +3.4697 and local stability only; z=.5 gives -2; two-minute pause.",
+      "audio_file": "segment-07.wav",
+      "sha256": "cab40362f77bf80f61b4acf496abbdf216a4366007555837f899e100b32782bc",
+      "narration_sha256": "782f4747246e8322eae31ea397220767a5b6dd464ac5b203188091d5c49d0bb9",
+      "duration_seconds": 47.263333333333335,
+      "sample_rate": 24000,
+      "peak": 0.706512451171875,
+      "clipped_samples": 0,
+      "expected_narration": "Start with local curvature at z equal to zero point one two. Take one divided by zero point one two, add one divided by zero point eight eight, then subtract six. The result is about positive three point four six nine seven. Positive curvature means sufficiently small composition fluctuations raise the energy, so this homogeneous state is locally stable. It does not exclude a lower-energy split into more distant compositions. At the middle composition, zero point five, the curvature is negative two, so the homogeneous liquid is locally unstable. Pause for two minutes to reproduce both calculations in guide B one.",
+      "recognized": "Start with local curvature at z equal to 0.12. Take 1 divided by 0.12. Add 1 divided by 0.88, then subtract 6. The result is about positive 3.4697. Positive curvature means sufficiently small composition fluctuations raise the energy. So this homogeneous state is locally stable. It does not exclude a lower energy split into more distant compositions. At the middle composition, 0.5, the curvature is negative 2. So the homogeneous liquid is locally unstable. Pause for 2 minutes to reproduce both calculations in guide B1.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.08,
+          "text": "Start with local curvature at z equal to 0.12."
+        },
+        {
+          "start": 5.08,
+          "end": 8.32,
+          "text": "Take 1 divided by 0.12."
+        },
+        {
+          "start": 8.32,
+          "end": 13.36,
+          "text": "Add 1 divided by 0.88, then subtract 6."
+        },
+        {
+          "start": 13.36,
+          "end": 17.76,
+          "text": "The result is about positive 3.4697."
+        },
+        {
+          "start": 17.76,
+          "end": 24.240000000000002,
+          "text": "Positive curvature means sufficiently small composition fluctuations raise the energy."
+        },
+        {
+          "start": 24.240000000000002,
+          "end": 27.92,
+          "text": "So this homogeneous state is locally stable."
+        },
+        {
+          "start": 28.0,
+          "end": 32.88,
+          "text": "It does not exclude a lower energy split into more distant compositions."
+        },
+        {
+          "start": 32.88,
+          "end": 38.480000000000004,
+          "text": "At the middle composition, 0.5, the curvature is negative 2."
+        },
+        {
+          "start": 38.480000000000004,
+          "end": 42.24,
+          "text": "So the homogeneous liquid is locally unstable."
+        },
+        {
+          "start": 42.24,
+          "end": 47.2,
+          "text": "Pause for 2 minutes to reproduce both calculations in guide B1."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "All curvature inputs, positive3.4697 at.12, negative2 at.5, local/global distinction and pause recognized correctly."
+    },
+    {
+      "slide": 8,
+      "slide_id": "endpoints",
+      "title": "Step 2: find the two tangent contacts",
+      "focus": "Common-tangent contacts near .07072 and .92928, root bracket .0707 to .0708, center is maximum.",
+      "audio_file": "segment-08.wav",
+      "sha256": "2b2dcc4092041389fb3ceb11fd4b417b39c47c078a1a58e55813762bb9c22e89",
+      "narration_sha256": "5dc60a9fec18c9291d801d3d4fd5fafc134a38f0c0fe4f3e7af5ed958a531134",
+      "duration_seconds": 44.776666666666664,
+      "sample_rate": 24000,
+      "peak": 0.71337890625,
+      "clipped_samples": 0,
+      "expected_narration": "Next, find the tangent contacts. The slope at each contact must equal the slope of the line joining them. For this symmetric example, the contacts are mirror images and the common tangent is horizontal. Solve the displayed slope equation for the low-composition root. It lies between zero point zero seven zero seven and zero point zero seven zero eight. Refining gives approximately zero point zero seven zero seven two, with its partner at zero point nine two nine two eight. Check the first root in guide B two. The stationary point at one half is a maximum, not a coexistence endpoint.",
+      "recognized": "Next, find the tangent contacts. The slope at each contact must equal the slope of the line joining them. For this symmetric example, the contacts are mirror images, and the common tangent is horizontal. Solve the displayed slope equation for the low composition root. It lies between 0.0707 and 0.0708. Refining gives approximately 0.07072, with its partner at 0.92928. Check the first root in guide B2. The stationary point at one half is a maximum, not a coexistence in point.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.5,
+          "text": "Next, find the tangent contacts."
+        },
+        {
+          "start": 2.5,
+          "end": 7.5,
+          "text": "The slope at each contact must equal the slope of the line joining them."
+        },
+        {
+          "start": 7.5,
+          "end": 12.0,
+          "text": "For this symmetric example, the contacts are mirror images,"
+        },
+        {
+          "start": 12.0,
+          "end": 15.0,
+          "text": "and the common tangent is horizontal."
+        },
+        {
+          "start": 15.0,
+          "end": 19.5,
+          "text": "Solve the displayed slope equation for the low composition root."
+        },
+        {
+          "start": 19.5,
+          "end": 26.5,
+          "text": "It lies between 0.0707 and 0.0708."
+        },
+        {
+          "start": 26.5,
+          "end": 31.5,
+          "text": "Refining gives approximately 0.07072,"
+        },
+        {
+          "start": 31.5,
+          "end": 35.5,
+          "text": "with its partner at 0.92928."
+        },
+        {
+          "start": 35.5,
+          "end": 38.5,
+          "text": "Check the first root in guide B2."
+        },
+        {
+          "start": 38.5,
+          "end": 41.5,
+          "text": "The stationary point at one half is a maximum,"
+        },
+        {
+          "start": 41.5,
+          "end": 44.5,
+          "text": "not a coexistence in point."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "All bracket/endpoint decimals recognized correctly. Tiny.en renders endpoint as in point, a homophonic transcription variant."
+    },
+    {
+      "slide": 11,
+      "slide_id": "feed-energy",
+      "title": "Step 5: calculate the homogeneous energy",
+      "focus": "Energy contributions -.254432,-.112493,+.3168; sum -.050125; dimensionless g=Gmix/(nRT).",
+      "audio_file": "segment-11.wav",
+      "sha256": "35da8ba47dee177a1b584b8ef066adc5be25972e70757052e5b21fef53af7e11",
+      "narration_sha256": "ac2c39063b0754a92071687552b76e24f629b0578637fa12fef54948f9faf884",
+      "duration_seconds": 49.42733333333333,
+      "sample_rate": 24000,
+      "peak": 0.70416259765625,
+      "clipped_samples": 0,
+      "expected_narration": "Calculate the homogeneous energy term by term. Multiply zero point one two by its natural logarithm. This contributes about negative zero point two five four four three two. The corresponding term for zero point eight eight contributes about negative zero point one one two four nine three. The excess term, three times zero point one two times zero point eight eight, is positive zero point three one six eight. Adding all three gives approximately negative zero point zero five zero one two five. This dimensionless value is total mixing Gibbs energy divided by the number of moles times R T. It is not yet an energy in joules.",
+      "recognized": "Calculate the homogeneous energy term by term. Multiply 0.12 by its natural logarithm. This contributes about negative 0.254432. The corresponding term for 0.88 contributes about negative 0.12493. The excess term, 3 times 0.12 times 0.88, is positive 0.3168. Adding all three gives approximately negative 0.050125. This dimensionless value is total mixing Gibbs energy, divided by the number of moles times RT. It is not yet an energy in joules.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.7800000000000002,
+          "text": "Calculate the homogeneous energy term by term."
+        },
+        {
+          "start": 3.7800000000000002,
+          "end": 8.52,
+          "text": "Multiply 0.12 by its natural logarithm."
+        },
+        {
+          "start": 8.52,
+          "end": 13.76,
+          "text": "This contributes about negative 0.254432."
+        },
+        {
+          "start": 13.76,
+          "end": 22.3,
+          "text": "The corresponding term for 0.88 contributes about negative 0.12493."
+        },
+        {
+          "start": 22.3,
+          "end": 27.84,
+          "text": "The excess term, 3 times 0.12 times 0.88,"
+        },
+        {
+          "start": 27.84,
+          "end": 31.52,
+          "text": "is positive 0.3168."
+        },
+        {
+          "start": 31.52,
+          "end": 38.32,
+          "text": "Adding all three gives approximately negative 0.050125."
+        },
+        {
+          "start": 38.32,
+          "end": 42.86,
+          "text": "This dimensionless value is total mixing Gibbs energy,"
+        },
+        {
+          "start": 42.86,
+          "end": 46.24,
+          "text": "divided by the number of moles times RT."
+        },
+        {
+          "start": 46.24,
+          "end": 49.04,
+          "text": "It is not yet an energy in joules."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Full-track ASR initially collapses repeated one in0.112493. Isolated-cue ASR with9/10-speed input independently recognizes the correct negative0.112493 without supplying an expected numeric prompt. Other terms, signs, total and nRT units match. See targeted_recheck."
+    },
+    {
+      "slide": 12,
+      "slide_id": "split-energy",
+      "title": "Step 6: compare with the split",
+      "focus": "Split g=-.058341, decrease+.008216; metastable homogeneous feed and feasible lower-energy split; total nRT conversion.",
+      "audio_file": "segment-12.wav",
+      "sha256": "42dd70ce3fd1f49732d19207db9f73e284540436c9cc37d0bae0616142b69488",
+      "narration_sha256": "8756c8f740f7a118ad43eb0b78295c2f46230b8a38e95e6ff9ed2cf7fa19d981",
+      "duration_seconds": 49.830625,
+      "sample_rate": 24000,
+      "peak": 0.67919921875,
+      "clipped_samples": 0,
+      "expected_narration": "Both tangent contacts have the same dimensionless energy, approximately negative zero point zero five eight three four one. Weighting these equal values by phase fractions that add to one gives that same value for the split. Subtract the split energy from the homogeneous energy. The positive decrease is about zero point zero zero eight two one six. The homogeneous feed is therefore metastable: locally stable, but a feasible split lowers the total energy. For an actual total energy decrease, multiply the displayed dimensionless decrease by the total number of moles, R, and the absolute temperature. Pause for five minutes to complete and check guide B three and B four.",
+      "recognized": "Both tangent contacts have the same dimensionless energy. Approximately negative 0.058341, weighting these equal values by phase fractions that add to 1, gives that same value for the split. Subtract the split energy from the homogeneous energy. The positive decrease is about 0.008216. The homogeneous feed is therefore metastable. Locally stable, but a feasible split lowers the total energy. For an actual total energy decrease, multiply the displayed dimensionless decrease by the total number of moles, R, and the absolute temperature. Pause for five minutes to complete and check guide B3 and B4.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.24,
+          "text": "Both tangent contacts have the same dimensionless energy."
+        },
+        {
+          "start": 4.24,
+          "end": 9.28,
+          "text": "Approximately negative 0.058341,"
+        },
+        {
+          "start": 9.28,
+          "end": 13.68,
+          "text": "weighting these equal values by phase fractions that add to 1,"
+        },
+        {
+          "start": 13.68,
+          "end": 16.240000000000002,
+          "text": "gives that same value for the split."
+        },
+        {
+          "start": 16.240000000000002,
+          "end": 20.400000000000002,
+          "text": "Subtract the split energy from the homogeneous energy."
+        },
+        {
+          "start": 20.400000000000002,
+          "end": 25.92,
+          "text": "The positive decrease is about 0.008216."
+        },
+        {
+          "start": 25.92,
+          "end": 29.36,
+          "text": "The homogeneous feed is therefore metastable."
+        },
+        {
+          "start": 29.36,
+          "end": 34.08,
+          "text": "Locally stable, but a feasible split lowers the total energy."
+        },
+        {
+          "start": 34.08,
+          "end": 36.88,
+          "text": "For an actual total energy decrease,"
+        },
+        {
+          "start": 36.88,
+          "end": 40.0,
+          "text": "multiply the displayed dimensionless decrease"
+        },
+        {
+          "start": 40.0,
+          "end": 44.879999999999995,
+          "text": "by the total number of moles, R, and the absolute temperature."
+        },
+        {
+          "start": 44.879999999999995,
+          "end": 50.4,
+          "text": "Pause for five minutes to complete and check guide B3 and B4."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Split energy, positive decrease.008216, metastability, nRT conversion and pause match source."
+    },
+    {
+      "slide": 16,
+      "slide_id": "feed-tangent",
+      "title": "A different tangent tests the homogeneous feed",
+      "focus": "Feed tangent TPD versus coexistence common tangent; negative rejects global stability; minimizing trial is not automatically binodal.",
+      "audio_file": "segment-16.wav",
+      "sha256": "1ebcdd4ae0deb4add43a080ad88e15fca1a1664d929f40b1a46fd6d094c7f385",
+      "narration_sha256": "985323b55820b25669da8aacee38ececd33f579461bbb0ea4dfe8783b705c1b4",
+      "duration_seconds": 49.57066666666667,
+      "sample_rate": 24000,
+      "peak": 0.747344970703125,
+      "clipped_samples": 0,
+      "expected_narration": "Now change the reference line. Tangent-plane distance, or T P D, uses the tangent to the homogeneous curve at the feed composition. At a trial composition w, subtract that feed-tangent value from g of w. A negative result shows that the homogeneous feed is not globally stable. This feed tangent is different from the coexistence common tangent we just verified. Its minimizing trial composition is not automatically a binodal endpoint. In guide C one, keep these two tests distinct: support of the coexistence line verifies the equilibrium construction, while feed T P D tests the original homogeneous liquid.",
+      "recognized": "Now change the reference line, tangent plane distance, or TPD, uses the tangent to the homogeneous curve at the feed composition. At a trial composition W, subtract that feed tangent value from G of W. A negative result shows that the homogeneous feed is not globally stable. This feed tangent is different from the coexistence common tangent we just verified. This minimizing trial composition is not automatically a binodal in point. In Guide C1, keep these two tests distinct. Support of the coexistence line verifies the equilibrium construction, while feed TPD tests the original homogeneous liquid.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 8.52,
+          "text": "Now change the reference line, tangent plane distance, or TPD, uses the tangent to the homogeneous"
+        },
+        {
+          "start": 8.52,
+          "end": 11.120000000000001,
+          "text": "curve at the feed composition."
+        },
+        {
+          "start": 11.120000000000001,
+          "end": 18.240000000000002,
+          "text": "At a trial composition W, subtract that feed tangent value from G of W. A negative"
+        },
+        {
+          "start": 18.240000000000002,
+          "end": 23.28,
+          "text": "result shows that the homogeneous feed is not globally stable."
+        },
+        {
+          "start": 23.28,
+          "end": 29.68,
+          "text": "This feed tangent is different from the coexistence common tangent we just verified."
+        },
+        {
+          "start": 29.68,
+          "end": 35.6,
+          "text": "This minimizing trial composition is not automatically a binodal in point."
+        },
+        {
+          "start": 35.6,
+          "end": 40.0,
+          "text": "In Guide C1, keep these two tests distinct."
+        },
+        {
+          "start": 40.0,
+          "end": 46.92,
+          "text": "Support of the coexistence line verifies the equilibrium construction, while feed TPD tests"
+        },
+        {
+          "start": 46.92,
+          "end": 64.08,
+          "text": "the original homogeneous liquid."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Feed tangent versus coexistence common tangent, negative TPD criterion and non-binodal minimizer caveat match; endpoint homophonic transcription variant only."
+    },
+    {
+      "slide": 18,
+      "slide_id": "lab-check",
+      "title": "Compare the outputs, then change the view",
+      "focus": "Phase amounts94.26%alpha/5.74%beta; positive curvature and negative feedTPD compatible; four-minute pause.",
+      "audio_file": "segment-18.wav",
+      "sha256": "9a71205045de051bc1791324d51874b904c21d68c37974528bb380eaa0c2171f",
+      "narration_sha256": "940c7f13288fe471e21af5eb073990efd9ad9ea973bf8573071852ef229436a5",
+      "duration_seconds": 51.029333333333334,
+      "sample_rate": 24000,
+      "peak": 0.6533203125,
+      "clipped_samples": 0,
+      "expected_narration": "Compare the displayed results with the calculation table. The alpha liquid accounts for about ninety-four point two six percent of the feed, and the beta liquid about five point seven four percent. The equilibrium energy is lower by about zero point zero zero eight two one six. Now switch View to Local curvature. The feed has positive curvature. Next select Tangent-plane distance, feed stability. Its negative minimum rejects global stability of this homogeneous feed. These observations are compatible, and together explain metastability. Allow for display rounding when checking residuals. Pause for four minutes to reproduce both views and record your comparisons in guide C one.",
+      "recognized": "Compare the displayed results with the calculation table. The alpha-liquid accounts for about 94.26% of the feed. And the beta-liquid about 5.74%. The equilibrium energy is lower by about 0.008216. Now switch view to local curvature. The feed has positive curvature. Next select tangent plane distance, feed stability. Its negative minimum rejects global stability of this homogeneous feed. These observations are compatible and together explain metastability. Allow for display rounding when checking residuals. Pause for 4 minutes to reproduce both views and record your comparisons in Guide C1.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "Compare the displayed results with the calculation table."
+        },
+        {
+          "start": 4.0,
+          "end": 10.0,
+          "text": "The alpha-liquid accounts for about 94.26% of the feed."
+        },
+        {
+          "start": 10.0,
+          "end": 14.0,
+          "text": "And the beta-liquid about 5.74%."
+        },
+        {
+          "start": 14.0,
+          "end": 20.0,
+          "text": "The equilibrium energy is lower by about 0.008216."
+        },
+        {
+          "start": 20.0,
+          "end": 23.0,
+          "text": "Now switch view to local curvature."
+        },
+        {
+          "start": 23.0,
+          "end": 26.0,
+          "text": "The feed has positive curvature."
+        },
+        {
+          "start": 26.0,
+          "end": 29.0,
+          "text": "Next select tangent plane distance, feed stability."
+        },
+        {
+          "start": 29.0,
+          "end": 35.0,
+          "text": "Its negative minimum rejects global stability of this homogeneous feed."
+        },
+        {
+          "start": 35.0,
+          "end": 39.0,
+          "text": "These observations are compatible and together explain"
+        },
+        {
+          "start": 39.0,
+          "end": 40.0,
+          "text": "metastability."
+        },
+        {
+          "start": 40.0,
+          "end": 44.0,
+          "text": "Allow for display rounding when checking residuals."
+        },
+        {
+          "start": 44.0,
+          "end": 47.0,
+          "text": "Pause for 4 minutes to reproduce both views"
+        },
+        {
+          "start": 47.0,
+          "end": 51.0,
+          "text": "and record your comparisons in Guide C1."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "94.26%alpha/5.74%beta, energy decrease.008216, positive local curvature with negative feedTPD, and pause all match."
+    },
+    {
+      "slide": 23,
+      "slide_id": "practice-answer",
+      "title": "Check your new-feed calculation",
+      "focus": "z=.35 curvature-1.6044,beta.325289,g=.035053,decrease.093395; correct signs and modelinputs.",
+      "audio_file": "segment-23.wav",
+      "sha256": "80342aeeba1341f74e7a5104f9721f6a95020aedd055415591ef7d4d99faaab6",
+      "narration_sha256": "122bc486a4246d10607bb33a536e497215487190e8bfbb7f21a3608b56935bbc",
+      "duration_seconds": 50.050666666666665,
+      "sample_rate": 24000,
+      "peak": 0.6962890625,
+      "clipped_samples": 0,
+      "expected_narration": "Check your calculation for zero point three five. The curvature is about negative one point six zero four four, so the homogeneous feed is locally unstable. The beta fraction is about zero point three two five two eight nine, and alpha is the remainder. Their weighted composition returns zero point three five. The homogeneous energy is approximately positive zero point zero three five zero five three, and the decrease is zero point zero nine three three nine five. Enter zero point three five in Feed mole fraction and click Find equilibrium. Compare the same endpoints, new amounts, and energy decrease. Correct guide D one in a different color.",
+      "recognized": "Check your calculation for 0.35. The curvature is about negative 1.6044, so the homogeneous feed is locally unstable. The beta fraction is about 0.325289, and alpha is the remainder. Their weighted composition returns 0.35. The homogeneous energy is approximately positive 0.035053, and the decrease is 0.093395. Enter 0.35 in feed mole fraction and click find equilibrium. Compare the same in points, new amounts and energy decrease. Correct guide D1 in a different color.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.7,
+          "text": "Check your calculation for 0.35."
+        },
+        {
+          "start": 3.7,
+          "end": 8.3,
+          "text": "The curvature is about negative 1.6044,"
+        },
+        {
+          "start": 8.3,
+          "end": 11.9,
+          "text": "so the homogeneous feed is locally unstable."
+        },
+        {
+          "start": 11.9,
+          "end": 16.7,
+          "text": "The beta fraction is about 0.325289,"
+        },
+        {
+          "start": 16.7,
+          "end": 18.8,
+          "text": "and alpha is the remainder."
+        },
+        {
+          "start": 18.8,
+          "end": 23.2,
+          "text": "Their weighted composition returns 0.35."
+        },
+        {
+          "start": 23.2,
+          "end": 30.9,
+          "text": "The homogeneous energy is approximately positive 0.035053,"
+        },
+        {
+          "start": 30.9,
+          "end": 35.9,
+          "text": "and the decrease is 0.093395."
+        },
+        {
+          "start": 35.9,
+          "end": 42.3,
+          "text": "Enter 0.35 in feed mole fraction and click find equilibrium."
+        },
+        {
+          "start": 42.3,
+          "end": 46.7,
+          "text": "Compare the same in points, new amounts and energy decrease."
+        },
+        {
+          "start": 46.7,
+          "end": 49.7,
+          "text": "Correct guide D1 in a different color."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Feed.35, curvature−1.6044,beta.325289,positiveg.035053,decrease.093395 and run instructions all match; endpoints transcribed homophonically."
+    },
+    {
+      "slide": 24,
+      "slide_id": "save",
+      "title": "Save a result you can explain",
+      "focus": "Explain, export study JSON, import exact downloaded file, Restore, recompute; no manualJSONediting.",
+      "audio_file": "segment-24.wav",
+      "sha256": "89b854074a8e3cb8cc8b1bff6f98fb72460ecca46c07d945e6d0b4b081b7fee0",
+      "narration_sha256": "aa00b87098a7fb03d430466a8278390fea49cd016f23c354e398552476c3954b",
+      "duration_seconds": 49.79591666666666,
+      "sample_rate": 24000,
+      "peak": 0.817626953125,
+      "clipped_samples": 0,
+      "expected_narration": "Write a short explanation in Your explanation. State the model, A, feed composition, classification, and phase amounts, then include one balance or energy comparison. Click Export study JSON and keep the downloaded file. To reopen it, expand Study workspace, reopen and compare cases. Choose Load studies or a comparison JSON and select your saved file. Click Restore beside the case. Check the restored inputs, then click Find equilibrium to recompute. If something differs, check the model, A, feed, selected view, and rounding. You do not need to edit the JSON manually. Keep this file with your worksheet as evidence you can explain.",
+      "recognized": "Write a short explanation in your explanation. State the model, A, feed composition, classification and phase amounts. Then include one balance or energy comparison. Click Export Study J-S-O-N and keep the downloaded file. To reopen it, expand Study Workspace, Reopen and Compare Cases. Choose Load Studies or Comparison J-S-O-N and select your saved file. Click Restore beside the case. Check the Restored Inputs, then click Find Equilibrium to Recomputed. If something differs, check the model, A, feed, selected view and rounding. You do not need to edit the J-S-O-N manually. Keep this file with your worksheet as evidence you can explain.",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.5,
+          "text": "Write a short explanation in your explanation."
+        },
+        {
+          "start": 3.5,
+          "end": 9.38,
+          "text": "State the model, A, feed composition, classification and phase amounts."
+        },
+        {
+          "start": 9.38,
+          "end": 12.86,
+          "text": "Then include one balance or energy comparison."
+        },
+        {
+          "start": 12.86,
+          "end": 17.82,
+          "text": "Click Export Study J-S-O-N and keep the downloaded file."
+        },
+        {
+          "start": 17.82,
+          "end": 22.62,
+          "text": "To reopen it, expand Study Workspace, Reopen and Compare Cases."
+        },
+        {
+          "start": 22.62,
+          "end": 28.580000000000002,
+          "text": "Choose Load Studies or Comparison J-S-O-N and select your saved file."
+        },
+        {
+          "start": 28.580000000000002,
+          "end": 30.94,
+          "text": "Click Restore beside the case."
+        },
+        {
+          "start": 30.94,
+          "end": 36.0,
+          "text": "Check the Restored Inputs, then click Find Equilibrium to Recomputed."
+        },
+        {
+          "start": 36.0,
+          "end": 41.400000000000006,
+          "text": "If something differs, check the model, A, feed, selected view and rounding."
+        },
+        {
+          "start": 41.400000000000006,
+          "end": 45.28,
+          "text": "You do not need to edit the J-S-O-N manually."
+        },
+        {
+          "start": 45.28,
+          "end": 49.08,
+          "text": "Keep this file with your worksheet as evidence you can explain."
+        }
+      ],
+      "review_status": "reviewed_against_source",
+      "review_notes": "Explanation, export, file load, Restore, recompute sequence recognized. JSON is rendered letter by letter in ASR, understandable and unambiguous. No manual editing instruction added."
+    }
+  ],
+  "checked_at_utc": "2026-10-24T12:21:24.747769+00:00",
+  "limitations": [
+    "Speech recognition can misrecognize scientific names and spoken numbers; disagreements require source comparison or listening.",
+    "10 selected slides were transcribed, not the whole 26-slide recording.",
+    "No complete subjective listening review is claimed."
+  ],
+  "targeted_recheck": {
+    "slide": 11,
+    "cue": "11-04",
+    "expected": "The corresponding term for zero point eight eight contributes about negative zero point one one two four nine three.",
+    "method": "Targeted isolated sentence with local tiny.en; no numeric prompt or model download.",
+    "variants": [
+      {
+        "beam": 1,
+        "speed": 1,
+        "recognized": "The corresponding term for 0.88 contributes about negative 0.12493."
+      },
+      {
+        "beam": 5,
+        "speed": 1,
+        "recognized": "The corresponding term for 0.88 contributes about negative 0.12493."
+      },
+      {
+        "beam": 10,
+        "speed": 1,
+        "recognized": "The corresponding term for 0.88 contributes about negative 0.12493."
+      },
+      {
+        "beam": 5,
+        "speed": 0.9,
+        "recognized": "The corresponding term for 0.88 contributes about negative 0.112493."
+      }
+    ]
+  },
+  "review_summary": "All 26 final source and WAV hashes were verified. Ten complete selected tracks were transcribed and compared with the source, including worked numerical examples and Lab 04 actions. An isolated sentence recheck resolves the repeated-one numerical recognition ambiguity for slide 11. No narration regeneration is supported by this ASR review. This does not constitute a full subjective listening review."
+}

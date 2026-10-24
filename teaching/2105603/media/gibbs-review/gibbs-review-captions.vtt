@@ -1,0 +1,957 @@
+WEBVTT
+
+01-01
+00:00:00.180 --> 00:00:04.724
+Welcome to this review of Gibbs energy graphs and liquid stability.
+
+01-02
+00:00:04.904 --> 00:00:11.987
+We will follow one calculation from the graph to the equations, then
+reproduce it in Lab zero four.
+
+01-03
+00:00:12.167 --> 00:00:20.272
+Our central question is simple: for a fixed overall composition, which
+allowed state has the lowest Gibbs energy?
+
+01-04
+00:00:20.452 --> 00:00:31.137
+By the end, you should be able to distinguish phase compositions from
+phase amounts, explain a metastable liquid, and use the Lab to check
+your own reasoning.
+
+01-05
+00:00:31.317 --> 00:00:33.579
+Keep a calculator nearby.
+
+01-06
+00:00:33.759 --> 00:00:38.751
+You will have several opportunities to pause and work before seeing
+the answer.
+
+02-01
+00:00:41.281 --> 00:00:46.806
+Open the four-page calculation and Lab guide using the link on this
+slide.
+
+02-02
+00:00:46.986 --> 00:00:50.570
+Also open Lab zero four in another tab.
+
+02-03
+00:00:50.750 --> 00:00:54.227
+Start with sections A and B on pages one and two.
+
+02-04
+00:00:54.407 --> 00:01:01.113
+Later, use section C for the screen demonstration and section D for
+independent practice.
+
+02-05
+00:01:01.293 --> 00:01:05.923
+Your calculator must have natural logarithms, labeled L N.
+
+02-06
+00:01:06.103 --> 00:01:10.839
+The suggested times on the slide describe the original reading route.
+
+02-07
+00:01:11.019 --> 00:01:16.629
+The video has its own running time, and your calculation pauses add to
+that time.
+
+02-08
+00:01:16.809 --> 00:01:21.033
+This is optional support for your original Week three worksheet.
+
+02-09
+00:01:21.213 --> 00:01:24.883
+It adds no attendance or exit-ticket submission.
+
+03-01
+00:01:27.413 --> 00:01:30.388
+First, separate consistency from stability.
+
+03-02
+00:01:30.568 --> 00:01:41.085
+Lab zero three asks whether data are compatible with an applicable
+thermodynamic constraint, such as Gibbs Duhem, under the assumptions
+of the test.
+
+03-03
+00:01:41.265 --> 00:01:46.982
+Lab zero four asks which feasible state has the lowest total Gibbs
+energy.
+
+03-04
+00:01:47.162 --> 00:01:49.232
+These are different questions.
+
+03-05
+00:01:49.412 --> 00:01:54.212
+A consistent liquid model can predict separation into two liquids.
+
+03-06
+00:01:54.392 --> 00:01:59.789
+In guide A one, identify which question a common tangent helps answer.
+
+03-07
+00:01:59.969 --> 00:02:07.100
+Throughout this review, temperature and pressure are fixed, and we
+consider only a binary liquid system.
+
+03-08
+00:02:07.280 --> 00:02:12.486
+Vapor and solid phases are outside the allowed states in this example.
+
+04-01
+00:02:15.016 --> 00:02:18.194
+Read the axes before interpreting the shape.
+
+04-02
+00:02:18.374 --> 00:02:26.084
+The horizontal coordinate, x, is the mole fraction of component one in
+a possible homogeneous liquid.
+
+04-03
+00:02:26.264 --> 00:02:32.690
+The vertical coordinate, g, is the molar Gibbs energy of mixing
+divided by R T.
+
+04-04
+00:02:32.870 --> 00:02:34.620
+It is dimensionless.
+
+04-05
+00:02:34.800 --> 00:02:39.002
+The symbol z describes the overall feed composition.
+
+04-06
+00:02:39.182 --> 00:02:46.666
+One liquid has x equal to z, but two liquids can have different
+compositions whose weighted average is z.
+
+04-07
+00:02:46.846 --> 00:02:51.625
+We compare states containing the same total amounts of both
+components.
+
+04-08
+00:02:51.805 --> 00:02:55.581
+Their pure-liquid reference contributions then cancel.
+
+04-09
+00:02:55.761 --> 00:02:59.793
+In guide A two, mark the feed at zero point one two.
+
+05-01
+00:03:02.323 --> 00:03:07.934
+At the marked feed, the point on the curved line represents one
+homogeneous liquid.
+
+05-02
+00:03:08.114 --> 00:03:14.663
+The point directly below it, on the common-tangent segment, represents
+a mixture of two liquids.
+
+05-03
+00:03:14.843 --> 00:03:22.587
+Those liquids have the compositions at the two contacts, with amounts
+chosen to reproduce the same overall feed.
+
+05-04
+00:03:22.767 --> 00:03:25.156
+Compare vertically at the same z.
+
+05-05
+00:03:25.336 --> 00:03:27.640
+The split has lower energy here.
+
+05-06
+00:03:27.820 --> 00:03:34.668
+Simply noticing that the homogeneous mixing energy is negative does
+not establish stability.
+
+05-07
+00:03:34.848 --> 00:03:39.328
+A negative value compares mixing with the pure-component reference.
+
+05-08
+00:03:39.508 --> 00:03:48.703
+Our stability question compares the homogeneous liquid with other
+feasible liquid states at the same overall composition.
+
+06-01
+00:03:51.233 --> 00:03:56.908
+We will use the symmetric, one-parameter Margules model with A equal
+to three.
+
+06-02
+00:03:57.088 --> 00:04:01.738
+This is a synthetic example, not a fitted real-fluid dataset.
+
+06-03
+00:04:01.918 --> 00:04:05.396
+The first two terms in g describe ideal mixing.
+
+06-04
+00:04:05.576 --> 00:04:09.117
+The last term describes the excess contribution.
+
+06-05
+00:04:09.297 --> 00:04:12.561
+The first derivative gives the slope of the curve.
+
+06-06
+00:04:12.741 --> 00:04:16.112
+The second derivative gives its local curvature.
+
+06-07
+00:04:16.292 --> 00:04:20.772
+Use natural logarithms in both the energy and the slope.
+
+06-08
+00:04:20.952 --> 00:04:28.312
+At a pure endpoint, evaluate the limiting value of x times natural log
+x, which is zero.
+
+06-09
+00:04:28.492 --> 00:04:33.782
+Keep this model and A fixed while changing the feed in the later
+comparisons.
+
+07-01
+00:04:36.312 --> 00:04:41.048
+Start with local curvature at z equal to zero point one two.
+
+07-02
+00:04:41.228 --> 00:04:49.314
+Take one divided by zero point one two, add one divided by zero point
+eight eight, then subtract six.
+
+07-03
+00:04:49.494 --> 00:04:53.739
+The result is about positive three point four six nine seven.
+
+07-04
+00:04:53.919 --> 00:05:03.860
+Positive curvature means sufficiently small composition fluctuations
+raise the energy, so this homogeneous state is locally stable.
+
+07-05
+00:05:04.040 --> 00:05:08.819
+It does not exclude a lower-energy split into more distant
+compositions.
+
+07-06
+00:05:08.999 --> 00:05:18.215
+At the middle composition, zero point five, the curvature is negative
+two, so the homogeneous liquid is locally unstable.
+
+07-07
+00:05:18.395 --> 00:05:23.046
+Pause for two minutes to reproduce both calculations in guide B one.
+
+08-01
+00:05:25.576 --> 00:05:28.008
+Next, find the tangent contacts.
+
+08-02
+00:05:28.188 --> 00:05:32.860
+The slope at each contact must equal the slope of the line joining
+them.
+
+08-03
+00:05:33.040 --> 00:05:40.272
+For this symmetric example, the contacts are mirror images and the
+common tangent is horizontal.
+
+08-04
+00:05:40.452 --> 00:05:44.825
+Solve the displayed slope equation for the low-composition root.
+
+08-05
+00:05:45.005 --> 00:05:51.874
+It lies between zero point zero seven zero seven and zero point zero
+seven zero eight.
+
+08-06
+00:05:52.054 --> 00:06:01.377
+Refining gives approximately zero point zero seven zero seven two,
+with its partner at zero point nine two nine two eight.
+
+08-07
+00:06:01.557 --> 00:06:04.181
+Check the first root in guide B two.
+
+08-08
+00:06:04.361 --> 00:06:09.822
+The stationary point at one half is a maximum, not a coexistence
+endpoint.
+
+09-01
+00:06:12.352 --> 00:06:17.558
+Now calculate amounts, using a basis of one mole of total feed.
+
+09-02
+00:06:17.738 --> 00:06:20.682
+The two phase fractions must add to one.
+
+09-03
+00:06:20.862 --> 00:06:24.126
+Their composition-weighted sum must equal z.
+
+09-04
+00:06:24.306 --> 00:06:28.316
+Solving those two balances gives the lever rule shown here.
+
+09-05
+00:06:28.496 --> 00:06:38.502
+For the beta fraction, subtract the alpha composition from the feed
+composition, then divide by the difference between the two endpoint
+compositions.
+
+09-06
+00:06:38.682 --> 00:06:43.034
+The result is about zero point zero five seven three nine eight.
+
+09-07
+00:06:43.214 --> 00:06:49.507
+The alpha fraction is one minus that, about zero point nine four two
+six zero two.
+
+09-08
+00:06:49.687 --> 00:06:56.919
+These are amounts of liquid phases per mole of feed, not phase
+compositions and not a vapor fraction.
+
+10-01
+00:06:59.449 --> 00:07:01.966
+Check the result before interpreting it.
+
+10-02
+00:07:02.146 --> 00:07:05.778
+First, the alpha and beta amounts add to one mole.
+
+10-03
+00:07:05.958 --> 00:07:13.019
+Next, multiply each phase amount by its component-one mole fraction
+and add the contributions.
+
+10-04
+00:07:13.199 --> 00:07:18.148
+The result is approximately zero point one two moles of component one.
+
+10-05
+00:07:18.328 --> 00:07:22.872
+Component two then accounts for zero point eight eight moles.
+
+10-06
+00:07:23.052 --> 00:07:26.743
+Small differences in the final digits come from rounding.
+
+10-07
+00:07:26.923 --> 00:07:32.214
+A successful balance establishes feasibility, not minimum Gibbs
+energy.
+
+10-08
+00:07:32.394 --> 00:07:40.052
+If either proposed phase fraction is negative or greater than one,
+those endpoints cannot represent this feed.
+
+10-09
+00:07:40.232 --> 00:07:43.475
+Record the component balance in guide B three.
+
+11-01
+00:07:46.005 --> 00:07:49.610
+Calculate the homogeneous energy term by term.
+
+11-02
+00:07:49.790 --> 00:07:54.228
+Multiply zero point one two by its natural logarithm.
+
+11-03
+00:07:54.408 --> 00:07:59.613
+This contributes about negative zero point two five four four three
+two.
+
+11-04
+00:07:59.793 --> 00:08:08.049
+The corresponding term for zero point eight eight contributes about
+negative zero point one one two four nine three.
+
+11-05
+00:08:08.229 --> 00:08:17.232
+The excess term, three times zero point one two times zero point eight
+eight, is positive zero point three one six eight.
+
+11-06
+00:08:17.412 --> 00:08:24.046
+Adding all three gives approximately negative zero point zero five
+zero one two five.
+
+11-07
+00:08:24.226 --> 00:08:31.949
+This dimensionless value is total mixing Gibbs energy divided by the
+number of moles times R T.
+
+11-08
+00:08:32.129 --> 00:08:34.902
+It is not yet an energy in joules.
+
+12-01
+00:08:37.432 --> 00:08:46.350
+Both tangent contacts have the same dimensionless energy,
+approximately negative zero point zero five eight three four one.
+
+12-02
+00:08:46.530 --> 00:08:53.356
+Weighting these equal values by phase fractions that add to one gives
+that same value for the split.
+
+12-03
+00:08:53.536 --> 00:08:57.547
+Subtract the split energy from the homogeneous energy.
+
+12-04
+00:08:57.727 --> 00:09:03.060
+The positive decrease is about zero point zero zero eight two one six.
+
+12-05
+00:09:03.240 --> 00:09:11.184
+The homogeneous feed is therefore metastable: locally stable, but a
+feasible split lowers the total energy.
+
+12-06
+00:09:11.364 --> 00:09:21.966
+For an actual total energy decrease, multiply the displayed
+dimensionless decrease by the total number of moles, R, and the
+absolute temperature.
+
+12-07
+00:09:22.146 --> 00:09:26.733
+Pause for five minutes to complete and check guide B three and B four.
+
+13-01
+00:09:29.263 --> 00:09:33.380
+This close view shows the same calculation geometrically.
+
+13-02
+00:09:33.560 --> 00:09:42.264
+Locate the upper point on the homogeneous curve and the lower point on
+the equilibrium segment, both at the feed composition.
+
+13-03
+00:09:42.444 --> 00:09:46.839
+Their vertical separation is the dimensionless energy decrease.
+
+13-04
+00:09:47.019 --> 00:09:51.798
+It is not the horizontal distance between the two phase compositions.
+
+13-05
+00:09:51.978 --> 00:09:59.898
+The endpoint spacing enters the lever rule, while this vertical gap
+measures the energy advantage of the feasible split.
+
+13-06
+00:10:00.078 --> 00:10:06.649
+On guide B four, label the upper point homogeneous and the lower point
+equilibrium split.
+
+13-07
+00:10:06.829 --> 00:10:14.765
+Keep the direction of subtraction clear: homogeneous minus split is
+positive when separation lowers the energy.
+
+14-01
+00:10:17.295 --> 00:10:21.818
+A candidate common tangent must support the whole allowed curve.
+
+14-02
+00:10:21.998 --> 00:10:26.264
+Subtract the line from g at every possible composition.
+
+14-03
+00:10:26.444 --> 00:10:28.599
+No value may be negative.
+
+14-04
+00:10:28.779 --> 00:10:37.766
+Equal chemical potentials identify a candidate pair, and the material
+balance establishes whether its amounts are feasible.
+
+14-05
+00:10:37.946 --> 00:10:43.002
+Global support completes the minimum-energy argument within this
+liquid model.
+
+14-06
+00:10:43.182 --> 00:10:51.114
+Checking only the two contacts is insufficient, because another part
+of the curve could lie below the candidate line.
+
+14-07
+00:10:51.294 --> 00:10:54.985
+A coarse plotted grid could also miss a narrow dip.
+
+14-08
+00:10:55.165 --> 00:11:02.418
+Here, we can examine all stationary points and both endpoints to
+verify the support condition directly.
+
+15-01
+00:11:04.948 --> 00:11:10.815
+For this specific model, the stationary compositions are the two
+contacts and one half.
+
+15-02
+00:11:10.995 --> 00:11:14.686
+Include the pure endpoints as boundary candidates.
+
+15-03
+00:11:14.866 --> 00:11:32.572
+Subtracting the horizontal common-tangent value gives approximately
+positive zero point zero five eight three four one at each pure
+endpoint, zero at each contact, and positive zero point one one five
+one nine four at one half.
+
+15-04
+00:11:32.752 --> 00:11:34.331
+None is negative.
+
+15-05
+00:11:34.511 --> 00:11:41.039
+Because these cover the stationary points and boundaries, they
+establish support across this curve.
+
+15-06
+00:11:41.219 --> 00:11:45.123
+This is stronger than checking a few arbitrary graph points.
+
+15-07
+00:11:45.303 --> 00:11:51.383
+Pause for two minutes to reproduce the middle-composition value and
+complete guide B five.
+
+16-01
+00:11:53.913 --> 00:11:56.132
+Now change the reference line.
+
+16-02
+00:11:56.312 --> 00:12:04.440
+Tangent-plane distance, or T P D, uses the tangent to the homogeneous
+curve at the feed composition.
+
+16-03
+00:12:04.620 --> 00:12:11.084
+At a trial composition w, subtract that feed-tangent value from g of
+w.
+
+16-04
+00:12:11.264 --> 00:12:16.640
+A negative result shows that the homogeneous feed is not globally
+stable.
+
+16-05
+00:12:16.820 --> 00:12:22.964
+This feed tangent is different from the coexistence common tangent we
+just verified.
+
+16-06
+00:12:23.144 --> 00:12:28.989
+Its minimizing trial composition is not automatically a binodal
+endpoint.
+
+16-07
+00:12:29.169 --> 00:12:42.954
+In guide C one, keep these two tests distinct: support of the
+coexistence line verifies the equilibrium construction, while feed T P
+D tests the original homogeneous liquid.
+
+17-01
+00:12:45.484 --> 00:12:50.241
+Open Lab zero four and go to the liquid stability experiment.
+
+17-02
+00:12:50.421 --> 00:12:59.189
+Under Explore a state, choose the metastable example with A equal to
+three and feed composition zero point one two.
+
+17-03
+00:12:59.369 --> 00:13:04.492
+Confirm Margules, one parameter, and check both numerical inputs.
+
+17-04
+00:13:04.672 --> 00:13:06.614
+Click Find equilibrium.
+
+17-05
+00:13:06.794 --> 00:13:10.399
+Select the Gibbs energy and common tangent view.
+
+17-06
+00:13:10.579 --> 00:13:12.926
+The graph should match our worked case.
+
+17-07
+00:13:13.106 --> 00:13:18.610
+Open Verify the equilibrium to inspect the energies and component
+balance.
+
+17-08
+00:13:18.790 --> 00:13:24.059
+Compare the two endpoint compositions and the phase amounts with guide
+B.
+
+17-09
+00:13:24.239 --> 00:13:32.410
+Opening the page alone does not guarantee these settings, so selecting
+and checking the preset is an essential first step.
+
+18-01
+00:13:34.940 --> 00:13:38.630
+Compare the displayed results with the calculation table.
+
+18-02
+00:13:38.810 --> 00:13:48.607
+The alpha liquid accounts for about ninety-four point two six percent
+of the feed, and the beta liquid about five point seven four percent.
+
+18-03
+00:13:48.787 --> 00:13:54.867
+The equilibrium energy is lower by about zero point zero zero eight
+two one six.
+
+18-04
+00:13:55.047 --> 00:13:57.692
+Now switch View to Local curvature.
+
+18-05
+00:13:57.872 --> 00:14:00.347
+The feed has positive curvature.
+
+18-06
+00:14:00.527 --> 00:14:04.346
+Next select Tangent-plane distance, feed stability.
+
+18-07
+00:14:04.526 --> 00:14:09.731
+Its negative minimum rejects global stability of this homogeneous
+feed.
+
+18-08
+00:14:09.911 --> 00:14:14.924
+These observations are compatible, and together explain metastability.
+
+18-09
+00:14:15.104 --> 00:14:18.838
+Allow for display rounding when checking residuals.
+
+18-10
+00:14:19.018 --> 00:14:25.439
+Pause for four minutes to reproduce both views and record your
+comparisons in guide C one.
+
+19-01
+00:14:27.969 --> 00:14:31.596
+Predict two new cases before revealing the results.
+
+19-02
+00:14:31.776 --> 00:14:33.653
+Keep A equal to three.
+
+19-03
+00:14:33.833 --> 00:14:44.218
+For z equal to zero point zero two, decide whether the feed lies
+between the binodal endpoints and whether the lever-rule amounts are
+feasible.
+
+19-04
+00:14:44.398 --> 00:14:51.161
+For z equal to one half, predict the curvature sign and the phase
+amounts suggested by symmetry.
+
+19-05
+00:14:51.341 --> 00:14:54.114
+Write both predictions in guide C two.
+
+19-06
+00:14:54.294 --> 00:15:01.420
+Then select the corresponding Stable and Unstable presets and click
+Find equilibrium for each.
+
+19-07
+00:15:01.600 --> 00:15:03.392
+Pause for five minutes.
+
+19-08
+00:15:03.572 --> 00:15:10.896
+Record your prediction, the Lab result, and a reason for any
+correction before continuing to the comparison.
+
+20-01
+00:15:13.426 --> 00:15:19.208
+Select the Stable preset at zero point zero two and run Find
+equilibrium.
+
+20-02
+00:15:19.388 --> 00:15:22.844
+The result is one liquid at the feed composition.
+
+20-03
+00:15:23.024 --> 00:15:30.426
+Using the two binodal endpoints would require a negative beta amount,
+so that split is infeasible.
+
+20-04
+00:15:30.606 --> 00:15:36.772
+Now select the Unstable preset at zero point five and run Find
+equilibrium.
+
+20-05
+00:15:36.952 --> 00:15:43.932
+The homogeneous curvature is negative two, and equilibrium has equal
+amounts of the two liquids.
+
+20-06
+00:15:44.112 --> 00:15:47.014
+The endpoint compositions stay unchanged.
+
+20-07
+00:15:47.194 --> 00:15:49.583
+Return to the comparison table.
+
+20-08
+00:15:49.763 --> 00:15:55.672
+Stable, metastable, and unstable classify the initial homogeneous
+feed.
+
+20-09
+00:15:55.852 --> 00:16:02.423
+They must not be confused with the stable equilibrium obtained after
+allowing separation.
+
+21-01
+00:16:04.953 --> 00:16:07.620
+Locate the same cases on this curve.
+
+21-02
+00:16:07.800 --> 00:16:12.109
+The binodal contacts bound the two-liquid equilibrium interval.
+
+21-03
+00:16:12.289 --> 00:16:21.974
+The spinodals, near zero point two one one three and zero point seven
+eight eight seven, mark where local curvature changes sign.
+
+21-04
+00:16:22.154 --> 00:16:28.000
+Between a binodal and its neighboring spinodal, the homogeneous liquid
+is metastable.
+
+21-05
+00:16:28.180 --> 00:16:31.764
+Inside the spinodals it is locally unstable.
+
+21-06
+00:16:31.944 --> 00:16:36.445
+Outside the binodal interval it is stable in this example.
+
+21-07
+00:16:36.625 --> 00:16:43.650
+Place zero point zero two, zero point one two, and zero point five in
+these regions.
+
+21-08
+00:16:43.830 --> 00:16:52.555
+The equilibrium common-tangent segment applies throughout the binodal
+interval, with phase amounts determined by the feed.
+
+22-01
+00:16:55.085 --> 00:16:58.477
+Work the new case in guide D one on page four.
+
+22-02
+00:16:58.657 --> 00:17:03.329
+Keep A equal to three and set the feed to zero point three five.
+
+22-03
+00:17:03.509 --> 00:17:06.005
+First calculate local curvature.
+
+22-04
+00:17:06.185 --> 00:17:13.502
+Then use the same endpoint compositions to calculate both phase
+fractions and check the component balance.
+
+22-05
+00:17:13.682 --> 00:17:18.333
+Calculate the homogeneous energy and its decrease on splitting.
+
+22-06
+00:17:18.513 --> 00:17:25.660
+Only after your hand calculation, enter the feed in Lab zero four and
+run Find equilibrium.
+
+22-07
+00:17:25.840 --> 00:17:30.789
+The endpoints stay fixed because the model and conditions are
+unchanged.
+
+22-08
+00:17:30.969 --> 00:17:36.409
+Pause for eight minutes to attempt all five steps before watching the
+worked answer.
+
+23-01
+00:17:38.939 --> 00:17:42.438
+Check your calculation for zero point three five.
+
+23-02
+00:17:42.618 --> 00:17:50.554
+The curvature is about negative one point six zero four four, so the
+homogeneous feed is locally unstable.
+
+23-03
+00:17:50.734 --> 00:17:57.454
+The beta fraction is about zero point three two five two eight nine,
+and alpha is the remainder.
+
+23-04
+00:17:57.634 --> 00:18:01.922
+Their weighted composition returns zero point three five.
+
+23-05
+00:18:02.102 --> 00:18:14.539
+The homogeneous energy is approximately positive zero point zero three
+five zero five three, and the decrease is zero point zero nine three
+three nine five.
+
+23-06
+00:18:14.719 --> 00:18:20.948
+Enter zero point three five in Feed mole fraction and click Find
+equilibrium.
+
+23-07
+00:18:21.128 --> 00:18:25.314
+Compare the same endpoints, new amounts, and energy decrease.
+
+23-08
+00:18:25.494 --> 00:18:28.460
+Correct guide D one in a different color.
+
+24-01
+00:18:30.990 --> 00:18:34.083
+Write a short explanation in Your explanation.
+
+24-02
+00:18:34.263 --> 00:18:43.394
+State the model, A, feed composition, classification, and phase
+amounts, then include one balance or energy comparison.
+
+24-03
+00:18:43.574 --> 00:18:48.395
+Click Export study JSON and keep the downloaded file.
+
+24-04
+00:18:48.575 --> 00:18:53.183
+To reopen it, expand Study workspace, reopen and compare cases.
+
+24-05
+00:18:53.363 --> 00:18:59.123
+Choose Load studies or a comparison JSON and select your saved file.
+
+24-06
+00:18:59.303 --> 00:19:01.500
+Click Restore beside the case.
+
+24-07
+00:19:01.680 --> 00:19:06.480
+Check the restored inputs, then click Find equilibrium to recompute.
+
+24-08
+00:19:06.660 --> 00:19:11.832
+If something differs, check the model, A, feed, selected view, and
+rounding.
+
+24-09
+00:19:12.012 --> 00:19:15.809
+You do not need to edit the JSON manually.
+
+24-10
+00:19:15.989 --> 00:19:20.256
+Keep this file with your worksheet as evidence you can explain.
+
+25-01
+00:19:22.786 --> 00:19:26.732
+Finish with guide D two, without using the Lab output.
+
+25-02
+00:19:26.912 --> 00:19:32.672
+Explain why positive curvature alone does not establish global
+stability.
+
+25-03
+00:19:32.852 --> 00:19:38.442
+State what stays fixed and what changes when the feed moves inside
+this tie line.
+
+25-04
+00:19:38.622 --> 00:19:44.680
+Explain why equal chemical potentials are only part of the equilibrium
+test.
+
+25-05
+00:19:44.860 --> 00:19:56.231
+Finally, explain why the binodal split cannot represent a feed of zero
+point zero two, even though extending the tangent line places it below
+the curve there.
+
+25-06
+00:19:56.411 --> 00:19:59.291
+Use one short sentence for each answer.
+
+25-07
+00:19:59.471 --> 00:20:03.076
+Pause for three minutes before checking the final slide.
+
+25-08
+00:20:03.256 --> 00:20:08.952
+Keep these corrections with your original worksheet; no additional
+form is required.
+
+26-01
+00:20:11.482 --> 00:20:14.170
+Compare your reasoning with these answers.
+
+26-02
+00:20:14.350 --> 00:20:22.521
+Positive curvature establishes local stability, while a distant
+feasible split may still lower the total energy.
+
+26-03
+00:20:22.701 --> 00:20:28.909
+Inside a fixed tie line, the phase compositions stay fixed and the
+amounts change.
+
+26-04
+00:20:29.089 --> 00:20:36.257
+Equality of chemical potentials gives a candidate, which still needs
+feasible amounts and global support.
+
+26-05
+00:20:36.437 --> 00:20:45.589
+The feed at zero point zero two lies outside the two endpoints, so
+their mixture would require a negative phase amount.
+
+26-06
+00:20:45.769 --> 00:20:52.148
+If you can connect these statements to your calculation and the Lab
+views, you have the key reasoning.
+
+26-07
+00:20:52.328 --> 00:20:56.317
+Return to the Week three study route whenever you are ready.

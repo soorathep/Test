@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "date": "2026-10-24",
+  "method": "Actual in-app Chromium UI checks against a local byte-range-capable HTTP server",
+  "video_sha256": "3b3e9bd4b7be18441f26d9c311891a91d863bc8b53d75a82553a083a1241a03a",
+  "checks": {
+    "metadata": {
+      "duration_seconds": 1258.666833,
+      "video_width": 1920,
+      "video_height": 1080,
+      "ready_state": 4
+    },
+    "chapter_seek": {
+      "slide_18_seconds": 814.784666,
+      "slide_24_playback_seconds": 1113.789407,
+      "seekable_end_seconds": 1258.666833
+    },
+    "activity_pause": {
+      "slide": 18,
+      "paused": true,
+      "time_seconds": 867.549433,
+      "prompt": "Pause for four minutes to reproduce both views and record your comparisons in guide C one.",
+      "continue_button_visible": true
+    },
+    "continue": {
+      "resumed_slide": 19,
+      "paused": false,
+      "time_seconds": 867.814
+    },
+    "captions": {
+      "mobile_visible_below_image": true,
+      "desktop_native_visible": true,
+      "toggle_disabled_and_restored": true
+    },
+    "mobile": {
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "document_width": 375,
+      "no_horizontal_overflow": true,
+      "temporary_viewport_reset": true
+    },
+    "desktop_playback": {
+      "slide": 24,
+      "paused_after_test": true,
+      "time_seconds": 1129.562467
+    }
+  },
+  "screenshots": [
+    "browser-mobile-captions.png",
+    "browser-desktop-captions.png"
+  ],
+  "notes": [
+    "The initial plain local HTTP server did not support media ranges; playback checks were repeated successfully on the range-capable preview.",
+    "The automated browser download event for the JSON resource timed out. The link uses the download attribute; resource availability and exact JSON content are verified separately in page-resource-qa.json."
+  ],
+  "scope": "Representative real browser playback, captions, chapter seek and activity pause checks; controller tests cover all activity boundaries. Public deployment verification follows separately."
+}

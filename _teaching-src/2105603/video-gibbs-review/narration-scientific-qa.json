@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "scope": "Narration scientific and alignment review; actual audio and recorded UI will be validated by parent agent.",
+  "inputs": [
+    "week03-gibbs-review.qmd",
+    "prereading/week03-gibbs-review-guide.html",
+    "labs/stability.html"
+  ],
+  "slide_count": 26,
+  "word_count": 2590,
+  "activity_minutes": 29,
+  "activity_schedule": {
+    "7": 2,
+    "12": 5,
+    "15": 2,
+    "18": 4,
+    "19": 5,
+    "22": 8,
+    "25": 3
+  },
+  "numeric_method": "Independent standard-library bisection of g prime for A=3; direct curvature, lever-rule, balance, and Gibbs evaluation.",
+  "xa": 0.07072018167994484,
+  "xb": 0.9292798183200551,
+  "g_endpoint": -0.058341349441440093,
+  "spinodals": [
+    0.21132486540518708,
+    0.7886751345948129
+  ],
+  "cases": [
+    {
+      "z": 0.02,
+      "curvature": 45.02040816326531,
+      "beta_fraction_from_binodal_pair": -0.05907589818505019,
+      "alpha_fraction_from_binodal_pair": 1.05907589818505,
+      "binodal_split_feasible": false,
+      "component_balance": 0.01999999999999999,
+      "homogeneous_g": -0.039239113279732,
+      "equilibrium_g": -0.039239113279732,
+      "decrease": 0
+    },
+    {
+      "z": 0.12,
+      "curvature": 3.4696969696969706,
+      "beta_fraction_from_binodal_pair": 0.057398247270168595,
+      "alpha_fraction_from_binodal_pair": 0.9426017527298314,
+      "binodal_split_feasible": true,
+      "component_balance": 0.12,
+      "homogeneous_g": -0.05012499127270964,
+      "equilibrium_g": -0.058341349441440093,
+      "decrease": 0.008216358168730453
+    },
+    {
+      "z": 0.5,
+      "curvature": -2.0,
+      "beta_fraction_from_binodal_pair": 0.5,
+      "alpha_fraction_from_binodal_pair": 0.5,
+      "binodal_split_feasible": true,
+      "component_balance": 0.5,
+      "homogeneous_g": 0.056852819440054714,
+      "equilibrium_g": -0.058341349441440093,
+      "decrease": 0.11519416888149481
+    },
+    {
+      "z": 0.35,
+      "curvature": -1.604395604395604,
+      "beta_fraction_from_binodal_pair": 0.3252887818171718,
+      "alpha_fraction_from_binodal_pair": 0.6747112181828282,
+      "binodal_split_feasible": true,
+      "component_balance": 0.35,
+      "homogeneous_g": 0.035053360965367375,
+      "equilibrium_g": -0.058341349441440093,
+      "decrease": 0.09339471040680747
+    }
+  ],
+  "support_candidates": [
+    {
+      "x": 0,
+      "distance": 0.058341349441440093
+    },
+    {
+      "x": 0.07072018167994484,
+      "distance": 0.0
+    },
+    {
+      "x": 0.5,
+      "distance": 0.11519416888149481
+    },
+    {
+      "x": 0.9292798183200551,
+      "distance": 1.1102230246251565e-16
+    },
+    {
+      "x": 1,
+      "distance": 0.058341349441440093
+    }
+  ],
+  "checks": [
+    "All 26 slide IDs and titles match QMD order including title slide.",
+    "Narration contains no raw digits, LaTeX, backslashes, or em dashes.",
+    "Every scene cue is an exact substring in narration.",
+    "Local positive curvature is never presented as proof of global stability.",
+    "Phase fractions are mole-based liquid amounts, distinguished from compositions and vapor fractions.",
+    "Gibbs energy plotted values and decreases are dimensionless; total energy decrease requires nRT.",
+    "Common-tangent support is distinguished from homogeneous-feed tangent-plane distance.",
+    "A=3 endpoint and practice calculations independently match displayed rounding.",
+    "z=0.02 binodal amounts explicitly identified as infeasible.",
+    "Binodals distinguished from spinodals.",
+    "No kinetics, real-fluid claims, additional attendance, or student feedback included.",
+    "Narration explicitly says video duration plus pauses differs from original suggested 45-minute reading route."
+  ],
+  "integration_notes": [
+    "Each pause instruction is already spoken once at the end of narration; do not append metadata text again.",
+    "Scene action fields are instructions for capture and are not claims of already recorded interactions.",
+    "Titles are slide headings, not spoken narration.",
+    "Export/import demonstration should reuse the exact captured z=0.35 JSON file."
+  ]
+}

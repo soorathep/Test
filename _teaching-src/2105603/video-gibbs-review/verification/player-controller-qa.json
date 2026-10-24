@@ -1,0 +1,46 @@
+{
+  "chapters": 26,
+  "script_sha256": "d72141a457fec8d30b470ab7e09891d164ccfabb851c0b6c5ca37aaeff72045e",
+  "manifest_sha256": "bca24c4076ad53ba39cc405c2f448c4da994d7f0c7adff8d9db47e16b730a407",
+  "timeline_sha256": "cf3700c58ae60f861338cdbd1952d4f00dc196f1c31972c48d01c8b6efe7bac1",
+  "mode": "Final measured timeline; mocked media events only",
+  "tests": [
+    {
+      "name": "Every work stop pauses before the next slide and Continue reaches the next chapter",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed playback cannot skip two activity boundaries",
+      "status": "passed"
+    },
+    {
+      "name": "Frame and timer event paths preserve the pause guard",
+      "status": "passed"
+    },
+    {
+      "name": "Intentional chapter selection bypasses skipped work but keeps playback paused",
+      "status": "passed"
+    },
+    {
+      "name": "Manual seeking and replaying an earlier exercise rearm its pause",
+      "status": "passed"
+    },
+    {
+      "name": "Disabling pauses allows ordinary playback and reenabling restores later stops",
+      "status": "passed"
+    },
+    {
+      "name": "Wide captions are native; narrow captions remain timed below the image",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed caption loading and failures retain readable fallback instructions",
+      "status": "passed"
+    },
+    {
+      "name": "Optional review labels and transcript contain no new attendance request",
+      "status": "passed"
+    }
+  ],
+  "scope": "No browser, decoded-video, audio or visual QA is claimed."
+}

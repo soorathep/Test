@@ -1,0 +1,3146 @@
+[
+  {
+    "number": 1,
+    "slide_id": "title-slide",
+    "narration": "Welcome to this review of Gibbs energy graphs and liquid stability. We will follow one calculation from the graph to the equations, then reproduce it in Lab zero four. Our central question is simple: for a fixed overall composition, which allowed state has the lowest Gibbs energy? By the end, you should be able to distinguish phase compositions from phase amounts, explain a metastable liquid, and use the Lab to check your own reasoning. Keep a calculator nearby. You will have several opportunities to pause and work before seeing the answer.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Reading Gibbs energy graphs",
+    "id": "01",
+    "slide": 1,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 0,
+    "end_sample": 938414,
+    "start_seconds": 0.0,
+    "end_seconds": 39.10058333333333,
+    "duration_samples": 938414,
+    "duration_seconds": 39.10058333333333,
+    "audio": "segment-01.wav",
+    "audio_sha256": "4d6a8539747e06b3b065b5f678d22ba727bd6115ef5672f99bf0c87d97a92efd",
+    "narration_sha256": "3081127286213c9e2987c9fcff088f4960db493cd9705e3610875673b62e4e29",
+    "cues": [
+      {
+        "id": "01-01",
+        "chapter_id": "01",
+        "text": "Welcome to this review of Gibbs energy graphs and liquid stability.",
+        "start_sample": 4320,
+        "end_sample": 113376,
+        "start_seconds": 0.18,
+        "end_seconds": 4.724
+      },
+      {
+        "id": "01-02",
+        "chapter_id": "01",
+        "text": "We will follow one calculation from the graph to the equations, then reproduce it in Lab zero four.",
+        "start_sample": 117696,
+        "end_sample": 287680,
+        "start_seconds": 4.904,
+        "end_seconds": 11.986666666666666
+      },
+      {
+        "id": "01-03",
+        "chapter_id": "01",
+        "text": "Our central question is simple: for a fixed overall composition, which allowed state has the lowest Gibbs energy?",
+        "start_sample": 292000,
+        "end_sample": 486527,
+        "start_seconds": 12.166666666666666,
+        "end_seconds": 20.271958333333334
+      },
+      {
+        "id": "01-04",
+        "chapter_id": "01",
+        "text": "By the end, you should be able to distinguish phase compositions from phase amounts, explain a metastable liquid, and use the Lab to check your own reasoning.",
+        "start_sample": 490847,
+        "end_sample": 747294,
+        "start_seconds": 20.451958333333334,
+        "end_seconds": 31.13725
+      },
+      {
+        "id": "01-05",
+        "chapter_id": "01",
+        "text": "Keep a calculator nearby.",
+        "start_sample": 751614,
+        "end_sample": 805886,
+        "start_seconds": 31.31725,
+        "end_seconds": 33.578583333333334
+      },
+      {
+        "id": "01-06",
+        "chapter_id": "01",
+        "text": "You will have several opportunities to pause and work before seeing the answer.",
+        "start_sample": 810206,
+        "end_sample": 930014,
+        "start_seconds": 33.758583333333334,
+        "end_seconds": 38.75058333333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 2,
+    "slide_id": "start",
+    "narration": "Open the four-page calculation and Lab guide using the link on this slide. Also open Lab zero four in another tab. Start with sections A and B on pages one and two. Later, use section C for the screen demonstration and section D for independent practice. Your calculator must have natural logarithms, labeled L N. The suggested times on the slide describe the original reading route. The video has its own running time, and your calculation pauses add to that time. This is optional support for your original Week three worksheet. It adds no attendance or exit-ticket submission.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Start with these two documents",
+    "id": "02",
+    "slide": 2,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 938414,
+    "end_sample": 1997581,
+    "start_seconds": 39.10058333333333,
+    "end_seconds": 83.23254166666666,
+    "duration_samples": 1059167,
+    "duration_seconds": 44.13195833333333,
+    "audio": "segment-02.wav",
+    "audio_sha256": "f8f65ec7fe30dc9a4557fb390caf11c3ff2ea2b1814e12a4693e16bfd6bab988",
+    "narration_sha256": "42806ea600d90a77e6b55b2371db980f0ad478bd3a692ce427b24be7c695b22c",
+    "cues": [
+      {
+        "id": "02-01",
+        "chapter_id": "02",
+        "text": "Open the four-page calculation and Lab guide using the link on this slide.",
+        "start_sample": 942734,
+        "end_sample": 1075342,
+        "start_seconds": 39.28058333333333,
+        "end_seconds": 44.80591666666667
+      },
+      {
+        "id": "02-02",
+        "chapter_id": "02",
+        "text": "Also open Lab zero four in another tab.",
+        "start_sample": 1079662,
+        "end_sample": 1165678,
+        "start_seconds": 44.98591666666667,
+        "end_seconds": 48.569916666666664
+      },
+      {
+        "id": "02-03",
+        "chapter_id": "02",
+        "text": "Start with sections A and B on pages one and two.",
+        "start_sample": 1169998,
+        "end_sample": 1253454,
+        "start_seconds": 48.749916666666664,
+        "end_seconds": 52.22725
+      },
+      {
+        "id": "02-04",
+        "chapter_id": "02",
+        "text": "Later, use section C for the screen demonstration and section D for independent practice.",
+        "start_sample": 1257774,
+        "end_sample": 1418717,
+        "start_seconds": 52.40725,
+        "end_seconds": 59.11320833333333
+      },
+      {
+        "id": "02-05",
+        "chapter_id": "02",
+        "text": "Your calculator must have natural logarithms, labeled L N.",
+        "start_sample": 1423037,
+        "end_sample": 1534141,
+        "start_seconds": 59.29320833333333,
+        "end_seconds": 63.92254166666667
+      },
+      {
+        "id": "02-06",
+        "chapter_id": "02",
+        "text": "The suggested times on the slide describe the original reading route.",
+        "start_sample": 1538461,
+        "end_sample": 1652125,
+        "start_seconds": 64.10254166666667,
+        "end_seconds": 68.83854166666667
+      },
+      {
+        "id": "02-07",
+        "chapter_id": "02",
+        "text": "The video has its own running time, and your calculation pauses add to that time.",
+        "start_sample": 1656445,
+        "end_sample": 1791101,
+        "start_seconds": 69.01854166666666,
+        "end_seconds": 74.62920833333334
+      },
+      {
+        "id": "02-08",
+        "chapter_id": "02",
+        "text": "This is optional support for your original Week three worksheet.",
+        "start_sample": 1795421,
+        "end_sample": 1896797,
+        "start_seconds": 74.80920833333333,
+        "end_seconds": 79.03320833333333
+      },
+      {
+        "id": "02-09",
+        "chapter_id": "02",
+        "text": "It adds no attendance or exit-ticket submission.",
+        "start_sample": 1901117,
+        "end_sample": 1989181,
+        "start_seconds": 79.21320833333333,
+        "end_seconds": 82.88254166666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 3,
+    "slide_id": "two-questions",
+    "narration": "First, separate consistency from stability. Lab zero three asks whether data are compatible with an applicable thermodynamic constraint, such as Gibbs Duhem, under the assumptions of the test. Lab zero four asks which feasible state has the lowest total Gibbs energy. These are different questions. A consistent liquid model can predict separation into two liquids. In guide A one, identify which question a common tangent helps answer. Throughout this review, temperature and pressure are fixed, and we consider only a binary liquid system. Vapor and solid phases are outside the allowed states in this example.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Keep two questions separate",
+    "id": "03",
+    "slide": 3,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 1997581,
+    "end_sample": 3092059,
+    "start_seconds": 83.23254166666666,
+    "end_seconds": 128.83579166666667,
+    "duration_samples": 1094478,
+    "duration_seconds": 45.60325,
+    "audio": "segment-03.wav",
+    "audio_sha256": "ce0338dc349f603483bca2b10f9a81006cf5ec10cc572965fdc66be1a13fd07e",
+    "narration_sha256": "b2ea63f7dc01a1bbc06720affd3877d4ced3dc2ea914fb04e31c2f2c3b4de59c",
+    "cues": [
+      {
+        "id": "03-01",
+        "chapter_id": "03",
+        "text": "First, separate consistency from stability.",
+        "start_sample": 2001901,
+        "end_sample": 2073308,
+        "start_seconds": 83.41254166666667,
+        "end_seconds": 86.38783333333333
+      },
+      {
+        "id": "03-02",
+        "chapter_id": "03",
+        "text": "Lab zero three asks whether data are compatible with an applicable thermodynamic constraint, such as Gibbs Duhem, under the assumptions of the test.",
+        "start_sample": 2077628,
+        "end_sample": 2330044,
+        "start_seconds": 86.56783333333334,
+        "end_seconds": 97.08516666666667
+      },
+      {
+        "id": "03-03",
+        "chapter_id": "03",
+        "text": "Lab zero four asks which feasible state has the lowest total Gibbs energy.",
+        "start_sample": 2334364,
+        "end_sample": 2471580,
+        "start_seconds": 97.26516666666667,
+        "end_seconds": 102.9825
+      },
+      {
+        "id": "03-04",
+        "chapter_id": "03",
+        "text": "These are different questions.",
+        "start_sample": 2475900,
+        "end_sample": 2525564,
+        "start_seconds": 103.1625,
+        "end_seconds": 105.23183333333333
+      },
+      {
+        "id": "03-05",
+        "chapter_id": "03",
+        "text": "A consistent liquid model can predict separation into two liquids.",
+        "start_sample": 2529884,
+        "end_sample": 2645084,
+        "start_seconds": 105.41183333333333,
+        "end_seconds": 110.21183333333333
+      },
+      {
+        "id": "03-06",
+        "chapter_id": "03",
+        "text": "In guide A one, identify which question a common tangent helps answer.",
+        "start_sample": 2649404,
+        "end_sample": 2778940,
+        "start_seconds": 110.39183333333334,
+        "end_seconds": 115.78916666666667
+      },
+      {
+        "id": "03-07",
+        "chapter_id": "03",
+        "text": "Throughout this review, temperature and pressure are fixed, and we consider only a binary liquid system.",
+        "start_sample": 2783260,
+        "end_sample": 2954411,
+        "start_seconds": 115.96916666666667,
+        "end_seconds": 123.10045833333334
+      },
+      {
+        "id": "03-08",
+        "chapter_id": "03",
+        "text": "Vapor and solid phases are outside the allowed states in this example.",
+        "start_sample": 2958731,
+        "end_sample": 3083659,
+        "start_seconds": 123.28045833333333,
+        "end_seconds": 128.48579166666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 4,
+    "slide_id": "axes",
+    "narration": "Read the axes before interpreting the shape. The horizontal coordinate, x, is the mole fraction of component one in a possible homogeneous liquid. The vertical coordinate, g, is the molar Gibbs energy of mixing divided by R T. It is dimensionless. The symbol z describes the overall feed composition. One liquid has x equal to z, but two liquids can have different compositions whose weighted average is z. We compare states containing the same total amounts of both components. Their pure-liquid reference contributions then cancel. In guide A two, mark the feed at zero point one two.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Read the axes before the curve",
+    "id": "04",
+    "slide": 4,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 3092059,
+    "end_sample": 4179435,
+    "start_seconds": 128.83579166666667,
+    "end_seconds": 174.143125,
+    "duration_samples": 1087376,
+    "duration_seconds": 45.30733333333333,
+    "audio": "segment-04.wav",
+    "audio_sha256": "9e3f9cd54b507a12a3455e88ec2494f8d95bef5a4ac63ebcee689d163cc9ef7a",
+    "narration_sha256": "bb9cf888f952aa0cf1ca967b0ccdd82973610999f1c3550bcd864af92154de62",
+    "cues": [
+      {
+        "id": "04-01",
+        "chapter_id": "04",
+        "text": "Read the axes before interpreting the shape.",
+        "start_sample": 3096379,
+        "end_sample": 3172667,
+        "start_seconds": 129.01579166666667,
+        "end_seconds": 132.19445833333333
+      },
+      {
+        "id": "04-02",
+        "chapter_id": "04",
+        "text": "The horizontal coordinate, x, is the mole fraction of component one in a possible homogeneous liquid.",
+        "start_sample": 3176987,
+        "end_sample": 3362027,
+        "start_seconds": 132.37445833333334,
+        "end_seconds": 140.08445833333334
+      },
+      {
+        "id": "04-03",
+        "chapter_id": "04",
+        "text": "The vertical coordinate, g, is the molar Gibbs energy of mixing divided by R T.",
+        "start_sample": 3366347,
+        "end_sample": 3520571,
+        "start_seconds": 140.26445833333332,
+        "end_seconds": 146.69045833333334
+      },
+      {
+        "id": "04-04",
+        "chapter_id": "04",
+        "text": "It is dimensionless.",
+        "start_sample": 3524891,
+        "end_sample": 3566875,
+        "start_seconds": 146.87045833333335,
+        "end_seconds": 148.61979166666666
+      },
+      {
+        "id": "04-05",
+        "chapter_id": "04",
+        "text": "The symbol z describes the overall feed composition.",
+        "start_sample": 3571195,
+        "end_sample": 3672059,
+        "start_seconds": 148.79979166666666,
+        "end_seconds": 153.00245833333332
+      },
+      {
+        "id": "04-06",
+        "chapter_id": "04",
+        "text": "One liquid has x equal to z, but two liquids can have different compositions whose weighted average is z.",
+        "start_sample": 3676379,
+        "end_sample": 3855995,
+        "start_seconds": 153.18245833333333,
+        "end_seconds": 160.66645833333334
+      },
+      {
+        "id": "04-07",
+        "chapter_id": "04",
+        "text": "We compare states containing the same total amounts of both components.",
+        "start_sample": 3860315,
+        "end_sample": 3975003,
+        "start_seconds": 160.84645833333335,
+        "end_seconds": 165.625125
+      },
+      {
+        "id": "04-08",
+        "chapter_id": "04",
+        "text": "Their pure-liquid reference contributions then cancel.",
+        "start_sample": 3979323,
+        "end_sample": 4069947,
+        "start_seconds": 165.805125,
+        "end_seconds": 169.581125
+      },
+      {
+        "id": "04-09",
+        "chapter_id": "04",
+        "text": "In guide A two, mark the feed at zero point one two.",
+        "start_sample": 4074267,
+        "end_sample": 4171035,
+        "start_seconds": 169.761125,
+        "end_seconds": 173.793125
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 5,
+    "slide_id": "read-curve",
+    "narration": "At the marked feed, the point on the curved line represents one homogeneous liquid. The point directly below it, on the common-tangent segment, represents a mixture of two liquids. Those liquids have the compositions at the two contacts, with amounts chosen to reproduce the same overall feed. Compare vertically at the same z. The split has lower energy here. Simply noticing that the homogeneous mixing energy is negative does not establish stability. A negative value compares mixing with the pure-component reference. Our stability question compares the homogeneous liquid with other feasible liquid states at the same overall composition.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Compare states at the same overall composition",
+    "id": "05",
+    "slide": 5,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 4179435,
+    "end_sample": 5305275,
+    "start_seconds": 174.143125,
+    "end_seconds": 221.053125,
+    "duration_samples": 1125840,
+    "duration_seconds": 46.91,
+    "audio": "segment-05.wav",
+    "audio_sha256": "4e8a212db7cb30f043d6985fc6719e3d40586e1b7c53e8133f8a962136c8d8f6",
+    "narration_sha256": "5d8fb6c7f4419dc48f12820a84dcf7fafa8580db490b553ce8f89c91b7a69c82",
+    "cues": [
+      {
+        "id": "05-01",
+        "chapter_id": "05",
+        "text": "At the marked feed, the point on the curved line represents one homogeneous liquid.",
+        "start_sample": 4183755,
+        "end_sample": 4318411,
+        "start_seconds": 174.323125,
+        "end_seconds": 179.93379166666668
+      },
+      {
+        "id": "05-02",
+        "chapter_id": "05",
+        "text": "The point directly below it, on the common-tangent segment, represents a mixture of two liquids.",
+        "start_sample": 4322731,
+        "end_sample": 4479915,
+        "start_seconds": 180.11379166666666,
+        "end_seconds": 186.663125
+      },
+      {
+        "id": "05-03",
+        "chapter_id": "05",
+        "text": "Those liquids have the compositions at the two contacts, with amounts chosen to reproduce the same overall feed.",
+        "start_sample": 4484235,
+        "end_sample": 4670091,
+        "start_seconds": 186.843125,
+        "end_seconds": 194.587125
+      },
+      {
+        "id": "05-04",
+        "chapter_id": "05",
+        "text": "Compare vertically at the same z.",
+        "start_sample": 4674411,
+        "end_sample": 4731755,
+        "start_seconds": 194.767125,
+        "end_seconds": 197.15645833333335
+      },
+      {
+        "id": "05-05",
+        "chapter_id": "05",
+        "text": "The split has lower energy here.",
+        "start_sample": 4736075,
+        "end_sample": 4791371,
+        "start_seconds": 197.33645833333333,
+        "end_seconds": 199.64045833333333
+      },
+      {
+        "id": "05-06",
+        "chapter_id": "05",
+        "text": "Simply noticing that the homogeneous mixing energy is negative does not establish stability.",
+        "start_sample": 4795691,
+        "end_sample": 4960043,
+        "start_seconds": 199.82045833333333,
+        "end_seconds": 206.66845833333332
+      },
+      {
+        "id": "05-07",
+        "chapter_id": "05",
+        "text": "A negative value compares mixing with the pure-component reference.",
+        "start_sample": 4964363,
+        "end_sample": 5071883,
+        "start_seconds": 206.84845833333333,
+        "end_seconds": 211.32845833333334
+      },
+      {
+        "id": "05-08",
+        "chapter_id": "05",
+        "text": "Our stability question compares the homogeneous liquid with other feasible liquid states at the same overall composition.",
+        "start_sample": 5076203,
+        "end_sample": 5296875,
+        "start_seconds": 211.50845833333332,
+        "end_seconds": 220.703125
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 6,
+    "slide_id": "model",
+    "narration": "We will use the symmetric, one-parameter Margules model with A equal to three. This is a synthetic example, not a fitted real-fluid dataset. The first two terms in g describe ideal mixing. The last term describes the excess contribution. The first derivative gives the slope of the curve. The second derivative gives its local curvature. Use natural logarithms in both the energy and the slope. At a pure endpoint, evaluate the limiting value of x times natural log x, which is zero. Keep this model and A fixed while changing the feed in the later comparisons.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "One model for every calculation",
+    "id": "06",
+    "slide": 6,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 5305275,
+    "end_sample": 6339179,
+    "start_seconds": 221.053125,
+    "end_seconds": 264.1324583333333,
+    "duration_samples": 1033904,
+    "duration_seconds": 43.07933333333333,
+    "audio": "segment-06.wav",
+    "audio_sha256": "6b4a26f75d3951f0480fb5373c8d86d1cf59c899f344cca10dc128875bae6c5d",
+    "narration_sha256": "39e1117889f5d1a91927eb6673a411a7ea64b3b9b23cf14e2ea4bad99292db51",
+    "cues": [
+      {
+        "id": "06-01",
+        "chapter_id": "06",
+        "text": "We will use the symmetric, one-parameter Margules model with A equal to three.",
+        "start_sample": 5309595,
+        "end_sample": 5445787,
+        "start_seconds": 221.233125,
+        "end_seconds": 226.90779166666667
+      },
+      {
+        "id": "06-02",
+        "chapter_id": "06",
+        "text": "This is a synthetic example, not a fitted real-fluid dataset.",
+        "start_sample": 5450107,
+        "end_sample": 5561723,
+        "start_seconds": 227.08779166666667,
+        "end_seconds": 231.73845833333334
+      },
+      {
+        "id": "06-03",
+        "chapter_id": "06",
+        "text": "The first two terms in g describe ideal mixing.",
+        "start_sample": 5566043,
+        "end_sample": 5649499,
+        "start_seconds": 231.91845833333332,
+        "end_seconds": 235.39579166666667
+      },
+      {
+        "id": "06-04",
+        "chapter_id": "06",
+        "text": "The last term describes the excess contribution.",
+        "start_sample": 5653819,
+        "end_sample": 5738811,
+        "start_seconds": 235.57579166666667,
+        "end_seconds": 239.117125
+      },
+      {
+        "id": "06-05",
+        "chapter_id": "06",
+        "text": "The first derivative gives the slope of the curve.",
+        "start_sample": 5743131,
+        "end_sample": 5821467,
+        "start_seconds": 239.297125,
+        "end_seconds": 242.561125
+      },
+      {
+        "id": "06-06",
+        "chapter_id": "06",
+        "text": "The second derivative gives its local curvature.",
+        "start_sample": 5825787,
+        "end_sample": 5906683,
+        "start_seconds": 242.741125,
+        "end_seconds": 246.11179166666668
+      },
+      {
+        "id": "06-07",
+        "chapter_id": "06",
+        "text": "Use natural logarithms in both the energy and the slope.",
+        "start_sample": 5911003,
+        "end_sample": 6018523,
+        "start_seconds": 246.29179166666665,
+        "end_seconds": 250.77179166666667
+      },
+      {
+        "id": "06-08",
+        "chapter_id": "06",
+        "text": "At a pure endpoint, evaluate the limiting value of x times natural log x, which is zero.",
+        "start_sample": 6022843,
+        "end_sample": 6199483,
+        "start_seconds": 250.95179166666668,
+        "end_seconds": 258.3117916666667
+      },
+      {
+        "id": "06-09",
+        "chapter_id": "06",
+        "text": "Keep this model and A fixed while changing the feed in the later comparisons.",
+        "start_sample": 6203803,
+        "end_sample": 6330779,
+        "start_seconds": 258.49179166666664,
+        "end_seconds": 263.78245833333335
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 7,
+    "slide_id": "local-curvature",
+    "narration": "Start with local curvature at z equal to zero point one two. Take one divided by zero point one two, add one divided by zero point eight eight, then subtract six. The result is about positive three point four six nine seven. Positive curvature means sufficiently small composition fluctuations raise the energy, so this homogeneous state is locally stable. It does not exclude a lower-energy split into more distant compositions. At the middle composition, zero point five, the curvature is negative two, so the homogeneous liquid is locally unstable. Pause for two minutes to reproduce both calculations in guide B one.",
+    "pause_instruction": "Pause for two minutes to reproduce both calculations in guide B one.",
+    "activity_minutes": 2,
+    "title": "Step 1: test local curvature",
+    "id": "07",
+    "slide": 7,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 6339179,
+    "end_sample": 7473499,
+    "start_seconds": 264.1324583333333,
+    "end_seconds": 311.39579166666664,
+    "duration_samples": 1134320,
+    "duration_seconds": 47.263333333333335,
+    "audio": "segment-07.wav",
+    "audio_sha256": "cab40362f77bf80f61b4acf496abbdf216a4366007555837f899e100b32782bc",
+    "narration_sha256": "782f4747246e8322eae31ea397220767a5b6dd464ac5b203188091d5c49d0bb9",
+    "cues": [
+      {
+        "id": "07-01",
+        "chapter_id": "07",
+        "text": "Start with local curvature at z equal to zero point one two.",
+        "start_sample": 6343499,
+        "end_sample": 6457163,
+        "start_seconds": 264.3124583333333,
+        "end_seconds": 269.0484583333333
+      },
+      {
+        "id": "07-02",
+        "chapter_id": "07",
+        "text": "Take one divided by zero point one two, add one divided by zero point eight eight, then subtract six.",
+        "start_sample": 6461483,
+        "end_sample": 6655531,
+        "start_seconds": 269.2284583333333,
+        "end_seconds": 277.31379166666665
+      },
+      {
+        "id": "07-03",
+        "chapter_id": "07",
+        "text": "The result is about positive three point four six nine seven.",
+        "start_sample": 6659851,
+        "end_sample": 6761739,
+        "start_seconds": 277.49379166666665,
+        "end_seconds": 281.739125
+      },
+      {
+        "id": "07-04",
+        "chapter_id": "07",
+        "text": "Positive curvature means sufficiently small composition fluctuations raise the energy, so this homogeneous state is locally stable.",
+        "start_sample": 6766059,
+        "end_sample": 7004651,
+        "start_seconds": 281.919125,
+        "end_seconds": 291.8604583333333
+      },
+      {
+        "id": "07-05",
+        "chapter_id": "07",
+        "text": "It does not exclude a lower-energy split into more distant compositions.",
+        "start_sample": 7008971,
+        "end_sample": 7123659,
+        "start_seconds": 292.04045833333333,
+        "end_seconds": 296.819125
+      },
+      {
+        "id": "07-06",
+        "chapter_id": "07",
+        "text": "At the middle composition, zero point five, the curvature is negative two, so the homogeneous liquid is locally unstable.",
+        "start_sample": 7127979,
+        "end_sample": 7349163,
+        "start_seconds": 296.999125,
+        "end_seconds": 306.215125
+      },
+      {
+        "id": "07-07",
+        "chapter_id": "07",
+        "text": "Pause for two minutes to reproduce both calculations in guide B one.",
+        "start_sample": 7353483,
+        "end_sample": 7465099,
+        "start_seconds": 306.395125,
+        "end_seconds": 311.0457916666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 8,
+    "slide_id": "endpoints",
+    "narration": "Next, find the tangent contacts. The slope at each contact must equal the slope of the line joining them. For this symmetric example, the contacts are mirror images and the common tangent is horizontal. Solve the displayed slope equation for the low-composition root. It lies between zero point zero seven zero seven and zero point zero seven zero eight. Refining gives approximately zero point zero seven zero seven two, with its partner at zero point nine two nine two eight. Check the first root in guide B two. The stationary point at one half is a maximum, not a coexistence endpoint.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Step 2: find the two tangent contacts",
+    "id": "08",
+    "slide": 8,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 7473499,
+    "end_sample": 8548139,
+    "start_seconds": 311.39579166666664,
+    "end_seconds": 356.17245833333334,
+    "duration_samples": 1074640,
+    "duration_seconds": 44.776666666666664,
+    "audio": "segment-08.wav",
+    "audio_sha256": "2b2dcc4092041389fb3ceb11fd4b417b39c47c078a1a58e55813762bb9c22e89",
+    "narration_sha256": "5dc60a9fec18c9291d801d3d4fd5fafc134a38f0c0fe4f3e7af5ed958a531134",
+    "cues": [
+      {
+        "id": "08-01",
+        "chapter_id": "08",
+        "text": "Next, find the tangent contacts.",
+        "start_sample": 7477819,
+        "end_sample": 7536187,
+        "start_seconds": 311.57579166666665,
+        "end_seconds": 314.00779166666666
+      },
+      {
+        "id": "08-02",
+        "chapter_id": "08",
+        "text": "The slope at each contact must equal the slope of the line joining them.",
+        "start_sample": 7540507,
+        "end_sample": 7652635,
+        "start_seconds": 314.18779166666667,
+        "end_seconds": 318.8597916666667
+      },
+      {
+        "id": "08-03",
+        "chapter_id": "08",
+        "text": "For this symmetric example, the contacts are mirror images and the common tangent is horizontal.",
+        "start_sample": 7656955,
+        "end_sample": 7830523,
+        "start_seconds": 319.03979166666664,
+        "end_seconds": 326.2717916666667
+      },
+      {
+        "id": "08-04",
+        "chapter_id": "08",
+        "text": "Solve the displayed slope equation for the low-composition root.",
+        "start_sample": 7834843,
+        "end_sample": 7939803,
+        "start_seconds": 326.4517916666667,
+        "end_seconds": 330.825125
+      },
+      {
+        "id": "08-05",
+        "chapter_id": "08",
+        "text": "It lies between zero point zero seven zero seven and zero point zero seven zero eight.",
+        "start_sample": 7944123,
+        "end_sample": 8108987,
+        "start_seconds": 331.005125,
+        "end_seconds": 337.87445833333334
+      },
+      {
+        "id": "08-06",
+        "chapter_id": "08",
+        "text": "Refining gives approximately zero point zero seven zero seven two, with its partner at zero point nine two nine two eight.",
+        "start_sample": 8113307,
+        "end_sample": 8337051,
+        "start_seconds": 338.05445833333334,
+        "end_seconds": 347.377125
+      },
+      {
+        "id": "08-07",
+        "chapter_id": "08",
+        "text": "Check the first root in guide B two.",
+        "start_sample": 8341371,
+        "end_sample": 8404347,
+        "start_seconds": 347.557125,
+        "end_seconds": 350.181125
+      },
+      {
+        "id": "08-08",
+        "chapter_id": "08",
+        "text": "The stationary point at one half is a maximum, not a coexistence endpoint.",
+        "start_sample": 8408667,
+        "end_sample": 8539739,
+        "start_seconds": 350.361125,
+        "end_seconds": 355.8224583333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 9,
+    "slide_id": "lever-rule",
+    "narration": "Now calculate amounts, using a basis of one mole of total feed. The two phase fractions must add to one. Their composition-weighted sum must equal z. Solving those two balances gives the lever rule shown here. For the beta fraction, subtract the alpha composition from the feed composition, then divide by the difference between the two endpoint compositions. The result is about zero point zero five seven three nine eight. The alpha fraction is one minus that, about zero point nine four two six zero two. These are amounts of liquid phases per mole of feed, not phase compositions and not a vapor fraction.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Step 3: calculate the phase amounts",
+    "id": "09",
+    "slide": 9,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 8548139,
+    "end_sample": 9630459,
+    "start_seconds": 356.17245833333334,
+    "end_seconds": 401.269125,
+    "duration_samples": 1082320,
+    "duration_seconds": 45.096666666666664,
+    "audio": "segment-09.wav",
+    "audio_sha256": "a63644d36b38c7ec8b09820fdfb9ce16210667da05619a181037b00590f10f46",
+    "narration_sha256": "f8d476049fa6be43bc2be415dc3510db9b7067d244e6c3cba4c57595b14798b4",
+    "cues": [
+      {
+        "id": "09-01",
+        "chapter_id": "09",
+        "text": "Now calculate amounts, using a basis of one mole of total feed.",
+        "start_sample": 8552459,
+        "end_sample": 8677387,
+        "start_seconds": 356.35245833333335,
+        "end_seconds": 361.5577916666667
+      },
+      {
+        "id": "09-02",
+        "chapter_id": "09",
+        "text": "The two phase fractions must add to one.",
+        "start_sample": 8681707,
+        "end_sample": 8752363,
+        "start_seconds": 361.7377916666667,
+        "end_seconds": 364.68179166666664
+      },
+      {
+        "id": "09-03",
+        "chapter_id": "09",
+        "text": "Their composition-weighted sum must equal z.",
+        "start_sample": 8756683,
+        "end_sample": 8835019,
+        "start_seconds": 364.86179166666665,
+        "end_seconds": 368.12579166666666
+      },
+      {
+        "id": "09-04",
+        "chapter_id": "09",
+        "text": "Solving those two balances gives the lever rule shown here.",
+        "start_sample": 8839339,
+        "end_sample": 8935595,
+        "start_seconds": 368.30579166666666,
+        "end_seconds": 372.31645833333334
+      },
+      {
+        "id": "09-05",
+        "chapter_id": "09",
+        "text": "For the beta fraction, subtract the alpha composition from the feed composition, then divide by the difference between the two endpoint compositions.",
+        "start_sample": 8939915,
+        "end_sample": 9180043,
+        "start_seconds": 372.49645833333335,
+        "end_seconds": 382.5017916666667
+      },
+      {
+        "id": "09-06",
+        "chapter_id": "09",
+        "text": "The result is about zero point zero five seven three nine eight.",
+        "start_sample": 9184363,
+        "end_sample": 9288811,
+        "start_seconds": 382.68179166666664,
+        "end_seconds": 387.0337916666667
+      },
+      {
+        "id": "09-07",
+        "chapter_id": "09",
+        "text": "The alpha fraction is one minus that, about zero point nine four two six zero two.",
+        "start_sample": 9293131,
+        "end_sample": 9444171,
+        "start_seconds": 387.2137916666667,
+        "end_seconds": 393.507125
+      },
+      {
+        "id": "09-08",
+        "chapter_id": "09",
+        "text": "These are amounts of liquid phases per mole of feed, not phase compositions and not a vapor fraction.",
+        "start_sample": 9448491,
+        "end_sample": 9622059,
+        "start_seconds": 393.687125,
+        "end_seconds": 400.919125
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 10,
+    "slide_id": "balance",
+    "narration": "Check the result before interpreting it. First, the alpha and beta amounts add to one mole. Next, multiply each phase amount by its component-one mole fraction and add the contributions. The result is approximately zero point one two moles of component one. Component two then accounts for zero point eight eight moles. Small differences in the final digits come from rounding. A successful balance establishes feasibility, not minimum Gibbs energy. If either proposed phase fraction is negative or greater than one, those endpoints cannot represent this feed. Record the component balance in guide B three.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Step 4: check the component balance",
+    "id": "10",
+    "slide": 10,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 9630459,
+    "end_sample": 10699803,
+    "start_seconds": 401.269125,
+    "end_seconds": 445.825125,
+    "duration_samples": 1069344,
+    "duration_seconds": 44.556,
+    "audio": "segment-10.wav",
+    "audio_sha256": "51b702d0ed946afff62bdddea6f1df6dd4fef9a86daa7a37c38c16f43bec4bda",
+    "narration_sha256": "21d628e16a6c3f4da958d8f13d9df6f14199121597ff692bd52b4d1d3f807792",
+    "cues": [
+      {
+        "id": "10-01",
+        "chapter_id": "10",
+        "text": "Check the result before interpreting it.",
+        "start_sample": 9634779,
+        "end_sample": 9695195,
+        "start_seconds": 401.449125,
+        "end_seconds": 403.9664583333333
+      },
+      {
+        "id": "10-02",
+        "chapter_id": "10",
+        "text": "First, the alpha and beta amounts add to one mole.",
+        "start_sample": 9699515,
+        "end_sample": 9786667,
+        "start_seconds": 404.1464583333333,
+        "end_seconds": 407.77779166666664
+      },
+      {
+        "id": "10-03",
+        "chapter_id": "10",
+        "text": "Next, multiply each phase amount by its component-one mole fraction and add the contributions.",
+        "start_sample": 9790987,
+        "end_sample": 9960459,
+        "start_seconds": 407.95779166666665,
+        "end_seconds": 415.019125
+      },
+      {
+        "id": "10-04",
+        "chapter_id": "10",
+        "text": "The result is approximately zero point one two moles of component one.",
+        "start_sample": 9964779,
+        "end_sample": 10083563,
+        "start_seconds": 415.199125,
+        "end_seconds": 420.14845833333334
+      },
+      {
+        "id": "10-05",
+        "chapter_id": "10",
+        "text": "Component two then accounts for zero point eight eight moles.",
+        "start_sample": 10087883,
+        "end_sample": 10196939,
+        "start_seconds": 420.32845833333334,
+        "end_seconds": 424.8724583333333
+      },
+      {
+        "id": "10-06",
+        "chapter_id": "10",
+        "text": "Small differences in the final digits come from rounding.",
+        "start_sample": 10201259,
+        "end_sample": 10289835,
+        "start_seconds": 425.05245833333333,
+        "end_seconds": 428.743125
+      },
+      {
+        "id": "10-07",
+        "chapter_id": "10",
+        "text": "A successful balance establishes feasibility, not minimum Gibbs energy.",
+        "start_sample": 10294155,
+        "end_sample": 10421131,
+        "start_seconds": 428.923125,
+        "end_seconds": 434.2137916666667
+      },
+      {
+        "id": "10-08",
+        "chapter_id": "10",
+        "text": "If either proposed phase fraction is negative or greater than one, those endpoints cannot represent this feed.",
+        "start_sample": 10425451,
+        "end_sample": 10609259,
+        "start_seconds": 434.3937916666667,
+        "end_seconds": 442.05245833333333
+      },
+      {
+        "id": "10-09",
+        "chapter_id": "10",
+        "text": "Record the component balance in guide B three.",
+        "start_sample": 10613579,
+        "end_sample": 10691403,
+        "start_seconds": 442.23245833333334,
+        "end_seconds": 445.475125
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 11,
+    "slide_id": "feed-energy",
+    "narration": "Calculate the homogeneous energy term by term. Multiply zero point one two by its natural logarithm. This contributes about negative zero point two five four four three two. The corresponding term for zero point eight eight contributes about negative zero point one one two four nine three. The excess term, three times zero point one two times zero point eight eight, is positive zero point three one six eight. Adding all three gives approximately negative zero point zero five zero one two five. This dimensionless value is total mixing Gibbs energy divided by the number of moles times R T. It is not yet an energy in joules.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Step 5: calculate the homogeneous energy",
+    "id": "11",
+    "slide": 11,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 10699803,
+    "end_sample": 11886059,
+    "start_seconds": 445.825125,
+    "end_seconds": 495.2524583333333,
+    "duration_samples": 1186256,
+    "duration_seconds": 49.42733333333333,
+    "audio": "segment-11.wav",
+    "audio_sha256": "35da8ba47dee177a1b584b8ef066adc5be25972e70757052e5b21fef53af7e11",
+    "narration_sha256": "ac2c39063b0754a92071687552b76e24f629b0578637fa12fef54948f9faf884",
+    "cues": [
+      {
+        "id": "11-01",
+        "chapter_id": "11",
+        "text": "Calculate the homogeneous energy term by term.",
+        "start_sample": 10704123,
+        "end_sample": 10790651,
+        "start_seconds": 446.005125,
+        "end_seconds": 449.6104583333333
+      },
+      {
+        "id": "11-02",
+        "chapter_id": "11",
+        "text": "Multiply zero point one two by its natural logarithm.",
+        "start_sample": 10794971,
+        "end_sample": 10901467,
+        "start_seconds": 449.79045833333333,
+        "end_seconds": 454.2277916666667
+      },
+      {
+        "id": "11-03",
+        "chapter_id": "11",
+        "text": "This contributes about negative zero point two five four four three two.",
+        "start_sample": 10905787,
+        "end_sample": 11030715,
+        "start_seconds": 454.40779166666664,
+        "end_seconds": 459.613125
+      },
+      {
+        "id": "11-04",
+        "chapter_id": "11",
+        "text": "The corresponding term for zero point eight eight contributes about negative zero point one one two four nine three.",
+        "start_sample": 11035035,
+        "end_sample": 11233179,
+        "start_seconds": 459.793125,
+        "end_seconds": 468.049125
+      },
+      {
+        "id": "11-05",
+        "chapter_id": "11",
+        "text": "The excess term, three times zero point one two times zero point eight eight, is positive zero point three one six eight.",
+        "start_sample": 11237499,
+        "end_sample": 11453563,
+        "start_seconds": 468.229125,
+        "end_seconds": 477.23179166666665
+      },
+      {
+        "id": "11-06",
+        "chapter_id": "11",
+        "text": "Adding all three gives approximately negative zero point zero five zero one two five.",
+        "start_sample": 11457883,
+        "end_sample": 11617115,
+        "start_seconds": 477.41179166666666,
+        "end_seconds": 484.0464583333333
+      },
+      {
+        "id": "11-07",
+        "chapter_id": "11",
+        "text": "This dimensionless value is total mixing Gibbs energy divided by the number of moles times R T.",
+        "start_sample": 11621435,
+        "end_sample": 11806779,
+        "start_seconds": 484.2264583333333,
+        "end_seconds": 491.949125
+      },
+      {
+        "id": "11-08",
+        "chapter_id": "11",
+        "text": "It is not yet an energy in joules.",
+        "start_sample": 11811099,
+        "end_sample": 11877659,
+        "start_seconds": 492.129125,
+        "end_seconds": 494.90245833333336
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 12,
+    "slide_id": "split-energy",
+    "narration": "Both tangent contacts have the same dimensionless energy, approximately negative zero point zero five eight three four one. Weighting these equal values by phase fractions that add to one gives that same value for the split. Subtract the split energy from the homogeneous energy. The positive decrease is about zero point zero zero eight two one six. The homogeneous feed is therefore metastable: locally stable, but a feasible split lowers the total energy. For an actual total energy decrease, multiply the displayed dimensionless decrease by the total number of moles, R, and the absolute temperature. Pause for five minutes to complete and check guide B three and B four.",
+    "pause_instruction": "Pause for five minutes to complete and check guide B three and B four.",
+    "activity_minutes": 5,
+    "title": "Step 6: compare with the split",
+    "id": "12",
+    "slide": 12,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 11886059,
+    "end_sample": 13081994,
+    "start_seconds": 495.2524583333333,
+    "end_seconds": 545.0830833333333,
+    "duration_samples": 1195935,
+    "duration_seconds": 49.830625,
+    "audio": "segment-12.wav",
+    "audio_sha256": "42dd70ce3fd1f49732d19207db9f73e284540436c9cc37d0bae0616142b69488",
+    "narration_sha256": "8756c8f740f7a118ad43eb0b78295c2f46230b8a38e95e6ff9ed2cf7fa19d981",
+    "cues": [
+      {
+        "id": "12-01",
+        "chapter_id": "12",
+        "text": "Both tangent contacts have the same dimensionless energy, approximately negative zero point zero five eight three four one.",
+        "start_sample": 11890379,
+        "end_sample": 12104395,
+        "start_seconds": 495.43245833333333,
+        "end_seconds": 504.34979166666665
+      },
+      {
+        "id": "12-02",
+        "chapter_id": "12",
+        "text": "Weighting these equal values by phase fractions that add to one gives that same value for the split.",
+        "start_sample": 12108715,
+        "end_sample": 12272555,
+        "start_seconds": 504.52979166666665,
+        "end_seconds": 511.3564583333333
+      },
+      {
+        "id": "12-03",
+        "chapter_id": "12",
+        "text": "Subtract the split energy from the homogeneous energy.",
+        "start_sample": 12276875,
+        "end_sample": 12373131,
+        "start_seconds": 511.5364583333333,
+        "end_seconds": 515.547125
+      },
+      {
+        "id": "12-04",
+        "chapter_id": "12",
+        "text": "The positive decrease is about zero point zero zero eight two one six.",
+        "start_sample": 12377451,
+        "end_sample": 12505451,
+        "start_seconds": 515.727125,
+        "end_seconds": 521.0604583333334
+      },
+      {
+        "id": "12-05",
+        "chapter_id": "12",
+        "text": "The homogeneous feed is therefore metastable: locally stable, but a feasible split lowers the total energy.",
+        "start_sample": 12509771,
+        "end_sample": 12700410,
+        "start_seconds": 521.2404583333333,
+        "end_seconds": 529.18375
+      },
+      {
+        "id": "12-06",
+        "chapter_id": "12",
+        "text": "For an actual total energy decrease, multiply the displayed dimensionless decrease by the total number of moles, R, and the absolute temperature.",
+        "start_sample": 12704730,
+        "end_sample": 12959194,
+        "start_seconds": 529.36375,
+        "end_seconds": 539.9664166666666
+      },
+      {
+        "id": "12-07",
+        "chapter_id": "12",
+        "text": "Pause for five minutes to complete and check guide B three and B four.",
+        "start_sample": 12963514,
+        "end_sample": 13073594,
+        "start_seconds": 540.1464166666667,
+        "end_seconds": 544.7330833333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 13,
+    "slide_id": "energy-gap",
+    "narration": "This close view shows the same calculation geometrically. Locate the upper point on the homogeneous curve and the lower point on the equilibrium segment, both at the feed composition. Their vertical separation is the dimensionless energy decrease. It is not the horizontal distance between the two phase compositions. The endpoint spacing enters the lever rule, while this vertical gap measures the energy advantage of the feasible split. On guide B four, label the upper point homogeneous and the lower point equilibrium split. Keep the direction of subtraction clear: homogeneous minus split is positive when separation lowers the energy.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "See the same comparison on the graph",
+    "id": "13",
+    "slide": 13,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 13081994,
+    "end_sample": 14186761,
+    "start_seconds": 545.0830833333333,
+    "end_seconds": 591.1150416666667,
+    "duration_samples": 1104767,
+    "duration_seconds": 46.031958333333336,
+    "audio": "segment-13.wav",
+    "audio_sha256": "105b9b5cce9bb7bd71cc7c56e1eb772830150273ceff303e2bc6d7e9e99669ab",
+    "narration_sha256": "9a14d31d36e6cea6afe9c31448aec08394b88aafc7bf3219d8f56a9ffcdefc10",
+    "cues": [
+      {
+        "id": "13-01",
+        "chapter_id": "13",
+        "text": "This close view shows the same calculation geometrically.",
+        "start_sample": 13086314,
+        "end_sample": 13185130,
+        "start_seconds": 545.2630833333334,
+        "end_seconds": 549.3804166666666
+      },
+      {
+        "id": "13-02",
+        "chapter_id": "13",
+        "text": "Locate the upper point on the homogeneous curve and the lower point on the equilibrium segment, both at the feed composition.",
+        "start_sample": 13189450,
+        "end_sample": 13398346,
+        "start_seconds": 549.5604166666667,
+        "end_seconds": 558.2644166666666
+      },
+      {
+        "id": "13-03",
+        "chapter_id": "13",
+        "text": "Their vertical separation is the dimensionless energy decrease.",
+        "start_sample": 13402666,
+        "end_sample": 13508138,
+        "start_seconds": 558.4444166666667,
+        "end_seconds": 562.8390833333333
+      },
+      {
+        "id": "13-04",
+        "chapter_id": "13",
+        "text": "It is not the horizontal distance between the two phase compositions.",
+        "start_sample": 13512458,
+        "end_sample": 13627146,
+        "start_seconds": 563.0190833333334,
+        "end_seconds": 567.79775
+      },
+      {
+        "id": "13-05",
+        "chapter_id": "13",
+        "text": "The endpoint spacing enters the lever rule, while this vertical gap measures the energy advantage of the feasible split.",
+        "start_sample": 13631466,
+        "end_sample": 13821561,
+        "start_seconds": 567.97775,
+        "end_seconds": 575.898375
+      },
+      {
+        "id": "13-06",
+        "chapter_id": "13",
+        "text": "On guide B four, label the upper point homogeneous and the lower point equilibrium split.",
+        "start_sample": 13825881,
+        "end_sample": 13983577,
+        "start_seconds": 576.078375,
+        "end_seconds": 582.6490416666667
+      },
+      {
+        "id": "13-07",
+        "chapter_id": "13",
+        "text": "Keep the direction of subtraction clear: homogeneous minus split is positive when separation lowers the energy.",
+        "start_sample": 13987897,
+        "end_sample": 14178361,
+        "start_seconds": 582.8290416666666,
+        "end_seconds": 590.7650416666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 14,
+    "slide_id": "global-support",
+    "narration": "A candidate common tangent must support the whole allowed curve. Subtract the line from g at every possible composition. No value may be negative. Equal chemical potentials identify a candidate pair, and the material balance establishes whether its amounts are feasible. Global support completes the minimum-energy argument within this liquid model. Checking only the two contacts is insufficient, because another part of the curve could lie below the candidate line. A coarse plotted grid could also miss a narrow dip. Here, we can examine all stationary points and both endpoints to verify the support condition directly.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Step 7: check global support",
+    "id": "14",
+    "slide": 14,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 14186761,
+    "end_sample": 15282440,
+    "start_seconds": 591.1150416666667,
+    "end_seconds": 636.7683333333333,
+    "duration_samples": 1095679,
+    "duration_seconds": 45.65329166666667,
+    "audio": "segment-14.wav",
+    "audio_sha256": "0fc8f737b38bb7f17209119cd110d99b56fab61450077029f5fe5a5c5b318c57",
+    "narration_sha256": "1068c3a7827a4d2a604a3ffe3879c87bcbf32620ccc081e647d47040beb56c85",
+    "cues": [
+      {
+        "id": "14-01",
+        "chapter_id": "14",
+        "text": "A candidate common tangent must support the whole allowed curve.",
+        "start_sample": 14191081,
+        "end_sample": 14299625,
+        "start_seconds": 591.2950416666666,
+        "end_seconds": 595.8177083333334
+      },
+      {
+        "id": "14-02",
+        "chapter_id": "14",
+        "text": "Subtract the line from g at every possible composition.",
+        "start_sample": 14303945,
+        "end_sample": 14406345,
+        "start_seconds": 595.9977083333333,
+        "end_seconds": 600.264375
+      },
+      {
+        "id": "14-03",
+        "chapter_id": "14",
+        "text": "No value may be negative.",
+        "start_sample": 14410665,
+        "end_sample": 14462377,
+        "start_seconds": 600.444375,
+        "end_seconds": 602.5990416666667
+      },
+      {
+        "id": "14-04",
+        "chapter_id": "14",
+        "text": "Equal chemical potentials identify a candidate pair, and the material balance establishes whether its amounts are feasible.",
+        "start_sample": 14466697,
+        "end_sample": 14682392,
+        "start_seconds": 602.7790416666667,
+        "end_seconds": 611.7663333333334
+      },
+      {
+        "id": "14-05",
+        "chapter_id": "14",
+        "text": "Global support completes the minimum-energy argument within this liquid model.",
+        "start_sample": 14686712,
+        "end_sample": 14808056,
+        "start_seconds": 611.9463333333333,
+        "end_seconds": 617.0023333333334
+      },
+      {
+        "id": "14-06",
+        "chapter_id": "14",
+        "text": "Checking only the two contacts is insufficient, because another part of the curve could lie below the candidate line.",
+        "start_sample": 14812376,
+        "end_sample": 15002744,
+        "start_seconds": 617.1823333333333,
+        "end_seconds": 625.1143333333333
+      },
+      {
+        "id": "14-07",
+        "chapter_id": "14",
+        "text": "A coarse plotted grid could also miss a narrow dip.",
+        "start_sample": 15007064,
+        "end_sample": 15095640,
+        "start_seconds": 625.2943333333334,
+        "end_seconds": 628.985
+      },
+      {
+        "id": "14-08",
+        "chapter_id": "14",
+        "text": "Here, we can examine all stationary points and both endpoints to verify the support condition directly.",
+        "start_sample": 15099960,
+        "end_sample": 15274040,
+        "start_seconds": 629.165,
+        "end_seconds": 636.4183333333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 15,
+    "slide_id": "support-values",
+    "narration": "For this specific model, the stationary compositions are the two contacts and one half. Include the pure endpoints as boundary candidates. Subtracting the horizontal common-tangent value gives approximately positive zero point zero five eight three four one at each pure endpoint, zero at each contact, and positive zero point one one five one nine four at one half. None is negative. Because these cover the stationary points and boundaries, they establish support across this curve. This is stronger than checking a few arbitrary graph points. Pause for two minutes to reproduce the middle-composition value and complete guide B five.",
+    "pause_instruction": "Pause for two minutes to reproduce the middle-composition value and complete guide B five.",
+    "activity_minutes": 2,
+    "title": "Verify support for this model",
+    "id": "15",
+    "slide": 15,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 15282440,
+    "end_sample": 16409592,
+    "start_seconds": 636.7683333333333,
+    "end_seconds": 683.733,
+    "duration_samples": 1127152,
+    "duration_seconds": 46.964666666666666,
+    "audio": "segment-15.wav",
+    "audio_sha256": "0637a39d577d554b4c44bff04ac851e5606b232a9ecbbefd21a82c54cb1f19c5",
+    "narration_sha256": "eb494a36f5af65b867437705767842254aa7a0bb6da905ab83314d21fe670b55",
+    "cues": [
+      {
+        "id": "15-01",
+        "chapter_id": "15",
+        "text": "For this specific model, the stationary compositions are the two contacts and one half.",
+        "start_sample": 15286760,
+        "end_sample": 15427560,
+        "start_seconds": 636.9483333333334,
+        "end_seconds": 642.815
+      },
+      {
+        "id": "15-02",
+        "chapter_id": "15",
+        "text": "Include the pure endpoints as boundary candidates.",
+        "start_sample": 15431880,
+        "end_sample": 15520456,
+        "start_seconds": 642.995,
+        "end_seconds": 646.6856666666666
+      },
+      {
+        "id": "15-03",
+        "chapter_id": "15",
+        "text": "Subtracting the horizontal common-tangent value gives approximately positive zero point zero five eight three four one at each pure endpoint, zero at each contact, and positive zero point one one five one nine four at one half.",
+        "start_sample": 15524776,
+        "end_sample": 15949736,
+        "start_seconds": 646.8656666666667,
+        "end_seconds": 664.5723333333333
+      },
+      {
+        "id": "15-04",
+        "chapter_id": "15",
+        "text": "None is negative.",
+        "start_sample": 15954056,
+        "end_sample": 15991944,
+        "start_seconds": 664.7523333333334,
+        "end_seconds": 666.331
+      },
+      {
+        "id": "15-05",
+        "chapter_id": "15",
+        "text": "Because these cover the stationary points and boundaries, they establish support across this curve.",
+        "start_sample": 15996264,
+        "end_sample": 16152936,
+        "start_seconds": 666.511,
+        "end_seconds": 673.039
+      },
+      {
+        "id": "15-06",
+        "chapter_id": "15",
+        "text": "This is stronger than checking a few arbitrary graph points.",
+        "start_sample": 16157256,
+        "end_sample": 16250952,
+        "start_seconds": 673.219,
+        "end_seconds": 677.123
+      },
+      {
+        "id": "15-07",
+        "chapter_id": "15",
+        "text": "Pause for two minutes to reproduce the middle-composition value and complete guide B five.",
+        "start_sample": 16255272,
+        "end_sample": 16401192,
+        "start_seconds": 677.303,
+        "end_seconds": 683.383
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 16,
+    "slide_id": "feed-tangent",
+    "narration": "Now change the reference line. Tangent-plane distance, or T P D, uses the tangent to the homogeneous curve at the feed composition. At a trial composition w, subtract that feed-tangent value from g of w. A negative result shows that the homogeneous feed is not globally stable. This feed tangent is different from the coexistence common tangent we just verified. Its minimizing trial composition is not automatically a binodal endpoint. In guide C one, keep these two tests distinct: support of the coexistence line verifies the equilibrium construction, while feed T P D tests the original homogeneous liquid.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "A different tangent tests the homogeneous feed",
+    "id": "16",
+    "slide": 16,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 16409592,
+    "end_sample": 17599288,
+    "start_seconds": 683.733,
+    "end_seconds": 733.3036666666667,
+    "duration_samples": 1189696,
+    "duration_seconds": 49.57066666666667,
+    "audio": "segment-16.wav",
+    "audio_sha256": "1ebcdd4ae0deb4add43a080ad88e15fca1a1664d929f40b1a46fd6d094c7f385",
+    "narration_sha256": "985323b55820b25669da8aacee38ececd33f579461bbb0ea4dfe8783b705c1b4",
+    "cues": [
+      {
+        "id": "16-01",
+        "chapter_id": "16",
+        "text": "Now change the reference line.",
+        "start_sample": 16413912,
+        "end_sample": 16467160,
+        "start_seconds": 683.913,
+        "end_seconds": 686.1316666666667
+      },
+      {
+        "id": "16-02",
+        "chapter_id": "16",
+        "text": "Tangent-plane distance, or T P D, uses the tangent to the homogeneous curve at the feed composition.",
+        "start_sample": 16471480,
+        "end_sample": 16666552,
+        "start_seconds": 686.3116666666666,
+        "end_seconds": 694.4396666666667
+      },
+      {
+        "id": "16-03",
+        "chapter_id": "16",
+        "text": "At a trial composition w, subtract that feed-tangent value from g of w.",
+        "start_sample": 16670872,
+        "end_sample": 16826008,
+        "start_seconds": 694.6196666666667,
+        "end_seconds": 701.0836666666667
+      },
+      {
+        "id": "16-04",
+        "chapter_id": "16",
+        "text": "A negative result shows that the homogeneous feed is not globally stable.",
+        "start_sample": 16830328,
+        "end_sample": 16959352,
+        "start_seconds": 701.2636666666667,
+        "end_seconds": 706.6396666666667
+      },
+      {
+        "id": "16-05",
+        "chapter_id": "16",
+        "text": "This feed tangent is different from the coexistence common tangent we just verified.",
+        "start_sample": 16963672,
+        "end_sample": 17111128,
+        "start_seconds": 706.8196666666666,
+        "end_seconds": 712.9636666666667
+      },
+      {
+        "id": "16-06",
+        "chapter_id": "16",
+        "text": "Its minimizing trial composition is not automatically a binodal endpoint.",
+        "start_sample": 17115448,
+        "end_sample": 17255736,
+        "start_seconds": 713.1436666666667,
+        "end_seconds": 718.989
+      },
+      {
+        "id": "16-07",
+        "chapter_id": "16",
+        "text": "In guide C one, keep these two tests distinct: support of the coexistence line verifies the equilibrium construction, while feed T P D tests the original homogeneous liquid.",
+        "start_sample": 17260056,
+        "end_sample": 17590888,
+        "start_seconds": 719.169,
+        "end_seconds": 732.9536666666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 17,
+    "slide_id": "open-lab",
+    "narration": "Open Lab zero four and go to the liquid stability experiment. Under Explore a state, choose the metastable example with A equal to three and feed composition zero point one two. Confirm Margules, one parameter, and check both numerical inputs. Click Find equilibrium. Select the Gibbs energy and common tangent view. The graph should match our worked case. Open Verify the equilibrium to inspect the energies and component balance. Compare the two endpoint compositions and the phase amounts with guide B. Opening the page alone does not guarantee these settings, so selecting and checking the preset is an essential first step.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "scenes": [
+      {
+        "key": "lab04-open",
+        "cue": "Open Lab zero four and go to the liquid stability experiment.",
+        "action": "Open Lab 04 at #lle-experiment and show the initial controls."
+      },
+      {
+        "key": "lab04-preset-meta",
+        "cue": "Under Explore a state, choose the metastable example with A equal to three and feed composition zero point one two.",
+        "action": "Select Metastable · A = 3, z₁ = 0.12."
+      },
+      {
+        "key": "lab04-confirm-meta",
+        "cue": "Confirm Margules, one parameter, and check both numerical inputs.",
+        "action": "Show Liquid model, A and Feed mole fraction z₁ values."
+      },
+      {
+        "key": "lab04-run-meta",
+        "cue": "Click Find equilibrium.",
+        "action": "Click Find equilibrium and show Gibbs energy & common tangent."
+      },
+      {
+        "key": "lab04-meta-verification",
+        "cue": "Open Verify the equilibrium to inspect the energies and component balance.",
+        "action": "Expand verification if needed, show energies, phase amounts, compositions and balance residual."
+      }
+    ],
+    "title": "Open Lab 04 and reproduce the calculation",
+    "id": "17",
+    "slide": 17,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 17599288,
+    "end_sample": 18738232,
+    "start_seconds": 733.3036666666667,
+    "end_seconds": 780.7596666666667,
+    "duration_samples": 1138944,
+    "duration_seconds": 47.456,
+    "audio": "segment-17.wav",
+    "audio_sha256": "d121d2ac700b5d872ced0010133bf57ab68b202fb8ca4ac698ebdffc958c1582",
+    "narration_sha256": "5803fa0b31124d2fe0b424fca60d29dd75090568816019c73135f755d7e0c8b3",
+    "cues": [
+      {
+        "id": "17-01",
+        "chapter_id": "17",
+        "text": "Open Lab zero four and go to the liquid stability experiment.",
+        "start_sample": 17603608,
+        "end_sample": 17717784,
+        "start_seconds": 733.4836666666666,
+        "end_seconds": 738.241
+      },
+      {
+        "id": "17-02",
+        "chapter_id": "17",
+        "text": "Under Explore a state, choose the metastable example with A equal to three and feed composition zero point one two.",
+        "start_sample": 17722104,
+        "end_sample": 17932536,
+        "start_seconds": 738.421,
+        "end_seconds": 747.189
+      },
+      {
+        "id": "17-03",
+        "chapter_id": "17",
+        "text": "Confirm Margules, one parameter, and check both numerical inputs.",
+        "start_sample": 17936856,
+        "end_sample": 18059816,
+        "start_seconds": 747.369,
+        "end_seconds": 752.4923333333334
+      },
+      {
+        "id": "17-04",
+        "chapter_id": "17",
+        "text": "Click Find equilibrium.",
+        "start_sample": 18064136,
+        "end_sample": 18110728,
+        "start_seconds": 752.6723333333333,
+        "end_seconds": 754.6136666666666
+      },
+      {
+        "id": "17-05",
+        "chapter_id": "17",
+        "text": "Select the Gibbs energy and common tangent view.",
+        "start_sample": 18115048,
+        "end_sample": 18201576,
+        "start_seconds": 754.7936666666667,
+        "end_seconds": 758.399
+      },
+      {
+        "id": "17-06",
+        "chapter_id": "17",
+        "text": "The graph should match our worked case.",
+        "start_sample": 18205896,
+        "end_sample": 18262216,
+        "start_seconds": 758.579,
+        "end_seconds": 760.9256666666666
+      },
+      {
+        "id": "17-07",
+        "chapter_id": "17",
+        "text": "Open Verify the equilibrium to inspect the energies and component balance.",
+        "start_sample": 18266536,
+        "end_sample": 18398632,
+        "start_seconds": 761.1056666666667,
+        "end_seconds": 766.6096666666666
+      },
+      {
+        "id": "17-08",
+        "chapter_id": "17",
+        "text": "Compare the two endpoint compositions and the phase amounts with guide B.",
+        "start_sample": 18402952,
+        "end_sample": 18529416,
+        "start_seconds": 766.7896666666667,
+        "end_seconds": 772.059
+      },
+      {
+        "id": "17-09",
+        "chapter_id": "17",
+        "text": "Opening the page alone does not guarantee these settings, so selecting and checking the preset is an essential first step.",
+        "start_sample": 18533736,
+        "end_sample": 18729832,
+        "start_seconds": 772.239,
+        "end_seconds": 780.4096666666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 18,
+    "slide_id": "lab-check",
+    "narration": "Compare the displayed results with the calculation table. The alpha liquid accounts for about ninety-four point two six percent of the feed, and the beta liquid about five point seven four percent. The equilibrium energy is lower by about zero point zero zero eight two one six. Now switch View to Local curvature. The feed has positive curvature. Next select Tangent-plane distance, feed stability. Its negative minimum rejects global stability of this homogeneous feed. These observations are compatible, and together explain metastability. Allow for display rounding when checking residuals. Pause for four minutes to reproduce both views and record your comparisons in guide C one.",
+    "pause_instruction": "Pause for four minutes to reproduce both views and record your comparisons in guide C one.",
+    "activity_minutes": 4,
+    "scenes": [
+      {
+        "key": "lab04-meta-outputs",
+        "cue": "Compare the displayed results with the calculation table.",
+        "action": "Show metastable verification results alongside the narration."
+      },
+      {
+        "key": "lab04-meta-curvature",
+        "cue": "Now switch View to Local curvature.",
+        "action": "Select Local curvature and show z₁=0.12 and positive curvature."
+      },
+      {
+        "key": "lab04-meta-tpd",
+        "cue": "Next select Tangent-plane distance, feed stability.",
+        "action": "Select Tangent-plane distance · feed stability and show the negative minimum and feed-reference explanation."
+      }
+    ],
+    "title": "Compare the outputs, then change the view",
+    "id": "18",
+    "slide": 18,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 18738232,
+    "end_sample": 19962936,
+    "start_seconds": 780.7596666666667,
+    "end_seconds": 831.789,
+    "duration_samples": 1224704,
+    "duration_seconds": 51.029333333333334,
+    "audio": "segment-18.wav",
+    "audio_sha256": "9a71205045de051bc1791324d51874b904c21d68c37974528bb380eaa0c2171f",
+    "narration_sha256": "940c7f13288fe471e21af5eb073990efd9ad9ea973bf8573071852ef229436a5",
+    "cues": [
+      {
+        "id": "18-01",
+        "chapter_id": "18",
+        "text": "Compare the displayed results with the calculation table.",
+        "start_sample": 18742552,
+        "end_sample": 18831128,
+        "start_seconds": 780.9396666666667,
+        "end_seconds": 784.6303333333333
+      },
+      {
+        "id": "18-02",
+        "chapter_id": "18",
+        "text": "The alpha liquid accounts for about ninety-four point two six percent of the feed, and the beta liquid about five point seven four percent.",
+        "start_sample": 18835448,
+        "end_sample": 19070568,
+        "start_seconds": 784.8103333333333,
+        "end_seconds": 794.607
+      },
+      {
+        "id": "18-03",
+        "chapter_id": "18",
+        "text": "The equilibrium energy is lower by about zero point zero zero eight two one six.",
+        "start_sample": 19074888,
+        "end_sample": 19220808,
+        "start_seconds": 794.787,
+        "end_seconds": 800.867
+      },
+      {
+        "id": "18-04",
+        "chapter_id": "18",
+        "text": "Now switch View to Local curvature.",
+        "start_sample": 19225128,
+        "end_sample": 19288616,
+        "start_seconds": 801.047,
+        "end_seconds": 803.6923333333333
+      },
+      {
+        "id": "18-05",
+        "chapter_id": "18",
+        "text": "The feed has positive curvature.",
+        "start_sample": 19292936,
+        "end_sample": 19352328,
+        "start_seconds": 803.8723333333334,
+        "end_seconds": 806.347
+      },
+      {
+        "id": "18-06",
+        "chapter_id": "18",
+        "text": "Next select Tangent-plane distance, feed stability.",
+        "start_sample": 19356648,
+        "end_sample": 19448296,
+        "start_seconds": 806.527,
+        "end_seconds": 810.3456666666667
+      },
+      {
+        "id": "18-07",
+        "chapter_id": "18",
+        "text": "Its negative minimum rejects global stability of this homogeneous feed.",
+        "start_sample": 19452616,
+        "end_sample": 19577544,
+        "start_seconds": 810.5256666666667,
+        "end_seconds": 815.731
+      },
+      {
+        "id": "18-08",
+        "chapter_id": "18",
+        "text": "These observations are compatible, and together explain metastability.",
+        "start_sample": 19581864,
+        "end_sample": 19702184,
+        "start_seconds": 815.911,
+        "end_seconds": 820.9243333333334
+      },
+      {
+        "id": "18-09",
+        "chapter_id": "18",
+        "text": "Allow for display rounding when checking residuals.",
+        "start_sample": 19706504,
+        "end_sample": 19796104,
+        "start_seconds": 821.1043333333333,
+        "end_seconds": 824.8376666666667
+      },
+      {
+        "id": "18-10",
+        "chapter_id": "18",
+        "text": "Pause for four minutes to reproduce both views and record your comparisons in guide C one.",
+        "start_sample": 19800424,
+        "end_sample": 19954536,
+        "start_seconds": 825.0176666666666,
+        "end_seconds": 831.439
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 19,
+    "slide_id": "predict-cases",
+    "narration": "Predict two new cases before revealing the results. Keep A equal to three. For z equal to zero point zero two, decide whether the feed lies between the binodal endpoints and whether the lever-rule amounts are feasible. For z equal to one half, predict the curvature sign and the phase amounts suggested by symmetry. Write both predictions in guide C two. Then select the corresponding Stable and Unstable presets and click Find equilibrium for each. Pause for five minutes. Record your prediction, the Lab result, and a reason for any correction before continuing to the comparison.",
+    "pause_instruction": "Pause for five minutes. Record your prediction, the Lab result, and a reason for any correction before continuing to the comparison.",
+    "activity_minutes": 5,
+    "title": "Predict before changing the feed",
+    "id": "19",
+    "slide": 19,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 19962936,
+    "end_sample": 21005911,
+    "start_seconds": 831.789,
+    "end_seconds": 875.2462916666667,
+    "duration_samples": 1042975,
+    "duration_seconds": 43.45729166666667,
+    "audio": "segment-19.wav",
+    "audio_sha256": "e39fab3c4d26102338dad32bdc43d4465b745db83cc270cd84d33507077ceba4",
+    "narration_sha256": "3c4fd6eaecf8c9fa5fa21bb18677e6427998d276389b2fc7b3f56b00217e80dd",
+    "cues": [
+      {
+        "id": "19-01",
+        "chapter_id": "19",
+        "text": "Predict two new cases before revealing the results.",
+        "start_sample": 19967256,
+        "end_sample": 20054296,
+        "start_seconds": 831.969,
+        "end_seconds": 835.5956666666667
+      },
+      {
+        "id": "19-02",
+        "chapter_id": "19",
+        "text": "Keep A equal to three.",
+        "start_sample": 20058616,
+        "end_sample": 20103672,
+        "start_seconds": 835.7756666666667,
+        "end_seconds": 837.653
+      },
+      {
+        "id": "19-03",
+        "chapter_id": "19",
+        "text": "For z equal to zero point zero two, decide whether the feed lies between the binodal endpoints and whether the lever-rule amounts are feasible.",
+        "start_sample": 20107992,
+        "end_sample": 20357240,
+        "start_seconds": 837.833,
+        "end_seconds": 848.2183333333334
+      },
+      {
+        "id": "19-04",
+        "chapter_id": "19",
+        "text": "For z equal to one half, predict the curvature sign and the phase amounts suggested by symmetry.",
+        "start_sample": 20361560,
+        "end_sample": 20523864,
+        "start_seconds": 848.3983333333333,
+        "end_seconds": 855.161
+      },
+      {
+        "id": "19-05",
+        "chapter_id": "19",
+        "text": "Write both predictions in guide C two.",
+        "start_sample": 20528184,
+        "end_sample": 20594744,
+        "start_seconds": 855.341,
+        "end_seconds": 858.1143333333333
+      },
+      {
+        "id": "19-06",
+        "chapter_id": "19",
+        "text": "Then select the corresponding Stable and Unstable presets and click Find equilibrium for each.",
+        "start_sample": 20599064,
+        "end_sample": 20770072,
+        "start_seconds": 858.2943333333334,
+        "end_seconds": 865.4196666666667
+      },
+      {
+        "id": "19-07",
+        "chapter_id": "19",
+        "text": "Pause for five minutes.",
+        "start_sample": 20774392,
+        "end_sample": 20817400,
+        "start_seconds": 865.5996666666666,
+        "end_seconds": 867.3916666666667
+      },
+      {
+        "id": "19-08",
+        "chapter_id": "19",
+        "text": "Record your prediction, the Lab result, and a reason for any correction before continuing to the comparison.",
+        "start_sample": 20821720,
+        "end_sample": 20997511,
+        "start_seconds": 867.5716666666667,
+        "end_seconds": 874.8962916666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 20,
+    "slide_id": "compare-cases",
+    "narration": "Select the Stable preset at zero point zero two and run Find equilibrium. The result is one liquid at the feed composition. Using the two binodal endpoints would require a negative beta amount, so that split is infeasible. Now select the Unstable preset at zero point five and run Find equilibrium. The homogeneous curvature is negative two, and equilibrium has equal amounts of the two liquids. The endpoint compositions stay unchanged. Return to the comparison table. Stable, metastable, and unstable classify the initial homogeneous feed. They must not be confused with the stable equilibrium obtained after allowing separation.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "scenes": [
+      {
+        "key": "lab04-stable-run",
+        "cue": "Select the Stable preset at zero point zero two and run Find equilibrium.",
+        "action": "Select Stable · A = 3, z₁ = 0.02, click Find equilibrium, show Gibbs/common-tangent view and one-liquid result."
+      },
+      {
+        "key": "lab04-unstable-run",
+        "cue": "Now select the Unstable preset at zero point five and run Find equilibrium.",
+        "action": "Select Unstable · A = 3, z₁ = 0.50, click Find equilibrium, show equal phase fractions and negative feed curvature."
+      },
+      {
+        "key": "lab04-compare-table",
+        "cue": "Return to the comparison table.",
+        "action": "Return to slide 20 table of the three feeds."
+      }
+    ],
+    "title": "Three feed states, two equilibrium outcomes",
+    "id": "20",
+    "slide": 20,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 21005911,
+    "end_sample": 22194551,
+    "start_seconds": 875.2462916666667,
+    "end_seconds": 924.7729583333333,
+    "duration_samples": 1188640,
+    "duration_seconds": 49.526666666666664,
+    "audio": "segment-20.wav",
+    "audio_sha256": "bcae23af556fd0507fc21ffe35ff0fff0faf7f7b42a2044e7c168acbb3f26dff",
+    "narration_sha256": "2c6d54b72bcda2c013883b9806be2da05f2188c56d9499659a70792c38b6a5ca",
+    "cues": [
+      {
+        "id": "20-01",
+        "chapter_id": "20",
+        "text": "Select the Stable preset at zero point zero two and run Find equilibrium.",
+        "start_sample": 21010231,
+        "end_sample": 21148983,
+        "start_seconds": 875.4262916666667,
+        "end_seconds": 881.207625
+      },
+      {
+        "id": "20-02",
+        "chapter_id": "20",
+        "text": "The result is one liquid at the feed composition.",
+        "start_sample": 21153303,
+        "end_sample": 21236247,
+        "start_seconds": 881.387625,
+        "end_seconds": 884.843625
+      },
+      {
+        "id": "20-03",
+        "chapter_id": "20",
+        "text": "Using the two binodal endpoints would require a negative beta amount, so that split is infeasible.",
+        "start_sample": 21240567,
+        "end_sample": 21418231,
+        "start_seconds": 885.023625,
+        "end_seconds": 892.4262916666667
+      },
+      {
+        "id": "20-04",
+        "chapter_id": "20",
+        "text": "Now select the Unstable preset at zero point five and run Find equilibrium.",
+        "start_sample": 21422551,
+        "end_sample": 21570519,
+        "start_seconds": 892.6062916666667,
+        "end_seconds": 898.771625
+      },
+      {
+        "id": "20-05",
+        "chapter_id": "20",
+        "text": "The homogeneous curvature is negative two, and equilibrium has equal amounts of the two liquids.",
+        "start_sample": 21574839,
+        "end_sample": 21742375,
+        "start_seconds": 898.951625,
+        "end_seconds": 905.9322916666666
+      },
+      {
+        "id": "20-06",
+        "chapter_id": "20",
+        "text": "The endpoint compositions stay unchanged.",
+        "start_sample": 21746695,
+        "end_sample": 21816327,
+        "start_seconds": 906.1122916666667,
+        "end_seconds": 909.013625
+      },
+      {
+        "id": "20-07",
+        "chapter_id": "20",
+        "text": "Return to the comparison table.",
+        "start_sample": 21820647,
+        "end_sample": 21877991,
+        "start_seconds": 909.193625,
+        "end_seconds": 911.5829583333333
+      },
+      {
+        "id": "20-08",
+        "chapter_id": "20",
+        "text": "Stable, metastable, and unstable classify the initial homogeneous feed.",
+        "start_sample": 21882311,
+        "end_sample": 22024135,
+        "start_seconds": 911.7629583333334,
+        "end_seconds": 917.6722916666666
+      },
+      {
+        "id": "20-09",
+        "chapter_id": "20",
+        "text": "They must not be confused with the stable equilibrium obtained after allowing separation.",
+        "start_sample": 22028455,
+        "end_sample": 22186151,
+        "start_seconds": 917.8522916666667,
+        "end_seconds": 924.4229583333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 21,
+    "slide_id": "regions",
+    "narration": "Locate the same cases on this curve. The binodal contacts bound the two-liquid equilibrium interval. The spinodals, near zero point two one one three and zero point seven eight eight seven, mark where local curvature changes sign. Between a binodal and its neighboring spinodal, the homogeneous liquid is metastable. Inside the spinodals it is locally unstable. Outside the binodal interval it is stable in this example. Place zero point zero two, zero point one two, and zero point five in these regions. The equilibrium common-tangent segment applies throughout the binodal interval, with phase amounts determined by the feed.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Locate the three regions on the same curve",
+    "id": "21",
+    "slide": 21,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 22194551,
+    "end_sample": 23349718,
+    "start_seconds": 924.7729583333333,
+    "end_seconds": 972.9049166666666,
+    "duration_samples": 1155167,
+    "duration_seconds": 48.13195833333333,
+    "audio": "segment-21.wav",
+    "audio_sha256": "9e714bf972ba424e678f95f6b4333139bd8bcaa5599259437a8ffe63d4bb51ac",
+    "narration_sha256": "2af63e708631cbdf811ea5d17fd65d6a14d8f3a4d51b901c3ce18e77a0032a41",
+    "cues": [
+      {
+        "id": "21-01",
+        "chapter_id": "21",
+        "text": "Locate the same cases on this curve.",
+        "start_sample": 22198871,
+        "end_sample": 22262871,
+        "start_seconds": 924.9529583333333,
+        "end_seconds": 927.619625
+      },
+      {
+        "id": "21-02",
+        "chapter_id": "21",
+        "text": "The binodal contacts bound the two-liquid equilibrium interval.",
+        "start_sample": 22267191,
+        "end_sample": 22370615,
+        "start_seconds": 927.799625,
+        "end_seconds": 932.1089583333334
+      },
+      {
+        "id": "21-03",
+        "chapter_id": "21",
+        "text": "The spinodals, near zero point two one one three and zero point seven eight eight seven, mark where local curvature changes sign.",
+        "start_sample": 22374935,
+        "end_sample": 22607383,
+        "start_seconds": 932.2889583333333,
+        "end_seconds": 941.9742916666667
+      },
+      {
+        "id": "21-04",
+        "chapter_id": "21",
+        "text": "Between a binodal and its neighboring spinodal, the homogeneous liquid is metastable.",
+        "start_sample": 22611703,
+        "end_sample": 22751991,
+        "start_seconds": 942.1542916666667,
+        "end_seconds": 947.999625
+      },
+      {
+        "id": "21-05",
+        "chapter_id": "21",
+        "text": "Inside the spinodals it is locally unstable.",
+        "start_sample": 22756311,
+        "end_sample": 22842327,
+        "start_seconds": 948.179625,
+        "end_seconds": 951.763625
+      },
+      {
+        "id": "21-06",
+        "chapter_id": "21",
+        "text": "Outside the binodal interval it is stable in this example.",
+        "start_sample": 22846647,
+        "end_sample": 22954679,
+        "start_seconds": 951.943625,
+        "end_seconds": 956.4449583333334
+      },
+      {
+        "id": "21-07",
+        "chapter_id": "21",
+        "text": "Place zero point zero two, zero point one two, and zero point five in these regions.",
+        "start_sample": 22958999,
+        "end_sample": 23127590,
+        "start_seconds": 956.6249583333333,
+        "end_seconds": 963.6495833333333
+      },
+      {
+        "id": "21-08",
+        "chapter_id": "21",
+        "text": "The equilibrium common-tangent segment applies throughout the binodal interval, with phase amounts determined by the feed.",
+        "start_sample": 23131910,
+        "end_sample": 23341318,
+        "start_seconds": 963.8295833333333,
+        "end_seconds": 972.5549166666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 22,
+    "slide_id": "practice",
+    "narration": "Work the new case in guide D one on page four. Keep A equal to three and set the feed to zero point three five. First calculate local curvature. Then use the same endpoint compositions to calculate both phase fractions and check the component balance. Calculate the homogeneous energy and its decrease on splitting. Only after your hand calculation, enter the feed in Lab zero four and run Find equilibrium. The endpoints stay fixed because the model and conditions are unchanged. Pause for eight minutes to attempt all five steps before watching the worked answer.",
+    "pause_instruction": "Pause for eight minutes to attempt all five steps before watching the worked answer.",
+    "activity_minutes": 8,
+    "title": "Your turn: solve a new feed",
+    "id": "22",
+    "slide": 22,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 23349718,
+    "end_sample": 24354214,
+    "start_seconds": 972.9049166666666,
+    "end_seconds": 1014.7589166666667,
+    "duration_samples": 1004496,
+    "duration_seconds": 41.854,
+    "audio": "segment-22.wav",
+    "audio_sha256": "502ab39fe946d6c1e5497b0bb44356bee7e3081813a248b60d694f1c1790bf7f",
+    "narration_sha256": "a14eddc20ca3f3ddcaec960b58831783dd867234fa123d388bb715ce62a375b7",
+    "cues": [
+      {
+        "id": "22-01",
+        "chapter_id": "22",
+        "text": "Work the new case in guide D one on page four.",
+        "start_sample": 23354038,
+        "end_sample": 23435446,
+        "start_seconds": 973.0849166666667,
+        "end_seconds": 976.4769166666666
+      },
+      {
+        "id": "22-02",
+        "chapter_id": "22",
+        "text": "Keep A equal to three and set the feed to zero point three five.",
+        "start_sample": 23439766,
+        "end_sample": 23551894,
+        "start_seconds": 976.6569166666667,
+        "end_seconds": 981.3289166666667
+      },
+      {
+        "id": "22-03",
+        "chapter_id": "22",
+        "text": "First calculate local curvature.",
+        "start_sample": 23556214,
+        "end_sample": 23616118,
+        "start_seconds": 981.5089166666667,
+        "end_seconds": 984.0049166666666
+      },
+      {
+        "id": "22-04",
+        "chapter_id": "22",
+        "text": "Then use the same endpoint compositions to calculate both phase fractions and check the component balance.",
+        "start_sample": 23620438,
+        "end_sample": 23796054,
+        "start_seconds": 984.1849166666667,
+        "end_seconds": 991.50225
+      },
+      {
+        "id": "22-05",
+        "chapter_id": "22",
+        "text": "Calculate the homogeneous energy and its decrease on splitting.",
+        "start_sample": 23800374,
+        "end_sample": 23911990,
+        "start_seconds": 991.68225,
+        "end_seconds": 996.3329166666666
+      },
+      {
+        "id": "22-06",
+        "chapter_id": "22",
+        "text": "Only after your hand calculation, enter the feed in Lab zero four and run Find equilibrium.",
+        "start_sample": 23916310,
+        "end_sample": 24087830,
+        "start_seconds": 996.5129166666667,
+        "end_seconds": 1003.6595833333333
+      },
+      {
+        "id": "22-07",
+        "chapter_id": "22",
+        "text": "The endpoints stay fixed because the model and conditions are unchanged.",
+        "start_sample": 24092150,
+        "end_sample": 24210934,
+        "start_seconds": 1003.8395833333333,
+        "end_seconds": 1008.7889166666666
+      },
+      {
+        "id": "22-08",
+        "chapter_id": "22",
+        "text": "Pause for eight minutes to attempt all five steps before watching the worked answer.",
+        "start_sample": 24215254,
+        "end_sample": 24345814,
+        "start_seconds": 1008.9689166666667,
+        "end_seconds": 1014.4089166666666
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 23,
+    "slide_id": "practice-answer",
+    "narration": "Check your calculation for zero point three five. The curvature is about negative one point six zero four four, so the homogeneous feed is locally unstable. The beta fraction is about zero point three two five two eight nine, and alpha is the remainder. Their weighted composition returns zero point three five. The homogeneous energy is approximately positive zero point zero three five zero five three, and the decrease is zero point zero nine three three nine five. Enter zero point three five in Feed mole fraction and click Find equilibrium. Compare the same endpoints, new amounts, and energy decrease. Correct guide D one in a different color.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "scenes": [
+      {
+        "key": "practice-worked-answer",
+        "cue": "Check your calculation for zero point three five.",
+        "action": "Show slide 23 step-by-step numerical answer."
+      },
+      {
+        "key": "lab04-practice-run",
+        "cue": "Enter zero point three five in Feed mole fraction and click Find equilibrium.",
+        "action": "Set z₁=0.35 at A=3 and Margules one parameter, click Find equilibrium."
+      },
+      {
+        "key": "lab04-practice-verify",
+        "cue": "Compare the same endpoints, new amounts, and energy decrease.",
+        "action": "Show the new output and verification panel for z₁=0.35."
+      }
+    ],
+    "title": "Check your new-feed calculation",
+    "id": "23",
+    "slide": 23,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 24354214,
+    "end_sample": 25555430,
+    "start_seconds": 1014.7589166666667,
+    "end_seconds": 1064.8095833333334,
+    "duration_samples": 1201216,
+    "duration_seconds": 50.050666666666665,
+    "audio": "segment-23.wav",
+    "audio_sha256": "80342aeeba1341f74e7a5104f9721f6a95020aedd055415591ef7d4d99faaab6",
+    "narration_sha256": "122bc486a4246d10607bb33a536e497215487190e8bfbb7f21a3608b56935bbc",
+    "cues": [
+      {
+        "id": "23-01",
+        "chapter_id": "23",
+        "text": "Check your calculation for zero point three five.",
+        "start_sample": 24358534,
+        "end_sample": 24442502,
+        "start_seconds": 1014.9389166666666,
+        "end_seconds": 1018.4375833333334
+      },
+      {
+        "id": "23-02",
+        "chapter_id": "23",
+        "text": "The curvature is about negative one point six zero four four, so the homogeneous feed is locally unstable.",
+        "start_sample": 24446822,
+        "end_sample": 24637286,
+        "start_seconds": 1018.6175833333333,
+        "end_seconds": 1026.5535833333333
+      },
+      {
+        "id": "23-03",
+        "chapter_id": "23",
+        "text": "The beta fraction is about zero point three two five two eight nine, and alpha is the remainder.",
+        "start_sample": 24641606,
+        "end_sample": 24802886,
+        "start_seconds": 1026.7335833333334,
+        "end_seconds": 1033.4535833333334
+      },
+      {
+        "id": "23-04",
+        "chapter_id": "23",
+        "text": "Their weighted composition returns zero point three five.",
+        "start_sample": 24807206,
+        "end_sample": 24910118,
+        "start_seconds": 1033.6335833333333,
+        "end_seconds": 1037.9215833333333
+      },
+      {
+        "id": "23-05",
+        "chapter_id": "23",
+        "text": "The homogeneous energy is approximately positive zero point zero three five zero five three, and the decrease is zero point zero nine three three nine five.",
+        "start_sample": 24914438,
+        "end_sample": 25212934,
+        "start_seconds": 1038.1015833333333,
+        "end_seconds": 1050.5389166666666
+      },
+      {
+        "id": "23-06",
+        "chapter_id": "23",
+        "text": "Enter zero point three five in Feed mole fraction and click Find equilibrium.",
+        "start_sample": 25217254,
+        "end_sample": 25366758,
+        "start_seconds": 1050.7189166666667,
+        "end_seconds": 1056.94825
+      },
+      {
+        "id": "23-07",
+        "chapter_id": "23",
+        "text": "Compare the same endpoints, new amounts, and energy decrease.",
+        "start_sample": 25371078,
+        "end_sample": 25471542,
+        "start_seconds": 1057.12825,
+        "end_seconds": 1061.31425
+      },
+      {
+        "id": "23-08",
+        "chapter_id": "23",
+        "text": "Correct guide D one in a different color.",
+        "start_sample": 25475862,
+        "end_sample": 25547030,
+        "start_seconds": 1061.49425,
+        "end_seconds": 1064.4595833333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 24,
+    "slide_id": "save",
+    "narration": "Write a short explanation in Your explanation. State the model, A, feed composition, classification, and phase amounts, then include one balance or energy comparison. Click Export study JSON and keep the downloaded file. To reopen it, expand Study workspace, reopen and compare cases. Choose Load studies or a comparison JSON and select your saved file. Click Restore beside the case. Check the restored inputs, then click Find equilibrium to recompute. If something differs, check the model, A, feed, selected view, and rounding. You do not need to edit the JSON manually. Keep this file with your worksheet as evidence you can explain.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "scenes": [
+      {
+        "key": "lab04-explanation",
+        "cue": "Write a short explanation in Your explanation.",
+        "action": "Fill the explanation field for A=3,z₁=0.35 using the verified classification, amounts, and energy decrease."
+      },
+      {
+        "key": "lab04-export-json",
+        "cue": "Click Export study JSON and keep the downloaded file.",
+        "action": "Export the study JSON and show the download result."
+      },
+      {
+        "key": "lab04-open-workspace",
+        "cue": "To reopen it, expand Study workspace, reopen and compare cases.",
+        "action": "Expand Study workspace near top of page."
+      },
+      {
+        "key": "lab04-import-json",
+        "cue": "Choose Load studies or a comparison JSON and select your saved file.",
+        "action": "Import the exact downloaded study JSON through the visible file control."
+      },
+      {
+        "key": "lab04-restore-json",
+        "cue": "Click Restore beside the case.",
+        "action": "Restore the imported case and show the restored inputs/explanation."
+      },
+      {
+        "key": "lab04-recompute-json",
+        "cue": "Check the restored inputs, then click Find equilibrium to recompute.",
+        "action": "Recompute restored case and verify same output."
+      }
+    ],
+    "title": "Save a result you can explain",
+    "id": "24",
+    "slide": 24,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 25555430,
+    "end_sample": 26750532,
+    "start_seconds": 1064.8095833333334,
+    "end_seconds": 1114.6055,
+    "duration_samples": 1195102,
+    "duration_seconds": 49.79591666666666,
+    "audio": "segment-24.wav",
+    "audio_sha256": "89b854074a8e3cb8cc8b1bff6f98fb72460ecca46c07d945e6d0b4b081b7fee0",
+    "narration_sha256": "aa00b87098a7fb03d430466a8278390fea49cd016f23c354e398552476c3954b",
+    "cues": [
+      {
+        "id": "24-01",
+        "chapter_id": "24",
+        "text": "Write a short explanation in Your explanation.",
+        "start_sample": 25559750,
+        "end_sample": 25633990,
+        "start_seconds": 1064.9895833333333,
+        "end_seconds": 1068.0829166666667
+      },
+      {
+        "id": "24-02",
+        "chapter_id": "24",
+        "text": "State the model, A, feed composition, classification, and phase amounts, then include one balance or energy comparison.",
+        "start_sample": 25638310,
+        "end_sample": 25857446,
+        "start_seconds": 1068.2629166666666,
+        "end_seconds": 1077.3935833333333
+      },
+      {
+        "id": "24-03",
+        "chapter_id": "24",
+        "text": "Click Export study JSON and keep the downloaded file.",
+        "start_sample": 25861766,
+        "end_sample": 25977478,
+        "start_seconds": 1077.5735833333333,
+        "end_seconds": 1082.3949166666666
+      },
+      {
+        "id": "24-04",
+        "chapter_id": "24",
+        "text": "To reopen it, expand Study workspace, reopen and compare cases.",
+        "start_sample": 25981798,
+        "end_sample": 26092390,
+        "start_seconds": 1082.5749166666667,
+        "end_seconds": 1087.1829166666666
+      },
+      {
+        "id": "24-05",
+        "chapter_id": "24",
+        "text": "Choose Load studies or a comparison JSON and select your saved file.",
+        "start_sample": 26096710,
+        "end_sample": 26234950,
+        "start_seconds": 1087.3629166666667,
+        "end_seconds": 1093.1229166666667
+      },
+      {
+        "id": "24-06",
+        "chapter_id": "24",
+        "text": "Click Restore beside the case.",
+        "start_sample": 26239270,
+        "end_sample": 26292006,
+        "start_seconds": 1093.3029166666668,
+        "end_seconds": 1095.50025
+      },
+      {
+        "id": "24-07",
+        "chapter_id": "24",
+        "text": "Check the restored inputs, then click Find equilibrium to recompute.",
+        "start_sample": 26296326,
+        "end_sample": 26411526,
+        "start_seconds": 1095.68025,
+        "end_seconds": 1100.48025
+      },
+      {
+        "id": "24-08",
+        "chapter_id": "24",
+        "text": "If something differs, check the model, A, feed, selected view, and rounding.",
+        "start_sample": 26415846,
+        "end_sample": 26539956,
+        "start_seconds": 1100.66025,
+        "end_seconds": 1105.8315
+      },
+      {
+        "id": "24-09",
+        "chapter_id": "24",
+        "text": "You do not need to edit the JSON manually.",
+        "start_sample": 26544276,
+        "end_sample": 26635412,
+        "start_seconds": 1106.0115,
+        "end_seconds": 1109.8088333333333
+      },
+      {
+        "id": "24-10",
+        "chapter_id": "24",
+        "text": "Keep this file with your worksheet as evidence you can explain.",
+        "start_sample": 26639732,
+        "end_sample": 26742132,
+        "start_seconds": 1109.9888333333333,
+        "end_seconds": 1114.2555
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 25,
+    "slide_id": "self-check",
+    "narration": "Finish with guide D two, without using the Lab output. Explain why positive curvature alone does not establish global stability. State what stays fixed and what changes when the feed moves inside this tie line. Explain why equal chemical potentials are only part of the equilibrium test. Finally, explain why the binodal split cannot represent a feed of zero point zero two, even though extending the tangent line places it below the curve there. Use one short sentence for each answer. Pause for three minutes before checking the final slide. Keep these corrections with your original worksheet; no additional form is required.",
+    "pause_instruction": "Pause for three minutes before checking the final slide. Keep these corrections with your original worksheet; no additional form is required.",
+    "activity_minutes": 3,
+    "title": "Check the reasoning without the Lab",
+    "id": "25",
+    "slide": 25,
+    "activity": true,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 26750532,
+    "end_sample": 27871252,
+    "start_seconds": 1114.6055,
+    "end_seconds": 1161.3021666666666,
+    "duration_samples": 1120720,
+    "duration_seconds": 46.696666666666665,
+    "audio": "segment-25.wav",
+    "audio_sha256": "8931215b8f1859c89fb4e067c3ac931294dbb12d008e0c475796207b992a369f",
+    "narration_sha256": "3419a3e27e948d0ec76b03036300f961c1300aa4c2a1440f8fcbc66997851ee5",
+    "cues": [
+      {
+        "id": "25-01",
+        "chapter_id": "25",
+        "text": "Finish with guide D two, without using the Lab output.",
+        "start_sample": 26754852,
+        "end_sample": 26849572,
+        "start_seconds": 1114.7855,
+        "end_seconds": 1118.7321666666667
+      },
+      {
+        "id": "25-02",
+        "chapter_id": "25",
+        "text": "Explain why positive curvature alone does not establish global stability.",
+        "start_sample": 26853892,
+        "end_sample": 26992132,
+        "start_seconds": 1118.9121666666667,
+        "end_seconds": 1124.6721666666667
+      },
+      {
+        "id": "25-03",
+        "chapter_id": "25",
+        "text": "State what stays fixed and what changes when the feed moves inside this tie line.",
+        "start_sample": 26996452,
+        "end_sample": 27130596,
+        "start_seconds": 1124.8521666666666,
+        "end_seconds": 1130.4415
+      },
+      {
+        "id": "25-04",
+        "chapter_id": "25",
+        "text": "Explain why equal chemical potentials are only part of the equilibrium test.",
+        "start_sample": 27134916,
+        "end_sample": 27280324,
+        "start_seconds": 1130.6215,
+        "end_seconds": 1136.6801666666668
+      },
+      {
+        "id": "25-05",
+        "chapter_id": "25",
+        "text": "Finally, explain why the binodal split cannot represent a feed of zero point zero two, even though extending the tangent line places it below the curve there.",
+        "start_sample": 27284644,
+        "end_sample": 27557540,
+        "start_seconds": 1136.8601666666666,
+        "end_seconds": 1148.2308333333333
+      },
+      {
+        "id": "25-06",
+        "chapter_id": "25",
+        "text": "Use one short sentence for each answer.",
+        "start_sample": 27561860,
+        "end_sample": 27630980,
+        "start_seconds": 1148.4108333333334,
+        "end_seconds": 1151.2908333333332
+      },
+      {
+        "id": "25-07",
+        "chapter_id": "25",
+        "text": "Pause for three minutes before checking the final slide.",
+        "start_sample": 27635300,
+        "end_sample": 27721828,
+        "start_seconds": 1151.4708333333333,
+        "end_seconds": 1155.0761666666667
+      },
+      {
+        "id": "25-08",
+        "chapter_id": "25",
+        "text": "Keep these corrections with your original worksheet; no additional form is required.",
+        "start_sample": 27726148,
+        "end_sample": 27862852,
+        "start_seconds": 1155.2561666666666,
+        "end_seconds": 1160.9521666666667
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  },
+  {
+    "number": 26,
+    "slide_id": "answers",
+    "narration": "Compare your reasoning with these answers. Positive curvature establishes local stability, while a distant feasible split may still lower the total energy. Inside a fixed tie line, the phase compositions stay fixed and the amounts change. Equality of chemical potentials gives a candidate, which still needs feasible amounts and global support. The feed at zero point zero two lies outside the two endpoints, so their mixture would require a negative phase amount. If you can connect these statements to your calculation and the Lab views, you have the key reasoning. Return to the Week three study route whenever you are ready.",
+    "pause_instruction": "",
+    "activity_minutes": 0,
+    "title": "Answers and reading",
+    "id": "26",
+    "slide": 26,
+    "activity": false,
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "source_pdf_sha256": "ce1931747b20493413893c43f674f4cfd300952afea32230afc123f1eeb15ef6",
+    "start_sample": 27871252,
+    "end_sample": 28960004,
+    "start_seconds": 1161.3021666666666,
+    "end_seconds": 1206.6668333333334,
+    "duration_samples": 1088752,
+    "duration_seconds": 45.364666666666665,
+    "audio": "segment-26.wav",
+    "audio_sha256": "a662b1c040d43ed296a04ef7cd45361f8305ed26f2f30171414829feb434f3ee",
+    "narration_sha256": "6d67301d6a0d4428efeafea9a391cb7acf9f547e19b536f6061c5db01cdc0cef",
+    "cues": [
+      {
+        "id": "26-01",
+        "chapter_id": "26",
+        "text": "Compare your reasoning with these answers.",
+        "start_sample": 27875572,
+        "end_sample": 27940084,
+        "start_seconds": 1161.4821666666667,
+        "end_seconds": 1164.1701666666668
+      },
+      {
+        "id": "26-02",
+        "chapter_id": "26",
+        "text": "Positive curvature establishes local stability, while a distant feasible split may still lower the total energy.",
+        "start_sample": 27944404,
+        "end_sample": 28140500,
+        "start_seconds": 1164.3501666666666,
+        "end_seconds": 1172.5208333333333
+      },
+      {
+        "id": "26-03",
+        "chapter_id": "26",
+        "text": "Inside a fixed tie line, the phase compositions stay fixed and the amounts change.",
+        "start_sample": 28144820,
+        "end_sample": 28293812,
+        "start_seconds": 1172.7008333333333,
+        "end_seconds": 1178.9088333333334
+      },
+      {
+        "id": "26-04",
+        "chapter_id": "26",
+        "text": "Equality of chemical potentials gives a candidate, which still needs feasible amounts and global support.",
+        "start_sample": 28298132,
+        "end_sample": 28470164,
+        "start_seconds": 1179.0888333333332,
+        "end_seconds": 1186.2568333333334
+      },
+      {
+        "id": "26-05",
+        "chapter_id": "26",
+        "text": "The feed at zero point zero two lies outside the two endpoints, so their mixture would require a negative phase amount.",
+        "start_sample": 28474484,
+        "end_sample": 28694132,
+        "start_seconds": 1186.4368333333334,
+        "end_seconds": 1195.5888333333332
+      },
+      {
+        "id": "26-06",
+        "chapter_id": "26",
+        "text": "If you can connect these statements to your calculation and the Lab views, you have the key reasoning.",
+        "start_sample": 28698452,
+        "end_sample": 28851540,
+        "start_seconds": 1195.7688333333333,
+        "end_seconds": 1202.1475
+      },
+      {
+        "id": "26-07",
+        "chapter_id": "26",
+        "text": "Return to the Week three study route whenever you are ready.",
+        "start_sample": 28855860,
+        "end_sample": 28951604,
+        "start_seconds": 1202.3275,
+        "end_seconds": 1206.3168333333333
+      }
+    ],
+    "generation": {
+      "engine": "Kokoro ONNX",
+      "engine_version": "0.6.1",
+      "model": "Kokoro v1.0",
+      "voice": "am_michael",
+      "voice_description": "Michael, male US English",
+      "language": "en-us",
+      "speed": 0.94,
+      "sentence_pause": 0,
+      "clause_pause": 0.12,
+      "cue_gap_seconds": 0.18,
+      "leading_silence_seconds": 0.18,
+      "trailing_silence_seconds": 0.35,
+      "target_segment_rms": 0.075,
+      "peak_limit": 0.89,
+      "sample_rate": 24000,
+      "format": "WAV PCM_16 mono",
+      "pronunciation_version": 3
+    }
+  }
+]

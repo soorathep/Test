@@ -1,0 +1,46 @@
+{
+  "capture_method": "Genuine Lab 04 browser interactions and screenshots",
+  "source_url": "https://www.skhgroup.net/teaching/2105603/labs/stability.html#lle-experiment",
+  "cases": [
+    {
+      "A": 3,
+      "z": 0.12,
+      "state": "metastable",
+      "fractionBeta": 0.057398,
+      "gain": 0.00821636
+    },
+    {
+      "A": 3,
+      "z": 0.02,
+      "state": "stable",
+      "phase": "one liquid"
+    },
+    {
+      "A": 3,
+      "z": 0.5,
+      "state": "unstable",
+      "fractionBeta": 0.5
+    },
+    {
+      "A": 3,
+      "z": 0.35,
+      "state": "unstable",
+      "fractionBeta": 0.325289,
+      "gain": 0.09339471
+    }
+  ],
+  "restore": {
+    "source": "gibbs-review-lab04-study.json",
+    "changed_before_restore": {
+      "A": 1.8,
+      "z": 0.5
+    },
+    "restored": {
+      "A": 3,
+      "z": 0.35
+    },
+    "recalculated": true
+  },
+  "no_student_data": true,
+  "visual_review": "All 22 captured screens inspected; inputs, output values, graphs and restore controls are genuine and legible."
+}
