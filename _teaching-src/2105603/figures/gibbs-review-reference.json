@@ -1,0 +1,173 @@
+{
+  "model": "Symmetric Margules",
+  "A": 3.0,
+  "scope": "Fixed T and P; binary liquid phases; no vapor, solid, kinetics or interface energy.",
+  "gDefinition": "Delta_mix G / (n R T)",
+  "coexistence": {
+    "xAlpha": 0.07072018167994483,
+    "xBeta": 0.9292798183200551,
+    "gAlpha": -0.05834134944144004,
+    "gBeta": -0.05834134944143998,
+    "commonTangentSlope": 0,
+    "spinodalAlpha": 0.21132486540518708,
+    "spinodalBeta": 0.7886751345948129,
+    "chemicalPotentialAlpha": [
+      -0.058341349441440205,
+      -0.058341349441440045
+    ],
+    "chemicalPotentialBeta": [
+      -0.05834134944144007,
+      -0.058341349441439316
+    ]
+  },
+  "calculationAtZ012": {
+    "idealTerm1": -0.2544316243440109,
+    "idealTerm2": -0.1124933669286987,
+    "excessTerm": 0.31679999999999997,
+    "inverseCompositionProduct": 9.46969696969697,
+    "tpdAtW09": -0.2292624536603779,
+    "gAtW09": -0.05508297339144824,
+    "feedTangentAtW09": 0.17417948026892965
+  },
+  "cases": [
+    {
+      "z": 0.02,
+      "homogeneousG": -0.03923911327973197,
+      "curvature": 45.02040816326531,
+      "slope": -1.0118202981106266,
+      "equilibriumG": -0.03923911327973197,
+      "gain": 0.0,
+      "state": "stable",
+      "phase": "one liquid",
+      "fractionAlpha": null,
+      "fractionBeta": null,
+      "nAlphaFor100Mol": null,
+      "nBetaFor100Mol": null,
+      "componentBalance": null,
+      "tpd": {
+        "minimum": 0.0,
+        "w": 0.02,
+        "stationaryCandidates": [
+          0.02000000000000015
+        ]
+      }
+    },
+    {
+      "z": 0.12,
+      "homogeneousG": -0.05012499127270964,
+      "curvature": 3.4696969696969706,
+      "slope": 0.28756983530979396,
+      "equilibriumG": -0.05834134944144004,
+      "gain": 0.008216358168730398,
+      "state": "metastable",
+      "phase": "two liquids",
+      "fractionAlpha": 0.9426017527298314,
+      "fractionBeta": 0.057398247270168616,
+      "nAlphaFor100Mol": 94.26017527298313,
+      "nBetaFor100Mol": 5.739824727016861,
+      "componentBalance": 0.12,
+      "tpd": {
+        "minimum": -0.2446334863050216,
+        "w": 0.9527604803869487,
+        "stationaryCandidates": [
+          0.1199999999999999,
+          0.34584913713099813,
+          0.9527604803869487
+        ]
+      }
+    },
+    {
+      "z": 0.35,
+      "homogeneousG": 0.035053360965367375,
+      "curvature": -1.604395604395604,
+      "slope": 0.2809607915937766,
+      "equilibriumG": -0.05834134944144004,
+      "gain": 0.09339471040680741,
+      "state": "unstable",
+      "phase": "two liquids",
+      "fractionAlpha": 0.6747112181828281,
+      "fractionBeta": 0.32528878181717186,
+      "nAlphaFor100Mol": 67.47112181828281,
+      "nBetaFor100Mol": 32.52887818171718,
+      "componentBalance": 0.35,
+      "tpd": {
+        "minimum": -0.25968845772947347,
+        "w": 0.9523506739239714,
+        "stationaryCandidates": [
+          0.11812992539650012,
+          0.3499999999999999,
+          0.9523506739239714
+        ]
+      }
+    },
+    {
+      "z": 0.5,
+      "homogeneousG": 0.056852819440054714,
+      "curvature": -2.0,
+      "slope": 0.0,
+      "equilibriumG": -0.05834134944144004,
+      "gain": 0.11519416888149475,
+      "state": "unstable",
+      "phase": "two liquids",
+      "fractionAlpha": 0.4999999999999999,
+      "fractionBeta": 0.5000000000000001,
+      "nAlphaFor100Mol": 49.999999999999986,
+      "nBetaFor100Mol": 50.000000000000014,
+      "componentBalance": 0.5000000000000001,
+      "tpd": {
+        "minimum": -0.11519416888149475,
+        "w": 0.07072018167994483,
+        "stationaryCandidates": [
+          0.07072018167994483,
+          0.5,
+          0.9292798183200551
+        ]
+      }
+    },
+    {
+      "z": 0.88,
+      "homogeneousG": -0.050124991272709585,
+      "curvature": 3.4696969696969706,
+      "slope": -0.28756983530979396,
+      "equilibriumG": -0.05834134944144004,
+      "gain": 0.008216358168730453,
+      "state": "metastable",
+      "phase": "two liquids",
+      "fractionAlpha": 0.05739824727016851,
+      "fractionBeta": 0.9426017527298315,
+      "nAlphaFor100Mol": 5.739824727016851,
+      "nBetaFor100Mol": 94.26017527298315,
+      "componentBalance": 0.8800000000000001,
+      "tpd": {
+        "minimum": -0.2446334863050217,
+        "w": 0.04723951961305131,
+        "stationaryCandidates": [
+          0.04723951961305131,
+          0.6541508628690018,
+          0.8800000000000001
+        ]
+      }
+    }
+  ],
+  "verification": {
+    "maxChemicalPotentialResidual": 7.28583859910259e-16,
+    "maxTangentSlopeResidual": 4.440892098500626e-16,
+    "globalSupportCandidates": [
+      0,
+      1,
+      0.07072018167994483,
+      0.5,
+      0.9292798183200551
+    ],
+    "minimumCommonTangentDistance": 0.0,
+    "method": "Check endpoints and all stationary points, whose brackets are set by analytical spinodals; plotting grid is not the stability criterion."
+  },
+  "source": "https://ocw.mit.edu/courses/3-020-thermodynamics-of-materials-spring-2021/mit3_020s21_l21.pdf",
+  "notes": [
+    "The label stable, metastable or unstable describes the hypothetical homogeneous feed. Inside the miscibility gap the equilibrium is two liquids.",
+    "A horizontal common tangent is special to this symmetric mixing-energy curve. Adding or subtracting an affine pure-state reference preserves coexistence and stability.",
+    "A negative TPD at any admissible trial composition rules out global stability. TPD minimizer is not generally a coexistence endpoint.",
+    "Equality of chemical potentials is necessary but a candidate tangent must also support the entire admissible Gibbs curve.",
+    "No kinetics, nucleation barrier or time to separate is predicted."
+  ]
+}

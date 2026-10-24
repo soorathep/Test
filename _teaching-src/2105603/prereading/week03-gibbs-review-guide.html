@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Week 3 Gibbs graph review: calculation and Lab guide</title><style>
+@font-face{font-family:Sarabun;src:url('../assets/Sarabun-Regular.ttf')}@font-face{font-family:Sarabun;src:url('../assets/Sarabun-Bold.ttf');font-weight:700}
+@page{size:A4;margin:14mm 17mm}*{box-sizing:border-box}body{font:11pt/1.35 Sarabun,sans-serif;color:#333f4a;margin:0}h1{font-size:21pt;line-height:1.12;margin:10px 0}h2{font-size:13pt;line-height:1.2;margin:13px 0 6px}p{margin:6px 0}li{margin:5px 0}ol,ul{padding-left:22px;margin:6px 0}table{width:100%;border-collapse:collapse;margin:8px 0;font-size:10pt}th,td{border:1px solid #b9c1c6;padding:6px 7px;text-align:left;vertical-align:top}th{font-weight:700}.page{break-after:page}.page:last-child{break-after:auto}.tag{font-size:9pt;border-bottom:1px solid #b9c1c6;padding-bottom:6px}.eq{border-left:3px solid #0f6e6b;padding:4px 0 4px 11px;margin:8px 0}.note{border-top:1px solid #b9c1c6;padding-top:7px}.small{font-size:9.5pt}.line{height:25px;border-bottom:1px dotted #b9c1c6}.blank{height:31px}.graph{display:block;width:100%;height:185px;object-fit:contain;margin:7px auto}a{color:#0f6e6b}footer{font-size:9pt;margin-top:12px;border-top:1px solid #b9c1c6;padding-top:6px}@media screen{body{max-width:820px;margin:24px auto;padding:0 22px}.page{margin-bottom:30px;padding-bottom:25px;border-bottom:1px solid #b9c1c6}}@media print{h1,h2{break-after:avoid}tr,.eq{break-inside:avoid}}
+</style></head><body>
+<section class="page"><div class="tag">2105603 · Week 3 optional review · Page 1 of 4</div>
+<h1>Read the graph before using the Lab</h1>
+<p><b>Open:</b> <a href="https://www.skhgroup.net/teaching/2105603/week03-gibbs-review.html">Gibbs review slides</a> and <a href="https://www.skhgroup.net/teaching/2105603/labs/stability.html#lle-experiment">Lab 04: Liquid stability</a>. Keep this guide and a calculator with <b>ln</b> beside them. No spreadsheet or code is needed.</p>
+<p>Allow about <b>45 minutes</b>: read and calculate (20), compare in the Lab (15), then practice and check (10). Use only the parts you need to support your original Week 3 worksheet. This review adds no attendance or exit-ticket submission.</p>
+<h2>A1. Identify the question</h2>
+<p><b>Consistency:</b> Are data compatible with an applicable thermodynamic constraint? <b>Stability:</b> Which feasible state has the lowest total Gibbs energy at fixed T, P and total amounts?</p>
+<p>A common tangent answers the question of: ______________________________</p>
+<h2>A2. Read the axes and the state</h2>
+<p>We plot <b>g(x) = Δg<sub>mix</sub>(x)/(RT)</b>, a dimensionless molar mixing energy. The horizontal variable <b>x = x₁</b> describes a possible homogeneous liquid. The overall feed composition is <b>z = z₁</b>.</p>
+<p>At a given z, the curve represents one homogeneous liquid. A feasible mixture of two compositions lies on the line segment joining their energies. Compare states at the <b>same z</b>. The affine pure-liquid reference cancels because the total amounts of both components are the same.</p>
+<img class="graph" src="../figures/gibbs-review-curve.svg" alt="A=3 Gibbs mixing energy curve, common tangent and feed z=0.12">
+<p><b>At z = 0.12:</b> Mark the homogeneous point, the lower two-liquid point, and the two tangent contacts on the graph. Which state has lower energy? __________________</p>
+<h2>A3. Keep the two tests separate</h2>
+<table><tr><th>Test</th><th>What it establishes</th></tr><tr><td>Local curvature g″(z)</td><td>Positive: stable to sufficiently small composition fluctuations. Negative: locally unstable.</td></tr><tr><td>Global energy/support test</td><td>Compares all allowed states. A supporting common tangent lies on or below the whole curve.</td></tr></table>
+<p class="note">Positive curvature does not rule out a lower-energy distant split. A negative mixing energy does not prove stability against two mixed liquids. All calculations here use a hypothetical binary liquid model; vapor and solids are excluded.</p>
+</section>
+<section class="page"><div class="tag">2105603 · Worked calculation · Page 2 of 4</div>
+<h1>B. Work one case: A = 3, z = 0.12</h1>
+<div class="eq"><b>g(x) = x ln x + (1 − x) ln(1 − x) + 3x(1 − x)</b><br>g′(x) = ln[x/(1 − x)] + 3(1 − 2x)<br>g″(x) = 1/x + 1/(1 − x) − 6</div>
+<h2>B1. Check local curvature</h2>
+<p>g″(0.12) = 8.333333 + 1.136364 − 6 = <b>+3.469697</b>.<br>This is locally stable; the global question is still open.</p>
+<h2>B2. Locate the common-tangent contacts</h2>
+<p>The general tangent condition is g′(x<sup>α</sup>) = g′(x<sup>β</sup>) = [g(x<sup>β</sup>) − g(x<sup>α</sup>)]/(x<sup>β</sup> − x<sup>α</sup>). In this symmetric case the tangent is horizontal, so x<sup>β</sup> = 1 − x<sup>α</sup> and g′(x<sup>α</sup>) = 0.</p>
+<p>The low-composition root is between 0.0707 and 0.0708. Refining it gives <b>x<sup>α</sup> = 0.07072018</b> and <b>x<sup>β</sup> = 0.92927982</b>. Substitute x<sup>α</sup> into g′ to check a value near zero. The stationary point 0.50 has negative curvature and is not a binodal endpoint.</p>
+<h2>B3. Calculate amounts and check the balance</h2>
+<p>Use a basis of 1 mol of total feed. The mole-based phase fractions describe amounts of liquid phases, not compositions or vapor fractions.</p>
+<div class="eq">f<sup>β</sup> = (z − x<sup>α</sup>)/(x<sup>β</sup> − x<sup>α</sup>)<br>= (0.12 − 0.07072018)/0.85855964 = <b>0.057398</b><br>f<sup>α</sup> = 1 − f<sup>β</sup> = <b>0.942602</b><br>0.942602(0.07072018) + 0.057398(0.92927982) ≈ <b>0.120000</b></div>
+<h2>B4. Compare the energies at the same feed composition</h2>
+<table><tr><th>Homogeneous calculation</th><th>Value</th></tr><tr><td>0.12 ln 0.12</td><td>−0.25443162</td></tr><tr><td>0.88 ln 0.88</td><td>−0.11249337</td></tr><tr><td>3(0.12)(0.88)</td><td>+0.31680000</td></tr><tr><td><b>Sum g(z)</b></td><td><b>−0.05012499</b></td></tr></table>
+<p>Both tangent contacts have g = −0.05834135. Thus g<sub>split</sub> = f<sup>α</sup>g(x<sup>α</sup>) + f<sup>β</sup>g(x<sup>β</sup>) = <b>−0.05834135</b>. The decrease is <b>g(z) − g<sub>split</sub> = 0.00821636</b>. Multiply by nRT for a total energy in joules when R is in J mol⁻¹ K⁻¹.</p>
+<h2>B5. Complete the global test</h2>
+<p>Check g(x) − ℓ(x) ≥ 0 across the whole interval, where ℓ(x) = −0.05834135. The candidate minima are the endpoints and stationary points: d(0) = d(1) = 0.05834135; d(0.50) = 0.11519417; d(x<sup>α</sup>) = d(x<sup>β</sup>) = 0. All are nonnegative. A coarse plot alone can miss a dip. <b>Conclusion:</b> the homogeneous z = 0.12 liquid is metastable; equilibrium is two liquids.</p>
+</section>
+<section class="page"><div class="tag">2105603 · Guided Lab comparison · Page 3 of 4</div>
+<h1>C. Reproduce, compare, save</h1>
+<h2>C1. Reproduce the worked case in Lab 04</h2>
+<ol><li>Open <a href="https://www.skhgroup.net/teaching/2105603/labs/stability.html#lle-experiment">Lab 04</a>. Under <b>Explore a state</b>, choose <b>Metastable · A = 3, z₁ = 0.12</b>.</li><li>Confirm <b>Margules · 1 parameter</b>, <b>A = 3</b> and <b>Feed mole fraction z₁ = 0.12</b>. Click <b>Find equilibrium →</b>.</li><li>Set <b>View → Gibbs energy &amp; common tangent</b>. Compare both contacts and the two energies with page 2. Open <b>Verify the equilibrium</b> to inspect the component balance residual.</li><li>Switch to <b>Local curvature</b>, then <b>Tangent-plane distance · feed stability</b>. Observe positive g″ but a negative minimum feed TPD.</li></ol>
+<p>Feed TPD uses the tangent at the <b>homogeneous feed</b>: TPD(w) = g(w) − [g(z) + g′(z)(w − z)]. Negative TPD rejects global stability of that feed. The trial minimizing w is not automatically an equilibrium endpoint. Do not confuse this tangent with the coexistence common tangent.</p>
+<table><tr><th>Record from the Lab</th><th>Your result</th><th>Expected</th></tr><tr><td>f<sup>α</sup>, f<sup>β</sup></td><td class="blank"></td><td>0.942602, 0.057398</td></tr><tr><td>Homogeneous / equilibrium g</td><td class="blank"></td><td>−0.050125 / −0.058341</td></tr><tr><td>g″(z) / sign of minimum TPD</td><td class="blank"></td><td>+3.469697 / negative</td></tr></table>
+<h2>C2. Predict, then run two other feeds</h2>
+<p>Keep A = 3. First predict without the output, then select the matching <b>Stable</b> or <b>Unstable</b> preset and click <b>Find equilibrium →</b>. Allow 5 minutes.</p>
+<table><tr><th>Feed</th><th>Your prediction</th><th>Observed equilibrium and reason</th></tr><tr><td>z = 0.02</td><td class="blank"></td><td></td></tr><tr><td>z = 0.50</td><td class="blank"></td><td></td></tr></table>
+<p class="small">Checks after your attempt: at 0.02, one liquid and g″ = +45.020408; the proposed binodal split needs a negative fraction. At 0.50, the homogeneous liquid has g″ = −2 and equilibrium has equal amounts of two liquids. Spinodals 0.211325 and 0.788675 are local-curvature boundaries, not the binodal endpoints.</p>
+<h2>C3. Save evidence and reopen it</h2>
+<p>Write the settings, classification and one balance or energy comparison in <b>Your explanation</b>. Click <b>Export study JSON</b>. To reopen, expand <b>Study workspace · reopen and compare cases</b>, choose <b>Load studies or a comparison JSON</b>, select <b>Restore</b> beside the case, then click <b>Find equilibrium →</b>.</p>
+<p class="note"><b>If results differ:</b> check model, A, z, selected view and recalculation first. Keep the JSON and a screenshot when asking for help. You do not need to edit JSON manually.</p>
+</section>
+<section class="page"><div class="tag">2105603 · Independent attempt and checks · Page 4 of 4</div>
+<h1>D. Explain a new case yourself</h1>
+<h2>D1. A = 3, z = 0.35: attempt before checking</h2>
+<p>Keep the same two endpoints. Allow about 8 minutes. Calculate by hand first, then enter <b>Feed mole fraction z₁ = 0.35</b> in Lab 04 and click <b>Find equilibrium →</b>.</p>
+<table><tr><th>Calculation</th><th>Your hand result</th><th>Lab comparison</th></tr><tr><td>g″(0.35) and local classification</td><td class="blank"></td><td></td></tr><tr><td>f<sup>α</sup> and f<sup>β</sup></td><td class="blank"></td><td></td></tr><tr><td>f<sup>α</sup>x<sup>α</sup> + f<sup>β</sup>x<sup>β</sup></td><td class="blank"></td><td></td></tr><tr><td>Homogeneous g(0.35)</td><td class="blank"></td><td></td></tr><tr><td>g(0.35) − g<sub>split</sub></td><td class="blank"></td><td></td></tr></table>
+<h2>D2. Check the reasoning without the verification panel</h2>
+<p><b>1.</b> Why does positive curvature not finish a global stability test?</p><div class="line"></div>
+<p><b>2.</b> What stays fixed when z changes inside a supported tie line?</p><div class="line"></div>
+<p><b>3.</b> What must be checked after equal chemical potentials are found?</p><div class="line"></div>
+<p><b>4.</b> Why is the binodal split infeasible for z = 0.02?</p><div class="line"></div>
+<h2>Answers: uncover after your attempt</h2>
+<p><b>D1:</b> g″ = −1.604396; locally unstable. f<sup>α</sup> = 0.674711, f<sup>β</sup> = 0.325289. The balance gives 0.350000. g(0.35) = 0.03505336; g<sub>split</sub> = −0.05834135; decrease = 0.09339471. The same two compositions coexist, with new amounts.</p>
+<p><b>D2:</b> (1) A distant feasible split may still lower total Gibbs energy. (2) Phase compositions stay fixed; amounts change. (3) Check feasible amounts/material balance and global support, not only equality. (4) The feed lies outside the endpoints, so a negative phase amount would be required.</p>
+<footer>Reading: <a href="https://ocw.mit.edu/courses/3-020-thermodynamics-of-materials-spring-2021/mit3_020s21_l21.pdf">MIT OpenCourseWare, 3.020 Lecture 21</a>. Return to the <a href="https://www.skhgroup.net/teaching/2105603/week03-study.html">Week 3 route</a> or the <a href="https://www.skhgroup.net/teaching/2105603/week03-video.html#slide-35">Lab 04 screen demonstration</a>. Keep corrections with the original worksheet; no repeat submission is required.</footer>
+</section></body></html>

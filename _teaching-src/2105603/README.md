@@ -21,6 +21,31 @@ The five appendix slides in `vle.qmd` carry `visibility="uncounted"`: they are
 reachable but do not advance the slide counter, so the deck reads as 81 slides
 and the extra material is there if a question needs it.
 
+## Optional Week 3 Gibbs review
+
+`week03-gibbs-review.qmd` is a separate 26-slide English review of Gibbs
+curves, local and global stability, common tangents and phase amounts. The
+four-page guide in `prereading/week03-gibbs-review-guide.html` follows the same
+worked Margules example and Lab 04 controls. This supports the original Week 3
+worksheet without adding a required submission or replacing the 180-minute route.
+
+Regenerate figures with the research interpreter and the installed lab palette:
+
+```bash
+~/.venvs/research/bin/python figures/gibbs_review.py
+quarto render week03-gibbs-review.qmd --profile public --output-dir _site
+~/.venvs/research/bin/python tools/vendor-katex.py _site
+~/.venvs/research/bin/python tools/publish.py week03-gibbs-review.html
+```
+
+Serve the repository locally, set `COURSE_ORIGIN` to that server, and run
+`tools/export-gibbs-review.mjs` with the configured Node runtime. It writes the
+26-page slide PDF and four-page guide PDF into the public `files/` directory.
+Verify equations, pagination and embedded fonts before publishing. The figure
+script also writes `gibbs-review-reference.json` with independently reproducible
+numbers. Do not add feedback responses or private instructor reports to this
+public repository. Rebuild the student offline archive after final exports.
+
 ---
 
 ## Build

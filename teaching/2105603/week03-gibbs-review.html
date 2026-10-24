@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Soorathep Kheawhom">
+  <meta name="dcterms.date" content="2026-10-24">
+  <title>2105603 – Reading Gibbs energy graphs</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5339fbbf9aa03db18226bb6b1f30c8df.css">
+  <link rel="stylesheet" href="assets/postmidterm.css">
+  <link rel="stylesheet" href="assets/week03-gibbs-review.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="site_libs/katex/katex.min.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
+  <h1 class="title">Reading Gibbs energy graphs</h1>
+  <p class="subtitle">Week 3 review · Calculate, compare, explain</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Soorathep Kheawhom
+</div>
+</div>
+</div>
+
+  <p class="date">24 October 2026</p>
+</section>
+<section id="start" class="slide level2">
+<h2>Start with these two documents</h2>
+<p><strong>Open:</strong> the <a href="files/week03-gibbs-review-guide.pdf">four-page calculation and Lab guide</a> and <a href="labs/stability.html#lle-experiment">Lab 04: Liquid stability</a> in another tab.</p>
+<p>Use a calculator with <strong>natural logarithms, ln</strong>. No spreadsheet or code is needed.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Follow this route</th>
+<th>Write in the guide</th>
+<th style="text-align: right;">Suggested time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Read the graph and calculate one case</td>
+<td>A–B, pages 1–2</td>
+<td style="text-align: right;">20 min</td>
+</tr>
+<tr class="even">
+<td>Reproduce it in Lab 04; change the feed</td>
+<td>C, page 3</td>
+<td style="text-align: right;">15 min</td>
+</tr>
+<tr class="odd">
+<td>Solve a new case and check your reasoning</td>
+<td>D, page 4</td>
+<td style="text-align: right;">10 min</td>
+</tr>
+</tbody>
+</table>
+<p>This optional review supports your original Week 3 worksheet. Use the parts you need; no additional attendance or exit-ticket submission is required.</p>
+</section>
+<section id="two-questions" class="slide level2">
+<h2>Keep two questions separate</h2>
+<p><strong>Lab 03: Are the data compatible with a thermodynamic constraint?</strong></p>
+<p>Applicable consistency tests assess relationships such as Gibbs–Duhem, with assumptions about the data and their path.</p>
+<p><strong>Lab 04: Which allowed state has the lowest total Gibbs energy?</strong></p>
+<p>A liquid model can satisfy Gibbs–Duhem and still predict separation into two liquids.</p>
+<p><strong>Your action:</strong> On guide page 1, A1, write which question a common tangent helps answer. This review concerns a binary liquid at fixed T and P; vapor and solid phases are excluded.</p>
+</section>
+<section id="axes" class="slide level2">
+<h2>Read the axes before the curve</h2>
+<p><span class="math display">g(x)=\frac{\Delta g_{\mathrm{mix}}(x)}{RT},\qquad x=x_1,\quad x_2=1-x.</span></p>
+<ul>
+<li><strong>Horizontal:</strong> composition of a possible homogeneous liquid, from pure component 2 to pure component 1.</li>
+<li><strong>Vertical:</strong> molar Gibbs energy of mixing divided by RT, dimensionless. Lower means lower mixing energy at the same composition.</li>
+<li><strong>Feed:</strong> <span class="math inline">z=z_1</span> is the overall composition. A single liquid has <span class="math inline">x=z</span>; two liquids can have <span class="math inline">x^\alpha\ne z\ne x^\beta</span>.</li>
+</ul>
+<p>The pure-liquid reference is an affine function of composition. It cancels when states have the same total amounts of both components, so this graph can compare their total Gibbs energies.</p>
+<p><strong>Your action:</strong> Guide A2: mark <span class="math inline">z=0.12</span> and distinguish it from the two phase compositions.</p>
+</section>
+<section id="read-curve" class="slide level2">
+<h2>Compare states at the same overall composition</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/gibbs-review-curve.svg" class="review-figure"></p>
+<figcaption>Dimensionless Gibbs mixing energy for symmetric Margules A=3, with a globally supporting common tangent and feed z=0.12.</figcaption>
+</figure>
+</div>
+<p>The curve at <span class="math inline">z</span> represents <strong>one homogeneous liquid</strong>. The line segment between the two tangent contacts represents a <strong>two-liquid mixture</strong>, with amounts chosen to give that same <span class="math inline">z</span>.</p>
+<p><strong>Your action:</strong> Guide A2: at <span class="math inline">z=0.12</span>, which state is lower? A negative value of <span class="math inline">g</span> alone does not answer this comparison.</p>
+</section>
+<section id="model" class="slide level2">
+<h2>One model for every calculation</h2>
+<p>For the synthetic, symmetric one-parameter Margules liquid, use <strong>A = 3</strong>:</p>
+<p><span class="math display">g(x)=x\ln x+(1-x)\ln(1-x)+3x(1-x).</span></p>
+<p><span class="math display">g'(x)=\ln\frac{x}{1-x}+3(1-2x),\qquad
+g''(x)=\frac{1}{x}+\frac{1}{1-x}-6.</span></p>
+<p>All quantities here, including A, are dimensionless. At pure endpoints, use the limit <span class="math inline">x\ln x\to0</span>.</p>
+<p><strong>Your action:</strong> Guide B1, page 2: enter <span class="math inline">z=0.12</span>. Use ln, not log₁₀. Keep A fixed when changing the feed later.</p>
+</section>
+<section id="local-curvature" class="slide level2">
+<h2>Step 1: test local curvature</h2>
+<p>At the homogeneous feed composition <span class="math inline">z=0.12</span>:</p>
+<p><span class="math display">g''(0.12)=\frac{1}{0.12}+\frac{1}{0.88}-6</span> <span class="math display">=8.333333+1.136364-6=\boxed{3.469697&gt;0}.</span></p>
+<p>This state resists sufficiently small composition fluctuations: it is <strong>locally stable</strong>. A distant pair of compositions may still lower the total Gibbs energy.</p>
+<p>At <span class="math inline">z=0.50</span>, <span class="math inline">g''=2+2-6=-2</span>: the homogeneous liquid is <strong>locally unstable</strong>.</p>
+<p><strong>Your action:</strong> Record both curvatures in B1. Do not write “globally stable” from a positive curvature alone.</p>
+</section>
+<section id="endpoints" class="slide level2">
+<h2>Step 2: find the two tangent contacts</h2>
+<p>A common tangent must satisfy</p>
+<p><span class="math display">g'(x^\alpha)=g'(x^\beta)=
+\frac{g(x^\beta)-g(x^\alpha)}{x^\beta-x^\alpha}.</span></p>
+<p>Symmetry makes this particular tangent horizontal: <span class="math inline">x^\beta=1-x^\alpha</span> and <span class="math inline">g'(x^\alpha)=0</span>.</p>
+<p><span class="math display">\ln\frac{x^\alpha}{1-x^\alpha}+3(1-2x^\alpha)=0.</span></p>
+<p>The low-composition root lies between <strong>0.0707 and 0.0708</strong>. Refinement gives</p>
+<p><span class="math display">\boxed{x^\alpha=0.07072018,\qquad x^\beta=0.92927982}.</span></p>
+<p><strong>Your action:</strong> Guide B2: substitute <span class="math inline">x^\alpha</span> in <span class="math inline">g'</span>. The root at 0.50 is a maximum here, not a second liquid phase. A horizontal tangent is specific to this symmetric case.</p>
+</section>
+<section id="lever-rule" class="slide level2">
+<h2>Step 3: calculate the phase amounts</h2>
+<p>Use a basis of <strong>1 mol of total feed</strong>. Let <span class="math inline">f^\alpha+f^\beta=1</span>.</p>
+<p><span class="math display">z=f^\alpha x^\alpha+f^\beta x^\beta
+\quad\Longrightarrow\quad
+f^\beta=\frac{z-x^\alpha}{x^\beta-x^\alpha}.</span></p>
+<p>At <span class="math inline">z=0.12</span>:</p>
+<p><span class="math display">f^\beta=\frac{0.12000000-0.07072018}{0.92927982-0.07072018}
+=\boxed{0.057398}.</span></p>
+<p><span class="math display">f^\alpha=1-f^\beta=\boxed{0.942602}.</span></p>
+<p><strong>Your action:</strong> Guide B3: write the amounts as 0.942602 mol α and 0.057398 mol β per mol of feed. These are liquid phase fractions; no vapor fraction is involved.</p>
+</section>
+<section id="balance" class="slide level2">
+<h2>Step 4: check the component balance</h2>
+<p><span class="math display">0.942602+0.057398=1.000000</span></p>
+<p><span class="math display">0.942602(0.07072018)+0.057398(0.92927982)
+\approx\boxed{0.120000}.</span></p>
+<p>For component 2, the same amounts give <span class="math inline">1-z=0.88</span>.</p>
+<p>The result satisfies the amount and composition constraints. <strong>A closed balance alone does not prove that the state minimizes Gibbs energy.</strong></p>
+<p><strong>Your action:</strong> Guide B3: check this sum on your calculator. If a phase fraction is outside 0–1, that proposed split cannot represent this feed.</p>
+</section>
+<section id="feed-energy" class="slide level2">
+<h2>Step 5: calculate the homogeneous energy</h2>
+<p><span class="math display">g(0.12)=0.12\ln(0.12)+0.88\ln(0.88)+3(0.12)(0.88)</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">0.12\ln(0.12)</span></td>
+<td style="text-align: right;">−0.25443162</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">0.88\ln(0.88)</span></td>
+<td style="text-align: right;">−0.11249337</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">3(0.12)(0.88)</span></td>
+<td style="text-align: right;">+0.31680000</td>
+</tr>
+<tr class="even">
+<td><strong>Sum: homogeneous <span class="math inline">g(z)</span></strong></td>
+<td style="text-align: right;"><strong>−0.05012499</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your action:</strong> Guide B4: reproduce the sum. This is <span class="math inline">\Delta G_{\mathrm{mix}}/(nRT)</span> for the homogeneous feed, not an energy in joules.</p>
+</section>
+<section id="split-energy" class="slide level2">
+<h2>Step 6: compare with the split</h2>
+<p>Both endpoints have <span class="math inline">g(x^\alpha)=g(x^\beta)=-0.05834135</span>.</p>
+<p><span class="math display">g_{\mathrm{split}}=f^\alpha g(x^\alpha)+f^\beta g(x^\beta)
+=-0.05834135.</span></p>
+<p><span class="math display">\text{Energy decrease}=g(z)-g_{\mathrm{split}}
+=\boxed{0.00821636&gt;0}.</span></p>
+<p>The split is lower even though <span class="math inline">g''(0.12)&gt;0</span>. The original homogeneous feed is <strong>metastable</strong>; the equilibrium state is two liquids.</p>
+<p><strong>Your action:</strong> Guide B4: circle the lower energy. To obtain an actual total energy decrease, multiply 0.00821636 by <span class="math inline">nRT</span> using consistent units.</p>
+</section>
+<section id="energy-gap" class="slide level2">
+<h2>See the same comparison on the graph</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/gibbs-review-gap.svg" class="review-figure"></p>
+<figcaption>Close view of the homogeneous feed and the lower two-liquid energy at z=0.12.</figcaption>
+</figure>
+</div>
+<p>Read the <strong>vertical</strong> separation at the same <span class="math inline">z</span>. It equals <span class="math inline">g(z)-g_{\mathrm{split}}</span>, not a distance between the two phase compositions.</p>
+<p><strong>Your action:</strong> Return to B4: label the upper point “homogeneous” and the lower point “equilibrium split.”</p>
+</section>
+<section id="global-support" class="slide level2">
+<h2>Step 7: check global support</h2>
+<p>For a candidate line <span class="math inline">\ell(x)</span>, examine the whole allowed interval:</p>
+<p><span class="math display">d(x)=g(x)-\ell(x)\ge0\quad\text{for all }0\le x\le1.</span></p>
+<p>Here <span class="math inline">\ell(x)=-0.05834135</span>. The two contacts are the global minima: checking the stationary points and endpoints verifies that no part of this curve lies below the line.</p>
+<ul>
+<li>Equal chemical potentials identify a <strong>candidate</strong> pair.</li>
+<li>The material balance checks whether its amounts are feasible.</li>
+<li>Global support establishes the lowest energy within this binary liquid model.</li>
+</ul>
+<p><strong>Your action:</strong> Guide B5: explain why testing only the two contacts is insufficient. A finite plotted grid can miss a narrow dip; the Lab also searches stationary points and uses a numerical tolerance.</p>
+</section>
+<section id="support-values" class="slide level2">
+<h2>Verify support for this model</h2>
+<p>For A = 3, the stationary points are <span class="math inline">x^\alpha</span>, 0.50 and <span class="math inline">x^\beta</span>. Add both pure endpoints to cover the candidates for the lowest value of <span class="math inline">d(x)=g(x)-\ell(x)</span>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Candidate composition</th>
+<th style="text-align: right;"><span class="math inline">d(x)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0 and 1</td>
+<td style="text-align: right;"><span class="math inline">0-(-0.05834135)=0.05834135</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">x^\alpha</span> and <span class="math inline">x^\beta</span></td>
+<td style="text-align: right;"><span class="math inline">0</span></td>
+</tr>
+<tr class="odd">
+<td>0.50</td>
+<td style="text-align: right;"><span class="math inline">(0.75-\ln 2)-(-0.05834135)=0.11519417</span></td>
+</tr>
+</tbody>
+</table>
+<p>All candidate values are nonnegative, so the line supports this entire curve. The contacts give its lowest value.</p>
+<p><strong>Your action:</strong> Guide B5: reproduce the middle-composition value. This exhaustive stationary-point check applies to the stated A = 3 model; checking a few arbitrary plotted points would not be equivalent.</p>
+</section>
+<section id="feed-tangent" class="slide level2">
+<h2>A different tangent tests the homogeneous feed</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/gibbs-review-tpd.svg" class="review-figure"></p>
+<figcaption>Tangent-plane distance relative to the homogeneous z=0.12 liquid, showing a negative value at a trial composition.</figcaption>
+</figure>
+</div>
+<p><span class="math display">\mathrm{TPD}(w)=g(w)-[g(z)+g'(z)(w-z)].</span></p>
+<p>A negative value rejects global stability of the <strong>homogeneous feed</strong>. This feed tangent differs from the <strong>coexistence common tangent</strong>. The trial minimizer <span class="math inline">w</span> is not automatically a binodal endpoint.</p>
+<p><strong>Your action:</strong> Guide C1, page 3: keep these two reference lines distinct when switching Lab views.</p>
+</section>
+<section id="open-lab" class="slide level2">
+<h2>Open Lab 04 and reproduce the calculation</h2>
+<p><strong>Open:</strong> <a href="labs/stability.html#lle-experiment">Lab 04: Liquid stability</a>. Keep guide <strong>C1</strong> beside it.</p>
+<ol type="1">
+<li>Under <strong>Explore a state</strong>, choose <strong>Metastable · A = 3, z₁ = 0.12</strong>.</li>
+<li>Confirm <strong>Liquid model = Margules · 1 parameter</strong>, <strong>A = 3</strong>, and <strong>Feed mole fraction z₁ = 0.12</strong>.</li>
+<li>Click <strong>Find equilibrium →</strong>. Select <strong>View → Gibbs energy &amp; common tangent</strong>.</li>
+<li>Open <strong>Verify the equilibrium</strong>. Compare the homogeneous and equilibrium energies and the component balance residual with your hand calculation.</li>
+</ol>
+<p><strong>Your action:</strong> Record the values before revealing the comparison on the next slide. If the Lab opens at a different state, use the preset above; opening the page alone does not set this case.</p>
+</section>
+<section id="lab-check" class="slide level2">
+<h2>Compare the outputs, then change the view</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th style="text-align: right;">Hand calculation / expected Lab value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coexisting compositions <span class="math inline">x^\alpha</span>, <span class="math inline">x^\beta</span></td>
+<td style="text-align: right;">0.070720, 0.929280</td>
+</tr>
+<tr class="even">
+<td>Phase fractions <span class="math inline">f^\alpha</span>, <span class="math inline">f^\beta</span></td>
+<td style="text-align: right;">0.942602, 0.057398</td>
+</tr>
+<tr class="odd">
+<td>Local curvature of feed</td>
+<td style="text-align: right;">+3.469697</td>
+</tr>
+<tr class="even">
+<td>Homogeneous <span class="math inline">g(z)</span> / equilibrium <span class="math inline">g(z)</span></td>
+<td style="text-align: right;">−0.050125 / −0.058341</td>
+</tr>
+<tr class="odd">
+<td>Energy decrease</td>
+<td style="text-align: right;">0.008216 (dimensionless)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your action:</strong> Guide C1: switch to <strong>Local curvature</strong>, then <strong>Tangent-plane distance · feed stability</strong>. Positive local curvature and negative minimum feed TPD are compatible here.</p>
+<p>Allow for display rounding. Small residuals check the numerical solution; assess global support separately.</p>
+</section>
+<section id="predict-cases" class="slide level2">
+<h2>Predict before changing the feed</h2>
+<p>Keep the same model and <strong>A = 3</strong>. On guide <strong>C2</strong>, predict these two cases before running them:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feed</th>
+<th>Questions to answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">z=0.02</span></td>
+<td>Does this feed lie between the binodal endpoints? Is the lever-rule split feasible?</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">z=0.50</span></td>
+<td>What is the sign of <span class="math inline">g''</span>? What amounts does symmetry suggest?</td>
+</tr>
+</tbody>
+</table>
+<p>Then select the matching <strong>Stable</strong> and <strong>Unstable</strong> presets and click <strong>Find equilibrium →</strong> for each case.</p>
+<p><strong>Pause for 5 minutes.</strong> Record your prediction, Lab result and one reason for any correction. Continue only after both cases.</p>
+</section>
+<section id="compare-cases" class="slide level2">
+<h2>Three feed states, two equilibrium outcomes</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Feed <span class="math inline">z</span></th>
+<th style="text-align: right;"><span class="math inline">g''(z)</span></th>
+<th>Homogeneous feed</th>
+<th>Equilibrium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.02</td>
+<td style="text-align: right;">+45.020408</td>
+<td>Stable</td>
+<td>One liquid, <span class="math inline">x=z</span></td>
+</tr>
+<tr class="even">
+<td>0.12</td>
+<td style="text-align: right;">+3.469697</td>
+<td>Metastable</td>
+<td>Two liquids; <span class="math inline">f^\beta=0.057398</span></td>
+</tr>
+<tr class="odd">
+<td>0.50</td>
+<td style="text-align: right;">−2.000000</td>
+<td>Unstable</td>
+<td>Two liquids; <span class="math inline">f^\alpha=f^\beta=0.5</span></td>
+</tr>
+</tbody>
+</table>
+<p>For A = 3, the spinodals are <strong>0.211325 and 0.788675</strong>. They mark the change in local curvature, not the coexistence compositions.</p>
+<p>At <span class="math inline">z=0.02</span>, the proposed binodal split gives <span class="math inline">f^\beta&lt;0</span>. Do not use a line extended outside its contacts as a feasible two-phase mixture.</p>
+<p><strong>Your action:</strong> Guide C2: distinguish “classification of the initial homogeneous feed” from “stable equilibrium after allowing separation.”</p>
+</section>
+<section id="regions" class="slide level2">
+<h2>Locate the three regions on the same curve</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/gibbs-review-regions.svg" class="review-figure"></p>
+<figcaption>Classification of homogeneous feeds for symmetric Margules A=3, with separate binodal and spinodal boundaries.</figcaption>
+</figure>
+</div>
+<p>Between a binodal and its neighboring spinodal, a homogeneous feed is metastable. Inside the spinodals, it is locally unstable. Allowing separation gives two-liquid equilibrium throughout the binodal interval.</p>
+<p><strong>Your action:</strong> On guide C2, locate 0.02, 0.12 and 0.50. These labels classify the homogeneous feed; the lower common-tangent segment describes its equilibrium when separation is allowed.</p>
+</section>
+<section id="practice" class="slide level2">
+<h2>Your turn: solve a new feed</h2>
+<p><strong>Guide D1, page 4. Keep A = 3 and set <span class="math inline">z=0.35</span>.</strong></p>
+<ol type="1">
+<li>Calculate <span class="math inline">g''(z)</span> and classify the homogeneous feed locally.</li>
+<li>Use the same endpoints to calculate <span class="math inline">f^\alpha</span> and <span class="math inline">f^\beta</span>.</li>
+<li>Check <span class="math inline">f^\alpha x^\alpha+f^\beta x^\beta=z</span>.</li>
+<li>Calculate <span class="math inline">g(z)</span> and <span class="math inline">g(z)-g_{\mathrm{split}}</span>.</li>
+<li>In Lab 04, enter <strong>Feed mole fraction z₁ = 0.35</strong> and click <strong>Find equilibrium →</strong>. Explain any difference from your calculation.</li>
+</ol>
+<p><strong>Pause for 8 minutes before the next slide.</strong> The endpoints depend on the model and fixed conditions, not on the feed’s position inside this tie line.</p>
+</section>
+<section id="practice-answer" class="slide level2">
+<h2>Check your new-feed calculation</h2>
+<p><span class="math display">g''(0.35)=\frac1{0.35}+\frac1{0.65}-6=-1.604396.</span></p>
+<p><span class="math display">f^\beta=\frac{0.35-0.07072018}{0.85855964}=0.325289,
+\qquad f^\alpha=0.674711.</span></p>
+<p><span class="math display">0.674711(0.07072018)+0.325289(0.92927982)\approx0.350000.</span></p>
+<p><span class="math display">g(0.35)=0.35\ln(0.35)+0.65\ln(0.65)+3(0.35)(0.65)
+=0.03505336.</span></p>
+<p><span class="math display">g(0.35)-g_{\mathrm{split}}=\boxed{0.09339471}.</span></p>
+<p><strong>Your action:</strong> Correct D1 in a different color. The feed is locally unstable and its stable liquid equilibrium is the same pair of compositions, with different amounts.</p>
+</section>
+<section id="save" class="slide level2">
+<h2>Save a result you can explain</h2>
+<p><strong>Guide C3, page 3.</strong> At the case you want to keep:</p>
+<ol type="1">
+<li>In <strong>Your explanation</strong>, state A, z, the feed classification and the equilibrium phase amounts. Include one balance or energy comparison.</li>
+<li>Click <strong>Export study JSON</strong> and keep the downloaded file with your worksheet.</li>
+<li>To reopen it, expand <strong>Study workspace · reopen and compare cases</strong> near the top. Use <strong>Load studies or a comparison JSON</strong>, then <strong>Restore</strong> beside your case.</li>
+<li>Click <strong>Find equilibrium →</strong> to recompute from restored inputs.</li>
+</ol>
+<p><strong>If something differs:</strong> check model, A and z first; then the selected view, rounding and whether you recalculated. Keep a screenshot and the study JSON when asking for help. No manual JSON editing is needed.</p>
+</section>
+<section id="self-check" class="slide level2">
+<h2>Check the reasoning without the Lab</h2>
+<p><strong>Guide D2, page 4. Answer before opening the next slide.</strong></p>
+<ol type="1">
+<li>Can <span class="math inline">g''(z)&gt;0</span> alone establish global stability?</li>
+<li>What is fixed, and what changes, when z moves inside this tie line at fixed T, P and A?</li>
+<li>Why does equality of chemical potentials alone not finish the stability test?</li>
+<li>The common tangent lies below <span class="math inline">g(0.02)</span> when extended left. Why is its binodal split not the equilibrium for this feed?</li>
+</ol>
+<p>Use one short sentence for each. Keep these corrections with the original Week 3 worksheet; this review adds no form submission.</p>
+</section>
+<section id="answers" class="slide level2">
+<h2>Answers and reading</h2>
+<ol type="1">
+<li><strong>No.</strong> Positive curvature establishes local stability. A feasible distant split can still lower total Gibbs energy.</li>
+<li><strong>Fixed:</strong> <span class="math inline">x^\alpha</span> and <span class="math inline">x^\beta</span>. <strong>Changing:</strong> phase amounts according to the material balance.</li>
+<li>It identifies a candidate. Check feasible amounts and a common tangent that supports the whole allowed Gibbs curve.</li>
+<li>Since <span class="math inline">0.02&lt;x^\alpha</span>, reproducing this feed with those endpoints would require a negative phase amount.</li>
+</ol>
+<p><strong>Read further:</strong> <a href="https://ocw.mit.edu/courses/3-020-thermodynamics-of-materials-spring-2021/mit3_020s21_l21.pdf">MIT OpenCourseWare, Lecture 21: phase coexistence and stability</a>. Our numerical values come from the stated synthetic Margules model, not a real-fluid dataset.</p>
+<p><strong>Next:</strong> Return to the <a href="week03-study.html">Week 3 study route</a>. Use the <a href="week03-video.html#slide-35">Lab 04 demonstration in the Week 3 video</a> if you need another screen walkthrough.</p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'visible',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Click anywhere on a slide to advance.
+
+         Reveal.js has no built-in click-to-advance, so this adds it. Going back is
+         the ← key, or the arrow at the left edge of the screen
+         (controlsLayout: edges in _quarto.yml).
+
+         It deliberately does nothing when the click means something else: a link or
+         control, a double-click, a modified click, the overview (O), a drag that
+         selected text, or the click that dismisses a selection. Without those
+         guards a student trying to select a sentence would skip a slide instead.
+
+         Note the selection is checked on mousedown, not on click — the browser
+         clears the selection before the click event fires. -->
+    <script>
+    (function () {
+      var IGNORE = 'a, button, input, select, textarea, label, summary, video, audio,' +
+                   ' iframe, .controls, .slide-menu, .slide-menu-button, .progress,' +
+                   ' .speaker-controls, .pdf-page';
+      var DRAG_PX = 6;
+      var downX = 0, downY = 0, hadSelection = false;
+
+      document.addEventListener('mousedown', function (e) {
+        downX = e.clientX;
+        downY = e.clientY;
+        var s = window.getSelection();
+        hadSelection = !!(s && String(s).length > 0);
+      }, true);
+
+      function ready(fn) {
+        if (typeof Reveal !== 'undefined' && Reveal.isReady && Reveal.isReady()) return fn();
+        setTimeout(function () { ready(fn); }, 120);
+      }
+
+      ready(function () {
+        document.addEventListener('click', function (e) {
+          if (e.button !== 0) return;                        // left button only
+          if (e.detail > 1) return;                          // ignore double-clicks
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (e.target.closest && e.target.closest(IGNORE)) return;
+          if (Reveal.isOverview() || Reveal.isPaused()) return;
+          if (Math.abs(e.clientX - downX) > DRAG_PX ||
+              Math.abs(e.clientY - downY) > DRAG_PX) return; // that was a drag
+          if (hadSelection) { hadSelection = false; return; } // that click cleared a selection
+          Reveal.next();
+        }, false);
+      });
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
