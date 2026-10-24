@@ -45,7 +45,7 @@ jobs:
 
       # Keep the downloadable Quarto source intact; Jekyll consumes YAML headers.
       - name: Preserve MILP Quarto source
-        run: cp teaching/2105623/milp/slides.qmd _site/teaching/2105623/milp/slides.qmd
+        run: sudo cp teaching/2105623/milp/slides.qmd _site/teaching/2105623/milp/slides.qmd
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
