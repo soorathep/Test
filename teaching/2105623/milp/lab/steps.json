@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Set up the notebook",
+    "prompt": "Run cells in order with Shift+Enter. Python 3 with NumPy, SciPy \u22651.9, and Matplotlib is required. If an import fails, install these packages in your selected environment, then restart the kernel.",
+    "code": "import numpy as np\nimport scipy\nfrom scipy.optimize import milp, Bounds, LinearConstraint\nprint(\"SciPy\", scipy.__version__)"
+  },
+  {
+    "title": "Define the objective and variable order",
+    "prompt": "Use v=[a,b,yA,yB]. Money is in $1,000/week. Why do the opening costs have positive signs in c?",
+    "code": "c = np.array([-8., -6., 10., 8.])\nintegrality = [0, 0, 1, 1]\nbounds = Bounds([0,0,0,0], [6,8,1,1])\nprint(\"Minimize negative net profit; only yA and yB are binary.\")"
+  },
+  {
+    "title": "Build each row of the matrix",
+    "prompt": "Read every row aloud: labor, sales upper bound, A linking, B linking. Sales is an upper limit, not a minimum demand.",
+    "code": "A = np.array([[2,1,0,0],\n              [1,1,0,0],\n              [1,0,-6,0],\n              [0,1,0,-8]], dtype=float)\nupper = np.array([12,10,0,0], dtype=float)\nconstraints = LinearConstraint(A, -np.inf, upper)\nprint(A)"
+  },
+  {
+    "title": "Solve and interpret status",
+    "prompt": "Predict which lines open before running. A returned vector alone is not an optimality certificate.",
+    "code": "result = milp(c, integrality=integrality, bounds=bounds,\n              constraints=constraints, options={\"mip_rel_gap\":0})\nprint(\"Status:\", result.status, result.message)\nassert result.success\nprint(\"[a,b,yA,yB] =\", result.x)\nprint(\"Net profit =\", -result.fun)\nprint(\"Profit upper bound =\", -result.mip_dual_bound)\nprint(\"MIP gap =\", result.mip_gap)\nassert np.isclose(-result.fun,46)"
+  },
+  {
+    "title": "Audit the result independently",
+    "prompt": "Check the four rows, bounds, binary decisions, and original profit expression. Keep tolerances; never round continuous production automatically.",
+    "code": "v = result.x\ntol = 1e-7\nprint(\"Row use:\", A @ v)\nprint(\"Row slack:\", upper - A @ v)\nassert np.all(A @ v <= upper + tol)\nassert np.all(v >= bounds.lb-tol) and np.all(v <= bounds.ub+tol)\nassert np.allclose(v[2:], np.round(v[2:]), atol=tol)\nprofit = 8*v[0]+6*v[1]-10*v[2]-8*v[3]\nassert np.isclose(profit,-result.fun)\nprint(\"All checks passed; net profit =\",profit)"
+  },
+  {
+    "title": "Enumerate opening choices",
+    "prompt": "Verify the answer with four continuous LPs, one for each fixed pair of opening decisions.",
+    "code": "from scipy.optimize import linprog\nfrom itertools import product\nrecords = []\nfor ya,yb in product([0,1], repeat=2):\n    r = linprog([-8,-6], A_ub=[[2,1],[1,1]], b_ub=[12,10],\n                bounds=[(0,6*ya),(0,8*yb)], method=\"highs\")\n    assert r.success\n    z = -r.fun-10*ya-8*yb\n    records.append(z)\n    print((ya,yb), \"production\",r.x,\"net profit\",z)\nassert np.isclose(max(records),46)"
+  },
+  {
+    "title": "Relax integrality",
+    "prompt": "Why can a relaxed opening fraction pay only part of a fixed cost? Explain why this value is an upper bound for maximization.",
+    "code": "relaxed = milp(c, integrality=[0,0,0,0], bounds=bounds,\n               constraints=constraints)\nassert relaxed.success\nprint(\"Relaxed decisions:\",relaxed.x)\nprint(\"LP upper bound:\",-relaxed.fun)\nassert np.isclose(-relaxed.fun,158/3)\nassert -relaxed.fun >= -result.fun - tol"
+  },
+  {
+    "title": "Change one assumption at a time",
+    "prompt": "Reset to the baseline before each scenario. Try sales cap 8, B opening cost 20, or minimum A batch 3. Predict first.",
+    "code": "def solve_case(sales=10, fixed_b=8, minimum_a=0, one_line=False):\n    rows=A.copy(); rhs=upper.copy(); rhs[1]=sales\n    if minimum_a:\n        rows=np.vstack([rows,[-1,0,minimum_a,0]])\n        rhs=np.r_[rhs,0]\n    if one_line:\n        rows=np.vstack([rows,[0,0,1,1]])\n        rhs=np.r_[rhs,1]\n    r=milp([-8,-6,10,fixed_b],integrality=integrality,bounds=bounds,\n           constraints=LinearConstraint(rows,-np.inf,rhs),\n           options={\"mip_rel_gap\":0})\n    assert r.success\n    return r\nfor label,kwargs,expected in [(\"Sales cap 8\",{\"sales\":8},40),\n                              (\"B cost 20\",{\"fixed_b\":20},38),\n                              (\"A minimum 3\",{\"minimum_a\":3},42)]:\n    r=solve_case(**kwargs)\n    print(label,r.x,-r.fun)\n    assert np.isclose(-r.fun,expected)"
+  },
+  {
+    "title": "Add a purchasable capacity module",
+    "prompt": "Add binary k. It supplies 4 labor units and costs p per week. Rewrite the labor row as 2a+b-4k \u226412. Do not add capacity for free.",
+    "code": "def module_case(price=7, force=None):\n    rows=np.column_stack([A,np.zeros(4)])\n    rows[0,-1]=-4\n    lb=[0,0,0,0,0]; ub=[6,8,1,1,1]\n    if force is not None: lb[-1]=ub[-1]=force\n    r=milp([-8,-6,10,8,price],integrality=[0,0,1,1,1],\n           bounds=Bounds(lb,ub),constraints=LinearConstraint(rows,-np.inf,upper),\n           options={\"mip_rel_gap\":0})\n    assert r.success\n    return r\nfor price in [7,8,9,10]:\n    r=module_case(price)\n    no=module_case(price,0); buy=module_case(price,1)\n    print(\"Price\",price,\"best\",-r.fun,\"no buy\",-no.fun,\"buy\",-buy.fun)\n    assert np.isclose(-r.fun,max(-no.fun,-buy.fun))\nassert np.isclose(-module_case(7).fun,47)\nassert np.isclose(-module_case(9).fun,46)"
+  },
+  {
+    "title": "Complete independent exercises",
+    "prompt": "Use the separate exercise sheet first. Record your model change, plan, objective, and feasibility checks. Then submit the Exit Ticket before reading its solutions.",
+    "code": "print(\"Next: exercises.html and the online Exit Ticket.\")"
+  }
+]

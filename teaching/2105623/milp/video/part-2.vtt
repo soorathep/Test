@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.874
+Now move to our main engineering example.
+
+00:00:02.874 --> 00:00:08.621
+All data are illustrative, and money is measured in thousands of dollars per week.
+
+00:00:08.621 --> 00:00:14.858
+Production contributes eight per tonne on line A and six on line B, after variable costs.
+
+00:00:14.858 --> 00:00:19.694
+Opening a line incurs a weekly fixed cost, ten for A and eight for B.
+
+00:00:19.694 --> 00:00:24.600
+We must decide both whether to open each line and how much to produce.
+
+00:00:26.600 --> 00:00:30.647
+Line A can produce at most six tonnes and B at most eight.
+
+00:00:30.647 --> 00:00:34.903
+Labor requirements are two units per tonne on A and one on B.
+
+00:00:34.903 --> 00:00:37.206
+Twelve labor units are available.
+
+00:00:37.206 --> 00:00:39.788
+Total sales cannot exceed ten tonnes.
+
+00:00:39.788 --> 00:00:44.253
+This is an upper demand limit, not a requirement to produce ten.
+
+00:00:44.253 --> 00:00:51.440
+No production is feasible, and the model should retain that option if all profitable choices disappear.
+
+00:00:53.500 --> 00:00:56.975
+Use a and b for continuous production amounts.
+
+00:00:56.975 --> 00:01:00.375
+Use y A and y B for binary opening decisions.
+
+00:01:00.375 --> 00:01:03.623
+These variables answer different questions.
+
+00:01:03.623 --> 00:01:12.840
+If a line is open, it can produce any allowed amount within its capacity, including zero unless we impose a minimum batch.
+
+00:01:12.840 --> 00:01:16.541
+If a line is closed, its production must be zero.
+
+00:01:16.541 --> 00:01:20.092
+The next constraints connect the two decisions.
+
+00:01:22.100 --> 00:01:25.629
+Read the linking inequality in its two cases.
+
+00:01:25.629 --> 00:01:31.354
+When y A is zero, nonnegativity and the zero upper bound force a to zero.
+
+00:01:31.354 --> 00:01:34.962
+When y A is one, a can range from zero to six.
+
+00:01:34.962 --> 00:01:39.197
+This is a linear inequality because six is a constant.
+
+00:01:39.197 --> 00:01:43.118
+We do not need to multiply two decision variables.
+
+00:01:43.118 --> 00:01:47.588
+Repeat the same reasoning for line B with capacity eight.
+
+00:01:49.600 --> 00:01:55.400
+Suppose opening A is worthwhile operationally only if it produces at least three tonnes.
+
+00:01:55.400 --> 00:02:01.728
+Add the lower linking bound a at least three times y A, while retaining the upper linking bound.
+
+00:02:01.728 --> 00:02:08.450
+The two allowed states are closed with zero production, or open with production between three and six.
+
+00:02:08.450 --> 00:02:12.471
+This is an optional scenario, not part of our baseline model.
+
+00:02:12.471 --> 00:02:16.096
+Keep that distinction when comparing numerical answers.
+
+00:02:18.100 --> 00:02:21.432
+Binary variables also encode logical choices.
+
+00:02:21.432 --> 00:02:24.246
+At most one permits both to be closed.
+
+00:02:24.246 --> 00:02:26.616
+Exactly one removes that option.
+
+00:02:26.616 --> 00:02:34.170
+The implication A requires B means that selecting A forces B to one, which is written y A at most y B.
+
+00:02:34.170 --> 00:02:36.391
+It does not mean B requires A.
+
+00:02:36.391 --> 00:02:39.798
+Test each expression on the four binary pairs.
+
+00:02:39.798 --> 00:02:45.796
+These are alternative policy examples; we do not impose them all on the baseline.
+
+00:02:47.800 --> 00:02:51.173
+Read the full baseline model from top to bottom.
+
+00:02:51.173 --> 00:02:54.475
+The objective subtracts each opening cost once.
+
+00:02:54.475 --> 00:02:57.075
+Labor and sales constrain production.
+
+00:02:57.075 --> 00:03:01.080
+Linking inequalities prevent production on a closed line.
+
+00:03:01.080 --> 00:03:05.999
+Production remains continuous, while the opening variables are binary.
+
+00:03:05.999 --> 00:03:16.960
+Before solving, check units: every objective term is thousands of dollars per week, every labor term is labor units per week, and sales are tonnes per week.
+
+00:03:19.000 --> 00:03:21.807
+There are only four opening patterns.
+
+00:03:21.807 --> 00:03:28.027
+For each pattern, fix the binary variables and solve the remaining continuous L P.
+
+00:03:28.027 --> 00:03:29.848
+Neither line gives zero.
+
+00:03:29.848 --> 00:03:34.778
+A alone produces six and earns thirty eight after its fixed cost.
+
+00:03:34.778 --> 00:03:37.737
+B alone produces eight and earns forty.
+
+00:03:37.737 --> 00:03:41.226
+Both produce two and eight, earning forty six.
+
+00:03:41.226 --> 00:03:48.736
+Enumeration provides an independent certificate for this small model and checks our M I L P result.
+
+00:03:50.800 --> 00:03:53.175
+Do not stop at a solver message.
+
+00:03:53.175 --> 00:03:57.406
+Insert the proposed solution into the original equations.
+
+00:03:57.406 --> 00:04:00.821
+Labor is exactly twelve and sales exactly ten.
+
+00:04:00.821 --> 00:04:05.942
+Production on A is below six and B is at eight, with both lines open.
+
+00:04:05.942 --> 00:04:14.627
+Variable contribution is sixty four, and total opening cost is eighteen, leaving forty six thousand dollars per week.
+
+00:04:14.627 --> 00:04:19.600
+This audit is also a useful way to find coefficient-order mistakes.
+
+00:04:21.600 --> 00:04:27.549
+The constant in a linking inequality should be a valid and reasonably tight upper bound.
+
+00:04:27.549 --> 00:04:29.915
+Six comes directly from A capacity.
+
+00:04:29.915 --> 00:04:41.543
+Replacing it with one hundred, while keeping the physical capacity separately, preserves binary feasibility but lets the relaxation pay a tiny fraction of the opening cost.
+
+00:04:41.543 --> 00:04:47.425
+A bound that is too small causes the opposite problem: it removes real operating plans.
+
+00:04:47.425 --> 00:04:49.656
+Derive U from engineering limits.

@@ -1,0 +1,32 @@
+[
+  [
+    "Integer production",
+    "Maximize 3x+2y with x+y\u22644, 2x+y\u22646.5, and nonnegative integer x,y. Find the optimum and verify it by enumeration.",
+    "For y=0,1,2,3,4 the best allowed x is 3,2,2,1,0 respectively, with values 9,8,10,9,8. Therefore the unique optimum is (2,2), value 10. It uses resources 4 and 6, within limits 4 and 6.5."
+  ],
+  [
+    "Sales cap 6",
+    "Reset the plant model to baseline, then replace a+b\u226410 with a+b\u22646. Compare all four opening patterns.",
+    "Neither gives 0. A only: a=6, net 48\u221210=38. B only: b=6, net 36\u22128=28. Both: with the tighter sales cap, contribution is maximized by a=6,b=0, so net 48\u221218=30. Opening B is allowed without producing B but wastes its fixed cost. Best is A only, profit 38."
+  ],
+  [
+    "At most one line",
+    "Use baseline data and add yA+yB\u22641. What is the best opening and production plan?",
+    "Both is excluded. Neither gives 0, A only gives 38, B only gives 40. Choose yA=0,yB=1,a=0,b=8. Labor use 8\u226412 and sales 8\u226410. Profit 48\u22128=40."
+  ],
+  [
+    "A module costing 8",
+    "Use baseline plant data plus an optional module adding 4 labor units. Its weekly cost is 8. Compare buy and do not buy.",
+    "Without buying, best profit is 46 at (a,b)=(2,8). Buying changes labor capacity to 16. Open both and produce (6,4): labor 16, sales 10, operating profit 48+24\u221218=54, then subtract module cost 8 to get 46. Both purchase states are optimal. One returned vector does not establish uniqueness."
+  ],
+  [
+    "A minimum batch of 4",
+    "Reset to baseline and add a\u22654yA. Compare opening patterns and determine the optimum.",
+    "A only still gives 38. B only still gives 40. With both open and a\u22654, the labor limit is binding and b\u226412\u22122a. Contribution 8a+6b\u226472\u22124a, which decreases with a, so choose a=4,b=4. Net profit is 32+24\u221218=38. Choose B only with profit 40."
+  ],
+  [
+    "A remaining optimality gap",
+    "A maximization MILP has feasible incumbent value 46 and a valid global upper bound 48. What can be concluded?",
+    "The unknown optimum lies in [46,48]. A better feasible plan may exist, but its improvement is at most 2 objective units. This is not yet proof that 46 is exactly optimal. A node upper bound is not a feasible integer value; do not report 48 as an achieved profit."
+  ]
+]

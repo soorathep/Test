@@ -1,0 +1,358 @@
+{
+  "voice": "en-US-GuyNeural",
+  "rate": "-5%",
+  "pitch": "+0Hz",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Integer and mixed-integer programming",
+      "script": "Welcome to our independent study lesson on integer and mixed integer linear programming. In the previous lesson, decisions could vary continuously. Today we add decisions that must be whole numbers or yes or no. Keep paper and the Python notebook beside you. Pause whenever a question appears. The aim is to build a model, solve it, and explain why its decisions make sense.",
+      "file": "audio/slide-001.mp3",
+      "duration_seconds": 26.496
+    },
+    {
+      "slide": 2,
+      "title": "Your three-hour study route",
+      "script": "The videos are shorter than the scheduled class because your working time matters. Use fifteen minutes to recall L P, thirty for integer geometry, and thirty five for modeling. Take a ten minute break. Then spend twenty five minutes on branch and bound, forty five on the lab, and twenty on the exit ticket. Pause the video rather than trying to finish every activity at playback speed.",
+      "file": "audio/slide-002.mp3",
+      "duration_seconds": 25.152
+    },
+    {
+      "slide": 3,
+      "title": "Recall the LP certificate",
+      "script": "Recall our maximization L P. A feasible production plan gives a value we can achieve. Feasible dual prices give an upper bound. When the two values agree, we have a certificate. Integer programming retains the idea of bounds, but an L P solution may no longer be an allowable plan. That distinction will drive the search procedure in this lesson.",
+      "file": "audio/slide-003.mp3",
+      "duration_seconds": 25.944
+    },
+    {
+      "slide": 4,
+      "title": "Three kinds of decisions",
+      "script": "Choose the variable domain from the meaning of the decision. Tonnes can usually be fractional, while an indivisible machine count cannot. A binary variable represents whether a line is available or selected. A mixed integer model may contain all three types. Making every variable integer is unnecessary and can change the engineering problem, especially when production is a continuous flow.",
+      "file": "audio/slide-004.mp3",
+      "duration_seconds": 26.544
+    },
+    {
+      "slide": 5,
+      "title": "A small integer production problem",
+      "script": "We first use a small illustrative batch problem, with objective units chosen only for teaching. Each batch of x earns three and each batch of y earns two. Two shared resources give the displayed inequalities. The coefficients remain linear. What changes relative to L P is the requirement that both batch counts be whole numbers. Sketch the continuous feasible region before adding the integer points.",
+      "file": "audio/slide-005.mp3",
+      "duration_seconds": 27.792
+    },
+    {
+      "slide": 6,
+      "title": "Solve the continuous relaxation",
+      "script": "Temporarily remove the integer restriction. Subtracting the first active equation from the second gives x equal to two. Substitution gives y equal to two point five. The value is eleven. This is a useful bound, but half a batch is not permitted in the integer problem. Do not report this relaxed point as the final production decision.",
+      "file": "audio/slide-006.mp3",
+      "duration_seconds": 24.96
+    },
+    {
+      "slide": 7,
+      "title": "Rounding is not a solution method",
+      "script": "Rounding y upward produces the plan two, three. Its resource use is five and seven, so it violates both limits. Rounding downward gives two, two and is feasible in this example. That success does not establish a general algorithm. Other problems can have infeasible rounded points or better integer points elsewhere. We need a method that verifies feasibility and provides a bound on quality.",
+      "file": "audio/slide-007.mp3",
+      "duration_seconds": 28.032
+    },
+    {
+      "slide": 8,
+      "title": "The integer optimum",
+      "script": "For a problem this small, we can list all feasible integer points. The point two, two gives ten, and no other point in the finite list gives more. This independent enumeration will later check our solver. The difference between eleven and ten is the absolute relaxation gap for this example. It is not the solver stopping gap after the optimum has been certified.",
+      "file": "audio/slide-008.mp3",
+      "duration_seconds": 24.864
+    },
+    {
+      "slide": 9,
+      "title": "Bounds depend on objective direction",
+      "script": "Removing restrictions enlarges the feasible set. Therefore a relaxed maximization can only improve or preserve the best value; it supplies an upper bound. A relaxed minimization supplies a lower bound. A feasible integer plan provides the opposite side. Before interpreting any solver bound, say whether your mathematical model is a maximization or a minimization, especially when you negated the objective in code.",
+      "file": "audio/slide-009.mp3",
+      "duration_seconds": 28.296
+    },
+    {
+      "slide": 10,
+      "title": "Pause: check a proposed batch plan",
+      "script": "Pause here and test the proposed integer plan three, one. Check both inequalities before comparing profit. The first resource use is four, which passes, but the second is seven, which exceeds six point five. Its objective is eleven, but that number is not attainable under our constraints. When you resume, keep this rule: domain checks and every resource check come before interpreting an objective.",
+      "file": "audio/slide-010.mp3",
+      "duration_seconds": 26.784
+    },
+    {
+      "slide": 11,
+      "title": "A plant with two optional lines",
+      "script": "Now move to our main engineering example. All data are illustrative, and money is measured in thousands of dollars per week. Production contributes eight per tonne on line A and six on line B, after variable costs. Opening a line incurs a weekly fixed cost, ten for A and eight for B. We must decide both whether to open each line and how much to produce.",
+      "file": "audio/slide-011.mp3",
+      "duration_seconds": 24.6
+    },
+    {
+      "slide": 12,
+      "title": "Capacity and resource data",
+      "script": "Line A can produce at most six tonnes and B at most eight. Labor requirements are two units per tonne on A and one on B. Twelve labor units are available. Total sales cannot exceed ten tonnes. This is an upper demand limit, not a requirement to produce ten. No production is feasible, and the model should retain that option if all profitable choices disappear.",
+      "file": "audio/slide-012.mp3",
+      "duration_seconds": 24.84
+    },
+    {
+      "slide": 13,
+      "title": "Separate production from opening",
+      "script": "Use a and b for continuous production amounts. Use y A and y B for binary opening decisions. These variables answer different questions. If a line is open, it can produce any allowed amount within its capacity, including zero unless we impose a minimum batch. If a line is closed, its production must be zero. The next constraints connect the two decisions.",
+      "file": "audio/slide-013.mp3",
+      "duration_seconds": 26.592
+    },
+    {
+      "slide": 14,
+      "title": "Linking constraint: a ≤ 6yA",
+      "script": "Read the linking inequality in its two cases. When y A is zero, nonnegativity and the zero upper bound force a to zero. When y A is one, a can range from zero to six. This is a linear inequality because six is a constant. We do not need to multiply two decision variables. Repeat the same reasoning for line B with capacity eight.",
+      "file": "audio/slide-014.mp3",
+      "duration_seconds": 25.488
+    },
+    {
+      "slide": 15,
+      "title": "An optional minimum production level",
+      "script": "Suppose opening A is worthwhile operationally only if it produces at least three tonnes. Add the lower linking bound a at least three times y A, while retaining the upper linking bound. The two allowed states are closed with zero production, or open with production between three and six. This is an optional scenario, not part of our baseline model. Keep that distinction when comparing numerical answers.",
+      "file": "audio/slide-015.mp3",
+      "duration_seconds": 26.496
+    },
+    {
+      "slide": 16,
+      "title": "Logic with binary variables",
+      "script": "Binary variables also encode logical choices. At most one permits both to be closed. Exactly one removes that option. The implication A requires B means that selecting A forces B to one, which is written y A at most y B. It does not mean B requires A. Test each expression on the four binary pairs. These are alternative policy examples; we do not impose them all on the baseline.",
+      "file": "audio/slide-016.mp3",
+      "duration_seconds": 27.696
+    },
+    {
+      "slide": 17,
+      "title": "The complete baseline MILP",
+      "script": "Read the full baseline model from top to bottom. The objective subtracts each opening cost once. Labor and sales constrain production. Linking inequalities prevent production on a closed line. Production remains continuous, while the opening variables are binary. Before solving, check units: every objective term is thousands of dollars per week, every labor term is labor units per week, and sales are tonnes per week.",
+      "file": "audio/slide-017.mp3",
+      "duration_seconds": 29.16
+    },
+    {
+      "slide": 18,
+      "title": "Verify by enumerating opening choices",
+      "script": "There are only four opening patterns. For each pattern, fix the binary variables and solve the remaining continuous L P. Neither line gives zero. A alone produces six and earns thirty eight after its fixed cost. B alone produces eight and earns forty. Both produce two and eight, earning forty six. Enumeration provides an independent certificate for this small model and checks our M I L P result.",
+      "file": "audio/slide-018.mp3",
+      "duration_seconds": 29.736
+    },
+    {
+      "slide": 19,
+      "title": "Audit the chosen production plan",
+      "script": "Do not stop at a solver message. Insert the proposed solution into the original equations. Labor is exactly twelve and sales exactly ten. Production on A is below six and B is at eight, with both lines open. Variable contribution is sixty four, and total opening cost is eighteen, leaving forty six thousand dollars per week. This audit is also a useful way to find coefficient-order mistakes.",
+      "file": "audio/slide-019.mp3",
+      "duration_seconds": 28.8
+    },
+    {
+      "slide": 20,
+      "title": "Choose a meaningful upper bound",
+      "script": "The constant in a linking inequality should be a valid and reasonably tight upper bound. Six comes directly from A capacity. Replacing it with one hundred, while keeping the physical capacity separately, preserves binary feasibility but lets the relaxation pay a tiny fraction of the opening cost. A bound that is too small causes the opposite problem: it removes real operating plans. Derive U from engineering limits.",
+      "file": "audio/slide-020.mp3",
+      "duration_seconds": 28.056
+    },
+    {
+      "slide": 21,
+      "title": "Relax the opening decisions",
+      "script": "Relaxing the binary decisions allows fractional opening. At production two on A, the relaxation chooses y A equal to one third and pays only one third of its fixed cost. B remains fully open. The relaxed value is fifty two point six six seven, above the attainable integer value forty six. One third of an opened line is a mathematical device for bounding, not an allowable purchase or operating decision.",
+      "file": "audio/slide-021.mp3",
+      "duration_seconds": 28.248
+    },
+    {
+      "slide": 22,
+      "title": "A loose bound makes the relaxation weaker",
+      "script": "For this comparison, retain the physical production limits six and eight. Only loosen the linking constants to one hundred. The relaxed model can then use y A equal to zero point zero two and y B equal to zero point zero eight. It earns sixty three point one six because it pays too little fixed cost. The binary model is unchanged. Without the separate physical limits, we would be comparing a different problem.",
+      "file": "audio/slide-022.mp3",
+      "duration_seconds": 28.512
+    },
+    {
+      "slide": 23,
+      "title": "Branch-and-bound: maintain two values",
+      "script": "Branch and bound maintains a feasible integer incumbent and optimistic bounds for regions that have not been eliminated. In a maximization problem, a node whose upper bound is no better than the incumbent cannot improve the answer. A node can also close because it is infeasible or its relaxed optimum is already integer. We will illustrate these ideas using the two batch variables, rather than a large industrial tree.",
+      "file": "audio/slide-023.mp3",
+      "duration_seconds": 26.28
+    },
+    {
+      "slide": 24,
+      "title": "Root node: split a fractional variable",
+      "script": "Return to the batch model with resource limits four point five and six point five. Its root relaxation gives y equal to two point five. Any integer y must lie at most two or at least three. These disjoint branches lose no integer solutions. We keep all original constraints in both branches. Branching is not rounding one candidate; it partitions the remaining search space.",
+      "file": "audio/slide-024.mp3",
+      "duration_seconds": 26.568
+    },
+    {
+      "slide": 25,
+      "title": "Left branch: y ≤ 2",
+      "script": "In the left branch, the relaxed optimum becomes two point two five, two, with upper bound ten point seven five. Now x is fractional, so split on x. The child with x at most two has the integer optimum two, two and value ten. This gives our incumbent. Its feasibility can be checked directly, and every remaining node must beat ten to matter for the optimal value.",
+      "file": "audio/slide-025.mp3",
+      "duration_seconds": 25.632
+    },
+    {
+      "slide": 26,
+      "title": "Prune the other left child",
+      "script": "The other child requires x at least three and y at most two. Its relaxation has point three, zero point five and value ten. Although that point is fractional, its upper bound already equals our incumbent. We can prune if our purpose is to find one optimum and certify the value. If we wanted every alternative optimum, equality pruning would need more careful treatment.",
+      "file": "audio/slide-026.mp3",
+      "duration_seconds": 25.176
+    },
+    {
+      "slide": 27,
+      "title": "Right branch: y ≥ 3",
+      "script": "The right branch initially has upper bound ten point five at one point five, three, so it cannot yet be discarded. Split x at one and two. The first child has bound ten and cannot improve the incumbent. The second requires x at least two and y at least three, forcing x plus y at least five, above four point five. No unexplored branch can now beat ten.",
+      "file": "audio/slide-027.mp3",
+      "duration_seconds": 24.384
+    },
+    {
+      "slide": 28,
+      "title": "What certifies completion?",
+      "script": "The proof combines a feasible plan with bounds covering every alternative. Our incumbent reaches ten. Each branch either has no feasible point or has upper bound at most ten. Therefore no feasible integer plan can be better. This is a global certificate for the linear integer model. Modern solvers add presolve, cuts and heuristics, so their actual node counts need not match our teaching tree.",
+      "file": "audio/slide-028.mp3",
+      "duration_seconds": 27.576
+    },
+    {
+      "slide": 29,
+      "title": "Stopping early and reading the gap",
+      "script": "A solver stopped by a time limit may have a useful feasible plan, or it may have none. Inspect status before reading variables. In our code we minimize negative profit. Therefore negative fun is the feasible profit, and negative mip dual bound is an upper bound on maximum profit. The field mip gap describes the solver gap. It is different from comparing the original L P relaxation with the integer optimum.",
+      "file": "audio/slide-029.mp3",
+      "duration_seconds": 29.688
+    },
+    {
+      "slide": 30,
+      "title": "Why LP shadow prices need care",
+      "script": "The previous lesson used L P shadow prices within a valid basis range. Integer decisions can change discretely, so that interpretation does not transfer automatically. For a simple machine sizing example, one machine supplies four units and costs ten. Meeting demand requires the ceiling of demand divided by four machines, producing jumps in cost. Reoptimization compares actual feasible decisions and includes the full purchase cost.",
+      "file": "audio/slide-030.mp3",
+      "duration_seconds": 30.216
+    },
+    {
+      "slide": 31,
+      "title": "Python lab: predict before running",
+      "script": "Open the guided notebook from the course page. It uses NumPy, SciPy and Matplotlib, with no paid solver or account required for the calculations. Run cells from top to bottom. Before each result, write a prediction on paper. The notebook has working demonstration cells and a separate exercise section. The answer notebook is separate so that you can attempt your own code first.",
+      "file": "audio/slide-031.mp3",
+      "duration_seconds": 27.48
+    },
+    {
+      "slide": 32,
+      "title": "Step 1: choose a fixed variable order",
+      "script": "Start by writing the variable order explicitly: a, b, y A, y B. Every coefficient vector and matrix column must follow that order. SciPy minimizes, so production contribution receives negative coefficients and opening costs positive coefficients. After solving, negate the minimized objective to report profit. Do not negate the constraints, and do not forget the fixed costs when checking the answer.",
+      "file": "audio/slide-032.mp3",
+      "duration_seconds": 28.824
+    },
+    {
+      "slide": 33,
+      "title": "Step 2: encode variable domains",
+      "script": "SciPy uses zero for continuous variables and one for integer variables in this example. To make an integer variable binary, also restrict its lower and upper bounds to zero and one. Setting integrality alone does not make a variable binary. We keep physical upper bounds on production as well. This makes later comparisons with loose linking constraints clear and helps catch mistakes.",
+      "file": "audio/slide-033.mp3",
+      "duration_seconds": 26.712
+    },
+    {
+      "slide": 34,
+      "title": "Step 3: build the constraint matrix",
+      "script": "Write each inequality in the same variable order. The labor row is two, one, zero, zero. The sales row is one, one, zero, zero. Bring linking terms to the left, giving one, zero, minus six, zero, and zero, one, zero, minus eight. Each linking row has right hand side zero. The notebook prints the matrix so you can compare it with the model before solving.",
+      "file": "audio/slide-034.mp3",
+      "duration_seconds": 27.432
+    },
+    {
+      "slide": 35,
+      "title": "Step 4: solve and check status",
+      "script": "Call milp using the coefficients, domains and linear constraints. First check the status and message. For the baseline, the solver should find production two and eight, with both opening variables one, and profit forty six. Small floating point differences are normal. A result printed near zero should be judged with a numerical tolerance, but you should not round away a large feasibility error.",
+      "file": "audio/slide-035.mp3",
+      "duration_seconds": 26.352
+    },
+    {
+      "slide": 36,
+      "title": "Step 5: audit every constraint",
+      "script": "Now audit the result independently of the solver status. Multiply the matrix by the variable vector and compare each row with its upper bound. Check lower and upper variable bounds, and check that binary entries are close to zero or one. Finally recompute eight a plus six b minus ten y A minus eight y B. A matching objective alone cannot detect every modeling error.",
+      "file": "audio/slide-036.mp3",
+      "duration_seconds": 25.608
+    },
+    {
+      "slide": 37,
+      "title": "Step 6: compare relaxation and MILP",
+      "script": "Run the same model with all integrality flags set to zero. Confirm the relaxed value is about fifty two point six seven and y A is one third. Then restore the two integer flags. Finally enumerate the four opening patterns and solve a continuous L P for each. Agreement between enumeration and M I L P is an independent check of this small model, not a proof that all future code is correct.",
+      "file": "audio/slide-037.mp3",
+      "duration_seconds": 26.832
+    },
+    {
+      "slide": 38,
+      "title": "Step 7: change one assumption",
+      "script": "Change one assumption at a time, resetting all other inputs to baseline. Reducing the sales cap to eight selects only B and gives forty. Raising B opening cost to twenty selects only A and gives thirty eight. Adding A minimum production three gives both lines open, production three and six, and profit forty two. These different decisions show why sensitivity experiments must state exactly what changed.",
+      "file": "audio/slide-038.mp3",
+      "duration_seconds": 27.072
+    },
+    {
+      "slide": 39,
+      "title": "Step 8: consider an extra capacity module",
+      "script": "Introduce another binary decision for one optional labor capacity module. It adds four labor units and costs seven thousand dollars per week. Move minus four k into the labor constraint and add plus seven k to the minimization objective. The best purchase plan produces six and four, with both lines open, and earns forty seven after all costs. Compare with forty six without the module: the net benefit is only one.",
+      "file": "audio/slide-039.mp3",
+      "duration_seconds": 28.008
+    },
+    {
+      "slide": 40,
+      "title": "Step 9: compare purchase costs",
+      "script": "Separate the operating improvement from the purchase price. With the module available, the best operating profit after line opening costs is fifty four, compared with forty six without it. The gross improvement is eight. A module cost of seven leaves one of net benefit. A cost of ten is too high, so the optimized decision is not to buy, leaving profit forty six. Never subtract the module cost twice.",
+      "file": "audio/slide-040.mp3",
+      "duration_seconds": 28.584
+    },
+    {
+      "slide": 41,
+      "title": "Independent exercises",
+      "script": "Pause and complete the first three exercises in the practice notebook. The first changes the small integer batch model, not the plant model. The second and third each start from the original plant baseline. For each exercise, write the changed equation, predict the decision, solve, and check feasibility. Several points may tie in an optimization problem; a correct answer should explain whether the reported optimum is unique.",
+      "file": "audio/slide-041.mp3",
+      "duration_seconds": 27.576
+    },
+    {
+      "slide": 42,
+      "title": "Independent exercises: decisions and bounds",
+      "script": "For exercise four, set the capacity module cost to eight. Check both purchase states because a solver may return only one of multiple best plans. Exercise five adds a minimum batch of four for A. Exercise six is conceptual: an incumbent of forty six and upper bound forty eight does not prove optimality, but it limits the possible improvement. Write the bound interval without confusing it with the final answer.",
+      "file": "audio/slide-042.mp3",
+      "duration_seconds": 26.424
+    },
+    {
+      "slide": 43,
+      "title": "Exercise solutions: batch and sales cap",
+      "script": "Check your reasoning against these answers. With the first batch resource limit at four, two, two remains feasible and gives ten. Enumeration verifies it is best. For plant sales cap six, A alone gives forty eight minus ten, or thirty eight, beating the other patterns. Under the at most one policy at baseline demand, B alone gives forty and beats A at thirty eight. Verify each statement by comparing allowed patterns.",
+      "file": "audio/slide-043.mp3",
+      "duration_seconds": 29.328
+    },
+    {
+      "slide": 44,
+      "title": "Exercise solutions: module and minimum batch",
+      "script": "At module cost eight, the improved operating profit fifty four minus eight equals forty six, so both purchase states can be optimal. At minimum A production four, opening both gives at most thirty eight, while B alone still gives forty. In the bound question, the optimum lies between forty six and forty eight. The absolute remaining gap is two; no exact optimum is certified until the bounds meet or an acceptable tolerance is justified.",
+      "file": "audio/slide-044.mp3",
+      "duration_seconds": 28.272
+    },
+    {
+      "slide": 45,
+      "title": "Exit Ticket: explain, then submit",
+      "script": "Use the online exit ticket after completing the lab. There are four required written questions and an optional reflection. Explain the reasoning rather than submitting only numbers. You may answer in Thai or English. The form is anonymous, and the instructor sees your response privately. Wait for the saved receipt before closing the page. Pause now, and do not advance to the solutions until you have attempted all four questions.",
+      "file": "audio/slide-045.mp3",
+      "duration_seconds": 29.976
+    },
+    {
+      "slide": 46,
+      "title": "Exit Ticket questions",
+      "script": "Question one asks you to interpret the linking inequalities in both binary states. Question two distinguishes a feasible integer decision from an optimistic relaxation. Question three changes the module cost to nine while all other baseline data stay fixed. Question four uses maximization node bounds of forty five, forty six and forty eight with incumbent forty six. Explain which nodes can be pruned if we seek one optimal solution.",
+      "file": "audio/slide-046.mp3",
+      "duration_seconds": 29.064
+    },
+    {
+      "slide": 47,
+      "title": "Exit Ticket solutions: linking and relaxation",
+      "script": "For the first answer, substitute zero and one directly. Zero forces a to zero, while one gives the interval three to six. For the second, the relaxed solution pays only one third of A opening cost. That violates the binary opening rule, so its larger profit is not achievable in the M I L P. It remains useful as a valid upper bound because relaxation enlarges the feasible set.",
+      "file": "audio/slide-047.mp3",
+      "duration_seconds": 27.312
+    },
+    {
+      "slide": 48,
+      "title": "Exit Ticket solutions: purchase and pruning",
+      "script": "At cost nine, buying the module gives fifty four minus nine, or forty five. Not buying gives forty six, so reject the purchase. The incremental benefit of buying is negative one. For pruning, nodes with bounds forty five and forty six cannot improve incumbent forty six. A node bounded by forty eight might improve it, so it needs further processing. Its upper bound is not a promise that forty eight is attainable.",
+      "file": "audio/slide-048.mp3",
+      "duration_seconds": 28.92
+    },
+    {
+      "slide": 49,
+      "title": "A reliable MILP workflow",
+      "script": "A reliable model starts with clear decisions and units. Use binary variables for choices, continuous variables for divisible quantities, and tight valid bounds to connect them. After solving, audit the equations and objective rather than trusting a single status message. When assumptions change, reoptimize and compare complete net outcomes. These habits transfer to equipment selection, production scheduling and process network design beyond our small examples.",
+      "file": "audio/slide-049.mp3",
+      "duration_seconds": 30.696
+    },
+    {
+      "slide": 50,
+      "title": "Resources and next steps",
+      "script": "Use the official SciPy documentation to confirm the exact definitions of solver fields. The course page contains this deck, the five narrated chapters, the guided lab, practice exercises and separate solutions. Save your notebook and your exit ticket receipt. When we meet again, bring an example where your prediction differed from the solver and explain the constraints you checked. That comparison is often where the most useful learning happens.",
+      "file": "audio/slide-050.mp3",
+      "duration_seconds": 29.136
+    }
+  ],
+  "total_duration_seconds": 1368.216
+}

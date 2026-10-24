@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MILP guided Python lab</title><link rel="stylesheet" href="style.css"><main><nav><a href="../">Course home</a><a href="index.html">MILP home</a><a href="slides.html">Slides & audio</a><a href="lab.html">Python lab</a><a href="exercises.html">Practice</a><a href="https://optimization-2105623-class-check.soorathep-k.chatgpt.site/milp">Exit Ticket</a></nav><h1>Python lab: model, solve, verify</h1><p>Allow 45 minutes. Download the notebook, run one cell at a time, and compare your predictions before opening each expected output.</p><p><a class="button" href="lab/MILP-guided-lab.ipynb" download>Download notebook</a> <a href="lab/MILP-guided-lab.py" download>Plain Python script</a></p><p>In Jupyter, use File → Open to open the notebook, select a Python kernel with NumPy and SciPy, and press Shift+Enter to run each cell. All inputs are included; no data download or API key is needed.</p><section><h2>1. Set up the notebook</h2><p>Run cells in order with Shift+Enter. Python 3 with NumPy, SciPy ≥1.9, and Matplotlib is required. If an import fails, install these packages in your selected environment, then restart the kernel.</p><button class="copy">Copy code</button><pre>import numpy as np
+import scipy
+from scipy.optimize import milp, Bounds, LinearConstraint
+print(&quot;SciPy&quot;, scipy.__version__)</pre><details><summary>Expected output, after you try</summary><pre>SciPy 1.18.1
+</pre></details></section><section><h2>2. Define the objective and variable order</h2><p>Use v=[a,b,yA,yB]. Money is in $1,000/week. Why do the opening costs have positive signs in c?</p><button class="copy">Copy code</button><pre>c = np.array([-8., -6., 10., 8.])
+integrality = [0, 0, 1, 1]
+bounds = Bounds([0,0,0,0], [6,8,1,1])
+print(&quot;Minimize negative net profit; only yA and yB are binary.&quot;)</pre><details><summary>Expected output, after you try</summary><pre>Minimize negative net profit; only yA and yB are binary.
+</pre></details></section><section><h2>3. Build each row of the matrix</h2><p>Read every row aloud: labor, sales upper bound, A linking, B linking. Sales is an upper limit, not a minimum demand.</p><button class="copy">Copy code</button><pre>A = np.array([[2,1,0,0],
+              [1,1,0,0],
+              [1,0,-6,0],
+              [0,1,0,-8]], dtype=float)
+upper = np.array([12,10,0,0], dtype=float)
+constraints = LinearConstraint(A, -np.inf, upper)
+print(A)</pre><details><summary>Expected output, after you try</summary><pre>[[ 2.  1.  0.  0.]
+ [ 1.  1.  0.  0.]
+ [ 1.  0. -6.  0.]
+ [ 0.  1.  0. -8.]]
+</pre></details></section><section><h2>4. Solve and interpret status</h2><p>Predict which lines open before running. A returned vector alone is not an optimality certificate.</p><button class="copy">Copy code</button><pre>result = milp(c, integrality=integrality, bounds=bounds,
+              constraints=constraints, options={&quot;mip_rel_gap&quot;:0})
+print(&quot;Status:&quot;, result.status, result.message)
+assert result.success
+print(&quot;[a,b,yA,yB] =&quot;, result.x)
+print(&quot;Net profit =&quot;, -result.fun)
+print(&quot;Profit upper bound =&quot;, -result.mip_dual_bound)
+print(&quot;MIP gap =&quot;, result.mip_gap)
+assert np.isclose(-result.fun,46)</pre><details><summary>Expected output, after you try</summary><pre>Status: 0 Optimization terminated successfully. (HiGHS Status 7: Optimal)
+[a,b,yA,yB] = [2. 8. 1. 1.]
+Net profit = 46.0
+Profit upper bound = 46.0
+MIP gap = 0.0
+</pre></details></section><section><h2>5. Audit the result independently</h2><p>Check the four rows, bounds, binary decisions, and original profit expression. Keep tolerances; never round continuous production automatically.</p><button class="copy">Copy code</button><pre>v = result.x
+tol = 1e-7
+print(&quot;Row use:&quot;, A @ v)
+print(&quot;Row slack:&quot;, upper - A @ v)
+assert np.all(A @ v &lt;= upper + tol)
+assert np.all(v &gt;= bounds.lb-tol) and np.all(v &lt;= bounds.ub+tol)
+assert np.allclose(v[2:], np.round(v[2:]), atol=tol)
+profit = 8*v[0]+6*v[1]-10*v[2]-8*v[3]
+assert np.isclose(profit,-result.fun)
+print(&quot;All checks passed; net profit =&quot;,profit)</pre><details><summary>Expected output, after you try</summary><pre>Row use: [12. 10. -4.  0.]
+Row slack: [0. 0. 4. 0.]
+All checks passed; net profit = 46.0
+</pre></details></section><section><h2>6. Enumerate opening choices</h2><p>Verify the answer with four continuous LPs, one for each fixed pair of opening decisions.</p><button class="copy">Copy code</button><pre>from scipy.optimize import linprog
+from itertools import product
+records = []
+for ya,yb in product([0,1], repeat=2):
+    r = linprog([-8,-6], A_ub=[[2,1],[1,1]], b_ub=[12,10],
+                bounds=[(0,6*ya),(0,8*yb)], method=&quot;highs&quot;)
+    assert r.success
+    z = -r.fun-10*ya-8*yb
+    records.append(z)
+    print((ya,yb), &quot;production&quot;,r.x,&quot;net profit&quot;,z)
+assert np.isclose(max(records),46)</pre><details><summary>Expected output, after you try</summary><pre>(0, 0) production [0. 0.] net profit -0.0
+(0, 1) production [0. 8.] net profit 40.0
+(1, 0) production [6. 0.] net profit 38.0
+(1, 1) production [2. 8.] net profit 46.0
+</pre></details></section><section><h2>7. Relax integrality</h2><p>Why can a relaxed opening fraction pay only part of a fixed cost? Explain why this value is an upper bound for maximization.</p><button class="copy">Copy code</button><pre>relaxed = milp(c, integrality=[0,0,0,0], bounds=bounds,
+               constraints=constraints)
+assert relaxed.success
+print(&quot;Relaxed decisions:&quot;,relaxed.x)
+print(&quot;LP upper bound:&quot;,-relaxed.fun)
+assert np.isclose(-relaxed.fun,158/3)
+assert -relaxed.fun &gt;= -result.fun - tol</pre><details><summary>Expected output, after you try</summary><pre>Relaxed decisions: [2.         8.         0.33333333 1.        ]
+LP upper bound: 52.666666666666664
+</pre></details></section><section><h2>8. Change one assumption at a time</h2><p>Reset to the baseline before each scenario. Try sales cap 8, B opening cost 20, or minimum A batch 3. Predict first.</p><button class="copy">Copy code</button><pre>def solve_case(sales=10, fixed_b=8, minimum_a=0, one_line=False):
+    rows=A.copy(); rhs=upper.copy(); rhs[1]=sales
+    if minimum_a:
+        rows=np.vstack([rows,[-1,0,minimum_a,0]])
+        rhs=np.r_[rhs,0]
+    if one_line:
+        rows=np.vstack([rows,[0,0,1,1]])
+        rhs=np.r_[rhs,1]
+    r=milp([-8,-6,10,fixed_b],integrality=integrality,bounds=bounds,
+           constraints=LinearConstraint(rows,-np.inf,rhs),
+           options={&quot;mip_rel_gap&quot;:0})
+    assert r.success
+    return r
+for label,kwargs,expected in [(&quot;Sales cap 8&quot;,{&quot;sales&quot;:8},40),
+                              (&quot;B cost 20&quot;,{&quot;fixed_b&quot;:20},38),
+                              (&quot;A minimum 3&quot;,{&quot;minimum_a&quot;:3},42)]:
+    r=solve_case(**kwargs)
+    print(label,r.x,-r.fun)
+    assert np.isclose(-r.fun,expected)</pre><details><summary>Expected output, after you try</summary><pre>Sales cap 8 [0. 8. 0. 1.] 40.0
+B cost 20 [6. 0. 1. 0.] 38.0
+A minimum 3 [3. 6. 1. 1.] 42.0
+</pre></details></section><section><h2>9. Add a purchasable capacity module</h2><p>Add binary k. It supplies 4 labor units and costs p per week. Rewrite the labor row as 2a+b-4k ≤12. Do not add capacity for free.</p><button class="copy">Copy code</button><pre>def module_case(price=7, force=None):
+    rows=np.column_stack([A,np.zeros(4)])
+    rows[0,-1]=-4
+    lb=[0,0,0,0,0]; ub=[6,8,1,1,1]
+    if force is not None: lb[-1]=ub[-1]=force
+    r=milp([-8,-6,10,8,price],integrality=[0,0,1,1,1],
+           bounds=Bounds(lb,ub),constraints=LinearConstraint(rows,-np.inf,upper),
+           options={&quot;mip_rel_gap&quot;:0})
+    assert r.success
+    return r
+for price in [7,8,9,10]:
+    r=module_case(price)
+    no=module_case(price,0); buy=module_case(price,1)
+    print(&quot;Price&quot;,price,&quot;best&quot;,-r.fun,&quot;no buy&quot;,-no.fun,&quot;buy&quot;,-buy.fun)
+    assert np.isclose(-r.fun,max(-no.fun,-buy.fun))
+assert np.isclose(-module_case(7).fun,47)
+assert np.isclose(-module_case(9).fun,46)</pre><details><summary>Expected output, after you try</summary><pre>Price 7 best 47.0 no buy 46.0 buy 47.0
+Price 8 best 46.0 no buy 46.0 buy 46.0
+Price 9 best 46.0 no buy 46.0 buy 45.0
+Price 10 best 46.0 no buy 46.0 buy 44.0
+</pre></details></section><section><h2>10. Complete independent exercises</h2><p>Use the separate exercise sheet first. Record your model change, plan, objective, and feasibility checks. Then submit the Exit Ticket before reading its solutions.</p><button class="copy">Copy code</button><pre>print(&quot;Next: exercises.html and the online Exit Ticket.&quot;)</pre><details><summary>Expected output, after you try</summary><pre>Next: exercises.html and the online Exit Ticket.
+</pre></details></section><p><a href="exercises.html">Now try the independent exercises →</a></p><script>document.querySelectorAll(".copy").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent="Copied"}catch{b.textContent="Select and copy the code below"}})</script><footer><p class="small">2105623 Optimization · November 2, 2026 · Illustrative teaching data. Questions and comments: use the Exit Ticket reflection.</p></footer></main></html>

@@ -1,0 +1,18 @@
+[
+  [
+    "Linking",
+    "yA=0 gives a\u22640 and a\u22650, so a=0. yA=1 gives 3\u2264a\u22646. Opening does not force full capacity."
+  ],
+  [
+    "Relaxation",
+    "The relaxed yA=1/3 is not binary. It pays only 10/3 rather than 10 for opening A. Relaxation enlarges the feasible set, so 158/3\u224852.667 is a valid upper bound, but this plan is inadmissible for the MILP, whose optimum is 46."
+  ],
+  [
+    "Purchase",
+    "Gross operating improvement =54\u221246=8. Cost=9. Incremental net benefit=8\u22129=\u22121. Buy gives 45; do not buy gives 46. Reject the purchase; best total profit stays 46."
+  ],
+  [
+    "Pruning",
+    "For maximization, node bounds 45 and 46 cannot improve incumbent 46, so prune them when seeking one optimum. Bound 48 may improve it and needs further work. The global certificate is 46\u2264optimum\u226448. A bound of 48 does not prove a feasible integer solution at 48 exists. Keeping all alternative optima would require more care with equality pruning."
+  ]
+]

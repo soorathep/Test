@@ -1,0 +1,160 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.945
+Relaxing the binary decisions allows fractional opening.
+
+00:00:03.945 --> 00:00:11.835
+At production two on A, the relaxation chooses y A equal to one third and pays only one third of its fixed cost.
+
+00:00:11.835 --> 00:00:13.314
+B remains fully open.
+
+00:00:13.314 --> 00:00:20.147
+The relaxed value is fifty two point six six seven, above the attainable integer value forty six.
+
+00:00:20.147 --> 00:00:28.248
+One third of an opened line is a mathematical device for bounding, not an allowable purchase or operating decision.
+
+00:00:30.300 --> 00:00:35.401
+For this comparison, retain the physical production limits six and eight.
+
+00:00:35.401 --> 00:00:38.826
+Only loosen the linking constants to one hundred.
+
+00:00:38.826 --> 00:00:46.024
+The relaxed model can then use y A equal to zero point zero two and y B equal to zero point zero eight.
+
+00:00:46.024 --> 00:00:51.125
+It earns sixty three point one six because it pays too little fixed cost.
+
+00:00:51.125 --> 00:00:53.221
+The binary model is unchanged.
+
+00:00:53.221 --> 00:00:58.812
+Without the separate physical limits, we would be comparing a different problem.
+
+00:01:00.900 --> 00:01:08.463
+Branch and bound maintains a feasible integer incumbent and optimistic bounds for regions that have not been eliminated.
+
+00:01:08.463 --> 00:01:15.395
+In a maximization problem, a node whose upper bound is no better than the incumbent cannot improve the answer.
+
+00:01:15.395 --> 00:01:21.004
+A node can also close because it is infeasible or its relaxed optimum is already integer.
+
+00:01:21.004 --> 00:01:27.180
+We will illustrate these ideas using the two batch variables, rather than a large industrial tree.
+
+00:01:29.200 --> 00:01:35.104
+Return to the batch model with resource limits four point five and six point five.
+
+00:01:35.104 --> 00:01:38.848
+Its root relaxation gives y equal to two point five.
+
+00:01:38.848 --> 00:01:42.664
+Any integer y must lie at most two or at least three.
+
+00:01:42.664 --> 00:01:46.264
+These disjoint branches lose no integer solutions.
+
+00:01:46.264 --> 00:01:49.864
+We keep all original constraints in both branches.
+
+00:01:49.864 --> 00:01:55.768
+Branching is not rounding one candidate; it partitions the remaining search space.
+
+00:01:57.800 --> 00:02:05.725
+In the left branch, the relaxed optimum becomes two point two five, two, with upper bound ten point seven five.
+
+00:02:05.725 --> 00:02:08.224
+Now x is fractional, so split on x.
+
+00:02:08.224 --> 00:02:13.650
+The child with x at most two has the integer optimum two, two and value ten.
+
+00:02:13.650 --> 00:02:15.435
+This gives our incumbent.
+
+00:02:15.435 --> 00:02:23.432
+Its feasibility can be checked directly, and every remaining node must beat ten to matter for the optimal value.
+
+00:02:25.500 --> 00:02:29.627
+The other child requires x at least three and y at most two.
+
+00:02:29.627 --> 00:02:33.892
+Its relaxation has point three, zero point five and value ten.
+
+00:02:33.892 --> 00:02:39.395
+Although that point is fractional, its upper bound already equals our incumbent.
+
+00:02:39.395 --> 00:02:44.416
+We can prune if our purpose is to find one optimum and certify the value.
+
+00:02:44.416 --> 00:02:50.676
+If we wanted every alternative optimum, equality pruning would need more careful treatment.
+
+00:02:52.700 --> 00:03:00.665
+The right branch initially has upper bound ten point five at one point five, three, so it cannot yet be discarded.
+
+00:03:00.665 --> 00:03:02.272
+Split x at one and two.
+
+00:03:02.272 --> 00:03:06.674
+The first child has bound ten and cannot improve the incumbent.
+
+00:03:06.674 --> 00:03:14.429
+The second requires x at least two and y at least three, forcing x plus y at least five, above four point five.
+
+00:03:14.429 --> 00:03:17.084
+No unexplored branch can now beat ten.
+
+00:03:19.100 --> 00:03:24.332
+The proof combines a feasible plan with bounds covering every alternative.
+
+00:03:24.332 --> 00:03:26.171
+Our incumbent reaches ten.
+
+00:03:26.171 --> 00:03:31.262
+Each branch either has no feasible point or has upper bound at most ten.
+
+00:03:31.262 --> 00:03:34.726
+Therefore no feasible integer plan can be better.
+
+00:03:34.726 --> 00:03:38.827
+This is a global certificate for the linear integer model.
+
+00:03:38.827 --> 00:03:46.676
+Modern solvers add presolve, cuts and heuristics, so their actual node counts need not match our teaching tree.
+
+00:03:48.700 --> 00:03:55.020
+A solver stopped by a time limit may have a useful feasible plan, or it may have none.
+
+00:03:55.020 --> 00:03:57.959
+Inspect status before reading variables.
+
+00:03:57.959 --> 00:04:00.899
+In our code we minimize negative profit.
+
+00:04:00.899 --> 00:04:09.055
+Therefore negative fun is the feasible profit, and negative mip dual bound is an upper bound on maximum profit.
+
+00:04:09.055 --> 00:04:12.215
+The field mip gap describes the solver gap.
+
+00:04:12.215 --> 00:04:18.388
+It is different from comparing the original L P relaxation with the integer optimum.
+
+00:04:20.400 --> 00:04:25.307
+The previous lesson used L P shadow prices within a valid basis range.
+
+00:04:25.307 --> 00:04:32.038
+Integer decisions can change discretely, so that interpretation does not transfer automatically.
+
+00:04:32.038 --> 00:04:37.857
+For a simple machine sizing example, one machine supplies four units and costs ten.
+
+00:04:37.857 --> 00:04:44.587
+Meeting demand requires the ceiling of demand divided by four machines, producing jumps in cost.
+
+00:04:44.587 --> 00:04:50.616
+Reoptimization compares actual feasible decisions and includes the full purchase cost.

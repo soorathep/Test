@@ -1,0 +1,160 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.380
+Open the guided notebook from the course page.
+
+00:00:03.380 --> 00:00:10.581
+It uses NumPy, SciPy and Matplotlib, with no paid solver or account required for the calculations.
+
+00:00:10.581 --> 00:00:12.711
+Run cells from top to bottom.
+
+00:00:12.711 --> 00:00:16.238
+Before each result, write a prediction on paper.
+
+00:00:16.238 --> 00:00:21.896
+The notebook has working demonstration cells and a separate exercise section.
+
+00:00:21.896 --> 00:00:27.480
+The answer notebook is separate so that you can attempt your own code first.
+
+00:00:29.500 --> 00:00:34.074
+Start by writing the variable order explicitly: a, b, y A, y B.
+
+00:00:34.074 --> 00:00:38.866
+Every coefficient vector and matrix column must follow that order.
+
+00:00:38.866 --> 00:00:47.216
+SciPy minimizes, so production contribution receives negative coefficients and opening costs positive coefficients.
+
+00:00:47.216 --> 00:00:51.790
+After solving, negate the minimized objective to report profit.
+
+00:00:51.790 --> 00:00:58.324
+Do not negate the constraints, and do not forget the fixed costs when checking the answer.
+
+00:01:00.400 --> 00:01:06.500
+SciPy uses zero for continuous variables and one for integer variables in this example.
+
+00:01:06.500 --> 00:01:13.020
+To make an integer variable binary, also restrict its lower and upper bounds to zero and one.
+
+00:01:13.020 --> 00:01:17.086
+Setting integrality alone does not make a variable binary.
+
+00:01:17.086 --> 00:01:20.732
+We keep physical upper bounds on production as well.
+
+00:01:20.732 --> 00:01:27.112
+This makes later comparisons with loose linking constraints clear and helps catch mistakes.
+
+00:01:29.200 --> 00:01:33.030
+Write each inequality in the same variable order.
+
+00:01:33.030 --> 00:01:35.999
+The labor row is two, one, zero, zero.
+
+00:01:35.999 --> 00:01:38.969
+The sales row is one, one, zero, zero.
+
+00:01:38.969 --> 00:01:46.863
+Bring linking terms to the left, giving one, zero, minus six, zero, and zero, one, zero, minus eight.
+
+00:01:46.863 --> 00:01:50.145
+Each linking row has right hand side zero.
+
+00:01:50.145 --> 00:01:56.632
+The notebook prints the matrix so you can compare it with the model before solving.
+
+00:01:58.700 --> 00:02:03.058
+Call milp using the coefficients, domains and linear constraints.
+
+00:02:03.058 --> 00:02:05.405
+First check the status and message.
+
+00:02:05.405 --> 00:02:13.519
+For the baseline, the solver should find production two and eight, with both opening variables one, and profit forty six.
+
+00:02:13.519 --> 00:02:16.469
+Small floating point differences are normal.
+
+00:02:16.469 --> 00:02:25.052
+A result printed near zero should be judged with a numerical tolerance, but you should not round away a large feasibility error.
+
+00:02:27.100 --> 00:02:31.040
+Now audit the result independently of the solver status.
+
+00:02:31.040 --> 00:02:37.020
+Multiply the matrix by the variable vector and compare each row with its upper bound.
+
+00:02:37.020 --> 00:02:43.633
+Check lower and upper variable bounds, and check that binary entries are close to zero or one.
+
+00:02:43.633 --> 00:02:48.346
+Finally recompute eight a plus six b minus ten y A minus eight y B.
+
+00:02:48.346 --> 00:02:52.708
+A matching objective alone cannot detect every modeling error.
+
+00:02:54.800 --> 00:02:58.832
+Run the same model with all integrality flags set to zero.
+
+00:02:58.832 --> 00:03:04.532
+Confirm the relaxed value is about fifty two point six seven and y A is one third.
+
+00:03:04.532 --> 00:03:06.965
+Then restore the two integer flags.
+
+00:03:06.965 --> 00:03:12.526
+Finally enumerate the four opening patterns and solve a continuous L P for each.
+
+00:03:12.526 --> 00:03:21.632
+Agreement between enumeration and M I L P is an independent check of this small model, not a proof that all future code is correct.
+
+00:03:23.700 --> 00:03:28.561
+Change one assumption at a time, resetting all other inputs to baseline.
+
+00:03:28.561 --> 00:03:32.814
+Reducing the sales cap to eight selects only B and gives forty.
+
+00:03:32.814 --> 00:03:37.607
+Raising B opening cost to twenty selects only A and gives thirty eight.
+
+00:03:37.607 --> 00:03:44.628
+Adding A minimum production three gives both lines open, production three and six, and profit forty two.
+
+00:03:44.628 --> 00:03:50.772
+These different decisions show why sensitivity experiments must state exactly what changed.
+
+00:03:52.800 --> 00:03:57.763
+Introduce another binary decision for one optional labor capacity module.
+
+00:03:57.763 --> 00:04:02.317
+It adds four labor units and costs seven thousand dollars per week.
+
+00:04:02.317 --> 00:04:08.775
+Move minus four k into the labor constraint and add plus seven k to the minimization objective.
+
+00:04:08.775 --> 00:04:15.981
+The best purchase plan produces six and four, with both lines open, and earns forty seven after all costs.
+
+00:04:15.981 --> 00:04:20.808
+Compare with forty six without the module: the net benefit is only one.
+
+00:04:22.900 --> 00:04:27.148
+Separate the operating improvement from the purchase price.
+
+00:04:27.148 --> 00:04:36.364
+With the module available, the best operating profit after line opening costs is fifty four, compared with forty six without it.
+
+00:04:36.364 --> 00:04:38.596
+The gross improvement is eight.
+
+00:04:38.596 --> 00:04:42.124
+A module cost of seven leaves one of net benefit.
+
+00:04:42.124 --> 00:04:48.820
+A cost of ten is too high, so the optimized decision is not to buy, leaving profit forty six.
+
+00:04:48.820 --> 00:04:51.484
+Never subtract the module cost twice.

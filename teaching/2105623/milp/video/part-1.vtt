@@ -1,0 +1,166 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.319
+Welcome to our independent study lesson on integer and mixed integer linear programming.
+
+00:00:06.319 --> 00:00:10.484
+In the previous lesson, decisions could vary continuously.
+
+00:00:10.484 --> 00:00:15.007
+Today we add decisions that must be whole numbers or yes or no.
+
+00:00:15.007 --> 00:00:18.310
+Keep paper and the Python notebook beside you.
+
+00:00:18.310 --> 00:00:20.752
+Pause whenever a question appears.
+
+00:00:20.752 --> 00:00:26.496
+The aim is to build a model, solve it, and explain why its decisions make sense.
+
+00:00:28.500 --> 00:00:33.899
+The videos are shorter than the scheduled class because your working time matters.
+
+00:00:33.899 --> 00:00:40.023
+Use fifteen minutes to recall L P, thirty for integer geometry, and thirty five for modeling.
+
+00:00:40.023 --> 00:00:41.603
+Take a ten minute break.
+
+00:00:41.603 --> 00:00:48.516
+Then spend twenty five minutes on branch and bound, forty five on the lab, and twenty on the exit ticket.
+
+00:00:48.516 --> 00:00:53.652
+Pause the video rather than trying to finish every activity at playback speed.
+
+00:00:55.700 --> 00:00:57.830
+Recall our maximization L P.
+
+00:00:57.830 --> 00:01:02.091
+A feasible production plan gives a value we can achieve.
+
+00:01:02.091 --> 00:01:05.210
+Feasible dual prices give an upper bound.
+
+00:01:05.210 --> 00:01:08.938
+When the two values agree, we have a certificate.
+
+00:01:08.938 --> 00:01:16.775
+Integer programming retains the idea of bounds, but an L P solution may no longer be an allowable plan.
+
+00:01:16.775 --> 00:01:21.644
+That distinction will drive the search procedure in this lesson.
+
+00:01:23.700 --> 00:01:27.805
+Choose the variable domain from the meaning of the decision.
+
+00:01:27.805 --> 00:01:33.004
+Tonnes can usually be fractional, while an indivisible machine count cannot.
+
+00:01:33.004 --> 00:01:37.725
+A binary variable represents whether a line is available or selected.
+
+00:01:37.725 --> 00:01:41.145
+A mixed integer model may contain all three types.
+
+00:01:41.145 --> 00:01:50.244
+Making every variable integer is unnecessary and can change the engineering problem, especially when production is a continuous flow.
+
+00:01:52.300 --> 00:01:58.967
+We first use a small illustrative batch problem, with objective units chosen only for teaching.
+
+00:01:58.967 --> 00:02:03.038
+Each batch of x earns three and each batch of y earns two.
+
+00:02:03.038 --> 00:02:06.757
+Two shared resources give the displayed inequalities.
+
+00:02:06.757 --> 00:02:08.933
+The coefficients remain linear.
+
+00:02:08.933 --> 00:02:15.109
+What changes relative to L P is the requirement that both batch counts be whole numbers.
+
+00:02:15.109 --> 00:02:20.092
+Sketch the continuous feasible region before adding the integer points.
+
+00:02:22.100 --> 00:02:25.352
+Temporarily remove the integer restriction.
+
+00:02:25.352 --> 00:02:31.025
+Subtracting the first active equation from the second gives x equal to two.
+
+00:02:31.025 --> 00:02:34.429
+Substitution gives y equal to two point five.
+
+00:02:34.429 --> 00:02:35.941
+The value is eleven.
+
+00:02:35.941 --> 00:02:42.068
+This is a useful bound, but half a batch is not permitted in the integer problem.
+
+00:02:42.068 --> 00:02:47.060
+Do not report this relaxed point as the final production decision.
+
+00:02:49.100 --> 00:02:52.504
+Rounding y upward produces the plan two, three.
+
+00:02:52.504 --> 00:02:57.068
+Its resource use is five and seven, so it violates both limits.
+
+00:02:57.068 --> 00:03:01.776
+Rounding downward gives two, two and is feasible in this example.
+
+00:03:01.776 --> 00:03:05.543
+That success does not establish a general algorithm.
+
+00:03:05.543 --> 00:03:11.699
+Other problems can have infeasible rounded points or better integer points elsewhere.
+
+00:03:11.699 --> 00:03:17.132
+We need a method that verifies feasibility and provides a bound on quality.
+
+00:03:19.200 --> 00:03:23.771
+For a problem this small, we can list all feasible integer points.
+
+00:03:23.771 --> 00:03:29.243
+The point two, two gives ten, and no other point in the finite list gives more.
+
+00:03:29.243 --> 00:03:33.190
+This independent enumeration will later check our solver.
+
+00:03:33.190 --> 00:03:39.147
+The difference between eleven and ten is the absolute relaxation gap for this example.
+
+00:03:39.147 --> 00:03:44.064
+It is not the solver stopping gap after the optimum has been certified.
+
+00:03:46.100 --> 00:03:49.405
+Removing restrictions enlarges the feasible set.
+
+00:03:49.405 --> 00:03:56.634
+Therefore a relaxed maximization can only improve or preserve the best value; it supplies an upper bound.
+
+00:03:56.634 --> 00:03:59.800
+A relaxed minimization supplies a lower bound.
+
+00:03:59.800 --> 00:04:03.312
+A feasible integer plan provides the opposite side.
+
+00:04:03.312 --> 00:04:14.396
+Before interpreting any solver bound, say whether your mathematical model is a maximization or a minimization, especially when you negated the objective in code.
+
+00:04:16.400 --> 00:04:20.255
+Pause here and test the proposed integer plan three, one.
+
+00:04:20.255 --> 00:04:23.502
+Check both inequalities before comparing profit.
+
+00:04:23.502 --> 00:04:30.265
+The first resource use is four, which passes, but the second is seven, which exceeds six point five.
+
+00:04:30.265 --> 00:04:35.744
+Its objective is eleven, but that number is not attainable under our constraints.
+
+00:04:35.744 --> 00:04:43.184
+When you resume, keep this rule: domain checks and every resource check come before interpreting an objective.

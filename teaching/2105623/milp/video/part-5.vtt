@@ -1,0 +1,160 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:04.553
+Pause and complete the first three exercises in the practice notebook.
+
+00:00:04.553 --> 00:00:09.040
+The first changes the small integer batch model, not the plant model.
+
+00:00:09.040 --> 00:00:13.268
+The second and third each start from the original plant baseline.
+
+00:00:13.268 --> 00:00:19.641
+For each exercise, write the changed equation, predict the decision, solve, and check feasibility.
+
+00:00:19.641 --> 00:00:27.576
+Several points may tie in an optimization problem; a correct answer should explain whether the reported optimum is unique.
+
+00:00:29.600 --> 00:00:33.283
+For exercise four, set the capacity module cost to eight.
+
+00:00:33.283 --> 00:00:38.903
+Check both purchase states because a solver may return only one of multiple best plans.
+
+00:00:38.903 --> 00:00:42.069
+Exercise five adds a minimum batch of four for A.
+
+00:00:42.069 --> 00:00:51.631
+Exercise six is conceptual: an incumbent of forty six and upper bound forty eight does not prove optimality, but it limits the possible improvement.
+
+00:00:51.631 --> 00:00:56.024
+Write the bound interval without confusing it with the final answer.
+
+00:00:58.100 --> 00:01:01.139
+Check your reasoning against these answers.
+
+00:01:01.139 --> 00:01:07.146
+With the first batch resource limit at four, two, two remains feasible and gives ten.
+
+00:01:07.146 --> 00:01:09.407
+Enumeration verifies it is best.
+
+00:01:09.407 --> 00:01:16.898
+For plant sales cap six, A alone gives forty eight minus ten, or thirty eight, beating the other patterns.
+
+00:01:16.898 --> 00:01:23.753
+Under the at most one policy at baseline demand, B alone gives forty and beats A at thirty eight.
+
+00:01:23.753 --> 00:01:27.428
+Verify each statement by comparing allowed patterns.
+
+00:01:29.500 --> 00:01:38.059
+At module cost eight, the improved operating profit fifty four minus eight equals forty six, so both purchase states can be optimal.
+
+00:01:38.059 --> 00:01:44.738
+At minimum A production four, opening both gives at most thirty eight, while B alone still gives forty.
+
+00:01:44.738 --> 00:01:49.537
+In the bound question, the optimum lies between forty six and forty eight.
+
+00:01:49.537 --> 00:01:57.772
+The absolute remaining gap is two; no exact optimum is certified until the bounds meet or an acceptable tolerance is justified.
+
+00:01:59.800 --> 00:02:03.459
+Use the online exit ticket after completing the lab.
+
+00:02:03.459 --> 00:02:08.314
+There are four required written questions and an optional reflection.
+
+00:02:08.314 --> 00:02:12.396
+Explain the reasoning rather than submitting only numbers.
+
+00:02:12.396 --> 00:02:14.788
+You may answer in Thai or English.
+
+00:02:14.788 --> 00:02:19.784
+The form is anonymous, and the instructor sees your response privately.
+
+00:02:19.784 --> 00:02:23.373
+Wait for the saved receipt before closing the page.
+
+00:02:23.373 --> 00:02:29.776
+Pause now, and do not advance to the solutions until you have attempted all four questions.
+
+00:02:31.800 --> 00:02:37.330
+Question one asks you to interpret the linking inequalities in both binary states.
+
+00:02:37.330 --> 00:02:43.061
+Question two distinguishes a feasible integer decision from an optimistic relaxation.
+
+00:02:43.061 --> 00:02:48.996
+Question three changes the module cost to nine while all other baseline data stay fixed.
+
+00:02:48.996 --> 00:02:56.413
+Question four uses maximization node bounds of forty five, forty six and forty eight with incumbent forty six.
+
+00:02:56.413 --> 00:03:00.864
+Explain which nodes can be pruned if we seek one optimal solution.
+
+00:03:02.900 --> 00:03:06.916
+For the first answer, substitute zero and one directly.
+
+00:03:06.916 --> 00:03:11.663
+Zero forces a to zero, while one gives the interval three to six.
+
+00:03:11.663 --> 00:03:17.140
+For the second, the relaxed solution pays only one third of A opening cost.
+
+00:03:17.140 --> 00:03:23.932
+That violates the binary opening rule, so its larger profit is not achievable in the M I L P.
+
+00:03:23.932 --> 00:03:30.212
+It remains useful as a valid upper bound because relaxation enlarges the feasible set.
+
+00:03:32.300 --> 00:03:37.590
+At cost nine, buying the module gives fifty four minus nine, or forty five.
+
+00:03:37.590 --> 00:03:41.188
+Not buying gives forty six, so reject the purchase.
+
+00:03:41.188 --> 00:03:44.714
+The incremental benefit of buying is negative one.
+
+00:03:44.714 --> 00:03:51.133
+For pruning, nodes with bounds forty five and forty six cannot improve incumbent forty six.
+
+00:03:51.133 --> 00:03:56.706
+A node bounded by forty eight might improve it, so it needs further processing.
+
+00:03:56.706 --> 00:04:01.220
+Its upper bound is not a promise that forty eight is attainable.
+
+00:04:03.300 --> 00:04:06.970
+A reliable model starts with clear decisions and units.
+
+00:04:06.970 --> 00:04:14.978
+Use binary variables for choices, continuous variables for divisible quantities, and tight valid bounds to connect them.
+
+00:04:14.978 --> 00:04:21.250
+After solving, audit the equations and objective rather than trusting a single status message.
+
+00:04:21.250 --> 00:04:25.922
+When assumptions change, reoptimize and compare complete net outcomes.
+
+00:04:25.922 --> 00:04:33.996
+These habits transfer to equipment selection, production scheduling and process network design beyond our small examples.
+
+00:04:36.000 --> 00:04:41.696
+Use the official SciPy documentation to confirm the exact definitions of solver fields.
+
+00:04:41.696 --> 00:04:49.684
+The course page contains this deck, the five narrated chapters, the guided lab, practice exercises and separate solutions.
+
+00:04:49.684 --> 00:04:52.827
+Save your notebook and your exit ticket receipt.
+
+00:04:52.827 --> 00:05:00.946
+When we meet again, bring an example where your prediction differed from the solver and explain the constraints you checked.
+
+00:05:00.946 --> 00:05:05.136
+That comparison is often where the most useful learning happens.
