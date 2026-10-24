@@ -1,0 +1,77 @@
+<!-- Site navigation: the ONLY copy. Used by index.html and _layouts/default.html.
+     To add or move a menu item, edit this file only. -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="{{ site.baseurl }}/#home">SKH <span>Research Group</span></a>
+    <button class="burger" aria-label="Menu" aria-expanded="false">MENU</button>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-group">
+        <a class="nav-top" href="{{ site.baseurl }}/#research">Research</a>
+        <div class="nav-sub">
+          <a href="{{ site.baseurl }}/#research">Research programme</a>
+          <a href="{{ site.baseurl }}/#cti">CTI Framework</a>
+          <a href="{{ site.baseurl }}/#facilities">Facilities</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-top" href="{{ site.baseurl }}/#people">People</a>
+        <div class="nav-sub">
+          <a href="{{ site.baseurl }}/#people">Group members</a>
+          <a href="{{ site.baseurl }}/collaborators/">Collaborators</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-top" href="{{ site.baseurl }}/#publications">Publications</a>
+        <div class="nav-sub">
+          <a href="{{ site.baseurl }}/#publications">Publications</a>
+          <a href="{{ site.baseurl }}/#recognition">Recognition</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-top" href="{{ site.baseurl }}/teaching/">Teaching</a>
+        <div class="nav-sub">
+          <a href="{{ site.baseurl }}/teaching/">Courses</a>
+          <a href="{{ site.baseurl }}/teaching/seminars/">Seminars</a>
+          <a href="{{ site.baseurl }}/resources/">Resources</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-top" href="{{ site.baseurl }}/news/">News</a>
+        <div class="nav-sub">
+          <a href="{{ site.baseurl }}/news/">Lab news</a>
+          <a href="{{ site.baseurl }}/essays/">Essays</a>
+          <a href="{{ site.baseurl }}/activities/">Activities</a>
+        </div>
+      </div>
+      <a class="nav-cta" href="{{ site.baseurl }}/#join">Join Us</a>
+    </nav>
+  </div>
+</header>
+<script>
+(function(){
+  var menu = document.querySelector('.nav-links');
+  var burger = document.querySelector('.burger');
+  var groups = document.querySelectorAll('.nav-group');
+  function norm(p){ return p.replace(/index\.html$/, ''); }
+  // Highlight the group that contains the current page (path + hash).
+  function mark(){
+    var here = norm(location.pathname), hash = location.hash || (here === '{{ site.baseurl }}/' ? '#home' : '');
+    groups.forEach(function(g){
+      var hit = false;
+      g.querySelectorAll('.nav-sub a').forEach(function(a){
+        var p = norm(a.pathname);
+        if (a.hash ? (p === here && a.hash === hash) : (here.indexOf(p) === 0)) hit = true;
+      });
+      g.querySelector('.nav-top').classList.toggle('on', hit);
+    });
+  }
+  mark();
+  window.addEventListener('hashchange', function(){
+    mark(); menu.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+    if (document.activeElement && menu.contains(document.activeElement)) document.activeElement.blur(); // close dropdown
+  });
+  burger.addEventListener('click', function(){
+    var o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o ? 'true' : 'false');
+  });
+})();
+</script>

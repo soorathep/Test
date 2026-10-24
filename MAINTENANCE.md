@@ -337,3 +337,29 @@ Claude cannot reach the repo. Two ways to work:
 Give Claude the **source**, not a summary: the CV, the publisher's cover file, the Scopus
 page. Every error worth fixing in this file so far came from someone paraphrasing a source
 instead of reading it.
+
+## Navigation menu (reorganised 24 Oct 2026)
+
+The menu lives in ONE file: `_includes/nav.html`. Both `index.html` and
+`_layouts/default.html` pull it in with `{% include nav.html %}`. Before this,
+the two pages each kept their own copy and drifted (Join Us was missing on
+every page except the home page).
+
+Five groups, each a top link plus a dropdown, and a Join Us button:
+
+- Research: Research programme, CTI Framework, Facilities
+- People: Group members, Collaborators
+- Publications: Publications, Recognition
+- Teaching: Courses, Seminars, Resources
+- News: Lab news, Essays, Activities
+
+Rules:
+- Add a new page as a dropdown item under an existing group. Do not add a
+  sixth top-level item without a strong reason; five is the point.
+- Home-page sections are linked as `{{ site.baseurl }}/#section`, never
+  `index.html#section`, so clicking them on the home page only changes the
+  hash (no reload).
+- The script in nav.html highlights the group that contains the current
+  page, handles the MENU button, and closes the dropdown after a click.
+  index.html no longer touches the nav links; do not add nav code back there.
+- On phones (<= 900 px) every group opens flat under MENU; no dropdowns.

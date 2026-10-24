@@ -73,29 +73,7 @@ layout: null
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-in">
-    <a class="brand" href="#home">SKH <span>Research Group</span></a>
-    <button class="burger" aria-label="Menu">MENU</button>
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#research">Research</a>
-      <a href="#cti">CTI Framework</a>
-      <a href="#facilities">Facilities</a>
-      <a href="#people">People</a>
-      <a href="#publications">Publications</a>
-      <a href="#recognition">Recognition</a>
-      <a href="teaching/">Teaching</a>
-      <a href="teaching/seminars/">Seminars</a>
-      <a href="collaborators/">Collaborators</a>
-      <a href="activities/">Activities</a>
-      <a href="resources/">Resources</a>
-      <a href="#join">Join Us</a>
-      <a href="news/">News</a>
-      <a href="essays/">Essays</a>
-    </nav>
-  </div>
-</header>
+{% include nav.html %}
 
 <main>
 
@@ -790,8 +768,6 @@ layout: null
 <script>
 (function(){
   var pages = document.querySelectorAll('.page');
-  var links = document.querySelectorAll('.nav-links a');
-  var menu  = document.querySelector('.nav-links');
 
   function show(id){
     var found = false;
@@ -801,14 +777,11 @@ layout: null
       if(on) found = true;
     });
     if(!found){ document.getElementById('home').classList.add('on'); id = '#home'; }
-    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === id); });
-    menu.classList.remove('open');
     window.scrollTo(0,0);
     if(id === '#home') drawSpectrum();
   }
 
   window.addEventListener('hashchange', function(){ show(location.hash || '#home'); });
-  document.querySelector('.burger').addEventListener('click', function(){ menu.classList.toggle('open'); });
 
   // damped EXAFS-like oscillation: the lab's own vernacular as the hero mark
   function drawSpectrum(){

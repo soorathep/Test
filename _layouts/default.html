@@ -27,28 +27,7 @@
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-in">
-    <a class="brand" href="{{ site.baseurl }}/{{ site.home_url }}">SKH <span>Research Group</span></a>
-    <button class="burger" aria-label="Menu">MENU</button>
-    <nav class="nav-links">
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#home">Home</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#research">Research</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#cti">CTI Framework</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#facilities">Facilities</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#people">People</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#publications">Publications</a>
-      <a href="{{ site.baseurl }}/{{ site.home_url }}#recognition">Recognition</a>
-      <a href="{{ site.baseurl }}/teaching/">Teaching</a>
-      <a href="{{ site.baseurl }}/teaching/seminars/">Seminars</a>
-      <a href="{{ site.baseurl }}/collaborators/">Collaborators</a>
-      <a href="{{ site.baseurl }}/activities/">Activities</a>
-      <a href="{{ site.baseurl }}/resources/">Resources</a>
-      <a href="{{ site.baseurl }}/news/">News</a>
-      <a href="{{ site.baseurl }}/essays/">Essays</a>
-    </nav>
-  </div>
-</header>
+{% include nav.html %}
 
 <div class="page on">
   <div class="wrap">
@@ -66,11 +45,5 @@
   </div>
 </footer>
 
-<script>
-  var b = document.querySelector('.burger');
-  if (b) b.addEventListener('click', function () {
-    document.querySelector('.nav-links').classList.toggle('open');
-  });
-</script>
 </body>
 </html>
