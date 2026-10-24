@@ -69,9 +69,9 @@
     "rows": [
       "Intersection: x + y = 4.5 and 2x + y = 6.5.",
       "Subtract: x = 2; then y = 2.5.",
-      "LP value = 3(2) + 2(2.5) = 11."
+      "Add constraints: 3x + 2y ≤ 11. This point attains 11."
     ],
-    "script": "Temporarily remove the integer restriction. Subtracting the first active equation from the second gives x equal to two. Substitution gives y equal to two point five. The value is eleven. This is a useful bound, but half a batch is not permitted in the integer problem. Do not report this relaxed point as the final production decision.",
+    "script": "Temporarily remove the integer restriction. Subtracting the first active equation from the second gives x equal to two, then y equal to two point five. To prove optimality, add the two resource inequalities. Their left sides sum to three x plus two y, and their limits sum to eleven. Thus every feasible point has objective at most eleven. Our point attains eleven, certifying the relaxed optimum. It still violates the whole batch requirement.",
     "fig": "relax",
     "eq": null,
     "part": 1
@@ -290,7 +290,7 @@
     "rows": [
       "Incumbent: best feasible integer plan found so far.",
       "Node bound: best value of a restricted LP relaxation.",
-      "For maximization, prune a node if its bound ≤ incumbent."
+      "For max: prune if bound ≤ incumbent, when seeking one optimum."
     ],
     "script": "Branch and bound maintains a feasible integer incumbent and optimistic bounds for regions that have not been eliminated. In a maximization problem, a node whose upper bound is no better than the incumbent cannot improve the answer. A node can also close because it is infeasible or its relaxed optimum is already integer. We will illustrate these ideas using the two batch variables, rather than a large industrial tree.",
     "fig": null,
@@ -331,7 +331,7 @@
       "Its LP optimum is (3,0.5), bound 10.",
       "Bound equals incumbent 10: no better value is possible."
     ],
-    "script": "The other child requires x at least three and y at most two. Its relaxation has point three, zero point five and value ten. Although that point is fractional, its upper bound already equals our incumbent. We can prune if our purpose is to find one optimum and certify the value. If we wanted every alternative optimum, equality pruning would need more careful treatment.",
+    "script": "The other child requires x at least three and y at most two. Its relaxed solution has x equals three and y equals zero point five, with objective value ten. Although that point is fractional, its upper bound already equals our incumbent. We can prune if our purpose is to find one optimum and certify the value. If we wanted every alternative optimum, equality pruning would need more careful treatment.",
     "fig": "tree",
     "eq": null,
     "part": 3
@@ -379,11 +379,11 @@
     "n": 30,
     "title": "Why LP shadow prices need care",
     "rows": [
-      "Integer decisions can switch when data change.",
-      "Do not extrapolate an LP marginal across a MILP change.",
-      "Change the capacity or demand and re-solve the MILP."
+      "Separate example: each machine supplies 4 units and costs 10.",
+      "Variable cost = 2 per unit: C(D) = 10 ceil(D/4) + 2D.",
+      "For D ≥ 0, machine counts jump. Re-solve MILP after changes."
     ],
-    "script": "The previous lesson used L P shadow prices within a valid basis range. Integer decisions can change discretely, so that interpretation does not transfer automatically. For a simple machine sizing example, one machine supplies four units and costs ten. Meeting demand requires the ceiling of demand divided by four machines, producing jumps in cost. Reoptimization compares actual feasible decisions and includes the full purchase cost.",
+    "script": "This figure is a separate machine sizing example, not the two line plant. Demand is D, each machine supplies four units, and each machine costs ten. Producing each unit also costs two. For nonnegative demand, the required machine count is the ceiling of D divided by four. Total minimum cost is ten times that count plus two D. Within a fixed machine count, cost rises with slope two. Crossing capacity requires another machine and a cost jump. Do not extrapolate an L P shadow price across that switch.",
     "fig": "steps",
     "eq": null,
     "part": 3
@@ -393,10 +393,10 @@
     "title": "Python lab: predict before running",
     "rows": [
       "Download MILP-guided-lab.ipynb.",
-      "Use Python with NumPy, SciPy, and Matplotlib.",
-      "Run cells in order; pause before each displayed answer."
+      "Use Python with NumPy and SciPy (version 1.9 or later).",
+      "Run cells in order; use the separate exercise sheet for practice."
     ],
-    "script": "Open the guided notebook from the course page. It uses NumPy, SciPy and Matplotlib, with no paid solver or account required for the calculations. Run cells from top to bottom. Before each result, write a prediction on paper. The notebook has working demonstration cells and a separate exercise section. The answer notebook is separate so that you can attempt your own code first.",
+    "script": "Open the guided notebook from the course page. The calculations use Python with NumPy and SciPy, version one point nine or later. No paid solver is required. Run cells from top to bottom and predict each result before executing it. This notebook is a worked tutorial, and an executed reference copy is available. The six independent exercises are on the separate practice page and printable worksheet. Try them before opening the worked solutions.",
     "fig": null,
     "eq": null,
     "part": 4
@@ -526,7 +526,7 @@
       "2. Plant model: reduce the sales cap to 6.",
       "3. Add an at-most-one-line policy to the baseline."
     ],
-    "script": "Pause and complete the first three exercises in the practice notebook. The first changes the small integer batch model, not the plant model. The second and third each start from the original plant baseline. For each exercise, write the changed equation, predict the decision, solve, and check feasibility. Several points may tie in an optimization problem; a correct answer should explain whether the reported optimum is unique.",
+    "script": "Pause and complete the first three exercises on the separate practice page or printable worksheet. The first changes the small integer batch model, not the plant model. The second and third each start from the original plant baseline. Write the changed equation, predict the decision, solve, and check feasibility. For the batch question, enumerate the feasible integer points. For the plant questions, compare the permitted opening patterns. Check whether alternative plans tie.",
     "fig": null,
     "eq": null,
     "part": 5
@@ -601,12 +601,12 @@
     "n": 47,
     "title": "Exit Ticket solutions: linking and relaxation",
     "rows": [
-      "1. yA=0 ⇒ a=0; yA=1 ⇒ 3≤a≤6.",
-      "2. Relaxation allows yA=1/3 and partial fixed cost.",
+      "Q1: yA=0 ⇒ a=0; yA=1 ⇒ 3≤a≤6.",
+      "Q2 resets to baseline: relaxed yA=1/3 pays partial fixed cost.",
       "52.667 is an upper bound, not an attainable MILP profit."
     ],
-    "script": "For the first answer, substitute zero and one directly. Zero forces a to zero, while one gives the interval three to six. For the second, the relaxed solution pays only one third of A opening cost. That violates the binary opening rule, so its larger profit is not achievable in the M I L P. It remains useful as a valid upper bound because relaxation enlarges the feasible set.",
-    "fig": "minbatch",
+    "script": "For question one, substitute zero and one into both linking inequalities. Zero forces a to zero, while one allows production from three to six. The figure illustrates only question one. Question two returns to the baseline without that minimum batch constraint. Its relaxed solution pays only one third of A opening cost. That opening fraction violates the binary rule. The larger relaxed profit is an upper bound from a larger feasible set, not an attainable M I L P outcome.",
+    "fig": "exit-link",
     "eq": null,
     "part": 5
   },

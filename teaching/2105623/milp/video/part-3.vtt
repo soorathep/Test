@@ -78,83 +78,92 @@ This gives our incumbent.
 00:02:15.435 --> 00:02:23.432
 Its feasibility can be checked directly, and every remaining node must beat ten to matter for the optimal value.
 
-00:02:25.500 --> 00:02:29.627
+00:02:25.500 --> 00:02:29.553
 The other child requires x at least three and y at most two.
 
-00:02:29.627 --> 00:02:33.892
-Its relaxation has point three, zero point five and value ten.
+00:02:29.553 --> 00:02:35.970
+Its relaxed solution has x equals three and y equals zero point five, with objective value ten.
 
-00:02:33.892 --> 00:02:39.395
+00:02:35.970 --> 00:02:41.374
 Although that point is fractional, its upper bound already equals our incumbent.
 
-00:02:39.395 --> 00:02:44.416
+00:02:41.374 --> 00:02:46.305
 We can prune if our purpose is to find one optimum and certify the value.
 
-00:02:44.416 --> 00:02:50.676
+00:02:46.305 --> 00:02:52.452
 If we wanted every alternative optimum, equality pruning would need more careful treatment.
 
-00:02:52.700 --> 00:03:00.665
+00:02:54.500 --> 00:03:02.465
 The right branch initially has upper bound ten point five at one point five, three, so it cannot yet be discarded.
 
-00:03:00.665 --> 00:03:02.272
+00:03:02.465 --> 00:03:04.072
 Split x at one and two.
 
-00:03:02.272 --> 00:03:06.674
+00:03:04.072 --> 00:03:08.474
 The first child has bound ten and cannot improve the incumbent.
 
-00:03:06.674 --> 00:03:14.429
+00:03:08.474 --> 00:03:16.229
 The second requires x at least two and y at least three, forcing x plus y at least five, above four point five.
 
-00:03:14.429 --> 00:03:17.084
+00:03:16.229 --> 00:03:18.884
 No unexplored branch can now beat ten.
 
-00:03:19.100 --> 00:03:24.332
+00:03:20.900 --> 00:03:26.132
 The proof combines a feasible plan with bounds covering every alternative.
 
-00:03:24.332 --> 00:03:26.171
+00:03:26.132 --> 00:03:27.971
 Our incumbent reaches ten.
 
-00:03:26.171 --> 00:03:31.262
+00:03:27.971 --> 00:03:33.062
 Each branch either has no feasible point or has upper bound at most ten.
 
-00:03:31.262 --> 00:03:34.726
+00:03:33.062 --> 00:03:36.526
 Therefore no feasible integer plan can be better.
 
-00:03:34.726 --> 00:03:38.827
+00:03:36.526 --> 00:03:40.627
 This is a global certificate for the linear integer model.
 
-00:03:38.827 --> 00:03:46.676
+00:03:40.627 --> 00:03:48.476
 Modern solvers add presolve, cuts and heuristics, so their actual node counts need not match our teaching tree.
 
-00:03:48.700 --> 00:03:55.020
+00:03:50.500 --> 00:03:56.820
 A solver stopped by a time limit may have a useful feasible plan, or it may have none.
 
-00:03:55.020 --> 00:03:57.959
+00:03:56.820 --> 00:03:59.759
 Inspect status before reading variables.
 
-00:03:57.959 --> 00:04:00.899
+00:03:59.759 --> 00:04:02.699
 In our code we minimize negative profit.
 
-00:04:00.899 --> 00:04:09.055
+00:04:02.699 --> 00:04:10.855
 Therefore negative fun is the feasible profit, and negative mip dual bound is an upper bound on maximum profit.
 
-00:04:09.055 --> 00:04:12.215
+00:04:10.855 --> 00:04:14.015
 The field mip gap describes the solver gap.
 
-00:04:12.215 --> 00:04:18.388
+00:04:14.015 --> 00:04:20.188
 It is different from comparing the original L P relaxation with the integer optimum.
 
-00:04:20.400 --> 00:04:25.307
-The previous lesson used L P shadow prices within a valid basis range.
+00:04:22.200 --> 00:04:27.640
+This figure is a separate machine sizing example, not the two line plant.
 
-00:04:25.307 --> 00:04:32.038
-Integer decisions can change discretely, so that interpretation does not transfer automatically.
+00:04:27.640 --> 00:04:33.154
+Demand is D, each machine supplies four units, and each machine costs ten.
 
-00:04:32.038 --> 00:04:37.857
-For a simple machine sizing example, one machine supplies four units and costs ten.
+00:04:33.154 --> 00:04:35.762
+Producing each unit also costs two.
 
-00:04:37.857 --> 00:04:44.587
-Meeting demand requires the ceiling of demand divided by four machines, producing jumps in cost.
+00:04:35.762 --> 00:04:42.245
+For nonnegative demand, the required machine count is the ceiling of D divided by four.
 
-00:04:44.587 --> 00:04:50.616
-Reoptimization compares actual feasible decisions and includes the full purchase cost.
+00:04:42.245 --> 00:04:46.269
+Total minimum cost is ten times that count plus two D.
+
+00:04:46.269 --> 00:04:50.442
+Within a fixed machine count, cost rises with slope two.
+
+00:04:50.442 --> 00:04:54.838
+Crossing capacity requires another machine and a cost jump.
+
+00:04:54.838 --> 00:04:59.160
+Do not extrapolate an L P shadow price across that switch.

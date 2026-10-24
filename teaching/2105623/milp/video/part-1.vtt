@@ -84,83 +84,86 @@ What changes relative to L P is the requirement that both batch counts be whole 
 00:02:15.109 --> 00:02:20.092
 Sketch the continuous feasible region before adding the integer points.
 
-00:02:22.100 --> 00:02:25.352
+00:02:22.100 --> 00:02:25.231
 Temporarily remove the integer restriction.
 
-00:02:25.352 --> 00:02:31.025
-Subtracting the first active equation from the second gives x equal to two.
+00:02:25.231 --> 00:02:33.023
+Subtracting the first active equation from the second gives x equal to two, then y equal to two point five.
 
-00:02:31.025 --> 00:02:34.429
-Substitution gives y equal to two point five.
+00:02:33.023 --> 00:02:37.028
+To prove optimality, add the two resource inequalities.
 
-00:02:34.429 --> 00:02:35.941
-The value is eleven.
+00:02:37.028 --> 00:02:42.490
+Their left sides sum to three x plus two y, and their limits sum to eleven.
 
-00:02:35.941 --> 00:02:42.068
-This is a useful bound, but half a batch is not permitted in the integer problem.
+00:02:42.490 --> 00:02:46.495
+Thus every feasible point has objective at most eleven.
 
-00:02:42.068 --> 00:02:47.060
-Do not report this relaxed point as the final production decision.
+00:02:46.495 --> 00:02:50.646
+Our point attains eleven, certifying the relaxed optimum.
 
-00:02:49.100 --> 00:02:52.504
+00:02:50.646 --> 00:02:53.996
+It still violates the whole batch requirement.
+
+00:02:56.000 --> 00:02:59.404
 Rounding y upward produces the plan two, three.
 
-00:02:52.504 --> 00:02:57.068
+00:02:59.404 --> 00:03:03.968
 Its resource use is five and seven, so it violates both limits.
 
-00:02:57.068 --> 00:03:01.776
+00:03:03.968 --> 00:03:08.676
 Rounding downward gives two, two and is feasible in this example.
 
-00:03:01.776 --> 00:03:05.543
+00:03:08.676 --> 00:03:12.443
 That success does not establish a general algorithm.
 
-00:03:05.543 --> 00:03:11.699
+00:03:12.443 --> 00:03:18.599
 Other problems can have infeasible rounded points or better integer points elsewhere.
 
-00:03:11.699 --> 00:03:17.132
+00:03:18.599 --> 00:03:24.032
 We need a method that verifies feasibility and provides a bound on quality.
 
-00:03:19.200 --> 00:03:23.771
+00:03:26.100 --> 00:03:30.671
 For a problem this small, we can list all feasible integer points.
 
-00:03:23.771 --> 00:03:29.243
+00:03:30.671 --> 00:03:36.143
 The point two, two gives ten, and no other point in the finite list gives more.
 
-00:03:29.243 --> 00:03:33.190
+00:03:36.143 --> 00:03:40.090
 This independent enumeration will later check our solver.
 
-00:03:33.190 --> 00:03:39.147
+00:03:40.090 --> 00:03:46.047
 The difference between eleven and ten is the absolute relaxation gap for this example.
 
-00:03:39.147 --> 00:03:44.064
+00:03:46.047 --> 00:03:50.964
 It is not the solver stopping gap after the optimum has been certified.
 
-00:03:46.100 --> 00:03:49.405
+00:03:53.000 --> 00:03:56.305
 Removing restrictions enlarges the feasible set.
 
-00:03:49.405 --> 00:03:56.634
+00:03:56.305 --> 00:04:03.534
 Therefore a relaxed maximization can only improve or preserve the best value; it supplies an upper bound.
 
-00:03:56.634 --> 00:03:59.800
+00:04:03.534 --> 00:04:06.700
 A relaxed minimization supplies a lower bound.
 
-00:03:59.800 --> 00:04:03.312
+00:04:06.700 --> 00:04:10.212
 A feasible integer plan provides the opposite side.
 
-00:04:03.312 --> 00:04:14.396
+00:04:10.212 --> 00:04:21.296
 Before interpreting any solver bound, say whether your mathematical model is a maximization or a minimization, especially when you negated the objective in code.
 
-00:04:16.400 --> 00:04:20.255
+00:04:23.300 --> 00:04:27.155
 Pause here and test the proposed integer plan three, one.
 
-00:04:20.255 --> 00:04:23.502
+00:04:27.155 --> 00:04:30.402
 Check both inequalities before comparing profit.
 
-00:04:23.502 --> 00:04:30.265
+00:04:30.402 --> 00:04:37.165
 The first resource use is four, which passes, but the second is seven, which exceeds six point five.
 
-00:04:30.265 --> 00:04:35.744
+00:04:37.165 --> 00:04:42.644
 Its objective is eleven, but that number is not attainable under our constraints.
 
-00:04:35.744 --> 00:04:43.184
+00:04:42.644 --> 00:04:50.084
 When you resume, keep this rule: domain checks and every resource check come before interpreting an objective.
