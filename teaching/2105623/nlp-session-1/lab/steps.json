@@ -1,0 +1,52 @@
+[
+  {
+    "title": "1. Setup and prediction",
+    "prompt": "Use a kernel with NumPy, SciPy, and Matplotlib. Keep skh_palette.py beside this notebook, or use the lab ZIP. Predict the objective and gradient at [3,0] before running.",
+    "code": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.optimize import minimize\nimport skh_palette as skh\nskh.use()\nC = skh.C\nnp.set_printoptions(precision=8, suppress=True)\n\ndef f(x):\n    u, v = np.asarray(x, dtype=float)\n    return (u - 1)**2 + 4*(v + 2)**2\n\ndef grad(x):\n    u, v = np.asarray(x, dtype=float)\n    return np.array([2*(u - 1), 8*(v + 2)])\n\ndef hess(x):\n    return np.diag([2.0, 8.0])\n\nx0 = np.array([3.0, 0.0])\nxstar = np.array([1.0, -2.0])\nprint(\"f(x0) =\", f(x0))\nprint(\"gradient =\", grad(x0))\nprint(\"Hessian =\\n\", hess(x0))\nassert f(x0) == 20\nnp.testing.assert_allclose(grad(x0), [4,16])\nnp.testing.assert_allclose(np.linalg.eigvalsh(hess(x0)), [2,8])"
+  },
+  {
+    "title": "2. Derivative checks",
+    "prompt": "Central differences provide a local numerical check. They do not prove that the formula is correct everywhere. Compare at two different points.",
+    "code": "def fd_gradient(fun, x, eps=1e-6):\n    eye = np.eye(len(x))\n    return np.array([(fun(x+eps*d)-fun(x-eps*d))/(2*eps) for d in eye])\n\ndef fd_hessian(gradient, x, eps=1e-6):\n    eye = np.eye(len(x))\n    return np.column_stack([(gradient(x+eps*d)-gradient(x-eps*d))/(2*eps) for d in eye])\n\nfor x in [x0, np.array([-0.7, 1.2])]:\n    ge = np.linalg.norm(fd_gradient(f,x)-grad(x))\n    he = np.linalg.norm(fd_hessian(grad,x)-hess(x))\n    print(\"x =\", x, \"gradient error =\", ge, \"Hessian error =\", he)\n    assert ge < 1e-6 and he < 1e-6"
+  },
+  {
+    "title": "3. Two steps by hand and in Python",
+    "prompt": "Use alpha=0.1. Predict both iterates and objective values before running.",
+    "code": "alpha = 0.1\nx1 = x0-alpha*grad(x0)\nx2 = x1-alpha*grad(x1)\nfor k,x in enumerate([x0,x1,x2]):\n    print(k, \"x =\", x, \"f =\", f(x), \"g =\", grad(x))\nnp.testing.assert_allclose(x1,[2.6,-1.6])\nnp.testing.assert_allclose(x2,[2.28,-1.92])\nnp.testing.assert_allclose([f(x0),f(x1),f(x2)],[20,3.2,1.664])"
+  },
+  {
+    "title": "4. A reusable fixed-step gradient loop",
+    "prompt": "The reason gradient_tolerance means approximate stationarity. For nonconvex functions it does not certify a minimum. The loop records the last point even when it stops at the iteration limit.",
+    "code": "def fixed_gd(fun, gradient, initial, alpha, tol=1e-8, maxiter=3000):\n    x = np.asarray(initial,dtype=float).copy()\n    trace = []\n    for k in range(maxiter+1):\n        value = float(fun(x))\n        g = np.asarray(gradient(x),dtype=float)\n        norm = float(np.linalg.norm(g))\n        trace.append((k, x.copy(), value, norm))\n        if not np.isfinite(value) or not np.all(np.isfinite(g)):\n            return trace, \"nonfinite\"\n        if norm <= tol:\n            return trace, \"gradient_tolerance\"\n        if abs(value)>1e12:\n            return trace, \"large_objective_guard\"\n        if k == maxiter:\n            return trace, \"iteration_limit\"\n        x = x-alpha*g\n    raise RuntimeError(\"Unreachable\")\n\ntrace, reason = fixed_gd(f,grad,x0,0.1)\nk,x,value,gnorm = trace[-1]\nprint(\"reason =\", reason, \"iterations =\", k)\nprint(\"x =\", x, \"f =\", value, \"gradient norm =\", gnorm)\nassert reason == \"gradient_tolerance\"\nnp.testing.assert_allclose(x,xstar,atol=1e-7)\nassert value < 1e-14"
+  },
+  {
+    "title": "5. Paths and function values",
+    "prompt": "The star marks the exact minimizer. Compare this plot with the first two hand-calculated steps.",
+    "code": "path = np.array([row[1] for row in trace])\nu,v = np.meshgrid(np.linspace(-0.3,3.7,150),np.linspace(-3.9,1,150))\nz = (u-1)**2+4*(v+2)**2\nfig,axs = plt.subplots(1,2,figsize=(10,4))\naxs[0].contour(u,v,z,levels=[0.2,0.5,1,2,4,8,16,24],colors=C['teal'],linewidths=1.5)\naxs[0].plot(path[:,0],path[:,1],'-o',color=C['amber'],lw=2,ms=4)\naxs[0].plot([1],[-2],'*',color=C['graphite'],ms=12)\naxs[0].set(xlabel='u',ylabel='v',title='Gradient descent, alpha=0.1')\naxs[1].semilogy([r[0] for r in trace],[max(r[2],1e-30) for r in trace],color=C['teal'],lw=2)\naxs[1].set(xlabel='Iteration',ylabel='f(x)-f*',title='Objective error')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "title": "6. Fixed step-size experiments",
+    "prompt": "Predict the behavior using the two error multipliers. In particular, distinguish oscillation at alpha=0.25 from growth at alpha=0.30.",
+    "code": "runs = {}\nfor alpha in [0.05,0.1,0.24,0.25,0.3]:\n    tr,rs = fixed_gd(f,grad,x0,alpha)\n    runs[alpha]=(tr,rs)\n    k,x,val,gn=tr[-1]\n    print(f\"alpha={alpha:.2f}  {rs:23s}  k={k:4d}  f={val:.6g}  ||g||={gn:.6g}\")\nassert runs[0.1][1]=='gradient_tolerance'\nassert runs[0.24][1]=='gradient_tolerance'\nassert runs[0.25][1]=='iteration_limit'\nassert runs[0.3][1]=='large_objective_guard'\nnp.testing.assert_allclose(runs[0.25][0][-1][2],16,atol=1e-9)\n\nfig,ax=plt.subplots(figsize=(7,4))\nfor alpha,color,style in [(0.1,C['teal'],'-'),(0.25,C['amber'],'--'),(0.3,C['graphite'],':')]:\n    tr=runs[alpha][0][:36]\n    ax.semilogy([r[0] for r in tr],[max(r[2],1e-30) for r in tr],color=color,ls=style,lw=2,label=f'alpha={alpha}')\nax.set(xlabel='Iteration',ylabel='f(x)-f*',title='Same starting point for every run')\nax.legend()\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "title": "7. Newton and a solver reference",
+    "prompt": "Solve H p = -g, rather than explicitly inverting H. The optional SciPy call below uses a trust-region Newton method, so its iteration count need not equal one full Newton step.",
+    "code": "p = np.linalg.solve(hess(x0),-grad(x0))\nxnew = x0+p\nprint(\"p =\",p, \"xnew =\",xnew,\"f =\",f(xnew))\nnp.testing.assert_allclose(p,[-2,-2])\nnp.testing.assert_allclose(xnew,xstar)\nassert f(xnew)==0\n\nreference = minimize(f,x0,method='trust-exact',jac=grad,hess=hess,options={'gtol':1e-9})\nprint(\"SciPy:\",reference.success,reference.message)\nprint(\"x =\",reference.x,\"f =\",reference.fun,\"gradient norm =\",np.linalg.norm(grad(reference.x)))\nassert reference.success\nnp.testing.assert_allclose(reference.x,xstar,atol=1e-7)"
+  },
+  {
+    "title": "8. Nonconvex starting points",
+    "prompt": "Use q(x)=(x\u00b2-1)\u00b2, not the two-variable quadratic. Classify the returned stationary point using q double prime and the nonnegative-square lower bound.",
+    "code": "def q(x):\n    t=float(x[0]); return (t*t-1)**2\n\ndef qgrad(x):\n    t=float(x[0]); return np.array([4*t*(t*t-1)])\n\ndef qsecond(t): return 12*t*t-4\n\nfor start in [-1.5,-0.2,0,0.2,1.5]:\n    tr,rs=fixed_gd(q,qgrad,[start],0.05)\n    k,x,val,gn=tr[-1]; curvature=qsecond(x[0])\n    kind='strict local minimum' if curvature>0 else 'strict local maximum' if curvature<0 else 'inconclusive'\n    print(f\"start={start:4.1f} end={x[0]: .8f} f={val:.5g} H={curvature:.5g} {rs}: {kind}\")\n    if start==0: assert x[0]==0 and val==1 and curvature==-4\n    else: assert abs(abs(x[0])-1)<1e-7 and val<1e-14\n# At +/-1, q=0 and q is nonnegative everywhere: these minima are global."
+  },
+  {
+    "title": "9. A failed Newton step",
+    "prompt": "Predict the sign of g*p before evaluating the new function value. Negative curvature makes the raw Newton direction an ascent direction here.",
+    "code": "start=0.2\ng0=qgrad([start])[0]\nH0=qsecond(start)\np=-g0/H0\nnew=start+p\nprint(\"gradient =\",g0,\"Hessian =\",H0,\"direction =\",p,\"g*p =\",g0*p)\nprint(\"old x, f:\",start,q([start]),\"new x, f:\",new,q([new]))\nnp.testing.assert_allclose(new,-1/55)\nassert g0*p>0 and q([new])>q([start])\nxx=np.linspace(-1.5,1.5,400)\nfig,ax=plt.subplots(figsize=(7,4))\nax.plot(xx,(xx**2-1)**2,color=C['teal'],lw=2,label='q(x)')\nax.scatter([start,new],[q([start]),q([new])],color=[C['teal'],C['amber']],s=55)\nax.annotate('Newton step',xy=(new,q([new])),xytext=(-1.2,1.5),arrowprops={'arrowstyle':'->','color':C['graphite']})\nax.set(xlabel='x',ylabel='q(x)',title='A step toward the local maximum')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "title": "10. Independent practice checks",
+    "prompt": "Attempt worksheet A-C before running this cell. Check a coupled Hessian, one nonquadratic Newton step, and the limits of the second-derivative test.",
+    "code": "H=np.array([[2.,2.],[2.,6.]])\nc=np.array([-4.,-8.])\nsolution=np.linalg.solve(H,-c)\nvalue=0.5*solution@H@solution+c@solution+7\nprint(\"Practice A:\",solution,\"value =\",value,\"eigenvalues =\",np.linalg.eigvalsh(H))\nnp.testing.assert_allclose(solution,[1,1])\nnp.testing.assert_allclose(value,1)\nnp.testing.assert_allclose(np.linalg.eigvalsh(H),[4-2*np.sqrt(2),4+2*np.sqrt(2)])\n\nx=2.; direction=-(4*x**3+2*x)/(12*x*x+2); xnew=x+direction\nprint(\"Practice B:\",\"p =\",direction,\"xnew =\",xnew,\"value =\",xnew**4+xnew*xnew)\nnp.testing.assert_allclose(xnew,1.28)\nnp.testing.assert_allclose(xnew**4+xnew*xnew,4.32275456)\nprint(\"Practice C: x^4 has a minimum and -x^4 a maximum at 0, although both first and second derivatives vanish there.\")"
+  }
+]

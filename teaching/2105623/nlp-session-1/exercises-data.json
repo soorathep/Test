@@ -1,0 +1,87 @@
+[
+  [
+    "1. Convex sets",
+    "Classify C1={x: x1≥0, x2≥0, x1+x2≤4} and C2={x: x1²+x2²≥1}. Prove convexity or give two feasible endpoints with an infeasible midpoint.",
+    [
+      "C1 is the intersection of three half-spaces. Each inequality is affine, so the intersection is convex.",
+      "For C2, choose p=(−1,0) and q=(1,0). Both have squared norm 1 and are feasible.",
+      "The midpoint (p+q)/2=(0,0) has squared norm 0<1. This single counterexample proves that C2 is nonconvex."
+    ]
+  ],
+  [
+    "2. Function classification",
+    "On R, classify x⁴, −x², and q(x)=(x²−1)². State whether a global minimizer exists and whether it is unique.",
+    [
+      "For x⁴, f″=12x²≥0 everywhere, so f is convex. Its derivative 4x³ is strictly increasing, so it is strictly convex.",
+      "x⁴≥0, with equality only at x=0. Hence its global minimum is uniquely 0. It is not strongly convex on R: f″(0)=0 rules out a uniform positive lower curvature bound.",
+      "For −x², f″=−2<0. It is concave, and f(x) tends to −infinity as |x| grows. There is no global minimum. The stationary point x=0 is a global maximum.",
+      "For q, q(−1)=q(1)=0 while q(0)=1. The midpoint inequality fails, proving nonconvexity. Because q is a square, it is nonnegative and has exactly two global minimizers, −1 and 1."
+    ]
+  ],
+  [
+    "3. Two gradient descent steps",
+    "Let f(u,v)=(u−1)²+4(v+2)². Start at x0=(3,0). Use alpha=0.1 to compute two gradient descent steps, including the gradient and objective at each iterate.",
+    [
+      "Gradient: g=(2(u−1),8(v+2)). Hessian: diag(2,8). At x0, f0=20 and g0=(4,16).",
+      "x1=x0−0.1g0=(3−0.4,0−1.6)=(2.6,−1.6).",
+      "f1=(1.6)²+4(0.4)²=2.56+0.64=3.2. Recompute g1=(3.2,3.2).",
+      "x2=x1−0.1g1=(2.28,−1.92). Then f2=(1.28)²+4(0.08)²=1.6384+0.0256=1.664.",
+      "g2=(2.56,0.64) is not zero. The iterates improved the objective but have not reached the exact solution (1,−2)."
+    ]
+  ],
+  [
+    "4. The step-size boundary",
+    "For the same quadratic, derive the range of constant positive alpha that converges from every initial point. Explain alpha=0.25 and alpha=0.30 from x0=(3,0).",
+    [
+      "Write errors eu=u−1 and ev=v+2. Updating by −alpha*g gives eu,new=(1−2alpha)eu and ev,new=(1−8alpha)ev.",
+      "A geometric sequence converges to zero for every initial error if the absolute multiplier is below 1.",
+      "|1−2alpha|<1 gives 0<alpha<1; |1−8alpha|<1 gives 0<alpha<1/4. Their intersection is 0<alpha<1/4.",
+      "At alpha=1/4, eu,k=2(1/2)^k and ev,k=2(−1)^k. Thus f_k=4(1/4)^k+16 tends to 16, not 0. The v coordinate alternates between 0 and −4.",
+      "At alpha=0.30, the v-error multiplier is −1.4. Its magnitude grows from the nonzero initial error. The first iterate is (1.8,−4.8), with f=32>20."
+    ]
+  ],
+  [
+    "5. Newton and a coupled quadratic (Practice A)",
+    "Minimize h(x,y)=x²+2xy+3y²−4x−8y+7 on R². Derive the gradient, Hessian, eigenvalues, stationary point, and its classification.",
+    [
+      "Gradient: (2x+2y−4, 2x+6y−8). Hessian rows: (2,2) and (2,6).",
+      "The characteristic polynomial is (2−lambda)(6−lambda)−4 = lambda²−8lambda+8.",
+      "The roots are [8±sqrt(64−32)]/2 = 4±2sqrt(2), both positive. The constant Hessian is positive definite everywhere.",
+      "Stationarity gives x+y=2 and x+3y=4. Subtraction yields 2y=2, so y=1 and x=1.",
+      "h(1,1)=1+2+3−4−8+7=1. The stationary point is the unique global minimum.",
+      "Independent check: writing e=x−1 and d=y−1 gives h=1+(e+d)²+2d²≥1, with equality only when e=d=0."
+    ]
+  ],
+  [
+    "6. Nonquadratic Newton (Practice B)",
+    "Take one full Newton step for r(x)=x⁴+x² starting at x0=2. Check the new objective. Has the method reached the minimizer?",
+    [
+      "r′(x)=4x³+2x; r″(x)=12x²+2. At x0=2, r′=36 and r″=50.",
+      "Solve 50p=−36, giving p=−0.72. With a full step, x1=2−0.72=1.28.",
+      "r(2)=20; r(1.28)=1.28⁴+1.28²=2.68435456+1.6384=4.32275456.",
+      "The objective decreases, but r′(1.28)=10.948608 is not zero. The exact minimizer is x=0 because r is nonnegative and equals zero only there.",
+      "Unlike a positive-definite quadratic, this nonquadratic function is not generally solved by one Newton step."
+    ]
+  ],
+  [
+    "7. Stationarity and a failed Newton step",
+    "For q(x)=(x²−1)², calculate a full Newton step from 0.2. Explain why it increases q. Separately explain why x⁴ and −x⁴ cannot be classified from their first two derivatives at zero (Practice C).",
+    [
+      "q′=4x(x²−1) and q″=12x²−4. At 0.2, g=−0.768 and H=−3.52.",
+      "p=−g/H=−12/55≈−0.2181818. Therefore x1=1/5−12/55=−1/55≈−0.0181818.",
+      "g*p≈0.1675636>0: this Newton direction is an ascent direction. Direct evaluation confirms q(0.2)=0.9216 and q(x1)=(3024/3025)²≈0.99933895.",
+      "A negative Hessian makes the local quadratic model concave; its stationary point is a model maximum, not a minimum.",
+      "At zero, x⁴ and −x⁴ both have zero first and second derivatives. Yet x⁴≥0 gives a strict minimum, while −x⁴≤0 gives a strict maximum. A zero Hessian is inconclusive."
+    ]
+  ],
+  [
+    "8. Lab interpretation",
+    "Run the five fixed step sizes and the five nonconvex starts in the notebook. Report the iterate, objective, gradient norm, stopping reason, and your classification. Do not use solver success alone as proof.",
+    [
+      "For the quadratic, alpha=0.05,0.10,0.24 converge toward (1,−2). The alpha=0.24 run oscillates in v while its magnitude contracts; alpha=0.25 does not converge to the minimizer; alpha=0.30 grows.",
+      "For q with alpha=0.05, starts −1.5 and −0.2 approach −1; starts 0.2 and 1.5 approach 1. At these minima, q=0 and q″=8>0.",
+      "Starting exactly at zero stops immediately under a gradient tolerance, but q″(0)=−4<0 identifies a strict local maximum.",
+      "The notebook includes exact-value checks and central-difference checks. Compare numerical tolerances, not exact floating-point equality."
+    ]
+  ]
+]
