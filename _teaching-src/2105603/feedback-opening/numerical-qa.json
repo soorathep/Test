@@ -1,0 +1,295 @@
+{
+  "status": "passed",
+  "scope": "Synthetic numerical and source-label verification; not new experimental data, grading, or browser QA",
+  "sources": {
+    "consistency_engine": "src/engine/consistency.js",
+    "consistency_sha256": "ff306f98eb2c44f5e0aec60681c11324c37f33c3d95bfdd61ecbbbfe257af2bc",
+    "stability_engine": "src/engine/stability.js",
+    "stability_sha256": "6e3bae03bdcbadc7269bf57545658a7379213139ff8a4ceaf30f1a5897da0a4d",
+    "property_data": "data/case-studies/ipa-water.json",
+    "property_sha256": "262be25da8e8178cca55dee2dfdb1372d4d7b239f757674919f525ff2f1ff20c",
+    "review_page": "week04-questions.html",
+    "review_page_sha256": "318cac753036a67c8018b89d82437fa4e61b1864c4ab2fdd902f4c3dd76dd49e"
+  },
+  "checks": [
+    {
+      "name": "D at 41 points",
+      "actual": 2.01346322468344,
+      "expected": 2.013463,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Score at 41 points",
+      "actual": 1.6718389636067679,
+      "expected": 1.671839,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "D at 81 points",
+      "actual": 1.9560578810733447,
+      "expected": 1.956058,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Score at 81 points",
+      "actual": 1.5907668978884386,
+      "expected": 1.590767,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "D at 161 points",
+      "actual": 1.9417238225937432,
+      "expected": 1.941724,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Score at 161 points",
+      "actual": 1.5656069080700477,
+      "expected": 1.565607,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Rounded local residual at x=.35, 81 points",
+      "actual": -0.2497586268583446,
+      "expected": -0.25,
+      "tolerance": 0.0005,
+      "status": "passed"
+    },
+    {
+      "name": "Printed alpha contact",
+      "actual": 0.0707201816799442,
+      "expected": 0.07072018,
+      "tolerance": 5e-9,
+      "status": "passed"
+    },
+    {
+      "name": "Printed beta contact",
+      "actual": 0.9292798183200558,
+      "expected": 0.92927982,
+      "tolerance": 5e-9,
+      "status": "passed"
+    },
+    {
+      "name": "Printed beta fraction at z=0.12",
+      "actual": 0.057398247270169254,
+      "expected": 0.057398,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Printed alpha fraction at z=0.12",
+      "actual": 0.9426017527298307,
+      "expected": 0.942602,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Printed curvature at z=0.12",
+      "actual": 3.4696969696969706,
+      "expected": 3.469697,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Independent component balance at z=0.12",
+      "actual": 0.12,
+      "expected": 0.12,
+      "tolerance": 1e-14,
+      "status": "passed"
+    },
+    {
+      "name": "Engine alpha at z=0.12",
+      "actual": 0.07072018167994476,
+      "expected": 0.0707201816799442,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine beta at z=0.12",
+      "actual": 0.9292798183200552,
+      "expected": 0.9292798183200558,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine phase fraction at z=0.12",
+      "actual": 0.05739824727016868,
+      "expected": 0.057398247270169254,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine energy reduction at z=0.12",
+      "actual": 0.008216358168730398,
+      "expected": 0.00821635816873037,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Printed homogeneous Gibbs",
+      "actual": -0.05012499127270964,
+      "expected": -0.05012499,
+      "tolerance": 5e-9,
+      "status": "passed"
+    },
+    {
+      "name": "Printed split Gibbs",
+      "actual": -0.05834134944144001,
+      "expected": -0.05834135,
+      "tolerance": 5e-9,
+      "status": "passed"
+    },
+    {
+      "name": "Printed energy reduction",
+      "actual": 0.00821635816873037,
+      "expected": 0.00821636,
+      "tolerance": 5e-9,
+      "status": "passed"
+    },
+    {
+      "name": "Printed beta fraction at z=0.35",
+      "actual": 0.325288781817172,
+      "expected": 0.325289,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Printed alpha fraction at z=0.35",
+      "actual": 0.674711218182828,
+      "expected": 0.674711,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Printed curvature at z=0.35",
+      "actual": -1.604395604395604,
+      "expected": -1.604396,
+      "tolerance": 5e-7,
+      "status": "passed"
+    },
+    {
+      "name": "Independent component balance at z=0.35",
+      "actual": 0.35,
+      "expected": 0.35,
+      "tolerance": 1e-14,
+      "status": "passed"
+    },
+    {
+      "name": "Engine alpha at z=0.35",
+      "actual": 0.07072018167994476,
+      "expected": 0.0707201816799442,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine beta at z=0.35",
+      "actual": 0.9292798183200552,
+      "expected": 0.9292798183200558,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine phase fraction at z=0.35",
+      "actual": 0.3252887818171718,
+      "expected": 0.325288781817172,
+      "tolerance": 1e-12,
+      "status": "passed"
+    },
+    {
+      "name": "Engine energy reduction at z=0.35",
+      "actual": 0.09339471040680741,
+      "expected": 0.09339471040680739,
+      "tolerance": 1e-12,
+      "status": "passed"
+    }
+  ],
+  "consistency": [
+    {
+      "points": 41,
+      "D_percent": 2.01346322468344,
+      "scaled_mean_absolute_residual": 1.6718389636067679,
+      "residual_at_x035": -0.24903390884840249,
+      "area_status": "meets-criterion",
+      "score_status": "meets-criterion"
+    },
+    {
+      "points": 81,
+      "D_percent": 1.9560578810733447,
+      "scaled_mean_absolute_residual": 1.5907668978884386,
+      "residual_at_x035": -0.2497586268583446,
+      "area_status": "meets-criterion",
+      "score_status": "meets-criterion"
+    },
+    {
+      "points": 161,
+      "D_percent": 1.9417238225937432,
+      "scaled_mean_absolute_residual": 1.5656069080700477,
+      "residual_at_x035": -0.24993966606048967,
+      "area_status": "meets-criterion",
+      "score_status": "meets-criterion"
+    }
+  ],
+  "gibbs": [
+    {
+      "A": 3,
+      "z": 0.12,
+      "xAlpha": 0.0707201816799442,
+      "xBeta": 0.9292798183200558,
+      "fractionAlpha": 0.9426017527298307,
+      "fractionBeta": 0.057398247270169254,
+      "curvature": 3.4696969696969706,
+      "homogeneousG": -0.05012499127270964,
+      "splitG": -0.05834134944144001,
+      "reductionPerRT": 0.00821635816873037,
+      "state": "metastable",
+      "feedTPDMinimum": -0.24463348630502144,
+      "balanceResidual": 0
+    },
+    {
+      "A": 3,
+      "z": 0.35,
+      "xAlpha": 0.0707201816799442,
+      "xBeta": 0.9292798183200558,
+      "fractionAlpha": 0.674711218182828,
+      "fractionBeta": 0.325288781817172,
+      "curvature": -1.604395604395604,
+      "homogeneousG": 0.035053360965367375,
+      "splitG": -0.05834134944144001,
+      "reductionPerRT": 0.09339471040680739,
+      "state": "unstable",
+      "feedTPDMinimum": -0.2596884577294735,
+      "balanceResidual": 0
+    }
+  ],
+  "support": {
+    "method": "Check both endpoints and all roots of g-prime=0, bracketed by the analytical spinodals. No coarse plotting grid is used for the criterion.",
+    "spinodals": [
+      0.21132486540518708,
+      0.7886751345948129
+    ],
+    "candidateCompositions": [
+      0,
+      1,
+      0.0707201816799442,
+      0.5,
+      0.9292798183200545
+    ],
+    "distances": [
+      0.05834134944144001,
+      0.05834134944144001,
+      0,
+      0.11519416888149472,
+      0
+    ],
+    "minimum": 0,
+    "tolerance": 1e-12
+  },
+  "ui_labels": "All control names quoted in the review match the inspected Lab03 and Lab04 HTML.",
+  "figure": "Existing Gibbs review: amber homogeneous curve and feed diamond; dashed teal envelope and equilibrium-feed circle; graphite supporting tangent and contact circles. No vertical feed line is drawn."
+}

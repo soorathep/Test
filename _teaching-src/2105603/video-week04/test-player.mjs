@@ -76,6 +76,18 @@ assert.deepEqual(chapters.filter(c=>c.activity).map(c=>c.slide),[...workStops,br
 assert.equal(workStops.reduce((sum,n)=>sum+chapters[n-1].activity_minutes,0),120);
 for(const c of chapters)assert.equal(c.activity_minutes,activityMinutes[c.slide]??0,`Wrong activity budget at slide ${c.slide}`);
 assert.equal(chapters.at(-1).activity,false,'Slide 40 checks receipt and saved work; it does not ask for another submission.');
+const recordedChapters=chapters;
+const routeOverlay=spawnSync(python,['-c','import json,runpy,sys; m=runpy.run_path(sys.argv[1]); print(json.dumps(m["apply_current_route"](json.load(sys.stdin))))',builder],{encoding:'utf8',input:JSON.stringify(chapters)});
+assert.equal(routeOverlay.status,0,routeOverlay.stderr);
+chapters=JSON.parse(routeOverlay.stdout);
+const requiredWorkStops=workStops.filter(slide=>slide!==36);
+assert.equal(requiredWorkStops.reduce((sum,n)=>sum+chapters[n-1].activity_minutes,0),100);
+assert.equal(chapters[35].activity_minutes,0,'The optional choice must not carry a required 20-minute budget.');
+assert.equal(chapters[35].recorded_activity_minutes,20,'Original media metadata remains preserved separately.');
+for(const [index,c] of chapters.entries()){
+  const original=recordedChapters[index];
+  for(const key of ['slide','start','end','narration','title','activity'])assert.equal(c[key],original[key],`Route overlay must preserve recorded ${key}`);
+}
 
 class Element {
   constructor(id){this.id=id;this.textContent='';this.hidden=false;this.disabled=false;this.checked=false;this.listeners=new Map();this.attributes=new Map();this.scrolls=[];}
@@ -174,7 +186,8 @@ await test('Missing study-time ranges label only slides 1–3 as the introductio
   h.el('download-transcript').click();
   const text=await h.downloads.at(-1).text();
   assert.equal(text.match(/\nLesson introduction\n/g)?.length,3);
-  assert.equal(text.match(/\nFollow the study route and activity cues\n/g)?.length,37);
+  assert.equal(text.match(/\nFollow the study route and activity cues\n/g)?.length,33);
+  assert.equal(text.match(/\nOptional H review; outside the required work budget\n/g)?.length,4);
   assert.deepEqual(staticStudyLabels.slice(0,6),['Lesson introduction','Lesson introduction',...Array(4).fill('Follow the study route and activity cues')]);
 });
 await test('Valid study-time ranges remain visible in the player and both transcript formats',async()=>{
@@ -184,8 +197,8 @@ await test('Valid study-time ranges remain visible in the player and both transc
   h.el('download-transcript').click();assert.match(await h.downloads.at(-1).text(),/SLIDE 30: [^\n]+\nStudy time 120-150 min\n/);
   assert.equal(staticStudyLabels.at(-1),'Study time 120-150 min');
 });
-await test('Default pause holds all ten revised work stops before advancing',async()=>{
-  for(const slide of workStops){
+await test('Default pause holds all nine required video work stops before advancing',async()=>{
+  for(const slide of requiredWorkStops){
     const h=harness();assert.equal(h.el('auto-pause').checked,true);await h.jump(slide);await h.play();
     await h.advance(chapters[slide-1].end-.24);checkPause(h,slide);
     await h.play();checkPause(h,slide);
@@ -237,10 +250,45 @@ await test('Turning work pauses off permits manual playback and clears a shown p
   assert.equal(h.video.paused,false);assert.equal(h.el('slide-counter').textContent,`Slide 5 of ${chapters.length}`);
   h.video.pause();h.toggle(true);await h.jump(8);await h.play();await h.advance(chapters[7].end-.24);checkPause(h,8);
 });
-await test('Timer and frame guards protect the unseen-review boundary without timeupdate',async()=>{
+await test('Timer and frame guards present the optional review choice without timeupdate',async()=>{
   for(const event of ['timer','frame']){
     const h=harness();await h.jump(36);await h.play();await h.advance(chapters[35].end-.24,event);checkPause(h,36);
   }
+});
+await test('Optional H choice can skip directly to slide 39 without a required 20-minute task',async()=>{
+  const h=harness();await h.jump(36);await h.play();await h.advance(chapters[35].end-.24);checkPause(h,36);
+  assert.equal(h.el('pause-heading').textContent,'Optional practice: choose your route');
+  assert.equal(h.el('optional-skip-button').hidden,false);
+  assert.match(h.el('pause-budget').textContent,/No additional work is required here/);
+  assert.equal(h.el('continue-button').textContent,'I completed optional H1–H4; show check');
+  h.el('optional-skip-button').click();await h.settle();
+  near(h.video.currentTime,chapters[38].start+.025);
+  assert.equal(h.el('slide-counter').textContent,'Slide 39 of 40');
+  assert.equal(h.el('pause-panel').hidden,true);
+  assert.equal(h.video.paused,true,'Explicit skip selects the exit-ticket chapter and leaves it ready to play.');
+  await h.play();await h.advance(chapters[38].end-.24);checkPause(h,39);
+});
+await test('Optional H attempt can continue to its check after the student chooses to complete it',async()=>{
+  const h=harness();await h.jump(36);await h.play();await h.advance(chapters[35].end-.24);
+  await h.continueActivity();near(h.video.currentTime,chapters[36].start+.025);
+  assert.equal(h.el('slide-counter').textContent,'Slide 37 of 40');
+  assert.equal(h.video.paused,false);assert.equal(h.el('pause-panel').hidden,true);
+});
+await test('Optional-review navigation is explicit and appears only in slides 35–38',async()=>{
+  const h=harness();await h.jump(34);assert.equal(h.el('optional-review-navigation').hidden,true);
+  for(const slide of [35,36,37,38]){await h.jump(slide);assert.equal(h.el('optional-review-navigation').hidden,false);}
+  h.el('optional-review-exit').click();await h.settle();near(h.video.currentTime,chapters[38].start+.025);
+  assert.equal(h.el('optional-review-navigation').hidden,true);
+});
+await test('Current route and transcript distinguish the unchanged recording from updated requirements',async()=>{
+  assert.match(template,/week04-questions\.html/);
+  assert.match(template,/20-minute questions-first opening/);
+  assert.match(template,/100 minutes of core work and reflection/);
+  assert.match(template,/Completing H1–H4 adds about 20 minutes/);
+  const h=harness();h.el('download-transcript').click();const text=await h.downloads.at(-1).text();
+  assert.match(text,/unchanged from the original recording/);
+  assert.match(text,/H1–H4 is optional and adds about 20 minutes/);
+  assert.match(text,/CURRENT ROUTE ACTION:/);
 });
 await test('The ten-minute break holds slide 20 and Continue resumes slide 21',async()=>{
   const h=harness();await h.jump(breakSlide);await h.play();await h.advance(chapters[breakSlide-1].end-.24);checkPause(h,breakSlide);
@@ -294,7 +342,8 @@ await test('Late caption loading attaches cue updates and desktop native CC chan
   h.track.mode='showing';await h.settle();assert.equal(h.el('captions-enabled').checked,true);
 });
 const result={scope:'Controller unit tests using minimal fake DOM/media; not actual rendering, audio synchronization or browser playback QA',
-  mode,script_sha256:createHash('sha256').update(script).digest('hex'),chapters:chapters.length,tests};
+  mode,script_sha256:createHash('sha256').update(script).digest('hex'),chapters:chapters.length,
+  route:{opening_minutes:20,required_video_work_minutes:100,break_minutes:10,optional_H_minutes:20,recording_unchanged:true},tests};
 if(mode.startsWith('actual'))result.timing_source=path.relative(root,timelinePath);
 const outputIndex=process.argv.indexOf('--output');
 if(outputIndex>=0){assert.ok(process.argv[outputIndex+1]);const dest=path.resolve(process.argv[outputIndex+1]);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,JSON.stringify(result,null,2)+'\n');}

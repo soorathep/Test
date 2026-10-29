@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "status": "passed",
+  "scope": "Week 4 questions-first teaching route",
+  "content_checks": {
+    "numeric_comparisons": 28,
+    "mock_controller_tests": 24,
+    "independent_review": "No blocking findings; local links and anchors resolve; navigation hashes match; no student-identifying records in publication scope"
+  },
+  "browser_checks": {
+    "browser": "In-app browser",
+    "url": "http://127.0.0.1:8820/teaching/2105603/week04-video.html",
+    "actual_video_duration_seconds": 3449.157875,
+    "slide36_choice_pause": "Observed with decoded video playback",
+    "optional_continue": "Continues to slide 37 and resumes",
+    "skip_optional": "Goes to slide 39 and pauses",
+    "slide39_form_pause": "Observed after natural playback",
+    "question_page": "Desktop graphic and labels visually reviewed; R1 reveal works",
+    "mobile": "390 by 844; no horizontal overflow or broken images; viewport reset"
+  },
+  "pdf_checks": {
+    "pages": {
+      "practice": 6,
+      "lab_guide": 4,
+      "solutions": 4
+    },
+    "visual": "Changed pages rendered and inspected; final guide page 4 rechecked",
+    "fonts": "Embedded TrueType; no Type 3"
+  },
+  "offline_package": {
+    "files": 508,
+    "size_MB": 65.11,
+    "validation": "passed"
+  },
+  "limitations": [
+    "No new narration or video was generated; original media and slide PDFs retained.",
+    "Video playback spot checks covered route transitions; the unchanged complete recording was not listened to again.",
+    "Planning total about 187.5 minutes is a conservative allocation, not measured student completion time.",
+    "No forms submitted during QA."
+  ]
+}

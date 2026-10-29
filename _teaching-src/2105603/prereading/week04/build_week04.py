@@ -95,7 +95,7 @@ def qr(doc):
 def practice(output):
  d=Doc(output/'week04-practice.pdf','Week 4 practice: Solid equilibria and adsorption',6,'Practice record')
  d.page('Identify the process and constraints','Page 1 | A and B | Pause at slides 4 (8 min) and 8 (6 min). Keep attempts and corrections separately.')
- d.p('Start at <link href="'+BASE+'week04-study.html"><u>week04-study.html</u></link>. This independent lesson replaces class while the instructor attends the ECS meeting. Use the video OR the same slides, this worksheet, a calculator and the four-page Lab guide. Plan approximately three hours. The video page reports measured recording time plus 120 minutes of work and a 10-minute break. No additional compulsory preparation or follow-up is assigned.','small')
+ d.p('Start at <link href="'+BASE+'week04-study.html"><u>week04-study.html</u></link>. This independent lesson replaces class while the instructor attends the ECS meeting. Begin with the 20-minute questions-first opening on the study page; write R1-R3 in your notebook. Then use the video OR the same slides with this worksheet. Open the Lab guide only when directed. The revised route includes 20 minutes of opening review, 100 minutes of core work, the recording and a 10-minute break. H1-H4 are optional; their former 20 minutes have moved to the opening.','small')
  d.head('A. What process are you describing?')
  q(d,'A1.','Classify: (i) a pure solid dissolves into a liquid mixture, (ii) volatile solid enters the gas phase in a sealed vessel, (iii) gas molecules accumulate on an adsorbent surface. Name SLE, bulk GSE or adsorption, and identify the phases involved.',2)
  q(d,'A2.','Week 3 compared liquid states at fixed T and P. Which equilibrium potential is appropriate for a closed, rigid vessel at fixed T and free gas volume? State the conserved amount and explain why pressure is now an output.',2)
@@ -152,8 +152,8 @@ def practice(output):
  q(d,'G4.','Export all three model studies, save the comparison JSON, import it into Study workspace, restore one case and recalculate. Check units, model, mass and inventory before comparing the fresh result. Keep one numerical balance, an interpretation and a model limitation with the export.',2)
  d.p('If the vessel result is unavailable, read its message and check whether the equilibrium root lies inside the declared pressure range. Do not substitute a boundary pressure or call an unavailable result zero. Experimental fitting, BET screening and isosteric heat are optional extensions outside this core lesson.','small')
 
- d.page('Transfer, review and submit feedback','Page 6 | H1-H4: slide 36, 20 min. I: slide 39, 10 min. Keep solutions closed until the H attempt is complete.')
- d.head('H. New cases, your own calculations')
+ d.page('Optional transfer and required feedback','Page 6 | H1-H4: optional extension, 20 extra min. I: required, slide 39, 10 min. The opening review replaces required H work.')
+ d.head('H. Optional new cases')
  q(d,'H1.','A closed GSE vessel has T=310 K, V=2 L, Psub=5 kPa and no inert gas. For nA=0.002 and 0.008 mol, calculate ncap, ngas, nsolid and PA. Identify the phases and verify each inventory balance.',2)
  q(d,'H2.','Add 0.001 mol inert gas to each H1 case at fixed T,V. Calculate Ptotal and state whether PA changes. Explain which equilibrium condition is an equality while solid is present.',2)
  q(d,'H3.','A synthetic Langmuir model at 310 K has qs=3 mol/kg and b=0.05 kPa⁻¹. At P=20 kPa, Vg=2 L and ms=5 g, calculate q, ngas, nads and the total adsorbate nA needed for that pressure. Show the kg and pressure conversions.',2)
@@ -195,7 +195,7 @@ def guide(output):
  d.p('Expand <b>Closed vessel</b> to inspect its inputs. Return the selected model to Langmuir and click <b>Compare &amp; solve vessel →</b>. The isotherm plot shows all four independently specified models, but the vessel table uses only the selected model.')
  d.p('Pressure is adsorbate partial pressure in kPa. Uptake is absolute mol/kg of dry adsorbent, numerically equal to mmol/g. The interface takes mass in g and volume in L; use kg in your hand balance. Temperature labels supplied parameters; changing T alone does not predict new adsorption parameters.','small')
 
- d.page('Lab 11: balance and retain evidence','Guide page 4 | Finish G before the unseen H attempt | No experimental data upload or fitting is required.')
+ d.page('Lab 11: balance and retain evidence','Guide page 4 | Finish G, then submit I; H is optional | No experimental data upload or fitting is required.')
  d.table([['Case','Selected model','Dry mass / g','Other inputs'],['11A','Langmuir','10','Fixed as guide p. 3'],['11B','Henry','10','Only model changes'],['11C','Langmuir','20','Compare with 11A']],widths=[58,126,96,CW-280])
  d.p('For each case, click <b>Compare &amp; solve vessel →</b>, record PA, q, gas adsorbate amount and adsorbed amount, and click <b>Export model study</b>. Input changes invalidate the previous result. Save each completed case before changing a control.')
  d.head('Calculate the independent balance')
@@ -207,7 +207,7 @@ def guide(output):
  d.p('<b>Raw JSON units:</b> Lab 11 stores volume in m³ and adsorbent mass in kg: 0.001 m³=1 L and 0.010 kg=10 g. Its pressure and isotherm parameters retain the labeled kPa basis. Workspace control strings retain the original display units.','small')
  d.head('If a result is unavailable')
  d.p('Read the reported reason. The vessel root must lie inside the declared pressure range and model window. Expand a range only when supported by the model/property source, not merely to force an answer. Absolute and excess uptake have different balances; do not substitute excess adsorption without its correction. No kinetics or energy balance is solved.')
- d.p('Attempt H1-H4 on worksheet p. 6 before opening solutions. At slide 39 complete the existing anonymous Session 4 exit ticket and feedback; include numerical evidence from both Labs and actual study time. Submit once, wait for “Response received,” then verify the receipt on slide 40. No separate attendance identity is collected.','small')
+ d.p('H1-H4 on worksheet p. 6 are optional. Their 20-minute allocation is replaced by the questions-first opening. Skip to slide 39 for the required form: the existing anonymous Session 4 exit ticket and feedback; include numerical evidence from both Labs and actual study time. Submit once, wait for “Response received,” then verify the receipt on slide 40. No separate attendance identity is collected.','small')
  d.link('Return to the complete lesson route','week04-study.html')
  d.finish()
 def solutions(output):
@@ -248,7 +248,7 @@ def solutions(output):
  d.p('<b>G3.</b> Doubling mass lowers pressure and q per kg, but increases total adsorbed moles from 0.00756238 to 0.00885943 mol because there are more kg of adsorbent. The gas amount correspondingly falls. These fixed-T equilibrium models give no uptake rate or thermal transient.','small')
  d.p('<b>G4.</b> Save each model study and a Lab 11 comparison JSON. After importing and restoring, verify model, parameters, mass, inventory and pressure units, then click <b>Compare &amp; solve vessel →</b>. Report unavailable roots as unavailable, not zero; do not extrapolate merely to obtain a numerical answer.','small')
 
- d.page('H-I. New cases and supported conclusions','Solutions page 4 | Open only after completing the independent H1-H4 attempt.')
+ d.page('H-I. Optional new cases and reflection','Solutions page 4 | H1-H4 are optional extension work. Open these answers after an optional independent attempt.')
  d.head('H1-H2. A new GSE vessel')
  d.p('At T=310 K, V=2 L and Psub=5 kPa, ncap=10/(8.314462618×310)=<b>0.003879753388 mol</b>. For 0.001 mol inert gas, Pinert=<b>1.288741706 kPa</b>.','small')
  d.table([['nA / mol','ngas / mol','nsolid / mol','PA / kPa','Ptotal with inert / kPa'],['0.002','0.002000000','0','2.577483','3.866225'],['0.008','0.003879753','0.004120247','5.000000','6.288742']],widths=[61,106,105,89,CW-361])

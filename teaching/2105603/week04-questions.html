@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4 opening: your Week 3 questions | 2105603</title>
+<meta name="description" content="A 20-minute opening review: consistency diagnostics, the Van Ness modeling test, Gibbs graphs, metastability and phase amounts, with three short notebook checks.">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="labs/assets/site.css">
+<link rel="stylesheet" href="labs/assets/palette.css">
+<link rel="stylesheet" href="labs/assets/lab.css">
+<style>
+.question-review{max-width:1060px;color:var(--palette-graphite)}
+.question-review .hero{grid-template-columns:1fr;padding:32px 0 24px;gap:0}
+.question-review .hero h1{max-width:22ch;color:var(--palette-graphite)}
+.question-review .hero .lede{max-width:75ch}
+.question-review a{color:var(--palette-teal);text-decoration:underline;text-underline-offset:3px}
+.question-review section{padding:28px 0;border-top:1px solid var(--palette-mist)}
+.question-review section.hero{border:0}
+.question-review h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:0 0 18px}
+.question-review h3{font-size:1.16rem;line-height:1.3;margin:24px 0 12px}
+.question-review p{margin:12px 0;max-width:83ch}
+.question-review ol,.question-review ul{padding-left:24px;margin:12px 0}
+.question-review li{margin:9px 0;max-width:82ch}
+.question-review .time{font-family:Archivo,system-ui,sans-serif;color:var(--palette-teal);font-size:.8rem;font-weight:600;display:block;margin-bottom:10px}
+.question-review .start-note,.question-review .takeaway{border-left:4px solid var(--palette-teal);padding:8px 18px;margin:18px 0;background:var(--palette-paper)}
+.question-review .takeaway{border-color:var(--palette-amber)}
+.question-review .step{font-weight:600;font-family:Archivo,system-ui,sans-serif}
+.question-review .eq{font-family:Georgia,serif;font-size:1.08rem;padding:12px 16px;background:var(--palette-paper);margin:14px 0;overflow-wrap:anywhere;line-height:1.7}
+.question-review .eq .eq-line{display:block}
+.question-review .table-wrap{overflow-x:auto;margin:16px 0}
+.question-review table{width:100%;font-size:.93rem;border-collapse:collapse}
+.question-review th,.question-review td{padding:10px 12px;vertical-align:top;border-bottom:1px solid var(--palette-mist)}
+.question-review th{font-family:Archivo,system-ui,sans-serif;font-size:.82rem;letter-spacing:0;text-transform:none;font-weight:600;color:var(--palette-graphite)}
+.question-review .numeric{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.question-review figure{margin:20px 0;max-width:100%}
+.question-review figure img{width:100%;height:auto;display:block}
+.question-review figcaption{font-size:.88rem;line-height:1.6;margin-top:10px}
+.question-review details{margin:18px 0;border-top:1px solid var(--palette-mist);border-bottom:1px solid var(--palette-mist);padding:0 16px}
+.question-review details summary{font-family:Archivo,system-ui,sans-serif;font-size:.94rem;font-weight:600;padding:15px 0;cursor:pointer;line-height:1.4;color:var(--palette-teal)}
+.question-review details>div{padding-bottom:14px}
+.question-review .checks{counter-reset:checks}
+.question-review .checks>li{padding:12px 0}
+.question-review .compact{font-size:.88rem}
+.question-review .next{display:inline-block;font-family:Archivo,system-ui,sans-serif;font-weight:600;padding:12px 18px;border:1px solid var(--palette-teal);border-radius:4px;text-decoration:none}
+.question-review .source-links{font-size:.85rem;overflow-wrap:anywhere}
+.question-review :focus-visible{outline:3px solid var(--palette-amber);outline-offset:4px}
+@media(max-width:640px){.question-review{padding-left:18px;padding-right:18px}.question-review th,.question-review td{padding:9px 7px}.question-review .eq{font-size:.98rem;padding:10px}.question-review figure{margin-left:-8px;margin-right:-8px}.question-review details{padding:0 10px}.question-review .hero h1{font-size:2.35rem}}
+@media print{@page{size:A4;margin:16mm}.lab-nav,.skip-link,.question-review .next{display:none}.question-review{max-width:none;padding:0;font-size:10.5pt;color:var(--palette-graphite)}.question-review h1{font-size:24pt!important}.question-review h2{font-size:17pt}.question-review h3{font-size:12pt}.question-review section{padding:16px 0}.question-review .eq,.question-review figure,.question-review tr{break-inside:avoid}.question-review h2,.question-review h3,.question-review summary{break-after:avoid}.question-review details:not([open])>div{display:none}.question-review a{color:var(--palette-graphite)}.question-review .table-wrap{overflow:visible}.question-review details{border:0;padding:0}.question-review .compact{font-size:9pt}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#start">Skip to the opening review</a>
+<header class="lab-nav"><a class="brand" href="./">2105603 <span>Thermodynamics</span></a><nav aria-label="Course navigation"><a href="week04-study.html">Week 4 study route</a><a href="week04-video.html">Week 4 video</a></nav></header>
+<main id="start" class="thermo-lab question-review">
+<div class="breadcrumb mono">Week 4 / Start here / Questions from Week 3</div>
+<section class="hero" aria-labelledby="title"><div><p class="eyebrow mono">20-minute opening review</p><h1>First, let us answer your questions</h1><p class="lede">Before solid equilibria and adsorption, clarify what a test result means and how a Gibbs graph supports a phase decision. We will define the symbols, follow one calculation and explain the result.</p></div></section>
+<div class="start-note"><p><strong>What to open:</strong> this page, a calculator and your notebook. Write the three short answers labelled <strong>R1–R3</strong> below. No new PDF or JSON export is required.</p><p><strong>Your time:</strong> 2 minutes to separate the questions, 6 minutes for consistency tests, 8 minutes for Gibbs energy and 4 minutes for your answers. This opening <strong>replaces the required 20-minute H1–H4 unseen-case activity</strong>; H1–H4 is now optional. There is no additional form to submit.</p></div>
+
+<section aria-labelledby="questions">
+<span class="time">0–2 minutes · Identify the question before choosing a test</span>
+<h2 id="questions">Three questions need different evidence</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">Question</th><th scope="col">Evidence to examine</th></tr></thead><tbody>
+<tr><td><strong>Do the activity data satisfy a thermodynamic relationship?</strong></td><td>Gibbs–Duhem diagnostics, with the path, assumptions, numerical method and data coverage stated.</td></tr>
+<tr><td><strong>Can a chosen model reproduce the observed VLE?</strong></td><td>Predicted versus observed pressure <var>P</var> and vapor mole fraction <var>y</var>, using a defined fit and model.</td></tr>
+<tr><td><strong>Is this phase state stable?</strong></td><td>The lowest possible total Gibbs energy at fixed <var>T</var>, <var>P</var> and conserved composition, within the admitted phase model.</td></tr>
+</tbody></table></div>
+<p>A fitted curve, a consistency score and a stability test answer different questions. A low number is useful only after we identify the question and its assumptions.</p>
+</section>
+
+<section aria-labelledby="consistency">
+<span class="time">2–8 minutes · Read the meaning before the threshold</span>
+<h2 id="consistency">If D and r pass, is Gibbs–Duhem satisfied?</h2>
+<p><strong>A pass says that the selected diagnostic met its criterion.</strong> It does not prove that every point is correct. First distinguish an integrated area, a local residual and an average score.</p>
+<h3>1. D compares positive and negative areas</h3>
+<p>Plot <var>f</var>(<var>x</var>) = ln(γ<sub>1</sub>/γ<sub>2</sub>) against liquid mole fraction <var>x</var> = <var>x</var><sub>1</sub>. Let A<sub>+</sub> be the area above zero and A<sub>−</sub> the <strong>positive magnitude</strong> of the area below zero.</p>
+<div class="eq" aria-label="D equals 100 times the absolute difference between the two area magnitudes divided by their sum">D = 100 |A<sub>+</sub> − A<sub>−</sub>| / (A<sub>+</sub> + A<sub>−</sub>)</div>
+<p>For the isothermal case used here, with the pressure contribution neglected, the full-range signed integral should vanish. Lab 03 reports the empirical <strong>D &lt; 5%</strong> criterion. A small D means a small <em>net area imbalance</em>; positive and negative errors may cancel.</p>
+
+<h3>2. r is a local residual; the displayed score is an average</h3>
+<p>Write <var>g</var><sub>E</sub> for the dimensionless <strong>excess</strong> Gibbs energy per mole. The subscript distinguishes it from the total mixing-energy curve used later. Lab 03 calls this quantity <var>g</var> in its differential formula:</p>
+<div class="eq"><span class="eq-line">g<sub>E</sub> = g<sup>E</sup>/(RT) = x ln γ<sub>1</sub> + (1 − x) ln γ<sub>2</sub></span><span class="eq-line">r(x) = dg<sub>E</sub>/dx − ln(γ<sub>1</sub>/γ<sub>2</sub>)</span><span class="eq-line">Displayed score = 100 mean |r|</span></div>
+<p>For this isothermal approximation, an exact consistent relation gives <var>r</var> = 0. A nonzero numerical residual can reflect inconsistent input, differentiation error or noise. The Lab averages the absolute residuals at interior points and applies the <strong>teaching threshold score &lt; 5</strong>.</p>
+<p><strong>The score is dimensionless, not a percentage error.</strong> Multiplying by 100 does not create a relative-error denominator. A small average can hide a narrow local peak, so inspect the residual curve too.</p>
+<div class="takeaway"><p><strong>Concrete example:</strong> at 350 K, choose the localized defect, amplitude 0.25 and 81 points. The Lab gives D ≈ <strong>1.956%</strong> and score ≈ <strong>1.591</strong>, both below their limits, but <var>r</var>(0.35) ≈ <strong>−0.250</strong>. The localized departure remains visible even though both summaries pass.</p></div>
+
+<details><summary>Optional: reproduce this example in Lab 03</summary><div>
+<p>This is a brief comparison, not another assignment. No export is needed.</p>
+<ol><li>Open <a href="labs/consistency.html#consistency-experiment" target="_blank" rel="noopener">Lab 03: consistency tests</a>.</li><li>Set <strong>Data set → Synthetic · isothermal, 350 K</strong>, <strong>Controlled perturbation → Localized defect near x₁ = 0.35</strong>, <strong>Amplitude → 0.25</strong> and <strong>Sampling resolution → 81 points</strong>.</li><li>Read the area and differential scorecards. Under <strong>Inspect</strong>, choose <strong>Local Gibbs–Duhem residual</strong>. Find the peak near <var>x</var> = 0.35.</li><li>Explain aloud: “The average meets its threshold, but a local departure remains.” Return to this page.</li></ol>
+</div></details>
+<details><summary>Optional: why did 41 versus 161 points change D only slightly?</summary><div>
+<div class="table-wrap"><table><thead><tr><th scope="col">Points</th><th scope="col" class="numeric">D (%)</th><th scope="col" class="numeric">100 mean |r|</th></tr></thead><tbody><tr><td>41</td><td class="numeric">2.013463</td><td class="numeric">1.671839</td></tr><tr><td>81</td><td class="numeric">1.956058</td><td class="numeric">1.590767</td></tr><tr><td>161</td><td class="numeric">1.941724</td><td class="numeric">1.565607</td></tr></tbody></table></div>
+<p>These are denser samples of the <strong>same synthetic function</strong>, not new experiments. The narrow defect remains. More points can improve numerical integration and reveal the residual shape, but do not remove the defect or force the average to fail. This comparison does not establish a universally sufficient number of experimental points.</p>
+<p>The plotted residual uses three-point numerical derivatives. It is a teaching diagnostic, not the NIST Padé-based Kojima point-test implementation. Isobaric data also need the appropriate temperature/excess-enthalpy correction; do not apply the simplified isothermal formula indiscriminately.</p>
+</div></details>
+
+<details><summary>Optional: where does the residual equation come from?</summary><div>
+<p>Differentiate the excess Gibbs expression using the product rule:</p>
+<div class="eq">dg<sub>E</sub>/dx = ln(γ<sub>1</sub>/γ<sub>2</sub>) + x dlnγ<sub>1</sub>/dx + (1 − x) dlnγ<sub>2</sub>/dx.</div>
+<p>At fixed temperature and pressure, Gibbs–Duhem requires the last two terms to sum to zero. Subtracting ln(γ<sub>1</sub>/γ<sub>2</sub>) leaves the residual r. This explains why r should vanish for exact consistent activity functions under those conditions.</p>
+<p>For an isobaric path with changing temperature, the Lab adds the term [H<sup>E</sup>/(RT²)] dT/dx, where H<sup>E</sup> denotes the molar excess enthalpy; a verdict needs that information. The pressure/excess-volume term is neglected in this teaching implementation.</p>
+<p>The Herington alternative uses the empirical allowance J = 150(T<sub>max</sub> − T<sub>min</sub>)/T<sub>min</sub>, with both temperatures in kelvin; J is dimensionless. It compares D − J with 10. J is not a measured excess enthalpy. Do not interchange isothermal and isobaric criteria.</p>
+<p>The full-area test also needs the full composition interval. Extrapolated endpoints make the result conditional. If A<sub>+</sub> + A<sub>−</sub> vanishes, D is undefined, not automatically failed.</p></div></details>
+<h3>3. Where does the Van Ness test fit?</h3>
+<p><strong>It is a modeling-capability approach within thermodynamic consistency testing.</strong> Lab 03 uses a <strong>Van Ness-type teaching variant</strong>: a consistent NRTL activity model is fitted jointly to <var>P</var> and <var>y</var> at the observed temperature and liquid composition.</p>
+<div class="eq"><span class="eq-line">Δp = mean [100 |P<sub>calc</sub> − P<sub>obs</sub>| / P<sub>obs</sub>]</span><span class="eq-line">Δy = mean [100 |y<sub>calc</sub> − y<sub>obs</sub>|]</span></div>
+<p>The limits are <strong>Δp &lt; 1%</strong> and <strong>Δy &lt; 1 percentage point</strong> (an absolute mole-fraction difference below 0.01 on average). The second is <strong>not</strong> a relative percentage error in <var>y</var>.</p>
+<p>Meeting both limits establishes reproduction by this model under these assumptions. It does not certify every measurement. Missing a limit can reflect model flexibility, property correlations or experimental data. This fit is not the full NIST TDE implementation.</p>
+<p class="source-links">Method references: <a href="https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Herington.htm">NIST area and Herington tests</a> · <a href="https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Point.htm">NIST point test</a> · <a href="https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/VanNess.htm">NIST Van Ness modeling test</a>. The Lab states where its teaching methods differ.</p>
+</section>
+
+<section aria-labelledby="gibbs">
+<span class="time">8–16 minutes · Follow one state from equation to graph to decision</span>
+<h2 id="gibbs">How can I decide stability without a badge?</h2>
+<p><strong>First read what the graph represents.</strong> At fixed <var>T</var> and <var>P</var>, let <var>x</var> be a possible liquid composition and <var>z</var> the overall composition of our material. The curve gives the Gibbs energy if that composition is kept as <strong>one homogeneous liquid</strong>.</p>
+<div class="eq"><span class="eq-line">g(x) = Δ<sub>mix</sub>G/(nRT)</span><span class="eq-line">g(x) = x ln x + (1 − x) ln(1 − x) + A x(1 − x), with A = 3</span></div>
+<p>The first two terms are ideal mixing. The last is the symmetric Margules <strong>excess</strong> contribution. This <var>g</var> is total dimensionless <em>mixing</em> Gibbs energy, not the excess-only <var>g</var><sub>E</sub> in the consistency formula above.</p>
+<figure><img src="figures/gibbs-review-curve.svg" width="956" height="495" alt="For symmetric Margules A equals 3, the homogeneous-liquid Gibbs curve is above the supporting horizontal common tangent between compositions 0.07072 and 0.92928. At overall composition 0.12, the homogeneous feed has higher Gibbs energy than the two-liquid state."><figcaption>The existing Gibbs review plot uses <strong>A = 3 and z = 0.12</strong>. Read vertically at the same overall composition to compare a homogeneous feed with an admissible split. This is a composition graph, not a time trajectory.</figcaption></figure>
+<ol>
+<li><strong>Amber curve, “Homogeneous liquid”:</strong> evaluate the equation at each trial composition <var>x</var>. Its height is the single-liquid mixing Gibbs energy.</li>
+<li><strong>Two contact compositions:</strong> <var>x</var><sup>α</sup> = 0.07072018 and <var>x</var><sup>β</sup> = 0.92927982. They are candidate coexisting phase compositions, not phase amounts.</li>
+<li><strong>Graphite common tangent:</strong> a line ℓ(<var>x</var>) touching at both contacts. Here it is horizontal because this example is symmetric; common tangents need not be horizontal in general.</li>
+<li><strong>Dashed teal equilibrium envelope:</strong> the lowest admissible Gibbs energy. Between the contacts it follows the supported two-liquid line; outside this interval it follows the stable single-liquid branch for this model.</li>
+<li><strong>Two feed markers at z = 0.12:</strong> the amber diamond marks the homogeneous liquid on the curve; the teal circle marks the two-liquid state on the common tangent below it. Compare their heights at the same composition. Their vertical difference is the Gibbs-energy reduction upon splitting. The diagonal annotation arrow only identifies the split-state point.</li>
+</ol>
+
+<h3>Step 1. Check local curvature</h3>
+<div class="eq"><span class="eq-line">g″(x) = 1/x + 1/(1 − x) − 2A</span><span class="eq-line">g″(0.12) = 1/0.12 + 1/0.88 − 6 = 3.469697 &gt; 0</span></div>
+<p>Positive curvature means the homogeneous liquid resists <strong>infinitesimal composition fluctuations</strong>. It does not exclude a lower-energy split into substantially different compositions.</p>
+
+<h3>Step 2. Compare an admissible two-liquid state</h3>
+<p>Use the two contacts and conserve total composition. Fractions here are moles of each phase divided by total moles:</p>
+<div class="eq"><span class="eq-line">f<sup>β</sup> = (z − x<sup>α</sup>)/(x<sup>β</sup> − x<sup>α</sup>)</span><span class="eq-line">= (0.12 − 0.07072018)/(0.92927982 − 0.07072018) = 0.057398</span><span class="eq-line">f<sup>α</sup> = 1 − f<sup>β</sup> = 0.942602</span><span class="eq-line">f<sup>α</sup>x<sup>α</sup> + f<sup>β</sup>x<sup>β</sup> = 0.120000</span></div>
+<div class="eq"><span class="eq-line">g<sub>one</sub> = g(0.12) = −0.05012499</span><span class="eq-line">g<sub>split</sub> = f<sup>α</sup>g(x<sup>α</sup>) + f<sup>β</sup>g(x<sup>β</sup>) = −0.05834135</span><span class="eq-line">g<sub>one</sub> − g<sub>split</sub> = 0.00821636 &gt; 0</span></div>
+<p>The split is lower by <strong>0.00821636 RT per mole of feed</strong>. This homogeneous feed is <strong>metastable</strong>: locally resistant to small fluctuations, but not the global minimum. The sign of either Gibbs value alone cannot decide stability; compare admissible alternatives at the same constraints and reference state.</p>
+
+<h3>Step 3. Check the whole composition range</h3>
+<p>Equal chemical potentials identify a candidate coexistence condition. To establish global stability in this liquid model, its common tangent must support the full curve:</p>
+<div class="eq">g(x) − ℓ(x) ≥ 0 for every admissible x; equality holds at the contact compositions.</div>
+<p>A line that crosses above the curve somewhere fails this check. Comparing one pair alone can establish that the feed is not globally stable, but does not by itself establish that this pair is the global minimum. Inspect the full support condition, with numerical resolution and tolerance stated, rather than trusting a label alone.</p>
+<div class="takeaway"><p><strong>Decision sequence:</strong> negative local curvature identifies an unstable homogeneous feed. Positive local curvature plus a lower supported split identifies a metastable feed. A homogeneous state is globally stable only when no admissible alternative lowers Gibbs energy. Zero curvature needs further examination.</p></div>
+
+<h3>Change the overall composition, then check what moves</h3>
+<p>At the same <var>T</var>, <var>P</var> and model, change only <var>z</var> from 0.12 to 0.35, still between the contacts:</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Overall z</th><th scope="col" class="numeric">x<sup>α</sup></th><th scope="col" class="numeric">x<sup>β</sup></th><th scope="col" class="numeric">f<sup>β</sup></th><th scope="col">Homogeneous-feed curvature</th></tr></thead><tbody><tr><td>0.12</td><td class="numeric">0.07072018</td><td class="numeric">0.92927982</td><td class="numeric">0.057398</td><td>+3.469697: locally stable</td></tr><tr><td>0.35</td><td class="numeric">0.07072018</td><td class="numeric">0.92927982</td><td class="numeric">0.325289</td><td>−1.604396: locally unstable</td></tr></tbody></table></div>
+<p><strong>The phase compositions stay fixed; the relative amounts change.</strong> The contact points are selected by equilibrium at the fixed conditions. The material balance selects where the overall composition lies between them.</p>
+<details><summary>Optional: compare the calculation in Lab 04</summary><div>
+<ol><li>Open <a href="labs/stability.html#lle-experiment" target="_blank" rel="noopener">Lab 04: liquid stability</a>. Set <strong>Liquid model → Margules · 1 parameter</strong> and <strong>Interaction parameter A → 3</strong>.</li><li>Set <strong>Feed mole fraction z₁ → 0.12</strong> and press <strong>Find equilibrium</strong>. Compare the local curvature, the two phase compositions, the phase fractions and the Gibbs reduction with the calculation above.</li><li>Under <strong>View</strong>, select <strong>Gibbs energy &amp; common tangent</strong> to compare the curve and line. Then select <strong>Tangent-plane distance · feed stability</strong>. A negative feed TPD somewhere rejects global stability of the homogeneous feed. This is different from the <strong>Common-tangent residual (binodal construction)</strong>, which checks the coexistence equations, not global support. Explain which tangent each test uses.</li><li>Change only <strong>z₁ to 0.35</strong> and press <strong>Find equilibrium</strong> again. Check that the contact compositions stay fixed while the phase fractions change. No additional export or submission is needed.</li></ol>
+<p>The graph shows equilibrium possibilities, not a nucleation barrier, separation rate or elapsed time. For further optional practice, use the existing <a href="week03-gibbs-review-video.html">Gibbs review video with Lab 04 demonstration</a>.</p>
+</div></details>
+</section>
+
+<section aria-labelledby="checks">
+<span class="time">16–20 minutes · Write first, then reveal the checks</span>
+<h2 id="checks">Three short answers before Week 4</h2>
+<p>Write <strong>R1–R3 in your notebook</strong>. Use one or two sentences for each, plus the requested fraction. Keep your first answer, then add a correction if needed. These are practice checks, not another submission.</p>
+<ol class="checks">
+<li><strong>R1.</strong> D and the mean residual score both meet their limits, but the residual curve has a narrow peak. Can you conclude that every point satisfies Gibbs–Duhem? What should you inspect?
+<details><summary>Reveal R1 check after writing</summary><div><p>No. Integrated or averaged summaries can hide cancellation or localized departures. Inspect the residual shape, assumptions, data coverage and numerical sensitivity. State which criterion passed instead of certifying every point.</p></div></details></li>
+<li><strong>R2.</strong> At A = 3 and z = 0.12, g″ is positive but a supported split has lower Gibbs energy. Is the homogeneous feed globally stable, metastable or locally unstable? Give the reason without using the Lab badge.
+<details><summary>Reveal R2 check after writing</summary><div><p>Metastable. Positive curvature gives local resistance to small composition fluctuations, but the admissible supported split lowers Gibbs energy by 0.00821636 RT per mole of feed. The homogeneous state is not the global minimum.</p></div></details></li>
+<li><strong>R3.</strong> Move z to 0.35 on the same supported tie line. What stays fixed? Calculate f<sup>β</sup>. Then state why Week 4 will still need material balances after writing an equilibrium relation.
+<details><summary>Reveal R3 check after writing</summary><div><p>The phase compositions remain x<sup>α</sup> = 0.07072018 and x<sup>β</sup> = 0.92927982. The lever rule gives f<sup>β</sup> = 0.325289 and f<sup>α</sup> = 0.674711. Equilibrium specifies coexistence conditions; total inventories determine phase amounts. In Week 4, we must also check whether enough material remains for a solid phase to be present.</p></div></details></li>
+</ol>
+<div class="start-note"><p><strong>Now continue Week 4:</strong> open the existing worksheet at <strong>page 1, A1–A3</strong>, then start the video. Follow the updated study route. H1–H4 is optional this week because this opening uses its 20-minute budget. Complete the existing <strong>Session 4 exit ticket and feedback once</strong> at the end of the required lesson.</p></div>
+<p><a class="next" href="week04-video.html">Continue to the Week 4 video</a></p>
+<p class="compact"><a href="week04-study.html">Return to the Week 4 study route</a> · <a href="files/week04-practice.pdf">Open the existing worksheet</a></p>
+</section>
+<footer class="lab-footer">2105603 · Advanced Chemical Engineering Thermodynamics · Opening review for Week 4. Optional details and Lab comparisons are available for support; no repeat Week 3 submission is required.</footer>
+</main>
+</body>
+</html>

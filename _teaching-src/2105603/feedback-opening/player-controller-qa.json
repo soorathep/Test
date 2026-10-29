@@ -1,0 +1,112 @@
+{
+  "scope": "Controller unit tests using minimal fake DOM/media; not actual rendering, audio synchronization or browser playback QA",
+  "mode": "actual timing metadata; mocked media events, no decoded-video or browser QA",
+  "script_sha256": "3b3c08d0d668bebbfc14e329dce2b699cb877f4d3fb7a515ff1c4d224c6537de",
+  "chapters": 40,
+  "route": {
+    "opening_minutes": 20,
+    "required_video_work_minutes": 100,
+    "break_minutes": 10,
+    "optional_H_minutes": 20,
+    "recording_unchanged": true
+  },
+  "tests": [
+    {
+      "name": "Missing study-time ranges label only slides 1–3 as the introduction",
+      "status": "passed"
+    },
+    {
+      "name": "Valid study-time ranges remain visible in the player and both transcript formats",
+      "status": "passed"
+    },
+    {
+      "name": "Default pause holds all nine required video work stops before advancing",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed timeupdate beyond a boundary rewinds to the previous task",
+      "status": "passed"
+    },
+    {
+      "name": "Continue advances from the Lab 11 investigation to its check and resumes",
+      "status": "passed"
+    },
+    {
+      "name": "Intentional chapter and native seeks do not trigger skipped work stops",
+      "status": "passed"
+    },
+    {
+      "name": "The demo link intentionally selects Lab 10 chapter 16",
+      "status": "passed"
+    },
+    {
+      "name": "The second demo link intentionally selects Lab 11 chapter 30",
+      "status": "passed"
+    },
+    {
+      "name": "Both five-minute prediction pauses hold before their Lab results",
+      "status": "passed"
+    },
+    {
+      "name": "Replaying a completed activity reinstates its future pause",
+      "status": "passed"
+    },
+    {
+      "name": "Turning work pauses off permits manual playback and clears a shown pause",
+      "status": "passed"
+    },
+    {
+      "name": "Timer and frame guards present the optional review choice without timeupdate",
+      "status": "passed"
+    },
+    {
+      "name": "Optional H choice can skip directly to slide 39 without a required 20-minute task",
+      "status": "passed"
+    },
+    {
+      "name": "Optional H attempt can continue to its check after the student chooses to complete it",
+      "status": "passed"
+    },
+    {
+      "name": "Optional-review navigation is explicit and appears only in slides 35–38",
+      "status": "passed"
+    },
+    {
+      "name": "Current route and transcript distinguish the unchanged recording from updated requirements",
+      "status": "passed"
+    },
+    {
+      "name": "The ten-minute break holds slide 20 and Continue resumes slide 21",
+      "status": "passed"
+    },
+    {
+      "name": "Final form pause 39 leads to receipt check 40 without inventing another work stop",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed natural ended event catches unfinished form pause 39",
+      "status": "passed"
+    },
+    {
+      "name": "An intentional jump to final receipt check does not trigger skipped form work",
+      "status": "passed"
+    },
+    {
+      "name": "Wide captions remain native; narrow captions use active timed cues below the image",
+      "status": "passed"
+    },
+    {
+      "name": "Caption toggle disables both presentations and restores the appropriate narrow mode",
+      "status": "passed"
+    },
+    {
+      "name": "Native full screen uses native captions; narrow wrapper full screen retains separate captions",
+      "status": "passed"
+    },
+    {
+      "name": "Late caption loading attaches cue updates and desktop native CC changes update the toggle",
+      "status": "passed"
+    }
+  ],
+  "timing_source": "outputs/week04-video/timeline.json"
+}
