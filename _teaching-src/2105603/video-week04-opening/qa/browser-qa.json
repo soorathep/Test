@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "video_sha256": "5cae2fec51804ce53d95852cd6d0088806dbbd7c01ea2f5a6917b8dd8d62900f",
+  "decoded_duration_seconds": 4427.21125,
+  "browser": "In-app browser",
+  "checks": [
+    "Opening13 naturally pauses before answers and keeps R1-R3 visible",
+    "Continue resumes at Opening14",
+    "Existing Lab10 and Lab11 links reach the same semantic chapters at shifted timestamps",
+    "Core36 presents explicit optional H choice",
+    "Skip optional H reaches core39 paused",
+    "390px layout has no horizontal overflow",
+    "Active English caption appears below the video at narrow width",
+    "Temporary viewport reset",
+    "Corrected core HTML slides2/3/35/36 visually inspected without clipping"
+  ],
+  "form_submitted": false,
+  "subjective_listening_performed": false,
+  "limits": "Browser checks are targeted. Full media boundaries and numeric audio alignment are verified separately by decoded-video tests; new narration meaning checked through ASR with source comparison."
+}

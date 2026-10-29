@@ -1,0 +1,137 @@
+{
+  "scope": "Controller tests using minimal fake DOM/media; not rendered-video, audio synchronization, listening or browser QA",
+  "mode": "actual timing metadata; mocked media events, no decoded-video or browser QA",
+  "script_sha256": "5fe0deb41e3668dd09368585343a172d109bb172c08a98805afa2d0feae29266",
+  "chapters": 54,
+  "route": {
+    "opening_chapters": 14,
+    "opening_work_minutes": 4,
+    "core_work_minutes": 100,
+    "break_minutes": 10,
+    "optional_H_minutes": 20,
+    "integrated_recording": true
+  },
+  "tests": [
+    {
+      "name": "Builder rejects old forty-slide media, wrong anchors, missing pauses and double-counted opening work",
+      "status": "passed"
+    },
+    {
+      "name": "Default playback starts with Opening 01 and no repeated reading assignment",
+      "status": "passed"
+    },
+    {
+      "name": "All forty historical core anchors retain their original semantic target",
+      "status": "passed"
+    },
+    {
+      "name": "Every opening anchor selects its own chapter without colliding with core slide numbers",
+      "status": "passed"
+    },
+    {
+      "name": "Hash changes and the opening/core start links select explicitly without autoplay",
+      "status": "passed"
+    },
+    {
+      "name": "The R1–R3 pause stops before answers and Continue advances to Opening 14",
+      "status": "passed"
+    },
+    {
+      "name": "A delayed update cannot expose opening answers before the R1–R3 pause",
+      "status": "passed"
+    },
+    {
+      "name": "Opening 14 transitions continuously to the original core slide 1",
+      "status": "passed"
+    },
+    {
+      "name": "All nine required core work stops remain intact",
+      "status": "passed"
+    },
+    {
+      "name": "Study labels distinguish opening and core introduction and preserve explicit ranges",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed core task updates rewind without revealing checks",
+      "status": "passed"
+    },
+    {
+      "name": "Required investigation Continue resumes at the correct core check",
+      "status": "passed"
+    },
+    {
+      "name": "Intentional chapter and native seeks do not trigger earlier opening or core tasks",
+      "status": "passed"
+    },
+    {
+      "name": "Both Lab demo links resolve after the opening offset and retain prediction instructions",
+      "status": "passed"
+    },
+    {
+      "name": "Both prediction stops precede Lab demos and resume into them",
+      "status": "passed"
+    },
+    {
+      "name": "Replay reinstates opening and core pauses",
+      "status": "passed"
+    },
+    {
+      "name": "Turning pauses off permits manual playback and clears the current task",
+      "status": "passed"
+    },
+    {
+      "name": "Timer and frame guards handle opening attempts and optional choices without timeupdate",
+      "status": "passed"
+    },
+    {
+      "name": "Optional H choice skips to the correctly offset form chapter and stays paused",
+      "status": "passed"
+    },
+    {
+      "name": "Optional H Continue resumes the optional check only after an explicit choice",
+      "status": "passed"
+    },
+    {
+      "name": "Optional H navigation appears only on core slides 35–38",
+      "status": "passed"
+    },
+    {
+      "name": "Ten-minute break resumes core slide 21 after the opening offset",
+      "status": "passed"
+    },
+    {
+      "name": "Final form pause leads once to receipt check without another submission stop",
+      "status": "passed"
+    },
+    {
+      "name": "Delayed natural ended event catches unfinished form but intentional final jump does not",
+      "status": "passed"
+    },
+    {
+      "name": "Transcript counts integrated narration once and labels opening versus historical core slides",
+      "status": "passed"
+    },
+    {
+      "name": "Wide captions remain native; narrow captions use active timed cues below the image",
+      "status": "passed"
+    },
+    {
+      "name": "Caption toggle disables both presentations and restores the appropriate narrow mode",
+      "status": "passed"
+    },
+    {
+      "name": "Native full screen uses native captions; narrow wrapper full screen retains separate captions",
+      "status": "passed"
+    },
+    {
+      "name": "Late caption loading attaches cue updates and desktop native CC changes update the toggle",
+      "status": "passed"
+    },
+    {
+      "name": "Production media requires an encoded hash and versions every media URL consistently",
+      "status": "passed"
+    }
+  ],
+  "timing_source": "outputs/week04-opening-video/timeline.json"
+}

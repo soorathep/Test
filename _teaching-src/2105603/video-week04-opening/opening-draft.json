@@ -1,0 +1,437 @@
+[
+  {
+    "id": "01",
+    "slide": 1,
+    "number": 1,
+    "slide_id": "opening-01",
+    "title": "Your questions before Week 4",
+    "narration": "Welcome to week four. Before we begin solid equilibria and adsorption, let us answer the questions that came from your exit tickets and feedback. We will explain what consistency scores mean, read the Gibbs energy graph, and distinguish phase compositions from phase amounts. Keep a calculator and your notebook beside you. Later in this opening, you will pause for four minutes and write three short answers, labelled R one through R three. This video opening replaces the separate opening reading. You do not need to repeat both. It also replaces the formerly required H exercises, which are now optional. After this review, continue with worksheet sections A through G, then section I and the existing Session four form. There is no additional submission for these opening questions.",
+    "display": {
+      "kicker": "Week 4 · Questions from Week 3",
+      "bullets": [
+        "Consistency scores: what does a pass mean?",
+        "Gibbs graphs: which state has lower energy?",
+        "Equilibrium compositions and phase amounts"
+      ],
+      "callout": "Keep a calculator and notebook ready. Write R1–R3 at the pause.",
+      "footer": "This opening replaces the separate reading. H1–H4 is optional."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null
+  },
+  {
+    "id": "02",
+    "slide": 2,
+    "number": 2,
+    "slide_id": "opening-02",
+    "title": "Match the question to the evidence",
+    "narration": "Three questions sound similar, but require different evidence. First, do the activity data satisfy a thermodynamic relationship? For that question, examine Gibbs-Duhem diagnostics and state the experimental path, assumptions and numerical method. Second, can a chosen model reproduce the observed vapor-liquid equilibrium? Compare calculated and observed pressure and vapor composition, using a specified fit. Third, is a proposed phase state stable? At fixed temperature, pressure and total composition, compare its total Gibbs energy with admissible alternatives. A fitted curve cannot, by itself, answer all three questions. A consistency score does not tell you the amount of each phase. A stability badge does not replace an explanation of the energy comparison. Before reading a result, say which question you are asking. That sentence determines which graph, residual or material balance you should inspect.",
+    "display": {
+      "kicker": "Identify the question first",
+      "table": {
+        "headers": [
+          "Question",
+          "Evidence"
+        ],
+        "rows": [
+          [
+            "Thermodynamic relationship?",
+            "Gibbs–Duhem diagnostics"
+          ],
+          [
+            "Model reproduces VLE?",
+            "Calculated versus observed P and y"
+          ],
+          [
+            "Phase state is stable?",
+            "Lowest admissible total Gibbs energy"
+          ]
+        ]
+      },
+      "callout": "A fit, a consistency score and a stability test answer different questions."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null
+  },
+  {
+    "id": "03",
+    "slide": 3,
+    "number": 3,
+    "slide_id": "opening-03",
+    "title": "What Gibbs–Duhem requires",
+    "narration": "Start with the excess Gibbs energy per mole, divided by R T. We call this dimensionless quantity g sub E. For a binary liquid, it equals x times the natural logarithm of gamma one, plus one minus x times the natural logarithm of gamma two. Differentiate with respect to x. The product rule gives the logarithm of gamma one over gamma two, plus two derivative terms. At fixed temperature and pressure, Gibbs-Duhem requires those last two terms to add to zero. This is why the derivative of g sub E should equal the logarithm of gamma one over gamma two. Our isothermal teaching example neglects the pressure contribution. For an isobaric data set whose temperature changes, an excess-enthalpy correction is needed. We cannot apply the simplified isothermal relation indiscriminately. The path and assumptions belong beside the result, not just in the calculation settings.",
+    "display": {
+      "kicker": "Binary liquid · stated path and assumptions",
+      "equations": [
+        "g<sub>E</sub> = x ln γ<sub>1</sub> + (1 − x) ln γ<sub>2</sub>",
+        "dg<sub>E</sub>/dx = ln(γ<sub>1</sub>/γ<sub>2</sub>) + x dlnγ<sub>1</sub>/dx + (1 − x) dlnγ<sub>2</sub>/dx",
+        "At fixed T, P:  x dlnγ<sub>1</sub>/dx + (1 − x) dlnγ<sub>2</sub>/dx = 0"
+      ],
+      "callout": "The simplified isothermal example neglects the pressure contribution.",
+      "footer": "Changing temperature at constant pressure requires an excess-enthalpy correction."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Herington.htm"
+    ]
+  },
+  {
+    "id": "04",
+    "slide": 4,
+    "number": 4,
+    "slide_id": "opening-04",
+    "title": "D measures net area imbalance",
+    "narration": "For the area test, plot the natural logarithm of gamma one over gamma two against liquid mole fraction x. Call the area above zero A plus. Call the positive magnitude of the area below zero A minus. D is one hundred times the absolute difference of these two magnitudes, divided by their sum. In the isothermal approximation used here, the signed integral over the full composition interval should vanish. Lab three uses the empirical criterion D less than five percent. A small D therefore indicates a small net area imbalance. It is not the percentage error of every measured point. Positive and negative departures can cancel in an integral. Also check composition coverage. If endpoints were extrapolated, the conclusion depends on that extrapolation. If both area magnitudes vanish, the normalized ratio is undefined; do not force a verdict from a zero denominator.",
+    "display": {
+      "kicker": "Area diagnostic",
+      "equations": [
+        "f(x) = ln(γ<sub>1</sub>/γ<sub>2</sub>)",
+        "D = 100 |A<sub>+</sub> − A<sub>−</sub>| / (A<sub>+</sub> + A<sub>−</sub>)",
+        "Lab criterion: D < 5%"
+      ],
+      "bullets": [
+        "A<sub>−</sub> is the positive magnitude below zero.",
+        "Small net imbalance can hide cancellation.",
+        "The full-range test needs full composition coverage."
+      ],
+      "callout": "D is not a percentage error for every point."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Herington.htm"
+    ]
+  },
+  {
+    "id": "05",
+    "slide": 5,
+    "number": 5,
+    "slide_id": "opening-05",
+    "title": "Local residual and average score",
+    "narration": "The differential diagnostic asks a more local question. Subtract the logarithm of gamma one over gamma two from the derivative of g sub E. The difference is r of x. Exact consistent functions give zero under the stated isothermal approximation. A nonzero numerical residual can come from inconsistent input, differentiation error or noise. Lab three displays one hundred times the mean absolute residual at the interior points. Its teaching threshold is a score below five. This score is dimensionless. Multiplying by one hundred does not make it a percentage error, because there is no relative-error denominator. Notice the distinction between the local curve and its average. A narrow peak can remain even when the average is small. Read both. A pass means that this selected summary met its criterion. It does not prove that every point exactly satisfies Gibbs-Duhem.",
+    "display": {
+      "kicker": "Local evidence versus a summary score",
+      "equations": [
+        "r(x) = dg<sub>E</sub>/dx − ln(γ<sub>1</sub>/γ<sub>2</sub>)",
+        "Displayed score = 100 mean |r|",
+        "Teaching threshold: score < 5"
+      ],
+      "bullets": [
+        "r(x) shows where departures occur.",
+        "The average can hide a narrow peak.",
+        "Numerical differentiation and noise affect r."
+      ],
+      "callout": "The score is dimensionless, not a percentage error."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json",
+      "https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Point.htm"
+    ]
+  },
+  {
+    "id": "06",
+    "slide": 6,
+    "number": 6,
+    "slide_id": "opening-06",
+    "title": "More points do not remove a defect",
+    "narration": "Here is the example from the opening reading. Use the synthetic isothermal data at three hundred and fifty kelvin, a localized defect with amplitude zero point two five, and eighty-one sampling points. D is about one point nine five six percent. The differential score is about one point five nine one. Both summaries pass. Yet the residual near x equal to zero point three five is about negative zero point two five zero. The local departure remains. Changing from forty-one to one hundred and sixty-one points changes D only slightly. These are denser samples of the same synthetic function, not new experimental measurements. More points can improve the numerical approximation and reveal the shape of the defect. They cannot remove the defect from the function. Nor does this comparison establish one universally sufficient number of experimental data points. Inspect the residual curve before writing your conclusion.",
+    "display": {
+      "kicker": "Lab 03 · synthetic localized defect",
+      "table": {
+        "headers": [
+          "Points",
+          "D (%)",
+          "100 mean |r|"
+        ],
+        "rows": [
+          [
+            "41",
+            "2.013463",
+            "1.671839"
+          ],
+          [
+            "81",
+            "1.956058",
+            "1.590767"
+          ],
+          [
+            "161",
+            "1.941724",
+            "1.565607"
+          ]
+        ]
+      },
+      "equations": [
+        "At 81 points: r(0.35) ≈ −0.250"
+      ],
+      "callout": "Both summaries pass, while a local departure remains.",
+      "footer": "350 K; amplitude 0.25. Denser samples of the same function."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json",
+      "https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/Point.htm"
+    ]
+  },
+  {
+    "id": "07",
+    "slide": 7,
+    "number": 7,
+    "slide_id": "opening-07",
+    "title": "What the Van Ness-type fit tests",
+    "narration": "The Van Ness approach examines modeling capability within thermodynamic consistency testing. Our Lab uses a teaching variant. It fits a consistent N R T L activity model jointly to pressure and vapor composition, at the observed temperature and liquid composition. The pressure metric is the mean absolute relative difference, multiplied by one hundred. The vapor-composition metric is the mean absolute mole-fraction difference, also multiplied by one hundred. Their denominators differ. The criteria are pressure error below one percent, and vapor-composition difference below one percentage point. The second is not a relative percentage error in y. Meeting both limits means that this model reproduces these observations under these assumptions. It does not certify each measurement. Missing a limit can reflect the model, property correlations or experimental data. This teaching fit is not the full NIST implementation. Report the method and its assumptions along with the two numbers.",
+    "display": {
+      "kicker": "Modeling capability within consistency testing",
+      "equations": [
+        "Δp = mean [100 |P<sub>calc</sub> − P<sub>obs</sub>| / P<sub>obs</sub>]",
+        "Δy = mean [100 |y<sub>calc</sub> − y<sub>obs</sub>|]",
+        "Δp < 1%       Δy < 1 percentage point"
+      ],
+      "bullets": [
+        "Consistent NRTL model fitted jointly to P and y.",
+        "A successful fit is evidence of reproduction.",
+        "It does not certify every observation."
+      ],
+      "footer": "Lab 03 uses a Van Ness-type teaching variant, not the full NIST TDE implementation."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "https://trc.nist.gov/TDE/Help/TDE103b_v4_0/VLE-DataSets-ConsistencyTests/VanNess.htm"
+    ]
+  },
+  {
+    "id": "08",
+    "slide": 8,
+    "number": 8,
+    "slide_id": "opening-08",
+    "title": "Read what the Gibbs curve represents",
+    "narration": "Now turn to phase stability. The vertical axis changes meaning. Here, g is the total mixing Gibbs energy divided by n R T. It includes ideal mixing and the excess contribution. It is not the excess-only quantity g sub E from the consistency calculation. For the symmetric Margules example, A is three. At each possible composition x, the curve gives the energy of one homogeneous liquid. The symbol z denotes our overall feed composition. We compare a homogeneous liquid at z with possible splits that conserve the same overall composition. Keep temperature, pressure and the reference state fixed during that comparison. The horizontal axis is composition, not time. Moving along the curve does not show a droplet evolving or a separation process proceeding. The graph describes possible states and their energies within this liquid model.",
+    "display": {
+      "kicker": "Fixed T, P and conserved overall composition",
+      "equations": [
+        "g(x) = Δ<sub>mix</sub>G / (nRT)",
+        "g(x) = x ln x + (1 − x) ln(1 − x) + A x(1 − x)",
+        "A = 3;  overall feed z = 0.12"
+      ],
+      "bullets": [
+        "x: composition of a possible homogeneous liquid",
+        "z: overall composition of our material",
+        "Total mixing g includes ideal and excess terms."
+      ],
+      "callout": "The horizontal axis is composition, not time."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "09",
+    "slide": 9,
+    "number": 9,
+    "slide_id": "opening-09",
+    "title": "Identify the curve, contacts and markers",
+    "narration": "Follow the labels on the graph. The amber curve represents the homogeneous liquid. The two contact compositions are about zero point zero seven zero seven two and zero point nine two nine two eight. These are the compositions inside the candidate coexisting phases, not their relative amounts. The graphite common tangent touches both contacts. It is horizontal here because this example is symmetric; a common tangent is not always horizontal. The dashed teal equilibrium envelope follows the supported two-liquid line between the contacts. Now read vertically at z equal to zero point one two. The amber diamond marks the homogeneous feed. The teal circle below it marks the two-liquid state with the same overall composition. The difference in height is the Gibbs energy decrease on splitting. Always compare the two heights at the same overall composition, rather than comparing arbitrary points along the curve.",
+    "display": {
+      "kicker": "Read vertically at z = 0.12",
+      "figure": "gibbs",
+      "bullets": [
+        "Amber curve and diamond: homogeneous liquid and feed",
+        "Graphite line: supporting common tangent",
+        "Dashed teal line and circle: equilibrium envelope and split feed"
+      ],
+      "footer": "Contact compositions x<sup>α</sup> = 0.07072018 and x<sup>β</sup> = 0.92927982 are not phase fractions."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "10",
+    "slide": 10,
+    "number": 10,
+    "slide_id": "opening-10",
+    "title": "Positive curvature is only a local check",
+    "narration": "First check the curvature of the homogeneous curve at the feed. For this model, the second derivative is one over x, plus one over one minus x, minus twice A. At x equal to zero point one two, substitute one over zero point one two, plus one over zero point eight eight, minus six. The result is about positive three point four six nine seven. Positive curvature means that the homogeneous liquid resists infinitesimal composition fluctuations. It does not exclude a lower-energy split into substantially different compositions. Negative curvature identifies a locally unstable homogeneous state. Zero curvature needs further examination. To distinguish a globally stable state from a metastable one, we still need an energy comparison with admissible alternatives. Do not stop at the positive sign or at a badge. Write what was tested: local curvature, at the specified feed composition.",
+    "display": {
+      "kicker": "Step 1 · local curvature",
+      "equations": [
+        "g″(x) = 1/x + 1/(1 − x) − 2A",
+        "g″(0.12) = 1/0.12 + 1/0.88 − 6",
+        "= +3.469697"
+      ],
+      "bullets": [
+        "Positive: resists infinitesimal composition fluctuations.",
+        "Negative: locally unstable homogeneous state.",
+        "Zero: requires further examination."
+      ],
+      "callout": "Positive curvature does not establish global stability."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "11",
+    "slide": 11,
+    "number": 11,
+    "slide_id": "opening-11",
+    "title": "Use the lever rule, then compare energies",
+    "narration": "Use the contact compositions to construct a split with the correct material balance. The beta phase fraction equals z minus x alpha, divided by x beta minus x alpha. At z equal to zero point one two, substitution gives zero point zero five seven three nine eight. The alpha fraction is one minus that value, or zero point nine four two six zero two. These are mole fractions of the total amount assigned to each phase. Their weighted composition returns zero point one two. Next, evaluate the energy. The homogeneous value is about negative zero point zero five zero one two five. The weighted split value is about negative zero point zero five eight three four one. The positive difference shown on the slide is the Gibbs energy reduction, measured in R T per mole of feed. Positive local curvature with a lower admissible split identifies this feed as metastable.",
+    "display": {
+      "kicker": "Step 2 · conserve composition and compare energy",
+      "equations": [
+        "f<sup>β</sup> = (0.12 − 0.07072018)/(0.92927982 − 0.07072018)",
+        "f<sup>β</sup> = 0.057398;  f<sup>α</sup> = 0.942602",
+        "f<sup>α</sup>x<sup>α</sup> + f<sup>β</sup>x<sup>β</sup> = 0.120000",
+        "g<sub>one</sub> = −0.05012499;  g<sub>split</sub> = −0.05834135",
+        "g<sub>one</sub> − g<sub>split</sub> = +0.00821636"
+      ],
+      "callout": "The homogeneous feed is metastable: locally resistant, but not the global minimum."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "12",
+    "slide": 12,
+    "number": 12,
+    "slide_id": "opening-12",
+    "title": "Global support and the Lab checks",
+    "narration": "A lower split rejects global stability of the feed. To establish that the chosen split is the equilibrium state, check that its common tangent supports the whole curve. The curve minus that line must be nonnegative at every admissible composition, with equality at the contacts. In Lab four, the common-tangent residual checks the coexistence equations. It does not check global support. The feed tangent-plane-distance view uses the tangent at the homogeneous feed. A negative value somewhere rejects global stability of that feed. These are different checks. Finally, change only z to zero point three five. At the same temperature, pressure and model, the contact compositions stay fixed. The beta fraction becomes about zero point three two five two eight nine. The relative amounts change, and the feed curvature is now negative. Equilibrium selects coexistence compositions; material balance selects the phase amounts.",
+    "display": {
+      "kicker": "Step 3 · global support and conserved amounts",
+      "equations": [
+        "g(x) − ℓ(x) ≥ 0 for every admissible x",
+        "Change only z: 0.12 → 0.35",
+        "x<sup>α</sup> and x<sup>β</sup> unchanged;  f<sup>β</sup> → 0.325289"
+      ],
+      "bullets": [
+        "Common-tangent residual: coexistence equations",
+        "Feed TPD: negative somewhere rejects feed stability",
+        "Full supporting line: global test within the liquid model"
+      ],
+      "callout": "Equilibrium compositions stay fixed; the relative amounts change."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "13",
+    "slide": 13,
+    "number": 13,
+    "slide_id": "opening-13",
+    "title": "Pause and write R1–R3",
+    "narration": "Pause for about four minutes and write R one through R three in your notebook. For R one, both D and the mean residual score pass, but the residual curve has a narrow peak. Can you certify every point, and what should you inspect? For R two, A is three and z is zero point one two. Curvature is positive, but a supported split has lower Gibbs energy. Classify the homogeneous feed and explain why. For R three, move z to zero point three five on the same supported tie line. State what stays fixed, calculate the beta phase fraction, and explain why Week four still needs material balances. Keep your first answers, then continue to the check.",
+    "display": {
+      "kicker": "Four-minute notebook pause",
+      "bullets": [
+        "R1. D and the mean residual score pass, but r(x) has a narrow peak. Can you certify every point? What should you inspect?",
+        "R2. A = 3, z = 0.12: positive curvature, lower supported split. Is the homogeneous feed globally stable, metastable or locally unstable? Why?",
+        "R3. Move z to 0.35 on the same tie line. What stays fixed? Calculate f<sup>β</sup>. Why will Week 4 still need material balances?"
+      ],
+      "callout": "Write first. Then continue to the check. No extra form or export.",
+      "equations": [
+        "x<sup>α</sup> = 0.07072018;  x<sup>β</sup> = 0.92927982"
+      ]
+    },
+    "activity": true,
+    "activity_minutes": 4,
+    "pause_instruction": "Pause for about 4 minutes. Write R1–R3 in your notebook before continuing to the check. Use the contact compositions xα = 0.07072018 and xβ = 0.92927982 for R3.",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  },
+  {
+    "id": "14",
+    "slide": 14,
+    "number": 14,
+    "slide_id": "opening-14",
+    "title": "Check your answers, then continue",
+    "narration": "For R one, the answer is no. Integrated or averaged summaries can hide cancellation and localized departures. Inspect the residual shape, assumptions, composition coverage and numerical sensitivity. State which criterion passed. For R two, the homogeneous feed is metastable. Its positive curvature gives local resistance, but the supported split has lower Gibbs energy. For R three, the two contact compositions stay fixed. The lever rule gives a beta fraction of zero point three two five two eight nine and an alpha fraction of zero point six seven four seven one one. Equilibrium conditions do not replace inventory balances. That distinction carries directly into Week four, where we must check whether enough material remains for a solid phase to exist. Add corrections beside your first answers. Now continue with the six-page worksheet and four-page Lab guide. Complete A through G and I; H remains optional. Submit the existing Session four exit ticket and feedback once at the end.",
+    "display": {
+      "kicker": "Notebook check and transition",
+      "bullets": [
+        "R1: No. Inspect the local curve, assumptions, coverage and numerical sensitivity.",
+        "R2: Metastable. Positive curvature, but a lower supported split.",
+        "R3: x<sup>α</sup> and x<sup>β</sup> stay fixed. f<sup>β</sup> = 0.325289; f<sup>α</sup> = 0.674711."
+      ],
+      "callout": "Continue with worksheet A–G and I. H1–H4 is optional.",
+      "footer": "Equilibrium conditions plus inventory balances determine the state and amounts."
+    },
+    "activity": false,
+    "activity_minutes": 0,
+    "pause_instruction": "",
+    "stage_start_minute": null,
+    "stage_end_minute": null,
+    "sources": [
+      "week04-questions.html",
+      "numerical-qa.json"
+    ]
+  }
+]

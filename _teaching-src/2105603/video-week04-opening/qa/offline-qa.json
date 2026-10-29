@@ -1,0 +1,97 @@
+{
+  "status": "pass",
+  "scope": "Final offline archive integrity and current Week 4 content; no live-server playback claim.",
+  "archive": "teaching/2105603/files/thermodynamics-offline.zip",
+  "archive_sha256": "09825748387dbb779fb81219f8a2113989a47df9915691b517e6e739647b8252",
+  "archive_bytes": 65700494,
+  "manifest_files_verified": 509,
+  "files": [
+    {
+      "file": "teaching/2105603/files/week04-video-slides.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "db2b66535151654cc32576f6eb1525c9516307cb6e07463ab3a22b22ed673fd2",
+      "pages": 54
+    },
+    {
+      "file": "teaching/2105603/files/postmidterm-04-slides.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "c2fb83d5a48203eb44a76bb5f56e052b9d66e96969914fdf8ecfe5a6a8804c8e",
+      "pages": 40
+    },
+    {
+      "file": "teaching/2105603/files/preclass-week-04.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "2835261e73b59d9a9943e8ad434bf88de7ba8db8b0880de165a3dcce56e16699",
+      "pages": 3
+    },
+    {
+      "file": "teaching/2105603/files/week04-practice.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "6e966b8b27b1d712a96d28ae10113cb5e6b404899ededd89d4bb6ad15d254d9b",
+      "pages": 6
+    },
+    {
+      "file": "teaching/2105603/files/week04-lab-guide.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "783c3dc640f549cc3c113a6d08e4bbcdd17cd8b71acbb31c22942076fc04f564",
+      "pages": 4
+    },
+    {
+      "file": "teaching/2105603/files/week04-solutions.pdf",
+      "verification": "byte-identical to staged public PDF",
+      "sha256": "df6695f7d8ef862c3fa604d4042531d8053875ececa9d31a0f74accebb1af0bd",
+      "pages": 4
+    },
+    {
+      "file": "teaching/2105603/week04-study.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "d8175a56cc6316e25882678c5e7e8d905c9ca3b20d3293adcca35775fafd6c81",
+      "offline_sha256": "95bdfdb084d36886e1e1c61bfd751d913a93f732ec43c33db1108e263312f928"
+    },
+    {
+      "file": "teaching/2105603/week04-questions.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "650f638857592ebf23c2f1bf945a094829d025a0d8417d4ff1e965415a575f6b",
+      "offline_sha256": "09ce724affc384092d482657e67263df14f3ff884ef944f08f916ea8c021989f"
+    },
+    {
+      "file": "teaching/2105603/postmidterm-04.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "864562a128d5ae15a9a36c7a85e1e7cb903b71c40f760f0be06e2c39d2a9141d",
+      "offline_sha256": "acec15fc83d7005b491edce1878de1957dda21c7b980626863aad50cfad571d6"
+    },
+    {
+      "file": "teaching/2105603/postmidterm-04-appendix.html",
+      "verification": "exact match after documented offline link rewrites only",
+      "public_sha256": "fea1d00dce00d6b79aab8b68f627aedfeaabe036e605c98d3a94baaa63ca1371",
+      "offline_sha256": "2661f12e63eab72b61dfa8267906d743831ca6b8b493430768fb7f2dc5f5a7d6"
+    }
+  ],
+  "online_demo_anchors_preserved": [
+    "https://www.skhgroup.net/teaching/2105603/week04-video.html#opening-01",
+    "https://www.skhgroup.net/teaching/2105603/week04-video.html#slide-16",
+    "https://www.skhgroup.net/teaching/2105603/week04-video.html#slide-30"
+  ],
+  "relative_omitted_player_links": [],
+  "media_files_in_archive": [],
+  "private_system_files": [],
+  "labs_release_manifest_byte_identical": true,
+  "session_4_core_labs": [
+    "solids",
+    "adsorption"
+  ],
+  "staged_player_sha256": "211dfa56132a57c6759d1c8eb16ab1e6fa8c692040c1a09603db47830c42b17b",
+  "staged_player_chapters": 54,
+  "opening_chapters": 14,
+  "core_slides": 40,
+  "new_and_legacy_anchors_preserved": true,
+  "builder_sha256": "5b404a7aae1ccd48e0e8518557cfc9ec489c1de1924779a3933dd00394b3cfe3",
+  "omitted_video_pages_from_final_builder": [
+    "week02-video.html",
+    "week03-video.html",
+    "week04-video.html",
+    "lab08-video.html",
+    "lab01-video.html",
+    "week03-gibbs-review-video.html"
+  ]
+}

@@ -1,3 +1,5 @@
+CURRENT PUBLICATION: The combined opening + core recording is now reproduced from ../video-week04-opening/. This file documents the prior edition and its retained source inputs.
+
 WEEK 4 ROUTE UPDATE - 29 OCTOBER 2026
 
 Begin with week04-questions.html: 20 minutes for consistency diagnostics,
