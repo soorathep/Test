@@ -1,0 +1,68 @@
+Slide 1: LP and duality: questions explained
+This review responds to questions from the LP exit ticket. We will build the dual problem one step at a time, so that each new symbol has a clear meaning. Then we will examine what happens when the first resource increases from four to six units. Keep a pen and paper nearby. Pause at the practice slide and try the calculation before listening to the solution. Throughout the review, production quantities are continuous, as in the original linear program.
+
+Slide 2: The original production problem
+Our original model chooses how much of two products to make. One unit of product x earns three profit units and uses one unit of resource one and two units of resource two. Product y earns two and uses one unit of each resource. We have four units of resource one and five units of resource two. The shaded region shows feasible production plans. For this review, profit and resource quantities use illustrative units. At the marked point, x equals one and y equals three.
+
+Slide 3: Production quantities and resource prices
+The symbols describe different decisions. In the primal, x and y are quantities of products. In the dual, u is a price per unit of resource one, and v is a price per unit of resource two. The letter z labels the profit calculated from x and y. The letter w labels the resource value calculated from u and v. We are constructing a second optimization problem, not substituting u for x or v for y. The optimal objective values will agree, even though the decisions have different meanings.
+
+Slide 4: Step 1: weighting the resource constraints
+We start with the two resource inequalities. Multiply the first by u and the second by v. We require these weights to be nonnegative because multiplication by a nonnegative number preserves the inequality direction. Add the two inequalities. The result says that the priced resource use cannot exceed the value of the available resources. We have not chosen numerical prices yet. We will choose prices that make this expression an upper bound on production profit.
+
+Slide 5: Step 2: collecting product coefficients
+Expand the weighted resource use, then collect terms in x and y. Product x carries the coefficient u plus two v because it consumes one unit of the first resource and two of the second. Product y carries u plus v because it uses one unit of each. This is where the coefficients in the dual constraints come from. Each product column in the primal resource table becomes one constraint in the dual. The coefficients do not come from renaming the production variables.
+
+Slide 6: Step 3: a valid upper bound on profit
+To bound profit from above, the cost assigned to each product must cover its profit coefficient. For x, this means u plus two v must be at least three. For y, u plus v must be at least two. Since x and y are nonnegative, we can multiply these coefficient inequalities by the quantities and add them. This gives the first inequality on the slide. Resource feasibility gives the second. Every feasible production profit is therefore at most four u plus five v whenever the prices satisfy these conditions.
+
+Slide 7: Step 4: the complete dual problem
+Any feasible pair of prices gives an upper bound on profit. We want the smallest such bound, so the dual objective is a minimization. The available resource amounts, four and five, become objective coefficients. Each primal resource row creates one dual variable. Each product column creates one dual constraint. The displayed signs apply to this particular primal form: maximization, less-than-or-equal resource constraints, and nonnegative product quantities. Different primal signs or free variables require the corresponding dual rules, rather than copying this pattern blindly.
+
+Slide 8: A cheap price pair can fail the bound
+Suppose we pick u equal to one and v equal to zero. The resource value is only four, which looks attractive for minimization. But both product coverage constraints fail. A concrete counterexample makes the problem visible: produce zero of x and four of y. This uses four units of each resource, so it is feasible. Its profit is eight, greater than the proposed bound of four. A low objective value alone does not make a dual solution valid. Always check every constraint first.
+
+Slide 9: Matching feasible values certify optimality
+Now use prices u and v both equal to one. Both coverage constraints hold with equality, and the dual objective is nine. The production plan x equal to one and y equal to three is feasible and also earns nine. Weak duality tells us no feasible production plan can earn more than this dual bound. Because we have a plan that reaches it, the plan and the prices are optimal. Notice that the equality is between objective values, z and w. The optimal production quantities and resource prices need not match.
+
+Slide 10: Complementary slackness links the solutions
+Complementary slackness links each variable to the slack in its matching constraint. A positive resource price requires full use of that resource. A positive product quantity requires its assigned cost to equal its profit coefficient. At our baseline solution, both products are positive. Set both dual slacks to zero. Subtract u plus v equals two from u plus two v equals three. This gives v equal to one, then u equal to one. A binding constraint can sometimes have a zero multiplier, so binding by itself does not prove that its price is positive.
+
+Slide 11: Changing the amount of resource 1
+We now vary only the first resource amount, b one. Keep the second resource at five and keep both profit coefficients unchanged. At the baseline, the optimal price of resource one is one. This suggests that an extra small unit of the first resource adds one profit unit. The proposed value formula is nine plus one times the change in b one. Before using it for a finite change, we must find the interval over which the same optimal structure remains valid.
+
+Slide 12: Step 1: the intersection as b₁ changes
+Inside the current regime, both resource constraints bind. Write their boundary equations. Subtract the first from the second to obtain x equal to five minus b one. Substitute this into x plus y equals b one to obtain y equal to two b one minus five. These expressions describe the moving intersection of the resource boundaries. They are only candidate production quantities until we check nonnegativity and optimality. The figure shows how the intersection moves as resource one increases.
+
+Slide 13: Step 2: the allowable interval
+The interval comes directly from nonnegative production. Five minus b one must be at least zero, so b one cannot exceed five. Two b one minus five must be at least zero, so b one must be at least two point five. Combining the conditions gives the allowable interval. Throughout this interval, prices one and one remain dual feasible, and their value equals the feasible intersection's profit. This proves optimality, rather than merely checking that the intersection exists.
+
+Slide 14: Step 3: profit inside the interval
+Substitute the intersection quantities into the original profit function. Three times five minus b one, plus two times two b one minus five, simplifies to b one plus five. Its slope is one, which is the shadow price. For example, increasing the first resource from four to four point two gives x equal to zero point eight and y equal to three point four. The resulting profit is nine point two, exactly matching the shadow-price prediction. This is an exact finite-change result within the stated interval.
+
+Slide 15: Beyond the interval: b₁ = 6
+At b one equal to six, the old intersection formula gives x equal to negative one and y equal to seven. The two resource boundary lines still intersect, but the point is outside the feasible region because negative production is forbidden. The old price formula predicts eleven, but the feasible plan that previously justified equality no longer exists. Prices one and one still give a valid upper bound of eleven. The bound has become loose, so it no longer identifies the optimal value.
+
+Slide 16: Profit per unit of the limiting resource
+Why should we not simply choose x because three is greater than two? One unit of x uses twice as much of the limiting second resource. Compare profit per unit of that resource. Product x earns three divided by two, or one point five. Product y earns two divided by one, or two. In this changed problem, using all five units of resource two for y is feasible for resource one as well. This ratio argument works here because one resource is the effective bottleneck. It is not a general replacement for solving an LP with several binding resources.
+
+Slide 17: The new optimum uses five units of y
+Compare the two axis endpoints. Producing two point five units of x earns seven point five. Producing five units of y earns ten and satisfies both resource limits. We can also substitute y equals five minus two x along the second resource boundary. Profit becomes ten minus x, so moving toward smaller x raises profit along that boundary. The best endpoint is zero x and five y. The next slide proves that no interior point or other feasible point can do better.
+
+Slide 18: A new dual certificate proves the answer
+Use a price of zero for resource one and two for resource two. The dual coverage constraints become four greater than or equal to three, and two equal to two. Both prices are nonnegative, so the pair is feasible. The resource value is ten, which matches the profit of producing five y. That equality proves global optimality for this LP. Resource one has one unit left over, and its price is zero. Product x has zero output and a positive dual slack of one. Both facts fit complementary slackness.
+
+Slide 19: The complete value curve for b₁ ≥ 0
+The whole value curve has three linear pieces. With very little resource one, it is the effective bottleneck, and producing x gives profit three times b one. Between two point five and five, the best plan mixes both products and profit is b one plus five. Above five, producing five y already exhausts resource two, and additional resource one has no value. The slope therefore decreases from three to one to zero. The old straight-line prediction continues above the actual value after b one passes five.
+
+Slide 20: Range endpoints and a finite increase
+For a change from four to six, split the change where the value curve changes slope. The first extra resource unit, from four to five, adds one profit unit. The next unit, from five to six, adds nothing. Total profit increases by one, not two. At the endpoint five, the left and right derivatives differ, so there is no single two-sided marginal value. The baseline price of one still predicts the value at the endpoint correctly, but it cannot predict increases beyond that endpoint. Buying capacity would also require subtracting its purchase cost from this gross gain.
+
+Slide 21: Pause and try the calculation
+Pause the recording and solve both cases before moving on. Keep the second resource at five and the original profit coefficients at three and two. For b one equal to four point six, first check whether the value lies in the allowable interval. Then find the production quantities and verify the resource use. Repeat for five point four, but do not extend the old formula automatically. Finally, find a feasible dual pair whose objective matches each production profit. The solution is on the next slide.
+
+Slide 22: Practice solution and optimality checks
+For case A, the intersection gives x equal to zero point four and y equal to four point two. Resource use is four point six and five, exactly the available amounts. Profit is nine point six. Prices one and one give the same dual value. For case B, the old intersection would have negative x. Use zero x and five y instead. Its profit is ten. Prices zero and two certify that value, while zero point four unit of resource one remains unused. A positive slack forces that resource's optimal price to zero by complementary slackness.
+
+Slide 23: A connected view of primal and dual
+The primal chooses feasible quantities. The dual chooses feasible resource prices that bound the profit. When both feasible values match, we have an optimality certificate. Complementary slackness explains how unused resources and inactive products fit the prices. Shadow prices then describe how the optimal value responds to resource changes, within the appropriate range and direction. If anything remains unclear, use the LP exit ticket feedback field to identify the slide number and the step that caused difficulty. You may write your question in Thai or English.
