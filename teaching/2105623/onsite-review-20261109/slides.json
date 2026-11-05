@@ -52,7 +52,7 @@
       "For any feasible pair: z ≤ w"
     ],
     "fig": "bound",
-    "script": "Here is the proof. Since x and y are nonnegative, the dual constraints imply that three x plus two y is no greater than u plus two v times x, plus u plus v times y. Rearranging gives u times x plus y, plus v times two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above."
+    "script": "Here is the proof. Since x and y are nonnegative, multiply the first dual inequality by x and the second by y, then add them. Profit is no greater than the quantity u plus two v, multiplied by x, plus the quantity u plus v, multiplied by y. Collecting terms gives u times the entire quantity x plus y, plus v times the entire quantity two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above."
   },
   {
     "n": 6,
@@ -102,9 +102,9 @@
     "n": 10,
     "title": "Feasibility determines the interval",
     "rows": [
-      "x ≥ 0 requires b₁ ≤ 5.",
-      "y ≥ 0 requires b₁ ≥ 2.5.",
-      "Together: 2.5 ≤ b₁ ≤ 5"
+      "x ≥ 0 requires b₁ ≤ 5; y ≥ 0 requires b₁ ≥ 2.5.",
+      "On 2.5 ≤ b₁ ≤ 5: primal z = b₁ + 5 = dual w.",
+      "At the endpoints, use one-sided slopes."
     ],
     "fig": "interval_feasible",
     "script": "The first nonnegativity condition says five minus b one must be at least zero, so b one cannot exceed five. The second says two b one minus five must be at least zero, so b one cannot be below two point five. Within this interval the old dual prices one, one remain feasible, and the candidate primal profit equals their bound. That certifies optimality throughout the interval, including its endpoints. At an endpoint, the derivative may differ on the two sides."
@@ -135,12 +135,12 @@
     "n": 13,
     "title": "Why producing y gives the larger profit",
     "rows": [
-      "On 2x + y = 5, substitute y = 5 − 2x.",
-      "z = 3x + 2(5 − 2x) = 10 − x",
-      "For x ≥ 0, z ≤ 10; equality at x = 0."
+      "For b₁ = 6: y ≤ 5 − 2x for every feasible plan.",
+      "z = 3x + 2y ≤ 10 − x ≤ 10",
+      "Feasible (x,y) = (0,5) attains 10."
     ],
     "fig": "efficiency",
-    "script": "It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. On the binding line, substitute y equals five minus two x. The objective becomes ten minus x. Increasing x actually reduces profit along this line. Product x earns one point five per unit of resource two, while y earns two. The best plan is zero, five. Alternatively, prices zero, two give a feasible dual bound of ten."
+    "script": "Keep resource one at six and resource two at five. It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. For every feasible plan, resource two implies that y is at most five minus two x. Substituting this bound into profit gives z at most ten minus x, which is at most ten because x is nonnegative. The feasible plan zero, five attains ten, so it is optimal. The chart explains the same result: product x earns one point five per unit of resource two, while product y earns two."
   },
   {
     "n": 14,
@@ -195,18 +195,18 @@
       "At (3,0), ∇f = (4,16) and f = 20."
     ],
     "fig": "gradient",
-    "script": "Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Use this quadratic throughout the next examples. Differentiating with respect to u gives two times u minus one. Differentiating with respect to v gives eight times v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. These numbers are inputs to an iteration, not the answer to the optimization problem. The minimum is at one, minus two, but ordinary gradient descent generally takes several steps to approach it."
+    "script": "Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Differentiate the quadratic shown on the slide. The first derivative component is two times the entire quantity u minus one. The second component is eight times the entire quantity v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. The arrow shows negative zero point one times this gradient, so it previews the next step. Its endpoint is not the optimum. The minimum is at one, minus two, marked by the star."
   },
   {
     "n": 19,
     "title": "One gradient step is not the optimum",
     "rows": [
-      "Use α = 0.1: x₁ = x₀ − α∇f(x₀).",
+      "Let rₖ = (uₖ,vₖ). Use α = 0.1: r₁ = r₀ − α∇f(r₀).",
       "(u₁,v₁) = (3,0) − 0.1(4,16) = (2.6,−1.6)",
-      "f(x₁) = 1.6² + 4(0.4)² = 3.2"
+      "f(r₁) = 1.6² + 4(0.4)² = 3.2"
     ],
     "fig": "gdstep",
-    "script": "Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions."
+    "script": "Let r sub k denote the pair of coordinates at iteration k. Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions."
   },
   {
     "n": 20,
@@ -224,8 +224,8 @@
     "title": "Solution: update the gradient every time",
     "rows": [
       "∇f(2.6,−1.6) = (3.2,3.2)",
-      "x₂ = (2.6,−1.6) − 0.1(3.2,3.2) = (2.28,−1.92)",
-      "f(x₂) = 1.28² + 4(0.08)² = 1.664"
+      "r₂ = (2.6,−1.6) − 0.1(3.2,3.2) = (2.28,−1.92)",
+      "f(r₂) = 1.28² + 4(0.08)² = 1.664"
     ],
     "fig": "gdsolution",
     "script": "At the first iterate, both gradient components are three point two. Subtracting zero point three two from each coordinate gives two point two eight, minus one point nine two. The objective is one point six six four. Compare the sequence twenty, three point two, and one point six six four. It is decreasing, although the two coordinates converge at different rates. Reusing the old gradient would be a different update and would not produce this sequence."
@@ -247,7 +247,7 @@
     "rows": [
       "eᵤ multiplier = 0.5; eᵥ multiplier = −1.",
       "From (3,0), v alternates: 0, −4, 0, −4, …",
-      "f(xₖ) = 4(1/4)ᵏ + 16 → 16, not 0."
+      "f(rₖ) = 4(1/4)ᵏ + 16 → 16, not 0."
     ],
     "fig": "oscillation",
     "script": "At exactly one quarter, the u error shrinks by one half. The v error changes sign but keeps the same magnitude. Starting from v equals zero, the v coordinate therefore alternates between zero and minus four. Its contribution to the objective stays at sixteen. The u contribution decays, so the total objective approaches sixteen, not zero. This is neither convergence to the minimum nor unbounded growth of both coordinates. The boundary of a convergence interval deserves its own check."
@@ -258,10 +258,10 @@
     "rows": [
       "p = −g/H in one dimension.",
       "At x = 0.2 for q: g = −0.768, H = −3.52.",
-      "p ≈ −0.21818; gp > 0, so p is an ascent direction."
+      "p ≈ −0.21818; full step x+p ≈ −0.01818."
     ],
     "fig": "newton",
-    "script": "Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight. Multiplying the gradient by this direction gives a positive number, so sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search."
+    "script": "Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight one eight. A full step moves from zero point two to approximately minus zero point zero one eight one eight, as the graph shows. The product of the gradient and direction is positive, so this is an ascent direction: sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search."
   },
   {
     "n": 25,

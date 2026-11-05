@@ -34,9 +34,9 @@
     {
       "slide": 5,
       "title": "Why the dual gives an upper bound",
-      "script": "Here is the proof. Since x and y are nonnegative, the dual constraints imply that three x plus two y is no greater than u plus two v times x, plus u plus v times y. Rearranging gives u times x plus y, plus v times two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above.",
+      "script": "Here is the proof. Since x and y are nonnegative, multiply the first dual inequality by x and the second by y, then add them. Profit is no greater than the quantity u plus two v, multiplied by x, plus the quantity u plus v, multiplied by y. Collecting terms gives u times the entire quantity x plus y, plus v times the entire quantity two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above.",
       "file": "audio/slide-005.mp3",
-      "duration_seconds": 25.56
+      "duration_seconds": 33.816
     },
     {
       "slide": 6,
@@ -90,9 +90,9 @@
     {
       "slide": 13,
       "title": "Why producing y gives the larger profit",
-      "script": "It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. On the binding line, substitute y equals five minus two x. The objective becomes ten minus x. Increasing x actually reduces profit along this line. Product x earns one point five per unit of resource two, while y earns two. The best plan is zero, five. Alternatively, prices zero, two give a feasible dual bound of ten.",
+      "script": "Keep resource one at six and resource two at five. It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. For every feasible plan, resource two implies that y is at most five minus two x. Substituting this bound into profit gives z at most ten minus x, which is at most ten because x is nonnegative. The feasible plan zero, five attains ten, so it is optimal. The chart explains the same result: product x earns one point five per unit of resource two, while product y earns two.",
       "file": "audio/slide-013.mp3",
-      "duration_seconds": 33.12
+      "duration_seconds": 36.576
     },
     {
       "slide": 14,
@@ -125,16 +125,16 @@
     {
       "slide": 18,
       "title": "Gradient descent: compute the gradient",
-      "script": "Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Use this quadratic throughout the next examples. Differentiating with respect to u gives two times u minus one. Differentiating with respect to v gives eight times v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. These numbers are inputs to an iteration, not the answer to the optimization problem. The minimum is at one, minus two, but ordinary gradient descent generally takes several steps to approach it.",
+      "script": "Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Differentiate the quadratic shown on the slide. The first derivative component is two times the entire quantity u minus one. The second component is eight times the entire quantity v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. The arrow shows negative zero point one times this gradient, so it previews the next step. Its endpoint is not the optimum. The minimum is at one, minus two, marked by the star.",
       "file": "audio/slide-018.mp3",
-      "duration_seconds": 39.288
+      "duration_seconds": 40.488
     },
     {
       "slide": 19,
       "title": "One gradient step is not the optimum",
-      "script": "Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions.",
+      "script": "Let r sub k denote the pair of coordinates at iteration k. Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions.",
       "file": "audio/slide-019.mp3",
-      "duration_seconds": 31.128
+      "duration_seconds": 34.464
     },
     {
       "slide": 20,
@@ -167,9 +167,9 @@
     {
       "slide": 24,
       "title": "Newton directions also need a check",
-      "script": "Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight. Multiplying the gradient by this direction gives a positive number, so sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search.",
+      "script": "Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight one eight. A full step moves from zero point two to approximately minus zero point zero one eight one eight, as the graph shows. The product of the gradient and direction is positive, so this is an ascent direction: sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search.",
       "file": "audio/slide-024.mp3",
-      "duration_seconds": 31.248
+      "duration_seconds": 39.36
     },
     {
       "slide": 25,
@@ -186,5 +186,5 @@
       "duration_seconds": 28.272
     }
   ],
-  "total_duration_seconds": 810.504
+  "total_duration_seconds": 834.864
 }
