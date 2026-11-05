@@ -1,0 +1,288 @@
+[
+  {
+    "n": 1,
+    "title": "LP and NLP: guided review",
+    "rows": [
+      "Prepare for onsite class",
+      "Monday, November 9, 2026",
+      "Pause, calculate, then compare your reasoning."
+    ],
+    "fig": "roadmap",
+    "script": "Welcome to this guided review of linear and nonlinear optimization. Please attend our onsite class on Monday, November ninth, twenty twenty-six. Before class, work through these explanations and pause at each practice slide. We will connect production decisions to dual prices, explain when a shadow price remains valid, and check the steps used by nonlinear optimization methods. Bring your calculations and the questions that you would like us to discuss in person."
+  },
+  {
+    "n": 2,
+    "title": "What the primal variables mean",
+    "rows": [
+      "max z = 3x + 2y;  x, y ≥ 0",
+      "Resource 1: x + y ≤ 4",
+      "Resource 2: 2x + y ≤ 5"
+    ],
+    "fig": "primal",
+    "script": "Start with the production problem. The variables x and y are continuous production quantities. Each unit of x earns three profit units and uses one unit of resource one and two units of resource two. Each unit of y earns two and uses one unit of each resource. The number z is the resulting profit. It is not an additional independent production decision. The feasible region contains all production plans that satisfy both resource limits."
+  },
+  {
+    "n": 3,
+    "title": "What the dual variables mean",
+    "rows": [
+      "u = price per unit of resource 1",
+      "v = price per unit of resource 2",
+      "w = 4u + 5v: value of the available resources"
+    ],
+    "fig": "prices",
+    "script": "The dual describes a different decision. We choose nonnegative resource prices u and v. These are not renamed versions of x and y. Production quantities belong to the primal, while resource prices belong to the dual. Four units of resource one and five units of resource two have total value four u plus five v. We call that value w. To create an upper bound on profit, the resource prices must cover the profit of each product."
+  },
+  {
+    "n": 4,
+    "title": "Derive one dual constraint per product",
+    "rows": [
+      "Product x uses (1, 2): cost = u + 2v",
+      "Cover its profit: u + 2v ≥ 3",
+      "Product y uses (1, 1): u + v ≥ 2"
+    ],
+    "fig": "dualcolumns",
+    "script": "Read one product column at a time. Product x consumes one unit of resource one and two units of resource two, so its priced resource cost is u plus two v. That cost must be at least its profit of three. Product y consumes one unit of each resource, so u plus v must be at least two. This is why the primal resource coefficients reappear by columns in the dual constraints. The inequality direction follows from requiring a valid upper bound."
+  },
+  {
+    "n": 5,
+    "title": "Why the dual gives an upper bound",
+    "rows": [
+      "min w = 4u + 5v;  u, v ≥ 0",
+      "u + 2v ≥ 3;  u + v ≥ 2",
+      "For any feasible pair: z ≤ w"
+    ],
+    "fig": "bound",
+    "script": "Here is the proof. Since x and y are nonnegative, the dual constraints imply that three x plus two y is no greater than u plus two v times x, plus u plus v times y. Rearranging gives u times x plus y, plus v times two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above."
+  },
+  {
+    "n": 6,
+    "title": "An optimality certificate",
+    "rows": [
+      "Primal (x, y) = (1, 3): z = 9",
+      "Dual (u, v) = (1, 1): w = 9",
+      "Both are feasible; equal values prove optimality."
+    ],
+    "fig": "certificate",
+    "script": "Check both sides before comparing values. The production plan one, three uses four units of resource one and five units of resource two, and earns nine. The resource prices one, one satisfy one plus two equals three and one plus one equals two, and give a bound of nine. Feasible profit reaches a valid upper bound. Therefore neither side can improve, and both solutions are optimal. Equality of two numbers alone is not enough unless both points are feasible."
+  },
+  {
+    "n": 7,
+    "title": "Practice: test a proposed price",
+    "rows": [
+      "Proposed prices: (u, v) = (1, 0)",
+      "Check both dual constraints and compute w.",
+      "Can w bound every feasible primal profit?"
+    ],
+    "fig": "prices_test",
+    "script": "Pause the narration and test the prices u equals one and v equals zero. First substitute them into both dual inequalities. Then compute the proposed resource value. Finally compare it with a feasible production plan that you already know. A small proposed dual value is useful only when it is dual feasible. Write one sentence explaining why this proposal succeeds or fails before opening the next slide."
+  },
+  {
+    "n": 8,
+    "title": "Solution: feasibility comes first",
+    "rows": [
+      "1 + 2(0) = 1 < 3;  1 + 0 = 1 < 2",
+      "w = 4, but feasible (1, 3) earns z = 9.",
+      "The proposed prices are not dual feasible."
+    ],
+    "fig": "invalid",
+    "script": "Both dual constraints fail. The cost assigned to product x is only one, below its profit of three. The assigned cost of product y is also one, below its profit of two. Although the resource value is four, the feasible production plan one, three earns nine. Four therefore cannot be an upper bound on all feasible profits. The mistake is accepting a dual objective value without checking the dual constraints."
+  },
+  {
+    "n": 9,
+    "title": "Derive the shadow-price interval",
+    "rows": [
+      "Keep b₂ = 5 and change b₁ only.",
+      "Solve x + y = b₁ and 2x + y = 5.",
+      "x = 5 − b₁;  y = 2b₁ − 5"
+    ],
+    "fig": "interval",
+    "script": "We now change only the right hand side of resource one, keeping resource two at five and the profit coefficients unchanged. Follow the intersection of the two binding resource constraints. Subtracting the first equation from the second gives x equals five minus b one. Substituting into the first gives y equals two b one minus five. This candidate remains usable only while both production quantities are nonnegative. Outside that interval, the algebraic intersection still exists but is not a feasible production plan."
+  },
+  {
+    "n": 10,
+    "title": "Feasibility determines the interval",
+    "rows": [
+      "x ≥ 0 requires b₁ ≤ 5.",
+      "y ≥ 0 requires b₁ ≥ 2.5.",
+      "Together: 2.5 ≤ b₁ ≤ 5"
+    ],
+    "fig": "interval_feasible",
+    "script": "The first nonnegativity condition says five minus b one must be at least zero, so b one cannot exceed five. The second says two b one minus five must be at least zero, so b one cannot be below two point five. Within this interval the old dual prices one, one remain feasible, and the candidate primal profit equals their bound. That certifies optimality throughout the interval, including its endpoints. At an endpoint, the derivative may differ on the two sides."
+  },
+  {
+    "n": 11,
+    "title": "Inside the interval: b₁ = 4.2",
+    "rows": [
+      "x = 0.8;  y = 3.4;  z = 9.2",
+      "Δb₁ = 0.2;  Δz = 1 × 0.2 = 0.2",
+      "The shadow-price prediction is exact here."
+    ],
+    "fig": "within",
+    "script": "At b one equals four point two, the candidate is x equals zero point eight and y equals three point four. Resource use is four point two and five, so the plan is feasible. Profit is three times zero point eight plus two times three point four, which equals nine point two. The old optimum was nine. Increasing resource one by zero point two therefore increases profit by zero point two, exactly as predicted by its shadow price of one."
+  },
+  {
+    "n": 12,
+    "title": "Outside the interval: b₁ = 6",
+    "rows": [
+      "Old intersection: (−1, 7), infeasible.",
+      "Old prediction: 9 + 1(6 − 4) = 11.",
+      "Reoptimize: (x, y) = (0, 5), z = 10."
+    ],
+    "fig": "outside",
+    "script": "At b one equals six, continuing the old intersection gives minus one, seven. Negative production is forbidden, so that candidate is infeasible. Continuing the old shadow price would predict eleven, but the true optimum is ten at zero, five. We must reoptimize after crossing the interval boundary. Resource two now limits production, while one unit of resource one remains unused. The next slide proves the correct answer without relying on the graph alone."
+  },
+  {
+    "n": 13,
+    "title": "Why producing y gives the larger profit",
+    "rows": [
+      "On 2x + y = 5, substitute y = 5 − 2x.",
+      "z = 3x + 2(5 − 2x) = 10 − x",
+      "For x ≥ 0, z ≤ 10; equality at x = 0."
+    ],
+    "fig": "efficiency",
+    "script": "It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. On the binding line, substitute y equals five minus two x. The objective becomes ten minus x. Increasing x actually reduces profit along this line. Product x earns one point five per unit of resource two, while y earns two. The best plan is zero, five. Alternatively, prices zero, two give a feasible dual bound of ten."
+  },
+  {
+    "n": 14,
+    "title": "Shadow prices are slopes of the value function",
+    "rows": [
+      "For b₁ ≥ 0: z* = min(3b₁, b₁ + 5, 10)",
+      "Slopes: 3, then 1, then 0",
+      "Use the slope only within its valid segment."
+    ],
+    "fig": "value",
+    "script": "The optimal value is piecewise linear. Up to b one equals two point five, resource one is tight enough that the best profit is three b one. From two point five to five, the profit is b one plus five. Beyond five, profit stays at ten. The shadow prices in the interiors of these segments are three, one, and zero. The old price of one describes only the middle segment. At the corners, use the appropriate direction and do not assume a single two-sided derivative."
+  },
+  {
+    "n": 15,
+    "title": "Convexity requires a domain-wide check",
+    "rows": [
+      "Assume f is C² on an open convex domain.",
+      "Convex ⇔ Hessian is positive semidefinite everywhere.",
+      "A Hessian check at one point is not enough."
+    ],
+    "fig": "convex",
+    "script": "We now turn to nonlinear optimization. For a twice continuously differentiable function on an open convex domain, convexity is equivalent to a positive semidefinite Hessian at every point of that domain. A positive Hessian at one point is a local curvature statement. It does not establish the shape everywhere else. Geometrically, a convex function lies below the line segment joining any two points on its graph. Always state the domain before using a convexity test."
+  },
+  {
+    "n": 16,
+    "title": "A stationary point may be a maximum",
+    "rows": [
+      "q(x) = (x² − 1)²",
+      "q′(x) = 4x(x² − 1);  q″(x) = 12x² − 4",
+      "At x = 0: q′ = 0, q″ = −4 < 0."
+    ],
+    "fig": "doublewell",
+    "script": "Consider q of x equals x squared minus one, all squared. Its derivative is four x times x squared minus one, and its second derivative is twelve x squared minus four. At zero, the first derivative vanishes but the second derivative is negative. Therefore zero is a strict local maximum. A solver can stop there because its gradient tolerance is satisfied. The stopping condition tells us that the gradient is small, not that a minimum has been proved."
+  },
+  {
+    "n": 17,
+    "title": "Check values and classify the point",
+    "rows": [
+      "q(0) = 1;  q(−1) = q(1) = 0",
+      "q(x) ≥ 0 for every real x.",
+      "Thus x = ±1 are global minima; x = 0 is a local maximum."
+    ],
+    "fig": "doublewell_values",
+    "script": "Evaluate the function at the stationary points. At zero the value is one. At plus one and minus one the value is zero. Because q is a square, it can never be negative. The two zero-valued points are therefore global minima. This conclusion uses both curvature and a global lower bound. A local maximum at zero is compatible with the function growing without bound for large absolute x. Local and global statements must not be confused."
+  },
+  {
+    "n": 18,
+    "title": "Gradient descent: compute the gradient",
+    "rows": [
+      "NLP coordinates u,v: f = (u−1)² + 4(v+2)²",
+      "∇f = (2(u−1), 8(v+2))",
+      "At (3,0), ∇f = (4,16) and f = 20."
+    ],
+    "fig": "gradient",
+    "script": "Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Use this quadratic throughout the next examples. Differentiating with respect to u gives two times u minus one. Differentiating with respect to v gives eight times v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. These numbers are inputs to an iteration, not the answer to the optimization problem. The minimum is at one, minus two, but ordinary gradient descent generally takes several steps to approach it."
+  },
+  {
+    "n": 19,
+    "title": "One gradient step is not the optimum",
+    "rows": [
+      "Use α = 0.1: x₁ = x₀ − α∇f(x₀).",
+      "(u₁,v₁) = (3,0) − 0.1(4,16) = (2.6,−1.6)",
+      "f(x₁) = 1.6² + 4(0.4)² = 3.2"
+    ],
+    "fig": "gdstep",
+    "script": "Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions."
+  },
+  {
+    "n": 20,
+    "title": "Practice: compute the second step",
+    "rows": [
+      "Start now at (2.6, −1.6); keep α = 0.1.",
+      "Compute the new gradient, point, and objective.",
+      "Does reusing the old gradient give the same method?"
+    ],
+    "fig": "gdpractice",
+    "script": "Pause and compute the second step yourself. Start from two point six, minus one point six, and evaluate the gradient at this new point. Then subtract zero point one times that gradient and calculate the resulting objective. Do not reuse the first gradient of four, sixteen. Gradient descent updates its local direction as the point moves. Write the new gradient and both new coordinates before looking at the next slide."
+  },
+  {
+    "n": 21,
+    "title": "Solution: update the gradient every time",
+    "rows": [
+      "∇f(2.6,−1.6) = (3.2,3.2)",
+      "x₂ = (2.6,−1.6) − 0.1(3.2,3.2) = (2.28,−1.92)",
+      "f(x₂) = 1.28² + 4(0.08)² = 1.664"
+    ],
+    "fig": "gdsolution",
+    "script": "At the first iterate, both gradient components are three point two. Subtracting zero point three two from each coordinate gives two point two eight, minus one point nine two. The objective is one point six six four. Compare the sequence twenty, three point two, and one point six six four. It is decreasing, although the two coordinates converge at different rates. Reusing the old gradient would be a different update and would not produce this sequence."
+  },
+  {
+    "n": 22,
+    "title": "Derive the constant-step convergence range",
+    "rows": [
+      "Let eᵤ = u−1 and eᵥ = v+2.",
+      "eᵤ,new = (1−2α)eᵤ;  eᵥ,new = (1−8α)eᵥ",
+      "Both shrink for every start when 0 < α < 0.25."
+    ],
+    "fig": "stepsize",
+    "script": "Subtract the optimum from each coordinate and track the errors. The u error is multiplied by one minus two alpha on each iteration. The v error is multiplied by one minus eight alpha. For convergence from every starting point, the absolute value of each multiplier must be less than one. The first requires alpha between zero and one. The second requires alpha between zero and one quarter. Their intersection is the strict interval zero to one quarter."
+  },
+  {
+    "n": 23,
+    "title": "At α = 0.25, one coordinate oscillates",
+    "rows": [
+      "eᵤ multiplier = 0.5; eᵥ multiplier = −1.",
+      "From (3,0), v alternates: 0, −4, 0, −4, …",
+      "f(xₖ) = 4(1/4)ᵏ + 16 → 16, not 0."
+    ],
+    "fig": "oscillation",
+    "script": "At exactly one quarter, the u error shrinks by one half. The v error changes sign but keeps the same magnitude. Starting from v equals zero, the v coordinate therefore alternates between zero and minus four. Its contribution to the objective stays at sixteen. The u contribution decays, so the total objective approaches sixteen, not zero. This is neither convergence to the minimum nor unbounded growth of both coordinates. The boundary of a convergence interval deserves its own check."
+  },
+  {
+    "n": 24,
+    "title": "Newton directions also need a check",
+    "rows": [
+      "p = −g/H in one dimension.",
+      "At x = 0.2 for q: g = −0.768, H = −3.52.",
+      "p ≈ −0.21818; gp > 0, so p is an ascent direction."
+    ],
+    "fig": "newton",
+    "script": "Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight. Multiplying the gradient by this direction gives a positive number, so sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search."
+  },
+  {
+    "n": 25,
+    "title": "KKT: active does not mean positive multiplier",
+    "rows": [
+      "Minimize x² subject to x ≤ 0.",
+      "At x* = 0: the constraint is active, μ = 0.",
+      "2x + μ = 0;  μ ≥ 0;  μx = 0."
+    ],
+    "fig": "kkt",
+    "script": "A short constrained example connects the review to KKT. Minimize x squared subject to x no greater than zero. Use the Lagrangian x squared plus mu x, with mu nonnegative. The optimum is zero, and stationarity gives mu equals zero. The constraint is active because its value is zero, but its multiplier is also zero. Complementary slackness requires the product to vanish; it does not require a strictly positive multiplier whenever the constraint is active."
+  },
+  {
+    "n": 26,
+    "title": "Bring your reasoning to onsite class",
+    "rows": [
+      "Monday, November 9, 2026: attend onsite.",
+      "Bring your LP and NLP calculations and questions.",
+      "Review the steps, not just the final answers."
+    ],
+    "fig": "recap",
+    "script": "Please attend our onsite class on Monday, November ninth. Bring your notes from both LP and NLP, and a laptop if available for the Python examples. Be ready to explain what primal and dual variables represent, why a shadow price has a limited range, and why a small gradient does not prove a minimum. We will work through calculations together, answer questions, and clarify the main learning objectives and how to prepare for the examination."
+  }
+]

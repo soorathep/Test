@@ -1,0 +1,77 @@
+Slide 1: LP and NLP: guided review
+Welcome to this guided review of linear and nonlinear optimization. Please attend our onsite class on Monday, November ninth, twenty twenty-six. Before class, work through these explanations and pause at each practice slide. We will connect production decisions to dual prices, explain when a shadow price remains valid, and check the steps used by nonlinear optimization methods. Bring your calculations and the questions that you would like us to discuss in person.
+
+Slide 2: What the primal variables mean
+Start with the production problem. The variables x and y are continuous production quantities. Each unit of x earns three profit units and uses one unit of resource one and two units of resource two. Each unit of y earns two and uses one unit of each resource. The number z is the resulting profit. It is not an additional independent production decision. The feasible region contains all production plans that satisfy both resource limits.
+
+Slide 3: What the dual variables mean
+The dual describes a different decision. We choose nonnegative resource prices u and v. These are not renamed versions of x and y. Production quantities belong to the primal, while resource prices belong to the dual. Four units of resource one and five units of resource two have total value four u plus five v. We call that value w. To create an upper bound on profit, the resource prices must cover the profit of each product.
+
+Slide 4: Derive one dual constraint per product
+Read one product column at a time. Product x consumes one unit of resource one and two units of resource two, so its priced resource cost is u plus two v. That cost must be at least its profit of three. Product y consumes one unit of each resource, so u plus v must be at least two. This is why the primal resource coefficients reappear by columns in the dual constraints. The inequality direction follows from requiring a valid upper bound.
+
+Slide 5: Why the dual gives an upper bound
+Here is the proof. Since x and y are nonnegative, the dual constraints imply that three x plus two y is no greater than u plus two v times x, plus u plus v times y. Rearranging gives u times x plus y, plus v times two x plus y. Primal feasibility and nonnegative prices make this no greater than four u plus five v. Every feasible dual value therefore bounds every feasible primal profit from above.
+
+Slide 6: An optimality certificate
+Check both sides before comparing values. The production plan one, three uses four units of resource one and five units of resource two, and earns nine. The resource prices one, one satisfy one plus two equals three and one plus one equals two, and give a bound of nine. Feasible profit reaches a valid upper bound. Therefore neither side can improve, and both solutions are optimal. Equality of two numbers alone is not enough unless both points are feasible.
+
+Slide 7: Practice: test a proposed price
+Pause the narration and test the prices u equals one and v equals zero. First substitute them into both dual inequalities. Then compute the proposed resource value. Finally compare it with a feasible production plan that you already know. A small proposed dual value is useful only when it is dual feasible. Write one sentence explaining why this proposal succeeds or fails before opening the next slide.
+
+Slide 8: Solution: feasibility comes first
+Both dual constraints fail. The cost assigned to product x is only one, below its profit of three. The assigned cost of product y is also one, below its profit of two. Although the resource value is four, the feasible production plan one, three earns nine. Four therefore cannot be an upper bound on all feasible profits. The mistake is accepting a dual objective value without checking the dual constraints.
+
+Slide 9: Derive the shadow-price interval
+We now change only the right hand side of resource one, keeping resource two at five and the profit coefficients unchanged. Follow the intersection of the two binding resource constraints. Subtracting the first equation from the second gives x equals five minus b one. Substituting into the first gives y equals two b one minus five. This candidate remains usable only while both production quantities are nonnegative. Outside that interval, the algebraic intersection still exists but is not a feasible production plan.
+
+Slide 10: Feasibility determines the interval
+The first nonnegativity condition says five minus b one must be at least zero, so b one cannot exceed five. The second says two b one minus five must be at least zero, so b one cannot be below two point five. Within this interval the old dual prices one, one remain feasible, and the candidate primal profit equals their bound. That certifies optimality throughout the interval, including its endpoints. At an endpoint, the derivative may differ on the two sides.
+
+Slide 11: Inside the interval: b₁ = 4.2
+At b one equals four point two, the candidate is x equals zero point eight and y equals three point four. Resource use is four point two and five, so the plan is feasible. Profit is three times zero point eight plus two times three point four, which equals nine point two. The old optimum was nine. Increasing resource one by zero point two therefore increases profit by zero point two, exactly as predicted by its shadow price of one.
+
+Slide 12: Outside the interval: b₁ = 6
+At b one equals six, continuing the old intersection gives minus one, seven. Negative production is forbidden, so that candidate is infeasible. Continuing the old shadow price would predict eleven, but the true optimum is ten at zero, five. We must reoptimize after crossing the interval boundary. Resource two now limits production, while one unit of resource one remains unused. The next slide proves the correct answer without relying on the graph alone.
+
+Slide 13: Why producing y gives the larger profit
+It is tempting to prefer product x because three is greater than two. But x consumes twice as much of the limiting resource. On the binding line, substitute y equals five minus two x. The objective becomes ten minus x. Increasing x actually reduces profit along this line. Product x earns one point five per unit of resource two, while y earns two. The best plan is zero, five. Alternatively, prices zero, two give a feasible dual bound of ten.
+
+Slide 14: Shadow prices are slopes of the value function
+The optimal value is piecewise linear. Up to b one equals two point five, resource one is tight enough that the best profit is three b one. From two point five to five, the profit is b one plus five. Beyond five, profit stays at ten. The shadow prices in the interiors of these segments are three, one, and zero. The old price of one describes only the middle segment. At the corners, use the appropriate direction and do not assume a single two-sided derivative.
+
+Slide 15: Convexity requires a domain-wide check
+We now turn to nonlinear optimization. For a twice continuously differentiable function on an open convex domain, convexity is equivalent to a positive semidefinite Hessian at every point of that domain. A positive Hessian at one point is a local curvature statement. It does not establish the shape everywhere else. Geometrically, a convex function lies below the line segment joining any two points on its graph. Always state the domain before using a convexity test.
+
+Slide 16: A stationary point may be a maximum
+Consider q of x equals x squared minus one, all squared. Its derivative is four x times x squared minus one, and its second derivative is twelve x squared minus four. At zero, the first derivative vanishes but the second derivative is negative. Therefore zero is a strict local maximum. A solver can stop there because its gradient tolerance is satisfied. The stopping condition tells us that the gradient is small, not that a minimum has been proved.
+
+Slide 17: Check values and classify the point
+Evaluate the function at the stationary points. At zero the value is one. At plus one and minus one the value is zero. Because q is a square, it can never be negative. The two zero-valued points are therefore global minima. This conclusion uses both curvature and a global lower bound. A local maximum at zero is compatible with the function growing without bound for large absolute x. Local and global statements must not be confused.
+
+Slide 18: Gradient descent: compute the gradient
+Here u and v are decision coordinates for a new nonlinear problem, not the resource prices in the LP example. Use this quadratic throughout the next examples. Differentiating with respect to u gives two times u minus one. Differentiating with respect to v gives eight times v plus two. At the starting point three, zero, the gradient is four, sixteen and the objective is twenty. These numbers are inputs to an iteration, not the answer to the optimization problem. The minimum is at one, minus two, but ordinary gradient descent generally takes several steps to approach it.
+
+Slide 19: One gradient step is not the optimum
+Multiply each gradient component by zero point one, giving zero point four and one point six. Subtract those changes from the starting coordinates. The next point is two point six, minus one point six. Its objective is one point six squared plus four times zero point four squared, or three point two. The objective has fallen from twenty to three point two, but it is still above the minimum of zero. Progress and exact convergence are different conclusions.
+
+Slide 20: Practice: compute the second step
+Pause and compute the second step yourself. Start from two point six, minus one point six, and evaluate the gradient at this new point. Then subtract zero point one times that gradient and calculate the resulting objective. Do not reuse the first gradient of four, sixteen. Gradient descent updates its local direction as the point moves. Write the new gradient and both new coordinates before looking at the next slide.
+
+Slide 21: Solution: update the gradient every time
+At the first iterate, both gradient components are three point two. Subtracting zero point three two from each coordinate gives two point two eight, minus one point nine two. The objective is one point six six four. Compare the sequence twenty, three point two, and one point six six four. It is decreasing, although the two coordinates converge at different rates. Reusing the old gradient would be a different update and would not produce this sequence.
+
+Slide 22: Derive the constant-step convergence range
+Subtract the optimum from each coordinate and track the errors. The u error is multiplied by one minus two alpha on each iteration. The v error is multiplied by one minus eight alpha. For convergence from every starting point, the absolute value of each multiplier must be less than one. The first requires alpha between zero and one. The second requires alpha between zero and one quarter. Their intersection is the strict interval zero to one quarter.
+
+Slide 23: At α = 0.25, one coordinate oscillates
+At exactly one quarter, the u error shrinks by one half. The v error changes sign but keeps the same magnitude. Starting from v equals zero, the v coordinate therefore alternates between zero and minus four. Its contribution to the objective stays at sixteen. The u contribution decays, so the total objective approaches sixteen, not zero. This is neither convergence to the minimum nor unbounded growth of both coordinates. The boundary of a convergence interval deserves its own check.
+
+Slide 24: Newton directions also need a check
+Newton uses local curvature as well as the gradient. For the double-well function at zero point two, the gradient is minus zero point seven six eight and the Hessian is minus three point five two. The Newton direction is approximately minus zero point two one eight. Multiplying the gradient by this direction gives a positive number, so sufficiently small positive steps initially increase the objective. A descent method should replace that direction or safeguard the Hessian before applying a descent line search.
+
+Slide 25: KKT: active does not mean positive multiplier
+A short constrained example connects the review to KKT. Minimize x squared subject to x no greater than zero. Use the Lagrangian x squared plus mu x, with mu nonnegative. The optimum is zero, and stationarity gives mu equals zero. The constraint is active because its value is zero, but its multiplier is also zero. Complementary slackness requires the product to vanish; it does not require a strictly positive multiplier whenever the constraint is active.
+
+Slide 26: Bring your reasoning to onsite class
+Please attend our onsite class on Monday, November ninth. Bring your notes from both LP and NLP, and a laptop if available for the Python examples. Be ready to explain what primal and dual variables represent, why a shadow price has a limited range, and why a small gradient does not prove a minimum. We will work through calculations together, answer questions, and clarify the main learning objectives and how to prepare for the examination.
