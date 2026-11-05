@@ -272,14 +272,25 @@
       ],
       "extension": [],
       "outcome": "Use extent and Gibbs driving force to establish equilibrium, then reconcile thermodynamic routes to K.",
-      "deliverable": "In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.",
-      "preparation": "Write the species amounts and feasible extent interval before calculating K. Prepare the three short questions on page 3.",
+      "deliverable": "One worksheet, three Lab 12 cases, independent atom and Q checks, and one JSON restore within the lesson.",
+      "preparation": "No required preparation. Keep the six-page worksheet beside the video.",
       "deck": "postmidterm-05.html",
       "guidingQuestion": "Why can composition change while the equilibrium constant stays the same?",
-      "optionalPractice": "Choose one extension: vary temperature with and without a heat-capacity correction, reverse the reaction, or scale its coefficients consistently.",
+      "optionalPractice": "Optional: examine nonzero heat capacity, reverse the reaction or scale all coefficients and properties consistently.",
       "appendix": "postmidterm-05-appendix.html",
       "prereading": "files/preclass-week-05.pdf",
-      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5"
+      "exitForm": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+      "delivery": "independent",
+      "date": "2026-11-06",
+      "nextOnsiteDate": "2026-11-13",
+      "video": "week05-video.html",
+      "studyHub": "week05-study.html",
+      "worksheet": "files/week05-practice.pdf",
+      "worksheetPages": 6,
+      "labGuide": "files/week05-lab-guide.pdf",
+      "solutions": "files/week05-solutions.pdf",
+      "prereadingOptional": true,
+      "exitWindow": "final 10 minutes"
     },
     {
       "number": 6,
@@ -451,9 +462,9 @@
       "anchor": "rx-experiment",
       "predict": "Predict which routes to K remain usable when temperature changes.",
       "steps": [
-        "Write species amounts from extent, find the feasible interval and predict the sign of the Gibbs driving force.",
-        "Reconcile thermodynamic routes at the reference temperature; change pressure at fixed T and compare K, Q and extent.",
-        "As an extension, change T and compare constant-property and ΔCp routes with point-data applicability."
+        "Use the Week 5 worksheet to derive the mole table, activities and Q for the synthetic dissociation.",
+        "Reconcile K from Gibbs energy and H−TS at 350 K. Compare 100 and 400 kPa at fixed temperature.",
+        "Use constant-enthalpy van ’t Hoff at 400 K, with ΔCp°=0. Check atoms and Q=K, then restore one calculator JSON."
       ],
       "check": "Check the reaction basis, standard states, lnQ−lnK and atom balances.",
       "limit": "The extent solver admits one neutral ideal-gas reaction. An observed Q is not automatically K."

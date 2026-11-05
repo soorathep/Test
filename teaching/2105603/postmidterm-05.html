@@ -6,32 +6,39 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.43">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Soorathep Kheawhom">
-  <meta name="dcterms.date" content="2026-09-30">
-  <title>2105603 – Chemical equilibrium and routes to K</title>
+  <meta name="dcterms.date" content="2026-11-06">
+  <title>2105603 – Week 5: Chemical equilibrium and routes to K</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-44ab30104761961979c1939c561e7051.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5339fbbf9aa03db18226bb6b1f30c8df.css">
   <link rel="stylesheet" href="assets/postmidterm.css">
+  <link rel="stylesheet" href="assets/week05-independent.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -77,12 +84,12 @@
     }
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
     .reveal .footnotes ol li > p:first-child {
       display: inline-block;
@@ -124,19 +131,19 @@
     .reveal .slide > img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-left,
     .reveal .slide > img.r-stretch.quarto-figure-left  {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-right,
     .reveal .slide > img.r-stretch.quarto-figure-right  {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
   </style>
 </head>
@@ -144,137 +151,501 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
-  <h1 class="title">Chemical equilibrium and routes to K</h1>
-  <p class="subtitle">After midterm · Session 5 of 6 · 180 minutes</p>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Soorathep Kheawhom 
+<section id="week05-title" class="slide level2">
+<h2>Week 5: from phases to reactions</h2>
+<div class="your-action">
+<p><strong>Read this slide.</strong> Open the <a href="files/week05-practice.pdf">Week 5 worksheet</a>, page 1. Keep it beside the video. This lesson replaces the class on <strong>6 November</strong>. We return to the classroom on <strong>13 November</strong>.</p>
 </div>
-</div>
-</div>
-
-  <p class="date">30 September 2026</p>
-</section>
-<section id="the-question-for-today" class="slide level2">
-<h2>The question for today</h2>
-<p>Why can composition change while the equilibrium constant stays the same?</p>
-<p><a href="files/preclass-week-05.pdf">Before class: 3-page reading</a> · 15–20 minutes</p>
-<p>Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.</p>
-</section>
-<section id="the-180-minute-class" class="slide level2">
-<h2>The 180-minute class</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Activity</th>
-<th style="text-align: right;">Minutes</th>
+<th>Week 4 process</th>
+<th>What controls equilibrium?</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Opening question and essential concepts</td>
-<td style="text-align: right;">30</td>
+<td>Bulk sublimation</td>
+<td>A separate pure solid can coexist with its gas. While solid remains, <span class="math inline">P_A=P_{\mathrm{sub}}(T)</span> in this model.</td>
 </tr>
 <tr class="even">
-<td>One hand calculation</td>
-<td style="text-align: right;">20</td>
-</tr>
-<tr class="odd">
-<td>One lab demonstration</td>
-<td style="text-align: right;">20</td>
-</tr>
-<tr class="even">
-<td>Break</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td>Student pair investigation</td>
-<td style="text-align: right;">70</td>
-</tr>
-<tr class="even">
-<td>Discussion, exit ticket and feedback</td>
-<td style="text-align: right;">30</td>
+<td>Surface adsorption</td>
+<td>Molecules occupy an adsorbent surface. An isotherm gives uptake <span class="math inline">q(P_A)</span> per mass of adsorbent.</td>
 </tr>
 </tbody>
 </table>
-<p>The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.</p>
+<p>Both calculations also need an <strong>inventory balance</strong>. These conditions answer different questions.</p>
 </section>
-<section id="start-with-extent-and-driving-force" class="slide level2">
-<h2>Start with extent and driving force</h2>
-<p><span class="math display">n_i=n_{i,0}+\nu_i\xi,\qquad n_i\geq0</span> <span class="math display">\left(\frac{dG}{d\xi}\right)_{T,P}=\Delta_rG=\Delta_rG^\circ+RT\ln Q</span></p>
-<p>Write the feasible extent interval first. A negative derivative favors increasing extent; a positive derivative favors decreasing extent.</p>
-<p>An interior equilibrium has zero derivative. Boundary minima need one-sided checks.</p>
-</section>
-<section id="the-equilibrium-condition-gives-k" class="slide level2">
-<h2>The equilibrium condition gives K</h2>
-<p><span class="math display">\Delta_rG=0\ \Rightarrow\ Q=K,\qquad\ln K=-\frac{\Delta_rG^\circ}{RT}</span></p>
-<p>Obtain standard Gibbs energy from direct data, formation properties, or H−TS at the evaluation temperature.</p>
-<p>K depends on T and the reaction/standard-state convention. Q describes the current composition and pressure.</p>
-<p>Additional K(T) routes are in the appendix and lab.</p>
-</section>
-<section id="a-reference-state-check" class="slide level2">
-<h2>A reference-state check</h2>
-<p>Lab 12 synthetic A₂ ⇌ 2A at 350 K uses ΔrG°=−4.000 kJ/mol.</p>
-<p><span class="math display">\ln K=\frac{4000}{R(350)}=1.37454,\qquad K\approx3.95326</span></p>
-<p>With ΔrH°=50.000 kJ/mol and ΔrS°=54000/350 J mol⁻¹ K⁻¹, the H−TS route gives the same value.</p>
-</section>
-<section id="check-the-minimum-and-the-reaction-quotient" class="slide level2">
-<h2>Check the minimum and the reaction quotient</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/preclass-reaction.png" style="width:68.0%"></p>
-<figcaption>Synthetic dissociation at 350 K and standard pressure. Initially one mole of reactant.</figcaption>
-</figure>
+<section id="pressure-at-fixed-volume" class="slide level2 work-stop">
+<h2>Partial and total pressure at fixed volume</h2>
+<div class="your-action">
+<p><strong>Pause for 4 minutes. Worksheet p.&nbsp;1, R1.</strong> Calculate first. Check your answer on slide 4. If stuck, mark the step and continue.</p>
 </div>
-<p>At ξ≈0.70503 mol, Q≈3.95326=K. Check the atom balance.</p>
+<p><span class="math inline">T=300</span> K, <span class="math inline">V=1</span> L, <span class="math inline">P_{\mathrm{sub}}=10</span> kPa. Total volatile amount: <span class="math inline">n_A=0.002</span> mol.</p>
+<p><span class="math display">n_{\mathrm{cap}}=\frac{P_{\mathrm{sub}}V}{RT},\qquad P_A=\frac{n_{A,\mathrm{gas}}RT}{V}</span></p>
+<ol type="1">
+<li>Does any solid remain? Calculate <span class="math inline">P_A</span>.</li>
+<li>Add <span class="math inline">0.002</span> mol of ideal, nonadsorbing inert gas at the <strong>same <span class="math inline">T</span> and free volume</strong>. Calculate <span class="math inline">P_{\mathrm{total}}</span>.</li>
+</ol>
+<p>Use <span class="math inline">R=8.314462618</span> kPa L mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span>. State which pressure changes.</p>
 </section>
-<section id="one-demonstration-20-minutes" class="slide level2">
-<h2>One demonstration · 20 minutes</h2>
-<p><a href="labs/reaction.html#rx-experiment">Open the core lab</a></p>
-<p>Use the synthetic Lab 12 case. Write nA₂=1−ξ, nA=2ξ and 0≤ξ≤1 mol first. Compare the supplied Gibbs-energy and H−TS routes, then change only pressure and inspect K and extent.</p>
-<p>Keep one saved baseline for the pair investigation.</p>
+<section id="two-independent-checks" class="slide level2 work-stop">
+<h2>A balance needs an independent equation</h2>
+<div class="your-action">
+<p><strong>Pause for 4 minutes. Worksheet p.&nbsp;1, R2.</strong> Substitute the proposed pressure into both equations. Slide 4 gives the check.</p>
+</div>
+<p>A candidate Langmuir state has <span class="math inline">P_A=10</span> kPa, <span class="math inline">T=300</span> K, <span class="math inline">V_g=1</span> L and <span class="math inline">m_s=0.010</span> kg. Given <span class="math inline">q_s=2</span> mol/kg, <span class="math inline">b=0.1</span> kPa<span class="math inline">^{-1}</span> and total feed <span class="math inline">0.010</span> mol:</p>
+<p><span class="math display">n_{\mathrm{gas}}=\frac{P_AV_g}{RT},\qquad n_{\mathrm{ads}}=m_s\frac{q_s bP_A}{1+bP_A}</span></p>
+<p>Calculate each amount <strong>independently</strong>. Does their sum equal the stated feed?</p>
+<p>A number obtained by subtracting gas moles from the feed still needs to satisfy the isotherm.</p>
 </section>
-<section id="pair-investigation-70-minutes" class="slide level2">
-<h2>Pair investigation · 70 minutes</h2>
+<section id="review-check" class="slide level2">
+<h2>Two calculations, one physical state</h2>
+<div class="your-action">
+<p><strong>Check R1-R2 on worksheet p.&nbsp;1.</strong> Keep your first attempt and write corrections beside it. No extra Lab run is required for this review.</p>
+</div>
+<p><strong>R1:</strong> <span class="math inline">n_{\mathrm{cap}}=0.004009</span> mol exceeds the available <span class="math inline">0.002</span> mol. No solid remains. <span class="math inline">P_A=4.989</span> kPa. Adding the inert gas gives <span class="math inline">P_{\mathrm{total}}=9.977</span> kPa while <span class="math inline">P_A</span> stays unchanged.</p>
+<p><strong>R2:</strong> At the proposed 10 kPa, <span class="math inline">n_{\mathrm{gas}}=0.004009</span> mol and <span class="math inline">n_{\mathrm{ads}}=0.010000</span> mol. Their sum, <span class="math inline">0.014009</span> mol, exceeds the feed.</p>
+<p>The checked equilibrium is <span class="math inline">P_A=6.080</span> kPa, with <span class="math inline">0.002438+0.007562=0.010000</span> mol.</p>
+<p><strong>Next:</strong> chemical equilibrium also combines an equilibrium relation with conserved amounts.</p>
+</section>
+<section id="one-route" class="slide level2">
+<h2>One worksheet, one Lab, three hours</h2>
+<div class="your-action">
+<p><strong>Read the route on worksheet p.&nbsp;1.</strong> Use the indicated worksheet section at every pause. Open the Lab guide only for the Lab 12 steps.</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Required work</th>
+<th style="text-align: right;">Planned time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Video explanations and demonstrations</td>
+<td style="text-align: right;">About 42 min</td>
+</tr>
+<tr class="even">
+<td>Worksheet, Lab 12, exit ticket and feedback</td>
+<td style="text-align: right;">128 min</td>
+</tr>
+<tr class="odd">
+<td>Break</td>
+<td style="text-align: right;">10 min</td>
+</tr>
+</tbody>
+</table>
+<p>There is <strong>no required preclass reading or follow-up assignment</strong>. Additional models are optional references.</p>
+<p>At a pause limit, record the unresolved step and continue. Bring it to class on <strong>13 November</strong>. The time budget is a guide, not a speed test.</p>
+</section>
+<section id="extent-and-atoms" class="slide level2">
+<h2>Reaction extent keeps the atoms balanced</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;2, A1.</strong> Use the same synthetic reaction throughout this lesson. You will complete A1-A3 at slide 8.</p>
+</div>
+<p><span class="math display">\mathrm{A_2(g)}\rightleftharpoons 2\mathrm{A(g)}</span></p>
+<p>Initially: 1 mol of A<span class="math inline">_2</span>, no A and no inert gas. A is a formal teaching species.</p>
+<p><span class="math display">n_{A_2}=1\ \mathrm{mol}-\xi,\qquad n_A=2\xi,\qquad 0\leq\xi\leq1\ \mathrm{mol}</span></p>
+<p>Define the dimensionless fraction <span class="math inline">f=\xi/(1\ \mathrm{mol})</span>. Then <span class="math inline">n_{\mathrm{total}}=(1+f)</span> mol.</p>
+<p>The conserved atom amount is <span class="math inline">2n_{A_2}+n_A=2</span> mol of A atoms.</p>
+</section>
+<section id="dimensionless-activities" class="slide level2">
+<h2>Activities make Q dimensionless</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;2, A2.</strong> The Lab 12 extent calculation assumes one ideal gas phase at fixed temperature and total pressure.</p>
+</div>
+<p>For each gas, <span class="math inline">a_i=y_iP/p^\circ</span>, with <span class="math inline">p^\circ=100</span> kPa.</p>
+<p><span class="math display">Q=\frac{a_A^2}{a_{A_2}}=\frac{y_A^2}{y_{A_2}}\frac{P}{p^\circ}</span></p>
 <ul>
-<li>10 min: predict and record the baseline.</li>
-<li>25 min: change one input and calculate.</li>
-<li>20 min: exchange roles and check the result by hand.</li>
-<li>15 min: prepare one plot or table and a short explanation.</li>
+<li><span class="math inline">P</span> is the actual <strong>total pressure</strong>.</li>
+<li><span class="math inline">p^\circ</span> defines the standard state and stays fixed in our comparisons.</li>
+<li><span class="math inline">Q</span> describes a composition. <span class="math inline">K(T)</span> describes equilibrium for the reaction and standard states as written.</li>
 </ul>
-<p>In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.</p>
+<p>Use dimensionless <span class="math inline">P/p^\circ</span>, not a pressure carrying units inside a logarithm.</p>
 </section>
-<section id="discussion-20-minutes" class="slide level2">
-<h2>Discussion · 20 minutes</h2>
-<p>Why can composition change while the equilibrium constant stays the same?</p>
-<p>Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.</p>
+<section id="build-reaction-quotient" class="slide level2 work-stop">
+<h2>Your turn: build Q from the mole table</h2>
+<div class="your-action">
+<p><strong>Pause for 10 minutes. Worksheet p.&nbsp;2, A1-A3.</strong> Work through the mole table and quotient. Then continue to slide 9.</p>
+</div>
+<ol type="1">
+<li>Write the mole amounts, total moles and mole fractions in terms of <span class="math inline">f</span>.</li>
+<li>Substitute the mole fractions into <span class="math inline">Q</span>.</li>
+<li>Evaluate <span class="math inline">Q</span> at <span class="math inline">f=0.50</span> and <span class="math inline">P/p^\circ=1</span>, then at <span class="math inline">P/p^\circ=4</span>.</li>
+</ol>
+<p>Check the atom balance at <span class="math inline">f=0.50</span>.</p>
+<p>For finite <span class="math inline">\ln Q</span>, work inside <span class="math inline">0&lt;f&lt;1</span>. The pure-feed and complete-conversion endpoints need limiting interpretations.</p>
 </section>
-<section id="after-class-3040-minutes" class="slide level2">
-<h2>After class · 30–40 minutes</h2>
-<p>In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.</p>
-<p><a href="labs/assessments.html#session-5">Assessment 5 and independent checkpoint</a></p>
-<p>Retain one study JSON, one comparison and a short explanation.</p>
-<p>Optional: <a href="postmidterm-05-appendix.html">Session appendix</a>.</p>
-<p><a href="labs/learning-path.html#session-5">Learning path</a> · <a href="files/thermodynamics-offline.zip">Offline package</a></p>
+<section id="quotient-check" class="slide level2">
+<h2>Check the quotient and the atom balance</h2>
+<div class="your-action">
+<p><strong>Check A1-A3 on worksheet p.&nbsp;2.</strong> Correct the algebra before using it in the following calculations.</p>
+</div>
+<p><span class="math display">y_{A_2}=\frac{1-f}{1+f},\qquad y_A=\frac{2f}{1+f}</span></p>
+<p><span class="math display">Q=\frac{4f^2}{1-f^2}\frac{P}{p^\circ}</span></p>
+<p>At <span class="math inline">f=0.50</span>: <span class="math inline">n_{A_2}=0.50</span> mol, <span class="math inline">n_A=1.00</span> mol, <span class="math inline">y_A=2/3</span> and <span class="math inline">y_{A_2}=1/3</span>.</p>
+<p><span class="math inline">Q=1.3333</span> at <span class="math inline">P/p^\circ=1</span> and <span class="math inline">Q=5.3333</span> at <span class="math inline">P/p^\circ=4</span>.</p>
+<p>The atom check is <span class="math inline">2(0.50)+1.00=2.00</span> mol of A atoms. These are specified trial states, not yet equilibrium solutions.</p>
 </section>
-<section id="exit-ticket-feedback-8-minutes" class="slide level2">
-<h2>Exit ticket + feedback · 8 minutes</h2>
+<section id="reaction-driving-force" class="slide level2 work-stop">
+<h2>Which way does the reaction proceed?</h2>
+<div class="your-action">
+<p><strong>Pause for 6 minutes. Worksheet p.&nbsp;2, B1.</strong> Calculate the driving force at each trial <span class="math inline">Q</span>, then predict forward or reverse reaction. Check on slide 14.</p>
+</div>
+<p>At 350 K, the supplied standard reaction Gibbs energy is <span class="math inline">\Delta_rG^\circ=-4000</span> J/mol of reaction.</p>
+<p><span class="math display">\Delta_rG=\Delta_rG^\circ+RT\ln Q</span></p>
+<p>Evaluate <span class="math inline">Q=1</span> and <span class="math inline">Q=10</span>, using <span class="math inline">R=8.314462618</span> J mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span>.</p>
+<p>Negative <span class="math inline">\Delta_rG</span> favors increasing extent. Positive <span class="math inline">\Delta_rG</span> favors decreasing extent. An interior equilibrium has <span class="math inline">\Delta_rG=0</span>.</p>
+</section>
+<section id="gibbs-route" class="slide level2">
+<h2>Route 1: K from standard Gibbs energy</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;3, B2.</strong> Write the substitution now. Complete the numeric comparison at slide 13.</p>
+</div>
+<p><span class="math display">\ln K=-\frac{\Delta_rG^\circ}{RT}</span></p>
+<p>At 350 K, use <span class="math inline">\Delta_rG^\circ=-4.000</span> <strong>kJ per mol of the reaction as written</strong>.</p>
+<p>Convert kJ to J before using <span class="math inline">R=8.314462618</span> J mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span>.</p>
+<p>Calculate <span class="math inline">\ln K</span> first, then <span class="math inline">K=\exp(\ln K)</span>. A standard Gibbs energy supplied at one temperature is a point value.</p>
+</section>
+<section id="enthalpy-entropy-route" class="slide level2">
+<h2>Route 2: K from enthalpy and entropy</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;3, B3.</strong> Keep the same reaction, temperature and standard states as Route 1.</p>
+</div>
+<p>At the reference temperature 350 K, the synthetic definitions are:</p>
+<p><span class="math display">\Delta_rH^\circ=50000\ \mathrm{J/mol},\qquad \Delta_rS^\circ=\frac{54000}{350}\ \mathrm{J\,mol^{-1}K^{-1}}</span></p>
+<p><span class="math display">\Delta_rG^\circ=\Delta_rH^\circ-T\Delta_rS^\circ</span></p>
+<p>Then use the same <span class="math inline">\ln K=-\Delta_rG^\circ/(RT)</span> relation.</p>
+<p>An endothermic reaction can have <span class="math inline">K&gt;1</span>: the entropy term also contributes to the standard Gibbs energy.</p>
+</section>
+<section id="compare-k-routes" class="slide level2 work-stop">
+<h2>Your turn: compare the two K routes</h2>
+<div class="your-action">
+<p><strong>Pause for 10 minutes. Worksheet p.&nbsp;3, B2-B4.</strong> Calculate both routes before opening the worked solutions. Continue to slide 14 for the check.</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Route</th>
+<th>Calculate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Direct standard Gibbs energy</td>
+<td><span class="math inline">\ln K</span> and <span class="math inline">K</span> at 350 K</td>
+</tr>
+<tr class="even">
+<td>Standard enthalpy and entropy</td>
+<td><span class="math inline">\Delta_rG^\circ</span>, <span class="math inline">\ln K</span> and <span class="math inline">K</span> at 350 K</td>
+</tr>
+</tbody>
+</table>
+<p>Explain why agreement is expected for these <strong>mutually consistent synthetic inputs</strong>.</p>
+<p>Does agreement between two calculations using those definitions independently validate a real chemical system?</p>
+</section>
+<section id="reference-check" class="slide level2">
+<h2>Both routes give the same reference K</h2>
+<div class="your-action">
+<p><strong>Check B1-B4.</strong> Mark the energy units and the sign in your worksheet. Retain these values for the remaining cases.</p>
+</div>
+<p><span class="math display">\Delta_rG^\circ=50000-350\left(\frac{54000}{350}\right)=-4000\ \mathrm{J/mol}</span></p>
+<p><span class="math display">\ln K=1.3745412,\qquad K=3.9532626</span></p>
+<p><strong>B1:</strong> <span class="math inline">Q=1</span> gives <span class="math inline">\Delta_rG=-4.000</span> kJ/mol, so forward reaction is favored. <span class="math inline">Q=10</span> gives <span class="math inline">\Delta_rG=+2.7007</span> kJ/mol, so reverse reaction is favored.</p>
+<p>Agreement checks consistent use of the supplied definitions. Real-system prediction still needs valid property data and an appropriate model.</p>
+</section>
+<section id="solve-reference-extent" class="slide level2 work-stop">
+<h2>Your turn: solve for equilibrium extent</h2>
+<div class="your-action">
+<p><strong>Pause for 15 minutes. Worksheet p.&nbsp;3, C1-C3.</strong> Solve the reference case by hand before checking slide 16.</p>
+</div>
+<p>At 350 K, <span class="math inline">K=3.9532626</span>, <span class="math inline">P=100</span> kPa and <span class="math inline">p^\circ=100</span> kPa:</p>
+<p><span class="math display">K=\frac{4f^2}{1-f^2}\frac{P}{p^\circ}</span></p>
+<ol type="1">
+<li>Rearrange for <span class="math inline">f^2</span>, then take the physically feasible positive root.</li>
+<li>Calculate <span class="math inline">\xi</span>, <span class="math inline">n_{A_2}</span>, <span class="math inline">n_A</span>, <span class="math inline">y_{A_2}</span> and <span class="math inline">y_A</span>.</li>
+<li>Recompute <span class="math inline">Q</span> and the conserved atom amount from your result.</li>
+</ol>
+<p>Use <span class="math inline">f=\xi/(1\ \mathrm{mol})</span>, so the mole and dimensionless quantities remain distinct.</p>
+</section>
+<section id="reference-composition-check" class="slide level2">
+<h2>The reference equilibrium satisfies Q=K</h2>
+<div class="your-action">
+<p><strong>Check C1-C3 on worksheet p.&nbsp;3.</strong> Use unrounded values for a tight numerical check.</p>
+</div>
+<p><span class="math display">f=\sqrt{\frac{K}{K+4P/p^\circ}}=0.7050261,\qquad\xi=0.7050261\ \mathrm{mol}</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th style="text-align: right;">Reference equilibrium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">n_{A_2}</span> / mol</td>
+<td style="text-align: right;">0.2949739</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">n_A</span> / mol</td>
+<td style="text-align: right;">1.4100521</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">y_{A_2}</span>, <span class="math inline">y_A</span></td>
+<td style="text-align: right;">0.1730026, 0.8269974</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">Q=3.9532626=K</span> and <span class="math inline">2n_{A_2}+n_A=2.0000000</span> mol of A atoms.</p>
+</section>
+<section id="pressure-prediction" class="slide level2 work-stop">
+<h2>Your turn: compress at the same temperature</h2>
+<div class="your-action">
+<p><strong>Pause for 8 minutes. Worksheet p.&nbsp;4, C4.</strong> Predict the direction first, then calculate. Check on slide 18.</p>
+</div>
+<p>Keep 350 K, the reaction, initial inventory and <span class="math inline">p^\circ=100</span> kPa. Raise the actual total pressure from 100 to <strong>400 kPa</strong>.</p>
+<ul>
+<li>Does standard <span class="math inline">K</span> change?</li>
+<li>Which way should equilibrium extent move for <span class="math inline">\mathrm{A_2}\rightleftharpoons2\mathrm{A}</span>?</li>
+<li>Calculate <span class="math inline">f</span>, <span class="math inline">\xi</span> and the equilibrium mole fractions with <span class="math inline">P/p^\circ=4</span>.</li>
+</ul>
+<p>This is a fixed-<span class="math inline">T,P</span> reaction calculation. Do not replace it with the fixed-volume inert-gas argument from Week 4.</p>
+</section>
+<section id="pressure-check" class="slide level2">
+<h2>Pressure changes composition at fixed K</h2>
+<div class="your-action">
+<p><strong>Check C4 on worksheet p.&nbsp;4.</strong> Compare the same quantities in both cases.</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>At 350 K</th>
+<th style="text-align: right;">100 kPa</th>
+<th style="text-align: right;">400 kPa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Standard <span class="math inline">K</span></td>
+<td style="text-align: right;">3.953263</td>
+<td style="text-align: right;">3.953263</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\xi</span> / mol</td>
+<td style="text-align: right;">0.705026</td>
+<td style="text-align: right;">0.445114</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">y_A</span></td>
+<td style="text-align: right;">0.826997</td>
+<td style="text-align: right;">0.616026</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">y_{A_2}</span></td>
+<td style="text-align: right;">0.173003</td>
+<td style="text-align: right;">0.383974</td>
+</tr>
+</tbody>
+</table>
+<p>At a fixed trial composition, raising pressure increases <span class="math inline">Q</span> because <span class="math inline">\Delta\nu=+1</span>. Equilibrium shifts toward smaller extent until <span class="math inline">Q=K</span> again.</p>
+</section>
+<section id="lab12-setup" class="slide level2 work-stop">
+<h2>Lab 12: prepare a controlled comparison</h2>
+<div class="your-action">
+<p><strong>Pause for 5 minutes. Worksheet p.&nbsp;4, D1; Lab guide p.&nbsp;1.</strong> Open <a href="labs/reaction.html#rx-experiment">Lab 12</a>, select <strong>Reset synthetic example</strong>, and inspect the listed controls. Then watch slide 20.</p>
+</div>
+<p>Set <span class="math inline">T=T_{\mathrm{ref}}=350</span> K, <span class="math inline">P=p^\circ=100</span> kPa and inert gas <span class="math inline">=0</span> mol.</p>
+<p>Change the default <span class="math inline">\Delta_rC_p^\circ</span> from <strong>30 to 0 J mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span></strong>. Keep the supplied <span class="math inline">\Delta_rG^\circ</span>, <span class="math inline">\Delta_rH^\circ</span>, <span class="math inline">\Delta_rS^\circ</span> and reference <span class="math inline">\ln K</span>.</p>
+<p>For <strong>K source for extent and driving force</strong>, choose <strong>Direct <span class="math inline">\Delta_rG^\circ</span> at its supplied T</strong>. Verify the reaction table starts with 1 mol A<span class="math inline">_2</span> and 0 mol A.</p>
+</section>
+<section id="lab12-demo" class="slide level2 demo-slide">
+<h2>Lab 12 demonstration: the reference state</h2>
+<div class="your-action">
+<p><strong>Watch the actual Lab demonstration.</strong> Follow guide p.&nbsp;1. Observe the result before beginning D2-D4 on slide 21.</p>
+</div>
+<ol type="1">
+<li>Click <strong>Compare K methods</strong> and inspect the reference values.</li>
+<li>Read <strong>From K to equilibrium composition</strong>: extent, equilibrium moles, activities and atom balance.</li>
+<li>Select <strong><span class="math inline">\Delta H^\circ/\Delta S^\circ</span> · constant values</strong>, recalculate and compare the reference result.</li>
+<li>Return to <strong>Direct <span class="math inline">\Delta_rG^\circ</span></strong>, recalculate and export <strong>12A</strong>.</li>
+</ol>
+<p>The separate <strong>Observed activities</strong> panel uses supplied trial values <span class="math inline">y_{A_2}=0.2</span>, <span class="math inline">y_A=0.8</span>. It does not automatically show the extent solver’s equilibrium composition.</p>
+</section>
+<section id="lab12-independent" class="slide level2 work-stop">
+<h2>Your turn: reproduce the pressure comparison</h2>
+<div class="your-action">
+<p><strong>Pause for 22 minutes. Worksheet p.&nbsp;4, D2-D4; guide p.&nbsp;1.</strong> Run the cases yourself. Slide 22 provides the pressure demonstration and check.</p>
+</div>
+<ul>
+<li><strong>12A:</strong> 350 K, 100 kPa. Compare direct Gibbs with the enthalpy/entropy route at this temperature.</li>
+<li><strong>12B:</strong> keep 350 K and change only pressure to 400 kPa. Use direct Gibbs for the saved case.</li>
+<li>Recalculate after every change. Record <span class="math inline">K</span>, <span class="math inline">\xi</span>, mole fractions and one atom/<span class="math inline">Q</span> check. Export both studies.</li>
+</ul>
+<p>Identify both axes and the minimum in the reaction Gibbs-energy graph. If blocked, record the control or message and continue at the time limit.</p>
+</section>
+<section id="lab12-reading-check" class="slide level2 demo-slide">
+<h2>What the Lab results establish</h2>
+<div class="your-action">
+<p><strong>Watch the 400 kPa check and compare D2-D4.</strong> Correct your own records. The worked solutions contain the same reference numbers.</p>
+</div>
+<p>The graph plots reaction extent <span class="math inline">\xi</span> in mol against relative total Gibbs energy <span class="math inline">[G(\xi)-G(0)]/(RT)</span> in <strong>mol</strong>.</p>
+<p>The selected equilibrium is the minimum within this admitted <strong>single neutral ideal-gas reaction model</strong>. At the solution, <span class="math inline">\ln Q-\ln K\approx0</span> and the atom balance closes.</p>
+<p>At 400 kPa, <span class="math inline">K</span> remains 3.953263 while <span class="math inline">\xi</span> decreases to 0.445114 mol. A successful calculation checks this model; it does not establish real-gas accuracy or rule out other phases.</p>
+</section>
+<section id="break" class="slide level2 work-stop">
+<h2>Ten-minute break</h2>
+<div class="your-action">
+<p><strong>Pause for 10 minutes.</strong> Save your worksheet and the two exported studies. Resume at slide 24.</p>
+</div>
+<p>Your first comparison changed <strong>pressure at fixed temperature</strong>.</p>
+<p>After the break, change <strong>temperature at fixed pressure</strong> and ask why <span class="math inline">K</span> now changes.</p>
+<p>You do not need to complete optional reading during the break.</p>
+</section>
+<section id="temperature-dependence" class="slide level2">
+<h2>Temperature changes the equilibrium constant</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;5, E1.</strong> Keep <span class="math inline">P=p^\circ=100</span> kPa for the next case.</p>
+</div>
+<p>The direct value <span class="math inline">\Delta_rG^\circ=-4.000</span> kJ/mol was supplied at <strong>350 K</strong>. It does not describe every temperature.</p>
+<p>For this lesson, define a constant reaction enthalpy of <span class="math inline">+50.000</span> kJ/mol over 350-400 K, equivalent here to <span class="math inline">\Delta_rC_p^\circ=0</span>.</p>
+<p>The positive enthalpy predicts that increasing temperature increases <span class="math inline">K</span> for the reaction as written.</p>
+</section>
+<section id="vanthoff-route" class="slide level2">
+<h2>Route 3: K at a new temperature</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;5, E1-E2.</strong> Use the reference constant calculated earlier and the stated constant-enthalpy assumption.</p>
+</div>
+<p><span class="math display">\ln\!\left[\frac{K(T)}{K(350)}\right]=\frac{\Delta_rH^\circ}{R}\left(\frac{1}{350}-\frac{1}{T}\right)</span></p>
+<p>For <span class="math inline">T=400</span> K, <span class="math inline">\Delta_rH^\circ=50000</span> J/mol and <span class="math inline">\ln K(350)=1.3745412</span>.</p>
+<p>First calculate the increment in <span class="math inline">\ln K</span>, then add it to <span class="math inline">\ln K(350)</span>. Exponentiate once at the end.</p>
+<p>This temperature law needs a valid approximation over the interval, consistent reference data and no intervening phase transition.</p>
+</section>
+<section id="temperature-calculation" class="slide level2 work-stop">
+<h2>Your turn: heat from 350 K to 400 K</h2>
+<div class="your-action">
+<p><strong>Pause for 15 minutes. Worksheet p.&nbsp;5, E1-E3.</strong> Calculate before watching slide 27.</p>
+</div>
+<ol type="1">
+<li>Calculate <span class="math inline">\ln K(400)</span> and <span class="math inline">K(400)</span> using van’t Hoff.</li>
+<li>Cross-check with <span class="math inline">\Delta_rG^\circ(400)=50000-400(54000/350)</span> J/mol under the same <span class="math inline">\Delta_rC_p^\circ=0</span> assumption.</li>
+<li>At <span class="math inline">P/p^\circ=1</span>, calculate <span class="math inline">f</span>, equilibrium mole fractions and the direction of change relative to 350 K.</li>
+</ol>
+<p>Keep pressure, initial inventory and standard states fixed during this temperature comparison.</p>
+</section>
+<section id="temperature-check" class="slide level2">
+<h2>The endothermic reaction dissociates further</h2>
+<div class="your-action">
+<p><strong>Check E1-E3 on worksheet p.&nbsp;5.</strong> Compare logarithms before comparing rounded <span class="math inline">K</span> values.</p>
+</div>
+<p><span class="math display">\ln K(400)=1.3745412+2.1477206=3.5222618</span></p>
+<p><span class="math display">K(400)=33.8609295,\qquad\Delta_rG^\circ(400)=-11.714286\ \mathrm{kJ/mol}</span></p>
+<p>At 100 kPa: <span class="math inline">\xi=0.945701</span> mol, <span class="math inline">y_A=0.972093</span> and <span class="math inline">y_{A_2}=0.027907</span>.</p>
+<p>The initial atom inventory stays fixed while temperature changes the standard equilibrium constant and the equilibrium composition.</p>
+</section>
+<section id="point-data-limits" class="slide level2">
+<h2>A 350 K Gibbs value is not a temperature law</h2>
+<div class="your-action">
+<p><strong>Read with worksheet p.&nbsp;5, F1 and guide p.&nbsp;2.</strong> Identify the applicable K source before changing the evaluation temperature.</p>
+</div>
+<p>At 400 K, choose <strong>van ’t Hoff · constant <span class="math inline">\Delta H^\circ</span></strong> for the extent solver. Retain <span class="math inline">T_{\mathrm{ref}}=350</span> K, the reference <span class="math inline">\ln K</span> and <span class="math inline">\Delta_rC_p^\circ=0</span>.</p>
+<p>Direct and formation Gibbs-energy inputs supplied at 350 K become <strong>unavailable at 400 K</strong>. Changing their temperature labels would claim new property data; it would not calculate them.</p>
+<p>Custom species, nonzero heat capacities and more detailed temperature models are <strong>optional references</strong>, outside this lesson’s required work.</p>
+</section>
+<section id="lab12-temperature-run" class="slide level2 work-stop">
+<h2>Your turn: save and reopen the temperature case</h2>
+<div class="your-action">
+<p><strong>Pause for 19 minutes. Worksheet p.&nbsp;5, F1-F3; guide p.&nbsp;2.</strong> Run the new case and verify a restored file before the demonstration on slide 30.</p>
+</div>
+<ul>
+<li><strong>12C:</strong> select constant-enthalpy van’t Hoff, set <span class="math inline">T=400</span> K and <span class="math inline">P=100</span> kPa, then recalculate. Keep all reference values fixed.</li>
+<li>Record the applicable <span class="math inline">K</span>, extent, composition and atom/<span class="math inline">Q</span> check. Export the complete study.</li>
+<li>Reopen your <strong>12A</strong> study with <strong>Restore calculator study JSON</strong>. Verify the restored settings and freshly recalculated result.</li>
+</ul>
+<p>If a value is unavailable, record the reason. Do not replace it with zero. Record unresolved steps and continue when the pause budget ends.</p>
+</section>
+<section id="three-case-check" class="slide level2 demo-slide">
+<h2>Three cases separate pressure and temperature</h2>
+<div class="your-action">
+<p><strong>Watch the 400 K calculation and JSON restore.</strong> Check F1-F3 and your three saved records. Worksheet p.&nbsp;6 lists what to retain.</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th style="text-align: right;"><span class="math inline">T</span> / K</th>
+<th style="text-align: right;"><span class="math inline">P</span> / kPa</th>
+<th style="text-align: right;"><span class="math inline">K</span></th>
+<th style="text-align: right;"><span class="math inline">\xi</span> / mol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12A</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3.953263</td>
+<td style="text-align: right;">0.705026</td>
+</tr>
+<tr class="even">
+<td>12B</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">3.953263</td>
+<td style="text-align: right;">0.445114</td>
+</tr>
+<tr class="odd">
+<td>12C</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">33.860929</td>
+<td style="text-align: right;">0.945701</td>
+</tr>
+</tbody>
+</table>
+<p>12A to 12B isolates pressure. 12A to 12C isolates temperature under the specified constant-enthalpy model.</p>
+<p>A restored study must reproduce its settings and fresh calculation. Exporting a JSON file does not submit it to the instructor.</p>
+</section>
+<section id="what-to-bring" class="slide level2">
+<h2>Bring one unresolved question to our next class</h2>
+<div class="your-action">
+<p><strong>Read worksheet p.&nbsp;6, G.</strong> Prepare one concise explanation and one unresolved step, if any. We will discuss these in class on <strong>13 November</strong>.</p>
+</div>
+<ul>
+<li><span class="math inline">K</span> uses the reaction, temperature and standard-state convention.</li>
+<li><span class="math inline">Q</span> uses a particular composition and pressure. At equilibrium, <span class="math inline">Q=K</span>.</li>
+<li>Extent converts the initial inventory into a composition while conserving atoms.</li>
+<li>A pressure change can alter composition without changing <span class="math inline">K</span>. A temperature change generally changes <span class="math inline">K</span>.</li>
+</ul>
+<p>Keep one worksheet and three exported studies. Optional material is not a requirement for completion.</p>
+<div class="reference-links">
+<p>Optional definitions: <a href="https://goldbook.iupac.org/terms/view/S05915">IUPAC standard equilibrium constant</a> · <a href="https://goldbook.iupac.org/terms/view/E02177">IUPAC equilibrium constant</a>.</p>
+</div>
+</section>
+<section id="exit-ticket" class="slide level2 work-stop">
+<h2>Exit ticket, feedback and saved work</h2>
+<div class="your-action">
+<p><strong>Pause for 10 minutes. Worksheet p.&nbsp;6, G.</strong> Open the <a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5">Session 5 exit ticket and feedback form</a>. Submit once and wait for <strong>Response received</strong>.</p>
+</div>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>5 min · Explain and check</strong></p>
-<p>Answer the session question in the form. Give one result or independent check from today’s lab, with units.</p>
-<p><strong>3 min · Help improve the next class</strong></p>
-<p>Rate the pace, report lab access, and suggest one improvement.</p>
-<p>Thai or English. No name, ID or email requested.</p>
-<p>Wait for <strong>“Response received.”</strong> We will use the final 2 minutes to close the class.</p>
-</div><div class="column" style="width:36%;">
+<div class="column" style="width:72%;">
+<p>In your explanation, distinguish <span class="math inline">K</span> from <span class="math inline">Q</span> and explain the pressure comparison. Give one numerical result or independent check, with settings and units.</p>
+<p>In feedback, report actual study minutes, whether the pace was suitable and the exact step you want explained in class. English or Thai is welcome in the form.</p>
+<p>The form is anonymous and does not identify individual attendance. Save your worksheet, corrections and JSON files. Your required Week 5 work ends here.</p>
+</div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5"><img data-src="assets/exit-qr-05.png" style="width:100.0%" alt="Scan to submit Session 5 exit ticket and feedback."></a></p>
-<figcaption>Scan to submit Session 5 exit ticket and feedback.</figcaption>
+<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5"><img data-src="assets/exit-qr-05.png" width="150"></a></p>
+<figcaption>Scan to open the Session 5 exit ticket and feedback form.</figcaption>
 </figure>
 </div>
 <p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5">Open Session 5 form</a></p>
@@ -297,7 +668,7 @@ Soorathep Kheawhom
   <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="site_libs/revealjs/plugin/search/search.js"></script>
@@ -318,7 +689,7 @@ Soorathep Kheawhom
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
 'smaller': false,
- 
+
         // Display controls in the bottom right corner
         controls: true,
 
@@ -340,7 +711,7 @@ Soorathep Kheawhom
         slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
-        showSlideNumber: 'speaker',
+        showSlideNumber: 'all',
 
         // Add the current slide number to the URL hash so that reloading the
         // page/copying the URL will return you to the same slide
@@ -445,7 +816,7 @@ Soorathep Kheawhom
         transition: 'none',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'fast',
+        transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
@@ -527,190 +898,173 @@ Soorathep Kheawhom
     })();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button,
+              { trigger: "manual",
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config);
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
-    
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
 
 </body></html>

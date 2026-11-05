@@ -1,0 +1,540 @@
+{
+  "checked_at_utc": "2026-11-05T11:10:35.415335+00:00",
+  "script_sha256": "9c196ffbebded65c9174f13be0d0409a6c9148615d4366fe53ebc47badc057ac",
+  "scope": "All 32 English narration tracks",
+  "method": {
+    "model": "tiny.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "cpu_threads": 1,
+    "num_workers": 1,
+    "beam_size": 3,
+    "language": "en",
+    "local_files_only": true,
+    "faster_whisper_version": "1.2.1"
+  },
+  "status": "complete_source_comparison",
+  "pending_audio": [],
+  "checks": [
+    {
+      "slide": 1,
+      "title": "Week 5: from phases to reactions",
+      "audio_sha256": "067ef117b586cd8dfd0d5a15b7a50c824cc4ebdaf8e2d6acaf3e7603308923b6",
+      "narration_sha256": "adf10f8067ebfc9c74e90976a551afeae3ba53e74a645ef4186d4a0c3f518a64",
+      "source": "Welcome to Week five, from phases to chemical reactions. This is our independent lesson for Friday, November sixth. We will meet onsite again on Friday, November thirteenth. Please begin with the short review in section R of the worksheet. Your recent questions showed that we should separate two ideas before moving on. Bulk phase equilibrium concerns a substance distributed between macroscopic phases, such as a solid and its vapor. Adsorption concerns uptake associated with a surface. The amount adsorbed depends on an adsorption relation and the available surface capacity. A vapor pressure alone does not describe that uptake. Today, we will use the same habit of combining an equilibrium relation with conservation, but the species can also react. Our main example is a synthetic dissociation, A two forming two A atoms. We will follow one worksheet and use Lab twelve. Keep the worksheet beside the video so every pause has a clear place to work.",
+      "asr": "Welcome to week 5, from phases to chemical reactions. This is our independent lesson for Friday, November 6th. We will meet on-site again on Friday, November 13th. Please begin with the short review in section R of the worksheet. Your recent questions showed that we should separate two ideas before moving on. Bulk phase equilibrium concerns a substance distributed between macroscopic phases. Such as a solid and its vapor, adsorption concerns uptake associated with a surface. The amount adsorbed depends on an adsorption relation and the available surface capacity. A vapor pressure alone does not describe that uptake. Today we will use the same habit of combining an equilibrium relation with conservation. But the species can also react. Our main example is a synthetic dissociation. A2 forming two atoms. We will follow one worksheet and use lab 12. Keep the worksheet beside the video, so every pause has a clear place to work.",
+      "cache": "outputs/week05-video/asr-cache/067ef117b586cd8dfd0d5a15b7a50c824cc4ebdaf8e2d6acaf3e7603308923b6-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "067ef117b586cd8dfd0d5a15b7a50c824cc4ebdaf8e2d6acaf3e7603308923b6",
+        "narration_sha256": "adf10f8067ebfc9c74e90976a551afeae3ba53e74a645ef4186d4a0c3f518a64",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 2,
+      "title": "Partial and total pressure at fixed volume",
+      "audio_sha256": "a2f5bb28595544baa58528ca6043d6004cba4248edbfb6d2d97cec003dd8ac32",
+      "narration_sha256": "0af2488701c312e59dbb1b0b0d0aa30ce9c103e606126f860e3bbd3d7878f451",
+      "source": "Before we discuss reactions, revisit pressure in a closed, rigid vessel. The temperature and the volume are fixed. The ideal gas equation connects the amount of each gas to its own partial pressure. Total pressure is the sum of those partial pressures. If all of the volatile solid has disappeared, calculate the volatile gas pressure from its available amount. Do not continue forcing its pressure to equal the saturation value after that phase is depleted. The assumption of an ideal gas is a separate modeling choice. Losing the solid phase does not make a real gas ideal. Now pause for four minutes and complete R one. Use the values printed in the worksheet, calculate the volatile partial pressure and total pressure, then state which pressure changes when inert gas is added at fixed temperature and volume. Keep the volatile inventory unchanged. Record a unit check. After your attempt, continue to the next question. We will check both review answers together.",
+      "asr": "Before we discuss reactions, revisit pressure in a closed, rigid vessel. The temperature and the volume are fixed. The ideal gas equation connects the amount of each gas to its own partial pressure. Total pressure is the sum of those partial pressures. If all of the volatile solid has disappeared, calculate the volatile gas pressure from its available amount. Do not continue forcing its pressure to equal the saturation value after that phase is depleted. The assumption of an ideal gas is a separate modeling choice. Losing the solid phase does not make a real gas ideal. Now pause for four minutes and complete R1. Use the values printed in the worksheet. Calculate the volatile partial pressure and total pressure. Then state which pressure changes when inert gas is added at fixed temperature and volume. Keep the volatile inventory unchanged. Record a unit check. After your attempt, continue to the next question. We will check both review answers together.",
+      "cache": "outputs/week05-video/asr-cache/a2f5bb28595544baa58528ca6043d6004cba4248edbfb6d2d97cec003dd8ac32-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "a2f5bb28595544baa58528ca6043d6004cba4248edbfb6d2d97cec003dd8ac32",
+        "narration_sha256": "0af2488701c312e59dbb1b0b0d0aa30ce9c103e606126f860e3bbd3d7878f451",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 3,
+      "title": "A balance needs an independent equation",
+      "audio_sha256": "232ae275c0a81ee12cd4a46c7768c4c110a569bdc8e219a4d13f45d30c9c7c6d",
+      "narration_sha256": "2aba13716875b60b30602749733fd5f320c099d26405a4f12df53d969a473f47",
+      "source": "The next question concerns adsorption in a finite vessel. Conservation tells us that the feed is divided between free gas and adsorbed material. The Langmuir equation supplies another condition that the proposed state must satisfy. Choosing two amounts that add to the feed is insufficient if the adsorbed amount disagrees with the isotherm at the same pressure. In R two, the pressure and the model parameters are supplied. First calculate the gas amount from pressure, volume and temperature. Independently calculate the loading from the Langmuir equation, then multiply that loading by the adsorbent mass. Only after these two calculations should you compare their sum with the feed. Use units of mole per kilogram for the loading and kilograms for the adsorbent mass. Their product is an amount in moles. Pause for four minutes and complete R two. If a number seems unreasonable, write which equation or conversion you need to check. Continue when the time budget ends.",
+      "asr": "The next question concerns its sorption in a finite vessel. Conservation tells us that the feed is divided between free gas and its sorbed material. The lanyar equation supplies another condition that the proposed state must satisfy. Choosing two amounts that add to the feed is insufficient. If the its sorbed amount disagrees with the isotherm at the same pressure. In R2, the pressure and the model parameters are supplied. First calculate the gas amount from pressure, volume and temperature. Independently calculate the loading from the lanyar equation. Then multiply that loading by the its sorbent mass. Only after these two calculations should you compare their sum with the feed. Use units of mole per kilogram for the loading and kilograms for the its sorbent mass. Their product is an amount in moles. Pause for four minutes and complete R2. If a number seems unreasonable, write which equation or conversion you need to check. Continue when the time budget ends.",
+      "cache": "outputs/week05-video/asr-cache/232ae275c0a81ee12cd4a46c7768c4c110a569bdc8e219a4d13f45d30c9c7c6d-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "232ae275c0a81ee12cd4a46c7768c4c110a569bdc8e219a4d13f45d30c9c7c6d",
+        "narration_sha256": "2aba13716875b60b30602749733fd5f320c099d26405a4f12df53d969a473f47",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 4,
+      "title": "Two calculations, one physical state",
+      "audio_sha256": "ca5df7959d59717e55171ad0a200f83ae99eb0329b08b47a9263a21f62ba5dfc",
+      "narration_sha256": "58907602c7ef02109455049a68528a7f8a3a31a43bc7222d37978f8f5b7bc4ba",
+      "source": "Check R one first. The gas capacity at the sublimation pressure is about four thousandths of a mole, which exceeds the available zero point zero zero two moles. All of the solid disappears. The volatile partial pressure is about four point nine eight nine kilopascals. Adding the specified inert gas at fixed temperature and volume raises total pressure to about nine point nine seven seven kilopascals, while the volatile partial pressure stays unchanged. Now check R two. At the proposed ten kilopascals, the gas contains about four thousandths of a mole, and the isotherm requires zero point zero one moles on the surface. Their sum exceeds the feed. That proposed pressure cannot satisfy this model and inventory together. The checked equilibrium pressure is about six point zero eight zero kilopascals. It gives about zero point zero zero two four four moles of gas and zero point zero zero seven five six moles adsorbed. The sum matches the feed. We will use the same combination of equilibrium and conservation checks for reactions.",
+      "asr": "Check R1 first. The gas capacity at the sublimation pressure is about 4,000ths of a mole, which exceeds the available 0.002 moles. All of the solid disappears. The volatile partial pressure is about 4.989 kilopascals. Adding the specified inert gas at fixed temperature and volume raises total pressure to about 9.977 kilopascals, while the volatile partial pressure stays unchanged. Now check R2. At the proposed 10 kilopascals, the gas contains about 4,000ths of a mole, and the isotherm requires 0.01 moles on the surface. There are some exceeds the feed. That proposed pressure cannot satisfy this model and inventory together. The checked equilibrium pressure is about 6.080 kilopascals. It gives about 0.002, 4,4 moles of gas, and 0.00756 moles at sorbed. The sum matches the feed. We will use the same combination of equilibrium and conservation checks for reactions.",
+      "cache": "outputs/week05-video/asr-cache/ca5df7959d59717e55171ad0a200f83ae99eb0329b08b47a9263a21f62ba5dfc-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "ca5df7959d59717e55171ad0a200f83ae99eb0329b08b47a9263a21f62ba5dfc",
+        "narration_sha256": "58907602c7ef02109455049a68528a7f8a3a31a43bc7222d37978f8f5b7bc4ba",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Compared final regenerated track after simplifying spoken rounding or stating zero point five. Intended numerical meaning is supported by the source, final ASR and on-screen values.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 5,
+      "title": "One worksheet, one Lab, three hours",
+      "audio_sha256": "69c7695952813483e8e25bdc0d0c83d6c325830125853b17d4036539e1e244b1",
+      "narration_sha256": "77c0891d511e75d7a88a32921a37e48768c242a6c014918cb6080bb1006d753d",
+      "source": "Here is the complete route for this week. Use the six-page Week five worksheet as your working record. Keep Lab twelve open in a second tab when we reach section D. The short Lab guide is available when you need help finding a control. The worked solutions are for checking after an attempt. There is no additional required preparation or follow-up assignment. The planned activities use one hundred and twenty-eight minutes, with a separate ten-minute break. Add the recording duration shown on the video page for a total of approximately three hours. Your actual time may differ. Please use the suggested stop budgets. If you remain stuck at the end of a pause, record the specific step and continue. Bring that question to our onsite class on November thirteenth. You do not need to repeat the whole worksheet neatly. A first attempt, a correction and a short explanation provide a useful record of your learning.",
+      "asr": "Here is the complete route for this week. Use the six-page week 5 worksheet as your working record. Keep Lab 12 open in a second tab when we reach Section D. The short lab guide is available when you need help finding a control. The work solutions are for checking after an attempt. There is no additional required preparation or follow-up assignment. The planned activities use 128 minutes with a separate 10-minute break. Add the recording duration shown on the video page for a total of approximately 3 hours. Your actual time may differ. Please use the suggested stop budget. If you remain stuck at the end of a pause, record the specific step and continue. Bring that question to our on-site class on November 13. You do not need to repeat the whole worksheet neatly. A first attempt, a correction and a short explanation provide a useful record of your learning.",
+      "cache": "outputs/week05-video/asr-cache/69c7695952813483e8e25bdc0d0c83d6c325830125853b17d4036539e1e244b1-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "69c7695952813483e8e25bdc0d0c83d6c325830125853b17d4036539e1e244b1",
+        "narration_sha256": "77c0891d511e75d7a88a32921a37e48768c242a6c014918cb6080bb1006d753d",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 6,
+      "title": "Reaction extent keeps the atoms balanced",
+      "audio_sha256": "044b4ac3dd940a2eee96a97d0b3aad17b6dfbf574041c0534ecc9857c41818ef",
+      "narration_sha256": "478398de23b3bc996c08f79fbf05fe30e9dc40807ee84e4a44ede33cc8363dd9",
+      "source": "Our reaction is A two gas in equilibrium with two A gas. We begin with one mole of A two and no A. No inert gas is present in the three required cases. A two contains two A atoms, so the reaction conserves atoms even though the number of gas molecules changes. Reaction extent tells us how far the reaction has proceeded on the written stoichiometric basis. Consuming one mole of A two produces two moles of A. The general expression is the initial amount plus the stoichiometric coefficient times the reaction extent. Reactant coefficients are negative and product coefficients are positive. For this particular feed, it is convenient to define f as the reaction extent divided by one mole. The fraction f is dimensionless. The amounts are one minus f moles of A two and two f moles of A. Nonnegative amounts require f between zero and one. These bounds come from the available material, before we use any equilibrium constant.",
+      "asr": "A reaction is A2 gas in equilibrium with 2 a gas. We begin with 1 mole of a 2 and no A. No inert gas is present in the 3 required cases. A2 contains 2 atoms, so the reaction conserves atoms even though the number of gas molecules changes. Reaction extent tells us how far the reaction has preceded on the written stoichiometric basis. Using 1 mole of a 2 produces 2 moles of a. The general expression is the initial amount plus the stoichiometric coefficient times the reaction extent. Reacting coefficients are negative and product coefficients are positive. For this particular feed, it is convenient to define F as the reaction extent divided by 1 mole. The fraction F is dimensionless. The amounts are 1 minus F moles of a 2 and 2 F moles of a. Non-negative amounts require F between 0 and 1. These bounds come from the available material before we use any equilibrium constant.",
+      "cache": "outputs/week05-video/asr-cache/044b4ac3dd940a2eee96a97d0b3aad17b6dfbf574041c0534ecc9857c41818ef-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "044b4ac3dd940a2eee96a97d0b3aad17b6dfbf574041c0534ecc9857c41818ef",
+        "narration_sha256": "478398de23b3bc996c08f79fbf05fe30e9dc40807ee84e4a44ede33cc8363dd9",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 7,
+      "title": "Activities make Q dimensionless",
+      "audio_sha256": "00d620cd35cf841a5bc5884cee783d6b73066ebff33a4897488f92b766aad0aa",
+      "narration_sha256": "690c545879ee802149a357a8369d54c6cc223e2b90e0b42fdae0d7795c2bca47",
+      "source": "To describe equilibrium, we need activities. For today's ideal gas model, the activity of a species is its mole fraction multiplied by total pressure, divided by the standard pressure. Both pressures must use the same units. Their ratio is dimensionless, and so is the activity. We use a standard pressure of one hundred kilopascals throughout this lesson. This is a reference convention. The actual total pressure is a separate input that we can change. For A two dissociating into two A, the quotient is the activity of A squared, divided by the activity of A two. The exponents come directly from the reaction coefficients. Write this activity expression before substituting mole fractions. That step makes it easier to see how pressure enters the calculation. Later we will compare one hundred and four hundred kilopascals at the same temperature. Our standard pressure stays at one hundred kilopascals in both cases.",
+      "asr": "To describe equilibrium, we need activities. For today's ideal gas model, the activity of a species is its mole fraction multiplied by total pressure, divided by the standard pressure. Both pressures must use the same units. Their ratio is dimensionless and so is the activity. We use a standard pressure of 100 kilopascals throughout this lesson. This is a reference convention. The actual total pressure is a separate input that we can change. For a two dissociating into two A, the quotient is the activity of a squared, divided by the activity of a two. The exponents come directly from the reaction coefficients. Write this activity expression before substituting mole fractions. That step makes it easier to see how pressure enters the calculation. Later we will compare 100 and 400 kilopascals at the same temperature. Our standard pressure stays at 100 kilopascals in both cases.",
+      "cache": "outputs/week05-video/asr-cache/00d620cd35cf841a5bc5884cee783d6b73066ebff33a4897488f92b766aad0aa-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "00d620cd35cf841a5bc5884cee783d6b73066ebff33a4897488f92b766aad0aa",
+        "narration_sha256": "690c545879ee802149a357a8369d54c6cc223e2b90e0b42fdae0d7795c2bca47",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 8,
+      "title": "Your turn: build Q from the mole table",
+      "audio_sha256": "bb0387f3091897f14a9aec702eb90076e3c0ee7d408a03c47debc44e5a8832c1",
+      "narration_sha256": "c754d0fd97f5792b6d172b26002026806443ce79c2ba92233dfeca5da8f0d502",
+      "source": "Please pause for ten minutes and complete A one through A three. Begin with a mole table. Write the amounts of A two, A and the total gas in terms of f. Divide each species amount by the total amount to obtain its mole fraction. Check that the fractions sum to one. Substitute those fractions into the activity definition and then into the reaction quotient. Try to simplify the expression without looking ahead. Keep the actual-pressure to standard-pressure ratio visible. Evaluate the quotient at a trial fraction of zero point five, first at a pressure ratio of one and then at a ratio of four. Finally, check the total number of A atoms using the stoichiometric counts. The total molecular amount can change, but the atom inventory must remain equal to the initial inventory. If the algebra becomes difficult, retain the unsimplified expression and substitute one trial value of f to test it. That is a useful intermediate result. At the end of ten minutes, record any unfinished step and continue to the check. The next slide shows the derivation.",
+      "asr": "Please pause for 10 minutes and complete A1 through A3, begin with a mole table, write the amounts of a 2, and the total gas in terms of F. Divide each species amount by the total amount to obtain its mole fraction. Check that the fraction sum to 1. Substitute those fractions into the activity definition, and then into the reaction quotient, try to simplify the expression without looking ahead. Keep the actual pressure to standard pressure ratio visible. Evaluate the quotient at a trial fraction of 0.5, first at a pressure ratio of 1, and then at a ratio of 4. Finally, check the total number of atoms using the stoic geometric count. The total molecular amount can change, but the atom inventory must remain equal to the initial inventory. If the algebra becomes difficult, retain the unsimplified expression and substitute one trial value of F to test it. That is a useful intermediate result. At the end of 10 minutes, record any unfinished step and continue to the check. The next slide shows the derivation.",
+      "cache": "outputs/week05-video/asr-cache/bb0387f3091897f14a9aec702eb90076e3c0ee7d408a03c47debc44e5a8832c1-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "bb0387f3091897f14a9aec702eb90076e3c0ee7d408a03c47debc44e5a8832c1",
+        "narration_sha256": "c754d0fd97f5792b6d172b26002026806443ce79c2ba92233dfeca5da8f0d502",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Compared final regenerated track after simplifying spoken rounding or stating zero point five. Intended numerical meaning is supported by the source, final ASR and on-screen values.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 9,
+      "title": "Check the quotient and the atom balance",
+      "audio_sha256": "a64ba02da5b0e97f206c8f870db007602c9f8ba85410d53b8ef8691d0dc37ea9",
+      "narration_sha256": "76086bf7b51a5badfd9af4c9458fb7420ea2b0227f6ab545073178a393456d35",
+      "source": "The total gas amount is one plus f moles. Therefore, the mole fraction of A two is one minus f, divided by one plus f. The mole fraction of A is two f, divided by one plus f. Substituting these into the quotient gives four f squared divided by one minus f squared, multiplied by the pressure ratio. One pressure factor remains because the product side has one more mole of gas per mole of reaction than the reactant side. If your expression has two pressure factors or none, return to the activity exponents and cancel them explicitly. The atom check is twice the amount of A two plus the amount of A. Substitution gives two moles of conserved A atoms for every feasible f. Notice that molecular moles and atom moles describe different inventories. At a trial fraction of zero point five, the quotient is one point three three three three at a pressure ratio of one, and five point three three three three at a pressure ratio of four. These are trial states, so we have not yet established equilibrium. The quotient changes with f, while the atom balance remains satisfied.",
+      "asr": "The total gas amount is 1 plus F moles. Therefore, the mole fraction of a 2 is 1 minus F, divided by 1 plus F. The mole fraction of a is 2 F, divided by 1 plus F. Substituting these into the quotient gives 4 F squared divided by 1 minus F squared. Multiplyed by the pressure ratio. One pressure factor remains because the product side has one more mole of gas per mole of reaction than the reactant side. If your expression has two pressure factors or none, return to the activity exponents and cancel them explicitly. The atom check is twice the amount of a 2 plus the amount of a. Substitution gives two moles of conserved atoms for every feasible F. Notice that molecular moles and atom moles describe different inventories. At a trial fraction of 0.5, the quotient is 1.3333 at a pressure ratio of 1. And 5.3333 at a pressure ratio of 4. These are trial states, so we have not yet established equilibrium. The quotient changes with F, while the atom balance remains satisfied.",
+      "cache": "outputs/week05-video/asr-cache/a64ba02da5b0e97f206c8f870db007602c9f8ba85410d53b8ef8691d0dc37ea9-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "a64ba02da5b0e97f206c8f870db007602c9f8ba85410d53b8ef8691d0dc37ea9",
+        "narration_sha256": "76086bf7b51a5badfd9af4c9458fb7420ea2b0227f6ab545073178a393456d35",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Compared final regenerated track after simplifying spoken rounding or stating zero point five. Intended numerical meaning is supported by the source, final ASR and on-screen values.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 10,
+      "title": "Which way does the reaction proceed?",
+      "audio_sha256": "e62c9d51d78142c3a671c30293cae814966a82c1a8bda84faa0cd25ffff4bbc4",
+      "narration_sha256": "87f42ac61fb1c8138edde178f42093fd6c6c147df3c443eb083b7fff972b90d0",
+      "source": "How can the quotient tell us which direction is favored? At fixed temperature and pressure, the reaction Gibbs energy is the standard reaction Gibbs energy plus R T times the natural logarithm of Q. An equivalent form is R T times the natural logarithm of Q divided by K. A negative value favors forward reaction. A positive value favors reverse reaction. At an interior equilibrium, the reaction Gibbs energy is zero and Q equals K. These statements refer to the reaction as written. Reversing the reaction reverses the corresponding sign convention. For B one, use the supplied standard reaction Gibbs energy of minus four thousand joules per mole at three hundred and fifty kelvin. Test Q equal to one and Q equal to ten. Pause for six minutes, calculate the signs and write the favored direction for each state. Use the natural logarithm. We will return to these answers after calculating K by two routes.",
+      "asr": "How can the quotient tell us which direction is favored? At fixed temperature and pressure, the reaction Gibbs energy is the standard reaction Gibbs energy plus RT times the natural logarithm of Q. An equivalent form is RT times the natural logarithm of Q divided by K, a negative value favors forward reaction, a positive value favors reverse reaction. At an interior equilibrium, the reaction Gibbs energy is zero and Q equals K. These statements refer to the reaction as written, reversing the reaction reverses the corresponding sign convention. For B1, use the supplied standard reaction Gibbs energy of minus 4,000 joules per mole at 350 Kelvin. Test Q equal to 1 and Q equal to 10. Pause for 6 minutes. Calculate the signs and write the favored direction for each state. Use the natural logarithm. We will return to these answers after calculating K by 2 routes.",
+      "cache": "outputs/week05-video/asr-cache/e62c9d51d78142c3a671c30293cae814966a82c1a8bda84faa0cd25ffff4bbc4-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "e62c9d51d78142c3a671c30293cae814966a82c1a8bda84faa0cd25ffff4bbc4",
+        "narration_sha256": "87f42ac61fb1c8138edde178f42093fd6c6c147df3c443eb083b7fff972b90d0",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 11,
+      "title": "Route 1: K from standard Gibbs energy",
+      "audio_sha256": "f21aa386fc4706741da27db5383876f265d88e8a083e001b04c69fa3c9f3a985",
+      "narration_sha256": "ac8b1d078810baf5b19775f2df1ba77bab5ae6c3510fef2301b8303533467621",
+      "source": "The first route starts with standard reaction Gibbs energy at the temperature of interest. The equation is natural log K equals minus standard reaction Gibbs energy divided by R T. For this example, the supplied standard reaction Gibbs energy applies at three hundred and fifty kelvin. It is minus four kilojoules per mole of reaction as written. To use the gas constant in joules per mole per kelvin, convert that energy to minus four thousand joules per mole. Keep the two minus signs separate until you substitute. A negative standard reaction Gibbs energy gives a positive natural logarithm of K, so K should exceed one. This sign prediction is a quick check on the arithmetic. The final equilibrium constant is dimensionless because it is defined using dimensionless activities. A larger K describes a stronger product preference in this convention, but it does not by itself specify the conversion. The feed and constraints are also needed.",
+      "asr": "The first route starts with standard reaction, Gibbs energy at the temperature of interest. The equation is natural log, k equals minus standard reaction, Gibbs energy divided by RT. For this example, the supplied standard reaction Gibbs energy applies at 350 Kelvin. It is minus 4 kilojoules per mole of reaction as written. To use the gas constant in joules per mole per Kelvin, convert that energy to minus 4,000 joules per mole. Keep the two minus signs separate until you substitute. A negative standard reaction, Gibbs energy gives a positive natural logarithm of k. So k should exceed 1. This sign prediction is a quick check on the arithmetic. The final equilibrium constant is dimensionless, because it is defined using dimensionless activities. A larger k describes a stronger product preference in this convention, but it does not by itself specify the conversion. The feed and constraints are also needed.",
+      "cache": "outputs/week05-video/asr-cache/f21aa386fc4706741da27db5383876f265d88e8a083e001b04c69fa3c9f3a985-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "f21aa386fc4706741da27db5383876f265d88e8a083e001b04c69fa3c9f3a985",
+        "narration_sha256": "ac8b1d078810baf5b19775f2df1ba77bab5ae6c3510fef2301b8303533467621",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 12,
+      "title": "Route 2: K from enthalpy and entropy",
+      "audio_sha256": "e86f5c25b64984f3caa6f0b8f097b8e1acfffe3cc7e94e9c4d9bc5187c84a7ce",
+      "narration_sha256": "0e5b71531121224450ff15b9bfdc9ddfcbe0470e28f168e26b890d6f528143ad",
+      "source": "The second route constructs standard reaction Gibbs energy from standard reaction enthalpy and entropy at the same temperature. For the reference case, the enthalpy is fifty kilojoules per mole of reaction. The entropy is about one hundred and fifty-four point two eight five seven joules per mole per kelvin. Convert either the energy or entropy so that the subtraction uses consistent units. In joules, calculate fifty thousand minus three hundred and fifty multiplied by the entropy value. Then use that Gibbs energy in the equation for natural log K. These two routes should agree because the synthetic inputs were constructed consistently. In an experimental or literature calculation, agreement also depends on using the same phases, standard states and reaction basis. If the routes disagree, check the inputs before interpreting the discrepancy as physical behavior. For today's comparison, keep all supplied properties at the reference temperature of three hundred and fifty kelvin.",
+      "asr": "The second route constructs standard reaction Gibbs energy from standard reaction in thalpy, and entropy at the same temperature. For the reference case, the enthalpy is 50 kilojoules per mole of reaction. The entropy is about 154.285 7 joules per mole per kelvin, convert either the energy or entropy, so that the subtraction uses consistent units. In joules, calculate 50,000 minus 350 multiplied by the entropy value, then use that Gibbs energy in the equation for natural log k. These two routes should agree because the synthetic inputs were constructed consistently. In an experimental or literature calculation, agreement also depends on using the same phases, standard states and reaction basis. If the routes disagree, check the inputs before interpreting the discrepancy as physical behavior. For today's comparison, keep all supplied properties at the reference temperature of 350 kelvin.",
+      "cache": "outputs/week05-video/asr-cache/e86f5c25b64984f3caa6f0b8f097b8e1acfffe3cc7e94e9c4d9bc5187c84a7ce-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "e86f5c25b64984f3caa6f0b8f097b8e1acfffe3cc7e94e9c4d9bc5187c84a7ce",
+        "narration_sha256": "0e5b71531121224450ff15b9bfdc9ddfcbe0470e28f168e26b890d6f528143ad",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 13,
+      "title": "Your turn: compare the two K routes",
+      "audio_sha256": "894ac0dca1215b10824e0a788b80ebc1d8a7cbc318c15f57c7ddec49cdf325ba",
+      "narration_sha256": "8b7517ad1eb2abf9442114f60aa8f5b7ecedb0daef5bd9ec925010b4d9a08af6",
+      "source": "Pause for ten minutes and complete B two through B four. Calculate natural log K and then K from the directly supplied standard Gibbs energy. Next, calculate standard Gibbs energy from enthalpy and entropy, and use that value to obtain a second K. Show the energy conversion on your worksheet so someone else can follow your units. Keep several digits during the calculation and round only the reported result. Compare the two routes and write why agreement is expected for this synthetic case. If you obtain a reciprocal value or a very small constant, revisit the minus sign in the exponential. If your two Gibbs energies differ by a factor of a thousand, check the joule and kilojoule conversion. You can use a calculator or a spreadsheet for the arithmetic. The objective is to make the route from the supplied properties to the equilibrium constant visible. Continue to the numerical check after your attempt.",
+      "asr": "Pause for 10 minutes and complete B2 through B4, calculate natural log K, and then K from the directly supplied standard Gibbs energy. Next, calculate standard Gibbs energy from enthalpy and entropy and use that value to obtain a second K. Show the energy conversion on your worksheet so someone else can follow your units. Keep several digits during the calculation and round only the reported result. Compare the two rounds and write why agreement is expected for this synthetic case. If you obtain a reciprocal value or a very small constant, revisit the minus sign in the exponential. If your two Gibbs energies differ by a factor of a thousand, check the dual and kilojoule conversion. You can use a calculator or a spreadsheet for the arithmetic. The objective is to make the route from the supplied properties to the equilibrium constant visible. Continue to the numerical check after your attempt.",
+      "cache": "outputs/week05-video/asr-cache/894ac0dca1215b10824e0a788b80ebc1d8a7cbc318c15f57c7ddec49cdf325ba-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "894ac0dca1215b10824e0a788b80ebc1d8a7cbc318c15f57c7ddec49cdf325ba",
+        "narration_sha256": "8b7517ad1eb2abf9442114f60aa8f5b7ecedb0daef5bd9ec925010b4d9a08af6",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 14,
+      "title": "Both routes give the same reference K",
+      "audio_sha256": "99c515d6a8c0bf75ff0abde15acdf70be4e051e081836e8ae4c341cb4a0d3d08",
+      "narration_sha256": "25152fff4d0a04681a4fe966d7f5b77941b6e311d206bad7f65dc6e59f6292c8",
+      "source": "Both routes give a standard reaction Gibbs energy of minus four thousand joules per mole at three hundred and fifty kelvin. Dividing its negative by R T gives natural log K equal to about one point three seven four five four. Exponentiating gives K equal to about three point nine five three two six. The enthalpy-entropy calculation reaches the same result because fifty thousand minus fifty-four thousand equals minus four thousand joules per mole. Return briefly to B one. When Q is one, its natural logarithm is zero, so the reaction Gibbs energy is minus four kilojoules per mole and forward reaction is favored. When Q is ten, Q exceeds K. The logarithm of Q over K is positive, so reverse reaction is favored. At equilibrium, Q equals this finite K. The standard reaction Gibbs energy remains minus four kilojoules per mole. It is the actual reaction Gibbs energy that becomes zero.",
+      "asr": "Both routes give a standard reaction Gibbs energy of minus 4,000 joules per mole at 350 kelvin. Dividing its negative by RT gives natural log K equal to about 1.37454. Exponentiating gives K equal to about 3.95326. The enthalpy entropy calculation reaches the same result because 50,000 minus 54,000 equals minus 4,000 joules per mole. Return briefly to B1. When Q is 1, its natural logarithm is 0, so the reaction Gibbs energy is minus 4 kilojoules per mole and forward reaction is favored. When Q is 10, Q exceeds K. The logarithm of Q over K is positive, so reverse reaction is favored. At equilibrium, Q equals this finite K. The standard reaction, Gibbs energy, remains minus 4 kilojoules per mole. It is the actual reaction Gibbs energy that becomes 0.",
+      "cache": "outputs/week05-video/asr-cache/99c515d6a8c0bf75ff0abde15acdf70be4e051e081836e8ae4c341cb4a0d3d08-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "99c515d6a8c0bf75ff0abde15acdf70be4e051e081836e8ae4c341cb4a0d3d08",
+        "narration_sha256": "25152fff4d0a04681a4fe966d7f5b77941b6e311d206bad7f65dc6e59f6292c8",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 15,
+      "title": "Your turn: solve for equilibrium extent",
+      "audio_sha256": "f77db28a3b78d911db746888a0ce4976d617745f197a4393e058ce209f6660e2",
+      "narration_sha256": "c87a45175c0f155bcbbfb2b594fb0d752640f2f22e778dd1d130f9adaa646429",
+      "source": "Now use K to calculate composition. At equilibrium, set the quotient expression from section A equal to K. If r denotes the actual-pressure to standard-pressure ratio, the equation is K equals four f squared times r, divided by one minus f squared. Rearranging gives f squared equal to K divided by K plus four r. Take the nonnegative root because our initial feed allows only forward extent between zero and one mole. For the reference pressure of one hundred kilopascals, r equals one. Pause for fifteen minutes and complete C one through C three. Calculate f, convert it to reaction extent, and calculate both species amounts and their mole fractions. Then verify the atom balance. Reconstruct Q from the calculated mole fractions and the pressure ratio. This second calculation should return K within rounding. Please do not use the rearranged equation as your only check. The purpose is to test the final composition independently.",
+      "asr": "Now, use k to calculate composition. At equilibrium, set the quotient expression from section equal to k. If r denotes the actual pressure to standard pressure ratio, the equation is k equals 4f squared times r, divided by 1 minus f squared. Rearranging gives f squared equal to k, divided by k plus 4r. Take the non-negative root because our initial feed allows only forward extent between 0 and 1 mole. For the reference pressure of 100 kilopascals, r equals 1, pause for 15 minutes, and complete c1 through c3. Calculate f, convert it to reaction extent, and calculate both species amounts and their mole fractions. Then verify the atom balance, reconstruct q from the calculated mole fractions, and the pressure ratio. This second calculation should return k within rounding. Please do not use the rearranged equation as your only check. The purpose is to test the final composition independently.",
+      "cache": "outputs/week05-video/asr-cache/f77db28a3b78d911db746888a0ce4976d617745f197a4393e058ce209f6660e2-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "f77db28a3b78d911db746888a0ce4976d617745f197a4393e058ce209f6660e2",
+        "narration_sha256": "c87a45175c0f155bcbbfb2b594fb0d752640f2f22e778dd1d130f9adaa646429",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 16,
+      "title": "The reference equilibrium satisfies Q=K",
+      "audio_sha256": "5ffcdd038a0bf1e78ee960471469e32646e8c2e694ef92927eeac3b87a1db5b4",
+      "narration_sha256": "9cc9a7ef0bd671b8db9e9285800dabcaf93c5321152df27e045844466a7216e6",
+      "source": "For the reference case, f is about zero point seven zero five. The reaction extent is therefore about zero point seven zero five moles. The remaining A two amount is about zero point two nine five moles, and the A amount is about one point four one zero moles. Their sum is about one point seven zero five moles. Dividing by this total gives mole fractions of about zero point one seven three for A two and zero point eight two seven for A. These fractions differ from the species amounts, even though both describe the same state. Use the more precise on-screen values when checking numerical closure. The atom check gives two moles of A atoms. At this pressure, the activities equal the mole fractions numerically, so the activity quotient returns about three point nine five three two six. K greater than one has produced substantial dissociation, while a finite amount of A two remains.",
+      "asr": "For the reference case, F is about 0.705. The reaction extent is therefore about 0.705 moles. The remaining A2 amount is about 0.295 moles, and the amount is about 1.410 moles. There some is about 1.705 moles. Dividing by this total gives mole fractions of about 0.173 for a 2, and 0.827 for a. These fractions differ from the species' amounts, even though both describe the same state. Use the more precise on-screen values when checking numerical closure. The atom check gives two moles of atoms. At this pressure, the activities equal the mole fractions numerically, so the activity quotient returns about 3.95326. K greater than 1 has produced substantial dissociation, while a finite amount of a 2 remains.",
+      "cache": "outputs/week05-video/asr-cache/5ffcdd038a0bf1e78ee960471469e32646e8c2e694ef92927eeac3b87a1db5b4-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "5ffcdd038a0bf1e78ee960471469e32646e8c2e694ef92927eeac3b87a1db5b4",
+        "narration_sha256": "9cc9a7ef0bd671b8db9e9285800dabcaf93c5321152df27e045844466a7216e6",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Compared final regenerated track after simplifying spoken rounding or stating zero point five. Intended numerical meaning is supported by the source, final ASR and on-screen values.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 17,
+      "title": "Your turn: compress at the same temperature",
+      "audio_sha256": "7eca6d3ee38b9bd17794ddede526eddae538cf739fa7f67aabec0f993ab8e6b4",
+      "narration_sha256": "4b79537d3225536ef49ac014f09cdba4133dc129f5050a966479ef1cf6780f00",
+      "source": "Next, increase total pressure to four hundred kilopascals while keeping temperature at three hundred and fifty kelvin. Keep the same feed and standard pressure. Before calculating, predict whether dissociation should increase or decrease. The reaction produces more gas molecules in the forward direction. At a fixed composition, increasing pressure therefore increases Q. Use that observation to predict which way the system must react to recover Q equal to K. Then calculate the new equilibrium using r equal to four. Pause for eight minutes and complete C four. Report the new extent, species amounts and mole fractions. Write one sentence explaining what happens to K and one sentence explaining what happens to composition. Use the temperature condition in your explanation. It is possible for equilibrium composition to change while the standard equilibrium constant remains the same. This controlled comparison will help you distinguish those two quantities when you open the Lab.",
+      "asr": "Next, increase total pressure to 400 kilopascals while keeping temperature at 350 Kelvin. Keep the same feed and standard pressure. Before calculating, predict whether dissociation should increase or decrease. The reaction produces more gas molecules in the forward direction. At a fixed composition, increasing pressure therefore increases Q. Use that observation to predict which way the system must react to recover Q equal to K. Then calculate the new equilibrium using R equal to 4. Pause for 8 minutes and complete C4. Report the new extent, species amounts and mole fractions. Write one sentence explaining what happens to K and one sentence explaining what happens to composition. Use the temperature condition in your explanation. It is possible for equilibrium composition to change while the standard equilibrium constant remains the same. This controlled comparison will help you distinguish those two quantities when you open the lab.",
+      "cache": "outputs/week05-video/asr-cache/7eca6d3ee38b9bd17794ddede526eddae538cf739fa7f67aabec0f993ab8e6b4-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "7eca6d3ee38b9bd17794ddede526eddae538cf739fa7f67aabec0f993ab8e6b4",
+        "narration_sha256": "4b79537d3225536ef49ac014f09cdba4133dc129f5050a966479ef1cf6780f00",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 18,
+      "title": "Pressure changes composition at fixed K",
+      "audio_sha256": "7405de05370794fc5f62d7bc4f06390667acf9a62cbd6f586b0d855343d8602a",
+      "narration_sha256": "018d38483b333c3282108c20a8f31fded0cc6cf114b5285078e7b971b588c724",
+      "source": "At four hundred kilopascals, K remains about three point nine five three two six because temperature and the standard-state convention are unchanged. The equilibrium extent decreases to about zero point four four five one moles. The A two amount becomes about zero point five five four nine moles, and the A amount becomes about zero point eight nine zero two moles. The A mole fraction is about zero point six one six zero three, and the A two mole fraction is about zero point three eight three nine seven. The higher-pressure mixture therefore contains less dissociated A. You can explain this directly from the quotient: at a fixed f, multiplying pressure by four multiplies Q by four. Reverse reaction then reduces f until Q returns to K. This is more precise than applying a pressure slogan without specifying the reaction or constraint. Keep the baseline and pressure-only cases beside each other in your worksheet. The atom total should be two in both cases, even though the molecular totals differ. We will now reproduce these states using the same ideal gas model in Lab twelve.",
+      "asr": "At 400 kilopascals, K remains about 3.95326 because temperature and the standard state convention are unchanged. The equilibrium extent decreases to about 0.4451 moles. The A2 amount becomes about 0.5549 moles, and the amount becomes about 0.8902 moles. The Amole fraction is about 0.61603, and the A2 mole fraction is about 0.38397. The higher pressure mixture, therefore contains less dissociated A. You can explain this directly from the quotient. At a fixed F, multiplying pressure by 4 multiplies Q by 4. Reverse reaction then reduces F until Q returns to K. This is more precise than applying a pressure slogan, without specifying the reaction or constraint. Keep the baseline and pressure only cases beside each other in your worksheet. The atom total should be 2 in both cases, even though the molecular totals differ. We will now reproduce these states using the same ideal gas model in Lab 12.",
+      "cache": "outputs/week05-video/asr-cache/7405de05370794fc5f62d7bc4f06390667acf9a62cbd6f586b0d855343d8602a-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "7405de05370794fc5f62d7bc4f06390667acf9a62cbd6f586b0d855343d8602a",
+        "narration_sha256": "018d38483b333c3282108c20a8f31fded0cc6cf114b5285078e7b971b588c724",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Compared final regenerated track after simplifying spoken rounding or stating zero point five. Intended numerical meaning is supported by the source, final ASR and on-screen values.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 19,
+      "title": "Lab 12: prepare a controlled comparison",
+      "audio_sha256": "ee6a2890d347586d9a9178c379bbfca1f375a8ea4a9aae415081f81f1b7200fa",
+      "narration_sha256": "f9a363b9c126d75e3216b45d2bbf54e982aa19f0f7c50b3b549b36866952c267",
+      "source": "Open Lab twelve using the link on this slide or the video page. Its title is Chemical equilibrium and routes to K. Complete D one before continuing. Reset the synthetic example so the feed and property values are known. Check that evaluation temperature and reference temperature are three hundred and fifty kelvin, and that total pressure and standard pressure are one hundred kilopascals. Set the reaction heat-capacity change to zero. The default value is thirty, so this is an intentional change for today's constant-enthalpy comparison. Keep the inert amount at zero. For the first run, select the direct standard Gibbs energy as the K source for extent and driving force. The direct data apply at three hundred and fifty kelvin. Check the species table and the source note. Pause for five minutes to prepare these inputs. If you need help finding a control, use the two-page Lab guide. Resume for the demonstration when your inputs are ready.",
+      "asr": "Open Lab 12, using the link on this slide or the video page. Its title is Chemical Equilibrium and Routes to K. Complete D1 before continuing. Reset the synthetic example, so the feed and property values are known. Check that evaluation temperature and reference temperature are 350 Kelvin. And that total pressure and standard pressure are 100 kilopascals. Set the reaction heat capacity change to 0. The default value is 30, so this is an intentional change for today's constant enthalpy comparison. Keep the inert amount at 0. For the first run, select the direct standard Gibbs energy as the K source for extent and driving force. The direct data apply at 350 Kelvin. Check the species table and the source node. Pause for 5 minutes to prepare these inputs. If you need help finding a control, use the 2 page lab guide. Resume for the demonstration when your inputs are ready.",
+      "cache": "outputs/week05-video/asr-cache/ee6a2890d347586d9a9178c379bbfca1f375a8ea4a9aae415081f81f1b7200fa-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "ee6a2890d347586d9a9178c379bbfca1f375a8ea4a9aae415081f81f1b7200fa",
+        "narration_sha256": "f9a363b9c126d75e3216b45d2bbf54e982aa19f0f7c50b3b549b36866952c267",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 20,
+      "title": "Lab 12 demonstration: the reference state",
+      "audio_sha256": "dd7798618110a6feda4e743a82b0d56c72b6a0df52355603ba5d8a83ca414a98",
+      "narration_sha256": "31db51b372bef389a2129751dcb4c1e6c97d6b5f2af7fe197ed13710e06439e2",
+      "source": "Here is the actual Lab twelve calculator with the reference inputs prepared. In the thermal-properties section, the heat-capacity change is zero, and the reference enthalpy and entropy match the worksheet. In the reaction-extent section, the total pressure is one hundred kilopascals, the inert amount is zero, and the selected K source is direct standard Gibbs energy. Now use Compare K methods to calculate the reference case. The methods table shows the agreement of the direct Gibbs and enthalpy-entropy routes at the reference temperature. The formation-energy sum is another route available in this synthetic example, but we do not need an additional worksheet task for it. Scroll to From K to equilibrium composition. The extent is about zero point seven zero five zero three moles, matching the hand calculation. Check the species amounts and the atom-balance message. The observed-activities panel needs careful reading. Its supplied mole fractions, zero point two and zero point eight, are independent observations. They are not the initial feed and they are not the equilibrium composition found by the extent solver. Those observations give Q equal to three point two at this temperature and pressure, so they favor forward reaction relative to the selected K. Leave the equilibrium assertion unchecked. Checking that box would label the supplied observations as claimed equilibrium, but would not prove that claim. Return to the K-source control, select the constant-value enthalpy and entropy route, and recalculate. The extent remains the same because the two property routes agree at the reference temperature. Return to direct standard Gibbs energy and recalculate before saving the reference case as twelve A using Export complete study. Keep the downloaded JSON file in your Week five folder so you can restore it later.",
+      "asr": "Here is the actual lab 12 calculator, with the reference inputs prepared. In the thermal properties section, the heat capacity change is zero, and the reference enthalpy and entropy match the worksheet. In the reaction extents section, the total pressure is 100 kilopascals. The inert amount is zero, and the selected case source is direct standard Gibbs energy. Now use Compare K method to calculate the reference case. The methods table shows the agreement of the direct Gibbs and enthalpy entropy routes at the reference temperature. The formation energy sum is another route available in this synthetic example, but we do not need an additional worksheet task for it. Scroll to from K to equilibrium composition. The extent is about 0.70503 moles, matching the hand calculation, check the species amounts, and the atom balance message. The observed activities panel needs careful reading. It's supplied mole fractions, 0.2 and 0.8 are independent observations. They are not the initial feed, and they are not the equilibrium composition found by the extent solver. Those observations give Q equal to 3.2 at this temperature and pressure, so they favor forward reaction relative to the selected K. Leave the equilibrium assertion unchecked. Checking that box would label the supplied observations as claimed equilibrium, but would not prove that claim. Return to the case source control, select the constant value enthalpy and entropy route, and recalculate. The extent remains the same because the two property routes agree at the reference temperature. Return to direct standard Gibbs energy and recalculate before saving the reference case as 12, a using export complete study. Keep the downloaded J-S-O-N file in your week 5 folder so you can restore it later.",
+      "cache": "outputs/week05-video/asr-cache/dd7798618110a6feda4e743a82b0d56c72b6a0df52355603ba5d8a83ca414a98-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "dd7798618110a6feda4e743a82b0d56c72b6a0df52355603ba5d8a83ca414a98",
+        "narration_sha256": "31db51b372bef389a2129751dcb4c1e6c97d6b5f2af7fe197ed13710e06439e2",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 21,
+      "title": "Your turn: reproduce the pressure comparison",
+      "audio_sha256": "1323953e6d6758487839d365da6a7b3d899ca50936c9d071bff8890c9456a936",
+      "narration_sha256": "d1ee64088e250e0bf42712b3993b9ee164dac4d424f0f3b7a1b56ae3263c8603",
+      "source": "Now pause for twenty-two minutes and complete D two through D four. First reproduce the reference run and compare the displayed extent with your calculation in section C. Record the selected K source and the units beside your result. Check the enthalpy-entropy route at the reference temperature. Then change only total pressure to four hundred kilopascals and calculate case twelve B. Keep the temperature, standard pressure, feed and inert amount unchanged. Compare K and extent across the two cases. Save evidence of each result using the Lab export, together with your worksheet table. A short note identifying the changed input is enough. You do not need to copy every table or produce a separate report. Inspect the observed-activities label before using any displayed quotient as a solver check. If the application result differs from your hand calculation, compare the inputs one by one. At the end of the pause, record any remaining mismatch and continue to the result check.",
+      "asr": "Now pause for 22 minutes and complete D2 through D4. First, reproduce the reference run and compare the displayed extent with your calculation in Section C. Record the selected case source and the units beside your result. Check the enthalpy entropy route at the reference temperature. Then change only total pressure to 400 kilopascals and calculate Case 12B. Keep the temperature, standard pressure, feed and inert amount unchanged. Compare K and extend across the two cases. Save evidence of each result using the lab export. Together with your worksheet table, a short note identifying the changed input is enough. You do not need to copy every table or produce a separate report. Inspect the observed activities label before using any displayed quotient as a solver check. If the application result differs from your hand calculation, compare the inputs one by one. At the end of the pause, record any remaining mismatch and continue to the result check.",
+      "cache": "outputs/week05-video/asr-cache/1323953e6d6758487839d365da6a7b3d899ca50936c9d071bff8890c9456a936-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "1323953e6d6758487839d365da6a7b3d899ca50936c9d071bff8890c9456a936",
+        "narration_sha256": "d1ee64088e250e0bf42712b3993b9ee164dac4d424f0f3b7a1b56ae3263c8603",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 22,
+      "title": "What the Lab results establish",
+      "audio_sha256": "97eaa2e71a56b82e31f15f30cb3ab8e03f067650aabeb13a12f4f748de54182d",
+      "narration_sha256": "078b08395ee2b176deb76a0ec9102152a2c968b26f3d70e0d33d0241ffc22731",
+      "source": "This is the pressure-case result in the actual calculator. At three hundred and fifty kelvin and four hundred kilopascals, the selected route still gives K equal to about three point nine five three two six. The extent is about zero point four four five one one moles, consistent with case twelve B. The species table lets you reconstruct both the atom balance and the equilibrium quotient. Now inspect the Gibbs-energy curve along reaction extent. Its minimum occurs at the calculated equilibrium extent for this fixed-temperature, fixed-pressure ideal gas model. The vertical axis is the change in total Gibbs energy from the reference state, divided by R T. Its units are moles. This plotted quantity is different from standard reaction Gibbs energy and from the actual reaction Gibbs energy. The actual reaction Gibbs energy is the slope of total Gibbs energy with respect to extent. The minimum tells us where the slope with respect to extent becomes zero. The allowed interval still comes from nonnegative species amounts. Lab twelve solves one balanced reaction among neutral ideal gases. It does not automatically calculate liquid splitting, multiple simultaneous reactions or a nonideal equation of state. These limits belong beside the numerical answer when you describe what the calculation establishes.",
+      "asr": "This is the pressure case result in the actual calculator. At 350 Kelvin and 400 kilopascals, the selected route still gives K equal to about 3.95326. The extent is about 0.44511 moles, consistent with K12B. The species table lets you reconstruct both the atom balance and the equilibrium quotient. Now, inspect the Gibbs energy curve along reaction extent. Its minimum occurs at the calculated equilibrium extent for this fixed temperature. Fixed pressure ideal gas model. The vertical axis is the change in total Gibbs energy from the reference state, divided by RT. Its units are moles. This plotted quantity is different from standard reaction, Gibbs energy. And from the actual reaction Gibbs energy, the actual reaction Gibbs energy is the slope of total Gibbs energy with respect to extent. The minimum tells us where the slope with respect to extent becomes 0. The allowed interval still comes from non-negative species amounts. Lab 12 solves one balanced reaction among neutral ideal gases. It does not automatically calculate liquid splitting, multiple simultaneous reactions, or a non-ideal equation of state. These limits belong beside the numerical answer when you describe what the calculation establishes.",
+      "cache": "outputs/week05-video/asr-cache/97eaa2e71a56b82e31f15f30cb3ab8e03f067650aabeb13a12f4f748de54182d-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "97eaa2e71a56b82e31f15f30cb3ab8e03f067650aabeb13a12f4f748de54182d",
+        "narration_sha256": "078b08395ee2b176deb76a0ec9102152a2c968b26f3d70e0d33d0241ffc22731",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Verified total Gibbs-energy/RT axis units of mol and explicit distinction between plotted quantity and actual reaction Gibbs energy, the slope of total G against extent.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 23,
+      "title": "Ten-minute break",
+      "audio_sha256": "afb9569a62a7c13accc2d14851b640f14b9e64eb77729885d4bdd7fd675ceed7",
+      "narration_sha256": "c95986124781b9060cfb3bdebe9202c7d23ef24c6ea4673cd913c8a3ad85119d",
+      "source": "Please take the planned ten-minute break now. Save your worksheet and make sure you can find the reference and pressure-case JSON files. You have completed the reference-property and pressure comparisons. When you return, we will change temperature and calculate a new equilibrium constant. Leave the optional extensions for another time. Pause the video, step away from the screen if you can, and resume at the temperature section after about ten minutes. The break is included in the lesson budget.",
+      "asr": "Please take the Plan 10 minute break now. Save your worksheet and make sure you can find the reference in pressure case JSON files. You have completed the reference property and pressure comparisons. When you return, we will change temperature and calculate a new equilibrium constant. Leave the optional extensions for another time. Pause the video, step away from the screen if you can, and resume at the temperature section after about 10 minutes. The break is included in the lesson budget.",
+      "cache": "outputs/week05-video/asr-cache/afb9569a62a7c13accc2d14851b640f14b9e64eb77729885d4bdd7fd675ceed7-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "afb9569a62a7c13accc2d14851b640f14b9e64eb77729885d4bdd7fd675ceed7",
+        "narration_sha256": "c95986124781b9060cfb3bdebe9202c7d23ef24c6ea4673cd913c8a3ad85119d",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 24,
+      "title": "Temperature changes the equilibrium constant",
+      "audio_sha256": "fb597e25a82e4b11690820be3254f4afc434e1a6ed5f330ddb8a8d49037c6256",
+      "narration_sha256": "105563d52670c472a9999910f0aab980b055da3d3732dfba01f2923f5552d526",
+      "source": "We have changed pressure while holding K fixed. Next we change temperature. The standard equilibrium constant depends on temperature for a fixed reaction and standard-state convention. A Gibbs-energy value supplied at one temperature gives one point on that relationship. It does not automatically give a law for other temperatures. To estimate K at four hundred kelvin, we will use the reference constant at three hundred and fifty kelvin together with the standard reaction enthalpy. Our model assumes that the reaction enthalpy remains constant over this interval. This is an approximation with a stated range, rather than a new measured data set. Because the reaction enthalpy is positive, the dissociation is endothermic. Before using the equation, predict whether a higher temperature should increase or decrease the equilibrium constant. Keep pressure at one hundred kilopascals for the temperature case so the comparison isolates temperature. The initial feed and standard pressure also remain unchanged.",
+      "asr": "We have changed pressure while holding K fixed. Next, we change temperature. The standard equilibrium constant depends on temperature for a fixed reaction and standard state convention. A Gibbs energy value supplied at one temperature gives one point on that relationship. It does not automatically give a law for other temperatures. To estimate K at 400 kelvin, we will use the reference constant at 350 kelvin together with the standard reaction and thalpy. Our model assumes that the reaction and thalpy remains constant over this interval. This is an approximation with a stated range rather than a new measured data set. Because the reaction and thalpy is positive, the dissociation is endothermic. Before using the equation, predict whether a higher temperature should increase or decrease the equilibrium constant. Keep pressure at 100 kilopascals for the temperature case, so the comparison isolates temperature. The initial feed and standard pressure also remain unchanged.",
+      "cache": "outputs/week05-video/asr-cache/fb597e25a82e4b11690820be3254f4afc434e1a6ed5f330ddb8a8d49037c6256-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "fb597e25a82e4b11690820be3254f4afc434e1a6ed5f330ddb8a8d49037c6256",
+        "narration_sha256": "105563d52670c472a9999910f0aab980b055da3d3732dfba01f2923f5552d526",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 25,
+      "title": "Route 3: K at a new temperature",
+      "audio_sha256": "8237e295aa2c3174533d5569346b9ccba895b42c3abe52447113f3359eba779c",
+      "narration_sha256": "5df118f53b247f48dbd048b59e2db86439ac52772392b56b76bd0d274a006739",
+      "source": "The integrated van't Hoff equation relates the natural logarithm of the ratio of the two equilibrium constants to the reaction enthalpy. With constant enthalpy, it is the enthalpy divided by R, multiplied by one over the reference temperature minus one over the new temperature. Here the reference temperature is three hundred and fifty kelvin, and the new temperature is four hundred kelvin. Use fifty thousand joules per mole for the reaction enthalpy. Since the new temperature is higher, one over the reference temperature is larger than one over the new temperature. The difference is positive. The enthalpy is also positive, so the logarithm of the K ratio should be positive. That predicts an increase in K. To find the new natural logarithm of K, add this change to the reference natural logarithm. Then exponentiate once. Keep both temperatures in kelvin and check the sign before calculating the final value.",
+      "asr": "The integrated vant, half-equation, relates the natural logarithm of the ratio of the two equilibrium constants to the reaction in thalpy. With constant enthalpy, it is the enthalpy divided by R multiplied by 1 over the reference temperature minus 1 over the new temperature. Here the reference temperature is 350 kelvin, and the new temperature is 400 kelvin. Use 50,000 joules per mole for the reaction enthalpy, since the new temperature is higher. 1 over the reference temperature is larger than 1 over the new temperature. The difference is positive. The enthalpy is also positive, so the logarithm of the k ratio should be positive. That predicts an increase in k. To find the new natural logarithm of k, add this change to the reference natural logarithm. Then, exponentiate once, keep both temperatures in kelvin, and check the sign before calculating the final value.",
+      "cache": "outputs/week05-video/asr-cache/8237e295aa2c3174533d5569346b9ccba895b42c3abe52447113f3359eba779c-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "8237e295aa2c3174533d5569346b9ccba895b42c3abe52447113f3359eba779c",
+        "narration_sha256": "5df118f53b247f48dbd048b59e2db86439ac52772392b56b76bd0d274a006739",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 26,
+      "title": "Your turn: heat from 350 K to 400 K",
+      "audio_sha256": "891f93173733c13790e0d6c70f8f5b38976841ada68bbc5119e4fe179bd6ca6f",
+      "narration_sha256": "e63fb62f4c45e9721f7104483ac6b43fa0d58c832be5b85b0739169d9e83ffa3",
+      "source": "Pause for fifteen minutes and complete E one through E three. Start with the constant-enthalpy van't Hoff equation and substitute the reference temperature, new temperature and enthalpy with their units. Calculate the logarithmic change first. Add it to the reference natural logarithm of K, then obtain K at four hundred kelvin. Cross-check the new Gibbs energy with enthalpy minus the new temperature times entropy, under the same zero heat-capacity-change assumption. Then use the new K in the equilibrium-extent expression at a pressure ratio of one. Calculate the species amounts and make the same two independent checks as before. The atom total should remain unchanged, and the quotient reconstructed from the final composition should match the new K. Keep enough intermediate digits to avoid a rounding mismatch. Write a short explanation connecting the positive reaction enthalpy to the direction of the temperature effect. If you need more time, mark the specific unfinished line and continue to the solution. You can return to that line during our onsite question period on November thirteenth.",
+      "asr": "Pause for 15 minutes and complete E1 through E3. Start with the constant enthalpy vent, half-equation, and substitute the reference temperature. New temperature and enthalpy with their units. Calculate the logarithmic change first. Add it to the reference natural logarithm of K. Then obtain K at 400 Kelvin. Cross-check the new Gibbs energy with enthalpy minus the new temperature times entropy. Under the same zero heat capacity change assumption, then use the new K in the equilibrium extent expression at a pressure ratio of 1. Calculate the species amount and make the same two independent checks as before. The atom total should remain unchanged, and the quotient reconstructed from the final composition should match the new K. Keep enough intermediate digits to avoid a rounding mismatch. Write a short explanation connecting the positive reaction enthalpy to the direction of the temperature effect. If you need more time, mark the specific unfinished line and continue to the solution. You can return to that line during our on-site question period on November 13.",
+      "cache": "outputs/week05-video/asr-cache/891f93173733c13790e0d6c70f8f5b38976841ada68bbc5119e4fe179bd6ca6f-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "891f93173733c13790e0d6c70f8f5b38976841ada68bbc5119e4fe179bd6ca6f",
+        "narration_sha256": "e63fb62f4c45e9721f7104483ac6b43fa0d58c832be5b85b0739169d9e83ffa3",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 27,
+      "title": "The endothermic reaction dissociates further",
+      "audio_sha256": "a16b950bfb526730aa25379bfcee0966627354062590cd41446adade983ef81b",
+      "narration_sha256": "13f91a7e51d96d28cb5d0ccdc60072a7148bd6a68cb8555ec8c7c93c792cdb7b",
+      "source": "The logarithmic change from three hundred and fifty to four hundred kelvin is about two point one four seven seven two. Adding the reference natural logarithm gives about three point five two two two six. The new equilibrium constant is therefore about thirty-three point eight six zero nine three. The enthalpy-entropy cross-check gives standard reaction Gibbs energy of about minus eleven point seven one four three kilojoules per mole at four hundred kelvin. At one hundred kilopascals, this gives an extent of about zero point nine four five seven zero moles. The A two amount is about zero point zero five four three zero moles, and the A amount is about one point eight nine one four zero moles. The resulting mole fractions are about zero point nine seven two zero nine for A and zero point zero two seven nine one for A two. Heating has increased dissociation for this endothermic reaction under the stated model. The atom inventory still equals two moles of A atoms. Compare this case with the reference case, not with the four-hundred-kilopascal case, when attributing the difference to temperature alone. The increase in K is a property of the temperature model. The increase in extent also uses the specified feed and pressure.",
+      "asr": "The logarithmic change from 350 to 400 kelvin is about 2.14772. Adding the reference natural logarithm gives about 3.52226. The new equilibrium constant is therefore about 33.86093. The enthalpy entropy cross check gives standard reaction Gibbs energy of about minus 11.7143 kilojoules per mole at 400 kelvin. At 100 kilopascals, this gives an extent of about 0.94570 moles. The 32 amount is about 0.05430 moles, and the amount is about 1.89140 moles. The resulting mole fractions are about 0.97209 for a and 0.0279, 1 for a 2. Heeding has increased dissociation for this endothermic reaction under the stated model. The atom inventory still equals 2 moles of atoms. Compare this case with the reference case, not with the 400 kilopascal case, when attributing the difference to temperature alone. The increase in K is a property of the temperature model. The increase in extent also uses the specified feed and pressure.",
+      "cache": "outputs/week05-video/asr-cache/a16b950bfb526730aa25379bfcee0966627354062590cd41446adade983ef81b-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "a16b950bfb526730aa25379bfcee0966627354062590cd41446adade983ef81b",
+        "narration_sha256": "13f91a7e51d96d28cb5d0ccdc60072a7148bd6a68cb8555ec8c7c93c792cdb7b",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 28,
+      "title": "A 350 K Gibbs value is not a temperature law",
+      "audio_sha256": "ea4f8ab788bb2d92b8f11e996d9a65247c4be3b4a81e8e75bae7415e9f6ccc56",
+      "narration_sha256": "e9626b189cdff25be9d3436ebb5edf510da2eaf0ed394bfaa8c0484c9b9ff63f",
+      "source": "At four hundred kelvin, the direct Gibbs and formation-energy rows supplied at three hundred and fifty kelvin become unavailable. That is appropriate. Changing a temperature label would not create valid property data at a new temperature. Use the temperature-dependent route instead. For our required calculation, select van't Hoff with constant reaction enthalpy, and keep the heat-capacity change at zero. The Lab also offers a heat-capacity correction. With its default nonzero value, that is a different temperature model and can give a different K. You may explore it later, but it is outside this week's required work. The independent observed-composition panel has its own observation temperature. A three-hundred-and-fifty-kelvin observation does not become a four-hundred-kelvin observation simply because the main evaluation temperature changes. Its unavailable message does not prevent the equilibrium extent calculation from using an applicable thermodynamic route. Read each panel's temperature and label before comparing its output.",
+      "asr": "At 400 kelvin, the direct Gibbs and formation energy rose supplied at 350 kelvin become unavailable. That is appropriate. Changing a temperature label would not create valid property data at a new temperature. Use the temperature dependent route instead. For our required calculation, select Vant Hough with constant reaction and thalpy and keep the heat capacity change at zero. The lab also offers a heat capacity correction. With its default non-zero value, that is a different temperature model and can give a different K. You may explore it later, but it is outside this week's required work. The independent, observed composition panel has its own observation temperature. A350 kelvin observation. Does not become a 400 kelvin observation simply because the main evaluation temperature changes. Its unavailable message does not prevent the equilibrium extent calculation from using an applicable thermodynamic route. Heat each panel's temperature and label before comparing its output.",
+      "cache": "outputs/week05-video/asr-cache/ea4f8ab788bb2d92b8f11e996d9a65247c4be3b4a81e8e75bae7415e9f6ccc56-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "ea4f8ab788bb2d92b8f11e996d9a65247c4be3b4a81e8e75bae7415e9f6ccc56",
+        "narration_sha256": "e9626b189cdff25be9d3436ebb5edf510da2eaf0ed394bfaa8c0484c9b9ff63f",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 29,
+      "title": "Your turn: save and reopen the temperature case",
+      "audio_sha256": "1811474335daa21abddedba10f2226ef6eb282f66ccc3d92961bff7e9a96015e",
+      "narration_sha256": "ddcbd7d1e3a49ca4b5f1917ef23e504e455f3fc5515867455b5a598657e20df1",
+      "source": "Pause for nineteen minutes and complete F one through F three. Set evaluation temperature to four hundred kelvin and total pressure to one hundred kilopascals. Keep the reference temperature and reference K at their original three-hundred-and-fifty-kelvin values. Select van't Hoff with constant reaction enthalpy as the K source, and check that the heat-capacity change is zero. Run case twelve C and compare it with section E. Export the complete study. Next, use Restore calculator study JSON to reopen your saved twelve A reference file. The calculator should recover the original inputs and recalculate the reference result. Verify the restored temperature, pressure, K and extent. A restored filename alone is insufficient evidence that the numerical state is the one you intended. Finish the three-case table and keep one note about the pressure effect and one about the temperature effect. If restoring a file fails, retain your calculation evidence and record the message for our next onsite class.",
+      "asr": "Pause for 19 minutes and complete F1 through F3. Set a valuation temperature to 400 Kelvin in total pressure to 100 kilopascals. Keep the reference temperature and reference K at their original 350 Kelvin values. Select Vant Hough with constant reaction and thalpy as the K source. And check that the heat capacity change is zero. Run Case 12C and compare it with Section E. Export the complete study. Next, use restore calculator study J-S-O-N to reopen your save 12 a reference file. The calculator should recover the original inputs and recalculate the reference result. Verify the restored temperature, pressure, K and extend. A restored file name alone is insufficient evidence that the numerical state is the one you intended. Finish the 3 case table and keep one note about the pressure effect and one about the temperature effect. If restoring a file fails, retain your calculation evidence and record the message for our next on-site class.",
+      "cache": "outputs/week05-video/asr-cache/1811474335daa21abddedba10f2226ef6eb282f66ccc3d92961bff7e9a96015e-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "1811474335daa21abddedba10f2226ef6eb282f66ccc3d92961bff7e9a96015e",
+        "narration_sha256": "ddcbd7d1e3a49ca4b5f1917ef23e504e455f3fc5515867455b5a598657e20df1",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 30,
+      "title": "Three cases separate pressure and temperature",
+      "audio_sha256": "0fcc2257fa9306b0610afbd4b5cf5709f049d532699a498246acef27a1755752",
+      "narration_sha256": "1ce1efe624650f655a8af786f98bff2f4a592fa59a7704db522f1a65b61abcca",
+      "source": "Here is the temperature-case setup in the actual Lab. The evaluation temperature is four hundred kelvin, pressure is one hundred kilopascals, and the selected extent route is van't Hoff with constant reaction enthalpy. The heat-capacity change is zero. After Compare K methods, the temperature-dependent route gives K equal to about thirty-three point eight six zero nine three. The direct Gibbs and formation rows remain tied to their supplied reference temperature. Scroll to the equilibrium composition. The extent is about zero point nine four five seven zero moles, agreeing with the worksheet. Export complete study saves the inputs and calculated evidence for case twelve C. To check reproducibility, choose the earlier twelve A file under Restore calculator study JSON. The restored controls return to three hundred and fifty kelvin and one hundred kilopascals. The recalculated K is about three point nine five three two six, with extent about zero point seven zero five zero three moles. Compare these with your reference row. Your final table now separates two changes. The pressure-only case changes extent while K stays fixed. The temperature-only case changes K and extent. All three cases conserve the same A-atom inventory. The JSON files let you reopen the exact chosen inputs, while your worksheet explains what those inputs and results mean.",
+      "asr": "Here is the temperature case setup in the actual lab. The evaluation temperature is 400 Kelvin. Pressure is 100 kilopascals. And the selected extent route is Vanthoff with constant reaction and thalpy. The heat capacity change is zero. After compare K methods, the temperature dependent route gives K equal to about 33.86093. The direct Gibbs and formation rows remain tied to their supplied reference temperature. Scroll to the equilibrium composition. The extent is about 0.94570 moles, agreeing with the worksheet. Export complete study saves the inputs and calculated evidence for case 12C. To check reproducibility, choose the earlier 12A file under restore calculator study J-S-O-N. The restored controls return to 350 Kelvin and 100 kilopascals. The recalculated K is about 3.95326, with extent about 0.70503 moles. Compare these with your reference row. Your final table now separates two changes. The pressure only case changes extent while K stays fixed. The temperature only case changes K and extent. All three cases conserve the same A atom inventory. The J-S-O-N files let you reopen the exact chosen inputs, while your worksheet explains what those inputs and results mean.",
+      "cache": "outputs/week05-video/asr-cache/0fcc2257fa9306b0610afbd4b5cf5709f049d532699a498246acef27a1755752-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "0fcc2257fa9306b0610afbd4b5cf5709f049d532699a498246acef27a1755752",
+        "narration_sha256": "1ce1efe624650f655a8af786f98bff2f4a592fa59a7704db522f1a65b61abcca",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 31,
+      "title": "Bring one unresolved question to our next class",
+      "audio_sha256": "c890c9e08a6e0160325312e8d042456f6c88689ef5f020cda7851ac4d79b33ef",
+      "narration_sha256": "d320da905a4cb9abf3e17fca76f35eaba1e2e2d54264100047b629fc04067f90",
+      "source": "Before the final form, check the explanation you would give to another student. K follows from standard thermodynamic properties and the chosen temperature. Q follows from the activities of a particular state. Equilibrium extent combines the equilibrium condition with the feed and conservation constraints. These three ideas work together, but they answer different questions. The inert-gas question also depends on the constraint. In this Lab, adding inert at fixed temperature and total pressure dilutes the reacting species and can shift the equilibrium. In a rigid ideal gas vessel at fixed temperature and volume, adding inert leaves reacting-species partial pressures unchanged, so an initially equilibrated reacting mixture does not shift. Name the constraint whenever you use that conclusion. Choose one unresolved question from your worksheet and identify the step where your reasoning stops. We will use those questions when we meet onsite on Friday, November thirteenth. Further heat-capacity and custom-reaction work is optional.",
+      "asr": "Before the final form, check the explanation you would give to another student. K follows from standard thermodynamic properties and the chosen temperature. Q follows from the activities of a particular state. Equilibrium extent combines the equilibrium condition with the feed and conservation constraints. These three ideas work together, but they answer different questions. The inert gas question also depends on the constraint. In this lab, adding inert at fixed temperature and total pressure dilutes the reacting species and can shift the equilibrium. In a rigid ideal gas vessel at fixed temperature and volume, adding inert leaves reacting species partial pressures unchanged. So an initially equilibrated reacting mixture does not shift. Name the constraint whenever you use that conclusion. Choose one unresolved question from your worksheet and identify the step where your reasoning stops. We will use those questions when we meet on site on Friday, November 13th, further heat capacity and custom reaction work is optional.",
+      "cache": "outputs/week05-video/asr-cache/c890c9e08a6e0160325312e8d042456f6c88689ef5f020cda7851ac4d79b33ef-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "c890c9e08a6e0160325312e8d042456f6c88689ef5f020cda7851ac4d79b33ef",
+        "narration_sha256": "d320da905a4cb9abf3e17fca76f35eaba1e2e2d54264100047b629fc04067f90",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    },
+    {
+      "slide": 32,
+      "title": "Exit ticket, feedback and saved work",
+      "audio_sha256": "fb8ee1dc7e15531542e7e635848870d34e6d45ad8dc05cf037bb1131b2d1eeb8",
+      "narration_sha256": "1d22d8880e0cd522f2bf3942f79c69ade38f6ca4279cd76401185cccb05c9f47",
+      "source": "Use the final ten minutes for section G and the Session five exit ticket and feedback. Open the form using the link or QR code on this slide. Check that Session five is selected before submitting. Explain one result from the required cases using your own calculation evidence. Distinguish K from Q, then explain the pressure-only comparison with one numerical result or an independent check. Include the settings and units. Include the question you still want to discuss. In the feedback, report your actual study time and identify any instruction, calculation or control that caused difficulty. Specific descriptions help us improve the next lesson. You may answer the form in English or Thai. It is anonymous and does not identify individual attendance. Submit once and wait for the Response received confirmation. Keep your worksheet and exported study files together. This completes the required Week five work. Please follow the video and its activity stops for November sixth, and we will return to the classroom on Friday, November thirteenth.",
+      "asr": "Use the final 10 minutes for Section G, and the Session 5 exit ticket and feedback. Open the form using the link or QR code on this slide. Check that Session 5 is selected before submitting. Explain one result from the required cases using your own calculation evidence. Distinguished K from Q, then explain the pressure only comparison with one numerical result or an independent check. Include the settings and units. Include the question you still want to discuss. In the feedback, report your actual study time and identify any instruction, calculation or control that caused difficulty. Specific descriptions help us improve the next lesson. You may answer the form in English or Thai. It is anonymous and does not identify individual attendance. Submit once and wait for the response received confirmation. Keep your worksheet and exported study files together. This completes the required week 5 work. Please follow the video and its activity stops for November 6th, and we will return to the classroom on Friday, November 13th.",
+      "cache": "outputs/week05-video/asr-cache/fb8ee1dc7e15531542e7e635848870d34e6d45ad8dc05cf037bb1131b2d1eeb8-08b1da58641c.json",
+      "source_comparison": {
+        "audio_sha256": "fb8ee1dc7e15531542e7e635848870d34e6d45ad8dc05cf037bb1131b2d1eeb8",
+        "narration_sha256": "1d22d8880e0cd522f2bf3942f79c69ade38f6ca4279cd76401185cccb05c9f47",
+        "decision": "ASR text compared with exact source. No probable semantic change requiring repair remains.",
+        "notes": "Scientific names and letter formatting can be misrecognized by tiny.en. Source text and synchronized original captions preserve the intended terms.",
+        "full_subjective_listening_review_performed": false
+      }
+    }
+  ],
+  "full_subjective_listening_review_performed": false,
+  "limitations": [
+    "Tiny ASR may misrecognize scientific names, letters and spoken decimals.",
+    "Hash-bound source comparison checks probable meaning, not complete subjective audio quality."
+  ],
+  "reviewed_track_count": 32,
+  "passed": true,
+  "decision_file_sha256": "a9cbf0ea122a74e85f7ac43f63c3b3c4cd78dbab2fd969bd39d77d6dadb3ddb1"
+}

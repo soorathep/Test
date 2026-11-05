@@ -1,0 +1,543 @@
+{
+  "audited_at_utc": "2026-11-05T11:14:57.568601+00:00",
+  "actor": "Codex /root/week05_narration",
+  "mode": "read-only release audit; only this local receipt is written",
+  "site": "~/.codex/worktrees/week05-video/Test",
+  "git_head_at_audit": "680cb5777dd8ccb91be0044e375c7b6b368fa9a4",
+  "working_tree_snapshot": "Release edits in progress; no assertion of clean Git state or live deployment.",
+  "passed": true,
+  "failed_checks": [],
+  "checks": [
+    {
+      "check": "Changes scoped to course 2105603",
+      "passed": true,
+      "details": {
+        "count": 84,
+        "outside_scope": []
+      }
+    },
+    {
+      "check": "32 chapters align across contract, narration, audio and player",
+      "passed": true,
+      "details": {
+        "chapter_count": 32
+      }
+    },
+    {
+      "check": "Exact titles, IDs, spoken script, pause budgets and player times match",
+      "passed": true,
+      "details": [
+        {
+          "slide": 1,
+          "id": "week05-title",
+          "valid": true
+        },
+        {
+          "slide": 2,
+          "id": "pressure-at-fixed-volume",
+          "valid": true
+        },
+        {
+          "slide": 3,
+          "id": "two-independent-checks",
+          "valid": true
+        },
+        {
+          "slide": 4,
+          "id": "review-check",
+          "valid": true
+        },
+        {
+          "slide": 5,
+          "id": "one-route",
+          "valid": true
+        },
+        {
+          "slide": 6,
+          "id": "extent-and-atoms",
+          "valid": true
+        },
+        {
+          "slide": 7,
+          "id": "dimensionless-activities",
+          "valid": true
+        },
+        {
+          "slide": 8,
+          "id": "build-reaction-quotient",
+          "valid": true
+        },
+        {
+          "slide": 9,
+          "id": "quotient-check",
+          "valid": true
+        },
+        {
+          "slide": 10,
+          "id": "reaction-driving-force",
+          "valid": true
+        },
+        {
+          "slide": 11,
+          "id": "gibbs-route",
+          "valid": true
+        },
+        {
+          "slide": 12,
+          "id": "enthalpy-entropy-route",
+          "valid": true
+        },
+        {
+          "slide": 13,
+          "id": "compare-k-routes",
+          "valid": true
+        },
+        {
+          "slide": 14,
+          "id": "reference-check",
+          "valid": true
+        },
+        {
+          "slide": 15,
+          "id": "solve-reference-extent",
+          "valid": true
+        },
+        {
+          "slide": 16,
+          "id": "reference-composition-check",
+          "valid": true
+        },
+        {
+          "slide": 17,
+          "id": "pressure-prediction",
+          "valid": true
+        },
+        {
+          "slide": 18,
+          "id": "pressure-check",
+          "valid": true
+        },
+        {
+          "slide": 19,
+          "id": "lab12-setup",
+          "valid": true
+        },
+        {
+          "slide": 20,
+          "id": "lab12-demo",
+          "valid": true
+        },
+        {
+          "slide": 21,
+          "id": "lab12-independent",
+          "valid": true
+        },
+        {
+          "slide": 22,
+          "id": "lab12-reading-check",
+          "valid": true
+        },
+        {
+          "slide": 23,
+          "id": "break",
+          "valid": true
+        },
+        {
+          "slide": 24,
+          "id": "temperature-dependence",
+          "valid": true
+        },
+        {
+          "slide": 25,
+          "id": "vanthoff-route",
+          "valid": true
+        },
+        {
+          "slide": 26,
+          "id": "temperature-calculation",
+          "valid": true
+        },
+        {
+          "slide": 27,
+          "id": "temperature-check",
+          "valid": true
+        },
+        {
+          "slide": 28,
+          "id": "point-data-limits",
+          "valid": true
+        },
+        {
+          "slide": 29,
+          "id": "lab12-temperature-run",
+          "valid": true
+        },
+        {
+          "slide": 30,
+          "id": "three-case-check",
+          "valid": true
+        },
+        {
+          "slide": 31,
+          "id": "what-to-bring",
+          "valid": true
+        },
+        {
+          "slide": 32,
+          "id": "exit-ticket",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "check": "Required workload is approximately three hours",
+      "passed": true,
+      "details": {
+        "recording_seconds": 2487.4780416666667,
+        "work_minutes": 128,
+        "break_minutes": 10,
+        "total_minutes": 179.45796736111112,
+        "activity_stops": 13
+      }
+    },
+    {
+      "check": "Measured timing appears in student pages",
+      "passed": true,
+      "details": {
+        "displayed_recording": "41:27",
+        "displayed_total_minutes": 179.5
+      }
+    },
+    {
+      "check": "Slide deck has the same 32 chapter IDs",
+      "passed": true,
+      "details": {
+        "deck_ids": [
+          "week05-title",
+          "pressure-at-fixed-volume",
+          "two-independent-checks",
+          "review-check",
+          "one-route",
+          "extent-and-atoms",
+          "dimensionless-activities",
+          "build-reaction-quotient",
+          "quotient-check",
+          "reaction-driving-force",
+          "gibbs-route",
+          "enthalpy-entropy-route",
+          "compare-k-routes",
+          "reference-check",
+          "solve-reference-extent",
+          "reference-composition-check",
+          "pressure-prediction",
+          "pressure-check",
+          "lab12-setup",
+          "lab12-demo",
+          "lab12-independent",
+          "lab12-reading-check",
+          "break",
+          "temperature-dependence",
+          "vanthoff-route",
+          "temperature-calculation",
+          "temperature-check",
+          "point-data-limits",
+          "lab12-temperature-run",
+          "three-case-check",
+          "what-to-bring",
+          "exit-ticket"
+        ]
+      }
+    },
+    {
+      "check": "PDF counts and embedded fonts",
+      "passed": true,
+      "details": [
+        {
+          "file": "files/postmidterm-05-slides.pdf",
+          "expected_pages": 32,
+          "pages": 32,
+          "font_types": [
+            "Type0"
+          ],
+          "no_type3": true,
+          "all_fonts_embedded": true,
+          "sha256": "2713d394c91ab521031da8f285e7cfec8daece598a8f492a7931adda68ea316a"
+        },
+        {
+          "file": "files/week05-practice.pdf",
+          "expected_pages": 6,
+          "pages": 6,
+          "font_types": [
+            "TrueType"
+          ],
+          "no_type3": true,
+          "all_fonts_embedded": true,
+          "sha256": "d27ec405f46b75b8e082dae73e00b73d4b6284a3ba9e7f846e56ab1099c7f5f4"
+        },
+        {
+          "file": "files/week05-lab-guide.pdf",
+          "expected_pages": 2,
+          "pages": 2,
+          "font_types": [
+            "TrueType"
+          ],
+          "no_type3": true,
+          "all_fonts_embedded": true,
+          "sha256": "c6b03d00f10da785ee865b0df1b81059cd88a4f1f45f06d218031c0b3ef99388"
+        },
+        {
+          "file": "files/week05-solutions.pdf",
+          "expected_pages": 5,
+          "pages": 5,
+          "font_types": [
+            "TrueType"
+          ],
+          "no_type3": true,
+          "all_fonts_embedded": true,
+          "sha256": "2ce97a622d679dfbe74b424469f83c88cd24004839e47967883e5ea2179ac3e9"
+        }
+      ]
+    },
+    {
+      "check": "Public slide PDF equals reviewed video input",
+      "passed": true,
+      "details": {
+        "sha256": "2713d394c91ab521031da8f285e7cfec8daece598a8f492a7931adda68ea316a"
+      }
+    },
+    {
+      "check": "Week5 local resources and linked chapter anchors resolve",
+      "passed": true,
+      "details": {
+        "checked_links": 116,
+        "missing": [],
+        "bad_anchors": [],
+        "external_urls": [
+          "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+          "https://www.skhgroup.net/teaching/2105603/week05-study.html",
+          "https://www.skhgroup.net/teaching/2105603/week05-video.html"
+        ]
+      }
+    },
+    {
+      "check": "Session5 anonymous form and November dates are explicit",
+      "passed": true,
+      "details": {
+        "form": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+        "independent_lesson_date": "2026-11-06",
+        "onsite_return_date": "2026-11-13"
+      }
+    },
+    {
+      "check": "Published media copies match final validated outputs",
+      "passed": true,
+      "details": [
+        {
+          "file": "week05-lecture.mp4",
+          "sha256": "eef029ff2fa5187aeef851eaedf40820c3b58560147fb3b946e3b7fc1b723385",
+          "bytes": 46411961,
+          "matches_final_output": true
+        },
+        {
+          "file": "week05-captions.vtt",
+          "sha256": "e20a43e2caf35dcf3171196d70ef5f0157651e028240776d72af1a396a300602",
+          "bytes": 47803,
+          "matches_final_output": true
+        },
+        {
+          "file": "week05-poster.png",
+          "sha256": "19b4b4a9e1adf9405060cfa8041844f0cee40006032c924685c58e8d690f54df",
+          "bytes": 115513,
+          "matches_final_output": true
+        }
+      ]
+    },
+    {
+      "check": "Video and caption URLs share final hash version",
+      "passed": true,
+      "details": {
+        "version": "eef029ff2fa5"
+      }
+    },
+    {
+      "check": "Sourcepack carries passing media and controller receipts",
+      "passed": true,
+      "details": {
+        "video-qa.json": {
+          "passed": true,
+          "status": null,
+          "reviewed_track_count": null
+        },
+        "audio-audio-qa.json": {
+          "passed": true,
+          "status": null,
+          "reviewed_track_count": null
+        },
+        "asr-review.json": {
+          "passed": true,
+          "status": "complete_source_comparison",
+          "reviewed_track_count": 32
+        },
+        "controller-qa.json": {
+          "passed": 24,
+          "status": null,
+          "reviewed_track_count": null
+        }
+      }
+    },
+    {
+      "check": "Hash-bound ASR decisions included for reproducibility",
+      "passed": true,
+      "details": {
+        "required_file": "_teaching-src/2105603/video-week05/media/qa-audio-review-decisions.json"
+      }
+    },
+    {
+      "check": "Three exported cases reproduce analytic chemistry and clean teaching inputs",
+      "passed": true,
+      "details": [
+        {
+          "case": "A",
+          "T_K": 350,
+          "P_kPa": 100,
+          "route": "direct",
+          "K": 3.9532625518535793,
+          "extent_mol": 0.7050260589458048,
+          "atom_balance_mol": 2.0,
+          "quotient": 3.9532625538649,
+          "valid": true
+        },
+        {
+          "case": "B",
+          "T_K": 350,
+          "P_kPa": 400,
+          "route": "direct",
+          "K": 3.9532625518535793,
+          "extent_mol": 0.4451136067509651,
+          "atom_balance_mol": 2.0,
+          "quotient": 3.95326254817132,
+          "valid": true
+        },
+        {
+          "case": "C",
+          "T_K": 400,
+          "P_kPa": 100,
+          "route": "vh",
+          "K": 33.8609294543933,
+          "extent_mol": 0.945700898882933,
+          "atom_balance_mol": 2.0,
+          "quotient": 33.860929476379944,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "check": "No private records, model weights, raw audio or credential-like material in changed files",
+      "passed": true,
+      "details": {
+        "text_files_screened": 61,
+        "findings": [],
+        "excluded_artifacts_found": [],
+        "scope": "Changed files under course2105603 only. Pattern screen, not a formal secret-security guarantee."
+      }
+    },
+    {
+      "check": "No stale draft timing metadata in player",
+      "passed": true,
+      "details": {
+        "contiguous": true
+      }
+    }
+  ],
+  "files_changed_at_start": [
+    "_teaching-src/2105603/postmidterm-05.qmd",
+    "teaching/2105603/files/postmidterm-05-slides.pdf",
+    "teaching/2105603/files/thermodynamics-offline.zip",
+    "teaching/2105603/index.html",
+    "teaching/2105603/labs/assessments.html",
+    "teaching/2105603/labs/assets/learning-guide.js",
+    "teaching/2105603/labs/assets/learning-path.json",
+    "teaching/2105603/labs/learning-path.html",
+    "teaching/2105603/labs/release-manifest.json",
+    "teaching/2105603/postmidterm-05.html",
+    "_teaching-src/2105603/assets/week05-independent.css",
+    "_teaching-src/2105603/video-week05/README.md",
+    "_teaching-src/2105603/video-week05/documents/build_week05.py",
+    "_teaching-src/2105603/video-week05/documents/documents-qa.json",
+    "_teaching-src/2105603/video-week05/documents/lesson-contract.json",
+    "_teaching-src/2105603/video-week05/export-slides.mjs",
+    "_teaching-src/2105603/video-week05/media/build-narration.py",
+    "_teaching-src/2105603/video-week05/media/build-video.py",
+    "_teaching-src/2105603/video-week05/media/demo-capture-qa.json",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-01-baseline-inputs.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-02-thermal-inputs.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-03-direct-run.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-04-baseline-extent.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-05-hs-extent.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-06-route-comparison.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/20-07-observed-q.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/22-01-pressure-input.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/22-02-pressure-extent.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/22-03-same-k.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/30-01-temperature-model.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/30-02-temperature-k.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/30-03-temperature-extent.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/30-04-export-restore.png",
+    "_teaching-src/2105603/video-week05/media/demo-frames/30-05-restored-baseline.png",
+    "_teaching-src/2105603/video-week05/media/demo-scenes.json",
+    "_teaching-src/2105603/video-week05/media/downloads/week05-case-a.json",
+    "_teaching-src/2105603/video-week05/media/downloads/week05-case-b.json",
+    "_teaching-src/2105603/video-week05/media/downloads/week05-case-c.json",
+    "_teaching-src/2105603/video-week05/media/narration.json",
+    "_teaching-src/2105603/video-week05/media/production-summary.json",
+    "_teaching-src/2105603/video-week05/media/qa-audio-review-decisions.json",
+    "_teaching-src/2105603/video-week05/media/qa-audio.py",
+    "_teaching-src/2105603/video-week05/media/week05-transcript.txt",
+    "_teaching-src/2105603/video-week05/offline/README.md",
+    "_teaching-src/2105603/video-week05/offline/build-offline.py",
+    "_teaching-src/2105603/video-week05/offline/refresh-release-manifest.py",
+    "_teaching-src/2105603/video-week05/offline/validate-offline.py",
+    "_teaching-src/2105603/video-week05/qa/asr-review.json",
+    "_teaching-src/2105603/video-week05/qa/audio-audio-qa.json",
+    "_teaching-src/2105603/video-week05/qa/audio-manifest.json",
+    "_teaching-src/2105603/video-week05/qa/caption-timeline.json",
+    "_teaching-src/2105603/video-week05/qa/controller-qa.json",
+    "_teaching-src/2105603/video-week05/qa/final-changed-pages.json",
+    "_teaching-src/2105603/video-week05/qa/offline-qa.json",
+    "_teaching-src/2105603/video-week05/qa/release-update-qa.json",
+    "_teaching-src/2105603/video-week05/qa/slides-qa.json",
+    "_teaching-src/2105603/video-week05/qa/slides-visual-review.json",
+    "_teaching-src/2105603/video-week05/qa/timeline.json",
+    "_teaching-src/2105603/video-week05/qa/video-qa.json",
+    "_teaching-src/2105603/video-week05/qa/week05-page-build-qa.json",
+    "_teaching-src/2105603/video-week05/reviewed-slides.pdf",
+    "_teaching-src/2105603/video-week05/serve_preview.py",
+    "_teaching-src/2105603/video-week05/stage_release.py",
+    "_teaching-src/2105603/video-week05/update-course-links.py",
+    "_teaching-src/2105603/video-week05/web/README.txt",
+    "_teaching-src/2105603/video-week05/web/build-video-page.py",
+    "_teaching-src/2105603/video-week05/web/player.css",
+    "_teaching-src/2105603/video-week05/web/player.js",
+    "_teaching-src/2105603/video-week05/web/study-template.html",
+    "_teaching-src/2105603/video-week05/web/test-player.mjs",
+    "_teaching-src/2105603/video-week05/web/video-template.html",
+    "_teaching-src/2105603/video-week05/web/week05-study.html",
+    "_teaching-src/2105603/video-week05/web/week05-video.html",
+    "_teaching-src/2105603/week05-study.html",
+    "_teaching-src/2105603/week05-video.html",
+    "teaching/2105603/assets/week05-independent.css",
+    "teaching/2105603/files/week05-lab-guide.pdf",
+    "teaching/2105603/files/week05-practice.pdf",
+    "teaching/2105603/files/week05-solutions.pdf",
+    "teaching/2105603/media/week05/week05-captions.vtt",
+    "teaching/2105603/media/week05/week05-lecture.mp4",
+    "teaching/2105603/media/week05/week05-poster.png",
+    "teaching/2105603/week05-study.html",
+    "teaching/2105603/week05-video.html"
+  ],
+  "limitations": [
+    "Live HTTP deployment and browser playback are verified separately by root.",
+    "Offline bundle/manifest updates may be finishing concurrently.",
+    "Full subjective listening review was not performed."
+  ]
+}

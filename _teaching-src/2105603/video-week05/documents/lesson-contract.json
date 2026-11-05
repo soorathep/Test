@@ -1,0 +1,297 @@
+{
+  "course": "2105603",
+  "week": 5,
+  "date": "2026-11-06",
+  "next_in_person_class": "2026-11-13",
+  "language": "en-US",
+  "slide_count": 32,
+  "narration_target_minutes": 42,
+  "work_minutes": 128,
+  "break_minutes": 10,
+  "total_planned_minutes": 180,
+  "required_resources": [
+    "week05-practice.pdf",
+    "labs/reaction.html#rx-experiment"
+  ],
+  "support_resources": [
+    "week05-lab-guide.pdf",
+    "week05-solutions.pdf"
+  ],
+  "policy": "Use one worksheet and one Lab. No required preclass or follow-up assignment. Attempt first, check after. At each stop budget, record the sticking point and continue. Bring remaining questions to13November.",
+  "synthetic_case": {
+    "reaction": "A2 ⇌ 2A",
+    "n0_A2_mol": 1,
+    "n0_A_mol": 0,
+    "inert_mol": 0,
+    "p_standard_kPa": 100,
+    "Tref_K": 350,
+    "Gref_J_per_mol_reaction": -4000,
+    "Href_J_per_mol_reaction": 50000,
+    "Sref_J_per_mol_reaction_K": 154.28571428571428,
+    "Cp_J_per_mol_reaction_K": 0
+  },
+  "exit_url": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+  "slides": [
+    {
+      "number": 1,
+      "id": "week05-title",
+      "title": "Week 5: from phases to reactions",
+      "purpose": "Answer the bulk-sublimation versus surface-adsorption question and identify this independent lesson.",
+      "worksheet": "R",
+      "pause_minutes": 0
+    },
+    {
+      "number": 2,
+      "id": "pressure-at-fixed-volume",
+      "title": "Partial and total pressure at fixed volume",
+      "purpose": "Separate volatile partial pressure from total pressure using the depleted-solid case.",
+      "worksheet": "R1",
+      "pause_minutes": 4
+    },
+    {
+      "number": 3,
+      "id": "two-independent-checks",
+      "title": "A balance needs an independent equation",
+      "purpose": "Attempt a Langmuir calculation from the given pressure and all supplied parameters.",
+      "worksheet": "R2",
+      "pause_minutes": 4
+    },
+    {
+      "number": 4,
+      "id": "review-check",
+      "title": "Two calculations, one physical state",
+      "purpose": "Show R1–R2 answers and connect equilibrium relations to conservation.",
+      "worksheet": "R1–R2 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 5,
+      "id": "one-route",
+      "title": "One worksheet, one Lab, three hours",
+      "purpose": "State the timebox, required route and stop rule.",
+      "worksheet": "All sections",
+      "pause_minutes": 0
+    },
+    {
+      "number": 6,
+      "id": "extent-and-atoms",
+      "title": "Reaction extent keeps the atoms balanced",
+      "purpose": "Build mole expressions for A2 ⇌ 2A and the feasible interval.",
+      "worksheet": "A1",
+      "pause_minutes": 0
+    },
+    {
+      "number": 7,
+      "id": "dimensionless-activities",
+      "title": "Activities make Q dimensionless",
+      "purpose": "Define ideal-gas activities and distinguish standard pressure from actual pressure.",
+      "worksheet": "A2",
+      "pause_minutes": 0
+    },
+    {
+      "number": 8,
+      "id": "build-reaction-quotient",
+      "title": "Your turn: build Q from the mole table",
+      "purpose": "Derive y and Q for the synthetic dissociation.",
+      "worksheet": "A1–A3",
+      "pause_minutes": 10
+    },
+    {
+      "number": 9,
+      "id": "quotient-check",
+      "title": "Check the quotient and the atom balance",
+      "purpose": "Give the mole table, analytic Q and dimensionless extent convention.",
+      "worksheet": "A1–A3 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 10,
+      "id": "reaction-driving-force",
+      "title": "Which way does the reaction proceed?",
+      "purpose": "Use Q/K or ΔrG at Q=1 and10 to interpret direction.",
+      "worksheet": "B1",
+      "pause_minutes": 6
+    },
+    {
+      "number": 11,
+      "id": "gibbs-route",
+      "title": "Route 1: K from standard Gibbs energy",
+      "purpose": "State the direct-Gibbs calculation without revealing its numeric answer.",
+      "worksheet": "B2",
+      "pause_minutes": 0
+    },
+    {
+      "number": 12,
+      "id": "enthalpy-entropy-route",
+      "title": "Route 2: K from enthalpy and entropy",
+      "purpose": "Keep reaction basis and units consistent at350K.",
+      "worksheet": "B3",
+      "pause_minutes": 0
+    },
+    {
+      "number": 13,
+      "id": "compare-k-routes",
+      "title": "Your turn: compare the two K routes",
+      "purpose": "Calculate both routes and explain their agreement.",
+      "worksheet": "B2–B4",
+      "pause_minutes": 10
+    },
+    {
+      "number": 14,
+      "id": "reference-check",
+      "title": "Both routes give the same reference K",
+      "purpose": "Show checked ΔG°,lnK,K and the B1 signs.",
+      "worksheet": "B1–B4 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 15,
+      "id": "solve-reference-extent",
+      "title": "Your turn: solve for equilibrium extent",
+      "purpose": "Rearrange Q=K and calculate extent,moles,fractions at100kPa.",
+      "worksheet": "C1–C3",
+      "pause_minutes": 15
+    },
+    {
+      "number": 16,
+      "id": "reference-composition-check",
+      "title": "The reference equilibrium satisfies Q=K",
+      "purpose": "Show the baseline numbers and independent atom/Q checks.",
+      "worksheet": "C1–C3 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 17,
+      "id": "pressure-prediction",
+      "title": "Your turn: compress at the same temperature",
+      "purpose": "Predict then calculate the400kPa case with unchanged standard K.",
+      "worksheet": "C4",
+      "pause_minutes": 8
+    },
+    {
+      "number": 18,
+      "id": "pressure-check",
+      "title": "Pressure changes composition at fixed K",
+      "purpose": "Show both pressure cases and explain Δν=+1.",
+      "worksheet": "C4 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 19,
+      "id": "lab12-setup",
+      "title": "Lab 12: prepare a controlled comparison",
+      "purpose": "Open exact calculator, reset, set ΔCp=0, select direct Gibbs and audit controls.",
+      "worksheet": "D1",
+      "pause_minutes": 5
+    },
+    {
+      "number": 20,
+      "id": "lab12-demo",
+      "title": "Lab 12 demonstration: the reference state",
+      "purpose": "Watch the actual Lab12 reference calculation at350K100kPa, compare direct andHS routes, return to direct andexport12A.",
+      "worksheet": "Watch after D1",
+      "pause_minutes": 0
+    },
+    {
+      "number": 21,
+      "id": "lab12-independent",
+      "title": "Your turn: reproduce the pressure comparison",
+      "purpose": "Run12A direct,checkhsroute,run12B400kPa,and save evidence.",
+      "worksheet": "D2–D4",
+      "pause_minutes": 22
+    },
+    {
+      "number": 22,
+      "id": "lab12-reading-check",
+      "title": "What the Lab results establish",
+      "purpose": "After the independent attempt, watch400kPapressurecase andinterpretK,extent,Gcurve andindependentchecks.",
+      "worksheet": "D2–D4 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 23,
+      "id": "break",
+      "title": "Ten-minute break",
+      "purpose": "Save notes and take the timeboxed break.",
+      "worksheet": "Break",
+      "pause_minutes": 10
+    },
+    {
+      "number": 24,
+      "id": "temperature-dependence",
+      "title": "Temperature changes the equilibrium constant",
+      "purpose": "Separate standard-property point data from a temperature law.",
+      "worksheet": "E1",
+      "pause_minutes": 0
+    },
+    {
+      "number": 25,
+      "id": "vanthoff-route",
+      "title": "Route 3: K at a new temperature",
+      "purpose": "Introduce integrated van’t Hoff with constant reaction enthalpy.",
+      "worksheet": "E1–E2",
+      "pause_minutes": 0
+    },
+    {
+      "number": 26,
+      "id": "temperature-calculation",
+      "title": "Your turn: heat from 350 K to 400 K",
+      "purpose": "Calculate lnK400,K400 and extent at100kPa.",
+      "worksheet": "E1–E3",
+      "pause_minutes": 15
+    },
+    {
+      "number": 27,
+      "id": "temperature-check",
+      "title": "The endothermic reaction dissociates further",
+      "purpose": "Show correct temperature calculation and equilibrium composition.",
+      "worksheet": "E1–E3 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 28,
+      "id": "point-data-limits",
+      "title": "A 350 K Gibbs value is not a temperature law",
+      "purpose": "Explain unavailable direct route at400K and optional Cp/custom-species extensions.",
+      "worksheet": "F1 preparation",
+      "pause_minutes": 0
+    },
+    {
+      "number": 29,
+      "id": "lab12-temperature-run",
+      "title": "Your turn: save and reopen the temperature case",
+      "purpose": "Selectconstant-Hvanthoff,set400K100kPa,export12C,restore12A andverify.",
+      "worksheet": "F1–F3",
+      "pause_minutes": 19
+    },
+    {
+      "number": 30,
+      "id": "three-case-check",
+      "title": "Three cases separate pressure and temperature",
+      "purpose": "After the independent attempt, watch400Kconstant-Hvanthoffcase andrestore12AJSON withfreshcalculation.",
+      "worksheet": "F1–F3 check",
+      "pause_minutes": 0
+    },
+    {
+      "number": 31,
+      "id": "what-to-bring",
+      "title": "Bring one unresolved question to our next class",
+      "purpose": "Synthesize K/Q/extent and stop the required work; prepare13Novdiscussion.",
+      "worksheet": "G preparation",
+      "pause_minutes": 0
+    },
+    {
+      "number": 32,
+      "id": "exit-ticket",
+      "title": "Exit ticket, feedback and saved work",
+      "purpose": "SubmitSession5once,confirmreceipt,reportactualtimeandunresolvedstep.",
+      "worksheet": "G",
+      "pause_minutes": 10
+    }
+  ],
+  "demo_slide_numbers": [
+    20,
+    22,
+    30
+  ]
+}

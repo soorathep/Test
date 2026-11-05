@@ -1,0 +1,103 @@
+{
+  "mode": "Actual final media timing metadata; mocked DOM/media. No browser or decoded-media QA.",
+  "passed": 24,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "32 chapters and contract budgets",
+      "pass": true
+    },
+    {
+      "name": "every required stop guards before next slide and continues manually",
+      "pass": true
+    },
+    {
+      "name": "solution does not play while a work stop is active",
+      "pass": true
+    },
+    {
+      "name": "intentional chapter seek skips preceding activities without acknowledging them",
+      "pass": true
+    },
+    {
+      "name": "demo shortcuts select20,22,30",
+      "pass": true
+    },
+    {
+      "name": "manual seek remains usable during activity pause",
+      "pass": true
+    },
+    {
+      "name": "guard works with requestAnimationFrame",
+      "pass": true
+    },
+    {
+      "name": "guard works after playback-rate change",
+      "pass": true
+    },
+    {
+      "name": "disabled auto-pause allows uninterrupted playback",
+      "pass": true
+    },
+    {
+      "name": "backward review can pause again without erasing checklist",
+      "pass": true
+    },
+    {
+      "name": "metadata deep link uses slide anchor",
+      "pass": true
+    },
+    {
+      "name": "metadata accepts descriptive slide ID",
+      "pass": true
+    },
+    {
+      "name": "resume preserves active attempt before answer",
+      "pass": true
+    },
+    {
+      "name": "resume restores acknowledged checklist",
+      "pass": true
+    },
+    {
+      "name": "loading and leaving page does not erase unused saved place",
+      "pass": true
+    },
+    {
+      "name": "restart clears saved completion and returns to first slide",
+      "pass": true
+    },
+    {
+      "name": "blocked local storage does not break playback",
+      "pass": true
+    },
+    {
+      "name": "wide screen uses native English captions",
+      "pass": true
+    },
+    {
+      "name": "narrow screen places timed captions below image",
+      "pass": true
+    },
+    {
+      "name": "caption toggle disables and reenables track",
+      "pass": true
+    },
+    {
+      "name": "delayed caption load attaches track",
+      "pass": true
+    },
+    {
+      "name": "caption load failure provides transcript fallback",
+      "pass": true
+    },
+    {
+      "name": "video load failure shows useful fallback",
+      "pass": true
+    },
+    {
+      "name": "transcript download includes all32chapters and correct week",
+      "pass": true
+    }
+  ]
+}

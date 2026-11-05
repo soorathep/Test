@@ -1,0 +1,34 @@
+/* Instructions are visible in the browser deck and printable PDF. */
+.reveal .your-action {
+  font-size: .79em;
+  line-height: 1.35;
+  border-top: 1px solid var(--teal);
+  margin: 0 0 .7em;
+  padding-top: .35em;
+}
+.reveal .your-action p { margin: 0; line-height: 1.35; }
+.reveal table { font-size: .86em; }
+.reveal table th, .reveal table td { padding: .22em .35em; }
+.reveal .slides section > p, .reveal .slides section > ul,
+.reveal .slides section > ol { font-size: .91em; }
+.reveal .slides section > .math.display { margin: .45em 0; }
+/* Preserve mathematical symbols inside capitalized table headings. */
+.reveal table th .math, .reveal table th .katex {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.reveal .work-stop .your-action { border-top-width: 3px; }
+.reveal .slides section > .math.display { margin: .35em 0; }
+.reveal #week05-title table { font-size: .78em; }
+.reveal #review-check > p { font-size: .82em; }
+.reveal #lab12-demo > ol, .reveal #lab12-temperature-run > ul { font-size: .82em; }
+.reveal #three-case-check table { font-size: .82em; }
+
+.reveal #exit-ticket .column > p { font-size: .79em; margin: .35em 0; }
+.reveal #exit-ticket .column img { margin: .2em 0; }
+.reveal #exit-ticket figcaption { display: none; }
+.reveal .reference-links { font-size: .55em; margin-top: .8em; }
+
+/* Preserve SI unit symbols such as kPa and mol in table headings. */
+.reveal table th { text-transform: none; letter-spacing: normal; }

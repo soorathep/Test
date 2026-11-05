@@ -1,141 +1,482 @@
 ---
-title: "Chemical equilibrium and routes to K"
-subtitle: "After midterm · Session 5 of 6 · 180 minutes"
+pagetitle: "Week 5: Chemical equilibrium and routes to K"
 author: "Soorathep Kheawhom"
-date: 2026-09-30
-date-format: "D MMMM YYYY"
+date: 2026-11-06
 format:
   revealjs:
     theme: [default, theme/teal-amber.scss]
-    css: assets/postmidterm.css
+    css: [assets/postmidterm.css, assets/week05-independent.css]
     width: 1280
     height: 720
     margin: 0.06
     center: false
     auto-stretch: false
     slide-number: c/t
-    show-slide-number: speaker
     progress: true
     hash: true
     history: true
     transition: none
-    transition-speed: fast
     menu: false
     html-math-method: katex
-    title-slide-attributes:
-      data-background-color: "#1C242B"
 ---
 
-## The question for today
+## Week 5: from phases to reactions {#week05-title}
 
-Why can composition change while the equilibrium constant stays the same?
+::: {.your-action}
+**Read this slide.** Open the [Week 5 worksheet](files/week05-practice.pdf), page 1. Keep it beside the video. This lesson replaces the class on **6 November**. We return to the classroom on **13 November**.
+:::
 
-[Before class: 3-page reading](files/preclass-week-05.pdf) · 15–20 minutes
+| Week 4 process | What controls equilibrium? |
+|---|---|
+| Bulk sublimation | A separate pure solid can coexist with its gas. While solid remains, $P_A=P_{\mathrm{sub}}(T)$ in this model. |
+| Surface adsorption | Molecules occupy an adsorbent surface. An isotherm gives uptake $q(P_A)$ per mass of adsorbent. |
 
-Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
+Both calculations also need an **inventory balance**. These conditions answer different questions.
 
-## The 180-minute class
+## Partial and total pressure at fixed volume {#pressure-at-fixed-volume .work-stop}
 
-| Activity | Minutes |
+::: {.your-action}
+**Pause for 4 minutes. Worksheet p. 1, R1.** Calculate first. Check your answer on slide 4. If stuck, mark the step and continue.
+:::
+
+$T=300$ K, $V=1$ L, $P_{\mathrm{sub}}=10$ kPa. Total volatile amount: $n_A=0.002$ mol.
+
+$$n_{\mathrm{cap}}=\frac{P_{\mathrm{sub}}V}{RT},\qquad P_A=\frac{n_{A,\mathrm{gas}}RT}{V}$$
+
+1. Does any solid remain? Calculate $P_A$.
+2. Add $0.002$ mol of ideal, nonadsorbing inert gas at the **same $T$ and free volume**. Calculate $P_{\mathrm{total}}$.
+
+Use $R=8.314462618$ kPa L mol$^{-1}$ K$^{-1}$. State which pressure changes.
+
+## A balance needs an independent equation {#two-independent-checks .work-stop}
+
+::: {.your-action}
+**Pause for 4 minutes. Worksheet p. 1, R2.** Substitute the proposed pressure into both equations. Slide 4 gives the check.
+:::
+
+A candidate Langmuir state has $P_A=10$ kPa, $T=300$ K, $V_g=1$ L and $m_s=0.010$ kg. Given $q_s=2$ mol/kg, $b=0.1$ kPa$^{-1}$ and total feed $0.010$ mol:
+
+$$n_{\mathrm{gas}}=\frac{P_AV_g}{RT},\qquad n_{\mathrm{ads}}=m_s\frac{q_s bP_A}{1+bP_A}$$
+
+Calculate each amount **independently**. Does their sum equal the stated feed?
+
+A number obtained by subtracting gas moles from the feed still needs to satisfy the isotherm.
+
+## Two calculations, one physical state {#review-check}
+
+::: {.your-action}
+**Check R1-R2 on worksheet p. 1.** Keep your first attempt and write corrections beside it. No extra Lab run is required for this review.
+:::
+
+**R1:** $n_{\mathrm{cap}}=0.004009$ mol exceeds the available $0.002$ mol. No solid remains. $P_A=4.989$ kPa. Adding the inert gas gives $P_{\mathrm{total}}=9.977$ kPa while $P_A$ stays unchanged.
+
+**R2:** At the proposed 10 kPa, $n_{\mathrm{gas}}=0.004009$ mol and $n_{\mathrm{ads}}=0.010000$ mol. Their sum, $0.014009$ mol, exceeds the feed.
+
+The checked equilibrium is $P_A=6.080$ kPa, with $0.002438+0.007562=0.010000$ mol.
+
+**Next:** chemical equilibrium also combines an equilibrium relation with conserved amounts.
+
+## One worksheet, one Lab, three hours {#one-route}
+
+::: {.your-action}
+**Read the route on worksheet p. 1.** Use the indicated worksheet section at every pause. Open the Lab guide only for the Lab 12 steps.
+:::
+
+| Required work | Planned time |
 |---|---:|
-| Opening question and essential concepts | 30 |
-| One hand calculation | 20 |
-| One lab demonstration | 20 |
-| Break | 10 |
-| Student pair investigation | 70 |
-| Discussion, exit ticket and feedback | 30 |
+| Video explanations and demonstrations | About 42 min |
+| Worksheet, Lab 12, exit ticket and feedback | 128 min |
+| Break | 10 min |
 
-The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.
+There is **no required preclass reading or follow-up assignment**. Additional models are optional references.
 
-## Start with extent and driving force
+At a pause limit, record the unresolved step and continue. Bring it to class on **13 November**. The time budget is a guide, not a speed test.
 
-$$n_i=n_{i,0}+\nu_i\xi,\qquad n_i\geq0$$
-$$\left(\frac{dG}{d\xi}\right)_{T,P}=\Delta_rG=\Delta_rG^\circ+RT\ln Q$$
+## Reaction extent keeps the atoms balanced {#extent-and-atoms}
 
-Write the feasible extent interval first. A negative derivative favors increasing extent; a positive derivative favors decreasing extent.
+::: {.your-action}
+**Read with worksheet p. 2, A1.** Use the same synthetic reaction throughout this lesson. You will complete A1-A3 at slide 8.
+:::
 
-An interior equilibrium has zero derivative. Boundary minima need one-sided checks.
+$$\mathrm{A_2(g)}\rightleftharpoons 2\mathrm{A(g)}$$
 
-## The equilibrium condition gives K
+Initially: 1 mol of A$_2$, no A and no inert gas. A is a formal teaching species.
 
-$$\Delta_rG=0\ \Rightarrow\ Q=K,\qquad\ln K=-\frac{\Delta_rG^\circ}{RT}$$
+$$n_{A_2}=1\ \mathrm{mol}-\xi,\qquad n_A=2\xi,\qquad 0\leq\xi\leq1\ \mathrm{mol}$$
 
-Obtain standard Gibbs energy from direct data, formation properties, or H−TS at the evaluation temperature.
+Define the dimensionless fraction $f=\xi/(1\ \mathrm{mol})$. Then $n_{\mathrm{total}}=(1+f)$ mol.
 
-K depends on T and the reaction/standard-state convention. Q describes the current composition and pressure.
+The conserved atom amount is $2n_{A_2}+n_A=2$ mol of A atoms.
 
-Additional K(T) routes are in the appendix and lab.
+## Activities make Q dimensionless {#dimensionless-activities}
 
-## A reference-state check
+::: {.your-action}
+**Read with worksheet p. 2, A2.** The Lab 12 extent calculation assumes one ideal gas phase at fixed temperature and total pressure.
+:::
 
-Lab 12 synthetic A₂ ⇌ 2A at 350 K uses ΔrG°=−4.000 kJ/mol.
+For each gas, $a_i=y_iP/p^\circ$, with $p^\circ=100$ kPa.
 
-$$\ln K=\frac{4000}{R(350)}=1.37454,\qquad K\approx3.95326$$
+$$Q=\frac{a_A^2}{a_{A_2}}=\frac{y_A^2}{y_{A_2}}\frac{P}{p^\circ}$$
 
-With ΔrH°=50.000 kJ/mol and ΔrS°=54000/350 J mol⁻¹ K⁻¹, the H−TS route gives the same value.
+- $P$ is the actual **total pressure**.
+- $p^\circ$ defines the standard state and stays fixed in our comparisons.
+- $Q$ describes a composition. $K(T)$ describes equilibrium for the reaction and standard states as written.
 
-## Check the minimum and the reaction quotient
+Use dimensionless $P/p^\circ$, not a pressure carrying units inside a logarithm.
 
-![Synthetic dissociation at 350 K and standard pressure. Initially one mole of reactant.](figures/preclass-reaction.png){width="68%"}
+## Your turn: build Q from the mole table {#build-reaction-quotient .work-stop}
 
-At ξ≈0.70503 mol, Q≈3.95326=K. Check the atom balance.
+::: {.your-action}
+**Pause for 10 minutes. Worksheet p. 2, A1-A3.** Work through the mole table and quotient. Then continue to slide 9.
+:::
 
-## One demonstration · 20 minutes
+1. Write the mole amounts, total moles and mole fractions in terms of $f$.
+2. Substitute the mole fractions into $Q$.
+3. Evaluate $Q$ at $f=0.50$ and $P/p^\circ=1$, then at $P/p^\circ=4$.
 
-[Open the core lab](labs/reaction.html#rx-experiment)
+Check the atom balance at $f=0.50$.
 
-Use the synthetic Lab 12 case. Write nA₂=1−ξ, nA=2ξ and 0≤ξ≤1 mol first. Compare the supplied Gibbs-energy and H−TS routes, then change only pressure and inspect K and extent.
+For finite $\ln Q$, work inside $0<f<1$. The pure-feed and complete-conversion endpoints need limiting interpretations.
 
-Keep one saved baseline for the pair investigation.
+## Check the quotient and the atom balance {#quotient-check}
 
-## Pair investigation · 70 minutes
+::: {.your-action}
+**Check A1-A3 on worksheet p. 2.** Correct the algebra before using it in the following calculations.
+:::
 
-- 10 min: predict and record the baseline.
-- 25 min: change one input and calculate.
-- 20 min: exchange roles and check the result by hand.
-- 15 min: prepare one plot or table and a short explanation.
+$$y_{A_2}=\frac{1-f}{1+f},\qquad y_A=\frac{2f}{1+f}$$
 
-In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.
+$$Q=\frac{4f^2}{1-f^2}\frac{P}{p^\circ}$$
 
-## Discussion · 20 minutes
+At $f=0.50$: $n_{A_2}=0.50$ mol, $n_A=1.00$ mol, $y_A=2/3$ and $y_{A_2}=1/3$.
 
-Why can composition change while the equilibrium constant stays the same?
+$Q=1.3333$ at $P/p^\circ=1$ and $Q=5.3333$ at $P/p^\circ=4$.
 
-Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.
+The atom check is $2(0.50)+1.00=2.00$ mol of A atoms. These are specified trial states, not yet equilibrium solutions.
 
-## After class · 30–40 minutes
+## Which way does the reaction proceed? {#reaction-driving-force .work-stop}
 
-In Lab 12, compare the supplied Gibbs-energy and H−TS routes at the reference temperature. Change pressure at fixed T and compare K with equilibrium extent. Check one balance.
+::: {.your-action}
+**Pause for 6 minutes. Worksheet p. 2, B1.** Calculate the driving force at each trial $Q$, then predict forward or reverse reaction. Check on slide 14.
+:::
 
-[Assessment 5 and independent checkpoint](labs/assessments.html#session-5)
+At 350 K, the supplied standard reaction Gibbs energy is $\Delta_rG^\circ=-4000$ J/mol of reaction.
 
-Retain one study JSON, one comparison and a short explanation.
+$$\Delta_rG=\Delta_rG^\circ+RT\ln Q$$
 
-Optional: [Session appendix](postmidterm-05-appendix.html).
+Evaluate $Q=1$ and $Q=10$, using $R=8.314462618$ J mol$^{-1}$ K$^{-1}$.
 
-[Learning path](labs/learning-path.html#session-5) · [Offline package](files/thermodynamics-offline.zip)
+Negative $\Delta_rG$ favors increasing extent. Positive $\Delta_rG$ favors decreasing extent. An interior equilibrium has $\Delta_rG=0$.
 
-## Exit ticket + feedback · 8 minutes
+## Route 1: K from standard Gibbs energy {#gibbs-route}
+
+::: {.your-action}
+**Read with worksheet p. 3, B2.** Write the substitution now. Complete the numeric comparison at slide 13.
+:::
+
+$$\ln K=-\frac{\Delta_rG^\circ}{RT}$$
+
+At 350 K, use $\Delta_rG^\circ=-4.000$ **kJ per mol of the reaction as written**.
+
+Convert kJ to J before using $R=8.314462618$ J mol$^{-1}$ K$^{-1}$.
+
+Calculate $\ln K$ first, then $K=\exp(\ln K)$. A standard Gibbs energy supplied at one temperature is a point value.
+
+## Route 2: K from enthalpy and entropy {#enthalpy-entropy-route}
+
+::: {.your-action}
+**Read with worksheet p. 3, B3.** Keep the same reaction, temperature and standard states as Route 1.
+:::
+
+At the reference temperature 350 K, the synthetic definitions are:
+
+$$\Delta_rH^\circ=50000\ \mathrm{J/mol},\qquad \Delta_rS^\circ=\frac{54000}{350}\ \mathrm{J\,mol^{-1}K^{-1}}$$
+
+$$\Delta_rG^\circ=\Delta_rH^\circ-T\Delta_rS^\circ$$
+
+Then use the same $\ln K=-\Delta_rG^\circ/(RT)$ relation.
+
+An endothermic reaction can have $K>1$: the entropy term also contributes to the standard Gibbs energy.
+
+## Your turn: compare the two K routes {#compare-k-routes .work-stop}
+
+::: {.your-action}
+**Pause for 10 minutes. Worksheet p. 3, B2-B4.** Calculate both routes before opening the worked solutions. Continue to slide 14 for the check.
+:::
+
+| Route | Calculate |
+|---|---|
+| Direct standard Gibbs energy | $\ln K$ and $K$ at 350 K |
+| Standard enthalpy and entropy | $\Delta_rG^\circ$, $\ln K$ and $K$ at 350 K |
+
+Explain why agreement is expected for these **mutually consistent synthetic inputs**.
+
+Does agreement between two calculations using those definitions independently validate a real chemical system?
+
+## Both routes give the same reference K {#reference-check}
+
+::: {.your-action}
+**Check B1-B4.** Mark the energy units and the sign in your worksheet. Retain these values for the remaining cases.
+:::
+
+$$\Delta_rG^\circ=50000-350\left(\frac{54000}{350}\right)=-4000\ \mathrm{J/mol}$$
+
+$$\ln K=1.3745412,\qquad K=3.9532626$$
+
+**B1:** $Q=1$ gives $\Delta_rG=-4.000$ kJ/mol, so forward reaction is favored. $Q=10$ gives $\Delta_rG=+2.7007$ kJ/mol, so reverse reaction is favored.
+
+Agreement checks consistent use of the supplied definitions. Real-system prediction still needs valid property data and an appropriate model.
+
+## Your turn: solve for equilibrium extent {#solve-reference-extent .work-stop}
+
+::: {.your-action}
+**Pause for 15 minutes. Worksheet p. 3, C1-C3.** Solve the reference case by hand before checking slide 16.
+:::
+
+At 350 K, $K=3.9532626$, $P=100$ kPa and $p^\circ=100$ kPa:
+
+$$K=\frac{4f^2}{1-f^2}\frac{P}{p^\circ}$$
+
+1. Rearrange for $f^2$, then take the physically feasible positive root.
+2. Calculate $\xi$, $n_{A_2}$, $n_A$, $y_{A_2}$ and $y_A$.
+3. Recompute $Q$ and the conserved atom amount from your result.
+
+Use $f=\xi/(1\ \mathrm{mol})$, so the mole and dimensionless quantities remain distinct.
+
+## The reference equilibrium satisfies Q=K {#reference-composition-check}
+
+::: {.your-action}
+**Check C1-C3 on worksheet p. 3.** Use unrounded values for a tight numerical check.
+:::
+
+$$f=\sqrt{\frac{K}{K+4P/p^\circ}}=0.7050261,\qquad\xi=0.7050261\ \mathrm{mol}$$
+
+| Quantity | Reference equilibrium |
+|---|---:|
+| $n_{A_2}$ / mol | 0.2949739 |
+| $n_A$ / mol | 1.4100521 |
+| $y_{A_2}$, $y_A$ | 0.1730026, 0.8269974 |
+
+$Q=3.9532626=K$ and $2n_{A_2}+n_A=2.0000000$ mol of A atoms.
+
+## Your turn: compress at the same temperature {#pressure-prediction .work-stop}
+
+::: {.your-action}
+**Pause for 8 minutes. Worksheet p. 4, C4.** Predict the direction first, then calculate. Check on slide 18.
+:::
+
+Keep 350 K, the reaction, initial inventory and $p^\circ=100$ kPa. Raise the actual total pressure from 100 to **400 kPa**.
+
+- Does standard $K$ change?
+- Which way should equilibrium extent move for $\mathrm{A_2}\rightleftharpoons2\mathrm{A}$?
+- Calculate $f$, $\xi$ and the equilibrium mole fractions with $P/p^\circ=4$.
+
+This is a fixed-$T,P$ reaction calculation. Do not replace it with the fixed-volume inert-gas argument from Week 4.
+
+## Pressure changes composition at fixed K {#pressure-check}
+
+::: {.your-action}
+**Check C4 on worksheet p. 4.** Compare the same quantities in both cases.
+:::
+
+| At 350 K | 100 kPa | 400 kPa |
+|---|---:|---:|
+| Standard $K$ | 3.953263 | 3.953263 |
+| $\xi$ / mol | 0.705026 | 0.445114 |
+| $y_A$ | 0.826997 | 0.616026 |
+| $y_{A_2}$ | 0.173003 | 0.383974 |
+
+At a fixed trial composition, raising pressure increases $Q$ because $\Delta\nu=+1$. Equilibrium shifts toward smaller extent until $Q=K$ again.
+
+## Lab 12: prepare a controlled comparison {#lab12-setup .work-stop}
+
+::: {.your-action}
+**Pause for 5 minutes. Worksheet p. 4, D1; Lab guide p. 1.** Open [Lab 12](labs/reaction.html#rx-experiment), select **Reset synthetic example**, and inspect the listed controls. Then watch slide 20.
+:::
+
+Set $T=T_{\mathrm{ref}}=350$ K, $P=p^\circ=100$ kPa and inert gas $=0$ mol.
+
+Change the default $\Delta_rC_p^\circ$ from **30 to 0 J mol$^{-1}$ K$^{-1}$**. Keep the supplied $\Delta_rG^\circ$, $\Delta_rH^\circ$, $\Delta_rS^\circ$ and reference $\ln K$.
+
+For **K source for extent and driving force**, choose **Direct $\Delta_rG^\circ$ at its supplied T**. Verify the reaction table starts with 1 mol A$_2$ and 0 mol A.
+
+## Lab 12 demonstration: the reference state {#lab12-demo .demo-slide}
+
+::: {.your-action}
+**Watch the actual Lab demonstration.** Follow guide p. 1. Observe the result before beginning D2-D4 on slide 21.
+:::
+
+1. Click **Compare K methods** and inspect the reference values.
+2. Read **From K to equilibrium composition**: extent, equilibrium moles, activities and atom balance.
+3. Select **$\Delta H^\circ/\Delta S^\circ$ · constant values**, recalculate and compare the reference result.
+4. Return to **Direct $\Delta_rG^\circ$**, recalculate and export **12A**.
+
+The separate **Observed activities** panel uses supplied trial values $y_{A_2}=0.2$, $y_A=0.8$. It does not automatically show the extent solver's equilibrium composition.
+
+## Your turn: reproduce the pressure comparison {#lab12-independent .work-stop}
+
+::: {.your-action}
+**Pause for 22 minutes. Worksheet p. 4, D2-D4; guide p. 1.** Run the cases yourself. Slide 22 provides the pressure demonstration and check.
+:::
+
+- **12A:** 350 K, 100 kPa. Compare direct Gibbs with the enthalpy/entropy route at this temperature.
+- **12B:** keep 350 K and change only pressure to 400 kPa. Use direct Gibbs for the saved case.
+- Recalculate after every change. Record $K$, $\xi$, mole fractions and one atom/$Q$ check. Export both studies.
+
+Identify both axes and the minimum in the reaction Gibbs-energy graph. If blocked, record the control or message and continue at the time limit.
+
+## What the Lab results establish {#lab12-reading-check .demo-slide}
+
+::: {.your-action}
+**Watch the 400 kPa check and compare D2-D4.** Correct your own records. The worked solutions contain the same reference numbers.
+:::
+
+The graph plots reaction extent $\xi$ in mol against relative total Gibbs energy $[G(\xi)-G(0)]/(RT)$ in **mol**.
+
+The selected equilibrium is the minimum within this admitted **single neutral ideal-gas reaction model**. At the solution, $\ln Q-\ln K\approx0$ and the atom balance closes.
+
+At 400 kPa, $K$ remains 3.953263 while $\xi$ decreases to 0.445114 mol. A successful calculation checks this model; it does not establish real-gas accuracy or rule out other phases.
+
+## Ten-minute break {#break .work-stop}
+
+::: {.your-action}
+**Pause for 10 minutes.** Save your worksheet and the two exported studies. Resume at slide 24.
+:::
+
+Your first comparison changed **pressure at fixed temperature**.
+
+After the break, change **temperature at fixed pressure** and ask why $K$ now changes.
+
+You do not need to complete optional reading during the break.
+
+## Temperature changes the equilibrium constant {#temperature-dependence}
+
+::: {.your-action}
+**Read with worksheet p. 5, E1.** Keep $P=p^\circ=100$ kPa for the next case.
+:::
+
+The direct value $\Delta_rG^\circ=-4.000$ kJ/mol was supplied at **350 K**. It does not describe every temperature.
+
+For this lesson, define a constant reaction enthalpy of $+50.000$ kJ/mol over 350-400 K, equivalent here to $\Delta_rC_p^\circ=0$.
+
+The positive enthalpy predicts that increasing temperature increases $K$ for the reaction as written.
+
+## Route 3: K at a new temperature {#vanthoff-route}
+
+::: {.your-action}
+**Read with worksheet p. 5, E1-E2.** Use the reference constant calculated earlier and the stated constant-enthalpy assumption.
+:::
+
+$$\ln\!\left[\frac{K(T)}{K(350)}\right]=\frac{\Delta_rH^\circ}{R}\left(\frac{1}{350}-\frac{1}{T}\right)$$
+
+For $T=400$ K, $\Delta_rH^\circ=50000$ J/mol and $\ln K(350)=1.3745412$.
+
+First calculate the increment in $\ln K$, then add it to $\ln K(350)$. Exponentiate once at the end.
+
+This temperature law needs a valid approximation over the interval, consistent reference data and no intervening phase transition.
+
+## Your turn: heat from 350 K to 400 K {#temperature-calculation .work-stop}
+
+::: {.your-action}
+**Pause for 15 minutes. Worksheet p. 5, E1-E3.** Calculate before watching slide 27.
+:::
+
+1. Calculate $\ln K(400)$ and $K(400)$ using van't Hoff.
+2. Cross-check with $\Delta_rG^\circ(400)=50000-400(54000/350)$ J/mol under the same $\Delta_rC_p^\circ=0$ assumption.
+3. At $P/p^\circ=1$, calculate $f$, equilibrium mole fractions and the direction of change relative to 350 K.
+
+Keep pressure, initial inventory and standard states fixed during this temperature comparison.
+
+## The endothermic reaction dissociates further {#temperature-check}
+
+::: {.your-action}
+**Check E1-E3 on worksheet p. 5.** Compare logarithms before comparing rounded $K$ values.
+:::
+
+$$\ln K(400)=1.3745412+2.1477206=3.5222618$$
+
+$$K(400)=33.8609295,\qquad\Delta_rG^\circ(400)=-11.714286\ \mathrm{kJ/mol}$$
+
+At 100 kPa: $\xi=0.945701$ mol, $y_A=0.972093$ and $y_{A_2}=0.027907$.
+
+The initial atom inventory stays fixed while temperature changes the standard equilibrium constant and the equilibrium composition.
+
+## A 350 K Gibbs value is not a temperature law {#point-data-limits}
+
+::: {.your-action}
+**Read with worksheet p. 5, F1 and guide p. 2.** Identify the applicable K source before changing the evaluation temperature.
+:::
+
+At 400 K, choose **van 't Hoff · constant $\Delta H^\circ$** for the extent solver. Retain $T_{\mathrm{ref}}=350$ K, the reference $\ln K$ and $\Delta_rC_p^\circ=0$.
+
+Direct and formation Gibbs-energy inputs supplied at 350 K become **unavailable at 400 K**. Changing their temperature labels would claim new property data; it would not calculate them.
+
+Custom species, nonzero heat capacities and more detailed temperature models are **optional references**, outside this lesson's required work.
+
+## Your turn: save and reopen the temperature case {#lab12-temperature-run .work-stop}
+
+::: {.your-action}
+**Pause for 19 minutes. Worksheet p. 5, F1-F3; guide p. 2.** Run the new case and verify a restored file before the demonstration on slide 30.
+:::
+
+- **12C:** select constant-enthalpy van't Hoff, set $T=400$ K and $P=100$ kPa, then recalculate. Keep all reference values fixed.
+- Record the applicable $K$, extent, composition and atom/$Q$ check. Export the complete study.
+- Reopen your **12A** study with **Restore calculator study JSON**. Verify the restored settings and freshly recalculated result.
+
+If a value is unavailable, record the reason. Do not replace it with zero. Record unresolved steps and continue when the pause budget ends.
+
+## Three cases separate pressure and temperature {#three-case-check .demo-slide}
+
+::: {.your-action}
+**Watch the 400 K calculation and JSON restore.** Check F1-F3 and your three saved records. Worksheet p. 6 lists what to retain.
+:::
+
+| Case | $T$ / K | $P$ / kPa | $K$ | $\xi$ / mol |
+|---|---:|---:|---:|---:|
+| 12A | 350 | 100 | 3.953263 | 0.705026 |
+| 12B | 350 | 400 | 3.953263 | 0.445114 |
+| 12C | 400 | 100 | 33.860929 | 0.945701 |
+
+12A to 12B isolates pressure. 12A to 12C isolates temperature under the specified constant-enthalpy model.
+
+A restored study must reproduce its settings and fresh calculation. Exporting a JSON file does not submit it to the instructor.
+
+## Bring one unresolved question to our next class {#what-to-bring}
+
+::: {.your-action}
+**Read worksheet p. 6, G.** Prepare one concise explanation and one unresolved step, if any. We will discuss these in class on **13 November**.
+:::
+
+- $K$ uses the reaction, temperature and standard-state convention.
+- $Q$ uses a particular composition and pressure. At equilibrium, $Q=K$.
+- Extent converts the initial inventory into a composition while conserving atoms.
+- A pressure change can alter composition without changing $K$. A temperature change generally changes $K$.
+
+Keep one worksheet and three exported studies. Optional material is not a requirement for completion.
+
+::: {.reference-links}
+Optional definitions: [IUPAC standard equilibrium constant](https://goldbook.iupac.org/terms/view/S05915) · [IUPAC equilibrium constant](https://goldbook.iupac.org/terms/view/E02177).
+:::
+
+## Exit ticket, feedback and saved work {#exit-ticket .work-stop}
+
+::: {.your-action}
+**Pause for 10 minutes. Worksheet p. 6, G.** Open the [Session 5 exit ticket and feedback form](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5). Submit once and wait for **Response received**.
+:::
 
 :::: {.columns}
-::: {.column width="60%"}
+::: {.column width="72%"}
 
-**5 min · Explain and check**
+In your explanation, distinguish $K$ from $Q$ and explain the pressure comparison. Give one numerical result or independent check, with settings and units.
 
-Answer the session question in the form. Give one result or independent check from today's lab, with units.
+In feedback, report actual study minutes, whether the pace was suitable and the exact step you want explained in class. English or Thai is welcome in the form.
 
-**3 min · Help improve the next class**
-
-Rate the pace, report lab access, and suggest one improvement.
-
-Thai or English. No name, ID or email requested.
-
-Wait for **“Response received.”** We will use the final 2 minutes to close the class.
+The form is anonymous and does not identify individual attendance. Save your worksheet, corrections and JSON files. Your required Week 5 work ends here.
 
 :::
-::: {.column width="36%"}
+::: {.column width="25%"}
 
-[![Scan to submit Session 5 exit ticket and feedback.](assets/exit-qr-05.png){width="100%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5)
+[![Scan to open the Session 5 exit ticket and feedback form.](assets/exit-qr-05.png){width="150px"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5)
 
 [Open Session 5 form](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5)
 

@@ -18,7 +18,7 @@ if(required&&session.supplementalVideo){
  const links=el('p');links.append(video,document.createTextNode(' · '),guideLink);follow.append(links,el('p',session.supplementalNote));panel.append(follow);
 }
 const reading=el('a',independent&&session.prereadingOptional?'Optional background reading PDF':'Pre-class reading PDF · three preparation questions');reading.href='../'+session.prereading;panel.append(reading);
-const exitLink=el('a',independent?`Study minutes ${session.exitWindow||'172–180'}: exit ticket + feedback`:'End of class: exit ticket + feedback');exitLink.href=session.exitForm;const exitLine=el('p');exitLine.append(exitLink);panel.append(exitLine);
+const exitLink=el('a',independent?(session.number===5?'Final 10 minutes: exit ticket + feedback':`Study minutes ${session.exitWindow||'172–180'}: exit ticket + feedback`):'End of class: exit ticket + feedback');exitLink.href=session.exitForm;const exitLine=el('p');exitLine.append(exitLink);panel.append(exitLine);
 if(independent) panel.append(el('p','The exit ticket and feedback are anonymous and do not identify attendance. Follow the main lesson instructions for any separately announced submission.'));
 const details=el('details');details.open=true;details.append(el('summary','Guided activity · predict, calculate, explain'),el('p',guide.predict));const list=el('ol');guide.steps.forEach(v=>list.append(el('li',v)));details.append(list,el('p','Evidence to retain: '+guide.check),el('p','Scope: '+guide.limit));panel.append(details);
 const notes=el('details');notes.append(el('summary','My worksheet · save and continue later'));

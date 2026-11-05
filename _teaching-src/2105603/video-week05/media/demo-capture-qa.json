@@ -1,0 +1,103 @@
+{
+  "captured_at": "2026-11-05T10:59:26.403380+00:00",
+  "source": "Actual Lab 12 browser interface at local reviewed website checkout, port8845. Calculations operated through visible controls.",
+  "kind": "Narrated stepwise actual-interface captures, not a continuous screen recording.",
+  "baseline_restore": "UI export from Case A, subsequent independent pressure/temperature cases, file-chooser import of original baseline and recalculation verified at T350/P100/direct,Cp0,xi0.7050261. No visible error.",
+  "cases": [
+    {
+      "file": "week05-case-a.json",
+      "sha256": "db4a7e91114faa86c6ca1aec1e9d9d98e00b1b2250deb78fb486c0b3399db884",
+      "temperature_K": 350,
+      "pressure_kPa": 100,
+      "K_source": "direct",
+      "K": 3.9532625518535793,
+      "extent_mol": 0.7050260589458048,
+      "atom_total_mol": 2.0,
+      "lnQ_minus_lnK": 5.087748000676129e-10
+    },
+    {
+      "file": "week05-case-b.json",
+      "sha256": "62c1c34d5dacdf01a6b1fe8731d1db797bea521545591d7c2d2c872177f343c6",
+      "temperature_K": 350,
+      "pressure_kPa": 400,
+      "K_source": "direct",
+      "K": 3.9532625518535793,
+      "extent_mol": 0.4451136067509651,
+      "atom_total_mol": 2.0,
+      "lnQ_minus_lnK": -9.31448251861866e-10
+    },
+    {
+      "file": "week05-case-c.json",
+      "sha256": "f7e7f7bec32c866aa42efa3b844ba85439f1d8e38a1c6d5a4eed659c8a981e6d",
+      "temperature_K": 400,
+      "pressure_kPa": 100,
+      "K_source": "vh",
+      "K": 33.8609294543933,
+      "extent_mol": 0.945700898882933,
+      "atom_total_mol": 2.0,
+      "lnQ_minus_lnK": 6.493214854685903e-10
+    }
+  ],
+  "frames": [
+    {
+      "file": "20-01-baseline-inputs.png",
+      "sha256": "d1001c85ec3a6753b01ab9c094346b1db9886a198bd952534f221ba9fd56eed7"
+    },
+    {
+      "file": "20-02-thermal-inputs.png",
+      "sha256": "e0bc1e6cf9f7fe16767aa03bbec620e1315b2f0d9f882d5bb722d99ef0ebc67e"
+    },
+    {
+      "file": "20-03-direct-run.png",
+      "sha256": "fc8a05024f3d6d78818409c5b0d6982ac93746a1dd3299550cf952b8c01a062a"
+    },
+    {
+      "file": "20-04-baseline-extent.png",
+      "sha256": "1cd35e46a1452bb467d08617ea0b04027213d2a31edfe998c07d9002146f4292"
+    },
+    {
+      "file": "20-05-hs-extent.png",
+      "sha256": "1cac8c673be79f5d9e0f3fa2c632009fb327cefa5fb343d3460c34b1337ad3d7"
+    },
+    {
+      "file": "20-06-route-comparison.png",
+      "sha256": "8ef96cf18ce1999dfd83e899d13a40a00363d022f49597b52cd3e64133b18d8b"
+    },
+    {
+      "file": "20-07-observed-q.png",
+      "sha256": "fc05c5dba1b7162d4c87b835118cf9d66b66923267ebb261ff356ddd513efa07"
+    },
+    {
+      "file": "22-01-pressure-input.png",
+      "sha256": "ffe5512f6d2a1657c3dde0cd8420f488cf170a671584da684f9ada410bf287a2"
+    },
+    {
+      "file": "22-02-pressure-extent.png",
+      "sha256": "1a766cc4fc440ebb7f6bce4e5c596959ade6a613be1ef518811b039cae5419dc"
+    },
+    {
+      "file": "22-03-same-k.png",
+      "sha256": "8ef96cf18ce1999dfd83e899d13a40a00363d022f49597b52cd3e64133b18d8b"
+    },
+    {
+      "file": "30-01-temperature-model.png",
+      "sha256": "ffe5512f6d2a1657c3dde0cd8420f488cf170a671584da684f9ada410bf287a2"
+    },
+    {
+      "file": "30-02-temperature-k.png",
+      "sha256": "a8fd82076e3e5f1004b17d2a2eb75a684d0b393d05f161f68f82e09aff2419a9"
+    },
+    {
+      "file": "30-03-temperature-extent.png",
+      "sha256": "bf3f29c806a3a30c728b212b25e0b8f7ef81c9fe7d28040bd65567b6a1c9fa6d"
+    },
+    {
+      "file": "30-04-export-restore.png",
+      "sha256": "4357423f0d6c9e460ebe71d2e6829adc3c2787a5779cc4dd7d5a9ff60bd084f9"
+    },
+    {
+      "file": "30-05-restored-baseline.png",
+      "sha256": "aebc6764f67e1827fd159f85b23eae768a5d98afe0bd29c12d5f137725b0f0b8"
+    }
+  ]
+}

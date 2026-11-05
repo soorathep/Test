@@ -1,0 +1,32 @@
+{
+  "reviewed_at": "2026-11-05T11:06:27.952523+00:00",
+  "pdf_sha256": "6c8b27b031192e304db50decccb7bcda65bd6306f9b661f81115a481cbb2a9d4",
+  "pages": 32,
+  "render_method": "Poppler pdftoppm at96dpi, all32pages",
+  "visual_review": "All32pages inspected in8contact sheets; selected pages inspected individually.",
+  "individual_pages": [
+    1,
+    4,
+    5,
+    12,
+    16,
+    20,
+    21,
+    30,
+    32
+  ],
+  "clipping_or_overlap_found": false,
+  "broken_formula_glyphs_found": false,
+  "table_bounds_issues_found": false,
+  "must_fix": [],
+  "minor_notes": [
+    "Slide30 table header uses uppercaseKPA due table-header styling; intended unit is kPa."
+  ],
+  "qr": {
+    "decoded": true,
+    "method": "macOS Vision VNDetectBarcodesRequest on the rendered slide32 PNG",
+    "value": "https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=5",
+    "expected_match": true
+  },
+  "scope": "Read-only PDF visual QA. Font embedding and source numeric validation handled by parent task."
+}
