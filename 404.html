@@ -23,3 +23,16 @@ sitemap: false
       <a href="mailto:soorathep.k@chula.ac.th">soorathep.k@chula.ac.th</a></p>
   </div>
 </section>
+<script>
+  const courseDownloads = {{ site.data.course_release_downloads | jsonify }};
+  const downloadUrl = courseDownloads[window.location.pathname];
+  if (typeof downloadUrl === "string") {
+    const heading = document.querySelector(".post-head h1");
+    heading.textContent = "This course download has moved.";
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.textContent = "Download from GitHub Releases";
+    document.querySelector(".post-body").prepend(link);
+    window.location.replace(downloadUrl);
+  }
+</script>

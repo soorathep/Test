@@ -47,6 +47,15 @@ jobs:
       - name: Preserve MILP Quarto source
         run: sudo cp teaching/2105623/milp/slides.qmd _site/teaching/2105623/milp/slides.qmd
 
+      - name: Check published site size
+        run: |
+          size=$(du --apparent-size --block-size=1 --summarize _site | cut -f1)
+          printf 'Published site size: %s bytes\n' "$size"
+          if [ "$size" -gt 1000000000 ]; then
+            echo '::error::The generated site exceeds the GitHub Pages 1 GB limit.'
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
