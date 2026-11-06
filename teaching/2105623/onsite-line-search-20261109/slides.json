@@ -267,17 +267,28 @@
   },
   {
     "n": 21,
-    "title": "Convexity requires a domain-wide check",
+    "title": "From LP to NLP: how we check an answer",
     "rows": [
-      "Assume f is C² on an open convex domain.",
-      "Convex ⇔ Hessian is positive semidefinite everywhere.",
-      "A Hessian check at one point is not enough."
+      "LP: dual-feasible prices with w = z certify the optimum.",
+      "NLP: ∇f = 0 finds candidates; curvature and convexity classify them.",
+      "Line search: the Armijo test checks each trial step before we accept it."
     ],
-    "fig": "convex",
+    "fig": null,
     "part": "Review"
   },
   {
     "n": 22,
+    "title": "Convexity requires a domain-wide check",
+    "rows": [
+      "Assume f is C² on an open convex domain.",
+      "Convex ⇔ Hessian is positive semidefinite everywhere.",
+      "One point is not enough: q = (x²−1)² has q″(1) = 8 but q″(0) = −4."
+    ],
+    "fig": "curvature",
+    "part": "Review"
+  },
+  {
+    "n": 23,
     "title": "A stationary point may be a maximum",
     "rows": [
       "q(x) = (x² − 1)²",
@@ -288,7 +299,7 @@
     "part": "Review"
   },
   {
-    "n": 23,
+    "n": 24,
     "title": "Check values and classify the point",
     "rows": [
       "q(0) = 1;  q(−1) = q(1) = 0",
@@ -299,18 +310,18 @@
     "part": "Review"
   },
   {
-    "n": 24,
+    "n": 25,
     "title": "Gradient descent: compute the gradient",
     "rows": [
       "NLP coordinates u,v: f = (u−1)² + 4(v+2)²",
-      "∇f = (2(u−1), 8(v+2))",
-      "At (3,0), ∇f = (4,16) and f = 20."
+      "∇f = (2(u−1), 8(v+2)); Hessian diag(2, 8) is positive definite everywhere.",
+      "So f is convex and (1,−2) is its global minimum. At (3,0): ∇f = (4,16), f = 20."
     ],
     "fig": "gradient",
     "part": "Review"
   },
   {
-    "n": 25,
+    "n": 26,
     "title": "One gradient step is not the optimum",
     "rows": [
       "Let rₖ = (uₖ,vₖ). Use α = 0.1: r₁ = r₀ − α∇f(r₀).",
@@ -321,7 +332,7 @@
     "part": "Review"
   },
   {
-    "n": 26,
+    "n": 27,
     "title": "Practice: compute the second step",
     "rows": [
       "Start now at (2.6, −1.6); keep α = 0.1.",
@@ -332,7 +343,7 @@
     "part": "Review"
   },
   {
-    "n": 27,
+    "n": 28,
     "title": "Solution: update the gradient every time",
     "rows": [
       "∇f(2.6,−1.6) = (3.2,3.2)",
@@ -343,7 +354,7 @@
     "part": "Review"
   },
   {
-    "n": 28,
+    "n": 29,
     "title": "Derive the constant-step convergence range",
     "rows": [
       "Let eᵤ = u−1 and eᵥ = v+2.",
@@ -354,7 +365,7 @@
     "part": "Review"
   },
   {
-    "n": 29,
+    "n": 30,
     "title": "At α = 0.25, one coordinate oscillates",
     "rows": [
       "eᵤ multiplier = 0.5; eᵥ multiplier = −1.",
@@ -365,7 +376,7 @@
     "part": "Review"
   },
   {
-    "n": 30,
+    "n": 31,
     "title": "Newton directions also need a check",
     "rows": [
       "p = −g/H in one dimension.",
@@ -376,7 +387,7 @@
     "part": "Review"
   },
   {
-    "n": 31,
+    "n": 32,
     "title": "NLP checkpoint",
     "rows": [
       "For q(x)=(x²−1)², classify x=0 and x=±1.",
@@ -387,7 +398,7 @@
     "part": "Review"
   },
   {
-    "n": 32,
+    "n": 33,
     "title": "Break · 10 minutes",
     "rows": [
       "Keep the quadratic and the starting point in your notes.",
@@ -398,7 +409,7 @@
     "part": "Break"
   },
   {
-    "n": 33,
+    "n": 34,
     "title": "Direction and step size",
     "rows": [
       "rₖ₊₁ = rₖ + αₖpₖ, with αₖ > 0",
@@ -409,7 +420,7 @@
     "part": "Line search"
   },
   {
-    "n": 34,
+    "n": 35,
     "title": "Check the direction first",
     "rows": [
       "With g = ∇f(r), require gᵀp < 0 for descent.",
@@ -420,7 +431,7 @@
     "part": "Line search"
   },
   {
-    "n": 35,
+    "n": 36,
     "title": "A one-dimensional function along the ray",
     "rows": [
       "At r₀=(3,0): g₀=(4,16), p₀=(−4,−16).",
@@ -431,7 +442,7 @@
     "part": "Line search"
   },
   {
-    "n": 36,
+    "n": 37,
     "title": "Exact line search for this quadratic",
     "rows": [
       "φ′(α) = −272 + 2080α",
@@ -442,7 +453,7 @@
     "part": "Line search"
   },
   {
-    "n": 37,
+    "n": 38,
     "title": "A large step can increase the objective",
     "rows": [
       "At α=1: r₁=(−1,−16), f=788.",
@@ -453,7 +464,7 @@
     "part": "Line search"
   },
   {
-    "n": 38,
+    "n": 39,
     "title": "Armijo sufficient decrease",
     "rows": [
       "Accept α if f(r+αp) ≤ f(r) + c₁αgᵀp.",
@@ -464,7 +475,7 @@
     "part": "Line search"
   },
   {
-    "n": 39,
+    "n": 40,
     "title": "Backtracking parameters",
     "rows": [
       "Start each search with α₀=1.",
@@ -475,7 +486,7 @@
     "part": "Line search"
   },
   {
-    "n": 40,
+    "n": 41,
     "title": "Trial 1: α=1",
     "rows": [
       "Actual value: φ(1)=788",
@@ -486,7 +497,7 @@
     "part": "Line search"
   },
   {
-    "n": 41,
+    "n": 42,
     "title": "Trial 2: α=0.5",
     "rows": [
       "Actual value: φ(0.5)=144",
@@ -497,7 +508,7 @@
     "part": "Line search"
   },
   {
-    "n": 42,
+    "n": 43,
     "title": "Trial 3: α=0.25",
     "rows": [
       "Actual value: φ(0.25)=17",
@@ -508,7 +519,7 @@
     "part": "Line search"
   },
   {
-    "n": 43,
+    "n": 44,
     "title": "Trial 4: α=0.125",
     "rows": [
       "Actual value: φ(0.125)=2.25",
@@ -519,7 +530,7 @@
     "part": "Line search"
   },
   {
-    "n": 44,
+    "n": 45,
     "title": "Acceptance depends on c₁",
     "rows": [
       "With c₁=0.0001, α=0.25 passes the first search.",
@@ -530,7 +541,7 @@
     "part": "Line search"
   },
   {
-    "n": 45,
+    "n": 46,
     "title": "The two loops",
     "rows": [
       "Outer loop: compute g and choose a descent direction p.",
@@ -541,7 +552,7 @@
     "part": "Line search"
   },
   {
-    "n": 46,
+    "n": 47,
     "title": "Demo 2: inspect each Armijo trial",
     "rows": [
       "Reset to (3,0), c₁=0.1, ρ=0.5.",
@@ -553,7 +564,7 @@
     "demo": "armijo"
   },
   {
-    "n": 47,
+    "n": 48,
     "title": "Practice: one-dimensional backtracking",
     "rows": [
       "Minimize f(x)=3x². Start at x=1, so p=−6.",
@@ -564,7 +575,7 @@
     "part": "Line search"
   },
   {
-    "n": 48,
+    "n": 49,
     "title": "Practice solution",
     "rows": [
       "α=1: 75 > −0.6 and α=0.5: 12 > 1.2 → reject both.",
@@ -575,7 +586,7 @@
     "part": "Line search"
   },
   {
-    "n": 49,
+    "n": 50,
     "title": "Compare complete runs",
     "rows": [
       "Use the same start (3,0) for every method.",
@@ -587,7 +598,7 @@
     "demo": "gd"
   },
   {
-    "n": 50,
+    "n": 51,
     "title": "Python demonstration",
     "rows": [
       "Run line_search_lab.py or open the notebook.",
@@ -598,7 +609,7 @@
     "part": "Line search"
   },
   {
-    "n": 51,
+    "n": 52,
     "title": "Stopping and reporting",
     "rows": [
       "Check ‖g‖, objective, iteration count and finite values.",
@@ -609,7 +620,7 @@
     "part": "Line search"
   },
   {
-    "n": 52,
+    "n": 53,
     "title": "Line search cannot repair every direction",
     "rows": [
       "For q at x=0.2: Newton gives p≈−0.21818 and gp>0.",
@@ -621,7 +632,7 @@
     "demo": "newton"
   },
   {
-    "n": 53,
+    "n": 54,
     "title": "BFGS: a preview",
     "rows": [
       "Gradient descent uses p=−g.",
@@ -632,7 +643,18 @@
     "part": "Line search"
   },
   {
-    "n": 54,
+    "n": 55,
+    "title": "Opening questions: answers",
+    "rows": [
+      "Prices bound profit only if dual feasible: (1,0) gives w = 4 < 9.",
+      "∇f = 0 is not enough: x = 0 is a local maximum of q.",
+      "A descent direction can still fail: α = 1 and 0.5 increase f."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 56,
     "title": "Exit check",
     "rows": [
       "Why was α=0.25 rejected when c₁=0.1?",
@@ -643,7 +665,7 @@
     "part": "Line search"
   },
   {
-    "n": 55,
+    "n": 57,
     "title": "Exit check: answers",
     "rows": [
       "17 > 13.2: the decrease is insufficient for this target.",
@@ -654,7 +676,7 @@
     "part": "Line search"
   },
   {
-    "n": 56,
+    "n": 58,
     "title": "Next: constrained nonlinear optimization",
     "rows": [
       "Feasible directions and active constraints",
