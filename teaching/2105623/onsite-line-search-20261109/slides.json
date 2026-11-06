@@ -1,0 +1,667 @@
+[
+  {
+    "n": 1,
+    "title": "LP, NLP and line search",
+    "rows": [
+      "Onsite workshop · Monday, November 9, 2026",
+      "90 min review · 10 min break · 80 min new material",
+      "Calculate first; use the demo to test your prediction."
+    ],
+    "fig": null,
+    "part": "Review"
+  },
+  {
+    "n": 2,
+    "title": "Today’s schedule",
+    "rows": [
+      "0–55 min: LP, duality and shadow prices",
+      "55–90 min: NLP, gradients and curvature",
+      "100–180 min: line search, demos and practice"
+    ],
+    "fig": null,
+    "part": "Review"
+  },
+  {
+    "n": 3,
+    "title": "Opening questions",
+    "rows": [
+      "Does a small dual objective always bound primal profit?",
+      "Does ∇f = 0 prove that a point is a minimum?",
+      "Does a descent direction work with every positive step size?"
+    ],
+    "fig": null,
+    "part": "Review"
+  },
+  {
+    "n": 4,
+    "title": "What the primal variables mean",
+    "rows": [
+      "max z = 3x + 2y;  x, y ≥ 0",
+      "Resource 1: x + y ≤ 4",
+      "Resource 2: 2x + y ≤ 5"
+    ],
+    "fig": "primal",
+    "part": "Review"
+  },
+  {
+    "n": 5,
+    "title": "What the dual variables mean",
+    "rows": [
+      "u = price per unit of resource 1",
+      "v = price per unit of resource 2",
+      "w = 4u + 5v: value of the available resources"
+    ],
+    "fig": "prices",
+    "part": "Review"
+  },
+  {
+    "n": 6,
+    "title": "Derive one dual constraint per product",
+    "rows": [
+      "Product x uses (1, 2): cost = u + 2v",
+      "Cover its profit: u + 2v ≥ 3",
+      "Product y uses (1, 1): u + v ≥ 2"
+    ],
+    "fig": "dualcolumns",
+    "part": "Review"
+  },
+  {
+    "n": 7,
+    "title": "Why the dual gives an upper bound",
+    "rows": [
+      "min w = 4u + 5v;  u, v ≥ 0",
+      "u + 2v ≥ 3;  u + v ≥ 2",
+      "For any feasible pair: z ≤ w"
+    ],
+    "fig": "bound",
+    "part": "Review"
+  },
+  {
+    "n": 8,
+    "title": "An optimality certificate",
+    "rows": [
+      "Primal (x, y) = (1, 3): z = 9",
+      "Dual (u, v) = (1, 1): w = 9",
+      "Both are feasible; equal values prove optimality."
+    ],
+    "fig": "certificate",
+    "part": "Review"
+  },
+  {
+    "n": 9,
+    "title": "Complementary slackness",
+    "rows": [
+      "Resource slack: s = b − Ax ≥ 0",
+      "Product surplus: t = Aᵀλ − c ≥ 0",
+      "At optimal feasible pairs: λᵢsᵢ = 0 and xⱼtⱼ = 0."
+    ],
+    "fig": null,
+    "part": "Review",
+    "table": [
+      [
+        "Pair",
+        "Zero-product rule"
+      ],
+      [
+        "Resource i",
+        "price × unused amount = 0"
+      ],
+      [
+        "Product j",
+        "quantity × surplus = 0"
+      ]
+    ]
+  },
+  {
+    "n": 10,
+    "title": "Check both zero products",
+    "rows": [
+      "At (x,y)=(1,3), resource slacks are (0,0).",
+      "At (u,v)=(1,1), dual surpluses are (0,0).",
+      "All four products vanish; z = w = 9."
+    ],
+    "fig": null,
+    "part": "Review",
+    "table": [
+      [
+        "Resource",
+        "Slack",
+        "Price"
+      ],
+      [
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "2",
+        "0",
+        "1"
+      ]
+    ]
+  },
+  {
+    "n": 11,
+    "title": "Practice: test a proposed price",
+    "rows": [
+      "Proposed prices: (u, v) = (1, 0)",
+      "Check both dual constraints and compute w.",
+      "Can w bound every feasible primal profit?"
+    ],
+    "fig": "prices_test",
+    "part": "Review"
+  },
+  {
+    "n": 12,
+    "title": "Solution: feasibility comes first",
+    "rows": [
+      "1 + 2(0) = 1 < 3;  1 + 0 = 1 < 2",
+      "w = 4, but feasible (1, 3) earns z = 9.",
+      "The proposed prices are not dual feasible."
+    ],
+    "fig": "invalid",
+    "part": "Review"
+  },
+  {
+    "n": 13,
+    "title": "Derive the shadow-price interval",
+    "rows": [
+      "Keep b₂ = 5 and change b₁ only.",
+      "Solve x + y = b₁ and 2x + y = 5.",
+      "x = 5 − b₁;  y = 2b₁ − 5"
+    ],
+    "fig": "interval",
+    "part": "Review"
+  },
+  {
+    "n": 14,
+    "title": "Feasibility determines the interval",
+    "rows": [
+      "x ≥ 0 requires b₁ ≤ 5; y ≥ 0 requires b₁ ≥ 2.5.",
+      "On 2.5 ≤ b₁ ≤ 5: primal z = b₁ + 5 = dual w.",
+      "At the endpoints, use one-sided slopes."
+    ],
+    "fig": "interval_feasible",
+    "part": "Review"
+  },
+  {
+    "n": 15,
+    "title": "Inside the interval: b₁ = 4.2",
+    "rows": [
+      "x = 0.8;  y = 3.4;  z = 9.2",
+      "Δb₁ = 0.2;  Δz = 1 × 0.2 = 0.2",
+      "The shadow-price prediction is exact here."
+    ],
+    "fig": "within",
+    "part": "Review"
+  },
+  {
+    "n": 16,
+    "title": "Outside the interval: b₁ = 6",
+    "rows": [
+      "Old intersection: (−1, 7), infeasible.",
+      "Old prediction: 9 + 1(6 − 4) = 11.",
+      "Reoptimize: (x, y) = (0, 5), z = 10."
+    ],
+    "fig": "outside",
+    "part": "Review"
+  },
+  {
+    "n": 17,
+    "title": "Why producing y gives the larger profit",
+    "rows": [
+      "For b₁ = 6: y ≤ 5 − 2x for every feasible plan.",
+      "z = 3x + 2y ≤ 10 − x ≤ 10",
+      "Feasible (x,y) = (0,5) attains 10."
+    ],
+    "fig": "efficiency",
+    "part": "Review"
+  },
+  {
+    "n": 18,
+    "title": "Shadow prices are slopes of the value function",
+    "rows": [
+      "For b₁ ≥ 0: z* = min(3b₁, b₁ + 5, 10)",
+      "Slopes: 3, then 1, then 0",
+      "Use the slope only within its valid segment."
+    ],
+    "fig": "value",
+    "part": "Review"
+  },
+  {
+    "n": 19,
+    "title": "Demo 1: change resource capacity",
+    "rows": [
+      "Predict the optimum at b₁ = 2, 4.2 and 6.",
+      "Move the slider; compare actual profit with the old-price prediction.",
+      "Watch which resource has unused capacity."
+    ],
+    "fig": "value",
+    "part": "Review",
+    "demo": "lp"
+  },
+  {
+    "n": 20,
+    "title": "LP checkpoint",
+    "rows": [
+      "At b₁=6, write the unused amount of each resource.",
+      "Find feasible dual prices whose value equals 10.",
+      "Does an active constraint always have a positive price?"
+    ],
+    "fig": null,
+    "part": "Review",
+    "table": [
+      [
+        "At b₁=6",
+        "Answer"
+      ],
+      [
+        "Primal quantities",
+        "(0,5)"
+      ],
+      [
+        "Slacks / dual prices",
+        "(1,0) / (0,2)"
+      ]
+    ]
+  },
+  {
+    "n": 21,
+    "title": "Convexity requires a domain-wide check",
+    "rows": [
+      "Assume f is C² on an open convex domain.",
+      "Convex ⇔ Hessian is positive semidefinite everywhere.",
+      "A Hessian check at one point is not enough."
+    ],
+    "fig": "convex",
+    "part": "Review"
+  },
+  {
+    "n": 22,
+    "title": "A stationary point may be a maximum",
+    "rows": [
+      "q(x) = (x² − 1)²",
+      "q′(x) = 4x(x² − 1);  q″(x) = 12x² − 4",
+      "At x = 0: q′ = 0, q″ = −4 < 0."
+    ],
+    "fig": "doublewell",
+    "part": "Review"
+  },
+  {
+    "n": 23,
+    "title": "Check values and classify the point",
+    "rows": [
+      "q(0) = 1;  q(−1) = q(1) = 0",
+      "q(x) ≥ 0 for every real x.",
+      "Thus x = ±1 are global minima; x = 0 is a local maximum."
+    ],
+    "fig": "doublewell_values",
+    "part": "Review"
+  },
+  {
+    "n": 24,
+    "title": "Gradient descent: compute the gradient",
+    "rows": [
+      "NLP coordinates u,v: f = (u−1)² + 4(v+2)²",
+      "∇f = (2(u−1), 8(v+2))",
+      "At (3,0), ∇f = (4,16) and f = 20."
+    ],
+    "fig": "gradient",
+    "part": "Review"
+  },
+  {
+    "n": 25,
+    "title": "One gradient step is not the optimum",
+    "rows": [
+      "Let rₖ = (uₖ,vₖ). Use α = 0.1: r₁ = r₀ − α∇f(r₀).",
+      "(u₁,v₁) = (3,0) − 0.1(4,16) = (2.6,−1.6)",
+      "f(r₁) = 1.6² + 4(0.4)² = 3.2"
+    ],
+    "fig": "gdstep",
+    "part": "Review"
+  },
+  {
+    "n": 26,
+    "title": "Practice: compute the second step",
+    "rows": [
+      "Start now at (2.6, −1.6); keep α = 0.1.",
+      "Compute the new gradient, point, and objective.",
+      "Does reusing the old gradient give the same method?"
+    ],
+    "fig": "gdpractice",
+    "part": "Review"
+  },
+  {
+    "n": 27,
+    "title": "Solution: update the gradient every time",
+    "rows": [
+      "∇f(2.6,−1.6) = (3.2,3.2)",
+      "r₂ = (2.6,−1.6) − 0.1(3.2,3.2) = (2.28,−1.92)",
+      "f(r₂) = 1.28² + 4(0.08)² = 1.664"
+    ],
+    "fig": "gdsolution",
+    "part": "Review"
+  },
+  {
+    "n": 28,
+    "title": "Derive the constant-step convergence range",
+    "rows": [
+      "Let eᵤ = u−1 and eᵥ = v+2.",
+      "eᵤ,new = (1−2α)eᵤ;  eᵥ,new = (1−8α)eᵥ",
+      "Both shrink for every start when 0 < α < 0.25."
+    ],
+    "fig": "stepsize",
+    "part": "Review"
+  },
+  {
+    "n": 29,
+    "title": "At α = 0.25, one coordinate oscillates",
+    "rows": [
+      "eᵤ multiplier = 0.5; eᵥ multiplier = −1.",
+      "From (3,0), v alternates: 0, −4, 0, −4, …",
+      "f(rₖ) = 4(1/4)ᵏ + 16 → 16, not 0."
+    ],
+    "fig": "oscillation",
+    "part": "Review"
+  },
+  {
+    "n": 30,
+    "title": "Newton directions also need a check",
+    "rows": [
+      "p = −g/H in one dimension.",
+      "At x = 0.2 for q: g = −0.768, H = −3.52.",
+      "p ≈ −0.21818; full step x+p ≈ −0.01818."
+    ],
+    "fig": "newton",
+    "part": "Review"
+  },
+  {
+    "n": 31,
+    "title": "NLP checkpoint",
+    "rows": [
+      "For q(x)=(x²−1)², classify x=0 and x=±1.",
+      "For the quadratic, explain why α=0.25 can fail if kept fixed.",
+      "Before line search, what sign should gᵀp have?"
+    ],
+    "fig": "oscillation",
+    "part": "Review"
+  },
+  {
+    "n": 32,
+    "title": "Break · 10 minutes",
+    "rows": [
+      "Keep the quadratic and the starting point in your notes.",
+      "f(u,v) = (u−1)² + 4(v+2)²; r₀=(3,0)",
+      "Next: choose a step size automatically."
+    ],
+    "fig": null,
+    "part": "Break"
+  },
+  {
+    "n": 33,
+    "title": "Direction and step size",
+    "rows": [
+      "rₖ₊₁ = rₖ + αₖpₖ, with αₖ > 0",
+      "Step length = αₖ‖pₖ‖; αₖ scales the direction.",
+      "For gradient descent, pₖ = −∇f(rₖ)."
+    ],
+    "fig": "gdstep",
+    "part": "Line search"
+  },
+  {
+    "n": 34,
+    "title": "Check the direction first",
+    "rows": [
+      "With g = ∇f(r), require gᵀp < 0 for descent.",
+      "For p=−g and g≠0: gᵀp = −‖g‖² < 0.",
+      "This guarantees decrease for sufficiently small positive α."
+    ],
+    "fig": "direction",
+    "part": "Line search"
+  },
+  {
+    "n": 35,
+    "title": "A one-dimensional function along the ray",
+    "rows": [
+      "At r₀=(3,0): g₀=(4,16), p₀=(−4,−16).",
+      "φ(α) = f(3−4α, −16α)",
+      "φ(α) = 20 − 272α + 1040α²"
+    ],
+    "fig": "phi",
+    "part": "Line search"
+  },
+  {
+    "n": 36,
+    "title": "Exact line search for this quadratic",
+    "rows": [
+      "φ′(α) = −272 + 2080α",
+      "α* = 272/2080 = 17/130 ≈ 0.13077",
+      "φ(α*) = 144/65 ≈ 2.21538"
+    ],
+    "fig": "phi",
+    "part": "Line search"
+  },
+  {
+    "n": 37,
+    "title": "A large step can increase the objective",
+    "rows": [
+      "At α=1: r₁=(−1,−16), f=788.",
+      "At α=0.5: r₁=(1,−8), f=144.",
+      "Both exceed f(r₀)=20, despite g₀ᵀp₀<0."
+    ],
+    "fig": "large_steps",
+    "part": "Line search"
+  },
+  {
+    "n": 38,
+    "title": "Armijo sufficient decrease",
+    "rows": [
+      "Accept α if f(r+αp) ≤ f(r) + c₁αgᵀp.",
+      "Choose 0<c₁<1 and require gᵀp<0.",
+      "The accepted value must beat a target below f(r)."
+    ],
+    "fig": "armijo",
+    "part": "Line search"
+  },
+  {
+    "n": 39,
+    "title": "Backtracking parameters",
+    "rows": [
+      "Start each search with α₀=1.",
+      "Here: c₁=0.1 and ρ=0.5.",
+      "If Armijo fails, replace α by ρα and test again."
+    ],
+    "fig": "armijo",
+    "part": "Line search"
+  },
+  {
+    "n": 40,
+    "title": "Trial 1: α=1",
+    "rows": [
+      "Actual value: φ(1)=788",
+      "Armijo target: 20 + 0.1(1)(−272) = −7.2",
+      "788 > −7.2: reject and halve α."
+    ],
+    "fig": "trial1",
+    "part": "Line search"
+  },
+  {
+    "n": 41,
+    "title": "Trial 2: α=0.5",
+    "rows": [
+      "Actual value: φ(0.5)=144",
+      "Armijo target: 20 − 27.2(0.5) = 6.4",
+      "144 > 6.4: reject and halve α."
+    ],
+    "fig": "trial2",
+    "part": "Line search"
+  },
+  {
+    "n": 42,
+    "title": "Trial 3: α=0.25",
+    "rows": [
+      "Actual value: φ(0.25)=17",
+      "Armijo target: 20 − 27.2(0.25) = 13.2",
+      "17 > 13.2: reject, even though 17 < 20."
+    ],
+    "fig": "trial3",
+    "part": "Line search"
+  },
+  {
+    "n": 43,
+    "title": "Trial 4: α=0.125",
+    "rows": [
+      "Actual value: φ(0.125)=2.25",
+      "Armijo target: 20 − 27.2(0.125) = 16.6",
+      "2.25 ≤ 16.6: accept r₁=(2.5,−2)."
+    ],
+    "fig": "trial4",
+    "part": "Line search"
+  },
+  {
+    "n": 44,
+    "title": "Acceptance depends on c₁",
+    "rows": [
+      "With c₁=0.0001, α=0.25 passes the first search.",
+      "Its target is 19.9932, and the actual value is 17.",
+      "One accepted step does not justify keeping that α forever."
+    ],
+    "fig": "c1_compare",
+    "part": "Line search"
+  },
+  {
+    "n": 45,
+    "title": "The two loops",
+    "rows": [
+      "Outer loop: compute g and choose a descent direction p.",
+      "Inner loop: keep r,p fixed; test α, ρα, ρ²α, …",
+      "After acceptance: update r, then recompute g."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 46,
+    "title": "Demo 2: inspect each Armijo trial",
+    "rows": [
+      "Reset to (3,0), c₁=0.1, ρ=0.5.",
+      "Test 1 → 0.5 → 0.25 → 0.125; explain every decision.",
+      "Accept the step, then inspect the NEW gradient."
+    ],
+    "fig": "armijo",
+    "part": "Line search",
+    "demo": "armijo"
+  },
+  {
+    "n": 47,
+    "title": "Practice: one-dimensional backtracking",
+    "rows": [
+      "Minimize f(x)=x². Start at x=2, so p=−4.",
+      "Use α₀=1, c₁=0.1 and ρ=0.5.",
+      "Find the first accepted α and the new point."
+    ],
+    "fig": "practice_line",
+    "part": "Line search"
+  },
+  {
+    "n": 48,
+    "title": "Practice solution",
+    "rows": [
+      "α=1: actual 4 > target 2.4 → reject.",
+      "α=0.5: actual 0 ≤ target 3.2 → accept.",
+      "New point: x=2+0.5(−4)=0; gradient=0."
+    ],
+    "fig": "practice_line",
+    "part": "Line search"
+  },
+  {
+    "n": 49,
+    "title": "Compare complete runs",
+    "rows": [
+      "Use the same start (3,0) for every method.",
+      "Fixed α=0.1 converges; fixed α=0.25 stalls above 0.",
+      "Backtracking with c₁=0.1 reaches (1,−2) in two accepted steps."
+    ],
+    "fig": "runs",
+    "part": "Line search",
+    "demo": "gd"
+  },
+  {
+    "n": 50,
+    "title": "Python demonstration",
+    "rows": [
+      "Run line_search_lab.py or open the notebook.",
+      "Print α, actual value, target and accept/reject.",
+      "Change the start or c₁, then explain the new trace."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 51,
+    "title": "Stopping and reporting",
+    "rows": [
+      "Check ‖g‖, objective, iteration count and finite values.",
+      "A tiny step or small change can mean stagnation.",
+      "For nonconvex problems, also inspect curvature and multiple starts."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 52,
+    "title": "Line search cannot repair every direction",
+    "rows": [
+      "For q at x=0.2: Newton gives p≈−0.21818 and gp>0.",
+      "Small positive steps in this direction increase q.",
+      "Replace the direction, for example with p=−g, before descent search."
+    ],
+    "fig": "newton",
+    "part": "Line search",
+    "demo": "newton"
+  },
+  {
+    "n": 53,
+    "title": "BFGS: a preview",
+    "rows": [
+      "Gradient descent uses p=−g.",
+      "Newton solves Hp=−g using the Hessian.",
+      "BFGS updates a curvature approximation using changes in r and g."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 54,
+    "title": "Exit check",
+    "rows": [
+      "Why was α=0.25 rejected when c₁=0.1?",
+      "What stays fixed during the inner backtracking loop?",
+      "What must be checked before a descent line search?"
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 55,
+    "title": "Exit check: answers",
+    "rows": [
+      "17 > 13.2: the decrease is insufficient for this target.",
+      "Keep the current point r and direction p fixed.",
+      "Require a finite, valid trial domain and gᵀp<0; handle g=0 separately."
+    ],
+    "fig": null,
+    "part": "Line search"
+  },
+  {
+    "n": 56,
+    "title": "Next: constrained nonlinear optimization",
+    "rows": [
+      "Feasible directions and active constraints",
+      "Lagrange multipliers and KKT as optimality conditions",
+      "How practical constrained solvers use local models"
+    ],
+    "fig": null,
+    "part": "Line search"
+  }
+]

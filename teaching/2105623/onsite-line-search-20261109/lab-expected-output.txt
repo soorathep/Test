@@ -1,0 +1,11 @@
+Iteration 0: alpha | actual | target | accepted
+1 | 788 | -7.2 | False
+0.5 | 144 | 6.4 | False
+0.25 | 17 | 13.2 | False
+0.125 | 2.25 | 16.6 | True
+Iteration 1: alpha | actual | target | accepted
+1 | 2.25 | 1.35 | False
+0.5 | 0 | 1.8 | True
+History: [(0, [3.0, 0.0], 20.0), (1, [2.5, -2.0], 2.25), (2, [1.0, -2.0], 0.0)]
+Stop: gradient tolerance gradient: [0.0, 0.0]
+Practice: rerun solve(start=(0,0)); then change c1 to 0.4.
