@@ -25,7 +25,7 @@
     "n": 3,
     "title": "Opening questions",
     "rows": [
-      "Does a small dual objective always bound primal profit?",
+      "Do any resource prices give an upper bound on profit?",
       "Does ∇f = 0 prove that a point is a minimum?",
       "Does a descent direction work with every positive step size?"
     ],
@@ -383,7 +383,7 @@
       "For the quadratic, explain why α=0.25 can fail if kept fixed.",
       "Before line search, what sign should gᵀp have?"
     ],
-    "fig": "oscillation",
+    "fig": null,
     "part": "Review"
   },
   {
@@ -402,7 +402,7 @@
     "title": "Direction and step size",
     "rows": [
       "rₖ₊₁ = rₖ + αₖpₖ, with αₖ > 0",
-      "Step length = αₖ‖pₖ‖; αₖ scales the direction.",
+      "αₖ is the step size (textbooks: step length); distance moved = αₖ‖pₖ‖.",
       "For gradient descent, pₖ = −∇f(rₖ)."
     ],
     "fig": "gdstep",
@@ -556,20 +556,20 @@
     "n": 47,
     "title": "Practice: one-dimensional backtracking",
     "rows": [
-      "Minimize f(x)=x². Start at x=2, so p=−4.",
+      "Minimize f(x)=3x². Start at x=1, so p=−6.",
       "Use α₀=1, c₁=0.1 and ρ=0.5.",
       "Find the first accepted α and the new point."
     ],
-    "fig": "practice_line",
+    "fig": null,
     "part": "Line search"
   },
   {
     "n": 48,
     "title": "Practice solution",
     "rows": [
-      "α=1: actual 4 > target 2.4 → reject.",
-      "α=0.5: actual 0 ≤ target 3.2 → accept.",
-      "New point: x=2+0.5(−4)=0; gradient=0."
+      "α=1: 75 > −0.6 and α=0.5: 12 > 1.2 → reject both.",
+      "α=0.25: actual 0.75 ≤ target 2.1 → accept.",
+      "New point x=−0.5: f drops from 3 to 0.75, but x* = 0."
     ],
     "fig": "practice_line",
     "part": "Line search"
@@ -580,7 +580,7 @@
     "rows": [
       "Use the same start (3,0) for every method.",
       "Fixed α=0.1 converges; fixed α=0.25 stalls above 0.",
-      "Backtracking with c₁=0.1 reaches (1,−2) in two accepted steps."
+      "Backtracking (c₁=0.1) reaches (1,−2) in two steps; exact arrival is special to this example."
     ],
     "fig": "runs",
     "part": "Line search",
@@ -648,7 +648,7 @@
     "rows": [
       "17 > 13.2: the decrease is insufficient for this target.",
       "Keep the current point r and direction p fixed.",
-      "Require a finite, valid trial domain and gᵀp<0; handle g=0 separately."
+      "Check gᵀp < 0. If g = 0, stop and classify the point."
     ],
     "fig": null,
     "part": "Line search"
