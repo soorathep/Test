@@ -69,6 +69,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | People and alumni placements | yearly | `id="people"` | Your records |
 | Patents, awards, roles | rare | `id="recognition"`, home callout | CV |
 | Instruments | rare | `id="facilities"` | MRBS instrument booking calendar |
+| Activity photos | whenever | Home + `/activities/` | `_data/activities.yml` + `img/activities/` |
 | **Blog posts** | **whenever** | **`_posts/*.md`** | **You** |
 | Seminars and invited talks | a few / year | `/teaching/seminars/` | `_data/seminars.yml` + the `.qmd` |
 
@@ -79,6 +80,15 @@ publisher should not be there.
 ---
 
 ## Recipes
+
+### Add activity photos
+
+Put the images in `img/activities/` and add an event at the top of
+`_data/activities.yml`, following its template. The home page chooses an event at
+random, then one photo from it, each time the page loads. New events join this
+selection automatically. The caption uses the event title and date; it does not
+identify the people in the photo. Portrait and landscape photos are shown in full.
+Without JavaScript, the first photo of the newest nonempty album is displayed.
 
 ### Add a journal cover
 

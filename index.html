@@ -70,7 +70,7 @@ layout: null
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="assets/home.css">
+<link rel="stylesheet" href="assets/home.css?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 
@@ -79,7 +79,7 @@ layout: null
 <main>
 
 <!-- ================= HOME ================= -->
-<div class="page" id="home">
+<div class="page on" id="home">
   <div class="wrap">
     <section class="home-hero" aria-labelledby="home-title">
       <div class="home-intro">
@@ -91,13 +91,48 @@ layout: null
           <a class="button button-secondary" href="#people">Meet the group</a>
         </div>
       </div>
-      <figure class="home-showcase">
-        <img src="{{ '/img/activities/techsauce-2026-1.jpg' | relative_url }}" width="788" height="1400" fetchpriority="high" alt="Two researchers beside the group’s flow battery and poster at the exhibition booth.">
+      {% assign home_activity = nil %}
+      {% for activity in site.data.activities %}
+        {% if activity.photos.size > 0 %}
+          {% assign home_activity = activity %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if home_activity %}
+      <figure class="home-showcase" id="home-activity">
+        <noscript><img src="{{ '/img/activities/' | append: home_activity.photos.first | relative_url }}" alt="{{ home_activity.title | escape }}"></noscript>
         <figcaption>
-          <span>The group’s organic redox flow battery at Techsauce Global Summit 2026, Bangkok, August 2026.</span>
+          <span data-activity-caption>{{ home_activity.title | escape }}{% if home_activity.date %} · {{ home_activity.date | escape }}{% endif %}</span>
           <a href="{{ '/activities/' | relative_url }}">View photos <span aria-hidden="true">→</span></a>
         </figcaption>
       </figure>
+      <template id="home-activity-albums">
+        {% for activity in site.data.activities %}
+          {% if activity.photos.size > 0 %}
+          <div data-title="{{ activity.title | escape }}" data-date="{{ activity.date | escape }}">
+            {% for photo in activity.photos %}
+            <img src="{{ '/img/activities/' | append: photo | relative_url }}" alt="{{ activity.title | escape }}">
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </template>
+      <script>
+      (function () {
+        var figure = document.getElementById('home-activity');
+        var albums = document.getElementById('home-activity-albums').content.children;
+        // Give each event equal weight, then choose one photo for this page load.
+        var album = albums[Math.floor(Math.random() * albums.length)];
+        var photos = album.querySelectorAll('img');
+        var photo = photos[Math.floor(Math.random() * photos.length)].cloneNode(true);
+        photo.setAttribute('fetchpriority', 'high');
+        photo.decoding = 'async';
+        figure.insertBefore(photo, figure.firstChild);
+        figure.querySelector('[data-activity-caption]').textContent = album.dataset.title +
+          (album.dataset.date ? ' · ' + album.dataset.date : '');
+      })();
+      </script>
+      {% endif %}
     </section>
 
     <section class="home-method" aria-labelledby="home-method-title">
