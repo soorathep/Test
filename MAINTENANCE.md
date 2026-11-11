@@ -68,7 +68,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | Publication counts (322 / 7,085 / h-48) | yearly | `id="publications"` `<h2>` + note | Scopus |
 | People and alumni placements | yearly | `id="people"` | Your records |
 | Patents, awards, roles | rare | `id="recognition"`, home callout | CV |
-| Instruments | rare | `id="facilities"` | Notion booking calendar |
+| Instruments | rare | `id="facilities"` | MRBS instrument booking calendar |
 | **Blog posts** | **whenever** | **`_posts/*.md`** | **You** |
 | Seminars and invited talks | a few / year | `/teaching/seminars/` | `_data/seminars.yml` + the `.qmd` |
 
