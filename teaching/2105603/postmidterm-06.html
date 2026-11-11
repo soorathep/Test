@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.43">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Soorathep Kheawhom">
-  <meta name="dcterms.date" content="2026-09-30">
+  <meta name="dcterms.date" content="2026-11-13">
   <title>2105603 – Electrochemical equilibrium</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,19 +18,25 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-44ab30104761961979c1939c561e7051.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5339fbbf9aa03db18226bb6b1f30c8df.css">
   <link rel="stylesheet" href="assets/postmidterm.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -77,12 +83,12 @@
     }
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
     .reveal .footnotes ol li > p:first-child {
       display: inline-block;
@@ -124,20 +130,26 @@
     .reveal .slide > img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-left,
     .reveal .slide > img.r-stretch.quarto-figure-left  {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-right,
     .reveal .slide > img.r-stretch.quarto-figure-right  {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
+  </style>
+  <style>
+  .reveal .slides table {font-size: .82em;}
+  .reveal .slides table th {font-size: .95em; text-transform: none; letter-spacing: normal;}
+  #the-180-minute-class col:first-child, #recap-check col:first-child {width: 18% !important;}
+  #the-180-minute-class col:last-child, #recap-check col:last-child {width: 82% !important;}
   </style>
 </head>
 <body class="quarto-light">
@@ -146,61 +158,274 @@
 
 <section id="title-slide" data-background-color="#1C242B" class="quarto-title-block center">
   <h1 class="title">Electrochemical equilibrium</h1>
-  <p class="subtitle">After midterm · Session 6 of 6 · 180 minutes</p>
+  <p class="subtitle">Week 6 · Onsite · 180 minutes</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Soorathep Kheawhom 
+Soorathep Kheawhom
 </div>
 </div>
 </div>
 
-  <p class="date">30 September 2026</p>
+  <p class="date">13 November 2026</p>
 </section>
-<section id="the-question-for-today" class="slide level2">
-<h2>The question for today</h2>
-<p>What determines the sign of a concentration-cell potential?</p>
-<p><a href="files/preclass-week-06.pdf">Before class: 3-page reading</a> · 15–20 minutes</p>
-<p>Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.</p>
-</section>
-<section id="the-180-minute-class" class="slide level2">
-<h2>The 180-minute class</h2>
+<section id="week5-questions" class="slide level2">
+<h2>Does doubling the pressure always double Q?</h2>
+<p><strong>A question from Week 5.</strong> How does the pressure argument change for a real gas?</p>
+<p>Start with the ideal-gas reaction <span class="math inline">\mathrm{A_2(g)\rightleftharpoons 2A(g)}</span>. At 350 K, <span class="math inline">K=3.953</span> for <span class="math inline">p^\circ=100</span> kPa. Compress the mixture from 100 to 200 kPa at fixed temperature. Consider the instant before the composition responds.</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Activity</th>
-<th style="text-align: right;">Minutes</th>
+<th>Starting value</th>
+<th>Predict <span class="math inline">Q</span> immediately after compression</th>
+<th>Which way will the reaction move?</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Opening question and essential concepts</td>
-<td style="text-align: right;">30</td>
+<td><span class="math inline">Q=K=3.953</span></td>
+<td>Calculate on paper</td>
+<td>Toward A or A₂?</td>
 </tr>
 <tr class="even">
-<td>One hand calculation</td>
-<td style="text-align: right;">20</td>
-</tr>
-<tr class="odd">
-<td>One lab demonstration</td>
-<td style="text-align: right;">20</td>
-</tr>
-<tr class="even">
-<td>Break</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td>Student pair investigation</td>
-<td style="text-align: right;">70</td>
-</tr>
-<tr class="even">
-<td>Discussion, exit ticket and feedback</td>
-<td style="text-align: right;">30</td>
+<td><span class="math inline">Q=1.000</span></td>
+<td>Calculate on paper</td>
+<td>Toward A or A₂?</td>
 </tr>
 </tbody>
 </table>
-<p>The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.</p>
+<p>Take one minute. Compare your two answers with a neighbor.</p>
+</section>
+<section id="pressure-check" class="slide level2">
+<h2>Compare the new quotient with K</h2>
+<p>At fixed mole fractions, the ideal-gas quotient for this reaction is proportional to pressure.</p>
+<p><span class="math display">Q=\frac{y_{\mathrm A}^2}{y_{\mathrm{A_2}}}\frac{P}{p^\circ}</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Before compression</th>
+<th>Immediately after</th>
+<th>Response at 350 K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">Q=3.953</span></td>
+<td><span class="math inline">Q=7.906&gt;K</span></td>
+<td>More A₂ forms.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">Q=1.000</span></td>
+<td><span class="math inline">Q=2.000&lt;K</span></td>
+<td>More A forms.</td>
+</tr>
+</tbody>
+</table>
+<p>As the reaction proceeds, the mole fractions change. At the new equilibrium, <span class="math inline">Q=K=3.953</span> in both cases.</p>
+</section>
+<section id="real-gas" class="slide level2">
+<h2>A real gas uses fugacity in each activity</h2>
+<p>At a specified <span class="math inline">T,P,\mathbf y</span>, a mixture equation of state gives each component’s fugacity coefficient <span class="math inline">\phi_i</span>. With an ideal-gas standard state,</p>
+<p><span class="math display">a_i=\frac{f_i}{p^\circ}=\frac{\phi_i y_iP}{p^\circ},\qquad Q=\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}}.</span></p>
+<p>For this dissociation, the multiplier on the ideal-gas estimate is <span class="math inline">\phi_{\mathrm A}^2/\phi_{\mathrm{A_2}}</span>. The coefficients can change during compression and as the reaction proceeds. The same <span class="math inline">T</span>, written reaction and standard states give the same <span class="math inline">K</span>.</p>
+<p><strong>Try it.</strong> At 350 K and 200 kPa, use <span class="math inline">y_{\mathrm A}=0.80</span>, <span class="math inline">y_{\mathrm{A_2}}=0.20</span>. For this illustrative state take <span class="math inline">\phi_{\mathrm A}=0.90</span> and <span class="math inline">\phi_{\mathrm{A_2}}=0.95</span>. Calculate both activities and predict the direction.</p>
+</section>
+<section id="real-gas-check" class="slide level2">
+<h2>Work the real-gas example on paper</h2>
+<p>The pressure ratio is <span class="math inline">200/100=2</span>. At the specified composition,</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Calculation</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">a_{\mathrm A}</span></td>
+<td><span class="math inline">0.90(0.80)(2)</span></td>
+<td style="text-align: right;">1.44</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">a_{\mathrm{A_2}}</span></td>
+<td><span class="math inline">0.95(0.20)(2)</span></td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">Q</span></td>
+<td><span class="math inline">1.44^2/0.38</span></td>
+<td style="text-align: right;">5.46</td>
+</tr>
+</tbody>
+</table>
+<p>The ideal-gas estimate at this same state is <span class="math inline">6.40</span>. Both exceed <span class="math inline">K=3.953</span>, so A₂ forms. To find the final extent for the real gas, update the composition and both fugacity coefficients until <span class="math inline">Q=K</span>. Lab 12 solves the ideal-gas case.</p>
+</section>
+<section id="the-180-minute-class" class="slide level2">
+<h2>The 180-minute class</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0–15 min</td>
+<td>Answer the Week 5 pressure question and check a real-gas calculation</td>
+</tr>
+<tr class="even">
+<td>15–35 min</td>
+<td>Revisit Weeks 2–5 in pairs with paper and a calculator</td>
+</tr>
+<tr class="odd">
+<td>35–60 min</td>
+<td>Balance a cell reaction and calculate its potential by hand</td>
+</tr>
+<tr class="even">
+<td>60–70 min</td>
+<td>Demonstrate the concentration cell in Lab 13</td>
+</tr>
+<tr class="odd">
+<td>70–80 min</td>
+<td>Break</td>
+</tr>
+<tr class="even">
+<td>80–150 min</td>
+<td>Pair investigation and independent check</td>
+</tr>
+<tr class="odd">
+<td>150–180 min</td>
+<td>Discuss results (20), exit ticket (5), feedback (3), closing (2)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="review-week-2" class="slide level2">
+<h2>Week 2 · What did the VLE measurement tell us?</h2>
+<p>A VLE measurement gives <span class="math inline">P=100</span> kPa, <span class="math inline">x_1=0.40</span>, <span class="math inline">y_1=0.60</span>. Assume an ideal vapor, negligible Poynting correction and a pure-liquid reference state.</p>
+<p><span class="math display">y_1P=x_1\gamma_1 P_1^{\rm sat},\qquad a_1=x_1\gamma_1.</span></p>
+<ol type="1">
+<li>Use <span class="math inline">P_1^{\rm sat}=120</span> kPa. Find <span class="math inline">\gamma_1</span> and <span class="math inline">a_1</span>.</li>
+<li>A second source gives 150 kPa at the same temperature. Predict which way your inferred <span class="math inline">\gamma_1</span> moves.</li>
+<li>Before fitting the data, which Antoine conventions would you check?</li>
+</ol>
+</section>
+<section id="review-week-3" class="slide level2">
+<h2>Week 3 · Would this feed split into two liquids?</h2>
+<div class="columns">
+<div class="column" style="width:53%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/gibbs-review-curve.svg" style="width:100.0%" alt="At feed z=0.12 the supporting common tangent lies below the homogeneous liquid Gibbs curve."></p>
+<figcaption>Mixing Gibbs energy and the supporting common tangent for the Week 3 Margules liquid at A=3.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:45%;">
+<p>At <span class="math inline">z_1=0.12</span>, compare the curve and the supporting line at the <strong>same overall composition</strong>. Which state has lower Gibbs energy?</p>
+<p>The homogeneous curve has positive local curvature here. What does the tangent tell you that curvature alone cannot?</p>
+<p>A Gibbs–Duhem area test examines the VLE data. How could errors of opposite sign affect its signed integral?</p>
+</div></div>
+</section>
+<section id="review-week-4" class="slide level2">
+<h2>Week 4 · Can the vessel supply that much gas?</h2>
+<p>At 300 K, a 1.00 L vessel contains 0.00200 mol of volatile A. Its equilibrium sublimation pressure is 10.0 kPa. Use <span class="math inline">R=8.314</span> kPa L mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span> and assume an ideal gas.</p>
+<ol type="1">
+<li>Calculate the gas inventory required for <span class="math inline">P_A=10.0</span> kPa. Will any bulk solid remain?</li>
+<li>Calculate the actual <span class="math inline">P_A</span>. What happens to <span class="math inline">P_A</span> if you add an inert gas at fixed <span class="math inline">T,V</span>?</li>
+<li>In a separate adsorption vessel, an adsorbent of mass <span class="math inline">m_s</span> holds <span class="math inline">q(P_A,T)</span> mol per kg. Which term must you add to the gas inventory to close the balance?</li>
+</ol>
+</section>
+<section id="review-week-5" class="slide level2">
+<h2>Week 5 · Change pressure, then change temperature</h2>
+<p>Lab 12 used 1 mol of A₂ initially, zero A, no inert, and <span class="math inline">p^\circ=100</span> kPa. Use the same ideal-gas reaction in all three cases.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th style="text-align: right;"><span class="math inline">T</span> (K)</th>
+<th style="text-align: right;"><span class="math inline">P</span> (kPa)</th>
+<th style="text-align: right;"><span class="math inline">K</span></th>
+<th style="text-align: right;">Equilibrium extent (mol)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12A</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3.953</td>
+<td style="text-align: right;">0.7050</td>
+</tr>
+<tr class="even">
+<td>12B</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">3.953</td>
+<td style="text-align: right;">0.4451</td>
+</tr>
+<tr class="odd">
+<td>12C</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">33.861</td>
+<td style="text-align: right;">0.9457</td>
+</tr>
+</tbody>
+</table>
+<p>Which pair isolates pressure? Which isolates temperature? For 12C assume a constant positive reaction enthalpy of 50 kJ mol<span class="math inline">^{-1}</span>. Explain the change in <span class="math inline">K</span>.</p>
+<p>With a partner, use the extent in 12B to check <span class="math inline">2n_{\mathrm{A_2}}+n_{\mathrm A}</span> against the feed.</p>
+</section>
+<section id="recap-check" class="slide level2">
+<h2>Check your four predictions</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Compare with your calculation or prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2 · VLE</td>
+<td>With <span class="math inline">P_1^{\rm sat}=120</span> kPa, <span class="math inline">\gamma_1=1.25</span> and <span class="math inline">a_1=0.50</span>. With <span class="math inline">P_1^{\rm sat}=150</span> kPa they become 1.00 and 0.40. Check Antoine units, log base and temperature range.</td>
+</tr>
+<tr class="even">
+<td>3 · Stability</td>
+<td>At <span class="math inline">z_1=0.12</span> the two-liquid line lies lower. Positive local curvature describes small fluctuations. Opposite errors can cancel in the signed area test.</td>
+</tr>
+<tr class="odd">
+<td>4 · Inventory</td>
+<td>Saturation requires 0.00401 mol. All 0.00200 mol enters the gas, giving <span class="math inline">P_A=4.99</span> kPa. Adding ideal inert at fixed <span class="math inline">T,V</span> raises total pressure while <span class="math inline">P_A</span> stays at 4.99 kPa. For adsorption add <span class="math inline">m_s q</span> mol.</td>
+</tr>
+<tr class="even">
+<td>5 · Reaction</td>
+<td>12A–12B isolate pressure. 12A–12C isolate temperature. Heating raises <span class="math inline">K</span> for this endothermic reaction. In 12B, <span class="math inline">2(0.5549)+0.8902=2.0000</span> mol of A atoms.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-question-for-today" class="slide level2">
+<h2>The question for today</h2>
+<p>What determines the sign of a concentration-cell potential?</p>
+<p>Week 5 gave us <span class="math inline">\Delta_rG=RT\ln(Q/K)</span>. A reversible cell turns that reaction driving force into a potential difference, <span class="math inline">E=-\Delta_rG/(nF)</span>.</p>
+<p><strong>Predict on paper.</strong> For the reaction as written, what sign should <span class="math inline">E</span> have when <span class="math inline">Q&lt;K</span>? What voltage would you measure at complete cell equilibrium, <span class="math inline">Q=K</span>?</p>
+<p><a href="files/preclass-week-06.pdf">Pre-class reading and preparation questions</a></p>
 </section>
 <section id="two-reduction-half-reactions" class="slide level2">
 <h2>Two reduction half-reactions</h2>
@@ -216,7 +441,7 @@ Soorathep Kheawhom
 </section>
 <section id="a-concentration-cell-calculation" class="slide level2">
 <h2>A concentration-cell calculation</h2>
-<p>At 298.15 K, n=2, aL=0.01 and aR=1: <span class="math display">Q=0.01,\qquad E=+0.05915935\ \mathrm V</span></p>
+<p>Use the same <span class="math inline">\mathrm{M^{2+}/M}</span> couple on both sides at 298.15 K. For oxidation on the left and reduction on the right, <span class="math inline">Q=a_{\mathrm L}/a_{\mathrm R}</span>. Take <span class="math inline">a_{\mathrm L}=0.01</span>, <span class="math inline">a_{\mathrm R}=1</span>, <span class="math inline">n=2</span>, and neglect the junction potential. <span class="math display">Q=0.01,\qquad E=+0.05915935\ \mathrm V</span></p>
 <p>E°=0, K=1, but E is nonzero. Reversing the concentrations changes the sign of E. Equal activities give E=0.</p>
 <p>ΔrG≈−11.416 kJ per mol of the written reaction.</p>
 </section>
@@ -226,9 +451,9 @@ Soorathep Kheawhom
 <p>Use Eright−Eleft and deltaG=−nFE with the balanced electron count. Equal activities must give zero potential for the same reduction couple.</p>
 </section>
 <section id="one-demonstration-20-minutes" class="slide level2">
-<h2>One demonstration · 20 minutes</h2>
+<h2>One demonstration · 10 minutes</h2>
 <p><a href="labs/electrochemistry.html#ec-experiment">Open the core lab</a></p>
-<p>Load the Lab 13 concentration-cell preset. Predict the sign, exchange left and right activities, then set them equal. Keep T and reference conventions fixed.</p>
+<p>Open the concentration-cell preset on the projector. On paper, make three rows for the original, exchanged and equal activities. If your device is offline, use the projected inputs and complete the same hand check. Predict the sign, exchange left and right activities, then set them equal. Keep T and reference conventions fixed.</p>
 <p>Keep one saved baseline for the pair investigation.</p>
 </section>
 <section id="pair-investigation-70-minutes" class="slide level2">
@@ -267,7 +492,7 @@ Soorathep Kheawhom
 </div><div class="column" style="width:36%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=6"><img data-src="assets/exit-qr-06.png" style="width:100.0%" alt="Scan to submit Session 6 exit ticket and feedback."></a></p>
+<p><a href="https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=6"><img data-src="assets/exit-qr-06.png" style="width:100.0%"></a></p>
 <figcaption>Scan to submit Session 6 exit ticket and feedback.</figcaption>
 </figure>
 </div>
@@ -291,7 +516,7 @@ Soorathep Kheawhom
   <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="site_libs/revealjs/plugin/search/search.js"></script>
@@ -312,7 +537,7 @@ Soorathep Kheawhom
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
 'smaller': false,
- 
+
         // Display controls in the bottom right corner
         controls: true,
 
@@ -521,190 +746,173 @@ Soorathep Kheawhom
     })();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button,
+              { trigger: "manual",
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config);
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
-    
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
 
 </body></html>

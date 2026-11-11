@@ -1,13 +1,21 @@
 ---
 title: "Electrochemical equilibrium"
-subtitle: "After midterm · Session 6 of 6 · 180 minutes"
+subtitle: "Week 6 · Onsite · 180 minutes"
 author: "Soorathep Kheawhom"
-date: 2026-09-30
+date: 2026-11-13
 date-format: "D MMMM YYYY"
 format:
   revealjs:
     theme: [default, theme/teal-amber.scss]
     css: assets/postmidterm.css
+    include-in-header:
+      text: |
+        <style>
+        .reveal .slides table {font-size: .82em;}
+        .reveal .slides table th {font-size: .95em; text-transform: none; letter-spacing: normal;}
+        #the-180-minute-class col:first-child, #recap-check col:first-child {width: 18% !important;}
+        #the-180-minute-class col:last-child, #recap-check col:last-child {width: 82% !important;}
+        </style>
     width: 1280
     height: 720
     margin: 0.06
@@ -26,26 +34,155 @@ format:
       data-background-color: "#1C242B"
 ---
 
-## The question for today
+## Does doubling the pressure always double Q? {#week5-questions}
+
+**A question from Week 5.** How does the pressure argument change for a real gas?
+
+Start with the ideal-gas reaction $\mathrm{A_2(g)\rightleftharpoons 2A(g)}$. At 350 K, $K=3.953$ for $p^\circ=100$ kPa. Compress the mixture from 100 to 200 kPa at fixed temperature. Consider the instant before the composition responds.
+
+| Starting value | Predict $Q$ immediately after compression | Which way will the reaction move? |
+|---|---|---|
+| $Q=K=3.953$ | Calculate on paper | Toward A or A₂? |
+| $Q=1.000$ | Calculate on paper | Toward A or A₂? |
+
+Take one minute. Compare your two answers with a neighbor.
+
+## Compare the new quotient with K {#pressure-check}
+
+At fixed mole fractions, the ideal-gas quotient for this reaction is proportional to pressure.
+
+$$Q=\frac{y_{\mathrm A}^2}{y_{\mathrm{A_2}}}\frac{P}{p^\circ}$$
+
+| Before compression | Immediately after | Response at 350 K |
+|---|---|---|
+| $Q=3.953$ | $Q=7.906>K$ | More A₂ forms. |
+| $Q=1.000$ | $Q=2.000<K$ | More A forms. |
+
+As the reaction proceeds, the mole fractions change. At the new equilibrium, $Q=K=3.953$ in both cases.
+
+::: {.notes}
+Thai spoken recap: ความดันเพิ่มทำให้ Q ของปฏิกิริยานี้เพิ่มทันทีเมื่อองค์ประกอบยังคงเดิม ทิศทางขึ้นกับว่า Q ใหม่สูงหรือต่ำกว่า K.
+:::
+
+## A real gas uses fugacity in each activity {#real-gas}
+
+At a specified $T,P,\mathbf y$, a mixture equation of state gives each component's fugacity coefficient $\phi_i$. With an ideal-gas standard state,
+
+$$a_i=\frac{f_i}{p^\circ}=\frac{\phi_i y_iP}{p^\circ},\qquad Q=\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}}.$$
+
+For this dissociation, the multiplier on the ideal-gas estimate is $\phi_{\mathrm A}^2/\phi_{\mathrm{A_2}}$. The coefficients can change during compression and as the reaction proceeds. The same $T$, written reaction and standard states give the same $K$.
+
+**Try it.** At 350 K and 200 kPa, use $y_{\mathrm A}=0.80$, $y_{\mathrm{A_2}}=0.20$. For this illustrative state take $\phi_{\mathrm A}=0.90$ and $\phi_{\mathrm{A_2}}=0.95$. Calculate both activities and predict the direction.
+
+## Work the real-gas example on paper {#real-gas-check}
+
+The pressure ratio is $200/100=2$. At the specified composition,
+
+| Quantity | Calculation | Value |
+|---|---|---:|
+| $a_{\mathrm A}$ | $0.90(0.80)(2)$ | 1.44 |
+| $a_{\mathrm{A_2}}$ | $0.95(0.20)(2)$ | 0.38 |
+| $Q$ | $1.44^2/0.38$ | 5.46 |
+
+The ideal-gas estimate at this same state is $6.40$. Both exceed $K=3.953$, so A₂ forms. To find the final extent for the real gas, update the composition and both fugacity coefficients until $Q=K$. Lab 12 solves the ideal-gas case.
+
+::: {.notes}
+Thai spoken recap: ใช้ fugacity แทนความดันย่อยในการหาค่า activity ของแก๊สจริง เมื่อคำนวณ Q แล้วให้เปรียบเทียบกับ K ที่อุณหภูมิเดียวกัน ตัวอย่างนี้ให้ Q เท่ากับ 5.46 จึงเกิด A₂ เพิ่มขึ้น.
+:::
+
+## The 180-minute class {#the-180-minute-class}
+
+| Class time | Activity |
+|---|---|
+| 0–15 min | Answer the Week 5 pressure question and check a real-gas calculation |
+| 15–35 min | Revisit Weeks 2–5 in pairs with paper and a calculator |
+| 35–60 min | Balance a cell reaction and calculate its potential by hand |
+| 60–70 min | Demonstrate the concentration cell in Lab 13 |
+| 70–80 min | Break |
+| 80–150 min | Pair investigation and independent check |
+| 150–180 min | Discuss results (20), exit ticket (5), feedback (3), closing (2) |
+
+## Week 2 · What did the VLE measurement tell us? {#review-week-2}
+
+A VLE measurement gives $P=100$ kPa, $x_1=0.40$, $y_1=0.60$. Assume an ideal vapor, negligible Poynting correction and a pure-liquid reference state.
+
+$$y_1P=x_1\gamma_1 P_1^{\rm sat},\qquad a_1=x_1\gamma_1.$$
+
+1. Use $P_1^{\rm sat}=120$ kPa. Find $\gamma_1$ and $a_1$.
+2. A second source gives 150 kPa at the same temperature. Predict which way your inferred $\gamma_1$ moves.
+3. Before fitting the data, which Antoine conventions would you check?
+
+::: {.notes}
+Allow three minutes for pairs. Check 1.25 and 0.50, then 1.00 and 0.40. Ask about the log base, temperature unit, pressure unit and correlation range. Thai spoken recap: ข้อมูลทดลองชุดเดิมให้ค่า activity coefficient ต่างกันได้ ถ้าใช้ความดันไออิ่มตัวต่างกัน ต้องตรวจหน่วยและช่วงอุณหภูมิของสมการ Antoine.
+:::
+
+## Week 3 · Would this feed split into two liquids? {#review-week-3}
+
+:::: {.columns}
+::: {.column width="53%"}
+![Mixing Gibbs energy and the supporting common tangent for the Week 3 Margules liquid at A=3.](figures/gibbs-review-curve.svg){width="100%" fig-alt="At feed z=0.12 the supporting common tangent lies below the homogeneous liquid Gibbs curve."}
+:::
+::: {.column width="45%"}
+At $z_1=0.12$, compare the curve and the supporting line at the **same overall composition**. Which state has lower Gibbs energy?
+
+The homogeneous curve has positive local curvature here. What does the tangent tell you that curvature alone cannot?
+
+A Gibbs–Duhem area test examines the VLE data. How could errors of opposite sign affect its signed integral?
+:::
+::::
+
+::: {.notes}
+The split lies below the homogeneous point, despite the positive local curvature. At the same T and P the split meets the same material balance. Local residuals of opposite sign can cancel in an area integral. Thai spoken recap: การตรวจความสอดคล้องของข้อมูลกับการตรวจว่าเฟสเสถียรตอบคนละคำถาม ที่องค์ประกอบรวมเดียวกันให้เลือกสถานะที่พลังงานกิบส์ต่ำกว่า.
+:::
+
+## Week 4 · Can the vessel supply that much gas? {#review-week-4}
+
+At 300 K, a 1.00 L vessel contains 0.00200 mol of volatile A. Its equilibrium sublimation pressure is 10.0 kPa. Use $R=8.314$ kPa L mol$^{-1}$ K$^{-1}$ and assume an ideal gas.
+
+1. Calculate the gas inventory required for $P_A=10.0$ kPa. Will any bulk solid remain?
+2. Calculate the actual $P_A$. What happens to $P_A$ if you add an inert gas at fixed $T,V$?
+3. In a separate adsorption vessel, an adsorbent of mass $m_s$ holds $q(P_A,T)$ mol per kg. Which term must you add to the gas inventory to close the balance?
+
+::: {.notes}
+Hold the free gas volume fixed and assume the inert does not adsorb. Thai spoken recap: ต้องมีสารมากพอจึงจะเหลือของแข็งและได้ความดันระเหิด ถ้ามีตัวดูดซับให้รวมจำนวนโมลบนผิวในสมดุลมวลด้วย.
+:::
+
+## Week 5 · Change pressure, then change temperature {#review-week-5}
+
+Lab 12 used 1 mol of A₂ initially, zero A, no inert, and $p^\circ=100$ kPa. Use the same ideal-gas reaction in all three cases.
+
+| Case | $T$ (K) | $P$ (kPa) | $K$ | Equilibrium extent (mol) |
+|---|---:|---:|---:|---:|
+| 12A | 350 | 100 | 3.953 | 0.7050 |
+| 12B | 350 | 400 | 3.953 | 0.4451 |
+| 12C | 400 | 100 | 33.861 | 0.9457 |
+
+Which pair isolates pressure? Which isolates temperature? For 12C assume a constant positive reaction enthalpy of 50 kJ mol$^{-1}$. Explain the change in $K$.
+
+With a partner, use the extent in 12B to check $2n_{\mathrm{A_2}}+n_{\mathrm A}$ against the feed.
+
+## Check your four predictions {#recap-check}
+
+| Week | Compare with your calculation or prediction |
+|---|---|
+| 2 · VLE | With $P_1^{\rm sat}=120$ kPa, $\gamma_1=1.25$ and $a_1=0.50$. With $P_1^{\rm sat}=150$ kPa they become 1.00 and 0.40. Check Antoine units, log base and temperature range. |
+| 3 · Stability | At $z_1=0.12$ the two-liquid line lies lower. Positive local curvature describes small fluctuations. Opposite errors can cancel in the signed area test. |
+| 4 · Inventory | Saturation requires 0.00401 mol. All 0.00200 mol enters the gas, giving $P_A=4.99$ kPa. Adding ideal inert at fixed $T,V$ raises total pressure while $P_A$ stays at 4.99 kPa. For adsorption add $m_s q$ mol. |
+| 5 · Reaction | 12A–12B isolate pressure. 12A–12C isolate temperature. Heating raises $K$ for this endothermic reaction. In 12B, $2(0.5549)+0.8902=2.0000$ mol of A atoms. |
+
+::: {.notes}
+Ask one pair per row and collect one remaining question before moving on. Thai spoken recap: ในทุกกรณี เริ่มจากกำหนดสถานะอ้างอิงและเงื่อนไขที่ตรึงไว้ แล้วตรวจสมการสมดุลควบคู่กับสมดุลมวล.
+:::
+
+## The question for today {#the-question-for-today}
 
 What determines the sign of a concentration-cell potential?
 
-[Before class: 3-page reading](files/preclass-week-06.pdf) · 15–20 minutes
+Week 5 gave us $\Delta_rG=RT\ln(Q/K)$. A reversible cell turns that reaction driving force into a potential difference, $E=-\Delta_rG/(nF)$.
 
-Bring the three preparation answers. Revisit your prediction after one controlled comparison and an independent check.
+**Predict on paper.** For the reaction as written, what sign should $E$ have when $Q<K$? What voltage would you measure at complete cell equilibrium, $Q=K$?
 
-## The 180-minute class
-
-| Activity | Minutes |
-|---|---:|
-| Opening question and essential concepts | 30 |
-| One hand calculation | 20 |
-| One lab demonstration | 20 |
-| Break | 10 |
-| Student pair investigation | 70 |
-| Discussion, exit ticket and feedback | 30 |
-
-The 70-minute investigation is student work. Final block: discussion 20 min, exit ticket 5 min, feedback 3 min, closing 2 min.
+[Pre-class reading and preparation questions](files/preclass-week-06.pdf)
 
 ## Two reduction half-reactions
 
@@ -67,7 +204,7 @@ Changing T requires valid E° data at the new T.
 
 ## A concentration-cell calculation
 
-At 298.15 K, n=2, aL=0.01 and aR=1:
+Use the same $\mathrm{M^{2+}/M}$ couple on both sides at 298.15 K. For oxidation on the left and reduction on the right, $Q=a_{\mathrm L}/a_{\mathrm R}$. Take $a_{\mathrm L}=0.01$, $a_{\mathrm R}=1$, $n=2$, and neglect the junction potential.
 $$Q=0.01,\qquad E=+0.05915935\ \mathrm V$$
 
 E°=0, K=1, but E is nonzero. Reversing the concentrations changes the sign of E. Equal activities give E=0.
@@ -80,11 +217,11 @@ Use dimensionless activities. Concentration is an approximation with a stated st
 
 Use Eright−Eleft and deltaG=−nFE with the balanced electron count. Equal activities must give zero potential for the same reduction couple.
 
-## One demonstration · 20 minutes
+## One demonstration · 10 minutes {#one-demonstration-20-minutes}
 
 [Open the core lab](labs/electrochemistry.html#ec-experiment)
 
-Load the Lab 13 concentration-cell preset. Predict the sign, exchange left and right activities, then set them equal. Keep T and reference conventions fixed.
+Open the concentration-cell preset on the projector. On paper, make three rows for the original, exchanged and equal activities. If your device is offline, use the projected inputs and complete the same hand check. Predict the sign, exchange left and right activities, then set them equal. Keep T and reference conventions fixed.
 
 Keep one saved baseline for the pair investigation.
 
@@ -113,7 +250,7 @@ Retain one study JSON, one comparison and a short explanation.
 
 Optional: [Session appendix](postmidterm-06-appendix.html).
 
-[Learning path](labs/learning-path.html#session-6) · [Offline package](files/thermodynamics-offline.zip)
+[Learning path](labs/learning-path.html#session-6) · [Offline package](https://github.com/soorathep/Test/releases/download/course-downloads-20261107/thermodynamics-offline.zip)
 
 ## Exit ticket + feedback · 8 minutes
 
