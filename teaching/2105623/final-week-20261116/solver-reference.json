@@ -1,0 +1,88 @@
+{
+  "capacity": 3,
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "multiplier_source": "Analytic certificate (2,0,0), evaluated at each returned point",
+  "runs": [
+    {
+      "start": [
+        0.5,
+        0.5
+      ],
+      "point": [
+        2.0000000000000036,
+        1.0000000000000036
+      ],
+      "value": 1.9999999999999858,
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 4,
+      "residuals": {
+        "primal_violation": 7.105427357601002e-15,
+        "dual_violation": 0.0,
+        "stationarity": 7.105427357601002e-15,
+        "complementarity": 1.4210854715202004e-14
+      }
+    },
+    {
+      "start": [
+        3,
+        2
+      ],
+      "point": [
+        2.000000000000001,
+        1.000000000000001
+      ],
+      "value": 1.999999999999996,
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 3,
+      "residuals": {
+        "primal_violation": 1.7763568394002505e-15,
+        "dual_violation": 0.0,
+        "stationarity": 2.220446049250313e-15,
+        "complementarity": 3.552713678800501e-15
+      }
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "point": [
+        1.999999999999998,
+        0.9999999999999979
+      ],
+      "value": 2.0000000000000084,
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 4,
+      "residuals": {
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "stationarity": 4.440892098500626e-15,
+        "complementarity": 7.993605777301127e-15
+      }
+    },
+    {
+      "start": [
+        4,
+        0
+      ],
+      "point": [
+        1.999999999999999,
+        0.9999999999999989
+      ],
+      "value": 2.0000000000000044,
+      "success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 6,
+      "residuals": {
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "stationarity": 2.220446049250313e-15,
+        "complementarity": 4.440892098500626e-15
+      }
+    }
+  ]
+}
