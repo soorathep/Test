@@ -1,0 +1,140 @@
+/* Home page. Navigation, buttons, colors and type families come from style.css. */
+#home { padding-bottom: clamp(2.5rem, 6vw, 5rem); }
+#home section { padding: 0; }
+#home .home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(2rem, 5vw, 4.75rem);
+  align-items: center;
+  padding: clamp(2.25rem, 5vw, 4.4rem) 0;
+}
+.home-affiliation {
+  border-left: .3rem solid var(--sodium);
+  padding-left: .85rem;
+  font: 600 .95rem/1.5 "Archivo", system-ui, sans-serif;
+  color: var(--prussian);
+}
+.home-affiliation span { font-weight: 400; color: var(--ink-soft); }
+.home-intro h1 {
+  margin: 1.55rem 0 1rem;
+  font-size: clamp(2.75rem, 5.15vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -.055em;
+  color: var(--prussian-deep);
+}
+.home-intro h1 em {
+  display: block;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.07;
+  letter-spacing: -.05em;
+}
+.home-lede { max-width: 49ch; font-size: clamp(1.09rem, 1.45vw, 1.27rem); line-height: 1.55; color: var(--ink-soft); }
+.home-actions { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; margin-top: 1.55rem; }
+.home-showcase { min-width: 0; margin: 0; }
+.home-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 44%;
+}
+.home-showcase figcaption {
+  display: flex;
+  gap: .45rem 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: .8rem 1rem .95rem;
+  border-top: 3px solid var(--sodium);
+  background: var(--prussian-deep);
+  color: #fff;
+  font: .86rem/1.45 "Archivo", system-ui, sans-serif;
+}
+.home-showcase figcaption a { color: #fff; text-decoration: underline; text-underline-offset: .2em; white-space: nowrap; }
+.home-showcase figcaption a:hover { color: var(--sodium); }
+.home-text-link {
+  display: inline-flex;
+  gap: .45em;
+  align-items: baseline;
+  color: var(--prussian);
+  font: 600 .95rem/1.45 "Archivo", system-ui, sans-serif;
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}
+.home-text-link:hover { text-decoration-thickness: 2px; }
+#home h2 { font-size: clamp(1.65rem, 2.8vw, 2.4rem); line-height: 1.12; color: var(--prussian-deep); }
+.home-kicker {
+  margin: 0 0 .6rem;
+  font: 500 .77rem/1.4 "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: .065em;
+  color: var(--prussian);
+}
+#home .home-method { border-top: 2px solid var(--prussian); padding: 1.4rem 0 clamp(2.2rem, 5vw, 3.5rem); }
+.home-method-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .35fr); align-items: center; gap: 1.5rem; }
+.home-method-head .spectrum { width: 100%; height: 3rem; margin: 0; }
+.home-method-head .spectrum path { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.home-chain {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 .9rem;
+}
+.home-chain li { padding: .55rem clamp(1rem, 2.2vw, 1.8rem) .65rem; border-left: 1px solid var(--line); }
+.home-chain li:first-child { padding-left: 0; border: 0; }
+.home-chain-head { display: flex; gap: .6rem; align-items: center; margin-bottom: .35rem; color: var(--prussian); }
+.home-chain-head span { font: 500 .8rem/1.4 "IBM Plex Mono", monospace; border-bottom: 3px solid var(--sodium); }
+.home-chain-head h3 { font-size: 1.18rem; }
+.home-chain p { font-size: .99rem; line-height: 1.5; color: var(--ink-soft); }
+.home-section-head {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .55rem 1rem;
+}
+.home-cover-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(.7rem, 2vw, 1.45rem);
+  padding: 0;
+  margin: 1.1rem 0 0;
+  list-style: none;
+}
+.home-cover-strip img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: var(--paper-2); }
+.home-cover-strip p { font: 600 .87rem/1.4 "Archivo", system-ui, sans-serif; color: var(--prussian); margin-top: .4rem; }
+.home-cover-strip p span { color: var(--ink-soft); font-weight: 400; }
+.home-writing, .home-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3.8vw, 3.25rem); margin-top: clamp(2.1rem, 5vw, 3.5rem); }
+.home-writing-intro { margin: .9rem 0 0; color: var(--ink-soft); }
+.home-writing .post-list a.entry { display: block; padding: 1.05rem 0; }
+.home-writing .post-list .d { font-size: .73rem; line-height: 1.45; margin-bottom: .35rem; padding: 0; }
+.home-writing .post-list h3 { color: var(--prussian); font-size: 1.18rem; }
+.home-writing .post-list p { font-size: .97rem; line-height: 1.53; }
+#home .home-paper { background: var(--prussian-deep); color: #fff; padding: clamp(1.3rem, 2.8vw, 2.2rem); }
+#home .home-paper h2 { color: #fff; }
+.home-paper .home-kicker, .home-paper .home-text-link { color: var(--sodium); }
+.home-features p:not(.home-kicker) { margin: .8rem 0 0; font-size: 1rem; line-height: 1.55; }
+.home-paper .home-text-link { margin-top: 1.25rem; }
+#home .home-leadership { border-top: 3px solid var(--sodium); padding-top: 1.05rem; }
+#home .home-features h2 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); }
+@media (max-width: 780px) {
+  #home .home-hero { grid-template-columns: 1fr; gap: 1.5rem; }
+  .home-showcase img { max-height: 22rem; }
+  .home-intro h1 { margin-top: 1.25rem; }
+  .home-method-head { grid-template-columns: 1fr; gap: .4rem; }
+  .home-method-head .spectrum { max-width: 15rem; height: 1.6rem; }
+  .home-writing, .home-features { grid-template-columns: 1fr; gap: 1.55rem; }
+}
+@media (max-width: 560px) {
+  #home .home-hero { padding: 1.7rem 0; }
+  .home-intro h1 { font-size: clamp(2.5rem, 10.2vw, 3.3rem); }
+  .home-showcase figcaption { flex-wrap: wrap; }
+  .home-actions { gap: .55rem; }
+  .home-chain { grid-template-columns: 1fr; margin-top: .7rem; }
+  .home-chain li, .home-chain li:first-child { border: 0; border-bottom: 1px solid var(--line); padding: .65rem 0; }
+  .home-cover-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

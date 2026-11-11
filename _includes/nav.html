@@ -3,9 +3,8 @@
 <header class="nav">
   <div class="nav-in">
     <a class="brand" href="{{ site.baseurl }}/#home">SKH <span>Research Group</span></a>
-    <button class="burger" aria-label="Menu" aria-expanded="false">MENU</button>
-    <nav class="nav-links" aria-label="Main">
-      <a class="nav-booking" href="https://m2.tail1b67a2.ts.net/">Book equipment</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">MENU</button>
+    <nav class="nav-links" id="site-menu" aria-label="Main">
       <div class="nav-group">
         <a class="nav-top" href="{{ site.baseurl }}/#research">Research</a>
         <div class="nav-sub">
@@ -45,6 +44,7 @@
         </div>
       </div>
       <a class="nav-cta" href="{{ site.baseurl }}/#join">Join Us</a>
+      <a class="nav-booking" href="https://m2.tail1b67a2.ts.net/">Booking</a>
     </nav>
   </div>
 </header>
@@ -73,6 +73,13 @@
   });
   burger.addEventListener('click', function(){
     var o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o ? 'true' : 'false');
+  });
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape' && menu.classList.contains('open')){
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      burger.focus();
+    }
   });
 })();
 </script>

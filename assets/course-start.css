@@ -25,7 +25,10 @@
   text-underline-offset: .18em;
 }
 .course-links a.course-first {
-  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  border-radius: 6px;
   padding: .55rem .9rem;
   background: var(--prussian, #0e3b5c);
   color: white;

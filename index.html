@@ -70,6 +70,7 @@ layout: null
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
 
@@ -80,111 +81,119 @@ layout: null
 <!-- ================= HOME ================= -->
 <div class="page" id="home">
   <div class="wrap">
-    <div class="hero">
-      <div class="mono eyebrow">Energy Storage Innovation Laboratory · Chulalongkorn University</div>
-      <h1>Durability is a chain, <em>not a number.</em></h1>
-      <p class="lede">We study non-lithium batteries where they actually fail — at the solvation shell, through transport, and at the interface. Ionic conductivity does not predict lifetime. The causal chain does.</p>
-      <svg class="spectrum" viewBox="0 0 1120 150" preserveAspectRatio="none" aria-hidden="true">
-        <rect class="band" x="0" y="0" width="373" height="150" fill="#0E3B5C"></rect>
-        <rect class="band" x="746" y="0" width="374" height="150" fill="#E8A80B"></rect>
-        <line class="axis" x1="0" y1="75" x2="1120" y2="75"></line>
-        <path id="exafs" d=""></path>
-      </svg>
-    </div>
-
-    <p class="mono" style="text-align:center;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--zinc);margin-bottom:18px">
-      Zinc-ion · Sodium-ion · Organic flow &nbsp;—&nbsp; read through one chain, watched with operando synchrotron
-    </p>
-    <div class="chain">
-      <div class="node">
-        <span class="k">C — First shell</span>
-        <h3>Coordination</h3>
-        <p>What sits in the first solvation shell of the working ion, and how much free solvent is left over to react.</p>
-      </div>
-      <div class="arrow"><span>→</span></div>
-      <div class="node">
-        <span class="k">T — Bulk &amp; kinetics</span>
-        <h3>Transport</h3>
-        <p>Transference number and conductivity against temperature — the properties everyone reports, and the ones that mislead on their own.</p>
-      </div>
-      <div class="arrow"><span>→</span></div>
-      <div class="node">
-        <span class="k">I — Where it dies</span>
-        <h3>Interface</h3>
-        <p>Time-resolved interfacial resistance, fracture energy, stack-pressure sensitivity. Where the cell actually ends its life.</p>
-      </div>
-    </div>
-
-    <section>
-      <div class="sec-head">
-        <div class="mono eyebrow">Covers</div>
-        <h2>The work, as the journals drew it</h2>
-      </div>
-      <div class="strip">
-        {% for c in site.data.covers %}
-        <img src="covers/{{ c.file }}" alt="{{ c.alt }}" loading="lazy">
-        {% endfor %}
-      </div>
-      <p style="margin-top:16px"><a href="#recognition">All {{ site.data.covers | size }} covers, with captions →</a></p>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <div class="mono eyebrow">Latest</div>
-        <h2>News</h2>
-      </div>
-      <div class="post-list">
-        {% assign newsposts = site.posts | where: "kind", "news" %}
-        {% for post in newsposts limit: 2 %}
-        <a class="entry" href="{{ post.url }}">
-          <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
-          <div>
-            <h3>{{ post.title }}</h3>
-            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
-          </div>
-        </a>
-        {% endfor %}
-      </div>
-      <p style="margin-top:16px"><a href="news/">All news &rarr;</a></p>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <div class="mono eyebrow">Writing</div>
-        <h2>Essays</h2>
-      </div>
-      <p class="lede" style="margin-bottom:20px">A separate notebook on the research life — reflections, science-as-metaphor, and the craft of research, grouped into series.</p>
-      <div class="post-list">
-        {% assign essayposts = site.posts | where: "kind", "essay" %}
-        {% for post in essayposts limit: 2 %}
-        <a class="entry" href="{{ post.url }}">
-          <div class="d">{{ post.date | date: "%-d %b %Y" }}{% if post.series %} · {{ post.series }}{% endif %}</div>
-          <div>
-            <h3>{{ post.title }}</h3>
-            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
-          </div>
-        </a>
-        {% endfor %}
-      </div>
-      <p style="margin-top:16px"><a href="essays/">All essays &rarr;</a></p>
-    </section>
-
-    <section>
-      <div class="two">
-        <div class="callout">
-          <div class="mono">Featured — J. Mater. Chem. A, 2026</div>
-          <h3>Why ionic conductivity does not predict durability</h3>
-          <p>Six design rules, a minimal descriptor set, and a failure-mode decision logic for sodium batteries across liquid and solid electrolytes. Under a matched stack-pressure baseline, the usual sulfide-over-oxide ranking can invert — part of the sulfide advantage is pressure-assisted contact, not intrinsic transport.</p>
-          <p style="margin-top:14px"><a href="https://doi.org/10.1039/D6TA01969B">DOI 10.1039/D6TA01969B</a></p>
-        </div>
-        <div class="callout" style="background:var(--paper-2);color:var(--ink)">
-          <div class="mono" style="color:var(--prussian)">Institutional leadership</div>
-          <h3 style="color:var(--ink)">Founding Chair, ECS Thailand Section</h3>
-          <p style="color:var(--ink-soft)">Chartered by the Board of Directors of The Electrochemical Society on 30 May 2024 with 27 members. The only ECS-designated entity supporting electrochemical professionals and students in Thailand.</p>
-          <p style="color:var(--ink-soft);margin-top:14px">Organizing Chair, 19th Asian Conference on Solid State Ionics (ACSSI-19), Chulalongkorn University, 13–16 September 2026. Chair, Local Organizing Committee, MCARE 2026, Bangkok, 14–18 December 2026 — the first Southeast Asian edition of the conference.</p>
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="home-intro">
+        <p class="home-affiliation">Energy Storage Innovation Laboratory<br><span>Chulalongkorn University</span></p>
+        <h1 id="home-title">Durability is a chain, <em>not a number.</em></h1>
+        <p class="home-lede">We study why zinc-ion, sodium-ion and organic flow batteries fail. We combine electrochemical tests and operando synchrotron measurements to connect local coordination, transport and changes at the electrode interface.</p>
+        <div class="home-actions">
+          <a class="button" href="#research">Explore our research <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#people">Meet the group</a>
         </div>
       </div>
+      <figure class="home-showcase">
+        <img src="{{ '/img/activities/techsauce-2026-1.jpg' | relative_url }}" width="788" height="1400" fetchpriority="high" alt="Two researchers beside the group’s flow battery and poster at the exhibition booth.">
+        <figcaption>
+          <span>The group’s organic redox flow battery at Techsauce Global Summit 2026, Bangkok, August 2026.</span>
+          <a href="{{ '/activities/' | relative_url }}">View photos <span aria-hidden="true">→</span></a>
+        </figcaption>
+      </figure>
     </section>
+
+    <section class="home-method" aria-labelledby="home-method-title">
+      <div class="home-method-head">
+        <div>
+          <p class="home-kicker">Our framework</p>
+          <h2 id="home-method-title">Coordination, transport and interface</h2>
+        </div>
+        <svg class="spectrum" viewBox="0 0 1120 150" preserveAspectRatio="none" aria-hidden="true">
+          <line class="axis" x1="0" y1="75" x2="1120" y2="75"></line>
+          <path id="exafs" d=""></path>
+        </svg>
+      </div>
+      <ol class="home-chain">
+        <li>
+          <div class="home-chain-head"><span aria-hidden="true">C</span><h3>Coordination</h3></div>
+          <p>Which species surround the working ion, and how much free solvent remains available to react?</p>
+        </li>
+        <li>
+          <div class="home-chain-head"><span aria-hidden="true">T</span><h3>Transport</h3></div>
+          <p>How do transference number and ionic conductivity change with temperature?</p>
+        </li>
+        <li>
+          <div class="home-chain-head"><span aria-hidden="true">I</span><h3>Interface</h3></div>
+          <p>How do interfacial resistance, fracture energy and sensitivity to stack pressure shape cell lifetime?</p>
+        </li>
+      </ol>
+      <a class="home-text-link" href="#cti">Read the CTI framework <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="home-covers" aria-labelledby="home-covers-title">
+      <div class="home-section-head">
+        <h2 id="home-covers-title">Journal covers</h2>
+        <a class="home-text-link" href="#recognition">All {{ site.data.covers | size }} covers and captions <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="home-cover-strip">
+        {% for c in site.data.covers limit: 4 %}
+        <li>
+          <img src="{{ '/covers/' | append: c.file | relative_url }}" alt="{{ c.alt }}" loading="lazy">
+          <p>{{ c.journal }} <span>· {{ c.year }}</span></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <div class="home-writing">
+      <section aria-labelledby="home-news-title">
+        <div class="home-section-head">
+          <h2 id="home-news-title">Lab news</h2>
+          <a class="home-text-link" href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="post-list">
+          {% assign newsposts = site.posts | where: "kind", "news" %}
+          {% for post in newsposts limit: 2 %}
+          <a class="entry" href="{{ post.url | relative_url }}">
+            <div class="d">{{ post.date | date: "%-d %b %Y" }}</div>
+            <h3>{{ post.title }}</h3>
+            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section aria-labelledby="home-essays-title">
+        <div class="home-section-head">
+          <h2 id="home-essays-title">Essays</h2>
+          <a class="home-text-link" href="{{ '/essays/' | relative_url }}">All essays <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="home-writing-intro">Reflections on the research life and the craft of doing science, grouped into series.</p>
+        <div class="post-list">
+          {% assign essayposts = site.posts | where: "kind", "essay" %}
+          {% for post in essayposts limit: 2 %}
+          <a class="entry" href="{{ post.url | relative_url }}">
+            <div class="d">{{ post.date | date: "%-d %b %Y" }}{% if post.series %} · {{ post.series }}{% endif %}</div>
+            <h3>{{ post.title }}</h3>
+            <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncate: 140 }}{% endif %}</p>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+    <div class="home-features">
+      <section class="home-paper" aria-labelledby="home-paper-title">
+        <p class="home-kicker">Featured paper · J. Mater. Chem. A, 2026</p>
+        <h2 id="home-paper-title">Why ionic conductivity does not predict durability</h2>
+        <p>Six design rules, a minimal set of descriptors and a method for diagnosing failure in sodium batteries. When stack pressure is matched, the usual ranking of sulfide and oxide electrolytes can reverse. Pressure-assisted contact accounts for part of the sulfide advantage.</p>
+        <a class="home-text-link" href="https://doi.org/10.1039/D6TA01969B">Read the paper <span aria-hidden="true">→</span></a>
+      </section>
+      <section class="home-leadership" aria-labelledby="home-leadership-title">
+        <p class="home-kicker">Institutional leadership</p>
+        <h2 id="home-leadership-title">Founding Chair, ECS Thailand Section</h2>
+        <p>The Board of Directors of The Electrochemical Society chartered the section on 30 May 2024 with 27 members. It is the only ECS-designated entity supporting electrochemical professionals and students in Thailand.</p>
+        <p>Organizing Chair, 19th Asian Conference on Solid State Ionics (ACSSI-19), Chulalongkorn University, 13–16 September 2026. Chair, Local Organizing Committee, MCARE 2026, Bangkok, 14–18 December 2026, the conference’s first Southeast Asian edition.</p>
+      </section>
+    </div>
   </div>
 </div>
 
@@ -357,7 +366,7 @@ layout: null
           <p>Check availability for Biologic 1, then select your start and end times in 30-minute increments. A single reservation can continue overnight or span several days.</p>
           <p style="margin-top:14px"><a href="https://m2.tail1b67a2.ts.net/">Open the booking calendar</a></p>
         </div>
-        <div class="callout" style="background:var(--paper-2);color:var(--ink)">
+        <div class="callout callout-light" style="background:var(--paper-2);color:var(--ink)">
           <div class="mono" style="color:var(--prussian)">Code and analysis</div>
           <h3 style="color:var(--ink)">Group repositories</h3>
           <p style="color:var(--ink-soft)">Analysis scripts, fitting routines, and notebooks live under version control, not in personal drives. A figure in a paper should trace back to the commit that produced it.</p>
