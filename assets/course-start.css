@@ -1,0 +1,43 @@
+.course-start {
+  margin: 1.5rem 0 2rem;
+  border-left: 4px solid var(--sodium, #e8a80b);
+  padding: 1rem 1.25rem;
+  background: var(--paper-2, #eaecea);
+}
+.course-start h2, .course-start h3 {
+  margin: 0 0 .6rem;
+  color: var(--prussian, #0e3b5c);
+  font-size: 1.15rem;
+}
+.course-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 1.15rem;
+  font: .93rem/1.45 "Archivo", system-ui, sans-serif;
+}
+.course-links a {
+  display: inline-block;
+  max-width: 100%;
+  padding: .45rem 0;
+  color: var(--prussian, #0e3b5c);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+.course-links a.course-first {
+  border-radius: 3px;
+  padding: .55rem .9rem;
+  background: var(--prussian, #0e3b5c);
+  color: white;
+  text-decoration: none;
+}
+.course-links a.course-first:hover { text-decoration: underline; }
+.course-links a:focus-visible { outline: 3px solid #986800; outline-offset: 3px; }
+.course-catalog .course { gap: .5rem 1.5rem; }
+.course-catalog .course-links { flex-basis: 100%; }
+.course-catalog .c-extra { font-size: .9rem; }
+.course-schedule { max-width: 100%; overflow-x: auto; margin-bottom: 2.75rem; }
+#weekly-schedule { scroll-margin-top: 5.5rem; }
+@media (max-width: 640px) {
+  .course-links { align-items: flex-start; flex-direction: column; }
+}

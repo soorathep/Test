@@ -6,11 +6,21 @@
 #   note   optional one line.
 #   url    optional. Site-relative path to a course page — the title becomes a
 #          link. e.g. /teaching/2105620/
+#   first_lesson, practice and outline point to published course materials.
 # ─────────────────────────────────────────────────────────────────────────────
 
 - name: Seminar 3
   level: Graduate (PhD)
   url: /teaching/seminar3/
+  first_lesson:
+    label: "Session 1 · Cover letter, submission and revision"
+    url: /teaching/seminar3/01_submission.html
+  practice:
+    label: "Session 1 worksheet"
+    url: /teaching/seminar3/worksheet-1.html
+  outline:
+    label: "All four seminars"
+    url: /teaching/seminar3/#october-2026
   note: October 2026 seminars on submission and revision, figures and tables, article types and proposals, and AI ethics. Slides, video lecture, student workbook, feedback and exit tickets online.
 
   quick_links:
@@ -23,22 +33,47 @@
   level: Graduate
   code: 2105620
   url: /teaching/2105620/
+  first_lesson:
+    label: "Week 1 · The publication landscape"
+    url: /teaching/2105620/w01.html
+  practice:
+    label: "Pitch and listening activity sheets (PDF)"
+    url: /teaching/2105620/files/w01-activity-sheets.pdf
+  outline:
+    label: "Weekly schedule"
+    url: /teaching/2105620/#weekly-schedule
   note: Writing and publishing research — from taking published papers apart to building a manuscript of your own. Slides and schedule online.
 
 - name: Optimization of Chemical Processes
   level: Graduate
   code: 2105623
   url: /teaching/2105623/
+  first_lesson:
+    label: "Week 1 · The optimization workflow"
+    url: /teaching/2105623/w01.html
+  practice:
+    label: "Product mix workbook (Excel)"
+    url: /files/2105623/w01/w01-product-mix.xlsx
+  outline:
+    label: "Weekly schedule"
+    url: /teaching/2105623/#weekly-schedule
   note: Turning plant problems into models that say what you meant, then solving them — Excel and OpenSolver in the early weeks, Python and Pyomo after. Slides and schedule online.
 
 - name: Advanced Chemical Engineering Thermodynamics
   level: Graduate
   code: 2105603
   url: /teaching/2105603/
+  first_lesson:
+    label: "After midterm · Session 1: VLE and flash"
+    url: /teaching/2105603/postmidterm-01.html
+  practice:
+    label: "Session 1 lab and practice"
+    url: /teaching/2105603/labs/learning-path.html#session-1
+  outline:
+    label: "All after-midterm sessions"
+    url: /teaching/2105603/#after-midterm
   note: Molecular thermodynamics, equations of state, phase and reaction equilibrium. Module slides, lecture notes and Python notebooks online.
 
   quick_links:
-    - label: "After-midterm teaching slides: start with Session 1"
-      url: /teaching/2105603/postmidterm-01.html
     - label: "Course slides, readings, labs and Week 7 review"
       url: /teaching/2105603/#after-midterm

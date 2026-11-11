@@ -11,6 +11,8 @@ description: Graduate course on optimization for chemical engineers — fifteen 
     <h2>Optimization of Chemical Processes</h2>
   </div>
 
+  {% include course-start.html %}
+
   <aside id="final-week-20261116" style="border-left:4px solid #0F6E6B;padding:20px;margin:24px 0;background:#f3f7f5">
     <h3>Final onsite class · Monday, November 16, 2026</h3>
     <p>Constrained nonlinear optimization, Lagrange multipliers, KKT and solver verification. Follow the worked calculations and classroom demonstrations. The individual assignment is due December 2, 2026.</p>
@@ -217,32 +219,34 @@ description: Graduate course on optimization for chemical engineers — fifteen 
   {% endfor %}
   {% endif %}
 
-  <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
-  <table style="margin-bottom:44px">
-    <thead>
-      <tr><th style="width:52px">#</th><th>Session</th><th style="width:86px">Date</th><th style="width:150px">Hands-on</th><th style="width:66px">Files</th></tr>
-    </thead>
-    <tbody>
-      {% for w in c.weeks %}
-      <tr>
-        <td class="yr">{{ w.n }}</td>
-        <td>
-          {%- if w.gap -%}
-            <em style="color:var(--ink-soft)">{{ w.title }}</em>
-          {%- elsif w.slides -%}
-            <a href="{{ site.baseurl }}/teaching/2105623/{{ w.slides }}">{{ w.title }}</a>
-          {%- else -%}
-            {{ w.title }}
-          {%- endif -%}
-          {% if w.block %}<br><span class="mono" style="font-size:.76rem;color:var(--ink-soft)">{{ w.block }}</span>{% endif %}
-        </td>
-        <td class="yr">{{ w.dates }}</td>
-        <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.tool }}</td>
-        <td class="yr">{% if w.files %}{{ w.files | size }}{% else %}—{% endif %}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <h3 id="weekly-schedule" style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
+  <div class="course-schedule" role="region" aria-labelledby="weekly-schedule" tabindex="0">
+    <table>
+      <thead>
+        <tr><th style="width:52px">#</th><th>Session</th><th style="width:86px">Date</th><th style="width:150px">Hands-on</th><th style="width:66px">Files</th></tr>
+      </thead>
+      <tbody>
+        {% for w in c.weeks %}
+        <tr>
+          <td class="yr">{{ w.n }}</td>
+          <td>
+            {%- if w.gap -%}
+              <em style="color:var(--ink-soft)">{{ w.title }}</em>
+            {%- elsif w.slides -%}
+              <a href="{{ site.baseurl }}/teaching/2105623/{{ w.slides }}">{{ w.title }}</a>
+            {%- else -%}
+              {{ w.title }}
+            {%- endif -%}
+            {% if w.block %}<br><span class="mono" style="font-size:.76rem;color:var(--ink-soft)">{{ w.block }}</span>{% endif %}
+          </td>
+          <td class="yr">{{ w.dates }}</td>
+          <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.tool }}</td>
+          <td class="yr">{% if w.files %}{{ w.files | size }}{% else %}—{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   <h3 style="font-size:1.25rem;margin-bottom:18px">Assessment</h3>
   <table>

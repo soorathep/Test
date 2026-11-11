@@ -1,0 +1,12 @@
+{% assign course_info = site.data.courses | where: "url", page.url | first %}
+{% if course_info.first_lesson %}
+<link rel="stylesheet" href="{{ '/assets/course-start.css' | relative_url }}">
+<div class="course-start" role="group" aria-labelledby="course-start-heading">
+  <h3 id="course-start-heading">Start here</h3>
+  <div class="course-links">
+    <a class="course-first" href="{{ course_info.first_lesson.url | relative_url }}">{{ course_info.first_lesson.label }}</a>
+    <a href="{{ course_info.practice.url | relative_url }}">{{ course_info.practice.label }}</a>
+    <a href="{{ course_info.outline.url | relative_url }}">{{ course_info.outline.label }}</a>
+  </div>
+</div>
+{% endif %}

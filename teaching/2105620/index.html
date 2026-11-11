@@ -16,6 +16,8 @@ description: Graduate course on writing and publishing research in chemical engi
   structure. <strong>Weeks 7–14, design:</strong> you build one manuscript of your own,
   section by section, in the same order you learned to take one apart.</p>
 
+  {% include course-start.html %}
+
   <div class="facts" style="margin-bottom:44px">
     <div class="fact"><div class="k">Code</div><div>{{ c.code }} · {{ c.credits }} · elective</div></div>
     <div class="fact"><div class="k">Term</div><div>{{ c.semester }}</div></div>
@@ -127,30 +129,32 @@ description: Graduate course on writing and publishing research in chemical engi
   {% endif %}{% endfor %}
   {% endif %}
 
-  <h3 style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
-  <table style="margin-bottom:44px">
-    <thead>
-      <tr><th style="width:52px">#</th><th>Session</th><th style="width:118px">Dates</th><th style="width:210px">Lead</th></tr>
-    </thead>
-    <tbody>
-      {% for w in c.weeks %}
-      <tr>
-        <td class="yr">{{ w.n }}</td>
-        <td>
-          {%- if w.gap -%}
-            <em style="color:var(--ink-soft)">{{ w.title }}</em>
-          {%- elsif w.slides -%}
-            <a href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">{{ w.title }}</a>
-          {%- else -%}
-            {{ w.title }}
-          {%- endif -%}
-        </td>
-        <td class="yr">{{ w.dates }}</td>
-        <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.lead }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <h3 id="weekly-schedule" style="font-size:1.25rem;margin-bottom:18px">Weekly schedule</h3>
+  <div class="course-schedule" role="region" aria-labelledby="weekly-schedule" tabindex="0">
+    <table>
+      <thead>
+        <tr><th style="width:52px">#</th><th>Session</th><th style="width:118px">Dates</th><th style="width:210px">Lead</th></tr>
+      </thead>
+      <tbody>
+        {% for w in c.weeks %}
+        <tr>
+          <td class="yr">{{ w.n }}</td>
+          <td>
+            {%- if w.gap -%}
+              <em style="color:var(--ink-soft)">{{ w.title }}</em>
+            {%- elsif w.slides -%}
+              <a href="{{ site.baseurl }}/teaching/2105620/{{ w.slides }}">{{ w.title }}</a>
+            {%- else -%}
+              {{ w.title }}
+            {%- endif -%}
+          </td>
+          <td class="yr">{{ w.dates }}</td>
+          <td style="font-size:.88rem;color:var(--ink-soft)">{{ w.lead }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   <h3 style="font-size:1.25rem;margin-bottom:18px">Assessment</h3>
   <table>
