@@ -1,0 +1,35 @@
+Individual Optimization Assignment
+Due December 2, 2026 | Individual work | 100 raw points
+
+The assignment asks you to apply the methods covered after the midterm, justify your decisions, and verify computational results. It complements the final examination, which focuses on foundations and short calculations.
+
+Assignment brief (Rev 3):
+https://www.skhgroup.net/teaching/2105623/final-week-20261116/Individual-assignment.pdf?v=rev3-20261111
+
+Detailed scoring guide:
+https://www.skhgroup.net/teaching/2105623/final-week-20261116/assignment-scoring-guide.html
+
+What to submit
+1. One PDF report answering all four parts, with clearly numbered subparts. Show derivations, assumptions, calculations, required plots, and interpretations. About 8–12 pages including figures is a guide, not a grading requirement.
+2. One runnable Jupyter notebook (.ipynb) or Python script (.py). It must run from beginning to end. State software versions, solver settings, stopping criteria, and tolerances. Include solver status/messages and independent checks.
+3. Supporting files needed to reproduce your work, including the complete iteration traces. You may attach full traces as separate files rather than printing every row in the report.
+
+Scoring rubric (100 raw points)
+Part 1: LP certificate and sensitivity - 25 points
+Form the dual, verify primal/dual optimality and complementary slackness, derive the complete piecewise solution/value function, and interpret price predictions and their valid ranges.
+
+Part 2: Integer production and start-up cost - 20 points
+Explain the model implications, establish a relaxation bound, provide a complete integer optimality certificate, and diagnose the consequences of changing the operating-limit formulation.
+
+Part 3: Unconstrained methods and Armijo - 20 points
+Derive and compare fixed-step and exact-line-search updates, show Armijo trials, implement and compare convergence/evaluation costs, and explain and safeguard a failed Newton direction for a nonconvex objective.
+
+Part 4: Constrained NLP and a capacity decision - 35 points
+Derive and verify KKT conditions, establish the parameter range, compare exact and first-order benefits, optimize a continuous capacity purchase, and audit solver results from the specified starting points.
+
+How partial credit works
+The brief lists the points for every subpart. Credit depends on the requested calculations, reasoning, and verification. Numerical answers or solver screenshots alone cannot earn the marks assigned to derivations or interpretation. Equivalent valid methods and justified numerical tolerances are accepted. A single arithmetic error will not be penalized repeatedly when the subsequent reasoning is consistent.
+
+You may consult course materials and documentation. Submit your own reasoning and disclose external, AI, or code assistance. Do not submit another student's work.
+
+Start during the first week so that you have time to debug your code and check your conclusions. The course-grade weighting will be announced separately.

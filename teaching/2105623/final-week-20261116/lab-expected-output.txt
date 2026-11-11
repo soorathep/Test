@@ -1,0 +1,35 @@
+start (0.5, 0.5) success True message Optimization terminated successfully
+point [2. 1.] audit {'objective': np.float64(1.9999999999999858), 'primal_violation': 7.105427357601002e-15, 'dual_violation': 0.0, 'stationarity': 7.105427357601002e-15, 'complementarity': 1.4210854715202004e-14}
+start (3, 2) success True message Optimization terminated successfully
+point [2. 1.] audit {'objective': np.float64(1.999999999999996), 'primal_violation': 1.7763568394002505e-15, 'dual_violation': 0.0, 'stationarity': 2.220446049250313e-15, 'complementarity': 3.552713678800501e-15}
+start (0, 0) success True message Optimization terminated successfully
+point [2. 1.] audit {'objective': np.float64(2.0000000000000084), 'primal_violation': 0.0, 'dual_violation': 0.0, 'stationarity': 4.440892098500626e-15, 'complementarity': 7.993605777301127e-15}
+start (4, 0) success True message Optimization terminated successfully
+point [2. 1.] audit {'objective': np.float64(2.0000000000000044), 'primal_violation': 0.0, 'dual_violation': 0.0, 'stationarity': 2.220446049250313e-15, 'complementarity': 4.440892098500626e-15}
+Sensitivity: compare actual values with V(3)-2*(b-3).
+capacity 0.5 point [5.00000000e-01 1.50990331e-14] objective 10.249999999999797
+capacity 1 point [1. 0.] objective 8.000000000000249
+capacity 3 point [2. 1.] objective 1.9999999999999858
+capacity 3.2 point [2.1 1.1] objective 1.6199999999999894
+capacity 5 point [3. 2.] objective 3.944304526105059e-31
+capacity 6 point [3.00000005 2.00000014] objective 2.164885308433009e-14
+Try different starts and verify bounds, not only the capacity residual.
+
+Full analytic certificates compared with SLSQP
+b 0.5 expected [0.5 0. ] computed [5.00000000e-01 1.50990331e-14] lambda [5. 0. 1.]
+status True Optimization terminated successfully audit {'objective': np.float64(10.249999999999797), 'primal_violation': 4.3520742565306136e-14, 'dual_violation': 0.0, 'stationarity': 5.684341886080802e-14, 'complementarity': 2.1760371282653068e-13}
+b 1.0 expected [1. 0.] computed [1. 0.] lambda [4. 0. 0.]
+status True Optimization terminated successfully audit {'objective': np.float64(8.000000000000249), 'primal_violation': 0.0, 'dual_violation': 0.0, 'stationarity': 1.2434497875801753e-13, 'complementarity': 2.4868995751603507e-13}
+b 3.0 expected [2. 1.] computed [2. 1.] lambda [2. 0. 0.]
+status True Optimization terminated successfully audit {'objective': np.float64(1.9999999999999858), 'primal_violation': 7.105427357601002e-15, 'dual_violation': 0.0, 'stationarity': 7.105427357601002e-15, 'complementarity': 1.4210854715202004e-14}
+b 3.2 expected [2.1 1.1] computed [2.1 1.1] lambda [1.8 0.  0. ]
+status True Optimization terminated successfully audit {'objective': np.float64(1.6199999999999894), 'primal_violation': 5.773159728050814e-15, 'dual_violation': 0.0, 'stationarity': 6.217248937900877e-15, 'complementarity': 1.0391687510491465e-14}
+b 5.0 expected [3. 2.] computed [3. 2.] lambda [0. 0. 0.]
+status True Optimization terminated successfully audit {'objective': np.float64(3.944304526105059e-31), 'primal_violation': 0.0, 'dual_violation': 0.0, 'stationarity': 8.881784197001252e-16, 'complementarity': 0.0}
+b 6.0 expected [3. 2.] computed [3.00000005 2.00000014] lambda [0. 0. 0.]
+status True Optimization terminated successfully audit {'objective': np.float64(2.164885308433009e-14), 'primal_violation': 0.0, 'dual_violation': 0.0, 'stationarity': 2.746761129657216e-07, 'complementarity': 0.0}
+Value change: exact -0.38000000000000034 linear -0.40000000000000036
+manual alpha 0.1 point [0.6 0.4] objective 8.32 feasible True
+manual alpha 0.3 point [1.8 1.2] objective 2.0800000000000005 feasible True
+manual alpha 0.5 point [3. 2.] objective 0.0 feasible False
+nonconvex Newton gradient -1.092 Hessian -2.92 direction -0.37397260273972605 slope 0.40837808219178084
