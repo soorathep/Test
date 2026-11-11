@@ -95,7 +95,7 @@ else:
 
 # ------------------------------------------------------------------- decks --
 print("\ndecks")
-for m in modules + [{"id": f"session-{i}", "slides": f"postmidterm-{i:02d}.html"} for i in range(1, 7)] + [{"id": f"appendix-{i}", "slides": f"postmidterm-{i:02d}-appendix.html"} for i in range(1, 7)] + [{"id": "gibbs-review", "slides": "week03-gibbs-review.html"}]:
+for m in modules + [{"id": f"session-{i}", "slides": f"postmidterm-{i:02d}.html"} for i in range(1, 8)] + [{"id": f"appendix-{i}", "slides": f"postmidterm-{i:02d}-appendix.html"} for i in range(1, 7)] + [{"id": "gibbs-review", "slides": "week03-gibbs-review.html"}]:
     name = m.get("slides")
     if not name:
         fail(f"module {m['id']} has no `slides:` key")
@@ -155,7 +155,7 @@ for m in modules:
 if not fails:
     ok(f"{len(listed)} download files, all present")
 
-for i in range(1,7):
+for i in range(1,8):
     name=f"postmidterm-{i:02d}-slides.pdf"
     listed.add(name)
     if not (files_dir/name).is_file(): fail(f"missing session PDF: {name}")

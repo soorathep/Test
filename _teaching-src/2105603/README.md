@@ -215,16 +215,15 @@ Edit the front matter and body, add the module to `_data/act2026.yml` with
   syllabus rather than from a draft.
 
 
-## After-midterm teaching sequence (18 hours)
+## After-midterm teaching sequence and Week 7 workshop
 
-The editable `postmidterm-01.qmd` through `postmidterm-06.qmd` cover Modules 4–6,
-including solid/surface and electrochemical topics. Sessions 1, 5 and 6 are standard classroom sessions and
-use 12 slides and an optional appendix: 30 minutes of concepts, 20 minutes of
-hand calculation, 20 minutes of demonstration, a 10-minute break, 70 minutes of
-pair work, and 30 minutes of discussion and exit reflection. Their required
-independent work is 15–20 minutes of preparation and 30–40 minutes of follow-up.
+The six core decks, `postmidterm-01.qmd` through `postmidterm-06.qmd`,
+cover 18 learning hours. Sessions 1 and 6 use classroom slides with time for
+calculation, Lab practice and discussion. The additional Week 7 synthesis
+workshop uses `postmidterm-07.qmd`. Students revisit cases from across the
+core sessions and check their own calculations in the Labs.
 
-Sessions 2–4 are independent lessons. Their required worksheet, Lab, review,
+Sessions 2–5 are independent lessons. Their required worksheet, Lab, review,
 exit-ticket and feedback activities are included in each lesson's study route;
 the accompanying readings are optional. Session 4 replaces the live class while
 the instructor attends the ECS meeting, with approximately three hours of total
@@ -269,11 +268,11 @@ field for LLE and its evidence field for the consistency comparison. Students
 report actual study minutes and pace in the existing feedback text; no new form
 or identified attendance endpoint is assumed.
 
-Render the six session decks and six session appendices using the
+Render the seven session decks and the six core session appendices using the
 existing public-profile, vendored-KaTeX and publish workflow. Use the research
 interpreter by absolute path, `~/.venvs/research/bin/python`, for every tool.
 Public PDF copies are `files/postmidterm-01-slides.pdf` through
-`files/postmidterm-06-slides.pdf`. Original module teaching notes remain in the QMD sources and are stripped
+`files/postmidterm-07-slides.pdf`. Original module teaching notes remain in the QMD sources and are stripped
 from published HTML and PDFs. Classroom activity prompts are student-facing.
 
 
@@ -318,13 +317,13 @@ publishing the readings and refreshed classroom PDFs.
 
 ## End-of-class responses
 
-In classroom Sessions 1, 5 and 6, the final 30 minutes are discussion (20), exit
-ticket (5), feedback (3), and closing (2). Independent Sessions 2–4 include the
-exit ticket and feedback in their planned study time. In Session 2, they occupy
-study minutes 172–180, after the review and corrections. Classroom decks have
-12 core slides; the independent decks use their own guided sequences, including
-28 slides for Session 2 and 40 slides for Session 4. Their final slides contain
-a QR and clickable link to `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=N`.
+Sessions 1 and 6 use classroom slides. The independent lessons in Weeks 2–5
+include the exit ticket and feedback within their study time. Week 6 reserves
+five minutes for the electrochemistry exit ticket and three for feedback on that
+class. The additional Week 7 review workshop reserves five minutes for its own
+exit ticket and three for feedback on the entire period after the midterm.
+Each final slide has a QR code and a clickable link to the form for that week
+at `https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=N`.
 
 Responses persist in the Sites D1 table `course_responses`; the student page
 has no response-list endpoint. The instructor can ask ChatGPT to read the Sites

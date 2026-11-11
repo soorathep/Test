@@ -1,0 +1,197 @@
+---
+title: "Which equilibrium model fits the evidence?"
+subtitle: "Week 7 · After-midterm problem workshop"
+author: "Soorathep Kheawhom"
+format:
+  revealjs:
+    theme: [default, theme/teal-amber.scss]
+    css: assets/postmidterm.css
+    include-in-header:
+      text: |
+        <style>
+        .reveal .slides table {font-size: .82em;}
+        .reveal .slides table th {font-size: .92em; text-transform: none; letter-spacing: normal;}
+        #workshop-plan col:first-child {width: 16% !important;}
+        #workshop-plan col:last-child {width: 84% !important;}
+        </style>
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    show-slide-number: speaker
+    progress: true
+    hash: true
+    history: true
+    transition: none
+    transition-speed: fast
+    menu: false
+    html-math-method: katex
+    title-slide-attributes:
+      data-background-color: "#1C242B"
+---
+
+## Bring one question from Week 6 {#week6-questions}
+
+Open your Lab 13 notes. Which step would you like to see worked again?
+
+Take one minute to write the step and the value or sign you expected. Compare with a partner, then bring one question to the class discussion.
+
+To get started, consider identical electrodes with unequal ion activities. How could you predict which way the reversible cell would run?
+
+::: {.notes}
+Choose a real Week 6 exit-ticket question once responses are available. Ask a student to identify the written cell direction. If no specific question is available, use the displayed activity comparison. Explain the sign with the balanced reaction and an equal-activities check.
+:::
+
+## Plan for the workshop {#workshop-plan}
+
+| Minutes | Work with a partner |
+|---|---|
+| 0–15 | Resolve a question from Week 6. |
+| 15–50 | Calculate two phase fractions and check which phases coexist. |
+| 50–80 | Account for the gas inventory in two vessels. |
+| 80–90 | Break. |
+| 90–135 | Predict the direction of a cell reaction and check its voltage. |
+| 135–172 | Change one condition, run a lab, and exchange results. |
+| 172–180 | Complete the Week 7 exit ticket (5 min) and the after-midterm feedback survey (3 min). |
+
+## Which fraction of the feed becomes vapor? {#flash-problem}
+
+At 350 K, an ideal binary mixture has $P_1^{\rm sat}=150$ kPa and $P_2^{\rm sat}=60$ kPa. The feed contains $z_1=0.40$ and the pressure is 90 kPa.
+
+1. Use $P=x_1P_1^{\rm sat}+(1-x_1)P_2^{\rm sat}$ and $y_1=x_1P_1^{\rm sat}/P$ to find the liquid and vapor compositions.
+2. Find the mole fraction of the feed that is vapor, $\beta=(z_1-x_1)/(y_1-x_1)$.
+3. Open **Teaching binary · synthetic** in Lab 01. Its vapor pressures are supplied by the lab. Select the ideal liquid, set the feed and conditions above, and select **Calculate equilibrium**. Verify the overall composition on paper.
+
+[Open Lab 01 · VLE and flash](labs/index.html#experiment)
+
+## What if the compositions came from an experiment? {#measured-vle}
+
+Suppose the measured values at 350 K are $x_1=1/3$, $y_1=5/9$ and $P=90$ kPa. Assume ideal vapor, negligible Poynting correction, and a pure-liquid standard state.
+
+1. Use $\gamma_1=y_1P/(x_1P_1^{\rm sat})$. Compare the values inferred using 150 and 120 kPa for $P_1^{\rm sat}$. Which measured quantity changed?
+2. Before choosing an Antoine correlation, identify its log base, temperature and pressure units, and valid temperature range.
+3. A model fits these data closely. What additional evidence would you seek across compositions to assess thermodynamic consistency?
+
+## Which fraction forms the second liquid? {#liquid-problem}
+
+Now consider a different binary mixture. The one-parameter Margules model has $A=3$ and the overall mole fraction is $z_1=0.18$.
+
+1. In Lab 04 choose **Margules · 1 parameter**, enter $A=3$ and $z_1=0.18$, then select **Find equilibrium**. Read both liquid compositions from the common tangent.
+2. Use the lever rule to calculate the mole fraction of the feed in the liquid richer in component 1. Reconstruct the feed from the two endpoint compositions.
+3. Compare the common tangent with the homogeneous curve at $z_1=0.18$. Which state has lower Gibbs energy?
+
+[Open Lab 04 · Liquid stability](labs/stability.html#lle-experiment)
+
+## Check the phases against the feed {#phase-check}
+
+| Result | Independent check |
+|---|---|
+| Flash at 90 kPa. $x_1=0.3333$, $y_1=0.5556$, $\beta=0.3000$. | $0.70(0.3333)+0.30(0.5556)\approx0.4000$. |
+| LLE with $A=3$. The liquids have $x_1=0.07072$ and $0.92928$. The fraction in the richer liquid is $0.1273$. | $0.8727(0.07072)+0.1273(0.92928)\approx0.1800$. The common tangent lies below the homogeneous liquid at this feed. |
+
+**Week 2–3 data check.** $\gamma_1=1.00$ or $1.25$. The measured $x_1,y_1,P,T$ are the same. A small fitting residual measures agreement with the chosen model. Apply a Gibbs–Duhem consistency test appropriate to the experimental path and inspect the local residuals.
+
+## Can the vessel reach 10 kPa? {#vessel-problem}
+
+A closed vessel contains 0.0086712 mol of A at 300 K. The free gas volume is 1.00 L. Treat the gas as ideal and use $R=8.31446$ L kPa mol$^{-1}$ K$^{-1}$.
+
+**Vessel A.** Pure solid A can sublime. Its sublimation pressure is 10.0 kPa at this temperature. Calculate how many moles are needed in the gas to reach this pressure. How many remain as bulk solid?
+
+**Vessel B.** The inventory of A can occupy the gas or adsorb onto 10.0 g of a separate adsorbent. Use absolute Langmuir uptake $q=q_s bP_A/(1+bP_A)$, with $q_s=2.00$ mol kg$^{-1}$ and $b=0.100$ kPa$^{-1}$. Try $P_A=5.00$ kPa. Does the inventory close?
+
+## Test what happens when adsorbent mass doubles {#vessel-lab}
+
+In Lab 11, select **Reset synthetic parameters**. Use Langmuir at 300 K, 1 L free gas volume, 10 g adsorbent, 0.0086712 mol total adsorbate, and zero inert gas.
+
+1. Select **Compare & solve vessel** and record $P_A$, the gas moles, and the adsorbed moles.
+2. Predict the pressure at 20 g relative to its value at 10 g. Change only the adsorbent mass, recalculate, and check $n_A^g+m_sq$.
+3. Compare the roles of the two solids. What sets $P_A$ while bulk solid A remains in vessel A? Which equation sets it in vessel B?
+
+[Open Lab 11 · Adsorption](labs/adsorption.html#ad-experiment)
+
+## Follow the material in each vessel {#vessel-check}
+
+| Vessel | $P_A$ (kPa) | Gas (mol) | Bulk solid or adsorbed A (mol) |
+|---|---:|---:|---:|
+| A · Pure solid present | 10.00 | 0.0040091 | 0.0046621 in the solid |
+| B · 10 g adsorbent | 5.000 | 0.0020045 | 0.0066667 adsorbed |
+| B · 20 g adsorbent | 2.389 | 0.0009578 | 0.0077134 adsorbed |
+
+For vessel B at 10 g, $q(5.00)=0.6667$ mol kg$^{-1}$. Multiplying by 0.0100 kg gives the amount on the surface. Check that each row accounts for 0.0086712 mol of A.
+
+## Which electrode would gain metal? {#cell-problem}
+
+At 298.15 K, both electrodes use $\mathrm{M^{2+}/M}$. Take oxidation on the left, reduction on the right, and zero junction potential. If the circuit is closed, deposition can occur at the electrode undergoing reduction. Use $a_L=0.040$ and $a_R=0.40$.
+
+1. Write the reaction, keeping each species in its own compartment. Which ion activity belongs in the numerator of $Q$?
+2. The standard cell potential is zero. What is $K$? Compare $Q$ with $K$ to predict the direction and which electrode gains metal.
+3. Calculate $E=E^\circ-(0.05915935\ {\rm V}/n)\log_{10}Q$ and $\Delta_rG=-nFE$. Use $n=2$ and $F=96485$ C mol$^{-1}$.
+
+## Run the three cell conditions {#cell-lab}
+
+In Lab 13, select **Concentration-cell example**, then **Direct dimensionless activities**. In each $\mathrm{M^{2+}}$ row, edit the **value** column. Keep $\gamma=1$ and the pure-metal entries at 1.
+
+| Case | Left activity | Right activity | Before selecting **Calculate cell** |
+|---|---:|---:|---|
+| Original | 0.040 | 0.40 | Record your predicted sign and voltage. |
+| Exchanged | 0.40 | 0.040 | Predict which electrode now gains metal. |
+| Equal | 0.40 | 0.40 | Predict $Q$ and $E$. |
+
+Compare the lab's potential with your own $RT\ln(Q/K)$ check on the reaction Gibbs energy.
+
+[Open Lab 13 · Electrochemical equilibrium](labs/electrochemistry.html#ec-experiment)
+
+## Check the direction before rounding {#cell-check}
+
+For left oxidation and right reduction, the dissolved ion is produced on the left and consumed on the right, so $Q=a_L/a_R$. Identical electrodes give $E^\circ=0$ and $K=1$.
+
+| Case | $Q$ | $E$ (mV) | $\Delta_rG$ (kJ per mol of reaction as written) | Deposition if the cell runs |
+|---|---:|---:|---:|---|
+| Original | 0.10 | $+29.58$ | $-5.708$ | Right electrode |
+| Exchanged | 10 | $-29.58$ | $+5.708$ | Left electrode |
+| Equal | 1 | 0 | 0 | No net deposition |
+
+For the original case, $RT\ln(0.10)=-5.708$ kJ mol$^{-1}$. Write one sentence connecting that sign to the observed cell polarity.
+
+## Change one condition and exchange your result {#pair-retest}
+
+Choose one case and predict the outcome before touching its controls.
+
+| Choose one lab | Change this condition |
+|---|---|
+| [Lab 01 · Flash](labs/index.html#experiment) | Raise $P$ from 90 to 100 kPa at the same $T$ and $z_1$. Which phase or phases remain? |
+| [Lab 11 · Adsorption](labs/adsorption.html#ad-experiment) | Keep 20 g of adsorbent and double the total inventory. Predict the direction of the pressure change. |
+| [Lab 13 · Cell](labs/electrochemistry.html#ec-experiment) | In the original case, double both ion activities. Does the activity ratio change? Predict the voltage. |
+
+Allow 20 minutes to calculate and test. Use 10 minutes to exchange cases with another pair and reproduce their result. In the final 7 minutes, share one result and one check the class can repeat.
+
+::: {.notes}
+Lab 01 bubble P is 96 kPa and dew P is about 78.95 kPa for z1=0.40. At 100 kPa the feed is a single liquid. Lab 11 pressure increases because both terms in the inventory balance increase with pressure. Lab 13 Q stays 0.10, and E remains +29.58 mV. In Debrief ask the other pair how they would notice a reversed sign or a wrong reference convention.
+:::
+
+## Week 7 exit ticket and after-midterm feedback {#exit-ticket}
+
+:::: {.columns}
+::: {.column width="62%"}
+
+**5 min · Exit ticket for today's workshop**
+
+Choose one case from today. Give a result with its units, or state that it is dimensionless. Explain what it means and name an independent check or a limitation.
+
+**3 min · Feedback on all of Weeks 1–7**
+
+Rate the overall pace after the midterm. Which resource helped you most? Name one thing to keep or change.
+
+Complete both parts in the same form.
+
+:::
+::: {.column width="32%"}
+
+[![Scan to open the Week 7 exit ticket and whole after-midterm feedback survey.](assets/exit-qr-07.png){width="96%"}](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=7)
+
+[Open the Week 7 form](https://thermo-2105603-exit-ticket.soorathep-k.chatgpt.site/?session=7)
+
+:::
+::::

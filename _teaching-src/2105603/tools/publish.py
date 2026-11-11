@@ -40,7 +40,7 @@ DST = pathlib.Path(__file__).resolve().parents[3] / "teaching" / "2105603"
 DECKS = [
     "week02-clarifications.html",
     "week03-gibbs-review.html",
-    *[f"postmidterm-{i:02d}.html" for i in range(1,7)],
+    *[f"postmidterm-{i:02d}.html" for i in range(1,8)],
     "eos.html",        # Module 1  Evolution of Equations of State
     "fugacity.html",   # Module 2  Fugacity and the Equilibrium Criterion
     "solution.html",   # Module 3  Solution Thermodynamics

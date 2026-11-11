@@ -2,7 +2,7 @@
 import {createRequire} from 'node:module';import os from 'node:os';import path from 'node:path';import fs from 'node:fs';import assert from 'node:assert/strict';
 const require=createRequire(import.meta.url),{chromium}=require(path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const browser=await chromium.launch({headless:true,channel:'chrome',args:['--disable-gpu','--disable-renderer-backgrounding','--disable-backgrounding-occluded-windows','--disable-background-timer-throttling']});
-const names=process.argv.slice(2).length?process.argv.slice(2):Array.from({length:6},(_,i)=>'postmidterm-'+String(i+1).padStart(2,'0'));
+const names=process.argv.slice(2).length?process.argv.slice(2):Array.from({length:7},(_,i)=>'postmidterm-'+String(i+1).padStart(2,'0'));
 fs.mkdirSync('/tmp/thermo-slide-review',{recursive:true});
 const p=await browser.newPage({viewport:{width:1280,height:720}});
 await p.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
