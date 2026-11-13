@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Concentration cell · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Predict, calculate and compare a concentration cell using two clearly labelled solution compartments.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/guide.css">
+</head>
+<body>
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a>
+    <nav aria-label="Course navigation">
+      <a href="index.html">2027 design preview</a>
+      <a href="../">Course</a>
+    </nav>
+  </header>
+
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div>
+        <p class="eyebrow">Lab 13 · Electrochemistry</p>
+        <h1>Why does the cell voltage change?</h1>
+        <p class="intro-copy">Predict the voltage, change the concentrations, and check your result.</p>
+      </div>
+      <p class="preview-note">2027 prototype<br><a href="index.html#pilot">Help review this design</a></p>
+    </div>
+
+    <section class="starter" aria-label="Starting cases">
+      <div class="starter-label"><strong>Choose a case</strong><span>Values load into the two solutions below.</span></div>
+      <div class="case-buttons">
+        <button type="button" id="restore-baseline" data-case="baseline" aria-pressed="true">Starting case</button>
+        <button type="button" data-case="swap" aria-pressed="false">Swapped starting case</button>
+        <button type="button" data-case="equal" aria-pressed="false">Equal concentrations</button>
+      </div>
+    </section>
+
+    <div class="experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">Set the two solutions</h2><span class="condition">298.15 K</span></div>
+        <p class="section-help">Each compartment contains a metal electrode M(s) and dissolved M²⁺ ions.</p>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+
+        <form id="cell-form" novalidate>
+          <div class="cell-bridge" aria-hidden="true"><span>Same M²⁺/M electrode couple</span></div>
+          <div class="solution-grid">
+            <fieldset class="solution">
+              <legend>Left solution</legend>
+              <div class="electrode" aria-hidden="true"><span>M(s)</span></div>
+              <label for="c-left">M²⁺ concentration</label>
+              <div class="quantity-input"><input id="c-left" type="number" value="0.01" step="any" min="0" inputmode="decimal" aria-describedby="unit-c-left error-c-left"><span id="unit-c-left">mol/L</span></div>
+              <p id="error-c-left" class="field-error" hidden></p>
+              <p class="activity-value">Activity a<sub>L</sub> <output id="activity-left">—</output></p>
+            </fieldset>
+            <fieldset class="solution">
+              <legend>Right solution</legend>
+              <div class="electrode" aria-hidden="true"><span>M(s)</span></div>
+              <label for="c-right">M²⁺ concentration</label>
+              <div class="quantity-input"><input id="c-right" type="number" value="1" step="any" min="0" inputmode="decimal" aria-describedby="unit-c-right error-c-right"><span id="unit-c-right">mol/L</span></div>
+              <p id="error-c-right" class="field-error" hidden></p>
+              <p class="activity-value">Activity a<sub>R</sub> <output id="activity-right">—</output></p>
+            </fieldset>
+          </div>
+          <p id="cell-direction" class="cell-direction" aria-live="polite">Calculate the cell to identify the favored direction.</p>
+
+          <div class="prediction-row">
+            <label for="prediction">Predict the sign of E <span>optional</span></label>
+            <select id="prediction"><option value="">Choose a sign</option><option value="positive">Positive</option><option value="zero">Zero</option><option value="negative">Negative</option></select>
+          </div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Calculate the cell</button>
+
+          <details class="advanced">
+            <summary>Activity coefficients and model assumptions</summary>
+            <p>Activities use a = γc/c°. The standard concentration c° is 1 mol/L. The supplied coefficients are assumptions for this teaching example.</p>
+            <div class="coefficient-grid">
+              <div><label for="gamma-left">Left γ <span>dimensionless</span></label><input id="gamma-left" type="number" min="0" step="any" value="1" aria-describedby="error-gamma-left"><p id="error-gamma-left" class="field-error" hidden></p></div>
+              <div><label for="gamma-right">Right γ <span>dimensionless</span></label><input id="gamma-right" type="number" min="0" step="any" value="1" aria-describedby="error-gamma-right"><p id="error-gamma-right" class="field-error" hidden></p></div>
+            </div>
+            <p>Both standard reduction potentials use the same hypothetical reference and equal 0 V at 298.15 K. Two electrons transfer per reaction as written. Pure metal is present in each compartment, with activity 1. The model uses a zero liquid-junction potential and predicts reversible cell potential.</p>
+            <p>Individual-ion activities depend on the chosen convention. Bulk solutions must be electroneutral. The supplied γ values are teaching inputs.</p>
+            <p><a href="../labs/electrochemistry.html#ec-experiment">Open the general cell builder</a> for other half-reactions and standard-state inputs.</p>
+          </details>
+
+          <details class="advanced">
+            <summary>More concentration experiments</summary>
+            <p>Compare a smaller concentration ratio, then compare the same ratio at lower concentrations.</p>
+            <div class="case-buttons secondary-cases">
+              <button type="button" data-case="tenfold" aria-pressed="false">Left 0.1 · Right 1 mol/L</button>
+              <button type="button" data-case="same-ratio" aria-pressed="false">Left 0.001 · Right 0.1 mol/L</button>
+            </div>
+          </details>
+
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">Read and check the result</h2></div>
+        <div id="result-placeholder" class="result-placeholder">
+          <span class="placeholder-voltage" aria-hidden="true">E</span>
+          <p>Make a prediction, then calculate the cell.</p>
+          <p class="section-help">The sign refers to left oxidation and right reduction in the written cell reaction.</p>
+        </div>
+        <div id="results" hidden>
+          <div class="voltage-result"><span>Reversible cell potential E</span><div><output id="result-E">—</output><span class="voltage-unit">V</span></div></div>
+          <p id="result-direction" class="direction-result"></p>
+          <p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="result-metrics">
+            <div><dt>Current ratio Q</dt><dd id="result-Q">—</dd></div>
+            <div><dt>Equilibrium constant K</dt><dd id="result-K">—</dd></div>
+            <div><dt>Reaction Δ<sub>r</sub>G <span>kJ/mol as written</span></dt><dd id="result-dG">—</dd></div>
+          </dl>
+          <div class="calculation-check">
+            <h3>Check the calculation</h3>
+            <p class="reaction">M(s)<sub>L</sub> + M²⁺<sub>R</sub> ⇌ M²⁺<sub>L</sub> + M(s)<sub>R</sub></p>
+            <ol id="calc-steps"></ol>
+          </div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">Compare your cases</h2><span class="section-help">Saved rows keep their original inputs.</span></div>
+      <p id="comparison-empty" class="empty-state">Calculate a case and add its result here. Then change the concentrations and compare.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved case comparison" tabindex="0" hidden>
+        <table><caption class="visually-hidden">Concentration-cell comparison. Q and the activity coefficients are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">Left c / mol L⁻¹</th><th scope="col">Right c / mol L⁻¹</th><th scope="col">Left γ</th><th scope="col">Right γ</th><th scope="col">Q</th><th scope="col">E / V</th><th scope="col">Δ<sub>r</sub>G / kJ mol⁻¹</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table>
+      </div>
+      <label for="reflection" class="reflection-label">Explain your comparison</label>
+      <p id="reflection-help" class="section-help">What changed? Which calculation supports your explanation? For equal activities, check whether Q = K and E = 0.</p>
+      <textarea id="reflection" rows="4" maxlength="10000" aria-describedby="reflection-help" placeholder="Write your explanation and one independent check."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite"></p>
+      <p class="privacy-note">Your inputs, comparisons and explanation are kept in this open page. Download the study to keep a copy and reopen it later.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate this cell. You can read the model assumptions and compare your hand calculation with the course slides.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="index.html">2027 design and pilot plan</a></footer>
+  <script type="module" src="assets/electrochemistry.js"></script>
+</body>
+</html>
