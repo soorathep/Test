@@ -173,6 +173,11 @@ measurements in case D and the 80 kPa option, component order, measured versus
 derived quantities and the purpose of each control. A source note beside the
 data selector updates with the selected family and sampling resolution. No
 experimental file is required; the JSON opener restores this lab's saved work.
+Students can open a preview of every supplied T/P/x/y row, with a column key and
+units, before calculating. Four method-specific plots remain visible together:
+area cancellation, the Herington boiling range, local residuals, and fitted
+pressure/composition residuals in separate panels. The graph captions retain
+method applicability and distinguish aggregate criteria from pointwise values.
 The numbered route separates applicability, a control calculation, a deliberate
 challenge and a defended conclusion. A conceptual vector diagram distinguishes
 global area cancellation from local agreement. Mathematical quantities use

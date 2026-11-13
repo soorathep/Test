@@ -28,6 +28,7 @@
 .picture-key p, .diagnostic-picture figcaption { font-size: .9rem; margin-top: 7px; }
 .diagnostic-picture figcaption { color: var(--muted); margin-bottom: 0; }
 .setup-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; align-items: start; }
+.setup-grid > *, .setup-grid details { min-width: 0; }
 .setup-grid label { margin-top: 18px; }
 .setup-grid > div > label:first-child { margin-top: 0; }
 .control-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -103,4 +104,22 @@
   .counterexample-box { padding: 16px; }
   .model-action button { width: 100%; }
   .consistency-page .graduate-section button { width: 100%; }
+}
+
+.data-column-key { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; font-size: .9rem; }
+.data-column-key > div { min-width: 0; }
+.data-column-key dt { font-weight: 600; }
+.data-column-key dd { margin: 4px 0 0; }
+.data-preview-table { max-height: 340px; overflow-y: auto; }
+.consistency-page .data-preview-table th:last-child, .consistency-page .data-preview-table td:last-child { min-width: 110px; text-align: right; }
+.method-plot-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin: 18px 0; align-items: start; }
+.method-plot-panel { min-width: 0; padding: 16px; border: 1px solid var(--border); border-radius: 6px; }
+.method-plot-panel h3 { min-height: 2.8em; }
+.method-plot-panel .consistency-plot { min-height: 360px; }
+.method-plot-panel .model-method-plot { min-height: 440px; }
+@media (max-width:950px) { .method-plot-grid { grid-template-columns: 1fr; } }
+@media (max-width:600px) {
+ .data-column-key { grid-template-columns: 1fr; }
+ .method-plot-panel { padding: 12px; }
+ .method-plot-panel h3 { min-height: 0; }
 }

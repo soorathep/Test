@@ -3,7 +3,7 @@ import {
   normalizeSettings, normalizeBounds, analyze, runGraduate, serializeStudy, parseStudy,
 } from './consistency-state.js?v=graduate-1';
 import { derivative } from '../../labs/assets/consistency.js';
-import { palette } from '../../labs/assets/palette.js';
+import { renderMethodPlots, clearMethodPlots } from './consistency-plots.js?v=data-views-1';
 
 const $ = id => document.getElementById(id);
 const number = (value, digits = 6) => value == null || !Number.isFinite(value) ? 'Undefined' : Number(value).toLocaleString('en-US', { maximumSignificantDigits: digits });
@@ -11,7 +11,7 @@ const statusText = { 'meets-criterion': 'Meets this criterion', 'outside-criteri
 const sourceNames = { syntheticT: 'Synthetic · 350 K', syntheticP: 'Synthetic · 60 kPa', article60: 'Article · 60 kPa', article80: 'Article · 80 kPa' };
 const settingsIds = ['c3-dataset', 'c3-kind', 'c3-amplitude', 'c3-count', 'c3-extension', 'c3-heat'];
 const notesKeys = ['assumptions', 'uncertainty', 'evidence', 'decision'];
-let data, study = freshStudy(), revision = 0, activeWorker = null, busy = false, operation = null, chartRevision = 0;
+let data, study = freshStudy(), revision = 0, activeWorker = null, busy = false, operation = null;
 
 function freshStudy() {
   return { settings: copy(DEFAULT_SETTINGS), bounds: copy(DEFAULT_BOUNDS), notes: defaultNotes(),
@@ -72,7 +72,23 @@ function explainControls() {
     'c3-case-cancel': dataset === 'syntheticT' && $('c3-kind').value === 'cancel',
     'c3-case-isobaric': dataset === 'syntheticP', 'c3-case-article': dataset === 'article60' };
   for (const [id, selected] of Object.entries(presets)) $(id).setAttribute('aria-pressed', String(selected));
+  if ($('c3-data-preview').open) renderDataPreview();
 }
+function renderDataPreview() {
+  try {
+    if (!data) return;
+    const preview = analyze(readSettings(), data).set;
+    rows('c3-preview-body', preview.rows.map((row,index)=>[index+1,number(row.T),number(row.PkPa),number(row.x),number(row.y)]));
+    $('c3-preview-description').textContent = preview.synthetic
+      ? 'Generated practice states for 2-propanol + water, using the selected NRTL-based scenario and Antoine correlations.'
+      : preview.name + ': original supplied measurements, in source order. Activity-inference exclusions do not remove rows from this preview.';
+    $('c3-preview-status').textContent = 'Showing all ' + preview.rows.length + ' supplied states. ' + (preview.synthetic ? 'These are generated states, not measured observations.' : 'These are measured T–P–x–y states.') + ' Opening this preview does not replace your diagnostic results. Calculate diagnostics separately in Step 1.';
+  } catch (error) {
+    $('c3-preview-body').replaceChildren();
+    $('c3-preview-status').textContent = 'Preview unavailable: ' + error.message + ' Correct the scientific settings first.';
+  }
+}
+
 function stopWorker() {
   if (!activeWorker) return;
   const old = activeWorker; activeWorker = null; old.worker.terminate(); old.resolve({ error: 'Calculation canceled after a change.' });
@@ -87,7 +103,7 @@ function updateButtons() {
   $('c3-run-measured').disabled = !calculated || synthetic || busy;
 }
 function invalidate(message = 'Scientific settings changed. Calculate again; your notes and saved comparisons are retained.') {
-  revision++; chartRevision++; stopWorker(); busy = false; operation = null;
+  revision++; clearMethodPlots(); stopWorker(); busy = false; operation = null;
   study.analysis = null; study.model = null; study.modelError = ''; study.modelRequested = false;
   study.graduateRequested = copy(DEFAULT_REQUESTS); study.graduate = {};
   $('c3-results').hidden = true; $('c3-result-placeholder').hidden = false;
@@ -189,41 +205,9 @@ function render() {
     $('c3-scope').textContent = set.rows.length+' observations; '+set.valid.length+' usable activity pairs; '+set.excluded.length+' excluded. Activity interval: '+number(set.valid[0].x)+' to '+number(set.valid.at(-1).x)+' mol/mol. '+(area.full ? area.conditional?'The full-range area is conditional on an assumed curve.':'Synthetic endpoint limits are known.':'No full-range area claim is available.');
     $('c3-model-status').textContent = study.model ? 'Converged from a five-start fit. '+(study.model.atBound?'At least one parameter is at its bound.':'No parameter is at a bound.') : study.modelError || 'Not run for this calculated case.';
     $('c3-interpretation').textContent = set.synthetic ? (study.settings.scenario==='cancel'?'The added cosine has zero analytical integral, yet changes the local identity. Compare both results and the three-point example. The numerical whole-curve area need not be exactly zero.':study.settings.scenario==='local'?'Inspect the local peak as well as the mean score: a narrow imposed defect can remain below both aggregate thresholds.':'Use the control to separate numerical approximation from a deliberately imposed defect. A criterion met under these assumptions is not blanket validation.') : 'Keep “not assessed” distinct from “outside a criterion.” Missing endpoints or Hᴱ prevent a claim; a model threshold does not identify measurement error as its cause.';
-    renderCards();renderWorked();renderTables();drawChart();
+    renderCards();renderWorked();renderTables();renderMethodPlots({analysis:study.analysis,model:study.model,settings:study.settings,data});
   }
   renderGraduate();renderComparisons();updateButtons();
-}
-const trace=(x,y,name,color=palette.teal,dash='solid',mode='lines')=>({x,y,name,mode,line:{color,width:2,dash},marker:{color,size:6},connectgaps:false});
-async function drawChart() {
-  const call=++chartRevision, analysis=study.analysis;
-  if(!analysis)return;
-  if(!window.Plotly){$('c3-plot').textContent='The optional plot library is unavailable. All observations and residuals remain available in the numerical tables below.';$('c3-plot').style.minHeight='0';$('c3-legend').replaceChildren();return;}
-  const {set,area,local}=analysis,kind=$('c3-chart').value;
-  let traces=[],xTitle='Liquid composition x<sub>1</sub> / mol mol<sup>−1</sup>',yTitle,caption;
-  if(kind==='area'){
-    traces=[trace(set.valid.map(r=>r.x),set.valid.map(r=>r.f),set.synthetic?'Generated log ratio':'Inferred log ratio',set.synthetic&&set.kind!=='clean'?palette.amber:palette.teal,'solid','lines+markers')];
-    if(set.synthetic&&set.kind!=='clean'){
-      const ref=analyze({...study.settings,scenario:'clean'},data).set;
-      traces.unshift(trace(ref.valid.map(r=>r.x),ref.valid.map(r=>r.f),'Consistent control',palette.teal));
-    }
-    if(area.conditional)traces.push(trace(area.points.map(r=>r.x),area.points.map(r=>r.f),'Assumed full-range curve',palette.amber,'dash'));
-    yTitle='ln(γ<sub>1</sub>/γ<sub>2</sub>)';caption='Positive area = '+number(area.area.positive)+'; negative-area magnitude = '+number(area.area.negative)+'. '+(area.full?'Full-range curve.':'Measured interval only.');
-  }else if(kind==='differential'){
-    traces=[trace(local.points.map(r=>r.x),local.points.map(r=>r.raw),'Raw residual',palette.teal,'solid','lines+markers')];
-    if(set.path==='isobaric'&&set.synthetic&&study.settings.heat)traces.push(trace(local.points.map(r=>r.x),local.points.map(r=>r.residual),'Including supplied heat term',palette.amber));
-    yTitle='Dimensionless local residual r';caption=local.reason;
-  }else if(kind==='model'){
-    if(study.model)traces=[trace(study.model.points.map(r=>r.x),study.model.points.map(r=>r.pressureResidual),'100 ΔP/P / %',palette.amber,'solid','lines+markers'),trace(study.model.points.map(r=>r.x),study.model.points.map(r=>r.yResidual),'100 Δy / percentage points',palette.amber,'dash','lines+markers')];
-    yTitle='Residual / % P or percentage points y';caption=study.model?study.model.method:'Run the NRTL modeling test first. No model residuals are available yet.';
-  }else{
-    const key=set.path==='isothermal'?'PkPa':'T';traces=[trace(set.rows.map(r=>r.x),set.rows.map(r=>r[key]),'Liquid composition',palette.teal,'solid','markers'),trace(set.rows.map(r=>r.y),set.rows.map(r=>r[key]),'Vapor composition',palette.teal,'solid','markers')];traces[1].marker.symbol='diamond-open';
-    xTitle='Composition x<sub>1</sub> or y<sub>1</sub> / mol mol<sup>−1</sup>';yTitle=key==='T'?'Temperature / K':'Pressure / kPa';caption='All original or generated states, including excluded observations. The numerical table lists inclusion reasons.';
-  }
-  try {
-    await Plotly.react('c3-plot',traces,{margin:{l:72,r:16,t:20,b:80},font:{family:'Source Sans 3, sans-serif',color:palette.graphite,size:13},paper_bgcolor:'transparent',plot_bgcolor:'transparent',showlegend:false,xaxis:{title:{text:xTitle,standoff:16},zeroline:false,automargin:true},yaxis:{title:{text:yTitle,standoff:12},zerolinecolor:palette.graphite,automargin:true},hovermode:'closest'},{responsive:true,displayModeBar:false});
-    if(call!==chartRevision)return;
-    $('c3-legend').replaceChildren(...traces.map(t=>{const span=document.createElement('span'),swatch=document.createElement('i');swatch.style.borderColor=t.line.color;swatch.style.borderTopStyle=t.line.dash==='solid'?'solid':'dashed';span.append(swatch,document.createTextNode(t.name));return span;}));$('c3-chart-note').textContent=caption;
-  }catch{if(call===chartRevision){$('c3-plot').textContent='Plot unavailable. Use the numerical observations and residual tables.';$('c3-chart-note').textContent=caption;}}
 }
 function fitInWorker(analysis) {
   stopWorker();
@@ -292,10 +276,15 @@ function checkRecord() {
   note(missing.length?'Record check: add '+missing.join('; ')+'. This checks the record, not the quality of your reasoning.':'The record contains the calculation, comparisons and four written sections. Check the scientific argument yourself; this is not a grade.');
 }
 
+  $('c3-data-preview').addEventListener('toggle',()=>{if($('c3-data-preview').open)renderDataPreview();});
+  $('c3-preview-link').addEventListener('click',()=>{$('c3-data-preview').open=true;renderDataPreview();});
+if (location.hash === '#c3-data-preview') $('c3-data-preview').open = true;
+
 try {
   const response=await fetch('../labs/assets/ipa-water.json');if(!response.ok)throw new Error('The source measurements could not be loaded. Refresh the page to try again.');data=await response.json();
   $('c3-loading').hidden=true;fillFields();$('c3-calculate').disabled=false;note('Starting control loaded. Follow Step 1 and press Calculate diagnostics.');
   $('c3-form').addEventListener('submit',event=>event.preventDefault());
+
   for(const id of settingsIds)$(id).addEventListener(['c3-amplitude'].includes(id)?'input':'change',()=>invalidate());
   for(const key of ['T','P','x','y'])$('c3-bound-'+key).addEventListener('input',()=>{
     revision++;stopWorker();busy=false;operation=null;study.graduateRequested.sensitivity=false;delete study.graduate.sensitivity;
@@ -309,7 +298,7 @@ try {
   $('c3-case-cancel').addEventListener('click',()=>loadCase({scenario:'cancel'},'B · Canceling error at 350 K'));
   $('c3-case-isobaric').addEventListener('click',()=>loadCase({dataset:'syntheticP'},'C · Isobaric control with heat correction'));
   $('c3-case-article').addEventListener('click',()=>loadCase({dataset:'article60'},'D · Measured 60 kPa data'));
-  $('c3-calculate').addEventListener('click',calculate);$('c3-model').addEventListener('click',runModel);$('c3-chart').addEventListener('change',drawChart);
+  $('c3-calculate').addEventListener('click',calculate);$('c3-model').addEventListener('click',runModel);
   $('c3-run-challenge').addEventListener('click',runChallenge);$('c3-run-measured').addEventListener('click',runMeasured);$('c3-save-case').addEventListener('click',saveCase);$('c3-export').addEventListener('click',exportStudy);$('c3-import').addEventListener('change',importStudy);$('c3-check-record').addEventListener('click',checkRecord);
   updateButtons();
 }catch(error){$('c3-loading').textContent=error.message;showError(error,false);}
