@@ -1,0 +1,748 @@
+import {
+  DEFAULT_INPUTS, copy, validateData, normalizeInputs, observation, analyze,
+  fitStudy, makeStudy, parseStudy,
+} from './case-state.js';
+import { palette } from '../../labs/assets/palette.js';
+
+const element = (id) => document.getElementById(id);
+let data;
+let current = null;
+let retainedFit = null;
+let cases = [];
+let revision = 0;
+let importRequest = 0;
+let plotRevision = 0;
+let busy = false;
+let manualCaseName = false;
+let importedPrediction = '';
+
+function text(id, value) {
+  if (element(id)) element(id).textContent = value;
+}
+
+function show(id, visible) {
+  if (element(id)) element(id).hidden = !visible;
+}
+
+function format(value, digits = 6) {
+  if (value === null || !Number.isFinite(value)) return 'Not available';
+  if (value === 0) return '0';
+  return Number(value.toPrecision(digits)).toString();
+}
+
+function optionLabel(id) {
+  return element(id)?.selectedOptions?.[0]?.textContent || '';
+}
+
+function answers() {
+  return Object.fromEntries(['psat1', 'psat2', 'gamma1', 'gamma2'].map((key) => (
+    [key, element('answer-' + key)?.value || '']
+  )));
+}
+
+function writeAnswers(values = {}) {
+  for (const key of ['psat1', 'psat2', 'gamma1', 'gamma2']) {
+    if (element('answer-' + key)) element('answer-' + key).value = values[key] || '';
+  }
+  text('answer-feedback', '');
+}
+
+function clearError() {
+  element('form-error').replaceChildren();
+  element('form-error').hidden = true;
+  element('alpha').removeAttribute('aria-invalid');
+  show('error-alpha', false);
+}
+
+function error(message) {
+  const box = element('form-error');
+  box.replaceChildren(document.createTextNode(message));
+  if (message.includes('original Lab 02')) {
+    const link = document.createElement('a');
+    link.href = '../labs/case-study.html#case-experiment';
+    link.textContent = 'Open the original Lab 02';
+    box.append(document.createTextNode(' '), link);
+  }
+  box.hidden = false;
+  box.focus();
+}
+
+function readInputs() {
+  clearError();
+  const alphaText = element('alpha').value.trim();
+  const alpha = Number(alphaText);
+  if (!alphaText || !Number.isFinite(alpha) || alpha < 0.1 || alpha > 0.6) {
+    const message = 'Enter a dimensionless α from 0.1 to 0.6.';
+    element('alpha').setAttribute('aria-invalid', 'true');
+    text('error-alpha', message);
+    show('error-alpha', true);
+    error(message);
+    element('alpha').closest('details')?.setAttribute('open', '');
+    element('alpha').focus();
+    return null;
+  }
+  try {
+    return normalizeInputs({
+      inspect: Number(element('dataset').value),
+      selectedRow: Number(element('observation').value),
+      train: element('training-pressure').value,
+      evaluate: Number(element('evaluation-pressure').value),
+      alpha,
+      model: element('case-model').value,
+      chart: element('case-chart').value,
+    }, data);
+  } catch (issue) {
+    error(issue.message);
+    return null;
+  }
+}
+
+function setObservationOptions(pressure, selected = 6) {
+  const dataset = data.datasets.find((set) => set.pressureKPa === Number(pressure));
+  if (!dataset) throw new Error('Choose one of the supplied experimental pressures.');
+  element('observation').replaceChildren(...dataset.rows.map((row, index) => (
+    new Option('Row ' + (index + 1) + ' · x₁ = ' + format(row.x, 5), String(index))
+  )));
+  element('observation').value = String(Math.min(Math.max(0, selected), dataset.rows.length - 1));
+}
+
+function writeInputs(input) {
+  element('dataset').value = String(input.inspect);
+  setObservationOptions(input.inspect, input.selectedRow);
+  element('training-pressure').value = input.train;
+  element('evaluation-pressure').value = String(input.evaluate);
+  element('alpha').value = input.alpha;
+  element('case-model').value = input.model;
+  element('case-chart').value = input.chart;
+}
+
+function inspect() {
+  return observation(data, Number(element('dataset').value), Number(element('observation').value));
+}
+
+function renderPropertyRecords() {
+  const container = element('property-records');
+  if (!container) return;
+  container.replaceChildren(...data.properties.map((property) => {
+    const section = document.createElement('article');
+    const heading = document.createElement('h4');
+    heading.textContent = property.name;
+    const equation = document.createElement('p');
+    equation.className = 'property-equation';
+    equation.textContent = 'log₁₀(Psat / bar) = A − B/(T + C)';
+    const constants = document.createElement('p');
+    constants.textContent = 'A = ' + format(property.A, 12) + ', B = '
+      + format(property.B, 12) + ', C = ' + format(property.C, 12) + '.';
+    const units = document.createElement('p');
+    units.textContent = 'Use T in K. The equation returns Psat in bar; multiply by 100 for kPa. Valid from '
+      + property.rangeK.join(' to ') + ' K.';
+    section.append(heading, equation, constants, units);
+    if (typeof property.source === 'string' && /^https?:\/\//i.test(property.source)) {
+      const link = document.createElement('a');
+      link.href = property.source;
+      link.textContent = 'NIST source · ' + property.name;
+      section.append(link);
+    }
+    return section;
+  }));
+  const sourceNote = element('source-note');
+  if (sourceNote) {
+    sourceNote.replaceChildren(document.createTextNode(data.title
+      + '. Numerical observations from Tables 4 and 5. Component 1 is '
+      + data.components[0] + '; component 2 is ' + data.components[1] + '. '));
+    if (typeof data.source === 'string' && /^https?:\/\//i.test(data.source)) {
+      const link = document.createElement('a');
+      link.href = data.source;
+      link.textContent = 'Read the article';
+      sourceNote.append(link);
+    }
+  }
+}
+
+function renderObservation() {
+  const selected = inspect();
+  const { row } = selected;
+  text('obs-T', format(row.T, 7));
+  text('obs-P', format(row.PkPa));
+  text('obs-x', format(row.x));
+  text('obs-y', format(row.y));
+  text('psat1-value', selected.psat ? format(selected.psat[0]) : 'Not available');
+  text('psat2-value', selected.psat ? format(selected.psat[1]) : 'Not available');
+  text('gamma1-value', selected.gamma ? format(selected.gamma[0]) : 'Not inferred');
+  text('gamma2-value', selected.gamma ? format(selected.gamma[1]) : 'Not inferred');
+  text('exclusion-note', selected.reason || 'This observation supplies both inferred log-activity values.');
+  const all = data.datasets.find((set) => set.pressureKPa === Number(element('dataset').value));
+  text('observation-count', all.rows.length + ' reported observations at ' + all.pressureKPa + ' kPa.');
+  const rows = all.rows.map((item, index) => observation(data, all.pressureKPa, index));
+  if (element('observations-body')) {
+    element('observations-body').replaceChildren(...rows.map((item, index) => {
+      const tr = document.createElement('tr');
+      if (index === selected.rowIndex) tr.setAttribute('aria-current', 'true');
+      for (const value of [index + 1, item.row.PkPa, item.row.T, item.row.x, item.row.y,
+        item.reason || 'Included']) {
+        const cell = document.createElement('td');
+        cell.textContent = typeof value === 'number' ? format(value, 7) : value;
+        tr.append(cell);
+      }
+      return tr;
+    }));
+  }
+  const steps = selected.ln && selected.psat ? [
+    'Read row ' + (selected.rowIndex + 1) + ' at ' + format(row.PkPa) + ' kPa: T = '
+      + format(row.T) + ' K, x₁ = ' + format(row.x) + ', y₁ = ' + format(row.y) + '.',
+    'Use each Antoine equation at this measured T. Convert bar to kPa: P₁sat = '
+      + format(selected.psat[0]) + ' kPa and P₂sat = ' + format(selected.psat[1]) + ' kPa.',
+    'With ideal vapor and negligible pressure corrections, γ₁ = y₁P/(x₁P₁sat) = ('
+      + format(row.y) + ' × ' + format(row.PkPa) + ')/('
+      + format(row.x) + ' × ' + format(selected.psat[0]) + ') = '
+      + format(selected.gamma[0]) + '.',
+    'For component 2, x₂ = ' + format(1 - row.x) + ' and y₂ = ' + format(1 - row.y)
+      + '. Then γ₂ = y₂P/(x₂P₂sat) = ' + format(selected.gamma[1]) + '.',
+    'Take natural logarithms for fitting: ln γ₁ = ' + format(selected.ln[0])
+      + ' and ln γ₂ = ' + format(selected.ln[1]) + '. Both are dimensionless.',
+  ] : [selected.reason || 'The selected row cannot supply a usable pair of log-activity values.'];
+  if (element('observation-steps')) {
+    element('observation-steps').replaceChildren(...steps.map((step) => {
+      const li = document.createElement('li');
+      li.textContent = step;
+      return li;
+    }));
+  }
+}
+
+function checkObservation() {
+  const selected = inspect();
+  const expected = {
+    psat1: selected.psat?.[0], psat2: selected.psat?.[1],
+    gamma1: selected.gamma?.[0], gamma2: selected.gamma?.[1],
+  };
+  const labels = { psat1: 'P₁sat', psat2: 'P₂sat', gamma1: 'γ₁', gamma2: 'γ₂' };
+  const messages = [];
+  let supplied = 0;
+  let invalid = null;
+  for (const [key, source] of Object.entries(answers())) {
+    const field = element('answer-' + key);
+    field?.removeAttribute('aria-invalid');
+    if (!source.trim()) continue;
+    supplied += 1;
+    const value = Number(source);
+    if (!Number.isFinite(value) || value <= 0) {
+      field?.setAttribute('aria-invalid', 'true');
+      invalid ||= field;
+      messages.push(labels[key] + ' needs a positive finite value.');
+    } else if (!Number.isFinite(expected[key])) {
+      messages.push(labels[key] + ' cannot be checked for this excluded observation.');
+    } else {
+      const within = Math.abs(value - expected[key]) <= 0.01 * Math.abs(expected[key]);
+      messages.push(labels[key] + (within ? ' agrees within 1%.'
+        : ' differs by more than 1%. Check the equation, temperature and pressure units.'));
+    }
+  }
+  text('answer-feedback', supplied ? messages.join(' ')
+    : 'Enter at least one calculated value, then check it. This check uses a 1% relative tolerance.');
+  invalid?.focus();
+  revision += 1;
+}
+
+function clearChart() {
+  plotRevision += 1;
+  if (globalThis.Plotly && element('case-plot')) globalThis.Plotly.purge(element('case-plot'));
+  element('case-plot')?.replaceChildren();
+  element('curve-head')?.replaceChildren();
+  element('curve-body')?.replaceChildren();
+  text('plot-note', 'Fit the training data to calculate this comparison.');
+  show('plot-panel', false);
+}
+
+function invalidate(message) {
+  revision += 1;
+  current = null;
+  retainedFit = null;
+  clearError();
+  show('results', false);
+  show('result-placeholder', true);
+  text('result-placeholder', message || 'The fitting conditions changed. Fit again before comparing scores.');
+  element('save-case').disabled = true;
+  element('export-study').disabled = true;
+  const fitOption = element('case-model').querySelector('option[value="fit"]');
+  if (fitOption) fitOption.disabled = true;
+  element('case-model').value = 'article';
+  clearChart();
+  text('status', message || 'The previous fit has been cleared. Saved comparisons are retained.');
+}
+
+function summaryRole(analysis) {
+  if (analysis.evaluation.role === 'reference') {
+    return 'Article reference: agreement with the supplied observations. The article used a wider data collection; this is not a new held-out validation.';
+  }
+  if (analysis.evaluation.heldOut) {
+    return analysis.evaluation.pressure + ' kPa was not used in this teaching fit. Its score checks the retained model on held-out observations.';
+  }
+  return analysis.evaluation.pressure + ' kPa was included in fitting. This score is in-sample agreement, not a held-out validation.';
+}
+
+function renderResult() {
+  if (!current) return;
+  const { inputs, fit, analysis: a } = current;
+  const p = a.parameters;
+  text('train-score', format(a.train.rmse, 5));
+  text('eval-score', format(a.evaluation.rmse, 5));
+  text('train-score-label', inputs.model === 'fit' ? 'Fitting-data RMSE in ln γ' : 'Selected-data RMSE in ln γ');
+  text('eval-score-label', inputs.model === 'fit' ? 'Checking-data RMSE in ln γ' : 'Checking-data RMSE in ln γ · reference');
+  text('train-count', a.train.count);
+  text('eval-count', a.evaluation.count);
+  text('fit-count-note', a.train.count + ' of ' + a.train.total + ' observations supply log-activity pairs at '
+    + a.train.label + '. ' + a.train.excluded + ' excluded. At ' + a.evaluation.pressure + ' kPa, '
+    + a.evaluation.count + ' of ' + a.evaluation.total + ' are usable and ' + a.evaluation.excluded + ' are excluded.');
+  text('validation-role', summaryRole(a));
+  text('fit-parameters', inputs.model === 'fit'
+    ? 'Teaching fit: τ₁₂ = ' + format(p.a12, 7) + ', τ₂₁ = ' + format(p.a21, 7)
+      + ', α = ' + format(p.alpha) + '. All three are dimensionless. Both τ values are held constant across the fitted temperature range.'
+    : 'Article reference: τᵢⱼ = aᵢⱼ + bᵢⱼ/T. a₁₂ = ' + format(p.a12, 9)
+      + ', a₂₁ = ' + format(p.a21, 9) + ', b₁₂ = ' + format(p.b12, 9)
+      + ' K, b₂₁ = ' + format(p.b21, 9) + ' K; α = ' + format(p.alpha) + '.');
+  text('fit-status', inputs.model === 'fit' && fit
+    ? 'Numerical fit converged using ' + fit.points + ' usable pairs from ' + fit.label
+      + '. ' + (fit.atBound ? 'A fitted parameter reached its bound. Inspect the model and residuals.'
+        : 'Neither fitted parameter is at its bound.')
+    : 'The published temperature-dependent NRTL parameters are shown without refitting them to this exercise.');
+  const prediction = element('prediction')?.value;
+  text('interpretation', (inputs.model === 'fit'
+    ? 'Use the training score to judge agreement with fitted observations, then use the evaluation role below to interpret the other score.'
+    : 'Inspect this published reference, then fit two constant τ values to the selected training observations.')
+    + (prediction ? ' Your prediction was “' + optionLabel('prediction') + '”. Compare it with the two scores.' : ''));
+  text('model-assumptions', a.limits.join(' '));
+  const check = a.modelCheck;
+  text('model-check-note', 'At fixed ' + format(check.fixedTK || 350)
+    + ' K, the sampled Gibbs–Duhem derivative residual is '
+    + format(check.maxGibbsDuhemResidual, 3) + '. Minimum sampled scaled liquid curvature is '
+    + format(check.minSampledScaledCurvature, 4) + '. '
+    + (check.minSampledScaledCurvature > 0 ? 'Positive on the sampled grid; this is not a global stability proof.'
+      : 'Nonpositive curvature was detected. Homogeneous bubble-curve points may be unstable; this lab does not solve LLE.')
+    + ' This checks the model equation and does not certify the experimental data.');
+  const steps = [
+    'Infer ln γ₁ and ln γ₂ only for interior observations within both Antoine ranges. Keep every original measurement visible in the data table.',
+    (inputs.model === 'fit' ? 'Fit two constant τ values using only ' + a.train.label
+      + ' and α = ' + format(inputs.alpha) + '.'
+      : 'Evaluate the article parameters at each measured temperature. They have not been refitted here.'),
+    'For N usable observations, RMSE = sqrt[Σ((ln γ₁,model − ln γ₁,data)² + (ln γ₂,model − ln γ₂,data)²)/(2N)]. This score is dimensionless.',
+    'At ' + a.train.label + ', N = ' + a.train.count + ' and RMSE = ' + format(a.train.rmse, 6)
+      + '. At ' + a.evaluation.pressure + ' kPa, N = ' + a.evaluation.count
+      + ' and RMSE = ' + format(a.evaluation.rmse, 6) + '.',
+    summaryRole(a),
+    'A small fitting error, numerical convergence and thermodynamic consistency answer different questions. Continue to Lab 03 for consistency-test applicability.',
+  ];
+  element('score-steps')?.replaceChildren(...steps.map((step) => {
+    const li = document.createElement('li');
+    li.textContent = step;
+    return li;
+  }));
+  show('results', true);
+  show('result-placeholder', false);
+  element('save-case').disabled = false;
+  element('export-study').disabled = false;
+  const fitOption = element('case-model').querySelector('option[value="fit"]');
+  if (fitOption) fitOption.disabled = !retainedFit;
+}
+
+function numericalTable(headers, rows) {
+  if (element('curve-head')) {
+    const tr = document.createElement('tr');
+    headers.forEach((value) => {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = value;
+      tr.append(th);
+    });
+    element('curve-head').replaceChildren(tr);
+  }
+  element('curve-body')?.replaceChildren(...rows.map((values) => {
+    const tr = document.createElement('tr');
+    values.forEach((value) => {
+      const td = document.createElement('td');
+      td.textContent = typeof value === 'number' ? format(value, 7) : value ?? 'Outside property range';
+      tr.append(td);
+    });
+    return tr;
+  }));
+}
+
+function plotNote(message, analysis) {
+  const note = element('plot-note');
+  if (!note) return;
+  note.replaceChildren(document.createTextNode(message));
+  const unstable = analysis.modelCheck.minSampledScaledCurvature <= 0;
+  note.classList.toggle('scope-note', unstable);
+  if (unstable) {
+    note.append(document.createTextNode(' Nonpositive liquid curvature was detected on the sampled grid at 350 K. These are homogeneous model candidates and may not be stable equilibrium branches. '));
+    const link = document.createElement('a');
+    link.href = '../labs/stability.html#lle-experiment';
+    link.textContent = 'Investigate liquid stability in Lab 04';
+    note.append(link);
+  }
+}
+
+async function renderChart() {
+  const epoch = ++plotRevision;
+  const saved = current;
+  if (!saved) return;
+  show('plot-panel', true);
+  const { inputs, analysis: a } = saved;
+  const measured = a.evaluation.rows;
+  const valid = measured.filter((row) => row.ln);
+  const curve = a.curve;
+  const modelName = inputs.model === 'fit' ? 'Teaching fit' : 'Article reference';
+  const line = (x, y, name, color, dash = 'solid', mode = 'lines') => ({
+    x, y, name, mode, type: 'scatter', connectgaps: false,
+    line: { color, width: 2, dash }, marker: { color, size: 7 },
+  });
+  let traces, xTitle = 'Liquid mole fraction · x₁', yTitle, note;
+  if (inputs.chart === 'gamma') {
+    traces = [
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[0])), 'Inferred γ₁', palette.teal, 'solid', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[1])), 'Inferred γ₂', palette.teal, 'dot', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[0])), modelName + ' γ₁', palette.amber),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[1])), modelName + ' γ₂', palette.amber, 'dash'),
+    ];
+    traces[1].marker.symbol = 'diamond-open';
+    yTitle = 'Activity coefficient · γ';
+    note = 'Each model value uses the measured T and x of that observation. This is an isobaric path with changing temperature.';
+    numericalTable(['T / K', 'Liquid x₁', 'Inferred γ₁', 'Inferred γ₂', 'Model γ₁', 'Model γ₂'],
+      valid.map((r) => [r.T, r.x, Math.exp(r.ln[0]), Math.exp(r.ln[1]), Math.exp(r.modelLn[0]), Math.exp(r.modelLn[1])]));
+  } else if (inputs.chart === 'residual') {
+    traces = [
+      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[0] - r.ln[0]), 'ln γ₁ residual', palette.amber, 'solid', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[1] - r.ln[1]), 'ln γ₂ residual', palette.amber, 'dash', 'markers'),
+    ];
+    traces[1].marker.symbol = 'diamond-open';
+    yTitle = 'Model − inferred ln γ · dimensionless';
+    note = 'Residuals use the measured temperature and composition. A small residual does not establish experimental thermodynamic consistency.';
+    numericalTable(['T / K', 'Liquid x₁', 'ln γ₁ residual', 'ln γ₂ residual'],
+      valid.map((r) => [r.T, r.x, r.modelLn[0] - r.ln[0], r.modelLn[1] - r.ln[1]]));
+  } else {
+    traces = [
+      line(measured.map((r) => r.x), measured.map((r) => r.T), 'Measured liquid', palette.teal, 'solid', 'markers'),
+      line(measured.map((r) => r.y), measured.map((r) => r.T), 'Measured vapor', palette.teal, 'dot', 'markers'),
+      line(curve.map((r) => r.x), curve.map((r) => r.T), modelName + ' bubble', palette.amber),
+      line(curve.map((r) => r.y), curve.map((r) => r.T), modelName + ' dew', palette.amber, 'dash'),
+    ];
+    traces[1].marker.symbol = 'diamond-open';
+    xTitle = '2-propanol mole fraction · x₁ or y₁';
+    yTitle = 'Temperature / K';
+    note = 'All ' + a.evaluation.total + ' original observations at ' + a.evaluation.pressure
+      + ' kPa are shown. Calculated curves have gaps where no root exists inside '
+      + a.domainK.join(' to ') + ' K. No extrapolation is made.';
+    numericalTable(['Point', 'P / kPa', 'T / K', 'Liquid x₁', 'Vapor y₁'], [
+      ...measured.map((r) => ['Measured', r.PkPa, r.T, r.x, r.y]),
+      ...curve.map((r) => ['Calculated', a.evaluation.pressure, r.T, r.x, r.y]),
+    ]);
+  }
+  plotNote(a.evaluation.pressure + ' kPa · ' + modelName + '. ' + note, a);
+  if (!globalThis.Plotly) {
+    plotNote('The optional chart library is unavailable. Numerical scores, observations and curve data remain available. ' + note, a);
+    return;
+  }
+  try {
+    await globalThis.Plotly.react(element('case-plot'), traces, {
+      margin: { t: 24, r: 20, b: 150, l: 68 },
+      font: { family: 'Source Sans 3, sans-serif', size: 14, color: palette.graphite },
+      paper_bgcolor: 'white', plot_bgcolor: 'white',
+      xaxis: { title: { text: xTitle }, range: [0, 1], gridcolor: palette.mist },
+      yaxis: { title: { text: yTitle }, gridcolor: palette.mist, zerolinecolor: palette.graphite },
+      legend: { orientation: 'h', x: 0, y: -0.28, entrywidth: 175, entrywidthmode: 'pixels' },
+      hovermode: 'closest',
+    }, { responsive: true, displaylogo: false, displayModeBar: false });
+    if (epoch !== plotRevision || current !== saved) return;
+  } catch (issue) {
+    if (epoch === plotRevision) plotNote('The plot could not be drawn. Use the numerical scores and data table. ' + issue.message, a);
+  }
+}
+
+function attachWorkspace(calculated, input) {
+  return {
+    ...calculated,
+    inputs: input || calculated.inputs,
+    data,
+    name: element('case-name').value.trim() || 'Experimental VLE comparison',
+    prediction: element('prediction')?.value || importedPrediction,
+    answers: answers(),
+    solutionOpen: !!element('observation-solution')?.open,
+  };
+}
+
+function applyPrediction(value = '') {
+  const field = element('prediction');
+  const known = [...field.options].some((option) => option.value === value);
+  field.value = known ? value : '';
+  importedPrediction = known ? '' : value;
+  let note = element('recorded-prediction');
+  if (!note) {
+    note = document.createElement('p');
+    note.id = 'recorded-prediction';
+    note.className = 'input-help';
+    field.closest('.prediction-row').after(note);
+  }
+  note.textContent = importedPrediction ? 'Recorded prediction from the opened study: ' + importedPrediction : '';
+  note.hidden = !importedPrediction;
+}
+
+function updateName(inputs) {
+  if (manualCaseName) return;
+  element('case-name').value = inputs.model === 'article' ? 'Article reference, check ' + inputs.evaluate + ' kPa'
+    : 'Fit ' + (inputs.train === 'both' ? 'both pressures' : inputs.train + ' kPa') + ', check ' + inputs.evaluate + ' kPa';
+}
+
+function recalculate(allowReference = false) {
+  if (!retainedFit && !current && !allowReference) return;
+  const inputs = readInputs();
+  if (!inputs) return;
+  try {
+    updateName(inputs);
+    current = attachWorkspace({ inputs, fit: retainedFit, analysis: analyze(data, inputs, retainedFit) });
+    revision += 1;
+    renderResult();
+    renderChart();
+    text('status', 'Model retained. Comparison recalculated for ' + inputs.evaluate + ' kPa.');
+  } catch (issue) {
+    error(issue.message);
+  }
+}
+
+async function fitNow() {
+  if (busy) return;
+  const inputs = readInputs();
+  if (!inputs) return;
+  const started = revision;
+  busy = true;
+  element('fit-button').disabled = true;
+  text('fit-status', 'Fitting the selected training observations…');
+  text('status', 'Fitting two constant NRTL τ values. Evaluation observations are not added to the fit.');
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+  try {
+    if (revision !== started) return;
+    const fitted = fitStudy(data, inputs);
+    if (revision !== started) return;
+    retainedFit = fitted.fit;
+    element('case-model').querySelector('option[value="fit"]').disabled = false;
+    element('case-model').value = 'fit';
+    updateName(fitted.inputs);
+    current = attachWorkspace(fitted);
+    revision += 1;
+    renderResult();
+    renderChart();
+    text('status', 'Teaching fit complete. ' + summaryRole(current.analysis));
+    const panel = element('results').closest('section') || element('results');
+    const top = panel.getBoundingClientRect().top;
+    if (top < 0 || top > innerHeight - 100) {
+      panel.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  } catch (issue) {
+    invalidate('The fit could not be completed. Check the fitting conditions and try again.');
+    error(issue.message);
+  } finally {
+    busy = false;
+    element('fit-button').disabled = false;
+  }
+}
+
+function renderComparisons() {
+  element('comparison-body').replaceChildren(...cases.map((saved, index) => {
+    const tr = document.createElement('tr');
+    const a = saved.analysis;
+    const p = a.parameters;
+    const values = [saved.name, saved.inputs.model === 'fit' ? 'Teaching fit' : 'Article reference',
+      a.train.label, a.evaluation.pressure + ' kPa', p.alpha,
+      saved.inputs.model === 'fit' ? p.a12 : 'a + b/T',
+      saved.inputs.model === 'fit' ? p.a21 : 'a + b/T', a.train.rmse, a.evaluation.rmse];
+    values.forEach((value) => {
+      const td = document.createElement('td');
+      td.textContent = typeof value === 'number' ? format(value, 6) : value;
+      tr.append(td);
+    });
+    const td = document.createElement('td');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = 'Load case';
+    button.setAttribute('aria-label', 'Load ' + saved.name + ', comparison ' + (index + 1));
+    button.addEventListener('click', () => {
+      clearError();
+      data = copy(saved.data || data);
+      retainedFit = saved.fit ? copy(saved.fit) : null;
+      current = copy(saved);
+      const fitOption = element('case-model').querySelector('option[value="fit"]');
+      fitOption.disabled = !retainedFit;
+      writeInputs(saved.inputs);
+      element('case-name').value = saved.name;
+      manualCaseName = true;
+      applyPrediction(saved.prediction);
+      writeAnswers(saved.answers);
+      element('observation-solution').open = !!saved.solutionOpen;
+      current.analysis = analyze(data, saved.inputs, retainedFit);
+      renderPropertyRecords();
+      renderObservation();
+      renderResult();
+      renderChart();
+      revision += 1;
+      text('status', saved.name + ' reopened and recalculated from its saved scientific context.');
+    });
+    td.append(button);
+    tr.append(td);
+    return tr;
+  }));
+  show('comparison-empty', cases.length === 0);
+  show('comparison-table-wrap', cases.length > 0);
+}
+
+function saveCase() {
+  if (!current) return;
+  current = attachWorkspace(current);
+  cases.push(copy(current));
+  revision += 1;
+  renderComparisons();
+  text('status', current.name + ' saved. ' + cases.length + ' comparison cases in this study.');
+}
+
+function downloadStudy() {
+  if (!current) return;
+  current = attachWorkspace(current);
+  const study = makeStudy(current, cases, element('reflection').value);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(study, null, 2)], { type: 'application/json' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'thermodynamics-lab02-2027-study.json';
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  text('status', 'Study downloaded with source observations, fitting context, comparisons and your explanation.');
+}
+
+async function openStudy(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const request = ++importRequest;
+  const started = revision;
+  clearError();
+  try {
+    const opened = parseStudy(await file.text(), data);
+    if (request !== importRequest) return;
+    if (revision !== started) throw new Error('This study changed while the file was opening. Choose the file again to restore it.');
+    data = opened.data;
+    retainedFit = opened.fit;
+    current = opened;
+    cases = opened.cases;
+    const fitOption = element('case-model').querySelector('option[value="fit"]');
+    fitOption.disabled = !retainedFit;
+    writeInputs(opened.inputs);
+    element('case-name').value = opened.name || 'Opened study';
+    manualCaseName = true;
+    element('reflection').value = opened.reflection || '';
+    applyPrediction(opened.prediction);
+    writeAnswers(opened.answers);
+    element('observation-solution').open = !!opened.solutionOpen;
+    revision += 1;
+    renderPropertyRecords();
+    renderObservation();
+    renderComparisons();
+    renderResult();
+    renderChart();
+    text('status', 'Study reopened and recalculated. ' + cases.length + ' saved comparisons restored.');
+  } catch (issue) {
+    if (request === importRequest) {
+      error('Could not open this study. ' + issue.message);
+      text('status', 'The current study has been retained.');
+    }
+  } finally {
+    if (request === importRequest) event.target.value = '';
+  }
+}
+
+function fitButtonLabel() {
+  const train = element('training-pressure').value;
+  text('fit-button', train === 'both' ? 'Fit both pressure datasets' : 'Fit ' + train + ' kPa data');
+}
+
+async function start() {
+  const loadingControls = ['dataset', 'observation', 'alpha', 'training-pressure', 'evaluation-pressure',
+    'fit-button', 'case-model', 'case-chart', 'show-observation', 'check-observation', 'inspect-reference',
+    'import-study'];
+  for (const id of loadingControls) element(id).disabled = true;
+  const response = await fetch(new URL('../../labs/assets/ipa-water.json', import.meta.url));
+  if (!response.ok) throw new Error('The experimental observations could not be loaded. Reload this page.');
+  data = validateData(await response.json());
+  writeInputs(DEFAULT_INPUTS);
+  renderPropertyRecords();
+  renderObservation();
+  element('dataset').addEventListener('change', () => {
+    const prior = Number(element('observation').value);
+    setObservationOptions(Number(element('dataset').value), prior);
+    writeAnswers();
+    element('observation-solution').open = false;
+    renderObservation();
+    revision += 1;
+    if (current) recalculate();
+  });
+  element('observation').addEventListener('change', () => {
+    writeAnswers();
+    element('observation-solution').open = false;
+    renderObservation();
+    revision += 1;
+    if (current) recalculate();
+  });
+  element('show-observation').addEventListener('click', () => {
+    renderObservation();
+    element('observation-solution').open = true;
+    revision += 1;
+  });
+  element('check-observation').addEventListener('click', checkObservation);
+  element('fit-button').addEventListener('click', fitNow);
+  element('alpha').addEventListener('input', () => {
+    invalidate('α changed. Fit again to calculate the teaching model with this value.');
+  });
+  element('training-pressure').addEventListener('change', () => {
+    fitButtonLabel();
+    invalidate('Training observations changed. Fit again; saved comparison cases remain available.');
+  });
+  for (const id of ['evaluation-pressure', 'case-model', 'case-chart']) {
+    element(id).addEventListener('change', () => {
+      revision += 1;
+      recalculate(id === 'case-model');
+    });
+  }
+  element('inspect-reference').addEventListener('click', () => {
+    element('case-model').value = 'article';
+    revision += 1;
+    recalculate(true);
+  });
+  for (const id of ['prediction', 'case-name', 'reflection', 'answer-psat1', 'answer-psat2', 'answer-gamma1', 'answer-gamma2']) {
+    element(id)?.addEventListener('input', () => { revision += 1; });
+  }
+  element('prediction').addEventListener('change', () => { importedPrediction = ''; show('recorded-prediction', false); });
+  element('case-name').addEventListener('input', () => { manualCaseName = true; });
+  element('case-form').addEventListener('submit', (event) => { event.preventDefault(); fitNow(); });
+  element('case-form').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.target.matches('input[type="number"]')) {
+      event.preventDefault();
+      if (event.target.id.startsWith('answer-')) checkObservation();
+      else fitNow();
+    }
+  });
+  element('save-case').addEventListener('click', saveCase);
+  element('export-study').addEventListener('click', downloadStudy);
+  element('import-study').addEventListener('change', openStudy);
+  renderComparisons();
+  show('results', false);
+  show('result-placeholder', true);
+  show('plot-panel', false);
+  element('save-case').disabled = true;
+  element('export-study').disabled = true;
+  fitButtonLabel();
+  for (const id of loadingControls) element(id).disabled = false;
+  element('case-model').querySelector('option[value="fit"]').disabled = true;
+  text('status', 'Experimental observations loaded. Inspect one row, then fit the 60 kPa training data and evaluate the retained fit at 80 kPa.');
+}
+
+start().catch((issue) => {
+  error('Unable to start Lab 02. ' + issue.message);
+  text('status', 'Reload after the required source files become available.');
+});

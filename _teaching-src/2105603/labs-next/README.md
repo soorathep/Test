@@ -1,13 +1,13 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01, Lab 02 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
-The preparation scope is a shared interaction design, two functional prototypes,
+The preparation scope is a shared interaction design, three functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining 11 lab interfaces are future work. Implementation now proceeds in
-lab-number order from Lab 01. Lab 13 is the earlier reference prototype.
+the remaining 10 lab interfaces are future work. Implementation proceeds in
+lab-number order, with Lab 03 next. Lab 13 is the earlier reference prototype.
 
 ## Evidence and design decisions
 
@@ -72,6 +72,38 @@ recalculated from their property and model context. Unsupported contexts have
 an explicit route to the original Lab 01. Editing scientific inputs invalidates
 the current result and diagram while retaining saved comparisons.
 
+## Lab 02 prototype
+
+The guided case uses the existing isopropanol/water measurements and NRTL engine
+from `ipa-water.json` and `case-study.js`. Measured data remain read only. The
+starting problem fits two constant tau values to 60 kPa and evaluates that frozen
+fit against the 80 kPa observations. The sequence is inspect a measurement,
+calculate activities, fit, inspect plots, then save and explain a comparison.
+
+The starting measurement is Table 4, row 7: T = 341.25 K, P = 60 kPa,
+x1 = 0.4943 and y1 = 0.5690. Antoine constants, their equation and units are
+visible beside optional numerical practice fields. Students can enter saturation
+pressures in kPa and dimensionless activity coefficients, check their answers
+with a stated rounding tolerance, and open the worked calculation.
+
+There are 18 usable activity pairs at 60 kPa and 17 at 80 kPa. Pure endpoints
+cannot supply the absent-component activity. A further 80 kPa observation falls
+outside the joint Antoine range of 334 to 362.41 K. All measured rows remain
+visible with exclusion reasons, and curve gaps are preserved without extrapolation.
+
+Fit alpha is held fixed, initially 0.47, while two dimensionless tau parameters
+are estimated. The optional alpha control is restricted to 0.10 to 0.60 for this
+teaching exercise. Fit errors use dimensionless ln-gamma RMSE over 2N residuals.
+Changing the checking pressure retains the parameters. A joint fit to both
+pressures has no held-out pressure. The article's temperature-dependent reference
+was fitted against broader data and is not treated as a held-out validation model.
+
+Native studies reopen in this prototype with recomputed results, saved
+comparisons and explanations. Supported original Lab 02 exports can be imported.
+The original Lab 02 interface does not restore the new prototype's fitted-model
+state, so that reverse compatibility is not claimed. Model consistency checks
+and regression errors do not certify experimental thermodynamic consistency.
+
 ## Lab 13 prototype
 
 The prototype uses the same `calculate()` engine as the current lab via
@@ -102,9 +134,9 @@ Pilot observations inform the readiness review for the 2027 cohort.
 
 | Order | Labs | Main interface work |
 | --- | --- | --- |
-| Current prototype | 01 | Guided feed problem, units, phase interpretation, pressure comparison and balance check |
-| Next | 02 | Fit and validation roles, investigative questions beside evidence |
-| Then | 03–07 | Diagnostic applicability, Gibbs geometry, phase amounts, material/energy checks and structured observations |
+| Current prototypes | 01–02 | Guided feed problem, phase amounts, measured data, fitting and separate validation |
+| Next | 03 | Diagnostic applicability and consistency-test interpretation |
+| Then | 04–07 | Gibbs geometry, phase amounts, material/energy checks and structured observations |
 | Then | 08–12 | Data mapping, equation/unit validation, property editors and structured reactions |
 | Earlier reference, review in sequence | 13 | Two solutions, visible cases, physical interpretation, comparison and reopening |
 
@@ -144,6 +176,19 @@ Responsive checks include 320 px with 200% text and the desktop layout. Mobile
 phase-composition cards stack to keep labels and complete values readable. Numerical results and
 curve tables remain available when the optional plot library is unavailable.
 These are functional checks, not evidence of independent student usability.
+
+Lab 02 reference checks reproduce P1sat = 55.85317436 kPa,
+P2sat = 28.70289322 kPa, gamma1 = 1.23658805 and gamma2 = 1.78159872 for the
+starting observation. At alpha = 0.47, fitting 60 kPa gives tau12 = 0.3618155960
+and tau21 = 1.7524367107. Training ln-gamma RMSE is 0.1682833041, and the retained
+fit has a held-out 80 kPa RMSE of 0.1643767093. A joint fit uses 35 pairs with
+RMSE = 0.1548271965 and has no held-out pressure.
+
+Lab 02 adapter and browser checks cover numerical inference, fixed-alpha fitting,
+retained evaluation, all three views, exclusions, source-bearing original imports,
+native studies and saved comparisons, invalid-file atomicity, delayed imports,
+plot-library fallback and keyboard error recovery. Layout checks include 320 px
+with 200% text and 1280 px desktop. These checks do not establish student usability.
 
 Numerical reference cases use the course engine. At 298.15 K, gamma = 1,
 and E°cell = 0, the starting case 0.01/1 mol/L gives Q = 0.01 and E =

@@ -1,0 +1,93 @@
+@import url("./guide.css");
+
+.case-page .task-question { margin: 12px 0 0; font-weight: 600; }
+.case-page h1 { overflow-wrap: anywhere; }
+.case-page #plot-panel .panel-heading > div { min-width: 0; max-width: 100%; }
+.case-page .case-section { margin: 22px 0; }
+.evidence-picture { margin: 22px 0; }
+.evidence-sketch { display: block; width: 100%; max-width: 840px; height: auto; margin: 8px auto 14px; }
+.sketch-reference { fill: var(--soft-teal); stroke: var(--teal); stroke-width: 1.7; }
+.sketch-model { fill: var(--soft-sand); stroke: var(--amber); stroke-width: 1.7; }
+.sketch-axis { stroke: var(--ink); stroke-width: 2; fill: none; }
+.sketch-arrow { fill: var(--ink); }
+.sketch-data { fill: var(--teal); }
+.sketch-prediction { stroke: var(--amber); stroke-width: 3; fill: none; }
+.sketch-label { fill: var(--ink); text-anchor: middle; font-size: 22px; font-weight: 600; }
+.evidence-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.evidence-key > div { border-top: 2px solid var(--border); padding-top: 10px; }
+.evidence-key p { margin: 5px 0 0; font-size: .91rem; }
+.evidence-picture figcaption { font-size: .85rem; color: var(--muted); margin-top: 14px; }
+.step-links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 14px; font-size: .9rem; }
+.step-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.inspection-grid { display: grid; grid-template-columns: minmax(230px,.7fr) minmax(0,1.3fr); gap: 25px; align-items: start; }
+.inspection-controls label:not(:first-child) { margin-top: 18px; }
+.measurement-cards, .derived-cards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0; }
+.measurement-cards > div, .derived-cards > div { border: 1px solid var(--border); border-radius: 6px; padding: 15px; min-width: 0; }
+.measurement-cards dt, .derived-cards dt { font-size: .91rem; }
+.measurement-cards dd, .derived-cards dd { margin: 6px 0 0; font-size: 1.65rem; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.measurement-cards dd > span, .derived-cards dd > span { font-size: .87rem; font-weight: 400; }
+.measurement-cards p { margin: 6px 0 0; color: var(--muted); font-size: .84rem; }
+.input-help, .source-note { font-size: .86rem; color: var(--muted); margin-top: 7px; }
+.source-note { margin: 16px 0 0; }
+.scope-note { font-size: .9rem; border-left: 3px solid var(--amber); padding-left: 12px; margin-top: 16px; }
+.data-details { border-top: 1px solid var(--border); padding: 10px 0; margin-top: 12px; }
+.data-details summary { font-weight: 600; cursor: pointer; min-height: 44px; padding: 8px 0; }
+.data-details p { font-size: .91rem; }
+.data-details .table-scroll { margin: 12px 0; }
+.data-details th:last-child, .data-details td:last-child { text-align: left; white-space: normal; min-width: 210px; }
+.equation-box { display: flex; flex-wrap: wrap; gap: 5px 30px; background: var(--soft-teal); border-radius: 6px; padding: 15px 18px; }
+.equation-box p { margin: 0; font-family: "Source Serif 4", Georgia, serif; font-size: 1.15rem; overflow-wrap: anywhere; }
+.equation-box small { width: 100%; margin-top: 8px; font-size: .85rem; }
+.source-equation { font-family: "Source Serif 4", Georgia, serif; font-size: 1.05rem; overflow-wrap: anywhere; }
+.property-records { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.property-records article { padding: 16px; border: 1px solid var(--border); border-radius: 6px; min-width: 0; }
+.property-records h3 { font-size: 1rem; }
+.property-records p, .property-records a { font-size: .87rem; }
+.property-records a { overflow-wrap: anywhere; }
+.practice-fields { border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin: 20px 0 14px; min-width: 0; }
+.practice-fields legend { font-weight: 600; padding: 0 8px; }
+.practice-fields > .input-help { margin: 0 0 12px; }
+.answer-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; }
+.answer-grid .quantity-input input { padding-right: 85px; }
+.practice-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 0; }
+.answer-feedback { font-size: .92rem; margin: 12px 0 0; }
+.answer-feedback:empty { display: none; }
+.worked-steps { font-size: .93rem; padding-left: 23px; margin: 14px 0; }
+.worked-steps li + li { margin-top: 9px; }
+.case-fit-grid { grid-template-columns: minmax(330px,.8fr) minmax(0,1.2fr); }
+.case-fit-grid label:not(:first-child) { margin-top: 18px; }
+.case-fit-grid .prediction-row label { margin: 0; }
+.case-fit-grid .calculate-button { margin: 12px 0 6px; }
+.case-fit-grid .quantity-input input { padding-right: 80px; }
+.case-fit-grid .data-details p { margin-top: 10px; }
+.result-interpretation { font-size: 1.1rem; font-weight: 600; }
+.role-note { border-left: 3px solid var(--amber); padding-left: 12px; font-size: .92rem; }
+.score-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 12px; }
+.score-cards > div { background: var(--soft-teal); padding: 16px; border: 1px solid var(--border); border-radius: 6px; min-width: 0; }
+.score-cards > div:last-child { background: var(--soft-sand); }
+.score-cards dt { font-size: .91rem; }
+.score-cards dd { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 600; margin: 6px 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.score-cards p { font-size: .85rem; margin: 0; }
+.parameter-result { padding: 16px 0; font-size: 1.02rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.case-page .calculation-check { margin-top: 18px; }
+.case-page .calculation-check p { font-size: .91rem; }
+.case-page .save-case-row { margin-top: 20px; }
+.case-plot { width: 100%; min-height: 430px; }
+.investigation-steps { padding-left: 23px; }
+.investigation-steps li + li { margin-top: 10px; }
+.case-page #source-note, .case-page #status, #model-assumptions { overflow-wrap: anywhere; }
+.case-page #observations-body td:last-child { font-size: .86rem; }
+
+@media (max-width:950px) {
+  .inspection-grid, .case-fit-grid { grid-template-columns: 1fr; }
+  .answer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:600px) {
+  .evidence-key, .measurement-cards, .derived-cards, .property-records, .answer-grid, .score-cards { grid-template-columns: 1fr; }
+  .evidence-sketch { min-height: 75px; }
+  .measurement-cards > div, .derived-cards > div { padding: 12px; }
+  .answer-grid .quantity-input input, .case-fit-grid .quantity-input input { padding-right: 12px; }
+  .practice-actions { display: grid; grid-template-columns: 1fr; }
+  .equation-box { padding: 13px; }
+  .case-plot { min-height: 340px; }
+}
