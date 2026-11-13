@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>VLLE · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Vapor–liquid–liquid equilibrium: why three coexisting phases fix the pressure and compositions but not the amounts.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab06-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 06 · Vapor–liquid–liquid equilibrium</p><h1>When can two liquids and a vapor coexist?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary feed with z₁ = 0.50 at fixed temperature. The liquid follows symmetric Margules with A = 3, the vapor is ideal, and P₁<sup>sat</sup> = 80 kPa, P₂<sup>sat</sup> = 40 kPa.</p><p class="task-question">Find the three-phase pressure, read the three phase compositions, and explain why their amounts are not fixed.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the diagrams and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus the missing amount specification, a pressure sweep and the heterogeneous azeotrope in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 to verify the three-phase state. In Step 4, fix the amounts with an extra specification, sweep the pressure across the three-phase pressure, and test when the vapor lies inside the liquid gap. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a condition</strong><span>All named cases use A = 3, P₁<sup>sat</sup> = 80 kPa and P₂<sup>sat</sup> = 40 kPa at the same fixed temperature.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · three-phase pressure, z₁ = 0.50</button><button type="button" data-case="feed-02" aria-pressed="false">Same pressure · z₁ = 0.20</button><button type="button" data-case="high-p" aria-pressed="false">Higher pressure · 140 kPa</button><button type="button" data-case="low-p" aria-pressed="false">Lower pressure · 100 kPa</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Picture three coexisting phases</h2><span class="section-help">Compositions are fixed; amounts are not</span></div>
+      <div class="vlle-figures">
+        <div>
+          <svg class="three-phase-sketch" viewBox="0 0 360 260" role="img" aria-labelledby="vessel-title vessel-description">
+            <title id="vessel-title">A closed vessel with a vapor above two liquid layers</title>
+            <desc id="vessel-description">The vessel holds three phases at one temperature and pressure: a vapor with composition y1 at the top, and two liquid layers, alpha (component-1-poor) and beta (component-1-rich).</desc>
+            <defs><clipPath id="vessel-clip"><rect x="40" y="20" width="170" height="220" rx="26"/></clipPath></defs>
+            <g clip-path="url(#vessel-clip)"><rect x="40" y="20" width="170" height="90" class="sketch-vapor-fill"/><rect x="40" y="110" width="170" height="60" class="sketch-beta6-fill"/><rect x="40" y="170" width="170" height="70" class="sketch-alpha-fill"/><g class="sketch-vapor-dots"><circle cx="78" cy="50" r="5"/><circle cx="125" cy="40" r="5"/><circle cx="170" cy="62" r="5"/><circle cx="110" cy="82" r="5"/></g><path d="M40 110 H210" class="sketch-interface"/><path d="M40 170 H210" class="sketch-interface"/></g>
+            <rect x="40" y="20" width="170" height="220" rx="26" class="sketch-drum"/>
+            <g class="vessel-label"><text x="225" y="62">Vapor V · y₁</text><text x="225" y="145">Liquid β · x₁ᵝ</text><text x="225" y="210">Liquid α · x₁ᵅ</text></g>
+          </svg>
+          <p class="figure-caption">At one T, a binary with three phases has F = 2 − 3 + 2 = 1 degree of freedom, so T fixes P and all three compositions. Which liquid is on top depends on density, which the model does not calculate.</p>
+        </div>
+        <div>
+          <svg class="pxy-sketch" viewBox="0 0 560 300" role="img" aria-labelledby="pxy-title pxy-description">
+        <title id="pxy-title">Pressure–composition diagram of the starting system with its three-phase line</title>
+        <desc id="pxy-description">Above the three-phase pressure, a two-liquid region spans the middle compositions. Below it, a liquid plus vapor region lies on each side and vapor fills the bottom. At the three-phase pressure, liquid alpha, liquid beta and vapor coexist on one horizontal line.</desc>
+        <path d="M70 30 V250 H510" class="pxy-axis"/>
+        <path d="M70.0 230.0 L72.2 214.8 L74.4 200.5 L76.6 187.1 L78.8 174.4 L81.0 162.6 L83.2 151.4 L85.4 141.0 L87.6 131.2 L89.8 122.1 L92.0 113.5 L94.2 105.5 L96.4 98.0 L98.6 91.0 L100.8 84.5 L101.1 83.6" class="pxy-bubble"/><path d="M70.0 230.0 L142.1 214.8 L191.7 200.5 L227.8 187.1 L255.2 174.4 L276.8 162.6 L294.1 151.4 L308.3 141.0 L320.1 131.2 L330.0 122.1 L338.5 113.5 L345.9 105.5 L352.2 98.0 L357.8 91.0 L362.7 84.5 L363.3 83.6" class="pxy-dew"/>
+        <path d="M478.9 83.6 L479.2 84.0 L481.4 86.9 L483.6 90.0 L485.8 93.3 L488.0 96.9 L490.2 100.7 L492.4 104.9 L494.6 109.3 L496.8 114.0 L499.0 119.1 L501.2 124.5 L503.4 130.3 L505.6 136.4 L507.8 143.0 L510.0 150.0" class="pxy-bubble"/><path d="M363.3 83.6 L364.0 84.0 L368.8 86.9 L374.0 90.0 L379.8 93.3 L386.2 96.9 L393.2 100.7 L401.0 104.9 L409.7 109.3 L419.4 114.0 L430.2 119.1 L442.3 124.5 L456.0 130.3 L471.6 136.4 L489.5 143.0 L510.0 150.0" class="pxy-dew"/>
+        <path d="M101.1 83.6 V30 M478.9 83.6 V30" class="pxy-bubble"/>
+        <path d="M101.1 83.6 H478.9" class="pxy-triple"/>
+        <circle cx="101.1" cy="83.6" r="6" class="pxy-alpha"/><circle cx="478.9" cy="83.6" r="6" class="pxy-beta"/><circle cx="363.3" cy="83.6" r="6" class="pxy-vapor"/>
+        <g class="pxy-region"><text x="290" y="58">Lα + Lβ</text><text x="205" y="132">Lα + V</text><text x="480" y="130" class="pxy-small">Lβ + V</text><text x="290" y="212">Vapor</text><text x="85" y="52" class="pxy-small">Lα</text><text x="495" y="52" class="pxy-small">Lβ</text></g>
+        <g class="pxy-tick"><text x="70" y="270">0</text><text x="290" y="270">0.5</text><text x="510" y="270">1</text><text x="62" y="234" text-anchor="end">40</text><text x="62" y="154" text-anchor="end">80</text><text x="62" y="88" text-anchor="end">P₃</text></g>
+        <g class="pxy-axis-label"><text x="290" y="292">Mole fraction of component 1 · x₁ or y₁</text><text x="18" y="140" transform="rotate(-90 18 140)">Pressure / kPa</text></g>
+        <g class="pxy-callout"><text x="363.3" y="74">y₁</text><text x="124" y="75">x₁ᵅ</text><text x="456" y="75">x₁ᵝ</text></g>
+      </svg>
+          <p class="figure-caption">Calculated for the starting system. Above P₃ = 113.2 kPa two liquids coexist; below it, each liquid coexists with vapor. At P₃ the three points x₁ᵅ, y₁ and x₁ᵝ lie on one horizontal line.</p>
+        </div>
+      </div>
+      <figcaption>The feed composition z₁ chooses where on the three-phase line you are. Two material balances cannot fix three amounts, so the amounts form a family of solutions.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the system, pressure and feed</h2><span class="condition">Basis · 1.00 mol feed · fixed T</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="vlle-form" novalidate>
+          <label for="model">Liquid model</label><select id="model"><option value="symmetric">Margules · one parameter</option><option value="asymmetric">Margules · two parameters</option><option value="nrtl">NRTL · τ₁₂, τ₂₁, α</option></select>
+          <div id="symmetric-control" class="parameter-fields"><label for="A">Margules A <span>dimensionless</span></label><input id="A" type="number" value="3" min="0" max="6" step="any" aria-describedby="error-A"><p id="error-A" class="field-error" hidden></p></div>
+          <div id="asymmetric-control" class="parameter-fields coefficient-grid" hidden><div><label for="A12">A₁₂</label><input id="A12" type="number" value="3.5" min="0" max="6" step="any" aria-describedby="error-A12"><p id="error-A12" class="field-error" hidden></p></div><div><label for="A21">A₂₁</label><input id="A21" type="number" value="2.5" min="0" max="6" step="any" aria-describedby="error-A21"><p id="error-A21" class="field-error" hidden></p></div></div>
+          <div id="nrtl-control" class="parameter-fields" hidden><div class="coefficient-grid"><div><label for="tau12">τ₁₂</label><input id="tau12" type="number" value="3" min="-2" max="6" step="any" aria-describedby="error-tau12"><p id="error-tau12" class="field-error" hidden></p></div><div><label for="tau21">τ₂₁</label><input id="tau21" type="number" value="2" min="-2" max="6" step="any" aria-describedby="error-tau21"><p id="error-tau21" class="field-error" hidden></p></div></div><label for="alpha">Nonrandomness α</label><input id="alpha" type="number" value="0.3" min="0.1" max="0.6" step="any" aria-describedby="error-alpha"><p id="error-alpha" class="field-error" hidden></p></div>
+          <div class="feed-inputs"><div><label for="psat1">P₁<sup>sat</sup></label><div class="quantity-input"><input id="psat1" type="number" value="80" min="10" max="200" step="any" aria-describedby="psat1-unit error-psat1"><span id="psat1-unit">kPa</span></div><p id="error-psat1" class="field-error" hidden></p></div><div><label for="psat2">P₂<sup>sat</sup></label><div class="quantity-input"><input id="psat2" type="number" value="40" min="10" max="200" step="any" aria-describedby="psat2-unit error-psat2"><span id="psat2-unit">kPa</span></div><p id="error-psat2" class="field-error" hidden></p></div></div>
+          <p class="input-help">Hypothetical pure-component vapor pressures at the same fixed temperature, 10–200 kPa.</p>
+          <label for="pressure-mode">Pressure</label><select id="pressure-mode"><option value="triple">Use the three-phase pressure P₃</option><option value="manual">Enter a pressure</option></select>
+          <div id="pressure-control" hidden><div class="quantity-input"><input id="P" type="number" value="100" min="1" max="500" step="any" aria-label="Pressure" aria-describedby="P-unit error-P"><span id="P-unit">kPa</span></div><p id="error-P" class="field-error" hidden></p></div>
+          <div class="feed-inputs single-feed"><div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.5" min="0" max="1" step="any" aria-describedby="z-unit error-z"><span id="z-unit">mol/mol</span></div><p id="error-z" class="field-error" hidden></p></div></div>
+          <div class="prediction-row"><label for="prediction">Before calculating, which phases will be present?</label><select id="prediction"><option value="">Not sure yet</option><option value="VLLE">Two liquids + vapor</option><option value="LLE">Two liquids</option><option value="VLE">Liquid + vapor</option><option value="Vapor">Vapor only</option><option value="Liquid">One liquid</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Calculate equilibrium</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model assumptions</summary><p>The liquid Gibbs energy uses the selected activity model; the vapor is ideal. Both are placed on one Gibbs-energy reference using the pure-component saturation pressures, so the stable phases are those on the lowest common tangent of the liquid and vapor curves. Poynting corrections and temperature dependence are neglected. The system is hypothetical and does not represent a named chemical pair.</p><p><a href="../labs/vlle.html#vl-experiment">Open the current Lab 06</a> for its original controls and examples.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Identify the phases, compositions and amounts</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate the state to see its phases, compositions, amounts and checks.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="boundary-metrics"><div><dt>Pressure <span id="result-p-note">kPa</span></dt><dd id="result-p">—</dd></div></dl>
+          <div class="table-scroll" role="region" aria-label="Phases at equilibrium" tabindex="0"><table class="phase-table"><thead><tr><th scope="col">Phase</th><th scope="col">x₁ or y₁</th><th scope="col">Amount / mol</th></tr></thead><tbody id="phase-body"></tbody></table></div>
+          <p id="family-note" class="graduate-note"></p>
+          <div id="family-control" class="family-control" hidden><label for="choice">Explore the possible amounts</label><input id="choice" type="range" min="0" max="1" step="0.01" value="0.5" aria-describedby="choice-help"><p id="choice-help" class="input-help">Each position is one valid set of amounts. Every one satisfies both material balances.</p></div>
+          <div class="balance-readout"><strong>Component-balance residual</strong><output id="result-balance">—</output><span>mol of component 1 · 1 mol feed basis</span></div>
+          <div class="balance-readout"><strong>Fugacity equality residual</strong><output id="result-fug">—</output><span>largest relative difference between present phases</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · P₃, z₁ = 0.50" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the diagrams</h2><span class="section-help">Fixed T</span></div>
+      <div class="chart-toolbar"><label for="view">View</label><select id="view"><option value="pxy">Pressure–composition diagram</option><option value="gibbs">Liquid and vapor Gibbs curves at this pressure</option></select></div>
+      <div id="vlle-chart" class="vle-chart" role="img" aria-label="VLLE diagram. Numerical values are listed in the tables."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Why are the three compositions the same for every feed at P₃?</h3><p>Calculate the starting case (z₁ = 0.50) and “Same pressure · z₁ = 0.20”. Compare x₁ᵅ, x₁ᵝ and y₁.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Name what changed and what stayed the same, and use the phase rule."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>x₁ᵅ = 0.0707, x₁ᵝ = 0.9293 and y₁ = 0.6667 are identical for both feeds. Only the amounts change.</p><p>For two components and three phases, F = 2 − 3 + 2 = 1. Fixing T uses that one degree of freedom, so P₃ and all three compositions are fixed. This extends Labs 01 and 04: compositions come from the equilibrium conditions, amounts come from the material balance.</p></div></details></div>
+      <div class="concept-question"><h3>B. Why are the three amounts not unique?</h3><p>At the starting case, move the slider under the phase table and watch the three amounts.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Count the balance equations and the unknown amounts."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>There are three unknown amounts but only two balances: total moles, f<sup>α</sup> + f<sup>β</sup> + f<sup>V</sup> = 1, and component 1, f<sup>α</sup>x₁ᵅ + f<sup>β</sup>x₁ᵝ + f<sup>V</sup>y₁ = z₁. For z₁ = 0.50 any vapor amount from 0 to 0.72 mol satisfies both.</p><p>The phase rule fixes intensive variables only. One more extensive specification, such as the total enthalpy or volume, is needed to choose the amounts. Lab 07 supplies it with an energy balance.</p></div></details></div>
+      <div class="concept-question"><h3>C. Why do only two phases remain above or below P₃?</h3><p>Calculate “Higher pressure · 140 kPa” and “Lower pressure · 100 kPa”, and compare the Gibbs curves in Step 3 with the starting case.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Explain how pressure moves the vapor Gibbs curve relative to the liquid curve."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The ideal-vapor Gibbs energy contains ln(P/P<sub>i</sub><sup>sat</sup>), so raising P lifts the vapor curve while the liquid curve hardly changes. At 140 kPa the vapor curve lies above the liquid common tangent: two liquids, no vapor. At 100 kPa it drops below that tangent, and a new tangent between one liquid and the vapor gives liquid + vapor (V ≈ 0.79 mol).</p><p>Only at P₃ does one straight line touch both liquid minima and the vapor curve at once.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate what fixes a three-phase state</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="vlle-limits-heading"><h3 id="vlle-limits-heading">What these results can and cannot show</h3><ul><li>The system is hypothetical: one fixed temperature, constant liquid parameters, an ideal vapor and assumed saturation pressures.</li><li>Equilibrium decides which phases are present and their compositions. It does not decide the amounts at P₃, and it does not predict how fast phases separate.</li><li>A vapor-fraction specification here stands in for an energy or volume balance; it is not calculated from heat input.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="amounts-heading"><h3 id="amounts-heading">A. Supply the missing specification</h3>
+        <ol class="graduate-checklist"><li>Calculate the starting case at P₃ and read the allowed range of the vapor amount.</li><li>Specify a vapor amount and solve the two balances for f<sup>α</sup> and f<sup>β</sup> by hand. Check against the lab.</li><li>Explain which physical specification (heat duty, vessel volume) would replace your chosen vapor amount in a real flash.</li></ol>
+        <div class="graduate-grid graduate-controls"><div><label for="spec-fv">Specified vapor amount f<sup>V</sup></label><div class="quantity-input"><input id="spec-fv" type="number" value="0.3" min="0" max="1" step="any" aria-describedby="spec-fv-unit"><span id="spec-fv-unit">mol</span></div></div></div>
+        <div class="graduate-actions"><button id="run-amounts" class="primary-button" type="button" disabled>Solve the amounts</button></div>
+        <p id="amounts-status" class="graduate-status" role="status"></p>
+        <label for="note-amounts">Claim 1 · the missing specification</label><textarea id="note-amounts" rows="3" maxlength="10000" placeholder="Quote the allowed vapor range and your solved amounts. Name the physical specification that would fix them."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="sweep-heading"><h3 id="sweep-heading">B. Sweep the pressure across P₃</h3>
+        <ol class="graduate-checklist"><li>Keep the feed and run the sweep from 90 to 140 kPa. P₃ is inserted automatically.</li><li>Track the phase identity, the compositions and the vapor amount. Identify where each changes continuously and where it jumps.</li><li>Explain why the vapor amount at P₃ is a range rather than a number.</li></ol>
+        <div class="graduate-actions"><button id="run-sweep" type="button" class="primary-button" disabled>Sweep 90–140 kPa</button></div>
+        <p id="sweep-status" class="graduate-status" role="status"></p>
+        <div id="sweep-wrap" class="table-scroll graduate-table" role="region" aria-label="Pressure sweep" tabindex="0" hidden><table><thead><tr><th scope="col">P / kPa</th><th scope="col">Phases</th><th scope="col">Compositions</th><th scope="col">Vapor amount / mol</th></tr></thead><tbody id="sweep-body"></tbody></table></div>
+        <label for="note-sweep">Claim 2 · what changes at P₃</label><textarea id="note-sweep" rows="3" maxlength="10000" placeholder="Quote the vapor amount just below P₃, the range at P₃ and the value above P₃. Explain the jump."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="volatility-heading"><h3 id="volatility-heading">C. When does the vapor lie inside the liquid gap?</h3>
+        <ol class="graduate-checklist"><li>Run the comparison. It keeps the liquid model and sets P₂<sup>sat</sup> = 10 kPa while P₁<sup>sat</sup>/P₂<sup>sat</sup> ranges from 1 to 20.</li><li>Find where y₁ crosses x₁ᵝ. For symmetric Margules, show that y₁ = r/(1 + r) at P₃, with r = P₁<sup>sat</sup>/P₂<sup>sat</sup>.</li><li>Explain why a vapor inside the gap makes a decanter useful in heterogeneous azeotropic distillation.</li></ol>
+        <div class="graduate-actions"><button id="run-volatility" type="button" class="primary-button" disabled>Compare volatility ratios</button></div>
+        <p id="volatility-status" class="graduate-status" role="status"></p>
+        <div id="volatility-wrap" class="table-scroll graduate-table" role="region" aria-label="Volatility comparison" tabindex="0" hidden><table><thead><tr><th scope="col">P₁<sup>sat</sup>/P₂<sup>sat</sup></th><th scope="col">Interpretation</th><th scope="col">P₃ / kPa</th><th scope="col">x₁ᵅ</th><th scope="col">y₁</th><th scope="col">x₁ᵝ</th></tr></thead><tbody id="volatility-body"></tbody></table></div>
+        <label for="note-volatility">Claim 3 · heterogeneous azeotrope</label><textarea id="note-volatility" rows="3" maxlength="10000" placeholder="Quote the ratio where y₁ leaves the gap and explain what happens when the vapor is condensed."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State what equilibrium fixes, what it leaves open, and the measurement or balance that would close it."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Compare the compositions at P₃ for z₁ = 0.50 and 0.20, and the phases at 140 and 100 kPa.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved VLLE cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">P / kPa</th><th scope="col">Feed z₁</th><th scope="col">Phases</th><th scope="col">Compositions</th><th scope="col">Amounts / mol</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate equilibrium.</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate the equilibrium state. The figures and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/vlle-lab.js?v=lab06-1"></script>
+</body>
+</html>

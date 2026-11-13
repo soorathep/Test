@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–05 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–06 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining seven lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 06 next. Lab 13 is the earlier reference prototype.
+the remaining six lab interfaces are future work. Implementation proceeds in
+lab-number order, with Lab 07 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–05 now use a graduate teaching route. The foundation calculation is
+Labs 01–06 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -402,3 +402,16 @@ write-first, compare-after explanations. The Graduate view adds the investigatio
 section (Step 4, or G1–G3 and Steps 3–4 in Labs 02–03). The switch is shared
 (assets/mode.js); the choice is kept in the URL (?mode=graduate) and in localStorage.
 Concept answers are saved with each lab's study file.
+
+## Lab 06 prototype
+
+The starting system is a hypothetical binary at fixed T: symmetric Margules A = 3,
+ideal vapor, P1sat = 80 kPa and P2sat = 40 kPa. Its three-phase pressure is
+P3 = 113.2 kPa with x1alpha = 0.0707, x1beta = 0.9293 and y1 = 2/3. Two figures
+explain the state: a vessel with a vapor above two liquid layers, and a P–x–y diagram
+whose curves are generated from the same model. Core questions cover the fixed
+compositions at P3 (z1 = 0.50 and 0.20), the non-unique amounts (vapor 0 to 0.72 mol
+for z1 = 0.50) and the two-phase states at 140 and 100 kPa. The graduate route fixes
+the amounts with a vapor specification, sweeps 90–140 kPa across P3, and varies
+P1sat/P2sat at P2sat = 10 kPa; for symmetric Margules y1 = r/(1 + r) leaves the gap
+when r exceeds about 13.1.
