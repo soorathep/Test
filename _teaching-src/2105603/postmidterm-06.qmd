@@ -34,6 +34,74 @@ format:
       data-background-color: "#1C242B"
 ---
 
+## Start with the chemical potential {#chemical-potential}
+
+Follow the same reaction throughout the derivation.
+
+$$\mathrm{A_2(g)\rightleftharpoons 2A(g)}$$
+
+The chemical potential of each species depends on its activity.
+
+$$\mu_i=\mu_i^\circ+RT\ln a_i$$
+
+$\mu_i^\circ$ refers to the chosen standard state. The activity $a_i$ is dimensionless. For a gas, use $a_i=f_i/p^\circ$.
+
+::: {.notes}
+เริ่มที่ chemical potential ของสารแต่ละชนิด แยกส่วนมาตรฐานกับส่วนที่ขึ้นกับ activity ให้เห็นก่อน activity ของแก๊สใช้ fugacity หารด้วยความดันมาตรฐาน จึงไม่มีหน่วย
+:::
+
+## Combine the potentials along the reaction {#reaction-gibbs-energy}
+
+At fixed temperature and pressure, a small forward reaction consumes one unit of A₂ and forms two units of A.
+
+$$\mathrm dn_{\mathrm A}=2\,\mathrm d\xi,\qquad \mathrm dn_{\mathrm{A_2}}=-\mathrm d\xi$$
+
+Substitute these amounts into $\mathrm dG=\sum_i\mu_i\,\mathrm dn_i$.
+
+$$\mathrm dG=(2\mu_{\mathrm A}-\mu_{\mathrm{A_2}})\,\mathrm d\xi$$
+
+The reaction Gibbs energy is the slope along the reaction extent $\xi$.
+
+$$\Delta_rG=\left(\frac{\partial G}{\partial\xi}\right)_{T,P}=2\mu_{\mathrm A}-\mu_{\mathrm{A_2}}$$
+
+::: {.notes}
+เลขสองและเครื่องหมายลบมาจากสมการปฏิกิริยา อธิบายว่า delta-r-G เป็นความชันของ G ต่อความก้าวหน้าปฏิกิริยา ณ องค์ประกอบขณะนั้น
+:::
+
+## The activity ratio is Q {#reaction-quotient}
+
+Insert $\mu_i=\mu_i^\circ+RT\ln a_i$ into the reaction Gibbs energy.
+
+$$\Delta_rG=(2\mu_{\mathrm A}^\circ-\mu_{\mathrm{A_2}}^\circ)+RT(2\ln a_{\mathrm A}-\ln a_{\mathrm{A_2}})$$
+
+Define $\Delta_rG^\circ=2\mu_{\mathrm A}^\circ-\mu_{\mathrm{A_2}}^\circ$ and combine the logarithms.
+
+$$\Delta_rG=\Delta_rG^\circ+RT\ln\left(\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}}\right)$$
+
+The ratio calculated from the mixture's **current activities** is the reaction quotient.
+
+$$Q=\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}},\qquad \Delta_rG=\Delta_rG^\circ+RT\ln Q$$
+
+::: {.notes}
+ชี้การรวม logarithm ให้เห็นว่า activity ของผลิตภัณฑ์อยู่ข้างบน ของสารตั้งต้นอยู่ข้างล่าง และยกกำลังตามสัมประสิทธิ์ Q ใช้สภาวะขณะนี้ จะอยู่ที่สมดุลหรือยังดำเนินปฏิกิริยาก็ได้
+:::
+
+## At equilibrium, Q equals K {#equilibrium-constant}
+
+At reaction equilibrium, $\Delta_rG=0$. Call the equilibrium value of the activity ratio $K$.
+
+$$0=\Delta_rG^\circ+RT\ln K,\qquad K=\exp\left(-\frac{\Delta_rG^\circ}{RT}\right)$$
+
+For the written reaction and chosen standard states, the temperature determines $K$. Combine this relation with the expression for the current mixture.
+
+$$\boxed{\Delta_rG=RT\ln\left(\frac{Q}{K}\right)}$$
+
+Compare $Q$ with $K$ to predict the reaction direction. Which sign does $\Delta_rG$ have when $Q<K$?
+
+::: {.notes}
+ตอนนี้จึงใช้เงื่อนไขสมดุล delta-r-G เท่ากับศูนย์ เรียกค่าอัตราส่วนที่สมดุลว่า K จากนั้นแทนกลับเพื่อได้ RT ln Q/K ให้นิสิตบอกว่า Q น้อยกว่า K ทำให้ logarithm ติดลบ จึงเดินหน้า
+:::
+
 ## Q and K for the same reaction {#q-and-k}
 
 For $\mathrm{A_2(g)\rightleftharpoons 2A(g)}$, use the dimensionless activity ratio $a_{\mathrm A}^2/a_{\mathrm{A_2}}$.
@@ -110,7 +178,7 @@ Thai spoken recap: ใช้ fugacity แทนความดันย่อย
 
 | Class time | Activity |
 |---|---|
-| 0–15 min | Answer the Week 5 pressure question and check a real-gas calculation |
+| 0–15 min | Derive Q and K, then check compression and a real-gas calculation |
 | 15–35 min | Revisit Weeks 2–5 in pairs with paper and a calculator |
 | 35–60 min | Balance a cell reaction and calculate its potential by hand |
 | 60–70 min | Demonstrate the concentration cell in Lab 13 |

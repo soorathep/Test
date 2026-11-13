@@ -170,6 +170,40 @@ Soorathep Kheawhom
 
   <p class="date">13 November 2026</p>
 </section>
+<section id="chemical-potential" class="slide level2">
+<h2>Start with the chemical potential</h2>
+<p>Follow the same reaction throughout the derivation.</p>
+<p><span class="math display">\mathrm{A_2(g)\rightleftharpoons 2A(g)}</span></p>
+<p>The chemical potential of each species depends on its activity.</p>
+<p><span class="math display">\mu_i=\mu_i^\circ+RT\ln a_i</span></p>
+<p><span class="math inline">\mu_i^\circ</span> refers to the chosen standard state. The activity <span class="math inline">a_i</span> is dimensionless. For a gas, use <span class="math inline">a_i=f_i/p^\circ</span>.</p>
+</section>
+<section id="reaction-gibbs-energy" class="slide level2">
+<h2>Combine the potentials along the reaction</h2>
+<p>At fixed temperature and pressure, a small forward reaction consumes one unit of A₂ and forms two units of A.</p>
+<p><span class="math display">\mathrm dn_{\mathrm A}=2\,\mathrm d\xi,\qquad \mathrm dn_{\mathrm{A_2}}=-\mathrm d\xi</span></p>
+<p>Substitute these amounts into <span class="math inline">\mathrm dG=\sum_i\mu_i\,\mathrm dn_i</span>.</p>
+<p><span class="math display">\mathrm dG=(2\mu_{\mathrm A}-\mu_{\mathrm{A_2}})\,\mathrm d\xi</span></p>
+<p>The reaction Gibbs energy is the slope along the reaction extent <span class="math inline">\xi</span>.</p>
+<p><span class="math display">\Delta_rG=\left(\frac{\partial G}{\partial\xi}\right)_{T,P}=2\mu_{\mathrm A}-\mu_{\mathrm{A_2}}</span></p>
+</section>
+<section id="reaction-quotient" class="slide level2">
+<h2>The activity ratio is Q</h2>
+<p>Insert <span class="math inline">\mu_i=\mu_i^\circ+RT\ln a_i</span> into the reaction Gibbs energy.</p>
+<p><span class="math display">\Delta_rG=(2\mu_{\mathrm A}^\circ-\mu_{\mathrm{A_2}}^\circ)+RT(2\ln a_{\mathrm A}-\ln a_{\mathrm{A_2}})</span></p>
+<p>Define <span class="math inline">\Delta_rG^\circ=2\mu_{\mathrm A}^\circ-\mu_{\mathrm{A_2}}^\circ</span> and combine the logarithms.</p>
+<p><span class="math display">\Delta_rG=\Delta_rG^\circ+RT\ln\left(\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}}\right)</span></p>
+<p>The ratio calculated from the mixture’s <strong>current activities</strong> is the reaction quotient.</p>
+<p><span class="math display">Q=\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}},\qquad \Delta_rG=\Delta_rG^\circ+RT\ln Q</span></p>
+</section>
+<section id="equilibrium-constant" class="slide level2">
+<h2>At equilibrium, Q equals K</h2>
+<p>At reaction equilibrium, <span class="math inline">\Delta_rG=0</span>. Call the equilibrium value of the activity ratio <span class="math inline">K</span>.</p>
+<p><span class="math display">0=\Delta_rG^\circ+RT\ln K,\qquad K=\exp\left(-\frac{\Delta_rG^\circ}{RT}\right)</span></p>
+<p>For the written reaction and chosen standard states, the temperature determines <span class="math inline">K</span>. Combine this relation with the expression for the current mixture.</p>
+<p><span class="math display">\boxed{\Delta_rG=RT\ln\left(\frac{Q}{K}\right)}</span></p>
+<p>Compare <span class="math inline">Q</span> with <span class="math inline">K</span> to predict the reaction direction. Which sign does <span class="math inline">\Delta_rG</span> have when <span class="math inline">Q&lt;K</span>?</p>
+</section>
 <section id="q-and-k" class="slide level2">
 <h2>Q and K for the same reaction</h2>
 <p>For <span class="math inline">\mathrm{A_2(g)\rightleftharpoons 2A(g)}</span>, use the dimensionless activity ratio <span class="math inline">a_{\mathrm A}^2/a_{\mathrm{A_2}}</span>.</p>
@@ -310,7 +344,7 @@ Soorathep Kheawhom
 <tbody>
 <tr class="odd">
 <td>0–15 min</td>
-<td>Answer the Week 5 pressure question and check a real-gas calculation</td>
+<td>Derive Q and K, then check compression and a real-gas calculation</td>
 </tr>
 <tr class="even">
 <td>15–35 min</td>
