@@ -157,7 +157,7 @@ function clearPlot() {
   setText('chart-note', 'Calculate a state to show its phase diagram.');
 }
 
-function invalidate(message = 'Inputs changed. Predict the phases, then calculate again.') {
+function invalidate(message = 'Inputs changed. Check the inputs, then calculate again.') {
   revision += 1;
   current = null;
   show('results', false);
@@ -201,7 +201,7 @@ function loadCase(key) {
   element('prediction').value = '';
   importedPrediction = '';
   show('recorded-prediction', false);
-  invalidate('Starting values loaded. Predict the phases and calculate this case.');
+  invalidate('Starting values loaded. You can make a prediction before calculating this case.');
   setCaseSelection(key);
   setText('case-description', 'A 1.00 mol binary feed at 350 K and ' + format(chosen.values.P, 10)
     + ' kPa has a component 1 feed mole fraction z₁ = 0.40. Assume ideal vapor and ideal liquid.');

@@ -54,7 +54,7 @@
           </div>
           <div class="component-key"><span>Component 1 <strong id="component1-name">A</strong></span><span>Component 2 <strong id="component2-name">B</strong></span></div>
           <div class="property-summary"><h3>Vapor pressures at this temperature</h3><div id="property-values" class="property-values">Loading the property record…</div><p class="input-help">These pure-component vapor pressures change with temperature.</p></div>
-          <div class="prediction-row"><label for="prediction">Predict the phases <span>optional</span></label><select id="prediction"><option value="">Choose a prediction</option><option value="liquid">Liquid only</option><option value="two-phase">Liquid + vapor</option><option value="vapor">Vapor only</option><option value="boundary">At a phase boundary</option></select></div>
+          <div class="prediction-row"><label for="prediction">Before calculating, what do you think will be present?</label><select id="prediction" aria-describedby="prediction-help"><option value="">Not sure yet</option><option value="liquid">Liquid only</option><option value="two-phase">Liquid + vapor</option><option value="vapor">Vapor only</option><option value="boundary">At a phase boundary</option></select><p id="prediction-help" class="input-help">Make a prediction, then compare it with the calculated result. You can skip this step. Your choice does not change the calculation.</p></div>
           <p id="recorded-prediction" class="section-help" hidden></p>
           <button id="calculate" class="primary-button calculate-button" type="button" disabled>Calculate equilibrium</button>
           <p class="input-help">Add a calculated result to the comparison before changing a condition.</p>
