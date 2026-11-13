@@ -381,7 +381,7 @@ function importFromQuery() {
   applyInputs(inputs); $('case-name').value = 'Imported NRTL fit · z₁ = ' + num(inputs.z);
   for (const button of document.querySelectorAll('[data-case]')) button.setAttribute('aria-pressed', 'false');
   $('case-description').textContent = 'A 1.00 mol binary liquid feed follows the imported NRTL parameters τ₁₂ = ' + num(inputs.tau12) + ', τ₂₁ = ' + num(inputs.tau21) + ' and α = ' + num(inputs.alpha) + '.';
-  $('import-note').textContent = (q.get('from') === 'lab02' ? 'Parameters imported from your Lab 02 fit. ' : 'Imported NRTL parameters. ') + 'They are constant τ values; this lab treats them at one fixed temperature. Check the liquid stability, then return to the named cases for the core investigation.';
+  $('import-note').textContent = (q.get('from') === 'lab02' ? 'Parameters imported from your Lab 02 fit. ' : q.get('from') === 'lab05' ? 'Parameters imported from your Lab 05 tie-line fit. ' : 'Imported NRTL parameters. ') + 'They are constant τ values; this lab treats them at one fixed temperature. Check the liquid stability, then return to the named cases for the core investigation.';
   $('import-note').hidden = false;
   return true;
 }

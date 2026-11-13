@@ -22,3 +22,7 @@
 }
 .highlight-row td { background: var(--soft-sand); }
 #lle-chart { max-width: 100%; overflow: hidden; }
+#fit-chart { max-width: 100%; overflow: hidden; }
+.observation-table { margin: 12px 0 4px; }
+.observation-table td, .observation-table th { text-align: right; }
+.verdict-fail { color: var(--rust, #BE654C); }
