@@ -73,6 +73,10 @@ svg text{font-family:var(--f-body);fill:var(--muted);font-size:11px}
 .ratios{font:13px var(--f-mono);color:var(--muted);margin-top:10px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:12.5px;max-width:95ch;display:grid;gap:6px}
 footer b{color:var(--ink)}
+footer a{color:var(--teal)}
+.reflist{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.how ol{margin:0;padding-left:20px;display:grid;gap:8px;max-width:110ch}
+.how li{font-size:14px} .how li b{color:var(--ink)}
 @media (prefers-reduced-motion:no-preference){.verdict{transition:background-color .25s}}
 </style>
 
@@ -85,6 +89,16 @@ footer b{color:var(--ink)}
   <p>Enter the cost of your regeneration process and how long the regenerated material lasts compared with pristine material under the same test. The calculator applies the dimensionless criterion from the degradation-aware techno-economic model and shows the cycle life and cost your process would need to beat continued use.</p>
   <div class="eq">Regenerate at retirement (B) beats continued use, then virgin replacement (D), when&nbsp; <i>κ</i> &lt; <i>λ</i> + <i>p</i>(1 + <i>λ</i>)/2 − (1 + <i>κ</i>)<i>vρ</i>/2</div>
 </header>
+
+<section class="panel how" aria-labelledby="how-h">
+  <h2 id="how-h">How to use</h2>
+  <ol>
+    <li><b>Choose the case.</b> Pick the cathode route, the state of health at which the cell is retired, and the boundary: <em>CAM</em> counts the cathode material only; <em>Cell</em> adds the non-CAM cell cost and the cost of repurposing the old cell. The other fields then load the reference values of the model.</li>
+    <li><b>Enter your process.</b> Regeneration cost in USD per kg CAM (processing, reagents and energy), and the cycle-life ratio: equivalent full cycles to 80% capacity of the regenerated material divided by that of pristine material, measured in full cells under the same protocol. Example: pristine 1,000 cycles, regenerated 900 cycles, enter 0.90.</li>
+    <li><b>Read the verdict.</b> The card states whether regenerating at retirement or using the cell further is cheaper per MWh delivered. The tiles give the cycle-life ratio and the regeneration cost your process would need to reach the boundary; the map places your process against it.</li>
+    <li><b>Change assumptions only if you have better data.</b> Open <em>Market and use assumptions</em> to change the value of second-use energy, the repurposing cost, the virgin CAM cost, the non-CAM cell cost or the continuation energy. <em>Reset</em> restores the reference case.</li>
+  </ol>
+</section>
 
 <div class="grid">
 <section class="panel" aria-labelledby="in-h">
@@ -137,6 +151,17 @@ footer b{color:var(--ink)}
   <div><b>Model.</b> Reference values come from model v0.7 at its deterministic base: Sandia 18650 first-life fade at 25 °C, 20–80% SOC, 0.5C; calendar fade 0.015 per √year; 20-year service cap; 300 cycles per year; repurposing cost charged at the cell boundary only. The cycle-life ratio is converted to the energy ratio λ with the same fade law, so λ is not equal to the ratio itself.</div>
   <div><b>Accuracy.</b> The undiscounted criterion matched the discounted model in 97.1% (complete repair) and 96.1% (incomplete repair) of 2,160 test cases; every disagreement had a margin between −0.25 and +0.18, so results inside that band are flagged. One regeneration loop; floor at 60% SOH. For LFP retired below about 77% SOH the service cap removes continued use and the comparison is with virgin replacement.</div>
   <div><b>Published ratios.</b> Shaded bands on the map: processes that leave structural damage, 0.16 to 0.6; processes that restore structure and lithium content, 0.9 to about 1.05 (ESI Table S4 of the paper).</div>
+  <div id="refs"><b>Source of the model and data.</b> This calculator implements the dimensionless criterion and the reference values of S. Kheawhom and co-workers, "When does direct regeneration of cathode material beat further use of the cell? A dimensionless criterion from degradation-aware techno-economic assessment", manuscript submitted to <i>Chemical Engineering Journal</i> (2026; DOI to follow). A spreadsheet version is provided with the paper as ESI Calculator S1. The inputs come from the following sources.
+    <ul class="reflist">
+      <li><b>First-life capacity fade</b> (EFC to 80% SOH, fade exponents): Sandia 18650 cycling data, Preger et al., <i>J. Electrochem. Soc.</i> 167 (2020) 120532, <a href="https://doi.org/10.1149/1945-7111/abae37">doi:10.1149/1945-7111/abae37</a>; data from <a href="https://www.batteryarchive.org">www.batteryarchive.org</a>. NMC622 cycle life from Leng et al. (2017), <a href="https://doi.org/10.1149/2.0451706jes">doi:10.1149/2.0451706jes</a>, and Kirwa et al. (2026), <a href="https://doi.org/10.3390/batteries12090363">doi:10.3390/batteries12090363</a>.</li>
+      <li><b>Continuation energy below 80% SOH</b> (ρ): LFP first- and second-life aging data, Wheeler et al., <i>Sci. Data</i> 12 (2025) 392, <a href="https://doi.org/10.1038/s41597-025-04712-7">doi:10.1038/s41597-025-04712-7</a> (CC BY 4.0); cross-checked with Ohneseit et al. (2025), <a href="https://doi.org/10.1002/batt.202400713">doi:10.1002/batt.202400713</a>.</li>
+      <li><b>Calendar aging</b> (0.015 per √year): Gailani et al. (2020), <a href="https://doi.org/10.1109/upec49904.2020.9209759">doi:10.1109/upec49904.2020.9209759</a>; Svens et al. (2022), <a href="https://doi.org/10.1109/tte.2022.3158838">doi:10.1109/tte.2022.3158838</a>; Ohneseit et al. (2025).</li>
+      <li><b>Repurposing cost</b> (40 USD per kWh): Gharebaghi et al. (2024), <a href="https://doi.org/10.3390/en18010042">doi:10.3390/en18010042</a>; Fathoni et al. (2026), <a href="https://doi.org/10.3390/su18094428">doi:10.3390/su18094428</a>.</li>
+      <li><b>Regeneration cost by degradation stage</b>: method-level medians of Beletskii et al. (2026), <a href="https://doi.org/10.1002/advs.202519076">doi:10.1002/advs.202519076</a>, with lab-to-industry scale factors; single-crystal regrowth schedule of Qin et al. (2023), <a href="https://doi.org/10.1002/adma.202307091">doi:10.1002/adma.202307091</a>.</li>
+      <li><b>Virgin CAM cost</b>: route flowsheets of the paper with 2025 Shanghai Metals Market and Mysteel price points; NMC811 checked against Resendiz-Mora et al. (2026), <a href="https://doi.org/10.1016/j.jpowsour.2026.239534">doi:10.1016/j.jpowsour.2026.239534</a>.</li>
+      <li><b>Published cycle-life ratios</b> (shaded bands on the map): complete repair, Kirwa et al. (2026), Wang et al. (2026), <a href="https://doi.org/10.1093/nsr/nwag017">doi:10.1093/nsr/nwag017</a>, and Ji et al. (2026), <a href="https://doi.org/10.1002/adma.73177">doi:10.1002/adma.73177</a>; incomplete repair, Kirwa et al. (2026), Miah et al. (2026), <a href="https://doi.org/10.1039/d6dt00556j">doi:10.1039/d6dt00556j</a>, and Sita et al. (2024), <a href="https://doi.org/10.1002/batt.202400536">doi:10.1002/batt.202400536</a>.</li>
+    </ul>
+  </div>
 </footer>
 </div>
 <script>
@@ -194,10 +219,10 @@ function render() {
   }
   vd.className = 'verdict ' + cls; $('chip').textContent = chip; $('vt').textContent = title; $('vs').textContent = sub;
   $('flag').textContent = Math.abs(r.margin) < 0.25 ? 'Close to the decision boundary (|margin| < 0.25): the full discounted model can give the other answer here.' : '';
-  $('m').textContent = (r.margin >= 0 ? '+' : '') + fmt(r.margin, 3);
+  $('m').textContent = (r.margin >= 0 ? '+' : '\u2212') + fmt(Math.abs(r.margin), 3);
   $('fs').textContent = r.fS == null ? '> 2.0' : r.fS.toFixed(2);
-  $('be').textContent = r.beCost <= 0 ? 'none' : r.beCost.toFixed(1);
-  $('ba').textContent = (r.ba >= 0 ? '+' : '') + fmt(r.ba, 3);
+  $('be').textContent = r.beCost <= 0 ? 'none' : r.beCost.toFixed(2);
+  $('ba').textContent = (r.ba >= 0 ? '+' : '\u2212') + fmt(Math.abs(r.ba), 3);
   $('ratios').textContent = `κ ${r.k.toFixed(3)} · λ ${r.lam.toFixed(3)} · ρ ${r.rho.toFixed(3)} · v ${r.v.toFixed(2)} · p ${r.p.toFixed(3)} · virgin ${r.Cv.toFixed(1)} USD/kWh nameplate` + (r.cont ? '' : ' · continued use not possible');
   draw(c, rc, f, r);
 }
@@ -224,7 +249,8 @@ function draw(c, rc, f, r) {
   s += `<text x="${lx}" y="${ly}" text-anchor="middle" style="fill:${col('--amber')};font-weight:600">${r.cont ? 'B beats D' : 'B beats A'} below the line</text>`;
   const px = xs(f), py = ys(rc);
   s += `<circle cx="${px}" cy="${py}" r="7" fill="${r.margin > 0 ? col('--amber') : col('--teal')}" stroke="${col('--panel')}" stroke-width="2.5"/>`;
-  s += `<text x="${px + (f > 1.6 ? -12 : 12)}" y="${py - 10}" text-anchor="${f > 1.6 ? 'end' : 'start'}" style="fill:${col('--ink')};font-weight:600">your process</text>`;
+  const lf = f > 1.6 || (r.margin < 0 && f > 0.45);
+  s += `<text x="${px + (lf ? -12 : 12)}" y="${py - 10}" text-anchor="${lf ? 'end' : 'start'}" style="fill:${col('--ink')};font-weight:600">your process</text>`;
   s += `<text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle" style="fill:${col('--ink')}">Cycle-life ratio, regenerated / pristine</text>`;
   s += `<text transform="translate(16 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle" style="fill:${col('--ink')}">Regeneration cost, USD per kg CAM</text>`;
   svg.innerHTML = s;
