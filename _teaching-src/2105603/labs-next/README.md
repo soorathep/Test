@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–08 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–09 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
 the remaining four lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 09 next. Lab 13 is the earlier reference prototype.
+lab-number order, with Lab 10 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–08 now use a graduate teaching route. The foundation calculation is
+Labs 01–09 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -278,7 +278,7 @@ Pilot observations inform the readiness review for the 2027 cohort.
 | 06 VLLE | Identify coexisting phases and amounts | Clear conditions and quantities determined by the specification |
 | 07 Adiabatic flash | Specify feed and solve balances | Feed route, temperature/phases, material and energy checks |
 | 08 Experimental VLE input | Import measurements and properties | Column mapping, equation preview and unit/range validation |
-| 09 Virial | Compare vapor models | Explained reference case, one-coefficient experiment, property editor |
+| 09 Virial | Compare vapor models | Prototype: ideal vs second-virial vapor, K-value decomposition, B12 and scale studies |
 | 10 SLE/GSE | Select a solid-equilibrium question | Separate task routes and relevant fields |
 | 11 Adsorption | Compare, solve vessel or fit | Task-specific entry with matching inputs and outputs |
 | 12 Reaction equilibrium | Calculate K then Q/extent | Named routes, structured species/properties and explicit comparison |
@@ -442,3 +442,16 @@ consistency test is blind to it (D stays 1.16%), but the limits and the NRTL fit
 (99% pressure error) are not. The graduate route tabulates four deliberate
 misreadings, compares NRTL and Margules fits, and shows that the area D moves from
 1.16% (measured interval) to 0.008% (linear extension).
+
+## Lab 09 prototype
+
+The Lab 01 mixture at 350 K and 95 kPa, z1 = 0.5, ideal liquid, with synthetic
+constant B11 = -120, B12 = -90, B22 = -180 cm3/mol. The page solves the same flash with
+an ideal and a second-virial vapor (shared engine `virial.js`, pressure-form Z = 1 + Bmix P/RT,
+phi_i^sat in the liquid reference so B = 0 recovers the ideal vapor exactly). Starting
+case: Z = 0.9963 (Bmix = -114.7 cm3/mol at y1 = 0.6148), beta = 0.4883 vs 0.4935, bubble
+104.85 vs 105.00 kPa. ln phi1^sat = -0.0062 and -ln phi1 = +0.0033 largely cancel, so K1
+changes by only -0.3%. With ten times larger |B|: Z = 0.963, beta = 0.438, bubble error of
+the ideal vapor 1.48%, size indicator 0.093; 15x is refused by the 0.1 truncation guard.
+The graduate route tabulates the K-value decomposition, compares B12 = -90, the geometric
+mean -147, -63 and -117 (bubble 104.81-104.94 kPa), and runs the 1-15x scale study.

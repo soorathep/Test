@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Virial vapor · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="When is an ideal vapor good enough? Compare the same VLE with ideal and second-virial vapors.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab09-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="adiabatic.html">Lab 07</a><a href="vle-input.html">Lab 08</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 09 · Vapor nonideality and the second virial coefficient</p><h1>When is an ideal vapor good enough?</h1><p id="case-description" class="intro-copy">The Lab 01 mixture at 350 K and 95 kPa, z₁ = 0.50, with an ideal liquid. The vapor is described twice: as an ideal gas and with second virial coefficients B₁₁ = −120, B₁₂ = −90 and B₂₂ = −180 cm³ mol⁻¹.</p><p class="task-question">Compare the two vapors, find where the virial correction enters, and decide how large BP/RT must be before it matters.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, compare the two vapors and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus a term-by-term decomposition, the cross coefficient B₁₂ and a scale study in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 to compare the two vapors. In Step 4, decompose the correction to each K-value, test the cross coefficient and scale B toward the truncation limit. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a case</strong><span>All cases use the Lab 01 mixture at 350 K with an ideal liquid.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 95 kPa, B as given</button><button type="button" data-case="strong" aria-pressed="false">Ten times larger |B|</button><button type="button" data-case="zero" aria-pressed="false">All B = 0</button><button type="button" data-case="poynting" aria-pressed="false">Add the Poynting factor</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Where the vapor correction enters</h2><span class="section-help">Three small factors, partly cancelling</span></div>
+      <div class="vlle-figures vr-figures">
+        <div>
+          <svg class="eq-sketch" viewBox="0 0 520 230" role="img" aria-labelledby="eq-title eq-description">
+            <title id="eq-title">The gamma–phi equilibrium equation with its correction factors labeled</title>
+            <desc id="eq-description">y_i phi_i P equals x_i gamma_i phi_i-sat P_i-sat Pi_i. Phi_i corrects the vapor mixture, phi_i-sat corrects the pure saturated vapor in the liquid reference, gamma_i is the liquid activity coefficient and Pi_i is the Poynting factor. With phi_i, phi_i-sat and Pi_i equal to one this is the modified Raoult's law of Labs 01 and 02.</desc>
+            <g class="eq-note"><text x="255" y="38">γᵢ · liquid (Labs 01–02)</text><text x="445" y="38">Πᵢ · Poynting</text></g>
+            <path d="M255 46 V84" class="eq-lead eq-slate"/><path d="M445 46 V84" class="eq-lead eq-teal"/>
+            <g class="eq-main"><text x="58" y="114">yᵢ</text><text x="103" y="114" class="eq-amber-text">φᵢ</text><text x="143" y="114">P</text><text x="180" y="114">=</text><text x="217" y="114">xᵢ</text><text x="255" y="114" class="eq-slate-text">γᵢ</text><text x="316" y="114" class="eq-amber-text">φᵢˢᵃᵗ</text><text x="385" y="114">Pᵢˢᵃᵗ</text><text x="445" y="114" class="eq-teal-text">Πᵢ</text></g>
+            <path d="M103 124 V142" class="eq-lead eq-amber"/><path d="M316 124 V142" class="eq-lead eq-amber"/>
+            <g class="eq-note"><text x="103" y="160">vapor mixture</text><text x="316" y="160">pure saturated vapor</text></g>
+            <g class="eq-caption"><text x="260" y="196">ln φᵢ = (2Σⱼ yⱼBᵢⱼ − B<tspan baseline-shift="sub" font-size="70%">mix</tspan>) P/RT</text><text x="260" y="218">ln φᵢˢᵃᵗ = Bᵢᵢ Pᵢˢᵃᵗ/RT · ln Πᵢ = vᵢᴸ(P − Pᵢˢᵃᵗ)/RT</text></g>
+          </svg>
+          <p class="figure-caption">With φᵢ = φᵢˢᵃᵗ = Πᵢ = 1 this is the modified Raoult's law used in Labs 01, 02 and 08.</p>
+        </div>
+        <div>
+          <svg class="energy-sketch" viewBox="0 0 440 230" role="img" aria-labelledby="k-title k-description">
+            <title id="k-title">Correction terms in ln K for component 1 in the starting case</title>
+            <desc id="k-description">ln phi1-sat is minus 0.0062. Minus ln phi1 is plus 0.0033. The net correction to ln K1 is minus 0.0028, a change of about 0.3 percent in K1.</desc>
+            <path d="M220 30 V190" class="pxy-axis"/>
+            <rect x="96" y="45" width="124" height="34" class="energy-latent"/><rect x="220" y="95" width="67" height="34" class="energy-sensible"/><rect x="163" y="145" width="57" height="34" class="energy-net"/>
+            <g class="energy-text" style="text-anchor:start"><text x="20" y="67" style="text-anchor:start">ln φ₁ˢᵃᵗ</text><text x="20" y="117" style="text-anchor:start">− ln φ₁</text><text x="20" y="167" style="text-anchor:start">net ln K₁</text></g>
+            <g class="pxy-tick" style="text-anchor:start"><text x="300" y="117" style="text-anchor:start">+0.0033</text><text x="96" y="40" style="text-anchor:start">−0.0062</text><text x="232" y="167" style="text-anchor:start">−0.0028 (−0.3% in K₁)</text></g>
+            <g class="pxy-tick"><text x="220" y="210">0</text></g>
+          </svg>
+          <p class="figure-caption">Calculated for the starting case. The correction to the pure saturated vapor and the correction to the vapor mixture have opposite signs here and largely cancel.</p>
+        </div>
+      </div>
+      <figcaption>Both vapors use the same liquid model and the same saturation pressures. Any difference in the results comes only from the vapor description.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the conditions and coefficients</h2><span class="condition">Basis · 1.00 mol feed</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="vr-form" novalidate>
+          <div class="feed-inputs"><div><label for="T">Temperature</label><div class="quantity-input"><input id="T" type="number" value="350" min="300" max="390" step="any" aria-describedby="T-unit error-T"><span id="T-unit">K</span></div><p id="error-T" class="field-error" hidden></p></div><div><label for="P">Pressure</label><div class="quantity-input"><input id="P" type="number" value="95" min="1" max="200" step="any" aria-describedby="P-unit error-P"><span id="P-unit">kPa</span></div><p id="error-P" class="field-error" hidden></p></div><div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.5" min="0" max="1" step="any" aria-describedby="z-unit error-z"><span id="z-unit">mol/mol</span></div><p id="error-z" class="field-error" hidden></p></div></div>
+          <fieldset class="antoine-set"><legend>Second virial coefficients · cm³ mol⁻¹</legend>
+            <div class="antoine-grid abc-3"><div><label for="b11">B₁₁</label><input id="b11" type="number" value="-120" step="any" aria-describedby="error-b11"><p id="error-b11" class="field-error" hidden></p></div><div><label for="b12">B₁₂ · cross</label><input id="b12" type="number" value="-90" step="any" aria-describedby="error-b12"><p id="error-b12" class="field-error" hidden></p></div><div><label for="b22">B₂₂</label><input id="b22" type="number" value="-180" step="any" aria-describedby="error-b22"><p id="error-b22" class="field-error" hidden></p></div></div>
+            <p class="input-help">Constant over 300–390 K. Synthetic teaching values, not real-compound data. B₁₂ is supplied, not computed from a mixing rule.</p>
+          </fieldset>
+          <label for="model">Liquid model</label><select id="model"><option value="ideal">Ideal liquid (as in Lab 01)</option><option value="margules">Margules · one parameter</option><option value="margules2">Margules · two parameters</option><option value="nrtl">NRTL · constant τ</option></select>
+          <div id="margules-control" class="parameter-fields" hidden><label for="A">Margules A</label><input id="A" type="number" value="1" min="-1" max="1.8" step="any" aria-describedby="error-A"><p id="error-A" class="field-error" hidden></p></div>
+          <div id="margules2-control" class="parameter-fields coefficient-grid" hidden><div><label for="A12">A₁₂</label><input id="A12" type="number" value="1.5" min="-1" max="3" step="any" aria-describedby="error-A12"><p id="error-A12" class="field-error" hidden></p></div><div><label for="A21">A₂₁</label><input id="A21" type="number" value="0.5" min="-1" max="3" step="any" aria-describedby="error-A21"><p id="error-A21" class="field-error" hidden></p></div></div>
+          <div id="nrtl-control" class="parameter-fields" hidden><div class="coefficient-grid"><div><label for="tau12">τ₁₂</label><input id="tau12" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau12"><p id="error-tau12" class="field-error" hidden></p></div><div><label for="tau21">τ₂₁</label><input id="tau21" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau21"><p id="error-tau21" class="field-error" hidden></p></div></div><label for="alpha">Nonrandomness α</label><input id="alpha" type="number" value="0.3" min="0.1" max="0.6" step="any" aria-describedby="error-alpha"><p id="error-alpha" class="field-error" hidden></p></div>
+          <div class="poynting-row"><label class="check-label"><input id="poynting" type="checkbox"> Include the Poynting factor Πᵢ</label><div class="coefficient-grid"><div><label for="v1">v₁ᴸ / cm³ mol⁻¹</label><input id="v1" type="number" value="90" min="1" max="1000" step="any" aria-describedby="error-v1"><p id="error-v1" class="field-error" hidden></p></div><div><label for="v2">v₂ᴸ / cm³ mol⁻¹</label><input id="v2" type="number" value="110" min="1" max="1000" step="any" aria-describedby="error-v2"><p id="error-v2" class="field-error" hidden></p></div></div></div>
+          <div class="prediction-row"><label for="prediction">Before calculating, how much will the vapor amount change with the virial vapor?</label><select id="prediction"><option value="">Not sure yet</option><option value="small">Less than 2%</option><option value="medium">Between 2% and 10%</option><option value="large">More than 10%</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Compare the two vapors</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model and validity</summary><p>The pressure-form second-virial vapor: Z = 1 + B<sub>mix</sub>P/RT with B<sub>mix</sub> = y₁²B₁₁ + 2y₁y₂B₁₂ + y₂²B₂₂. The liquid reference includes φᵢˢᵃᵗ consistently, so B = 0 recovers the ideal vapor exactly. The lab refuses states with max|Bᵢⱼ| · max(P, Pᵢˢᵃᵗ)/RT &gt; 0.1, where neglected higher virial terms may matter; passing this guard is not an accuracy guarantee. Saturation pressures are the Lab 01 synthetic correlations (150 and 60 kPa at 350 K).</p><p><a href="../labs/virial.html">Open the current Lab 09</a> for temperature-dependent B, your own Antoine constants and the Gibbs-curve view.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Compare the two vapors</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate to compare the ideal and virial vapors side by side.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <div class="table-scroll" role="region" aria-label="Ideal versus virial vapor" tabindex="0"><table class="phase-table"><thead><tr><th scope="col">Quantity</th><th scope="col">Ideal vapor</th><th scope="col">Virial vapor</th><th scope="col">Change</th></tr></thead><tbody id="compare-body"></tbody></table></div>
+          <dl class="boundary-metrics"><div><dt>Vapor compressibility Z <span>1 for an ideal gas</span></dt><dd id="result-Z">—</dd></div><div><dt>Fugacity coefficients φ₁, φ₂ <span>in the vapor mixture</span></dt><dd id="result-phi">—</dd></div><div><dt>Size indicator max|B|·max(P, Pˢᵃᵗ)/RT <span>refused above 0.1</span></dt><dd id="result-ind">—</dd></div></dl>
+          <div class="balance-readout"><strong>Fugacity equality residual (virial)</strong><output id="result-fug">—</output><span>largest |f<sub>i</sub>ᴸ − f<sub>i</sub>ⱽ|/P</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 95 kPa" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the vapor properties</h2><span class="section-help">Across vapor composition at this T and P</span></div>
+      <div class="chart-toolbar"><label for="view">View</label><select id="view"><option value="phi">Fugacity coefficients φ₁ and φ₂</option><option value="Z">Compressibility Z</option></select></div>
+      <div id="vr-chart" class="vle-chart" role="img" aria-label="Vapor property plot. Numbers are listed in Step 2."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. What does Z = 0.996 mean?</h3><p>Calculate the starting case and read Z. Compute B<sub>mix</sub> at the vapor composition and check Z yourself.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Compute Bmix and Z, and say what a negative B means physically."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>At y₁ = 0.6148, B<sub>mix</sub> = 0.378(−120) + 2(0.6148)(0.3852)(−90) + 0.148(−180) = −114.7 cm³ mol⁻¹. Then Z = 1 + (−114.7 × 10⁻⁶)(95 000)/(8.314 × 350) = 0.9963.</p><p>A negative B means net attraction between molecules: the vapor occupies about 0.4% less volume than an ideal gas at the same T and P.</p></div></details></div>
+      <div class="concept-question"><h3>B. Why does the result change so little?</h3><p>Compare the bubble pressure and β of the two vapors, and read the correction terms in the right-hand figure.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Explain why φᵢ and φᵢˢᵃᵗ partly cancel."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The bubble pressure falls from 105.00 to 104.85 kPa (0.14%) and β from 0.494 to 0.488. From yᵢφᵢP = xᵢγᵢφᵢˢᵃᵗPᵢˢᵃᵗ, K₁ changes by the factor φ₁ˢᵃᵗ/φ₁ = exp(−0.0062 + 0.0033) = 0.997.</p><p>Both the vapor mixture and the pure saturated vapor in the reference are nonideal in the same direction, so their corrections largely cancel. At low pressure, |B|P/RT is below 1%, and the ideal vapor is a good approximation.</p></div></details></div>
+      <div class="concept-question"><h3>C. When does the vapor correction matter?</h3><p>Load “Ten times larger |B|” and compare Z, β and the bubble pressure with the ideal vapor.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Quote the changes and relate them to |B|P/RT."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>With B ten times larger, Z = 0.963, β falls from 0.494 to 0.438 and the bubble pressure is 1.5% below the ideal-vapor value. The size indicator |B|P/RT reaches 0.093, close to the 0.1 limit of the second-virial truncation.</p><p>Large |B| (strongly attracting or associating vapors such as carboxylic acids) and higher pressure make the vapor correction important. Beyond the limit, an equation of state is needed.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate the vapor correction</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="vr-limits-heading"><h3 id="vr-limits-heading">What these results can and cannot show</h3><ul><li>The coefficients are synthetic and constant with temperature. Real B values depend strongly on T and should come from measurements or a validated correlation.</li><li>The pressure-form truncation is a low-density approximation. Passing the 0.1 guard does not prove that higher virial terms are negligible.</li><li>B₁₂ is an independent property of the pair. A geometric-mean or other combining rule is an assumption, not a measurement.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="dec-heading"><h3 id="dec-heading">A. Decompose the correction to each K-value</h3>
+        <ol class="graduate-checklist"><li>Tabulate ln φᵢ, ln φᵢˢᵃᵗ and ln Πᵢ for both components at the calculated state.</li><li>Show that ln Kᵢ(virial) − ln Kᵢ(ideal) = ln φᵢˢᵃᵗ + ln Πᵢ − ln φᵢ at the same liquid composition.</li><li>Explain why the corrections have opposite signs for the two components here.</li></ol>
+        <div class="graduate-actions"><button id="run-dec" class="primary-button" type="button" disabled>Decompose the correction</button></div>
+        <p id="dec-status" class="graduate-status" role="status"></p>
+        <div id="dec-wrap" class="table-scroll graduate-table" role="region" aria-label="Correction decomposition" tabindex="0" hidden><table><thead><tr><th scope="col">Component</th><th scope="col">ln φᵢ</th><th scope="col">ln φᵢˢᵃᵗ</th><th scope="col">ln Πᵢ</th><th scope="col">Net change in ln Kᵢ</th></tr></thead><tbody id="dec-body"></tbody></table></div>
+        <label for="note-decomposition">Claim 1 · where the correction enters</label><textarea id="note-decomposition" rows="3" maxlength="10000" placeholder="Quote the terms for both components and explain their signs."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="cross-heading"><h3 id="cross-heading">B. How much does the cross coefficient matter?</h3>
+        <ol class="graduate-checklist"><li>Keep B₁₁ and B₂₂ and compare the supplied B₁₂ with the geometric mean −(B₁₁B₂₂)<sup>1/2</sup> and with ±30%.</li><li>Compare β, y₁ and the bubble pressure.</li><li>Explain why a combining rule for B₁₂ is an assumption that needs mixture data.</li></ol>
+        <div class="graduate-actions"><button id="run-cross" type="button" class="primary-button" disabled>Compare B₁₂ values</button></div>
+        <p id="cross-status" class="graduate-status" role="status"></p>
+        <div id="cross-wrap" class="table-scroll graduate-table" role="region" aria-label="Cross coefficient comparison" tabindex="0" hidden><table><thead><tr><th scope="col">B₁₂ / cm³ mol⁻¹</th><th scope="col">Note</th><th scope="col">β</th><th scope="col">y₁</th><th scope="col">Bubble P / kPa</th></tr></thead><tbody id="cross-body"></tbody></table></div>
+        <label for="note-cross">Claim 2 · the cross coefficient</label><textarea id="note-cross" rows="3" maxlength="10000" placeholder="Quote the range of β and bubble pressure across B₁₂ values."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="scale-heading"><h3 id="scale-heading">C. Scale B toward the truncation limit</h3>
+        <ol class="graduate-checklist"><li>Multiply all three coefficients by 1, 3, 5, 8, 10 and 15.</li><li>Compare Z, β and the bubble-pressure error of the ideal vapor with the size indicator.</li><li>Explain why the lab refuses the largest case, and what model you would use instead.</li></ol>
+        <div class="graduate-actions"><button id="run-scale" type="button" class="primary-button" disabled>Run the scale study</button></div>
+        <p id="scale-status" class="graduate-status" role="status"></p>
+        <div id="scale-wrap" class="table-scroll graduate-table" role="region" aria-label="Scale study" tabindex="0" hidden><table><thead><tr><th scope="col">Factor on B</th><th scope="col">Result or reason</th><th scope="col">Z</th><th scope="col">β virial / ideal</th><th scope="col">Ideal-vapor bubble P error / %</th><th scope="col">Size indicator</th></tr></thead><tbody id="scale-body"></tbody></table></div>
+        <label for="note-scale">Claim 3 · when the correction matters</label><textarea id="note-scale" rows="3" maxlength="10000" placeholder="Quote the bubble-pressure error against the size indicator."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State when you would keep the ideal vapor, when not, and which data you would need."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Confirm that all B = 0 reproduces the ideal vapor exactly.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">P / kPa</th><th scope="col">B₁₁, B₁₂, B₂₂</th><th scope="col">Z</th><th scope="col">β virial / ideal</th><th scope="col">Bubble P virial / ideal</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Compare the two vapors.</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate. The figures and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/virial-lab.js?v=lab09-1"></script>
+</body>
+</html>
