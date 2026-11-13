@@ -1,0 +1,85 @@
+@import url("./guide.css");
+
+.task-question { margin: 12px 0 0; font-size: 1rem; font-weight: 600; }
+.phase-picture { margin: 22px 0; }
+.process-sketch { display: block; width: 100%; max-width: 760px; height: auto; margin: 10px auto 16px; }
+.sketch-feed { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.sketch-pipe, .sketch-drum { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.sketch-arrow { fill: var(--ink); }
+.sketch-vapor-fill { fill: var(--soft-sand); }
+.sketch-liquid-fill { fill: var(--soft-teal); }
+.sketch-liquid-surface { fill: none; stroke: var(--teal); stroke-width: 2; }
+.sketch-vapor-dots { fill: var(--amber); }
+.sketch-label { fill: var(--ink); text-anchor: middle; font-size: 21px; font-weight: 600; }
+.picture-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.picture-key > div { border-top: 2px solid var(--border); padding-top: 10px; }
+.picture-key p { margin: 5px 0 0; font-size: .9rem; }
+.phase-picture figcaption { margin-top: 15px; font-size: .88rem; color: var(--muted); }
+.vle-experiment-grid { grid-template-columns: minmax(360px, .84fr) minmax(0, 1.16fr); }
+.feed-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.feed-inputs .feed-fraction { grid-column: 1 / -1; }
+.feed-inputs .quantity-input input { padding-right: 75px; }
+.input-help { font-size: .85rem; color: var(--muted); margin-top: 6px; margin-bottom: 0; }
+.component-key { display: flex; flex-wrap: wrap; gap: 8px 25px; padding: 15px 0; font-size: .88rem; }
+.component-key strong { display: block; font-size: 1rem; }
+.property-summary { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
+.property-summary h3 { font-size: .96rem; margin-bottom: 8px; }
+.property-values { font-size: .94rem; }
+.property-values table { font-size: .87rem; }
+.property-values td, .property-values th { padding: 6px 8px; white-space: normal; min-width: 0; }
+.parameter-fields { margin-top: 15px; }
+.parameter-fields label { margin-top: 10px; }
+.advanced > select { margin-bottom: 8px; }
+.advanced > label { margin-top: 15px; }
+.route-note { margin-top: 16px; padding: 14px; background: var(--soft-sand); border-left: 3px solid var(--amber); }
+.route-note p { margin: 0 0 8px; }
+.route-note p:last-child { margin-bottom: 0; }
+.phase-result { font-family: "Source Serif 4", Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; margin: 24px 0 10px; }
+.composition-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
+.composition-metrics > div { border: 1px solid var(--border); border-radius: 6px; padding: 14px; min-width: 0; }
+.composition-metrics > div:last-child { grid-column: 1 / -1; background: var(--soft-teal); }
+.composition-metrics dt { font-size: .88rem; }
+.composition-metrics dd { margin: 6px 0; font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.2; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.composition-metrics p { font-size: .83rem; color: var(--muted); margin-bottom: 0; }
+.phase-amounts { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+.phase-amounts dt { font-size: .9rem; }
+.phase-amounts dd { font-size: 1.3rem; font-weight: 600; margin: 6px 0 0; overflow-wrap: anywhere; }
+.phase-amounts dd span { font-size: .87rem; font-weight: 400; }
+.boundary-metrics { margin: 0 0 20px; }
+.boundary-metrics > div { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; border-top: 1px solid var(--border); padding: 12px 0; }
+.boundary-metrics dt { font-size: .91rem; }
+.boundary-metrics dt span { display: block; color: var(--muted); font-size: .87rem; }
+.boundary-metrics dd { font-size: 1.15rem; font-weight: 600; margin: 0; white-space: nowrap; }
+.boundary-metrics dd span { font-size: .83rem; font-weight: 400; }
+.balance-readout { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 5px 12px; margin-bottom: 22px; font-size: .9rem; }
+.balance-readout output { font-variant-numeric: tabular-nums; }
+.balance-readout > span { width: 100%; color: var(--muted); font-size: .85rem; }
+.vle-experiment-grid .calculation-check { margin-bottom: 12px; }
+.vle-experiment-grid .save-case-row { margin-top: 18px; }
+.diagram-panel { margin-top: 22px; }
+.vle-chart { width: 100%; min-height: 420px; }
+.chart-note { font-size: .92rem; margin-top: 12px; }
+.diagram-panel summary { min-height: 44px; padding: 10px 0; cursor: pointer; font-weight: 600; }
+.investigation-steps { padding-left: 23px; margin-bottom: 24px; }
+.investigation-steps li + li { margin-top: 8px; }
+.vle-experiment-grid .advanced ul { padding-left: 20px; }
+#property-sources { margin-top: 12px; overflow-wrap: anywhere; }
+
+@media (max-width: 950px) {
+  .vle-experiment-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .picture-key { grid-template-columns: 1fr; gap: 10px; }
+  .process-sketch { min-height: 96px; }
+  .feed-inputs { grid-template-columns: 1fr; gap: 16px; }
+  .feed-inputs .quantity-input input { padding-right: 12px; }
+  .vle-chart { min-height: 340px; }
+  .composition-metrics { gap: 8px; }
+  .composition-metrics > div { padding: 12px 10px; }
+  .composition-metrics dt { font-size: .84rem; }
+  .composition-metrics p { font-size: .8rem; }
+  .boundary-metrics > div { flex-wrap: wrap; gap: 6px; }
+  .boundary-metrics dt { flex: 1 1 180px; }
+  .phase-amounts { gap: 8px; }
+}

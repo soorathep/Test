@@ -1,12 +1,13 @@
 # Thermodynamics labs for 2027
 
-This source folder contains a working Lab 13 prototype and the design plan for
+This source folder contains working Lab 01 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
-The preparation scope is a shared interaction design, one functional prototype,
+The preparation scope is a shared interaction design, two functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining 12 lab interfaces are future work.
+the remaining 11 lab interfaces are future work. Implementation now proceeds in
+lab-number order from Lab 01. Lab 13 is the earlier reference prototype.
 
 ## Evidence and design decisions
 
@@ -30,6 +31,39 @@ general reactions.
 All student-facing copy uses English. Colors import the existing generated
 Teal-Amber palette. Fonts follow the course's Source Sans/Source Serif typography.
 Native fields, buttons, tables and details elements support keyboard use.
+
+## Lab 01 prototype
+
+The starting problem uses 1 mol of the synthetic ideal mixture at 350 K and
+90 kPa with feed mole fraction z1 = 0.40. Students predict the phases, calculate,
+distinguish phase composition from vapor fraction, read the P–x–y diagram, and
+check that the two phases reconstruct the feed.
+
+A simple vector illustration introduces the feed, flash vessel and two outlet
+phases. Plain-language labels distinguish z1, x1 and y1 from the phase amounts
+L and V. The caption explicitly limits the two-outlet picture to coexistence.
+
+The visible inputs are temperature in K, pressure in kPa and feed mole fraction.
+Pure-component vapor pressures at the current temperature are visible for the
+paper calculation. Named cases compare 90, 100 and 75 kPa. Bubble and dew cases
+use full-precision boundary conditions. One mol of feed is the fixed amount basis.
+
+The prototype reuses `thermo.js` and `systems.json` from the current course lab.
+Ideal, one- and two-parameter Margules and NRTL models are available in the model
+disclosure, with the existing parameter and liquid-convexity checks. The two
+property systems retain their temperature domains and source records. Synthetic
+vapor pressures use their Clausius correlations, so 150/60 kPa apply at 350 K.
+
+Absent phase compositions remain absent. At bubble/dew boundaries, limiting
+compositions are labelled as incipient phases. Pure/azeotropic saturated states
+retain an undetermined vapor amount when T, P and overall composition cannot
+specify it. The phase diagram has a numerical curve-data alternative.
+
+Students save named cases, compare pressure changes, download the study and
+reopen it with their notes. Supported original studies are validated and
+recalculated from their property and model context. Unsupported contexts have
+an explicit route to the original Lab 01. Editing scientific inputs invalidates
+the current result and diagram while retaining saved comparisons.
 
 ## Lab 13 prototype
 
@@ -59,13 +93,13 @@ and feedback reporting should distinguish teaching years in its metadata.
 Each lab adapter should validate and recalculate supported older study files.
 Pilot observations inform the readiness review for the 2027 cohort.
 
-| Stage | Labs | Main interface work |
+| Order | Labs | Main interface work |
 | --- | --- | --- |
-| Prototype and pilot | 13 | Two solutions, visible cases, prediction, physical interpretation, comparison and reopening |
-| Next | 01, 08 | Task entry, simple phase inputs, data template/preview/mapping, Antoine form and unit checks |
-| Data and evidence | 02, 03 | Fit and validation roles, diagnostic applicability, linked observations and residuals |
-| Phase investigations | 04, 05, 06, 07 | Feed, Gibbs geometry, phase amounts, structured observations, material/energy checks |
-| Property and reaction models | 09, 10, 11, 12 | Experiment-specific routes, property editors, structured reactions and independent checks |
+| Current prototype | 01 | Guided feed problem, units, phase interpretation, pressure comparison and balance check |
+| Next | 02 | Fit and validation roles, investigative questions beside evidence |
+| Then | 03–07 | Diagnostic applicability, Gibbs geometry, phase amounts, material/energy checks and structured observations |
+| Then | 08–12 | Data mapping, equation/unit validation, property editors and structured reactions |
+| Earlier reference, review in sequence | 13 | Two solutions, visible cases, physical interpretation, comparison and reopening |
 
 ### Per-lab design inventory
 
@@ -86,6 +120,22 @@ Pilot observations inform the readiness review for the 2027 cohort.
 | 13 Electrochemistry | Predict polarity and change activities | Two solution fields, visible cases and sign interpretation |
 
 ## Verification and pilot
+
+Lab 01 reference checks at 350 K, z1 = 0.40 and ideal liquid give the following
+results for the synthetic binary. At 90 kPa, x1 = 1/3, y1 = 5/9, beta = 0.30,
+L = 0.70 mol and V = 0.30 mol. The reconstructed component-1 amount is
+0.70(1/3) + 0.30(5/9) = 0.40 mol. At 100 kPa the state is liquid only, and at
+75 kPa it is vapor only. Bubble pressure is 96 kPa and dew pressure is
+78.94736842105263 kPa. Pure-component saturation retains indeterminate amounts.
+
+Adapter and browser checks cover the five named cases, pure saturation, all
+four liquid models, model restrictions, invalid inputs and stale-result
+invalidation. The saved-study checks include new studies with comparison rows,
+supported original snapshots/workspaces and fixed-temperature fit transfers,
+atomic rejection of invalid files, and asynchronous file-selection races.
+Responsive checks include 320 px and enlarged text. Numerical results and
+curve tables remain available when the optional plot library is unavailable.
+These are functional checks, not evidence of independent student usability.
 
 Numerical reference cases use the course engine. At 298.15 K, gamma = 1,
 and E°cell = 0, the starting case 0.01/1 mol/L gives Q = 0.01 and E =

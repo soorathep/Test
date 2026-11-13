@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>VLE and flash · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Work through a binary flash problem, read its phase diagram and check the component balance.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/vle.css">
+</head>
+<body>
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="index.html">2027 design plan</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 01 · Vapor–liquid equilibrium and flash</p><h1>Which phases form, and how much of each?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary feed at 350 K and 90 kPa contains 0.40 mol of component 1. Assume ideal vapor and ideal liquid.</p><p id="case-task" class="task-question">Predict the phases. Then find the composition and amount of each phase, and check the feed balance.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="index.html#pilot">Review the student workflow</a></p>
+    </div>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a pressure experiment</strong><span>Named cases use the synthetic ideal mixture at 350 K and z₁ = 0.40.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 90 kPa</button><button type="button" data-case="compressed" aria-pressed="false">Raise pressure · 100 kPa</button><button type="button" data-case="low-pressure" aria-pressed="false">Lower pressure · 75 kPa</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Picture a two-phase split</h2><span class="section-help">Composition and amount answer different questions</span></div>
+      <svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="process-title process-description">
+        <title id="process-title">A feed enters a flash vessel and can separate into vapor and liquid</title>
+        <desc id="process-description">One feed stream enters from the left. When two phases coexist, vapor leaves at the top right and liquid leaves at the bottom right. The liquid composition x1 and vapor composition y1 can differ from the feed composition z1.</desc>
+        <defs><marker id="process-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="drum-clip"><rect x="304" y="20" width="140" height="140" rx="34"/></clipPath></defs>
+        <rect x="28" y="65" width="130" height="50" rx="12" class="sketch-feed"/>
+        <path d="M 158 90 H 294" class="sketch-pipe" marker-end="url(#process-arrow)"/>
+        <g clip-path="url(#drum-clip)"><rect x="304" y="20" width="140" height="75" class="sketch-vapor-fill"/><rect x="304" y="95" width="140" height="65" class="sketch-liquid-fill"/><path d="M 304 95 Q 321 87 339 95 T 374 95 T 409 95 T 444 95" class="sketch-liquid-surface"/><g class="sketch-vapor-dots"><circle cx="331" cy="49" r="5"/><circle cx="376" cy="38" r="5"/><circle cx="414" cy="61" r="5"/><circle cx="362" cy="73" r="5"/></g></g>
+        <rect x="304" y="20" width="140" height="140" rx="34" class="sketch-drum"/>
+        <path d="M 444 48 H 584" class="sketch-pipe" marker-end="url(#process-arrow)"/>
+        <path d="M 444 132 H 584" class="sketch-pipe" marker-end="url(#process-arrow)"/>
+        <rect x="600" y="22" width="132" height="52" rx="12" class="sketch-vapor-fill"/><rect x="600" y="106" width="132" height="52" rx="12" class="sketch-liquid-fill"/>
+        <g class="sketch-label"><text x="93" y="97">Feed</text><text x="666" y="55">Vapor</text><text x="666" y="139">Liquid</text></g>
+      </svg>
+      <div class="picture-key"><div><strong>Feed · z₁</strong><p>Of all feed moles, what fraction is component 1?</p></div><div><strong>Liquid · x₁ and L</strong><p>x₁ tells its composition. L tells its amount in mol.</p></div><div><strong>Vapor · y₁ and V</strong><p>y₁ tells its composition. V tells its amount in mol.</p></div></div>
+      <figcaption><strong>β = V/F</strong> tells the fraction of feed moles in the vapor. For a 1 mol feed, L + V = 1 mol. The picture shows a two-phase case. Your calculation may instead find liquid only or vapor only.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the feed and conditions</h2><span class="condition">Basis · 1.00 mol feed</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="vle-form" novalidate>
+          <div class="feed-inputs">
+            <div><label for="T">Temperature</label><div class="quantity-input"><input id="T" type="number" value="350" step="any" aria-describedby="T-unit temperature-range error-T"><span id="T-unit">K</span></div><p id="temperature-range" class="input-help">Synthetic correlation range 300–390 K.</p><p id="error-T" class="field-error" hidden></p></div>
+            <div><label for="P">Pressure</label><div class="quantity-input"><input id="P" type="number" value="90" min="1" max="200" step="any" aria-describedby="P-unit pressure-help error-P"><span id="P-unit">kPa</span></div><p id="pressure-help" class="input-help">Calculation range 1–200 kPa.</p><p id="error-P" class="field-error" hidden></p></div>
+            <div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.4" min="0" max="1" step="any" aria-describedby="z-unit feed-help error-z"><span id="z-unit">mol/mol</span></div><p id="feed-help" class="input-help">Enter a fraction from 0 to 1. For this 1 mol feed, z₁ = 0.40 means 0.40 mol of component 1.</p><p id="error-z" class="field-error" hidden></p></div>
+          </div>
+          <div class="component-key"><span>Component 1 <strong id="component1-name">A</strong></span><span>Component 2 <strong id="component2-name">B</strong></span></div>
+          <div class="property-summary"><h3>Vapor pressures at this temperature</h3><div id="property-values" class="property-values">Loading the property record…</div><p class="input-help">These pure-component vapor pressures change with temperature.</p></div>
+          <div class="prediction-row"><label for="prediction">Predict the phases <span>optional</span></label><select id="prediction"><option value="">Choose a prediction</option><option value="liquid">Liquid only</option><option value="two-phase">Liquid + vapor</option><option value="vapor">Vapor only</option><option value="boundary">At a phase boundary</option></select></div>
+          <p id="recorded-prediction" class="section-help" hidden></p>
+          <button id="calculate" class="primary-button calculate-button" type="button" disabled>Calculate equilibrium</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a condition.</p>
+
+          <details class="advanced">
+            <summary>Change the mixture or liquid model</summary>
+            <label for="system">Mixture and property record</label><select id="system"><option value="synthetic">Teaching binary · synthetic</option></select><p id="system-note" class="input-help"></p>
+            <label for="model">Liquid model</label><select id="model"><option value="ideal">Ideal liquid · Raoult's law</option><option value="margules">Margules · one parameter</option><option value="margules2">Margules · two parameters</option><option value="nrtl">NRTL</option></select><p id="model-note" class="input-help">The starting problem uses the ideal liquid.</p>
+            <div id="margules-control" class="parameter-fields" hidden><label for="A">Margules A <span>dimensionless</span></label><input id="A" type="number" value="1" min="-1" max="1.8" step="any" aria-describedby="error-A"><p id="error-A" class="field-error" hidden></p></div>
+            <div id="margules2-control" class="parameter-fields coefficient-grid" hidden><div><label for="A12">A₁₂ <span>dimensionless</span></label><input id="A12" type="number" value="1.5" min="-1" max="3" step="any" aria-describedby="error-A12"><p id="error-A12" class="field-error" hidden></p></div><div><label for="A21">A₂₁ <span>dimensionless</span></label><input id="A21" type="number" value="0.5" min="-1" max="3" step="any" aria-describedby="error-A21"><p id="error-A21" class="field-error" hidden></p></div></div>
+            <div id="nrtl-control" class="parameter-fields" hidden>
+              <div class="coefficient-grid"><div><label for="tau12">τ₁₂ <span>dimensionless</span></label><input id="tau12" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau12"><p id="error-tau12" class="field-error" hidden></p></div><div><label for="tau21">τ₂₁ <span>dimensionless</span></label><input id="tau21" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau21"><p id="error-tau21" class="field-error" hidden></p></div></div>
+              <label for="alpha">Nonrandomness α <span>dimensionless</span></label><input id="alpha" type="number" value="0.3" min="0.1" max="0.6" step="any" aria-describedby="error-alpha"><p id="error-alpha" class="field-error" hidden></p>
+              <label for="temperatureMode">Temperature assumption</label><select id="temperatureMode"><option value="fixed">Parameters valid at the reference temperature</option><option value="constant">Assume τ stays constant over this temperature range</option></select>
+              <label for="referenceT">Parameter reference temperature / K</label><input id="referenceT" type="number" value="350" step="any" aria-describedby="error-referenceT"><p id="error-referenceT" class="field-error" hidden></p>
+            </div>
+            <div id="stability-route" class="route-note" hidden><p>These liquid parameters need a liquid-stability investigation.</p><p><a href="../labs/stability.html#lle-experiment">Open Lab 04 · liquid stability</a> · <a href="../labs/vlle.html#vl-experiment">Open Lab 06 · VLLE</a></p></div>
+          </details>
+          <details class="advanced"><summary>Try the bubble and dew boundaries</summary><p>Each case loads the synthetic ideal feed at 350 K and z₁ = 0.40. Predict the amount of the phase that is just appearing.</p><div class="case-buttons secondary-cases"><button type="button" data-case="bubble" aria-pressed="false">Bubble boundary · 96 kPa</button><button type="button" data-case="dew" aria-pressed="false">Dew boundary · 78.947… kPa</button></div></details>
+          <details class="advanced"><summary>Property sources and model assumptions</summary><p>Vapor is ideal. The activity standard state is the pure liquid at the system temperature. The pressure correction and saturated-vapor fugacity correction are set to one. Calculations use a convex liquid model in the supported range.</p><div id="property-sources"></div><p><a href="../labs/#experiment">Open the full Lab 01</a> for the original temperature diagrams, solver traces and transferred-fit controls.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Identify the phases and amounts</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate the state to see its phases, compositions and material-balance check.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="composition-metrics"><div><dt>Liquid composition x₁</dt><dd id="result-x">—</dd><p id="result-x-note">Fraction of component 1 within the liquid.</p></div><div><dt>Vapor composition y₁</dt><dd id="result-y">—</dd><p id="result-y-note">Fraction of component 1 within the vapor.</p></div><div><dt>Vapor fraction β = V/F</dt><dd id="result-beta">—</dd><p id="result-beta-note">Fraction of feed moles that becomes vapor.</p></div></dl>
+          <dl class="phase-amounts"><div><dt>Liquid amount L</dt><dd><output id="result-liquid-moles">—</output> <span>mol</span></dd></div><div><dt>Vapor amount V</dt><dd><output id="result-vapor-moles">—</output> <span>mol</span></dd></div></dl>
+          <dl class="boundary-metrics"><div><dt>Bubble pressure <span>for liquid x₁ = z₁</span></dt><dd><output id="result-bubble">—</output> <span>kPa</span></dd></div><div><dt>Dew pressure <span>for vapor y₁ = z₁</span></dt><dd><output id="result-dew">—</output> <span>kPa</span></dd></div></dl>
+          <div class="balance-readout"><strong>Component-balance residual</strong><output id="result-balance">—</output><span>mol of component 1 · 1 mol feed basis</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+          <details class="advanced"><summary>Boundary temperatures at this pressure</summary><p id="boundary-temperatures"></p></details>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 90 kPa" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the pressure–composition diagram</h2><span class="section-help">Fixed temperature · P–x–y</span></div>
+      <p class="section-help">Use the operating-pressure line and feed composition to locate the calculated state. Liquid and vapor compositions belong to different curves.</p>
+      <div id="vle-chart" class="vle-chart" role="img" aria-label="Pressure versus liquid and vapor compositions. Numerical results and curve data are provided below."></div>
+      <p id="chart-note" class="chart-note"></p>
+      <details><summary>Inspect the numerical curve data</summary><div id="curve-wrap" class="table-scroll" role="region" aria-label="Numerical equilibrium curve" tabindex="0"><table><caption class="visually-hidden">Selected-model equilibrium curve at the calculated temperature.</caption><thead><tr><th scope="col">Liquid x₁</th><th scope="col">Vapor y₁</th><th scope="col">Pressure / kPa</th></tr></thead><tbody id="curve-body"></tbody></table></div></details>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">4. Compare and explain</h2></div>
+      <ol class="investigation-steps"><li>Calculate the starting case and add it to the comparison.</li><li>Load the 100 kPa case. Predict which phase amount changes, calculate, and add the result.</li><li>Try the 75 kPa case. Explain all three states using the bubble and dew pressures.</li><li>Download your study, reopen it, and reproduce a saved case.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved VLE case comparison" tabindex="0" hidden><table><caption class="visually-hidden">Feed and phase compositions and vapor fraction are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">T / K</th><th scope="col">P / kPa</th><th scope="col">Feed z₁</th><th scope="col">Liquid model</th><th scope="col">Phase</th><th scope="col">Vapor β</th><th scope="col">Liquid x₁</th><th scope="col">Vapor y₁</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Explain your comparison</label><p id="reflection-help" class="section-help">Distinguish z₁, x₁, y₁ and β. Give one pressure comparison and a material-balance check.</p><textarea id="reflection" rows="4" maxlength="10000" aria-describedby="reflection-help" placeholder="Write your explanation and one calculation that supports it."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Loading the property record…</p><p class="privacy-note">Your inputs, comparisons and explanation are kept in this open page. Download the study to keep a copy and reopen it later.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate the equilibrium state. The starting problem and investigation steps remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="index.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/vle.js"></script>
+</body>
+</html>

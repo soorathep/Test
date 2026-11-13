@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Thermodynamics Labs 2027 · Design preview</title>
-  <meta name="description" content="A working concentration-cell prototype and the redesign plan for the 13 thermodynamics labs.">
+  <meta name="description" content="Guided VLE/flash and concentration-cell prototypes, with the redesign plan for the 13 thermodynamics labs.">
   <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="assets/guide.css">
 </head>
 <body>
   <a class="skip-link" href="#design">Skip to the design plan</a>
-  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="electrochemistry.html">Try Lab 13</a><a href="../">Course</a></nav></header>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Try Lab 01</a><a href="electrochemistry.html">Lab 13 prototype</a><a href="../">Course</a></nav></header>
   <main class="page design-page" id="design">
     <section class="design-intro">
       <p class="eyebrow">2105603 · 2027 design preview</p>
       <h1>Thermodynamics Labs 2027</h1>
-      <p>The redesign starts with a working concentration-cell experiment for Lab 13. Choose the lesson's starting case, edit the two solution concentrations, calculate, and build a comparison you can save and reopen.</p>
-      <a class="primary-button" href="electrochemistry.html">Try the Lab 13 prototype →</a>
+      <p>We are working through the labs in number order, starting with a guided VLE and flash problem. Read the starting case, enter quantities with units, calculate, and check the phase amounts against the feed.</p>
+      <a class="primary-button" href="vle.html">Try Lab 01 · VLE and flash →</a>
+      <p class="section-help" style="margin-top:16px">The earlier <a href="electrochemistry.html">Lab 13 concentration-cell prototype</a> is also available as a design reference.</p>
     </section>
 
     <section class="panel design-section" aria-labelledby="observations-heading">
@@ -44,25 +45,33 @@
 
     <section class="panel design-section" aria-labelledby="sequence-heading">
       <h2 id="sequence-heading">Redesign sequence for all 13 labs</h2>
-      <div class="table-scroll roadmap"><table><thead><tr><th scope="col">Stage</th><th scope="col">Labs</th><th scope="col">Main work</th></tr></thead><tbody>
-        <tr><td>Prototype and pilot</td><td>13 · Electrochemistry</td><td>Two labelled solutions, visible starting cases, worked results and a coherent comparison file. The working prototype is available above.</td></tr>
-        <tr><td>Next</td><td>01 · VLE/flash<br>08 · Experimental VLE input</td><td>A named starting problem and clear phase inputs. For data import, show the file template, column mapping, Antoine equation and unit checks together.</td></tr>
-        <tr><td>Data and evidence</td><td>02 · Case study<br>03 · Consistency</td><td>Separate fitting from validation. Explain which diagnostic applies to the data and connect the diagnosis to the selected observations.</td></tr>
-        <tr><td>Phase investigations</td><td>04 · Stability/LLE<br>05 · LLE fitting<br>06 · VLLE<br>07 · Adiabatic flash</td><td>Connect feed, Gibbs geometry, phase amounts and balance checks. Present the relevant inputs after students choose their equilibrium question.</td></tr>
-        <tr><td>Property and reaction models</td><td>09 · Virial<br>10 · SLE/GSE<br>11 · Adsorption<br>12 · Chemical equilibrium</td><td>Provide separate routes for each experiment. Use property editors and structured reaction tables, with limits and independent checks beside the outputs.</td></tr>
+      <div class="table-scroll roadmap"><table><thead><tr><th scope="col">Lab</th><th scope="col">Preparation</th><th scope="col">Student workflow</th></tr></thead><tbody>
+        <tr><td><a href="vle.html">01 · VLE/flash</a></td><td>Working prototype</td><td>Start from a feed problem, read phase compositions and amounts, check the balance, and compare pressures.</td></tr>
+        <tr><td>02 · Case study</td><td>Next in sequence</td><td>Separate fitting data from validation data and connect each plot to the investigative question.</td></tr>
+        <tr><td>03 · Consistency</td><td>Planned</td><td>Establish diagnostic applicability, inspect the data, and interpret each consistency check.</td></tr>
+        <tr><td>04 · Stability/LLE</td><td>Planned</td><td>Connect the selected feed with Gibbs curvature, the supporting tangent and phase fractions.</td></tr>
+        <tr><td>05 · LLE fitting</td><td>Planned</td><td>Enter observations in a table, fit, verify and compare.</td></tr>
+        <tr><td>06 · VLLE</td><td>Planned</td><td>Identify coexisting phases and the amounts fixed by the chosen specification.</td></tr>
+        <tr><td>07 · Adiabatic flash</td><td>Planned</td><td>Specify the feed and check material and energy balances beside the phase result.</td></tr>
+        <tr><td>08 · Experimental VLE input</td><td>Planned</td><td>Preview imported columns, Antoine equations, units and valid property ranges before fitting.</td></tr>
+        <tr><td>09 · Virial</td><td>Planned</td><td>Begin with a reference state, change one property and compare vapor models.</td></tr>
+        <tr><td>10 · SLE/GSE</td><td>Planned</td><td>Choose a solid-equilibrium question and enter its relevant quantities.</td></tr>
+        <tr><td>11 · Adsorption</td><td>Planned</td><td>Choose model comparison, vessel balance or fitting, with matching inputs and outputs.</td></tr>
+        <tr><td>12 · Chemical equilibrium</td><td>Planned</td><td>Calculate K, then Q and reaction extent using structured species and property inputs.</td></tr>
+        <tr><td><a href="electrochemistry.html">13 · Electrochemistry</a></td><td>Earlier reference prototype</td><td>Set two solution concentrations, interpret the voltage, and save a reproducible comparison.</td></tr>
       </tbody></table></div>
     </section>
 
     <section id="pilot" class="panel design-section" aria-labelledby="pilot-heading">
       <h2 id="pilot-heading">Try the prototype with a first-time student</h2>
       <ol>
-        <li>Open the starting concentration cell and calculate its voltage without verbal instructions.</li>
-        <li>Save that result, swap the concentrations, and explain the sign change.</li>
-        <li>Make the activities equal and use Q = K to explain the result.</li>
+        <li>Open the Lab 01 starting problem, predict its phases, and calculate without verbal instructions.</li>
+        <li>Explain the liquid and vapor compositions and check the component balance.</li>
+        <li>Save the starting result, raise the pressure to 100 kPa, and explain the change in phase amount.</li>
         <li>Download the study, reopen it, and reproduce a saved comparison.</li>
       </ol>
       <p>Record time, incorrect edits, places where help is needed, and the student's explanation. Include keyboard use and a narrow screen in the review.</p>
-      <p class="plan-note">This is a design prototype. Independent student usability sessions and the redesign of the remaining 12 labs are the next work. Numerical checks use the existing course calculation engine.</p>
+      <p class="plan-note">These are design prototypes for Labs 01 and 13. Independent student usability sessions and the remaining 11 lab interfaces are future work. Numerical checks use the existing course calculation engines.</p>
     </section>
 
     <section class="design-section" aria-labelledby="references-heading">
@@ -70,6 +79,6 @@
       <p>Field instructions, input feedback and control sizing follow the relevant W3C guidance. <a href="https://www.w3.org/WAI/tutorials/forms/instructions/">Form instructions</a> · <a href="https://www.w3.org/WAI/tutorials/forms/notifications/">User notifications</a> · <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">Target size</a></p>
     </section>
   </main>
-  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="electrochemistry.html">Try the concentration cell</a></footer>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="vle.html">Try Lab 01 · VLE and flash</a></footer>
 </body>
 </html>
