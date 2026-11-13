@@ -1,4 +1,5 @@
 @import url("./guide.css");
+@import url("./graduate.css");
 
 .case-page .task-question { margin: 12px 0 0; font-weight: 600; }
 .case-page sub, .case-page sup { font-size: 70%; line-height: 0; position: relative; vertical-align: baseline; }
@@ -81,16 +82,28 @@
 .case-page .calculation-check p { font-size: .91rem; }
 .case-page .save-case-row { margin-top: 20px; }
 .case-plot { width: 100%; min-height: 430px; }
+.case-legend { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 8px 0 16px; font-size: .88rem; }
+.case-legend > span { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+.legend-swatch { width: 28px; height: 0; border-top: 2px solid; flex-shrink: 0; }
+.legend-point { width: 9px; height: 9px; border: 2px solid; border-radius: 50%; }
+.legend-diamond { border-radius: 0; transform: rotate(45deg); }
 .investigation-steps { padding-left: 23px; }
 .investigation-steps li + li { margin-top: 10px; }
 .case-page #source-note, .case-page #status, #model-assumptions { overflow-wrap: anywhere; }
 .case-page #observations-body td:last-child { font-size: .86rem; }
+.case-graduate-bounds { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.case-graduate-bounds .quantity-input input { padding-right: 90px; }
+.case-page .graduate-step h4 { margin-top: 22px; }
+.case-page .graduate-reflections label { margin-top: 18px; }
 
 @media (max-width:950px) {
+  .case-graduate-bounds { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .inspection-grid, .case-fit-grid { grid-template-columns: 1fr; }
   .answer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:600px) {
+  .case-graduate-bounds { grid-template-columns: 1fr; }
+  .case-graduate-bounds .quantity-input input { padding-right: 12px; }
   .evidence-key, .measurement-cards, .derived-cards, .property-records, .answer-grid, .score-cards { grid-template-columns: 1fr; }
   .evidence-sketch { min-height: 75px; }
   .measurement-cards > div, .derived-cards > div { padding: 12px; }

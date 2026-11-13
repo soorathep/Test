@@ -1,4 +1,5 @@
 import * as engine from '../../labs/assets/case-study.js';
+import { normalizeGraduateCase, analyzeGraduateCase } from './case-graduate.js';
 
 export const GUIDED_CASE_VERSION = 1;
 export const STUDY_SCHEMA = 'skh-thermo-case-study/1';
@@ -228,10 +229,12 @@ function snapshot(current) {
   const name = text(current.name, 'Case study', 120).trim() || 'Case study';
   const solutionOpen = current.solutionOpen ?? false;
   if (typeof solutionOpen !== 'boolean') throw new Error('The saved solution-view state is invalid.');
+  const graduate = normalizeGraduateCase(current.graduate);
   return { schema: STUDY_SCHEMA, guidedVersion: GUIDED_CASE_VERSION, engineVersion: engine.CASE_VERSION,
     sourceId: data.id, dataVersion: data.version, source: data, inputs, fit: fitted ? copy(fitted) : null,
     name, prediction: text(current.prediction), reflection: text(current.reflection),
-    answers: answersFrom(current.answers), solutionOpen,
+    answers: answersFrom(current.answers), solutionOpen, graduate,
+    graduateResults: analyzeGraduateCase(data, inputs, graduate),
     ...(current.originalContext ? { originalContext: copy(current.originalContext) } : {}) };
 }
 
@@ -313,10 +316,12 @@ function parseCase(study, catalog) {
   const fitted = wantsFit ? fitFor(data, inputs) : null;
   const solutionOpen = study.solutionOpen ?? false;
   if (typeof solutionOpen !== 'boolean') throw new Error('The saved solution-view state is invalid.');
+  const graduate = normalizeGraduateCase(study.graduate);
+  const graduateAnalysis = analyzeGraduateCase(data, inputs, graduate);
   return { data, inputs, fit: fitted, analysis: analyze(data, inputs, fitted),
     name: text(study.name ?? study.caseName, 'Opened case', 120).trim() || 'Opened case',
     prediction: text(study.prediction), reflection: text(reflection),
-    answers: answersFrom(study.answers), solutionOpen,
+    answers: answersFrom(study.answers), solutionOpen, graduate, graduateAnalysis,
     ...(originalContext ? { originalContext: copy(originalContext) } : {}), notices };
 }
 

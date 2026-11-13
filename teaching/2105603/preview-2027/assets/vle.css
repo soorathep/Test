@@ -1,6 +1,20 @@
 @import url("./guide.css");
 
 .task-question { margin: 12px 0 0; font-size: 1rem; font-weight: 600; }
+.page sub, .page sup { font-size: 70%; line-height: 0; position: relative; vertical-align: baseline; }
+.page sub { bottom: -.3em; }
+.page sup { top: -.55em; }
+.page math { font-family: math; }
+.page math.inline-math { font-size: 1.05em; }
+.page h1 { overflow-wrap: anywhere; }
+.graduate-section .quantity-input input { padding-right: 90px; }
+.graduate-section .graduate-controls label { font-size: .92rem; }
+.graduate-section textarea { margin-bottom: 16px; }
+.graduate-section label { margin-top: 18px; }
+.graduate-section details { margin: 16px 0; }
+.graduate-section summary { min-height: 44px; padding: 9px 0; cursor: pointer; font-weight: 600; }
+.graduate-section table th:nth-child(2), .graduate-section table td:nth-child(2) { white-space: normal; min-width: 200px; text-align: left; }
+.graduate-section .graduate-metrics dd { overflow-wrap: anywhere; }
 .phase-picture { margin: 22px 0; }
 .process-sketch { display: block; width: 100%; max-width: 760px; height: auto; margin: 10px auto 16px; }
 .sketch-feed { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
@@ -94,6 +108,7 @@
 }
 
 @media (max-width: 600px) {
+  .graduate-section .quantity-input input { padding-right: 12px; }
   .saturation-cards { grid-template-columns: 1fr; }
   .picture-key { grid-template-columns: 1fr; gap: 10px; }
   .process-sketch { min-height: 96px; }

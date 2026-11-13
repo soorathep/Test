@@ -1,6 +1,7 @@
 import {
   VERSION, flash, bubbleP, dewP, bubbleT, dewT, diagram, parameters, psat,
 } from '../../labs/assets/thermo.js';
+import { restoreGraduate } from './vle-graduate.js';
 
 export const GUIDED_VLE_VERSION = 1;
 export const MODELS = ['ideal', 'margules', 'margules2', 'nrtl'];
@@ -242,6 +243,7 @@ function parseCase(study, catalog, fallbackName) {
     name: shortName(study.caseName, fallbackName),
     prediction: prediction(recordedPrediction),
     reflection,
+    graduate: restoreGraduate(study.graduate, calculated),
     originalContext: study.originalContext || {
       schema: study.schema || study.kind,
       chart: native?.chart || study.workspace?.controls?.['chart-kind'] || null,
@@ -294,6 +296,7 @@ function snapshot(saved, dataVersion) {
     schema: 'skh-thermo-experiment/1', engineVersion: VERSION, dataVersion,
     inputs: copy(saved.values), propertyRecord: copy(saved.propertyRecord), result: copy(saved.result),
     caseName: saved.name, prediction: saved.prediction || '', reflection: saved.reflection || '',
+    graduate: restoreGraduate(saved.graduate, saved),
     ...(saved.originalContext ? { originalContext: copy(saved.originalContext) } : {}),
     ...(saved.curves ? { curves: copy(saved.curves) } : {}),
   };

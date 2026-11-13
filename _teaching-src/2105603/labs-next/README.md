@@ -9,6 +9,11 @@ and a staged implementation plan. Independent student usability sessions and
 the remaining 10 lab interfaces are future work. Implementation proceeds in
 lab-number order, with Lab 03 next. Lab 13 is the earlier reference prototype.
 
+Labs 01 and 02 now use a graduate teaching route. The foundation calculation is
+a reproducible control; the core work audits assumptions, compares sensitivity
+outputs and defends conclusions with evidence. Numbered instructions and explicit
+quantity units remain available throughout.
+
 ## Evidence and design decisions
 
 During the 13 November 2026 instructor walkthrough, the starting example was
@@ -108,6 +113,55 @@ comparisons and explanations. Supported original Lab 02 exports can be imported.
 The original Lab 02 interface does not restore the new prototype's fitted-model
 state, so that reverse compatibility is not claimed. Model consistency checks
 and regression errors do not certify experimental thermodynamic consistency.
+
+## Graduate investigations in Labs 01 and 02
+
+Shared presentation is in `assets/graduate.css`. The scientific scenario methods
+are pure modules, `vle-graduate.js` and `case-graduate.js`, using the unchanged
+course engines. The measurements, source correlations and current-semester labs
+remain unchanged. Each prototype uses its existing single study-file workflow.
+Graduate control settings, run selections and structured notes are validated
+before restoring a study, and derived results are recalculated rather than trusted.
+Studies without the optional graduate block remain supported.
+
+Lab 01 compares four liquid-model candidates at a common baseline and retains
+invalid or nonconvex candidates as explicit outcomes. Its sensitivity exercise
+evaluates ten signed one-factor scenarios and 32 signed joint corners in T, P,
+z1 and independent multiplicative scales of the two saturation-pressure
+correlations. Antoine scaling shifts A by log10(scale); Clausius scaling changes
+the reference pressure; fixed records scale their supplied pressure. The original
+property record is not edited. Fixed-temperature NRTL references are not moved
+to admit an otherwise invalid temperature scenario.
+
+Finite-beta, indeterminate and failed scenarios are counted separately. Reported
+minima and maxima cover only the evaluated corners. They are not probabilities,
+confidence intervals, or proven global bounds. Zero half-widths can repeat a
+physical state. At the default 90 kPa baseline all 32 corners remain two phase,
+but beta spans approximately 0.1761565 to 0.4259372. At the 96 kPa boundary,
+the same bounds produce 16 liquid and 16 two-phase outcomes. This separates
+robustness of phase identity from sensitivity of phase amount.
+
+Lab 02 evaluates eight one-factor scenarios and sixteen joint corners for one
+valid interior measurement in T, P, x1 and y1. The demonstration half-widths are
+assumed analysis settings. The article's reported average expanded uncertainties
+with coverage factor 2 are not treated as independent pointwise standard
+deviations or automatic regression weights. Shared inputs also correlate inferred
+log-activity values. The uncertainty discussion identifies which input error
+distributions and covariances would be required for statistical propagation.
+
+The conditional-fit exercise holds alpha at 0.30, 0.47 and 0.60 in separate
+two-parameter fits to the same training observations. It retains the checking
+pressure and reports parameter, score, convergence, bound and sampled-curvature
+changes without changing the student's retained model. This is not a joint
+three-parameter fit or an identifiability proof. If checking scores inform alpha
+selection, that set has served model selection and cannot also be described as an
+untouched final test of the selected model. Fresh independent data or an
+appropriate validation design would be required.
+
+Both routes conclude with structured claims about assumptions, sensitivity,
+model discrepancy and the next evidence needed. The record check indicates
+completion of calculations and written sections; it does not grade scientific
+reasoning. The original general reflection remains an optional additional note.
 
 ## Lab 13 prototype
 
@@ -233,3 +287,5 @@ loads the course engine as an ES module, so use a local HTTP server.
 - W3C form validation https://www.w3.org/WAI/tutorials/forms/validation/
 - WCAG 2.2 target size https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
 - GOV.UK error summary https://design-system.service.gov.uk/components/error-summary/
+- NIST uncertainty propagation https://physics.nist.gov/cuu/Uncertainty/combination.html
+- NIST expanded uncertainty and coverage https://physics.nist.gov/cuu/Uncertainty/coverage.html

@@ -1,8 +1,9 @@
 import {
   DEFAULT_INPUTS, copy, validateData, normalizeInputs, observation, analyze,
   fitStudy, makeStudy, parseStudy,
-} from './case-state.js';
+} from './case-state.js?v=graduate-1';
 import { palette } from '../../labs/assets/palette.js';
+import { normalizeGraduateCase, analyzeGraduateCase, observationSensitivity, alphaSensitivity } from './case-graduate.js';
 
 const element = (id) => document.getElementById(id);
 let data;
@@ -15,6 +16,8 @@ let plotRevision = 0;
 let busy = false;
 let manualCaseName = false;
 let importedPrediction = '';
+let graduate = normalizeGraduateCase();
+let graduateAnalysis = { sensitivity: null, alpha: null };
 
 function text(id, value) {
   if (element(id)) element(id).textContent = value;
@@ -118,6 +121,186 @@ function writeAnswers(values = {}) {
     if (element('answer-' + key)) element('answer-' + key).value = values[key] || '';
   }
   text('answer-feedback', '');
+}
+
+function graduateNotes() {
+  return Object.fromEntries(['assumptions', 'uncertainty', 'evidence', 'decision'].map((key) =>
+    [key, element('g2-note-' + key)?.value || '']));
+}
+
+function readGraduate() {
+  const candidate = copy(graduate);
+  candidate.notes = graduateNotes();
+  for (const key of ['T', 'P', 'x', 'y']) {
+    const field = element('g2-bound-' + key);
+    const source = field.value.trim();
+    const value = Number(source);
+    field.removeAttribute('aria-invalid');
+    if (!source || !Number.isFinite(value) || value < 0 || value > Number(field.max)) {
+      field.setAttribute('aria-invalid', 'true');
+      const issue = new Error('Enter an assumed ' + key + ' bound from 0 to ' + field.max
+        + ' in the stated unit.');
+      issue.field = field;
+      throw issue;
+    }
+    candidate.bounds[key] = value;
+  }
+  return normalizeGraduateCase(candidate);
+}
+
+function graduateSnapshot() {
+  return normalizeGraduateCase({ ...graduate, notes: graduateNotes() });
+}
+
+function clearGraduate(sensitivity = true, alpha = true, message = '') {
+  graduate.notes = graduateNotes();
+  if (sensitivity) {
+    graduate.run.sensitivity = false;
+    graduateAnalysis.sensitivity = null;
+    show('g2-sensitivity-results', false);
+    text('g2-sensitivity-status', message || 'Observation or assumptions changed. Run the scenarios again before interpreting their ranges.');
+  }
+  if (alpha) {
+    graduate.run.alpha = false;
+    graduateAnalysis.alpha = null;
+    show('g2-alpha-results', false);
+    text('g2-alpha-status', message || 'Fitting or checking context changed. Run the conditional alpha comparison again.');
+  }
+}
+
+function graduateRows(id, rows) {
+  element(id).replaceChildren(...rows.map((values) => {
+    const row = document.createElement('tr');
+    values.forEach((value) => {
+      const cell = document.createElement('td');
+      if (typeof value === 'number') cell.textContent = format(value, 7);
+      else mathText(cell, value === null || value === undefined ? 'Unavailable' : value);
+      row.append(cell);
+    });
+    return row;
+  }));
+}
+
+function renderGraduate() {
+  const set = data?.datasets.find((item) => item.pressureKPa === Number(element('dataset').value));
+  if (set) {
+    const uncertainty = set.averageExpandedUncertainty;
+    text('g2-paper-uncertainty', 'Article reference at ' + set.pressureKPa + ' kPa: average expanded uncertainties U(T) = '
+      + uncertainty.T + ' K, U(P) = ' + uncertainty.PkPa + ' kPa, U(x) = ' + uncertainty.x
+      + ' and U(y) = ' + uncertainty.y + ', with coverage factor k = ' + set.coverageFactor
+      + '. These dataset averages are not independent pointwise standard deviations. They do not provide the covariance needed for automatic statistical weights.');
+  }
+  const sensitivity = graduateAnalysis.sensitivity;
+  show('g2-sensitivity-results', !!sensitivity);
+  if (sensitivity) {
+    const counts = sensitivity.counts;
+    text('g2-sensitivity-status', counts.valid + ' of ' + counts.attempted
+      + ' joint corners supplied finite activity pairs; ' + counts.unavailable
+      + ' were unavailable and ' + counts.failed + ' failed. All 8 one-factor scenarios were attempted.');
+    const row = sensitivity.context.row;
+    text('g2-sensitivity-context', 'Inspected control: ' + sensitivity.context.inspect + ' kPa, row '
+      + (sensitivity.context.selectedRow + 1) + ', T = ' + row.T + ' K, x = ' + row.x + ', y = ' + row.y
+      + '. Source observations and Antoine constants are unchanged. The figures below summarize accepted sampled corners only.');
+    graduateRows('g2-range-body', [
+      ['γ₁', sensitivity.baseline.gamma[0], sensitivity.ranges.gamma[0]?.min, sensitivity.ranges.gamma[0]?.max],
+      ['γ₂', sensitivity.baseline.gamma[1], sensitivity.ranges.gamma[1]?.min, sensitivity.ranges.gamma[1]?.max],
+      ['ln γ₁', sensitivity.baseline.ln[0], sensitivity.ranges.ln[0]?.min, sensitivity.ranges.ln[0]?.max],
+      ['ln γ₂', sensitivity.baseline.ln[1], sensitivity.ranges.ln[1]?.min, sensitivity.ranges.ln[1]?.max],
+    ]);
+    const names = { T: 'Temperature T', P: 'Pressure P', x: 'Liquid composition x₁', y: 'Vapor composition y₁' };
+    graduateRows('g2-oat-body', sensitivity.ranking.map((item) => [names[item.factor],
+      item.valid + ' / ' + item.attempted, item.maxAbsDeltaLn?.[0], item.maxAbsDeltaLn?.[1]]));
+    graduateRows('g2-corner-body', [...sensitivity.oneAtATime, ...sensitivity.corners].map((item) => [item.name, item.row.T,
+      item.row.PkPa, item.row.x, item.row.y, item.ln?.[0], item.ln?.[1],
+      item.status === 'valid' ? 'Accepted scenario' : item.status + ': ' + item.reason]));
+  }
+  const alpha = graduateAnalysis.alpha;
+  show('g2-alpha-results', !!alpha);
+  if (alpha) {
+    const training = alpha.context.pressures.map((pressure) => pressure + ' kPa').join(' + ');
+    text('g2-alpha-status', alpha.rows.filter((row) => row.status === 'valid').length
+      + ' of 3 conditional fits completed. The retained model and original measurements are unchanged.');
+    text('g2-alpha-context', 'Training observations: ' + training + '. Checking pressure: '
+      + alpha.context.evaluate + ' kPa. ' + (alpha.heldOut
+        ? 'This pressure was excluded from each two-parameter fit. If used to choose alpha, it becomes model-selection data and is not an untouched final test.'
+        : 'This pressure was included in training; these checking errors are in-sample agreement, not held-out validation.'));
+    graduateRows('g2-alpha-body', alpha.rows.map((row) => row.status !== 'valid'
+      ? [row.alpha, null, null, null, null, 'No', null, null, row.reason]
+      : [row.alpha, row.tau12, row.tau21, row.trainingRMSE, row.checkingRMSE,
+        row.converged ? 'Yes' : 'No', row.atBound ? 'Yes' : 'No', row.minSampledScaledCurvature,
+        row.minSampledScaledCurvature <= 0
+          ? 'Nonpositive sampled curvature at 350 K; homogeneous model candidates may be unstable. Investigate Lab 04.'
+          : 'Positive on the sampled grid at 350 K; not a global stability proof.']));
+  }
+}
+
+function restoreGraduate(saved, analysis, inputs) {
+  graduate = normalizeGraduateCase(saved);
+  for (const key of ['T', 'P', 'x', 'y']) {
+    element('g2-bound-' + key).value = graduate.bounds[key];
+    element('g2-bound-' + key).removeAttribute('aria-invalid');
+  }
+  for (const [key, value] of Object.entries(graduate.notes)) element('g2-note-' + key).value = value;
+  graduateAnalysis = analysis || analyzeGraduateCase(data, inputs || readInputs(), graduate);
+  renderGraduate();
+  if (!graduateAnalysis.sensitivity) text('g2-sensitivity-status', 'Choose a valid interior observation and run the scenario analysis.');
+  if (!graduateAnalysis.alpha) text('g2-alpha-status', 'Establish the baseline model, then compare three conditional fits.');
+}
+
+function runGraduateSensitivity() {
+  clearError();
+  try {
+    const inputs = readInputs();
+    if (!inputs) return;
+    const candidate = readGraduate();
+    const sensitivity = observationSensitivity(data, inputs, candidate);
+    graduate = candidate;
+    graduate.run.sensitivity = true;
+    graduateAnalysis.sensitivity = sensitivity;
+    revision += 1;
+    renderGraduate();
+    text('status', 'Graduate observation sensitivity recalculated. Download the study after completing your defended conclusion.');
+  } catch (issue) {
+    clearGraduate(true, false);
+    text('g2-sensitivity-status', issue.message);
+    issue.field?.focus();
+  }
+}
+
+async function runGraduateAlpha() {
+  if (busy) return;
+  clearError();
+  const inputs = readInputs();
+  if (!inputs) return;
+  if (!current) {
+    text('g2-alpha-status', 'Establish a baseline model in Step 3 before comparing the three conditional fits.');
+    element('fit-button').focus();
+    return;
+  }
+  const started = revision;
+  busy = true;
+  element('g2-run-alpha').disabled = true;
+  text('g2-alpha-status', 'Fitting three alpha assumptions to the same training observations…');
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+  try {
+    if (started !== revision) return;
+    const candidate = readGraduate();
+    const alpha = alphaSensitivity(data, inputs);
+    if (started !== revision) return;
+    graduate = candidate;
+    graduate.run.alpha = true;
+    graduateAnalysis.alpha = alpha;
+    revision += 1;
+    renderGraduate();
+    text('status', 'Three conditional alpha fits completed without replacing the retained model.');
+  } catch (issue) {
+    clearGraduate(false, true);
+    text('g2-alpha-status', issue.message);
+    issue.field?.focus();
+  } finally {
+    busy = false;
+    element('g2-run-alpha').disabled = false;
+  }
 }
 
 function clearError() {
@@ -323,11 +506,13 @@ function clearChart() {
   element('case-plot')?.replaceChildren();
   element('curve-head')?.replaceChildren();
   element('curve-body')?.replaceChildren();
+  element('case-legend')?.replaceChildren();
   text('plot-note', 'Fit the training data to calculate this comparison.');
   show('plot-panel', false);
 }
 
 function invalidate(message) {
+  clearGraduate(true, true);
   revision += 1;
   current = null;
   retainedFit = null;
@@ -510,6 +695,27 @@ async function renderChart() {
       ...curve.map((r) => ['Calculated', a.evaluation.pressure, r.T, r.x, r.y]),
     ]);
   }
+  if (element('case-legend')) {
+    const labels = inputs.chart === 'gamma'
+      ? ['Inferred γ₁', 'Inferred γ₂', modelName + ' γ₁', modelName + ' γ₂']
+      : inputs.chart === 'residual' ? ['ln γ₁ residual', 'ln γ₂ residual']
+        : ['Measured liquid', 'Measured vapor', modelName + ' bubble', modelName + ' dew'];
+    element('case-legend').replaceChildren(...traces.map((trace, index) => {
+      const label = document.createElement('span');
+      const swatch = document.createElement('i');
+      swatch.setAttribute('aria-hidden', 'true');
+      swatch.className = 'legend-swatch' + (trace.mode === 'markers' ? ' legend-point' : '');
+      swatch.style.borderColor = trace.line.color;
+      if (trace.mode === 'markers') {
+        if (trace.marker.symbol === 'diamond-open') swatch.classList.add('legend-diamond');
+        else swatch.style.background = trace.line.color;
+      } else swatch.style.borderTopStyle = trace.line.dash === 'dash' ? 'dashed' : 'solid';
+      const wording = document.createElement('span');
+      mathText(wording, labels[index]);
+      label.append(swatch, wording);
+      return label;
+    }));
+  }
   plotNote(a.evaluation.pressure + ' kPa · ' + modelName + '. ' + note, a);
   if (!globalThis.Plotly) {
     plotNote('The optional chart library is unavailable. Numerical scores, observations and curve data remain available. ' + note, a);
@@ -517,12 +723,12 @@ async function renderChart() {
   }
   try {
     await globalThis.Plotly.react(element('case-plot'), traces, {
-      margin: { t: 24, r: 20, b: 150, l: 68 },
+      margin: { t: 24, r: 20, b: 75, l: 68 },
       font: { family: 'Source Sans 3, sans-serif', size: 14, color: palette.graphite },
       paper_bgcolor: 'white', plot_bgcolor: 'white',
       xaxis: { title: { text: xTitle }, range: [0, 1], gridcolor: palette.mist },
       yaxis: { title: { text: yTitle }, gridcolor: palette.mist, zerolinecolor: palette.graphite },
-      legend: { orientation: 'h', x: 0, y: -0.28, entrywidth: 175, entrywidthmode: 'pixels' },
+      showlegend: false,
       hovermode: 'closest',
     }, { responsive: true, displaylogo: false, displayModeBar: false });
     if (epoch !== plotRevision || current !== saved) return;
@@ -540,6 +746,7 @@ function attachWorkspace(calculated, input) {
     prediction: element('prediction')?.value || importedPrediction,
     answers: answers(),
     solutionOpen: !!element('observation-solution')?.open,
+    graduate: graduateSnapshot(),
   };
 }
 
@@ -570,6 +777,11 @@ function recalculate(allowReference = false) {
   const inputs = readInputs();
   if (!inputs) return;
   try {
+    const prior = current?.inputs;
+    if (prior && ['inspect', 'selectedRow', 'train', 'evaluate', 'alpha', 'model'].some((key) => prior[key] !== inputs[key])) {
+      const fitContextChanged = ['train', 'evaluate', 'alpha', 'model'].some((key) => prior[key] !== inputs[key]);
+      clearGraduate(true, fitContextChanged);
+    }
     updateName(inputs);
     current = attachWorkspace({ inputs, fit: retainedFit, analysis: analyze(data, inputs, retainedFit) });
     revision += 1;
@@ -598,6 +810,7 @@ async function fitNow() {
     retainedFit = fitted.fit;
     element('case-model').querySelector('option[value="fit"]').disabled = false;
     element('case-model').value = 'fit';
+    clearGraduate(true, true, 'Baseline model recalculated. Run the graduate investigations again for this context.');
     updateName(fitted.inputs);
     current = attachWorkspace(fitted);
     revision += 1;
@@ -651,6 +864,7 @@ function renderComparisons() {
       writeAnswers(saved.answers);
       element('observation-solution').open = !!saved.solutionOpen;
       current.analysis = analyze(data, saved.inputs, retainedFit);
+      restoreGraduate(saved.graduate, null, saved.inputs);
       renderPropertyRecords();
       renderObservation();
       renderResult();
@@ -668,15 +882,20 @@ function renderComparisons() {
 
 function saveCase() {
   if (!current) return;
-  current = attachWorkspace(current);
-  cases.push(copy(current));
-  revision += 1;
-  renderComparisons();
-  text('status', current.name + ' saved. ' + cases.length + ' comparison cases in this study.');
+  try {
+    graduate = readGraduate();
+    current = attachWorkspace(current);
+    cases.push(copy(current));
+    revision += 1;
+    renderComparisons();
+    text('status', current.name + ' saved. ' + cases.length + ' comparison cases in this study, including graduate settings and conclusions.');
+  } catch (issue) { error(issue.message); issue.field?.focus(); }
 }
 
 function downloadStudy() {
   if (!current) return;
+  try {
+  graduate = readGraduate();
   current = attachWorkspace(current);
   const study = makeStudy(current, cases, element('reflection').value);
   const url = URL.createObjectURL(new Blob([JSON.stringify(study, null, 2)], { type: 'application/json' }));
@@ -687,7 +906,8 @@ function downloadStudy() {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  text('status', 'Study downloaded with source observations, fitting context, comparisons and your explanation.');
+  text('status', 'Study downloaded with observations, fitting context, graduate sensitivity results, comparisons and all conclusions.');
+  } catch (issue) { error(issue.message); issue.field?.focus(); }
 }
 
 async function openStudy(event) {
@@ -713,6 +933,7 @@ async function openStudy(event) {
     applyPrediction(opened.prediction);
     writeAnswers(opened.answers);
     element('observation-solution').open = !!opened.solutionOpen;
+    restoreGraduate(opened.graduate, opened.graduateAnalysis, opened.inputs);
     revision += 1;
     renderPropertyRecords();
     renderObservation();
@@ -738,7 +959,7 @@ function fitButtonLabel() {
 async function start() {
   const loadingControls = ['dataset', 'observation', 'alpha', 'training-pressure', 'evaluation-pressure',
     'fit-button', 'case-model', 'case-chart', 'show-observation', 'check-observation', 'inspect-reference',
-    'import-study'];
+    'import-study', 'g2-bound-T', 'g2-bound-P', 'g2-bound-x', 'g2-bound-y', 'g2-run-sensitivity', 'g2-run-alpha'];
   for (const id of loadingControls) element(id).disabled = true;
   const response = await fetch(new URL('../../labs/assets/ipa-water.json', import.meta.url));
   if (!response.ok) throw new Error('The experimental observations could not be loaded. Reload this page.');
@@ -746,12 +967,15 @@ async function start() {
   writeInputs(DEFAULT_INPUTS);
   renderPropertyRecords();
   renderObservation();
+  restoreGraduate(undefined, { sensitivity: null, alpha: null });
   element('dataset').addEventListener('change', () => {
     const prior = Number(element('observation').value);
     setObservationOptions(Number(element('dataset').value), prior);
     writeAnswers();
     element('observation-solution').open = false;
     renderObservation();
+    clearGraduate(true, false);
+    renderGraduate();
     revision += 1;
     if (current) recalculate();
   });
@@ -759,6 +983,8 @@ async function start() {
     writeAnswers();
     element('observation-solution').open = false;
     renderObservation();
+    clearGraduate(true, false);
+    renderGraduate();
     revision += 1;
     if (current) recalculate();
   });
@@ -797,12 +1023,27 @@ async function start() {
     if (event.key === 'Enter' && event.target.matches('input[type="number"]')) {
       event.preventDefault();
       if (event.target.id.startsWith('answer-')) checkObservation();
+      else if (event.target.id.startsWith('g2-bound-')) runGraduateSensitivity();
       else fitNow();
     }
   });
   element('save-case').addEventListener('click', saveCase);
   element('export-study').addEventListener('click', downloadStudy);
   element('import-study').addEventListener('change', openStudy);
+  element('g2-run-sensitivity').addEventListener('click', runGraduateSensitivity);
+  element('g2-run-alpha').addEventListener('click', runGraduateAlpha);
+  for (const key of ['T', 'P', 'x', 'y']) {
+    element('g2-bound-' + key).addEventListener('input', () => {
+      clearGraduate(true, false, 'Assumed bounds changed. Run the scenarios again.');
+      revision += 1;
+    });
+  }
+  for (const key of ['assumptions', 'uncertainty', 'evidence', 'decision']) {
+    element('g2-note-' + key).addEventListener('input', () => {
+      graduate.notes = graduateNotes();
+      revision += 1;
+    });
+  }
   renderComparisons();
   show('results', false);
   show('result-placeholder', true);

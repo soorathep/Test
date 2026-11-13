@@ -1,9 +1,10 @@
 import {
   CASES, copy, defaults, calculateVLE, caseValues, pressureCurves, temperatureBoundaries,
   parseStudy, makeStudy, validatePropertyRecord,
-} from './vle-state.js';
+} from './vle-state.js?v=graduate-1';
 import { psat, R } from '../../labs/assets/thermo.js';
 import { palette } from '../../labs/assets/palette.js';
+import { FACTORS, NOTE_KEYS, graduateControls, restoreGraduate, sensitivityStudy, modelStudy } from './vle-graduate.js';
 
 const element = (id) => document.getElementById(id);
 const numericFields = ['T', 'P', 'z', 'A', 'A12', 'A21', 'tau12', 'tau21', 'alpha', 'referenceT'];
@@ -29,9 +30,44 @@ let graphRevision = 0;
 let importedPrediction = '';
 let transferredContext = {};
 const importedRecords = new Map();
+let graduate = { ...graduateControls(), sensitivity: null, comparison: null };
+const mathNotation = {
+  'P₁sat': ['P', '1', 'sat'], 'P₂sat': ['P', '2', 'sat'], 'Pᵢsat': ['P', 'i', 'sat'],
+  'γ₁': ['γ', '1'], 'γ₂': ['γ', '2'], 'γᵢ': ['γ', 'i'],
+  'x₁': ['x', '1'], 'y₁': ['y', '1'], 'z₁': ['z', '1'], 'xᵢ': ['x', 'i'],
+  'τ₁₂': ['τ', '12'], 'τ₂₁': ['τ', '21'], 'A₁₂': ['A', '12'], 'A₂₁': ['A', '21'],
+};
+const mathPattern = new RegExp(Object.keys(mathNotation).sort((a, b) => b.length - a.length).join('|'), 'gu');
+
+function mathText(node, value) {
+  const source = String(value);
+  const fragment = document.createDocumentFragment();
+  let position = 0;
+  mathPattern.lastIndex = 0;
+  const make = (tag, text) => {
+    const result = document.createElementNS('http://www.w3.org/1998/Math/MathML', tag);
+    if (text !== undefined) result.textContent = text;
+    return result;
+  };
+  for (const match of source.matchAll(mathPattern)) {
+    fragment.append(document.createTextNode(source.slice(position, match.index)));
+    const [base, subscript, superscript] = mathNotation[match[0]];
+    const math = make('math');
+    math.classList.add('inline-math');
+    const body = make(superscript ? 'msubsup' : 'msub');
+    const sub = make(/^\d+$/.test(subscript) ? 'mn' : 'mi', subscript);
+    body.append(make('mi', base), sub);
+    if (superscript) { const sup = make('mi', superscript); sup.setAttribute('mathvariant', 'normal'); body.append(sup); }
+    math.append(body);
+    fragment.append(math);
+    position = match.index + match[0].length;
+  }
+  fragment.append(document.createTextNode(source.slice(position)));
+  node.replaceChildren(fragment);
+}
 
 function setText(id, text) {
-  if (element(id)) element(id).textContent = text;
+  if (element(id)) mathText(element(id), text);
 }
 
 function format(value, digits = 6) {
@@ -42,6 +78,134 @@ function format(value, digits = 6) {
 
 function show(id, visible) {
   if (element(id)) element(id).hidden = !visible;
+}
+
+function graduateForm() {
+  const bounds = {};
+  for (const factor of FACTORS) {
+    const input = element('graduate-bound-' + factor.key);
+    const value = Number(input.value);
+    input.removeAttribute('aria-invalid');
+    if (!input.value.trim() || !Number.isFinite(value) || value < 0 || value > factor.max) {
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+      throw new Error(factor.name + ' half-width must be from 0 to ' + factor.max + ' ' + factor.unit + '.');
+    }
+    bounds[factor.key] = value;
+  }
+  return graduateControls({ ...graduate, bounds,
+    notes: Object.fromEntries(NOTE_KEYS.map((key) => [key, element('graduate-' + key).value])) });
+}
+
+function writeGraduateForm() {
+  for (const factor of FACTORS) {
+    element('graduate-bound-' + factor.key).value = graduate.bounds[factor.key];
+    element('graduate-bound-' + factor.key).removeAttribute('aria-invalid');
+  }
+  for (const key of NOTE_KEYS) element('graduate-' + key).value = graduate.notes[key];
+}
+
+function invalidateGraduate(message = 'The baseline changed. Recalculate the state, then rerun the graduate investigations.') {
+  graduate = { ...graduate, sensitivityRequested: false, comparisonRequested: false, sensitivity: null, comparison: null };
+  setText('graduate-model-status', message);
+  setText('graduate-sensitivity-status', message);
+  setText('graduate-evidence-status', '');
+  renderGraduate();
+}
+
+function graduateTable(id, rows, values) {
+  element(id).replaceChildren(...rows.map((row) => {
+    const tr = document.createElement('tr');
+    for (const value of values(row)) {
+      const cell = document.createElement('td');
+      mathText(cell, value);
+      tr.append(cell);
+    }
+    return tr;
+  }));
+}
+
+function graduatePhase(row) {
+  return row.status === 'failed' ? 'Outside assumptions/domain: ' + row.reason
+    : phaseLabels[row.phase] || row.phase;
+}
+
+function renderGraduate() {
+  for (const id of ['graduate-compare-models', 'graduate-run-sensitivity']) element(id).disabled = !current;
+  setText('graduate-baseline', current
+    ? 'Calculated baseline: T = ' + format(current.values.T) + ' K, P = ' + format(current.values.P)
+      + ' kPa, z₁ = ' + format(current.values.z) + ', ' + current.result.model.name + ', '
+      + phaseLabels[current.result.phase] + ', β = ' + format(current.result.beta) + '.'
+    : 'Calculate a state in Step 1 before running either investigation.');
+  show('graduate-model-wrap', !!graduate.comparison);
+  if (graduate.comparison) {
+    graduateTable('graduate-model-body', graduate.comparison.rows, (row) => [
+      { ideal: 'Ideal liquid', margules: 'Margules · one parameter', margules2: 'Margules · two parameters', nrtl: 'NRTL' }[row.model],
+      row.parameters, graduatePhase(row), format(row.beta), row.x === null ? 'Not reported' : format(row.x),
+      row.y === null ? 'Not reported' : format(row.y),
+    ]);
+  }
+  show('graduate-sensitivity-results', !!graduate.sensitivity);
+  if (graduate.sensitivity) {
+    const result = graduate.sensitivity;
+    const counts = result.cornerSummary;
+    setText('graduate-beta-range', counts.finite ? format(counts.minBeta) + ' to ' + format(counts.maxBeta) : 'No finite β values');
+    setText('graduate-corner-counts', counts.finite + ' / ' + counts.indeterminate + ' / ' + counts.failed + ' of ' + counts.total);
+    setText('graduate-phase-counts', 'Joint-corner phase counts: ' + (Object.entries(counts.phases)
+      .map(([phase, count]) => (phaseLabels[phase] || phase) + ' = ' + count).join('; ') || 'No admitted phase result')
+      + '. Counts describe the chosen scenarios, not phase probabilities.');
+    const ranked = result.ranking.filter((row) => row.maxAbsoluteDeltaBeta !== null);
+    setText('graduate-ranking', ranked.length
+      ? 'Largest one-at-a-time |Δβ|: ' + ranked[0].name + ', ' + format(ranked[0].maxAbsoluteDeltaBeta)
+        + '. OAT statuses: ' + result.oatSummary.finite + ' finite, ' + result.oatSummary.indeterminate
+        + ' indeterminate, ' + result.oatSummary.failed + ' failed.'
+      : 'No finite one-at-a-time change in β could be computed. Read the failure and indeterminate-state reasons.');
+    graduateTable('graduate-oat-body', result.oat, (row) => [row.label, graduatePhase(row), format(row.beta), format(row.deltaBeta)]);
+    graduateTable('graduate-corner-body', result.corners, (row) => [row.label, format(row.inputs.T), format(row.inputs.P),
+      format(row.inputs.z), format(row.scales[0]), format(row.scales[1]), graduatePhase(row), format(row.beta)]);
+  }
+}
+
+function storeGraduate() {
+  graduate = restoreGraduate(graduateForm(), current);
+  current.graduate = copy(graduate);
+}
+
+function runGraduate(kind) {
+  if (!current) return;
+  try {
+    const controls = graduateForm();
+    graduate = { ...graduate, ...controls };
+    if (kind === 'comparison') {
+      graduate.comparison = modelStudy(current);
+      graduate.comparisonRequested = true;
+      setText('graduate-model-status', 'Four candidates calculated at the same baseline conditions. Failures remain in the table; no candidate is validated by this comparison.');
+    } else {
+      graduate.sensitivity = sensitivityStudy(current, graduate.bounds);
+      graduate.sensitivityRequested = true;
+      const count = graduate.sensitivity.cornerSummary;
+      setText('graduate-sensitivity-status', 'Ten one-at-a-time scenarios and 32 signed corner combinations evaluated. '
+        + count.failed + ' corners failed their domain/assumption checks. No input or reference temperature was clipped or changed silently.');
+    }
+    current.graduate = copy(graduate);
+    revision += 1;
+    renderGraduate();
+  } catch (error) {
+    setText(kind === 'comparison' ? 'graduate-model-status' : 'graduate-sensitivity-status', error.message);
+  }
+}
+
+function checkGraduateEvidence() {
+  const notes = Object.fromEntries(NOTE_KEYS.map((key) => [key, element('graduate-' + key).value.trim()]));
+  const missing = [];
+  if (!graduate.comparison) missing.push('run the model comparison');
+  if (!graduate.sensitivity) missing.push('run sensitivity scenarios for the current baseline');
+  if (!notes.assumptions) missing.push('write the assumptions/model-evidence claim');
+  if (!notes.sensitivity) missing.push('write the sensitivity/phase-robustness claim');
+  if (!notes.comparison) missing.push('link model spread to input/property sensitivity');
+  if (!notes.limits) missing.push('write the limited conclusion and next evidence needed');
+  setText('graduate-evidence-status', missing.length ? 'Evidence record incomplete: ' + missing.join('; ') + '.'
+    : 'The calculations and four explanation fields are present. Check that you cited at least two numerical outputs and justified the assumed bounds. This is a completeness check, not a grade or scientific validation.');
 }
 
 function hideError() {
@@ -233,6 +397,7 @@ function invalidate(message = 'Inputs changed. Check the inputs, then calculate 
   element('export-study').disabled = true;
   hideError();
   clearPlot();
+  invalidateGraduate();
 }
 
 function writeValues(values, property) {
@@ -271,7 +436,7 @@ function loadCase(key) {
   setCaseSelection(key);
   setText('case-description', 'A 1.00 mol binary feed at 350 K and ' + format(chosen.values.P, 10)
     + ' kPa has a component 1 feed mole fraction z₁ = 0.40. Assume ideal vapor and ideal liquid.');
-  setText('case-task', 'Predict the phases, calculate x₁, y₁ and both phase amounts, then check the component balance.');
+  setText('case-task', 'Verify the phase calculation, then complete the graduate model audit and sensitivity investigation in Step 4.');
   setText('status', chosen.name + ' loaded. Saved comparison rows remain available.');
 }
 
@@ -409,7 +574,7 @@ function renderResult() {
   feedback.hidden = !chosen;
   element('calc-steps').replaceChildren(...workedSteps(values, result).map((text) => {
     const row = document.createElement('li');
-    row.textContent = text;
+    mathText(row, text);
     return row;
   }));
   const temperatures = temperatureBoundaries(values, current.propertyRecord);
@@ -505,6 +670,11 @@ function calculate() {
       prediction: element('prediction').value || importedPrediction,
     };
     revision += 1;
+    graduate = restoreGraduate(graduate, current);
+    current.graduate = copy(graduate);
+    setText('graduate-model-status', graduate.comparison ? 'Saved model candidates recomputed for the calculated baseline.' : 'Baseline calculated. Compare the liquid-model candidates in Step 4.');
+    setText('graduate-sensitivity-status', graduate.sensitivity ? 'Saved sensitivity settings recomputed for the calculated baseline.' : 'Baseline calculated. Run the sensitivity scenarios in Step 4.');
+    renderGraduate();
     renderResult();
     setText('status', phaseLabels[current.result.phase] + '. Vapor fraction '
       + format(current.result.beta) + '. Check the calculation and save a case to compare.');
@@ -546,6 +716,9 @@ function renderComparisons() {
       element('case-name').value = saved.name;
       applyPrediction(saved.prediction);
       invalidate('Saved inputs loaded. Calculate to reproduce this comparison.');
+      graduate = { ...graduateControls(saved.graduate), sensitivity: null, comparison: null };
+      writeGraduateForm();
+      renderGraduate();
       setCaseSelection();
       setText('case-description', 'Recalculate this saved case, then compare it with the stored row.');
       setText('case-task', 'The saved property record and model parameters are restored with the inputs.');
@@ -563,6 +736,8 @@ function renderComparisons() {
 
 function saveCase() {
   if (!current) return;
+  try { storeGraduate(); }
+  catch (error) { setText('graduate-sensitivity-status', 'The comparison was not saved. ' + error.message); return; }
   current.name = element('case-name').value.trim() || 'Custom case';
   cases.push(copy(current));
   revision += 1;
@@ -572,6 +747,8 @@ function saveCase() {
 
 function downloadStudy() {
   if (!current) return;
+  try { storeGraduate(); }
+  catch (error) { setText('graduate-sensitivity-status', 'The study was not downloaded. ' + error.message); return; }
   current.name = element('case-name').value.trim() || 'Custom case';
   const study = makeStudy(current, cases, element('reflection').value, catalog.version);
   const url = URL.createObjectURL(new Blob([JSON.stringify(study, null, 2)], { type: 'application/json' }));
@@ -582,7 +759,7 @@ function downloadStudy() {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  setText('status', 'Study downloaded with inputs, property records, comparisons and your explanation.');
+  setText('status', 'Study downloaded with inputs, original property records, comparisons, graduate settings and explanations. Graduate calculations will be recomputed when reopened.');
 }
 
 function applyPrediction(value) {
@@ -609,10 +786,13 @@ async function openStudy(event) {
     applyPrediction(opened.prediction);
     cases = opened.cases;
     current = opened;
+    graduate = opened.graduate;
+    writeGraduateForm();
     revision += 1;
     setCaseSelection();
     renderComparisons();
     renderResult();
+    renderGraduate();
     setText('case-description', 'Study inputs reopened and recalculated. Compare the restored state with your saved cases.');
     setText('case-task', 'The saved property data and model parameters are retained for recalculation.');
     renderChart();
@@ -689,6 +869,34 @@ async function start() {
   element('save-case').addEventListener('click', saveCase);
   element('export-study').addEventListener('click', downloadStudy);
   element('import-study').addEventListener('change', openStudy);
+  for (const factor of FACTORS) {
+    element('graduate-bound-' + factor.key).addEventListener('input', () => {
+      graduate.sensitivity = null;
+      graduate.sensitivityRequested = false;
+      revision += 1;
+      setText('graduate-sensitivity-status', 'Sensitivity settings changed. Run the scenarios again; the base phase calculation is retained.');
+      setText('graduate-evidence-status', '');
+      renderGraduate();
+    });
+  }
+  for (const key of NOTE_KEYS) element('graduate-' + key).addEventListener('input', () => {
+    graduate.notes[key] = element('graduate-' + key).value;
+    revision += 1;
+    setText('graduate-evidence-status', '');
+  });
+  element('graduate-open-model').addEventListener('click', () => {
+    element('model').closest('details').open = true;
+    element('model').focus();
+  });
+  element('graduate-compare-models').addEventListener('click', () => runGraduate('comparison'));
+  element('graduate-run-sensitivity').addEventListener('click', () => runGraduate('sensitivity'));
+  element('graduate-check-evidence').addEventListener('click', checkGraduateEvidence);
+  element('graduate-boundary-case').addEventListener('click', () => {
+    loadCase('bubble');
+    setText('graduate-sensitivity-status', 'The 96 kPa boundary case is loaded. Calculate it in Step 1, then rerun the same sensitivity settings and compare the phase counts with the 90 kPa study.');
+    element('calculate').focus();
+  });
+  writeGraduateForm();
   loadCase('baseline');
   renderComparisons();
   element('calculate').disabled = false;

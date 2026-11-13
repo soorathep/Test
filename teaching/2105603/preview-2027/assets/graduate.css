@@ -1,0 +1,43 @@
+.graduate-section { margin: 24px 0; border-top: 3px solid var(--teal); }
+.graduate-section > .panel-heading { align-items: start; }
+.graduate-section p, .graduate-section li { overflow-wrap: anywhere; }
+.graduate-step { padding: 20px 0; margin-top: 16px; border-top: 1px solid var(--border); min-width: 0; }
+.graduate-step h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.graduate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.graduate-grid > * { min-width: 0; }
+.graduate-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin: 16px 0; min-width: 0; }
+.graduate-controls > * { min-width: 0; }
+.graduate-controls label { font-size: .93rem; }
+.graduate-controls .quantity-input input { padding-right: 80px; }
+.graduate-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.graduate-metrics > div { min-width: 0; padding: 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--soft-teal); }
+.graduate-metrics dt { font-size: .9rem; overflow-wrap: anywhere; }
+.graduate-metrics dd { margin: 7px 0 0; font-size: 1.3rem; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.graduate-metrics p { font-size: .85rem; margin: 8px 0 0; }
+.graduate-note { margin: 14px 0; border-left: 3px solid var(--amber); padding: 4px 0 4px 12px; font-size: .92rem; }
+.graduate-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.graduate-actions button { max-width: 100%; white-space: normal; }
+.graduate-checklist { padding-left: 22px; font-size: .94rem; }
+.graduate-checklist li + li { margin-top: 9px; }
+.graduate-table { margin: 14px 0; min-width: 0; }
+.graduate-table th, .graduate-table td { vertical-align: top; }
+.graduate-table td:last-child, .graduate-table th:last-child { white-space: normal; min-width: 170px; }
+.graduate-status { margin: 12px 0; font-weight: 600; overflow-wrap: anywhere; }
+.graduate-status:empty { display: none; }
+.graduate-reflections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 18px 0; }
+.graduate-reflections > div { min-width: 0; }
+.graduate-reflections textarea { min-height: 150px; }
+.graduate-section math { font-family: math; }
+.graduate-section .math-scroll { max-width: 100%; overflow-x: auto; }
+.graduate-section summary { min-height: 44px; padding: 9px 0; cursor: pointer; font-weight: 600; }
+
+@media (max-width: 950px) {
+  .graduate-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .graduate-controls, .graduate-metrics, .graduate-reflections { grid-template-columns: 1fr; }
+  .graduate-controls .quantity-input input { padding-right: 12px; }
+  .graduate-actions { display: grid; grid-template-columns: 1fr; }
+  .graduate-actions button { width: 100%; }
+  .graduate-section h2, .graduate-section h3, .graduate-section legend { overflow-wrap: anywhere; }
+}
