@@ -2,7 +2,7 @@ import {
   CASES, copy, defaults, calculateVLE, caseValues, pressureCurves, temperatureBoundaries,
   parseStudy, makeStudy, validatePropertyRecord,
 } from './vle-state.js';
-import { psat } from '../../labs/assets/thermo.js';
+import { psat, R } from '../../labs/assets/thermo.js';
 import { palette } from '../../labs/assets/palette.js';
 
 const element = (id) => document.getElementById(id);
@@ -110,23 +110,89 @@ function updateProperties() {
   const record = selectedProperty();
   if (!record) return;
   const T = Number(element('T').value);
+  const fixed = record.components.every((component) => component.equation === 'fixed');
+  const types = [...new Set(record.components.map((component) => component.equation))];
   setText('system-note', record.description || record.label || 'Saved binary property record.');
   setText('component1-name', record.components[0].name);
   setText('component2-name', record.components[1].name);
-  setText('temperature-range', 'Both vapor-pressure records apply from ' + record.rangeK.join(' to ') + ' K.');
+  setText('temperature-range', fixed
+    ? 'Supplied property values are available only at ' + format(record.rangeK[0]) + ' K.'
+    : 'Both vapor-pressure records apply from ' + record.rangeK.join(' to ') + ' K.');
   element('T').min = record.rangeK[0];
   element('T').max = record.rangeK[1];
   element('T').readOnly = record.rangeK[0] === record.rangeK[1];
+  setText('property-method', fixed
+    ? 'Supplied saturation pressures at ' + format(record.rangeK[0]) + ' K · fixed-temperature record.'
+    : types.length === 1 && types[0] === 'clausius'
+      ? (record.kind === 'synthetic' ? 'Synthetic teaching data · ' : '') + 'Clausius–Clapeyron correlation.'
+      : types.length === 1 && types[0] === 'antoine'
+        ? 'Antoine correlations · source equations use bar and kelvin.'
+        : 'Each component uses its own vapor-pressure record, shown below.');
+  const enteredPressure = element('P').value.trim();
+  const P = Number(enteredPressure);
+  setText('property-operating-pressure', (enteredPressure && Number.isFinite(P) && P >= 1 && P <= 200
+    ? 'Mixture operating pressure P = ' + format(P) + ' kPa. This is the pressure entered above.'
+    : 'Enter a mixture operating pressure from 1 to 200 kPa in the Pressure field above.')
+    + ' The mixture bubble and dew pressures are calculated in Step 2.');
+  setText('psat1-value', '—');
+  setText('psat2-value', '—');
+  setText('property-temperature', '—');
   if (!element('T').value.trim() || !Number.isFinite(T) || T < record.rangeK[0] || T > record.rangeK[1]) {
-    setText('property-values', 'Enter a temperature within the stated range to read both saturation pressures.');
+    setText('property-status', fixed
+      ? 'This property record supplies values only at ' + format(record.rangeK[0]) + ' K. No saturation pressures are shown for another temperature.'
+      : 'Enter a temperature from ' + record.rangeK.join(' to ') + ' K to read both saturation pressures.');
   } else {
     try {
       const sat = record.components.map((component) => psat(component, T) / 1000);
-      setText('property-values', 'At ' + format(T) + ' K: component 1 saturation pressure = '
-        + format(sat[0]) + ' kPa; component 2 = ' + format(sat[1]) + ' kPa.');
+      if (!sat.every((value) => Number.isFinite(value) && value > 0)) {
+        throw new Error('The property record does not give positive finite saturation pressures.');
+      }
+      setText('psat1-value', format(sat[0]));
+      setText('psat2-value', format(sat[1]));
+      setText('property-temperature', 'At T = ' + format(T) + ' K');
+      setText('property-status', fixed
+        ? 'Supplied values at this temperature. This record does not predict values at other temperatures.' : '');
     } catch (error) {
-      setText('property-values', 'Vapor-pressure data unavailable at this temperature. ' + error.message);
+      setText('property-status', 'Saturation pressures are unavailable at this temperature. ' + error.message);
     }
+  }
+  const correlation = element('property-correlation');
+  if (correlation) {
+    const cards = record.components.map((component, index) => {
+      const card = document.createElement('section');
+      card.className = 'property-equation-card';
+      const heading = document.createElement('h4');
+      heading.textContent = 'Component ' + (index + 1) + ' · ' + component.name;
+      const equation = document.createElement('p');
+      equation.className = 'property-equation';
+      const constants = document.createElement('p');
+      constants.className = 'property-constants';
+      const units = document.createElement('p');
+      if (component.equation === 'antoine') {
+        equation.textContent = 'log₁₀(Psat / bar) = A − B/(T + C)';
+        constants.textContent = 'A = ' + format(component.A, 15) + '; B = ' + format(component.B, 15)
+          + '; C = ' + format(component.C, 15) + '.';
+        units.textContent = 'Use T in K. The equation returns Psat in bar. Multiply by 100 for kPa.';
+      } else if (component.equation === 'clausius') {
+        equation.textContent = 'ln(Psat / Pref) = −(ΔHvap / R)(1/T − 1/Tref)';
+        constants.textContent = 'Pref = ' + format(component.PrefPa / 1000, 12)
+          + ' kPa; Tref = ' + format(component.Tref, 12) + ' K; ΔHvap = '
+          + format(component.HvapJmol, 12) + ' J/mol.';
+        units.textContent = 'Use T and Tref in K. Use ΔHvap in J/mol with R = '
+          + format(R, 8) + ' J/(mol K). Psat has the same pressure unit as Pref.';
+      } else {
+        equation.textContent = 'Supplied saturation pressure at ' + format(component.rangeK[0]) + ' K';
+        constants.textContent = 'Psat = ' + format(component.pressurePa / 1000, 12) + ' kPa.';
+        units.textContent = 'This fixed-temperature record has no equation for extrapolating to other temperatures.';
+      }
+      const range = document.createElement('p');
+      range.textContent = component.rangeK[0] === component.rangeK[1]
+        ? 'Valid only at ' + format(component.rangeK[0]) + ' K.'
+        : 'Component correlation range: ' + component.rangeK.join(' to ') + ' K.';
+      card.append(heading, equation, constants, units, range);
+      return card;
+    });
+    correlation.replaceChildren(...cards);
   }
   const sources = element('property-sources');
   if (sources) {
@@ -445,8 +511,9 @@ function calculate() {
     requestAnimationFrame(() => {
       if (current) renderChart();
     });
-    const result = element('results');
-    if (result.getBoundingClientRect().top > innerHeight - 100) {
+    const result = element('result-heading')?.closest('section') || element('results');
+    const resultTop = result.getBoundingClientRect().top;
+    if (resultTop < 0 || resultTop > innerHeight - 100) {
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       result.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' });
     }

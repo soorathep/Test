@@ -7,7 +7,7 @@
   <title>VLE and flash · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Work through a binary flash problem, read its phase diagram and check the component balance.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/vle.css">
+  <link rel="stylesheet" href="assets/vle.css?v=saturation-clarity-1">
 </head>
 <body>
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -52,8 +52,33 @@
             <div><label for="P">Pressure</label><div class="quantity-input"><input id="P" type="number" value="90" min="1" max="200" step="any" aria-describedby="P-unit pressure-help error-P"><span id="P-unit">kPa</span></div><p id="pressure-help" class="input-help">Calculation range 1–200 kPa.</p><p id="error-P" class="field-error" hidden></p></div>
             <div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.4" min="0" max="1" step="any" aria-describedby="z-unit feed-help error-z"><span id="z-unit">mol/mol</span></div><p id="feed-help" class="input-help">Enter a fraction from 0 to 1. For this 1 mol feed, z₁ = 0.40 means 0.40 mol of component 1.</p><p id="error-z" class="field-error" hidden></p></div>
           </div>
-          <div class="component-key"><span>Component 1 <strong id="component1-name">A</strong></span><span>Component 2 <strong id="component2-name">B</strong></span></div>
-          <div class="property-summary"><h3>Vapor pressures at this temperature</h3><div id="property-values" class="property-values">Loading the property record…</div><p class="input-help">These pure-component vapor pressures change with temperature.</p></div>
+          <section class="property-summary" id="saturation-properties" aria-labelledby="saturation-heading">
+            <h3 id="saturation-heading">Pure-component saturation pressures</h3>
+            <p class="saturation-symbol-key"><span class="math-symbol">P<sub>i</sub><sup>sat</sup>(T)</span> <span>sat = saturation</span></p>
+            <p class="saturation-definition">The pressure at which <strong>pure component i</strong> has liquid and vapor in equilibrium at temperature T.</p>
+            <figure class="pure-equilibrium-picture">
+              <svg viewBox="0 0 360 140" role="img" aria-labelledby="pure-equilibrium-title pure-equilibrium-description">
+                <title id="pure-equilibrium-title">A pure component at liquid–vapor equilibrium</title>
+                <desc id="pure-equilibrium-description">A closed vessel contains the liquid and vapor of one pure component. At the given temperature, the equilibrium pressure in this vessel is that component's saturation pressure.</desc>
+                <defs><marker id="saturation-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="pure-vessel-clip"><rect x="22" y="12" width="96" height="116" rx="14"/></clipPath></defs>
+                <g clip-path="url(#pure-vessel-clip)"><rect x="22" y="12" width="96" height="62" class="sketch-vapor-fill"/><rect x="22" y="74" width="96" height="54" class="sketch-liquid-fill"/><g class="sketch-vapor-dots"><circle cx="42" cy="33" r="3.5"/><circle cx="70" cy="25" r="3.5"/><circle cx="99" cy="42" r="3.5"/><circle cx="47" cy="58" r="3.5"/></g><path d="M 22 74 Q 38 68 54 74 T 86 74 T 118 74" class="sketch-liquid-surface"/></g>
+                <rect x="22" y="12" width="96" height="116" rx="14" class="sketch-drum"/>
+                <path d="M 69 101 V 48" class="sketch-pipe" marker-end="url(#saturation-arrow)"/><path d="M 88 48 V 101" class="sketch-pipe" marker-end="url(#saturation-arrow)"/>
+                <path d="M 125 39 H 151 M 125 106 H 151" class="sketch-pipe"/>
+                <g class="pure-phase-label"><text x="163" y="46">Saturated vapor</text><text x="163" y="113">Pure liquid</text></g>
+              </svg>
+              <figcaption>One pure component in its own vessel<br>Pure liquid ⇌ saturated vapor at the same T and P<sub>i</sub><sup>sat</sup>(T)</figcaption>
+            </figure>
+            <p id="property-temperature" class="saturation-temperature">Select a temperature to read the saturation pressures.</p>
+            <dl id="property-values" class="property-values saturation-cards">
+              <div><dt><span class="saturation-component">Component 1 · <strong id="component1-name">A</strong></span><span class="math-symbol">P<sub>1</sub><sup>sat</sup>(T)</span></dt><dd><output id="psat1-value">—</output> <span>kPa</span></dd></div>
+              <div><dt><span class="saturation-component">Component 2 · <strong id="component2-name">B</strong></span><span class="math-symbol">P<sub>2</sub><sup>sat</sup>(T)</span></dt><dd><output id="psat2-value">—</output> <span>kPa</span></dd></div>
+            </dl>
+            <p id="property-status" class="input-help" role="status">Loading the property record…</p>
+            <p id="property-method" class="property-method"></p>
+            <p id="property-operating-pressure" class="pressure-context"></p>
+            <details class="property-data"><summary>See the equation, constants and source</summary><div id="property-correlation"></div><div id="property-sources"></div></details>
+          </section>
           <div class="prediction-row"><label for="prediction">Before calculating, what do you think will be present?</label><select id="prediction" aria-describedby="prediction-help"><option value="">Not sure yet</option><option value="liquid">Liquid only</option><option value="two-phase">Liquid + vapor</option><option value="vapor">Vapor only</option><option value="boundary">At a phase boundary</option></select><p id="prediction-help" class="input-help">Make a prediction, then compare it with the calculated result. You can skip this step. Your choice does not change the calculation.</p></div>
           <p id="recorded-prediction" class="section-help" hidden></p>
           <button id="calculate" class="primary-button calculate-button" type="button" disabled>Calculate equilibrium</button>
@@ -74,7 +99,7 @@
             <div id="stability-route" class="route-note" hidden><p>These liquid parameters need a liquid-stability investigation.</p><p><a href="../labs/stability.html#lle-experiment">Open Lab 04 · liquid stability</a> · <a href="../labs/vlle.html#vl-experiment">Open Lab 06 · VLLE</a></p></div>
           </details>
           <details class="advanced"><summary>Try the bubble and dew boundaries</summary><p>Each case loads the synthetic ideal feed at 350 K and z₁ = 0.40. Predict the amount of the phase that is just appearing.</p><div class="case-buttons secondary-cases"><button type="button" data-case="bubble" aria-pressed="false">Bubble boundary · 96 kPa</button><button type="button" data-case="dew" aria-pressed="false">Dew boundary · 78.947… kPa</button></div></details>
-          <details class="advanced"><summary>Property sources and model assumptions</summary><p>Vapor is ideal. The activity standard state is the pure liquid at the system temperature. The pressure correction and saturated-vapor fugacity correction are set to one. Calculations use a convex liquid model in the supported range.</p><div id="property-sources"></div><p><a href="../labs/#experiment">Open the full Lab 01</a> for the original temperature diagrams, solver traces and transferred-fit controls.</p></details>
+          <details class="advanced"><summary>VLE model assumptions</summary><p>Vapor is ideal. The activity standard state is the pure liquid at the system temperature. The pressure correction and saturated-vapor fugacity correction are set to one. Calculations use a convex liquid model in the supported range.</p><p><a href="../labs/#experiment">Open the full Lab 01</a> for the original temperature diagrams, solver traces and transferred-fit controls.</p></details>
         </form>
       </section>
 
@@ -115,6 +140,6 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="index.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/vle.js"></script>
+  <script type="module" src="assets/vle.js?v=saturation-clarity-1"></script>
 </body>
 </html>

@@ -48,6 +48,13 @@ Pure-component vapor pressures at the current temperature are visible for the
 paper calculation. Named cases compare 90, 100 and 75 kPa. Bubble and dew cases
 use full-precision boundary conditions. One mol of feed is the fixed amount basis.
 
+The saturation-property block explicitly labels P1sat(T) and P2sat(T), shows
+each component name and pressure in kPa, and explains pure-component equilibrium
+with a closed-vessel illustration. The entered mixture operating pressure is
+identified separately. An adjacent disclosure provides the correlation, its
+constants, units, temperature range and source. Fixed-temperature imports are
+identified as supplied values. Invalid temperatures clear the displayed numbers.
+
 The prototype reuses `thermo.js` and `systems.json` from the current course lab.
 Ideal, one- and two-parameter Margules and NRTL models are available in the model
 disclosure, with the existing parameter and liquid-convexity checks. The two

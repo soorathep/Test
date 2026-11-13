@@ -23,8 +23,32 @@
 .component-key { display: flex; flex-wrap: wrap; gap: 8px 25px; padding: 15px 0; font-size: .88rem; }
 .component-key strong { display: block; font-size: 1rem; }
 .property-summary { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
-.property-summary h3 { font-size: .96rem; margin-bottom: 8px; }
+.property-summary h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.saturation-symbol-key { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 14px; margin-bottom: 10px; }
+.math-symbol { font-family: "Source Serif 4", Georgia, serif; font-size: 1.2rem; }
+.saturation-symbol-key > span:last-child { font-size: .83rem; color: var(--muted); }
+.saturation-definition { font-size: .92rem; margin-bottom: 10px; }
+.pure-equilibrium-picture { margin: 12px 0 16px; padding: 10px; border: 1px solid var(--border); border-radius: 6px; }
+.pure-equilibrium-picture svg { display: block; width: 100%; max-width: 350px; height: auto; margin: 0 auto 6px; }
+.pure-phase-label { fill: var(--ink); font-size: 21px; font-weight: 600; }
+.pure-equilibrium-picture figcaption { text-align: center; font-size: .82rem; }
+.saturation-temperature { font-weight: 600; margin-bottom: 10px; }
 .property-values { font-size: .94rem; }
+.saturation-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.saturation-cards > div { padding: 12px; border: 1px solid var(--teal); border-radius: 6px; background: var(--soft-teal); min-width: 0; }
+.saturation-component { display: block; font-size: .82rem; margin-bottom: 8px; overflow-wrap: anywhere; }
+.saturation-component strong { display: block; font-size: .94rem; }
+.saturation-cards dd { font-size: 1.6rem; font-weight: 600; margin: 6px 0 0; overflow-wrap: anywhere; }
+.saturation-cards dd > span { font-size: .88rem; font-weight: 400; }
+.property-method { font-size: .85rem; color: var(--muted); margin: 10px 0; }
+.pressure-context { border-left: 3px solid var(--amber); padding-left: 10px; font-size: .88rem; margin-bottom: 12px; }
+.property-data { font-size: .87rem; }
+.property-data summary { padding: 10px 0; min-height: 44px; font-weight: 600; cursor: pointer; }
+.property-data h4 { font-size: .92rem; margin: 14px 0 6px; }
+.property-data p, .property-data dl { margin-bottom: 8px; }
+.property-data .correlation-equation, .property-data .property-equation { overflow-wrap: anywhere; font-family: "Source Serif 4", Georgia, serif; }
+.property-data .property-equation-card + .property-equation-card { margin-top: 14px; padding-top: 2px; border-top: 1px solid var(--border); }
+.property-data ul { padding-left: 20px; }
 .property-values table { font-size: .87rem; }
 .property-values td, .property-values th { padding: 6px 8px; white-space: normal; min-width: 0; }
 .parameter-fields { margin-top: 15px; }
@@ -70,6 +94,7 @@
 }
 
 @media (max-width: 600px) {
+  .saturation-cards { grid-template-columns: 1fr; }
   .picture-key { grid-template-columns: 1fr; gap: 10px; }
   .process-sketch { min-height: 96px; }
   .feed-inputs { grid-template-columns: 1fr; gap: 16px; }
