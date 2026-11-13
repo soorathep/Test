@@ -17,7 +17,7 @@ const CASES = {
   'near-critical': { name: 'Near-critical · A = 2.05, z₁ = 0.50', inputs: { model: 'symmetric', A: 2.05, z: 0.5 } },
 };
 const RANGES = { A: [0, 6], A12: [0, 6], A21: [0, 6], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6], z: [0, 1] };
-const NOTE_IDS = { local: 'note-local', sensitivity: 'note-sensitivity', model: 'note-model', decision: 'note-decision' };
+const NOTE_IDS = { local: 'note-local', sensitivity: 'note-sensitivity', model: 'note-model', decision: 'note-decision', concept1: 'note-concept1', concept2: 'note-concept2', concept3: 'note-concept3' };
 
 const study = { result: null, inputs: null, cases: [], audit: null, sensitivity: null, match: null, source: null };
 

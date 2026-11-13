@@ -16,7 +16,7 @@ const CASES = {
   'measured-298': { name: 'Measured · 298.15 K', inputs: { source: 'measured', T: 298.15, alpha: 0.3, start12: 1, start21: 1 } },
   'measured-313': { name: 'Measured · 313.15 K', inputs: { source: 'measured', T: 313.15, alpha: 0.3, start12: 1, start21: 1 } },
 };
-const NOTE_IDS = { calibration: 'note-calibration', alpha: 'note-alpha', measurement: 'note-measurement', decision: 'note-decision' };
+const NOTE_IDS = { calibration: 'note-calibration', alpha: 'note-alpha', measurement: 'note-measurement', decision: 'note-decision', concept1: 'note-concept1', concept2: 'note-concept2', concept3: 'note-concept3' };
 const study = { data: null, fit: null, inputs: null, rows: null, cases: [], transfer: null, alpha: null, sensitivity: null };
 
 function cell(text) { const td = document.createElement('td'); td.textContent = text; return td; }

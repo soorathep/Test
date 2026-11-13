@@ -10,7 +10,7 @@ const number = (value, digits = 6) => value == null || !Number.isFinite(value) ?
 const statusText = { 'meets-criterion': 'Meets this criterion', 'outside-criterion': 'Outside this criterion', 'not-assessed': 'Not assessed', 'not-applicable': 'Not applicable', 'not-run': 'Not run' };
 const sourceNames = { syntheticT: 'Synthetic · 350 K', syntheticP: 'Synthetic · 60 kPa', article60: 'Article · 60 kPa', article80: 'Article · 80 kPa' };
 const settingsIds = ['c3-dataset', 'c3-kind', 'c3-amplitude', 'c3-count', 'c3-extension', 'c3-heat'];
-const notesKeys = ['assumptions', 'uncertainty', 'evidence', 'decision'];
+const notesKeys = ['assumptions', 'uncertainty', 'evidence', 'decision', 'concept1', 'concept2', 'concept3'];
 let data, study = freshStudy(), revision = 0, activeWorker = null, busy = false, operation = null;
 
 function freshStudy() {
@@ -270,10 +270,11 @@ function checkRecord() {
   const notes=readNotes(),missing=[];
   if(!study.analysis)missing.push('a calculated current case');
   if(study.comparisons.length<2)missing.push('at least two saved comparisons');
-  if(!study.comparisons.some(r=>r.graduateRequested.controls&&r.graduateRequested.grids)&&!study.graduateRequested.controls)missing.push('controlled-error and grid evidence');
-  if(!study.comparisons.some(r=>r.graduateRequested.endpoints&&r.graduateRequested.sensitivity)&&!study.graduateRequested.endpoints)missing.push('measured-data endpoint and sensitivity evidence');
-  for(const key of notesKeys)if(!notes[key].trim())missing.push('the '+key+' statement');
-  note(missing.length?'Record check: add '+missing.join('; ')+'. This checks the record, not the quality of your reasoning.':'The record contains the calculation, comparisons and four written sections. Check the scientific argument yourself; this is not a grade.');
+  const core=document.body.dataset.mode!=='graduate';
+  if(!core&&!study.comparisons.some(r=>r.graduateRequested.controls&&r.graduateRequested.grids)&&!study.graduateRequested.controls)missing.push('controlled-error and grid evidence');
+  if(!core&&!study.comparisons.some(r=>r.graduateRequested.endpoints&&r.graduateRequested.sensitivity)&&!study.graduateRequested.endpoints)missing.push('measured-data endpoint and sensitivity evidence');
+  for(const key of notesKeys.filter(k=>core===k.startsWith('concept')))if(!notes[key].trim())missing.push(core?'an answer to question '+'ABC'[Number(key.slice(-1))-1]:'the '+key+' statement');
+  note(missing.length?'Record check: add '+missing.join('; ')+'. This checks the record, not the quality of your reasoning.':(core?'The record contains the calculation, comparisons and your three answers.':'The record contains the calculation, comparisons and four written sections.')+' Check the scientific argument yourself; this is not a grade.');
 }
 
   $('c3-data-preview').addEventListener('toggle',()=>{if($('c3-data-preview').open)renderDataPreview();});

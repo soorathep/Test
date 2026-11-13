@@ -7,17 +7,18 @@
   <title>Liquid stability and LLE · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate liquid-stability investigation: verify a liquid split, separate local from global evidence, test parameter sensitivity and compare model forms.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab04-2">
+  <link rel="stylesheet" href="assets/stability.css?v=mode-1">
 </head>
-<body>
+<body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
   <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="lle-fit.html">Lab 05</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
   <main class="page" id="experiment">
     <div class="page-intro">
-      <div><p class="eyebrow">Lab 04 · Graduate investigation · Liquid stability and LLE</p><h1>Is one homogeneous liquid the lowest Gibbs energy?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary liquid feed at fixed temperature and pressure follows the symmetric Margules model with A = 3. The feed contains 0.50 mol of component 1.</p><p class="task-question">Verify the controlled starting case, then separate local from global stability evidence, test how sensitive the split is to the model parameter, and ask what the model form itself decides.</p></div>
+      <div><p class="eyebrow">Lab 04 · Liquid stability and LLE</p><h1>Is one homogeneous liquid the lowest Gibbs energy?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary liquid feed at fixed temperature and pressure follows the symmetric Margules model with A = 3. The feed contains 0.50 mol of component 1.</p><p class="task-question">Predict, calculate and read the Gibbs-energy construction, then explain when a liquid splits and how much of each liquid forms.</p></div>
       <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
     </div>
-    <p class="graduate-note"><strong>Graduate route.</strong> Complete Steps 1–3 to verify the calculation. In Step 4, compare local and global evidence, run bounded parameter scenarios and compare model forms matched at infinite dilution. Finish with evidence-backed claims. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the Gibbs construction and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus local versus global evidence, parameter sensitivity and model-form comparisons in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 to verify the calculation. In Step 4, compare local and global evidence, run bounded parameter scenarios and compare model forms matched at infinite dilution. Finish with evidence-backed claims. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
     <p id="import-note" class="route-note" hidden></p>
 
     <section class="starter" aria-label="Starting problems">
@@ -90,7 +91,15 @@
       <details><summary>Inspect the numerical curve data</summary><div class="table-scroll" role="region" aria-label="Numerical Gibbs-energy curve" tabindex="0"><table><thead><tr><th scope="col">x₁</th><th scope="col">Homogeneous g</th><th scope="col">Equilibrium envelope g</th><th scope="col">g″</th></tr></thead><tbody id="curve-body"></tbody></table></div></details>
     </section>
 
-    <section id="graduate-investigation" class="panel graduate-section" aria-labelledby="graduate-heading">
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use the calculations above to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Why does z₁ = 0.12 split even though its curvature is positive?</h3><p>Load the dilute feed, calculate, and read g″(z₁), the minimum TPD and the Gibbs plot.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Quote the curvature and the TPD, and explain what each test examines."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>g″(0.12) = 1/(0.12 × 0.88) − 6 = 3.47 &gt; 0, so the liquid resists small composition fluctuations. The minimum tangent-plane distance is −0.245, at a trial liquid near w₁ = 0.95: a liquid far from the feed lies below the tangent at the feed.</p><p>The equilibrium is two liquids (x₁ = 0.0707 and 0.9293). The homogeneous feed is metastable. Curvature is a local test; the tangent-plane distance is a global one.</p></div></details></div>
+      <div class="concept-question"><h3>B. At A = 3, which results change between z₁ = 0.12 and 0.50?</h3><p>Calculate both named feeds and compare x₁<sup>α</sup>, x₁<sup>β</sup> and f<sub>β</sub>.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Name what changed, what stayed the same, and why."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>x₁<sup>α</sup> = 0.0707 and x₁<sup>β</sup> = 0.9293 stay the same; f<sub>β</sub> rises from 0.057 to 0.50.</p><p>As in Lab 01, a binary with two coexisting phases at fixed T and P has no remaining freedom in the phase compositions. The feed only sets the amounts, through the lever rule f<sub>β</sub> = (z₁ − x₁<sup>α</sup>)/(x₁<sup>β</sup> − x₁<sup>α</sup>).</p></div></details></div>
+      <div class="concept-question"><h3>C. Why can no liquid split occur when A ≤ 2?</h3><p>Set A = 2 and then A = 1.5, calculate z₁ = 0.50, and look at the curvature plot.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Use g″ = 1/[x₁(1 − x₁)] − 2A to explain the result."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>1/[x₁(1 − x₁)] has its minimum value, 4, at x₁ = 0.5. So g″ ≥ 4 − 2A, which is never negative when A ≤ 2. The Gibbs curve is convex everywhere and no common tangent can touch it twice.</p><p>A = 2 at x₁ = 0.5 is the critical point, where the two coexisting compositions merge.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
       <div class="panel-heading"><h2 id="graduate-heading">4. Investigate what decides the split</h2><span class="condition">Master's core work</span></div>
       <p id="graduate-baseline" class="graduate-note">Calculate a feed in Step 1 before running an investigation.</p>
       <aside class="graduate-limits" aria-labelledby="lle-limits-heading"><h3 id="lle-limits-heading">What these results can and cannot show</h3><ul><li>The model decides equilibrium at fixed T and P. It does not predict whether or how fast a metastable liquid separates, because it has no nucleation barrier, interfacial energy or kinetics.</li><li>The half-widths you enter are assumed scenario bounds, not measured uncertainties. Each sampled range is deterministic: it is not a probability, a confidence interval or a guaranteed global bound.</li><li>Models matched at infinite dilution are hypothetical comparisons. Agreement between them would not validate either one; disagreement shows what the dilute-limit data cannot decide.</li><li>This is a binary analysis. A third component or a vapor phase needs a multicomponent stability test (Lab 06 treats VLLE).</li></ul></aside>
@@ -135,8 +144,9 @@
     </section>
 
     <section class="panel comparison-panel" aria-labelledby="comparison-heading">
-      <div class="panel-heading"><h2 id="comparison-heading">5. Compare, defend and save</h2></div>
-      <ol class="investigation-steps"><li>Calculate and save the three named feeds at A = 3. Confirm that the coexistence compositions stay fixed while f<sub>β</sub> changes.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Save the near-critical case and compare its phase count with the A = 3 cases.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the three named feeds at A = 3.</li><li>Confirm that the coexistence compositions stay fixed while f<sub>β</sub> changes.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the three named feeds at A = 3. Confirm that the coexistence compositions stay fixed while f<sub>β</sub> changes.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Save the near-critical case and compare its phase count with the A = 3 cases.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
       <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
       <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved liquid-stability case comparison" tabindex="0" hidden><table><caption class="visually-hidden">Compositions and fractions are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">Model and parameters</th><th scope="col">Feed z₁</th><th scope="col">Feed label</th><th scope="col">Phase</th><th scope="col">x₁<sup>α</sup></th><th scope="col">x₁<sup>β</sup></th><th scope="col">f<sub>β</sub></th><th scope="col">Δg decrease</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
       <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note beyond the graduate evidence record."></textarea>
@@ -147,6 +157,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/stability-lab.js?v=lab04-2"></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/stability-lab.js?v=mode-1"></script>
 </body>
 </html>

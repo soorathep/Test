@@ -124,7 +124,7 @@ function writeAnswers(values = {}) {
 }
 
 function graduateNotes() {
-  return Object.fromEntries(['assumptions', 'uncertainty', 'evidence', 'decision'].map((key) =>
+  return Object.fromEntries(['assumptions', 'uncertainty', 'evidence', 'decision', 'concept1', 'concept2', 'concept3'].map((key) =>
     [key, element('g2-note-' + key)?.value || '']));
 }
 
@@ -1047,7 +1047,7 @@ async function start() {
       revision += 1;
     });
   }
-  for (const key of ['assumptions', 'uncertainty', 'evidence', 'decision']) {
+  for (const key of ['assumptions', 'uncertainty', 'evidence', 'decision', 'concept1', 'concept2', 'concept3']) {
     element('g2-note-' + key).addEventListener('input', () => {
       graduate.notes = graduateNotes();
       revision += 1;

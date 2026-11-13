@@ -20,7 +20,7 @@ export const GRADUATE_CASE_DEFAULTS = Object.freeze({
   version: GRADUATE_CASE_VERSION,
   bounds: { T: 0.1, P: 0.5, x: 0.005, y: 0.005 },
   run: { sensitivity: false, alpha: false },
-  notes: { assumptions: '', uncertainty: '', evidence: '', decision: '' },
+  notes: { assumptions: '', uncertainty: '', evidence: '', decision: '', concept1: '', concept2: '', concept3: '' },
 });
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const factors = ['T', 'P', 'x', 'y'];
@@ -47,6 +47,7 @@ export function normalizeGraduateCase(value) {
     checked.run[key] = value.run[key];
   }
   for (const key of Object.keys(checked.notes)) {
+    if (value.notes[key] === undefined) continue;
     if (typeof value.notes[key] !== 'string' || value.notes[key].length > 10000) {
       throw new Error('Each graduate conclusion must be text of at most 10,000 characters.');
     }

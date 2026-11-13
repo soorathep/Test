@@ -393,3 +393,12 @@ calibration temperatures. At alpha = 0.3 and 298.15 K the held-out RMS compositi
 error falls from 0.077 (constant) and 0.056 (1/T) to 0.0097 (a + b/T with 313.15 K).
 B refits the same tie line at alpha = 0.2, 0.3 and 0.47; alpha = 0.47 converges but
 misses the tie line. C refits within the source expanded uncertainties.
+
+## Core and Graduate views
+
+Every 2027 lab opens in a Core view that shows the concept route: predict, calculate,
+read the diagram, and answer three "Check your understanding" questions with
+write-first, compare-after explanations. The Graduate view adds the investigation
+section (Step 4, or G1–G3 and Steps 3–4 in Labs 02–03). The switch is shared
+(assets/mode.js); the choice is kept in the URL (?mode=graduate) and in localStorage.
+Concept answers are saved with each lab's study file.

@@ -3,7 +3,7 @@ import { analyze, normalizeSettings, normalizeBounds, normalizeRequests, runGrad
 export { DEFAULT_SETTINGS, DEFAULT_BOUNDS, DEFAULT_REQUESTS, analyze, normalizeSettings, normalizeBounds, normalizeRequests, runGraduate } from './consistency-graduate.js';
 
 export const STUDY_SCHEMA = 'skh-thermo-consistency/1';
-export const defaultNotes = () => ({ assumptions: '', uncertainty: '', evidence: '', decision: '' });
+export const defaultNotes = () => ({ assumptions: '', uncertainty: '', evidence: '', decision: '', concept1: '', concept2: '', concept3: '' });
 export const copy = value => JSON.parse(JSON.stringify(value));
 const record = value => value && typeof value === 'object' && !Array.isArray(value);
 function normalizeNotes(raw = {}) {
