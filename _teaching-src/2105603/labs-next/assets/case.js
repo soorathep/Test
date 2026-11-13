@@ -20,6 +20,79 @@ function text(id, value) {
   if (element(id)) element(id).textContent = value;
 }
 
+const MATH_NS = 'http://www.w3.org/1998/Math/MathML';
+const notation = {
+  'P₁sat': ['P', '1', 'sat'], 'P₂sat': ['P', '2', 'sat'], 'Pᵢsat': ['P', 'i', 'sat'],
+  Psat: ['P', null, 'sat'],
+  'τ₁₂': ['τ', '12'], 'τ₂₁': ['τ', '21'], 'τᵢⱼ': ['τ', 'ij'],
+  'a₁₂': ['a', '12'], 'a₂₁': ['a', '21'], 'aᵢⱼ': ['a', 'ij'],
+  'b₁₂': ['b', '12'], 'b₂₁': ['b', '21'], 'bᵢⱼ': ['b', 'ij'],
+  'γ₁': ['γ', '1'], 'γ₂': ['γ', '2'], 'γᵢ': ['γ', 'i'],
+  'x₁': ['x', '1'], 'x₂': ['x', '2'], 'xᵢ': ['x', 'i'],
+  'y₁': ['y', '1'], 'y₂': ['y', '2'], 'yᵢ': ['y', 'i'],
+  'r₁': ['r', '1'], 'r₂': ['r', '2'], 'rᵢ': ['r', 'i'],
+};
+const notationPattern = new RegExp(Object.keys(notation).sort((a, b) => b.length - a.length).join('|'), 'gu');
+
+function mathNode(tag, ...children) {
+  const node = document.createElementNS(MATH_NS, tag);
+  for (const child of children) node.append(typeof child === 'string' ? document.createTextNode(child) : child);
+  return node;
+}
+
+function scriptToken(value) {
+  const [base, subscript, superscript] = notation[value];
+  const symbol = mathNode('mi', base);
+  const sub = subscript ? mathNode(/^\d+$/.test(subscript) ? 'mn' : 'mi', subscript) : null;
+  const sup = superscript ? mathNode('mi', superscript) : null;
+  if (sup) sup.setAttribute('mathvariant', 'normal');
+  const body = sub && sup ? mathNode('msubsup', symbol, sub, sup)
+    : sub ? mathNode('msub', symbol, sub) : mathNode('msup', symbol, sup);
+  const math = mathNode('math', body);
+  math.classList.add('inline-math');
+  math.setAttribute('aria-label', base + (subscript ? ' subscript ' + subscript : '')
+    + (superscript ? ' superscript ' + superscript : ''));
+  return math;
+}
+
+/** Recognize only fixed scientific tokens. All file-supplied text remains text. */
+function mathText(target, value) {
+  const node = typeof target === 'string' ? element(target) : target;
+  if (!node) return;
+  const source = String(value);
+  const fragment = document.createDocumentFragment();
+  let cursor = 0;
+  notationPattern.lastIndex = 0;
+  for (const match of source.matchAll(notationPattern)) {
+    fragment.append(document.createTextNode(source.slice(cursor, match.index)), scriptToken(match[0]));
+    cursor = match.index + match[0].length;
+  }
+  fragment.append(document.createTextNode(source.slice(cursor)));
+  node.replaceChildren(fragment);
+}
+
+function antoineEquation() {
+  const upright = (value) => {
+    const node = mathNode('mi', value);
+    node.setAttribute('mathvariant', 'normal');
+    return node;
+  };
+  const pressure = mathNode('msup', mathNode('mi', 'P'), upright('sat'));
+  const math = mathNode('math', mathNode('mrow',
+    mathNode('msub', upright('log'), mathNode('mn', '10')),
+    mathNode('mo', '('), mathNode('mfrac', pressure, upright('bar')), mathNode('mo', ')'),
+    mathNode('mo', '='), mathNode('mi', 'A'), mathNode('mo', '−'),
+    mathNode('mfrac', mathNode('mi', 'B'), mathNode('mrow', mathNode('mi', 'T'), mathNode('mo', '+'), mathNode('mi', 'C')))));
+  math.setAttribute('display', 'block');
+  math.classList.add('display-math');
+  math.setAttribute('aria-label', 'Base ten logarithm of saturation pressure in bar equals A minus B divided by T plus C.');
+  const wrapper = document.createElement('div');
+  wrapper.className = 'math-scroll';
+  wrapper.tabIndex = 0;
+  wrapper.append(math);
+  return wrapper;
+}
+
 function show(id, visible) {
   if (element(id)) element(id).hidden = !visible;
 }
@@ -101,7 +174,7 @@ function setObservationOptions(pressure, selected = 6) {
   const dataset = data.datasets.find((set) => set.pressureKPa === Number(pressure));
   if (!dataset) throw new Error('Choose one of the supplied experimental pressures.');
   element('observation').replaceChildren(...dataset.rows.map((row, index) => (
-    new Option('Row ' + (index + 1) + ' · x₁ = ' + format(row.x, 5), String(index))
+    new Option('Row ' + (index + 1) + ' · liquid fraction = ' + format(row.x, 5), String(index))
   )));
   element('observation').value = String(Math.min(Math.max(0, selected), dataset.rows.length - 1));
 }
@@ -127,15 +200,15 @@ function renderPropertyRecords() {
     const section = document.createElement('article');
     const heading = document.createElement('h4');
     heading.textContent = property.name;
-    const equation = document.createElement('p');
+    const equation = document.createElement('div');
     equation.className = 'property-equation';
-    equation.textContent = 'log₁₀(Psat / bar) = A − B/(T + C)';
+    equation.append(antoineEquation());
     const constants = document.createElement('p');
     constants.textContent = 'A = ' + format(property.A, 12) + ', B = '
       + format(property.B, 12) + ', C = ' + format(property.C, 12) + '.';
     const units = document.createElement('p');
-    units.textContent = 'Use T in K. The equation returns Psat in bar; multiply by 100 for kPa. Valid from '
-      + property.rangeK.join(' to ') + ' K.';
+    mathText(units, 'Use T in K. The equation returns Psat in bar; multiply by 100 for kPa. Valid from '
+      + property.rangeK.join(' to ') + ' K.');
     section.append(heading, equation, constants, units);
     if (typeof property.source === 'string' && /^https?:\/\//i.test(property.source)) {
       const link = document.createElement('a');
@@ -204,7 +277,7 @@ function renderObservation() {
   if (element('observation-steps')) {
     element('observation-steps').replaceChildren(...steps.map((step) => {
       const li = document.createElement('li');
-      li.textContent = step;
+      mathText(li, step);
       return li;
     }));
   }
@@ -238,7 +311,7 @@ function checkObservation() {
         : ' differs by more than 1%. Check the equation, temperature and pressure units.'));
     }
   }
-  text('answer-feedback', supplied ? messages.join(' ')
+  mathText('answer-feedback', supplied ? messages.join(' ')
     : 'Enter at least one calculated value, then check it. This check uses a 1% relative tolerance.');
   invalid?.focus();
   revision += 1;
@@ -295,7 +368,7 @@ function renderResult() {
     + a.train.label + '. ' + a.train.excluded + ' excluded. At ' + a.evaluation.pressure + ' kPa, '
     + a.evaluation.count + ' of ' + a.evaluation.total + ' are usable and ' + a.evaluation.excluded + ' are excluded.');
   text('validation-role', summaryRole(a));
-  text('fit-parameters', inputs.model === 'fit'
+  mathText('fit-parameters', inputs.model === 'fit'
     ? 'Teaching fit: τ₁₂ = ' + format(p.a12, 7) + ', τ₂₁ = ' + format(p.a21, 7)
       + ', α = ' + format(p.alpha) + '. All three are dimensionless. Both τ values are held constant across the fitted temperature range.'
     : 'Article reference: τᵢⱼ = aᵢⱼ + bᵢⱼ/T. a₁₂ = ' + format(p.a12, 9)
@@ -325,7 +398,7 @@ function renderResult() {
     (inputs.model === 'fit' ? 'Fit two constant τ values using only ' + a.train.label
       + ' and α = ' + format(inputs.alpha) + '.'
       : 'Evaluate the article parameters at each measured temperature. They have not been refitted here.'),
-    'For N usable observations, RMSE = sqrt[Σ((ln γ₁,model − ln γ₁,data)² + (ln γ₂,model − ln γ₂,data)²)/(2N)]. This score is dimensionless.',
+    'At each usable state, subtract inferred ln γᵢ from model ln γᵢ. Square both component residuals, sum across N observations, divide by 2N, and take the square root. The score is dimensionless.',
     'At ' + a.train.label + ', N = ' + a.train.count + ' and RMSE = ' + format(a.train.rmse, 6)
       + '. At ' + a.evaluation.pressure + ' kPa, N = ' + a.evaluation.count
       + ' and RMSE = ' + format(a.evaluation.rmse, 6) + '.',
@@ -334,7 +407,7 @@ function renderResult() {
   ];
   element('score-steps')?.replaceChildren(...steps.map((step) => {
     const li = document.createElement('li');
-    li.textContent = step;
+    mathText(li, step);
     return li;
   }));
   show('results', true);
@@ -351,7 +424,7 @@ function numericalTable(headers, rows) {
     headers.forEach((value) => {
       const th = document.createElement('th');
       th.scope = 'col';
-      th.textContent = value;
+      mathText(th, value);
       tr.append(th);
     });
     element('curve-head').replaceChildren(tr);
@@ -396,13 +469,13 @@ async function renderChart() {
     x, y, name, mode, type: 'scatter', connectgaps: false,
     line: { color, width: 2, dash }, marker: { color, size: 7 },
   });
-  let traces, xTitle = 'Liquid mole fraction · x₁', yTitle, note;
+  let traces, xTitle = 'Liquid mole fraction · x<sub>1</sub>', yTitle, note;
   if (inputs.chart === 'gamma') {
     traces = [
-      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[0])), 'Inferred γ₁', palette.teal, 'solid', 'markers'),
-      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[1])), 'Inferred γ₂', palette.teal, 'dot', 'markers'),
-      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[0])), modelName + ' γ₁', palette.amber),
-      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[1])), modelName + ' γ₂', palette.amber, 'dash'),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[0])), 'Inferred γ<sub>1</sub>', palette.teal, 'solid', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.ln[1])), 'Inferred γ<sub>2</sub>', palette.teal, 'dot', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[0])), modelName + ' γ<sub>1</sub>', palette.amber),
+      line(valid.map((r) => r.x), valid.map((r) => Math.exp(r.modelLn[1])), modelName + ' γ<sub>2</sub>', palette.amber, 'dash'),
     ];
     traces[1].marker.symbol = 'diamond-open';
     yTitle = 'Activity coefficient · γ';
@@ -411,8 +484,8 @@ async function renderChart() {
       valid.map((r) => [r.T, r.x, Math.exp(r.ln[0]), Math.exp(r.ln[1]), Math.exp(r.modelLn[0]), Math.exp(r.modelLn[1])]));
   } else if (inputs.chart === 'residual') {
     traces = [
-      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[0] - r.ln[0]), 'ln γ₁ residual', palette.amber, 'solid', 'markers'),
-      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[1] - r.ln[1]), 'ln γ₂ residual', palette.amber, 'dash', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[0] - r.ln[0]), 'ln γ<sub>1</sub> residual', palette.amber, 'solid', 'markers'),
+      line(valid.map((r) => r.x), valid.map((r) => r.modelLn[1] - r.ln[1]), 'ln γ<sub>2</sub> residual', palette.amber, 'dash', 'markers'),
     ];
     traces[1].marker.symbol = 'diamond-open';
     yTitle = 'Model − inferred ln γ · dimensionless';
@@ -427,7 +500,7 @@ async function renderChart() {
       line(curve.map((r) => r.y), curve.map((r) => r.T), modelName + ' dew', palette.amber, 'dash'),
     ];
     traces[1].marker.symbol = 'diamond-open';
-    xTitle = '2-propanol mole fraction · x₁ or y₁';
+    xTitle = '2-propanol mole fraction · x<sub>1</sub> or y<sub>1</sub>';
     yTitle = 'Temperature / K';
     note = 'All ' + a.evaluation.total + ' original observations at ' + a.evaluation.pressure
       + ' kPa are shown. Calculated curves have gaps where no root exists inside '

@@ -1,6 +1,14 @@
 @import url("./guide.css");
 
 .case-page .task-question { margin: 12px 0 0; font-weight: 600; }
+.case-page sub, .case-page sup { font-size: 70%; line-height: 0; position: relative; vertical-align: baseline; }
+.case-page sub { bottom: -.3em; }
+.case-page sup { top: -.55em; }
+.case-page math { font-family: math; }
+.case-page math.inline-math { font-size: 1.05em; }
+.case-page math.display-math { font-size: 1.2rem; }
+.math-scroll { max-width: 100%; min-width: 0; overflow-x: auto; padding: 10px 2px; }
+.equation-box > .math-scroll { flex: 1 1 280px; }
 .case-page h1 { overflow-wrap: anywhere; }
 .case-page #plot-panel .panel-heading > div { min-width: 0; max-width: 100%; }
 .case-page .case-section { margin: 22px 0; }

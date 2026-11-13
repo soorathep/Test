@@ -91,6 +91,11 @@ cannot supply the absent-component activity. A further 80 kPa observation falls
 outside the joint Antoine range of 334 to 362.41 K. All measured rows remain
 visible with exclusion reasons, and curve gaps are preserved without extrapolation.
 
+Core equations and dynamic mathematical tokens use native MathML for fractions,
+subscripts and superscripts. Plot labels use script markup, and ordinary form
+labels use HTML scripts. The formulas remain readable at 200% text on a narrow
+screen, with keyboard-accessible scrolling for long expressions.
+
 Fit alpha is held fixed, initially 0.47, while two dimensionless tau parameters
 are estimated. The optional alpha control is restricted to 0.10 to 0.60 for this
 teaching exercise. Fit errors use dimensionless ln-gamma RMSE over 2N residuals.
