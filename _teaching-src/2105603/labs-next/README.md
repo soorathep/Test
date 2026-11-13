@@ -140,7 +140,8 @@ four liquid models, model restrictions, invalid inputs and stale-result
 invalidation. The saved-study checks include new studies with comparison rows,
 supported original snapshots/workspaces and fixed-temperature fit transfers,
 atomic rejection of invalid files, and asynchronous file-selection races.
-Responsive checks include 320 px and enlarged text. Numerical results and
+Responsive checks include 320 px with 200% text and the desktop layout. Mobile
+phase-composition cards stack to keep labels and complete values readable. Numerical results and
 curve tables remain available when the optional plot library is unavailable.
 These are functional checks, not evidence of independent student usability.
 
