@@ -1,6 +1,15 @@
 @import url("./case.css");
 
 .consistency-page .task-question { font-weight: 600; margin-top: 14px; }
+.data-orientation { margin: 22px 0; }
+.data-family-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin: 20px 0; }
+.data-family-grid article { min-width: 0; padding: 18px; background: var(--soft-teal); border-top: 3px solid var(--teal); }
+.data-family-grid article + article { background: var(--paper); border-top-color: var(--ink); }
+.data-family-grid h3 { font-size: 1.08rem; }
+.data-family-grid li + li { margin-top: 8px; }
+.data-family-grid p:last-child { margin-bottom: 0; }
+.data-selection-note { margin: 12px 0; padding: 12px; background: var(--soft-teal); border-left: 3px solid var(--teal); font-size: .92rem; }
+.data-selection-note p { margin: 5px 0 0; }
 .lab-section { margin: 24px 0; }
 .guided-steps { padding-left: 24px; margin: 16px 0 22px; }
 .guided-steps li + li { margin-top: 9px; }
@@ -77,6 +86,7 @@
 .consistency-page math { font-family: math; }
 
 @media (max-width:950px) {
+  .data-family-grid { grid-template-columns: 1fr; }
   .sketch-scroll-help { display: block; }
   .setup-grid { grid-template-columns: 1fr; }
   .sensitivity-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }

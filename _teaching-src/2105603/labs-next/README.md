@@ -168,6 +168,11 @@ reasoning. The original general reflection remains an optional additional note.
 The guiding question is whether satisfying one diagnostic criterion is enough
 to justify using a VLE data set. Students first calculate the synthetic
 isothermal reference at 350 K, then impose a canceling log-activity-ratio defect.
+The visible opening data guide identifies model-generated cases A–C, the article
+measurements in case D and the 80 kPa option, component order, measured versus
+derived quantities and the purpose of each control. A source note beside the
+data selector updates with the selected family and sampling resolution. No
+experimental file is required; the JSON opener restores this lab's saved work.
 The numbered route separates applicability, a control calculation, a deliberate
 challenge and a defended conclusion. A conceptual vector diagram distinguishes
 global area cancellation from local agreement. Mathematical quantities use

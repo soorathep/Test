@@ -55,6 +55,9 @@ function explainControls() {
   $('c3-synthetic-controls').hidden = !synthetic; $('c3-endpoint-controls').hidden = synthetic;
   $('c3-amplitude').disabled = !synthetic || $('c3-kind').value === 'clean';
   $('c3-heat').disabled = dataset !== 'syntheticP';
+  $('c3-data-origin').textContent = synthetic
+    ? 'Model-generated practice data for 2-propanol + water: ' + $('c3-count').value + ' sampled states, including pure endpoints. NRTL supplies the starting activities; Antoine supplies saturation pressures. ' + ($('c3-kind').value === 'clean' ? 'No deliberate activity alteration is applied.' : 'The selected deliberate activity alteration is applied before recalculating the generated VLE states.')
+    : 'Published 2-propanol + water measurements from Barbieri, De Guido and Moioli (2024), Table ' + (dataset === 'article60' ? '4 at 60 kPa: 20 measured states, 18 usable activity pairs.' : '5 at 80 kPa: 20 measured states, 17 usable activity pairs.') + ' T, P, x and y are measured; saturation pressures and activity coefficients are calculated. Original rows remain unchanged.';
   $('c3-path-note').textContent = isothermal
     ? 'T = 350 K is fixed. Generated P varies with composition. Synthetic endpoint limits are supplied.'
     : synthetic ? 'P = 60 kPa is fixed. Generated T varies with composition. Synthetic endpoint limits and Hᴱ are supplied.'
