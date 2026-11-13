@@ -102,3 +102,16 @@
 #compare-body th { text-align: left; font-weight: 600; }
 @media (max-width: 760px) { .vr-figures { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .antoine-grid.abc-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Lab 10 · solid–liquid equilibrium */
+.sle-figures { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+.sle-feed { stroke: #333F4A; stroke-width: 1.5; stroke-dasharray: 3 4; fill: none; }
+.sle-tie { stroke: #E29A2D; stroke-width: 2.2; fill: none; }
+.sle-solid-pt { fill: #E29A2D; stroke: #1C242B; stroke-width: 1.5; }
+.sle-onset { fill: #fff; stroke: #0F6E6B; stroke-width: 2; }
+.sle-eutectic-pt { fill: #E29A2D; stroke: #1C242B; stroke-width: 1.5; }
+.sle-note text { fill: #66727C; font-size: 12px; text-anchor: middle; }
+.sle-worked { fill: var(--soft-teal); stroke: #0F6E6B; stroke-width: 1; }
+#so-chart { max-width: 100%; overflow: hidden; }
+#phase-body th { text-align: left; font-weight: 600; }
+@media (max-width: 760px) { .sle-figures { grid-template-columns: 1fr; } }
+.eq-main.eq-small text { font-size: 22px; }

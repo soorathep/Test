@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–09 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–10 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
 the remaining four lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 10 next. Lab 13 is the earlier reference prototype.
+lab-number order, with Lab 11 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–09 now use a graduate teaching route. The foundation calculation is
+Labs 01–10 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -455,3 +455,15 @@ changes by only -0.3%. With ten times larger |B|: Z = 0.963, beta = 0.438, bubbl
 the ideal vapor 1.48%, size indicator 0.093; 15x is refused by the 0.1 truncation guard.
 The graduate route tabulates the K-value decomposition, compares B12 = -90, the geometric
 mean -147, -63 and -117 (bubble 104.81-104.94 kPa), and runs the 1-15x scale study.
+
+## Lab 10 prototype
+
+Binary SLE with pure solids (shared engine `solids.js`). Synthetic A: Tm = 350 K,
+dhfus = 12 kJ/mol; B: Tm = 400 K, dhfus = 15 kJ/mol; ideal liquid; feed xA = 0.50 at 340 K.
+ln xB = -(15000/R)(1/340 - 1/400) = -0.796, so the liquid has xA = 0.549 and 0.089 mol of
+pure solid B forms (L = 0.5/0.549 = 0.911). First crystals of B at 346.7 K; eutectic at
+319.79 K, xA = 0.677 (checked independently with scipy). The A-rich feed (xA = 0.90)
+crystallizes A first at 341.3 K. Graduate route: cooling path 400-300 K, Margules
+A = -1, 0, 1, 1.5 (eutectic 305.7, 319.8, 333.6, 339.3 K), and one-at-a-time fusion
+property changes (dh2 +-10% moves the solid at 340 K from 0.022 to 0.143 mol). The
+gas-solid (sublimation) part of the current Lab 10 is linked, not rebuilt.
