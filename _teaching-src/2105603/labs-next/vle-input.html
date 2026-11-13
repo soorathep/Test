@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Your VLE data · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Bring your own binary VLE data: check units and vapor pressures on one row, inspect activity coefficients and their pure-liquid limits, then fit a model.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab08-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="adiabatic.html">Lab 07</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 08 · Your own VLE data</p><h1>Can you trust a VLE table before you fit it?</h1><p id="case-description" class="intro-copy">Start with a synthetic isothermal data set at 350 K, then paste your own T, P, x₁, y₁ table with its units and Antoine constants.</p><p class="task-question">Read one row by hand, check the pure-liquid limits of γ, and only then fit a model.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: read one row, inspect the activity coefficients, fit a model and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus unit-error signatures, a model comparison and endpoint assumptions in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 with the example and then with your own data. In Step 4, test which checks catch which input mistakes, compare three models and examine endpoint assumptions. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+    <p class="route-note">Your data stay in this browser. Nothing is uploaded. Download your study before leaving.</p>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">From a table row to activity coefficients</h2><span class="section-help">Every unit enters the result</span></div>
+      <svg class="process-sketch" viewBox="0 0 760 200" role="img" aria-labelledby="row-title row-description">
+        <title id="row-title">One measured row and the saturation pressures combine into two activity coefficients</title>
+        <desc id="row-description">The measured row gives T, P, x1 and y1. The Antoine equations give each pure-component saturation pressure at that T. Together they give gamma1 and gamma2 by modified Raoult's law. A wrong unit in any box changes both activity coefficients.</desc>
+        <defs><marker id="row-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker></defs>
+        <rect x="14" y="20" width="220" height="70" rx="12" class="sketch-feed"/><rect x="14" y="110" width="220" height="70" rx="12" class="sketch-feed"/>
+        <rect x="300" y="55" width="180" height="90" rx="12" class="sketch-model-box"/>
+        <rect x="546" y="55" width="200" height="90" rx="12" class="sketch-liquid-fill"/>
+        <path d="M234 55 H292" class="sketch-pipe" marker-end="url(#row-arrow)"/><path d="M234 145 H292" class="sketch-pipe" marker-end="url(#row-arrow)"/><path d="M480 100 H538" class="sketch-pipe" marker-end="url(#row-arrow)"/>
+        <g class="row-text"><text x="124" y="48">Measured row</text><text x="124" y="72" class="row-small">T [K or °C] · P [kPa, Pa, bar] · x₁ · y₁</text><text x="124" y="138">Antoine equation</text><text x="124" y="162" class="row-small">form · A, B, C · T unit · Psat unit</text><text x="390" y="92">γᵢ = yᵢP / (xᵢPᵢˢᵃᵗ)</text><text x="390" y="116" class="row-small">ideal vapor · same P units</text><text x="646" y="92">γ₁, γ₂</text><text x="646" y="116" class="row-small">ln γᵢ → 0 for pure i</text></g>
+      </svg>
+      <figcaption>Check the first row by hand before validating the whole table. A unit mistake usually shows as γ values that are far from 1 everywhere, including where a component is almost pure.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Describe the experiment and enter the table</h2><span class="condition">Binary · one run</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="vi-form" novalidate>
+          <div class="case-buttons secondary-cases"><button id="load-example" type="button" class="secondary-button">Load the synthetic example (350 K)</button></div>
+          <div class="coefficient-grid"><div><label for="name1">Component 1</label><input id="name1" type="text" value="Component A" maxlength="60"></div><div><label for="name2">Component 2</label><input id="name2" type="text" value="Component B" maxlength="60"></div></div>
+          <label for="source">Source of the measurements and vapor pressures</label><input id="source" type="text" value="Synthetic teaching example · not a measurement" maxlength="200">
+          <div class="feed-inputs"><div><label for="path">Experimental path</label><select id="path"><option value="isothermal">Isothermal · T span ≤ 0.05 K</option><option value="isobaric">Isobaric · P span ≤ 0.1%</option></select></div><div><label for="Tunit">T column unit</label><select id="Tunit"><option value="K">K</option><option value="C">°C</option></select></div><div><label for="Punit">P column unit</label><select id="Punit"><option value="kPa">kPa</option><option value="Pa">Pa</option><option value="bar">bar</option></select></div></div>
+          <fieldset class="antoine-set"><legend>Pure-component vapor pressures · Antoine</legend>
+            <p class="input-help">Choose the exact form printed by your source. Valid-range limits are always in K. Constants are not converted when you change a unit.</p>
+            <div class="antoine-grid" id="antoine-grid"></div>
+          </fieldset>
+          <label for="data">Data table · headers T,P,x1,y1 (optional HE)</label><textarea id="data" rows="8" maxlength="1000000" spellcheck="false" aria-describedby="data-help"></textarea>
+          <p id="data-help" class="input-help">Comma, semicolon or tab delimiters; dot decimals. At least five interior points, at most 500 rows. Do not include P<sup>sat</sup> columns.</p>
+          <div class="file-control"><label for="data-file">Or load a CSV or tab-separated file</label><input id="data-file" type="file" accept=".csv,.tsv,.txt,text/csv,text/plain"></div>
+          <div class="first-row" aria-live="polite"><h3>How the first interior row will be read</h3><dl id="first-row" class="first-row-list"><div><dt>Waiting for a table</dt><dd>—</dd></div></dl></div>
+          <div class="prediction-row"><label for="prediction">Before validating, what do you expect ln γ₁ to approach as x₁ → 1?</label><select id="prediction"><option value="">Not sure yet</option><option value="zero">0, because γ₁ → 1 for pure component 1</option><option value="inf">Its infinite-dilution value</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="validate" class="primary-button calculate-button" type="button">Validate and inspect the data</button>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Inspect the activity coefficients</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Validate the table to see every row's saturation pressures and activity coefficients, and the pure-liquid checks.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="boundary-metrics"><div><dt>ln γ₂ at the lowest x₁ <span>should approach 0 as x₁ → 0</span></dt><dd id="limit2">—</dd></div><div><dt>ln γ₁ at the highest x₁ <span>should approach 0 as x₁ → 1</span></dt><dd id="limit1">—</dd></div><div><dt>Rows used / excluded <span>pure endpoints are excluded from γ</span></dt><dd id="counts">—</dd></div></dl>
+          <div class="calculation-check"><h3>Check the first row on paper</h3><ol id="calc-steps"></ol></div>
+          <details><summary>Inspect every row</summary><div class="table-scroll" role="region" aria-label="Imported observations" tabindex="0"><table><thead><tr><th scope="col">x₁</th><th scope="col">y₁</th><th scope="col">T / K</th><th scope="col">P / kPa</th><th scope="col">P₁<sup>sat</sup> / kPa</th><th scope="col">P₂<sup>sat</sup> / kPa</th><th scope="col">γ₁</th><th scope="col">γ₂</th></tr></thead><tbody id="rows-body"></tbody></table></div></details>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Synthetic example · 350 K" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Fit a model and read the plots</h2><span class="section-help">Same observations, same vapor pressures</span></div>
+      <div class="chart-toolbar"><label for="fit-model">Model</label><select id="fit-model"><option value="nrtl">NRTL · α = 0.3</option><option value="margules1">Margules · 1 parameter</option><option value="margules2">Margules · 2 parameters</option></select><button id="fit" type="button" class="primary-button">Fit the model</button></div>
+      <p id="fit-status" class="graduate-status" role="status"></p>
+      <dl id="fit-metrics" class="graduate-metrics" hidden><div><dt>Mean |100 ΔP/P|</dt><dd id="fit-dp">—</dd></div><div><dt>Mean |100 Δy₁|</dt><dd id="fit-dy">—</dd></div></dl>
+      <div class="chart-toolbar"><label for="view">View</label><select id="view"><option value="lngamma">ln γ₁ and ln γ₂ against x₁</option><option value="pxy">Measured and fitted P–x–y</option></select></div>
+      <div id="vi-chart" class="vle-chart" role="img" aria-label="Activity coefficient and pressure plots. Numbers are listed in the tables."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use the synthetic example in Steps 1–3 to answer each question. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Read the first row by hand</h3><p>Load the example. Use the first-row preview to calculate γ₁ and γ₂ yourself.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Write the two equations with numbers and units."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>At 350 K, P₁<sup>sat</sup> = 150 kPa and P₂<sup>sat</sup> = 60 kPa. With x₁ = 0.05, y₁ = 0.3975 and P = 95.12 kPa: γ₁ = 0.3975 × 95.12/(0.05 × 150) = 5.04 and γ₂ = 0.6025 × 95.12/(0.95 × 60) = 1.005.</p><p>Component 1 is dilute here, so γ₁ is near its infinite-dilution value, while component 2 is almost pure and γ₂ ≈ 1.</p></div></details></div>
+      <div class="concept-question"><h3>B. What does a wrong pressure unit look like?</h3><p>Set the P column unit to bar (the numbers are really kPa) and validate again. Compare the pure-liquid checks and the fit with the correct import.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Which numbers changed, by how much, and which check reveals the mistake?"></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>Every P is multiplied by 100, so both γ values are multiplied by 100 and both ln γ rise by ln 100 = 4.61. ln γ₁ at x₁ = 0.95 becomes 4.61 instead of 0.004, which violates the pure-liquid limit. The NRTL fit misses the pressure by 99%.</p><p>The ratio γ₁/γ₂ does not change, so the area consistency test of Lab 03 gives the same D = 1.16% and cannot see this mistake. Check the units and the limits before testing consistency.</p></div></details></div>
+      <div class="concept-question"><h3>C. Does a near-perfect fit prove the data are right?</h3><p>Fit NRTL, then Margules with one and with two parameters. Compare the pressure errors.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Quote the errors and explain what a good fit can and cannot show."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>NRTL reproduces the pressure to about 10⁻⁶ %, two-parameter Margules to 0.26% and one-parameter Margules to 1.1%. The example was generated by NRTL with τ₁₂ = 0.8 and τ₂₁ = 1.2, which the fit recovers.</p><p>A good fit shows that a model can represent the table. It does not show that the measurements are accurate or thermodynamically consistent; Lab 03 tests consistency separately.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate what each check can catch</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Validate a table in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="vi-limits-heading"><h3 id="vi-limits-heading">What these results can and cannot show</h3><ul><li>The activity coefficients assume an ideal vapor, negligible Poynting corrections and correct vapor pressures. Their accuracy is limited by your property sources.</li><li>Endpoint extrapolation is an assumption. It never creates observations, and a full-range area result that depends on it is conditional.</li><li>A good model fit and a passed consistency test answer different questions; neither certifies measurement accuracy.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="sig-heading"><h3 id="sig-heading">A. Diagnose input mistakes by their signatures</h3>
+        <ol class="graduate-checklist"><li>Re-import the same table under four deliberate misreadings: P as bar, P as Pa, T as °C, and Antoine constants with the wrong T unit.</li><li>For each, read the pure-liquid limits, the area D and the NRTL pressure error, or the rejection reason.</li><li>Identify which check catches each mistake and which check is blind to it.</li></ol>
+        <div class="graduate-actions"><button id="run-sig" class="primary-button" type="button" disabled>Compare the misreadings</button></div>
+        <p id="sig-status" class="graduate-status" role="status"></p>
+        <div id="sig-wrap" class="table-scroll graduate-table" role="region" aria-label="Unit error signatures" tabindex="0" hidden><table><thead><tr><th scope="col">Import</th><th scope="col">Result or rejection</th><th scope="col">ln γ₂ at lowest x₁</th><th scope="col">ln γ₁ at highest x₁</th><th scope="col">Area D / %</th><th scope="col">NRTL mean |100 ΔP/P|</th></tr></thead><tbody id="sig-body"></tbody></table></div>
+        <label for="note-signatures">Claim 1 · which check catches which mistake</label><textarea id="note-signatures" rows="3" maxlength="10000" placeholder="Quote the limits, D and fit error for two misreadings."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="models-heading"><h3 id="models-heading">B. Compare three activity models</h3>
+        <ol class="graduate-checklist"><li>Fit NRTL, one-parameter Margules and two-parameter Margules to the same observations.</li><li>Compare the errors, the parameters and the residual pattern in Step 3.</li><li>Explain why adding a parameter reduces the error, and what extra data would discriminate between the models.</li></ol>
+        <div class="graduate-actions"><button id="run-models" type="button" class="primary-button" disabled>Fit three models</button></div>
+        <p id="models-status" class="graduate-status" role="status"></p>
+        <div id="models-wrap" class="table-scroll graduate-table" role="region" aria-label="Model comparison" tabindex="0" hidden><table><thead><tr><th scope="col">Model</th><th scope="col">Parameters</th><th scope="col">Mean |100 ΔP/P|</th><th scope="col">Mean |100 Δy₁|</th><th scope="col">At a bound</th></tr></thead><tbody id="models-body"></tbody></table></div>
+        <label for="note-models">Claim 2 · model choice</label><textarea id="note-models" rows="3" maxlength="10000" placeholder="Quote the errors and parameters; state what the comparison does not establish."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="end-heading"><h3 id="end-heading">C. How much does the area test depend on unmeasured endpoints?</h3>
+        <ol class="graduate-checklist"><li>Compare the area D with no extension, linear extension and a quadratic fit of ln(γ₁/γ₂).</li><li>Explain why the measured interval alone cannot give a full-range verdict.</li><li>Name the measurement that would replace the extrapolation.</li></ol>
+        <div class="graduate-actions"><button id="run-end" type="button" class="primary-button" disabled>Compare endpoint assumptions</button></div>
+        <p id="end-status" class="graduate-status" role="status"></p>
+        <div id="end-wrap" class="table-scroll graduate-table" role="region" aria-label="Endpoint assumptions" tabindex="0" hidden><table><thead><tr><th scope="col">Endpoint treatment</th><th scope="col">Composition interval</th><th scope="col">Signed area I</th><th scope="col">D / %</th></tr></thead><tbody id="end-body"></tbody></table></div>
+        <label for="note-endpoints">Claim 3 · endpoint dependence</label><textarea id="note-endpoints" rows="3" maxlength="10000" placeholder="Quote D for two treatments and explain what the difference means."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State whether you would use this table, with which model, and what you would measure next."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Validate and save the synthetic example.</li><li>Validate and save the same table read with P in bar. Compare the limits.</li><li>Answer questions A–C in Step 4, then repeat Steps 1–3 with your own data.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Validate and save the example and your own data.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your validated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved data imports" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">Components</th><th scope="col">Units T, P</th><th scope="col">Rows used</th><th scope="col">ln γ₂ at low x₁</th><th scope="col">ln γ₁ at high x₁</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Load the example or enter your own table.</p><p class="privacy-note">Your table, settings, comparisons and explanations stay in this open page. The study file includes your data table so that it can be reopened.</p>
+      <details class="advanced"><summary>Model and assumptions</summary><p>γ<sub>i</sub> = y<sub>i</sub>P/(x<sub>i</sub>P<sub>i</sub><sup>sat</sup>) assumes an ideal vapor and negligible Poynting and excess-volume corrections. Saturation pressures come from your Antoine constants at each row's T and are never extrapolated beyond the declared range. Fits minimize the unweighted mean of (100 ΔP/P)² and (100 Δy₁)² with bounded multistart Nelder–Mead. <a href="../labs/vle-input.html">Open the current Lab 08</a> for HE data, isobaric temperature-dependent NRTL and the full consistency suite.</p></details>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to read and fit the table. The figure and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/vle-input-lab.js?v=lab08-1"></script>
+</body>
+</html>

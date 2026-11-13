@@ -61,3 +61,22 @@
 .energy-text { fill: #1C242B; font-size: 13px; font-weight: 600; text-anchor: middle; }
 .energy-caption { fill: #333F4A; font-size: 13px; text-anchor: middle; }
 #ad-chart { max-width: 100%; overflow: hidden; }
+.sketch-model-box { fill: #F6E2BF; stroke: #E29A2D; stroke-width: 2; }
+.row-text { fill: #1C242B; font-size: 17px; font-weight: 600; text-anchor: middle; }
+.row-text .row-small { font-size: 12.5px; font-weight: 400; fill: #333F4A; }
+.antoine-set { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; margin: 16px 0; min-width: 0; }
+.antoine-set legend { font-weight: 600; padding: 0 6px; }
+.antoine-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.antoine-grid > div { min-width: 0; }
+.antoine-grid h3 { font-size: 1rem; margin: 6px 0; }
+.antoine-grid .abc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.antoine-grid .range { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.antoine-grid label { font-size: .88rem; margin-top: 8px; }
+.first-row { margin: 16px 0; padding: 12px 14px; border-left: 4px solid var(--teal); background: var(--soft-teal); border-radius: 6px; }
+.first-row h3 { font-size: 1rem; margin: 0 0 8px; }
+.first-row-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 16px; margin: 0; font-size: .9rem; }
+.first-row-list dt { color: var(--muted); }
+.first-row-list dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.limit-bad { color: #BE654C; }
+#vi-chart { max-width: 100%; overflow: hidden; }
+@media (max-width: 600px) { .antoine-grid, .first-row-list { grid-template-columns: 1fr; } }
