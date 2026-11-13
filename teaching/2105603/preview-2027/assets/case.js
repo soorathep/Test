@@ -85,7 +85,7 @@ function antoineEquation() {
     mathNode('mfrac', mathNode('mi', 'B'), mathNode('mrow', mathNode('mi', 'T'), mathNode('mo', '+'), mathNode('mi', 'C')))));
   math.setAttribute('display', 'block');
   math.classList.add('display-math');
-  math.setAttribute('aria-label', 'Base ten logarithm of saturation pressure in bar equals A minus B divided by T plus C.');
+  math.setAttribute('aria-label', 'Base ten logarithm of saturation pressure in bar equals A minus B divided by the quantity T plus C.');
   const wrapper = document.createElement('div');
   wrapper.className = 'math-scroll';
   wrapper.tabIndex = 0;
