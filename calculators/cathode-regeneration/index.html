@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Calculator: regenerate Li-ion cathode material at retirement, or use the cell further? Dimensionless criterion from a degradation-aware techno-economic model (SKH Research Group, Chulalongkorn University).">
+<title>Cathode Regeneration Criterion</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html{color-scheme:light}
+
+/* Layout: two-column instrument panel (inputs left, verdict + decision map right), stacking to one column on phones */
+:root{
+  --bg:#F6F4EF; --panel:#FFFFFF; --ink:#1C242B; --muted:#66727C; --rule:#D9DDE0; --grid:#E6E9EB;
+  --teal:#0F6E6B; --teal-soft:#DCEBEA; --amber:#C98316; --amber-fill:#F6E3C2; --rust:#BE654C; --sand:#EFE3C4;
+  --good:#0F6E6B; --bad:#BE654C; --warn:#B7791F;
+  --f-display:"Space Grotesk", "Inter", system-ui, sans-serif; --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12171B; --panel:#1A2126; --ink:#E7ECEE; --muted:#9AA6AE; --rule:#2C363D; --grid:#243037;
+  --teal:#4FB3AD; --teal-soft:#183A39; --amber:#E9A93E; --amber-fill:#3A2E19; --rust:#D98067; --sand:#2F2A1E;
+  --good:#4FB3AD; --bad:#D98067; --warn:#E3B04B; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#12171B; --panel:#1A2126; --ink:#E7ECEE; --muted:#9AA6AE; --rule:#2C363D; --grid:#243037;
+  --teal:#4FB3AD; --teal-soft:#183A39; --amber:#E9A93E; --amber-fill:#3A2E19; --rust:#D98067; --sand:#2F2A1E;
+  --good:#4FB3AD; --bad:#D98067; --warn:#E3B04B; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 40px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:22px}
+header h1{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+header p{margin:8px 0 0;color:var(--muted);max-width:70ch}
+.eq{font-family:var(--f-mono);font-size:14px;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;display:inline-block;margin-top:12px;overflow-x:auto;max-width:100%}
+.eq i{font-family:var(--f-body);font-style:italic;font-weight:600}
+.grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:18px;min-width:0}
+.panel h2{font-family:var(--f-display);font-weight:600;font-size:15px;margin:0 0 12px;letter-spacing:.01em}
+.lab{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+fieldset{border:0;padding:0;margin:0 0 16px;display:grid;gap:10px}
+.row{display:grid;grid-template-columns:1fr 112px;gap:10px;align-items:center}
+.row label{font-size:13.5px}
+.row small{display:block;color:var(--muted);font-size:11.5px;line-height:1.35}
+input[type=number],select{width:100%;font:500 14px var(--f-mono);color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:7px 8px;font-variant-numeric:tabular-nums}
+select{font-family:var(--f-body)}
+input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:500 13px var(--f-body);border:1px solid var(--rule);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--panel)}
+input[type=range]{width:100%;accent-color:var(--amber)}
+details{border-top:1px solid var(--rule);padding-top:12px}
+summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--teal)}
+details fieldset{margin-top:12px}
+.verdict{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:16px 18px;border-radius:10px;border:1px solid var(--rule)}
+.verdict .chip{font:600 12px var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:6px;color:var(--panel);white-space:nowrap}
+.verdict h3{font-family:var(--f-display);font-size:20px;margin:0;line-height:1.2}
+.verdict p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+.v-B{background:var(--amber-fill)} .v-B .chip{background:var(--amber)}
+.v-D{background:var(--teal-soft)} .v-D .chip{background:var(--teal)}
+.v-A{background:var(--teal-soft)} .v-A .chip{background:var(--rust)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;min-width:0}
+.stat b{display:block;font:500 20px var(--f-mono);font-variant-numeric:tabular-nums;margin-top:2px}
+.stat span{font-size:11.5px;color:var(--muted);line-height:1.3;display:block}
+.flag{font-size:12.5px;margin-top:10px;color:var(--warn);min-height:1.2em}
+.chartbox{margin-top:16px;overflow-x:auto}
+svg text{font-family:var(--f-body);fill:var(--muted);font-size:11px}
+.ratios{font:13px var(--f-mono);color:var(--muted);margin-top:10px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+footer{color:var(--muted);font-size:12.5px;max-width:95ch;display:grid;gap:6px}
+footer b{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.verdict{transition:background-color .25s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="lab" style="margin-bottom:6px"><a href="/" style="color:var(--teal);text-decoration:none">SKH Research Group</a> · Li-ion cathode end of life</div>
+  <h1>Regenerate the cathode now, or use the cell further?</h1>
+  <p>Enter the cost of your regeneration process and how long the regenerated material lasts compared with pristine material under the same test. The calculator applies the dimensionless criterion from the degradation-aware techno-economic model and shows the cycle life and cost your process would need to beat continued use.</p>
+  <div class="eq">Regenerate at retirement (B) beats continued use, then virgin replacement (D), when&nbsp; <i>κ</i> &lt; <i>λ</i> + <i>p</i>(1 + <i>λ</i>)/2 − (1 + <i>κ</i>)<i>vρ</i>/2</div>
+</header>
+
+<div class="grid">
+<section class="panel" aria-labelledby="in-h">
+  <h2 id="in-h">Case</h2>
+  <fieldset>
+    <div><label class="lab" for="route" style="display:block;margin-bottom:6px">Cathode route</label>
+      <select id="route"><option>C4 NMC811 LiOH</option><option>S2 NCA LiOH</option><option>C3 NMC622 Li2CO3</option><option>C1 LFP FePO4</option></select></div>
+    <div><div class="lab" style="margin-bottom:6px">Retirement state of health</div>
+      <div class="seg" id="soh"></div></div>
+    <div><div class="lab" style="margin-bottom:6px">System boundary</div>
+      <div class="seg" id="bnd"><button type="button" data-v="CAM" aria-pressed="false">CAM (materials)</button><button type="button" data-v="cell" aria-pressed="true">Cell (operator)</button></div></div>
+  </fieldset>
+
+  <h2>Your regeneration process</h2>
+  <fieldset>
+    <div class="row"><label for="rc">Regeneration cost<small>USD per kg CAM, processing, reagents and energy</small></label><input id="rc" type="number" step="0.1" min="0"></div>
+    <div class="row"><label for="f">Cycle-life ratio, regenerated / pristine<small>EFC to 80% capacity, same full-cell test</small></label><input id="f" type="number" step="0.01" min="0.1" max="2"></div>
+    <input id="fr" type="range" min="0.1" max="2" step="0.01" aria-label="Cycle-life ratio slider">
+  </fieldset>
+
+  <details>
+    <summary>Market and use assumptions</summary>
+    <fieldset>
+      <div class="row"><label for="v">Value of second-use energy, v<small>relative to first-use energy, 0.5 to 1.0</small></label><input id="v" type="number" step="0.05" min="0" max="1.5"></div>
+      <div class="row"><label for="rep">Repurposing cost<small>USD per kWh nameplate, counted at the cell boundary</small></label><input id="rep" type="number" step="1" min="0"></div>
+      <div class="row"><label for="vc">Virgin CAM cost<small>USD per kg</small></label><input id="vc" type="number" step="0.1" min="0.1"></div>
+      <div class="row"><label for="cc">Non-CAM cell cost<small>USD per kWh nameplate, cell boundary only</small></label><input id="cc" type="number" step="1" min="0"></div>
+      <div class="row"><label for="rho">Continuation energy, ρ<small>use from retirement to 60% SOH, relative to the first life</small></label><input id="rho" type="number" step="0.01" min="0"></div>
+    </fieldset>
+    <button type="button" id="reset" class="seg" style="all:unset;cursor:pointer;color:var(--teal);font-size:13px;font-weight:600">Reset to the reference case</button>
+  </details>
+</section>
+
+<section class="panel" aria-labelledby="out-h" aria-live="polite">
+  <h2 id="out-h">Verdict</h2>
+  <div id="verdict" class="verdict"><span class="chip" id="chip">B</span><div><h3 id="vt"></h3><p id="vs"></p></div></div>
+  <div class="flag" id="flag"></div>
+  <div class="stats">
+    <div class="stat"><span>Decision margin</span><b id="m"></b><span>positive favors regeneration</span></div>
+    <div class="stat"><span>Cycle-life ratio needed</span><b id="fs"></b><span>regenerated / pristine</span></div>
+    <div class="stat"><span>Break-even regeneration cost</span><b id="be"></b><span>USD per kg CAM</span></div>
+    <div class="stat"><span>Against virgin replacement</span><b id="ba"></b><span>λ − κ, positive favors regeneration</span></div>
+  </div>
+  <div class="chartbox"><svg id="chart" viewBox="0 0 640 330" width="100%" role="img" aria-label="Decision map: regeneration cost against cycle-life ratio"></svg></div>
+  <div class="ratios" id="ratios"></div>
+</section>
+</div>
+
+<footer>
+  <div><b>Model.</b> Reference values come from model v0.7 at its deterministic base: Sandia 18650 first-life fade at 25 °C, 20–80% SOC, 0.5C; calendar fade 0.015 per √year; 20-year service cap; 300 cycles per year; repurposing cost charged at the cell boundary only. The cycle-life ratio is converted to the energy ratio λ with the same fade law, so λ is not equal to the ratio itself.</div>
+  <div><b>Accuracy.</b> The undiscounted criterion matched the discounted model in 97.1% (complete repair) and 96.1% (incomplete repair) of 2,160 test cases; every disagreement had a margin between −0.25 and +0.18, so results inside that band are flagged. One regeneration loop; floor at 60% SOH. For LFP retired below about 77% SOH the service cap removes continued use and the comparison is with virgin replacement.</div>
+  <div><b>Published ratios.</b> Shaded bands on the map: processes that leave structural damage, 0.16 to 0.6; processes that restore structure and lithium content, 0.9 to about 1.05 (ESI Table S4 of the paper).</div>
+</footer>
+</div>
+<script>
+const REF = {"grid":[0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1.0,1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.55,1.6,1.65,1.7,1.75,1.8,1.85,1.9,1.95,2.0],"cases":[{"r":"C4 NMC811 LiOH","s":0.85,"b":"CAM","k":0.222,"p":0.0,"rho":3.034,"c":true,"rc":4.89,"vc":22.05,"w":0.75,"ls":1.705,"fs":1.925,"lam":[0.1267,0.1852,0.2416,0.2963,0.3496,0.4016,0.4525,0.5024,0.5513,0.5993,0.6465,0.693,0.7387,0.7838,0.8282,0.872,0.9152,0.9579,1.0,1.0416,1.0828,1.1235,1.1637,1.2035,1.2428,1.2818,1.3204,1.3586,1.3964,1.4338,1.471,1.5077,1.5442,1.5803,1.6161,1.6517,1.6869,1.7218,1.7565]},{"r":"C4 NMC811 LiOH","s":0.85,"b":"cell","k":0.692,"p":0.538,"rho":3.034,"c":true,"rc":4.89,"vc":22.05,"w":0.75,"ls":1.953,"fs":2.291,"lam":[0.1267,0.1852,0.2416,0.2963,0.3496,0.4016,0.4525,0.5024,0.5513,0.5993,0.6465,0.693,0.7387,0.7838,0.8282,0.872,0.9152,0.9579,1.0,1.0416,1.0828,1.1235,1.1637,1.2035,1.2428,1.2818,1.3204,1.3586,1.3964,1.4338,1.471,1.5077,1.5442,1.5803,1.6161,1.6517,1.6869,1.7218,1.7565]},{"r":"C4 NMC811 LiOH","s":0.8,"b":"CAM","k":0.322,"p":0.0,"rho":1.36,"c":true,"rc":7.1,"vc":22.05,"w":0.75,"ls":1.041,"fs":1.049,"lam":[0.1275,0.1862,0.2428,0.2977,0.3511,0.4031,0.454,0.5039,0.5527,0.6007,0.6478,0.6942,0.7398,0.7847,0.8289,0.8726,0.9156,0.9581,1.0,1.0414,1.0823,1.1228,1.1628,1.2023,1.2414,1.2801,1.3184,1.3563,1.3938,1.431,1.4678,1.5043,1.5404,1.5762,1.6117,1.6469,1.6818,1.7164,1.7507]},{"r":"C4 NMC811 LiOH","s":0.8,"b":"cell","k":0.732,"p":0.538,"rho":1.36,"c":true,"rc":7.1,"vc":22.05,"w":0.75,"ls":1.108,"fs":1.131,"lam":[0.1275,0.1862,0.2428,0.2977,0.3511,0.4031,0.454,0.5039,0.5527,0.6007,0.6478,0.6942,0.7398,0.7847,0.8289,0.8726,0.9156,0.9581,1.0,1.0414,1.0823,1.1228,1.1628,1.2023,1.2414,1.2801,1.3184,1.3563,1.3938,1.431,1.4678,1.5043,1.5404,1.5762,1.6117,1.6469,1.6818,1.7164,1.7507]},{"r":"C4 NMC811 LiOH","s":0.75,"b":"CAM","k":0.331,"p":0.0,"rho":0.658,"c":true,"rc":7.29,"vc":22.05,"w":0.75,"ls":0.681,"fs":0.635,"lam":[0.1282,0.1871,0.2438,0.2988,0.3522,0.4043,0.4552,0.505,0.5539,0.6018,0.6488,0.6951,0.7406,0.7854,0.8295,0.873,0.9159,0.9582,1.0,1.0412,1.082,1.1222,1.162,1.2014,1.2403,1.2788,1.3168,1.3545,1.3918,1.4288,1.4654,1.5016,1.5375,1.5731,1.6083,1.6433,1.6779,1.7122,1.7463]},{"r":"C4 NMC811 LiOH","s":0.75,"b":"cell","k":0.736,"p":0.538,"rho":0.658,"c":true,"rc":7.29,"vc":22.05,"w":0.75,"ls":0.728,"fs":0.686,"lam":[0.1282,0.1871,0.2438,0.2988,0.3522,0.4043,0.4552,0.505,0.5539,0.6018,0.6488,0.6951,0.7406,0.7854,0.8295,0.873,0.9159,0.9582,1.0,1.0412,1.082,1.1222,1.162,1.2014,1.2403,1.2788,1.3168,1.3545,1.3918,1.4288,1.4654,1.5016,1.5375,1.5731,1.6083,1.6433,1.6779,1.7122,1.7463]},{"r":"C4 NMC811 LiOH","s":0.7,"b":"CAM","k":0.34,"p":0.0,"rho":0.31,"c":true,"rc":7.49,"vc":22.05,"w":0.75,"ls":0.506,"fs":0.45,"lam":[0.1287,0.1878,0.2446,0.2997,0.3532,0.4053,0.4562,0.506,0.5548,0.6027,0.6497,0.6958,0.7413,0.786,0.83,0.8734,0.9162,0.9584,1.0,1.0411,1.0817,1.1218,1.1614,1.2006,1.2394,1.2777,1.3156,1.3531,1.3902,1.427,1.4634,1.4994,1.5351,1.5705,1.6055,1.6402,1.6747,1.7088,1.7426]},{"r":"C4 NMC811 LiOH","s":0.7,"b":"cell","k":0.739,"p":0.538,"rho":0.31,"c":true,"rc":7.49,"vc":22.05,"w":0.75,"ls":0.54,"fs":0.485,"lam":[0.1287,0.1878,0.2446,0.2997,0.3532,0.4053,0.4562,0.506,0.5548,0.6027,0.6497,0.6958,0.7413,0.786,0.83,0.8734,0.9162,0.9584,1.0,1.0411,1.0817,1.1218,1.1614,1.2006,1.2394,1.2777,1.3156,1.3531,1.3902,1.427,1.4634,1.4994,1.5351,1.5705,1.6055,1.6402,1.6747,1.7088,1.7426]},{"r":"C4 NMC811 LiOH","s":0.65,"b":"CAM","k":0.349,"p":0.0,"rho":0.116,"c":true,"rc":7.7,"vc":22.05,"w":0.75,"ls":0.412,"fs":0.355,"lam":[0.1292,0.1884,0.2453,0.3004,0.354,0.4061,0.457,0.5068,0.5556,0.6034,0.6504,0.6965,0.7418,0.7865,0.8304,0.8737,0.9164,0.9585,1.0,1.041,1.0815,1.1214,1.1609,1.2,1.2386,1.2768,1.3145,1.3519,1.3888,1.4206,1.4257,1.4307,1.4354,1.4399,1.4442,1.4484,1.4524,1.4563,1.46]},{"r":"C4 NMC811 LiOH","s":0.65,"b":"cell","k":0.743,"p":0.538,"rho":0.116,"c":true,"rc":7.7,"vc":22.05,"w":0.75,"ls":0.437,"fs":0.381,"lam":[0.1292,0.1884,0.2453,0.3004,0.354,0.4061,0.457,0.5068,0.5556,0.6034,0.6504,0.6965,0.7418,0.7865,0.8304,0.8737,0.9164,0.9585,1.0,1.041,1.0815,1.1214,1.1609,1.2,1.2386,1.2768,1.3145,1.3519,1.3888,1.4206,1.4257,1.4307,1.4354,1.4399,1.4442,1.4484,1.4524,1.4563,1.46]},{"r":"S2 NCA LiOH","s":0.85,"b":"CAM","k":0.21,"p":0.0,"rho":2.164,"c":true,"rc":4.9,"vc":23.26,"w":0.74,"ls":1.258,"fs":1.288,"lam":[0.113,0.1673,0.2207,0.2733,0.3251,0.3763,0.4269,0.477,0.5266,0.5757,0.6243,0.6726,0.7204,0.7679,0.815,0.8617,0.9081,0.9542,1.0,1.0455,1.0907,1.1355,1.1802,1.2245,1.2686,1.3125,1.356,1.3994,1.4425,1.4854,1.5281,1.5705,1.6127,1.6548,1.6966,1.7382,1.7796,1.8208,1.8618]},{"r":"S2 NCA LiOH","s":0.85,"b":"cell","k":0.675,"p":0.523,"rho":2.164,"c":true,"rc":4.9,"vc":23.26,"w":0.74,"ls":1.477,"fs":1.541,"lam":[0.113,0.1673,0.2207,0.2733,0.3251,0.3763,0.4269,0.477,0.5266,0.5757,0.6243,0.6726,0.7204,0.7679,0.815,0.8617,0.9081,0.9542,1.0,1.0455,1.0907,1.1355,1.1802,1.2245,1.2686,1.3125,1.356,1.3994,1.4425,1.4854,1.5281,1.5705,1.6127,1.6548,1.6966,1.7382,1.7796,1.8208,1.8618]},{"r":"S2 NCA LiOH","s":0.8,"b":"CAM","k":0.305,"p":0.0,"rho":1.143,"c":true,"rc":7.1,"vc":23.26,"w":0.74,"ls":0.902,"fs":0.894,"lam":[0.1122,0.1663,0.2194,0.2718,0.3236,0.3747,0.4253,0.4754,0.525,0.5741,0.6229,0.6712,0.7192,0.7668,0.8141,0.861,0.9077,0.954,1.0,1.0457,1.0912,1.1364,1.1813,1.226,1.2704,1.3146,1.3586,1.4023,1.4458,1.4891,1.5321,1.575,1.6177,1.6601,1.7024,1.7444,1.7863,1.828,1.8695]},{"r":"S2 NCA LiOH","s":0.8,"b":"cell","k":0.714,"p":0.523,"rho":1.143,"c":true,"rc":7.1,"vc":23.26,"w":0.74,"ls":0.98,"fs":0.978,"lam":[0.1122,0.1663,0.2194,0.2718,0.3236,0.3747,0.4253,0.4754,0.525,0.5741,0.6229,0.6712,0.7192,0.7668,0.8141,0.861,0.9077,0.954,1.0,1.0457,1.0912,1.1364,1.1813,1.226,1.2704,1.3146,1.3586,1.4023,1.4458,1.4891,1.5321,1.575,1.6177,1.6601,1.7024,1.7444,1.7863,1.828,1.8695]},{"r":"S2 NCA LiOH","s":0.75,"b":"CAM","k":0.314,"p":0.0,"rho":0.627,"c":true,"rc":7.3,"vc":23.26,"w":0.74,"ls":0.643,"fs":0.622,"lam":[0.1116,0.1655,0.2185,0.2708,0.3224,0.3735,0.4241,0.4742,0.5238,0.573,0.6218,0.6703,0.7183,0.7661,0.8135,0.8605,0.9073,0.9538,1.0,1.0459,1.0916,1.137,1.1821,1.2271,1.2717,1.3162,1.3604,1.4044,1.4482,1.4917,1.5351,1.5783,1.6212,1.664,1.7066,1.749,1.7912,1.8333,1.8751]},{"r":"S2 NCA LiOH","s":0.75,"b":"cell","k":0.718,"p":0.523,"rho":0.627,"c":true,"rc":7.3,"vc":23.26,"w":0.74,"ls":0.703,"fs":0.684,"lam":[0.1116,0.1655,0.2185,0.2708,0.3224,0.3735,0.4241,0.4742,0.5238,0.573,0.6218,0.6703,0.7183,0.7661,0.8135,0.8605,0.9073,0.9538,1.0,1.0459,1.0916,1.137,1.1821,1.2271,1.2717,1.3162,1.3604,1.4044,1.4482,1.4917,1.5351,1.5783,1.6212,1.664,1.7066,1.749,1.7912,1.8333,1.8751]},{"r":"S2 NCA LiOH","s":0.7,"b":"CAM","k":0.322,"p":0.0,"rho":0.326,"c":true,"rc":7.5,"vc":23.26,"w":0.74,"ls":0.495,"fs":0.472,"lam":[0.1112,0.1649,0.2178,0.27,0.3216,0.3726,0.4232,0.4733,0.5229,0.5722,0.621,0.6695,0.7176,0.7655,0.813,0.8601,0.907,0.9537,1.0,1.0461,1.0919,1.1375,1.1828,1.2279,1.2727,1.3174,1.3618,1.406,1.45,1.4938,1.5374,1.5808,1.624,1.6671,1.7099,1.7526,1.795,1.8374,1.8795]},{"r":"S2 NCA LiOH","s":0.7,"b":"cell","k":0.721,"p":0.523,"rho":0.326,"c":true,"rc":7.5,"vc":23.26,"w":0.74,"ls":0.542,"fs":0.52,"lam":[0.1112,0.1649,0.2178,0.27,0.3216,0.3726,0.4232,0.4733,0.5229,0.5722,0.621,0.6695,0.7176,0.7655,0.813,0.8601,0.907,0.9537,1.0,1.0461,1.0919,1.1375,1.1828,1.2279,1.2727,1.3174,1.3618,1.406,1.45,1.4938,1.5374,1.5808,1.624,1.6671,1.7099,1.7526,1.795,1.8374,1.8795]},{"r":"S2 NCA LiOH","s":0.65,"b":"CAM","k":0.331,"p":0.0,"rho":0.133,"c":true,"rc":7.7,"vc":23.26,"w":0.74,"ls":0.402,"fs":0.38,"lam":[0.1108,0.1644,0.2172,0.2694,0.3209,0.3719,0.4225,0.4725,0.5222,0.5715,0.6204,0.6689,0.7171,0.765,0.8126,0.8598,0.9068,0.9535,1.0,1.0462,1.0921,1.1378,1.1833,1.2285,1.2736,1.3184,1.3629,1.4073,1.4515,1.4955,1.5393,1.5829,1.6263,1.6695,1.7125,1.7554,1.7981,1.8407,1.883]},{"r":"S2 NCA LiOH","s":0.65,"b":"cell","k":0.725,"p":0.523,"rho":0.133,"c":true,"rc":7.7,"vc":23.26,"w":0.74,"ls":0.44,"fs":0.417,"lam":[0.1108,0.1644,0.2172,0.2694,0.3209,0.3719,0.4225,0.4725,0.5222,0.5715,0.6204,0.6689,0.7171,0.765,0.8126,0.8598,0.9068,0.9535,1.0,1.0462,1.0921,1.1378,1.1833,1.2285,1.2736,1.3184,1.3629,1.4073,1.4515,1.4955,1.5393,1.5829,1.6263,1.6695,1.7125,1.7554,1.7981,1.8407,1.883]},{"r":"C3 NMC622 Li2CO3","s":0.85,"b":"CAM","k":0.219,"p":0.0,"rho":2.881,"c":true,"rc":4.96,"vc":22.62,"w":0.675,"ls":1.624,"fs":1.835,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.85,"b":"cell","k":0.667,"p":0.509,"rho":2.881,"c":true,"rc":4.96,"vc":22.62,"w":0.675,"ls":1.859,"fs":2.19,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.8,"b":"CAM","k":0.228,"p":0.0,"rho":1.36,"c":true,"rc":5.15,"vc":22.62,"w":0.675,"ls":0.896,"fs":0.875,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.8,"b":"cell","k":0.67,"p":0.509,"rho":1.36,"c":true,"rc":5.15,"vc":22.62,"w":0.675,"ls":1.056,"fs":1.068,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.75,"b":"CAM","k":0.327,"p":0.0,"rho":0.685,"c":true,"rc":7.4,"vc":22.62,"w":0.675,"ls":0.691,"fs":0.643,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.75,"b":"cell","k":0.713,"p":0.509,"rho":0.685,"c":true,"rc":7.4,"vc":22.62,"w":0.675,"ls":0.739,"fs":0.696,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5996,1.6338,1.6678,1.7014,1.7348]},{"r":"C3 NMC622 Li2CO3","s":0.7,"b":"CAM","k":0.337,"p":0.0,"rho":0.333,"c":true,"rc":7.62,"vc":22.62,"w":0.675,"ls":0.515,"fs":0.457,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5811,1.5853,1.5893,1.5931,1.5967]},{"r":"C3 NMC622 Li2CO3","s":0.7,"b":"cell","k":0.717,"p":0.509,"rho":0.333,"c":true,"rc":7.62,"vc":22.62,"w":0.675,"ls":0.551,"fs":0.494,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1602,1.1991,1.2375,1.2754,1.313,1.3501,1.3868,1.4232,1.4592,1.4948,1.53,1.565,1.5811,1.5853,1.5893,1.5931,1.5967]},{"r":"C3 NMC622 Li2CO3","s":0.65,"b":"CAM","k":0.347,"p":0.0,"rho":0.128,"c":true,"rc":7.85,"vc":22.62,"w":0.675,"ls":0.416,"fs":0.359,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1598,1.1656,1.171,1.1761,1.181,1.1856,1.1899,1.1941,1.198,1.2018,1.2054,1.2089,1.2122,1.2153,1.2184,1.2213,1.2241]},{"r":"C3 NMC622 Li2CO3","s":0.65,"b":"cell","k":0.721,"p":0.509,"rho":0.128,"c":true,"rc":7.85,"vc":22.62,"w":0.675,"ls":0.442,"fs":0.384,"lam":[0.1296,0.189,0.246,0.3012,0.3548,0.407,0.458,0.5078,0.5565,0.6043,0.6512,0.6973,0.7425,0.7871,0.8309,0.8741,0.9167,0.9586,1.0,1.0408,1.0811,1.1209,1.1598,1.1656,1.171,1.1761,1.181,1.1856,1.1899,1.1941,1.198,1.2018,1.2054,1.2089,1.2122,1.2153,1.2184,1.2213,1.2241]},{"r":"C1 LFP FePO4","s":0.85,"b":"CAM","k":0.986,"p":0.0,"rho":0.71,"c":true,"rc":4.94,"vc":5.01,"w":0.53,"ls":1.55,"fs":1.797,"lam":[0.1363,0.1978,0.2566,0.3131,0.3676,0.4203,0.4715,0.5213,0.5698,0.6171,0.6633,0.7085,0.7526,0.7959,0.8383,0.8799,0.9206,0.9607,1.0,1.0386,1.0766,1.114,1.1508,1.1869,1.2226,1.2577,1.2922,1.3263,1.3599,1.393,1.4256,1.4578,1.4896,1.5209,1.5519,1.5824,1.6126,1.6424,1.6718]},{"r":"C1 LFP FePO4","s":0.85,"b":"cell","k":0.998,"p":0.735,"rho":0.71,"c":true,"rc":4.94,"vc":5.01,"w":0.53,"ls":0.876,"fs":0.845,"lam":[0.1363,0.1978,0.2566,0.3131,0.3676,0.4203,0.4715,0.5213,0.5698,0.6171,0.6633,0.7085,0.7526,0.7959,0.8383,0.8799,0.9206,0.9607,1.0,1.0386,1.0766,1.114,1.1508,1.1869,1.2226,1.2577,1.2922,1.3263,1.3599,1.393,1.4256,1.4578,1.4896,1.5209,1.5519,1.5824,1.6126,1.6424,1.6718]},{"r":"C1 LFP FePO4","s":0.8,"b":"CAM","k":1.023,"p":0.0,"rho":0.213,"c":true,"rc":5.12,"vc":5.01,"w":0.53,"ls":1.195,"fs":1.252,"lam":[0.1318,0.192,0.2497,0.3055,0.3596,0.4121,0.4632,0.5131,0.5619,0.6095,0.6562,0.7019,0.7468,0.7909,0.8341,0.8766,0.9184,0.9595,1.0,1.0398,1.0791,1.1178,1.1559,1.1935,1.2305,1.2419,1.245,1.2479,1.2506,1.2531,1.2555,1.2577,1.2598,1.2618,1.2637,1.2655,1.2672,1.2688,1.2704]},{"r":"C1 LFP FePO4","s":0.8,"b":"cell","k":1.004,"p":0.735,"rho":0.213,"c":true,"rc":5.12,"vc":5.01,"w":0.53,"ls":0.59,"fs":0.53,"lam":[0.1318,0.192,0.2497,0.3055,0.3596,0.4121,0.4632,0.5131,0.5619,0.6095,0.6562,0.7019,0.7468,0.7909,0.8341,0.8766,0.9184,0.9595,1.0,1.0398,1.0791,1.1178,1.1559,1.1935,1.2305,1.2419,1.245,1.2479,1.2506,1.2531,1.2555,1.2577,1.2598,1.2618,1.2637,1.2655,1.2672,1.2688,1.2704]},{"r":"C1 LFP FePO4","s":0.75,"b":"CAM","k":1.05,"p":0.0,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.05,"fs":2.107,"lam":[0.1367,0.1997,0.2604,0.3191,0.3762,0.4318,0.486,0.5391,0.591,0.6419,0.6918,0.7408,0.789,0.8364,0.8829,0.9288,0.9739,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]},{"r":"C1 LFP FePO4","s":0.75,"b":"cell","k":1.009,"p":0.735,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.009,"fs":1.103,"lam":[0.1367,0.1997,0.2604,0.3191,0.3762,0.4318,0.486,0.5391,0.591,0.6419,0.6918,0.7408,0.789,0.8364,0.8829,0.9288,0.9739,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]},{"r":"C1 LFP FePO4","s":0.7,"b":"CAM","k":1.05,"p":0.0,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.05,"fs":2.107,"lam":[0.1637,0.2396,0.3128,0.3839,0.4531,0.5207,0.5868,0.6514,0.7149,0.7771,0.8382,0.8983,0.9574,0.9695,0.9771,0.9838,0.9897,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]},{"r":"C1 LFP FePO4","s":0.7,"b":"cell","k":1.009,"p":0.735,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.009,"fs":1.103,"lam":[0.1637,0.2396,0.3128,0.3839,0.4531,0.5207,0.5868,0.6514,0.7149,0.7771,0.8382,0.8983,0.9574,0.9695,0.9771,0.9838,0.9897,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]},{"r":"C1 LFP FePO4","s":0.65,"b":"CAM","k":1.05,"p":0.0,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.05,"fs":2.107,"lam":[0.1895,0.2776,0.363,0.4459,0.5268,0.6059,0.6833,0.7592,0.8337,0.9069,0.9398,0.9511,0.961,0.9695,0.9771,0.9838,0.9897,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]},{"r":"C1 LFP FePO4","s":0.65,"b":"cell","k":1.009,"p":0.735,"rho":0.0,"c":false,"rc":5.26,"vc":5.01,"w":0.53,"ls":1.009,"fs":1.103,"lam":[0.1895,0.2776,0.363,0.4459,0.5268,0.6059,0.6833,0.7592,0.8337,0.9069,0.9398,0.9511,0.961,0.9695,0.9771,0.9838,0.9897,0.9951,1.0,1.0044,1.0085,1.0122,1.0156,1.0188,1.0217,1.0244,1.027,1.0293,1.0315,1.0336,1.0356,1.0374,1.0392,1.0408,1.0424,1.0439,1.0453,1.0466,1.0479]}]};
+const G = REF.grid, C = REF.cases;
+const $ = id => document.getElementById(id);
+const SOHS = [0.85, 0.80, 0.75, 0.70, 0.65];
+let soh = 0.80, bnd = 'cell';
+const sohBox = $('soh');
+SOHS.forEach(s => { const b = document.createElement('button'); b.type = 'button'; b.dataset.v = s; b.textContent = Math.round(s * 100) + '%'; sohBox.appendChild(b); });
+function caseNow() { return C.find(c => c.r === $('route').value && Math.abs(c.s - soh) < 1e-9 && c.b === bnd); }
+function lamOf(c, f) {
+  if (f <= G[0]) return c.lam[0] * f / G[0];
+  for (let i = 1; i < G.length; i++) if (f <= G[i]) { const t = (f - G[i - 1]) / (G[i] - G[i - 1]); return c.lam[i - 1] + t * (c.lam[i] - c.lam[i - 1]); }
+  const n = G.length - 1; return c.lam[n] + (f - G[n]) * (c.lam[n] - c.lam[n - 1]) / (G[n] - G[n - 1]);
+}
+function fOf(c, lam) {  // inverse of lamOf (monotone)
+  if (lam <= c.lam[0]) return G[0] * lam / c.lam[0];
+  for (let i = 1; i < G.length; i++) if (lam <= c.lam[i]) { const t = (lam - c.lam[i - 1]) / (c.lam[i] - c.lam[i - 1]); return G[i - 1] + t * (G[i] - G[i - 1]); }
+  return null;
+}
+function loadDefaults() {
+  const c = caseNow();
+  $('rc').value = c.rc.toFixed(2); $('vc').value = c.vc.toFixed(2); $('rho').value = c.rho.toFixed(3);
+  $('cc').value = bnd === 'cell' ? 45 : 0; $('rep').value = 40; $('v').value = 0.8;
+  if (!$('f').value) $('f').value = 0.95;
+  $('fr').value = $('f').value;
+}
+function num(id, d) { const x = parseFloat($(id).value); return Number.isFinite(x) ? x : d; }
+function calc(c, rc, f) {
+  const w = c.w, vc = num('vc', c.vc), Cc = bnd === 'cell' ? num('cc', 45) : 0, v = num('v', 0.8), rho = num('rho', c.rho), rep = num('rep', 40);
+  const Cv = vc / w + Cc, k = (rc / w + Cc) / Cv, p = bnd === 'cell' ? rep / Cv : 0, lam = lamOf(c, f), cont = c.c;
+  const margin = cont ? lam + p * (1 + lam) / 2 - (1 + k) * v * rho / 2 - k : lam - k;
+  const lamS = cont ? (k - p / 2 + (1 + k) * v * rho / 2) / (1 + p / 2) : k;
+  const kS = cont ? (lam + p * (1 + lam) / 2 - v * rho / 2) / (1 + v * rho / 2) : lam;
+  const beCost = (kS * Cv - Cc) * w;
+  return { k, p, lam, rho, v, cont, margin, lamS, fS: fOf(c, lamS), kS, beCost, Cv, Cc, w, ba: lam - k };
+}
+const fmt = (x, d = 2) => (x < 0 ? '−' : '') + Math.abs(x).toFixed(d);
+function render() {
+  const c = caseNow(); const rc = num('rc', c.rc), f = Math.min(2, Math.max(0.1, num('f', 0.95)));
+  const r = calc(c, rc, f);
+  const vd = $('verdict');
+  let cls, chip, title, sub;
+  if (!r.cont) {
+    cls = r.margin > 0 ? 'v-B' : 'v-A'; chip = r.margin > 0 ? 'Regenerate' : 'Replace';
+    title = r.margin > 0 ? 'Regenerate the cathode material' : 'Replace with virgin material';
+    sub = 'The 20-year service cap is reached in the first life, so continued use is not possible; the comparison is with virgin replacement.';
+  } else if (r.margin > 0) {
+    cls = 'v-B'; chip = 'Regenerate'; title = 'Regenerate at retirement';
+    sub = 'Strategy B: the regenerated life delivers energy at lower cost than using the cell to 60% SOH and then replacing it.';
+  } else {
+    cls = 'v-D'; chip = 'Use further'; title = 'Use the cell further first';
+    sub = 'Strategy D: continued use to 60% SOH, then replacement, is cheaper than regenerating now.';
+  }
+  vd.className = 'verdict ' + cls; $('chip').textContent = chip; $('vt').textContent = title; $('vs').textContent = sub;
+  $('flag').textContent = Math.abs(r.margin) < 0.25 ? 'Close to the decision boundary (|margin| < 0.25): the full discounted model can give the other answer here.' : '';
+  $('m').textContent = (r.margin >= 0 ? '+' : '') + fmt(r.margin, 3);
+  $('fs').textContent = r.fS == null ? '> 2.0' : r.fS.toFixed(2);
+  $('be').textContent = r.beCost <= 0 ? 'none' : r.beCost.toFixed(1);
+  $('ba').textContent = (r.ba >= 0 ? '+' : '') + fmt(r.ba, 3);
+  $('ratios').textContent = `κ ${r.k.toFixed(3)} · λ ${r.lam.toFixed(3)} · ρ ${r.rho.toFixed(3)} · v ${r.v.toFixed(2)} · p ${r.p.toFixed(3)} · virgin ${r.Cv.toFixed(1)} USD/kWh nameplate` + (r.cont ? '' : ' · continued use not possible');
+  draw(c, rc, f, r);
+}
+function draw(c, rc, f, r) {
+  const W = 640, H = 330, L = 58, R = 18, T = 18, B = 48, svg = $('chart');
+  const css = getComputedStyle(document.documentElement), col = n => css.getPropertyValue(n).trim();
+  const xs = x => L + (x - 0.1) / 1.9 * (W - L - R);
+  const pts = []; let ymax = Math.max(rc * 1.3, 5);
+  for (let i = 0; i <= 190; i++) { const fx = 0.1 + i * 0.01; const q = calc(c, 0, fx); pts.push([fx, Math.max(0, q.beCost)]); }
+  ymax = Math.max(ymax, Math.min(Math.max(...pts.map(p => p[1])) * 1.05, Math.max(rc * 2.5, c.vc * 1.2)));
+  const ys = y => T + (1 - y / ymax) * (H - T - B);
+  const step = ymax > 40 ? 10 : ymax > 16 ? 5 : ymax > 8 ? 2 : 1;
+  let s = `<defs><clipPath id="pc"><rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}"/></clipPath></defs>`;
+  s += `<rect x="${xs(0.16)}" y="${T}" width="${xs(0.6) - xs(0.16)}" height="${H - T - B}" fill="${col('--sand')}" opacity=".55"/>`;
+  s += `<rect x="${xs(0.9)}" y="${T}" width="${xs(1.05) - xs(0.9)}" height="${H - T - B}" fill="${col('--sand')}" opacity=".55"/>`;
+  for (let y = 0; y <= ymax + 1e-9; y += step) s += `<line x1="${L}" x2="${W - R}" y1="${ys(y)}" y2="${ys(y)}" stroke="${col('--grid')}"/><text x="${L - 8}" y="${ys(y) + 4}" text-anchor="end">${y}</text>`;
+  for (let x = 0.2; x <= 2.0001; x += 0.2) s += `<text x="${xs(x)}" y="${H - B + 18}" text-anchor="middle">${x.toFixed(1)}</text>`;
+  let area = `M${xs(pts[0][0])},${ys(0)} ` + pts.map(p => `L${xs(p[0])},${ys(p[1])}`).join(' ') + ` L${xs(2)},${ys(0)} Z`;
+  s += `<g clip-path="url(#pc)"><path d="${area}" fill="${col('--amber-fill')}" opacity=".9"/>`;
+  s += `<path d="${pts.map((p, i) => (i ? 'L' : 'M') + xs(p[0]) + ',' + ys(p[1])).join(' ')}" fill="none" stroke="${col('--amber')}" stroke-width="2.4"/></g>`;
+  s += `<line x1="${L}" x2="${W - R}" y1="${ys(0)}" y2="${ys(0)}" stroke="${col('--muted')}"/><line x1="${L}" x2="${L}" y1="${T}" y2="${ys(0)}" stroke="${col('--muted')}"/>`;
+  s += `<text x="${xs(0.38)}" y="${T + 14}" text-anchor="middle">incomplete repair</text><text x="${xs(0.975)}" y="${T + 14}" text-anchor="middle">complete</text>`;
+  const lx = xs(1.55), ly = ys(Math.min(ymax * 0.12, pts[150][1] * 0.4));
+  s += `<text x="${lx}" y="${ly}" text-anchor="middle" style="fill:${col('--amber')};font-weight:600">${r.cont ? 'B beats D' : 'B beats A'} below the line</text>`;
+  const px = xs(f), py = ys(rc);
+  s += `<circle cx="${px}" cy="${py}" r="7" fill="${r.margin > 0 ? col('--amber') : col('--teal')}" stroke="${col('--panel')}" stroke-width="2.5"/>`;
+  s += `<text x="${px + (f > 1.6 ? -12 : 12)}" y="${py - 10}" text-anchor="${f > 1.6 ? 'end' : 'start'}" style="fill:${col('--ink')};font-weight:600">your process</text>`;
+  s += `<text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle" style="fill:${col('--ink')}">Cycle-life ratio, regenerated / pristine</text>`;
+  s += `<text transform="translate(16 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle" style="fill:${col('--ink')}">Regeneration cost, USD per kg CAM</text>`;
+  svg.innerHTML = s;
+}
+function setSeg(box, val) { [...box.children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v == String(val)))); }
+sohBox.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; soh = parseFloat(b.dataset.v); setSeg(sohBox, b.dataset.v); loadDefaults(); render(); });
+$('bnd').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; bnd = b.dataset.v; setSeg($('bnd'), bnd); loadDefaults(); render(); });
+$('route').addEventListener('change', () => { loadDefaults(); render(); });
+$('fr').addEventListener('input', () => { $('f').value = $('fr').value; render(); });
+$('f').addEventListener('input', () => { $('fr').value = $('f').value; render(); });
+['rc', 'v', 'rep', 'vc', 'cc', 'rho'].forEach(id => $(id).addEventListener('input', render));
+$('reset').addEventListener('click', () => { loadDefaults(); render(); });
+setSeg(sohBox, '0.8'); loadDefaults(); render();
+try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render); new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); } catch (e) {}
+
+</script>
+</body>
+</html>
