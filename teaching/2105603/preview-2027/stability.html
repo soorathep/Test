@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Liquid stability and LLE · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="A graduate liquid-stability investigation: verify a liquid split, separate local from global evidence, test parameter sensitivity and compare model forms.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab04-1">
+</head>
+<body>
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 04 · Graduate investigation · Liquid stability and LLE</p><h1>Is one homogeneous liquid the lowest Gibbs energy?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary liquid feed at fixed temperature and pressure follows the symmetric Margules model with A = 3. The feed contains 0.50 mol of component 1.</p><p class="task-question">Verify the controlled starting case, then separate local from global stability evidence, test how sensitive the split is to the model parameter, and ask what the model form itself decides.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <p class="graduate-note"><strong>Graduate route.</strong> Complete Steps 1–3 to verify the calculation. In Step 4, compare local and global evidence, run bounded parameter scenarios and compare model forms matched at infinite dilution. Finish with evidence-backed claims. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+    <p id="import-note" class="route-note" hidden></p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a feed</strong><span>Named cases keep A = 3 and change only z₁. Predict each state before you calculate.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · z₁ = 0.50</button><button type="button" data-case="dilute" aria-pressed="false">Dilute feed · z₁ = 0.12</button><button type="button" data-case="very-dilute" aria-pressed="false">Very dilute feed · z₁ = 0.02</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Picture a liquid split</h2><span class="section-help">Composition and amount answer different questions</span></div>
+      <svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="split-title split-description">
+        <title id="split-title">A homogeneous liquid feed can separate into two liquid layers</title>
+        <desc id="split-description">One liquid feed enters a vessel at fixed temperature and pressure. When two liquids coexist, a component-1-poor liquid alpha and a component-1-rich liquid beta form separate layers.</desc>
+        <defs><marker id="split-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="split-clip"><rect x="304" y="20" width="140" height="140" rx="34"/></clipPath></defs>
+        <rect x="28" y="65" width="130" height="50" rx="12" class="sketch-feed"/>
+        <path d="M 158 90 H 294" class="sketch-pipe" marker-end="url(#split-arrow)"/>
+        <g clip-path="url(#split-clip)"><rect x="304" y="20" width="140" height="70" class="sketch-beta-fill"/><rect x="304" y="90" width="140" height="70" class="sketch-alpha-fill"/><path d="M 304 90 H 444" class="sketch-interface"/></g>
+        <rect x="304" y="20" width="140" height="140" rx="34" class="sketch-drum"/>
+        <path d="M 444 48 H 584" class="sketch-pipe" marker-end="url(#split-arrow)"/>
+        <path d="M 444 132 H 584" class="sketch-pipe" marker-end="url(#split-arrow)"/>
+        <rect x="600" y="22" width="132" height="52" rx="12" class="sketch-beta-fill"/><rect x="600" y="106" width="132" height="52" rx="12" class="sketch-alpha-fill"/>
+        <g class="sketch-label"><text x="93" y="97">Feed</text><text x="666" y="55">Liquid β</text><text x="666" y="139">Liquid α</text></g>
+      </svg>
+      <div class="picture-key"><div><strong>Feed · z₁</strong><p>Of all feed moles, what fraction is component 1?</p></div><div><strong>Liquid α · x₁<sup>α</sup> and f<sub>α</sub></strong><p>The component-1-poor liquid. f<sub>α</sub> is its share of the feed moles.</p></div><div><strong>Liquid β · x₁<sup>β</sup> and f<sub>β</sub></strong><p>The component-1-rich liquid. f<sub>β</sub> is its share of the feed moles.</p></div></div>
+      <figcaption>Which layer is on top depends on density, which this model does not calculate. For a 1 mol feed, f<sub>α</sub> + f<sub>β</sub> = 1. Your calculation may instead find one liquid.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the model and feed</h2><span class="condition">Basis · 1.00 mol feed · fixed T and P</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="lle-form" novalidate>
+          <label for="model">Liquid model</label><select id="model"><option value="symmetric">Margules · one parameter</option><option value="asymmetric">Margules · two parameters</option><option value="nrtl">NRTL · τ₁₂, τ₂₁, α</option></select>
+          <p id="model-note" class="input-help">The starting problem uses g<sup>E</sup>/RT = A x₁x₂ with A = 3.</p>
+          <div id="symmetric-control" class="parameter-fields"><label for="A">Margules A <span>dimensionless</span></label><input id="A" type="number" value="3" min="0" max="6" step="any" aria-describedby="A-help error-A"><p id="A-help" class="input-help">Range 0–6. A two-liquid region exists only for A &gt; 2.</p><p id="error-A" class="field-error" hidden></p></div>
+          <div id="asymmetric-control" class="parameter-fields coefficient-grid" hidden><div><label for="A12">A₁₂ <span>= ln γ₁∞</span></label><input id="A12" type="number" value="3.5" min="0" max="6" step="any" aria-describedby="error-A12"><p id="error-A12" class="field-error" hidden></p></div><div><label for="A21">A₂₁ <span>= ln γ₂∞</span></label><input id="A21" type="number" value="2.5" min="0" max="6" step="any" aria-describedby="error-A21"><p id="error-A21" class="field-error" hidden></p></div></div>
+          <div id="nrtl-control" class="parameter-fields" hidden>
+            <div class="coefficient-grid"><div><label for="tau12">τ₁₂ <span>dimensionless</span></label><input id="tau12" type="number" value="3" min="-2" max="6" step="any" aria-describedby="error-tau12"><p id="error-tau12" class="field-error" hidden></p></div><div><label for="tau21">τ₂₁ <span>dimensionless</span></label><input id="tau21" type="number" value="2" min="-2" max="6" step="any" aria-describedby="error-tau21"><p id="error-tau21" class="field-error" hidden></p></div></div>
+            <label for="alpha">Nonrandomness α <span>dimensionless</span></label><input id="alpha" type="number" value="0.3" min="0.1" max="0.6" step="any" aria-describedby="alpha-help error-alpha"><p id="alpha-help" class="input-help">τ values apply at one fixed temperature. Range: τ from −2 to 6, α from 0.1 to 0.6.</p><p id="error-alpha" class="field-error" hidden></p>
+          </div>
+          <div class="feed-inputs single-feed"><div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.5" min="0" max="1" step="any" aria-describedby="z-unit feed-help error-z"><span id="z-unit">mol/mol</span></div><p id="feed-help" class="input-help">Enter a fraction from 0 to 1. For this 1 mol feed, z₁ = 0.50 means 0.50 mol of component 1.</p><p id="error-z" class="field-error" hidden></p></div></div>
+          <div class="prediction-row"><label for="prediction">Before calculating, what is the equilibrium state?</label><select id="prediction" aria-describedby="prediction-help"><option value="">Not sure yet</option><option value="one liquid">One liquid</option><option value="two liquids">Two liquids</option></select><label for="prediction-local">How will the homogeneous feed respond to a small composition fluctuation?</label><select id="prediction-local"><option value="">Not sure yet</option><option value="resists">It resists (positive curvature)</option><option value="grows">It grows (negative curvature)</option></select><p id="prediction-help" class="input-help">Predictions are optional and do not change the calculation. For symmetric Margules, g″(z₁) = 1/[z₁(1 − z₁)] − 2A gives the local clue.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Calculate equilibrium</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model assumptions</summary><p>The liquid model gives the dimensionless mixing Gibbs energy g = Δ<sub>mix</sub>G/(nRT) at one fixed temperature and pressure. Pure liquids are the standard states. The model contains no vapor phase, interfacial energy, nucleation barrier or kinetics, so a metastable feed can persist in practice even though the split has lower Gibbs energy.</p><p>Parameters are hypothetical teaching values unless imported from a fit. No physical temperature is assigned to A.</p><p><a href="../labs/stability.html#lle-experiment">Open the current Lab 04</a> for its original controls and the parameter map.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Identify the phases and amounts</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate the feed to see its phases, compositions, amounts and equilibrium checks.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="composition-metrics"><div><dt>Liquid α composition x₁<sup>α</sup></dt><dd id="result-xa">—</dd><p id="result-xa-note">Component-1-poor coexistence composition.</p></div><div><dt>Liquid β composition x₁<sup>β</sup></dt><dd id="result-xb">—</dd><p id="result-xb-note">Component-1-rich coexistence composition.</p></div><div><dt>Fraction of feed in liquid β · f<sub>β</sub></dt><dd id="result-fb">—</dd><p id="result-fb-note">Lever rule: f<sub>β</sub> = (z₁ − x₁<sup>α</sup>)/(x₁<sup>β</sup> − x₁<sup>α</sup>).</p></div></dl>
+          <dl class="phase-amounts"><div><dt>Liquid α amount</dt><dd><output id="result-na">—</output> <span>mol</span></dd></div><div><dt>Liquid β amount</dt><dd><output id="result-nb">—</output> <span>mol</span></dd></div></dl>
+          <dl class="boundary-metrics"><div><dt>Homogeneous feed label <span>local curvature and global tangent support</span></dt><dd id="result-state">—</dd></div><div><dt>Local curvature g″(z₁) <span>sign tests small fluctuations</span></dt><dd id="result-curvature">—</dd></div><div><dt>Minimum tangent-plane distance <span>global test against all trial liquids</span></dt><dd id="result-tpd">—</dd></div><div><dt>Gibbs energy decrease per RT <span>homogeneous minus equilibrium, per mol feed</span></dt><dd id="result-gain">—</dd></div></dl>
+          <div class="balance-readout"><strong>Component-balance residual</strong><output id="result-balance">—</output><span>mol of component 1 · 1 mol feed basis</span></div>
+          <div class="balance-readout"><strong>Chemical-potential equality residual</strong><output id="result-mu">—</output><span>largest |μ<sub>i</sub><sup>α</sup> − μ<sub>i</sub><sup>β</sup>|/RT between the present liquids</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · z₁ = 0.50" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the Gibbs-energy construction</h2><span class="section-help">Fixed T and P · 1 mol basis</span></div>
+      <div class="chart-toolbar"><label for="view">View</label><select id="view"><option value="gibbs">Gibbs energy and common tangent</option><option value="tpd">Tangent-plane distance from the feed</option><option value="curvature">Local curvature g″(x₁)</option><option value="map">Binodal and spinodal map · Margules</option></select></div>
+      <div id="lle-chart" class="vle-chart" role="img" aria-label="Stability diagram. Numerical results and curve data are provided below."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+      <details><summary>Inspect the numerical curve data</summary><div class="table-scroll" role="region" aria-label="Numerical Gibbs-energy curve" tabindex="0"><table><thead><tr><th scope="col">x₁</th><th scope="col">Homogeneous g</th><th scope="col">Equilibrium envelope g</th><th scope="col">g″</th></tr></thead><tbody id="curve-body"></tbody></table></div></details>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate what decides the split</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a feed in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="lle-limits-heading"><h3 id="lle-limits-heading">What these results can and cannot show</h3><ul><li>The model decides equilibrium at fixed T and P. It does not predict whether or how fast a metastable liquid separates, because it has no nucleation barrier, interfacial energy or kinetics.</li><li>The half-widths you enter are assumed scenario bounds, not measured uncertainties. Each sampled range is deterministic: it is not a probability, a confidence interval or a guaranteed global bound.</li><li>Models matched at infinite dilution are hypothetical comparisons. Agreement between them would not validate either one; disagreement shows what the dilute-limit data cannot decide.</li><li>This is a binary analysis. A third component or a vapor phase needs a multicomponent stability test (Lab 06 treats VLLE).</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="audit-heading"><h3 id="audit-heading">A. Separate local from global stability evidence</h3>
+        <ol class="graduate-checklist"><li>Load the dilute feed z₁ = 0.12 and calculate it. Compute g″(z₁) = 1/[z₁(1 − z₁)] − 2A by hand and compare it with the lab.</li><li>Run the audit. Compare the sign of the curvature with the minimum tangent-plane distance and the Gibbs energy decrease.</li><li>Repeat for z₁ = 0.50 and 0.02. Explain why positive curvature alone cannot establish that a liquid is stable.</li></ol>
+        <div class="graduate-actions"><button id="run-audit" class="primary-button" type="button" disabled>Compare local and global evidence</button></div>
+        <p id="audit-status" class="graduate-status" role="status"></p>
+        <div id="audit-wrap" class="table-scroll graduate-table" role="region" aria-label="Local and global stability evidence" tabindex="0" hidden><table><thead><tr><th scope="col">Feed z₁</th><th scope="col">Interpretation</th><th scope="col">g″(z₁)</th><th scope="col">Minimum TPD</th><th scope="col">Trial w₁ at minimum</th><th scope="col">Δg decrease</th><th scope="col">Homogeneous feed</th></tr></thead><tbody id="audit-body"></tbody></table></div>
+        <label for="note-local">Claim 1 · local versus global evidence</label><textarea id="note-local" rows="3" maxlength="10000" placeholder="Quote the curvature and minimum TPD for at least two feeds. State what each test can and cannot establish."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="sensitivity-heading"><h3 id="sensitivity-heading">B. Test how sensitive the split is to the model parameters</h3>
+        <ol class="graduate-checklist"><li>Enter an assumed half-width for each parameter and for z₁. Start with the illustrative values and explain why they are useful for this exercise.</li><li>Run the one-at-a-time scenarios and the signed joint corners. Compare the change in x₁<sup>α</sup> with the change in f<sub>β</sub>.</li><li>For symmetric Margules, compare the finite change in x₁<sup>α</sup> with the local derivative dx₁<sup>α</sup>/dA from the binodal equation.</li><li>Load the near-critical case A = 2.05 and rerun the same half-width. Explain why the phase count itself changes and why a local derivative cannot describe it.</li></ol>
+        <div id="bounds-grid" class="graduate-grid graduate-controls"></div>
+        <div class="graduate-actions"><button id="run-sensitivity" type="button" class="primary-button" disabled>Run the sensitivity scenarios</button><button id="near-critical" type="button" class="secondary-button">Load the near-critical case · A = 2.05</button></div>
+        <p id="sensitivity-status" class="graduate-status" role="status"></p>
+        <div id="sensitivity-results" hidden>
+          <dl class="graduate-metrics"><div><dt>Sampled joint-corner x₁<sup>α</sup> range</dt><dd id="range-xa">—</dd></div><div><dt>Sampled joint-corner f<sub>β</sub> range</dt><dd id="range-fb">—</dd></div></dl>
+          <p id="sensitivity-counts" class="graduate-note"></p>
+          <p id="sensitivity-derivative"></p>
+          <div class="table-scroll graduate-table" role="region" aria-label="One-factor effects" tabindex="0"><table><thead><tr><th scope="col">Input</th><th scope="col">Accepted / attempted</th><th scope="col">Largest |Δx₁<sup>α</sup>|</th><th scope="col">Largest |Δf<sub>β</sub>|</th><th scope="col">Phase count changes?</th></tr></thead><tbody id="effects-body"></tbody></table></div>
+          <details><summary>Inspect every scenario</summary><div class="table-scroll graduate-table" role="region" aria-label="All sensitivity scenarios" tabindex="0"><table><thead><tr><th scope="col">Scenario</th><th scope="col">Inputs</th><th scope="col">Phase or failure reason</th><th scope="col">Feed label</th><th scope="col">x₁<sup>α</sup></th><th scope="col">x₁<sup>β</sup></th><th scope="col">f<sub>β</sub></th></tr></thead><tbody id="scenario-body"></tbody></table></div></details>
+          <p class="graduate-note">Zero half-widths repeat the baseline state. A failed scenario is listed with its reason and is never replaced with a number.</p>
+        </div>
+        <label for="note-sensitivity">Claim 2 · parameter sensitivity and phase robustness</label><textarea id="note-sensitivity" rows="3" maxlength="10000" placeholder="State the half-widths, the most influential input, the sampled ranges, and compare A = 3 with A = 2.05."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="match-heading"><h3 id="match-heading">C. Ask what the model form decides</h3>
+        <ol class="graduate-checklist"><li>Use the current model to read its infinite-dilution limits ln γ₁∞ and ln γ₂∞.</li><li>Run the comparison. Each candidate reproduces exactly the same two limits, so dilute activity data cannot tell them apart.</li><li>Compare the coexistence compositions and the predicted phase count. Identify the data that would discriminate between the candidates.</li></ol>
+        <div class="graduate-actions"><button id="run-match" type="button" class="primary-button" disabled>Compare models with the same dilute limits</button></div>
+        <p id="match-status" class="graduate-status" role="status"></p>
+        <div id="match-wrap" class="table-scroll graduate-table" role="region" aria-label="Models matched at infinite dilution" tabindex="0" hidden><table><thead><tr><th scope="col">Model</th><th scope="col">Matched parameters</th><th scope="col">Phase at feed or failure reason</th><th scope="col">x₁<sup>α</sup></th><th scope="col">x₁<sup>β</sup></th><th scope="col">f<sub>β</sub></th></tr></thead><tbody id="match-body"></tbody></table></div>
+        <label for="note-model">Claim 3 · model form and the evidence needed</label><textarea id="note-model" rows="3" maxlength="10000" placeholder="Quote two candidates that share ln γ∞ but differ in x₁α or phase count. Name the measurement that would decide between them."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited, reproducible conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State a conclusion the evidence supports, one it cannot establish, and the measurement that would resolve the limitation."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">Submission standard: report the model and parameter provenance; cite numerical results from A, B and C; identify retained assumptions and failed scenarios; and propose a discriminating measurement. The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare, defend and save</h2></div>
+      <ol class="investigation-steps"><li>Calculate and save the three named feeds at A = 3. Confirm that the coexistence compositions stay fixed while f<sub>β</sub> changes.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Save the near-critical case and compare its phase count with the A = 3 cases.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved liquid-stability case comparison" tabindex="0" hidden><table><caption class="visually-hidden">Compositions and fractions are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">Model and parameters</th><th scope="col">Feed z₁</th><th scope="col">Feed label</th><th scope="col">Phase</th><th scope="col">x₁<sup>α</sup></th><th scope="col">x₁<sup>β</sup></th><th scope="col">f<sub>β</sub></th><th scope="col">Δg decrease</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note beyond the graduate evidence record."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate equilibrium.</p><p class="privacy-note">Your inputs, comparisons, scenario settings and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate the equilibrium state. The starting problem and investigation steps remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/stability-lab.js?v=lab04-1"></script>
+</body>
+</html>

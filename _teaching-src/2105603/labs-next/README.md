@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–03 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–04 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining nine lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 04 next. Lab 13 is the earlier reference prototype.
+the remaining eight lab interfaces are future work. Implementation proceeds in
+lab-number order, with Lab 05 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–03 now use a graduate teaching route. The foundation calculation is
+Labs 01–04 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -356,3 +356,23 @@ loads the course engine as an ES module, so use a local HTTP server.
 - GOV.UK error summary https://design-system.service.gov.uk/components/error-summary/
 - NIST uncertainty propagation https://physics.nist.gov/cuu/Uncertainty/combination.html
 - NIST expanded uncertainty and coverage https://physics.nist.gov/cuu/Uncertainty/coverage.html
+
+## Lab 04 prototype
+
+The starting problem uses 1 mol of a symmetric Margules liquid with A = 3 at fixed
+T and P. The named feeds z1 = 0.50, 0.12 and 0.02 match the post-midterm lesson and
+worksheet (unstable, metastable and stable homogeneous feeds; the labels are not
+shown before calculation). Students calculate the coexistence compositions, the
+lever-rule amounts, the Gibbs energy decrease, the local curvature and the global
+tangent-plane distance, then check the material balance and chemical-potential
+equality.
+
+The graduate route has three investigations. A compares local curvature with the
+global tangent-plane distance for several feeds. B runs deterministic one-at-a-time
+and signed-corner scenarios for the model parameters and feed, reports the closed-form
+binodal derivative for symmetric Margules, and repeats near the critical point
+(A = 2.05), where the phase count itself changes. C builds two-parameter Margules and
+NRTL candidates (alpha = 0.2, 0.3, 0.47) that reproduce the same infinite-dilution
+activity coefficients and compares their predicted splits. At A = 3, NRTL with
+alpha = 0.47 predicts no miscibility gap, so dilute activity data cannot decide the
+LLE. Lab 02 fits link into Lab 04 with their constant tau values.

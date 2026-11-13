@@ -12,7 +12,7 @@
 </head>
 <body>
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
-  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
   <main class="page" id="experiment">
     <div class="page-intro">
       <div><p class="eyebrow">Lab 01 · Master's investigation · VLE and flash</p><h1>How credible is your predicted phase split?</h1><p id="case-description" class="intro-copy">A 1.00 mol binary feed at 350 K and 90 kPa contains 0.40 mol of component 1. Assume ideal vapor and ideal liquid.</p><p id="case-task" class="task-question">Verify the controlled starting case, then audit the assumptions and test how sensitive the conclusion is to uncertain inputs.</p></div>
@@ -98,7 +98,7 @@
               <label for="temperatureMode">Temperature assumption</label><select id="temperatureMode"><option value="fixed">Parameters valid at the reference temperature</option><option value="constant">Assume τ stays constant over this temperature range</option></select>
               <label for="referenceT">Parameter reference temperature / K</label><input id="referenceT" type="number" value="350" step="any" aria-describedby="error-referenceT"><p id="error-referenceT" class="field-error" hidden></p>
             </div>
-            <div id="stability-route" class="route-note" hidden><p>These liquid parameters need a liquid-stability investigation.</p><p><a href="../labs/stability.html#lle-experiment">Open Lab 04 · liquid stability</a> · <a href="../labs/vlle.html#vl-experiment">Open Lab 06 · VLLE</a></p></div>
+            <div id="stability-route" class="route-note" hidden><p>These liquid parameters need a liquid-stability investigation.</p><p><a href="stability.html">Open Lab 04 · liquid stability</a> · <a href="../labs/vlle.html#vl-experiment">Open Lab 06 · VLLE</a></p></div>
           </details>
           <details class="advanced"><summary>Try the bubble and dew boundaries</summary><p>Each case loads the synthetic ideal feed at 350 K and z₁ = 0.40. Predict the amount of the phase that is just appearing.</p><div class="case-buttons secondary-cases"><button type="button" data-case="bubble" aria-pressed="false">Bubble boundary · 96 kPa</button><button type="button" data-case="dew" aria-pressed="false">Dew boundary · 78.947… kPa</button></div></details>
           <details class="advanced"><summary>VLE model assumptions</summary><p>Vapor is ideal. The activity standard state is the pure liquid at the system temperature. The pressure correction and saturated-vapor fugacity correction are set to one. Calculations use a convex liquid model in the supported range.</p><p><a href="../labs/#experiment">Open the full Lab 01</a> for the original temperature diagrams, solver traces and transferred-fit controls.</p></details>

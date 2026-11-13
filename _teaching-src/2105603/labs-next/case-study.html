@@ -8,7 +8,7 @@
 </head>
 <body>
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
-  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="consistency.html">Lab 03</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
   <main class="page case-page" id="experiment">
     <div class="page-intro"><div><p class="eyebrow">Lab 02 · Experimental VLE and model evidence</p><h1>Defend a model using thermodynamic evidence.</h1><p class="intro-copy">Graduate investigation: establish a 60 kPa NRTL fit as a control, check it at 80 kPa, then test how measurement bounds and fixed modeling assumptions affect your conclusion.</p><p class="task-question">Complete the guided baseline, then G1–G3. Submit an assumption audit, two numerical sensitivity comparisons and a defended decision about model use.</p></div><p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p></div>
 
@@ -111,7 +111,7 @@
             <div class="table-scroll graduate-table" role="region" aria-label="Fixed alpha parameter and prediction sensitivity" tabindex="0"><table><thead><tr><th scope="col">Fixed α</th><th scope="col">τ<sub>12</sub></th><th scope="col">τ<sub>21</sub></th><th scope="col">Training RMSE in ln γ</th><th scope="col">Checking RMSE in ln γ</th><th scope="col">Converged</th><th scope="col">At bound</th><th scope="col">Minimum sampled liquid curvature (measured T range)</th><th scope="col">Status / interpretation</th></tr></thead><tbody id="g2-alpha-body"></tbody></table></div>
                         <p class="graduate-note">If you choose α by inspecting the checking errors, that pressure has become model-selection data. It was excluded from each two-parameter fit, but it is no longer an untouched final test of the chosen α. Obtain another independent test set or use appropriately nested validation before claiming final predictive performance.</p>
           </div>
-          <p>Any fit with nonpositive sampled liquid curvature can be investigated in <a href="../labs/stability.html#lle-experiment">Lab 04 (current course version)</a>. The 2027 version of Lab 04 is not yet available.</p><p><strong>Analysis question.</strong> Can similar predictive errors accompany different parameter values? State what this supports, then propose the additional data or parameter-profile study needed before claiming parameter identifiability or a statistical confidence interval.</p>
+          <p>Any fit with nonpositive sampled liquid curvature can be investigated in <a href="stability.html">Lab 04</a>. After a fit, Step 4 links your retained parameters directly to Lab 04.</p><p><strong>Analysis question.</strong> Can similar predictive errors accompany different parameter values? State what this supports, then propose the additional data or parameter-profile study needed before claiming parameter identifiability or a statistical confidence interval.</p>
         </section>
         <section class="graduate-step graduate-reflections" aria-labelledby="g2-decision-heading">
           <h3 id="g2-decision-heading">G3. Defend a model-use decision</h3>
@@ -132,6 +132,6 @@
     </form>
     <noscript><p class="error-summary">Enable JavaScript for calculation and fitting. The starting problem, equations and investigation steps remain available to read.</p></noscript>
   </main><footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="../labs/case-study.html">Original Lab 02 · full consistency case study</a></footer>
-  <script src="../labs/assets/plotly.min.js" defer></script><script type="module" src="assets/case.js?v=review-1"></script>
+  <script src="../labs/assets/plotly.min.js" defer></script><script type="module" src="assets/case.js?v=review-2"></script>
 </body>
 </html>

@@ -580,6 +580,13 @@ function renderResult() {
     + (check.minSampledScaledCurvature > 0 ? 'Positive on the sampled grid; this is not a global stability proof.'
       : 'Nonpositive curvature was detected. Homogeneous bubble-curve points may be unstable; this lab does not solve LLE.')
     + ' This checks the model equation and does not certify the experimental data.');
+  const checkNote = element('model-check-note');
+  if (checkNote && inputs.model === 'fit') {
+    const p = a.parameters, link = document.createElement('a');
+    link.href = 'stability.html?model=nrtl&from=lab02&tau12=' + p.a12.toFixed(6) + '&tau21=' + p.a21.toFixed(6) + '&alpha=' + p.alpha + '&z=0.5';
+    link.textContent = 'Check this fitted model for liquid splitting in Lab 04';
+    checkNote.append(' ', link, '.');
+  }
   const steps = [
     'Infer ln γ₁ and ln γ₂ only for interior observations within both Antoine ranges. Keep every original measurement visible in the data table.',
     (inputs.model === 'fit' ? 'Fit two constant τ values using only ' + a.train.label
@@ -636,8 +643,8 @@ function plotNote(message, analysis) {
   if (unstable) {
     note.append(document.createTextNode(' Nonpositive liquid curvature was detected on the sampled grid within the measured temperature range. These are homogeneous model candidates and may not be stable equilibrium branches. '));
     const link = document.createElement('a');
-    link.href = '../labs/stability.html#lle-experiment';
-    link.textContent = 'Investigate liquid stability in Lab 04 (current course version)';
+    link.href = 'stability.html' + (analysis.parameters?.b12 === 0 ? '?model=nrtl&from=lab02&tau12=' + analysis.parameters.a12.toFixed(6) + '&tau21=' + analysis.parameters.a21.toFixed(6) + '&alpha=' + analysis.parameters.alpha : '');
+    link.textContent = 'Investigate liquid stability in Lab 04';
     note.append(link);
   }
 }

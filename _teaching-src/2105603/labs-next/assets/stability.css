@@ -1,0 +1,24 @@
+@import url("./vle.css");
+@import url("./graduate.css");
+
+.sketch-alpha-fill { fill: var(--soft-teal); stroke: var(--teal); stroke-width: 1.5; }
+.sketch-beta-fill { fill: var(--soft-sand); stroke: var(--amber); stroke-width: 1.5; }
+.sketch-interface { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; }
+.single-feed { grid-template-columns: 1fr; margin-top: 18px; }
+.setup-panel > form > label:first-child { margin-top: 0; }
+.prediction-row label + select { margin-bottom: 12px; }
+.chart-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 6px 0 14px; }
+.chart-toolbar label { margin: 0; font-weight: 600; }
+.chart-toolbar select { width: auto; max-width: 100%; }
+.plot-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 10px 0 6px; font-size: .88rem; }
+.plot-legend span { display: inline-flex; align-items: center; gap: 9px; }
+.plot-legend i { width: 28px; border-top: 2px solid; display: inline-block; flex-shrink: 0; }
+.plot-legend i.legend-dot { width: 10px; height: 10px; border: 2px solid; border-radius: 50%; }
+.boundary-metrics dd { white-space: normal; text-align: right; }
+.state-label { text-transform: capitalize; }
+#import-note { margin: 16px 0; }
+@media (max-width: 600px) {
+  .boundary-metrics dd { text-align: left; }
+}
+.highlight-row td { background: var(--soft-sand); }
+#lle-chart { max-width: 100%; overflow: hidden; }
