@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–06 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–07 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining six lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 07 next. Lab 13 is the earlier reference prototype.
+the remaining five lab interfaces are future work. Implementation proceeds in
+lab-number order, with Lab 08 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–06 now use a graduate teaching route. The foundation calculation is
+Labs 01–07 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -415,3 +415,17 @@ for z1 = 0.50) and the two-phase states at 140 and 100 kPa. The graduate route f
 the amounts with a vapor specification, sweeps 90–140 kPa across P3, and varies
 P1sat/P2sat at P2sat = 10 kPa; for symmetric Margules y1 = r/(1 + r) leaves the gap
 when r exceeds about 13.1.
+
+## Lab 07 prototype
+
+The starting problem is the Lab 01 synthetic ideal mixture, z1 = 0.40, fed as a
+compressed liquid at 370 K and flashed adiabatically to 90 kPa. The outlet is at
+348.47 K with beta = 0.0755, just above the feed bubble temperature of 347.95 K.
+With equal liquid and vapor heat capacities the energy balance reduces to
+Cp(TF − T) = beta Δhvap(y), which the paper check reproduces exactly. Two figures show
+the valve-and-drum process and the enthalpy bookkeeping (sensible +2240 J/mol at the
+feed; sensible −172 and latent +2412 J/mol at the outlet). Core questions ask why the
+outlet is colder, why so little vaporizes, and what feed temperature or heater duty
+would reach the Lab 01 state (436 K, or Q = 7427 J/mol from a 370 K feed). The graduate
+route sweeps the feed temperature, compares ideal and Margules A = ±1 liquids, and
+computes the heater duty for a target vapor amount.

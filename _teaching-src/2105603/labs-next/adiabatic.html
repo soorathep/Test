@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Adiabatic flash · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Adiabatic flash: the energy balance replaces the temperature specification and fixes how much liquid vaporizes.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab07-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 07 · Adiabatic flash</p><h1>How much liquid flashes when no heat is added?</h1><p id="case-description" class="intro-copy">The Lab 01 mixture, z₁ = 0.40, enters as a compressed liquid at 370 K and flashes to 90 kPa through a valve. No heat is added or removed.</p><p class="task-question">Find the outlet temperature and vapor amount, then explain where the energy to vaporize comes from.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the energy balance and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus a feed-temperature sweep, a liquid-model comparison and the heater duty in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 to verify the energy balance. In Step 4, find where the flash begins, compare liquid models and calculate the heater duty that replaces Q = 0. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a feed</strong><span>All named cases use the Lab 01 synthetic ideal mixture with z₁ = 0.40.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 370 K feed to 90 kPa</button><button type="button" data-case="hotter" aria-pressed="false">Hotter feed · 390 K</button><button type="button" data-case="cooler" aria-pressed="false">Cooler feed · 340 K</button><button type="button" data-case="lower-p" aria-pressed="false">Lower outlet pressure · 60 kPa</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Picture an adiabatic flash</h2><span class="section-help">Energy, not temperature, is specified</span></div>
+      <div class="vlle-figures">
+        <div>
+          <svg class="process-sketch" viewBox="0 0 520 220" role="img" aria-labelledby="flash-title flash-description">
+            <title id="flash-title">A hot compressed liquid passes a valve into an insulated flash drum</title>
+            <desc id="flash-description">The liquid feed at 370 kelvin passes a pressure-reducing valve into an insulated drum at 90 kilopascals with no heat transfer. Vapor leaves at the top and liquid at the bottom, both at the outlet temperature.</desc>
+            <defs><marker id="ad-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="ad-drum"><rect x="250" y="30" width="110" height="160" rx="30"/></clipPath></defs>
+            <rect x="10" y="88" width="110" height="46" rx="12" class="sketch-liquid-fill sketch-feed-hot"/>
+            <path d="M120 111 H160" class="sketch-pipe"/><path d="M160 98 L184 124 V98 L160 124 Z" class="sketch-valve"/><path d="M184 111 H240" class="sketch-pipe" marker-end="url(#ad-arrow)"/>
+            <g clip-path="url(#ad-drum)"><rect x="250" y="30" width="110" height="100" class="sketch-vapor-fill"/><rect x="250" y="130" width="110" height="60" class="sketch-liquid-fill"/><g class="sketch-vapor-dots"><circle cx="280" cy="60" r="5"/><circle cx="318" cy="52" r="5"/><circle cx="300" cy="95" r="5"/><circle cx="338" cy="80" r="5"/></g></g>
+            <rect x="250" y="30" width="110" height="160" rx="30" class="sketch-drum sketch-insulated"/>
+            <path d="M360 62 H440" class="sketch-pipe" marker-end="url(#ad-arrow)"/><path d="M360 160 H440" class="sketch-pipe" marker-end="url(#ad-arrow)"/>
+            <g class="sketch-label"><text x="65" y="117">Feed</text><text x="480" y="67">Vapor</text><text x="480" y="165">Liquid</text></g>
+            <g class="sketch-note"><text x="65" y="76">370 K · liquid</text><text x="172" y="88">valve</text><text x="305" y="212">Q = 0 · 90 kPa</text><text x="65" y="156">z₁ = 0.40</text></g>
+          </svg>
+          <p class="figure-caption">Lab 01 specified T and P. Here P and the energy balance (Q = 0) are specified, and the outlet temperature is unknown.</p>
+        </div>
+        <div>
+          <svg class="energy-sketch" viewBox="0 0 440 240" role="img" aria-labelledby="energy-title energy-description">
+            <title id="energy-title">Enthalpy of the feed and of the outlet relative to liquid at 350 K</title>
+            <desc id="energy-description">The feed carries 2240 joules per mole of sensible enthalpy above the 350 kelvin liquid reference. At the outlet, the sensible enthalpy is minus 172 joules per mole because the outlet is colder than 350 kelvin, and the latent enthalpy of the vapor formed is 2412 joules per mole. Both totals equal 2240 joules per mole.</desc>
+            <path d="M50 170 H410" class="pxy-axis"/>
+            <rect x="90" y="58" width="90" height="112" class="energy-sensible"/>
+            <rect x="270" y="49" width="90" height="121" class="energy-latent"/><rect x="270" y="170" width="90" height="9" class="energy-sensible"/>
+            <path d="M80 58 H380" class="energy-total"/>
+            <g class="energy-text"><text x="135" y="118">sensible</text><text x="135" y="136">+2240</text><text x="315" y="104">latent</text><text x="315" y="122">+2412</text><text x="315" y="198">sensible −172</text></g>
+            <g class="pxy-axis-label"><text x="135" y="225">Feed · 370 K</text><text x="315" y="225">Outlet · 348.5 K</text></g>
+            <g class="pxy-tick"><text x="44" y="174" text-anchor="end">0</text><text x="44" y="62" text-anchor="end">2240</text></g>
+            <text x="222" y="40" class="energy-caption">Total h = 2240 J mol⁻¹ on both sides</text>
+          </svg>
+          <p class="figure-caption">Calculated for the starting case. Enthalpy is relative to liquid at 350 K. Cooling the whole 1 mol stream by 21.5 K releases the 2412 J needed to vaporize 0.0755 mol.</p>
+        </div>
+      </div>
+      <figcaption>Because liquid and vapor have the same heat capacities here, the energy balance reduces to C<sub>p</sub>(T<sub>F</sub> − T) = β Δh<sub>vap</sub>(y): sensible heat lost equals latent heat gained.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the feed and outlet pressure</h2><span class="condition">Basis · 1.00 mol feed · Q = 0</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="ad-form" novalidate>
+          <div class="feed-inputs"><div><label for="feedT">Liquid feed temperature T<sub>F</sub></label><div class="quantity-input"><input id="feedT" type="number" value="370" min="300" max="390" step="any" aria-describedby="feedT-unit error-feedT"><span id="feedT-unit">K</span></div><p id="error-feedT" class="field-error" hidden></p></div><div><label for="P">Outlet pressure</label><div class="quantity-input"><input id="P" type="number" value="90" min="1" max="200" step="any" aria-describedby="P-unit error-P"><span id="P-unit">kPa</span></div><p id="error-P" class="field-error" hidden></p></div><div class="feed-fraction"><label for="z">Component 1 feed mole fraction z₁</label><div class="quantity-input"><input id="z" type="number" value="0.4" min="0" max="1" step="any" aria-describedby="z-unit error-z"><span id="z-unit">mol/mol</span></div><p id="error-z" class="field-error" hidden></p></div></div>
+          <p class="input-help">The feed is a compressed liquid upstream of the valve. Property range 300–390 K.</p>
+          <label for="model">Liquid model</label><select id="model"><option value="ideal">Ideal liquid (as in Lab 01)</option><option value="margules">Margules · one parameter</option><option value="margules2">Margules · two parameters</option><option value="nrtl">NRTL · constant τ</option></select>
+          <div id="margules-control" class="parameter-fields" hidden><label for="A">Margules A</label><input id="A" type="number" value="1" min="-1" max="1.8" step="any" aria-describedby="error-A"><p id="error-A" class="field-error" hidden></p></div>
+          <div id="margules2-control" class="parameter-fields coefficient-grid" hidden><div><label for="A12">A₁₂</label><input id="A12" type="number" value="1.5" min="-1" max="3" step="any" aria-describedby="error-A12"><p id="error-A12" class="field-error" hidden></p></div><div><label for="A21">A₂₁</label><input id="A21" type="number" value="0.5" min="-1" max="3" step="any" aria-describedby="error-A21"><p id="error-A21" class="field-error" hidden></p></div></div>
+          <div id="nrtl-control" class="parameter-fields" hidden><div class="coefficient-grid"><div><label for="tau12">τ₁₂</label><input id="tau12" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau12"><p id="error-tau12" class="field-error" hidden></p></div><div><label for="tau21">τ₂₁</label><input id="tau21" type="number" value="0.5" min="-2" max="6" step="any" aria-describedby="error-tau21"><p id="error-tau21" class="field-error" hidden></p></div></div><label for="alpha">Nonrandomness α</label><input id="alpha" type="number" value="0.3" min="0.1" max="0.6" step="any" aria-describedby="error-alpha"><p id="error-alpha" class="field-error" hidden></p></div>
+          <div class="prediction-row"><label for="prediction">Before calculating, how will the outlet temperature compare with the feed?</label><select id="prediction"><option value="">Not sure yet</option><option value="lower">Lower than the feed</option><option value="same">The same as the feed</option><option value="higher">Higher than the feed</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button" disabled>Calculate the adiabatic flash</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Caloric model and assumptions</summary><p>Enthalpies are relative to the pure liquids at 350 K. C<sub>p,1</sub> = 100 and C<sub>p,2</sub> = 120 J mol⁻¹ K⁻¹ in both phases; Δh<sub>vap,1</sub> = 30 000 and Δh<sub>vap,2</sub> = 35 000 J mol⁻¹, the same constants as the Lab 01 vapor-pressure laws. The vapor is ideal. Activity parameters are held constant, so the consistent excess enthalpy is zero. Pressure effects on liquid enthalpy, heat loss and shaft work are neglected.</p><p><a href="../labs/adiabatic.html#af-experiment">Open the current Lab 07</a> for a specified-enthalpy feed and the solver iterations.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Read the outlet state and the energy balance</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate the flash to see the outlet temperature, the vapor amount and the energy balance.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <dl class="composition-metrics"><div><dt>Outlet temperature T</dt><dd id="result-T">—</dd><p id="result-T-note">K</p></div><div><dt>Vapor amount β</dt><dd id="result-beta">—</dd><p>mol vapor per mol feed</p></div><div><dt>Liquid x₁ and vapor y₁</dt><dd id="result-xy">—</dd><p>Fixed by T and P, as in Lab 01.</p></div></dl>
+          <dl class="boundary-metrics"><div><dt>Feed enthalpy h<sub>F</sub> <span>relative to liquid at 350 K</span></dt><dd id="result-hf">—</dd></div><div><dt>Outlet enthalpy <span>(1 − β)h<sub>L</sub> + βh<sub>V</sub></span></dt><dd id="result-hout">—</dd></div><div><dt>Bubble temperature of the feed <span>at the outlet pressure</span></dt><dd id="result-tb">—</dd></div></dl>
+          <div class="balance-readout"><strong>Energy residual</strong><output id="result-res">—</output><span>J mol⁻¹ · outlet minus feed</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 370 K feed to 90 kPa" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the energy balance</h2><span class="section-help">Outlet enthalpy against temperature</span></div>
+      <div id="ad-chart" class="vle-chart" role="img" aria-label="Outlet enthalpy against outlet temperature with the feed enthalpy. Numbers are given in Step 2."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note">The teal curve is the enthalpy of the equilibrium outlet at each trial temperature. It rises steeply where vapor forms. The amber line is the feed enthalpy. With Q = 0 the outlet must sit where they cross.</p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Why is the outlet colder than the feed?</h3><p>Calculate the starting case and compare T with T<sub>F</sub>.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Explain where the energy to vaporize comes from when Q = 0."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The outlet is at 348.47 K, 21.5 K below the 370 K feed. Vaporizing 0.0755 mol needs 0.0755 × 31 951 = 2412 J. With no heat supplied, that energy comes from the stream itself: cooling 1 mol by 21.5 K releases 112 × 21.5 = 2412 J.</p><p>The outlet settles just above the feed's bubble temperature at 90 kPa (347.95 K), where the remaining liquid is saturated.</p></div></details></div>
+      <div class="concept-question"><h3>B. Why does so little of the feed vaporize?</h3><p>Compare the starting case with “Hotter feed · 390 K”. How much more vapor does 20 K of extra feed temperature buy?</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Compare the heat capacity with the latent heat."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>β rises from 0.0755 to 0.1436 mol. From C<sub>p</sub>(T<sub>F</sub> − T) = β Δh<sub>vap</sub>, each kelvin of superheat vaporizes only about C<sub>p</sub>/Δh<sub>vap</sub> = 112/32 000 ≈ 0.0035 mol per mol of feed.</p><p>Latent heats are roughly 300 times larger than heat capacities, so an adiabatic flash of a liquid usually vaporizes only a small fraction.</p></div></details></div>
+      <div class="concept-question"><h3>C. What would it take to reach the Lab 01 state?</h3><p>Lab 01 found β = 0.30 at 350 K and 90 kPa for the same feed. Use the energy balance to estimate the feed temperature that would give this state with Q = 0.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Write the energy balance for T = 350 K and β = 0.30 and solve for T_F."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>At 350 K the vapor has y₁ = 0.5556, so Δh<sub>vap</sub>(y) = 32 222 J mol⁻¹. Then T<sub>F</sub> = 350 + 0.30 × 32 222/112 = 436 K, outside the 300–390 K property range.</p><p>In practice the same state is reached from a 370 K feed by adding heat: Q = h<sub>out</sub> − h<sub>F</sub> = 9667 − 2240 = 7427 J per mol of feed. Specifying T (Lab 01), Q (here) or β (Lab 06) are interchangeable ways to close the problem.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate what the energy balance decides</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="ad-limits-heading"><h3 id="ad-limits-heading">What these results can and cannot show</h3><ul><li>The caloric model is synthetic: equal liquid and vapor heat capacities, constant latent heats, and zero excess enthalpy because the activity parameters do not depend on temperature.</li><li>A real mixture with temperature-dependent activity coefficients has h<sup>E</sup> ≠ 0, which changes the energy balance.</li><li>The flash is an equilibrium stage. It does not describe the time or the drum size needed to separate the phases.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="sweep-heading"><h3 id="sweep-heading">A. Find where the flash begins</h3>
+        <ol class="graduate-checklist"><li>Run the sweep of feed temperatures from 330 to 390 K at the current pressure and feed.</li><li>Identify the feed temperature below which no vapor forms, and compare it with the bubble temperature of the feed.</li><li>Explain why β rises almost linearly with T<sub>F</sub> while the outlet temperature barely moves.</li></ol>
+        <div class="graduate-actions"><button id="run-sweep" class="primary-button" type="button" disabled>Sweep feed temperatures</button></div>
+        <p id="sweep-status" class="graduate-status" role="status"></p>
+        <div id="sweep-wrap" class="table-scroll graduate-table" role="region" aria-label="Feed temperature sweep" tabindex="0" hidden><table><thead><tr><th scope="col">T<sub>F</sub> / K</th><th scope="col">Outlet phases</th><th scope="col">Outlet T / K</th><th scope="col">β / mol</th></tr></thead><tbody id="sweep-body"></tbody></table></div>
+        <label for="note-sweep">Claim 1 · where the flash begins</label><textarea id="note-sweep" rows="3" maxlength="10000" placeholder="Quote the bubble temperature, the threshold feed temperature and the slope of β with T_F."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="models-heading"><h3 id="models-heading">B. Compare liquid models</h3>
+        <ol class="graduate-checklist"><li>Run the same feed and pressure with an ideal liquid and with Margules A = −1 and +1.</li><li>Compare the bubble temperature, the outlet temperature and β.</li><li>Explain the direction of each change from the activity coefficients, and why h<sup>E</sup> = 0 here.</li></ol>
+        <div class="graduate-actions"><button id="run-models" type="button" class="primary-button" disabled>Compare three liquid models</button></div>
+        <p id="models-status" class="graduate-status" role="status"></p>
+        <div id="models-wrap" class="table-scroll graduate-table" role="region" aria-label="Liquid model comparison" tabindex="0" hidden><table><thead><tr><th scope="col">Liquid model</th><th scope="col">Bubble T / K</th><th scope="col">Outlet T / K</th><th scope="col">β / mol</th><th scope="col">x₁</th><th scope="col">y₁</th></tr></thead><tbody id="models-body"></tbody></table></div>
+        <label for="note-models">Claim 2 · effect of nonideality</label><textarea id="note-models" rows="3" maxlength="10000" placeholder="Quote the outlet temperature and β for two models and explain the direction."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="duty-heading"><h3 id="duty-heading">C. Replace Q = 0 with a heater duty</h3>
+        <ol class="graduate-checklist"><li>Choose a target vapor amount and calculate the outlet temperature and the heat duty Q needed from the current feed.</li><li>Check that β = 0.30 reproduces the Lab 01 state at 90 kPa.</li><li>Explain why specifying T, Q or β each closes the same problem.</li></ol>
+        <div class="graduate-grid graduate-controls"><div><label for="target-beta">Target vapor amount β</label><div class="quantity-input"><input id="target-beta" type="number" value="0.3" min="0.01" max="0.99" step="any" aria-describedby="target-unit"><span id="target-unit">mol</span></div></div></div>
+        <div class="graduate-actions"><button id="run-duty" type="button" class="primary-button" disabled>Calculate the heater duty</button></div>
+        <p id="duty-status" class="graduate-status" role="status"></p>
+        <label for="note-duty">Claim 3 · the specification that closes the flash</label><textarea id="note-duty" rows="3" maxlength="10000" placeholder="Quote Q for your target and compare with the adiabatic result."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State what the energy balance fixes, which assumption matters most, and the data that would test it."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Compare the outlet temperature and β across feed temperatures and pressures.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved adiabatic flash cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">T<sub>F</sub> / K</th><th scope="col">P / kPa</th><th scope="col">Liquid model</th><th scope="col">Outlet T / K</th><th scope="col">β / mol</th><th scope="col">x₁, y₁</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Loading the property record…</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate the flash. The figures and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/adiabatic-lab.js?v=lab07-1"></script>
+</body>
+</html>

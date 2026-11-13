@@ -50,3 +50,14 @@
 .family-control input[type=range] { width: 100%; }
 #vlle-chart { max-width: 100%; overflow: hidden; }
 @media (max-width: 760px) { .vlle-figures { grid-template-columns: 1fr; } }
+.sketch-feed-hot { stroke: #BE654C; stroke-width: 2.5; }
+.sketch-valve { fill: #fff; stroke: var(--ink); stroke-width: 2; }
+.sketch-insulated { stroke-dasharray: 2 0; stroke-width: 5; stroke: #66727C; }
+.sketch-note { fill: #66727C; font-size: 13px; text-anchor: middle; }
+.energy-sketch { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+.energy-sensible { fill: var(--soft-teal); stroke: #0F6E6B; stroke-width: 1.5; }
+.energy-latent { fill: #F6E2BF; stroke: #E29A2D; stroke-width: 1.5; }
+.energy-total { stroke: #1C242B; stroke-width: 1.5; stroke-dasharray: 6 4; }
+.energy-text { fill: #1C242B; font-size: 13px; font-weight: 600; text-anchor: middle; }
+.energy-caption { fill: #333F4A; font-size: 13px; text-anchor: middle; }
+#ad-chart { max-width: 100%; overflow: hidden; }
