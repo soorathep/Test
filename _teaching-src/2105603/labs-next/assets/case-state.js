@@ -1,5 +1,5 @@
 import * as engine from '../../labs/assets/case-study.js';
-import { normalizeGraduateCase, analyzeGraduateCase } from './case-graduate.js';
+import { normalizeGraduateCase, analyzeGraduateCase, measuredRangeCheck } from './case-graduate.js';
 
 export const GUIDED_CASE_VERSION = 1;
 export const STUDY_SCHEMA = 'skh-thermo-case-study/1';
@@ -191,7 +191,7 @@ export function analyze(suppliedData, input = {}, suppliedFit = null) {
     observations: datasetAt(data, inputs.inspect).rows.map((_, index) => observation(data, inputs.inspect, index)),
     train, evaluation, parameters, reference,
     curve: engine.curve(data, inputs.evaluate, parameters), referenceCurve: engine.curve(data, inputs.evaluate, data.nrtl),
-    modelCheck: engine.modelCheck(parameters, 350), domainK: engine.domain(data),
+    modelCheck: measuredRangeCheck(data, parameters, [...new Set([...pressures, inputs.evaluate])]), domainK: engine.domain(data),
     limits: [
       'Activity coefficients are inferred using ideal vapor, negligible Poynting correction and pure-liquid standard states.',
       'RMSE is dimensionless and uses both ln-gamma residuals at measured temperature and liquid composition; each usable pair has equal weight.',

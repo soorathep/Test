@@ -1,9 +1,9 @@
 import {
   DEFAULT_SETTINGS, DEFAULT_BOUNDS, DEFAULT_REQUESTS, defaultNotes, copy,
   normalizeSettings, normalizeBounds, analyze, runGraduate, serializeStudy, parseStudy,
-} from './consistency-state.js?v=graduate-1';
+} from './consistency-state.js?v=review-1';
 import { derivative } from '../../labs/assets/consistency.js';
-import { renderMethodPlots, clearMethodPlots } from './consistency-plots.js?v=data-views-1';
+import { renderMethodPlots, clearMethodPlots } from './consistency-plots.js?v=review-1';
 
 const $ = id => document.getElementById(id);
 const number = (value, digits = 6) => value == null || !Number.isFinite(value) ? 'Undefined' : Number(value).toLocaleString('en-US', { maximumSignificantDigits: digits });
@@ -141,7 +141,7 @@ function renderCards() {
   const { area, local } = study.analysis, model = study.model;
   $('c3-scorecards').replaceChildren(
     scorecard('Isothermal area', area.redlichKister, 'I = ' + number(area.area.signed) + '; D = ' + number(area.area.D) + '%.' + (!area.full ? ' Partial composition interval only.' : '')),
-    scorecard('Herington isobaric criterion', area.herington, 'J = ' + number(area.J) + '; D − J = ' + number(area.DminusJ) + (!area.full ? ' (partial area only).' : '.')),
+    scorecard('Herington isobaric criterion', area.herington, area.herington?.status === 'not-applicable' ? 'Defined for isobaric data; this path holds T fixed.' : 'J = ' + number(area.J) + '; D − J = ' + number(area.DminusJ) + (!area.full ? ' (partial area only).' : '.')),
     scorecard('Local differential diagnostic', local, '100 mean |r| = ' + number(local.score) + '. No statistical uncertainty is implied.'),
     scorecard('NRTL modeling capability', model, model ? 'Mean |100 ΔP/P| = ' + number(model.deltaP) + '%; mean |Δy| = ' + number(model.deltaY / 100) + ' mol/mol.' : study.modelError || 'No modeling result yet.')
   );

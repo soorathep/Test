@@ -1,7 +1,7 @@
 import {
   CASES, copy, defaults, calculateVLE, caseValues, pressureCurves, temperatureBoundaries,
   parseStudy, makeStudy, validatePropertyRecord,
-} from './vle-state.js?v=graduate-1';
+} from './vle-state.js?v=review-1';
 import { psat, R } from '../../labs/assets/thermo.js';
 import { palette } from '../../labs/assets/palette.js';
 import { FACTORS, NOTE_KEYS, graduateControls, restoreGraduate, sensitivityStudy, modelStudy } from './vle-graduate.js';

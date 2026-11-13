@@ -1,7 +1,7 @@
 import {
   DEFAULT_INPUTS, copy, validateData, normalizeInputs, observation, analyze,
   fitStudy, makeStudy, parseStudy,
-} from './case-state.js?v=graduate-1';
+} from './case-state.js?v=review-1';
 import { palette } from '../../labs/assets/palette.js';
 import { normalizeGraduateCase, analyzeGraduateCase, observationSensitivity, alphaSensitivity } from './case-graduate.js';
 
@@ -229,8 +229,8 @@ function renderGraduate() {
       : [row.alpha, row.tau12, row.tau21, row.trainingRMSE, row.checkingRMSE,
         row.converged ? 'Yes' : 'No', row.atBound ? 'Yes' : 'No', row.minSampledScaledCurvature,
         row.minSampledScaledCurvature <= 0
-          ? 'Nonpositive sampled curvature at 350 K; homogeneous model candidates may be unstable. Investigate Lab 04.'
-          : 'Positive on the sampled grid at 350 K; not a global stability proof.']));
+          ? 'Nonpositive sampled curvature within the measured temperature range; homogeneous model candidates may be unstable. Investigate Lab 04.'
+          : 'Positive on the sampled grid across the measured temperatures; not a global stability proof.']));
   }
 }
 
@@ -571,8 +571,10 @@ function renderResult() {
     + (prediction ? ' Your prediction was “' + optionLabel('prediction') + '”. Compare it with the two scores.' : ''));
   text('model-assumptions', a.limits.join(' '));
   const check = a.modelCheck;
-  text('model-check-note', 'At fixed ' + format(check.fixedTK || 350)
-    + ' K, the sampled Gibbs–Duhem derivative residual is '
+  text('model-check-note', (check.rangeK
+      ? 'Across the measured temperatures ' + format(check.rangeK[0]) + '–' + format(check.rangeK[1]) + ' K (worst case at ' + format(check.fixedTK) + ' K)'
+      : 'At fixed ' + format(check.fixedTK || 350) + ' K')
+    + ', the sampled Gibbs–Duhem derivative residual is '
     + format(check.maxGibbsDuhemResidual, 3) + '. Minimum sampled scaled liquid curvature is '
     + format(check.minSampledScaledCurvature, 4) + '. '
     + (check.minSampledScaledCurvature > 0 ? 'Positive on the sampled grid; this is not a global stability proof.'
@@ -632,10 +634,10 @@ function plotNote(message, analysis) {
   const unstable = analysis.modelCheck.minSampledScaledCurvature <= 0;
   note.classList.toggle('scope-note', unstable);
   if (unstable) {
-    note.append(document.createTextNode(' Nonpositive liquid curvature was detected on the sampled grid at 350 K. These are homogeneous model candidates and may not be stable equilibrium branches. '));
+    note.append(document.createTextNode(' Nonpositive liquid curvature was detected on the sampled grid within the measured temperature range. These are homogeneous model candidates and may not be stable equilibrium branches. '));
     const link = document.createElement('a');
     link.href = '../labs/stability.html#lle-experiment';
-    link.textContent = 'Investigate liquid stability in Lab 04';
+    link.textContent = 'Investigate liquid stability in Lab 04 (current course version)';
     note.append(link);
   }
 }

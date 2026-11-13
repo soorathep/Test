@@ -1,4 +1,4 @@
-import { validateData } from './case-state.js?v=graduate-1';
+import { validateData } from './case-state.js?v=review-1';
 import { analyze, normalizeSettings, normalizeBounds, normalizeRequests, runGraduate } from './consistency-graduate.js';
 export { DEFAULT_SETTINGS, DEFAULT_BOUNDS, DEFAULT_REQUESTS, analyze, normalizeSettings, normalizeBounds, normalizeRequests, runGraduate } from './consistency-graduate.js';
 

@@ -1,6 +1,20 @@
 /** Deterministic graduate investigations. These scenarios are not statistical intervals. */
 import * as engine from '../../labs/assets/case-study.js';
 
+/** Liquid-curvature check across the measured temperatures of the selected pressures. */
+export function measuredRangeCheck(data, parameters, pressures) {
+  const temps = data.datasets.filter((set) => pressures.includes(set.pressureKPa))
+    .flatMap((set) => set.rows).map((row) => engine.infer(row, data)).filter((row) => row.ln).map((row) => row.T);
+  if (!temps.length) return engine.modelCheck(parameters, 350);
+  const lo = Math.min(...temps), hi = Math.max(...temps);
+  const checks = Array.from({ length: 5 }, (_, i) => engine.modelCheck(parameters, lo + (hi - lo) * i / 4));
+  const worst = checks.reduce((a, b) => (b.minSampledScaledCurvature < a.minSampledScaledCurvature ? b : a));
+  return { fixedTK: worst.fixedTK, rangeK: [lo, hi], temperatures: checks.length,
+    maxGibbsDuhemResidual: Math.max(...checks.map((c) => c.maxGibbsDuhemResidual)),
+    minSampledScaledCurvature: worst.minSampledScaledCurvature, samples: worst.samples };
+}
+
+
 export const GRADUATE_CASE_VERSION = 1;
 export const GRADUATE_CASE_DEFAULTS = Object.freeze({
   version: GRADUATE_CASE_VERSION,
@@ -147,13 +161,13 @@ export function alphaSensitivity(data, inputs) {
   const rows = alphaValues.map((alpha) => {
     try {
       const fit = fittedFor(data, pressures, alpha);
-      const check = engine.modelCheck(fit.parameters, 350);
+      const check = measuredRangeCheck(data, fit.parameters, [...new Set([...pressures, Number(inputs.evaluate)])]);
       return { alpha, status: 'valid', tau12: fit.parameters.a12, tau21: fit.parameters.a21,
         trainingPairs: fit.trainingPairs, checkingPairs: valid.length,
         trainingRMSE: fit.rmse, checkingRMSE: Math.sqrt(engine.objective(valid, fit.parameters)),
         converged: fit.converged, atBound: fit.atBound,
         minSampledScaledCurvature: check.minSampledScaledCurvature,
-        fixedTK: check.fixedTK, reason: '' };
+        fixedTK: check.fixedTK, rangeK: check.rangeK, reason: '' };
     } catch (issue) { return { alpha, status: 'failed', reason: issue.message }; }
   });
   return { context: { train: inputs.train, pressures, evaluate: Number(inputs.evaluate) }, rows,

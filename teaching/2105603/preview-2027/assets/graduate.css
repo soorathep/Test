@@ -41,3 +41,7 @@
   .graduate-actions button { width: 100%; }
   .graduate-section h2, .graduate-section h3, .graduate-section legend { overflow-wrap: anywhere; }
 }
+.graduate-limits { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--border); border-left: 4px solid var(--amber); border-radius: 6px; background: var(--paper, #F3F0EB); font-size: .93rem; }
+.graduate-limits h3 { font-size: 1rem; margin: 0 0 8px; }
+.graduate-limits ul { margin: 0; padding-left: 20px; }
+.graduate-limits li + li { margin-top: 6px; }
