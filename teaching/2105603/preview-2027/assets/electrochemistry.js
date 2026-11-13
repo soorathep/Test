@@ -43,6 +43,7 @@ function showError(message, includeOriginalLink = false) {
     error.append(document.createTextNode(' '), link);
   }
   error.hidden = false;
+  error.focus();
 }
 
 function clearFieldError(field) {
