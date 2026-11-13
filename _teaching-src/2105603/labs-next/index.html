@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Graduate Thermodynamics Labs 2027 · Design preview</title>
-  <meta name="description" content="Guided graduate investigations of VLE model assumptions, input sensitivity, experimental inference and conditional model fitting.">
+  <meta name="description" content="Guided graduate investigations of VLE model assumptions, experimental inference, uncertainty sensitivity and thermodynamic consistency tests.">
   <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="assets/guide.css">
 </head>
 <body>
   <a class="skip-link" href="#design">Skip to the design plan</a>
-  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="../">Course</a></nav></header>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="../">Course</a></nav></header>
   <main class="page design-page" id="design">
     <section class="design-intro">
       <p class="eyebrow">2105603 · 2027 design preview</p>
       <h1>Graduate Thermodynamics Labs 2027</h1>
-      <p>Use a reproducible baseline calculation, then test its assumptions. The graduate routes in Labs 01 and 02 combine guided calculations with input sensitivity, model comparisons and conclusions supported by evidence.</p>
+      <p>Use a reproducible baseline calculation, then test its assumptions. The graduate routes in Labs 01–03 combine guided calculations with sensitivity investigations, model comparisons and conclusions supported by evidence.</p>
       <a class="primary-button" href="vle.html">Lab 01 · Flash assumptions and sensitivity →</a>
       <p style="margin-top:18px"><a class="primary-button" href="case-study.html">Lab 02 · Experimental uncertainty and model evidence →</a></p>
+      <p style="margin-top:18px"><a class="primary-button" href="consistency.html">Lab 03 · Consistency tests and their limits →</a></p>
       <p class="section-help" style="margin-top:16px">The earlier <a href="electrochemistry.html">Lab 13 concentration-cell prototype</a> is also available as a design reference.</p>
     </section>
 
@@ -28,6 +29,7 @@
       <div class="table-scroll roadmap"><table><thead><tr><th scope="col">Investigation</th><th scope="col">Run and compare</th><th scope="col">Explain with evidence</th></tr></thead><tbody>
         <tr><td>Lab 01 · Model and phase robustness</td><td>Compare liquid models at the same conditions. Change one assumed input bound at a time, then inspect the joint corner scenarios.</td><td>Distinguish a robust phase classification from a sensitive phase amount. Identify the assumptions that remain untested and the independent data needed to justify a model.</td></tr>
         <tr><td>Lab 02 · Inference and conditional fitting</td><td>Propagate assumed measurement changes through one activity inference. Compare fixed-α fits using the same training data and retained checking pressure.</td><td>Separate measurement sensitivity, parameter sensitivity and model discrepancy. Explain how shared measurements correlate inferred activities and what is missing for statistical uncertainty intervals.</td></tr>
+        <tr><td>Lab 03 · Consistency evidence</td><td>Check method applicability, compare a clean reference with canceling defects, and test sampling, endpoint and measurement assumptions.</td><td>Explain how methods can disagree, distinguish a criterion from certification, and identify the independent evidence needed for a stronger conclusion.</td></tr>
       </tbody></table></div>
       <p>Support each conclusion with at least two numerical comparisons, state the assumptions behind the comparison, and propose an additional measurement that could challenge the claim.</p>
       <p class="plan-note">The sampled scenario ranges are deterministic sensitivity results. They do not supply probabilities, confidence intervals or guaranteed bounds. A fixed-α comparison also does not establish parameter identifiability. If checking errors are used to choose α or another model setting, additional independent data are needed to test the selected model.</p>
@@ -60,7 +62,7 @@
       <div class="table-scroll roadmap"><table><thead><tr><th scope="col">Lab</th><th scope="col">Preparation</th><th scope="col">Student workflow</th></tr></thead><tbody>
         <tr><td><a href="vle.html">01 · VLE/flash</a></td><td>Graduate prototype</td><td>Establish a baseline, audit model assumptions, test phase robustness under assumed input bounds and defend the conclusion.</td></tr>
         <tr><td><a href="case-study.html">02 · Case study</a></td><td>Graduate prototype</td><td>Infer activities, fit/check separate observations, quantify sensitivity to assumed measurement bounds and compare conditional fits.</td></tr>
-        <tr><td>03 · Consistency</td><td>Next in sequence</td><td>Establish diagnostic applicability, inspect the data, and interpret each consistency check.</td></tr>
+        <tr><td><a href="consistency.html">03 · Consistency</a></td><td>Graduate prototype</td><td>Check applicability, compare diagnostic methods and defend a conclusion under sampling, endpoint and measurement assumptions.</td></tr>
         <tr><td>04 · Stability/LLE</td><td>Planned</td><td>Connect the selected feed with Gibbs curvature, the supporting tangent and phase fractions.</td></tr>
         <tr><td>05 · LLE fitting</td><td>Planned</td><td>Enter observations in a table, fit, verify and compare.</td></tr>
         <tr><td>06 · VLLE</td><td>Planned</td><td>Identify coexisting phases and the amounts fixed by the chosen specification.</td></tr>
@@ -85,7 +87,8 @@
       <p>Record time, incorrect edits, places where help is needed, and the student's explanation. Include keyboard use and a narrow screen in the review.</p>
       <p>For Lab 02, inspect the starting measurement, check your activity-coefficient calculation, fit 60 kPa, evaluate 80 kPa without refitting, and reopen a saved comparison.</p>
       <p>For the graduate routes, ask the student to defend a claim using the sensitivity outputs, explain why the sampled range is not a confidence interval, and reopen the saved inputs and evidence record.</p>
-      <p class="plan-note">These are design prototypes for Labs 01, 02 and 13. Independent student usability sessions and the remaining 10 lab interfaces are future work. Numerical checks use the existing course calculation engines.</p>
+      <p>For Lab 03, ask the student to find the error hidden by an area criterion, explain a method marked not assessed, compare an endpoint assumption and reopen the complete diagnostic record.</p>
+      <p class="plan-note">These are design prototypes for Labs 01–03 and 13. Independent student usability sessions and the remaining nine lab interfaces are future work. Numerical checks use the existing course calculation engines.</p>
     </section>
 
     <section class="design-section" aria-labelledby="references-heading">

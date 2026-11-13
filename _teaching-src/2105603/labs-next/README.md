@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01, Lab 02 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–03 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
-The preparation scope is a shared interaction design, three functional prototypes,
+The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
-the remaining 10 lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 03 next. Lab 13 is the earlier reference prototype.
+the remaining nine lab interfaces are future work. Implementation proceeds in
+lab-number order, with Lab 04 next. Lab 13 is the earlier reference prototype.
 
-Labs 01 and 02 now use a graduate teaching route. The foundation calculation is
+Labs 01–03 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -163,6 +163,63 @@ model discrepancy and the next evidence needed. The record check indicates
 completion of calculations and written sections; it does not grade scientific
 reasoning. The original general reflection remains an optional additional note.
 
+## Lab 03 graduate consistency investigation
+
+The guiding question is whether satisfying one diagnostic criterion is enough
+to justify using a VLE data set. Students first calculate the synthetic
+isothermal reference at 350 K, then impose a canceling log-activity-ratio defect.
+The numbered route separates applicability, a control calculation, a deliberate
+challenge and a defended conclusion. A conceptual vector diagram distinguishes
+global area cancellation from local agreement. Mathematical quantities use
+native MathML or HTML scripts, with units beside editable quantities.
+
+The adapter reuses `consistency.js` and the existing measured-data/property
+records. Original course engines and measurements remain unchanged. The four
+methods are the piecewise-linear isothermal area criterion, the empirical
+Herington D−J variant, a three-point differential Gibbs–Duhem diagnostic and a
+Van Ness-type NRTL modeling-capability test. They are teaching implementations,
+not reproductions of the complete NIST TDE algorithms. A status refers only to
+the stated criterion. A converged model fit is not independent certification
+of experimental thermodynamic consistency.
+
+For isothermal area analysis, pressure/excess-volume effects are neglected.
+For isobaric differential analysis, the synthetic generator supplies an excess
+enthalpy correction. No equivalent verdict is assigned to real isobaric data
+without independent excess-enthalpy information. The Herington boiling-range
+allowance is empirical, not a measured excess-enthalpy correction. Missing
+endpoint intervals remain missing unless a clearly labeled extrapolation or
+smoothing assumption is selected. Pure experimental endpoints cannot provide
+the absent component's activity coefficient; synthetic endpoint limits are
+known from their generator.
+
+The graduate investigations compare sampling resolutions, endpoint assumptions
+and deterministic perturbations of measurements. Scenario ranges and counts
+are sensitivity evidence, not uncertainty distributions, confidence intervals
+or probabilities that a data set is consistent. Eight one-factor common-bias
+scenarios shift all temperatures or pressures together, or shift interior x or
+y measurements while retaining pure-component identities. The nominal included
+activity set is retained. An invalid included observation rejects the whole
+scenario instead of silently removing it. A statistical assessment would need
+experimentally justified uncertainties and covariance. A common pressure bias
+is a useful blind spot: both log activities shift together, leaving the area
+log-ratio and composition derivative unchanged under the adopted approximations.
+
+At the 81-point isothermal reference, D is approximately 0.0196883% and the
+differential mean score is 0.0301719. With a canceling amplitude of 0.25,
+D remains approximately 0.0183991%, while the differential mean score rises to
+15.7781. This shows why an area criterion alone can miss imposed errors.
+A localized defect with the same amplitude gives D approximately 1.95606% and
+a differential mean score of 1.59077, both below their aggregate thresholds.
+Students therefore inspect the residual trace and its maximum as well as the
+mean. A local defect is not guaranteed to exceed an aggregate threshold.
+
+Native study files retain settings, written claims and comparison contexts.
+Reopening validates inputs and recomputes derived results. Changed scientific
+controls invalidate current results while retaining written notes and saved
+comparisons. Unsupported or malformed files retain the current valid study.
+Numerical references, state checks and browser checks are recorded privately;
+they do not establish independent student usability.
+
 ## Lab 13 prototype
 
 The prototype uses the same `calculate()` engine as the current lab via
@@ -193,9 +250,9 @@ Pilot observations inform the readiness review for the 2027 cohort.
 
 | Order | Labs | Main interface work |
 | --- | --- | --- |
-| Current prototypes | 01–02 | Guided feed problem, phase amounts, measured data, fitting and separate validation |
-| Next | 03 | Diagnostic applicability and consistency-test interpretation |
-| Then | 04–07 | Gibbs geometry, phase amounts, material/energy checks and structured observations |
+| Current graduate prototypes | 01–03 | Guided calculations, model evidence, sensitivity and consistency-test interpretation |
+| Next | 04 | Gibbs geometry, liquid stability, supporting tangents and coexistence |
+| Then | 05–07 | Fitting, phase amounts, material/energy checks and structured observations |
 | Then | 08–12 | Data mapping, equation/unit validation, property editors and structured reactions |
 | Earlier reference, review in sequence | 13 | Two solutions, visible cases, physical interpretation, comparison and reopening |
 

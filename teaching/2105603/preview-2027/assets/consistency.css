@@ -1,0 +1,96 @@
+@import url("./case.css");
+
+.consistency-page .task-question { font-weight: 600; margin-top: 14px; }
+.lab-section { margin: 24px 0; }
+.guided-steps { padding-left: 24px; margin: 16px 0 22px; }
+.guided-steps li + li { margin-top: 9px; }
+.diagnostic-picture { margin: 22px 0; }
+.diagnostic-drawing { max-width: 100%; overflow-x: auto; }
+.diagnostic-sketch { display: block; max-width: 840px; min-width: 840px; width: 100%; height: auto; margin: 8px auto 16px; }
+.sketch-scroll-help { display: none; }
+.diagnostic-sketch .sketch-axis { stroke: var(--ink); stroke-width: 2; fill: none; }
+.diagnostic-sketch .sketch-reference { stroke: var(--teal); stroke-width: 3; fill: none; }
+.diagnostic-sketch .sketch-area { fill: var(--palette-sand); opacity: .6; }
+.diagnostic-sketch .sketch-effect { stroke: var(--amber); stroke-width: 3; fill: none; }
+.diagnostic-sketch .sketch-data { fill: var(--teal); }
+.diagnostic-sketch .sketch-label { fill: var(--ink); text-anchor: middle; font-size: 17px; font-weight: 600; }
+.picture-key { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.picture-key > div { border-top: 2px solid var(--border); padding-top: 12px; }
+.picture-key p, .diagnostic-picture figcaption { font-size: .9rem; margin-top: 7px; }
+.diagnostic-picture figcaption { color: var(--muted); margin-bottom: 0; }
+.setup-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; align-items: start; }
+.setup-grid label { margin-top: 18px; }
+.setup-grid > div > label:first-child { margin-top: 0; }
+.control-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.assumption-box { padding: 20px; background: var(--soft-teal); border-radius: 6px; }
+.assumption-box li + li { margin-top: 10px; }
+.assumption-box p, .assumption-box li { font-size: .94rem; }
+.assumption-box .scope-note { margin-bottom: 0; }
+.checkbox-label { display: flex; gap: 12px; align-items: start; font-size: .94rem; cursor: pointer; }
+.checkbox-label input { width: 22px; min-width: 22px; height: 22px; min-height: 22px; margin: 2px 0 0; accent-color: var(--teal); }
+.checkbox-label span { color: var(--ink); font-size: inherit; font-weight: 600; }
+.scorecard-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 20px 0; }
+.scorecard { border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 6px; padding: 18px; min-width: 0; }
+.scorecard h3 { margin-bottom: 8px; }
+.scorecard p { font-size: .92rem; margin: 12px 0 0; }
+.scorecard small { display: block; margin-top: 9px; color: var(--muted); }
+.criterion-status { display: block; font-weight: 700; font-size: 1.02rem; }
+.status-outside-criterion { border-top-color: var(--amber); background: var(--soft-sand); }
+.status-not-applicable, .status-not-assessed, .status-not-run { border-top-color: var(--ink); }
+.model-action { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 18px 0 8px; }
+.model-action p { margin: 0; font-size: .95rem; flex: 1 1 250px; }
+.chart-controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin: 22px 0 12px; }
+.chart-controls label { margin: 0; }
+.chart-controls select { max-width: 520px; }
+.consistency-plot { width: 100%; min-height: 410px; }
+.plot-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 10px 0 16px; font-size: .88rem; }
+.plot-legend span { display: inline-flex; align-items: center; gap: 9px; }
+.plot-legend i { width: 28px; border-top: 2px solid; display: inline-block; flex-shrink: 0; }
+.save-current { display: grid; grid-template-columns: minmax(180px,1fr) auto; gap: 10px 18px; align-items: end; margin-top: 24px; }
+.save-current label { grid-column: 1 / -1; margin: 0; }
+.method-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; margin-top: 20px; }
+.method-grid article { min-width: 0; }
+.method-grid p { font-size: .94rem; }
+.method-grid .math-scroll { padding: 12px 2px; }
+.method-grid math { font-size: 1.1rem; }
+.counterexample-box { border-left: 3px solid var(--amber); background: var(--soft-sand); padding: 18px 20px; margin: 20px 0; }
+.counterexample-box p { font-size: .94rem; }
+.table-heading { margin-top: 26px; }
+.sensitivity-fields { min-width: 0; margin: 22px 0; padding: 18px; border: 1px solid var(--border); }
+.sensitivity-fields legend { font-weight: 600; padding: 0 8px; }
+.sensitivity-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.sensitivity-grid > div { min-width: 0; }
+.sensitivity-grid .quantity-input input { padding-right: 85px; }
+.sensitivity-grid label { font-size: .93rem; }
+.analysis-question { margin-top: 22px; }
+.conclusion-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin: 24px 0; }
+.conclusion-fields > div { min-width: 0; }
+.consistency-page pre { max-width: 100%; overflow-x: auto; font-size: .82rem; background: var(--paper); padding: 15px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.consistency-page .table-scroll { margin: 12px 0; }
+.consistency-page .table-scroll th:last-child, .consistency-page .table-scroll td:last-child { white-space: normal; min-width: 185px; text-align: left; }
+.consistency-page .table-scroll th, .consistency-page .table-scroll td { vertical-align: top; }
+.consistency-page :is(button,p,li,h1,h2,h3,label,legend) { overflow-wrap: anywhere; }
+.consistency-page :is(button,select) { max-width: 100%; }
+.consistency-page sub, .consistency-page sup { font-size: 70%; line-height: 0; position: relative; vertical-align: baseline; }
+.consistency-page sub { bottom: -.3em; }
+.consistency-page sup { top: -.55em; }
+.consistency-page math { font-family: math; }
+
+@media (max-width:950px) {
+  .sketch-scroll-help { display: block; }
+  .setup-grid { grid-template-columns: 1fr; }
+  .sensitivity-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:600px) {
+  .site-header .brand { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+  .picture-key, .control-pair, .scorecard-grid, .method-grid, .sensitivity-grid, .conclusion-fields, .save-current { grid-template-columns: 1fr; }
+  .save-current label { grid-column: auto; }
+  .sensitivity-fields { padding: 14px; }
+  .sensitivity-grid .quantity-input input { padding-right: 12px; }
+  .chart-controls { display: block; }
+  .chart-controls label { margin-bottom: 8px; }
+  .consistency-plot { min-height: 330px; }
+  .counterexample-box { padding: 16px; }
+  .model-action button { width: 100%; }
+  .consistency-page .graduate-section button { width: 100%; }
+}
