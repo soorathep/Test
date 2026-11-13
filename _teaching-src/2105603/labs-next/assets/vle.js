@@ -436,7 +436,7 @@ function loadCase(key) {
   setCaseSelection(key);
   setText('case-description', 'A 1.00 mol binary feed at 350 K and ' + format(chosen.values.P, 10)
     + ' kPa has a component 1 feed mole fraction z₁ = 0.40. Assume ideal vapor and ideal liquid.');
-  setText('case-task', 'Verify the phase calculation, then complete the graduate model audit and sensitivity investigation in Step 4.');
+  setText('case-task', 'Predict the phases, calculate, then explain what fixes the phase compositions and what fixes the phase amounts.');
   setText('status', chosen.name + ' loaded. Saved comparison rows remain available.');
 }
 

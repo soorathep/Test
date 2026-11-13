@@ -9,7 +9,7 @@ export const FACTORS = [
   { key: 'psat1', name: 'Component 1 correlation scale', unit: '%', max: 20 },
   { key: 'psat2', name: 'Component 2 correlation scale', unit: '%', max: 20 },
 ];
-export const NOTE_KEYS = ['assumptions', 'comparison', 'sensitivity', 'limits'];
+export const NOTE_KEYS = ['assumptions', 'comparison', 'sensitivity', 'limits', 'concept1', 'concept2', 'concept3'];
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
 export function graduateControls(raw = undefined) {
