@@ -148,6 +148,95 @@ As the reaction proceeds, the mole fractions change. At the new equilibrium, $Q=
 Thai spoken recap: ความดันเพิ่มทำให้ Q ของปฏิกิริยานี้เพิ่มทันทีเมื่อองค์ประกอบยังคงเดิม ทิศทางขึ้นกับว่า Q ใหม่สูงหรือต่ำกว่า K.
 :::
 
+## Does gas non-ideality change K? {#nonideality-and-k}
+
+At the same temperature, for the same written reaction and standard states, **the thermodynamic $K$ stays the same**.
+
+$$K=\exp\left(-\frac{\Delta_rG^\circ}{RT}\right)$$
+
+Fugacity coefficients enter the current mixture's activity ratio. For $\mathrm{A_2(g)\rightleftharpoons 2A(g)}$,
+
+$$Q=\frac{\phi_{\mathrm A}^2}{\phi_{\mathrm{A_2}}}\frac{y_{\mathrm A}^2}{y_{\mathrm{A_2}}}\frac{P}{p^\circ}$$
+
+At equilibrium, this **full ratio** equals $K$. Non-ideality changes the equilibrium composition needed to satisfy that condition. We will now calculate the fugacities that enter it.
+
+::: {.notes}
+ตอบประเด็น K ก่อน ที่ T สมการปฏิกิริยาและสถานะมาตรฐานเดิม ค่า K เท่าเดิม เพราะนิยามจาก delta-r-G มาตรฐาน fugacity coefficient อยู่ในอัตราส่วน activity จึงเปลี่ยนองค์ประกอบที่ทำให้ Q เท่ากับ K ถ้าใช้ความดันย่อยอย่างเดียวจะได้เพียงอัตราส่วนที่ยังไม่รวมผลของ phi
+:::
+
+## Fugacity expresses the chemical potential {#what-is-fugacity}
+
+For an ideal gas mixture, the partial pressure $y_iP$ enters the chemical potential.
+
+$$\mu_i^{\rm ideal}=\mu_i^\circ+RT\ln\left(\frac{y_iP}{p^\circ}\right)$$
+
+For a real gas, define the **component fugacity**, $f_i$, through the same logarithmic form and standard state.
+
+$$\mu_i=\mu_i^\circ+RT\ln\left(\frac{f_i}{p^\circ}\right)$$
+
+Fugacity has pressure units. The activity $a_i=f_i/p^\circ$ is dimensionless. In the ideal-gas limit, $f_i=y_iP$.
+
+[Definition reference · IUPAC](https://publications.iupac.org/pac/1994/pdf/6603x0533.pdf)
+
+::: {.notes}
+fugacity เป็นปริมาณที่มีหน่วยความดันและใช้แทน chemical potential ของแก๊สจริงในรูป logarithm เดียวกับแก๊สอุดมคติ ชี้ว่า activity คือ f หารความดันมาตรฐานจึงไม่มีหน่วย
+:::
+
+## Compare fugacity with partial pressure {#fugacity-coefficient}
+
+The **fugacity coefficient**, $\phi_i$, is the ratio of component fugacity to its partial pressure.
+
+$$\phi_i=\frac{f_i}{y_iP},\qquad f_i=\phi_i y_iP$$
+
+Subtract the ideal-mixture chemical potential at the **same $T,P,\mathbf y$**.
+
+$$\mu_i-\mu_i^{\rm ideal}=RT\ln\phi_i$$
+
+At $\phi_i=1$, $f_i=y_iP$ and the chemical potential matches the ideal-mixture value. A value below one gives a negative departure in chemical potential; a value above one gives a positive departure.
+
+Each component has its own $\phi_i(T,P,\mathbf y)$.
+
+::: {.notes}
+สัมประสิทธิ์ phi ไม่มีหน่วย เป็นอัตราส่วน f ต่อความดันย่อยและบอกการเบี่ยงเบนของ chemical potential จากแก๊สผสมอุดมคติที่ T P และองค์ประกอบเดียวกัน ค่า phi ของแต่ละชนิดเปลี่ยนตามสภาวะได้
+:::
+
+## Calculate phi from an equation of state {#phi-from-eos}
+
+An EOS supplies the partial-molar properties used to calculate $RT\ln\phi_i$. Choose the EOS and its parameters for the stated $T,P,\mathbf y$.
+
+For the **low-density, pressure-form second-virial EOS**, used in Lab 09,
+
+$$Z=\frac{PV}{nRT}=1+\frac{B_{\rm mix}P}{RT},\qquad B_{\rm mix}=\sum_i\sum_j y_i y_j B_{ij}$$
+
+The component fugacity coefficients follow from this mixture EOS.
+
+$$\ln\phi_i=\left(2\sum_j y_jB_{ij}-B_{\rm mix}\right)\frac{P}{RT}$$
+
+The coefficients $B_{ij}(T)$ come from gas-property data or a correlation. The cross coefficient describes unlike pairs. Use consistent units and check the EOS validity range.
+
+::: {.notes}
+เริ่มจากเลือก EOS และข้อมูลพารามิเตอร์ที่อุณหภูมินั้น สำหรับ virial ต้องมีทั้ง B ของคู่ชนิดเดียวกันและคู่ต่างชนิด สมการของสารผสมให้ phi ของแต่ละชนิดผ่านสมบัติ partial molar ถ้ามีคำถามที่มาเชิงคณิตศาสตร์ ใช้ d mu_i ต่อ d P ที่ T และองค์ประกอบคงที่เท่ากับ partial molar volume แล้ว integrate ผลต่างจากแก๊สอุดมคติจากความดันศูนย์ถึง P อย่าใช้ Z ของสารผสมแทน phi_i
+:::
+
+## Work out both coefficients from the EOS {#virial-phi-check}
+
+Use synthetic inputs at 350 K and 200 kPa. Let component 1 be A and component 2 be A₂, with $y_1=0.80$, $y_2=0.20$.
+
+Take $B_{11}=-1.00$, $B_{12}=B_{21}=-0.600$, $B_{22}=-0.200$ L mol$^{-1}$ and $R=8.31446$ L kPa mol$^{-1}$ K$^{-1}$.
+
+$$B_{\rm mix}=0.80^2(-1.00)+2(0.80)(0.20)(-0.600)+0.20^2(-0.200)=-0.840\ {\rm L\,mol^{-1}}$$
+
+| Component | $\sum_j y_jB_{ij}$ (L mol$^{-1}$) | $\ln\phi_i$ | $\phi_i=\exp(\ln\phi_i)$ |
+|---|---:|---:|---:|
+| A | $-0.920$ | $(-1.000)(200)/(8.31446\times350)=-0.068727$ | 0.93358 |
+| A₂ | $-0.520$ | $(-0.200)(200)/(8.31446\times350)=-0.013745$ | 0.98635 |
+
+Carry these coefficients into the activity calculation. Keep unrounded values until the final result.
+
+::: {.notes}
+คำนวณ Bmix ก่อน แล้วให้เห็นผลรวม y_j B_ij ของแต่ละแถว A ให้ -0.920 และ A2 ให้ -0.520 เมื่อนำมาคูณสองแล้วลบ Bmix จะได้ -1.000 และ -0.200 ตามลำดับ จากนั้นคูณ P ต่อ RT เพื่อได้ ln phi และกด exp จึงได้ phi ค่าทั้งหมดเป็นข้อมูลสังเคราะห์สำหรับฝึก
+:::
+
 ## A real gas uses fugacity in each activity {#real-gas}
 
 At a specified $T,P,\mathbf y$, a mixture equation of state gives each component's fugacity coefficient $\phi_i$. With an ideal-gas standard state,
@@ -156,7 +245,7 @@ $$a_i=\frac{f_i}{p^\circ}=\frac{\phi_i y_iP}{p^\circ},\qquad Q=\frac{a_{\mathrm 
 
 For this dissociation, the multiplier on the ideal-gas estimate is $\phi_{\mathrm A}^2/\phi_{\mathrm{A_2}}$. The coefficients can change during compression and as the reaction proceeds. The same $T$, written reaction and standard states give the same $K$.
 
-**Try it.** At 350 K and 200 kPa, use $y_{\mathrm A}=0.80$, $y_{\mathrm{A_2}}=0.20$. For this illustrative state take $\phi_{\mathrm A}=0.90$ and $\phi_{\mathrm{A_2}}=0.95$. Calculate both activities and predict the direction.
+**Try it.** Continue with the same EOS calculation at 350 K and 200 kPa, with $y_{\mathrm A}=0.80$, $y_{\mathrm{A_2}}=0.20$. Use the calculated coefficients $\phi_{\mathrm A}=0.93358$ and $\phi_{\mathrm{A_2}}=0.98635$, with $p^\circ=100$ kPa. Calculate both fugacities, both activities and the reaction direction.
 
 ## Work the real-gas example on paper {#real-gas-check}
 
@@ -164,27 +253,29 @@ The pressure ratio is $200/100=2$. At the specified composition,
 
 | Quantity | Calculation | Value |
 |---|---|---:|
-| $a_{\mathrm A}$ | $0.90(0.80)(2)$ | 1.44 |
-| $a_{\mathrm{A_2}}$ | $0.95(0.20)(2)$ | 0.38 |
-| $Q$ | $1.44^2/0.38$ | 5.46 |
+| $f_{\mathrm A}$ | $\phi_{\mathrm A}(0.80)(200)$ | 149.373 kPa |
+| $f_{\mathrm{A_2}}$ | $\phi_{\mathrm{A_2}}(0.20)(200)$ | 39.454 kPa |
+| $a_{\mathrm A}$ | $f_{\mathrm A}/(100\ {\rm kPa})$ | 1.49373 |
+| $a_{\mathrm{A_2}}$ | $f_{\mathrm{A_2}}/(100\ {\rm kPa})$ | 0.394539 |
+| $Q$ | $a_{\mathrm A}^2/a_{\mathrm{A_2}}$ | 5.6553 |
 
 The ideal-gas estimate at this same state is $6.40$. Both exceed $K=3.953$, so A₂ forms. To find the final extent for the real gas, update the composition and both fugacity coefficients until $Q=K$. Lab 12 solves the ideal-gas case.
 
 ::: {.notes}
-Thai spoken recap: ใช้ fugacity แทนความดันย่อยในการหาค่า activity ของแก๊สจริง เมื่อคำนวณ Q แล้วให้เปรียบเทียบกับ K ที่อุณหภูมิเดียวกัน ตัวอย่างนี้ให้ Q เท่ากับ 5.46 จึงเกิด A₂ เพิ่มขึ้น.
+Thai spoken recap: ใช้ค่า phi ที่คำนวณจาก EOS หาค่า fugacity แล้วหารความดันมาตรฐานเพื่อได้ activity จากนั้นคำนวณ Q และเทียบกับ K ที่อุณหภูมิเดียวกัน ตัวอย่างนี้ให้ Q ประมาณ 5.66 จึงเกิด A₂ เพิ่มขึ้น.
 :::
 
 ## The 180-minute class {#the-180-minute-class}
 
 | Class time | Activity |
 |---|---|
-| 0–15 min | Derive Q and K, then check compression and a real-gas calculation |
-| 15–35 min | Revisit Weeks 2–5 in pairs with paper and a calculator |
-| 35–60 min | Balance a cell reaction and calculate its potential by hand |
-| 60–70 min | Demonstrate the concentration cell in Lab 13 |
-| 70–80 min | Break |
-| 80–150 min | Pair investigation and independent check |
-| 150–180 min | Discuss results (20), exit ticket (5), feedback (3), closing (2) |
+| 0–20 min | Derive Q and K, then calculate fugacity and check the pressure question |
+| 20–40 min | Revisit Weeks 2–5 in pairs with paper and a calculator |
+| 40–65 min | Balance a cell reaction and calculate its potential by hand |
+| 65–75 min | Demonstrate the concentration cell in Lab 13 |
+| 75–85 min | Break |
+| 85–155 min | Pair investigation and independent check |
+| 155–180 min | Discuss results (15), exit ticket (5), feedback (3), closing (2) |
 
 ## Week 2 · What did the VLE measurement tell us? {#review-week-2}
 
@@ -318,7 +409,7 @@ Keep one saved baseline for the pair investigation.
 
 In Lab 13, compare a concentration cell with the activities exchanged. Predict and explain the sign of E, then independently check deltaG=−nFE.
 
-## Discussion · 20 minutes
+## Discussion · 15 minutes {#discussion-20-minutes}
 
 What determines the sign of a concentration-cell potential?
 

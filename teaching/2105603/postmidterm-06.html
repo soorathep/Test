@@ -290,12 +290,84 @@ Soorathep Kheawhom
 </table>
 <p>As the reaction proceeds, the mole fractions change. At the new equilibrium, <span class="math inline">Q=K=3.953</span> in both cases.</p>
 </section>
+<section id="nonideality-and-k" class="slide level2">
+<h2>Does gas non-ideality change K?</h2>
+<p>At the same temperature, for the same written reaction and standard states, <strong>the thermodynamic <span class="math inline">K</span> stays the same</strong>.</p>
+<p><span class="math display">K=\exp\left(-\frac{\Delta_rG^\circ}{RT}\right)</span></p>
+<p>Fugacity coefficients enter the current mixture’s activity ratio. For <span class="math inline">\mathrm{A_2(g)\rightleftharpoons 2A(g)}</span>,</p>
+<p><span class="math display">Q=\frac{\phi_{\mathrm A}^2}{\phi_{\mathrm{A_2}}}\frac{y_{\mathrm A}^2}{y_{\mathrm{A_2}}}\frac{P}{p^\circ}</span></p>
+<p>At equilibrium, this <strong>full ratio</strong> equals <span class="math inline">K</span>. Non-ideality changes the equilibrium composition needed to satisfy that condition. We will now calculate the fugacities that enter it.</p>
+</section>
+<section id="what-is-fugacity" class="slide level2">
+<h2>Fugacity expresses the chemical potential</h2>
+<p>For an ideal gas mixture, the partial pressure <span class="math inline">y_iP</span> enters the chemical potential.</p>
+<p><span class="math display">\mu_i^{\rm ideal}=\mu_i^\circ+RT\ln\left(\frac{y_iP}{p^\circ}\right)</span></p>
+<p>For a real gas, define the <strong>component fugacity</strong>, <span class="math inline">f_i</span>, through the same logarithmic form and standard state.</p>
+<p><span class="math display">\mu_i=\mu_i^\circ+RT\ln\left(\frac{f_i}{p^\circ}\right)</span></p>
+<p>Fugacity has pressure units. The activity <span class="math inline">a_i=f_i/p^\circ</span> is dimensionless. In the ideal-gas limit, <span class="math inline">f_i=y_iP</span>.</p>
+<p><a href="https://publications.iupac.org/pac/1994/pdf/6603x0533.pdf">Definition reference · IUPAC</a></p>
+</section>
+<section id="fugacity-coefficient" class="slide level2">
+<h2>Compare fugacity with partial pressure</h2>
+<p>The <strong>fugacity coefficient</strong>, <span class="math inline">\phi_i</span>, is the ratio of component fugacity to its partial pressure.</p>
+<p><span class="math display">\phi_i=\frac{f_i}{y_iP},\qquad f_i=\phi_i y_iP</span></p>
+<p>Subtract the ideal-mixture chemical potential at the <strong>same <span class="math inline">T,P,\mathbf y</span></strong>.</p>
+<p><span class="math display">\mu_i-\mu_i^{\rm ideal}=RT\ln\phi_i</span></p>
+<p>At <span class="math inline">\phi_i=1</span>, <span class="math inline">f_i=y_iP</span> and the chemical potential matches the ideal-mixture value. A value below one gives a negative departure in chemical potential; a value above one gives a positive departure.</p>
+<p>Each component has its own <span class="math inline">\phi_i(T,P,\mathbf y)</span>.</p>
+</section>
+<section id="phi-from-eos" class="slide level2">
+<h2>Calculate phi from an equation of state</h2>
+<p>An EOS supplies the partial-molar properties used to calculate <span class="math inline">RT\ln\phi_i</span>. Choose the EOS and its parameters for the stated <span class="math inline">T,P,\mathbf y</span>.</p>
+<p>For the <strong>low-density, pressure-form second-virial EOS</strong>, used in Lab 09,</p>
+<p><span class="math display">Z=\frac{PV}{nRT}=1+\frac{B_{\rm mix}P}{RT},\qquad B_{\rm mix}=\sum_i\sum_j y_i y_j B_{ij}</span></p>
+<p>The component fugacity coefficients follow from this mixture EOS.</p>
+<p><span class="math display">\ln\phi_i=\left(2\sum_j y_jB_{ij}-B_{\rm mix}\right)\frac{P}{RT}</span></p>
+<p>The coefficients <span class="math inline">B_{ij}(T)</span> come from gas-property data or a correlation. The cross coefficient describes unlike pairs. Use consistent units and check the EOS validity range.</p>
+</section>
+<section id="virial-phi-check" class="slide level2">
+<h2>Work out both coefficients from the EOS</h2>
+<p>Use synthetic inputs at 350 K and 200 kPa. Let component 1 be A and component 2 be A₂, with <span class="math inline">y_1=0.80</span>, <span class="math inline">y_2=0.20</span>.</p>
+<p>Take <span class="math inline">B_{11}=-1.00</span>, <span class="math inline">B_{12}=B_{21}=-0.600</span>, <span class="math inline">B_{22}=-0.200</span> L mol<span class="math inline">^{-1}</span> and <span class="math inline">R=8.31446</span> L kPa mol<span class="math inline">^{-1}</span> K<span class="math inline">^{-1}</span>.</p>
+<p><span class="math display">B_{\rm mix}=0.80^2(-1.00)+2(0.80)(0.20)(-0.600)+0.20^2(-0.200)=-0.840\ {\rm L\,mol^{-1}}</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th style="text-align: right;"><span class="math inline">\sum_j y_jB_{ij}</span> (L mol<span class="math inline">^{-1}</span>)</th>
+<th style="text-align: right;"><span class="math inline">\ln\phi_i</span></th>
+<th style="text-align: right;"><span class="math inline">\phi_i=\exp(\ln\phi_i)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;"><span class="math inline">-0.920</span></td>
+<td style="text-align: right;"><span class="math inline">(-1.000)(200)/(8.31446\times350)=-0.068727</span></td>
+<td style="text-align: right;">0.93358</td>
+</tr>
+<tr class="even">
+<td>A₂</td>
+<td style="text-align: right;"><span class="math inline">-0.520</span></td>
+<td style="text-align: right;"><span class="math inline">(-0.200)(200)/(8.31446\times350)=-0.013745</span></td>
+<td style="text-align: right;">0.98635</td>
+</tr>
+</tbody>
+</table>
+<p>Carry these coefficients into the activity calculation. Keep unrounded values until the final result.</p>
+</section>
 <section id="real-gas" class="slide level2">
 <h2>A real gas uses fugacity in each activity</h2>
 <p>At a specified <span class="math inline">T,P,\mathbf y</span>, a mixture equation of state gives each component’s fugacity coefficient <span class="math inline">\phi_i</span>. With an ideal-gas standard state,</p>
 <p><span class="math display">a_i=\frac{f_i}{p^\circ}=\frac{\phi_i y_iP}{p^\circ},\qquad Q=\frac{a_{\mathrm A}^2}{a_{\mathrm{A_2}}}.</span></p>
 <p>For this dissociation, the multiplier on the ideal-gas estimate is <span class="math inline">\phi_{\mathrm A}^2/\phi_{\mathrm{A_2}}</span>. The coefficients can change during compression and as the reaction proceeds. The same <span class="math inline">T</span>, written reaction and standard states give the same <span class="math inline">K</span>.</p>
-<p><strong>Try it.</strong> At 350 K and 200 kPa, use <span class="math inline">y_{\mathrm A}=0.80</span>, <span class="math inline">y_{\mathrm{A_2}}=0.20</span>. For this illustrative state take <span class="math inline">\phi_{\mathrm A}=0.90</span> and <span class="math inline">\phi_{\mathrm{A_2}}=0.95</span>. Calculate both activities and predict the direction.</p>
+<p><strong>Try it.</strong> Continue with the same EOS calculation at 350 K and 200 kPa, with <span class="math inline">y_{\mathrm A}=0.80</span>, <span class="math inline">y_{\mathrm{A_2}}=0.20</span>. Use the calculated coefficients <span class="math inline">\phi_{\mathrm A}=0.93358</span> and <span class="math inline">\phi_{\mathrm{A_2}}=0.98635</span>, with <span class="math inline">p^\circ=100</span> kPa. Calculate both fugacities, both activities and the reaction direction.</p>
 </section>
 <section id="real-gas-check" class="slide level2">
 <h2>Work the real-gas example on paper</h2>
@@ -310,19 +382,29 @@ Soorathep Kheawhom
 </thead>
 <tbody>
 <tr class="odd">
+<td><span class="math inline">f_{\mathrm A}</span></td>
+<td><span class="math inline">\phi_{\mathrm A}(0.80)(200)</span></td>
+<td style="text-align: right;">149.373 kPa</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_{\mathrm{A_2}}</span></td>
+<td><span class="math inline">\phi_{\mathrm{A_2}}(0.20)(200)</span></td>
+<td style="text-align: right;">39.454 kPa</td>
+</tr>
+<tr class="odd">
 <td><span class="math inline">a_{\mathrm A}</span></td>
-<td><span class="math inline">0.90(0.80)(2)</span></td>
-<td style="text-align: right;">1.44</td>
+<td><span class="math inline">f_{\mathrm A}/(100\ {\rm kPa})</span></td>
+<td style="text-align: right;">1.49373</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">a_{\mathrm{A_2}}</span></td>
-<td><span class="math inline">0.95(0.20)(2)</span></td>
-<td style="text-align: right;">0.38</td>
+<td><span class="math inline">f_{\mathrm{A_2}}/(100\ {\rm kPa})</span></td>
+<td style="text-align: right;">0.394539</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">Q</span></td>
-<td><span class="math inline">1.44^2/0.38</span></td>
-<td style="text-align: right;">5.46</td>
+<td><span class="math inline">a_{\mathrm A}^2/a_{\mathrm{A_2}}</span></td>
+<td style="text-align: right;">5.6553</td>
 </tr>
 </tbody>
 </table>
@@ -343,32 +425,32 @@ Soorathep Kheawhom
 </thead>
 <tbody>
 <tr class="odd">
-<td>0–15 min</td>
-<td>Derive Q and K, then check compression and a real-gas calculation</td>
+<td>0–20 min</td>
+<td>Derive Q and K, then calculate fugacity and check the pressure question</td>
 </tr>
 <tr class="even">
-<td>15–35 min</td>
+<td>20–40 min</td>
 <td>Revisit Weeks 2–5 in pairs with paper and a calculator</td>
 </tr>
 <tr class="odd">
-<td>35–60 min</td>
+<td>40–65 min</td>
 <td>Balance a cell reaction and calculate its potential by hand</td>
 </tr>
 <tr class="even">
-<td>60–70 min</td>
+<td>65–75 min</td>
 <td>Demonstrate the concentration cell in Lab 13</td>
 </tr>
 <tr class="odd">
-<td>70–80 min</td>
+<td>75–85 min</td>
 <td>Break</td>
 </tr>
 <tr class="even">
-<td>80–150 min</td>
+<td>85–155 min</td>
 <td>Pair investigation and independent check</td>
 </tr>
 <tr class="odd">
-<td>150–180 min</td>
-<td>Discuss results (20), exit ticket (5), feedback (3), closing (2)</td>
+<td>155–180 min</td>
+<td>Discuss results (15), exit ticket (5), feedback (3), closing (2)</td>
 </tr>
 </tbody>
 </table>
@@ -528,7 +610,7 @@ Soorathep Kheawhom
 <p>In Lab 13, compare a concentration cell with the activities exchanged. Predict and explain the sign of E, then independently check deltaG=−nFE.</p>
 </section>
 <section id="discussion-20-minutes" class="slide level2">
-<h2>Discussion · 20 minutes</h2>
+<h2>Discussion · 15 minutes</h2>
 <p>What determines the sign of a concentration-cell potential?</p>
 <p>Compare results and discuss unexpected behavior. Use one numerical check to support your explanation.</p>
 </section>
