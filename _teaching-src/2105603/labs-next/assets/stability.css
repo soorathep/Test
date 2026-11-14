@@ -138,3 +138,15 @@
 @media (max-width: 760px) { .rx-figures { grid-template-columns: 1fr; } }
 .eq-note .rx-key-amber { fill: #B9741A; }
 .eq-note .rx-key-teal { fill: #0F6E6B; }
+/* Lab 13 · concentration cell */
+.ec-figures { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+.ec-wire { fill: none; stroke: #333F4A; stroke-width: 2; }
+.ec-meter { fill: #fff; stroke: #333F4A; stroke-width: 2; }
+.ec-bridge { fill: none; stroke: #DFC98F; stroke-width: 12; stroke-linejoin: round; }
+.ec-beaker { fill: none; stroke: #333F4A; stroke-width: 2.5; }
+.ec-dilute { fill: #E6F1F0; }
+.ec-conc { fill: #9CC9C5; }
+.ec-metal { fill: #B9C1C6; stroke: #333F4A; stroke-width: 1.5; }
+#ec-chart { max-width: 100%; overflow: hidden; }
+#electrode-body th { text-align: left; font-weight: 600; }
+@media (max-width: 760px) { .ec-figures { grid-template-columns: 1fr; } }

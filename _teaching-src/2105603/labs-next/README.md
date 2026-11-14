@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–12 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
 the remaining four lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 13 (mode update) next. Lab 13 is the earlier reference prototype.
+lab-number order; all 13 labs now have a 2027 prototype with Core and Graduate views.
 
-Labs 01–12 now use a graduate teaching route. The foundation calculation is
+Labs 01–13 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -232,23 +232,17 @@ they do not establish independent student usability.
 
 ## Lab 13 prototype
 
-The prototype uses the same `calculate()` engine as the current lab via
-`../../labs/assets/electrochemistry.js`. The adapter maps concentration and
-activity-coefficient fields to its validated half-reaction representation.
-It implements the synthetic identical M2+/M concentration cell at 298.15 K,
-with two electrons, a common standard-potential reference, equal standard
-potentials of zero, a 1 mol/L concentration standard and zero junction potential.
-
-The visible starting cases are the baseline, exchanged concentrations and equal
-concentrations. Further cases investigate a smaller ratio and common scaling.
-The activity coefficients are editable in the model disclosure.
-
-Changing a scientific input invalidates the current displayed result and its
-save/export actions. A saved comparison is a snapshot. Exports retain the existing
-`kind: "electrochemistry"` and engine input representation, adding guided-version,
-comparison and reflection fields. Supported original concentration-cell files
-can be reopened. File contents are validated and recalculated before replacing
-the current study. Other cell models have an explicit route to the general builder.
+Rebuilt in November 2026 to match Labs 01–12 (Core and Graduate views, figures, concept
+questions, schema `skh-thermo-cell-study/1`). It uses `calculate()` from
+`../../labs/assets/electrochemistry.js` through `assets/electrochemistry-graduate.js`, for the
+synthetic M | M2+(L) || M2+(R) | M concentration cell (n = 2, E° = 0, c° = 1 mol/L, junction
+potential neglected). Starting case 0.01 and 1.0 mol/L at 298.15 K: E = 59.16 mV
+(29.58 mV per decade), dG = -11.42 kJ/mol, right electrode the cathode. Graduate route:
+gamma = 1, single-ion Debye-Huckel limiting law and extended form for MX2 (I = 3c) give
+59.2, -34.7 and 29.9 mV; at fixed activities dE/dT = E/T, dS = 38.29 J/(mol K), dH = 0;
+reversible discharge of 0.10 L per side passes 9552 C and delivers 160 J (mean 16.7 mV).
+Study files from the earlier guided prototype (`kind: "electrochemistry"`) are refused
+with a pointer to the current Lab 13, which still opens them.
 
 ## Implementation sequence
 

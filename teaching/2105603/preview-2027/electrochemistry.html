@@ -5,139 +5,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Concentration cell · Thermodynamics Labs 2027 preview</title>
-  <meta name="description" content="Predict, calculate and compare a concentration cell using two clearly labelled solution compartments.">
+  <meta name="description" content="Why does a cell with identical electrodes have a voltage? A concentration cell with activities, temperature and discharge.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/guide.css">
+  <link rel="stylesheet" href="assets/stability.css?v=lab13-1">
 </head>
-<body>
+<body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
-  <header class="site-header">
-    <a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a>
-    <nav aria-label="Course navigation">
-      <a href="index.html">All 2027 labs</a>
-      <a href="../">Course</a>
-    </nav>
-  </header>
-
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="adiabatic.html">Lab 07</a><a href="vle-input.html">Lab 08</a><a href="virial.html">Lab 09</a><a href="solids.html">Lab 10</a><a href="adsorption.html">Lab 11</a><a href="reaction.html">Lab 12</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
   <main class="page" id="experiment">
     <div class="page-intro">
-      <div>
-        <p class="eyebrow">Lab 13 · Electrochemistry</p>
-        <h1>Why does the cell voltage change?</h1>
-        <p class="intro-copy">Predict the voltage, change the concentrations, and check your result.</p>
-      </div>
-      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Help review this design</a></p>
+      <div><p class="eyebrow">Lab 13 · Electrochemical equilibrium</p><h1>Why does a cell with identical electrodes have a voltage?</h1><p id="case-description" class="intro-copy">Two compartments each hold a synthetic metal electrode M(s) in a solution of M²⁺, joined by a salt bridge. The left solution is 0.01 mol L⁻¹ and the right 1.0 mol L⁻¹, at 298.15 K. Both electrodes have the same standard potential, so E° = 0.</p><p class="task-question">Calculate the cell voltage and identify which electrode is the cathode. Then explain where the electrical work comes from.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
     </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the Nernst line and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus activity-coefficient models, the temperature dependence of E and the work available on discharge in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 for the starting case. In Step 4, replace concentrations by activities from three models, extract ΔS from dE/dT, and integrate the work as the cell runs down. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
 
-    <section class="starter" aria-label="Starting cases">
-      <div class="starter-label"><strong>Choose a case</strong><span>Values load into the two solutions below.</span></div>
-      <div class="case-buttons">
-        <button type="button" id="restore-baseline" data-case="baseline" aria-pressed="true">Starting case</button>
-        <button type="button" data-case="swap" aria-pressed="false">Swapped starting case</button>
-        <button type="button" data-case="equal" aria-pressed="false">Equal concentrations</button>
-      </div>
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a case</strong><span>Both electrodes are the same M²⁺/M couple.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 0.01 and 1.0 mol L⁻¹</button><button type="button" data-case="swap" aria-pressed="false">Concentrations exchanged</button><button type="button" data-case="equal" aria-pressed="false">Equal concentrations</button><button type="button" data-case="same-ratio" aria-pressed="false">Same ratio · 0.001 and 0.1</button></div>
     </section>
 
-    <div class="experiment-grid">
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">A voltage from a difference in activity</h2><span class="section-help">Nernst equation with E° = 0</span></div>
+      <div class="vlle-figures ec-figures">
+        <div>
+          <svg class="three-phase-sketch" viewBox="0 0 400 290" role="img" aria-labelledby="cell-title cell-description">
+            <title id="cell-title">The concentration cell in the starting case</title>
+            <desc id="cell-description">Two beakers joined by a salt bridge. The left beaker holds 0.01 mol per litre M2+, the right 1.0 mol per litre. Each has an M electrode, connected through a voltmeter reading 59.2 millivolts. Electrons flow from left to right in the external wire. The left electrode is the anode, where M dissolves. The right electrode is the cathode, where M2+ deposits.</desc>
+            <path d="M90 74 V34 H180 M220 34 H310 V74" class="ec-wire"/>
+            <circle cx="200" cy="34" r="20" class="ec-meter"/><text x="200" y="40" class="vessel-label" style="text-anchor:middle">V</text>
+            <text x="200" y="76" class="pxy-callout">59.2 mV</text>
+            <text x="135" y="24" class="sle-note" style="text-anchor:middle">e⁻ →</text><text x="265" y="24" class="sle-note" style="text-anchor:middle">e⁻ →</text>
+            <path d="M128 160 V112 H272 V160" class="ec-bridge"/><text x="200" y="104" class="sle-note" style="text-anchor:middle">salt bridge</text>
+            <rect x="30" y="140" width="120" height="100" class="ec-dilute"/><rect x="250" y="140" width="120" height="100" class="ec-conc"/>
+            <path d="M30 110 V240 H150 V110" class="ec-beaker"/><path d="M250 110 V240 H370 V110" class="ec-beaker"/>
+            <rect x="82" y="74" width="16" height="150" class="ec-metal"/><rect x="302" y="74" width="16" height="150" class="ec-metal"/>
+            <g class="pxy-region"><text x="58" y="205" style="text-anchor:middle">0.01</text><text x="342" y="205" style="text-anchor:middle">1.0</text></g>
+            <g class="energy-text"><text x="90" y="262">anode</text><text x="310" y="262">cathode</text></g>
+            <g class="sle-note"><text x="90" y="280">M → M²⁺ + 2e⁻</text><text x="310" y="280">M²⁺ + 2e⁻ → M</text></g>
+          </svg>
+          <p class="figure-caption">Concentrations in mol L⁻¹. The dilute side dissolves metal and the concentrated side plates it, which moves both solutions toward the same activity.</p>
+        </div>
+        <div>
+          <svg class="pxy-sketch" viewBox="0 0 500 262" role="img" aria-labelledby="ne-title ne-description">
+            <title id="ne-title">Cell voltage against the activity ratio</title>
+            <desc id="ne-description">E in millivolts against log10 of a_R over a_L. A straight line through zero with slope 29.6 millivolts per decade for n = 2. The starting case at 2 decades gives 59.2 millivolts. The exchanged case at minus 2 decades gives minus 59.2 millivolts. Equal activities give zero.</desc>
+            <path d="M60 30 V220 H460" class="pxy-axis"/><path d="M60 125 H460" class="rx-zero"/>
+            <path d="M60 209.3 L460 40.7" class="pxy-bubble"/>
+            <path d="M393.3 68.8 V125" class="rx-drop"/><path d="M126.7 181.2 V125" class="rx-drop"/>
+            <circle cx="393.3" cy="68.8" r="5.5" class="pxy-vapor"/><circle cx="126.7" cy="181.2" r="5.5" class="sle-onset"/><circle cx="260" cy="125" r="4.5" class="sle-solid-pt"/>
+            <g class="pxy-callout" style="text-anchor:start"><text x="300" y="62" style="text-anchor:end">starting case · 59.2 mV</text><text x="136" y="204" style="text-anchor:start">exchanged · −59.2 mV</text><text x="268" y="142" style="text-anchor:start">equal · 0</text></g>
+            <g class="sle-note"><text x="452" y="176" style="text-anchor:end">slope (RT/2F) ln 10</text><text x="452" y="192" style="text-anchor:end">= 29.6 mV per decade</text></g>
+            <g class="pxy-tick"><text x="60" y="238">−3</text><text x="126.7" y="238">−2</text><text x="193.3" y="238">−1</text><text x="260" y="238">0</text><text x="326.7" y="238">1</text><text x="393.3" y="238">2</text><text x="460" y="238">3</text><text x="52" y="34" style="text-anchor:end">95</text><text x="52" y="129" style="text-anchor:end">0</text><text x="52" y="224" style="text-anchor:end">−95</text></g>
+            <text x="260" y="257" class="pxy-axis-label">log₁₀(a<tspan baseline-shift="sub" font-size="70%">R</tspan>/a<tspan baseline-shift="sub" font-size="70%">L</tspan>)</text>
+            <text x="16" y="125" class="pxy-axis-label" transform="rotate(-90 16 125)">E / mV</text>
+          </svg>
+          <p class="figure-caption">E = (RT/2F) ln(a<sub>R</sub>/a<sub>L</sub>) at 298.15 K. Only the ratio matters, so 0.001 and 0.1 mol L⁻¹ give the same voltage as 0.01 and 1.0.</p>
+        </div>
+      </div>
+      <figcaption>The two half-cells differ only in activity. The cell reaction transfers M²⁺ from the concentrated to the dilute solution through the external circuit, so ΔG = −nFE comes entirely from the activity difference.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
       <section class="panel setup-panel" aria-labelledby="setup-heading">
-        <div class="panel-heading"><h2 id="setup-heading">Set the two solutions</h2><span class="condition">298.15 K</span></div>
-        <p class="section-help">Each compartment contains a metal electrode M(s) and dissolved M²⁺ ions.</p>
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the two solutions</h2><span class="condition">M | M²⁺(L) ‖ M²⁺(R) | M</span></div>
         <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
-
-        <form id="cell-form" novalidate>
-          <div class="cell-bridge" aria-hidden="true"><span>Same M²⁺/M electrode couple</span></div>
-          <div class="solution-grid">
-            <fieldset class="solution">
-              <legend>Left solution</legend>
-              <div class="electrode" aria-hidden="true"><span>M(s)</span></div>
-              <label for="c-left">M²⁺ concentration</label>
-              <div class="quantity-input"><input id="c-left" type="number" value="0.01" step="any" min="0" inputmode="decimal" aria-describedby="unit-c-left error-c-left"><span id="unit-c-left">mol/L</span></div>
-              <p id="error-c-left" class="field-error" hidden></p>
-              <p class="activity-value">Activity a<sub>L</sub> <output id="activity-left">—</output></p>
-            </fieldset>
-            <fieldset class="solution">
-              <legend>Right solution</legend>
-              <div class="electrode" aria-hidden="true"><span>M(s)</span></div>
-              <label for="c-right">M²⁺ concentration</label>
-              <div class="quantity-input"><input id="c-right" type="number" value="1" step="any" min="0" inputmode="decimal" aria-describedby="unit-c-right error-c-right"><span id="unit-c-right">mol/L</span></div>
-              <p id="error-c-right" class="field-error" hidden></p>
-              <p class="activity-value">Activity a<sub>R</sub> <output id="activity-right">—</output></p>
-            </fieldset>
-          </div>
-          <p id="cell-direction" class="cell-direction" aria-live="polite">Calculate the cell to identify the favored direction.</p>
-
-          <div class="prediction-row">
-            <label for="prediction">Predict the sign of E <span>optional</span></label>
-            <select id="prediction"><option value="">Choose a sign</option><option value="positive">Positive</option><option value="zero">Zero</option><option value="negative">Negative</option></select>
-          </div>
+        <form id="ec-form" novalidate>
+          <div class="feed-inputs"><div><label for="cL">Left M²⁺ concentration</label><div class="quantity-input"><input id="cL" type="number" value="0.01" min="0.000001" max="10" step="any" aria-describedby="cL-unit error-cL"><span id="cL-unit">mol L⁻¹</span></div><p id="error-cL" class="field-error" hidden></p></div><div><label for="cR">Right M²⁺ concentration</label><div class="quantity-input"><input id="cR" type="number" value="1" min="0.000001" max="10" step="any" aria-describedby="cR-unit error-cR"><span id="cR-unit">mol L⁻¹</span></div><p id="error-cR" class="field-error" hidden></p></div><div><label for="T">Temperature</label><div class="quantity-input"><input id="T" type="number" value="298.15" min="273.15" max="373.15" step="any" aria-describedby="T-unit error-T"><span id="T-unit">K</span></div><p id="error-T" class="field-error" hidden></p></div></div>
+          <fieldset class="antoine-set"><legend>Activity coefficients · a = γc/c°, c° = 1 mol L⁻¹</legend>
+            <div class="coefficient-grid"><div><label for="gL">Left γ</label><input id="gL" type="number" value="1" min="0.0001" max="10" step="any" aria-describedby="error-gL"><p id="error-gL" class="field-error" hidden></p></div><div><label for="gR">Right γ</label><input id="gR" type="number" value="1" min="0.0001" max="10" step="any" aria-describedby="error-gR"><p id="error-gR" class="field-error" hidden></p></div></div>
+            <p class="input-help">γ = 1 treats the solutions as ideal. Graduate investigation A compares Debye–Hückel estimates.</p>
+          </fieldset>
+          <div class="prediction-row"><label for="prediction">Before calculating, what is the sign of E for the cell as written (left oxidation, right reduction)?</label><select id="prediction"><option value="">Not sure yet</option><option value="positive">Positive</option><option value="zero">Zero</option><option value="negative">Negative</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
           <button id="calculate" class="primary-button calculate-button" type="button">Calculate the cell</button>
-
-          <details class="advanced">
-            <summary>Activity coefficients and model assumptions</summary>
-            <p>Activities use a = γc/c°. The standard concentration c° is 1 mol/L. The supplied coefficients are assumptions for this teaching example.</p>
-            <div class="coefficient-grid">
-              <div><label for="gamma-left">Left γ <span>dimensionless</span></label><input id="gamma-left" type="number" min="0" step="any" value="1" aria-describedby="error-gamma-left"><p id="error-gamma-left" class="field-error" hidden></p></div>
-              <div><label for="gamma-right">Right γ <span>dimensionless</span></label><input id="gamma-right" type="number" min="0" step="any" value="1" aria-describedby="error-gamma-right"><p id="error-gamma-right" class="field-error" hidden></p></div>
-            </div>
-            <p>Both standard reduction potentials use the same hypothetical reference and equal 0 V at 298.15 K. Two electrons transfer per reaction as written. Pure metal is present in each compartment, with activity 1. The model uses a zero liquid-junction potential and predicts reversible cell potential.</p>
-            <p>Individual-ion activities depend on the chosen convention. Bulk solutions must be electroneutral. The supplied γ values are teaching inputs.</p>
-            <p><a href="../labs/electrochemistry.html#ec-experiment">Open the general cell builder</a> for other half-reactions and standard-state inputs.</p>
-          </details>
-
-          <details class="advanced">
-            <summary>More concentration experiments</summary>
-            <p>Compare a smaller concentration ratio, then compare the same ratio at lower concentrations.</p>
-            <div class="case-buttons secondary-cases">
-              <button type="button" data-case="tenfold" aria-pressed="false">Left 0.1 · Right 1 mol/L</button>
-              <button type="button" data-case="same-ratio" aria-pressed="false">Left 0.001 · Right 0.1 mol/L</button>
-            </div>
-          </details>
-
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model and validity</summary><p>Both electrodes are the same pure metal, so E° = 0 at every temperature. The liquid-junction potential across the salt bridge is neglected. Single-ion activity coefficients cannot be measured on their own; the supplied values are modelling assumptions.</p><p><a href="../labs/electrochemistry.html">Open the current Lab 13</a> for different half-reactions, standard potentials and your own species tables.</p></details>
         </form>
       </section>
 
       <section class="panel result-panel" aria-labelledby="result-heading">
-        <div class="panel-heading"><h2 id="result-heading">Read and check the result</h2></div>
-        <div id="result-placeholder" class="result-placeholder">
-          <span class="placeholder-voltage" aria-hidden="true">E</span>
-          <p>Make a prediction, then calculate the cell.</p>
-          <p class="section-help">The sign refers to left oxidation and right reduction in the written cell reaction.</p>
-        </div>
+        <div class="panel-heading"><h2 id="result-heading">2. Read the result</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate to see the cell voltage and the direction of the reaction.</p></div>
         <div id="results" hidden>
-          <div class="voltage-result"><span>Reversible cell potential E</span><div><output id="result-E">—</output><span class="voltage-unit">V</span></div></div>
-          <p id="result-direction" class="direction-result"></p>
-          <p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
-          <dl class="result-metrics">
-            <div><dt>Current ratio Q</dt><dd id="result-Q">—</dd></div>
-            <div><dt>Equilibrium constant K</dt><dd id="result-K">—</dd></div>
-            <div><dt>Reaction Δ<sub>r</sub>G <span>kJ/mol as written</span></dt><dd id="result-dG">—</dd></div>
-          </dl>
-          <div class="calculation-check">
-            <h3>Check the calculation</h3>
-            <p class="reaction">M(s)<sub>L</sub> + M²⁺<sub>R</sub> ⇌ M²⁺<sub>L</sub> + M(s)<sub>R</sub></p>
-            <ol id="calc-steps"></ol>
-          </div>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <div class="table-scroll" role="region" aria-label="Electrodes" tabindex="0"><table class="phase-table"><thead><tr><th scope="col">Electrode</th><th scope="col">Activity of M²⁺</th><th scope="col">Role</th><th scope="col">Reaction</th></tr></thead><tbody id="electrode-body"></tbody></table></div>
+          <dl class="boundary-metrics"><div><dt>Reaction quotient Q = a<sub>L</sub>/a<sub>R</sub> <span>for the cell as written</span></dt><dd id="result-Q">—</dd></div><div><dt>Gibbs energy ΔG = −nFE <span>per mol of M²⁺ transferred</span></dt><dd id="result-dG">—</dd></div><div><dt>Nernst slope <span>(RT/2F) ln 10 at this T</span></dt><dd id="result-slope">—</dd></div></dl>
+          <div class="balance-readout"><strong>Independent check</strong><output id="result-res">—</output><span>|E(engine) − (RT/2F) ln(a<sub>R</sub>/a<sub>L</sub>)| in V</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
         </div>
-        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 0.01 and 1.0" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
       </section>
     </div>
 
-    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
-      <div class="panel-heading"><h2 id="comparison-heading">Compare your cases</h2><span class="section-help">Saved rows keep their original inputs.</span></div>
-      <p id="comparison-empty" class="empty-state">Calculate a case and add its result here. Then change the concentrations and compare.</p>
-      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved case comparison" tabindex="0" hidden>
-        <table><caption class="visually-hidden">Concentration-cell comparison. Q and the activity coefficients are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">Left c / mol L⁻¹</th><th scope="col">Right c / mol L⁻¹</th><th scope="col">Left γ</th><th scope="col">Right γ</th><th scope="col">Q</th><th scope="col">E / V</th><th scope="col">Δ<sub>r</sub>G / kJ mol⁻¹</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table>
-      </div>
-      <label for="reflection" class="reflection-label">Explain your comparison</label>
-      <p id="reflection-help" class="section-help">What changed? Which calculation supports your explanation? For equal activities, check whether Q = K and E = 0.</p>
-      <textarea id="reflection" rows="4" maxlength="10000" aria-describedby="reflection-help" placeholder="Write your explanation and one independent check."></textarea>
-      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
-      <p id="status" class="study-status" role="status" aria-live="polite"></p>
-      <p class="privacy-note">Your inputs, comparisons and explanation are kept in this open page. Download the study to keep a copy and reopen it later.</p>
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the Nernst line</h2><span class="section-help">Calculated from the current inputs</span></div>
+      <div id="ec-chart" class="vle-chart" role="img" aria-label="Cell voltage against the activity ratio. Numbers are listed in Step 2."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
     </section>
-    <noscript><p class="error-summary">Enable JavaScript to calculate this cell. You can read the model assumptions and compare your hand calculation with the course slides.</p></noscript>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Calculate E on paper</h3><p>Write the cell reaction for left oxidation and right reduction, then apply the Nernst equation with E° = 0.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Write the overall reaction, Q and E."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>Overall: M²⁺(R) → M²⁺(L), with n = 2. Q = a<sub>L</sub>/a<sub>R</sub> = 0.01, so E = E° − (RT/2F) ln Q = −(0.01285 V)(−4.605) = 0.0592 V.</p><p>Equivalently, 29.6 mV for each factor of ten in the activity ratio, and the ratio here is two decades. E is positive, so the reaction runs as written: the right electrode is the cathode.</p></div></details></div>
+      <div class="concept-question"><h3>B. What sets the sign and the size of E?</h3><p>Compare “Concentrations exchanged”, “Equal concentrations” and “Same ratio · 0.001 and 0.1”.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Quote E for the three cases and state what it depends on."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>Exchanging the solutions gives −59.2 mV: the same reaction now runs in reverse, and the left electrode becomes the cathode. Equal concentrations give 0, because Q = K = 1. The 0.001 and 0.1 pair gives 59.2 mV again.</p><p>E depends only on the activity ratio, not on the absolute concentrations. The more concentrated side is always the cathode, because deposition there lowers its activity.</p></div></details></div>
+      <div class="concept-question"><h3>C. Where does the electrical work come from?</h3><p>Read ΔG for the starting case. ΔG° = 0 here, so no chemical change occurs overall.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Quote ΔG and relate it to dilution."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>ΔG = −2 × 96 485 × 0.0592 = −11.4 kJ per mol of M²⁺ transferred, equal to RT ln(a<sub>L</sub>/a<sub>R</sub>) for moving one mole of ions from the 1.0 to the 0.01 mol L⁻¹ solution.</p><p>The work comes from the free energy of dilution, which is entropic for ideal solutions. Mixing the two solutions directly would waste it; the cell converts it into electrical work.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate the cell evidence</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="ec-limits-heading"><h3 id="ec-limits-heading">What these results can and cannot show</h3><ul><li>Single-ion activity coefficients are not measurable. Debye–Hückel estimates are reliable only at low ionic strength.</li><li>A real salt bridge adds a liquid-junction potential, often a few millivolts, which is comparable to the corrections here.</li><li>The discharge study assumes equal volumes, constant γ and reversible operation. A real cell loses part of the work to resistance and overpotential.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="act-heading"><h3 id="act-heading">A. Concentration or activity?</h3>
+        <ol class="graduate-checklist"><li>Compute E with γ = 1, with the Debye–Hückel limiting law, and with the extended Debye–Hückel form for M²⁺ in MX₂ (I = 3c).</li><li>Compare γ on each side and the resulting E.</li><li>Explain why the limiting law can reverse the sign of E, and which result, if any, you would trust at 1 mol L⁻¹.</li></ol>
+        <div class="graduate-actions"><button id="run-act" class="primary-button" type="button" disabled>Compare activity models</button></div>
+        <p id="act-status" class="graduate-status" role="status"></p>
+        <div id="act-wrap" class="table-scroll graduate-table" role="region" aria-label="Activity models" tabindex="0" hidden><table><thead><tr><th scope="col">Model</th><th scope="col">I left / mol L⁻¹</th><th scope="col">γ left</th><th scope="col">I right / mol L⁻¹</th><th scope="col">γ right</th><th scope="col">E / mV</th></tr></thead><tbody id="act-body"></tbody></table></div>
+        <label for="note-activity">Claim 1 · activities</label><textarea id="note-activity" rows="3" maxlength="10000" placeholder="Quote E for the three models and the ionic strengths."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="temp-heading"><h3 id="temp-heading">B. What does dE/dT reveal?</h3>
+        <ol class="graduate-checklist"><li>Compute E from 278 to 338 K at the current activities.</li><li>Obtain ΔS = nF(dE/dT), the reversible heat TΔS and ΔH = ΔG + TΔS.</li><li>Explain why ΔH is zero here and what this says about the source of the work.</li></ol>
+        <div class="graduate-actions"><button id="run-temp" type="button" class="primary-button" disabled>Run the temperature study</button></div>
+        <p id="temp-status" class="graduate-status" role="status"></p>
+        <div id="temp-wrap" class="table-scroll graduate-table" role="region" aria-label="Temperature study" tabindex="0" hidden><table><thead><tr><th scope="col">T / K</th><th scope="col">E / mV</th><th scope="col">ΔG / kJ mol⁻¹</th><th scope="col">ΔS / J mol⁻¹ K⁻¹</th><th scope="col">TΔS / kJ mol⁻¹</th><th scope="col">ΔH / kJ mol⁻¹</th></tr></thead><tbody id="temp-body"></tbody></table></div>
+        <label for="note-temperature">Claim 2 · entropy and heat</label><textarea id="note-temperature" rows="3" maxlength="10000" placeholder="Quote dE/dT, ΔS and the heat absorbed at 298 K."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="dis-heading"><h3 id="dis-heading">C. How much work before the cell is flat?</h3>
+        <ol class="graduate-checklist"><li>Let the cell discharge reversibly with 0.10 L in each compartment until the activities are equal.</li><li>Tabulate E against the charge passed and integrate W = ∫E dq.</li><li>Compare W with the starting voltage times the total charge, and explain the difference.</li></ol>
+        <div class="graduate-actions"><button id="run-dis" type="button" class="primary-button" disabled>Run the discharge</button></div>
+        <p id="dis-status" class="graduate-status" role="status"></p>
+        <div id="dis-wrap" class="table-scroll graduate-table" role="region" aria-label="Discharge" tabindex="0" hidden><table><thead><tr><th scope="col">Fraction discharged</th><th scope="col">c left / mol L⁻¹</th><th scope="col">c right / mol L⁻¹</th><th scope="col">Charge passed / C</th><th scope="col">E / mV</th></tr></thead><tbody id="dis-body"></tbody></table></div>
+        <label for="note-discharge">Claim 3 · available work</label><textarea id="note-discharge" rows="3" maxlength="10000" placeholder="Quote the total charge, the work and the mean voltage."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State the voltage you would report for this cell, its main uncertainty, and the measurement you would make next."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Predict the voltage for 0.1 and 1.0 mol L⁻¹, then check it.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">c left / mol L⁻¹</th><th scope="col">c right / mol L⁻¹</th><th scope="col">γ left, right</th><th scope="col">T / K</th><th scope="col">E / mV</th><th scope="col">Cathode</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate the cell.</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate. The figures and questions remain available to read.</p></noscript>
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
-  <script type="module" src="assets/electrochemistry.js"></script>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/electrochemistry-lab.js?v=lab13-1"></script>
 </body>
 </html>
