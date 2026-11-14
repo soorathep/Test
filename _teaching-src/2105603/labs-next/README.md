@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–11 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–12 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
 the remaining four lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 12 next. Lab 13 is the earlier reference prototype.
+lab-number order, with Lab 13 (mode update) next. Lab 13 is the earlier reference prototype.
 
-Labs 01–11 now use a graduate teaching route. The foundation calculation is
+Labs 01–12 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -480,3 +480,15 @@ Henry/Langmuir/Freundlich fits to synthetic 300 K data (Langmuir with fixed +-2%
 scatter) over q <= 0.8 and all points (vessel P 10.1-18.4 kPa; q at 60 kPa 1.71-7.74),
 isosteric heat 25.1 kJ/mol from 300/320/340 K (24.1 if 340 K is recorded as 342 K), and
 a 300-400 K swing with Q = 20, 25, 30 kJ/mol (released at 380 K: 6.8, 9.2, 11.7 mmol).
+
+## Lab 12 prototype
+
+Ideal-gas A2 = 2A with the shared engine `reaction.js` (extent root and van 't Hoff).
+Synthetic data at 350 K: dG = -4 kJ/mol, dH = +50 kJ/mol, dCp = 0, P0 = 1 bar; 1 mol A2.
+K = 3.953, and without inert xi = [K/(K + 4P/P0)]^(1/2): 0.705 at 100 kPa (yA = 0.827),
+0.300 at 1000 kPa. 4 mol inert at 100 kPa gives 0.870. At 400 K, ln K = 3.522, K = 33.9,
+xi = 0.946; at 300 K, K = 0.226, xi = 0.231. Graduate route: ln K and conversion
+300-550 K with constant dH, dCp = +30 J/(mol K) and dH +-10%; driving force of four samples
+(yA2 = 0.2 reacts forward at 100 kPa, dG = -0.62 kJ/mol, and in reverse at 1000 kPa,
++6.09 kJ/mol); K converted to P0 = 1 atm gives the same xi, while the unconverted K
+gives 0.7074 instead of 0.7050.

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Chemical reaction equilibrium · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="How far does a gas reaction go? Ideal-gas equilibrium for A2 ⇌ 2A with pressure, inert gas and temperature.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab12-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="adiabatic.html">Lab 07</a><a href="vle-input.html">Lab 08</a><a href="virial.html">Lab 09</a><a href="solids.html">Lab 10</a><a href="adsorption.html">Lab 11</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 12 · Chemical reaction equilibrium</p><h1>How far does a gas reaction go?</h1><p id="case-description" class="intro-copy">A synthetic dimer dissociates in the gas phase, A₂ ⇌ 2A. At 350 K, ΔG° = −4.0 kJ mol⁻¹ and ΔH° = +50 kJ mol⁻¹ with a standard pressure of 1 bar. One mole of A₂ is fed at 350 K and 100 kPa, and the gases are ideal.</p><p class="task-question">Find the extent of reaction and the equilibrium composition. Then predict how pressure, an inert gas and temperature move it.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the Gibbs-energy curve and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus a temperature study of K, the driving force of reactor samples and the standard-state convention in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 for the starting case. In Step 4, carry K to other temperatures with different thermal data, evaluate the driving force of gas samples, and test pressure, inert gas and the standard state. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a case</strong><span>All cases feed 1 mol of A₂.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 350 K, 100 kPa</button><button type="button" data-case="high-p" aria-pressed="false">Ten times the pressure</button><button type="button" data-case="inert" aria-pressed="false">Add 4 mol inert gas</button><button type="button" data-case="hot" aria-pressed="false">Heated to 400 K</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Equilibrium is the minimum of G along the reaction</h2><span class="section-help">One reaction, ideal gases</span></div>
+      <div class="vlle-figures rx-figures">
+        <div>
+          <svg class="pxy-sketch" viewBox="0 0 500 262" role="img" aria-labelledby="g-title g-description">
+            <title id="g-title">Gibbs energy along the extent of reaction at two pressures</title>
+            <desc id="g-description">G minus G at zero extent, divided by RT, against the extent of reaction. At 100 kPa the curve has its minimum at extent 0.705. At 1000 kPa the minimum moves to extent 0.300 and is shallower. Both curves start at zero for pure A2.</desc>
+            <path d="M60 30 V220 H460" class="pxy-axis"/>
+            <path d="M60 93.3 H460" class="rx-zero"/>
+            <polyline points="60.0,93.3 70.0,108.2 80.0,118.6 90.0,127.4 100.0,135.1 110.0,142.0 120.0,148.2 130.0,153.9 140.0,159.1 150.0,163.9 160.0,168.4 170.0,172.5 180.0,176.3 190.0,179.8 200.0,183.0 210.0,186.0 220.0,188.7 230.0,191.2 240.0,193.5 250.0,195.5 260.0,197.3 270.0,198.9 280.0,200.4 290.0,201.6 300.0,202.5 310.0,203.3 320.0,203.9 330.0,204.3 340.0,204.4 350.0,204.4 360.0,204.1 370.0,203.5 380.0,202.7 390.0,201.7 400.0,200.3 410.0,198.6 420.0,196.5 430.0,193.9 440.0,190.8 450.0,186.7 460.0,180.4" class="pxy-bubble"/>
+            <polyline points="60.0,93.3 70.0,104.5 80.0,111.3 90.0,116.4 100.0,120.5 110.0,123.7 120.0,126.3 130.0,128.4 140.0,130.0 150.0,131.1 160.0,131.9 170.0,132.4 180.0,132.5 190.0,132.4 200.0,132.0 210.0,131.3 220.0,130.4 230.0,129.2 240.0,127.8 250.0,126.2 260.0,124.4 270.0,122.4 280.0,120.1 290.0,117.7 300.0,115.1 310.0,112.2 320.0,109.1 330.0,105.9 340.0,102.4 350.0,98.6 360.0,94.7 370.0,90.5 380.0,86.1 390.0,81.4 400.0,76.3 410.0,71.0 420.0,65.2 430.0,59.0 440.0,52.2 450.0,44.5 460.0,34.6" class="rx-high-p"/>
+            <path d="M342 204.4 V220" class="rx-drop"/><path d="M180 132.5 V220" class="rx-drop"/>
+            <circle cx="342" cy="204.4" r="5.5" class="sle-onset"/><circle cx="180" cy="132.5" r="5.5" class="pxy-vapor"/>
+            <g class="sle-note"><text x="66" y="86" style="text-anchor:start">pure A₂</text></g>
+            <g class="eq-note" style="text-anchor:start"><text x="76" y="44" style="text-anchor:start" class="rx-key-amber">1000 kPa · minimum at ξ = 0.300</text><text x="76" y="64" style="text-anchor:start" class="rx-key-teal">100 kPa · minimum at ξ = 0.705</text></g>
+            <g class="pxy-tick"><text x="60" y="238">0</text><text x="260" y="238">0.5</text><text x="460" y="238">1</text><text x="52" y="34" style="text-anchor:end">1</text><text x="52" y="97" style="text-anchor:end">0</text><text x="52" y="160" style="text-anchor:end">−1</text><text x="52" y="224" style="text-anchor:end">−2</text></g>
+            <text x="260" y="257" class="pxy-axis-label">Extent of reaction ξ / mol</text>
+            <text x="16" y="125" class="pxy-axis-label" transform="rotate(-90 16 125)">[G(ξ) − G(0)]/RT</text>
+          </svg>
+          <p class="figure-caption">Model-generated at 350 K. Raising the pressure penalizes the extra mole of gas, so the minimum moves to a smaller extent. K is the same for both curves.</p>
+        </div>
+        <div>
+          <svg class="eq-sketch" viewBox="0 0 440 250" role="img" aria-labelledby="k-title k-description">
+            <title id="k-title">The equilibrium condition for A2 to 2A</title>
+            <desc id="k-description">K equals y_A squared over y_A2 times P over P standard. K depends only on temperature through delta G standard. The composition term and the pressure ratio depend on the state. With one mole of A2 fed, the extent is the square root of K over K plus 4 P over P standard.</desc>
+            <g class="eq-note"><text x="70" y="36">T only</text><text x="210" y="36">composition</text><text x="352" y="36">pressure · Δν = +1</text></g>
+            <path d="M70 44 V80" class="eq-lead eq-teal"/><path d="M210 44 V80" class="eq-lead eq-amber"/><path d="M352 44 V80" class="eq-lead eq-slate"/>
+            <g class="eq-main eq-small"><text x="70" y="108" class="eq-teal-text">K</text><text x="120" y="108">=</text><text x="210" y="108" class="eq-amber-text">y<tspan baseline-shift="sub" font-size="65%">A</tspan>²/y<tspan baseline-shift="sub" font-size="65%">A₂</tspan></text><text x="285" y="108">×</text><text x="352" y="108" class="eq-slate-text">P/P°</text></g>
+            <g class="eq-caption"><text x="220" y="146">K = exp(−ΔG°/RT) = exp(4000/(8.314 × 350)) = 3.95</text></g>
+            <rect x="40" y="168" width="360" height="62" rx="6" class="sle-worked"/>
+            <g class="eq-note"><text x="220" y="192">1 mol A₂ fed: y<tspan baseline-shift="sub" font-size="70%">A</tspan> = 2ξ/(1 + ξ), y<tspan baseline-shift="sub" font-size="70%">A₂</tspan> = (1 − ξ)/(1 + ξ)</text><text x="220" y="216">ξ = [K/(K + 4P/P°)]<tspan baseline-shift="super" font-size="70%">1/2</tspan> = (3.95/7.95)<tspan baseline-shift="super" font-size="70%">1/2</tspan> = 0.705</text></g>
+          </svg>
+          <p class="figure-caption">Pressure and inert gas change the state term, not K. Temperature changes K.</p>
+        </div>
+      </div>
+      <figcaption>At fixed T and P, the system moves along the reaction until G is lowest. At that point ΔG = ΔG° + RT ln Q = 0, so Q = K.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the reactor and the reaction data</h2><span class="condition">A₂ ⇌ 2A · ideal gas</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="rx-form" novalidate>
+          <div class="feed-inputs"><div><label for="T">Temperature</label><div class="quantity-input"><input id="T" type="number" value="350" min="250" max="650" step="any" aria-describedby="T-unit error-T"><span id="T-unit">K</span></div><p id="error-T" class="field-error" hidden></p></div><div><label for="P">Pressure</label><div class="quantity-input"><input id="P" type="number" value="100" min="1" max="5000" step="any" aria-describedby="P-unit error-P"><span id="P-unit">kPa</span></div><p id="error-P" class="field-error" hidden></p></div><div><label for="nA2">A₂ fed</label><div class="quantity-input"><input id="nA2" type="number" value="1" min="0.001" max="100" step="any" aria-describedby="nA2-unit error-nA2"><span id="nA2-unit">mol</span></div><p id="error-nA2" class="field-error" hidden></p></div><div><label for="nI">Inert gas fed</label><div class="quantity-input"><input id="nI" type="number" value="0" min="0" max="100" step="any" aria-describedby="nI-unit error-nI"><span id="nI-unit">mol</span></div><p id="error-nI" class="field-error" hidden></p></div></div>
+          <fieldset class="antoine-set"><legend>Standard reaction properties at 350 K · P° = 1 bar</legend>
+            <div class="antoine-grid abc-3"><div><label for="dG">ΔG° / kJ mol⁻¹</label><input id="dG" type="number" value="-4" step="any" aria-describedby="error-dG"><p id="error-dG" class="field-error" hidden></p></div><div><label for="dH">ΔH° / kJ mol⁻¹</label><input id="dH" type="number" value="50" step="any" aria-describedby="error-dH"><p id="error-dH" class="field-error" hidden></p></div><div><label for="dCp">ΔC<sub>p</sub>° / J mol⁻¹ K⁻¹</label><input id="dCp" type="number" value="0" step="any" aria-describedby="error-dCp"><p id="error-dCp" class="field-error" hidden></p></div></div>
+            <p class="input-help">Synthetic teaching values. K at other temperatures follows the van ’t Hoff equation with constant ΔC<sub>p</sub>°.</p>
+          </fieldset>
+          <div class="prediction-row"><label for="prediction">Before calculating, how much of the A₂ dissociates?</label><select id="prediction"><option value="">Not sure yet</option><option value="low">Less than 30%</option><option value="mid">30% to 90%</option><option value="high">More than 90%</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Calculate the equilibrium</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model and validity</summary><p>One reaction among ideal gases, with activities aᵢ = yᵢP/P° and P° = 100 kPa. The inert gas is added at constant total pressure. The extent is found from ln Q(ξ) = ln K, which has a single root because G is convex along the reaction. Temperatures are limited to 250–650 K and pressures to 5000 kPa.</p><p><a href="../labs/reaction.html">Open the current Lab 12</a> for your own reaction table, formation Gibbs energies and measured activities.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Read the result</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate to see the extent of reaction and the composition.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <div class="table-scroll" role="region" aria-label="Equilibrium composition" tabindex="0"><table class="phase-table"><thead><tr><th scope="col">Species</th><th scope="col">Fed / mol</th><th scope="col">At equilibrium / mol</th><th scope="col">Mole fraction</th></tr></thead><tbody id="comp-body"></tbody></table></div>
+          <dl class="boundary-metrics"><div><dt>Equilibrium constant K <span>at this temperature</span></dt><dd id="result-K">—</dd></div><div><dt>Standard Gibbs energy ΔG°(T) <span>−RT ln K</span></dt><dd id="result-dG">—</dd></div><div><dt>Fraction of A₂ dissociated <span>ξ/n<sub>A₂,0</sub></span></dt><dd id="result-conv">—</dd></div></dl>
+          <div class="balance-readout"><strong>Equilibrium residual</strong><output id="result-res">—</output><span>ln Q − ln K at the calculated extent</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 350 K, 100 kPa" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the Gibbs energy along the reaction</h2><span class="section-help">Calculated from the current inputs</span></div>
+      <div class="chart-toolbar"><label for="view">View</label><select id="view"><option value="G">Gibbs energy along the extent</option><option value="T">Fraction dissociated against temperature</option></select></div>
+      <div id="rx-chart" class="vle-chart" role="img" aria-label="Reaction plot. Numbers are listed in Step 2."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Solve the starting case on paper</h3><p>Calculate K from ΔG°, write the mole fractions in terms of ξ, and solve for ξ.</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Show K, the expression in ξ and the result."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>K = exp(4000/(8.314 × 350)) = 3.95. With n<sub>A₂</sub> = 1 − ξ, n<sub>A</sub> = 2ξ and n<sub>total</sub> = 1 + ξ, the condition is K = 4ξ²/(1 − ξ²) × P/P°. At P = P°, ξ² = 3.95/7.95, so ξ = 0.705 and y<sub>A</sub> = 1.41/1.705 = 0.827.</p><p>A negative ΔG° means K &gt; 1, not complete reaction. The equilibrium mixture still contains 0.295 mol of A₂.</p></div></details></div>
+      <div class="concept-question"><h3>B. Why do pressure and an inert gas change the result?</h3><p>Compare the starting case with “Ten times the pressure” and “Add 4 mol inert gas”. Read K in each case.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Quote ξ and K for the three cases and relate them to Δν."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>K stays 3.95 in all three cases. At 1000 kPa, ξ falls to 0.300; with 4 mol inert at 100 kPa, ξ rises to 0.870.</p><p>The reaction makes one extra mole of gas (Δν = +1), so Q contains the factor P/P° × 1/n<sub>total</sub>. Higher pressure raises Q, so the reaction shifts back. An inert gas at constant total pressure lowers the partial pressures, so the reaction shifts forward. In a rigid vessel, adding an inert gas would leave the partial pressures and ξ unchanged.</p></div></details></div>
+      <div class="concept-question"><h3>C. What does temperature do to K?</h3><p>Load “Heated to 400 K” and compare K and ξ. Then calculate 300 K.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Quote K at 300, 350 and 400 K and use the van ’t Hoff equation."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>ln K(400) = ln K(350) + (ΔH°/R)(1/350 − 1/400) = 1.375 + 2.148 = 3.522, so K = 33.9 and ξ = 0.946. At 300 K, K = 0.226 and ξ = 0.231.</p><p>The dissociation is endothermic, so K rises with temperature. Unlike pressure, temperature changes K itself, because ΔG° depends on T.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate the equilibrium evidence</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="rx-limits-heading"><h3 id="rx-limits-heading">What these results can and cannot show</h3><ul><li>The reaction data are synthetic. Real K values come from calorimetry, formation data or measured compositions, each with its own uncertainty.</li><li>Equilibrium says how far a reaction can go, not how fast. A slow reaction may never reach this state.</li><li>At high pressure, fugacity coefficients replace yᵢP. The ideal-gas result is then a first estimate only.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="temp-heading"><h3 id="temp-heading">A. Carry K to other temperatures</h3>
+        <ol class="graduate-checklist"><li>Start from ΔG° at 350 K and compute ln K from 300 to 550 K with constant ΔH°, with ΔC<sub>p</sub>° = +30 J mol⁻¹ K⁻¹, and with ΔH° ± 10%.</li><li>Compare ln K and the fraction dissociated at the current pressure.</li><li>Explain where the thermal data matter for ln K but not for the conversion, and where they matter for both.</li></ol>
+        <div class="graduate-actions"><button id="run-temp" class="primary-button" type="button" disabled>Run the temperature study</button></div>
+        <p id="temp-status" class="graduate-status" role="status"></p>
+        <div id="temp-wrap" class="table-scroll graduate-table" role="region" aria-label="Temperature study" tabindex="0" hidden><table><thead id="temp-head"></thead><tbody id="temp-body"></tbody></table></div>
+        <label for="note-temperature">Claim 1 · thermal data and K</label><textarea id="note-temperature" rows="3" maxlength="10000" placeholder="Quote ln K and the conversion for two thermal assumptions at one temperature."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="drive-heading"><h3 id="drive-heading">B. Which way will a sample react?</h3>
+        <ol class="graduate-checklist"><li>For four gas samples at the current temperature, compute Q, ln(Q/K) and ΔG = RT ln(Q/K).</li><li>Decide the direction of reaction for each sample.</li><li>Explain why the same composition can react in opposite directions at different pressures.</li></ol>
+        <div class="graduate-actions"><button id="run-drive" type="button" class="primary-button" disabled>Evaluate the samples</button></div>
+        <p id="drive-status" class="graduate-status" role="status"></p>
+        <div id="drive-wrap" class="table-scroll graduate-table" role="region" aria-label="Driving force" tabindex="0" hidden><table><thead><tr><th scope="col">y<sub>A₂</sub></th><th scope="col">y<sub>A</sub></th><th scope="col">P / kPa</th><th scope="col">Q</th><th scope="col">ΔG / kJ mol⁻¹</th><th scope="col">Direction</th></tr></thead><tbody id="drive-body"></tbody></table></div>
+        <label for="note-driving">Claim 2 · the driving force</label><textarea id="note-driving" rows="3" maxlength="10000" placeholder="Quote Q, K and ΔG for the two samples with the same composition."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="press-heading"><h3 id="press-heading">C. Pressure, inert gas and the standard state</h3>
+        <ol class="graduate-checklist"><li>Compare the current state with ten times and one tenth the pressure, and with 4 mol of inert gas added.</li><li>Convert K to a standard pressure of 1 atm and use it consistently. Then use the 1 bar K with a 1 atm standard state by mistake.</li><li>Explain why the numerical value of K depends on P° while the physical equilibrium does not.</li></ol>
+        <div class="graduate-actions"><button id="run-press" type="button" class="primary-button" disabled>Run the pressure study</button></div>
+        <p id="press-status" class="graduate-status" role="status"></p>
+        <div id="press-wrap" class="table-scroll graduate-table" role="region" aria-label="Pressure and standard state" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">P / kPa</th><th scope="col">Inert / mol</th><th scope="col">P° / kPa</th><th scope="col">ln K used</th><th scope="col">Fraction dissociated</th><th scope="col">y<sub>A</sub></th></tr></thead><tbody id="press-body"></tbody></table></div>
+        <label for="note-pressure">Claim 3 · pressure and standard state</label><textarea id="note-pressure" rows="3" maxlength="10000" placeholder="Quote the conversion for the consistent and inconsistent standard states."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="Recommend reactor T and P for 95% dissociation, state the main uncertainty, and the measurement you would make."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Find a pressure at 350 K that gives the same ξ as adding 4 mol inert gas at 100 kPa.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">T / K</th><th scope="col">P / kPa</th><th scope="col">Inert / mol</th><th scope="col">K</th><th scope="col">ξ / mol</th><th scope="col">y<sub>A</sub></th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate the equilibrium.</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate. The figures and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/reaction-lab.js?v=lab12-1"></script>
+</body>
+</html>
