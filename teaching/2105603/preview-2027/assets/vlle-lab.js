@@ -15,6 +15,8 @@ const CASES = {
   'feed-02': { name: 'Same pressure · P₃, z₁ = 0.20', inputs: { ...BASE, pressureMode: 'triple', P: 100, z: 0.2 } },
   'high-p': { name: 'Higher pressure · 140 kPa, z₁ = 0.50', inputs: { ...BASE, pressureMode: 'manual', P: 140, z: 0.5 } },
   'low-p': { name: 'Lower pressure · 100 kPa, z₁ = 0.50', inputs: { ...BASE, pressureMode: 'manual', P: 100, z: 0.5 } },
+  real: { name: 'Real data · benzene + water, 342.55 K', inputs: { model: 'symmetric', A: 6, psat1: 71.97, psat2: 30.38, pressureMode: 'triple', P: 101.325, z: 0.5 },
+    source: 'Real data: benzene (1) + water (2) at 342.55 K (69.4 °C), the measured heteroazeotrope temperature at 101.3 kPa. Saturation pressures from NIST Antoine constants: benzene 71.97 kPa (Eon et al. 1971), water 30.38 kPa (Bridgeman and Aldrich 1964). The liquids are almost immiscible (about 0.06 wt% water in the benzene layer and 0.07 wt% benzene in the water layer), so A = 6, the largest value the lab allows, stands in for near-immiscibility. Measured: heteroazeotrope 69.4 °C at 101.3 kPa with 91.1 wt% benzene in the vapor, y₁ = 0.70 (azeotrope table, University of Edinburgh). Compare with the calculated P₃ and y.' },
 };
 const RANGES = { A: [0, 6], A12: [0, 6], A21: [0, 6], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6], psat1: [10, 200], psat2: [10, 200], P: [1, 500], z: [0, 1] };
 const LABELS = { ...PARAMETER_LABELS, psat1: 'P₁ˢᵃᵗ', psat2: 'P₂ˢᵃᵗ', P: 'Pressure' };
@@ -218,6 +220,7 @@ function renderCases() {
 
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
+  const note = $('case-source'); if (note) { note.textContent = p.source || ''; note.hidden = !p.source; }
   applyInputs(p.inputs); $('choice').value = '0.5'; $('case-name').value = p.name;
   for (const b of document.querySelectorAll('[data-case]')) b.setAttribute('aria-pressed', String(b.dataset.case === id));
   $('status').textContent = p.name + ' loaded. Make a prediction, then press Calculate equilibrium.';

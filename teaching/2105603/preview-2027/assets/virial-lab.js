@@ -1,7 +1,7 @@
 /** Lab 09 · 2027 preview page module. Calculations use the shared second-virial engine. */
 import * as vr from '../../labs/assets/virial.js';
 import { palette as c } from '../../labs/assets/palette.js';
-import { VIRIAL_GRADUATE_VERSION, MODELS, MODEL_KEYS, solve, decomposition, crossStudy, scaleStudy, evidenceCheck } from './virial-graduate.js';
+import { VIRIAL_GRADUATE_VERSION, MODELS, MODEL_KEYS, SYSTEMS, solve, decomposition, crossStudy, scaleStudy, evidenceCheck } from './virial-graduate.js';
 
 const SCHEMA = 'skh-thermo-virial-study/1';
 const $ = id => document.getElementById(id);
@@ -13,7 +13,10 @@ const CASES = {
   strong: { name: 'Ten times larger |B|', inputs: { ...BASE, b11: -1200, b12: -900, b22: -1800 } },
   zero: { name: 'All B = 0', inputs: { ...BASE, b11: 0, b12: 0, b22: 0 } },
   poynting: { name: 'Starting case with Poynting factor', inputs: { ...BASE, poynting: true } },
+  'benzene-toluene': { name: 'Real data · benzene + toluene, 360 K', inputs: { ...BASE, T: 360, P: 80, b11: -933.0, b12: -1194.5, b22: -1529.2, system: 'benzene-toluene' },
+    source: 'Real data: benzene (1) + toluene (2) at 360 K, 80 kPa, ideal liquid. Antoine constants from the NIST Chemistry WebBook. B₁₁ and B₂₂ from the Ambrose correlation B = a − b exp(c/T) fitted to measured data (benzene 290–600 K, toluene 341–583 K). B₁₂ is the geometric mean, an assumption: no measured cross coefficient is used.' },
 };
+let currentSystem = null;
 const RANGES = { T: [300, 390], P: [1, 200], z: [0, 1], b11: [-5000, 500], b12: [-5000, 500], b22: [-5000, 500], v1: [1, 1000], v2: [1, 1000], A: [-1, 1.8], A12: [-1, 3], A21: [-1, 3], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6] };
 const LABELS = { T: 'Temperature', P: 'Pressure', z: 'z₁', b11: 'B₁₁', b12: 'B₁₂', b22: 'B₂₂', v1: 'v₁ᴸ', v2: 'v₂ᴸ', A: 'A', A12: 'A₁₂', A21: 'A₂₁', tau12: 'τ₁₂', tau21: 'τ₂₁', alpha: 'α' };
 const NOTE_IDS = { concept1: 'note-concept1', concept2: 'note-concept2', concept3: 'note-concept3', decomposition: 'note-decomposition', cross: 'note-cross', scale: 'note-scale', decision: 'note-decision' };
@@ -26,10 +29,10 @@ function modelText(i) { return i.model === 'margules' ? 'Margules A = ' + num(i.
 const pct = (a, b) => a == null || b == null || !Number.isFinite(a) || !Number.isFinite(b) || b === 0 ? null : 100 * (a - b) / b;
 
 function showControls() { const m = $('model').value; $('margules-control').hidden = m !== 'margules'; $('margules2-control').hidden = m !== 'margules2'; $('nrtl-control').hidden = m !== 'nrtl'; }
-function applyInputs(i) { $('model').value = i.model; $('poynting').checked = Boolean(i.poynting); for (const k of Object.keys(RANGES)) if (i[k] !== undefined) $(k).value = String(i[k]); showControls(); }
+function applyInputs(i) { setSystem(i.system); $('model').value = i.model; $('poynting').checked = Boolean(i.poynting); for (const k of Object.keys(RANGES)) if (i[k] !== undefined) $(k).value = String(i[k]); showControls(); }
 
 function readInputs() {
-  const model = $('model').value, keys = ['T', 'P', 'z', 'b11', 'b12', 'b22', 'v1', 'v2', ...MODEL_KEYS[model]], inputs = { model, poynting: $('poynting').checked }, errors = [];
+  const model = $('model').value, keys = ['T', 'P', 'z', 'b11', 'b12', 'b22', 'v1', 'v2', ...MODEL_KEYS[model]], inputs = { model, poynting: $('poynting').checked, ...(currentSystem ? { system: currentSystem } : {}) }, errors = [];
   for (const k of Object.keys(RANGES)) { const e = $('error-' + k); if (e) e.hidden = true; $(k)?.removeAttribute('aria-invalid'); }
   for (const k of keys) {
     const raw = $(k).value.trim(), v = Number(raw), [lo, hi] = RANGES[k];
@@ -58,6 +61,7 @@ function invalidateGraduate(msg) {
 
 function friendly(message) {
   if (/truncation guard/.test(message)) return 'The second-virial truncation guard is exceeded: max|Bᵢⱼ| × max(P, Pˢᵃᵗ)/RT must not exceed 0.1. Reduce |B| or the pressure; at this size an equation of state is needed.';
+  if (/Antoine|outside.*range|Temperature outside/i.test(message) && currentSystem) return 'The real-data correlations for this system apply only within their temperature ranges (benzene Antoine 333.4–373.5 K). Choose T inside that range.';
   if (/Nonconvex liquid/.test(message)) return 'This liquid model splits into two liquids at this temperature. Use Lab 06 for VLLE, or reduce the nonideality.';
   return message;
 }
@@ -198,6 +202,11 @@ function renderCases() {
   }));
 }
 
+function setSystem(system) {
+  currentSystem = SYSTEMS[system] ? system : null;
+  const note = $('case-source');
+  if (note) { const c = Object.values(CASES).find(x => x.inputs.system === currentSystem && x.source); note.textContent = currentSystem && c ? c.source : ''; note.hidden = !currentSystem; }
+}
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
   applyInputs(p.inputs); $('case-name').value = p.name;

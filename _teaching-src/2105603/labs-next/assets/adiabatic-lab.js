@@ -1,7 +1,7 @@
 /** Lab 07 · 2027 preview page module. Calculations use the shared adiabatic engine. */
-import * as ad from '../../labs/assets/adiabatic.js';
+import * as ad from './adiabatic-local.js';
 import { palette as c } from '../../labs/assets/palette.js';
-import { ADIABATIC_GRADUATE_VERSION, MODELS, MODEL_KEYS, modelParameters, solve, feedSweep, modelComparison, dutyForVapor, evidenceCheck } from './adiabatic-graduate.js';
+import { ADIABATIC_GRADUATE_VERSION, MODELS, MODEL_KEYS, modelParameters, realSystem, solve, feedSweep, modelComparison, dutyForVapor, evidenceCheck } from './adiabatic-graduate.js';
 
 const SCHEMA = 'skh-thermo-adiabatic-study/1';
 const $ = id => document.getElementById(id);
@@ -12,7 +12,10 @@ const CASES = {
   hotter: { name: 'Hotter feed · 390 K to 90 kPa', inputs: { ...BASE, feedT: 390, P: 90 } },
   cooler: { name: 'Cooler feed · 340 K to 90 kPa', inputs: { ...BASE, feedT: 340, P: 90 } },
   'lower-p': { name: 'Lower outlet pressure · 370 K to 60 kPa', inputs: { ...BASE, feedT: 370, P: 60 } },
+  real: { name: 'Real data · benzene + toluene, 354 K to 40 kPa', inputs: { ...BASE, feedT: 354, P: 40, system: 'benzene-toluene' },
+    source: 'Real properties: benzene (1) + toluene (2), ideal liquid. Vapor pressures from NIST Antoine constants (Willingham et al. 1945, valid 308.5–354.1 K). Liquid Cp at 298.15 K from the NIST Chemistry WebBook (135.7 and 157.0 J/mol K); latent heats at the normal boiling points (30.72 kJ/mol at 353.3 K and 33.18 kJ/mol at 383.8 K; Majer and Svoboda 1985). The model keeps Cp and Δhvap constant, so toluene’s larger latent heat near 340 K (about 37 kJ/mol near 318 K in NIST) is underestimated.' },
 };
+let systemKey = 'synthetic';
 const RANGES = { feedT: [300, 390], P: [1, 200], z: [0, 1], A: [-1, 1.8], A12: [-1, 3], A21: [-1, 3], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6] };
 const LABELS = { feedT: 'Feed temperature', P: 'Outlet pressure', z: 'z₁', A: 'A', A12: 'A₁₂', A21: 'A₂₁', tau12: 'τ₁₂', tau21: 'τ₂₁', alpha: 'α' };
 const MODEL_NAMES = { ideal: 'Ideal liquid', margules: 'Margules', margules2: 'Margules · 2 parameters', nrtl: 'NRTL' };
@@ -24,10 +27,16 @@ function li(h) { const e = document.createElement('li'); e.innerHTML = h; return
 function modelText(i) { return i.model === 'margules' ? 'Margules A = ' + num(i.A) : i.model === 'margules2' ? 'Margules A₁₂ = ' + num(i.A12) + ', A₂₁ = ' + num(i.A21) : i.model === 'nrtl' ? 'NRTL τ₁₂ = ' + num(i.tau12) + ', τ₂₁ = ' + num(i.tau21) + ', α = ' + num(i.alpha) : 'Ideal liquid'; }
 
 function showControls() { const m = $('model').value; $('margules-control').hidden = m !== 'margules'; $('margules2-control').hidden = m !== 'margules2'; $('nrtl-control').hidden = m !== 'nrtl'; }
-function applyInputs(i) { $('model').value = i.model; for (const k of Object.keys(RANGES)) if (i[k] !== undefined) $(k).value = String(i[k]); showControls(); }
+function setSystem(key) {
+  systemKey = study.systems?.[key] ? key : 'synthetic';
+  study.system = study.systems?.[systemKey] ?? study.system;
+  const p = Object.values(CASES).find(x => (x.inputs.system ?? 'synthetic') === systemKey && x.source), note = $('case-source');
+  if (note) { note.textContent = p ? p.source : ''; note.hidden = !p; }
+}
+function applyInputs(i) { setSystem(i.system ?? 'synthetic'); $('model').value = i.model; for (const k of Object.keys(RANGES)) if (i[k] !== undefined) $(k).value = String(i[k]); showControls(); }
 
 function readInputs() {
-  const model = $('model').value, keys = ['feedT', 'P', 'z', ...MODEL_KEYS[model]], inputs = { model }, errors = [];
+  const model = $('model').value, keys = ['feedT', 'P', 'z', ...MODEL_KEYS[model]], inputs = { model, ...(systemKey !== 'synthetic' ? { system: systemKey } : {}) }, errors = [];
   for (const k of Object.keys(RANGES)) { const e = $('error-' + k); if (e) e.hidden = true; $(k)?.removeAttribute('aria-invalid'); }
   for (const k of keys) {
     const raw = $(k).value.trim(), v = Number(raw), [lo, hi] = RANGES[k];
@@ -87,14 +96,14 @@ function renderResult() {
 }
 
 function renderPaper() {
-  const r = study.result, i = study.inputs, list = $('calc-steps');
+  const r = study.result, i = study.inputs, list = $('calc-steps'), k = ad.caloricOf(study.system);
   list.replaceChildren(
-    li('Feed enthalpy: h<sub>F</sub> = C<sub>p</sub>(z)(T<sub>F</sub> − 350) with C<sub>p</sub>(z) = ' + num(i.z) + '(100) + ' + num(1 - i.z) + '(120) = ' + num(r.cp) + ' J mol⁻¹ K⁻¹, so h<sub>F</sub> = ' + num(r.H) + ' J mol⁻¹.'),
+    li('Feed enthalpy: h<sub>F</sub> = C<sub>p</sub>(z)(T<sub>F</sub> − ' + num(k.referenceT) + ') with C<sub>p</sub>(z) = ' + num(i.z) + '(' + num(k.Cp[0]) + ') + ' + num(1 - i.z) + '(' + num(k.Cp[1]) + ') = ' + num(r.cp) + ' J mol⁻¹ K⁻¹, so h<sub>F</sub> = ' + num(r.H) + ' J mol⁻¹.'),
   );
   if (r.beta > 1e-9 && r.y !== null) {
     list.append(
       li('At the outlet, T = ' + num(r.T, 6) + ' K and P = ' + num(i.P) + ' kPa; TP equilibrium gives x₁ = ' + num(r.x, 4) + ' and y₁ = ' + num(r.y, 4) + ' (as in Lab 01).'),
-      li('Latent heat of the vapor: Δh<sub>vap</sub>(y) = ' + num(r.y, 4) + '(30 000) + ' + num(1 - r.y, 4) + '(35 000) = ' + num(r.latent) + ' J mol⁻¹.'),
+      li('Latent heat of the vapor: Δh<sub>vap</sub>(y) = ' + num(r.y, 4) + '(' + num(k.Hvap[0]) + ') + ' + num(1 - r.y, 4) + '(' + num(k.Hvap[1]) + ') = ' + num(r.latent) + ' J mol⁻¹.'),
       li('Energy balance with equal liquid and vapor C<sub>p</sub>: C<sub>p</sub>(T<sub>F</sub> − T) = β Δh<sub>vap</sub>(y), so β = ' + num(r.cp) + ' × ' + num(i.feedT - r.T, 5) + '/' + num(r.latent) + ' = ' + num(r.betaClosed, 5) + '.'),
     );
   } else list.append(li('h<sub>F</sub> is below the saturated-liquid enthalpy at the outlet pressure, so β = 0 and T = T<sub>F</sub>.'));
@@ -194,7 +203,7 @@ async function openStudy(event) {
     for (const [k, id] of Object.entries(NOTE_IDS)) $(id).value = typeof rec.notes?.[k] === 'string' ? rec.notes[k] : '';
     $('reflection').value = typeof rec.reflection === 'string' ? rec.reflection : '';
     study.cases = (Array.isArray(rec.cases) ? rec.cases : []).filter(s => validInputs(s?.inputs) && typeof s.name === 'string').slice(0, 50)
-      .map(s => ({ name: s.name.slice(0, 80), inputs: s.inputs, summary: summary(solve(study.system, s.inputs)) }));
+      .map(s => ({ name: s.name.slice(0, 80), inputs: s.inputs, summary: summary(solve(study.systems[s.inputs.system] ?? study.systems.synthetic, s.inputs)) }));
     study.inputs = null; renderCases(); calculate({ quiet: true });
     if (rec.investigations?.sweep) runSweep();
     if (rec.investigations?.models) runModels();
@@ -217,7 +226,8 @@ async function init() {
   try {
     const response = await fetch('../labs/assets/systems.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('HTTP ' + response.status);
-    study.system = (await response.json()).systems.synthetic;
+    const all = (await response.json()).systems;
+    study.systems = { synthetic: all.synthetic, 'benzene-toluene': realSystem(all['benzene-toluene']) }; study.system = study.systems.synthetic;
     $('calculate').disabled = false; loadCase('baseline');
   } catch (error) { $('status').textContent = 'The property record could not be loaded (' + error.message + '). Reload the page to try again.'; }
 }

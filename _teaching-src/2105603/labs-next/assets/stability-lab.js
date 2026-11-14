@@ -15,6 +15,8 @@ const CASES = {
   dilute: { name: 'Dilute feed · z₁ = 0.12', inputs: { model: 'symmetric', A: 3, z: 0.12 } },
   'very-dilute': { name: 'Very dilute feed · z₁ = 0.02', inputs: { model: 'symmetric', A: 3, z: 0.02 } },
   'near-critical': { name: 'Near-critical · A = 2.05, z₁ = 0.50', inputs: { model: 'symmetric', A: 2.05, z: 0.5 } },
+  real: { name: 'Real data · cyclohexane + methanol, 298.15 K', inputs: { model: 'nrtl', tau12: 1.8508, tau21: 1.4328, alpha: 0.3, z: 0.5 },
+    description: 'A 1.00 mol liquid feed of cyclohexane (1) and methanol (2) at 298.15 K, z₁ = 0.50. The NRTL parameters (τ₁₂ = 1.851, τ₂₁ = 1.433, α = 0.3) are the exact fit to the measured 298.15 K tie line of Atik and Kerboub (J. Chem. Eng. Data 2008, 53, 1669) from Lab 05, where the coexisting liquids are x₁ = 0.177 and 0.876.' },
 };
 const RANGES = { A: [0, 6], A12: [0, 6], A21: [0, 6], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6], z: [0, 1] };
 const NOTE_IDS = { local: 'note-local', sensitivity: 'note-sensitivity', model: 'note-model', decision: 'note-decision', concept1: 'note-concept1', concept2: 'note-concept2', concept3: 'note-concept3' };
@@ -327,7 +329,7 @@ function loadCase(id) {
   const preset = CASES[id]; if (!preset) return;
   applyInputs(preset.inputs); $('case-name').value = preset.name;
   for (const button of document.querySelectorAll('[data-case]')) button.setAttribute('aria-pressed', String(button.dataset.case === id));
-  $('case-description').textContent = 'A 1.00 mol binary liquid feed at fixed temperature and pressure follows the symmetric Margules model with A = ' + num(preset.inputs.A) + '. The feed contains ' + num(preset.inputs.z) + ' mol of component 1.';
+  $('case-description').textContent = preset.description || 'A 1.00 mol binary liquid feed at fixed temperature and pressure follows the symmetric Margules model with A = ' + num(preset.inputs.A) + '. The feed contains ' + num(preset.inputs.z) + ' mol of component 1.';
   $('status').textContent = preset.name + ' loaded. Make a prediction, then press Calculate equilibrium.';
 }
 

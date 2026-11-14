@@ -7,7 +7,7 @@
   <title>Adiabatic flash · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Adiabatic flash: the energy balance replaces the temperature specification and fixes how much liquid vaporizes.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab07-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -22,7 +22,8 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a feed</strong><span>All named cases use the Lab 01 synthetic ideal mixture with z₁ = 0.40.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 370 K feed to 90 kPa</button><button type="button" data-case="hotter" aria-pressed="false">Hotter feed · 390 K</button><button type="button" data-case="cooler" aria-pressed="false">Cooler feed · 340 K</button><button type="button" data-case="lower-p" aria-pressed="false">Lower outlet pressure · 60 kPa</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 370 K feed to 90 kPa</button><button type="button" data-case="hotter" aria-pressed="false">Hotter feed · 390 K</button><button type="button" data-case="cooler" aria-pressed="false">Cooler feed · 340 K</button><button type="button" data-case="lower-p" aria-pressed="false">Lower outlet pressure · 60 kPa</button><button type="button" data-case="real" aria-pressed="false">Real data · benzene + toluene</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
@@ -141,7 +142,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State what the energy balance fixes, which assumption matters most, and the data that would test it."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -159,7 +160,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/adiabatic-lab.js?v=lab07-1"></script>
 </body>
 </html>

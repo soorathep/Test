@@ -13,6 +13,8 @@ const CASES = {
   empty: { name: 'No adsorbent', inputs: { ...BASE, m: 0 } },
   heated: { name: 'Heated to 340 K', inputs: { ...BASE, T: 340 } },
   henry: { name: 'Linear isotherm, same initial slope', inputs: { ...BASE, model: 'henry' } },
+  co2: { name: 'Real data · CO₂ on zeolite 13X, 300 K', inputs: { ...BASE, n: 0.08, qs: 4.96, b: 0.46212, Q: 37.86 },
+    source: 'Real data: CO₂ on zeolite 13X pellets (Grace MS 544HP), 1.0 L, 20 g, 0.080 mol CO₂. Langmuir model with constant saturation capacity from Son et al., J. Chem. Eng. Data 2018, 63, 1663 (Table S1): qs = 4.960 mol/kg, b = 1.1847×10⁻⁷ exp(4553/T) kPa⁻¹, so b(300 K) = 0.462 kPa⁻¹ and Q = 37.86 kJ/mol. Over 0–200 °C this simple model fits with RMSE 0.37 mol/kg. The authors’ 3-site Langmuir fit (RMSE 0.034 mol/kg) gives 13.3 kPa for this vessel at 300 K instead of 7.5 kPa, and 41.8 instead of 30.0 kPa at 340 K: the isotherm model matters more than the arithmetic.' },
 };
 const RANGES = { T: [250, 450], V: [0.01, 100], m: [0, 10000], n: [0.0001, 100], qs: [0.01, 50], b: [0.0001, 100], K: [0.0001, 100], Q: [0, 100] };
 const LABELS = { T: 'Temperature', V: 'Free gas volume', m: 'Adsorbent mass', n: 'Gas inventory', qs: 'qs', b: 'b', K: 'K', Q: 'Q' };
@@ -173,6 +175,7 @@ function renderCases() {
 
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
+  const note = $('case-source'); if (note) { note.textContent = p.source || ''; note.hidden = !p.source; }
   applyInputs(p.inputs); $('case-name').value = p.name;
   for (const b of document.querySelectorAll('[data-case]')) b.setAttribute('aria-pressed', String(b.dataset.case === id));
   $('status').textContent = p.name + ' loaded. Make a prediction, then press Calculate the equilibrium.';

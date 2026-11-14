@@ -7,7 +7,7 @@
   <title>Virial vapor · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="When is an ideal vapor good enough? Compare the same VLE with ideal and second-virial vapors.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab09-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -22,7 +22,8 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a case</strong><span>All cases use the Lab 01 mixture at 350 K with an ideal liquid.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 95 kPa, B as given</button><button type="button" data-case="strong" aria-pressed="false">Ten times larger |B|</button><button type="button" data-case="zero" aria-pressed="false">All B = 0</button><button type="button" data-case="poynting" aria-pressed="false">Add the Poynting factor</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 95 kPa, B as given</button><button type="button" data-case="strong" aria-pressed="false">Ten times larger |B|</button><button type="button" data-case="zero" aria-pressed="false">All B = 0</button><button type="button" data-case="poynting" aria-pressed="false">Add the Poynting factor</button><button type="button" data-case="benzene-toluene" aria-pressed="false">Real data · benzene + toluene</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
@@ -141,7 +142,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State when you would keep the ideal vapor, when not, and which data you would need."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -159,7 +160,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/virial-lab.js?v=lab09-1"></script>
 </body>
 </html>

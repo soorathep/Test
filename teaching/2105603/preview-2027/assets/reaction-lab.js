@@ -13,6 +13,8 @@ const CASES = {
   'high-p': { name: 'Ten times the pressure · 1000 kPa', inputs: { ...BASE, P: 1000 } },
   inert: { name: 'Add 4 mol inert gas', inputs: { ...BASE, nI: 4 } },
   hot: { name: 'Heated to 400 K', inputs: { ...BASE, T: 400 } },
+  n2o4: { name: 'Real data · N₂O₄ ⇌ 2NO₂, 350 K', inputs: { ...BASE, dG: -4.361, dH: 56.863, dCp: -6.174 },
+    source: 'Real data: N₂O₄ ⇌ 2NO₂ (A₂ = N₂O₄, A = NO₂). Standard reaction properties at 350 K and 1 bar from NIST-JANAF formation data (NO₂ table N-007, N₂O₄ table N-032): ΔG° = 2(54.445) − 113.251 = −4.361 kJ/mol, ΔH° = 2(32.768) − 8.673 = 56.863 kJ/mol, ΔCp° = 2(38.583) − 83.340 = −6.174 J/(mol K). Carried to 298.15 K, the van ’t Hoff form gives ΔG° = 4.734 kJ/mol, against 4.729 kJ/mol from the same tables.' },
 };
 const RANGES = { T: [250, 650], P: [1, 5000], nA2: [0.001, 100], nI: [0, 100], dG: [-200, 200], dH: [-500, 500], dCp: [-500, 500] };
 const LABELS = { T: 'Temperature', P: 'Pressure', nA2: 'A₂ fed', nI: 'Inert gas fed', dG: 'ΔG°', dH: 'ΔH°', dCp: 'ΔCp°' };
@@ -179,6 +181,7 @@ function renderCases() {
 
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
+  const note = $('case-source'); if (note) { note.textContent = p.source || ''; note.hidden = !p.source; }
   applyInputs(p.inputs); $('case-name').value = p.name;
   for (const b of document.querySelectorAll('[data-case]')) b.setAttribute('aria-pressed', String(b.dataset.case === id));
   $('status').textContent = p.name + ' loaded. Make a prediction, then press Calculate the equilibrium.';

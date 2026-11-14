@@ -35,4 +35,26 @@ export function initMode() {
   }
 }
 
+/** Concept questions: the explanation opens after the student has written an answer. */
+const MIN_ANSWER = 30;
+export function gateConceptAnswers() {
+  for (const q of document.querySelectorAll('.concept-question')) {
+    const text = q.querySelector('textarea'), details = q.querySelector('details'), summary = details?.querySelector('summary');
+    if (!text || !summary || details.dataset.gated) continue;
+    details.dataset.gated = 'true';
+    const hint = document.createElement('p'); hint.className = 'concept-gate'; hint.setAttribute('role', 'status');
+    details.after(hint);
+    summary.addEventListener('click', event => {
+      if (details.open) { hint.textContent = ''; return; }
+      if (text.value.trim().length < MIN_ANSWER) {
+        event.preventDefault();
+        hint.textContent = 'Write your own answer first (at least one full sentence), then compare with the explanation.';
+        text.focus();
+      } else hint.textContent = '';
+    });
+    text.addEventListener('input', () => { if (text.value.trim().length >= MIN_ANSWER) hint.textContent = ''; });
+  }
+}
+
 initMode();
+gateConceptAnswers();

@@ -7,7 +7,7 @@
   <title>Chemical reaction equilibrium · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="How far does a gas reaction go? Ideal-gas equilibrium for A2 ⇌ 2A with pressure, inert gas and temperature.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab12-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -22,7 +22,8 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a case</strong><span>All cases feed 1 mol of A₂.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 350 K, 100 kPa</button><button type="button" data-case="high-p" aria-pressed="false">Ten times the pressure</button><button type="button" data-case="inert" aria-pressed="false">Add 4 mol inert gas</button><button type="button" data-case="hot" aria-pressed="false">Heated to 400 K</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 350 K, 100 kPa</button><button type="button" data-case="high-p" aria-pressed="false">Ten times the pressure</button><button type="button" data-case="inert" aria-pressed="false">Add 4 mol inert gas</button><button type="button" data-case="hot" aria-pressed="false">Heated to 400 K</button><button type="button" data-case="n2o4" aria-pressed="false">Real data · N₂O₄ ⇌ 2NO₂</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
@@ -142,7 +143,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="Recommend reactor T and P for 95% dissociation, state the main uncertainty, and the measurement you would make."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -160,7 +161,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/reaction-lab.js?v=lab12-1"></script>
 </body>
 </html>

@@ -13,6 +13,8 @@ const CASES = {
   swap: { name: 'Concentrations exchanged', inputs: { ...BASE, cL: 1, cR: 0.01 } },
   equal: { name: 'Equal concentrations', inputs: { ...BASE, cL: 1, cR: 1 } },
   'same-ratio': { name: 'Same ratio · 0.001 and 0.1', inputs: { ...BASE, cL: 0.001, cR: 0.1 } },
+  cuso4: { name: 'Real data · CuSO₄ 0.1 and 1.0', inputs: { ...BASE, cL: 0.1, cR: 1, gL: 0.150, gR: 0.043 },
+    source: 'Real data: Cu | CuSO₄(0.1 mol/kg) ‖ CuSO₄(1.0 mol/kg) | Cu at 25 °C. γ± of CuSO₄ from Robinson and Stokes, Trans. Faraday Soc. 1949, 45, 612 (Table II, isopiestic): 0.150 at 0.1 and 0.043 at 1.0 mol/kg. The authors mark the 0.1 mol/kg value as an estimate and scale all others to it, so the absolute γ values are uncertain but their ratio, which is all that E needs, is not. Molalities are entered here as concentrations, an approximation. Using γ± for Cu²⁺ is a convention, and the junction potential is neglected.' },
 };
 const RANGES = { cL: [0.000001, 10], cR: [0.000001, 10], T: [273.15, 373.15], gL: [0.0001, 10], gR: [0.0001, 10] };
 const LABELS = { cL: 'Left concentration', cR: 'Right concentration', T: 'Temperature', gL: 'Left γ', gR: 'Right γ' };
@@ -159,6 +161,7 @@ function renderCases() {
 
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
+  const note = $('case-source'); if (note) { note.textContent = p.source || ''; note.hidden = !p.source; }
   applyInputs(p.inputs); $('case-name').value = p.name;
   for (const b of document.querySelectorAll('[data-case]')) b.setAttribute('aria-pressed', String(b.dataset.case === id));
   $('status').textContent = p.name + ' loaded. Make a prediction, then press Calculate the cell.';

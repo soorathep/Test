@@ -7,8 +7,7 @@
   <title>VLE and flash · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate VLE investigation: verify a flash state, audit model assumptions and examine bounded input and property sensitivity.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/vle.css?v=review-1">
-  <link rel="stylesheet" href="assets/graduate.css?v=mode-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -23,12 +22,13 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a pressure experiment</strong><span>Named cases use the synthetic ideal mixture at 350 K and z₁ = 0.40.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 90 kPa</button><button type="button" data-case="compressed" aria-pressed="false">Raise pressure · 100 kPa</button><button type="button" data-case="low-pressure" aria-pressed="false">Lower pressure · 75 kPa</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 90 kPa</button><button type="button" data-case="compressed" aria-pressed="false">Raise pressure · 100 kPa</button><button type="button" data-case="low-pressure" aria-pressed="false">Lower pressure · 75 kPa</button><button type="button" data-case="real" aria-pressed="false">Real data · benzene + toluene</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
       <div class="panel-heading"><h2 id="picture-heading">Picture a two-phase split</h2><span class="section-help">Composition and amount answer different questions</span></div>
-      <svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="process-title process-description">
+      <div class="figure-scroll" role="region" aria-label="Figure (scroll sideways on a small screen)" tabindex="0"><svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="process-title process-description">
         <title id="process-title">A feed enters a flash vessel and can separate into vapor and liquid</title>
         <desc id="process-description">One feed stream enters from the left. When two phases coexist, vapor leaves at the top right and liquid leaves at the bottom right. The liquid composition x1 and vapor composition y1 can differ from the feed composition z1.</desc>
         <defs><marker id="process-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="drum-clip"><rect x="304" y="20" width="140" height="140" rx="34"/></clipPath></defs>
@@ -40,7 +40,7 @@
         <path d="M 444 132 H 584" class="sketch-pipe" marker-end="url(#process-arrow)"/>
         <rect x="600" y="22" width="132" height="52" rx="12" class="sketch-vapor-fill"/><rect x="600" y="106" width="132" height="52" rx="12" class="sketch-liquid-fill"/>
         <g class="sketch-label"><text x="93" y="97">Feed</text><text x="666" y="55">Vapor</text><text x="666" y="139">Liquid</text></g>
-      </svg>
+      </svg></div>
       <div class="picture-key"><div><strong>Feed · z₁</strong><p>Of all feed moles, what fraction is component 1?</p></div><div><strong>Liquid · x₁ and L</strong><p>x₁ tells its composition. L tells its amount in mol.</p></div><div><strong>Vapor · y₁ and V</strong><p>y₁ tells its composition. V tells its amount in mol.</p></div></div>
       <figcaption><strong>β = V/F</strong> tells the fraction of feed moles in the vapor. For a 1 mol feed, L + V = 1 mol. The picture shows a two-phase case. Your calculation may instead find liquid only or vapor only.</figcaption>
     </figure>
@@ -174,7 +174,7 @@
         <label for="graduate-comparison">Evidence linking the model comparison to the sensitivity study</label><textarea id="graduate-comparison" rows="3" maxlength="10000" placeholder="Distinguish model spread from input/property sensitivity. Explain which comparison supports your claim and which alternative explanation remains possible."></textarea>
         <label for="graduate-limits">Claim 3 · limits and the next evidence needed</label><textarea id="graduate-limits" rows="3" maxlength="10000" placeholder="State a conclusion the current evidence supports, one it cannot establish, and the measurement or improved model that would resolve the limitation."></textarea>
         <div class="graduate-actions"><button id="graduate-check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="graduate-evidence-status" class="graduate-status" role="status"></p>
-                <p class="graduate-note">Submission standard: report the baseline and parameter provenance; cite numerical model and sensitivity results; identify retained assumptions, domain failures and phase changes; and propose a discriminating follow-up. The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+                <p class="graduate-note">Submission standard: report the baseline and parameter provenance; cite numerical model and sensitivity results; identify retained assumptions, domain failures and phase changes; and propose a discriminating follow-up. The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -192,7 +192,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/vle.js?v=mode-1"></script>
 </body>
 </html>

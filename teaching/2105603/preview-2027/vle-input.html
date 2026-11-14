@@ -7,7 +7,7 @@
   <title>Your VLE data · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Bring your own binary VLE data: check units and vapor pressures on one row, inspect activity coefficients and their pure-liquid limits, then fit a model.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab08-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -23,7 +23,7 @@
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
       <div class="panel-heading"><h2 id="picture-heading">From a table row to activity coefficients</h2><span class="section-help">Every unit enters the result</span></div>
-      <svg class="process-sketch" viewBox="0 0 760 200" role="img" aria-labelledby="row-title row-description">
+      <div class="figure-scroll" role="region" aria-label="Figure (scroll sideways on a small screen)" tabindex="0"><svg class="process-sketch" viewBox="0 0 760 200" role="img" aria-labelledby="row-title row-description">
         <title id="row-title">One measured row and the saturation pressures combine into two activity coefficients</title>
         <desc id="row-description">The measured row gives T, P, x1 and y1. The Antoine equations give each pure-component saturation pressure at that T. Together they give gamma1 and gamma2 by modified Raoult's law. A wrong unit in any box changes both activity coefficients.</desc>
         <defs><marker id="row-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker></defs>
@@ -32,7 +32,7 @@
         <rect x="546" y="55" width="200" height="90" rx="12" class="sketch-liquid-fill"/>
         <path d="M234 55 H292" class="sketch-pipe" marker-end="url(#row-arrow)"/><path d="M234 145 H292" class="sketch-pipe" marker-end="url(#row-arrow)"/><path d="M480 100 H538" class="sketch-pipe" marker-end="url(#row-arrow)"/>
         <g class="row-text"><text x="124" y="48">Measured row</text><text x="124" y="72" class="row-small">T [K or °C] · P [kPa, Pa, bar] · x₁ · y₁</text><text x="124" y="138">Antoine equation</text><text x="124" y="162" class="row-small">form · A, B, C · T unit · Psat unit</text><text x="390" y="92">γᵢ = yᵢP / (xᵢPᵢˢᵃᵗ)</text><text x="390" y="116" class="row-small">ideal vapor · same P units</text><text x="646" y="92">γ₁, γ₂</text><text x="646" y="116" class="row-small">ln γᵢ → 0 for pure i</text></g>
-      </svg>
+      </svg></div>
       <figcaption>Check the first row by hand before validating the whole table. A unit mistake usually shows as γ values that are far from 1 everywhere, including where a component is almost pure.</figcaption>
     </figure>
 
@@ -122,7 +122,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State whether you would use this table, with which model, and what you would measure next."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -141,7 +141,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/vle-input-lab.js?v=lab08-1"></script>
 </body>
 </html>

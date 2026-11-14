@@ -15,8 +15,18 @@ export function liquidParameters(i) {
   return { model: 'nrtl', tau12: Number(i.tau12), tau21: Number(i.tau21), alpha: Number(i.alpha), temperatureMode: 'constant' };
 }
 
+/** Real-data system: benzene (1) + toluene (2). Antoine constants from the NIST Chemistry WebBook
+ * (log10 P/bar = A − B/(T + C)): benzene Eon et al. 1971, 333.4–373.5 K; toluene Williamham et al. 1945, 308.52–384.66 K. */
+export const SYSTEMS = Object.freeze({
+  'benzene-toluene': { names: ['benzene', 'toluene'], antoine: [
+    { form: 'log10-plus', A: 4.72583, B: 1660.652, C: -1.461, TminK: 333.4, TmaxK: 373.5, temperatureUnit: 'K', pressureUnit: 'bar' },
+    { form: 'log10-plus', A: 4.07827, B: 1343.943, C: -53.773, TminK: 308.52, TmaxK: 384.66, temperatureUnit: 'K', pressureUnit: 'bar' }] },
+});
+/** Ambrose correlation B/(cm³ mol⁻¹) = a − b exp(c/T): benzene a 571.4, b 348.4, c 526.6 (290–600 K); toluene 719.1, 373.3, 646.4 (341–583 K). */
+export function ambroseB(T) { return [571.4 - 348.4 * Math.exp(526.6 / T), 719.1 - 373.3 * Math.exp(646.4 / T)]; }
+
 export function engineInput(i, B = [i.b11, i.b12, i.b22]) {
-  return { T: i.T, P: i.P * 1000, z: i.z, A: liquidParameters(i), antoine: i.antoine ?? exampleAntoine(),
+  return { T: i.T, P: i.P * 1000, z: i.z, A: liquidParameters(i), antoine: i.antoine ?? SYSTEMS[i.system]?.antoine ?? exampleAntoine(),
     virial: { B: B.map(Number), slope: [0, 0, 0], unit: 'cm3/mol', law: 'constant', Tref: 350, Tmin: 300, Tmax: 390 },
     poynting: Boolean(i.poynting), volumes: [Number(i.v1 ?? 90), Number(i.v2 ?? 110)] };
 }

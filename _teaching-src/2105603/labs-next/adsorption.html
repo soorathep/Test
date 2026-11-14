@@ -7,7 +7,7 @@
   <title>Adsorption in a closed vessel · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Where does the gas go? Adsorption equilibrium in a closed vessel with a Langmuir isotherm, a material balance and temperature swing.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab11-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -22,7 +22,8 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a case</strong><span>All cases use the same vessel and gas inventory.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 300 K, 20 g</button><button type="button" data-case="empty" aria-pressed="false">No adsorbent</button><button type="button" data-case="heated" aria-pressed="false">Heated to 340 K</button><button type="button" data-case="henry" aria-pressed="false">Linear isotherm, same initial slope</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 300 K, 20 g</button><button type="button" data-case="empty" aria-pressed="false">No adsorbent</button><button type="button" data-case="heated" aria-pressed="false">Heated to 340 K</button><button type="button" data-case="henry" aria-pressed="false">Linear isotherm, same initial slope</button><button type="button" data-case="co2" aria-pressed="false">Real data · CO₂ on zeolite 13X</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
@@ -148,7 +149,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State which isotherm and Q you would use for this vessel, the range you trust, and the measurement you would add."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -166,7 +167,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/adsorption-lab.js?v=lab11-1"></script>
 </body>
 </html>

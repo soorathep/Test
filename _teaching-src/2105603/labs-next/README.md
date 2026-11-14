@@ -116,7 +116,7 @@ and regression errors do not certify experimental thermodynamic consistency.
 
 ## Graduate investigations in Labs 01 and 02
 
-Shared presentation is in `assets/graduate.css`. The scientific scenario methods
+Shared presentation is in `assets/labs.css` (graduate section). The scientific scenario methods
 are pure modules, `vle-graduate.js` and `case-graduate.js`, using the unchanged
 course engines. The measurements, source correlations and current-semester labs
 remain unchanged. Each prototype uses its existing single study-file workflow.
@@ -486,3 +486,39 @@ xi = 0.946; at 300 K, K = 0.226, xi = 0.231. Graduate route: ln K and conversion
 (yA2 = 0.2 reacts forward at 100 kPa, dG = -0.62 kJ/mol, and in reverse at 1000 kPa,
 +6.09 kJ/mol); K converted to P0 = 1 atm gives the same xi, while the unconverted K
 gives 0.7074 instead of 0.7050.
+
+## Review fixes (November 2026)
+
+- Labs 04 and 05 gained model-generated figures (Gibbs curve with common tangent for
+  Margules A = 3; measured cyclohexane + methanol LLE with constant-tau and 1/T predictions).
+  Labs 02 and 03 open with less text: the Antoine details and the method equations are
+  collapsed, and the data-source cards in Lab 03 are behind a disclosure.
+- Figures scroll sideways on screens narrower than 600 px instead of shrinking their labels.
+- `assets/mode.js` keeps each Core explanation closed until the student has written at
+  least 30 characters. The evidence-record note now states that it is not a grade.
+- Real-data cases: Lab 09 benzene + toluene (NIST Antoine; Ambrose correlation for B11, B22;
+  geometric-mean B12 as an assumption), Lab 10 naphthalene + biphenyl (NIST fusion data;
+  ideal eutectic 313.9 K at x(biphenyl) = 0.556 against reported 312.6-315 K), Lab 12
+  N2O4 = 2NO2 (NIST-JANAF at 350 K), Lab 13 CuSO4 0.1 and 1.0 mol/kg with mean activity
+  coefficients 0.150 and 0.043 (Robinson and Stokes 1949, Table II; the 0.1 m anchor is an
+  estimate, the ratio is not), and Lab 11 CO2 on zeolite 13X (Son et al., J. Chem. Eng. Data
+  2018, 63, 1663, Table S1: qs 4.960 mol/kg, b0 1.1847e-7 1/kPa, E/R 4553 K; their 3-site
+  fit gives 13.3 instead of 7.5 kPa for the same vessel).
+- Lab 10 uses x1, z1 and x2 like the other labs; the solids keep the names A and B.
+- One stylesheet: `assets/labs.css` replaces guide, vle, graduate, case, consistency,
+  figures and stability CSS. Every page, including the index and design notes, links
+  `assets/labs.css?v=r3`; duplicate rules (help text, legends, picture keys) were merged.
+- Real-data starting cases for the four labs that had only synthetic data:
+  Lab 01 benzene + toluene at 350 K and 50 kPa (NIST Antoine; beta 0.593);
+  Lab 04 NRTL tau12 1.8508, tau21 1.4328, alpha 0.3 from the Lab 05 cyclohexane + methanol
+  fit (Atik and Kerboub 2008), giving liquids at x1 0.177 and 0.876;
+  Lab 06 benzene + water at 342.55 K (NIST Antoine; measured heteroazeotrope 69.4 C,
+  y1 0.70); Lab 07 benzene + toluene flash from 354 K to 40 kPa with Cp(l) 135.7 and
+  157.0 J/(mol K) and Hvap 30.72 and 33.18 kJ/mol (NIST; Majer and Svoboda), through the
+  generalized engine `assets/adiabatic-local.js`.
+- Labs 02 and 03 were trimmed to about 750 and 710 visible Core words (other labs 590-730):
+  the Lab 02 practice fields and the Lab 03 assumption list are disclosures, and help text
+  is shorter. No calculation or source was removed.
+- `tests/smoke_test.py` runs every lab in a headless browser (calculation, starter cases,
+  graduate investigations, answer gating, 375 px width). Run it after `build.py`.
+- The design notes propose a required, choose-two and optional split of the 13 labs.

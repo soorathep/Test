@@ -11,6 +11,8 @@ export const CASES = {
   'low-pressure': { name: 'Lower pressure', P: 75, task: 'Lower the pressure to 75 kPa. Predict which phase or phases remain.' },
   bubble: { name: 'Bubble boundary', boundary: 'bubble', task: 'At the feed bubble pressure, identify the incipient phase and its composition.' },
   dew: { name: 'Dew boundary', boundary: 'dew', task: 'At the feed dew pressure, identify the incipient phase and its composition.' },
+  real: { name: 'Real data · benzene + toluene', system: 'benzene-toluene', T: 350, P: 50, task: 'At 350 K and 50 kPa, which phases form and how much feed becomes vapor?',
+    source: 'Real properties: benzene (1) + toluene (2) with NIST Antoine vapor pressures (Willingham et al., J. Res. NBS 1945) and an ideal liquid. At 350 K, P₁ˢᵃᵗ = 91.6 kPa and P₂ˢᵃᵗ = 34.8 kPa. Raoult’s law is an approximation for this pair; no measured mixture data are used here.' },
 };
 
 export function copy(value) {
@@ -156,12 +158,13 @@ export function calculateVLE(input, propertyRecord) {
 export function caseValues(key, catalog) {
   const choice = CASES[key];
   if (!choice) throw new Error('Choose a named starting case.');
-  const property = catalog.systems.synthetic;
-  const values = defaults('synthetic', property);
+  const systemKey = choice.system ?? 'synthetic', property = catalog.systems[systemKey];
+  const values = defaults(systemKey, property);
+  if (Number.isFinite(choice.T)) { values.T = choice.T; values.referenceT = choice.T; }
   if (choice.boundary === 'bubble') values.P = bubbleP(property, 350, 0.4, 0).P / 1000;
   else if (choice.boundary === 'dew') values.P = dewP(property, 350, 0.4, 0).P / 1000;
   else values.P = choice.P;
-  return { values, propertyRecord: copy(property), name: choice.name, task: choice.task };
+  return { values, propertyRecord: copy(property), name: choice.name, task: choice.task, source: choice.source ?? '' };
 }
 
 export function pressureCurves(values, property) {

@@ -7,7 +7,7 @@
   <title>Concentration cell · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Why does a cell with identical electrodes have a voltage? A concentration cell with activities, temperature and discharge.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=lab13-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -22,7 +22,8 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a case</strong><span>Both electrodes are the same M²⁺/M couple.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 0.01 and 1.0 mol L⁻¹</button><button type="button" data-case="swap" aria-pressed="false">Concentrations exchanged</button><button type="button" data-case="equal" aria-pressed="false">Equal concentrations</button><button type="button" data-case="same-ratio" aria-pressed="false">Same ratio · 0.001 and 0.1</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 0.01 and 1.0 mol L⁻¹</button><button type="button" data-case="swap" aria-pressed="false">Concentrations exchanged</button><button type="button" data-case="equal" aria-pressed="false">Equal concentrations</button><button type="button" data-case="same-ratio" aria-pressed="false">Same ratio · 0.001 and 0.1</button><button type="button" data-case="cuso4" aria-pressed="false">Real data · CuSO₄ 0.1 and 1.0</button></div>
+      <p id="case-source" class="source-note" hidden></p>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
@@ -144,7 +145,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State the voltage you would report for this cell, its main uncertainty, and the measurement you would make next."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -162,7 +163,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/electrochemistry-lab.js?v=lab13-1"></script>
 </body>
 </html>

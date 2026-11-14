@@ -11,10 +11,12 @@ const CASES = {
   baseline: { name: 'Starting case · 340 K', inputs: { ...BASE } },
   near: { name: 'Cooler · 320 K', inputs: { ...BASE, T: 320 } },
   below: { name: 'Below the eutectic · 300 K', inputs: { ...BASE, T: 300 } },
-  'a-rich': { name: 'A-rich feed · xA = 0.90', inputs: { ...BASE, z: 0.9 } },
+  'a-rich': { name: 'A-rich feed · x₁ = 0.90', inputs: { ...BASE, z: 0.9 } },
+  real: { name: 'Real data · naphthalene + biphenyl, 316 K', inputs: { ...BASE, T: 316, Tm1: 353.4, h1: 19.0, Tm2: 342.1, h2: 18.58 },
+    source: 'Real data: A = naphthalene (Tm 353.4 K, Δhfus 19.0 kJ/mol; Chirico et al. 2002) and B = biphenyl (Tm 342.1 K, Δhfus 18.58 kJ/mol; Chirico et al. 1989), both via the NIST Chemistry WebBook, with an ideal liquid. The ideal model gives a eutectic at 313.9 K, x₂ = 0.556. Gallus et al. (J. Chem. Educ. 2001, 78, 961) report measured eutectics near 313–315 K at x₂ ≈ 0.54–0.56, and cite 312.6 K (39.4 °C) at 0.555 from earlier work.' },
 };
 const RANGES = { T: [250, 450], z: [0, 1], Tm1: [260, 440], Tm2: [260, 440], h1: [1, 100], h2: [1, 100], A: [-1, 1.8], A12: [-1, 3], A21: [-1, 3], tau12: [-2, 6], tau21: [-2, 6], alpha: [0.1, 0.6] };
-const LABELS = { T: 'Temperature', z: 'zA', Tm1: 'Tm of A', Tm2: 'Tm of B', h1: 'Δhfus of A', h2: 'Δhfus of B', A: 'A', A12: 'A₁₂', A21: 'A₂₁', tau12: 'τ₁₂', tau21: 'τ₂₁', alpha: 'α' };
+const LABELS = { T: 'Temperature', z: 'z₁', Tm1: 'Tm of A', Tm2: 'Tm of B', h1: 'Δhfus of A', h2: 'Δhfus of B', A: 'A', A12: 'A₁₂', A21: 'A₂₁', tau12: 'τ₁₂', tau21: 'τ₂₁', alpha: 'α' };
 const NOTE_IDS = { concept1: 'note-concept1', concept2: 'note-concept2', concept3: 'note-concept3', cooling: 'note-cooling', models: 'note-models', properties: 'note-properties', decision: 'note-decision' };
 const study = { inputs: null, result: null, cases: [], cooling: null, models: null, properties: null };
 
@@ -72,7 +74,7 @@ function calculate({ quiet = false } = {}) {
   $('diagram-panel').hidden = false;
   renderResult(); renderPaper(); renderChart();
   for (const id of ['save-case', 'run-cool', 'run-models', 'run-props', 'export-study']) $(id).disabled = false;
-  $('graduate-baseline').textContent = 'Current state: z_A = ' + num(inputs.z) + ' at ' + num(inputs.T, 5) + ' K, ' + modelText(inputs) + ' · ' + phaseName(r.r.type) + (r.eutectic ? ', eutectic ' + num(r.eutectic.T, 5) + ' K.' : '.');
+  $('graduate-baseline').textContent = 'Current state: z₁ = ' + num(inputs.z) + ' at ' + num(inputs.T, 5) + ' K, ' + modelText(inputs) + ' · ' + phaseName(r.r.type) + (r.eutectic ? ', eutectic ' + num(r.eutectic.T, 5) + ' K.' : '.');
   if (!quiet) $('status').textContent = 'Calculated. Add the result to the comparison before changing a setting.';
   return true;
 }
@@ -96,23 +98,23 @@ function renderResult() {
   const rows = [['Liquid', undetermined ? 'Undetermined' : num(q.liquid, 4), q.x == null ? '—' : num(q.x, 4)], ['Solid A', undetermined ? 'Undetermined' : num(q.solid1, 4), '1'], ['Solid B', undetermined ? 'Undetermined' : num(q.solid2, 4), '0']];
   $('phase-body').replaceChildren(...rows.map(([a, b, x]) => { const tr = document.createElement('tr'), th = document.createElement('th'); th.scope = 'row'; th.textContent = a; tr.append(th, cell(b), cell(x)); return tr; }));
   $('result-liquidus').textContent = sol.liquidus ? num(sol.liquidus.T, 5) + ' K · solid ' + (sol.liquidus.solid === 2 ? 'B' : 'A') : '—';
-  $('result-eutectic').textContent = sol.eutectic ? num(sol.eutectic.T, 5) + ' K at x_A = ' + num(sol.eutectic.x, 4) : 'Outside 250–450 K';
+  $('result-eutectic').textContent = sol.eutectic ? num(sol.eutectic.T, 5) + ' K at x₁ = ' + num(sol.eutectic.x, 4) : 'Outside 250–450 K';
   $('result-gs').textContent = num(q.gs[0], 4) + ', ' + num(q.gs[1], 4);
   $('result-res').textContent = q.balanceResidual == null ? '—' : q.balanceResidual.toExponential(2);
 }
 
 function renderPaper() {
   const sol = study.result, q = sol.r, i = study.inputs, R = so.R, list = $('calc-steps');
-  list.replaceChildren(li('Pure-solid terms at ' + num(i.T, 5) + ' K: ln a<sub>A</sub>ˢ = −(' + num(i.h1 * 1000) + '/' + num(R, 5) + ')(1/' + num(i.T, 5) + ' − 1/' + num(i.Tm1, 5) + ') = ' + num(q.gs[0], 4) + ' and ln a<sub>B</sub>ˢ = ' + num(q.gs[1], 4) + '.'));
+  list.replaceChildren(li('Pure-solid terms at ' + num(i.T, 5) + ' K: ln a₁ˢ = −(' + num(i.h1 * 1000) + '/' + num(R, 5) + ')(1/' + num(i.T, 5) + ' − 1/' + num(i.Tm1, 5) + ') = ' + num(q.gs[0], 4) + ' and ln a₂ˢ = ' + num(q.gs[1], 4) + '.'));
   if (/Liquid \+ solid/.test(q.type)) {
     const B = q.type.endsWith('2');
     list.append(
-      li('Solid ' + (B ? 'B' : 'A') + ' saturates the liquid: ln(x<sub>' + (B ? 'B' : 'A') + '</sub>γ<sub>' + (B ? 'B' : 'A') + '</sub>) = ' + num(B ? q.gs[1] : q.gs[0], 4) + (i.model === 'ideal' ? ', so with γ = 1, ' + (B ? 'x<sub>B</sub> = ' + num(Math.exp(q.gs[1]), 4) + ' and x<sub>A</sub> = ' + num(q.x, 4) : 'x<sub>A</sub> = ' + num(q.x, 4)) + '.' : '; solving with the liquid model gives x<sub>A</sub> = ' + num(q.x, 4) + '.')),
-      li(B ? 'All of A stays in the liquid: L = z<sub>A</sub>/x<sub>A</sub> = ' + num(i.z) + '/' + num(q.x, 4) + ' = ' + num(q.liquid, 4) + ' mol, so solid B = ' + num(q.solid2, 4) + ' mol.' : 'All of B stays in the liquid: L = (1 − z<sub>A</sub>)/(1 − x<sub>A</sub>) = ' + num(1 - i.z) + '/' + num(1 - q.x, 4) + ' = ' + num(q.liquid, 4) + ' mol, so solid A = ' + num(q.solid1, 4) + ' mol.'),
+      li('Solid ' + (B ? 'B' : 'A') + ' saturates the liquid: ln(x<sub>' + (B ? '2' : '1') + '</sub>γ<sub>' + (B ? '2' : '1') + '</sub>) = ' + num(B ? q.gs[1] : q.gs[0], 4) + (i.model === 'ideal' ? ', so with γ = 1, ' + (B ? 'x₂ = ' + num(Math.exp(q.gs[1]), 4) + ' and x₁ = ' + num(q.x, 4) : 'x₁ = ' + num(q.x, 4)) + '.' : '; solving with the liquid model gives x₁ = ' + num(q.x, 4) + '.')),
+      li(B ? 'All of A stays in the liquid: L = z₁/x₁ = ' + num(i.z) + '/' + num(q.x, 4) + ' = ' + num(q.liquid, 4) + ' mol, so solid B = ' + num(q.solid2, 4) + ' mol.' : 'All of B stays in the liquid: L = (1 − z₁)/(1 − x₁) = ' + num(1 - i.z) + '/' + num(1 - q.x, 4) + ' = ' + num(q.liquid, 4) + ' mol, so solid A = ' + num(q.solid1, 4) + ' mol.'),
     );
-  } else if (q.type === 'Liquid') list.append(li('For this feed, x<sub>A</sub>γ<sub>A</sub> and x<sub>B</sub>γ<sub>B</sub> both exceed the solid limits above, so neither solid can form.'));
+  } else if (q.type === 'Liquid') list.append(li('For this feed, x₁γ₁ and x₂γ₂ both exceed the solid limits above, so neither solid can form.'));
   else if (/Solid 1 \+ solid 2/.test(q.type)) list.append(li('Below the eutectic no liquid satisfies both solubility limits, so the feed is ' + num(i.z) + ' mol solid A and ' + num(1 - i.z) + ' mol solid B.'));
-  if (sol.liquidus) list.append(li('First crystals: solve ln(x<sub>i</sub>γ<sub>i</sub>) at x<sub>A</sub> = z<sub>A</sub> for T. Solid B gives ' + num(saturationT(toEngine(i), i.z, 1), 5) + ' K and solid A gives ' + num(saturationT(toEngine(i), i.z, 0), 5) + ' K; the higher one forms first.'));
+  if (sol.liquidus) list.append(li('First crystals: solve ln(x<sub>i</sub>γ<sub>i</sub>) at x₁ = z₁ for T. Solid B gives ' + num(saturationT(toEngine(i), i.z, 1), 5) + ' K and solid A gives ' + num(saturationT(toEngine(i), i.z, 0), 5) + ' K; the higher one forms first.'));
 }
 
 async function renderChart() {
@@ -129,7 +131,7 @@ async function renderChart() {
   traces.push({ x: [i.z], y: [i.T], name: 'Current state', mode: 'markers', marker: { color: c.ink, size: 10 }, line: { color: c.ink } });
   const Ts = [i.Tm1, i.Tm2, i.T, sol.eutectic?.T].filter(Number.isFinite), lo = Math.max(250, Math.min(...Ts) - 25), hi = Math.min(450, Math.max(...Ts) + 15);
   const layout = { margin: { l: 70, r: 16, t: 16, b: 56 }, font: { family: 'Source Sans 3, sans-serif', size: 13, color: c.ink }, paper_bgcolor: 'transparent', plot_bgcolor: 'transparent', showlegend: false, hovermode: 'closest',
-    xaxis: { title: { text: 'Mole fraction of A, x_A' }, range: [0, 1], zeroline: false, linecolor: c.graphite, gridcolor: c.mist }, yaxis: { title: { text: 'Temperature / K' }, range: [lo, hi], zeroline: false, linecolor: c.graphite, gridcolor: c.mist } };
+    xaxis: { title: { text: 'Mole fraction of A, x₁' }, range: [0, 1], zeroline: false, linecolor: c.graphite, gridcolor: c.mist }, yaxis: { title: { text: 'Temperature / K' }, range: [lo, hi], zeroline: false, linecolor: c.graphite, gridcolor: c.mist } };
   try { await window.Plotly.react('so-chart', traces, layout, { responsive: true, displayModeBar: false }); } catch { /* numbers are in Step 2 */ }
   $('chart-legend').replaceChildren(...traces.map(t => { const s = document.createElement('span'), e = document.createElement('i'); e.style.borderColor = t.line.color; if (t.mode === 'markers') e.className = 'legend-dot'; else e.style.borderTopStyle = t.line.dash === 'dash' ? 'dashed' : t.line.dash === 'dot' ? 'dotted' : 'solid'; s.append(e, document.createTextNode(t.name)); return s; }));
   $('chart-note').textContent = 'Above both curves the mixture is liquid. Between a curve and the eutectic line, liquid coexists with one pure solid; the tie line joins the pure solid to the saturated liquid. Below the eutectic, both solids coexist.';
@@ -140,7 +142,7 @@ function runCooling() {
   const s = coolingPath(toEngine(study.inputs)); study.cooling = true;
   $('cool-body').replaceChildren(...s.rows.map(r => { const tr = document.createElement('tr'), u = r.status === 'ok' && r.liquid === null; tr.append(cell(num(r.T, 5)), cell(r.status === 'ok' ? phaseName(r.type) : 'Failed: ' + friendly(r.reason)), cell(num(r.x, 4)), cell(u ? '—' : num(r.liquid, 4)), cell(u ? '—' : num(r.solid1, 4)), cell(u ? '—' : num(r.solid2, 4))); return tr; }));
   $('cool-wrap').hidden = false;
-  $('cool-status').textContent = 'First crystals at ' + (s.liquidus ? num(s.liquidus.T, 5) + ' K (solid ' + (s.liquidus.solid === 2 ? 'B' : 'A') + ')' : '—') + '. Eutectic at ' + (s.eutectic ? num(s.eutectic.T, 5) + ' K, x_A = ' + num(s.eutectic.x, 4) : '—') + '. Rows 0.5 K above and below the eutectic bracket the disappearance of the liquid.';
+  $('cool-status').textContent = 'First crystals at ' + (s.liquidus ? num(s.liquidus.T, 5) + ' K (solid ' + (s.liquidus.solid === 2 ? 'B' : 'A') + ')' : '—') + '. Eutectic at ' + (s.eutectic ? num(s.eutectic.T, 5) + ' K, x₁ = ' + num(s.eutectic.x, 4) : '—') + '. Rows 0.5 K above and below the eutectic bracket the disappearance of the liquid.';
 }
 
 function runModels() {
@@ -148,7 +150,7 @@ function runModels() {
   const rows = modelStudy(toEngine(study.inputs)); study.models = true;
   $('models-body').replaceChildren(...rows.map(r => { const tr = document.createElement('tr'); tr.append(cell(num(r.A)), cell(r.status === 'ok' ? num(r.eutecticT, 5) : 'Failed: ' + friendly(r.reason)), cell(num(r.eutecticX, 4)), cell(num(r.liquidusT, 5)), cell(r.type ? phaseName(r.type) : '—'), cell(num(r.solid, 4))); return tr; }));
   $('models-wrap').hidden = false;
-  $('models-status').textContent = 'Same pure-solid data, feed z_A = ' + num(study.inputs.z) + ' at ' + num(study.inputs.T, 5) + ' K. Only the one-parameter Margules liquid changes.';
+  $('models-status').textContent = 'Same pure-solid data, feed z₁ = ' + num(study.inputs.z) + ' at ' + num(study.inputs.T, 5) + ' K. Only the one-parameter Margules liquid changes.';
 }
 
 function runProperties() {
@@ -183,6 +185,7 @@ function renderCases() {
 
 function loadCase(id) {
   const p = CASES[id]; if (!p) return;
+  const note = $('case-source'); if (note) { note.textContent = p.source || ''; note.hidden = !p.source; }
   applyInputs(p.inputs); $('case-name').value = p.name;
   for (const b of document.querySelectorAll('[data-case]')) b.setAttribute('aria-pressed', String(b.dataset.case === id));
   $('status').textContent = p.name + ' loaded. Make a prediction, then press Calculate the equilibrium.';

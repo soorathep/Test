@@ -7,7 +7,7 @@
   <title>Liquid stability and LLE · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate liquid-stability investigation: verify a liquid split, separate local from global evidence, test parameter sensitivity and compare model forms.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=mode-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -23,12 +23,12 @@
 
     <section class="starter" aria-label="Starting problems">
       <div class="starter-label"><strong>Choose a feed</strong><span>Named cases keep A = 3 and change only z₁. Predict each state before you calculate.</span></div>
-      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · z₁ = 0.50</button><button type="button" data-case="dilute" aria-pressed="false">Dilute feed · z₁ = 0.12</button><button type="button" data-case="very-dilute" aria-pressed="false">Very dilute feed · z₁ = 0.02</button></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · z₁ = 0.50</button><button type="button" data-case="dilute" aria-pressed="false">Dilute feed · z₁ = 0.12</button><button type="button" data-case="very-dilute" aria-pressed="false">Very dilute feed · z₁ = 0.02</button><button type="button" data-case="real" aria-pressed="false">Real data · cyclohexane + methanol</button></div>
     </section>
 
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
       <div class="panel-heading"><h2 id="picture-heading">Picture a liquid split</h2><span class="section-help">Composition and amount answer different questions</span></div>
-      <svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="split-title split-description">
+      <div class="figure-scroll" role="region" aria-label="Figure (scroll sideways on a small screen)" tabindex="0"><svg class="process-sketch" viewBox="0 0 760 180" role="img" aria-labelledby="split-title split-description">
         <title id="split-title">A homogeneous liquid feed can separate into two liquid layers</title>
         <desc id="split-description">One liquid feed enters a vessel at fixed temperature and pressure. When two liquids coexist, a component-1-poor liquid alpha and a component-1-rich liquid beta form separate layers.</desc>
         <defs><marker id="split-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" class="sketch-arrow"/></marker><clipPath id="split-clip"><rect x="304" y="20" width="140" height="140" rx="34"/></clipPath></defs>
@@ -40,8 +40,25 @@
         <path d="M 444 132 H 584" class="sketch-pipe" marker-end="url(#split-arrow)"/>
         <rect x="600" y="22" width="132" height="52" rx="12" class="sketch-beta-fill"/><rect x="600" y="106" width="132" height="52" rx="12" class="sketch-alpha-fill"/>
         <g class="sketch-label"><text x="93" y="97">Feed</text><text x="666" y="55">Liquid β</text><text x="666" y="139">Liquid α</text></g>
-      </svg>
+      </svg></div>
       <div class="picture-key"><div><strong>Feed · z₁</strong><p>Of all feed moles, what fraction is component 1?</p></div><div><strong>Liquid α · x₁<sup>α</sup> and f<sub>α</sub></strong><p>The component-1-poor liquid. f<sub>α</sub> is its share of the feed moles.</p></div><div><strong>Liquid β · x₁<sup>β</sup> and f<sub>β</sub></strong><p>The component-1-rich liquid. f<sub>β</sub> is its share of the feed moles.</p></div></div>
+      <div class="extra-figure">
+        <svg class="pxy-sketch" viewBox="0 0 500 262" role="img" aria-labelledby="gmix-title gmix-description">
+          <title id="gmix-title">Gibbs energy of mixing for symmetric Margules A = 3 with the common tangent</title>
+          <desc id="gmix-description">The mixing Gibbs energy over RT against x1. The curve has two minima near x1 = 0.07 and 0.93 and a hump in the middle. A common tangent touches both minima at the binodal compositions 0.0707 and 0.9293. Inflection points at 0.211 and 0.789 mark the spinodal. The feed 0.02 lies outside the binodal and is stable. The feed 0.12 lies between binodal and spinodal and is metastable. The feed 0.50 lies inside the spinodal and is unstable.</desc>
+          <path d="M60 30 V220 H460" class="pxy-axis"/><path d="M60 125 H460" class="rx-zero"/>
+          <polyline points="60.2,128.8 60.8,136.5 62.0,147.5 64.0,160.7 68.0,178.2 72.0,189.4 76.0,196.6 80.0,201.0 84.0,203.4 88.3,204.2 92.0,203.7 100.0,199.7 108.0,193.0 120.0,179.6 132.0,163.8 144.5,146.3 160.0,124.8 180.0,99.0 200.0,77.4 220.0,61.2 240.0,51.2 260.0,47.9 280.0,51.2 300.0,61.2 320.0,77.4 340.0,99.0 360.0,124.8 375.5,146.3 388.0,163.8 400.0,179.6 412.0,193.0 420.0,199.7 428.0,203.7 431.7,204.2 436.0,203.4 440.0,201.0 444.0,196.6 448.0,189.4 452.0,178.2 456.0,160.7 458.0,147.5 459.2,136.5 459.8,128.8" class="pxy-bubble"/>
+          <path d="M88.3 204.2 H431.7" class="ads-balance"/>
+          <circle cx="88.3" cy="204.2" r="4.5" class="pxy-alpha"/><circle cx="431.7" cy="204.2" r="4.5" class="pxy-alpha"/>
+          <circle cx="144.5" cy="146.3" r="4" class="sle-onset"/><circle cx="375.5" cy="146.3" r="4" class="sle-onset"/>
+          <circle cx="68" cy="178.2" r="5" class="sle-solid-pt"/><circle cx="108" cy="193.0" r="5" class="pxy-vapor"/><circle cx="260" cy="47.9" r="5" class="pxy-vapor"/>
+          <g class="eq-note" style="text-anchor:start"><text x="270" y="44" style="text-anchor:start" class="rx-key-amber">z₁ = 0.50 · unstable</text><text x="152" y="172" style="text-anchor:start">z₁ = 0.12 · metastable</text><text x="74" y="236" style="text-anchor:start">z₁ = 0.02 · stable</text></g>
+          <g class="sle-note"><text x="260" y="198">common tangent · binodal 0.0707 and 0.9293</text><text x="385" y="140" style="text-anchor:start">spinodal 0.789</text></g>
+          <g class="pxy-tick"><text x="60" y="252">0</text><text x="260" y="252">0.5</text><text x="460" y="252">1</text><text x="52" y="129" style="text-anchor:end">0</text></g>
+          <text x="16" y="125" class="pxy-axis-label" transform="rotate(-90 16 125)">Δg<tspan baseline-shift="sub" font-size="70%">mix</tspan>/RT</text>
+        </svg>
+        <p class="figure-caption">Model-generated for symmetric Margules A = 3. A feed between the two tangent points lowers its Gibbs energy by splitting onto the tangent line. Between the binodal and the open circles (spinodal) the curve still bends upward, so the single liquid is locally stable but not globally stable.</p>
+      </div>
       <figcaption>Which layer is on top depends on density, which this model does not calculate. For a 1 mol feed, f<sub>α</sub> + f<sub>β</sub> = 1. Your calculation may instead find one liquid.</figcaption>
     </figure>
 
@@ -139,7 +156,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited, reproducible conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State a conclusion the evidence supports, one it cannot establish, and the measurement that would resolve the limitation."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">Submission standard: report the model and parameter provenance; cite numerical results from A, B and C; identify retained assumptions and failed scenarios; and propose a discriminating measurement. The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">Submission standard: report the model and parameter provenance; cite numerical results from A, B and C; identify retained assumptions and failed scenarios; and propose a discriminating measurement. The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -157,7 +174,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/stability-lab.js?v=mode-1"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>LLE parameter fitting · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate LLE fitting investigation: calibrate NRTL to a tie line, test temperature transfer, examine fixed-alpha identifiability and measurement sensitivity.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/stability.css?v=mode-1">
+  <link rel="stylesheet" href="assets/labs.css?v=r3">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -28,6 +28,24 @@
     <figure class="panel phase-picture" aria-labelledby="picture-heading">
       <div class="panel-heading"><h2 id="picture-heading">From a tie line to parameters</h2><span class="section-help">Two equations, two unknowns</span></div>
       <div class="picture-key"><div><strong>Data · x₁<sup>α</sup> and x₁<sup>β</sup></strong><p>One measured tie line: the compositions of two coexisting liquids at one T and P.</p></div><div><strong>Equations · μ₁ and μ₂</strong><p>Equal chemical potential of each component in both liquids gives two equations.</p></div><div><strong>Unknowns · τ₁₂ and τ₂₁</strong><p>With α fixed, two τ values can usually satisfy both equations exactly.</p></div></div>
+      <div class="extra-figure">
+        <svg class="pxy-sketch" viewBox="0 0 500 262" role="img" aria-labelledby="tie-title tie-description">
+          <title id="tie-title">Measured liquid–liquid compositions for cyclohexane and methanol with two predictions from one tie line</title>
+          <desc id="tie-description">Temperature from 275 to 320 K against the cyclohexane mole fraction. Measured compositions of both liquids from 278 to 316 K form a dome that narrows as temperature rises. The NRTL fit at 298.15 K reproduces that tie line exactly. Constant tau predicts the same compositions at every temperature, which gives vertical lines. Tau proportional to 1 over T narrows the gap slightly but much less than the measurements, which reach 0.301 and 0.702 at 316 K.</desc>
+          <path d="M60 30 V220 H460" class="pxy-axis"/>
+          <path d="M130.8 220 V30 M410.4 220 V30" class="lle-const"/>
+          <polyline points="117.3,206.7 120.4,185.6 123.8,164.5 127.2,143.4 130.8,122.3 134.6,101.1 138.5,80.0 142.7,58.9 145.3,46.3" class="lle-inv"/>
+          <polyline points="421.6,206.7 419.0,185.6 416.3,164.5 413.4,143.4 410.4,122.3 407.2,101.1 403.8,80.0 400.2,58.9 397.9,46.3" class="lle-inv"/>
+          <path d="M130.8 122.3 H410.4" class="pxy-bubble"/>
+          <g class="lle-meas"><circle cx="101.6" cy="206.7" r="3.5"/><circle cx="436.8" cy="206.7" r="3.5"/><circle cx="110.0" cy="185.6" r="3.5"/><circle cx="435.6" cy="185.6" r="3.5"/><circle cx="114.0" cy="164.5" r="3.5"/><circle cx="428.8" cy="164.5" r="3.5"/><circle cx="123.2" cy="143.4" r="3.5"/><circle cx="416.8" cy="143.4" r="3.5"/><circle cx="130.8" cy="122.3" r="3.5"/><circle cx="410.4" cy="122.3" r="3.5"/><circle cx="136.0" cy="101.1" r="3.5"/><circle cx="396.4" cy="101.1" r="3.5"/><circle cx="147.2" cy="80.0" r="3.5"/><circle cx="384.8" cy="80.0" r="3.5"/><circle cx="164.4" cy="58.9" r="3.5"/><circle cx="363.2" cy="58.9" r="3.5"/><circle cx="180.4" cy="46.3" r="3.5"/><circle cx="340.8" cy="46.3" r="3.5"/></g>
+          <g class="sle-note"><text x="270" y="116">fitted tie line · 298.15 K</text><text x="270" y="40">measured · 316 K</text></g>
+          <g class="eq-note" style="text-anchor:start"><text x="180" y="168" style="text-anchor:start" class="rx-key-teal">constant τ</text><text x="180" y="186" style="text-anchor:start" class="rx-key-amber">τ ∝ 1/T</text><text x="180" y="204" style="text-anchor:start">● measured (Atik and Kerboub 2008)</text></g>
+          <g class="pxy-tick"><text x="60" y="238">0</text><text x="260" y="238">0.5</text><text x="460" y="238">1</text><text x="52" y="203" style="text-anchor:end">280</text><text x="52" y="161" style="text-anchor:end">290</text><text x="52" y="118" style="text-anchor:end">300</text><text x="52" y="76" style="text-anchor:end">310</text><text x="52" y="34" style="text-anchor:end">320</text></g>
+          <text x="260" y="257" class="pxy-axis-label">Cyclohexane mole fraction x₁</text>
+          <text x="16" y="125" class="pxy-axis-label" transform="rotate(-90 16 125)">T / K</text>
+        </svg>
+        <p class="figure-caption">Measured data from Atik and Kerboub (2008) via NIST ThermoML. NRTL with α = 0.3 is fitted exactly to the 298.15 K tie line. Both temperature assumptions miss the narrowing gap near the upper critical solution temperature: at 316 K the measured liquids are 0.301 and 0.702, the 1/T prediction 0.213 and 0.845.</p>
+      </div>
       <figcaption>An exact fit uses all the information in the tie line. Evidence that the model is right has to come from data the fit did not use, such as tie lines at other temperatures.</figcaption>
     </figure>
 
@@ -122,7 +140,7 @@
       <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited, reproducible conclusion</h3>
         <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State the parameter set you would use and over which temperature range, what it cannot establish, and the measurement that would test it."></textarea>
         <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
-        <p class="graduate-note">Submission standard: report the data source and fit settings; cite numerical results from A, B and C; separate calibration from held-out evidence; and propose a discriminating measurement. The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+        <p class="graduate-note">Submission standard: report the data source and fit settings; cite numerical results from A, B and C; separate calibration from held-out evidence; and propose a discriminating measurement. The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
     </section>
 
@@ -141,7 +159,7 @@
   </main>
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
-  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/mode.js?v=mode-2"></script>
   <script type="module" src="assets/lle-lab.js?v=mode-1"></script>
 </body>
 </html>
