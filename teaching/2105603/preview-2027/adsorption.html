@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Adsorption in a closed vessel · Thermodynamics Labs 2027 preview</title>
+  <meta name="description" content="Where does the gas go? Adsorption equilibrium in a closed vessel with a Langmuir isotherm, a material balance and temperature swing.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/stability.css?v=lab11-1">
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#experiment">Skip to the experiment</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Thermodynamics Labs</span></a><nav aria-label="Course navigation"><a href="vle.html">Lab 01</a><a href="case-study.html">Lab 02</a><a href="consistency.html">Lab 03</a><a href="stability.html">Lab 04</a><a href="lle-fit.html">Lab 05</a><a href="vlle.html">Lab 06</a><a href="adiabatic.html">Lab 07</a><a href="vle-input.html">Lab 08</a><a href="virial.html">Lab 09</a><a href="solids.html">Lab 10</a><a href="index.html">All 2027 labs</a><a href="../">Course</a></nav></header>
+  <main class="page" id="experiment">
+    <div class="page-intro">
+      <div><p class="eyebrow">Lab 11 · Gas adsorption equilibrium</p><h1>Where does the gas go?</h1><p id="case-description" class="intro-copy">A rigid 1.0 L vessel holds 20 g of a synthetic adsorbent and 0.030 mol of a single gas at 300 K. Without the adsorbent the pressure would be 74.8 kPa. The adsorbent follows a Langmuir isotherm with q<sub>s</sub> = 2.0 mol kg⁻¹, b = 0.10 kPa⁻¹ at 300 K and an isosteric heat of 25 kJ mol⁻¹.</p><p class="task-question">Find the equilibrium pressure and how much gas sits on the solid. Then predict what heating the closed vessel does.</p></div>
+      <p class="preview-note">2027 prototype<br><a href="design-notes.html#pilot">Review the student workflow</a></p>
+    </div>
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core concepts</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Graduate investigation</span></label></div><p class="core-only">Core: predict, calculate, read the isotherm and explain the result. Steps 1–5.</p><p class="grad-only">Graduate: the core steps plus a fit-range study, the isosteric heat from three isotherms and a temperature-swing study in Step 4.</p></fieldset>
+    <p class="graduate-note grad-only"><strong>Graduate route.</strong> Complete Steps 1–3 for the starting case. In Step 4, fit isotherm models to measured-style data over two ranges, recover the isosteric heat, and test how it controls the gas released on heating. <a href="#graduate-investigation">Go to the graduate investigation</a>.</p>
+
+    <section class="starter" aria-label="Starting problems">
+      <div class="starter-label"><strong>Choose a case</strong><span>All cases use the same vessel and gas inventory.</span></div>
+      <div class="case-buttons"><button type="button" data-case="baseline" aria-pressed="true">Starting case · 300 K, 20 g</button><button type="button" data-case="empty" aria-pressed="false">No adsorbent</button><button type="button" data-case="heated" aria-pressed="false">Heated to 340 K</button><button type="button" data-case="henry" aria-pressed="false">Linear isotherm, same initial slope</button></div>
+    </section>
+
+    <figure class="panel phase-picture" aria-labelledby="picture-heading">
+      <div class="panel-heading"><h2 id="picture-heading">Two equations meet at equilibrium</h2><span class="section-help">Isotherm and material balance</span></div>
+      <div class="vlle-figures ads-figures">
+        <div>
+          <svg class="three-phase-sketch" viewBox="0 0 320 300" role="img" aria-labelledby="vs-title vs-description">
+            <title id="vs-title">A closed vessel with an adsorbent bed</title>
+            <desc id="vs-description">The gas inventory n splits between the free gas, PV over RT, and the adsorbed phase, m times q of P. At 300 K, 20 percent is in the gas and 80 percent on the solid. At 340 K, 36 percent is in the gas.</desc>
+            <rect x="60" y="22" width="200" height="190" rx="14" class="ads-vessel"/>
+            <rect x="72" y="150" width="176" height="50" rx="6" class="ads-bed"/>
+            <g class="ads-pellet"><circle cx="90" cy="165" r="7"/><circle cx="110" cy="182" r="7"/><circle cx="130" cy="165" r="7"/><circle cx="150" cy="183" r="7"/><circle cx="170" cy="166" r="7"/><circle cx="190" cy="182" r="7"/><circle cx="210" cy="165" r="7"/><circle cx="230" cy="183" r="7"/></g>
+            <g class="ads-gas"><circle cx="100" cy="60" r="3.5"/><circle cx="160" cy="80" r="3.5"/><circle cx="220" cy="55" r="3.5"/><circle cx="130" cy="115" r="3.5"/><circle cx="200" cy="118" r="3.5"/></g>
+            <g class="ads-on"><circle cx="90" cy="157" r="2.6"/><circle cx="98" cy="166" r="2.6"/><circle cx="130" cy="157" r="2.6"/><circle cx="138" cy="168" r="2.6"/><circle cx="170" cy="158" r="2.6"/><circle cx="178" cy="168" r="2.6"/><circle cx="210" cy="157" r="2.6"/><circle cx="218" cy="167" r="2.6"/><circle cx="110" cy="174" r="2.6"/><circle cx="150" cy="175" r="2.6"/><circle cx="190" cy="174" r="2.6"/><circle cx="230" cy="175" r="2.6"/></g>
+            <text x="160" y="40" class="vessel-label" style="text-anchor:middle">gas · PV/RT</text>
+            <text x="160" y="140" class="vessel-label" style="text-anchor:middle">adsorbed · m q(P)</text>
+            <text x="160" y="232" class="sketch-note">n = PV/RT + m q(P)</text>
+            <g class="energy-text" style="text-anchor:start"><text x="20" y="262" style="text-anchor:start">300 K</text><text x="20" y="288" style="text-anchor:start">340 K</text></g>
+            <rect x="72" y="250" width="44" height="16" class="energy-sensible"/><rect x="116" y="250" width="176" height="16" class="energy-latent"/>
+            <rect x="72" y="276" width="79" height="16" class="energy-sensible"/><rect x="151" y="276" width="141" height="16" class="energy-latent"/>
+            <g class="pxy-tick"><text x="94" y="262">20%</text><text x="204" y="262">80% adsorbed</text><text x="111" y="288">36%</text><text x="221" y="288">64% adsorbed</text></g>
+          </svg>
+          <p class="figure-caption">Teal is the free gas and amber the adsorbed amount, for the starting case and after heating to 340 K.</p>
+        </div>
+        <div>
+          <svg class="pxy-sketch" viewBox="0 0 500 262" role="img" aria-labelledby="iso-title iso-description">
+            <title id="iso-title">Isotherms and the vessel material-balance line</title>
+            <desc id="iso-description">Uptake q against pressure P. The 300 K Langmuir isotherm rises and flattens toward 2 mol per kg. The 340 K isotherm lies lower. The material-balance line falls from q = 1.5 at P = 0. It crosses the 300 K isotherm at 15.0 kPa and q = 1.20, and the 340 K isotherm at 30.3 kPa and q = 0.96. A linear isotherm with the same initial slope crosses the balance line at 6.8 kPa.</desc>
+            <path d="M60 30 V220 H460" class="pxy-axis"/>
+            <path d="M60 220 L160 40" class="ads-henry"/>
+            <polyline points="60.0,220.0 70.0,203.6 80.0,190.0 90.0,178.5 100.0,168.6 110.0,160.0 120.0,152.5 140.0,140.0 160.0,130.0 180.0,121.8 210.0,112.0 240.0,104.3 280.0,96.2 320.0,90.0 360.0,85.0 410.0,80.0 460.0,76.0" class="pxy-bubble"/>
+            <polyline points="60.0,220.0 80.0,209.6 100.0,200.3 120.0,192.0 140.0,184.5 160.0,177.7 190.0,168.6 220.0,160.6 260.0,151.4 310.0,141.8 360.0,133.6 410.0,126.7 460.0,120.7" class="ads-iso-hot"/>
+            <path d="M60 85 L460 157.2" class="ads-balance"/>
+            <circle cx="209.9" cy="112.0" r="5.5" class="pxy-vapor"/><circle cx="362.8" cy="133.2" r="5.5" class="pxy-vapor"/><circle cx="128.2" cy="97.3" r="4.5" class="sle-onset"/>
+            <g class="pxy-callout"><text x="452" y="186" style="text-anchor:end">crossings: 300 K at 15.0 kPa, q = 1.20</text><text x="452" y="205" style="text-anchor:end">340 K at 30.3 kPa, q = 0.96</text></g>
+            <g class="sle-note"><text x="452" y="70" style="text-anchor:end">Langmuir · 300 K</text><text x="452" y="114" style="text-anchor:end">340 K</text><text x="170" y="52" style="text-anchor:start">linear, q = 0.2P · 6.8 kPa</text><text x="72" y="78" style="text-anchor:start">material balance</text></g>
+            <g class="pxy-tick"><text x="60" y="238">0</text><text x="160" y="238">10</text><text x="260" y="238">20</text><text x="360" y="238">30</text><text x="460" y="238">40</text><text x="52" y="224" style="text-anchor:end">0</text><text x="52" y="134" style="text-anchor:end">1.0</text><text x="52" y="44" style="text-anchor:end">2.0</text></g>
+            <text x="260" y="257" class="pxy-axis-label">Pressure P / kPa</text>
+            <text x="16" y="130" class="pxy-axis-label" transform="rotate(-90 16 130)">q / mol kg⁻¹</text>
+          </svg>
+          <p class="figure-caption">Model-generated for the starting case. Heating barely moves the balance line but lowers the isotherm, so the crossing moves to higher pressure.</p>
+        </div>
+      </div>
+      <figcaption>The isotherm says how much the solid holds at a given pressure. The material balance says how the fixed inventory must be shared. Equilibrium is the single pressure that satisfies both.</figcaption>
+    </figure>
+
+    <div class="experiment-grid vle-experiment-grid">
+      <section class="panel setup-panel" aria-labelledby="setup-heading">
+        <div class="panel-heading"><h2 id="setup-heading">1. Set the vessel and the isotherm</h2><span class="condition">Single gas · ideal gas phase</span></div>
+        <div id="form-error" class="error-summary" role="alert" tabindex="-1" hidden></div>
+        <form id="ad-form" novalidate>
+          <div class="feed-inputs"><div><label for="T">Temperature</label><div class="quantity-input"><input id="T" type="number" value="300" min="250" max="450" step="any" aria-describedby="T-unit error-T"><span id="T-unit">K</span></div><p id="error-T" class="field-error" hidden></p></div><div><label for="V">Free gas volume</label><div class="quantity-input"><input id="V" type="number" value="1" min="0.01" max="100" step="any" aria-describedby="V-unit error-V"><span id="V-unit">L</span></div><p id="error-V" class="field-error" hidden></p></div><div><label for="m">Adsorbent mass</label><div class="quantity-input"><input id="m" type="number" value="20" min="0" max="10000" step="any" aria-describedby="m-unit error-m"><span id="m-unit">g</span></div><p id="error-m" class="field-error" hidden></p></div><div><label for="n">Gas inventory</label><div class="quantity-input"><input id="n" type="number" value="0.03" min="0.0001" max="100" step="any" aria-describedby="n-unit error-n"><span id="n-unit">mol</span></div><p id="error-n" class="field-error" hidden></p></div></div>
+          <label for="model">Isotherm</label><select id="model"><option value="langmuir">Langmuir · q = qs·bP/(1 + bP)</option><option value="henry">Linear (Henry) · q = KP</option></select>
+          <div id="langmuir-control" class="parameter-fields coefficient-grid"><div><label for="qs">q<sub>s</sub> / mol kg⁻¹</label><input id="qs" type="number" value="2" min="0.01" max="50" step="any" aria-describedby="error-qs"><p id="error-qs" class="field-error" hidden></p></div><div><label for="b">b at 300 K / kPa⁻¹</label><input id="b" type="number" value="0.1" min="0.0001" max="100" step="any" aria-describedby="error-b"><p id="error-b" class="field-error" hidden></p></div></div>
+          <div id="henry-control" class="parameter-fields" hidden><label for="K">K at 300 K / mol kg⁻¹ kPa⁻¹</label><input id="K" type="number" value="0.2" min="0.0001" max="100" step="any" aria-describedby="error-K"><p id="error-K" class="field-error" hidden></p></div>
+          <label for="Q">Isosteric heat of adsorption Q</label><div class="quantity-input"><input id="Q" type="number" value="25" min="0" max="100" step="any" aria-describedby="Q-unit error-Q"><span id="Q-unit">kJ mol⁻¹</span></div><p id="error-Q" class="field-error" hidden></p>
+          <p class="input-help">b(T) = b(300 K)·exp[(Q/R)(1/T − 1/300)]; the same factor applies to K. Synthetic teaching values.</p>
+          <div class="prediction-row"><label for="prediction">Before calculating, what fraction of the gas is on the solid?</label><select id="prediction"><option value="">Not sure yet</option><option value="low">Less than half</option><option value="mid">Half to 90%</option><option value="high">More than 90%</option></select><p class="input-help">Optional. Your choice does not change the calculation.</p></div>
+          <button id="calculate" class="primary-button calculate-button" type="button">Calculate the equilibrium</button>
+          <p class="input-help">Add a calculated result to the comparison before changing a setting.</p>
+          <details class="advanced"><summary>Model and validity</summary><p>Absolute uptake of one gas, ideal gas phase, adsorbed-phase volume neglected, constant isosteric heat and q<sub>s</sub> independent of temperature. Pressures are limited to 200 kPa. The equilibrium is unique because both the gas and the adsorbed amounts increase with pressure.</p><p><a href="../labs/adsorption.html">Open the current Lab 11</a> to fit Freundlich and BET models to your own isotherm data.</p></details>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><h2 id="result-heading">2. Read the result</h2></div>
+        <div id="result-placeholder" class="result-placeholder"><p>Calculate to see the pressure and how the gas is shared.</p></div>
+        <div id="results" hidden>
+          <p id="result-phase" class="phase-result"></p><p id="phase-interpretation" class="section-help"></p><p id="prediction-feedback" class="prediction-feedback" aria-live="polite"></p>
+          <div class="table-scroll" role="region" aria-label="Where the gas is" tabindex="0"><table class="phase-table"><thead><tr><th scope="col">Location</th><th scope="col">Amount / mol</th><th scope="col">Share</th></tr></thead><tbody id="share-body"></tbody></table></div>
+          <dl class="boundary-metrics"><div><dt>Uptake q <span>mol per kg of adsorbent</span></dt><dd id="result-q">—</dd></div><div><dt>Fractional coverage θ = q/q<sub>s</sub> <span>Langmuir only</span></dt><dd id="result-theta">—</dd></div><div><dt>Pressure without adsorbent <span>same gas, vessel and T</span></dt><dd id="result-empty">—</dd></div><div><dt>Isotherm parameter at this T <span>b or K</span></dt><dd id="result-param">—</dd></div></dl>
+          <div class="balance-readout"><strong>Material balance residual</strong><output id="result-res">—</output><span>PV/RT + m q − n, in mol</span></div>
+          <div class="calculation-check"><h3>Check the calculation on paper</h3><ol id="calc-steps"></ol></div>
+        </div>
+        <div class="save-case-row"><label for="case-name">Name this case</label><input id="case-name" type="text" value="Starting case · 300 K, 20 g" maxlength="80"><button id="save-case" class="secondary-button" type="button" disabled>Add result to comparison</button></div>
+      </section>
+    </div>
+
+    <section id="diagram-panel" class="panel diagram-panel" aria-labelledby="diagram-heading" hidden>
+      <div class="panel-heading"><h2 id="diagram-heading">3. Read the isotherm and the balance</h2><span class="section-help">Calculated from the current inputs</span></div>
+      <div id="ad-chart" class="vle-chart" role="img" aria-label="Uptake against pressure with the material-balance line. Numbers are listed in Step 2."></div>
+      <div id="chart-legend" class="plot-legend"></div>
+      <p id="chart-note" class="chart-note"></p>
+    </section>
+
+    <section id="concept-check" class="panel core-only" aria-labelledby="concept-heading">
+      <div class="panel-heading"><h2 id="concept-heading">4. Check your understanding</h2><span class="section-help">Write first, then compare</span></div>
+      <p class="section-help">Use Steps 1–3 to answer each question in your own words. Then open the explanation and compare. Your answers are saved with your study.</p>
+      <div class="concept-question"><h3>A. Check the material balance</h3><p>For the starting case, take the calculated pressure and verify n = PV/RT + m q(P).</p><label for="note-concept1" class="visually-hidden">Your answer to question A</label><textarea id="note-concept1" rows="3" maxlength="10000" placeholder="Compute the gas and adsorbed amounts and their sum."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>At P = 14.99 kPa, the gas holds (14 990 Pa)(0.001 m³)/(8.314 × 300) = 0.0060 mol. The uptake is q = 2.0 × 1.499/2.499 = 1.20 mol kg⁻¹, so the solid holds 0.020 kg × 1.20 = 0.0240 mol. The sum is 0.0300 mol.</p><p>80% of the gas is on the solid, and the pressure is 15.0 kPa instead of 74.8 kPa. The coverage θ = 0.60 is far from the low-pressure limit.</p></div></details></div>
+      <div class="concept-question"><h3>B. Why does a linear isotherm give the wrong pressure?</h3><p>Load “Linear isotherm, same initial slope” (K = q<sub>s</sub>b = 0.2) and compare the pressure.</p><label for="note-concept2" class="visually-hidden">Your answer to question B</label><textarea id="note-concept2" rows="3" maxlength="10000" placeholder="Quote both pressures and both uptakes."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The linear isotherm gives 6.8 kPa and q = 1.36 mol kg⁻¹, against 15.0 kPa and 1.20 mol kg⁻¹ for Langmuir. Both agree only as P → 0.</p><p>At θ = 0.6 the sites are filling, so each extra kPa adds less uptake. A linear isotherm ignores this saturation, overestimates what the solid can hold, and so underestimates the pressure by more than half.</p></div></details></div>
+      <div class="concept-question"><h3>C. What does heating the closed vessel do?</h3><p>Load “Heated to 340 K”. Compare the pressure with the starting case and with an empty vessel heated by the same amount.</p><label for="note-concept3" class="visually-hidden">Your answer to question C</label><textarea id="note-concept3" rows="3" maxlength="10000" placeholder="Quote both pressure rises and the gas released from the solid."></textarea><details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The pressure rises from 15.0 to 30.3 kPa, a factor of 2.0. An empty vessel would rise only by 340/300 = 1.13, from 74.8 to 84.8 kPa. The solid releases 0.0047 mol, and the gas share rises from 20% to 36%.</p><p>Adsorption is exothermic, so b falls with temperature: b(340 K) = 0.1 × exp[(25 000/8.314)(1/340 − 1/300)] = 0.031 kPa⁻¹. This is the basis of temperature-swing regeneration.</p></div></details></div>
+    </section>
+
+    <section id="graduate-investigation" class="panel graduate-section grad-only" aria-labelledby="graduate-heading">
+      <div class="panel-heading"><h2 id="graduate-heading">4. Investigate the isotherm evidence</h2><span class="condition">Master's core work</span></div>
+      <p id="graduate-baseline" class="graduate-note">Calculate a state in Step 1 before running an investigation.</p>
+      <aside class="graduate-limits" aria-labelledby="ad-limits-heading"><h3 id="ad-limits-heading">What these results can and cannot show</h3><ul><li>The isotherm data are synthetic: a Langmuir isotherm with a fixed ±2% pressure scatter. Real data may need heterogeneous or multisite models.</li><li>A good fit inside the measured range does not justify the model outside it.</li><li>The isosteric heat assumes an ideal gas and absolute uptake. Excess uptake must be converted first.</li></ul></aside>
+
+      <section class="graduate-step" aria-labelledby="fit-heading"><h3 id="fit-heading">A. Does the fitted range matter?</h3>
+        <ol class="graduate-checklist"><li>Fit Henry, Langmuir and Freundlich models to the 300 K isotherm, first for q ≤ 0.8 mol kg⁻¹ and then for all seven points.</li><li>Use each fit to predict the vessel pressure and the uptake at 60 kPa, outside the data.</li><li>Explain why a small RMSE inside the range does not guarantee a reliable vessel prediction.</li></ol>
+        <div class="graduate-actions"><button id="run-fits" class="primary-button" type="button" disabled>Run the fit-range study</button></div>
+        <p id="fits-status" class="graduate-status" role="status"></p>
+        <div id="fits-wrap" class="table-scroll graduate-table" role="region" aria-label="Fit range study" tabindex="0" hidden><table><thead><tr><th scope="col">Fitted data</th><th scope="col">Model</th><th scope="col">Parameters</th><th scope="col">RMSE / mol kg⁻¹</th><th scope="col">Vessel P at 300 K / kPa</th><th scope="col">q at 60 kPa / mol kg⁻¹</th></tr></thead><tbody id="fits-body"></tbody></table></div>
+        <label for="note-fits">Claim 1 · the fitted range</label><textarea id="note-fits" rows="3" maxlength="10000" placeholder="Quote the vessel pressure and q at 60 kPa from at least two fits."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="heat-heading"><h3 id="heat-heading">B. Recover the isosteric heat</h3>
+        <ol class="graduate-checklist"><li>Compute Q<sub>st</sub> = −R d ln P/d(1/T) at fixed loading from isotherms at 300, 320 and 340 K.</li><li>Repeat with only two temperatures, and with the 340 K isotherm recorded as 342 K.</li><li>Explain which change you can detect from the data and which you cannot.</li></ol>
+        <div class="graduate-actions"><button id="run-heat" type="button" class="primary-button" disabled>Compute the isosteric heat</button></div>
+        <p id="heat-status" class="graduate-status" role="status"></p>
+        <div id="heat-wrap" class="table-scroll graduate-table" role="region" aria-label="Isosteric heat" tabindex="0" hidden><table><thead><tr><th scope="col">Data used</th><th scope="col">Q<sub>st</sub> range / kJ mol⁻¹</th><th scope="col">Mean / kJ mol⁻¹</th><th scope="col">Largest ln P misfit</th><th scope="col">Note</th></tr></thead><tbody id="heat-body"></tbody></table></div>
+        <label for="note-heat">Claim 2 · the isosteric heat</label><textarea id="note-heat" rows="3" maxlength="10000" placeholder="Quote the three Qst values and explain the misfit column."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="swing-heading"><h3 id="swing-heading">C. How much gas does heating release?</h3>
+        <ol class="graduate-checklist"><li>Heat the closed vessel from 300 K to 400 K with Q = 20, 25 and 30 kJ mol⁻¹.</li><li>Compare the pressure and the gas released from the solid.</li><li>State how uncertainty in Q translates into uncertainty in the released gas.</li></ol>
+        <div class="graduate-actions"><button id="run-swing" type="button" class="primary-button" disabled>Run the temperature swing</button></div>
+        <p id="swing-status" class="graduate-status" role="status"></p>
+        <div id="swing-wrap" class="table-scroll graduate-table" role="region" aria-label="Temperature swing" tabindex="0" hidden><table><thead><tr><th scope="col">T / K</th><th scope="col">P / kPa · Q = 20</th><th scope="col">P / kPa · Q = 25</th><th scope="col">P / kPa · Q = 30</th><th scope="col">Released / mmol · Q = 20</th><th scope="col">Released / mmol · Q = 25</th><th scope="col">Released / mmol · Q = 30</th></tr></thead><tbody id="swing-body"></tbody></table></div>
+        <label for="note-swing">Claim 3 · the temperature swing</label><textarea id="note-swing" rows="3" maxlength="10000" placeholder="Quote the released gas at one temperature for all three Q values."></textarea>
+      </section>
+
+      <section class="graduate-step" aria-labelledby="argument-heading"><h3 id="argument-heading">D. Defend a limited conclusion</h3>
+        <label for="note-decision">Decision and next evidence</label><textarea id="note-decision" rows="3" maxlength="10000" placeholder="State which isotherm and Q you would use for this vessel, the range you trust, and the measurement you would add."></textarea>
+        <div class="graduate-actions"><button id="check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="evidence-status" class="graduate-status" role="status"></p>
+        <p class="graduate-note">The record check only confirms that the sections and calculations are present. Scientific reasoning still needs instructor review.</p>
+      </section>
+    </section>
+
+    <section class="panel comparison-panel" aria-labelledby="comparison-heading">
+      <div class="panel-heading"><h2 id="comparison-heading">5. Compare and save</h2></div>
+      <ol class="investigation-steps core-only"><li>Calculate and save the four named cases.</li><li>Double the adsorbent mass and predict the direction of the pressure change before calculating.</li><li>Answer questions A–C in Step 4 using the saved comparison.</li><li>Download the complete study, reopen it, and reproduce a saved case.</li></ol>
+      <ol class="investigation-steps grad-only"><li>Calculate and save the four named cases.</li><li>Complete investigations A–C and write the graduate claims.</li><li>Download the complete study, reopen it, and reproduce a saved case and its investigation record.</li></ol>
+      <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
+      <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved cases" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">T / K</th><th scope="col">m / g</th><th scope="col">Isotherm</th><th scope="col">P / kPa</th><th scope="col">q / mol kg⁻¹</th><th scope="col">Adsorbed share</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+      <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate the equilibrium.</p><p class="privacy-note">Your inputs, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
+    </section>
+    <noscript><p class="error-summary">Enable JavaScript to calculate. The figures and questions remain available to read.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
+  <script src="../labs/assets/plotly.min.js" defer></script>
+  <script type="module" src="assets/mode.js?v=mode-1"></script>
+  <script type="module" src="assets/adsorption-lab.js?v=lab11-1"></script>
+</body>
+</html>

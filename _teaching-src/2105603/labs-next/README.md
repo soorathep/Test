@@ -1,15 +1,15 @@
 # Thermodynamics labs for 2027
 
-This source folder contains working Lab 01–10 and Lab 13 prototypes and the design plan for
+This source folder contains working Lab 01–11 and Lab 13 prototypes and the design plan for
 the next version of the 13 course labs. The public preview is generated at
 `teaching/2105603/preview-2027/`.
 
 The preparation scope is a shared interaction design, four functional prototypes,
 and a staged implementation plan. Independent student usability sessions and
 the remaining four lab interfaces are future work. Implementation proceeds in
-lab-number order, with Lab 11 next. Lab 13 is the earlier reference prototype.
+lab-number order, with Lab 12 next. Lab 13 is the earlier reference prototype.
 
-Labs 01–10 now use a graduate teaching route. The foundation calculation is
+Labs 01–11 now use a graduate teaching route. The foundation calculation is
 a reproducible control; the core work audits assumptions, compares sensitivity
 outputs and defends conclusions with evidence. Numbered instructions and explicit
 quantity units remain available throughout.
@@ -467,3 +467,16 @@ crystallizes A first at 341.3 K. Graduate route: cooling path 400-300 K, Margule
 A = -1, 0, 1, 1.5 (eutectic 305.7, 319.8, 333.6, 339.3 K), and one-at-a-time fusion
 property changes (dh2 +-10% moves the solid at 340 K from 0.022 to 0.143 mol). The
 gas-solid (sublimation) part of the current Lab 10 is linked, not rebuilt.
+
+## Lab 11 prototype
+
+Closed-vessel adsorption with the shared engine `adsorption.js`. 1.0 L free volume,
+20 g adsorbent, 0.030 mol gas at 300 K; Langmuir qs = 2 mol/kg, b(300 K) = 0.1 1/kPa,
+Q = 25 kJ/mol (b(T) = b300 exp[(Q/R)(1/T - 1/300)]). Equilibrium P = 14.99 kPa,
+q = 1.200 mol/kg (theta = 0.60), 80% adsorbed; 74.8 kPa without adsorbent. A linear
+isotherm with the same initial slope (K = 0.2) gives 6.82 kPa. Heating to 340 K gives
+30.3 kPa (x2.0, versus x1.13 for an empty vessel) and releases 4.7 mmol. Graduate route:
+Henry/Langmuir/Freundlich fits to synthetic 300 K data (Langmuir with fixed +-2% pressure
+scatter) over q <= 0.8 and all points (vessel P 10.1-18.4 kPa; q at 60 kPa 1.71-7.74),
+isosteric heat 25.1 kJ/mol from 300/320/340 K (24.1 if 340 K is recorded as 342 K), and
+a 300-400 K swing with Q = 20, 25, 30 kJ/mol (released at 380 K: 6.8, 9.2, 11.7 mmol).
