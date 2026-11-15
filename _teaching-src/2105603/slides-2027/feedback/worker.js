@@ -9,7 +9,7 @@
 // No name, ID, e-mail or IP address is stored.
 
 const ALLOWED_ORIGINS = ['https://www.skhgroup.net', 'https://skhgroup.net'];
-const COURSES = { '2105603': 7 };                       // course code -> number of sessions
+const COURSES = { '2105603': 7, '2105315': 14 };        // course code -> number of sessions
 const CHOICES = {
   mode: ['In class', 'On my own'],
   pace: ['Too slow', 'About right', 'Too fast'],

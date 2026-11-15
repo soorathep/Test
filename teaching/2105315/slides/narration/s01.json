@@ -523,12 +523,16 @@
  "exit": {
   "text": [
    {
-    "en": "Before you leave, answer three short questions on myCourseVille. Two minutes.",
-    "th": "ก่อนออกจากห้อง ตอบคำถามสั้นสามข้อใน myCourseVille ใช้เวลาสองนาที"
+    "en": "Before you leave, answer the exit ticket. It takes about five minutes and it is anonymous.",
+    "th": "ก่อนออกจากห้อง ตอบคำถามท้ายคาบ ใช้เวลาประมาณห้านาที และไม่ระบุตัวตน"
    },
    {
-    "en": "Two ways a missing value can appear, one check you would run on AI-written code, and what is still unclear.",
-    "th": "ค่าที่หายปรากฏได้สองแบบอย่างไร การตรวจหนึ่งข้อที่จะใช้กับโค้ดที่ AI เขียน และอะไรที่ยังไม่เข้าใจ"
+    "en": "Name two ways a missing value can appear in plant data, and one check you would run on AI-written code before trusting its mean.",
+    "th": "บอกสองแบบที่ค่าที่หายไปปรากฏในข้อมูลโรงงาน และการตรวจหนึ่งข้อที่จะใช้กับโค้ดที่ AI เขียน ก่อนจะเชื่อค่าเฉลี่ยที่ได้"
+   },
+   {
+    "en": "Scan the code or open the link. The same form asks about the pace, your confidence and whether the lab worked. No name or student ID is recorded.",
+    "th": "สแกนคิวอาร์โค้ดหรือเปิดลิงก์ ฟอร์มเดียวกันถามเรื่องความเร็วของคาบ ความมั่นใจ และแล็บใช้งานได้หรือไม่ ระบบไม่บันทึกชื่อหรือรหัสนิสิต"
    }
   ],
   "en": {
@@ -536,11 +540,15 @@
    "cues": [
     [
      0.25,
-     5.35
+     6.27
     ],
     [
-     5.7,
-     12.95
+     6.62,
+     15.34
+    ],
+    [
+     15.69,
+     26.83
     ]
    ]
   }

@@ -19,6 +19,14 @@ Settings are remembered in the browser (keys `nr315-*`, separate from the 210560
 Concepts, Activity 1 (pairs, no computer), concepts, Activity 2 (the week's web lab), debrief, exit ticket.
 Activity slides use `.activity` (amber rule) and end with a note for students studying alone.
 
+## Exit ticket and feedback
+
+The exit-ticket slide shows a QR code for `exit.html?s=N` (one PNG per session, `make_exit_qr.py N`).
+The form is anonymous and posts to the same Cloudflare relay as 2105603; answers are saved in the private
+repository `soorathep/course-feedback` under `responses/2105315/sNN/`. Setup, the relay code and
+`collect.py` are in `_teaching-src/2105603/slides-2027/feedback/`. Add each session's question to
+`PROMPTS` in `exit.html`.
+
 ## Files
 
 | File | Role |
