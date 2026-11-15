@@ -47,6 +47,9 @@ jobs:
       - name: Preserve MILP Quarto source
         run: sudo cp teaching/2105623/milp/slides.qmd _site/teaching/2105623/milp/slides.qmd
 
+      - name: Link course videos to separate course sites
+        run: sudo python3 tools/migrate_course_video_links.py
+
       - name: Check published site size
         run: |
           size=$(du --apparent-size --block-size=1 --summarize _site | cut -f1)
