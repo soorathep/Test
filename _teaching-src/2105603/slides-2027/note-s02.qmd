@@ -1,0 +1,134 @@
+---
+title: "Activity coefficients from measured VLE data"
+subtitle: "Pre-class note for Session 2 · about 20 minutes"
+author: "Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics"
+format:
+  html:
+    minimal: true
+    toc: false
+    css: notes.css
+    html-math-method: katex
+    include-in-header:
+      text: '<meta name="robots" content="noindex">'
+---
+
+::: {.draft-note}
+Draft for 2027. If you are taking the course this year, use the current course page.
+:::
+
+::: {.purpose}
+**Why read this.** Session 2 takes a published data set for 2-propanol + water and asks how far a real liquid is from ideal, which model describes it, and how much the model can be trusted. This note sets up the vocabulary so the session can use its time on the data. Work the three questions at the end and bring one question of your own.
+:::
+
+## 1. The working equation and what it assumes
+
+Session 1 wrote equal fugacity in the γ–φ form. For component *i* in a liquid in equilibrium with its vapor,
+
+$$y_i\,\Phi_i\,P = x_i\,\gamma_i\,P_i^{\text{sat}},\qquad \Phi_i=\frac{\hat\phi_i^{V}}{\phi_i^{\text{sat}}}\exp\!\left[-\frac{V_i^{L}(P-P_i^{\text{sat}})}{RT}\right].$$
+
+Φ<sub>i</sub> collects every vapor-phase and pressure correction. Solving for the activity coefficient gives the **data-reduction equation**
+
+$$\gamma_i=\frac{y_i\,\Phi_i\,P}{x_i\,P_i^{\text{sat}}(T)}.$$
+
+Three inputs carry the result, and each has its own error:
+
+| Input | Comes from | Typical problem |
+|---|---|---|
+| T, P, x<sub>i</sub>, y<sub>i</sub> | the experiment | scatter, and bias in the vapor sample |
+| P<sub>i</sub><sup>sat</sup>(T) | a correlation (Antoine) | wrong constants, units or range |
+| Φ<sub>i</sub> | a vapor model (ideal gas or virial) | neglected nonideality |
+
+**When is Φ<sub>i</sub> ≈ 1 acceptable?** With the second virial coefficient and the Poynting term neglected, $\ln\Phi_i\approx B_{ii}(P-P_i^{\text{sat}})/RT$. For an illustrative $B_{ii}=-1000\ \text{cm}^3\,\text{mol}^{-1}$ at 341 K and 60 kPa, the correction to ln γ is −0.011 for a component with P<sup>sat</sup> = 28.7 kPa and −0.0015 for one with P<sup>sat</sup> = 55.9 kPa. A 1 % shift is small next to the scatter of most data, but it is **systematic**: it has the same sign in every row, so it can bias a consistency test even when it is invisible in a plot.
+
+## 2. Reducing one measured row
+
+Row 7 of the 60 kPa data of Barbieri et al. (2024): T = 341.25 K, x₁ = 0.4943, y₁ = 0.569 (1 = 2-propanol, 2 = water). With the course Antoine constants (Section 6) and Φ<sub>i</sub> = 1:
+
+| | P<sup>sat</sup> / kPa | γ | ln γ |
+|---|---:|---:|---:|
+| 2-propanol | 55.853 | 1.237 | 0.212 |
+| water | 28.703 | 1.782 | 0.578 |
+
+Two details matter. P<sup>sat</sup> is evaluated at the **measured T of that row**, because isobaric data change temperature from row to row. The pure-component rows (x₁ = 0 or 1) give 0/0 for the absent component and carry no γ for it. They are still useful: they test your P<sup>sat</sup> correlation against the authors' own apparatus.
+
+## 3. Why models are written for the excess Gibbs energy
+
+The measured γ values are not independent. They are partial molar quantities of one function, the molar excess Gibbs energy:
+
+$$g\equiv\frac{G^{E}}{RT}=\sum_i x_i\ln\gamma_i,\qquad \ln\gamma_i=\left(\frac{\partial\,(n\,g)}{\partial n_i}\right)_{T,P,n_{j\ne i}}.$$
+
+For row 7, g = 0.4943(0.212) + 0.5057(0.578) = 0.397. Because γ<sub>i</sub> derive from one function, they obey the **Gibbs–Duhem equation** at constant T and P:
+
+$$x_1\,\mathrm{d}\ln\gamma_1+x_2\,\mathrm{d}\ln\gamma_2=0.$$
+
+A model for g therefore gives both γ values consistently by construction. This is why fitting a G<sup>E</sup> model is better than fitting ln γ₁ and ln γ₂ with two unrelated curves. Common binary models:
+
+| Model | Parameters | Comment |
+|---|---|---|
+| Margules (one constant) | A | g = A x₁x₂; symmetric; a quick screen |
+| Margules (two constant), van Laar | 2 | asymmetric; empirical |
+| Wilson | 2 (+ molar volumes) | local composition; cannot predict liquid–liquid splitting |
+| NRTL | 2 + α | local composition; can describe partial miscibility; used in Session 2 |
+
+NRTL (Renon and Prausnitz, 1968) for a binary:
+
+$$\ln\gamma_1=x_2^2\left[\tau_{21}\Big(\frac{G_{21}}{x_1+x_2G_{21}}\Big)^2+\frac{\tau_{12}G_{12}}{(x_2+x_1G_{12})^2}\right],\qquad G_{ij}=\exp(-\alpha\,\tau_{ij}).$$
+
+In general τ<sub>ij</sub> depends on temperature, often as $\tau_{ij}=a_{ij}+b_{ij}/T$. Session 2 fits constant τ values. Keep this in mind when data at 60 and 80 kPa, which cover different temperature ranges, give different parameters.
+
+## 4. What a fit is, and what it is not
+
+A fit chooses parameters to minimize a sum of squared residuals. The choice of residual is part of the model statement:
+
+- **ln γ residuals** (used in Lab 02): simple and transparent, but they inherit the errors of y and P<sup>sat</sup>.
+- **Pressure residuals, P only** (Barker's method, 1953): uses T, P, x and ignores y; useful when vapor sampling is the weakest measurement.
+- **All variables with their uncertainties** (maximum likelihood): the most defensible, and the most work.
+
+Two points are easy to miss. First, NRTL parameters are strongly **correlated**: many (τ₁₂, τ₂₁) pairs give almost the same fitting error. Report the parameters with an uncertainty, or at least check how flat the minimum is. Second, a small fitting error shows that the model can follow these points. It does not show that the data are right, or that the model will work at other conditions. The honest test is a **check on data the model has not seen**, such as the other pressure in Session 2.
+
+## 5. Consistency tests: what they can and cannot show
+
+Measured T, P, x and y over-determine the problem, so Gibbs–Duhem can be used to test the data. The **area test** (Redlich and Kister, 1948; Herington, 1951) integrates it over the composition range. For **isothermal** data,
+
+$$\int_0^1\ln\frac{\gamma_1}{\gamma_2}\,\mathrm{d}x_1=0.$$
+
+For **isobaric** data the temperature changes along the integral, and the right-hand side becomes a heat-of-mixing term, $-\int_0^1 \frac{H^{E}}{RT^2}\frac{\mathrm{d}T}{\mathrm{d}x_1}\,\mathrm{d}x_1$, which is not zero. Applying the isothermal form to isobaric data can fail good data. **Point tests** compare the measured y with the y predicted from T, P, x through a G<sup>E</sup> model, row by row.
+
+Passing a test does not certify the data. It shows that the data are consistent with Gibbs–Duhem within the tolerance chosen, under the assumed Φ<sub>i</sub> and P<sup>sat</sup>. Failing a test can mean bad data, a wrong P<sup>sat</sup> correlation or a neglected vapor correction.
+
+## 6. Vapor pressures: the input nobody measures for you
+
+Every γ is divided by P<sup>sat</sup>, so a 3 % error in P<sup>sat</sup> becomes a 3 % error in γ (0.030 in ln γ), in every row and with the same sign. Before using any Antoine set, check four things: the **log base**, the **pressure unit**, the **temperature unit**, and the **temperature range**. Then compare it with the pure-component rows of the data.
+
+All real-fluid vapor pressures in the 2027 labs and slides use the sets below, from the NIST Chemistry WebBook, in the form $\log_{10}(P^{\text{sat}}/\text{bar})=A-B/(T/\text{K}+C)$.
+
+| Compound | A | B | C | Range / K | Original data | Used in |
+|---|---:|---:|---:|---|---|---|
+| benzene | 4.01814 | 1203.835 | −53.226 | 287.70–354.07 | Willingham et al. (1945) | Lab 01, adiabatic flash, Session 1 |
+| benzene | 4.72583 | 1660.652 | −1.461 | 333.4–373.5 | Eon et al. (1971) | virial-vapor lab at 360 K |
+| toluene | 4.07827 | 1343.943 | −53.773 | 308.52–384.66 | Willingham et al. (1945) | Lab 01, adiabatic flash, virial lab, Session 1 |
+| p-xylene | 4.11138 | 1450.688 | −58.160 | 331.44–412.44 | Willingham et al. (1945) | Lab 01 step D, Session 1 |
+| 2-propanol | 4.8610 | 1357.427 | −75.814 | 329.92–362.41 | Biddiscombe et al. (1963) | Lab 02, Session 2 |
+| water | 5.0768 | 1659.793 | −45.854 | 334–363 | Bridgeman and Aldrich (1964) | Lab 02, Session 2 |
+
+The second benzene set is used only where the temperature is above 354.07 K, the upper limit of the 1945 set. Where both sets apply, they differ by less than 0.4 % in P<sup>sat</sup>.
+
+## 7. Before Session 2
+
+Write short answers. We use them in the first 30 minutes.
+
+1. **Reduce a row.** Repeat the row 7 calculation of Section 2 yourself, including g = G<sup>E</sup>/RT. Which component is further from ideal, and does that agree with which one is dilute?
+2. **Propagate an error.** Suppose the water Antoine set gave P<sup>sat</sup> 3 % too low. Which way does γ₂ move, by how much, and is the error random or systematic across the rows?
+3. **Read a fit.** An NRTL fit to the 60 kPa data has a small error. Give two separate reasons why the same parameters might still predict the 80 kPa data poorly.
+
+## References
+
+- Barbieri, A., De Guido, G., Moioli, S. (2024). *J. Chem. Thermodyn.* 198, 107342. Data for 2-propanol + water at 60 and 80 kPa (Lab 02).
+- Barker, J. A. (1953). Determination of activity coefficients from total pressure measurements. *Aust. J. Chem.* 6, 207–210.
+- Herington, E. F. G. (1951). Tests for the consistency of experimental isobaric vapour–liquid equilibrium data. *J. Inst. Petrol.* 37, 457–470.
+- NIST Chemistry WebBook, SRD 69, phase-change data for each compound (Antoine equation parameters).
+- Prausnitz, J. M., Lichtenthaler, R. N., de Azevedo, E. G. (1999). *Molecular Thermodynamics of Fluid-Phase Equilibria*, 3rd ed. Prentice Hall. Chapters 6 and 7.
+- Redlich, O., Kister, A. T. (1948). Algebraic representation of thermodynamic properties and the classification of solutions. *Ind. Eng. Chem.* 40, 345–348.
+- Renon, H., Prausnitz, J. M. (1968). Local compositions in thermodynamic excess functions for liquid mixtures. *AIChE J.* 14, 135–144.
+
+[Session 2 slides →](s02.html){.next-link}

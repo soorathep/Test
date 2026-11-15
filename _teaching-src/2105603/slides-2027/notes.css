@@ -1,0 +1,17 @@
+@import url("../../shared/labs-kit/labs-base.css");
+body { background: var(--paper); }
+#title-block-header, main, .draft-note, .purpose, h2, p, ul, ol, table, .katex-display { max-width: 760px; margin-left: auto; margin-right: auto; }
+#title-block-header { padding: 48px 20px 8px; }
+#title-block-header .subtitle { color: var(--teal); font-weight: 600; margin: 4px 0 6px; }
+#title-block-header .author { color: var(--muted); font-size: .92rem; }
+body { padding: 0 20px 60px; line-height: 1.6; font-size: 1.04rem; }
+h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.45rem; margin-top: 2.2em; margin-bottom: .6em; }
+.draft-note { border-left: 3px solid var(--amber, #E29A2D); padding: 6px 14px; color: var(--muted); font-size: .9rem; margin-top: 10px; }
+.purpose { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-top: 20px; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; margin: 1em auto 1.4em; background: white; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+th { font-weight: 600; }
+td { font-variant-numeric: tabular-nums; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.next-link { display: inline-block; margin-top: 24px; font-weight: 600; }
+@media print { body { background: white; font-size: 10.5pt; } .draft-note { display: none; } h2 { break-after: avoid; } table { break-inside: avoid; } }

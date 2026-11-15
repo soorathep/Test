@@ -1,0 +1,23 @@
+{
+  "about": "Single source of Antoine constants for 2105603 (labs, slides, notes). Every real-fluid vapor pressure in the course uses a set from this file. Source: NIST Chemistry WebBook, SRD 69, Phase change data, Antoine Equation Parameters. Form: log10(Psat/bar) = A - B/(T/K + C). Rule: use the set whose range covers the temperatures of the problem; if two sets cover it, use the first listed for that compound.",
+  "form": "log10(P/bar) = A - B/(T + C), T in K",
+  "checked": "2026-11-15",
+  "compounds": {
+    "benzene": {"cas": "71-43-2", "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C71432&Mask=4", "sets": [
+      {"A": 4.01814, "B": 1203.835, "C": -53.226, "TminK": 287.70, "TmaxK": 354.07, "ref": "Willingham, Taylor, Pignocco and Rossini (1945), J. Res. Natl. Bur. Stand. 35, 219-244", "usedIn": ["labs/assets/systems.json (Lab 01 VLE and flash, adiabatic-flash lab)", "slides-2027 s01", "labs-next mcflash.js presets"]},
+      {"A": 4.72583, "B": 1660.652, "C": -1.461, "TminK": 333.4, "TmaxK": 373.5, "ref": "Eon, Pommier et al. (1971), NIST fit to authors' data", "usedIn": ["labs-next virial-graduate.js (virial-vapor lab at 360 K, above the 1945 range)"]}
+    ]},
+    "toluene": {"cas": "108-88-3", "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C108883&Mask=4", "sets": [
+      {"A": 4.07827, "B": 1343.943, "C": -53.773, "TminK": 308.52, "TmaxK": 384.66, "ref": "Willingham et al. (1945)", "usedIn": ["labs/assets/systems.json (Lab 01, adiabatic-flash lab)", "labs-next virial-graduate.js", "slides-2027 s01", "mcflash.js presets"]}
+    ]},
+    "p-xylene": {"cas": "106-42-3", "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C106423&Mask=4", "sets": [
+      {"A": 4.11138, "B": 1450.688, "C": -58.16, "TminK": 331.44, "TmaxK": 412.44, "ref": "Willingham et al. (1945)", "usedIn": ["slides-2027 s01", "mcflash.js presets"]}
+    ]},
+    "2-propanol": {"cas": "67-63-0", "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C67630&Mask=4", "sets": [
+      {"A": 4.8610, "B": 1357.427, "C": -75.814, "TminK": 329.92, "TmaxK": 362.41, "ref": "Biddiscombe, Collerson et al. (1963)", "usedIn": ["labs-next case-study.html (Lab 02)", "slides-2027 s02"]}
+    ]},
+    "water": {"cas": "7732-18-5", "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=4", "sets": [
+      {"A": 5.0768, "B": 1659.793, "C": -45.854, "TminK": 334.0, "TmaxK": 363.0, "ref": "Bridgeman and Aldrich (1964)", "usedIn": ["labs-next case-study.html (Lab 02)", "slides-2027 s02"]}
+    ]}
+  }
+}
