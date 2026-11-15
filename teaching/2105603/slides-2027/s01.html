@@ -819,14 +819,17 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
     <!-- Narration and captions for 2027 decks.
          Loads narration/<deck>.json (built by build_narration.py): per slide, an MP3 and
          sentence cues with English and Thai text. Controls at the bottom left:
-         narration on/off, captions off/English/Thai, auto-advance on/off.
+         narration on/off, pause/resume and replay while narration is on,
+         captions off/English/Thai, auto-advance on/off.
          With narration off and captions on, the slide's full text is shown to read. -->
     <style>
     .nr-bar { position: fixed; left: 12px; bottom: 10px; z-index: 40; display: flex; gap: 6px; font: 600 14px/1 "Source Sans 3", "Course Thai", sans-serif; }
     .nr-bar button { border: 1.5px solid #0F6E6B; background: #fff; color: #0F6E6B; border-radius: 4px; padding: 8px 12px; cursor: pointer; }
     .nr-bar button[aria-pressed="true"] { background: #0F6E6B; border-color: #0F6E6B; color: #fff; }
     .nr-bar button:focus-visible { outline: 2px solid #E29A2D; outline-offset: 2px; }
-    .nr-caption { position: fixed; left: 50%; bottom: 60px; transform: translateX(-50%); z-index: 39; width: min(960px, 86vw); max-height: 30vh; overflow-y: auto;
+    /* When captions show, the slide area shrinks by --cc-band so captions never cover slide text. */
+    .reveal { height: calc(100% - var(--cc-band, 0px)) !important; }
+    .nr-caption { position: fixed; left: 50%; bottom: 56px; transform: translateX(-50%); z-index: 39; width: min(1100px, 92vw); max-height: 22vh; overflow-y: auto;
       background: rgba(28,36,43,.9); color: #fff; border-radius: 4px; padding: 10px 16px; font: 400 21px/1.45 "Source Sans 3", "Course Thai", sans-serif; text-align: center; }
     .nr-caption.transcript { text-align: left; font-size: 18px; }
     .nr-caption.transcript p { margin: 0 0 .4em; }
@@ -838,6 +841,8 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
     </style>
     <div class="nr-bar" role="toolbar" aria-label="Narration and captions">
       <button type="button" id="nr-sound" aria-pressed="false">Narration (EN): off</button>
+      <button type="button" id="nr-pause" hidden="">Pause</button>
+      <button type="button" id="nr-replay" hidden="">Replay slide</button>
       <button type="button" id="nr-cc" aria-pressed="false">Captions: off</button>
       <button type="button" id="nr-auto" aria-pressed="false">Auto-advance: off</button>
       <a class="draft-mark" href="../index.html">Draft for 2027 · current class: course page</a>
@@ -853,10 +858,22 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
       const audio = new Audio(); audio.preload = 'auto';
       const box = document.getElementById('nr-caption');
       const $ = (id) => document.getElementById(id);
-      let data = {}, slide = null;
+      let data = {}, slide = null, band = -1;
+
+      // Reserve a band under the slide for the caption box and re-lay out the slide.
+      function setBand() {
+        const h = box.hidden ? 0 : box.offsetHeight + 64;
+        if (h === band) return;
+        band = h;
+        document.documentElement.style.setProperty('--cc-band', h + 'px');
+        if (window.Reveal && Reveal.isReady()) Reveal.layout();
+      }
+      new ResizeObserver(setBand).observe(box);
 
       function paintButtons() {
         $('nr-sound').textContent = 'Narration (EN): ' + (state.sound ? 'on' : 'off'); $('nr-sound').setAttribute('aria-pressed', state.sound);
+        $('nr-pause').hidden = !state.sound; $('nr-replay').hidden = !state.sound;
+        $('nr-pause').textContent = audio.paused && audio.currentTime > 0 && !audio.ended ? 'Resume' : 'Pause';
         $('nr-cc').textContent = CC_LABEL[state.cc]; $('nr-cc').setAttribute('aria-pressed', state.cc !== 'off');
         $('nr-auto').textContent = 'Auto-advance: ' + (state.auto ? 'on' : 'off'); $('nr-auto').setAttribute('aria-pressed', state.auto);
       }
@@ -885,6 +902,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
           box.hidden = true;
         } else transcript();
       }
+      audio.addEventListener('play', paintButtons);
+      audio.addEventListener('pause', paintButtons);
+      $('nr-pause').addEventListener('click', (e) => {
+        if (audio.paused) audio.play().catch(() => {}); else audio.pause();
+        e.currentTarget.blur();
+      });
+      $('nr-replay').addEventListener('click', (e) => {
+        if (slide) { audio.currentTime = 0; audio.play().catch(() => {}); }
+        e.currentTarget.blur();
+      });
       audio.addEventListener('timeupdate', () => { if (state.sound) syncCaption(); });
       audio.addEventListener('ended', () => { if (state.auto && !Reveal.isLastSlide()) Reveal.next(); });
 
