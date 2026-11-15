@@ -385,7 +385,7 @@ The following public repositories are the authoritative publishing destinations 
 | 2105603 | https://github.com/soorathep/course-2105603 | https://soorathep.github.io/course-2105603/ |
 | 2105620 | https://github.com/soorathep/course-2105620 | https://soorathep.github.io/course-2105620/ |
 | 2105623 | https://github.com/soorathep/course-2105623 | https://soorathep.github.io/course-2105623/ |
-| seminar3 | https://github.com/soorathep/course-seminar3 | https://soorathep.github.io/course-seminar3/ |
+| 2105717 (Seminar 3) | https://github.com/soorathep/course-seminar3 | https://soorathep.github.io/course-seminar3/ |
 
 The research site's teaching catalog links to the independent course sites. Existing teaching pages, worksheets, labs and video URLs in this repository remain online unchanged for compatibility. Do not remove them or redirect learner-state pages without a reviewed migration: worksheet answers and notes can live in browser localStorage on the original domain. Existing feedback forms also rely on the original authorized origin. New course updates belong in the course repositories, not in these legacy copies. Source/editor projects can keep their own repositories; their publication scripts must target the matching course repository rather than Test. Do not re-point a source project's Git remote blindly.
 
