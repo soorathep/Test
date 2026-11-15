@@ -15,8 +15,12 @@
 .nr-caption.transcript p { margin: 0 0 .4em; }
 .nr-caption[lang="th"] { font-family: "Course Thai", "Sarabun", sans-serif; }
 .reveal-viewport.dark-slide .nr-bar button:not([aria-pressed="true"]) { background: rgba(255,255,255,.85); }
+.draft-mark { align-self: center; margin-right: 6px; font: 400 12px/1 "Source Sans 3", sans-serif; color: #66727C !important; text-decoration: none; }
+.draft-mark:hover { text-decoration: underline; }
+@media print { .draft-mark { display: none; } }
 </style>
 <div class="nr-bar" role="toolbar" aria-label="Narration and captions">
+  <a class="draft-mark" href="../index.html">Draft for 2027 · current class: course page</a>
   <button type="button" id="nr-sound" aria-pressed="false">Narration: off</button>
   <button type="button" id="nr-cc" aria-pressed="false">Captions: off</button>
   <button type="button" id="nr-auto" aria-pressed="false">Auto-advance: off</button>

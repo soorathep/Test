@@ -26,6 +26,8 @@ format:
     controlsBackArrows: visible
     html-math-method: katex
     embed-resources: false
+    include-in-header:
+      text: '<meta name="robots" content="noindex">'
     include-after-body:
       - ../theme/click-advance.html
       - narration-player.html

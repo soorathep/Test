@@ -12,6 +12,11 @@ permalink: /news/:year/:month/:day/:title/
 defaults:
   - scope: {path: "", type: posts}
     values: {layout: post}
+  # 2027 drafts: reachable by link only, kept out of the sitemap (pages also carry noindex)
+  - scope: {path: "teaching/2105603/preview-2027"}
+    values: {sitemap: false}
+  - scope: {path: "teaching/2105603/slides-2027"}
+    values: {sitemap: false}
 
 plugins:
   - jekyll-feed      # /feed.xml
