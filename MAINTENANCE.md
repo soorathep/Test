@@ -422,3 +422,7 @@ The authoritative gallery and new albums are maintained in https://github.com/so
 Keep this repository's nine existing img/activities images and _data/activities.yml unchanged unless a separate compatibility migration is approved: the main homepage uses both for its random-photo feature and old direct image URLs must continue working. These are a curated legacy snapshot, not the authoring destination for new albums. New albums do not automatically appear on the main homepage; update that curated highlight deliberately when needed. The earlier Add activity photos instructions apply to the new repository for gallery additions, not to main_web.
 
 The new gallery's initial nine images were verified byte-for-byte after deployment. Shared main-site CSS/layout and unrelated courses remain unchanged. No DNS or custom-domain changes were required.
+
+## Live Activities feed (16 November 2026)
+
+The homepage now fetches https://soorathep.github.io/activities/albums.json on every visit with cache revalidation, and randomly chooses from that current gallery. This supersedes the curated-snapshot limitation above. Add photos/albums only to the activities repository. No main_web edit is needed for new albums. Existing embedded metadata/images remain an immediate loading/offline/error fallback and preserve legacy image URLs. The remote photo is installed only after loading successfully; labels use textContent and photo URLs are constrained to the gallery image directory.

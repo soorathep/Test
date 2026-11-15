@@ -117,21 +117,7 @@ layout: null
           {% endif %}
         {% endfor %}
       </template>
-      <script>
-      (function () {
-        var figure = document.getElementById('home-activity');
-        var albums = document.getElementById('home-activity-albums').content.children;
-        // Give each event equal weight, then choose one photo for this page load.
-        var album = albums[Math.floor(Math.random() * albums.length)];
-        var photos = album.querySelectorAll('img');
-        var photo = photos[Math.floor(Math.random() * photos.length)].cloneNode(true);
-        photo.setAttribute('fetchpriority', 'high');
-        photo.decoding = 'async';
-        figure.insertBefore(photo, figure.firstChild);
-        figure.querySelector('[data-activity-caption]').textContent = album.dataset.title +
-          (album.dataset.date ? ' · ' + album.dataset.date : '');
-      })();
-      </script>
+      <script src="{{ '/assets/home-activities.js' | relative_url }}?v=20261116"></script>
       {% endif %}
     </section>
 
