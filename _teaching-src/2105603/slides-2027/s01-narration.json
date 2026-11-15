@@ -16,8 +16,8 @@
     "th": "ทั้งคาบนี้ตั้งอยู่บนคำถามเดียว คือ ที่อุณหภูมิคงที่ ความดันเปลี่ยนสัดส่วนการแยกเฟสอย่างไร"
    },
    {
-    "en": "If you are studying on your own, turn on narration and captions with the buttons at the top right. Use the arrow keys to move through the slides.",
-    "th": "ถ้าเรียนด้วยตนเอง เปิดเสียงบรรยายและคำบรรยายได้ที่ปุ่มมุมขวาบน และใช้ปุ่มลูกศรเพื่อเลื่อนสไลด์"
+    "en": "If you are studying on your own, turn on narration and captions with the buttons at the bottom left. Use the arrow keys to move through the slides.",
+    "th": "ถ้าเรียนด้วยตนเอง เปิดเสียงบรรยายและคำบรรยายได้ที่ปุ่มมุมซ้ายล่าง และใช้ปุ่มลูกศรเพื่อเลื่อนสไลด์"
    }
   ],
   "course-map": [
@@ -129,11 +129,80 @@
     "th": "ถ้ากำลังเรียนด้วยตนเอง ให้ทำตามลำดับเดียวกัน และหยุดที่สไลด์กิจกรรมแต่ละสไลด์"
    }
   ],
+  "phase-rule": [
+   {
+    "en": "Before drawing anything, count what is fixed.",
+    "th": "ก่อนวาดอะไร ให้นับก่อนว่าอะไรถูกกำหนดไว้แล้วบ้าง"
+   },
+   {
+    "en": "Gibbs' phase rule gives F equals C minus pi plus 2.",
+    "th": "กฎเฟสของกิบส์ให้ F = C − π + 2"
+   },
+   {
+    "en": "With two components and two phases, there are two degrees of freedom.",
+    "th": "เมื่อมีสององค์ประกอบและสองเฟส จะมีระดับขั้นความเสรีเท่ากับสอง"
+   },
+   {
+    "en": "So once you fix the temperature and the pressure, both phase compositions are fixed.",
+    "th": "ดังนั้นเมื่อกำหนดอุณหภูมิและความดันแล้ว องค์ประกอบของทั้งสองเฟสจะถูกกำหนดตามไปด้วย"
+   },
+   {
+    "en": "The feed composition does not change x or y. It only decides how much of each phase forms.",
+    "th": "องค์ประกอบของสารป้อนไม่ได้เปลี่ยน x หรือ y แต่กำหนดเพียงว่าแต่ละเฟสเกิดขึ้นมากเท่าไร"
+   }
+  ],
+  "bubble": [
+   {
+    "en": "Now build the diagram one line at a time.",
+    "th": "ต่อไปเราจะสร้างแผนภาพทีละเส้น"
+   },
+   {
+    "en": "Take a liquid of composition x and lower the pressure until the first bubble of vapor appears.",
+    "th": "เริ่มจากของเหลวที่มีองค์ประกอบ x แล้วลดความดันลงจนเกิดฟองไอฟองแรก"
+   },
+   {
+    "en": "Sum Raoult's law over both components, and use the fact that the vapor mole fractions add up to one.",
+    "th": "รวมกฎของราอูลต์ของทั้งสององค์ประกอบ และใช้ข้อที่ว่าเศษส่วนโมลในไอรวมกันได้หนึ่ง"
+   },
+   {
+    "en": "That gives the bubble pressure: the sum of x i times P i sat.",
+    "th": "จะได้ความดันจุดเดือด คือผลรวมของ x_i คูณ P_i^sat",
+    "say": "That gives the bubble pressure: the sum of x i times P i sat."
+   },
+   {
+    "en": "At x1 = 0.5, it is 105 kPa. For an ideal liquid this line is straight.",
+    "th": "ที่ x₁ = 0.5 ได้ 105 กิโลปาสคาล สำหรับของเหลวอุดมคติ เส้นนี้เป็นเส้นตรง",
+    "say": "At x one equals zero point five, it is one hundred and five kilopascals. For an ideal liquid this line is straight."
+   }
+  ],
+  "dew": [
+   {
+    "en": "Now start from the other side.",
+    "th": "ต่อไปเริ่มจากอีกด้านหนึ่ง"
+   },
+   {
+    "en": "Take a vapor of composition y and raise the pressure until the first drop of liquid forms.",
+    "th": "เริ่มจากไอที่มีองค์ประกอบ y แล้วเพิ่มความดันจนเกิดหยดของเหลวหยดแรก"
+   },
+   {
+    "en": "Now the liquid mole fractions must add up to one, which gives one over P dew equals the sum of y i over P i sat.",
+    "th": "ครั้งนี้เศษส่วนโมลในของเหลวต้องรวมกันได้หนึ่ง จึงได้ 1/P_dew เท่ากับผลรวมของ y_i หาร P_i^sat",
+    "say": "Now the liquid mole fractions must add up to one, which gives: one over P dew equals the sum of y i over P i sat."
+   },
+   {
+    "en": "At y1 = 0.5, the dew pressure is 85.71 kPa.",
+    "th": "ที่ y₁ = 0.5 ความดันจุดน้ำค้างเท่ากับ 85.71 กิโลปาสคาล",
+    "say": "At y one equals zero point five, the dew pressure is eighty-five point seven one kilopascals."
+   },
+   {
+    "en": "The dew line is curved, and it always lies below the bubble line.",
+    "th": "เส้น dew เป็นเส้นโค้ง และอยู่ต่ำกว่าเส้น bubble เสมอ"
+   }
+  ],
   "concept": [
    {
-    "en": "Here is the pressure-composition diagram for the Lab 01 ideal binary at 350 K.",
-    "th": "นี่คือแผนภาพความดัน-องค์ประกอบของสารผสมสองชนิดแบบอุดมคติใน Lab 01 ที่ 350 เคลวิน",
-    "say": "Here is the pressure-composition diagram for the Lab 01 ideal binary at three hundred and fifty kelvin."
+    "en": "Now put the two lines together.",
+    "th": "ตอนนี้นำสองเส้นมารวมกัน"
    },
    {
     "en": "Above the solid bubble line the mixture is all liquid. Below the dashed dew line it is all vapor.",
@@ -151,6 +220,81 @@
    {
     "en": "The position of the feed on that line sets the amounts. Here the vapor fraction is about 0.49.",
     "th": "ตำแหน่งของสารป้อนบนเส้นนั้นกำหนดปริมาณของแต่ละเฟส ในกรณีนี้สัดส่วนไอประมาณ 0.49"
+   }
+  ],
+  "lever": [
+   {
+    "en": "How much of each phase forms? Write the balances on one mole of feed.",
+    "th": "แต่ละเฟสเกิดขึ้นเท่าไร ให้เขียนดุลมวลบนสารป้อนหนึ่งโมล"
+   },
+   {
+    "en": "With beta as the vapor fraction, z1 equals one minus beta times x1, plus beta times y1.",
+    "th": "ให้ β เป็นสัดส่วนไอ จะได้ z₁ = (1 − β)x₁ + βy₁",
+    "say": "With beta as the vapor fraction, z one equals one minus beta, times x one, plus beta times y one."
+   },
+   {
+    "en": "Solve for beta. This is the lever rule: the feed point divides the tie line.",
+    "th": "แก้หา β นี่คือกฎคาน จุดของสารป้อนแบ่งเส้นเชื่อมออกเป็นสองส่วน"
+   },
+   {
+    "en": "At 95 kPa, beta is 0.4935.",
+    "th": "ที่ 95 กิโลปาสคาล β เท่ากับ 0.4935",
+    "say": "At ninety-five kilopascals, beta is zero point four nine three five."
+   },
+   {
+    "en": "Always check with the other component. Here component 2 closes at exactly 0.5.",
+    "th": "ตรวจด้วยองค์ประกอบอีกตัวเสมอ ในที่นี้องค์ประกอบที่ 2 ปิดดุลได้ 0.5 พอดี"
+   }
+  ],
+  "worked": [
+   {
+    "en": "Here is the whole flash at 95 kPa, in four steps.",
+    "th": "นี่คือการคำนวณ flash ที่ 95 กิโลปาสคาลทั้งหมด ในสี่ขั้นตอน",
+    "say": "Here is the whole flash at ninety-five kilopascals, in four steps."
+   },
+   {
+    "en": "First, the phase check. The pressure lies between the dew and bubble pressures of the feed, so two phases form.",
+    "th": "ขั้นแรก ตรวจเฟส ความดันอยู่ระหว่างความดัน dew และ bubble ของสารป้อน จึงเกิดสองเฟส"
+   },
+   {
+    "en": "Second, the K-values: P sat divided by P for each component.",
+    "th": "ขั้นที่สอง ค่า K คือ P^sat หารด้วย P ของแต่ละองค์ประกอบ"
+   },
+   {
+    "en": "Third, the compositions from the two summation conditions: x1 is 0.3889 and y1 is 0.6140.",
+    "th": "ขั้นที่สาม หาองค์ประกอบจากเงื่อนไขผลรวมทั้งสอง ได้ x₁ = 0.3889 และ y₁ = 0.6140",
+    "say": "Third, the compositions from the two summation conditions: x one is zero point three eight eight nine, and y one is zero point six one four zero."
+   },
+   {
+    "en": "Fourth, beta from the lever rule, and a balance check.",
+    "th": "ขั้นที่สี่ หา β จากกฎคาน แล้วตรวจดุลมวล"
+   },
+   {
+    "en": "Do not skip step one. Outside the two-phase range, the same formulas still give numbers, but beta falls below zero or above one.",
+    "th": "อย่าข้ามขั้นแรก นอกช่วงสองเฟส สูตรเดียวกันยังให้ตัวเลขออกมา แต่ β จะน้อยกว่าศูนย์หรือมากกว่าหนึ่ง"
+   }
+  ],
+  "rachford-rice": [
+   {
+    "en": "With more than two components, there is no closed form for x.",
+    "th": "เมื่อมีมากกว่าสององค์ประกอบ จะไม่มีสูตรปิดสำหรับ x"
+   },
+   {
+    "en": "Instead, write every x i in terms of beta, and require that the vapor and liquid mole fractions add up to the same total.",
+    "th": "ให้เขียน x_i ทุกตัวในรูปของ β แล้วกำหนดให้ผลรวมเศษส่วนโมลในไอและในของเหลวเท่ากัน"
+   },
+   {
+    "en": "That gives the Rachford-Rice equation, one equation in one unknown.",
+    "th": "จะได้สมการ Rachford–Rice ซึ่งเป็นสมการเดียวที่มีตัวแปรเดียว"
+   },
+   {
+    "en": "The left side decreases with beta, so there is a single root between zero and one whenever two phases exist.",
+    "th": "ด้านซ้ายของสมการลดลงเมื่อ β เพิ่ม จึงมีรากเดียวระหว่างศูนย์ถึงหนึ่งเมื่อมีสองเฟส"
+   },
+   {
+    "en": "For our binary at 95 kPa, the two terms cancel at beta equals 0.4935, the same value as the lever rule.",
+    "th": "สำหรับสารผสมสององค์ประกอบของเราที่ 95 กิโลปาสคาล สองพจน์หักล้างกันที่ β = 0.4935 ซึ่งเท่ากับค่าจากกฎคาน",
+    "say": "For our binary at ninety-five kilopascals, the two terms cancel at beta equals zero point four nine three five, the same value as the lever rule."
    }
   ],
   "activity-1": [
@@ -173,6 +317,30 @@
     "th": "จากนั้นเทียบกับเพื่อนคู่ของคุณ ยังไม่ต้องคำนวณ"
    }
   ],
+  "activity-1-debrief": [
+   {
+    "en": "Here is the answer to activity 1.",
+    "th": "นี่คือคำตอบของกิจกรรมที่ 1"
+   },
+   {
+    "en": "At 110 kPa the feed lies above the bubble line, because the bubble pressure of the feed is 105 kPa.",
+    "th": "ที่ 110 กิโลปาสคาล สารป้อนอยู่เหนือเส้น bubble เพราะความดันจุดเดือดของสารป้อนเท่ากับ 105 กิโลปาสคาล",
+    "say": "At one hundred and ten kilopascals the feed lies above the bubble line, because the bubble pressure of the feed is one hundred and five kilopascals."
+   },
+   {
+    "en": "So the mixture is all liquid. No vapor forms.",
+    "th": "ดังนั้นสารผสมเป็นของเหลวทั้งหมด ไม่มีไอเกิดขึ้น"
+   },
+   {
+    "en": "For this feed, two phases exist only between 85.71 and 105 kPa.",
+    "th": "สำหรับสารป้อนนี้ สองเฟสจะเกิดขึ้นเฉพาะในช่วง 85.71 ถึง 105 กิโลปาสคาล",
+    "say": "For this feed, two phases exist only between eighty-five point seven one and one hundred and five kilopascals."
+   },
+   {
+    "en": "A good reason names the line. Saying only that higher pressure means less vapor gives the right direction, but does not say whether any vapor remains.",
+    "th": "เหตุผลที่ดีต้องระบุเส้น การบอกเพียงว่าความดันสูงขึ้นทำให้ไอน้อยลง ให้ทิศทางที่ถูก แต่ไม่ได้บอกว่ายังเหลือไออยู่หรือไม่"
+   }
+  ],
   "demo-lab": [
    {
     "en": "Now open Lab 01. You can follow on your own screen.",
@@ -190,6 +358,158 @@
    {
     "en": "Save this as your baseline, then change only the pressure and test your prediction from activity 1.",
     "th": "บันทึกผลนี้เป็น baseline จากนั้นเปลี่ยนเฉพาะความดัน แล้วทดสอบคำทำนายของคุณจากกิจกรรมที่หนึ่ง"
+   }
+  ],
+  "mistakes": [
+   {
+    "en": "Before you start the lab work, here are four common mistakes.",
+    "th": "ก่อนเริ่มทำ lab นี่คือข้อผิดพลาดที่พบบ่อยสี่ข้อ"
+   },
+   {
+    "en": "One: using the feed composition in the bubble or dew equation to get the phase compositions. Those pressures only tell you whether two phases form.",
+    "th": "หนึ่ง ใช้องค์ประกอบของสารป้อนในสมการ bubble หรือ dew เพื่อหาองค์ประกอบของเฟส ความดันเหล่านั้นบอกได้เพียงว่าเกิดสองเฟสหรือไม่"
+   },
+   {
+    "en": "Two: skipping the phase check, and reporting a beta below zero or above one.",
+    "th": "สอง ข้ามการตรวจเฟส แล้วรายงานค่า β ที่น้อยกว่าศูนย์หรือมากกว่าหนึ่ง"
+   },
+   {
+    "en": "Three: mixing pressure units when forming the K-values.",
+    "th": "สาม ใช้หน่วยความดันปนกันเมื่อคำนวณค่า K"
+   },
+   {
+    "en": "Four: expecting the feed to move x and y. At fixed temperature and pressure, the feed changes only beta.",
+    "th": "สี่ คาดว่าสารป้อนจะเปลี่ยน x และ y ที่อุณหภูมิและความดันคงที่ สารป้อนเปลี่ยนเพียง β"
+   }
+  ],
+  "break": [
+   {
+    "en": "Take a ten-minute break.",
+    "th": "พักสิบนาที"
+   },
+   {
+    "en": "Next is activity 2, a pair investigation in Lab 01.",
+    "th": "ต่อไปคือกิจกรรมที่ 2 ทำงานเป็นคู่ใน Lab 01"
+   },
+   {
+    "en": "Before the break ends, check that Lab 01 opens on your device and that your baseline at 95 kPa is saved.",
+    "th": "ก่อนหมดเวลาพัก ตรวจว่า Lab 01 เปิดได้บนอุปกรณ์ของคุณ และบันทึก baseline ที่ 95 กิโลปาสคาลไว้แล้ว",
+    "say": "Before the break ends, check that Lab 01 opens on your device and that your baseline at ninety-five kilopascals is saved."
+   }
+  ],
+  "activity-2": [
+   {
+    "en": "Activity 2 takes seventy minutes, in pairs.",
+    "th": "กิจกรรมที่ 2 ใช้เวลาเจ็ดสิบนาที ทำเป็นคู่"
+   },
+   {
+    "en": "One of you drives Lab 01, the other checks by hand. Swap roles halfway.",
+    "th": "คนหนึ่งใช้ Lab 01 อีกคนตรวจด้วยมือ แล้วสลับบทบาทกันครึ่งทาง"
+   },
+   {
+    "en": "First, predict the vapor fraction at 90, 95 and 100 kPa, and sketch beta against pressure.",
+    "th": "ขั้นแรก ทำนายสัดส่วนไอที่ 90, 95 และ 100 กิโลปาสคาล แล้ววาดกราฟ β เทียบกับความดันคร่าว ๆ",
+    "say": "First, predict the vapor fraction at ninety, ninety-five and one hundred kilopascals, and sketch beta against pressure."
+   },
+   {
+    "en": "Then run the three pressures in Lab 01, changing only the pressure, and save each case.",
+    "th": "จากนั้นคำนวณทั้งสามความดันใน Lab 01 โดยเปลี่ยนเฉพาะความดัน และบันทึกแต่ละเคสไว้"
+   },
+   {
+    "en": "The checker repeats one pressure by hand, including a component balance.",
+    "th": "ผู้ตรวจคำนวณซ้ำหนึ่งความดันด้วยมือ รวมถึงการตรวจดุลมวลขององค์ประกอบ"
+   },
+   {
+    "en": "Finally, write two sentences with numbers that answer the session question, and download the study file with your names and IDs.",
+    "th": "สุดท้าย เขียนสองประโยคพร้อมตัวเลขเพื่อตอบคำถามประจำคาบ แล้วดาวน์โหลดไฟล์ study พร้อมชื่อและรหัสนิสิต"
+   }
+  ],
+  "activity-2-check": [
+   {
+    "en": "This is what to hand in.",
+    "th": "นี่คือสิ่งที่ต้องส่ง"
+   },
+   {
+    "en": "Your Lab 01 study file with the three cases, your name and student ID, one hand calculation, and two sentences that answer the session question.",
+    "th": "ไฟล์ study ของ Lab 01 ที่มีสามเคส ชื่อและรหัสนิสิต การคำนวณด้วยมือหนึ่งครั้ง และสองประโยคที่ตอบคำถามประจำคาบ"
+   },
+   {
+    "en": "Use the table on the right to check your Lab 01 results.",
+    "th": "ใช้ตารางด้านขวาตรวจผลจาก Lab 01 ของคุณ"
+   },
+   {
+    "en": "Graduate students: load the real benzene and toluene case, find the pressure range where this feed gives two phases, and compare with the flash drum from the start of the session.",
+    "th": "นิสิตบัณฑิตศึกษา โหลดเคสข้อมูลจริงของเบนซีนและโทลูอีน หาช่วงความดันที่สารป้อนนี้เกิดสองเฟส แล้วเทียบกับ flash drum ตอนต้นคาบ"
+   }
+  ],
+  "discussion": [
+   {
+    "en": "This plot answers the session question.",
+    "th": "กราฟนี้ตอบคำถามประจำคาบ"
+   },
+   {
+    "en": "As pressure rises at fixed temperature, the vapor fraction falls from one at the dew pressure to zero at the bubble pressure.",
+    "th": "เมื่อความดันเพิ่มขึ้นที่อุณหภูมิคงที่ สัดส่วนไอลดลงจากหนึ่งที่ความดัน dew เป็นศูนย์ที่ความดัน bubble"
+   },
+   {
+    "en": "Discuss three questions with your partner, then with the class.",
+    "th": "อภิปรายสามคำถามกับเพื่อนคู่ แล้วอภิปรายกับทั้งชั้น"
+   },
+   {
+    "en": "Why does beta fall? Both x1 and y1 rise with pressure, so why can beta still fall? And what would change at 360 K?",
+    "th": "ทำไม β จึงลดลง ในเมื่อ x₁ และ y₁ เพิ่มขึ้นตามความดันทั้งคู่ ทำไม β ยังลดลงได้ และถ้าอุณหภูมิเป็น 360 เคลวินจะเปลี่ยนอะไร",
+    "say": "Why does beta fall? Both x one and y one rise with pressure, so why can beta still fall? And what would change at three hundred and sixty kelvin?"
+   }
+  ],
+  "summary": [
+   {
+    "en": "To summarize: three questions, three tools.",
+    "th": "สรุป สามคำถาม สามเครื่องมือ"
+   },
+   {
+    "en": "Which phases form? Compare the pressure with the dew and bubble pressures of the feed.",
+    "th": "เกิดเฟสอะไร เทียบความดันกับความดัน dew และ bubble ของสารป้อน"
+   },
+   {
+    "en": "What compositions? Temperature and pressure fix them on the tie line.",
+    "th": "องค์ประกอบเท่าไร อุณหภูมิและความดันกำหนดไว้บนเส้นเชื่อม"
+   },
+   {
+    "en": "How much? The lever rule, or Rachford-Rice for many components.",
+    "th": "ปริมาณเท่าไร ใช้กฎคาน หรือ Rachford–Rice เมื่อมีหลายองค์ประกอบ"
+   },
+   {
+    "en": "Next session, we leave the ideal liquid and infer gamma from measured data.",
+    "th": "คาบหน้า เราจะออกจากของเหลวอุดมคติ และหา γ จากข้อมูลการวัด"
+   }
+  ],
+  "exit-ticket": [
+   {
+    "en": "Exit ticket. Five minutes, on your own.",
+    "th": "exit ticket ใช้เวลาห้านาที ทำคนเดียว"
+   },
+   {
+    "en": "At 350 K and z1 = 0.5, how does raising the pressure from 90 to 100 kPa change beta, and why? Use one number.",
+    "th": "ที่ 350 เคลวิน และ z₁ = 0.5 การเพิ่มความดันจาก 90 เป็น 100 กิโลปาสคาลเปลี่ยน β อย่างไร และเพราะอะไร ใช้ตัวเลขประกอบหนึ่งค่า",
+    "say": "At three hundred and fifty kelvin and z one equals zero point five, how does raising the pressure from ninety to one hundred kilopascals change beta, and why? Use one number."
+   },
+   {
+    "en": "In class, answer in the course form. On your own, write it in the additional note of your Lab 01 study file.",
+    "th": "ในชั้นเรียน ตอบในแบบฟอร์มของวิชา ถ้าเรียนเอง ให้เขียนในช่องหมายเหตุเพิ่มเติมของไฟล์ study ของ Lab 01"
+   }
+  ],
+  "after-class": [
+   {
+    "en": "After class, hand in your Lab 01 study file this week.",
+    "th": "หลังเลิกเรียน ส่งไฟล์ study ของ Lab 01 ภายในสัปดาห์นี้"
+   },
+   {
+    "en": "Read the short note on activity coefficients before session 2.",
+    "th": "อ่านเอกสารสั้นเรื่องสัมประสิทธิ์แอกทิวิตีก่อนคาบที่ 2"
+   },
+   {
+    "en": "Graduate students can add the real-data extension to the same file. See you next session.",
+    "th": "นิสิตบัณฑิตศึกษาเพิ่มส่วนขยายข้อมูลจริงในไฟล์เดียวกันได้ แล้วพบกันคาบหน้า"
    }
   ]
  }

@@ -260,8 +260,61 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 </div>
 <div class="selfstudy">
-<p><strong>Studying on your own?</strong> Follow the same order. Turn on narration or captions at the top right, and pause at each activity slide.</p>
+<p><strong>Studying on your own?</strong> Follow the same order. Turn on narration or captions at the bottom left, and pause at each activity slide.</p>
 </div>
+</section>
+<section id="phase-rule" class="slide level2">
+<h2>Two phases, two components: what is fixed?</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="math display">F=C-\pi+2</span></p>
+<div class="rule-table">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td>components, C</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>phases, π</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>degrees of freedom, F</td>
+<td><strong>2</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column rule-notes" style="width:50%;">
+<p>Fix <strong>T and P</strong> and both phase compositions, x and y, are fixed.</p>
+<p>The feed z does <strong>not</strong> change x or y. It only changes <strong>how much</strong> of each phase forms.</p>
+<p>This is why a tie line at one T and P serves every feed between its ends.</p>
+</div></div>
+</section>
+<section id="bubble" class="slide level2">
+<h2>The bubble line: where the first bubble appears</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p><img data-src="figures/s01-bubble.svg" class="fig-pxy" alt="Bubble line of the ideal binary with the bubble pressure 105 kPa marked at x1 = 0.5"></p>
+</div><div class="column concept-notes" style="width:42%;">
+<p>Start from a liquid of composition x and lower P until the first bubble forms. Summing <span class="math inline">y_iP=x_iP_i^{\text{sat}}</span> over i, with <span class="math inline">\sum y_i=1</span>:</p>
+<p><span class="math display">P_{\text{bubble}}=\sum_i x_iP_i^{\text{sat}}</span></p>
+<p>At <span class="math inline">x_1=0.5</span>: <span class="math inline">0.5(150)+0.5(60)=</span> <strong>105 kPa</strong>.</p>
+<p>For an ideal liquid the bubble line is straight.</p>
+</div></div>
+</section>
+<section id="dew" class="slide level2">
+<h2>The dew line: where the first drop appears</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p><img data-src="figures/s01-dew.svg" class="fig-pxy" alt="Dew line of the ideal binary with the dew pressure 85.71 kPa marked at y1 = 0.5"></p>
+</div><div class="column concept-notes" style="width:42%;">
+<p>Start from a vapor of composition y and raise P until the first drop forms. Now <span class="math inline">x_i=y_iP/P_i^{\text{sat}}</span> and <span class="math inline">\sum x_i=1</span>:</p>
+<p><span class="math display">\frac{1}{P_{\text{dew}}}=\sum_i\frac{y_i}{P_i^{\text{sat}}}</span></p>
+<p>At <span class="math inline">y_1=0.5</span>: <span class="math inline">1/(0.5/150+0.5/60)=</span> <strong>85.71 kPa</strong>.</p>
+<p>The dew line is curved, and always lies below the bubble line.</p>
+</div></div>
 </section>
 <section id="concept" class="slide level2">
 <h2>One diagram answers three questions</h2>
@@ -277,6 +330,56 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p><span class="source">Lab 01 synthetic binary · 350 K · P₁ˢᵃᵗ = 150 kPa, P₂ˢᵃᵗ = 60 kPa · z₁ = 0.5</span></p>
 </div></div>
 </section>
+<section id="lever" class="slide level2">
+<h2>How much of each phase: the lever rule</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p>Total and component balances on 1 mol of feed, with β = V/F:</p>
+<p><span class="math display">z_1=(1-\beta)\,x_1+\beta\,y_1</span></p>
+<p><span class="math display">\beta=\frac{z_1-x_1}{y_1-x_1}</span></p>
+<p>The feed point divides the tie line. The closer z is to y, the more vapor forms.</p>
+</div><div class="column" style="width:46%;">
+<div class="lever-box">
+<p><span class="label">At 95 kPa</span></p>
+<p>β = (0.5 − 0.3889) / (0.6140 − 0.3889) = <strong>0.4935</strong></p>
+<p><span class="label">Check component 2</span></p>
+<p>(1 − β)(0.6111) + β(0.3860) = 0.3095 + 0.1905 = <strong>0.5000</strong> ✓</p>
+</div>
+</div></div>
+</section>
+<section id="worked" class="slide level2">
+<h2>Worked example: the flash at 95 kPa by hand</h2>
+<div class="steps4">
+<div>
+<p><span class="label">1 · Phase check</span> P<sub>dew</sub>(z) = 85.71 &lt; <strong>95</strong> &lt; 105 = P<sub>bubble</sub>(z), so two phases form.</p>
+</div>
+<div>
+<p><span class="label">2 · K-values</span> K<sub>1</sub> = 150/95 = 1.5789<br> K<sub>2</sub> = 60/95 = 0.6316</p>
+</div>
+<div>
+<p><span class="label">3 · Compositions</span> x<sub>1</sub> = (1 − K<sub>2</sub>)/(K<sub>1</sub> − K<sub>2</sub>) = <strong>0.3889</strong><br> y<sub>1</sub> = K<sub>1</sub>x<sub>1</sub> = <strong>0.6140</strong></p>
+</div>
+<div>
+<p><span class="label">4 · Amounts and check</span> β = <strong>0.4935</strong>, and component 2 closes at 0.5000.</p>
+</div>
+</div>
+<p>Step 3 comes from <span class="math inline">\sum x_i=1</span> and <span class="math inline">\sum K_ix_i=1</span>. Step 1 matters: outside the two-phase range the same formulas give β &lt; 0 or β &gt; 1, which means one phase.</p>
+</section>
+<section id="rachford-rice" class="slide level2">
+<h2>More than two components: Rachford–Rice</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<p>With <span class="math inline">K_i=P_i^{\text{sat}}/P</span> and <span class="math inline">x_i=\dfrac{z_i}{1+\beta(K_i-1)}</span>, the condition <span class="math inline">\sum(y_i-x_i)=0</span> gives one equation in β:</p>
+<p><span class="math display">\sum_i\frac{z_i(K_i-1)}{1+\beta(K_i-1)}=0</span></p>
+<p>It decreases with β, so it has one root between 0 and 1 whenever two phases exist. Solve it by bisection or Newton’s method.</p>
+</div><div class="column" style="width:42%;">
+<div class="lever-box">
+<p><span class="label">Check at 95 kPa, β = 0.4935</span></p>
+<p>0.5(0.5789)/1.2857 = +0.2251<br> 0.5(−0.3684)/0.8182 = −0.2251</p>
+<p>Sum = <strong>0</strong>. For a binary the root is the lever-rule value.</p>
+</div>
+</div></div>
+</section>
 <section id="activity-1" class="slide level2 activity">
 <h2>Predict before you calculate</h2>
 <p><span class="act-label">Activity 1 · 10 minutes · alone, then with a partner</span></p>
@@ -290,6 +393,21 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <div class="selfstudy">
 <p><strong>On your own:</strong> pause here, write your answer, then go to the next slide.</p>
 </div>
+</section>
+<section id="activity-1-debrief" class="slide level2">
+<h2>Activity 1: check your prediction</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p>At 110 kPa the feed (z₁ = 0.5) lies <strong>above the bubble line</strong>: P &gt; P<sub>bubble</sub>(z) = 105 kPa.</p>
+<p>The mixture is <strong>all liquid</strong>. No vapor forms.</p>
+<p><span class="label">Two phases exist for z₁ = 0.5 only between</span></p>
+<div class="range">
+<p>85.71 kPa &lt; P &lt; 105 kPa</p>
+</div>
+</div><div class="column rule-notes" style="width:46%;">
+<p>A good reason names the line: “110 kPa is above the bubble pressure of the feed.”</p>
+<p>A weak reason: “pressure went up, so less vapor”. The direction is right, but it does not say whether any vapor remains.</p>
+</div></div>
 </section>
 <section id="demo-lab" class="slide level2">
 <h2>Demonstration · Lab 01</h2>
@@ -308,6 +426,150 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p><span class="label">Lab 01 should report</span> x₁ = 0.3889 · y₁ = 0.6140 · β = 0.4935 · bubble P = 105.0 kPa · dew P = 85.71 kPa</p>
 </div>
 </div></div>
+</section>
+<section id="mistakes" class="slide level2">
+<h2>Four common mistakes</h2>
+<div class="mistakes">
+<div>
+<p><strong>Using z in the bubble or dew equation of a flash.</strong> P<sub>bubble</sub>(z) and P<sub>dew</sub>(z) only tell you whether two phases form. The compositions come from the tie line.</p>
+</div>
+<div>
+<p><strong>Skipping the phase check.</strong> Outside the two-phase range the flash formulas still return numbers, with β &lt; 0 or β &gt; 1.</p>
+</div>
+<div>
+<p><strong>Mixing pressure units.</strong> P and P<sup>sat</sup> must be in the same unit before forming K<sub>i</sub>.</p>
+</div>
+<div>
+<p><strong>Expecting z to move x and y.</strong> At fixed T and P, z changes only β.</p>
+</div>
+</div>
+</section>
+<section id="break" class="slide level2 breakslide">
+<h2>Break · 10 minutes</h2>
+<div class="break-next">
+<p><span class="label">Next</span> Activity 2: a pair investigation in Lab 01, 70 minutes.</p>
+<p>Before you leave your seat, check that Lab 01 opens on your device and that your baseline at 95 kPa is saved.</p>
+</div>
+</section>
+<section id="activity-2" class="slide level2 activity">
+<h2>Activity 2 · how does P move the split?</h2>
+<p><span class="act-label">Activity 2 · 70 minutes · in pairs: one drives Lab 01, one checks by hand, then swap</span></p>
+<div class="a2grid">
+<div>
+<p><span class="label">10 min · predict</span> At 350 K and z₁ = 0.5, predict β at <strong>90, 95 and 100 kPa</strong>. Sketch β against P.</p>
+</div>
+<div>
+<p><span class="label">25 min · calculate</span> Run the three pressures in Lab 01. Change only P. Save each as a case with a clear name.</p>
+</div>
+<div>
+<p><span class="label">20 min · hand check</span> The checker repeats one pressure by hand: K-values, x₁, y₁, β and a component balance.</p>
+</div>
+<div>
+<p><span class="label">15 min · explain</span> Write two sentences, with numbers, answering the session question. Download the study file with your names and IDs.</p>
+</div>
+</div>
+<div class="selfstudy">
+<p><strong>On your own:</strong> do both roles yourself. Pause the slides, work in Lab 01, then continue.</p>
+</div>
+</section>
+<section id="activity-2-check" class="slide level2">
+<h2>Activity 2 · what to hand in</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<ol type="1">
+<li>Lab 01 study file with three saved cases (90, 95, 100 kPa), your name and student ID.</li>
+<li>One hand calculation, photographed or typed into the additional note.</li>
+<li>Two sentences that answer the session question with numbers.</li>
+</ol>
+<p><span class="label">Graduate extension</span> Load the real benzene + toluene case. Find the pressure range where z = 0.40 gives two phases at 350 K, and compare β at 50 kPa with the drum on slide 3.</p>
+</div><div class="column" style="width:46%;">
+<div class="lever-box">
+<p><span class="label">Check your Lab 01 results</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">P / kPa</th>
+<th style="text-align: right;">x₁</th>
+<th style="text-align: right;">y₁</th>
+<th style="text-align: right;">β</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0.3333</td>
+<td style="text-align: right;">0.5556</td>
+<td style="text-align: right;">0.750</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">0.3889</td>
+<td style="text-align: right;">0.6140</td>
+<td style="text-align: right;">0.494</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.4444</td>
+<td style="text-align: right;">0.6667</td>
+<td style="text-align: right;">0.250</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</section>
+<section id="discussion" class="slide level2">
+<h2>Discussion: what did pressure do?</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><img data-src="figures/s01-beta.svg" class="fig-pxy" alt="Vapor fraction falls from 1 at the dew pressure to 0 at the bubble pressure for z1 = 0.5"></p>
+</div><div class="column concept-notes" style="width:40%;">
+<p><span class="q">Discuss in pairs, then with the class</span></p>
+<ol type="1">
+<li>Why does β fall from 1 to 0 between 85.71 and 105 kPa?</li>
+<li>x₁ and y₁ both <strong>rise</strong> with P. Why can β still fall?</li>
+<li>What would change if T were raised to 360 K?</li>
+</ol>
+</div></div>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<div class="summary3">
+<div>
+<p><span class="label">Which phases</span> Compare P with P<sub>dew</sub>(z) and P<sub>bubble</sub>(z).</p>
+</div>
+<div>
+<p><span class="label">What compositions</span> T and P fix x and y on the tie line: <span class="math inline">K_i=P_i^{\text{sat}}/P</span>.</p>
+</div>
+<div>
+<p><span class="label">How much</span> The lever rule, or Rachford–Rice for many components, gives β.</p>
+</div>
+</div>
+<p><strong>Session question:</strong> at fixed T, raising P moves the tie line up and the feed toward the liquid end, so β falls, from 1 at the dew pressure to 0 at the bubble pressure.</p>
+<p><span class="label">Next session</span> Real mixtures: γ ≠ 1, inferred from measured VLE data (Lab 02).</p>
+</section>
+<section id="exit-ticket" class="slide level2 activity">
+<h2>Exit ticket · 5 minutes</h2>
+<p><span class="act-label">Exit ticket · alone · 5 minutes</span></p>
+<div class="prompt">
+<p>At 350 K and z₁ = 0.5, how does raising P from 90 to 100 kPa change β, and why? Use one number.</p>
+</div>
+<p>In class: answer in the course form. On your own: write the answer in the additional note of your Lab 01 study file before you download it.</p>
+</section>
+<section id="after-class" class="slide level2">
+<h2>After class</h2>
+<div class="summary3">
+<div>
+<p><span class="label">Hand in · this week</span> Your Lab 01 study file from Activity 2, with name and student ID.</p>
+</div>
+<div>
+<p><span class="label">Prepare · Session 2</span> Read the note on activity coefficients from measured data. About 20 minutes.</p>
+</div>
+<div>
+<p><span class="label">Optional · graduate</span> Finish the real benzene + toluene extension and add it to the same study file.</p>
+</div>
+</div>
+<p><a href="../preview-2027/vle.html" class="lab-button" target="_blank">Open Lab 01 →</a></p>
 
 </section>
     </div>
@@ -556,30 +818,29 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
     </script>
     <!-- Narration and captions for 2027 decks.
          Loads narration/<deck>.json (built by build_narration.py): per slide, an MP3 and
-         sentence cues with English and Thai text. Controls at the top right:
+         sentence cues with English and Thai text. Controls at the bottom left:
          narration on/off, captions off/English/Thai, auto-advance on/off.
          With narration off and captions on, the slide's full text is shown to read. -->
     <style>
-    .nr-bar { position: fixed; right: 12px; top: 12px; z-index: 40; display: flex; gap: 6px; font: 600 13px/1 "Source Sans 3", "Course Thai", sans-serif; }
-    .nr-bar { opacity: .55; transition: opacity .15s; } .nr-bar:hover, .nr-bar:focus-within { opacity: 1; }
-    .nr-bar button { border: 1px solid #B9C1C6; background: rgba(255,255,255,.92); color: #1C242B; border-radius: 4px; padding: 7px 10px; cursor: pointer; }
+    .nr-bar { position: fixed; left: 12px; bottom: 10px; z-index: 40; display: flex; gap: 6px; font: 600 14px/1 "Source Sans 3", "Course Thai", sans-serif; }
+    .nr-bar button { border: 1.5px solid #0F6E6B; background: #fff; color: #0F6E6B; border-radius: 4px; padding: 8px 12px; cursor: pointer; }
     .nr-bar button[aria-pressed="true"] { background: #0F6E6B; border-color: #0F6E6B; color: #fff; }
     .nr-bar button:focus-visible { outline: 2px solid #E29A2D; outline-offset: 2px; }
-    .nr-caption { position: fixed; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 39; width: min(960px, 86vw); max-height: 30vh; overflow-y: auto;
+    .nr-caption { position: fixed; left: 50%; bottom: 60px; transform: translateX(-50%); z-index: 39; width: min(960px, 86vw); max-height: 30vh; overflow-y: auto;
       background: rgba(28,36,43,.9); color: #fff; border-radius: 4px; padding: 10px 16px; font: 400 21px/1.45 "Source Sans 3", "Course Thai", sans-serif; text-align: center; }
     .nr-caption.transcript { text-align: left; font-size: 18px; }
     .nr-caption.transcript p { margin: 0 0 .4em; }
     .nr-caption[lang="th"] { font-family: "Course Thai", "Sarabun", sans-serif; }
     .reveal-viewport.dark-slide .nr-bar button:not([aria-pressed="true"]) { background: rgba(255,255,255,.85); }
-    .draft-mark { align-self: center; margin-right: 6px; font: 400 12px/1 "Source Sans 3", sans-serif; color: #66727C !important; text-decoration: none; }
+    .draft-mark { align-self: center; margin-left: 8px; font: 400 12px/1 "Source Sans 3", sans-serif; color: #66727C !important; text-decoration: none; }
     .draft-mark:hover { text-decoration: underline; }
     @media print { .draft-mark { display: none; } }
     </style>
     <div class="nr-bar" role="toolbar" aria-label="Narration and captions">
-      <a class="draft-mark" href="../index.html">Draft for 2027 · current class: course page</a>
-      <button type="button" id="nr-sound" aria-pressed="false">Narration: off</button>
+      <button type="button" id="nr-sound" aria-pressed="false">Narration (EN): off</button>
       <button type="button" id="nr-cc" aria-pressed="false">Captions: off</button>
       <button type="button" id="nr-auto" aria-pressed="false">Auto-advance: off</button>
+      <a class="draft-mark" href="../index.html">Draft for 2027 · current class: course page</a>
     </div>
     <div class="nr-caption" id="nr-caption" aria-live="polite" hidden=""></div>
     <script>
@@ -595,7 +856,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
       let data = {}, slide = null;
 
       function paintButtons() {
-        $('nr-sound').textContent = 'Narration: ' + (state.sound ? 'on' : 'off'); $('nr-sound').setAttribute('aria-pressed', state.sound);
+        $('nr-sound').textContent = 'Narration (EN): ' + (state.sound ? 'on' : 'off'); $('nr-sound').setAttribute('aria-pressed', state.sound);
         $('nr-cc').textContent = CC_LABEL[state.cc]; $('nr-cc').setAttribute('aria-pressed', state.cc !== 'off');
         $('nr-auto').textContent = 'Auto-advance: ' + (state.auto ? 'on' : 'off'); $('nr-auto').setAttribute('aria-pressed', state.auto);
       }
