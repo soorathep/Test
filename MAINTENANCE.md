@@ -373,3 +373,22 @@ Rules:
   page, handles the MENU button, and closes the dropdown after a click.
   index.html no longer touches the nav links; do not add nav code back there.
 - On phones (<= 900 px) every group opens flat under MENU; no dropdowns.
+
+
+## Course websites after 2026-11-15
+
+The following public repositories are the authoritative publishing destinations for course updates:
+
+| Course | Repository | Site |
+| --- | --- | --- |
+| 2105315 | https://github.com/soorathep/course-2105315 | https://soorathep.github.io/course-2105315/ |
+| 2105603 | https://github.com/soorathep/course-2105603 | https://soorathep.github.io/course-2105603/ |
+| 2105620 | https://github.com/soorathep/course-2105620 | https://soorathep.github.io/course-2105620/ |
+| 2105623 | https://github.com/soorathep/course-2105623 | https://soorathep.github.io/course-2105623/ |
+| seminar3 | https://github.com/soorathep/course-seminar3 | https://soorathep.github.io/course-seminar3/ |
+
+The research site's teaching catalog links to the independent course sites. Existing teaching pages, worksheets, labs and video URLs in this repository remain online unchanged for compatibility. Do not remove them or redirect learner-state pages without a reviewed migration: worksheet answers and notes can live in browser localStorage on the original domain. Existing feedback forms also rely on the original authorized origin. New course updates belong in the course repositories, not in these legacy copies. Source/editor projects can keep their own repositories; their publication scripts must target the matching course repository rather than Test. Do not re-point a source project's Git remote blindly.
+
+Annual archive policy: at the end of each teaching year, prepare a reviewed, versioned archive with checksums, confirm rights/license and remove student personal data. Publish to Zenodo only after owner review of the content and metadata, verify the DOI and downloadable files, then add an annual archive link. No Zenodo record was published by this migration.
+
+The branch course-sites-migration-20261115 is an UNDEPLOYED experiment that excludes old video URLs. Do not merge it: it would break direct media embeds and non-browser download clients. Only the catalog-only migration was deployed.
