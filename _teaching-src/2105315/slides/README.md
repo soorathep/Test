@@ -23,8 +23,8 @@ Activity slides use `.activity` (amber rule) and end with a note for students st
 
 The exit-ticket slide shows a QR code for `exit.html?s=N` (one PNG per session, `make_exit_qr.py N`).
 The form is anonymous and posts to the same Cloudflare relay as 2105603; answers are saved in the private
-repository `soorathep/course-feedback` under `responses/2105315/sNN/`. Setup, the relay code and
-`collect.py` are in `_teaching-src/2105603/slides-2027/feedback/`. Add each session's question to
+repository `soorathep/course-feedback` under `responses/2105315/sNN/`. Setup, the relay code,
+`collect.py` and the guide are in that repository. Add each session's question to
 `PROMPTS` in `exit.html`.
 
 ## Files
