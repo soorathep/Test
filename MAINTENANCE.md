@@ -385,3 +385,31 @@ The research site's teaching catalog links to the independent course sites. Exis
 Annual archive policy: at the end of each teaching year, prepare a reviewed, versioned archive with checksums, confirm rights/license and remove student personal data. Publish to Zenodo only after owner review of the content and metadata, verify the DOI and downloadable files, then add an annual archive link. No Zenodo record was published by this migration.
 
 The branch course-sites-migration-20261115 is an UNDEPLOYED experiment that excludes old video URLs. Do not merge it: it would break direct media embeds and non-browser download clients. Only the catalog-only migration was deployed.
+
+
+### Legacy 2105717 Seminar 3 compatibility files
+
+Authoritative teaching content is in [course-seminar3](https://github.com/soorathep/course-seminar3).
+The verified October 2026 archive is https://doi.org/10.5281/zenodo.24248149.
+Its ZIP SHA-256 is 452834573774caf9946711566a812325f821f3e4710aadec197fbe292cf399f3.
+
+Duplicate Seminar 3 material and the old worksheet application were retired from
+main_web on 15 November 2026 with the owner's explicit authorization. Thirteen
+HTML entry pages remain as small redirects preserving query strings and fragments.
+The main course catalog already routes to the dedicated site through
+_data/course_migration.json; preserve that mapping.
+
+Before retiring the old worksheet application, all four worksheet templates,
+their render dependencies and the blank English workbook were exported as
+2105717-worksheets-original-site-2026-10.zip, SHA-256
+4412387a964c26b83c0e8c82473d81ba3136fd2129a7e43cffa658fc1cc49d83.
+The full original templates and dependencies also remain in the verified Zenodo
+archive and dedicated course repository. Browser-saved student answers are not
+in the repository and are not included in these template exports.
+
+Only six media compatibility files remain unchanged: both lecture MP4s plus their
+two posters and two chapter lists. These preserve direct video URLs and existing
+embeds. JavaScript 404 handling is not an HTTP redirect for media clients.
+Do not remove these without a separately verified migration or explicit owner
+decision addressing direct media access. This folder is not an active authoring
+project; do not restore duplicate slides or libraries.

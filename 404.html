@@ -26,7 +26,7 @@ sitemap: false
 <script>
   const courseDownloads = {{ site.data.course_release_downloads | jsonify }};
   const legacyCoursePath = window.location.pathname;
-  const migratedCourse = legacyCoursePath.match(/^\/teaching\/(2105620|2105315)(?:\/|$)/);
+  const migratedCourse = legacyCoursePath.match(/^\/teaching\/(2105620|2105315|seminar3)(?:\/|$)/);
   if (migratedCourse) {
     const courseCode = migratedCourse[1];
     const coursePath = legacyCoursePath === "/teaching/" + courseCode ? legacyCoursePath + "/" : legacyCoursePath;
