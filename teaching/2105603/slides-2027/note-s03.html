@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics">
+
+<title>Gibbs energy of mixing and phase stability</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<meta name="robots" content="noindex">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="../site_libs/katex/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="notes.css">
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Gibbs energy of mixing and phase stability</h1>
+<p class="subtitle">Pre-class note for Session 3 · about 20 minutes</p>
+<p class="author">Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics</p>
+
+</header>
+
+
+<div class="draft-note">
+<p>Draft for 2027. If you are taking the course this year, use the current course page.</p>
+</div>
+<div class="purpose">
+<p><strong>Why read this.</strong> Session 1 ended with a warning: when K depends on composition, a one-phase answer from a flash must be confirmed by a stability test. Session 2 ended with a fitted NRTL model for 2-propanol + water that matched the VLE data close to their stated uncertainty and still predicted a liquid split that does not exist. Session 3 asks when one liquid really splits into two, and how to test it. Work the three questions at the end and bring one question of your own.</p>
+</div>
+<h2 id="the-function-that-decides">1. The function that decides</h2>
+<p>At fixed T and P, a mixture takes the state of lowest total Gibbs energy. For a liquid, the molar Gibbs energy of mixing in units of RT is</p>
+<p><span class="math display">\frac{\Delta g_{\text{mix}}}{RT}=\sum_i x_i\ln x_i+\frac{G^E}{RT}.</span></p>
+<p>The ideal term is always negative and curved upward; it favors one mixed phase. A large positive G<sup>E</sup> can bend the curve the other way. If a straight line between two compositions lies below the curve, a feed between them lowers its Gibbs energy by splitting into those two liquids.</p>
+<h2 id="local-and-global-stability-in-a-binary">2. Local and global stability in a binary</h2>
+<p><strong>Local test.</strong> One phase is stable against small composition changes when the curve is convex:</p>
+<p><span class="math display">x_1x_2\,\frac{\partial^2(\Delta g_{\text{mix}}/RT)}{\partial x_1^2}=1+x_1x_2\,\frac{\partial^2 (G^E/RT)}{\partial x_1^2}&gt;0.</span></p>
+<p>This scaled curvature is the quantity reported in Labs 02 and 04. The <strong>spinodal</strong> is where it equals zero.</p>
+<p><strong>Global test.</strong> A positive curvature does not guarantee stability. The equilibrium compositions of the two liquids, the <strong>binodal</strong>, satisfy equal chemical potentials, which for a liquid–liquid split is</p>
+<p><span class="math display">x_i^{\alpha}\gamma_i^{\alpha}=x_i^{\beta}\gamma_i^{\beta}\qquad(i=1,2).</span></p>
+<p>Graphically this is the common tangent to Δg<sub>mix</sub>. Between the binodal and the spinodal the liquid is <strong>metastable</strong>: locally stable, but a split lowers G.</p>
+<p><strong>Worked example.</strong> For the one-constant Margules model, G<sup>E</sup>/RT = A x₁x₂, the curvature is 1 − 2A x₁x₂. It is smallest at x₁ = 0.5, so a split needs A &gt; 2. By symmetry the binodal satisfies</p>
+<p><span class="math display">\ln\frac{x_1}{1-x_1}=A\,(2x_1-1).</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">A</th>
+<th>Spinodal x₁</th>
+<th>Binodal x₁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.5</td>
+<td>0.276 and 0.724</td>
+<td>0.145 and 0.855</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.0</td>
+<td>0.211 and 0.789</td>
+<td>0.0707 and 0.929</td>
+</tr>
+</tbody>
+</table>
+<p>At A = 3, a feed with z₁ = 0.12 has positive curvature but lies inside the binodal: it splits. This is the case you will meet first in Lab 04.</p>
+<h2 id="more-than-two-components-the-tangent-plane-test">3. More than two components: the tangent-plane test</h2>
+<p>With C components the curvature becomes a matrix, and checking it is still only a local test. The practical global test is the <strong>tangent-plane distance</strong> (Michelsen, 1982). For a feed z and any trial composition w,</p>
+<p><span class="math display">\frac{\text{TPD}(\mathbf w)}{RT}=\sum_i w_i\left[\ln w_i+\ln\gamma_i(\mathbf w)-\ln z_i-\ln\gamma_i(\mathbf z)\right].</span></p>
+<p>If TPD ≥ 0 for every w, no second phase can lower the Gibbs energy and the feed is stable. If some w gives TPD &lt; 0, the feed splits, and that w is a good initial guess for the new phase. In practice the minima of TPD are searched from several starts, because a search that finds no negative value has not proved that none exists. This is the test that the Session 1 flash needed before accepting a one-phase answer.</p>
+<h2 id="which-models-can-predict-a-split">4. Which models can predict a split?</h2>
+<p>Not every G<sup>E</sup> model can. The <strong>Wilson</strong> equation keeps the curvature positive for any parameters, so it cannot describe liquid–liquid immiscibility however it is fitted. <strong>NRTL</strong> and <strong>UNIQUAC</strong> can. This flexibility has a cost: a model fitted only to VLE data can predict a split that does not occur.</p>
+<p>Session 2 gave an example. Fitting NRTL (α = 0.47, constant τ) to the 2-propanol + water data at 60 kPa:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fit</th>
+<th style="text-align: right;">τ₁₂</th>
+<th style="text-align: right;">τ₂₁</th>
+<th style="text-align: right;">Minimum scaled curvature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>unweighted</td>
+<td style="text-align: right;">0.362</td>
+<td style="text-align: right;">1.752</td>
+<td style="text-align: right;">0.238</td>
+</tr>
+<tr class="even">
+<td>weighted by measurement uncertainty</td>
+<td style="text-align: right;">0.337</td>
+<td style="text-align: right;">2.848</td>
+<td style="text-align: right;">−0.030 near x₁ = 0.15</td>
+</tr>
+</tbody>
+</table>
+<p>The weighted fit is the closer of the two to the stated measurement uncertainty (RMS of residual over σ 1.16, against 1.94), yet it predicts that a fully miscible liquid splits. VLE data near the dilute end constrain τ₂₁ weakly, and the phase behavior depends on it strongly. Mutual-solubility or LLE data, when they exist, are the evidence that rules such a model in or out.</p>
+<h2 id="from-tie-lines-to-parameters">5. From tie lines to parameters</h2>
+<p>When LLE is measured, each tie line gives two equations, <span class="math inline">x_i^{\alpha}\gamma_i^{\alpha}=x_i^{\beta}\gamma_i^{\beta}</span>, so a single tie line at one temperature fixes two parameters. That is why a two-parameter fit can reproduce one tie line exactly, and why that is not evidence of a good model. Tie lines at several temperatures test whether constant τ is adequate; usually it is not, and τ<sub>ij</sub>(T) is needed. Lab 05 works through this.</p>
+<h2 id="before-session-3">6. Before Session 3</h2>
+<p>Write short answers. We use them in the first 30 minutes.</p>
+<ol type="1">
+<li><strong>Spinodal and binodal.</strong> For Margules with A = 2.5, confirm the spinodal compositions in the table, and check that x₁ = 0.145 satisfies the binodal equation.</li>
+<li><strong>Local versus global.</strong> At A = 3, classify z₁ = 0.05, 0.12 and 0.50 as stable, metastable or unstable. Which of them does a curvature test alone get wrong?</li>
+<li><strong>Evidence.</strong> The weighted NRTL fit of Section 4 is close to the stated VLE uncertainty. Name one measurement that would show directly whether its predicted split is real.</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Michelsen, M. L. (1982). The isothermal flash problem. Part I. Stability. <em>Fluid Phase Equilib.</em> 9, 1–19.</li>
+<li>Prausnitz, J. M., Lichtenthaler, R. N., de Azevedo, E. G. (1999). <em>Molecular Thermodynamics of Fluid-Phase Equilibria</em>, 3rd ed.&nbsp;Prentice Hall. Chapters 6 and 7.</li>
+<li>Renon, H., Prausnitz, J. M. (1968). Local compositions in thermodynamic excess functions for liquid mixtures. <em>AIChE J.</em> 14, 135–144.</li>
+<li>Barbieri, C., De Guido, G., Moioli, S. (2024). <em>J. Chem. Thermodyn.</em> 198, 107342. The 2-propanol + water data of Session 2.</li>
+</ul>
+<p><a href="s02.html" class="next-link">Session 2 slides →</a></p>
+
+
+
+
+
+</body></html>

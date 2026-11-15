@@ -184,40 +184,40 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div></div>
 </section>
 <section id="recap" class="slide level2">
-<h2>What you already know</h2>
+<h2>From Session 1 to measured data</h2>
 <div class="chain">
 <div class="link">
-<p><span class="label">Session 1</span> Ideal liquid, Raoult’s law.</p>
-<p><span class="math display">y_iP=x_iP_i^{\text{sat}}</span></p>
+<p><span class="label">Session 1</span> The γ–φ route, solved for the phases.</p>
+<p><span class="math display">y_i\Phi_iP=x_i\gamma_iP_i^{\text{sat}}</span></p>
 </div>
 <div class="link today">
-<p><span class="label">Today</span> Keep the ideal vapor, let the liquid be real.</p>
-<p><span class="math display">y_iP=x_i\gamma_iP_i^{\text{sat}}</span></p>
+<p><span class="label">Today</span> The same equation, solved for γ from a measurement.</p>
+<p><span class="math display">\gamma_i=\frac{y_i\Phi_iP}{x_iP_i^{\text{sat}}(T)}</span></p>
 </div>
 <div class="link">
-<p><span class="label">From the first half</span> γ<sub>i</sub> measures the departure of component i from an ideal solution, relative to its pure liquid.</p>
+<p><span class="label">First half</span> γ<sub>i</sub> is a partial molar property of G<sup>E</sup>, so γ₁ and γ₂ are linked by Gibbs–Duhem.</p>
 </div>
 </div>
-<p>Every quantity except γ is measured or comes from a vapor-pressure correlation, so one measured state gives γ₁ and γ₂.</p>
+<p>Φ<sub>i</sub> collects the vapor nonideality and the Poynting factor. Every input on the right has an uncertainty, and it passes into γ.</p>
 </section>
 <section id="outcomes" class="slide level2">
 <h2>By the end of today you can</h2>
 <p><span class="where-head">Where you show it</span></p>
 <ol type="1">
-<li><strong>Infer</strong> γ₁ and γ₂ from one measured T, P, x, y state. <span class="where">Worked example, Activity 2</span></li>
-<li><strong>Explain</strong> what γ &gt; 1 and an azeotrope mean, with numbers. <span class="where">Activity 1</span></li>
-<li><strong>Fit</strong> a two-parameter NRTL model at one pressure and <strong>check</strong> it at another. <span class="where">Lab 02 demo, Activity 2</span></li>
-<li><strong>State</strong> what a small fitting error and a consistency test can and cannot establish. <span class="where">Discussion, exit ticket</span></li>
+<li><strong>Reduce</strong> a measured T, P, x, y state to γ₁, γ₂ and G<sup>E</sup>/RT, and state the assumptions with their size. <span class="where">Worked example, Activity 2</span></li>
+<li><strong>Propagate</strong> measurement uncertainty into ln γ and say which rows constrain a model. <span class="where">Activity 1, Lab 02 G3</span></li>
+<li><strong>Fit</strong> NRTL with and without weights, and <strong>compare</strong> parameters, their correlation and the checking error. <span class="where">Lab 02 demo, Activity 2</span></li>
+<li><strong>Judge</strong> what a fit, a check and a consistency test can and cannot establish. <span class="where">Discussion, exit ticket</span></li>
 </ol>
 </section>
 <section id="route" class="slide level2">
 <h2>The 180-minute route</h2>
 <div class="route">
 <div class="seg concept" style="flex:30">
-<p><span class="t">0–30</span> <strong>Essential concepts</strong> <span class="d">γ from data, NRTL, fit and check</span></p>
+<p><span class="t">0–30</span> <strong>Essential concepts</strong> <span class="d">data reduction, G<sup>E</sup>, uncertainty, weights</span></p>
 </div>
 <div class="seg act" style="flex:10">
-<p><span class="t">30–40</span> <strong>Activity 1</strong> <span class="d">the azeotrope</span></p>
+<p><span class="t">30–40</span> <strong>Activity 1</strong> <span class="d">which rows count?</span></p>
 </div>
 <div class="seg demo" style="flex:20">
 <p><span class="t">40–60</span> <strong>Demo</strong> <span class="d">Lab 02</span></p>
@@ -226,21 +226,21 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p><span class="t">60–70</span> <strong>Break</strong></p>
 </div>
 <div class="seg act" style="flex:70">
-<p><span class="t">70–140</span> <strong>Activity 2 · pair investigation</strong> <span class="d">Lab 02: γ by hand, three fits</span></p>
+<p><span class="t">70–140</span> <strong>Activity 2 · pair investigation</strong> <span class="d">Lab 02: three fits, then weighted fits</span></p>
 </div>
 <div class="seg wrap" style="flex:40">
-<p><span class="t">140–180</span> <strong>Discussion and exit ticket</strong> <span class="d">consistency, the session question</span></p>
+<p><span class="t">140–180</span> <strong>Discussion and exit ticket</strong> <span class="d">why the checks disagree</span></p>
 </div>
 </div>
 <div class="route-question">
-<p><span class="label">Session question</span> When a model fits measured VLE data well, what does that prove, and what does it not?</p>
+<p><span class="label">Session question</span> When a model fits measured VLE data well, what does that prove, and what does it not? And which data decide the fit?</p>
 </div>
 <div class="beforeafter">
 <div>
 <p><span class="label">Before class · 15–20 min</span> Read the <a href="note-s02.html" target="_blank">note on activity coefficients</a>. Bring one question.</p>
 </div>
 <div>
-<p><span class="label">After class · 30–40 min</span> Finish the three Lab 02 fits and submit the study file with your name and ID.</p>
+<p><span class="label">After class · 30–40 min</span> Finish the Lab 02 fits including G3, and submit the study file with your name and ID.</p>
 </div>
 </div>
 <div class="selfstudy">
@@ -251,18 +251,41 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>From one measured state to γ</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Solve the modified Raoult’s law for γ:</p>
-<p><span class="math display">\gamma_1=\frac{y_1P}{x_1P_1^{\text{sat}}(T)}\qquad\gamma_2=\frac{y_2P}{x_2P_2^{\text{sat}}(T)}</span></p>
-<p>P<sup>sat</sup> is evaluated at the <strong>measured T</strong> of that row, from the Antoine equation:</p>
+<p><span class="math display">\gamma_i=\frac{y_i\,\Phi_i\,P}{x_i\,P_i^{\text{sat}}(T)}</span></p>
+<p>P<sup>sat</sup> at the <strong>measured T</strong> of each row, from the course Antoine sets:</p>
 <p><span class="math display">\log_{10}\frac{P^{\text{sat}}}{\text{bar}}=A-\frac{B}{T+C}</span></p>
-</div><div class="column rule-notes" style="width:48%;">
-<p>Assumptions behind each γ:</p>
-<ul>
-<li>ideal vapor (low pressure)</li>
-<li>negligible pressure correction on the liquid</li>
-<li>pure-liquid standard state, so γ<sub>i</sub> → 1 as x<sub>i</sub> → 1</li>
-</ul>
 <p>At a pure endpoint the absent component gives 0/0, so those rows carry no γ.</p>
+</div><div class="column" style="width:48%;">
+<div class="lever-box">
+<p><span class="label">Assumptions, with their size here</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Assumption</th>
+<th>Effect on ln γ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Φ<sub>i</sub> = 1, for B = −1000 cm³ mol⁻¹</td>
+<td>−0.011 (water), −0.0015 (2-propanol)</td>
+</tr>
+<tr class="even">
+<td>Antoine set 3 % low</td>
+<td>+0.030, same sign in every row</td>
+</tr>
+<tr class="odd">
+<td>Pure-liquid standard state</td>
+<td>γ<sub>i</sub> → 1 as x<sub>i</sub> → 1</td>
+</tr>
+</tbody>
+</table>
+<p>Small next to scatter, but <strong>systematic</strong>: it does not average out.</p>
+</div>
 </div></div>
 </section>
 <section id="worked" class="slide level2">
@@ -296,19 +319,99 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p><span class="math display">\frac{\gamma_1}{\gamma_2}=\frac{P_2^{\text{sat}}}{P_1^{\text{sat}}}</span></p>
 </div></div>
 </section>
+<section id="ge-gd" class="slide level2">
+<h2>γ₁ and γ₂ are not independent</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">g\equiv\frac{G^E}{RT}=\sum_i x_i\ln\gamma_i\qquad \ln\gamma_i=\left(\frac{\partial (ng)}{\partial n_i}\right)_{T,P,n_j}</span></p>
+<p>At constant T and P, <strong>Gibbs–Duhem</strong>:</p>
+<p><span class="math display">x_1\,\mathrm{d}\ln\gamma_1+x_2\,\mathrm{d}\ln\gamma_2=0</span></p>
+<p>Row 7: g = 0.4943(0.212) + 0.5057(0.578) = <strong>0.397</strong>.</p>
+</div><div class="column rule-notes" style="width:48%;">
+<p>So fit a model for g, not two separate curves for ln γ₁ and ln γ₂. Any g(x) gives a consistent pair by construction.</p>
+<p>Measured T, P, x <strong>and</strong> y over-determine the problem. That redundancy is what a consistency test uses, and it is also why a bad y can be detected.</p>
+</div></div>
+</section>
 <section id="nrtl" class="slide level2">
 <h2>From points to a model: NRTL</h2>
 <div class="columns">
 <div class="column" style="width:56%;">
 <p><span class="math display">\ln\gamma_1=x_2^2\left[\tau_{21}\Big(\frac{G_{21}}{x_1+x_2G_{21}}\Big)^2+\frac{\tau_{12}G_{12}}{(x_2+x_1G_{12})^2}\right]</span></p>
 <p><span class="math display">G_{ij}=\exp(-\alpha\,\tau_{ij})</span></p>
-<p>ln γ₂ follows by swapping 1 and 2. With α fixed at 0.47 (from the article), two parameters τ₁₂ and τ₂₁ are fitted.</p>
+<p>ln γ₂ follows by swapping 1 and 2. In general τ<sub>ij</sub> = a<sub>ij</sub> + b<sub>ij</sub>/T. With α = 0.47 (from the article) and constant τ, two parameters are fitted.</p>
 </div><div class="column" style="width:42%;">
 <div class="lever-box">
 <p><span class="label">What “fit” means here</span></p>
 <p>Choose τ₁₂, τ₂₁ to minimize the root-mean-square difference between model and measured ln γ:</p>
 <p><span class="math display">\text{RMSE}=\sqrt{\frac{\sum_j (r_{1,j}^2+r_{2,j}^2)}{2N}}</span></p>
 <p>r = model ln γ − measured ln γ; N usable pairs.</p>
+</div>
+</div></div>
+</section>
+<section id="consistency" class="slide level2">
+<h2>Can a test tell us the data are good?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Gibbs–Duhem links the two activity coefficients at constant T and P:</p>
+<p><span class="math display">x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0</span></p>
+<p>For isothermal data this gives the <strong>area test</strong>:</p>
+<p><span class="math display">\int_0^1\ln\frac{\gamma_1}{\gamma_2}\,dx_1=0</span></p>
+<p>Isobaric data add an H<sup>E</sup> term. The article reports this test passed (−4.83 and −0.65, limit 10) without it.</p>
+</div><div class="column" style="width:48%;">
+<div class="lever-box">
+<p><span class="label">Lab 03 on the measured 60 kPa data</span></p>
+<p>Area test: <strong>not applicable</strong>, the path is isobaric.<br> Herington: <strong>not assessed</strong>, no endpoint estimates.<br> Local test: <strong>not assessed</strong>, H<sup>E</sup> is not available.</p>
+<p>“Not assessed” is not “inconsistent”. It means the data do not carry what the test needs.</p>
+</div>
+</div></div>
+</section>
+<section id="uncertainty" class="slide level2">
+<h2>How well is ln γ₁ known in each row?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Propagate the standard uncertainties u = U/k (article averages, k = 2):</p>
+<p><span class="math display">\sigma_{\ln\gamma_1}^2\approx\Big(\frac{u_x}{x_1}\Big)^2+\Big(\frac{u_y}{y_1}\Big)^2+\Big(\frac{u_P}{P}\Big)^2+\Big(\frac{\mathrm{d}\ln P_1^{\text{sat}}}{\mathrm{d}T}u_T\Big)^2</span></p>
+<p>At 60 kPa: u<sub>x</sub> = 0.0107, u<sub>y</sub> = 0.0139, u<sub>P</sub> = 0.25 kPa, u<sub>T</sub> = 0.037 K.</p>
+</div><div class="column" style="width:48%;">
+<div class="lever-box">
+<p><span class="label"><span class="nt">σ</span> of measured ln <span class="nt">γ₁</span> · 60 kPa</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x₁</th>
+<th style="text-align: right;">y₁</th>
+<th style="text-align: right;">measured ln γ₁</th>
+<th style="text-align: right;">σ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.4943</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.212</td>
+<td style="text-align: right;">0.033</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.1401</td>
+<td style="text-align: right;">0.4769</td>
+<td style="text-align: right;">1.223</td>
+<td style="text-align: right;">0.082</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0371</td>
+<td style="text-align: right;">0.3473</td>
+<td style="text-align: right;">2.004</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0063</td>
+<td style="text-align: right;">0.0418</td>
+<td style="text-align: right;">1.238</td>
+<td style="text-align: right;">1.74</td>
+</tr>
+</tbody>
+</table>
+<p>The dilute rows hardly constrain ln γ₁, yet an unweighted RMSE counts them fully.</p>
 </div>
 </div></div>
 </section>
@@ -326,32 +429,93 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div><div class="column rule-notes" style="width:48%;">
 <p>A fitting error alone can always be made small by adding parameters.</p>
 <p>A checking error on held-out data is the honest test of a model.</p>
-<p>This is the same idea as training and test data in machine learning.</p>
+<p>The 80 kPa set loses its most dilute row: at 362.78 K it is outside the 2-propanol Antoine range.</p>
+</div></div>
+</section>
+<section id="objective" class="slide level2">
+<h2>The objective is part of the model</h2>
+<div class="columns">
+<div class="column" style="width:46%;">
+<p>Unweighted: minimize <span class="math inline">\sum r^2</span>. Weighted: minimize <span class="math inline">\sum (r/\sigma)^2</span>.</p>
+<p>RMS(r/σ) ≈ 1 means the misfit matches the stated uncertainty.</p>
+<p>The ± values are from the linearized covariance at the minimum. The unweighted fit at 60 kPa has τ₁₂ and τ₂₁ correlated at −0.86: many pairs fit almost equally well.</p>
+</div><div class="column" style="width:52%;">
+<div class="lever-box">
+<p><span class="label">Training set 60 kPa · <span class="nt">α</span> = 0.47</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">τ₁₂</th>
+<th style="text-align: right;">τ₂₁</th>
+<th style="text-align: right;">RMSE 60 / 80</th>
+<th style="text-align: right;">RMS(r/σ) 60 / 80</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>unweighted</td>
+<td style="text-align: right;">0.362 ± 0.14</td>
+<td style="text-align: right;">1.75 ± 0.15</td>
+<td style="text-align: right;">0.168 / 0.164</td>
+<td style="text-align: right;">1.94 / 0.77</td>
+</tr>
+<tr class="even">
+<td>weighted</td>
+<td style="text-align: right;">0.337 ± 0.04</td>
+<td style="text-align: right;">2.85 ± 0.15</td>
+<td style="text-align: right;">0.407 / 0.097</td>
+<td style="text-align: right;">1.16 / 0.93</td>
+</tr>
+</tbody>
+</table>
+<p>Changing only the weights moves τ₂₁ by 1.1, about seven of its standard deviations. The weighted parameters also give negative liquid curvature near x₁ = 0.15: a liquid split that does not exist.</p>
+</div>
+</div></div>
+</section>
+<section id="tdep" class="slide level2">
+<h2>Can isobaric data give τ(T)?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>On an isobar, T is set by x: here 340.9–358.7 K at 60 kPa. Composition and temperature effects are <strong>confounded</strong>.</p>
+<p>Fitting τ<sub>ij</sub> = a<sub>ij</sub> + b<sub>ij</sub>/T to both pressures (4 parameters):</p>
+<ul>
+<li>RMSE falls only from 0.155 to 0.146</li>
+<li>b₁₂ = −2250 K, b₂₁ = 5950 K: large, opposite, compensating</li>
+</ul>
+</div><div class="column rule-notes" style="width:48%;">
+<p>The article’s own T-dependent NRTL parameters (its Table 7) give 0.26 at 60 kPa and 0.054 at 80 kPa in this ln γ metric.</p>
+<p>Different objectives and data give different parameters. To identify τ(T), use data that vary T at fixed x: isotherms at several T, or excess enthalpy H<sup>E</sup>, the temperature derivative of G<sup>E</sup>/T.</p>
 </div></div>
 </section>
 <section id="activity-1" class="slide level2 activity">
-<h2>Predict before you look</h2>
+<h2>Which rows decide the fit?</h2>
 <p><span class="act-label">Activity 1 · 10 minutes · alone, then with a partner</span></p>
 <div class="prompt">
-<p>Row 5 at 60 kPa is the azeotrope: T = 340.92 K, x₁ = 0.6461, y₁ = 0.6492. Is γ₁/γ₂ greater or less than 1, and roughly how large?</p>
+<p>At 60 kPa, u<sub>x</sub> = 0.0107 and u<sub>y</sub> = 0.0139. Estimate σ of ln γ₁ from the x and y terms for row 7 (x₁ = 0.4943, y₁ = 0.569) and for the most dilute row (x₁ = 0.0063, y₁ = 0.0418).</p>
 </div>
-<p>At 340.92 K: P₁<sup>sat</sup> = 55.04 kPa and P₂<sup>sat</sup> = 28.29 kPa.</p>
-<p>Use the azeotrope condition, not a full calculation. Then compare with your partner.</p>
+<p>Then predict: in an unweighted fit, which of the two rows has more influence on τ₂₁? Is that what you want? Compare with your partner.</p>
 <div class="selfstudy">
 <p><strong>On your own:</strong> pause here, write your answer, then go to the next slide.</p>
 </div>
 </section>
 <section id="activity-1-debrief" class="slide level2">
-<h2>Activity 1: check your prediction</h2>
+<h2>Activity 1: check your estimate</h2>
 <div class="columns">
 <div class="column" style="width:52%;">
-<p>At the azeotrope y<sub>i</sub> = x<sub>i</sub>, so γ₁P₁<sup>sat</sup> = γ₂P₂<sup>sat</sup>:</p>
-<p><span class="math display">\frac{\gamma_1}{\gamma_2}=\frac{28.29}{55.04}=0.514</span></p>
-<p>From the measured row: γ₁ = 1.095 and γ₂ = 2.102, so γ₁/γ₂ = <strong>0.521</strong>.</p>
+<p>Row 7: <span class="math inline">\sqrt{(0.0107/0.4943)^2+(0.0139/0.569)^2}</span> = <strong>0.033</strong></p>
+<p>Dilute row: <span class="math inline">\sqrt{(0.0107/0.0063)^2+(0.0139/0.0418)^2}</span> = <strong>1.73</strong></p>
+<p>The dilute row is 50 times less certain. In an unweighted fit it still counts as much as row 7, and its residual (0.77 for the 60 kPa fit) dominates the sum.</p>
 </div><div class="column rule-notes" style="width:46%;">
-<p><strong>Less than 1.</strong> Water is the less volatile component, so it needs the larger γ to reach the same partial pressure.</p>
-<p>The two ratios differ by about 1%: y₁ and x₁ are close but not equal at the measured point.</p>
-<p>Simple distillation cannot cross this composition.</p>
+<p>Four 60 kPa rows have x₁ &lt; 0.02. They supply 70 % of the unweighted sum of squares for the 60 kPa fit, and 88 % for the 80 kPa fit checked at 60 kPa.</p>
+<p>A weighted fit lets each row count in proportion to what was measured.</p>
 </div></div>
 </section>
 <section id="demo-lab" class="slide level2">
@@ -359,16 +523,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <div class="columns">
 <div class="column" style="width:44%;">
 <ol type="1">
-<li>Read <strong>row 7</strong> at 60 kPa and open the worked calculation. Check γ₁ = 1.237, γ₂ = 1.782.</li>
-<li>Fit <strong>60 kPa only</strong>, α = 0.47. Read the fitting error.</li>
-<li>Change the checking pressure to <strong>80 kPa</strong>. Do not refit.</li>
-<li>Look at the T–x–y plot: where does the model miss?</li>
+<li>Read <strong>row 7</strong> at 60 kPa. Check γ₁ = 1.237, γ₂ = 1.782.</li>
+<li>Fit <strong>60 kPa</strong>, check <strong>80 kPa</strong>: 0.168 and 0.164.</li>
+<li>Graduate view, <strong>G3</strong>: fit 60 kPa unweighted and weighted. Compare τ₂₁ and RMS(r/σ).</li>
+<li>Set the minimum x₁ to 0.05 and refit. What changes?</li>
 </ol>
 <p><a href="../preview-2027/case-study.html" class="lab-button" target="_blank">Open Lab 02 →</a></p>
 </div><div class="column" style="width:54%;">
-<p><img data-src="figures/s02-lab02.png" class="lab-shot" alt="Lab 02 T-x-y plot at 80 kPa with the model fitted at 60 kPa"></p>
+<p><img data-src="figures/s02-wf-lab.png" class="lab-shot" alt="Lab 02 G3 residual plot of ln gamma one against x one on a log scale for the unweighted and weighted fits with two-sigma bars"></p>
 <div class="expect">
-<p><span class="label">Lab 02 should report</span> τ₁₂ = 0.3618 · τ₂₁ = 1.7524 · fitting RMSE 0.168 (18 pairs) · checking RMSE 0.164 (17 pairs)</p>
+<p><span class="label">Lab 02 G3 should report · training 60 kPa</span> Unweighted τ₂₁ = 1.7524 ± 0.150 · weighted τ₂₁ = 2.8484 ± 0.152 · RMS(r/σ) at 60 kPa: 1.94 and 1.16 · min. liquid curvature 0.238 and −0.030</p>
 </div>
 </div></div>
 </section>
@@ -376,16 +540,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>Four common mistakes</h2>
 <div class="mistakes">
 <div>
-<p><strong>P<sup>sat</sup> at the wrong temperature.</strong> Each row has its own measured T. Evaluate both P<sup>sat</sup> there, not at one fixed T.</p>
+<p><strong>P<sup>sat</sup> at the wrong temperature.</strong> Each row has its own measured T. Evaluate both P<sup>sat</sup> there, and stay inside the Antoine range.</p>
 </div>
 <div>
-<p><strong>Using the pure-component rows.</strong> At x₁ = 0 or 1 the absent component gives 0/0. Those rows cannot enter the fit.</p>
+<p><strong>Treating every residual as equally certain.</strong> σ of ln γ₁ ranges from 0.03 to 1.7 in the same data set.</p>
 </div>
 <div>
-<p><strong>Refitting before checking.</strong> If you refit at the checking pressure, there is nothing left to check.</p>
+<p><strong>Reporting τ without its uncertainty.</strong> Two parameters correlated at −0.86 are not two independent findings.</p>
 </div>
 <div>
-<p><strong>Reading a small fitting error as proof.</strong> It shows the model can follow these points, not that the data or the model are right elsewhere.</p>
+<p><strong>Reading the isothermal area test on isobaric data.</strong> Without the H<sup>E</sup> term, a pass or a fail says little.</p>
 </div>
 </div>
 </section>
@@ -397,20 +561,20 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 </section>
 <section id="activity-2" class="slide level2 activity">
-<h2>Activity 2 · does the model transfer?</h2>
+<h2>Activity 2 · why do the checks disagree?</h2>
 <p><span class="act-label">Activity 2 · 70 minutes · in pairs: one drives Lab 02, one checks by hand, then swap</span></p>
 <div class="a2grid">
 <div>
-<p><span class="label">15 min · <span class="nt">γ</span> by hand</span> Pick any interior row other than row 7. Calculate P<sup>sat</sup>, γ₁ and γ₂ by hand. Check with the lab.</p>
+<p><span class="label">15 min · by hand</span> Pick an interior row other than row 7. Calculate P<sup>sat</sup>, γ₁, γ₂, g and σ of ln γ₁. Check with the lab.</p>
 </div>
 <div>
 <p><span class="label">20 min · three fits</span> Fit 60 → check 80. Fit 80 → check 60. Fit both. Save each as a case.</p>
 </div>
 <div>
-<p><span class="label">20 min · compare</span> Record the fitting and checking errors. Which fit transfers best? Which data set scatters more?</p>
+<p><span class="label">20 min · G3 weights</span> Repeat 60 and 80 in G3, unweighted and weighted, then with minimum x₁ = 0.02. Record τ, sd, RMS(r/σ) and the liquid curvature.</p>
 </div>
 <div>
-<p><span class="label">15 min · explain</span> Write two sentences, with numbers, answering the session question. Download the study file with your names and IDs.</p>
+<p><span class="label">15 min · explain</span> Two sentences with numbers: why does “fit 80” check worse at 60 kPa than “fit 60” checks at 80? Download the study file with names and IDs.</p>
 </div>
 </div>
 <div class="selfstudy">
@@ -420,16 +584,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <section id="activity-2-check" class="slide level2">
 <h2>Activity 2 · what to hand in</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:44%;">
 <ol type="1">
-<li>Lab 02 study file with three saved cases, your name and student ID.</li>
-<li>One hand calculation of γ₁ and γ₂ for your chosen row.</li>
-<li>Two sentences that answer the session question with numbers.</li>
+<li>Lab 02 study file with three saved cases, G3 and G4, your name and student ID.</li>
+<li>One hand calculation of γ₁, γ₂, g and σ.</li>
+<li>Two sentences that answer the activity question with numbers.</li>
 </ol>
-<p><span class="label">Graduate extension</span> Open Lab 03, load case D (measured 60 kPa data) and run the diagnostics. Explain why the tests report “not applicable” or “not assessed” rather than pass or fail.</p>
-</div><div class="column" style="width:48%;">
+<p><span class="label">Graduate extension</span> Fit with minimum x₁ = 0.05 at both pressures. Do the two parameter sets agree within their standard deviations? What would you measure next?</p>
+</div><div class="column" style="width:54%;">
 <div class="lever-box">
-<p><span class="label">Check your Lab 02 results · RMSE in ln <span class="nt">γ</span></span></p>
+<p><span class="label">Check your results · RMSE in ln <span class="nt">γ</span> · unweighted</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -438,6 +602,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <th style="text-align: right;">τ₂₁</th>
 <th style="text-align: right;">fit</th>
 <th style="text-align: right;">check</th>
+<th style="text-align: right;">check, x₁ ≥ 0.02</th>
 </tr>
 </thead>
 <tbody>
@@ -447,6 +612,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <td style="text-align: right;">1.752</td>
 <td style="text-align: right;">0.168</td>
 <td style="text-align: right;">0.164</td>
+<td style="text-align: right;">0.148</td>
 </tr>
 <tr class="even">
 <td>80 → 60</td>
@@ -454,6 +620,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <td style="text-align: right;">2.417</td>
 <td style="text-align: right;">0.043</td>
 <td style="text-align: right;">0.291</td>
+<td style="text-align: right;">0.116</td>
 </tr>
 <tr class="odd">
 <td>both</td>
@@ -461,58 +628,43 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <td style="text-align: right;">1.937</td>
 <td style="text-align: right;">0.155</td>
 <td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
 </tr>
 </tbody>
 </table>
+<p>G3, weighted: 60 kPa τ₂₁ = 2.85, RMS(r/σ) 1.16 / 0.93, min. curvature −0.030 · 80 kPa τ₂₁ = 2.08, RMS(r/σ) 1.59 / 0.42, curvature 0.139 (RMS at 60 / 80 kPa)</p>
 </div>
 </div></div>
 </section>
 <section id="discussion" class="slide level2">
-<h2>Discussion: what did the checks show?</h2>
+<h2>Discussion: why the checks disagree</h2>
 <div class="columns">
-<div class="column" style="width:56%;">
-<p><img data-src="figures/s02-rmse.svg" class="fig-pxy" alt="Bar chart of fitting and checking errors for the three fits"></p>
-</div><div class="column concept-notes" style="width:42%;">
+<div class="column" style="width:58%;">
+<p><img data-src="figures/s02-resid.svg" class="fig-pxy" alt="Residuals in ln gamma one at 60 kPa against x one on a log scale for the fits trained at 60 and 80 kPa, with two-sigma bars that grow large below x one equal to 0.02"></p>
+</div><div class="column concept-notes" style="width:40%;">
 <p><span class="q">Discuss in pairs, then with the class</span></p>
 <ol type="1">
-<li>Fitting 80 kPa gives the smallest fitting error, 0.043, but the largest checking error, 0.291. Why?</li>
-<li>Fitting 60 kPa gives similar errors at both pressures. What does that suggest about the 60 kPa data?</li>
-<li>Why does the joint fit leave no honest check?</li>
+<li>Without the four rows below x₁ = 0.02, the 80 kPa fit checks at 0.116 on 60 kPa data. What was the 0.291 measuring?</li>
+<li>The weighted 60 kPa fit is closer to the stated uncertainty, yet predicts that a fully miscible liquid splits. Is it the better model?</li>
+<li>Which single new measurement would discriminate τ₂₁ = 1.75 from 2.42?</li>
 </ol>
-</div></div>
-</section>
-<section id="consistency" class="slide level2">
-<h2>Can a test tell us the data are good?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Gibbs–Duhem links the two activity coefficients at constant T and P:</p>
-<p><span class="math display">x_1\,d\ln\gamma_1+x_2\,d\ln\gamma_2=0</span></p>
-<p>For isothermal data this gives the <strong>area test</strong>:</p>
-<p><span class="math display">\int_0^1\ln\frac{\gamma_1}{\gamma_2}\,dx_1=0</span></p>
-<p>Isobaric data need an extra term with the excess enthalpy H<sup>E</sup>.</p>
-</div><div class="column" style="width:48%;">
-<div class="lever-box">
-<p><span class="label">Lab 03 on the measured 60 kPa data</span></p>
-<p>Area test: <strong>not applicable</strong>, the path is isobaric.<br> Herington: <strong>not assessed</strong>, no endpoint estimates.<br> Local test: <strong>not assessed</strong>, H<sup>E</sup> is not available.</p>
-<p>“Not assessed” is not “inconsistent”. It means the data do not carry what the test needs.</p>
-</div>
 </div></div>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <div class="summary3">
 <div>
-<p><span class="label"><span class="nt">γ</span> from data</span> γ<sub>i</sub> = y<sub>i</sub>P / (x<sub>i</sub>P<sub>i</sub><sup>sat</sup>), with P<sup>sat</sup> at each measured T.</p>
+<p><span class="label">Data reduction</span> γ<sub>i</sub> = y<sub>i</sub>Φ<sub>i</sub>P / (x<sub>i</sub>P<sub>i</sub><sup>sat</sup>); assumptions are small but systematic.</p>
 </div>
 <div>
-<p><span class="label">Model</span> NRTL with α fixed: two τ values fitted to ln γ by RMSE.</p>
+<p><span class="label">Model</span> Fit G<sup>E</sup> (NRTL), not two curves. The objective and weights are part of the model.</p>
 </div>
 <div>
-<p><span class="label">Trust</span> Judge a model by its checking error on data it has not seen.</p>
+<p><span class="label">Trust</span> Check on unseen data, normalized by what was measured; report τ with its uncertainty.</p>
 </div>
 </div>
-<p><strong>Session question:</strong> a good fit shows that the model can follow the points it was given. It does not show that the model transfers to other conditions, or that the data are thermodynamically consistent. Fitting 80 kPa gave 0.043 on its own data and 0.291 at 60 kPa.</p>
-<p><span class="label">Next session</span> When one liquid splits into two: phase stability and LLE (Labs 04 and 05).</p>
+<p><strong>Session question:</strong> a small fit error shows that the model follows the points it was given. The 0.291 checking error came mostly from four dilute rows whose ln γ₁ is known only to ±0.6–1.7. Weighting moves τ₂₁ from 1.75 to 2.85 with the same data, and the weighted set predicts a liquid split that does not exist.</p>
+<p><span class="label">Next session</span> When does one liquid split into two? Phase stability and LLE (Labs 04 and 05), starting from that weighted fit.</p>
 </section>
 <section id="exit-ticket" class="slide level2 activity">
 <h2>Exit ticket · 5 minutes</h2>
@@ -520,7 +672,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <div class="columns">
 <div class="column" style="width:64%;">
 <div class="prompt">
-<p>A model fitted to 80 kPa data has a fitting error of 0.043 but a checking error of 0.291 at 60 kPa. What does this tell you, and what would you do next?</p>
+<p>Weighting the residuals moved τ₂₁ from 1.75 to 2.85 with the same data. What does this say about the parameters, and what would you report with them?</p>
 </div>
 <p>Scan the code or open the link. The same form asks three short questions about today: pace, confidence and whether the lab worked.</p>
 <p>No name or student ID is recorded. Wait for <strong>“Response received.”</strong></p>
@@ -533,13 +685,13 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>After class</h2>
 <div class="summary3">
 <div>
-<p><span class="label">Hand in · this week</span> Your Lab 02 study file with the three fits, name and student ID.</p>
+<p><span class="label">Hand in · this week</span> Your Lab 02 study file with the three fits, G3 and G4, name and student ID.</p>
 </div>
 <div>
-<p><span class="label">Prepare · Session 3</span> Read the note on Gibbs energy of mixing and phase stability. About 20 minutes.</p>
+<p><span class="label">Prepare · Session 3</span> Read the <a href="note-s03.html" target="_blank">note on Gibbs energy of mixing and phase stability</a>. About 20 minutes.</p>
 </div>
 <div>
-<p><span class="label">Optional · graduate</span> Run Lab 03 on the measured data and add your explanation to the study file.</p>
+<p><span class="label">Optional · graduate</span> Run Lab 03 on the measured 60 kPa data and explain each “not assessed” result in the study file.</p>
 </div>
 </div>
 <p><a href="../preview-2027/case-study.html" class="lab-button" target="_blank">Open Lab 02 →</a></p>

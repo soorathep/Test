@@ -207,6 +207,9 @@ window.Quarto = {
 <li><strong>Pressure residuals, P only</strong> (Barker’s method, 1953): uses T, P, x and ignores y; useful when vapor sampling is the weakest measurement.</li>
 <li><strong>All variables with their uncertainties</strong> (maximum likelihood): the most defensible, and the most work.</li>
 </ul>
+<p><strong>Weights.</strong> A residual should count in proportion to how well the measured value is known. Propagating the uncertainties of x, y, P and T through the data-reduction equation gives, for component 1,</p>
+<p><span class="math display">\sigma_{\ln\gamma_1}^2\approx\Big(\frac{u_x}{x_1}\Big)^2+\Big(\frac{u_y}{y_1}\Big)^2+\Big(\frac{u_P}{P}\Big)^2+\Big(\frac{\mathrm{d}\ln P_1^{\text{sat}}}{\mathrm{d}T}u_T\Big)^2 .</span></p>
+<p>The first term grows without bound as x₁ → 0. In a data set with u<sub>x</sub> ≈ 0.01, ln γ₁ is known to a few hundredths at x₁ ≈ 0.5 but only to about ±1 at x₁ ≈ 0.01, yet an unweighted fit counts both residuals equally. Session 2 shows how much this choice moves the parameters.</p>
 <p>Two points are easy to miss. First, NRTL parameters are strongly <strong>correlated</strong>: many (τ₁₂, τ₂₁) pairs give almost the same fitting error. Report the parameters with an uncertainty, or at least check how flat the minimum is. Second, a small fitting error shows that the model can follow these points. It does not show that the data are right, or that the model will work at other conditions. The honest test is a <strong>check on data the model has not seen</strong>, such as the other pressure in Session 2.</p>
 <h2 id="consistency-tests-what-they-can-and-cannot-show">5. Consistency tests: what they can and cannot show</h2>
 <p>Measured T, P, x and y over-determine the problem, so Gibbs–Duhem can be used to test the data. The <strong>area test</strong> (Redlich and Kister, 1948; Herington, 1951) integrates it over the composition range. For <strong>isothermal</strong> data,</p>
@@ -304,7 +307,7 @@ window.Quarto = {
 </ol>
 <h2 id="references">References</h2>
 <ul>
-<li>Barbieri, A., De Guido, G., Moioli, S. (2024). <em>J. Chem. Thermodyn.</em> 198, 107342. Data for 2-propanol + water at 60 and 80 kPa (Lab 02).</li>
+<li>Barbieri, C., De Guido, G., Moioli, S. (2024). <em>J. Chem. Thermodyn.</em> 198, 107342. Data for 2-propanol + water at 60 and 80 kPa (Lab 02).</li>
 <li>Barker, J. A. (1953). Determination of activity coefficients from total pressure measurements. <em>Aust. J. Chem.</em> 6, 207–210.</li>
 <li>Herington, E. F. G. (1951). Tests for the consistency of experimental isobaric vapour–liquid equilibrium data. <em>J. Inst. Petrol.</em> 37, 457–470.</li>
 <li>NIST Chemistry WebBook, SRD 69, phase-change data for each compound (Antoine equation parameters).</li>

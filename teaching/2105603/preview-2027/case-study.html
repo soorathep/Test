@@ -82,7 +82,7 @@
     </section>
       <section class="panel case-section graduate-section grad-only" id="graduate-investigations" aria-labelledby="g2-heading">
         <div class="panel-heading"><h2 id="g2-heading">Graduate analysis · defend the model</h2><span class="condition">Core graduate work · complete after the baseline</span></div>
-        <p>Use Steps 1–4 to establish your control calculation. Then complete G1–G3 below. A graduate conclusion must identify the assumptions, quantify their consequences and state what the available evidence cannot establish.</p>
+        <p>Use Steps 1–4 to establish your control calculation. Then complete G1–G4 below. A graduate conclusion must identify the assumptions, quantify their consequences and state what the available evidence cannot establish.</p>
         <aside class="graduate-limits" aria-labelledby="case-limits-heading"><h3 id="case-limits-heading">What these results can and cannot show</h3><ul><li>The ± bounds you enter are illustrative perturbations, not the article's pointwise standard uncertainties. No distribution, covariance or probability is assigned.</li><li>A sampled range covers only the accepted scenarios. It is not a confidence interval or a proven bound on every state inside the box.</li><li>The fixed-α fits are conditional two-parameter fits. They do not jointly estimate α, give parameter confidence intervals, bootstrap measurement uncertainty or prove non-identifiability.</li><li>Your retained model and the source measurements are never replaced by these investigations.</li></ul></aside>
         <section class="graduate-step" aria-labelledby="g2-sensitivity-heading">
           <h3 id="g2-sensitivity-heading">G1. Audit activity inference and test measurement sensitivity</h3>
@@ -122,9 +122,29 @@
           </div>
           <p>Any fit with nonpositive sampled liquid curvature can be investigated in <a href="stability.html">Lab 04</a>. After a fit, Step 4 links your retained parameters directly to Lab 04.</p><p><strong>Analysis question.</strong> Can similar predictive errors accompany different parameter values? State what this supports, then propose the additional data or parameter-profile study needed before claiming parameter identifiability or a statistical confidence interval.</p>
         </section>
+        <section class="graduate-step" id="wf-fit" aria-labelledby="wf-heading">
+          <h3 id="wf-heading">G3. Weight each residual by what was measured</h3>
+          <p>The baseline fit minimizes the unweighted RMSE in ln γ, so every residual counts equally. But ln γ₁ is known far less well when 2-propanol is dilute: from γ₁ = y₁P/(x₁P₁<sup>sat</sup>), an uncertainty u(x₁) gives about u(x₁)/x₁ in ln γ₁. With the article's average u(x₁) of about 0.011, that is 0.02 at x₁ = 0.49 and 1.7 at x₁ = 0.0063.</p>
+          <ol class="graduate-checklist"><li>Fit the same training set twice: unweighted, and with each residual divided by its propagated standard uncertainty σ (x, y, P and T through P<sup>sat</sup>).</li><li>Compare τ₁₂, τ₂₁, their standard deviations and correlation, the RMSE at both pressures, and RMS(r/σ), which is near 1 when the misfit matches the stated uncertainty.</li><li>Repeat with the 80 kPa set and with a minimum x₁ of 0.02 or 0.05. Explain which observations drove the difference between "fit 60, check 80" and "fit 80, check 60".</li><li>Read the liquid-curvature column. Does a fit that is closer to the stated uncertainty also give physically correct phase behavior?</li></ol>
+          <div class="graduate-grid case-graduate-bounds">
+            <div><label for="wf-train">Training set</label><select id="wf-train"><option value="60" selected>60 kPa</option><option value="80">80 kPa</option><option value="both">60 and 80 kPa</option></select></div>
+            <div><label for="wf-xmin">Minimum x₁ included in the fit</label><div class="quantity-input"><input id="wf-xmin" type="number" min="0" max="0.5" step="any" value="0"><span>mol/mol</span></div></div>
+            <div><label for="wf-plotP">Plot residuals at</label><select id="wf-plotP"><option value="60" selected>60 kPa</option><option value="80">80 kPa</option></select></div>
+          </div>
+          <div class="graduate-actions"><button id="wf-run" type="button" class="primary-button" disabled>Fit unweighted and weighted</button></div>
+          <p id="wf-status" class="graduate-status" role="status">Choose a training set and run both fits.</p>
+          <div id="wf-results" hidden>
+            <p id="wf-context" class="graduate-note"></p>
+            <div class="table-scroll graduate-table" role="region" aria-label="Unweighted and weighted NRTL fits" tabindex="0"><table><thead><tr><th scope="col">Fit</th><th scope="col">τ₁₂ ± sd</th><th scope="col">τ₂₁ ± sd</th><th scope="col">Correlation</th><th scope="col">RMSE ln γ · 60 kPa</th><th scope="col">RMSE ln γ · 80 kPa</th><th scope="col">RMS(r/σ) · 60 kPa</th><th scope="col">RMS(r/σ) · 80 kPa</th><th scope="col">Min. liquid curvature</th><th scope="col">At bound</th></tr></thead><tbody id="wf-out"></tbody></table></div>
+            <svg id="wf-plot" class="mc-plot" viewBox="0 0 680 300" role="img" aria-label="Residuals in ln gamma one against x one on a log scale, with two-sigma bars"></svg>
+            <p class="graduate-note">σ uses the article's average expanded uncertainties divided by k = 2 for every row. They are not pointwise values, and no covariance between x and y is available, so σ and RMS(r/σ) are approximate. The ± sd values come from the linearized covariance at the minimum: for the unweighted fit it is scaled by the residual variance, for the weighted fit it assumes σ is correct. Neither is a full confidence region.</p>
+          </div>
+          <p class="graduate-note">Min. liquid curvature is the smallest sampled value of x₁x₂ ∂²(Δg<sub>mix</sub>/RT)/∂x₁² for the fitted constant-τ model. A value at or below zero means the model predicts that one liquid is unstable and splits into two. 2-Propanol and water are fully miscible. Open <a href="stability.html">Lab 04</a> to examine such a fit.</p>
+          <label for="wf-claim">Your explanation, with numbers</label><textarea id="wf-claim" rows="3" maxlength="10000" placeholder="Which observations control the unweighted fit at 60 kPa? How do τ and the checking error change when residuals are weighted?"></textarea>
+        </section>
         <section class="graduate-step graduate-reflections" aria-labelledby="g2-decision-heading">
-          <h3 id="g2-decision-heading">G3. Defend a model-use decision</h3>
-          <p>Complete all four statements. Use at least two numerical comparisons from G1/G2 and one training/checking comparison. Distinguish measurement sensitivity, parameter sensitivity, model discrepancy and numerical error.</p>
+          <h3 id="g2-decision-heading">G4. Defend a model-use decision</h3>
+          <p>Complete all four statements. Use at least two numerical comparisons from G1–G3 and one training/checking comparison. Distinguish measurement sensitivity, parameter sensitivity, model discrepancy and numerical error.</p>
           <label for="g2-note-assumptions">Assumptions and evidence needed</label><textarea id="g2-note-assumptions" rows="3" maxlength="10000" placeholder="Identify assumptions. Explain how an omitted correction could be tested."></textarea>
           <label for="g2-note-uncertainty">Measurement sensitivity and missing covariance</label><textarea id="g2-note-uncertainty" rows="3" maxlength="10000" placeholder="Quote a sampled range and a one-factor result. Explain why these are not coverage intervals or independent error weights."></textarea>
           <label for="g2-note-evidence">Conditional parameter sensitivity and checking evidence</label><textarea id="g2-note-evidence" rows="3" maxlength="10000" placeholder="Compare two alpha rows and identify held-out checking observations. State what the evidence does and does not establish."></textarea>
@@ -143,6 +163,6 @@
     <noscript><p class="error-summary">Enable JavaScript for calculation and fitting. The starting problem, equations and investigation steps remain available to read.</p></noscript>
   </main><footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="../labs/case-study.html">Original Lab 02 · full consistency case study</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script><script type="module" src="assets/mode.js?v=mode-3"></script>
-  <script type="module" src="assets/case.js?v=mode-1"></script>
+  <script type="module" src="assets/case.js?v=mode-2"></script><script type="module" src="assets/wfit.js?v=2"></script>
 </body>
 </html>

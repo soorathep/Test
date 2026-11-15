@@ -16,13 +16,13 @@
    },
    {
     "start": 7.8,
-    "end": 14.84,
-    "en": "The question for the whole session: when a model fits measured data well, what does that prove, and what does it not?",
-    "th": "คำถามของทั้งคาบนี้คือ เมื่อแบบจำลองเข้ากับข้อมูลการวัดได้ดี สิ่งนั้นพิสูจน์อะไร และไม่ได้พิสูจน์อะไร"
+    "end": 16.86,
+    "en": "The question for the whole session: when a model fits measured data well, what does that prove, what does it not, and which data decide the fit?",
+    "th": "คำถามของทั้งคาบนี้คือ เมื่อแบบจำลองเข้ากับข้อมูลการวัดได้ดี สิ่งนั้นพิสูจน์อะไร ไม่ได้พิสูจน์อะไร และข้อมูลส่วนใดเป็นตัวกำหนดผลการ fit"
    },
    {
-    "start": 15.19,
-    "end": 24.83,
+    "start": 17.21,
+    "end": 26.86,
     "en": "If you are studying on your own, turn on narration and captions with the buttons at the bottom left. Use the arrow keys to move through the slides.",
     "th": "ถ้าเรียนด้วยตนเอง เปิดเสียงบรรยายและคำบรรยายได้ที่ปุ่มมุมซ้ายล่าง และใช้ปุ่มลูกศรเพื่อเลื่อนสไลด์"
    }
@@ -91,27 +91,27 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 4.54,
-    "en": "In session 1 we used Raoult's law for an ideal liquid.",
-    "th": "ในคาบที่ 1 เราใช้กฎของราอูลต์สำหรับของเหลวอุดมคติ"
+    "end": 4.88,
+    "en": "In session 1 we used the gamma-phi equation to find the phases.",
+    "th": "ในคาบที่ 1 เราใช้สมการ γ–φ เพื่อหาเฟส"
    },
    {
-    "start": 4.89,
-    "end": 12.12,
-    "en": "Today we keep the ideal vapor but let the liquid be real, by adding the activity coefficient gamma.",
-    "th": "วันนี้เรายังให้ไอเป็นอุดมคติ แต่ให้ของเหลวเป็นของจริง โดยเพิ่มสัมประสิทธิ์แอกทิวิตี γ"
+    "start": 5.23,
+    "end": 10.56,
+    "en": "Today we turn the same equation around and solve it for gamma, from a measured state.",
+    "th": "วันนี้เราจะใช้สมการเดียวกันในทางกลับกัน คือแก้หาค่า γ จากสถานะที่วัดได้"
    },
    {
-    "start": 12.47,
-    "end": 19.36,
-    "en": "Gamma measures how far each component departs from an ideal solution, relative to its pure liquid.",
-    "th": "γ บอกว่าแต่ละองค์ประกอบห่างจากสารละลายอุดมคติเท่าไร เมื่อเทียบกับของเหลวบริสุทธิ์ของมันเอง"
+    "start": 10.91,
+    "end": 19.89,
+    "en": "Phi collects the vapor nonideality and the Poynting factor. Every input on the right has an uncertainty, and it passes into gamma.",
+    "th": "Φ รวมผลความไม่เป็นอุดมคติของไอและแฟกเตอร์ Poynting ไว้ ตัวแปรทุกตัวทางขวามีความไม่แน่นอน และความไม่แน่นอนนั้นส่งผ่านไปยัง γ"
    },
    {
-    "start": 19.71,
-    "end": 27.56,
-    "en": "Every other quantity is measured or comes from a vapor-pressure correlation, so one measured state gives both gammas.",
-    "th": "ปริมาณอื่นทั้งหมดได้จากการวัดหรือจากสหสัมพันธ์ความดันไอ ดังนั้นสถานะที่วัดได้หนึ่งจุดให้ค่า γ ได้ทั้งสองตัว"
+    "start": 20.24,
+    "end": 28.71,
+    "en": "From the first half, gamma is a partial molar property of the excess Gibbs energy, so gamma 1 and gamma 2 are linked.",
+    "th": "จากครึ่งแรกของวิชา γ เป็นสมบัติโมลาร์ย่อยของพลังงานกิบส์ส่วนเกิน ดังนั้น γ₁ และ γ₂ จึงเชื่อมโยงกัน"
    }
   ]
  },
@@ -126,27 +126,27 @@
    },
    {
     "start": 4.03,
-    "end": 7.87,
-    "en": "Infer both activity coefficients from one measured state.",
-    "th": "หาสัมประสิทธิ์แอกทิวิตีทั้งสองตัวจากสถานะที่วัดได้หนึ่งจุด"
+    "end": 12.27,
+    "en": "Reduce a measured state to gamma 1, gamma 2 and the excess Gibbs energy, and state the assumptions with their size.",
+    "th": "แปลงสถานะที่วัดได้เป็น γ₁, γ₂ และพลังงานกิบส์ส่วนเกิน พร้อมระบุสมมติฐานและขนาดของผลกระทบ"
    },
    {
-    "start": 8.22,
-    "end": 13.2,
-    "en": "Explain what gamma greater than one and an azeotrope mean, with numbers.",
-    "th": "อธิบายด้วยตัวเลขว่า γ ที่มากกว่าหนึ่งและจุดอะซีโอโทรปหมายความว่าอะไร"
+    "start": 12.62,
+    "end": 18.72,
+    "en": "Propagate measurement uncertainty into ln gamma, and say which rows constrain a model.",
+    "th": "ส่งผ่านความไม่แน่นอนของการวัดไปยัง ln γ และบอกได้ว่าแถวข้อมูลใดเป็นตัวกำหนดแบบจำลอง"
    },
    {
-    "start": 13.55,
-    "end": 18.62,
-    "en": "Fit a two-parameter NRTL model at one pressure and check it at another.",
-    "th": "สร้างแบบจำลอง NRTL สองพารามิเตอร์ที่ความดันหนึ่ง แล้วตรวจสอบที่อีกความดันหนึ่ง"
+    "start": 19.07,
+    "end": 25.96,
+    "en": "Fit NRTL with and without weights, and compare the parameters, their correlation and the checking error.",
+    "th": "fit แบบจำลอง NRTL ทั้งแบบมีและไม่มีน้ำหนัก และเปรียบเทียบพารามิเตอร์ สหสัมพันธ์ของพารามิเตอร์ และความคลาดเคลื่อนของการตรวจสอบ"
    },
    {
-    "start": 18.97,
-    "end": 24.86,
-    "en": "And state what a small fitting error and a consistency test can and cannot establish.",
-    "th": "และบอกได้ว่าค่าความคลาดเคลื่อนของการ fit ที่ต่ำ และการทดสอบความสอดคล้อง ยืนยันอะไรได้และไม่ได้"
+    "start": 26.31,
+    "end": 31.88,
+    "en": "And judge what a fit, a check and a consistency test can and cannot establish.",
+    "th": "และประเมินได้ว่าการ fit การตรวจสอบ และการทดสอบความสอดคล้อง ยืนยันอะไรได้และยืนยันอะไรไม่ได้"
    }
   ]
  },
@@ -155,31 +155,31 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 2.6,
-    "en": "Here is the plan for the three hours.",
+    "end": 2.51,
+    "en": "This is the plan for the three hours.",
     "th": "นี่คือแผนของการเรียนสามชั่วโมง"
    },
    {
-    "start": 2.95,
-    "end": 9.65,
-    "en": "Thirty minutes of concepts: gamma from data, the NRTL model, and the idea of fit and check.",
-    "th": "สามสิบนาทีแรกเป็นแนวคิด ได้แก่ γ จากข้อมูล แบบจำลอง NRTL และแนวคิดการ fit แล้วตรวจสอบ"
+    "start": 2.86,
+    "end": 9.35,
+    "en": "Thirty minutes of concepts: data reduction, the excess Gibbs energy, uncertainty and weights.",
+    "th": "สามสิบนาทีแรกเป็นแนวคิด ได้แก่ การแปลงข้อมูล พลังงานกิบส์ส่วนเกิน ความไม่แน่นอน และการให้น้ำหนัก"
    },
    {
-    "start": 10.0,
-    "end": 15.24,
-    "en": "Activity 1 is about the azeotrope. Then I demonstrate Lab 02.",
-    "th": "กิจกรรมที่ 1 เป็นเรื่องจุดอะซีโอโทรป จากนั้นผมจะสาธิต Lab 02"
+    "start": 9.7,
+    "end": 18.12,
+    "en": "Activity 1 asks which rows decide the fit. Then I demonstrate Lab 02, including the new weighted fit.",
+    "th": "กิจกรรมที่ 1 ถามว่าแถวข้อมูลใดเป็นตัวกำหนดผลการ fit จากนั้นผมจะสาธิต Lab 02 รวมถึงการ fit แบบถ่วงน้ำหนักซึ่งเป็นส่วนใหม่"
    },
    {
-    "start": 15.59,
-    "end": 22.42,
-    "en": "After the break you work in pairs for seventy minutes, and we finish with a discussion of what the checks showed.",
-    "th": "หลังพักให้ทำงานเป็นคู่เจ็ดสิบนาที แล้วปิดท้ายด้วยการอภิปรายว่าการตรวจสอบบอกอะไรเรา"
+    "start": 18.47,
+    "end": 27.09,
+    "en": "After the break you work in pairs on three fits and then weighted fits, and we finish by discussing why the checks disagree.",
+    "th": "หลังพักให้ทำงานเป็นคู่ fit สามแบบ แล้วตามด้วยการ fit แบบถ่วงน้ำหนัก และปิดท้ายด้วยการอภิปรายว่าทำไมผลการตรวจสอบจึงไม่ตรงกัน"
    },
    {
-    "start": 22.77,
-    "end": 28.68,
+    "start": 27.44,
+    "end": 33.35,
     "en": "If you are studying on your own, follow the same order and pause at each activity slide.",
     "th": "ถ้าเรียนด้วยตนเอง ให้ทำตามลำดับเดียวกัน และหยุดที่สไลด์กิจกรรมแต่ละสไลด์"
    }
@@ -190,27 +190,27 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 8.61,
-    "en": "Solve the modified Raoult's law for gamma. Gamma one is y1 P over x1 P1 sat.",
-    "th": "แก้กฎของราอูลต์แบบปรับปรุงเพื่อหา γ ได้ γ₁ เท่ากับ y₁P หารด้วย x₁P₁^sat"
+    "end": 9.27,
+    "en": "Solve the gamma-phi equation for gamma. Evaluate P sat at the measured temperature of each row, with the course Antoine sets.",
+    "th": "แก้สมการ γ–φ หาค่า γ โดยคำนวณ P^sat ที่อุณหภูมิที่วัดได้ของแต่ละแถว ด้วยค่าคงที่ Antoine ของรายวิชา"
    },
    {
-    "start": 8.96,
-    "end": 16.3,
-    "en": "The saturation pressure must be evaluated at the measured temperature of that row, using the Antoine equation.",
-    "th": "ความดันไออิ่มตัวต้องคำนวณที่อุณหภูมิที่วัดได้ของแถวนั้น โดยใช้สมการ Antoine"
+    "start": 9.62,
+    "end": 24.94,
+    "en": "Each assumption has a size. Setting phi to one shifts ln gamma by about minus 0.011 for water, for a second virial coefficient of minus 1000 cubic centimetres per mole.",
+    "th": "สมมติฐานแต่ละข้อมีขนาดของผลกระทบ การกำหนดให้ Φ เท่ากับหนึ่งทำให้ ln γ ของน้ำเลื่อนไปประมาณ −0.011 เมื่อสัมประสิทธิ์ไวเรียลตัวที่สองเท่ากับ −1000 ลูกบาศก์เซนติเมตรต่อโมล"
    },
    {
-    "start": 16.65,
-    "end": 26.14,
-    "en": "Three assumptions sit behind every gamma: ideal vapor, a negligible pressure correction on the liquid, and the pure-liquid standard state.",
-    "th": "มีสมมติฐานสามข้ออยู่เบื้องหลัง γ ทุกค่า คือไอเป็นอุดมคติ ผลของความดันต่อของเหลวน้อยมาก และใช้ของเหลวบริสุทธิ์เป็นสถานะอ้างอิง"
+    "start": 25.29,
+    "end": 32.31,
+    "en": "An Antoine set that is 3 percent low adds 0.03 to ln gamma, in every row.",
+    "th": "ค่าคงที่ Antoine ที่ให้ค่าต่ำไป 3 เปอร์เซ็นต์ จะเพิ่ม ln γ ขึ้น 0.03 ในทุกแถว"
    },
    {
-    "start": 26.49,
-    "end": 33.04,
-    "en": "At a pure endpoint the absent component gives zero over zero, so those rows carry no gamma.",
-    "th": "ที่จุดปลายที่เป็นสารบริสุทธิ์ องค์ประกอบที่ไม่มีอยู่จะได้ศูนย์หารศูนย์ แถวเหล่านั้นจึงไม่ให้ค่า γ"
+    "start": 32.66,
+    "end": 38.27,
+    "en": "These are small next to the scatter, but they are systematic, so they do not average out.",
+    "th": "ผลเหล่านี้เล็กเมื่อเทียบกับการกระจายของข้อมูล แต่เป็นความคลาดเคลื่อนเชิงระบบ จึงไม่หักล้างกันเมื่อเฉลี่ย"
    }
   ]
  },
@@ -278,6 +278,35 @@
    }
   ]
  },
+ "ge-gd": {
+  "audio": "narration/s02/ge-gd.mp3",
+  "cues": [
+   {
+    "start": 0.25,
+    "end": 7.27,
+    "en": "Gamma 1 and gamma 2 are not independent. Both come from one function, the excess Gibbs energy.",
+    "th": "γ₁ และ γ₂ ไม่ได้เป็นอิสระต่อกัน ทั้งสองมาจากฟังก์ชันเดียวกัน คือพลังงานกิบส์ส่วนเกิน"
+   },
+   {
+    "start": 7.62,
+    "end": 12.4,
+    "en": "At constant temperature and pressure they obey the Gibbs-Duhem equation.",
+    "th": "ที่อุณหภูมิและความดันคงที่ ทั้งสองต้องเป็นไปตามสมการ Gibbs–Duhem"
+   },
+   {
+    "start": 12.75,
+    "end": 17.63,
+    "en": "For row 7, G E over R T is 0.397.",
+    "th": "สำหรับแถวที่ 7 ค่า G^E/RT เท่ากับ 0.397"
+   },
+   {
+    "start": 17.98,
+    "end": 30.46,
+    "en": "So we fit a model for the excess Gibbs energy, not two separate curves. And because T, P, x and y over-determine the problem, the data can be tested for consistency.",
+    "th": "ดังนั้นเราจึง fit แบบจำลองของพลังงานกิบส์ส่วนเกิน ไม่ใช่เส้นโค้งสองเส้นแยกกัน และเพราะ T, P, x และ y ให้ข้อมูลเกินจำเป็น จึงทดสอบความสอดคล้องของข้อมูลได้"
+   }
+  ]
+ },
  "nrtl": {
   "audio": "narration/s02/nrtl.mp3",
   "cues": [
@@ -289,15 +318,73 @@
    },
    {
     "start": 6.25,
-    "end": 17.97,
-    "en": "NRTL is a common choice. With alpha fixed at 0.47 from the article, only two parameters are fitted: tau 1 2 and tau 2 1.",
-    "th": "NRTL เป็นตัวเลือกที่ใช้กันมาก เมื่อกำหนด α = 0.47 ตามบทความ จะเหลือพารามิเตอร์ที่ต้อง fit เพียงสองตัว คือ τ₁₂ และ τ₂₁"
+    "end": 21.91,
+    "en": "NRTL is a common choice. In general tau depends on temperature. With alpha fixed at 0.47 from the article and constant tau, two parameters are fitted: tau 1 2 and tau 2 1.",
+    "th": "NRTL เป็นตัวเลือกที่ใช้กันมาก โดยทั่วไป τ ขึ้นกับอุณหภูมิ เมื่อกำหนด α = 0.47 ตามบทความ และให้ τ คงที่ จะเหลือพารามิเตอร์ที่ต้อง fit สองตัว คือ τ₁₂ และ τ₂₁"
    },
    {
-    "start": 18.32,
-    "end": 28.0,
+    "start": 22.26,
+    "end": 31.95,
     "en": "To fit means to choose those two values so that the root-mean-square difference between model and measured ln gamma is as small as possible.",
     "th": "การ fit คือการเลือกสองค่านั้น ให้ค่ารากกำลังสองเฉลี่ยของผลต่างระหว่าง ln γ จากแบบจำลองและจากการวัด มีค่าน้อยที่สุด"
+   }
+  ]
+ },
+ "consistency": {
+  "audio": "narration/s02/consistency.mp3",
+  "cues": [
+   {
+    "start": 0.25,
+    "end": 3.79,
+    "en": "Can a test tell us whether the data themselves are good?",
+    "th": "มีการทดสอบที่บอกได้ไหมว่าตัวข้อมูลเองดีหรือไม่"
+   },
+   {
+    "start": 4.14,
+    "end": 16.56,
+    "en": "The Gibbs-Duhem equation links the two activity coefficients. For isothermal data it gives the area test: the integral of ln gamma 1 over gamma 2 should be zero.",
+    "th": "สมการ Gibbs–Duhem เชื่อมสัมประสิทธิ์แอกทิวิตีทั้งสองเข้าด้วยกัน สำหรับข้อมูลที่อุณหภูมิคงที่ จะได้การทดสอบพื้นที่ คือปริพันธ์ของ ln(γ₁/γ₂) ควรเป็นศูนย์"
+   },
+   {
+    "start": 16.91,
+    "end": 29.22,
+    "en": "These data are isobaric, so the temperature changes along the integral and an excess enthalpy term appears. The article reports the area test passed without that term.",
+    "th": "ข้อมูลชุดนี้วัดที่ความดันคงที่ อุณหภูมิจึงเปลี่ยนไปตามเส้นทางของปริพันธ์ และมีพจน์ของเอนทาลปีส่วนเกินเพิ่มขึ้นมา บทความรายงานว่าผ่านการทดสอบพื้นที่โดยไม่ได้รวมพจน์นี้"
+   },
+   {
+    "start": 29.57,
+    "end": 43.09,
+    "en": "Lab 03 reports the tests as not applicable or not assessed, because the excess enthalpy and endpoint estimates are not available. Not assessed is not the same as inconsistent.",
+    "th": "Lab 03 รายงานผลว่า not applicable หรือ not assessed เพราะไม่มีข้อมูลเอนทาลปีส่วนเกินและค่าประมาณที่จุดปลาย not assessed ไม่ได้แปลว่าไม่สอดคล้อง"
+   }
+  ]
+ },
+ "uncertainty": {
+  "audio": "narration/s02/uncertainty.mp3",
+  "cues": [
+   {
+    "start": 0.25,
+    "end": 7.42,
+    "en": "How well is ln gamma 1 known in each row? Propagate the standard uncertainties from the article.",
+    "th": "ln γ₁ ในแต่ละแถวรู้ค่าได้แม่นยำเพียงใด ให้ส่งผ่านความไม่แน่นอนมาตรฐานจากบทความ"
+   },
+   {
+    "start": 7.77,
+    "end": 12.8,
+    "en": "The term u x over x 1 dominates when 2-propanol is dilute.",
+    "th": "พจน์ u_x/x₁ มีค่ามากที่สุดเมื่อ 2-โพรพานอลเจือจาง"
+   },
+   {
+    "start": 13.15,
+    "end": 25.59,
+    "en": "At x 1 of 0.49, sigma is 0.033. At x 1 of 0.0063, sigma is 1.74.",
+    "th": "ที่ x₁ = 0.49 ค่า σ เท่ากับ 0.033 ส่วนที่ x₁ = 0.0063 ค่า σ เท่ากับ 1.74"
+   },
+   {
+    "start": 25.94,
+    "end": 32.25,
+    "en": "The dilute rows hardly constrain ln gamma 1, yet an unweighted fit counts them fully.",
+    "th": "แถวที่เจือจางแทบไม่ได้กำหนดค่า ln γ₁ แต่การ fit แบบไม่ถ่วงน้ำหนักนับแถวเหล่านี้เต็มที่"
    }
   ]
  },
@@ -324,9 +411,73 @@
    },
    {
     "start": 26.15,
-    "end": 30.51,
-    "en": "It is the same idea as training and test data in machine learning.",
-    "th": "เป็นแนวคิดเดียวกับข้อมูล training และ test ใน machine learning"
+    "end": 38.78,
+    "en": "Note that the 80 kPa set loses its most dilute row: at 362.78 K it is outside the 2-propanol Antoine range.",
+    "th": "สังเกตว่าข้อมูลที่ 80 กิโลปาสคาลเสียแถวที่เจือจางที่สุดไป เพราะที่ 362.78 เคลวิน อยู่นอกช่วงของค่าคงที่ Antoine ของ 2-โพรพานอล"
+   }
+  ]
+ },
+ "objective": {
+  "audio": "narration/s02/objective.mp3",
+  "cues": [
+   {
+    "start": 0.25,
+    "end": 11.17,
+    "en": "The objective function is part of the model. Unweighted, we minimize the sum of squared residuals. Weighted, each residual is divided by its sigma.",
+    "th": "ฟังก์ชันเป้าหมายเป็นส่วนหนึ่งของแบบจำลอง แบบไม่ถ่วงน้ำหนักจะลดผลรวมกำลังสองของส่วนเหลือ แบบถ่วงน้ำหนักจะหารส่วนเหลือแต่ละตัวด้วย σ ของมัน"
+   },
+   {
+    "start": 11.52,
+    "end": 22.04,
+    "en": "With the same 60 kPa data, the unweighted fit gives tau 2 1 of 1.75, and the weighted fit gives 2.85.",
+    "th": "ด้วยข้อมูล 60 กิโลปาสคาลชุดเดียวกัน การ fit แบบไม่ถ่วงน้ำหนักได้ τ₂₁ = 1.75 และแบบถ่วงน้ำหนักได้ 2.85"
+   },
+   {
+    "start": 22.39,
+    "end": 27.96,
+    "en": "That shift is about seven of its standard deviations, from a change of weights alone.",
+    "th": "การเปลี่ยนแปลงนี้มีขนาดประมาณเจ็ดเท่าของส่วนเบี่ยงเบนมาตรฐาน โดยเปลี่ยนเพียงน้ำหนักเท่านั้น"
+   },
+   {
+    "start": 28.31,
+    "end": 39.81,
+    "en": "The weighted parameters also give negative liquid curvature near x 1 of 0.15. That is a liquid split, which does not exist for this mixture.",
+    "th": "พารามิเตอร์จากการ fit แบบถ่วงน้ำหนักยังให้ความโค้งของของเหลวเป็นลบที่ x₁ ประมาณ 0.15 ซึ่งหมายถึงการแยกเป็นสองเฟสของเหลว ทั้งที่สารผสมนี้ไม่แยกเฟส"
+   },
+   {
+    "start": 40.16,
+    "end": 54.94,
+    "en": "The unweighted parameters are correlated at minus 0.86: many pairs fit almost equally well. And a root-mean-square of r over sigma near one means the misfit matches the stated uncertainty.",
+    "th": "พารามิเตอร์จากการ fit แบบไม่ถ่วงน้ำหนักมีสหสัมพันธ์ −0.86 หมายความว่ามีหลายคู่ค่าที่ fit ได้ดีพอ ๆ กัน และค่า RMS ของ r/σ ที่ใกล้หนึ่ง หมายความว่าความคลาดเคลื่อนสอดคล้องกับความไม่แน่นอนที่ระบุไว้"
+   }
+  ]
+ },
+ "tdep": {
+  "audio": "narration/s02/tdep.mp3",
+  "cues": [
+   {
+    "start": 0.25,
+    "end": 4.35,
+    "en": "Can isobaric data tell us how tau depends on temperature?",
+    "th": "ข้อมูลที่ความดันคงที่บอกได้ไหมว่า τ ขึ้นกับอุณหภูมิอย่างไร"
+   },
+   {
+    "start": 4.7,
+    "end": 10.54,
+    "en": "On an isobar, temperature is set by composition, so the two effects are confounded.",
+    "th": "บนเส้นความดันคงที่ อุณหภูมิถูกกำหนดโดยองค์ประกอบ ผลของทั้งสองจึงแยกออกจากกันไม่ได้"
+   },
+   {
+    "start": 10.89,
+    "end": 24.27,
+    "en": "A four-parameter fit to both pressures lowers the error only from 0.155 to 0.146, with large, opposite b values that compensate each other.",
+    "th": "การ fit สี่พารามิเตอร์กับข้อมูลทั้งสองความดัน ลดความคลาดเคลื่อนได้เพียงจาก 0.155 เป็น 0.146 และได้ค่า b ขนาดใหญ่ที่มีเครื่องหมายตรงข้ามกันและหักล้างกัน"
+   },
+   {
+    "start": 24.62,
+    "end": 35.71,
+    "en": "To identify tau of T, we need data that vary temperature at fixed composition, such as isotherms at several temperatures, or excess enthalpy.",
+    "th": "หากต้องการหา τ ที่เป็นฟังก์ชันของ T ต้องใช้ข้อมูลที่อุณหภูมิเปลี่ยนที่องค์ประกอบคงที่ เช่นข้อมูลอุณหภูมิคงที่หลายอุณหภูมิ หรือข้อมูลเอนทาลปีส่วนเกิน"
    }
   ]
  },
@@ -341,21 +492,15 @@
    },
    {
     "start": 2.65,
-    "end": 6.36,
-    "en": "Row 5 at 60 kPa is the azeotrope.",
-    "th": "แถวที่ 5 ที่ 60 กิโลปาสคาลคือจุดอะซีโอโทรป"
+    "end": 10.2,
+    "en": "Estimate sigma of ln gamma 1 from the x and y terms, for row 7 and for the most dilute row.",
+    "th": "ประมาณค่า σ ของ ln γ₁ จากพจน์ของ x และ y สำหรับแถวที่ 7 และแถวที่เจือจางที่สุด"
    },
    {
-    "start": 6.71,
-    "end": 15.07,
-    "en": "Is gamma 1 over gamma 2 greater or less than one, and roughly how large? The saturation pressures are on the slide.",
-    "th": "γ₁/γ₂ มากกว่าหรือน้อยกว่าหนึ่ง และมีค่าประมาณเท่าไร ความดันไออิ่มตัวอยู่บนสไลด์"
-   },
-   {
-    "start": 15.42,
-    "end": 21.37,
-    "en": "Use the azeotrope condition, not a full calculation. Then compare with your partner.",
-    "th": "ใช้เงื่อนไขของจุดอะซีโอโทรป ไม่ต้องคำนวณเต็มรูปแบบ แล้วเทียบกับเพื่อนคู่"
+    "start": 10.55,
+    "end": 18.87,
+    "en": "Then predict which of the two rows has more influence on tau 2 1 in an unweighted fit, and whether that is what you want.",
+    "th": "แล้วทำนายว่าในการ fit แบบไม่ถ่วงน้ำหนัก แถวใดมีอิทธิพลต่อ τ₂₁ มากกว่า และนั่นเป็นสิ่งที่ต้องการหรือไม่"
    }
   ]
  },
@@ -370,21 +515,15 @@
    },
    {
     "start": 3.03,
-    "end": 16.96,
-    "en": "At the azeotrope, gamma 1 over gamma 2 equals P2 sat over P1 sat, which is 28.29 over 55.04, or 0.514.",
-    "th": "ที่จุดอะซีโอโทรป γ₁/γ₂ เท่ากับ P₂^sat/P₁^sat คือ 28.29 หาร 55.04 ได้ 0.514"
+    "end": 12.87,
+    "en": "For row 7, sigma is 0.033. For the dilute row, sigma is 1.73, fifty times larger.",
+    "th": "สำหรับแถวที่ 7 ค่า σ เท่ากับ 0.033 สำหรับแถวที่เจือจาง σ เท่ากับ 1.73 มากกว่าประมาณห้าสิบเท่า"
    },
    {
-    "start": 17.31,
-    "end": 26.68,
-    "en": "The measured row gives 0.521, about one percent different, because y and x are close but not exactly equal.",
-    "th": "แถวที่วัดได้ให้ 0.521 ต่างกันประมาณหนึ่งเปอร์เซ็นต์ เพราะ y กับ x ใกล้กันแต่ไม่เท่ากันพอดี"
-   },
-   {
-    "start": 27.03,
-    "end": 35.54,
-    "en": "The ratio is less than one: water, the less volatile component, needs the larger gamma to reach the same partial pressure.",
-    "th": "อัตราส่วนน้อยกว่าหนึ่ง น้ำซึ่งระเหยยากกว่าต้องมี γ ที่สูงกว่า จึงจะมีความดันย่อยเท่ากัน"
+    "start": 13.22,
+    "end": 32.29,
+    "en": "In an unweighted fit it still counts as much as row 7. Four rows below x 1 of 0.02 supply 70 percent of the sum of squares for the 60 kPa fit, and 88 percent when the 80 kPa fit is checked at 60.",
+    "th": "ในการ fit แบบไม่ถ่วงน้ำหนัก แถวนี้ยังมีน้ำหนักเท่ากับแถวที่ 7 สี่แถวที่ x₁ ต่ำกว่า 0.02 ให้ผลรวมกำลังสอง 70 เปอร์เซ็นต์ของการ fit ที่ 60 กิโลปาสคาล และ 88 เปอร์เซ็นต์เมื่อนำผล fit ที่ 80 กิโลปาสคาลมาตรวจสอบที่ 60"
    }
   ]
  },
@@ -399,21 +538,21 @@
    },
    {
     "start": 4.93,
-    "end": 12.18,
-    "en": "Read row 7 and open the worked calculation. Check that it matches the values we just calculated.",
-    "th": "อ่านแถวที่ 7 แล้วเปิดการคำนวณตัวอย่าง ตรวจว่าตรงกับค่าที่เพิ่งคำนวณไป"
+    "end": 19.46,
+    "en": "Read row 7 at 60 kPa and check gamma 1 and gamma 2. Then fit 60 kPa and check 80: the errors are 0.168 and 0.164.",
+    "th": "อ่านแถวที่ 7 ที่ 60 กิโลปาสคาล และตรวจค่า γ₁ และ γ₂ จากนั้น fit ที่ 60 และตรวจสอบที่ 80 ได้ความคลาดเคลื่อน 0.168 และ 0.164"
    },
    {
-    "start": 12.53,
-    "end": 18.44,
-    "en": "Fit 60 kPa only and read the fitting error: 0.168.",
-    "th": "fit เฉพาะข้อมูล 60 กิโลปาสคาล แล้วอ่านความคลาดเคลื่อนของการ fit ได้ 0.168"
+    "start": 19.81,
+    "end": 31.22,
+    "en": "Open the graduate view, step G3, and fit 60 kPa unweighted and weighted. Compare tau 2 1 and the root-mean-square of r over sigma.",
+    "th": "เปิดโหมด Graduate ขั้น G3 แล้ว fit ที่ 60 กิโลปาสคาลทั้งแบบไม่ถ่วงน้ำหนักและแบบถ่วงน้ำหนัก เปรียบเทียบ τ₂₁ และค่า RMS ของ r/σ"
    },
    {
-    "start": 18.79,
-    "end": 26.3,
-    "en": "Then change the checking pressure to 80 kPa without refitting, and look at where the model misses on the plot.",
-    "th": "จากนั้นเปลี่ยนความดันที่ใช้ตรวจสอบเป็น 80 กิโลปาสคาลโดยไม่ fit ใหม่ แล้วดูในกราฟว่าแบบจำลองพลาดตรงไหน"
+    "start": 31.57,
+    "end": 37.82,
+    "en": "Then set the minimum x 1 to 0.05 and refit. Watch what changes.",
+    "th": "จากนั้นกำหนดค่า x₁ ต่ำสุดเป็น 0.05 แล้ว fit ใหม่ สังเกตว่าอะไรเปลี่ยนไป"
    }
   ]
  },
@@ -428,27 +567,27 @@
    },
    {
     "start": 3.12,
-    "end": 9.99,
-    "en": "One: evaluating the saturation pressures at the wrong temperature. Each row has its own measured T.",
-    "th": "หนึ่ง คำนวณความดันไออิ่มตัวที่อุณหภูมิผิด แต่ละแถวมีอุณหภูมิที่วัดได้ของตัวเอง"
+    "end": 7.55,
+    "en": "One: P sat at the wrong temperature, or outside the Antoine range.",
+    "th": "หนึ่ง คำนวณ P^sat ที่อุณหภูมิผิด หรือนอกช่วงของสมการ Antoine"
    },
    {
-    "start": 10.34,
-    "end": 15.01,
-    "en": "Two: using the pure-component rows, which give zero over zero.",
-    "th": "สอง ใช้แถวที่เป็นสารบริสุทธิ์ ซึ่งให้ศูนย์หารศูนย์"
+    "start": 7.9,
+    "end": 18.08,
+    "en": "Two: treating every residual as equally certain. Sigma ranges from 0.03 to 1.7 in the same data set.",
+    "th": "สอง ถือว่าส่วนเหลือทุกตัวแน่นอนเท่ากัน ทั้งที่ σ อยู่ในช่วง 0.03 ถึง 1.7 ในข้อมูลชุดเดียวกัน"
    },
    {
-    "start": 15.36,
-    "end": 19.63,
-    "en": "Three: refitting at the checking pressure, which leaves nothing to check.",
-    "th": "สาม fit ใหม่ที่ความดันที่ใช้ตรวจสอบ ทำให้ไม่เหลืออะไรให้ตรวจ"
+    "start": 18.43,
+    "end": 28.69,
+    "en": "Three: reporting tau without its uncertainty. Two parameters correlated at minus 0.86 are not two independent findings.",
+    "th": "สาม รายงาน τ โดยไม่มีความไม่แน่นอน พารามิเตอร์สองตัวที่มีสหสัมพันธ์ −0.86 ไม่ใช่ข้อค้นพบที่เป็นอิสระสองข้อ"
    },
    {
-    "start": 19.98,
-    "end": 25.42,
-    "en": "Four: reading a small fitting error as proof that the model or the data are right.",
-    "th": "สี่ ถือว่าความคลาดเคลื่อนของการ fit ที่ต่ำเป็นหลักฐานว่าแบบจำลองหรือข้อมูลถูกต้อง"
+    "start": 29.04,
+    "end": 37.9,
+    "en": "Four: reading the isothermal area test on isobaric data. Without the enthalpy term, a pass or a fail says little.",
+    "th": "สี่ ใช้การทดสอบพื้นที่แบบอุณหภูมิคงที่กับข้อมูลความดันคงที่ หากไม่มีพจน์เอนทาลปี ผลว่าผ่านหรือไม่ผ่านก็บอกอะไรได้น้อย"
    }
   ]
  },
@@ -480,21 +619,21 @@
    },
    {
     "start": 8.69,
-    "end": 16.09,
-    "en": "First, pick any interior row other than row 7 and calculate both gammas by hand. Check with the lab.",
-    "th": "ขั้นแรก เลือกแถวใดก็ได้ที่ไม่ใช่จุดปลายและไม่ใช่แถวที่ 7 คำนวณ γ ทั้งสองด้วยมือ แล้วตรวจกับ lab"
+    "end": 18.16,
+    "en": "First, by hand: pick an interior row other than row 7, and calculate P sat, both gammas, G E over R T, and sigma.",
+    "th": "ขั้นแรก คำนวณด้วยมือ เลือกแถวภายในที่ไม่ใช่แถวที่ 7 แล้วคำนวณ P^sat, γ ทั้งสองตัว, G^E/RT และ σ"
    },
    {
-    "start": 16.44,
-    "end": 23.12,
-    "en": "Then run three fits: 60 checked at 80, 80 checked at 60, and both pressures together.",
-    "th": "จากนั้น fit สามแบบ คือ fit 60 ตรวจที่ 80, fit 80 ตรวจที่ 60 และ fit ทั้งสองความดันพร้อมกัน"
+    "start": 18.51,
+    "end": 28.68,
+    "en": "Then run the three fits, and repeat 60 and 80 in G3, unweighted and weighted, and with a minimum x 1 of 0.02.",
+    "th": "จากนั้น fit สามแบบ แล้วทำซ้ำที่ 60 และ 80 ในขั้น G3 ทั้งแบบไม่ถ่วงน้ำหนักและแบบถ่วงน้ำหนัก และแบบกำหนด x₁ ต่ำสุดเป็น 0.02"
    },
    {
-    "start": 23.47,
-    "end": 30.91,
-    "en": "Compare the errors, decide which fit transfers best, and write two sentences that answer the session question.",
-    "th": "เทียบค่าความคลาดเคลื่อน ตัดสินว่า fit แบบไหนใช้กับอีกความดันได้ดีที่สุด แล้วเขียนสองประโยคตอบคำถามประจำคาบ"
+    "start": 29.03,
+    "end": 36.46,
+    "en": "Finally, explain with numbers why fit 80 checks worse at 60 kPa than fit 60 checks at 80.",
+    "th": "สุดท้าย อธิบายด้วยตัวเลขว่าทำไมผล fit ที่ 80 จึงตรวจสอบที่ 60 ได้แย่กว่าผล fit ที่ 60 ตรวจสอบที่ 80"
    }
   ]
  },
@@ -503,21 +642,21 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 8.61,
-    "en": "This is what to hand in: the Lab 02 study file with the three cases, one hand calculation, and two sentences.",
-    "th": "สิ่งที่ต้องส่งคือ ไฟล์ study ของ Lab 02 ที่มีสามเคส การคำนวณด้วยมือหนึ่งครั้ง และสองประโยค"
+    "end": 7.1,
+    "en": "This is what to hand in: the Lab 02 study file, your hand calculation, and two sentences.",
+    "th": "สิ่งที่ต้องส่งคือ ไฟล์ study ของ Lab 02 การคำนวณด้วยมือ และสองประโยค"
    },
    {
-    "start": 8.96,
-    "end": 11.99,
-    "en": "Use the table on the right to check your results.",
-    "th": "ใช้ตารางด้านขวาตรวจผลของคุณ"
+    "start": 7.45,
+    "end": 21.38,
+    "en": "Use the table to check your results. Without the four rows below x 1 of 0.02, the 80 kPa fit checks at 0.116 on the 60 kPa data.",
+    "th": "ใช้ตารางนี้ตรวจผล เมื่อไม่รวมสี่แถวที่ x₁ ต่ำกว่า 0.02 ผล fit ที่ 80 กิโลปาสคาลตรวจสอบกับข้อมูล 60 ได้ 0.116"
    },
    {
-    "start": 12.34,
-    "end": 22.92,
-    "en": "Graduate students: open Lab 03 with the measured 60 kPa data and explain why the tests say not applicable or not assessed.",
-    "th": "นิสิตบัณฑิตศึกษา เปิด Lab 03 กับข้อมูลที่วัดได้ที่ 60 กิโลปาสคาล แล้วอธิบายว่าทำไมการทดสอบจึงรายงานว่า not applicable หรือ not assessed"
+    "start": 21.73,
+    "end": 33.42,
+    "en": "Graduate extension: fit with a minimum x 1 of 0.05 at both pressures, and ask whether the two parameter sets agree within their standard deviations.",
+    "th": "งานเสริมระดับบัณฑิต fit โดยกำหนด x₁ ต่ำสุดเป็น 0.05 ที่ทั้งสองความดัน แล้วพิจารณาว่าพารามิเตอร์สองชุดตรงกันภายในส่วนเบี่ยงเบนมาตรฐานหรือไม่"
    }
   ]
  },
@@ -526,56 +665,21 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 6.39,
-    "en": "Here are the three fits side by side. Teal is the fitting error, amber is the checking error.",
-    "th": "นี่คือผลของทั้งสาม fit เทียบกัน สีเขียวหัวเป็ดคือความคลาดเคลื่อนของการ fit สีอำพันคือความคลาดเคลื่อนของการตรวจสอบ"
+    "end": 11.26,
+    "en": "This plot shows the residuals in ln gamma 1 at 60 kPa, for the fits trained at 60 and at 80 kPa, with two-sigma bars.",
+    "th": "กราฟนี้แสดงส่วนเหลือของ ln γ₁ ที่ 60 กิโลปาสคาล สำหรับผล fit ที่ฝึกด้วยข้อมูล 60 และ 80 กิโลปาสคาล พร้อมแถบ ±2σ"
    },
    {
-    "start": 6.74,
-    "end": 17.92,
-    "en": "Fitting 80 kPa gives the smallest fitting error, 0.043, but the largest checking error, 0.291. Why?",
-    "th": "fit ที่ 80 กิโลปาสคาลให้ความคลาดเคลื่อนของการ fit ต่ำที่สุดคือ 0.043 แต่ความคลาดเคลื่อนของการตรวจสอบสูงที่สุดคือ 0.291 เพราะอะไร"
+    "start": 11.61,
+    "end": 18.24,
+    "en": "The large residuals sit where the bars are largest, below x 1 of 0.02.",
+    "th": "ส่วนเหลือที่มีค่ามากอยู่ในบริเวณที่แถบกว้างที่สุด คือที่ x₁ ต่ำกว่า 0.02"
    },
    {
-    "start": 18.27,
-    "end": 27.55,
-    "en": "Fitting 60 kPa gives similar errors at both pressures. What does that suggest about the scatter in the 60 kPa data?",
-    "th": "fit ที่ 60 กิโลปาสคาลให้ความคลาดเคลื่อนใกล้เคียงกันทั้งสองความดัน สิ่งนี้บอกอะไรเกี่ยวกับการกระจายของข้อมูลที่ 60 กิโลปาสคาล"
-   },
-   {
-    "start": 27.9,
-    "end": 31.12,
-    "en": "And why does the joint fit leave no honest check?",
-    "th": "และทำไมการ fit ทั้งสองความดันพร้อมกันจึงไม่เหลือการตรวจสอบที่ตรงไปตรงมา"
-   }
-  ]
- },
- "consistency": {
-  "audio": "narration/s02/consistency.mp3",
-  "cues": [
-   {
-    "start": 0.25,
-    "end": 3.79,
-    "en": "Can a test tell us whether the data themselves are good?",
-    "th": "มีการทดสอบที่บอกได้ไหมว่าตัวข้อมูลเองดีหรือไม่"
-   },
-   {
-    "start": 4.14,
-    "end": 16.56,
-    "en": "The Gibbs-Duhem equation links the two activity coefficients. For isothermal data it gives the area test: the integral of ln gamma 1 over gamma 2 should be zero.",
-    "th": "สมการ Gibbs–Duhem เชื่อมสัมประสิทธิ์แอกทิวิตีทั้งสองเข้าด้วยกัน สำหรับข้อมูลที่อุณหภูมิคงที่ จะได้การทดสอบพื้นที่ คือปริพันธ์ของ ln(γ₁/γ₂) ควรเป็นศูนย์"
-   },
-   {
-    "start": 16.91,
-    "end": 27.64,
-    "en": "These data are isobaric, so the area test does not apply, and the other tests need endpoint estimates or the excess enthalpy, which are not available.",
-    "th": "ข้อมูลชุดนี้วัดที่ความดันคงที่ การทดสอบพื้นที่จึงใช้ไม่ได้ ส่วนการทดสอบอื่นต้องใช้ค่าประมาณที่จุดปลายหรือเอนทาลปีส่วนเกิน ซึ่งไม่มีให้"
-   },
-   {
-    "start": 27.99,
-    "end": 34.99,
-    "en": "Not assessed is not the same as inconsistent. It means the data do not carry what the test needs.",
-    "th": "not assessed ไม่ได้แปลว่าไม่สอดคล้อง แต่หมายความว่าข้อมูลไม่มีสิ่งที่การทดสอบต้องใช้"
+    "start": 18.59,
+    "end": 38.86,
+    "en": "Discuss three questions: what the checking error of 0.291 was measuring; whether the weighted fit, closer to the stated uncertainty but predicting a split of a fully miscible liquid, is the better model; and which single new measurement would discriminate the two values of tau 2 1.",
+    "th": "อภิปรายสามคำถาม คือ ความคลาดเคลื่อนของการตรวจสอบ 0.291 วัดอะไรอยู่จริง การ fit แบบถ่วงน้ำหนักซึ่งใกล้ความไม่แน่นอนที่ระบุไว้มากกว่า แต่ทำนายว่าของเหลวที่ผสมกันได้สมบูรณ์จะแยกเฟส เป็นแบบจำลองที่ดีกว่าหรือไม่ และการวัดใหม่เพียงครั้งเดียวแบบใดที่จะแยกค่า τ₂₁ ทั้งสองออกจากกันได้"
    }
   ]
  },
@@ -590,27 +694,27 @@
    },
    {
     "start": 1.75,
-    "end": 8.64,
-    "en": "Gamma comes from each measured state, with the saturation pressures evaluated at that state's temperature.",
-    "th": "γ ได้จากสถานะที่วัดได้แต่ละจุด โดยคำนวณความดันไออิ่มตัวที่อุณหภูมิของสถานะนั้น"
+    "end": 8.22,
+    "en": "Data reduction gives gamma from each measured state. The assumptions are small but systematic.",
+    "th": "การแปลงข้อมูลให้ค่า γ จากสถานะที่วัดได้แต่ละจุด สมมติฐานมีผลเล็กแต่เป็นเชิงระบบ"
    },
    {
-    "start": 8.99,
-    "end": 13.98,
-    "en": "NRTL with alpha fixed has two parameters, fitted to ln gamma.",
-    "th": "NRTL ที่กำหนด α ไว้มีพารามิเตอร์สองตัว ซึ่ง fit กับ ln γ"
+    "start": 8.57,
+    "end": 14.69,
+    "en": "Fit a model for the excess Gibbs energy. The objective and the weights are part of the model.",
+    "th": "fit แบบจำลองของพลังงานกิบส์ส่วนเกิน ฟังก์ชันเป้าหมายและน้ำหนักเป็นส่วนหนึ่งของแบบจำลอง"
    },
    {
-    "start": 14.33,
-    "end": 22.72,
-    "en": "A good fit shows that the model can follow its own points. Judge a model by its checking error on data it has not seen.",
-    "th": "fit ที่ดีแสดงว่าแบบจำลองตามจุดข้อมูลของมันเองได้ ให้ตัดสินแบบจำลองจากความคลาดเคลื่อนของการตรวจสอบกับข้อมูลที่มันไม่เคยเห็น"
+    "start": 15.04,
+    "end": 21.72,
+    "en": "Check on unseen data, normalized by what was measured, and report tau with its uncertainty.",
+    "th": "ตรวจสอบกับข้อมูลที่ไม่ได้ใช้ fit โดยเทียบกับความไม่แน่นอนของการวัด และรายงาน τ พร้อมความไม่แน่นอน"
    },
    {
-    "start": 23.07,
-    "end": 26.23,
-    "en": "Next session: when one liquid splits into two.",
-    "th": "คาบหน้า เมื่อของเหลวหนึ่งเฟสแยกออกเป็นสองเฟส"
+    "start": 22.07,
+    "end": 30.77,
+    "en": "Next session: when does one liquid split into two? Phase stability and liquid-liquid equilibrium, starting from that weighted fit.",
+    "th": "คาบหน้า ของเหลวหนึ่งเฟสจะแยกเป็นสองเฟสเมื่อใด เรื่องเสถียรภาพของเฟสและสมดุลของเหลว–ของเหลว โดยเริ่มจากผล fit แบบถ่วงน้ำหนักนี้"
    }
   ]
  },
@@ -625,13 +729,13 @@
    },
    {
     "start": 4.25,
-    "end": 19.12,
-    "en": "A model fitted to 80 kPa has a fitting error of 0.043 but a checking error of 0.291 at 60 kPa. What does this tell you, and what would you do next?",
-    "th": "แบบจำลองที่ fit กับข้อมูล 80 กิโลปาสคาลมีความคลาดเคลื่อนของการ fit 0.043 แต่ความคลาดเคลื่อนของการตรวจสอบที่ 60 กิโลปาสคาลเป็น 0.291 สิ่งนี้บอกอะไร และคุณจะทำอะไรต่อ"
+    "end": 17.18,
+    "en": "Weighting the residuals moved tau 2 1 from 1.75 to 2.85 with the same data. What does this say about the parameters, and what would you report with them?",
+    "th": "การถ่วงน้ำหนักส่วนเหลือทำให้ τ₂₁ เปลี่ยนจาก 1.75 เป็น 2.85 ด้วยข้อมูลชุดเดียวกัน สิ่งนี้บอกอะไรเกี่ยวกับพารามิเตอร์ และควรรายงานอะไรไปพร้อมกับค่าเหล่านั้น"
    },
    {
-    "start": 19.47,
-    "end": 26.49,
+    "start": 17.53,
+    "end": 24.54,
     "en": "Scan the QR code or open the link. It is anonymous. Wait until you see Response received.",
     "th": "สแกน QR code หรือเปิดลิงก์ แบบฟอร์มไม่ระบุตัวตน รอจนขึ้นข้อความ Response received"
    }
@@ -642,21 +746,21 @@
   "cues": [
    {
     "start": 0.25,
-    "end": 4.62,
-    "en": "After class, hand in your Lab 02 study file this week.",
-    "th": "หลังเลิกเรียน ส่งไฟล์ study ของ Lab 02 ภายในสัปดาห์นี้"
+    "end": 7.74,
+    "en": "After class, hand in your Lab 02 study file this week, with the three fits, G3 and G4.",
+    "th": "หลังเลิกเรียน ส่งไฟล์ study ของ Lab 02 ภายในสัปดาห์นี้ พร้อมผล fit สามแบบ ขั้น G3 และ G4"
    },
    {
-    "start": 4.97,
-    "end": 9.26,
-    "en": "Read the note on Gibbs energy of mixing before session 3.",
-    "th": "อ่านเอกสารเรื่องพลังงานกิบส์ของการผสมก่อนคาบที่ 3"
+    "start": 8.09,
+    "end": 13.78,
+    "en": "Read the note on Gibbs energy of mixing and phase stability before session 3.",
+    "th": "อ่านเอกสารเรื่องพลังงานกิบส์ของการผสมและเสถียรภาพของเฟสก่อนคาบที่ 3"
    },
    {
-    "start": 9.61,
-    "end": 15.93,
-    "en": "Graduate students can add the Lab 03 analysis to the same file. See you next session.",
-    "th": "นิสิตบัณฑิตศึกษาเพิ่มการวิเคราะห์จาก Lab 03 ในไฟล์เดียวกันได้ แล้วพบกันคาบหน้า"
+    "start": 14.13,
+    "end": 22.6,
+    "en": "Graduate students can run Lab 03 on the measured data and explain each not assessed result. See you next session.",
+    "th": "นิสิตบัณฑิตศึกษาใช้ Lab 03 กับข้อมูลที่วัดได้ และอธิบายผล not assessed แต่ละข้อได้ แล้วพบกันคาบหน้า"
    }
   ]
  }

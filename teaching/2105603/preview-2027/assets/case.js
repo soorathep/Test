@@ -908,7 +908,7 @@ function downloadStudy() {
   graduate = readGraduate();
   current = attachWorkspace(current);
   const study = makeStudy(current, cases, element('reflection').value);
-  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(study), null, 2)], { type: 'application/json' }));
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent({ ...study, weighted: window.wFit?.state() }), null, 2)], { type: 'application/json' }));
   const link = document.createElement('a');
   link.href = url;
   link.download = studentFileName('thermodynamics-lab02-2027-study.json');
