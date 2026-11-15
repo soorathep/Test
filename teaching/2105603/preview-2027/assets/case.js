@@ -4,6 +4,7 @@ import {
 } from './case-state.js?v=review-1';
 import { palette } from '../../labs/assets/palette.js';
 import { normalizeGraduateCase, analyzeGraduateCase, observationSensitivity, alphaSensitivity } from './case-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const element = (id) => document.getElementById(id);
 let data;
@@ -907,10 +908,10 @@ function downloadStudy() {
   graduate = readGraduate();
   current = attachWorkspace(current);
   const study = makeStudy(current, cases, element('reflection').value);
-  const url = URL.createObjectURL(new Blob([JSON.stringify(study, null, 2)], { type: 'application/json' }));
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(study), null, 2)], { type: 'application/json' }));
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'thermodynamics-lab02-2027-study.json';
+  link.download = studentFileName('thermodynamics-lab02-2027-study.json');
   document.body.append(link);
   link.click();
   link.remove();

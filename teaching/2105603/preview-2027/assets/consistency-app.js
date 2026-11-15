@@ -4,6 +4,7 @@ import {
 } from './consistency-state.js?v=review-1';
 import { derivative } from '../../labs/assets/consistency.js';
 import { renderMethodPlots, clearMethodPlots } from './consistency-plots.js?v=review-1';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const $ = id => document.getElementById(id);
 const number = (value, digits = 6) => value == null || !Number.isFinite(value) ? 'Undefined' : Number(value).toLocaleString('en-US', { maximumSignificantDigits: digits });
@@ -249,7 +250,7 @@ function reopenComparison(index) {
 function exportStudy() {
   try{
     if(!study.analysis||busy)return;clearError();study.notes=readNotes();study.bounds=readBounds();
-    const payload=serializeStudy(study,data),url=URL.createObjectURL(new Blob([payload],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='lab03-graduate-consistency-study.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);note('Study downloaded. Open this file here to validate and recalculate its diagnostics and requested fits.');
+    const payload=withStudentJson(serializeStudy(study,data)),url=URL.createObjectURL(new Blob([payload],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download=studentFileName('lab03-graduate-consistency-study.json');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);note('Study downloaded. Open this file here to validate and recalculate its diagnostics and requested fits.');
   }catch(error){showError(error);}
 }
 async function importStudy(event) {

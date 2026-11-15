@@ -5,6 +5,7 @@ import {
   STABILITY_GRADUATE_VERSION, MODELS, PARAMETER_KEYS, PARAMETER_LABELS, DEFAULT_BOUNDS,
   solve, localGlobalAudit, sensitivityStudy, modelMatchStudy, evidenceCheck,
 } from './stability-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-stability-study/1';
 const $ = id => document.getElementById(id);
@@ -340,8 +341,8 @@ function exportStudy() {
     caseName: $('case-name').value, cases: study.cases, bounds: readBounds(), notes: notes(), reflection: $('reflection').value,
     investigations: { audit: Boolean(study.audit), sensitivity: Boolean(study.sensitivity), match: Boolean(study.match) }, source: study.source,
   };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab04-liquid-stability-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab04-liquid-stability-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 

@@ -5,6 +5,7 @@ import {
 import { psat, R } from '../../labs/assets/thermo.js';
 import { palette } from '../../labs/assets/palette.js';
 import { FACTORS, NOTE_KEYS, graduateControls, restoreGraduate, sensitivityStudy, modelStudy } from './vle-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const element = (id) => document.getElementById(id);
 const numericFields = ['T', 'P', 'z', 'A', 'A12', 'A21', 'tau12', 'tau21', 'alpha', 'referenceT'];
@@ -752,10 +753,10 @@ function downloadStudy() {
   catch (error) { setText('graduate-sensitivity-status', 'The study was not downloaded. ' + error.message); return; }
   current.name = element('case-name').value.trim() || 'Custom case';
   const study = makeStudy(current, cases, element('reflection').value, catalog.version);
-  const url = URL.createObjectURL(new Blob([JSON.stringify(study, null, 2)], { type: 'application/json' }));
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(study), null, 2)], { type: 'application/json' }));
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'thermodynamics-lab01-2027-study.json';
+  link.download = studentFileName('thermodynamics-lab01-2027-study.json');
   document.body.append(link);
   link.click();
   link.remove();

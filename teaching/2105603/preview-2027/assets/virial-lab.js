@@ -2,6 +2,7 @@
 import * as vr from '../../labs/assets/virial.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { VIRIAL_GRADUATE_VERSION, MODELS, MODEL_KEYS, SYSTEMS, solve, decomposition, crossStudy, scaleStudy, evidenceCheck } from './virial-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-virial-study/1';
 const $ = id => document.getElementById(id);
@@ -223,8 +224,8 @@ function exportStudy() {
   const record = { schema: SCHEMA, engineVersion: vr.VIRIAL_VERSION, graduateVersion: VIRIAL_GRADUATE_VERSION, savedAt: new Date().toISOString(),
     inputs: study.inputs || readInputs().inputs, prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases, view: $('view').value,
     notes: notes(), reflection: $('reflection').value, investigations: { decomposition: Boolean(study.decomposition), cross: Boolean(study.cross), scale: Boolean(study.scale) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab09-virial-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab09-virial-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 

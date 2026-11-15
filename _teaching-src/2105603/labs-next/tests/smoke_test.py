@@ -7,7 +7,8 @@ Run from the repository root after `python3 _teaching-src/2105603/labs-next/buil
 
 For every lab it loads the page, runs the main calculation, loads each starter case,
 runs every graduate investigation, checks that a concept answer stays closed until the
-student has written something, and checks that the page fits a 375 px phone screen.
+student has written something, downloads and reopens a study with student details, and
+checks that the page fits a 375 px phone screen.
 Any JavaScript error, failed check or horizontal overflow makes the script exit with 1.
 """
 import asyncio
@@ -44,6 +45,56 @@ async def click_main(page):
             return True
         await page.wait_for_timeout(250)
     return False
+
+
+async def check_submission(browser, url, lab):
+    """Download a study with and without student details, then reopen it in a fresh browser."""
+    import json
+    problems, errors = [], []
+    ctx = await browser.new_context(accept_downloads=True)
+    page = await ctx.new_page()
+    page.on('pageerror', lambda e: errors.append(str(e)))
+    await page.goto(url + lab + '.html')
+    await page.wait_for_timeout(700)
+    await click_main(page)
+    export = page.locator('button', has_text='Download my study').first
+    for _ in range(40):
+        if await export.is_enabled():
+            break
+        await page.wait_for_timeout(250)
+    async def download():
+        async with page.expect_download() as info:
+            await export.click()
+        d = await info.value
+        return d.suggested_filename, json.loads(pathlib.Path(await d.path()).read_text())
+    name, rec = await download()
+    if '_' in name or any(rec.get('student', {}).values()):
+        problems.append('blank download carried student details: ' + name)
+    await page.fill('#student-first-name', 'Somchai')
+    await page.fill('#student-last-name', 'Jaidee')
+    await page.fill('#student-id', '6712345621')
+    name, rec = await download()
+    if not name.endswith('_6712345621_Somchai_Jaidee.json'):
+        problems.append('file name lacks student details: ' + name)
+    if rec.get('student') != {'firstName': 'Somchai', 'lastName': 'Jaidee', 'studentId': '6712345621'}:
+        problems.append('student block missing from the file')
+    saved = pathlib.Path('/tmp') / name
+    saved.write_text(json.dumps(rec))
+    await ctx.close()
+    ctx = await browser.new_context()
+    page = await ctx.new_page()
+    page.on('pageerror', lambda e: errors.append('reopen: ' + str(e)))
+    await page.goto(url + lab + '.html')
+    await page.wait_for_timeout(900)
+    await page.locator('input[type="file"][accept*="json"]').first.set_input_files(str(saved))
+    await page.wait_for_timeout(1500)
+    if await page.input_value('#student-id') != '6712345621':
+        problems.append('reopened study did not restore the student details')
+    status = ' '.join(await page.locator('[role="status"], [role="alert"]').all_inner_texts()).lower()
+    if 'not a' in status or 'invalid' in status or 'could not' in status:
+        problems.append('reopen reported: ' + status[:160])
+    await ctx.close()
+    return problems + ['JS error: ' + e for e in errors]
 
 
 async def check_lab(browser, url, lab):
@@ -95,7 +146,7 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         for lab in LABS:
-            problems = await check_lab(browser, url, lab)
+            problems = await check_lab(browser, url, lab) + await check_submission(browser, url, lab)
             print(('FAIL ' if problems else 'ok   ') + lab + ('' if not problems else ': ' + '; '.join(problems)))
             failed = failed or bool(problems)
         await browser.close()

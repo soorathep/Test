@@ -522,3 +522,14 @@ gives 0.7074 instead of 0.7050.
 - `tests/smoke_test.py` runs every lab in a headless browser (calculation, starter cases,
   graduate investigations, answer gating, 375 px width). Run it after `build.py`.
 - The design notes propose a required, choose-two and optional split of the 13 labs.
+
+## Student details in downloaded studies (November 2026)
+
+- Every lab has an optional "Your details" block (first name, last name, student ID) above
+  "Download my study". A study downloads with or without them.
+- `assets/student.js` adds a `student` object at the top of the JSON file and appends the
+  details to the file name, for example `lab09-virial-study_6712345621_Somchai_Jaidee.json`.
+- Reopening a study restores the details. The browser also remembers them between labs
+  (local storage, this browser only).
+- `tests/smoke_test.py` now downloads a study with and without details in every lab and
+  reopens it in a fresh browser.

@@ -7,7 +7,7 @@
   <title>Your VLE data · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="Bring your own binary VLE data: check units and vapor pressures on one row, inspect activity coefficients and their pure-liquid limits, then fit a model.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/labs.css?v=r3">
+  <link rel="stylesheet" href="assets/labs.css?v=r4">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -133,7 +133,8 @@
       <p id="comparison-empty" class="empty-state">Your validated cases will appear here after you add them.</p>
       <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved data imports" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">Components</th><th scope="col">Units T, P</th><th scope="col">Rows used</th><th scope="col">ln γ₂ at low x₁</th><th scope="col">ln γ₁ at high x₁</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
       <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note."></textarea>
-      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <fieldset class="student-fields"><legend>Your details <span>(optional)</span></legend><p class="input-help">Saved in the downloaded file so your instructor can identify it. You can download without them.</p><div class="student-grid"><div><label for="student-first-name">First name</label><input id="student-first-name" type="text" maxlength="80" autocomplete="given-name"></div><div><label for="student-last-name">Last name</label><input id="student-last-name" type="text" maxlength="80" autocomplete="family-name"></div><div><label for="student-id">Student ID</label><input id="student-id" type="text" maxlength="20" inputmode="numeric" autocomplete="off"></div></div></fieldset>
+        <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
       <p id="status" class="study-status" role="status" aria-live="polite">Load the example or enter your own table.</p><p class="privacy-note">Your table, settings, comparisons and explanations stay in this open page. The study file includes your data table so that it can be reopened.</p>
       <details class="advanced"><summary>Model and assumptions</summary><p>γ<sub>i</sub> = y<sub>i</sub>P/(x<sub>i</sub>P<sub>i</sub><sup>sat</sup>) assumes an ideal vapor and negligible Poynting and excess-volume corrections. Saturation pressures come from your Antoine constants at each row's T and are never extrapolated beyond the declared range. Fits minimize the unweighted mean of (100 ΔP/P)² and (100 Δy₁)² with bounded multistart Nelder–Mead. <a href="../labs/vle-input.html">Open the current Lab 08</a> for HE data, isobaric temperature-dependent NRTL and the full consistency suite.</p></details>
     </section>

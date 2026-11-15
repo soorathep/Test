@@ -2,6 +2,7 @@
 import * as ad from '../../labs/assets/adsorption.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { ADSORPTION_GRADUATE_VERSION, MODELS, R, solve, tFactor, isothermParameters, fitRangeStudy, heatStudy, swingStudy, evidenceCheck } from './adsorption-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-adsorption-study/1';
 const $ = id => document.getElementById(id);
@@ -190,8 +191,8 @@ function exportStudy() {
   const record = { schema: SCHEMA, engineVersion: ad.ADSORPTION_VERSION, graduateVersion: ADSORPTION_GRADUATE_VERSION, savedAt: new Date().toISOString(),
     inputs: study.inputs || readInputs().inputs, prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases,
     notes: notes(), reflection: $('reflection').value, investigations: { fits: Boolean(study.fits), heat: Boolean(study.heat), swing: Boolean(study.swing) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab11-adsorption-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab11-adsorption-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 

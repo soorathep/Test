@@ -7,7 +7,7 @@
   <title>Liquid stability and LLE · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate liquid-stability investigation: verify a liquid split, separate local from global evidence, test parameter sensitivity and compare model forms.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/labs.css?v=r3">
+  <link rel="stylesheet" href="assets/labs.css?v=r4">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -167,7 +167,8 @@
       <p id="comparison-empty" class="empty-state">Your calculated cases will appear here after you add them.</p>
       <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved liquid-stability case comparison" tabindex="0" hidden><table><caption class="visually-hidden">Compositions and fractions are dimensionless.</caption><thead><tr><th scope="col">Case</th><th scope="col">Model and parameters</th><th scope="col">Feed z₁</th><th scope="col">Feed label</th><th scope="col">Phase</th><th scope="col">x₁<sup>α</sup></th><th scope="col">x₁<sup>β</sup></th><th scope="col">f<sub>β</sub></th><th scope="col">Δg decrease</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
       <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note beyond the graduate evidence record."></textarea>
-      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <fieldset class="student-fields"><legend>Your details <span>(optional)</span></legend><p class="input-help">Saved in the downloaded file so your instructor can identify it. You can download without them.</p><div class="student-grid"><div><label for="student-first-name">First name</label><input id="student-first-name" type="text" maxlength="80" autocomplete="given-name"></div><div><label for="student-last-name">Last name</label><input id="student-last-name" type="text" maxlength="80" autocomplete="family-name"></div><div><label for="student-id">Student ID</label><input id="student-id" type="text" maxlength="20" inputmode="numeric" autocomplete="off"></div></div></fieldset>
+        <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
       <p id="status" class="study-status" role="status" aria-live="polite">Starting case loaded. Press Calculate equilibrium.</p><p class="privacy-note">Your inputs, comparisons, scenario settings and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Results are recalculated on restore.</p>
     </section>
     <noscript><p class="error-summary">Enable JavaScript to calculate the equilibrium state. The starting problem and investigation steps remain available to read.</p></noscript>

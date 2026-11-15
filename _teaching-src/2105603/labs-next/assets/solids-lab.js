@@ -2,6 +2,7 @@
 import * as so from '../../labs/assets/solids.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { SOLIDS_GRADUATE_VERSION, MODELS, MODEL_KEYS, engineInput, solve, saturationT, coolingPath, modelStudy, propertyStudy, evidenceCheck } from './solids-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-solids-study/1';
 const $ = id => document.getElementById(id);
@@ -200,8 +201,8 @@ function exportStudy() {
   const record = { schema: SCHEMA, engineVersion: so.SOLIDS_VERSION, graduateVersion: SOLIDS_GRADUATE_VERSION, savedAt: new Date().toISOString(),
     inputs: study.inputs || readInputs().inputs, prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases,
     notes: notes(), reflection: $('reflection').value, investigations: { cooling: Boolean(study.cooling), models: Boolean(study.models), properties: Boolean(study.properties) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab10-sle-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab10-sle-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 

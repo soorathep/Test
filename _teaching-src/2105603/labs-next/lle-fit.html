@@ -7,7 +7,7 @@
   <title>LLE parameter fitting · Thermodynamics Labs 2027 preview</title>
   <meta name="description" content="A graduate LLE fitting investigation: calibrate NRTL to a tie line, test temperature transfer, examine fixed-alpha identifiability and measurement sensitivity.">
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="assets/labs.css?v=r3">
+  <link rel="stylesheet" href="assets/labs.css?v=r4">
 </head>
 <body data-mode="core">
   <a class="skip-link" href="#experiment">Skip to the experiment</a>
@@ -151,7 +151,8 @@
       <p id="comparison-empty" class="empty-state">Your fitted cases will appear here after you add them.</p>
       <div id="comparison-table-wrap" class="table-scroll" role="region" aria-label="Saved fit comparison" tabindex="0" hidden><table><thead><tr><th scope="col">Case</th><th scope="col">Data</th><th scope="col">T / K</th><th scope="col">α</th><th scope="col">τ₁₂</th><th scope="col">τ₂₁</th><th scope="col">Composition error</th><th scope="col">Reopen</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
       <label for="reflection" class="reflection-label">Optional additional note</label><textarea id="reflection" rows="3" maxlength="10000" placeholder="Add an optional note beyond the graduate evidence record."></textarea>
-      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <fieldset class="student-fields"><legend>Your details <span>(optional)</span></legend><p class="input-help">Saved in the downloaded file so your instructor can identify it. You can download without them.</p><div class="student-grid"><div><label for="student-first-name">First name</label><input id="student-first-name" type="text" maxlength="80" autocomplete="given-name"></div><div><label for="student-last-name">Last name</label><input id="student-last-name" type="text" maxlength="80" autocomplete="family-name"></div><div><label for="student-id">Student ID</label><input id="student-id" type="text" maxlength="20" inputmode="numeric" autocomplete="off"></div></div></fieldset>
+        <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
       <p id="status" class="study-status" role="status" aria-live="polite">Loading the measured data record…</p><p class="privacy-note">Your settings, comparisons and explanations are kept in this open page. Download one study file to keep the complete record and reopen it later. Fits are recalculated on restore.</p>
       <details class="advanced"><summary>Data source</summary><p>Measured tie lines: Atik and Kerboub, J. Chem. Eng. Data 2008, 53, 1669–1671 (<a href="https://doi.org/10.1021/je8001688">doi:10.1021/je8001688</a>). Numerical values from <a href="https://trc.nist.gov/ThermoML/10.1021/je8001688.html">NIST ThermoML</a>, datasets 6 and 7, with compiler-evaluated expanded uncertainties at 95% confidence. Cyclohexane is component 1; α is the cyclohexane-poor liquid.</p></details>
     </section>

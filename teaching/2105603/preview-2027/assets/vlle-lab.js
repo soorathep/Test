@@ -4,6 +4,7 @@ import * as liquid from '../../labs/assets/stability.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { PARAMETER_KEYS, PARAMETER_LABELS, MODELS, modelParameters } from './stability-graduate.js';
 import { VLLE_GRADUATE_VERSION, VOLATILITY_P2, solve, phaseLabel, amountsForVaporFraction, pressureSweep, volatilityStudy, evidenceCheck } from './vlle-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-vlle-study/1';
 const $ = id => document.getElementById(id);
@@ -236,8 +237,8 @@ function exportStudy() {
     inputs: study.inputs || readInputs().inputs, prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases,
     specFV: $('spec-fv').value, notes: notes(), reflection: $('reflection').value,
     investigations: { amounts: Boolean(study.amounts), sweep: Boolean(study.sweep), volatility: Boolean(study.volatility) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab06-vlle-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab06-vlle-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 

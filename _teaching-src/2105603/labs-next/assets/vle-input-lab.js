@@ -3,6 +3,7 @@ import * as vi from '../../labs/assets/vle-input.js';
 import { predict } from '../../labs/assets/vle-input.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { VLE_INPUT_GRADUATE_VERSION, MODELS, firstRow, pureLimits, errorSignatures, modelComparison, endpointStudy, evidenceCheck } from './vle-input-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-vle-input-study/1';
 const $ = id => document.getElementById(id);
@@ -204,8 +205,8 @@ function exportStudy() {
   const record = { schema: SCHEMA, engineVersion: vi.INPUT_VERSION, graduateVersion: VLE_INPUT_GRADUATE_VERSION, savedAt: new Date().toISOString(), options: readOptions(), text: $('data').value,
     fitModel: $('fit-model').value, fitted: Boolean(study.fit), prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases, notes: notes(), reflection: $('reflection').value,
     investigations: { signatures: Boolean(study.signatures), models: Boolean(study.models), endpoints: Boolean(study.endpoints) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab08-vle-data-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab08-vle-data-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded, including your data table.';
 }
 

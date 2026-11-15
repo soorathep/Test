@@ -2,6 +2,7 @@
 import * as ad from './adiabatic-local.js';
 import { palette as c } from '../../labs/assets/palette.js';
 import { ADIABATIC_GRADUATE_VERSION, MODELS, MODEL_KEYS, modelParameters, realSystem, solve, feedSweep, modelComparison, dutyForVapor, evidenceCheck } from './adiabatic-graduate.js';
+import { withStudent, withStudentJson, studentFileName } from './student.js';
 
 const SCHEMA = 'skh-thermo-adiabatic-study/1';
 const $ = id => document.getElementById(id);
@@ -186,8 +187,8 @@ function exportStudy() {
   const record = { schema: SCHEMA, engineVersion: ad.ADIABATIC_VERSION, graduateVersion: ADIABATIC_GRADUATE_VERSION, savedAt: new Date().toISOString(),
     inputs: study.inputs || readInputs().inputs, prediction: $('prediction').value, caseName: $('case-name').value, cases: study.cases, targetBeta: $('target-beta').value,
     notes: notes(), reflection: $('reflection').value, investigations: { sweep: Boolean(study.sweep), models: Boolean(study.models), duty: Boolean(study.duty) } };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' })), a = document.createElement('a');
-  a.href = url; a.download = 'lab07-adiabatic-study.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withStudent(record), null, 2)], { type: 'application/json' })), a = document.createElement('a');
+  a.href = url; a.download = studentFileName('lab07-adiabatic-study.json'); a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   $('status').textContent = 'Study downloaded. Open it later to restore the cases, settings and notes.';
 }
 
