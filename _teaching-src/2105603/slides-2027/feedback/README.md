@@ -22,6 +22,12 @@ pace, confidence 1-5, lab worked, still unclear, one change.
 4. Put the Worker address in `RELAY_URL` at the bottom of `exit.html`, render
    and publish.
 
+## Current deployment
+
+- Repository: `soorathep/course-feedback` (private)
+- Worker: `https://course-feedback-relay.ecs-thailand-election.workers.dev/`
+  (Cloudflare account soorathep.k; token expires about November 2027)
+
 ## Reading the answers
 
 Clone the private repository, then run `python3 collect.py` inside it (copy the
