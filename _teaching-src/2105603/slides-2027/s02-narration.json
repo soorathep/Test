@@ -1,0 +1,440 @@
+{
+ "session": "s02",
+ "voice": "am_michael",
+ "slides": {
+  "title-slide": [
+   {
+    "en": "Welcome to session 2.",
+    "th": "ยินดีต้อนรับสู่คาบที่ 2"
+   },
+   {
+    "en": "Today we leave the ideal liquid and work with measured data for a real mixture.",
+    "th": "วันนี้เราจะออกจากของเหลวอุดมคติ และทำงานกับข้อมูลการวัดของสารผสมจริง"
+   },
+   {
+    "en": "The question for the whole session: when a model fits measured data well, what does that prove, and what does it not?",
+    "th": "คำถามของทั้งคาบนี้คือ เมื่อแบบจำลองเข้ากับข้อมูลการวัดได้ดี สิ่งนั้นพิสูจน์อะไร และไม่ได้พิสูจน์อะไร"
+   },
+   {
+    "en": "If you are studying on your own, turn on narration and captions with the buttons at the bottom left. Use the arrow keys to move through the slides.",
+    "th": "ถ้าเรียนด้วยตนเอง เปิดเสียงบรรยายและคำบรรยายได้ที่ปุ่มมุมซ้ายล่าง และใช้ปุ่มลูกศรเพื่อเลื่อนสไลด์"
+   }
+  ],
+  "course-map": [
+   {
+    "en": "This is session 2 of the seven sessions after the midterm.",
+    "th": "นี่คือคาบที่ 2 จากเจ็ดคาบหลังสอบกลางภาค"
+   },
+   {
+    "en": "In session 1 we used an ideal liquid and Raoult's law.",
+    "th": "ในคาบที่ 1 เราใช้ของเหลวอุดมคติและกฎของราอูลต์"
+   },
+   {
+    "en": "Today we take measured data for a real mixture, infer how far it is from ideal, fit a model, and test whether that model can be trusted.",
+    "th": "วันนี้เราจะใช้ข้อมูลการวัดของสารผสมจริง หาว่าห่างจากอุดมคติเท่าไร สร้างแบบจำลองให้เข้ากับข้อมูล และทดสอบว่าเชื่อถือแบบจำลองนั้นได้แค่ไหน"
+   }
+  ],
+  "why": [
+   {
+    "en": "Why does this matter? Look at 2-propanol and water at 60 kPa.",
+    "th": "ทำไมเรื่องนี้สำคัญ ลองดู 2-โพรพานอลกับน้ำที่ 60 กิโลปาสคาล",
+    "say": "Why does this matter? Look at two-propanol and water at sixty kilopascals."
+   },
+   {
+    "en": "The teal lines are what Raoult's law predicts. The amber points are what was measured.",
+    "th": "เส้นสีเขียวหัวเป็ดคือสิ่งที่กฎของราอูลต์ทำนาย จุดสีอำพันคือค่าที่วัดได้จริง"
+   },
+   {
+    "en": "The real mixture boils up to 13 K lower than Raoult's law predicts.",
+    "th": "สารผสมจริงเดือดที่อุณหภูมิต่ำกว่าที่กฎของราอูลต์ทำนายได้มากถึง 13 เคลวิน",
+    "say": "The real mixture boils up to thirteen kelvin lower than Raoult's law predicts."
+   },
+   {
+    "en": "It also has an azeotrope near x1 = 0.65, where liquid and vapor have the same composition.",
+    "th": "และยังมีจุดอะซีโอโทรปใกล้ x₁ = 0.65 ซึ่งของเหลวและไอมีองค์ประกอบเท่ากัน",
+    "say": "It also has an azeotrope near x one equals zero point six five, where liquid and vapor have the same composition."
+   },
+   {
+    "en": "A column designed with Raoult's law would promise a pure product that simple distillation cannot make.",
+    "th": "หอกลั่นที่ออกแบบด้วยกฎของราอูลต์จะให้ผลว่าได้ผลิตภัณฑ์บริสุทธิ์ ซึ่งการกลั่นธรรมดาทำไม่ได้จริง"
+   }
+  ],
+  "recap": [
+   {
+    "en": "In session 1 we used Raoult's law for an ideal liquid.",
+    "th": "ในคาบที่ 1 เราใช้กฎของราอูลต์สำหรับของเหลวอุดมคติ"
+   },
+   {
+    "en": "Today we keep the ideal vapor but let the liquid be real, by adding the activity coefficient gamma.",
+    "th": "วันนี้เรายังให้ไอเป็นอุดมคติ แต่ให้ของเหลวเป็นของจริง โดยเพิ่มสัมประสิทธิ์แอกทิวิตี γ"
+   },
+   {
+    "en": "Gamma measures how far each component departs from an ideal solution, relative to its pure liquid.",
+    "th": "γ บอกว่าแต่ละองค์ประกอบห่างจากสารละลายอุดมคติเท่าไร เมื่อเทียบกับของเหลวบริสุทธิ์ของมันเอง"
+   },
+   {
+    "en": "Every other quantity is measured or comes from a vapor-pressure correlation, so one measured state gives both gammas.",
+    "th": "ปริมาณอื่นทั้งหมดได้จากการวัดหรือจากสหสัมพันธ์ความดันไอ ดังนั้นสถานะที่วัดได้หนึ่งจุดให้ค่า γ ได้ทั้งสองตัว"
+   }
+  ],
+  "outcomes": [
+   {
+    "en": "By the end of today you should be able to do four things.",
+    "th": "เมื่อจบคาบนี้ คุณควรทำได้สี่อย่าง"
+   },
+   {
+    "en": "Infer both activity coefficients from one measured state.",
+    "th": "หาสัมประสิทธิ์แอกทิวิตีทั้งสองตัวจากสถานะที่วัดได้หนึ่งจุด"
+   },
+   {
+    "en": "Explain what gamma greater than one and an azeotrope mean, with numbers.",
+    "th": "อธิบายด้วยตัวเลขว่า γ ที่มากกว่าหนึ่งและจุดอะซีโอโทรปหมายความว่าอะไร"
+   },
+   {
+    "en": "Fit a two-parameter NRTL model at one pressure and check it at another.",
+    "th": "สร้างแบบจำลอง NRTL สองพารามิเตอร์ที่ความดันหนึ่ง แล้วตรวจสอบที่อีกความดันหนึ่ง"
+   },
+   {
+    "en": "And state what a small fitting error and a consistency test can and cannot establish.",
+    "th": "และบอกได้ว่าค่าความคลาดเคลื่อนของการ fit ที่ต่ำ และการทดสอบความสอดคล้อง ยืนยันอะไรได้และไม่ได้"
+   }
+  ],
+  "route": [
+   {
+    "en": "Here is the plan for the three hours.",
+    "th": "นี่คือแผนของการเรียนสามชั่วโมง"
+   },
+   {
+    "en": "Thirty minutes of concepts: gamma from data, the NRTL model, and the idea of fit and check.",
+    "th": "สามสิบนาทีแรกเป็นแนวคิด ได้แก่ γ จากข้อมูล แบบจำลอง NRTL และแนวคิดการ fit แล้วตรวจสอบ"
+   },
+   {
+    "en": "Activity 1 is about the azeotrope. Then I demonstrate Lab 02.",
+    "th": "กิจกรรมที่ 1 เป็นเรื่องจุดอะซีโอโทรป จากนั้นผมจะสาธิต Lab 02"
+   },
+   {
+    "en": "After the break you work in pairs for seventy minutes, and we finish with a discussion of what the checks showed.",
+    "th": "หลังพักให้ทำงานเป็นคู่เจ็ดสิบนาที แล้วปิดท้ายด้วยการอภิปรายว่าการตรวจสอบบอกอะไรเรา"
+   },
+   {
+    "en": "If you are studying on your own, follow the same order and pause at each activity slide.",
+    "th": "ถ้าเรียนด้วยตนเอง ให้ทำตามลำดับเดียวกัน และหยุดที่สไลด์กิจกรรมแต่ละสไลด์"
+   }
+  ],
+  "gamma-def": [
+   {
+    "en": "Solve the modified Raoult's law for gamma. Gamma one is y1 P over x1 P1 sat.",
+    "th": "แก้กฎของราอูลต์แบบปรับปรุงเพื่อหา γ ได้ γ₁ เท่ากับ y₁P หารด้วย x₁P₁^sat",
+    "say": "Solve the modified Raoult's law for gamma. Gamma one is y one times P, over x one times P one sat."
+   },
+   {
+    "en": "The saturation pressure must be evaluated at the measured temperature of that row, using the Antoine equation.",
+    "th": "ความดันไออิ่มตัวต้องคำนวณที่อุณหภูมิที่วัดได้ของแถวนั้น โดยใช้สมการ Antoine"
+   },
+   {
+    "en": "Three assumptions sit behind every gamma: ideal vapor, a negligible pressure correction on the liquid, and the pure-liquid standard state.",
+    "th": "มีสมมติฐานสามข้ออยู่เบื้องหลัง γ ทุกค่า คือไอเป็นอุดมคติ ผลของความดันต่อของเหลวน้อยมาก และใช้ของเหลวบริสุทธิ์เป็นสถานะอ้างอิง"
+   },
+   {
+    "en": "At a pure endpoint the absent component gives zero over zero, so those rows carry no gamma.",
+    "th": "ที่จุดปลายที่เป็นสารบริสุทธิ์ องค์ประกอบที่ไม่มีอยู่จะได้ศูนย์หารศูนย์ แถวเหล่านั้นจึงไม่ให้ค่า γ"
+   }
+  ],
+  "worked": [
+   {
+    "en": "Here is a worked example: row 7 at 60 kPa.",
+    "th": "นี่คือตัวอย่างการคำนวณ แถวที่ 7 ที่ 60 กิโลปาสคาล",
+    "say": "Here is a worked example: row seven at sixty kilopascals."
+   },
+   {
+    "en": "The row gives T = 341.25 K, x1 = 0.4943 and y1 = 0.569.",
+    "th": "แถวนี้ให้ T = 341.25 เคลวิน, x₁ = 0.4943 และ y₁ = 0.569",
+    "say": "The row gives a temperature of three hundred and forty-one point two five kelvin, x one equals zero point four nine four three, and y one equals zero point five six nine."
+   },
+   {
+    "en": "At that temperature, the Antoine equation gives 55.853 kPa for 2-propanol and 28.703 kPa for water.",
+    "th": "ที่อุณหภูมินั้น สมการ Antoine ให้ 55.853 กิโลปาสคาลสำหรับ 2-โพรพานอล และ 28.703 กิโลปาสคาลสำหรับน้ำ",
+    "say": "At that temperature, the Antoine equation gives fifty-five point eight five kilopascals for two-propanol, and twenty-eight point seven zero kilopascals for water."
+   },
+   {
+    "en": "So gamma 1 is 1.237 and gamma 2 is 1.782.",
+    "th": "ดังนั้น γ₁ เท่ากับ 1.237 และ γ₂ เท่ากับ 1.782",
+    "say": "So gamma one is one point two three seven, and gamma two is one point seven eight two."
+   },
+   {
+    "en": "Both exceed one: each component escapes to the vapor more readily than in an ideal solution.",
+    "th": "ทั้งสองค่ามากกว่าหนึ่ง แต่ละองค์ประกอบจึงหนีเข้าสู่เฟสไอได้ง่ายกว่าในสารละลายอุดมคติ"
+   }
+  ],
+  "gamma-meaning": [
+   {
+    "en": "Now repeat that for all 18 usable rows at 60 kPa. This is the result.",
+    "th": "ทำแบบเดียวกันกับทั้ง 18 แถวที่ใช้ได้ที่ 60 กิโลปาสคาล นี่คือผลลัพธ์",
+    "say": "Now repeat that for all eighteen usable rows at sixty kilopascals. This is the result."
+   },
+   {
+    "en": "Ln gamma is positive for both components at every composition: a positive deviation from Raoult's law.",
+    "th": "ln γ เป็นบวกสำหรับทั้งสององค์ประกอบในทุกองค์ประกอบ คือเบี่ยงเบนทางบวกจากกฎของราอูลต์"
+   },
+   {
+    "en": "It is largest when a component is dilute. A little 2-propanol in water is very volatile, with gamma near eight.",
+    "th": "ค่านี้สูงที่สุดเมื่อองค์ประกอบนั้นเจือจาง 2-โพรพานอลปริมาณน้อยในน้ำระเหยได้ง่ายมาก โดยมี γ ประมาณแปด",
+    "say": "It is largest when a component is dilute. A little two-propanol in water is very volatile, with gamma near eight."
+   },
+   {
+    "en": "At an azeotrope, y equals x, so the ratio of the gammas equals the inverse ratio of the saturation pressures.",
+    "th": "ที่จุดอะซีโอโทรป y เท่ากับ x อัตราส่วนของ γ จึงเท่ากับอัตราส่วนกลับของความดันไออิ่มตัว"
+   }
+  ],
+  "nrtl": [
+   {
+    "en": "Points are not enough for design. We need a model that gives gamma at any composition.",
+    "th": "จุดข้อมูลอย่างเดียวไม่พอสำหรับการออกแบบ เราต้องมีแบบจำลองที่ให้ค่า γ ได้ทุกองค์ประกอบ"
+   },
+   {
+    "en": "NRTL is a common choice. With alpha fixed at 0.47 from the article, only two parameters are fitted: tau 1 2 and tau 2 1.",
+    "th": "NRTL เป็นตัวเลือกที่ใช้กันมาก เมื่อกำหนด α = 0.47 ตามบทความ จะเหลือพารามิเตอร์ที่ต้อง fit เพียงสองตัว คือ τ₁₂ และ τ₂₁",
+    "say": "NRTL is a common choice. With alpha fixed at zero point four seven from the article, only two parameters are fitted: tau one two and tau two one."
+   },
+   {
+    "en": "To fit means to choose those two values so that the root-mean-square difference between model and measured ln gamma is as small as possible.",
+    "th": "การ fit คือการเลือกสองค่านั้น ให้ค่ารากกำลังสองเฉลี่ยของผลต่างระหว่าง ln γ จากแบบจำลองและจากการวัด มีค่าน้อยที่สุด"
+   }
+  ],
+  "fit-check": [
+   {
+    "en": "The data come at two pressures: 60 kPa with 18 usable pairs, and 80 kPa with 17.",
+    "th": "ข้อมูลมีสองความดัน คือ 60 กิโลปาสคาลมี 18 คู่ที่ใช้ได้ และ 80 กิโลปาสคาลมี 17 คู่",
+    "say": "The data come at two pressures: sixty kilopascals with eighteen usable pairs, and eighty kilopascals with seventeen."
+   },
+   {
+    "en": "Fit the two parameters to one pressure only, keep them fixed, and check the model against the other pressure, which it has never seen.",
+    "th": "fit พารามิเตอร์ทั้งสองกับข้อมูลความดันเดียว คงค่าไว้ แล้วตรวจสอบแบบจำลองกับอีกความดันหนึ่งที่แบบจำลองไม่เคยเห็น"
+   },
+   {
+    "en": "A fitting error can always be made small by adding parameters. The checking error on held-out data is the honest test.",
+    "th": "ความคลาดเคลื่อนของการ fit ทำให้ต่ำได้เสมอด้วยการเพิ่มพารามิเตอร์ ความคลาดเคลื่อนของการตรวจสอบกับข้อมูลที่กันไว้จึงเป็นการทดสอบที่ตรงไปตรงมา"
+   },
+   {
+    "en": "It is the same idea as training and test data in machine learning.",
+    "th": "เป็นแนวคิดเดียวกับข้อมูล training และ test ใน machine learning"
+   }
+  ],
+  "activity-1": [
+   {
+    "en": "Activity 1. Ten minutes.",
+    "th": "กิจกรรมที่ 1 สิบนาที"
+   },
+   {
+    "en": "Row 5 at 60 kPa is the azeotrope.",
+    "th": "แถวที่ 5 ที่ 60 กิโลปาสคาลคือจุดอะซีโอโทรป",
+    "say": "Row five at sixty kilopascals is the azeotrope."
+   },
+   {
+    "en": "Is gamma 1 over gamma 2 greater or less than one, and roughly how large? The saturation pressures are on the slide.",
+    "th": "γ₁/γ₂ มากกว่าหรือน้อยกว่าหนึ่ง และมีค่าประมาณเท่าไร ความดันไออิ่มตัวอยู่บนสไลด์"
+   },
+   {
+    "en": "Use the azeotrope condition, not a full calculation. Then compare with your partner.",
+    "th": "ใช้เงื่อนไขของจุดอะซีโอโทรป ไม่ต้องคำนวณเต็มรูปแบบ แล้วเทียบกับเพื่อนคู่"
+   }
+  ],
+  "activity-1-debrief": [
+   {
+    "en": "Here is the answer to activity 1.",
+    "th": "นี่คือคำตอบของกิจกรรมที่ 1"
+   },
+   {
+    "en": "At the azeotrope, gamma 1 over gamma 2 equals P2 sat over P1 sat, which is 28.29 over 55.04, or 0.514.",
+    "th": "ที่จุดอะซีโอโทรป γ₁/γ₂ เท่ากับ P₂^sat/P₁^sat คือ 28.29 หาร 55.04 ได้ 0.514",
+    "say": "At the azeotrope, gamma one over gamma two equals P two sat over P one sat, which is twenty-eight point two nine over fifty-five point zero four, or zero point five one four."
+   },
+   {
+    "en": "The measured row gives 0.521, about one percent different, because y and x are close but not exactly equal.",
+    "th": "แถวที่วัดได้ให้ 0.521 ต่างกันประมาณหนึ่งเปอร์เซ็นต์ เพราะ y กับ x ใกล้กันแต่ไม่เท่ากันพอดี",
+    "say": "The measured row gives zero point five two one, about one percent different, because y and x are close but not exactly equal."
+   },
+   {
+    "en": "The ratio is less than one: water, the less volatile component, needs the larger gamma to reach the same partial pressure.",
+    "th": "อัตราส่วนน้อยกว่าหนึ่ง น้ำซึ่งระเหยยากกว่าต้องมี γ ที่สูงกว่า จึงจะมีความดันย่อยเท่ากัน"
+   }
+  ],
+  "demo-lab": [
+   {
+    "en": "Now open Lab 02. You can follow on your own screen.",
+    "th": "ตอนนี้เปิด Lab 02 ทำตามบนหน้าจอของตัวเองได้"
+   },
+   {
+    "en": "Read row 7 and open the worked calculation. Check that it matches the values we just calculated.",
+    "th": "อ่านแถวที่ 7 แล้วเปิดการคำนวณตัวอย่าง ตรวจว่าตรงกับค่าที่เพิ่งคำนวณไป",
+    "say": "Read row seven and open the worked calculation. Check that it matches the values we just calculated."
+   },
+   {
+    "en": "Fit 60 kPa only and read the fitting error: 0.168.",
+    "th": "fit เฉพาะข้อมูล 60 กิโลปาสคาล แล้วอ่านความคลาดเคลื่อนของการ fit ได้ 0.168",
+    "say": "Fit sixty kilopascals only, and read the fitting error: zero point one six eight."
+   },
+   {
+    "en": "Then change the checking pressure to 80 kPa without refitting, and look at where the model misses on the plot.",
+    "th": "จากนั้นเปลี่ยนความดันที่ใช้ตรวจสอบเป็น 80 กิโลปาสคาลโดยไม่ fit ใหม่ แล้วดูในกราฟว่าแบบจำลองพลาดตรงไหน",
+    "say": "Then change the checking pressure to eighty kilopascals without refitting, and look at where the model misses on the plot."
+   }
+  ],
+  "mistakes": [
+   {
+    "en": "Four common mistakes before you start.",
+    "th": "ข้อผิดพลาดที่พบบ่อยสี่ข้อก่อนเริ่มทำ"
+   },
+   {
+    "en": "One: evaluating the saturation pressures at the wrong temperature. Each row has its own measured T.",
+    "th": "หนึ่ง คำนวณความดันไออิ่มตัวที่อุณหภูมิผิด แต่ละแถวมีอุณหภูมิที่วัดได้ของตัวเอง"
+   },
+   {
+    "en": "Two: using the pure-component rows, which give zero over zero.",
+    "th": "สอง ใช้แถวที่เป็นสารบริสุทธิ์ ซึ่งให้ศูนย์หารศูนย์"
+   },
+   {
+    "en": "Three: refitting at the checking pressure, which leaves nothing to check.",
+    "th": "สาม fit ใหม่ที่ความดันที่ใช้ตรวจสอบ ทำให้ไม่เหลืออะไรให้ตรวจ"
+   },
+   {
+    "en": "Four: reading a small fitting error as proof that the model or the data are right.",
+    "th": "สี่ ถือว่าความคลาดเคลื่อนของการ fit ที่ต่ำเป็นหลักฐานว่าแบบจำลองหรือข้อมูลถูกต้อง"
+   }
+  ],
+  "break": [
+   {
+    "en": "Take a ten-minute break.",
+    "th": "พักสิบนาที"
+   },
+   {
+    "en": "Next is activity 2, a pair investigation in Lab 02. Check that the lab opens on your device before the break ends.",
+    "th": "ต่อไปคือกิจกรรมที่ 2 ทำงานเป็นคู่ใน Lab 02 ตรวจว่า lab เปิดได้บนอุปกรณ์ของคุณก่อนหมดเวลาพัก"
+   }
+  ],
+  "activity-2": [
+   {
+    "en": "Activity 2 takes seventy minutes, in pairs. One drives Lab 02, the other checks by hand, then swap.",
+    "th": "กิจกรรมที่ 2 ใช้เวลาเจ็ดสิบนาที ทำเป็นคู่ คนหนึ่งใช้ Lab 02 อีกคนตรวจด้วยมือ แล้วสลับกัน"
+   },
+   {
+    "en": "First, pick any interior row other than row 7 and calculate both gammas by hand. Check with the lab.",
+    "th": "ขั้นแรก เลือกแถวใดก็ได้ที่ไม่ใช่จุดปลายและไม่ใช่แถวที่ 7 คำนวณ γ ทั้งสองด้วยมือ แล้วตรวจกับ lab",
+    "say": "First, pick any interior row other than row seven and calculate both gammas by hand. Check with the lab."
+   },
+   {
+    "en": "Then run three fits: 60 checked at 80, 80 checked at 60, and both pressures together.",
+    "th": "จากนั้น fit สามแบบ คือ fit 60 ตรวจที่ 80, fit 80 ตรวจที่ 60 และ fit ทั้งสองความดันพร้อมกัน",
+    "say": "Then run three fits: sixty checked at eighty, eighty checked at sixty, and both pressures together."
+   },
+   {
+    "en": "Compare the errors, decide which fit transfers best, and write two sentences that answer the session question.",
+    "th": "เทียบค่าความคลาดเคลื่อน ตัดสินว่า fit แบบไหนใช้กับอีกความดันได้ดีที่สุด แล้วเขียนสองประโยคตอบคำถามประจำคาบ"
+   }
+  ],
+  "activity-2-check": [
+   {
+    "en": "This is what to hand in: the Lab 02 study file with the three cases, one hand calculation, and two sentences.",
+    "th": "สิ่งที่ต้องส่งคือ ไฟล์ study ของ Lab 02 ที่มีสามเคส การคำนวณด้วยมือหนึ่งครั้ง และสองประโยค"
+   },
+   {
+    "en": "Use the table on the right to check your results.",
+    "th": "ใช้ตารางด้านขวาตรวจผลของคุณ"
+   },
+   {
+    "en": "Graduate students: open Lab 03 with the measured 60 kPa data and explain why the tests say not applicable or not assessed.",
+    "th": "นิสิตบัณฑิตศึกษา เปิด Lab 03 กับข้อมูลที่วัดได้ที่ 60 กิโลปาสคาล แล้วอธิบายว่าทำไมการทดสอบจึงรายงานว่า not applicable หรือ not assessed",
+    "say": "Graduate students: open Lab 03 with the measured sixty kilopascal data, and explain why the tests say not applicable, or not assessed."
+   }
+  ],
+  "discussion": [
+   {
+    "en": "Here are the three fits side by side. Teal is the fitting error, amber is the checking error.",
+    "th": "นี่คือผลของทั้งสาม fit เทียบกัน สีเขียวหัวเป็ดคือความคลาดเคลื่อนของการ fit สีอำพันคือความคลาดเคลื่อนของการตรวจสอบ"
+   },
+   {
+    "en": "Fitting 80 kPa gives the smallest fitting error, 0.043, but the largest checking error, 0.291. Why?",
+    "th": "fit ที่ 80 กิโลปาสคาลให้ความคลาดเคลื่อนของการ fit ต่ำที่สุดคือ 0.043 แต่ความคลาดเคลื่อนของการตรวจสอบสูงที่สุดคือ 0.291 เพราะอะไร",
+    "say": "Fitting eighty kilopascals gives the smallest fitting error, zero point zero four three, but the largest checking error, zero point two nine one. Why?"
+   },
+   {
+    "en": "Fitting 60 kPa gives similar errors at both pressures. What does that suggest about the scatter in the 60 kPa data?",
+    "th": "fit ที่ 60 กิโลปาสคาลให้ความคลาดเคลื่อนใกล้เคียงกันทั้งสองความดัน สิ่งนี้บอกอะไรเกี่ยวกับการกระจายของข้อมูลที่ 60 กิโลปาสคาล",
+    "say": "Fitting sixty kilopascals gives similar errors at both pressures. What does that suggest about the scatter in the sixty kilopascal data?"
+   },
+   {
+    "en": "And why does the joint fit leave no honest check?",
+    "th": "และทำไมการ fit ทั้งสองความดันพร้อมกันจึงไม่เหลือการตรวจสอบที่ตรงไปตรงมา"
+   }
+  ],
+  "consistency": [
+   {
+    "en": "Can a test tell us whether the data themselves are good?",
+    "th": "มีการทดสอบที่บอกได้ไหมว่าตัวข้อมูลเองดีหรือไม่"
+   },
+   {
+    "en": "The Gibbs-Duhem equation links the two activity coefficients. For isothermal data it gives the area test: the integral of ln gamma 1 over gamma 2 should be zero.",
+    "th": "สมการ Gibbs–Duhem เชื่อมสัมประสิทธิ์แอกทิวิตีทั้งสองเข้าด้วยกัน สำหรับข้อมูลที่อุณหภูมิคงที่ จะได้การทดสอบพื้นที่ คือปริพันธ์ของ ln(γ₁/γ₂) ควรเป็นศูนย์"
+   },
+   {
+    "en": "These data are isobaric, so the area test does not apply, and the other tests need endpoint estimates or the excess enthalpy, which are not available.",
+    "th": "ข้อมูลชุดนี้วัดที่ความดันคงที่ การทดสอบพื้นที่จึงใช้ไม่ได้ ส่วนการทดสอบอื่นต้องใช้ค่าประมาณที่จุดปลายหรือเอนทาลปีส่วนเกิน ซึ่งไม่มีให้"
+   },
+   {
+    "en": "Not assessed is not the same as inconsistent. It means the data do not carry what the test needs.",
+    "th": "not assessed ไม่ได้แปลว่าไม่สอดคล้อง แต่หมายความว่าข้อมูลไม่มีสิ่งที่การทดสอบต้องใช้"
+   }
+  ],
+  "summary": [
+   {
+    "en": "To summarize.",
+    "th": "สรุป"
+   },
+   {
+    "en": "Gamma comes from each measured state, with the saturation pressures evaluated at that state's temperature.",
+    "th": "γ ได้จากสถานะที่วัดได้แต่ละจุด โดยคำนวณความดันไออิ่มตัวที่อุณหภูมิของสถานะนั้น"
+   },
+   {
+    "en": "NRTL with alpha fixed has two parameters, fitted to ln gamma.",
+    "th": "NRTL ที่กำหนด α ไว้มีพารามิเตอร์สองตัว ซึ่ง fit กับ ln γ"
+   },
+   {
+    "en": "A good fit shows that the model can follow its own points. Judge a model by its checking error on data it has not seen.",
+    "th": "fit ที่ดีแสดงว่าแบบจำลองตามจุดข้อมูลของมันเองได้ ให้ตัดสินแบบจำลองจากความคลาดเคลื่อนของการตรวจสอบกับข้อมูลที่มันไม่เคยเห็น"
+   },
+   {
+    "en": "Next session: when one liquid splits into two.",
+    "th": "คาบหน้า เมื่อของเหลวหนึ่งเฟสแยกออกเป็นสองเฟส"
+   }
+  ],
+  "exit-ticket": [
+   {
+    "en": "Exit ticket and feedback. Five minutes, on your own.",
+    "th": "exit ticket และความเห็น ใช้เวลาห้านาที ทำคนเดียว"
+   },
+   {
+    "en": "A model fitted to 80 kPa has a fitting error of 0.043 but a checking error of 0.291 at 60 kPa. What does this tell you, and what would you do next?",
+    "th": "แบบจำลองที่ fit กับข้อมูล 80 กิโลปาสคาลมีความคลาดเคลื่อนของการ fit 0.043 แต่ความคลาดเคลื่อนของการตรวจสอบที่ 60 กิโลปาสคาลเป็น 0.291 สิ่งนี้บอกอะไร และคุณจะทำอะไรต่อ",
+    "say": "A model fitted to eighty kilopascals has a fitting error of zero point zero four three, but a checking error of zero point two nine one at sixty kilopascals. What does this tell you, and what would you do next?"
+   },
+   {
+    "en": "Scan the QR code or open the link. It is anonymous. Wait until you see Response received.",
+    "th": "สแกน QR code หรือเปิดลิงก์ แบบฟอร์มไม่ระบุตัวตน รอจนขึ้นข้อความ Response received"
+   }
+  ],
+  "after-class": [
+   {
+    "en": "After class, hand in your Lab 02 study file this week.",
+    "th": "หลังเลิกเรียน ส่งไฟล์ study ของ Lab 02 ภายในสัปดาห์นี้"
+   },
+   {
+    "en": "Read the note on Gibbs energy of mixing before session 3.",
+    "th": "อ่านเอกสารเรื่องพลังงานกิบส์ของการผสมก่อนคาบที่ 3"
+   },
+   {
+    "en": "Graduate students can add the Lab 03 analysis to the same file. See you next session.",
+    "th": "นิสิตบัณฑิตศึกษาเพิ่มการวิเคราะห์จาก Lab 03 ในไฟล์เดียวกันได้ แล้วพบกันคาบหน้า"
+   }
+  ]
+ }
+}
