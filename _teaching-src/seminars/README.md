@@ -91,7 +91,8 @@ The notes in `conferences.qmd` carry running clock times in the form
 ## Writing a slide
 
 Same conventions as the course decks — see
-`_teaching-src/2105620/README.md` for the full list of blocks and accents.
+[the dedicated course README](https://github.com/soorathep/course-2105620/blob/main/_teaching-src/2105620/README.md)
+for the full list of blocks and accents.
 The theme here is a copy of that one, so the two stay visually identical.
 
 One trap worth recording: **white cards do not work on a dark slide.**

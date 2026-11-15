@@ -126,8 +126,9 @@ or from a `bundle-deck.py` build without `--public`.
 
 ## Writing a slide
 
-Each `##` starts a new slide. The house blocks are documented in the 2105620
-README; these decks add nothing except the rules below, each of which exists
+Each `##` starts a new slide. The house blocks are documented in the
+[2105620 README](https://github.com/soorathep/course-2105620/blob/main/_teaching-src/2105620/README.md);
+these decks add nothing except the rules below, each of which exists
 because breaking it broke something.
 
 **Card headings use `[Head]{.card-h}`, never `### Head`.** A markdown heading
