@@ -8,12 +8,12 @@
     "th": "ยินดีต้อนรับสู่คาบแรกหลังสอบกลางภาค"
    },
    {
-    "en": "Today we work on vapor-liquid equilibrium and the flash calculation.",
-    "th": "วันนี้เราจะเรียนเรื่องสมดุลไอ-ของเหลว และการคำนวณ flash"
+    "en": "Today we turn the equilibrium condition from the first half into a calculation: the flash.",
+    "th": "วันนี้เราจะนำเงื่อนไขสมดุลจากครึ่งแรกของวิชามาใช้คำนวณจริง นั่นคือการคำนวณ flash"
    },
    {
-    "en": "The whole session is built around one question: how does pressure change the phase split at fixed temperature?",
-    "th": "ทั้งคาบนี้ตั้งอยู่บนคำถามเดียว คือ ที่อุณหภูมิคงที่ ความดันเปลี่ยนสัดส่วนการแยกเฟสอย่างไร"
+    "en": "The question for the session: given T, P and a feed, how do we find which phases form, and how much of each, when K is not constant?",
+    "th": "คำถามของคาบนี้คือ เมื่อกำหนด T, P และสารป้อน เราจะหาได้อย่างไรว่าเกิดเฟสอะไร และแต่ละเฟสมีปริมาณเท่าไร ในกรณีที่ค่า K ไม่คงที่"
    },
    {
     "en": "If you are studying on your own, turn on narration and captions with the buttons at the bottom left. Use the arrow keys to move through the slides.",
@@ -67,21 +67,44 @@
   ],
   "recap": [
    {
-    "en": "You already have the tool. From the first half: at equilibrium, each component has the same fugacity in every phase.",
-    "th": "เรามีเครื่องมืออยู่แล้ว จากครึ่งแรกของวิชา ที่สมดุล แต่ละองค์ประกอบมีฟูกาซิตีเท่ากันในทุกเฟส"
+    "en": "Start from what you already have: at equilibrium, each component has the same fugacity in every phase.",
+    "th": "เริ่มจากสิ่งที่มีอยู่แล้ว ที่สมดุล แต่ละองค์ประกอบมีฟูกาซิตีเท่ากันในทุกเฟส"
    },
    {
-    "en": "At low pressure, with an ideal vapor and the pure-liquid standard state, this becomes y i P equals x i gamma i P i sat.",
-    "th": "ที่ความดันต่ำ เมื่อไอเป็นอุดมคติและใช้ของเหลวบริสุทธิ์เป็นสถานะอ้างอิง จะได้ y_i P = x_i γ_i P_i^sat",
-    "say": "At low pressure, with an ideal vapor and the pure-liquid standard state, this becomes: y i times P equals x i times gamma i times P i sat."
+    "en": "There are two ways to turn that into working equations.",
+    "th": "มีสองวิธีที่จะเปลี่ยนเงื่อนไขนี้เป็นสมการที่ใช้คำนวณได้"
    },
    {
-    "en": "Today we set gamma to one. That is Raoult's law, the simplest case on which to learn the method.",
-    "th": "วันนี้เราให้ γ เท่ากับหนึ่ง นั่นคือกฎของราอูลต์ ซึ่งเป็นกรณีที่ง่ายที่สุดสำหรับฝึกวิธีคิด"
+    "en": "In the gamma-phi route, the liquid is described by an activity model and the vapor by an equation of state.",
+    "th": "แบบ γ–φ อธิบายของเหลวด้วยแบบจำลองแอกทิวิตี และอธิบายไอด้วยสมการสถานะ"
    },
    {
-    "en": "In sessions 2 and 3, gamma comes back, taken from measured data.",
-    "th": "ในคาบที่ 2 และ 3 เราจะนำ γ กลับมา โดยหาจากข้อมูลการวัดจริง"
+    "en": "In the phi-phi route, one equation of state describes both phases.",
+    "th": "แบบ φ–φ ใช้สมการสถานะสมการเดียวอธิบายทั้งสองเฟส"
+   },
+   {
+    "en": "Today we use the general structure, with the ideal limit as the worked case.",
+    "th": "วันนี้เราจะใช้โครงสร้างทั่วไป และใช้กรณีอุดมคติเป็นตัวอย่างคำนวณ"
+   }
+  ],
+  "routes-to-k": [
+   {
+    "en": "Whichever route you choose, the result is a K-value: y i over x i.",
+    "th": "ไม่ว่าจะเลือกแบบใด ผลที่ได้คือค่า K ซึ่งเท่ากับ y_i หาร x_i",
+    "say": "Whichever route you choose, the result is a K-value: y i over x i."
+   },
+   {
+    "en": "For polar or associating liquids at low pressure, use gamma-phi. For hydrocarbons, gases, and high pressure, use phi-phi. Near a critical point, only phi-phi works.",
+    "th": "ของเหลวมีขั้วหรือมีพันธะไฮโดรเจนที่ความดันต่ำ ใช้ γ–φ ไฮโดรคาร์บอน แก๊ส และความดันสูง ใช้ φ–φ ใกล้จุดวิกฤตใช้ได้เฉพาะ φ–φ"
+   },
+   {
+    "en": "In both routes, K depends on temperature, pressure, and the compositions of both phases.",
+    "th": "ในทั้งสองแบบ K ขึ้นกับอุณหภูมิ ความดัน และองค์ประกอบของทั้งสองเฟส"
+   },
+   {
+    "en": "Only the ideal limit, P sat over P, is independent of composition. That is why a real flash needs an iteration.",
+    "th": "มีเพียงกรณีอุดมคติ คือ P^sat/P ที่ไม่ขึ้นกับองค์ประกอบ นี่คือเหตุผลที่ flash ของระบบจริงต้องคำนวณแบบวนซ้ำ",
+    "say": "Only the ideal limit, P sat over P, is independent of composition. That is why a real flash needs an iteration."
    }
   ],
   "outcomes": [
@@ -90,20 +113,20 @@
     "th": "เมื่อจบคาบนี้ คุณควรทำได้สี่อย่าง"
    },
    {
-    "en": "Read a pressure-composition diagram and say whether a feed is liquid, vapor, or two phases.",
-    "th": "อ่านแผนภาพความดัน-องค์ประกอบ และบอกได้ว่าสารป้อนเป็นของเหลว ไอ หรือสองเฟส"
+    "en": "Choose the gamma-phi or phi-phi route for a system, and write its K-values.",
+    "th": "เลือกแบบ γ–φ หรือ φ–φ ให้เหมาะกับระบบ และเขียนค่า K ได้"
    },
    {
-    "en": "Calculate the bubble and dew pressures of an ideal mixture.",
-    "th": "คำนวณความดันจุดเดือด (bubble) และจุดน้ำค้าง (dew) ของสารผสมอุดมคติ"
+    "en": "Decide the phase state from two simple sums, and find a bubble temperature by iteration.",
+    "th": "ตัดสินสถานะเฟสจากผลรวมสองตัว และหาอุณหภูมิจุดเดือดด้วยการคำนวณแบบวนซ้ำ"
    },
    {
-    "en": "Solve a flash at fixed temperature and pressure for the two compositions and the vapor fraction, and check the answer with a component balance.",
-    "th": "แก้ปัญหา flash ที่อุณหภูมิและความดันคงที่ เพื่อหาองค์ประกอบของสองเฟสและสัดส่วนไอ แล้วตรวจคำตอบด้วยดุลมวลขององค์ประกอบ"
+    "en": "Solve a multicomponent flash with the Rachford-Rice equation, and interpret a negative flash.",
+    "th": "แก้ปัญหา flash หลายองค์ประกอบด้วยสมการ Rachford–Rice และตีความ negative flash ได้"
    },
    {
-    "en": "And explain, with numbers, how raising the pressure at fixed temperature changes the split.",
-    "th": "และอธิบายด้วยตัวเลขว่า การเพิ่มความดันที่อุณหภูมิคงที่เปลี่ยนสัดส่วนการแยกเฟสอย่างไร"
+    "en": "And explain with numbers how a nonideal liquid changes K and the phase split.",
+    "th": "และอธิบายด้วยตัวเลขว่าของเหลวที่ไม่เป็นอุดมคติเปลี่ยนค่า K และการแยกเฟสอย่างไร"
    }
   ],
   "route": [
@@ -112,43 +135,42 @@
     "th": "นี่คือแผนของการเรียนสามชั่วโมง"
    },
    {
-    "en": "We start with 30 minutes on the diagram and the two boundary equations.",
-    "th": "เราเริ่มด้วยสามสิบนาทีเรื่องแผนภาพและสมการขอบเขตสองสมการ",
-    "say": "We start with thirty minutes on the diagram and the two boundary equations."
+    "en": "Thirty minutes of concepts: K-values, bubble temperature, and the Rachford-Rice equation.",
+    "th": "สามสิบนาทีแรกเป็นแนวคิด ได้แก่ ค่า K อุณหภูมิจุดเดือด และสมการ Rachford–Rice"
    },
    {
-    "en": "Activity 1 asks you to predict a phase state before any calculation.",
-    "th": "กิจกรรมที่หนึ่งให้ทำนายสถานะของเฟสก่อนคำนวณใด ๆ"
+    "en": "Activity 1 is a quick phase test. Then I demonstrate Lab 01, including its new multicomponent step.",
+    "th": "กิจกรรมที่ 1 เป็นการตรวจสถานะเฟสอย่างรวดเร็ว จากนั้นผมจะสาธิต Lab 01 รวมถึงขั้นตอนใหม่สำหรับหลายองค์ประกอบ"
    },
    {
-    "en": "Then I demonstrate Lab 01, and after the break you work in pairs on the same lab.",
-    "th": "จากนั้นผมจะสาธิต Lab 01 และหลังพักให้ทำงานเป็นคู่ใน lab เดียวกัน"
+    "en": "After the break you work in pairs on a three-component flash and a nonideal binary.",
+    "th": "หลังพักให้ทำงานเป็นคู่ เรื่อง flash สามองค์ประกอบ และระบบสององค์ประกอบที่ไม่เป็นอุดมคติ"
    },
    {
-    "en": "If you are studying this on your own, follow the same order and pause at each activity slide.",
-    "th": "ถ้ากำลังเรียนด้วยตนเอง ให้ทำตามลำดับเดียวกัน และหยุดที่สไลด์กิจกรรมแต่ละสไลด์"
+    "en": "If you are studying on your own, follow the same order and pause at each activity slide.",
+    "th": "ถ้าเรียนด้วยตนเอง ให้ทำตามลำดับเดียวกัน และหยุดที่สไลด์กิจกรรมแต่ละสไลด์"
    }
   ],
   "phase-rule": [
    {
-    "en": "Before drawing anything, count what is fixed.",
-    "th": "ก่อนวาดอะไร ให้นับก่อนว่าอะไรถูกกำหนดไว้แล้วบ้าง"
+    "en": "What does a flash actually fix? Start with the phase rule.",
+    "th": "flash กำหนดอะไรไว้บ้าง เริ่มจากกฎเฟส"
    },
    {
-    "en": "Gibbs' phase rule gives F equals C minus pi plus 2.",
-    "th": "กฎเฟสของกิบส์ให้ F = C − π + 2"
+    "en": "For a binary with two phases, F is two: fix T and P and both compositions are fixed.",
+    "th": "สำหรับระบบสององค์ประกอบที่มีสองเฟส F เท่ากับสอง เมื่อกำหนด T และ P องค์ประกอบทั้งสองเฟสจะถูกกำหนดด้วย"
    },
    {
-    "en": "With two components and two phases, there are two degrees of freedom.",
-    "th": "เมื่อมีสององค์ประกอบและสองเฟส จะมีระดับขั้นความเสรีเท่ากับสอง"
+    "en": "With C components, T and P leave C minus 2 compositions free.",
+    "th": "เมื่อมี C องค์ประกอบ หลังกำหนด T และ P จะยังเหลือองค์ประกอบอิสระอีก C − 2 ตัว"
    },
    {
-    "en": "So once you fix the temperature and the pressure, both phase compositions are fixed.",
-    "th": "ดังนั้นเมื่อกำหนดอุณหภูมิและความดันแล้ว องค์ประกอบของทั้งสองเฟสจะถูกกำหนดตามไปด้วย"
+    "en": "Duhem's theorem closes the gap: T, P and the feed fix the whole state, amounts included. That is the TP flash.",
+    "th": "ทฤษฎีบทของ Duhem บอกว่า T, P และสารป้อนกำหนดสถานะทั้งหมดได้ รวมถึงปริมาณของแต่ละเฟส นี่คือ TP flash"
    },
    {
-    "en": "The feed composition does not change x or y. It only decides how much of each phase forms.",
-    "th": "องค์ประกอบของสารป้อนไม่ได้เปลี่ยน x หรือ y แต่กำหนดเพียงว่าแต่ละเฟสเกิดขึ้นมากเท่าไร"
+    "en": "So for a binary the feed only changes beta, but with more components it also moves x and y.",
+    "th": "ดังนั้นสำหรับระบบสององค์ประกอบ สารป้อนเปลี่ยนเพียง β แต่เมื่อมีองค์ประกอบมากกว่านั้น สารป้อนจะเปลี่ยน x และ y ด้วย"
    }
   ],
   "bubble": [
@@ -199,6 +221,27 @@
     "th": "เส้น dew เป็นเส้นโค้ง และอยู่ต่ำกว่าเส้น bubble เสมอ"
    }
   ],
+  "bubble-t": [
+   {
+    "en": "Bubble pressure is explicit. Bubble temperature is not, because every K depends on temperature.",
+    "th": "ความดันจุดเดือดคำนวณได้โดยตรง แต่อุณหภูมิจุดเดือดคำนวณโดยตรงไม่ได้ เพราะค่า K ทุกตัวขึ้นกับอุณหภูมิ"
+   },
+   {
+    "en": "So we solve g of T equals the sum of z i K i, minus one, equals zero.",
+    "th": "จึงต้องแก้สมการ g(T) = Σ z_iK_i − 1 = 0",
+    "say": "So we solve: g of T, equals the sum of z i K i, minus one, equals zero."
+   },
+   {
+    "en": "For the three-component feed at 30 kPa, Newton's method from 350 K converges in three steps.",
+    "th": "สำหรับสารป้อนสามองค์ประกอบที่ 30 กิโลปาสคาล วิธีของนิวตันเริ่มจาก 350 เคลวิน ลู่เข้าภายในสามรอบ",
+    "say": "For the three-component feed at thirty kilopascals, Newton's method from three hundred and fifty kelvin converges in three steps."
+   },
+   {
+    "en": "The bubble temperature is 339.30 K, and the first vapor is rich in benzene.",
+    "th": "อุณหภูมิจุดเดือดเท่ากับ 339.30 เคลวิน และไอแรกที่เกิดมีเบนซีนมาก",
+    "say": "The bubble temperature is three hundred and thirty-nine point three kelvin, and the first vapor is rich in benzene."
+   }
+  ],
   "concept": [
    {
     "en": "Now put the two lines together.",
@@ -246,75 +289,81 @@
     "th": "ตรวจด้วยองค์ประกอบอีกตัวเสมอ ในที่นี้องค์ประกอบที่ 2 ปิดดุลได้ 0.5 พอดี"
    }
   ],
-  "worked": [
-   {
-    "en": "Here is the whole flash at 95 kPa, in four steps.",
-    "th": "นี่คือการคำนวณ flash ที่ 95 กิโลปาสคาลทั้งหมด ในสี่ขั้นตอน",
-    "say": "Here is the whole flash at ninety-five kilopascals, in four steps."
-   },
-   {
-    "en": "First, the phase check. The pressure lies between the dew and bubble pressures of the feed, so two phases form.",
-    "th": "ขั้นแรก ตรวจเฟส ความดันอยู่ระหว่างความดัน dew และ bubble ของสารป้อน จึงเกิดสองเฟส"
-   },
-   {
-    "en": "Second, the K-values: P sat divided by P for each component.",
-    "th": "ขั้นที่สอง ค่า K คือ P^sat หารด้วย P ของแต่ละองค์ประกอบ"
-   },
-   {
-    "en": "Third, the compositions from the two summation conditions: x1 is 0.3889 and y1 is 0.6140.",
-    "th": "ขั้นที่สาม หาองค์ประกอบจากเงื่อนไขผลรวมทั้งสอง ได้ x₁ = 0.3889 และ y₁ = 0.6140",
-    "say": "Third, the compositions from the two summation conditions: x one is zero point three eight eight nine, and y one is zero point six one four zero."
-   },
-   {
-    "en": "Fourth, beta from the lever rule, and a balance check.",
-    "th": "ขั้นที่สี่ หา β จากกฎคาน แล้วตรวจดุลมวล"
-   },
-   {
-    "en": "Do not skip step one. Outside the two-phase range, the same formulas still give numbers, but beta falls below zero or above one.",
-    "th": "อย่าข้ามขั้นแรก นอกช่วงสองเฟส สูตรเดียวกันยังให้ตัวเลขออกมา แต่ β จะน้อยกว่าศูนย์หรือมากกว่าหนึ่ง"
-   }
-  ],
   "rachford-rice": [
    {
-    "en": "With more than two components, there is no closed form for x.",
-    "th": "เมื่อมีมากกว่าสององค์ประกอบ จะไม่มีสูตรปิดสำหรับ x"
+    "en": "For the flash itself, write x and y in terms of beta and require that both sets of mole fractions sum to the same total.",
+    "th": "สำหรับการคำนวณ flash เขียน x และ y ในรูปของ β แล้วกำหนดให้ผลรวมเศษส่วนโมลของทั้งสองเฟสเท่ากัน"
    },
    {
-    "en": "Instead, write every x i in terms of beta, and require that the vapor and liquid mole fractions add up to the same total.",
-    "th": "ให้เขียน x_i ทุกตัวในรูปของ β แล้วกำหนดให้ผลรวมเศษส่วนโมลในไอและในของเหลวเท่ากัน"
+    "en": "That gives the Rachford-Rice equation, one equation in beta, whatever the number of components.",
+    "th": "จะได้สมการ Rachford–Rice เป็นสมการเดียวในตัวแปร β ไม่ว่าจะมีกี่องค์ประกอบ"
    },
    {
-    "en": "That gives the Rachford-Rice equation, one equation in one unknown.",
-    "th": "จะได้สมการ Rachford–Rice ซึ่งเป็นสมการเดียวที่มีตัวแปรเดียว"
+    "en": "Its derivative is negative everywhere between the two asymptotes, so there is exactly one root there. Bracket it there, then use Newton.",
+    "th": "อนุพันธ์ของมันเป็นลบตลอดช่วงระหว่างเส้นกำกับทั้งสอง จึงมีรากเพียงหนึ่งเดียวในช่วงนั้น ให้หาช่วงที่ครอบรากก่อน แล้วใช้วิธีของนิวตัน"
    },
    {
-    "en": "The left side decreases with beta, so there is a single root between zero and one whenever two phases exist.",
-    "th": "ด้านซ้ายของสมการลดลงเมื่อ β เพิ่ม จึงมีรากเดียวระหว่างศูนย์ถึงหนึ่งเมื่อมีสองเฟส"
+    "en": "For the three-component feed at 30 kPa, the root is beta equals 0.6013.",
+    "th": "สำหรับสารป้อนสามองค์ประกอบที่ 30 กิโลปาสคาล รากคือ β = 0.6013",
+    "say": "For the three-component feed at thirty kilopascals, the root is beta equals zero point six zero one three."
+   }
+  ],
+  "phase-check": [
+   {
+    "en": "Before solving, test the phase state. The Rachford-Rice function at beta zero and beta one gives two simple sums.",
+    "th": "ก่อนแก้สมการ ให้ตรวจสถานะเฟสก่อน ฟังก์ชัน Rachford–Rice ที่ β = 0 และ β = 1 ให้ผลรวมง่าย ๆ สองตัว"
    },
    {
-    "en": "For our binary at 95 kPa, the two terms cancel at beta equals 0.4935, the same value as the lever rule.",
-    "th": "สำหรับสารผสมสององค์ประกอบของเราที่ 95 กิโลปาสคาล สองพจน์หักล้างกันที่ β = 0.4935 ซึ่งเท่ากับค่าจากกฎคาน",
-    "say": "For our binary at ninety-five kilopascals, the two terms cancel at beta equals zero point four nine three five, the same value as the lever rule."
+    "en": "If the sum of z i K i is at most one, the feed is liquid. If the sum of z i over K i is at most one, it is vapor. Otherwise there are two phases.",
+    "th": "ถ้า Σ z_iK_i ไม่เกินหนึ่ง สารป้อนเป็นของเหลว ถ้า Σ z_i/K_i ไม่เกินหนึ่ง เป็นไอ นอกนั้นเป็นสองเฟส",
+    "say": "If the sum of z i K i is at most one, the feed is liquid. If the sum of z i over K i is at most one, it is vapor. Otherwise there are two phases."
+   },
+   {
+    "en": "For a single phase, Rachford-Rice still has a root, outside zero to one. This negative flash is an extrapolated tie line, not an amount.",
+    "th": "เมื่อเป็นเฟสเดียว สมการ Rachford–Rice ยังมีรากอยู่ แต่จะอยู่นอกช่วงศูนย์ถึงหนึ่ง negative flash นี้คือการต่อเส้นเชื่อมออกไป ไม่ใช่ปริมาณจริง"
+   },
+   {
+    "en": "With constant K the test is exact. When K depends on composition, a one-phase answer must be confirmed by a stability test, which we meet in session 3.",
+    "th": "เมื่อ K คงที่ การตรวจนี้แม่นยำ แต่เมื่อ K ขึ้นกับองค์ประกอบ คำตอบว่าเป็นเฟสเดียวต้องยืนยันด้วยการทดสอบเสถียรภาพ ซึ่งจะเรียนในคาบที่ 3"
+   }
+  ],
+  "nonideal-k": [
+   {
+    "en": "When K depends on composition, the flash becomes a loop.",
+    "th": "เมื่อ K ขึ้นกับองค์ประกอบ การคำนวณ flash จะกลายเป็นการวนซ้ำ"
+   },
+   {
+    "en": "Guess K, solve Rachford-Rice, update K from gamma and phi at the new compositions, and repeat until K stops changing.",
+    "th": "เดาค่า K แก้สมการ Rachford–Rice ปรับ K ใหม่จาก γ และ φ ที่องค์ประกอบใหม่ แล้วทำซ้ำจน K ไม่เปลี่ยน"
+   },
+   {
+    "en": "Here is why it matters. In Lab 01, the ideal binary at 95 kPa gives beta of 0.494.",
+    "th": "ตัวอย่างว่าทำไมเรื่องนี้สำคัญ ใน Lab 01 ระบบสององค์ประกอบแบบอุดมคติที่ 95 กิโลปาสคาลให้ β = 0.494",
+    "say": "Here is why it matters. In Lab 01, the ideal binary at ninety-five kilopascals gives beta of zero point four nine four."
+   },
+   {
+    "en": "With a Margules liquid, A equals one, the two-phase range moves up to between 102.4 and 134.8 kPa, and the same feed is all vapor.",
+    "th": "เมื่อใช้ของเหลวแบบ Margules ที่ A = 1 ช่วงสองเฟสเลื่อนขึ้นไปอยู่ระหว่าง 102.4 ถึง 134.8 กิโลปาสคาล และสารป้อนเดียวกันกลายเป็นไอทั้งหมด",
+    "say": "With a Margules liquid, A equals one, the two-phase range moves up to between one hundred and two point four and one hundred and thirty-four point eight kilopascals, and the same feed is all vapor."
+   },
+   {
+    "en": "The ideal answer was not even the right phase.",
+    "th": "คำตอบแบบอุดมคติไม่ได้ระบุเฟสถูกต้องเลย"
    }
   ],
   "activity-1": [
    {
-    "en": "Activity 1 · 10 minutes.",
-    "th": "กิจกรรมที่หนึ่ง สิบนาที",
-    "say": "Activity one. Ten minutes."
+    "en": "Activity 1. Ten minutes.",
+    "th": "กิจกรรมที่ 1 สิบนาที"
    },
    {
-    "en": "Keep the temperature and the feed the same, and raise the pressure to 110 kPa.",
-    "th": "คงอุณหภูมิและสารป้อนไว้เท่าเดิม แล้วเพิ่มความดันเป็น 110 กิโลปาสคาล",
-    "say": "Keep the temperature and the feed the same, and raise the pressure to one hundred and ten kilopascals."
+    "en": "The three-component feed is now at 45 kPa. The K-values are on the slide.",
+    "th": "สารป้อนสามองค์ประกอบอยู่ที่ 45 กิโลปาสคาล ค่า K อยู่บนสไลด์",
+    "say": "The three-component feed is now at forty-five kilopascals. The K-values are on the slide."
    },
    {
-    "en": "Is the mixture liquid, vapor, or two phases? Write your answer and one reason from the diagram.",
-    "th": "สารผสมเป็นของเหลว ไอ หรือสองเฟส เขียนคำตอบพร้อมเหตุผลหนึ่งข้อจากแผนภาพ"
-   },
-   {
-    "en": "Then compare with your partner. Do not calculate yet.",
-    "th": "จากนั้นเทียบกับเพื่อนคู่ของคุณ ยังไม่ต้องคำนวณ"
+    "en": "Decide the phase state using only the two sums. Then predict the sign of the Rachford-Rice root, and compare with your partner.",
+    "th": "ตัดสินสถานะเฟสโดยใช้ผลรวมสองตัวเท่านั้น แล้วทำนายเครื่องหมายของรากสมการ Rachford–Rice และเทียบกับเพื่อนคู่"
    }
   ],
   "activity-1-debrief": [
@@ -323,22 +372,14 @@
     "th": "นี่คือคำตอบของกิจกรรมที่ 1"
    },
    {
-    "en": "At 110 kPa the feed lies above the bubble line, because the bubble pressure of the feed is 105 kPa.",
-    "th": "ที่ 110 กิโลปาสคาล สารป้อนอยู่เหนือเส้น bubble เพราะความดันจุดเดือดของสารป้อนเท่ากับ 105 กิโลปาสคาล",
-    "say": "At one hundred and ten kilopascals the feed lies above the bubble line, because the bubble pressure of the feed is one hundred and five kilopascals."
+    "en": "The sum of z i K i is 0.965, which is less than one. So the feed is a subcooled liquid: 45 kPa is above its bubble pressure of 43.43 kPa.",
+    "th": "Σ z_iK_i = 0.965 ซึ่งน้อยกว่าหนึ่ง สารป้อนจึงเป็นของเหลวเย็นยิ่ง เพราะ 45 กิโลปาสคาลสูงกว่าความดันจุดเดือด 43.43 กิโลปาสคาล",
+    "say": "The sum of z i K i is zero point nine six five, which is less than one. So the feed is a subcooled liquid: forty-five kilopascals is above its bubble pressure of forty-three point four three."
    },
    {
-    "en": "So the mixture is all liquid. No vapor forms.",
-    "th": "ดังนั้นสารผสมเป็นของเหลวทั้งหมด ไม่มีไอเกิดขึ้น"
-   },
-   {
-    "en": "For this feed, two phases exist only between 85.71 and 105 kPa.",
-    "th": "สำหรับสารป้อนนี้ สองเฟสจะเกิดขึ้นเฉพาะในช่วง 85.71 ถึง 105 กิโลปาสคาล",
-    "say": "For this feed, two phases exist only between eighty-five point seven one and one hundred and five kilopascals."
-   },
-   {
-    "en": "A good reason names the line. Saying only that higher pressure means less vapor gives the right direction, but does not say whether any vapor remains.",
-    "th": "เหตุผลที่ดีต้องระบุเส้น การบอกเพียงว่าความดันสูงขึ้นทำให้ไอน้อยลง ให้ทิศทางที่ถูก แต่ไม่ได้บอกว่ายังเหลือไออยู่หรือไม่"
+    "en": "Rachford-Rice still returns a root, beta equals minus 0.064. It is a negative flash: the feed lies on the extension of the tie line.",
+    "th": "สมการ Rachford–Rice ยังให้รากออกมาคือ β = −0.064 เป็น negative flash สารป้อนอยู่บนส่วนที่ต่อออกไปของเส้นเชื่อม",
+    "say": "Rachford-Rice still returns a root, beta equals minus zero point zero six four. It is a negative flash: the feed lies on the extension of the tie line."
    }
   ],
   "demo-lab": [
@@ -347,39 +388,40 @@
     "th": "ตอนนี้เปิด Lab 01 ทำตามบนหน้าจอของตัวเองได้"
    },
    {
-    "en": "Load the synthetic case, set the pressure to 95 kPa and the feed to z₁ = 0.5, and calculate.",
-    "th": "โหลดเคส synthetic ตั้งความดันเป็น 95 กิโลปาสคาล แล้วกดคำนวณ",
-    "say": "Load the synthetic case, set the pressure to ninety-five kilopascals and the feed to zero point five, and calculate."
+    "en": "Start with the synthetic binary at 350 K, 95 kPa and z1 = 0.5, with an ideal liquid. Beta is 0.494.",
+    "th": "เริ่มจากระบบสององค์ประกอบสังเคราะห์ที่ 350 เคลวิน 95 กิโลปาสคาล และ z₁ = 0.5 ด้วยของเหลวอุดมคติ ได้ β = 0.494",
+    "say": "Start with the synthetic binary at three hundred and fifty kelvin, ninety-five kilopascals and z one equals zero point five, with an ideal liquid. Beta is zero point four nine four."
    },
    {
-    "en": "Check that the lab gives the same tie line as the diagram.",
-    "th": "ตรวจว่า lab ให้เส้นเชื่อมเดียวกับในแผนภาพ"
+    "en": "Switch the liquid model to Margules with A equal to one, recalculate, and find the new bubble and dew pressures.",
+    "th": "เปลี่ยนแบบจำลองของเหลวเป็น Margules ที่ A = 1 คำนวณใหม่ แล้วหาความดันจุดเดือดและจุดน้ำค้างใหม่"
    },
    {
-    "en": "Save this as your baseline, then change only the pressure and test your prediction from activity 1.",
-    "th": "บันทึกผลนี้เป็น baseline จากนั้นเปลี่ยนเฉพาะความดัน แล้วทดสอบคำทำนายของคุณจากกิจกรรมที่หนึ่ง"
+    "en": "Then open the graduate view, step D, and solve the three-component preset at 30 and at 45 kPa.",
+    "th": "จากนั้นเปิดโหมด Graduate ขั้น D แล้วแก้โจทย์สามองค์ประกอบที่ 30 และ 45 กิโลปาสคาล",
+    "say": "Then open the graduate view, step D, and solve the three-component preset at thirty and at forty-five kilopascals."
    }
   ],
   "mistakes": [
    {
-    "en": "Before you start the lab work, here are four common mistakes.",
-    "th": "ก่อนเริ่มทำ lab นี่คือข้อผิดพลาดที่พบบ่อยสี่ข้อ"
+    "en": "Four common mistakes before you start.",
+    "th": "ข้อผิดพลาดที่พบบ่อยสี่ข้อก่อนเริ่มทำ"
    },
    {
-    "en": "One: using the feed composition in the bubble or dew equation to get the phase compositions. Those pressures only tell you whether two phases form.",
-    "th": "หนึ่ง ใช้องค์ประกอบของสารป้อนในสมการ bubble หรือ dew เพื่อหาองค์ประกอบของเฟส ความดันเหล่านั้นบอกได้เพียงว่าเกิดสองเฟสหรือไม่"
+    "en": "One: treating a negative flash as an amount. Beta outside zero to one means one phase.",
+    "th": "หนึ่ง ถือว่า negative flash เป็นปริมาณจริง β ที่อยู่นอกช่วงศูนย์ถึงหนึ่งหมายถึงมีเฟสเดียว"
    },
    {
-    "en": "Two: skipping the phase check, and reporting a beta below zero or above one.",
-    "th": "สอง ข้ามการตรวจเฟส แล้วรายงานค่า β ที่น้อยกว่าศูนย์หรือมากกว่าหนึ่ง"
+    "en": "Two: starting Newton outside the asymptotes. Bracket the root first.",
+    "th": "สอง เริ่มวิธีของนิวตันนอกเส้นกำกับ ให้หาช่วงที่ครอบรากก่อน"
    },
    {
-    "en": "Three: mixing pressure units when forming the K-values.",
-    "th": "สาม ใช้หน่วยความดันปนกันเมื่อคำนวณค่า K"
+    "en": "Three: keeping K constant for a nonideal mixture. One Rachford-Rice solve is one step of a loop.",
+    "th": "สาม ใช้ K คงที่กับสารผสมที่ไม่เป็นอุดมคติ การแก้ Rachford–Rice หนึ่งครั้งเป็นเพียงหนึ่งรอบของการวนซ้ำ"
    },
    {
-    "en": "Four: expecting the feed to move x and y. At fixed temperature and pressure, the feed changes only beta.",
-    "th": "สี่ คาดว่าสารป้อนจะเปลี่ยน x และ y ที่อุณหภูมิและความดันคงที่ สารป้อนเปลี่ยนเพียง β"
+    "en": "Four: trusting the phase test when K varies. A one-phase answer needs a stability test.",
+    "th": "สี่ เชื่อผลการตรวจเฟสเมื่อ K ไม่คงที่ คำตอบว่าเป็นเฟสเดียวต้องผ่านการทดสอบเสถียรภาพก่อน"
    }
   ],
   "break": [
@@ -399,88 +441,74 @@
   ],
   "activity-2": [
    {
-    "en": "Activity 2 takes seventy minutes, in pairs.",
-    "th": "กิจกรรมที่ 2 ใช้เวลาเจ็ดสิบนาที ทำเป็นคู่"
+    "en": "Activity 2 takes seventy minutes, in pairs. One drives Lab 01, the other checks by hand, then swap.",
+    "th": "กิจกรรมที่ 2 ใช้เวลาเจ็ดสิบนาที ทำเป็นคู่ คนหนึ่งใช้ Lab 01 อีกคนตรวจด้วยมือ แล้วสลับกัน"
    },
    {
-    "en": "One of you drives Lab 01, the other checks by hand. Swap roles halfway.",
-    "th": "คนหนึ่งใช้ Lab 01 อีกคนตรวจด้วยมือ แล้วสลับบทบาทกันครึ่งทาง"
+    "en": "First, by hand: two Newton steps on Rachford-Rice for the three-component feed at 30 kPa, then x, y and a balance check.",
+    "th": "ขั้นแรก คำนวณด้วยมือ ทำวิธีของนิวตันสองรอบกับสมการ Rachford–Rice สำหรับสารป้อนสามองค์ประกอบที่ 30 กิโลปาสคาล แล้วหา x, y และตรวจดุลมวล",
+    "say": "First, by hand: two Newton steps on Rachford-Rice for the three-component feed at thirty kilopascals, then x, y and a balance check."
    },
    {
-    "en": "First, predict the vapor fraction at 90, 95 and 100 kPa, and sketch beta against pressure.",
-    "th": "ขั้นแรก ทำนายสัดส่วนไอที่ 90, 95 และ 100 กิโลปาสคาล แล้ววาดกราฟ β เทียบกับความดันคร่าว ๆ",
-    "say": "First, predict the vapor fraction at ninety, ninety-five and one hundred kilopascals, and sketch beta against pressure."
+    "en": "Check your answer in Lab 01 step D, find the dew and bubble pressures of the feed, and run 45 kPa.",
+    "th": "ตรวจคำตอบใน Lab 01 ขั้น D หาความดันจุดน้ำค้างและจุดเดือดของสารป้อน แล้วคำนวณที่ 45 กิโลปาสคาล",
+    "say": "Check your answer in Lab 01 step D, find the dew and bubble pressures of the feed, and run forty-five kilopascals."
    },
    {
-    "en": "Then run the three pressures in Lab 01, changing only the pressure, and save each case.",
-    "th": "จากนั้นคำนวณทั้งสามความดันใน Lab 01 โดยเปลี่ยนเฉพาะความดัน และบันทึกแต่ละเคสไว้"
-   },
-   {
-    "en": "The checker repeats one pressure by hand, including a component balance.",
-    "th": "ผู้ตรวจคำนวณซ้ำหนึ่งความดันด้วยมือ รวมถึงการตรวจดุลมวลขององค์ประกอบ"
-   },
-   {
-    "en": "Finally, write two sentences with numbers that answer the session question, and download the study file with your names and IDs.",
-    "th": "สุดท้าย เขียนสองประโยคพร้อมตัวเลขเพื่อตอบคำถามประจำคาบ แล้วดาวน์โหลดไฟล์ study พร้อมชื่อและรหัสนิสิต"
+    "en": "Then compare the ideal binary with Margules A of 0.5 and 1 at 95 kPa, and write two sentences that answer the session question.",
+    "th": "จากนั้นเทียบระบบสององค์ประกอบแบบอุดมคติกับ Margules ที่ A = 0.5 และ 1 ที่ 95 กิโลปาสคาล แล้วเขียนสองประโยคตอบคำถามประจำคาบ",
+    "say": "Then compare the ideal binary with Margules A of zero point five and one at ninety-five kilopascals, and write two sentences that answer the session question."
    }
   ],
   "activity-2-check": [
    {
-    "en": "This is what to hand in.",
-    "th": "นี่คือสิ่งที่ต้องส่ง"
+    "en": "This is what to hand in: the Lab 01 study file, your two Newton steps, and two sentences.",
+    "th": "สิ่งที่ต้องส่งคือ ไฟล์ study ของ Lab 01 การคำนวณวิธีของนิวตันสองรอบ และสองประโยค"
    },
    {
-    "en": "Your Lab 01 study file with the three cases, your name and student ID, one hand calculation, and two sentences that answer the session question.",
-    "th": "ไฟล์ study ของ Lab 01 ที่มีสามเคส ชื่อและรหัสนิสิต การคำนวณด้วยมือหนึ่งครั้ง และสองประโยคที่ตอบคำถามประจำคาบ"
+    "en": "Use the table on the right to check your three-component results.",
+    "th": "ใช้ตารางด้านขวาตรวจผลของระบบสามองค์ประกอบ"
    },
    {
-    "en": "Use the table on the right to check your Lab 01 results.",
-    "th": "ใช้ตารางด้านขวาตรวจผลจาก Lab 01 ของคุณ"
-   },
-   {
-    "en": "Graduate students: load the real benzene and toluene case, find the pressure range where this feed gives two phases, and compare with the flash drum from the start of the session.",
-    "th": "นิสิตบัณฑิตศึกษา โหลดเคสข้อมูลจริงของเบนซีนและโทลูอีน หาช่วงความดันที่สารป้อนนี้เกิดสองเฟส แล้วเทียบกับ flash drum ตอนต้นคาบ"
+    "en": "Graduate students: describe the outer loop you would add for a composition-dependent K, and where it could fail to converge.",
+    "th": "นิสิตบัณฑิตศึกษา อธิบายวงวนชั้นนอกที่จะเพิ่มเมื่อ K ขึ้นกับองค์ประกอบ และบอกว่าจะลู่เข้าไม่ได้ในกรณีใด"
    }
   ],
   "discussion": [
    {
-    "en": "This plot answers the session question.",
-    "th": "กราฟนี้ตอบคำถามประจำคาบ"
+    "en": "This plot shows the Rachford-Rice root for the three-component feed as the pressure changes.",
+    "th": "กราฟนี้แสดงรากของสมการ Rachford–Rice ของสารป้อนสามองค์ประกอบเมื่อความดันเปลี่ยน"
    },
    {
-    "en": "As pressure rises at fixed temperature, the vapor fraction falls from one at the dew pressure to zero at the bubble pressure.",
-    "th": "เมื่อความดันเพิ่มขึ้นที่อุณหภูมิคงที่ สัดส่วนไอลดลงจากหนึ่งที่ความดัน dew เป็นศูนย์ที่ความดัน bubble"
+    "en": "It is physical only between the dew pressure, 24.48 kPa, and the bubble pressure, 43.43 kPa.",
+    "th": "รากมีความหมายทางกายภาพเฉพาะระหว่างความดันจุดน้ำค้าง 24.48 กิโลปาสคาล และความดันจุดเดือด 43.43 กิโลปาสคาล",
+    "say": "It is physical only between the dew pressure, twenty-four point four eight kilopascals, and the bubble pressure, forty-three point four three."
    },
    {
-    "en": "Discuss three questions with your partner, then with the class.",
-    "th": "อภิปรายสามคำถามกับเพื่อนคู่ แล้วอภิปรายกับทั้งชั้น"
-   },
-   {
-    "en": "Why does beta fall? Both x1 and y1 rise with pressure, so why can beta still fall? And what would change at 360 K?",
-    "th": "ทำไม β จึงลดลง ในเมื่อ x₁ และ y₁ เพิ่มขึ้นตามความดันทั้งคู่ ทำไม β ยังลดลงได้ และถ้าอุณหภูมิเป็น 360 เคลวินจะเปลี่ยนอะไร",
-    "say": "Why does beta fall? Both x one and y one rise with pressure, so why can beta still fall? And what would change at three hundred and sixty kelvin?"
+    "en": "Discuss three questions: why the root leaves zero to one exactly at those pressures, which assumption failed for the Margules binary, and why the phase test is not enough when K varies.",
+    "th": "อภิปรายสามคำถาม คือทำไมรากจึงออกนอกช่วงศูนย์ถึงหนึ่งที่ความดันเหล่านั้นพอดี สมมติฐานข้อใดใช้ไม่ได้กับระบบ Margules และทำไมการตรวจเฟสจึงไม่พอเมื่อ K ไม่คงที่"
    }
   ],
   "summary": [
    {
-    "en": "To summarize: three questions, three tools.",
-    "th": "สรุป สามคำถาม สามเครื่องมือ"
+    "en": "To summarize.",
+    "th": "สรุป"
    },
    {
-    "en": "Which phases form? Compare the pressure with the dew and bubble pressures of the feed.",
-    "th": "เกิดเฟสอะไร เทียบความดันกับความดัน dew และ bubble ของสารป้อน"
+    "en": "Equal fugacity is written in the gamma-phi or phi-phi form. Both give K, which depends on T, P, x and y.",
+    "th": "เงื่อนไขฟูกาซิตีเท่ากันเขียนได้ในรูป γ–φ หรือ φ–φ ทั้งสองแบบให้ค่า K ซึ่งขึ้นกับ T, P, x และ y"
    },
    {
-    "en": "What compositions? Temperature and pressure fix them on the tie line.",
-    "th": "องค์ประกอบเท่าไร อุณหภูมิและความดันกำหนดไว้บนเส้นเชื่อม"
+    "en": "The two sums test the phase state: exactly for constant K, as a hint otherwise.",
+    "th": "ผลรวมสองตัวใช้ตรวจสถานะเฟส แม่นยำเมื่อ K คงที่ และเป็นเพียงข้อบ่งชี้ในกรณีอื่น"
    },
    {
-    "en": "How much? The lever rule, or Rachford-Rice for many components.",
-    "th": "ปริมาณเท่าไร ใช้กฎคาน หรือ Rachford–Rice เมื่อมีหลายองค์ประกอบ"
+    "en": "Rachford-Rice gives beta from one monotone equation, inside a loop that updates K.",
+    "th": "Rachford–Rice ให้ค่า β จากสมการเดียวที่เป็นฟังก์ชันทางเดียว ภายในวงวนที่ปรับค่า K"
    },
    {
-    "en": "Next session, we leave the ideal liquid and infer gamma from measured data.",
-    "th": "คาบหน้า เราจะออกจากของเหลวอุดมคติ และหา γ จากข้อมูลการวัด"
+    "en": "Next session: where gamma comes from, using measured VLE data.",
+    "th": "คาบหน้า γ มาจากไหน โดยใช้ข้อมูล VLE ที่วัดได้จริง"
    }
   ],
   "exit-ticket": [
@@ -489,17 +517,13 @@
     "th": "exit ticket และความเห็น ใช้เวลาห้านาที ทำคนเดียว"
    },
    {
-    "en": "At 350 K and z1 = 0.5, how does raising the pressure from 90 to 100 kPa change beta, and why? Use one number.",
-    "th": "ที่ 350 เคลวิน และ z₁ = 0.5 การเพิ่มความดันจาก 90 เป็น 100 กิโลปาสคาลเปลี่ยน β อย่างไร และเพราะอะไร ใช้ตัวเลขประกอบหนึ่งค่า",
-    "say": "At three hundred and fifty kelvin and z one equals zero point five, how does raising the pressure from ninety to one hundred kilopascals change beta, and why? Use one number."
+    "en": "A Rachford-Rice solve returns beta equals minus 0.064. What does this mean, and what must you check before accepting it for a nonideal mixture?",
+    "th": "การแก้สมการ Rachford–Rice ให้ β = −0.064 สิ่งนี้หมายความว่าอะไร และต้องตรวจอะไรก่อนยอมรับคำตอบนี้สำหรับสารผสมที่ไม่เป็นอุดมคติ",
+    "say": "A Rachford-Rice solve returns beta equals minus zero point zero six four. What does this mean, and what must you check before accepting it for a nonideal mixture?"
    },
    {
-    "en": "Scan the QR code or open the link. The same form asks three short questions about today's session.",
-    "th": "สแกน QR code หรือเปิดลิงก์ แบบฟอร์มเดียวกันนี้มีคำถามสั้น ๆ อีกสามข้อเกี่ยวกับคาบวันนี้"
-   },
-   {
-    "en": "It is anonymous. No name or student ID is recorded. Wait until you see Response received.",
-    "th": "แบบฟอร์มไม่ระบุตัวตน ไม่มีการบันทึกชื่อหรือรหัสนิสิต รอจนขึ้นข้อความ Response received"
+    "en": "Scan the QR code or open the link. It is anonymous. Wait until you see Response received.",
+    "th": "สแกน QR code หรือเปิดลิงก์ แบบฟอร์มไม่ระบุตัวตน รอจนขึ้นข้อความ Response received"
    }
   ],
   "after-class": [
@@ -508,12 +532,12 @@
     "th": "หลังเลิกเรียน ส่งไฟล์ study ของ Lab 01 ภายในสัปดาห์นี้"
    },
    {
-    "en": "Read the short note on activity coefficients before session 2.",
-    "th": "อ่านเอกสารสั้นเรื่องสัมประสิทธิ์แอกทิวิตีก่อนคาบที่ 2"
+    "en": "Read the note on activity coefficients before session 2.",
+    "th": "อ่านเอกสารเรื่องสัมประสิทธิ์แอกทิวิตีก่อนคาบที่ 2"
    },
    {
-    "en": "Graduate students can add the real-data extension to the same file. See you next session.",
-    "th": "นิสิตบัณฑิตศึกษาเพิ่มส่วนขยายข้อมูลจริงในไฟล์เดียวกันได้ แล้วพบกันคาบหน้า"
+    "en": "Graduate students can add a full nonideal flash algorithm to the same file. See you next session.",
+    "th": "นิสิตบัณฑิตศึกษาเพิ่มอัลกอริทึม flash แบบไม่เป็นอุดมคติฉบับเต็มลงในไฟล์เดียวกันได้ แล้วพบกันคาบหน้า"
    }
   ]
  }

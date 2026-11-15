@@ -199,41 +199,77 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div></div>
 </section>
 <section id="recap" class="slide level2">
-<h2>What you already know</h2>
+<h2>From equal fugacity to working equations</h2>
 <div class="chain">
 <div class="link">
-<p><span class="label">From the first half</span> At equilibrium each component has the same fugacity in every phase.</p>
+<p><span class="label">First half of the course</span> At equilibrium every component has the same fugacity in every phase.</p>
 <p><span class="math display">\hat f_i^{\,V}=\hat f_i^{\,L}</span></p>
 </div>
 <div class="link">
-<p><span class="label">At low pressure</span> Ideal vapor and the pure-liquid standard state give</p>
-<p><span class="math display">y_iP=x_i\gamma_iP_i^{\text{sat}}</span></p>
+<p><span class="label">γ–φ route</span> Liquid from an activity model, vapor from an EOS.</p>
+<p><span class="math display">y_i\hat\phi_i^{V}P=x_i\gamma_i\phi_i^{\text{sat}}P_i^{\text{sat}}\,\mathcal{P}_i</span></p>
 </div>
 <div class="link today">
-<p><span class="label">Today: ideal liquid</span> Set γ<sub>i</sub> = 1. This is Raoult’s law, the simplest case to learn the method on.</p>
-<p><span class="math display">y_iP=x_iP_i^{\text{sat}}</span></p>
+<p><span class="label">φ–φ route</span> Both phases from one equation of state.</p>
+<p><span class="math display">y_i\hat\phi_i^{V}=x_i\hat\phi_i^{L}</span></p>
 </div>
 </div>
-<p>Sessions 2 and 3 bring back γ ≠ 1 from measured data.</p>
+<p>𝒫<sub>i</sub> is the Poynting factor. Today: the general structure, then the ideal limit as the worked case. Sessions 2 and 3 bring in real γ.</p>
+</section>
+<section id="routes-to-k" class="slide level2">
+<h2>Every route gives a K-value</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p><span class="math display">K_i\equiv\frac{y_i}{x_i}</span></p>
+<p><span class="math display">K_i^{\gamma\phi}=\frac{\gamma_i\,\phi_i^{\text{sat}}P_i^{\text{sat}}\,\mathcal{P}_i}{\hat\phi_i^{V}P}\qquad K_i^{\phi\phi}=\frac{\hat\phi_i^{L}}{\hat\phi_i^{V}}</span></p>
+<p>Ideal liquid and ideal vapor at low pressure: <span class="math inline">K_i=P_i^{\text{sat}}/P</span>.</p>
+</div><div class="column" style="width:46%;">
+<div class="lever-box">
+<p><span class="label">Which route?</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Route</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polar or associating liquids, low P</td>
+<td>γ–φ</td>
+</tr>
+<tr class="even">
+<td>Hydrocarbons, gases, high P</td>
+<td>φ–φ</td>
+</tr>
+<tr class="odd">
+<td>Near a critical point</td>
+<td>φ–φ only</td>
+</tr>
+</tbody>
+</table>
+<p>In both, K depends on T, P <strong>and the phase compositions</strong>. Only the ideal limit gives K independent of x and y.</p>
+</div>
+</div></div>
 </section>
 <section id="outcomes" class="slide level2">
 <h2>By the end of today you can</h2>
 <p><span class="where-head">Where you show it</span></p>
 <ol type="1">
-<li><strong>Read</strong> a Pxy diagram and say whether a feed is liquid, vapor or two phases. <span class="where">Activity 1</span></li>
-<li><strong>Calculate</strong> bubble and dew pressures of an ideal mixture. <span class="where">Concepts, Lab 01 demo</span></li>
-<li><strong>Solve</strong> a TP flash for x, y and the vapor fraction β, and check it with a component balance. <span class="where">Activity 2</span></li>
-<li><strong>Explain</strong> how raising P at fixed T changes the split, using numbers. <span class="where">Exit ticket</span></li>
+<li><strong>Choose</strong> the γ–φ or φ–φ route for a system and write its K-values. <span class="where">Concepts</span></li>
+<li><strong>Decide</strong> the phase state from Σ z<sub>i</sub>K<sub>i</sub> and Σ z<sub>i</sub>/K<sub>i</sub>, and find a bubble T by iteration. <span class="where">Activity 1, worked example</span></li>
+<li><strong>Solve</strong> a multicomponent TP flash with Rachford–Rice and interpret a negative flash. <span class="where">Activity 2, Lab 01 step D</span></li>
+<li><strong>Explain</strong> with numbers how a nonideal liquid changes K and the phase split. <span class="where">Lab 01 demo, exit ticket</span></li>
 </ol>
 </section>
 <section id="route" class="slide level2">
 <h2>The 180-minute route</h2>
 <div class="route">
 <div class="seg concept" style="flex:30">
-<p><span class="t">0–30</span> <strong>Essential concepts</strong> <span class="d">Pxy diagram, bubble and dew, flash</span></p>
+<p><span class="t">0–30</span> <strong>Essential concepts</strong> <span class="d">K-values, bubble T, Rachford–Rice</span></p>
 </div>
 <div class="seg act" style="flex:10">
-<p><span class="t">30–40</span> <strong>Activity 1</strong> <span class="d">predict</span></p>
+<p><span class="t">30–40</span> <strong>Activity 1</strong> <span class="d">phase test</span></p>
 </div>
 <div class="seg demo" style="flex:20">
 <p><span class="t">40–60</span> <strong>Demo</strong> <span class="d">Lab 01</span></p>
@@ -242,21 +278,21 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p><span class="t">60–70</span> <strong>Break</strong></p>
 </div>
 <div class="seg act" style="flex:70">
-<p><span class="t">70–140</span> <strong>Activity 2 · pair investigation</strong> <span class="d">Lab 01: one change, one hand check</span></p>
+<p><span class="t">70–140</span> <strong>Activity 2 · pair investigation</strong> <span class="d">three-component flash, nonideal K</span></p>
 </div>
 <div class="seg wrap" style="flex:40">
 <p><span class="t">140–180</span> <strong>Discussion and exit ticket</strong> <span class="d">answer the session question</span></p>
 </div>
 </div>
 <div class="route-question">
-<p><span class="label">Session question</span> How does pressure change the phase split at fixed temperature?</p>
+<p><span class="label">Session question</span> Given T, P and a feed, how do we find which phases form, and how much of each, when K is not constant?</p>
 </div>
 <div class="beforeafter">
 <div>
-<p><span class="label">Before class · 15–20 min</span> Read the 3-page note and answer its three preparation questions.</p>
+<p><span class="label">Before class · 15–20 min</span> Review fugacity, φ and γ from the first half. Bring one question.</p>
 </div>
 <div>
-<p><span class="label">After class · 30–40 min</span> Finish the Lab 01 comparison and submit the downloaded study file with your name and ID.</p>
+<p><span class="label">After class · 30–40 min</span> Finish Lab 01 step D and the nonideal comparison. Submit the study file with your name and ID.</p>
 </div>
 </div>
 <div class="selfstudy">
@@ -264,32 +300,37 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 </section>
 <section id="phase-rule" class="slide level2">
-<h2>Two phases, two components: what is fixed?</h2>
+<h2>What is fixed in a flash?</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
 <p><span class="math display">F=C-\pi+2</span></p>
 <div class="rule-table">
 <table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">binary</th>
+<th style="text-align: right;">C components</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td>components, C</td>
-<td>2</td>
+<td>phases, π</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td>phases, π</td>
-<td>2</td>
-</tr>
-<tr class="odd">
 <td>degrees of freedom, F</td>
-<td><strong>2</strong></td>
+<td style="text-align: right;"><strong>2</strong></td>
+<td style="text-align: right;"><strong>C</strong></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div><div class="column rule-notes" style="width:50%;">
-<p>Fix <strong>T and P</strong> and both phase compositions, x and y, are fixed.</p>
-<p>The feed z does <strong>not</strong> change x or y. It only changes <strong>how much</strong> of each phase forms.</p>
-<p>This is why a tie line at one T and P serves every feed between its ends.</p>
+<p><strong>Intensive:</strong> for a binary, fixing T and P fixes x and y. With C components, T and P leave C − 2 compositions free.</p>
+<p><strong>Duhem’s theorem:</strong> T, P and the feed z fix the whole state, amounts included. That is the TP flash.</p>
+<p>For a binary the feed only changes β. With more components the feed also moves x and y.</p>
 </div></div>
 </section>
 <section id="bubble" class="slide level2">
@@ -315,6 +356,52 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <p>At <span class="math inline">y_1=0.5</span>: <span class="math inline">1/(0.5/150+0.5/60)=</span> <strong>85.71 kPa</strong>.</p>
 <p>The dew line is curved, and always lies below the bubble line.</p>
 </div></div>
+</section>
+<section id="bubble-t" class="slide level2">
+<h2>Bubble T needs an iteration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Bubble P is explicit: <span class="math inline">P=\sum_i z_iP_i^{\text{sat}}</span>. Bubble T is not, because every <span class="math inline">K_i</span> depends on T:</p>
+<p><span class="math display">g(T)=\sum_i z_iK_i(T,P)-1=0</span></p>
+<p>Newton on g(T), starting at 350 K, for z = 0.3 / 0.3 / 0.4 benzene, toluene, p-xylene at 30 kPa:</p>
+</div><div class="column" style="width:48%;">
+<div class="lever-box">
+<p><span class="label">Newton iterations</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">T / K</th>
+<th style="text-align: right;">Σ z<sub>i</sub>K<sub>i</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">350.000</td>
+<td style="text-align: right;">1.4478</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">340.731</td>
+<td style="text-align: right;">1.0524</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">339.328</td>
+<td style="text-align: right;">1.0011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">339.298</td>
+<td style="text-align: right;">1.0000</td>
+</tr>
+</tbody>
+</table>
+<p>Bubble T = <strong>339.30 K</strong>; first vapor y = 0.646 / 0.235 / 0.119.</p>
+</div>
+</div></div>
+<p><span class="source">Antoine constants: NIST WebBook, Willingham et al.&nbsp;(1945): benzene 4.01814, 1203.835, −53.226; toluene 4.07827, 1343.943, −53.773; p-xylene 4.11138, 1450.688, −58.160 (bar, K).</span></p>
 </section>
 <section id="concept" class="slide level2">
 <h2>One diagram answers three questions</h2>
@@ -347,66 +434,120 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 </div></div>
 </section>
-<section id="worked" class="slide level2">
-<h2>Worked example: the flash at 95 kPa by hand</h2>
-<div class="steps4">
-<div>
-<p><span class="label">1 · Phase check</span> P<sub>dew</sub>(z) = 85.71 &lt; <strong>95</strong> &lt; 105 = P<sub>bubble</sub>(z), so two phases form.</p>
-</div>
-<div>
-<p><span class="label">2 · K-values</span> K<sub>1</sub> = 150/95 = 1.5789<br> K<sub>2</sub> = 60/95 = 0.6316</p>
-</div>
-<div>
-<p><span class="label">3 · Compositions</span> x<sub>1</sub> = (1 − K<sub>2</sub>)/(K<sub>1</sub> − K<sub>2</sub>) = <strong>0.3889</strong><br> y<sub>1</sub> = K<sub>1</sub>x<sub>1</sub> = <strong>0.6140</strong></p>
-</div>
-<div>
-<p><span class="label">4 · Amounts and check</span> β = <strong>0.4935</strong>, and component 2 closes at 0.5000.</p>
-</div>
-</div>
-<p>Step 3 comes from <span class="math inline">\sum x_i=1</span> and <span class="math inline">\sum K_ix_i=1</span>. Step 1 matters: outside the two-phase range the same formulas give β &lt; 0 or β &gt; 1, which means one phase.</p>
-</section>
 <section id="rachford-rice" class="slide level2">
-<h2>More than two components: Rachford–Rice</h2>
+<h2>Rachford–Rice: one equation in β</h2>
 <div class="columns">
-<div class="column" style="width:56%;">
-<p>With <span class="math inline">K_i=P_i^{\text{sat}}/P</span> and <span class="math inline">x_i=\dfrac{z_i}{1+\beta(K_i-1)}</span>, the condition <span class="math inline">\sum(y_i-x_i)=0</span> gives one equation in β:</p>
-<p><span class="math display">\sum_i\frac{z_i(K_i-1)}{1+\beta(K_i-1)}=0</span></p>
-<p>It decreases with β, so it has one root between 0 and 1 whenever two phases exist. Solve it by bisection or Newton’s method.</p>
-</div><div class="column" style="width:42%;">
+<div class="column" style="width:46%;">
+<p>With <span class="math inline">x_i=z_i/[1+\beta(K_i-1)]</span> and <span class="math inline">y_i=K_ix_i</span>, require <span class="math inline">\sum(y_i-x_i)=0</span>:</p>
+<p><span class="math display">f(\beta)=\sum_i\frac{z_i(K_i-1)}{1+\beta(K_i-1)}=0</span></p>
+<p><span class="math inline">f'(\beta)&lt;0</span> between the asymptotes <span class="math inline">\beta=1/(1-K_{\max})</span> and <span class="math inline">1/(1-K_{\min})</span>, so there is <strong>exactly one root</strong> there. Bracket it there, then use Newton.</p>
+</div><div class="column" style="width:52%;">
+<p><img data-src="figures/s01-rr-lab.png" class="lab-shot" alt="Rachford-Rice function for the three-component feed at 30 kPa with the root at beta 0.6013"></p>
+<div class="expect">
+<p><span class="label">Benzene / toluene / p-xylene · 350 K · 30 kPa</span> K = 3.052 / 1.160 / 0.461 · root β = <strong>0.6013</strong> (Newton from 0.5: 0.5992, 0.6013)</p>
+</div>
+</div></div>
+</section>
+<section id="phase-check" class="slide level2">
+<h2>Phase test before you flash</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">f(0)=\sum_i z_iK_i-1\qquad f(1)=1-\sum_i\frac{z_i}{K_i}</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Σ z<sub>i</sub>K<sub>i</sub> ≤ 1</td>
+<td>liquid (at or below bubble point)</td>
+</tr>
+<tr class="even">
+<td>Σ z<sub>i</sub>/K<sub>i</sub> ≤ 1</td>
+<td>vapor (at or above dew point)</td>
+</tr>
+<tr class="odd">
+<td>both &gt; 1</td>
+<td>two phases, 0 &lt; β &lt; 1</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column rule-notes" style="width:48%;">
+<p>If the test says one phase, Rachford–Rice still has a root, outside 0–1. This <strong>negative flash</strong> is the extrapolated tie line, not a physical amount.</p>
+<p>With constant K the test is exact. When K depends on composition it is not: a one-phase answer must be confirmed by a <strong>stability test</strong> (tangent-plane distance, Session 3).</p>
+</div></div>
+</section>
+<section id="nonideal-k" class="slide level2">
+<h2>When K depends on composition</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="steps-v">
+<ol type="1">
+<li>Guess K (ideal or Wilson).</li>
+<li>Solve Rachford–Rice for β, then x and y.</li>
+<li>Update K from γ(x) and φ̂(y) or from the EOS.</li>
+<li>Repeat until K stops changing.</li>
+</ol>
+</div>
+<p>Successive substitution converges slowly near the critical point; then switch to Newton on all variables.</p>
+</div><div class="column" style="width:48%;">
 <div class="lever-box">
-<p><span class="label">Check at 95 kPa, β = 0.4935</span></p>
-<p>0.5(0.5789)/1.2857 = +0.2251<br> 0.5(−0.3684)/0.8182 = −0.2251</p>
-<p>Sum = <strong>0</strong>. For a binary the root is the lever-rule value.</p>
+<p><span class="label">Lab 01 · 350 K · 95 kPa · z₁ = 0.5</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Liquid model</th>
+<th>Two-phase range</th>
+<th>At 95 kPa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ideal</td>
+<td>85.71–105.0 kPa</td>
+<td>β = 0.494</td>
+</tr>
+<tr class="even">
+<td>Margules A = 1</td>
+<td>102.4–134.8 kPa</td>
+<td>all vapor</td>
+</tr>
+</tbody>
+</table>
+<p>Positive deviation raises both K-values and moves the whole envelope to higher P. The ideal answer is not even the right phase.</p>
 </div>
 </div></div>
 </section>
 <section id="activity-1" class="slide level2 activity">
-<h2>Predict before you calculate</h2>
+<h2>Phase test without solving</h2>
 <p><span class="act-label">Activity 1 · 10 minutes · alone, then with a partner</span></p>
 <div class="prompt">
-<p>Same temperature, same feed. The pressure rises from 95 to <strong>110 kPa</strong>.</p>
+<p>At 350 K and 45 kPa, the feed z = 0.3 / 0.3 / 0.4 (benzene, toluene, p-xylene) has K = 2.035 / 0.773 / 0.307.</p>
 </div>
 <div class="choices">
 <p><span>Liquid</span> <span>Two phases</span> <span>Vapor</span></p>
 </div>
-<p>Write your choice and <strong>one reason taken from the diagram</strong>. Then compare with your partner. Do not calculate yet.</p>
+<p>Decide with Σ z<sub>i</sub>K<sub>i</sub> and Σ z<sub>i</sub>/K<sub>i</sub> only. Then predict the sign of the Rachford–Rice root and compare with your partner.</p>
 <div class="selfstudy">
 <p><strong>On your own:</strong> pause here, write your answer, then go to the next slide.</p>
 </div>
 </section>
 <section id="activity-1-debrief" class="slide level2">
-<h2>Activity 1: check your prediction</h2>
+<h2>Activity 1: check your answer</h2>
 <div class="columns">
 <div class="column" style="width:52%;">
-<p>At 110 kPa the feed (z₁ = 0.5) lies <strong>above the bubble line</strong>: P &gt; P<sub>bubble</sub>(z) = 105 kPa.</p>
-<p>The mixture is <strong>all liquid</strong>. No vapor forms.</p>
-<p><span class="label">Two phases exist for z₁ = 0.5 only between</span></p>
+<p>Σ z<sub>i</sub>K<sub>i</sub> = 0.3(2.035) + 0.3(0.773) + 0.4(0.307) = <strong>0.965</strong> ≤ 1</p>
+<p>The feed is a <strong>subcooled liquid</strong>: 45 kPa is above its bubble pressure, 43.43 kPa.</p>
+<p><span class="label">Rachford–Rice root</span></p>
 <div class="range">
-<p>85.71 kPa &lt; P &lt; 105 kPa</p>
+<p>β = −0.064 (negative flash)</p>
 </div>
 </div><div class="column rule-notes" style="width:46%;">
-<p>A good reason names the line: “110 kPa is above the bubble pressure of the feed.”</p>
-<p>A weak reason: “pressure went up, so less vapor”. The direction is right, but it does not say whether any vapor remains.</p>
+<p>Σ z<sub>i</sub>/K<sub>i</sub> = 1.838 &gt; 1, so it is not vapor either. Only the first test decides.</p>
+<p>The negative root still means something: it is where the feed lies on the extension of the tie line. Some algorithms use it to locate the phase boundary.</p>
 </div></div>
 </section>
 <section id="demo-lab" class="slide level2">
@@ -414,16 +555,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <div class="columns">
 <div class="column" style="width:44%;">
 <ol type="1">
-<li>Load the <strong>synthetic</strong> case.</li>
-<li>Set P = 95 kPa and z₁ = 0.5, then press <strong>Calculate</strong>.</li>
-<li>Check the tie line against the diagram.</li>
-<li>Save it as your baseline, change <strong>only P</strong>, and test your prediction.</li>
+<li>Synthetic case, <strong>350 K, 95 kPa, z₁ = 0.5</strong>, ideal liquid: β = 0.494.</li>
+<li>Switch the liquid model to <strong>Margules, A = 1</strong>. Recalculate: all vapor.</li>
+<li>Find the new bubble and dew pressures. Explain the shift.</li>
+<li>Graduate view, <strong>step D</strong>: solve the 30 kPa three-component preset, then 45 kPa.</li>
 </ol>
 <p><a href="../preview-2027/vle.html" class="lab-button" target="_blank">Open Lab 01 →</a></p>
 </div><div class="column" style="width:54%;">
 <p><img data-src="figures/s01-lab01.png" class="lab-shot" alt="Lab 01 phase diagram at 95 kPa with the tie line from x1 0.389 to y1 0.614"></p>
 <div class="expect">
-<p><span class="label">Lab 01 should report</span> x₁ = 0.3889 · y₁ = 0.6140 · β = 0.4935 · bubble P = 105.0 kPa · dew P = 85.71 kPa</p>
+<p><span class="label">Lab 01 should report</span> Ideal: x₁ = 0.3889 · y₁ = 0.6140 · β = 0.4935 · Margules A = 1: vapor only, bubble 134.8 kPa</p>
 </div>
 </div></div>
 </section>
@@ -431,16 +572,16 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>Four common mistakes</h2>
 <div class="mistakes">
 <div>
-<p><strong>Using z in the bubble or dew equation of a flash.</strong> P<sub>bubble</sub>(z) and P<sub>dew</sub>(z) only tell you whether two phases form. The compositions come from the tie line.</p>
+<p><strong>Treating a negative flash as an amount.</strong> β &lt; 0 or β &gt; 1 means one phase. The value is an extrapolation.</p>
 </div>
 <div>
-<p><strong>Skipping the phase check.</strong> Outside the two-phase range the flash formulas still return numbers, with β &lt; 0 or β &gt; 1.</p>
+<p><strong>Newton outside the asymptotes.</strong> Rachford–Rice has poles at 1/(1 − K<sub>max</sub>) and 1/(1 − K<sub>min</sub>). Start inside, or bracket first.</p>
 </div>
 <div>
-<p><strong>Mixing pressure units.</strong> P and P<sup>sat</sup> must be in the same unit before forming K<sub>i</sub>.</p>
+<p><strong>Keeping K constant for a nonideal mixture.</strong> K depends on x and y. One Rachford–Rice solve is one step of an iteration.</p>
 </div>
 <div>
-<p><strong>Expecting z to move x and y.</strong> At fixed T and P, z changes only β.</p>
+<p><strong>Trusting the phase test with variable K.</strong> A one-phase answer needs a stability test before it is accepted.</p>
 </div>
 </div>
 </section>
@@ -452,20 +593,20 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 </section>
 <section id="activity-2" class="slide level2 activity">
-<h2>Activity 2 · how does P move the split?</h2>
+<h2>Activity 2 · flash beyond the ideal binary</h2>
 <p><span class="act-label">Activity 2 · 70 minutes · in pairs: one drives Lab 01, one checks by hand, then swap</span></p>
 <div class="a2grid">
 <div>
-<p><span class="label">10 min · predict</span> At 350 K and z₁ = 0.5, predict β at <strong>90, 95 and 100 kPa</strong>. Sketch β against P.</p>
+<p><span class="label">20 min · by hand</span> Three components at 350 K, 30 kPa. Do two Newton steps on Rachford–Rice from β = 0.5. Get x, y and close the balance.</p>
 </div>
 <div>
-<p><span class="label">25 min · calculate</span> Run the three pressures in Lab 01. Change only P. Save each as a case with a clear name.</p>
+<p><span class="label">15 min · step D</span> Check in Lab 01 step D. Then find the dew and bubble pressures of this feed and run 45 kPa.</p>
 </div>
 <div>
-<p><span class="label">20 min · hand check</span> The checker repeats one pressure by hand: K-values, x₁, y₁, β and a component balance.</p>
+<p><span class="label">20 min · nonideal</span> Binary at 350 K, z₁ = 0.5: compare ideal with Margules A = 0.5 and 1 at 95 kPa. Record β and both phase boundaries.</p>
 </div>
 <div>
-<p><span class="label">15 min · explain</span> Write two sentences, with numbers, answering the session question. Download the study file with your names and IDs.</p>
+<p><span class="label">15 min · explain</span> Two sentences with numbers answering the session question. Download the study file with your names and IDs.</p>
 </div>
 </div>
 <div class="selfstudy">
@@ -475,60 +616,55 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <section id="activity-2-check" class="slide level2">
 <h2>Activity 2 · what to hand in</h2>
 <div class="columns">
-<div class="column" style="width:52%;">
+<div class="column" style="width:48%;">
 <ol type="1">
-<li>Lab 01 study file with three saved cases (90, 95, 100 kPa), your name and student ID.</li>
-<li>One hand calculation, photographed or typed into the additional note.</li>
-<li>Two sentences that answer the session question with numbers.</li>
+<li>Lab 01 study file with step D solved at 30 and 45 kPa and the model comparison, your name and student ID.</li>
+<li>Your two Newton steps by hand.</li>
+<li>Two sentences answering the session question with numbers.</li>
 </ol>
-<p><span class="label">Graduate extension</span> Load the real benzene + toluene case. Find the pressure range where z = 0.40 gives two phases at 350 K, and compare β at 50 kPa with the drum on slide 3.</p>
-</div><div class="column" style="width:46%;">
+<p><span class="label">Graduate extension</span> Replace K = P<sup>sat</sup>/P with a composition-dependent K and describe the outer loop you would add. Where would it fail to converge?</p>
+</div><div class="column" style="width:50%;">
 <div class="lever-box">
-<p><span class="label">Check your Lab 01 results</span></p>
+<p><span class="label">Check your results · 350 K, z = 0.3 / 0.3 / 0.4</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: right;">P / kPa</th>
-<th style="text-align: right;">x₁</th>
-<th style="text-align: right;">y₁</th>
-<th style="text-align: right;">β</th>
+<th></th>
+<th style="text-align: right;">benzene</th>
+<th style="text-align: right;">toluene</th>
+<th style="text-align: right;">p-xylene</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">0.3333</td>
-<td style="text-align: right;">0.5556</td>
-<td style="text-align: right;">0.750</td>
+<td>x at 30 kPa</td>
+<td style="text-align: right;">0.1343</td>
+<td style="text-align: right;">0.2737</td>
+<td style="text-align: right;">0.5920</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">0.3889</td>
-<td style="text-align: right;">0.6140</td>
-<td style="text-align: right;">0.494</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">0.4444</td>
-<td style="text-align: right;">0.6667</td>
-<td style="text-align: right;">0.250</td>
+<td>y at 30 kPa</td>
+<td style="text-align: right;">0.4099</td>
+<td style="text-align: right;">0.3174</td>
+<td style="text-align: right;">0.2727</td>
 </tr>
 </tbody>
 </table>
+<p>β = 0.6013 at 30 kPa · two phases from 24.48 to 43.43 kPa · β = −0.064 at 45 kPa</p>
 </div>
 </div></div>
 </section>
 <section id="discussion" class="slide level2">
-<h2>Discussion: what did pressure do?</h2>
+<h2>Discussion: what did the flashes show?</h2>
 <div class="columns">
 <div class="column" style="width:58%;">
-<p><img data-src="figures/s01-beta.svg" class="fig-pxy" alt="Vapor fraction falls from 1 at the dew pressure to 0 at the bubble pressure for z1 = 0.5"></p>
+<p><img data-src="figures/s01-beta3.svg" class="fig-pxy" alt="Rachford-Rice root against pressure for the three-component feed, physical between the dew and bubble pressures and negative above the bubble pressure"></p>
 </div><div class="column concept-notes" style="width:40%;">
 <p><span class="q">Discuss in pairs, then with the class</span></p>
 <ol type="1">
-<li>Why does β fall from 1 to 0 between 85.71 and 105 kPa?</li>
-<li>x₁ and y₁ both <strong>rise</strong> with P. Why can β still fall?</li>
-<li>What would change if T were raised to 360 K?</li>
+<li>Why does the root leave 0–1 exactly at the dew and bubble pressures?</li>
+<li>Margules A = 1 turned two phases into one at 95 kPa. Which assumption in the ideal flash failed?</li>
+<li>With composition-dependent K, why is the phase test not enough on its own?</li>
 </ol>
 </div></div>
 </section>
@@ -536,17 +672,17 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>Summary</h2>
 <div class="summary3">
 <div>
-<p><span class="label">Which phases</span> Compare P with P<sub>dew</sub>(z) and P<sub>bubble</sub>(z).</p>
+<p><span class="label">Formulation</span> Equal fugacity, written as γ–φ or φ–φ. Both give K<sub>i</sub>, which depends on T, P, x and y.</p>
 </div>
 <div>
-<p><span class="label">What compositions</span> T and P fix x and y on the tie line: <span class="math inline">K_i=P_i^{\text{sat}}/P</span>.</p>
+<p><span class="label">Phase test</span> Σ z<sub>i</sub>K<sub>i</sub> and Σ z<sub>i</sub>/K<sub>i</sub>; exact for constant K, a hint otherwise.</p>
 </div>
 <div>
-<p><span class="label">How much</span> The lever rule, or Rachford–Rice for many components, gives β.</p>
+<p><span class="label">Flash</span> Rachford–Rice: one monotone equation in β inside its asymptotes, wrapped in a K-update loop.</p>
 </div>
 </div>
-<p><strong>Session question:</strong> at fixed T, raising P moves the tie line up and the feed toward the liquid end, so β falls, from 1 at the dew pressure to 0 at the bubble pressure.</p>
-<p><span class="label">Next session</span> Real mixtures: γ ≠ 1, inferred from measured VLE data (Lab 02).</p>
+<p><strong>Session question:</strong> test the phase state, solve Rachford–Rice, update K and repeat. For the three-component feed, β falls from 1 to 0 between 24.48 and 43.43 kPa; with Margules A = 1 the binary at 95 kPa is all vapor instead of β = 0.494.</p>
+<p><span class="label">Next session</span> Where γ comes from: activity coefficients from measured VLE data (Lab 02).</p>
 </section>
 <section id="exit-ticket" class="slide level2 activity">
 <h2>Exit ticket · 5 minutes</h2>
@@ -554,7 +690,7 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <div class="columns">
 <div class="column" style="width:64%;">
 <div class="prompt">
-<p>At 350 K and z₁ = 0.5, how does raising P from 90 to 100 kPa change β, and why? Use one number.</p>
+<p>A Rachford–Rice solve returns β = −0.064. What does this mean, and what must you check before accepting it for a nonideal mixture?</p>
 </div>
 <p>Scan the code or open the link. The same form asks three short questions about today: pace, confidence and whether the lab worked.</p>
 <p>No name or student ID is recorded. Wait for <strong>“Response received.”</strong></p>
@@ -567,13 +703,13 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 <h2>After class</h2>
 <div class="summary3">
 <div>
-<p><span class="label">Hand in · this week</span> Your Lab 01 study file from Activity 2, with name and student ID.</p>
+<p><span class="label">Hand in · this week</span> Your Lab 01 study file with step D and the model comparison, name and student ID.</p>
 </div>
 <div>
 <p><span class="label">Prepare · Session 2</span> Read the note on activity coefficients from measured data. About 20 minutes.</p>
 </div>
 <div>
-<p><span class="label">Optional · graduate</span> Finish the real benzene + toluene extension and add it to the same study file.</p>
+<p><span class="label">Optional · graduate</span> Sketch the full nonideal flash algorithm with a convergence test, and add it to the study file.</p>
 </div>
 </div>
 <p><a href="../preview-2027/vle.html" class="lab-button" target="_blank">Open Lab 01 →</a></p>

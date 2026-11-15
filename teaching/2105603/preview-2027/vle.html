@@ -177,6 +177,24 @@
         <div class="graduate-actions"><button id="graduate-check-evidence" type="button" class="secondary-button">Check my evidence record</button></div><p id="graduate-evidence-status" class="graduate-status" role="status"></p>
                 <p class="graduate-note">Submission standard: report the baseline and parameter provenance; cite numerical model and sensitivity results; identify retained assumptions, domain failures and phase changes; and propose a discriminating follow-up. The record check only confirms that the sections and calculations are present. It is a completeness reminder, not a grade; scientific reasoning still needs instructor review.</p>
       </section>
+      <section class="graduate-step" id="mc-flash" aria-labelledby="mc-heading"><h3 id="mc-heading">D. Beyond two components: the Rachford–Rice flash</h3>
+        <ol class="graduate-checklist"><li>For a feed z at fixed T and P with constant K<sub>i</sub>, the vapor fraction β is the root of f(β) = Σ z<sub>i</sub>(K<sub>i</sub> − 1)/[1 + β(K<sub>i</sub> − 1)] = 0.</li><li>Predict the phase state from Σ z<sub>i</sub>K<sub>i</sub> and Σ z<sub>i</sub>/K<sub>i</sub> before solving: Σ z<sub>i</sub>K<sub>i</sub> ≤ 1 means liquid, Σ z<sub>i</sub>/K<sub>i</sub> ≤ 1 means vapor.</li><li>Solve the 30 kPa preset, then the 45 kPa preset. Explain what a root outside 0 ≤ β ≤ 1 means.</li></ol>
+        <p class="graduate-note">Here K<sub>i</sub> = P<sub>i</sub><sup>sat</sup>/P, which assumes an ideal liquid and vapor. Presets use NIST Antoine constants (Willingham et al., 1945) at 350 K: benzene 91.567, toluene 34.786, p-xylene 13.821 kPa. Enter up to five components of your own.</p>
+        <div class="graduate-grid graduate-controls">
+          <div><label for="mc-preset">Preset</label><select id="mc-preset"></select></div>
+          <div><label for="mc-P">Pressure P</label><div class="quantity-input"><input id="mc-P" type="number" step="any" min="0" aria-describedby="mc-P-unit"><span id="mc-P-unit">kPa</span></div></div>
+        </div>
+        <div class="table-scroll graduate-table" role="region" aria-label="Components, feed and saturation pressures" tabindex="0"><table class="mc-input"><thead><tr><th scope="col">Component</th><th scope="col">Feed z<sub>i</sub></th><th scope="col">P<sub>i</sub><sup>sat</sup> at T / kPa</th></tr></thead><tbody id="mc-body"></tbody></table></div>
+        <div class="graduate-actions"><button id="mc-load" type="button" class="secondary-button">Load the preset</button><button id="mc-run" type="button" class="primary-button">Solve the flash</button></div>
+        <p id="mc-status" class="graduate-status" role="status"></p>
+        <div id="mc-results" hidden>
+          <dl class="graduate-metrics"><div><dt>Σ z<sub>i</sub>K<sub>i</sub></dt><dd id="mc-sumzk">—</dd></div><div><dt>Σ z<sub>i</sub>/K<sub>i</sub></dt><dd id="mc-sumzok">—</dd></div><div><dt>Root β</dt><dd id="mc-beta">—</dd></div><div><dt>Asymptotes of f(β)</dt><dd id="mc-bounds">—</dd></div></dl>
+          <p id="mc-verdict" class="graduate-note"></p>
+          <div class="figure-scroll" role="region" aria-label="Rachford-Rice function (scroll sideways on a small screen)" tabindex="0"><svg id="mc-plot" class="mc-plot" viewBox="0 0 640 300" role="img" aria-label="Rachford-Rice function against vapor fraction with the root marked"></svg></div>
+          <div class="table-scroll graduate-table" role="region" aria-label="Flash result per component" tabindex="0"><table><thead><tr><th scope="col">Component</th><th scope="col">z<sub>i</sub></th><th scope="col">K<sub>i</sub></th><th scope="col">x<sub>i</sub></th><th scope="col">y<sub>i</sub></th></tr></thead><tbody id="mc-out"></tbody></table></div>
+        </div>
+        <label for="mc-claim">Claim 4 · several components</label><textarea id="mc-claim" rows="3" maxlength="10000" placeholder="Report β, x and y at 30 kPa with a balance check. Explain the 45 kPa root, and what would change if K depended on composition."></textarea>
+      </section>
     </section>
 
     <section class="panel comparison-panel" aria-labelledby="comparison-heading">
@@ -195,6 +213,7 @@
   <footer class="site-footer"><span>2105603 · Advanced Chemical Engineering Thermodynamics</span><a href="design-notes.html">2027 design and pilot plan</a></footer>
   <script src="../labs/assets/plotly.min.js" defer></script>
   <script type="module" src="assets/mode.js?v=mode-3"></script>
-  <script type="module" src="assets/vle.js?v=mode-1"></script>
+  <script type="module" src="assets/vle.js?v=mode-2"></script>
+  <script type="module" src="assets/mcflash.js?v=2"></script>
 </body>
 </html>
