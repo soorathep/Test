@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Lab 01 · Is this file ready? · 2105315 Data Analytics Labs</title>
+  <meta name="description" content="Audit a real two-week air-quality export before anyone averages it: import settings, missing-value codes, repeated rows, and checking code written by an AI assistant.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="assets/labs.css?v=1">
+  <script type="module" src="assets/mode.js?v=1"></script>
+  <script type="module" src="assets/audit-lab.js?v=1"></script>
+</head>
+<body data-mode="core">
+  <a class="skip-link" href="#lab">Skip to the lab</a>
+  <header class="site-header"><a class="brand" href="index.html">SKH <span>Data Analytics Labs</span></a><nav aria-label="Course navigation"><a href="audit.html" aria-current="page">Lab 01</a><a href="index.html">All labs</a></nav></header>
+  <main class="page da-page" id="lab">
+    <p class="eyebrow">2105315 Data Analytics in Chemical Engineering · Lab 01 · Week 1</p>
+    <h1>Is this file ready for the morning report?</h1>
+    <div class="logbook" role="group" aria-label="Monitoring log">
+      <div class="logbook-row"><p class="logbook-time"><strong>07:40</strong>log</p><p class="logbook-entry">A two-week export from a road-level air-quality station has arrived. The 09:00 report needs the mean CO concentration. Nobody has opened the file yet.</p></div>
+      <div class="logbook-row"><p class="logbook-time"><strong>TASK</strong>you</p><p class="task-line">Find what the import and cleaning steps must fix before a mean of <span class="tag">CO(GT)</span> means anything. Then check code that an AI assistant wrote for the same job.</p></div>
+    </div>
+
+    <fieldset class="mode-switch"><legend>View</legend><div class="mode-options"><label><input type="radio" name="lab-mode" value="core" checked><span>Core</span></label><label><input type="radio" name="lab-mode" value="graduate"><span>Extension</span></label></div><p class="core-only">Core: Steps 1 to 7, about 40 minutes.</p><p class="grad-only">Extension: the core steps plus two decisions about missing data in Step 8.</p></fieldset>
+
+    <section class="lab-step" aria-labelledby="s1">
+      <div class="step-head"><span class="step-number">01</span><div><h2 id="s1">Choose your data</h2><p>Practise on a demo, then load your own 14 days. Your file is chosen from your student ID, so it differs from your classmates'.</p></div></div>
+      <fieldset class="student-fields"><legend>Your details</legend><p class="input-help">Your student ID picks your data set. All three go into the file you submit.</p><div class="student-grid"><div><label for="student-first-name">First name</label><input id="student-first-name" type="text" maxlength="80" autocomplete="given-name"></div><div><label for="student-last-name">Last name</label><input id="student-last-name" type="text" maxlength="80" autocomplete="family-name"></div><div><label for="student-id">Student ID</label><input id="student-id" type="text" maxlength="20" inputmode="numeric" autocomplete="off"></div></div></fieldset>
+      <div class="case-buttons" role="group" aria-label="Data set">
+        <button type="button" data-case="spring" aria-pressed="true">Demo A<span class="case-sub">22 Apr to 5 May 2004</span></button>
+        <button type="button" data-case="winter" aria-pressed="false">Demo B<span class="case-sub">2 to 15 Dec 2004</span></button>
+        <button type="button" data-case="student" aria-pressed="false">My data set<span class="case-sub">from my student ID</span></button>
+      </div>
+      <p id="id-note" class="id-note" role="status" aria-live="polite"></p>
+      <p id="dataset-line" class="dataset-line">Loading the station record…</p>
+      <details class="source-box"><summary>Where the data come from</summary>
+        <p>Real hourly data from a gas multisensor device and a co-located reference analyzer at road level in an Italian city, March 2004 to April 2005. Columns ending in (GT) are the reference analyzer; PT08 columns are the low-cost sensors.</p>
+        <p>Source: S. De Vito, Air Quality, UCI Machine Learning Repository, <a href="https://doi.org/10.24432/C59K5F">doi:10.24432/C59K5F</a>, CC BY 4.0. Paper: De Vito et al., Sensors and Actuators B 129 (2008) 750–757, <a href="https://doi.org/10.1016/j.snb.2007.09.060">doi:10.1016/j.snb.2007.09.060</a>.</p>
+        <p>Changed for this lab: 8 of the 13 measurement columns are kept; three rows are repeated on purpose (the source has no repeats); each file keeps 2 of the 114 empty rows at the end of the source. Everything else is the source text, unchanged.</p>
+      </details>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s2">
+      <div class="step-head"><span class="step-number">02</span><div><h2 id="s2">Read the raw file</h2><p>This is the text a program receives. Choose the settings a reader such as <code>pandas.read_csv</code> needs.</p></div></div>
+      <pre id="raw-file" class="raw-file" tabindex="0" aria-label="First lines of your file as raw text"></pre>
+      <p class="raw-file-note">Numbers on the left are line numbers in the file. ⋮ marks lines left out of this view.</p>
+      <div class="import-grid">
+        <div><label for="imp-sep">Column separator</label><select id="imp-sep"><option value="comma">comma ,</option><option value="semicolon">semicolon ;</option><option value="tab">tab</option></select></div>
+        <div><label for="imp-dec">Decimal mark</label><select id="imp-dec"><option value="point">point .</option><option value="comma">comma ,</option></select></div>
+        <div><label for="imp-miss">Missing values</label><select id="imp-miss"><option value="none">only empty cells</option><option value="code">empty cells and -200</option></select></div>
+      </div>
+      <div id="import-verdict" class="import-verdict" role="status" aria-live="polite"></div>
+      <ul id="col-chips" class="col-chips" aria-label="Columns as the reader would see them"></ul>
+      <p class="chip-key">Teal outline: read as numbers. Amber: read as text. Dashed: empty.</p>
+      <p><button id="download-csv" class="secondary-button" type="button">Download this file (CSV)</button></p>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s3">
+      <div class="step-head"><span class="step-number">03</span><div><h2 id="s3">Flag before you look</h2><p>Tick every statement you think is true for your file. The audit in Step 6 will check each one.</p></div></div>
+      <ul id="flag-list" class="flag-list"></ul>
+      <p id="flag-score" class="flag-score" hidden></p>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s4">
+      <div class="step-head"><span class="step-number">04</span><div><h2 id="s4">Check the AI's code</h2><p>A student asked an AI assistant: "Give me Python code for the mean CO in this file." It returned this, and it runs without an error.</p></div></div>
+      <pre class="code-block" aria-label="Code written by an AI assistant"><span class="ln"><span class="k">import</span> pandas <span class="k">as</span> pd</span><span class="ln"></span><span class="ln">df = pd.read_csv(<span class="s">"my_air_quality.csv"</span>, sep=<span class="s">";"</span>, decimal=<span class="s">","</span>)</span><span class="ln">df = df.drop_duplicates()</span><span class="ln"><span class="c"># mean CO concentration over the two weeks</span></span><span class="ln">print(df[<span class="s">"CO(GT)"</span>].mean())</span></pre>
+      <div class="concept-question">
+        <h3>What is wrong with this code, and how would you notice from the printed number alone?</h3>
+        <label for="ai-answer" class="visually-hidden">Your answer</label>
+        <textarea id="ai-answer" rows="3" maxlength="3000" placeholder="Write your answer first (at least one full sentence)."></textarea>
+        <details><summary>Compare with the explanation</summary><div class="concept-answer">
+          <p>The separator and decimal mark are right, and repeated rows are removed, so the code looks careful. It never tells pandas that <code>-200</code> means missing. Every missing hour is averaged as a concentration of −200 mg/m³, so the mean is far too low, and for most files it is negative. A negative mean concentration is impossible, which is the signal a careful reader catches without opening the data.</p>
+          <p>Fix: declare the code when reading.</p>
+          <p class="fix-line">df = pd.read_csv("my_air_quality.csv", sep=";", decimal=",", na_values=[-200])</p>
+          <p>Then check the result: count the missing values, look at the minimum, and compare one hand-calculated value with the code.</p>
+        </div></details>
+      </div>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s5">
+      <div class="step-head"><span class="step-number">05</span><div><h2 id="s5">Your notebook numbers</h2><p>Download your file in Step 2. Ask an AI assistant for code that reports the three numbers below, read the code before you run it, and enter what you get.</p></div></div>
+      <div id="notebook-list" class="notebook-list"></div>
+      <p id="locked-note" class="locked-note">Enter your numbers before you run the audit. The audit locks them and records whether you entered them first.</p>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s6">
+      <div class="step-head"><span class="step-number">06</span><div><h2 id="s6">Run the audit</h2><p>The page reads your file with the correct settings and checks every statement from Step 3.</p></div></div>
+      <button id="run-audit" class="primary-button calculate-button" type="button" disabled>Run the audit on my file</button>
+      <div id="results" hidden>
+        <p id="result-lead" class="result-lead"></p>
+        <dl class="consequence">
+          <div class="wrong"><dt>Mean CO(GT), -200 averaged in</dt><dd id="mean-naive">–</dd><p>What the code in Step 4 prints.</p></div>
+          <div class="right"><dt>Mean CO(GT), -200 as missing</dt><dd id="mean-valid">–</dd><p id="valid-note"></p></div>
+        </dl>
+        <div class="chart-toggle" role="group" aria-label="How to plot the -200 code"><button type="button" data-plot="recorded" aria-pressed="true">-200 as recorded</button><button type="button" data-plot="missing" aria-pressed="false">-200 as missing</button></div>
+        <figure class="figure-block"><div class="figure-scroll"><svg id="co-chart"></svg></div><figcaption id="co-caption"></figcaption></figure>
+        <div class="table-scroll" role="region" aria-label="Column audit" tabindex="0"><table class="audit-table"><caption class="visually-hidden">Missing values and valid range for each column after removing repeated rows.</caption><thead><tr><th scope="col">Column</th><th scope="col">Unit</th><th scope="col">-200 hours</th><th scope="col">Share</th><th scope="col">Valid min</th><th scope="col">Valid max</th></tr></thead><tbody id="audit-body"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s7">
+      <div class="step-head"><span class="step-number">07</span><div><h2 id="s7">Check your understanding</h2><p>Write first, then compare.</p></div></div>
+      <div class="concept-question" data-concept="zero">
+        <h3>A colleague replaces every -200 with 0 instead of marking it missing. What happens to the mean CO, and why is it still wrong?</h3>
+        <label for="c-zero" class="visually-hidden">Your answer</label>
+        <textarea id="c-zero" rows="3" maxlength="3000"></textarea>
+        <details><summary>Compare with the explanation</summary><div class="concept-answer"><p>The mean is now pulled down by every missing hour, but less dramatically than with −200, so the error is easier to miss. A zero looks like a real, clean-air reading. The analyzer did not measure zero; it measured nothing. Missing values must stay missing (NaN), and the report should state how many hours were missing.</p></div></details>
+      </div>
+      <div class="concept-question" data-concept="repeats">
+        <h3>Removing the three repeated rows hardly moves the mean. When would repeated rows matter more?</h3>
+        <label for="c-repeats" class="visually-hidden">Your answer</label>
+        <textarea id="c-repeats" rows="3" maxlength="3000"></textarea>
+        <details><summary>Compare with the explanation</summary><div class="concept-answer"><p>Three rows out of about 340 change a mean very little. Repeats matter more for totals (an emission summed over time is overstated), for counts of events such as hours above a limit, for anything that assumes one row per hour (resampling, time differences), and when the repeated rows fall on a peak.</p></div></details>
+      </div>
+    </section>
+
+    <section class="lab-step graduate-section grad-only" aria-labelledby="s8">
+      <div class="step-head"><span class="step-number">08</span><div><h2 id="s8">Extension: two decisions about missing data</h2><p>Treating -200 as missing is necessary. It does not tell you whether the remaining hours give a fair mean.</p></div></div>
+      <div class="graduate-step">
+        <h3>8a · Is missing CO random over the day?</h3>
+        <button id="run-hours" class="secondary-button" type="button" disabled>Show missing CO by hour of day</button>
+        <figure class="figure-block" id="hours-figure" hidden><div class="figure-scroll"><svg id="hours-chart"></svg></div><figcaption>Amber bars: share of your hours with CO(GT) at -200. Teal outlines: the same share over the whole year of data.</figcaption></figure>
+        <p id="hours-readout" class="ext-readout"></p>
+        <label for="e-hours">If missing hours cluster at one time of day, what does that do to a daily mean, and is the data "missing at random"? The source does not state why hours are missing; say what you infer and how sure you are.</label>
+        <textarea id="e-hours" rows="3" maxlength="3000"></textarea>
+      </div>
+      <div class="graduate-step">
+        <h3>8b · When is a daily mean reportable?</h3>
+        <p class="ext-intro">A daily mean from a few valid hours describes those hours, not the day. Set the minimum number of valid hours a day needs. The starting value of 18 of 24 is an assumption for this lab, not a regulation.</p>
+        <div class="range-row"><label for="min-hours">Minimum valid hours per day</label><output id="min-hours-out" for="min-hours">18 h</output><input id="min-hours" type="range" min="1" max="24" step="1" value="18" aria-describedby="min-hours-out"></div>
+        <button id="run-daily" class="secondary-button" type="button" disabled>Apply the rule</button>
+        <figure class="figure-block" id="daily-figure" hidden><div class="figure-scroll"><svg id="daily-chart"></svg></div><figcaption>Filled: reported days. Open: days below the minimum. Dashed squares: no valid hour. Labels give the valid hours in each day; a window that starts mid-day has short first and last days.</figcaption></figure>
+        <p id="daily-readout" class="ext-readout"></p>
+        <label for="e-rule">Choose your minimum and defend it in two or three sentences. Name what you gain and what you lose.</label>
+        <textarea id="e-rule" rows="3" maxlength="3000"></textarea>
+      </div>
+    </section>
+
+    <section class="lab-step" aria-labelledby="s9">
+      <div class="step-head"><span class="step-number">09</span><div><h2 id="s9">Submit</h2><p>Download one file and upload it to the assignment on myCourseVille.</p></div></div>
+      <ul class="submit-list"><li>The file holds your details, data set, settings, flags, answers, notebook numbers and the audit result.</li><li>It stays on your computer until you upload it. Nothing is sent from this page.</li><li>Open it here later to continue where you stopped.</li></ul>
+      <div class="study-actions"><button id="export-study" class="primary-button" type="button" disabled>Download my study</button><div class="file-control"><label for="import-study">Open a saved study</label><input id="import-study" type="file" accept=".json,application/json"></div></div>
+      <p id="status" class="study-status" role="status" aria-live="polite"></p>
+    </section>
+    <noscript><p class="error-summary">This lab needs JavaScript to read and audit the data file.</p></noscript>
+  </main>
+  <footer class="site-footer"><span>2105315 Data Analytics in Chemical Engineering · Chulalongkorn University</span><span>Data: De Vito, UCI Air Quality, CC BY 4.0</span></footer>
+</body>
+</html>

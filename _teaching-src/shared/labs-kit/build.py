@@ -9,7 +9,7 @@ import shutil
 SOURCE = Path(__file__).resolve().parent
 REPOSITORY = SOURCE.parents[2]
 DESTINATION = REPOSITORY / 'teaching/shared/labs-kit'
-FILES = ['labs-base.css', 'palette.css', 'mode.js']
+FILES = ['labs-base.css', 'palette.css', 'mode.js', 'submission.js']
 # palette.css is generated from skh_palette; the 2105603 course pages keep their own copy.
 PALETTE_TWIN = REPOSITORY / 'teaching/2105603/labs/assets/palette.css'
 
