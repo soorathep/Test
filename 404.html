@@ -26,9 +26,11 @@ sitemap: false
 <script>
   const courseDownloads = {{ site.data.course_release_downloads | jsonify }};
   const legacyCoursePath = window.location.pathname;
-  if (/^\/teaching\/2105620(?:\/|$)/.test(legacyCoursePath)) {
-    const coursePath = legacyCoursePath === "/teaching/2105620" ? legacyCoursePath + "/" : legacyCoursePath;
-    const courseUrl = "https://soorathep.github.io/course-2105620" + coursePath + window.location.search + window.location.hash;
+  const migratedCourse = legacyCoursePath.match(/^\/teaching\/(2105620|2105315)(?:\/|$)/);
+  if (migratedCourse) {
+    const courseCode = migratedCourse[1];
+    const coursePath = legacyCoursePath === "/teaching/" + courseCode ? legacyCoursePath + "/" : legacyCoursePath;
+    const courseUrl = "https://soorathep.github.io/course-" + courseCode + coursePath + window.location.search + window.location.hash;
     const heading = document.querySelector(".post-head h1");
     heading.textContent = "This course has moved.";
     const link = document.createElement("a");
