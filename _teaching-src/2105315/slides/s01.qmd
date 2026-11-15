@@ -1,0 +1,313 @@
+---
+title: "Data you can trust"
+subtitle: "Session 1 of 14 · 90 minutes · Reading a plant data file"
+author: "Soorathep Kheawhom · 2105315 Data Analytics in Chemical Engineering"
+title-slide-attributes:
+  data-background-color: "#1C242B"
+---
+
+## Where this session sits {#course-map}
+
+::: {.coursemap14}
+[Week 1 · Import and audit]{.wk .now} [1 · Data you can trust]{.cm .now} [2 · Audit and the AI's code]{.cm}
+[Week 2 · Missing data]{.wk} [3 · Why values go missing]{.cm} [4 · Filling gaps you can defend]{.cm}
+[Week 3 · Outliers and noise]{.wk} [5 · Spike or real event?]{.cm} [6 · Smoothing without lying]{.cm}
+[Week 4 · Visualization]{.wk} [7 · Trends and distributions]{.cm} [8 · Figures that tell the truth]{.cm}
+[Week 5 · Correlation and anomalies]{.wk} [9 · Correlated or driven?]{.cm} [10 · When did it start?]{.cm}
+[Week 6 · Hypothesis tests]{.wk} [11 · Did the change work?]{.cm} [12 · Tests on plant data]{.cm}
+[Week 7 · Integrated case]{.wk} [13 · Raw file to decision]{.cm} [14 · Defend your decision]{.cm}
+:::
+
+::: {.bridge}
+Fourteen sessions of 90 minutes before the midterm. Each week has one web lab; you submit one file per lab on myCourseVille.
+:::
+
+## How this course works this year {#ai-rule}
+
+::: {.rule-line}
+An AI assistant may write your code. **You must be able to check it.**
+:::
+
+::: {.duties}
+::: {.duty}
+[1 · Ask the right question]{.label}
+State what you want to know and what the answer must look like: a number, its unit, its time window.
+:::
+::: {.duty}
+[2 · Choose the treatment]{.label}
+Decide what to do with missing values, repeats and outliers, and say why. The AI cannot know your plant.
+:::
+::: {.duty .key}
+[3 · Verify the result]{.label}
+Check row counts, units, ranges and one value by hand. Code that runs is not code that is right.
+:::
+:::
+
+[The labs ask about 1, 2 and 3. None of them asks you to type code from memory.]{.note-line}
+
+## Today, minute by minute {#route}
+
+::: {.route}
+::: {.seg .concept}
+[0–25]{.t} **Concepts** [What a plant data file contains]{.d}
+:::
+::: {.seg .act}
+[25–37]{.t} **Activity 1** [Read raw lines in pairs]{.d}
+:::
+::: {.seg .concept}
+[37–55]{.t} **Concepts** [The six-check audit; reading code you did not write]{.d}
+:::
+::: {.seg .act}
+[55–80]{.t} **Activity 2** [Lab 01, Steps 1 to 3, on your own data]{.d}
+:::
+::: {.seg .wrap}
+[80–90]{.t} **Debrief** [Exit ticket]{.d}
+:::
+:::
+
+::: {.route-question}
+Question for today: before anyone computes a mean, what must you know about the file?
+:::
+
+## 07:40, a file arrives {#incident}
+
+::: {.logbook}
+::: {.logrow}
+[07:40]{.time} [A two-week export from a road-level air-quality station has arrived. The 09:00 report needs the mean CO concentration.]{.entry}
+:::
+::: {.logrow}
+[07:55]{.time} [A colleague asks an AI assistant for code. It runs without an error and prints **−57.00 mg/m³**.]{.entry}
+:::
+:::
+
+::: {.bridge}
+A concentration cannot be negative. Nothing crashed, yet the number is wrong. Today is about catching this before it reaches the report.
+:::
+
+[Data: S. De Vito, Air Quality, UCI Machine Learning Repository, doi:10.24432/C59K5F, CC BY 4.0. The −57.00 is computed from one student's 14-day window.]{.source}
+
+## What a plant data file contains {#anatomy}
+
+| Timestamp | Tag | Value | Unit | Quality |
+|---|---|---|---|---|
+| 2026-01-07 13:00:00 | FI-101 | 12.4 | m³/h | good |
+| 2026-01-07 13:00:01 | TI-205 | 78.3 | °C | good |
+| 2026-01-07 13:00:02 | FI-101 | 0.0 | m³/h | bad: I/O timeout |
+| 2026-01-07 14:00:00 | LAB-NH3 | 0.42 | wt% | lab, 1 per shift |
+
+::: {.anatomy-notes}
+[Timestamp]{.k} local or UTC? daylight saving? [Tag]{.k} which instrument, which unit operation. [Value + unit]{.k} the number means nothing without its unit. [Quality]{.k} the historian often says when a value is bad. A zero can be a reading or a failure.
+:::
+
+[Illustrative rows written for this slide; tag names follow common ISA practice.]{.source}
+
+## Sampling rates do not agree {#sampling}
+
+::: {.rates}
+::: {.rate}
+[Flow, pressure]{.label}
+**1 s to 10 s**
+Distributed control system
+:::
+::: {.rate}
+[Temperature, level]{.label}
+**10 s to 1 min**
+Historian, often compressed
+:::
+::: {.rate}
+[Hourly averages]{.label}
+**1 h**
+Environmental monitors, today's file
+:::
+::: {.rate .slow}
+[Lab assay]{.label}
+**1 per shift**
+Sampled by hand, results hours later
+:::
+:::
+
+::: {.bridge}
+Joining a 1-second flow with a once-per-shift assay forces a choice: average, take the last value, or wait. Week 1, Lab 02 is about that choice.
+:::
+
+## Missing data wears many disguises {#codes}
+
+::: {.disguises}
+[empty cell]{.dz} [NaN]{.dz} [−200]{.dz .hit} [9999]{.dz} [−9999]{.dz} ["Bad"]{.dz} ["I/O Timeout"]{.dz} [0.0 during a trip]{.dz} [the same value for 6 hours]{.dz}
+:::
+
+::: {.bridge}
+Rule: find how this file marks a missing value **before** you compute anything. Read the documentation, then confirm it in the data.
+:::
+
+[In today's file the source states that missing values are recorded as −200.]{.source}
+
+## Activity 1 · Read the raw text {#act1 .activity}
+
+[Pairs · 8 minutes · no computer]{.act-label}
+
+```{=html}
+<pre class="raw-lines"><span>Date;Time;CO(GT);PT08.S1(CO);NMHC(GT);C6H6(GT)</span><span>10/03/2004;18.00.00;2,6;1360;150;11,9</span><span>10/03/2004;19.00.00;2;1292;112;9,4</span><span>10/03/2004;20.00.00;2,2;1402;88;9,0</span><span>11/03/2004;04.00.00;-200;1011;14;1,3</span><span>12/03/2004;04.00.00;-200;831;10;1,1</span></pre>
+```
+
+::: {.prompt}
+Write down four settings a program needs to read these lines correctly.
+:::
+
+[Hint: look at what separates the columns, what separates whole and decimal parts, how a missing CO reading looks, and how the date is written.]{.hint}
+
+::: {.selfstudy}
+Studying alone: write your four settings before you go to the next slide.
+:::
+
+## Activity 1 · The four settings {#act1-answer}
+
+| Setting | In this file | If you get it wrong |
+|---|---|---|
+| Column separator | `;` | everything lands in one column |
+| Decimal mark | `,` | 2,6 is read as text, no mean possible |
+| Missing value | `-200` | −200 is averaged as a concentration |
+| Date format | day/month/year, time `18.00.00` | 11/03 becomes 3 November |
+
+[Both missing CO rows are at 04:00. Keep that in mind: missing values may follow a pattern. The Extension view of Lab 01 asks why.]{.note-line}
+
+## The six-check audit {#audit}
+
+::: {.six}
+::: {.chk}
+[1 · Shape]{.label}
+Rows and columns as expected? 14 days of hourly data is 336 rows.
+:::
+::: {.chk}
+[2 · Types]{.label}
+Is every measurement a number, not text?
+:::
+::: {.chk}
+[3 · Missing]{.label}
+How many per column, in which code, at which times?
+:::
+::: {.chk}
+[4 · Ranges and units]{.label}
+Minimum and maximum physically possible? Units as documented?
+:::
+::: {.chk}
+[5 · Repeats]{.label}
+Any rows recorded twice?
+:::
+::: {.chk}
+[6 · Time]{.label}
+Does every step equal the sampling interval? Any jumps or repeats?
+:::
+:::
+
+[Run all six before any mean, plot or model. They take minutes; a wrong report takes longer.]{.note-line}
+
+## Reading code you did not write {#read-code}
+
+```{=html}
+<pre class="code-slide"><span><b class="c"># 1-2  shape and types</b></span><span>df = pd.read_csv("file.csv", sep=";", decimal=",", na_values=[-200])</span><span>df.shape                 <b class="c"># (rows, columns)</b></span><span>df.dtypes                <b class="c"># float64 = number, object = text</b></span><span><b class="c"># 3-4  missing and ranges</b></span><span>df.isna().sum()          <b class="c"># missing per column</b></span><span>df.describe()            <b class="c"># min, max, mean per column</b></span><span><b class="c"># 5-6  repeats and time</b></span><span>df.duplicated().sum()    <b class="c"># rows that repeat exactly</b></span><span>t.diff().value_counts()  <b class="c"># step sizes between timestamps</b></span></pre>
+```
+
+[You do not need to write these lines. You need to read them and say what each one tells you about the file.]{.note-line}
+
+## Four ways to check code you did not write {#verify}
+
+::: {.checks4}
+::: {.c4}
+[Count]{.label}
+Rows before and after each step. If 3 rows vanish, you should know why.
+:::
+::: {.c4}
+[Range]{.label}
+Minimum and maximum against physics and units. A negative concentration is a bug.
+:::
+::: {.c4}
+[Hand]{.label}
+Compute one value from five rows by hand or on a calculator. Compare.
+:::
+::: {.c4}
+[Look]{.label}
+Plot before and after. A cleaning step should change the picture in the way you expect, and only there.
+:::
+:::
+
+## Quick prediction: the AI's code {#ai-code}
+
+```{=html}
+<pre class="code-slide"><span>df = pd.read_csv("my_air_quality.csv", sep=";", decimal=",")</span><span>df = df.drop_duplicates()</span><span>print(df["CO(GT)"].mean())</span></pre>
+```
+
+::: {.prompt}
+In a file where 99 of 336 CO hours are −200 and the valid hours average 2.74 mg/m³, what does this print? Estimate it in one minute.
+:::
+
+::: {.selfstudy}
+Studying alone: estimate the number, then go on.
+:::
+
+## It prints −57.00 {#ai-answer}
+
+::: {.calc}
+(237 × 2.74 + 99 × (−200)) / 336 ≈ **−57.0 mg/m³**
+:::
+
+::: {.beforeafter}
+::: {}
+[What went wrong]{.label}
+Separator and decimal mark are right, repeats are removed, but −200 is never declared missing. Every gap is averaged as a concentration.
+:::
+::: {}
+[The fix, and the check]{.label}
+Add `na_values=[-200]` when reading. Then check: missing count 99, minimum above zero, mean 2.74.
+:::
+:::
+
+[A number can be wrong without an error message. The Range check catches this one in seconds.]{.note-line}
+
+## Activity 2 · Lab 01, Steps 1 to 3 {#act2 .activity}
+
+[Individual · 25 minutes · laptop or phone]{.act-label}
+
+1. Open **Lab 01** and enter your name and student ID.
+2. Press **My data set**. Your 14 days differ from your neighbour's.
+3. Step 2: choose the three import settings until the verdict turns teal.
+4. Step 3: tick every statement you think is true. Do not run the audit yet.
+
+[Open Lab 01](../labs/audit.html){.lab-button target="_blank"}
+
+::: {.selfstudy}
+Studying alone: do Steps 1 to 3, then download your study in Step 9 to keep your work.
+:::
+
+## Debrief {#debrief}
+
+::: {.debrief-q}
+[Which import setting did you get wrong first, and what did the verdict say?]{.dq}
+[Which of the eight statements did your pair disagree on?]{.dq}
+[Your data set differs from your neighbour's. Which statements could be true for one of you and not the other?]{.dq}
+:::
+
+## Exit ticket {#exit}
+
+::: {.exit}
+1. Name two different ways a missing value can appear in plant data.
+2. Name one check you would run on AI-written code before trusting its mean.
+3. What is still unclear after today?
+:::
+
+[Answer on myCourseVille before you leave. Two minutes.]{.note-line}
+
+## Next session {#next}
+
+::: {.beforeafter}
+::: {}
+[Session 2 · Audit and the AI's code]{.label}
+Finish Lab 01: check the AI's code, enter your notebook numbers, run the audit, answer the questions.
+:::
+::: {}
+[Before you come]{.label}
+Download your file from Lab 01, Step 2. Ask an AI assistant for code that reports the three numbers in Step 5, and read the code before you run it.
+:::
+:::
+
+[Submit the Lab 01 study file on myCourseVille by the date shown there.]{.note-line}

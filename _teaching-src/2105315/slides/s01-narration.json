@@ -1,0 +1,194 @@
+{
+  "voice_en": "am_michael",
+  "note": "en = English caption and voice; th = Thai caption; th_say = what the Thai voice reads (Thai script only: English terms written as they sound, numbers in words). say = English voice text when it differs from en.",
+  "slides": {
+    "title-slide": [
+      {"en": "Welcome to Data Analytics in Chemical Engineering.",
+       "th": "ยินดีต้อนรับสู่วิชาการวิเคราะห์ข้อมูลในวิศวกรรมเคมีครับ",
+       "th_say": "ยินดีต้อนรับสู่วิชาการวิเคราะห์ข้อมูลในวิศวกรรมเคมีครับ"},
+      {"en": "Today's session is called Data you can trust. We will learn to read a plant data file before we compute anything from it.",
+       "th": "คาบนี้ชื่อว่า ข้อมูลที่เชื่อถือได้ เราจะฝึกอ่านไฟล์ข้อมูลจากโรงงานให้เข้าใจ ก่อนจะคำนวณอะไรจากมัน",
+       "th_say": "คาบนี้ชื่อว่า ข้อมูลที่เชื่อถือได้ เราจะฝึกอ่านไฟล์ข้อมูลจากโรงงานให้เข้าใจ ก่อนจะคำนวณอะไรจากมัน"}
+    ],
+    "course-map": [
+      {"en": "Before the midterm we meet fourteen times, ninety minutes each, two sessions per week.",
+       "th": "ก่อนสอบกลางภาค เราจะพบกันสิบสี่ครั้ง ครั้งละเก้าสิบนาที สัปดาห์ละสองครั้ง",
+       "th_say": "ก่อนสอบกลางภาค เราจะพบกันสิบสี่ครั้ง ครั้งละเก้าสิบนาที สัปดาห์ละสองครั้ง"},
+      {"en": "We start with importing and auditing data, then missing data, outliers and noise, visualization, correlation, and hypothesis tests. Week seven puts it all together on one case.",
+       "th": "เราเริ่มจากการนำเข้าและตรวจสอบข้อมูล ต่อด้วยข้อมูลที่หายไป ค่าผิดปกติและสัญญาณรบกวน การทำกราฟ สหสัมพันธ์ และการทดสอบสมมติฐาน สัปดาห์ที่เจ็ดจะรวมทุกอย่างในกรณีศึกษาเดียว",
+       "th_say": "เราเริ่มจากการนำเข้าและตรวจสอบข้อมูล ต่อด้วยข้อมูลที่หายไป ค่าผิดปกติและสัญญาณรบกวน การทำกราฟ สหสัมพันธ์ และการทดสอบสมมติฐาน สัปดาห์ที่เจ็ดจะรวมทุกอย่างในกรณีศึกษาเดียว"},
+      {"en": "Each week has one web lab, and you submit one file per lab on myCourseVille.",
+       "th": "แต่ละสัปดาห์มีแล็บบนเว็บหนึ่งแล็บ และส่งไฟล์หนึ่งไฟล์ต่อแล็บใน myCourseVille",
+       "th_say": "แต่ละสัปดาห์มีแล็บบนเว็บหนึ่งแล็บ และส่งไฟล์หนึ่งไฟล์ต่อแล็บในมายคอร์สวิลล์"}
+    ],
+    "ai-rule": [
+      {"en": "This year the course works differently. An AI assistant may write your code, but you must be able to check it.",
+       "th": "ปีนี้วิชานี้เปลี่ยนไป AI เขียนโค้ดให้ได้ แต่นิสิตต้องตรวจสอบโค้ดนั้นได้",
+       "th_say": "ปีนี้วิชานี้เปลี่ยนไป เอไอเขียนโค้ดให้ได้ แต่นิสิตต้องตรวจสอบโค้ดนั้นได้"},
+      {"en": "You have three duties. Ask the right question, with a number, a unit and a time window. Choose the treatment for missing values, repeats and outliers, and say why.",
+       "th": "นิสิตมีหน้าที่สามข้อ ข้อแรก ตั้งคำถามให้ชัด ว่าต้องการตัวเลขอะไร หน่วยอะไร ช่วงเวลาไหน ข้อสอง เลือกวิธีจัดการค่าที่หาย แถวซ้ำ และค่าผิดปกติ พร้อมเหตุผล",
+       "th_say": "นิสิตมีหน้าที่สามข้อ ข้อแรก ตั้งคำถามให้ชัด ว่าต้องการตัวเลขอะไร หน่วยอะไร ช่วงเวลาไหน ข้อสอง เลือกวิธีจัดการค่าที่หาย แถวซ้ำ และค่าผิดปกติ พร้อมเหตุผล"},
+      {"en": "And third, verify the result. Code that runs is not the same as code that is right.",
+       "th": "ข้อสาม ตรวจสอบผลลัพธ์ โค้ดที่รันได้ ไม่ได้แปลว่าโค้ดนั้นถูก",
+       "th_say": "ข้อสาม ตรวจสอบผลลัพธ์ โค้ดที่รันได้ ไม่ได้แปลว่าโค้ดนั้นถูก"}
+    ],
+    "route": [
+      {"en": "Here is today's plan. Twenty-five minutes of concepts, then a short activity in pairs.",
+       "th": "นี่คือแผนของวันนี้ ยี่สิบห้านาทีแรกเป็นเนื้อหา แล้วทำกิจกรรมสั้นเป็นคู่",
+       "th_say": "นี่คือแผนของวันนี้ ยี่สิบห้านาทีแรกเป็นเนื้อหา แล้วทำกิจกรรมสั้นเป็นคู่"},
+      {"en": "Then the six-check audit, and twenty-five minutes on Lab 01 with your own data. We finish with a debrief and an exit ticket.",
+       "th": "จากนั้นเรียนการตรวจสอบหกข้อ แล้วทำแล็บที่หนึ่งด้วยข้อมูลของตัวเองยี่สิบห้านาที ปิดท้ายด้วยการสรุปและคำถามก่อนออกจากห้อง",
+       "th_say": "จากนั้นเรียนการตรวจสอบหกข้อ แล้วทำแล็บที่หนึ่งด้วยข้อมูลของตัวเองยี่สิบห้านาที ปิดท้ายด้วยการสรุปและคำถามก่อนออกจากห้อง"},
+      {"en": "Keep one question in mind: before anyone computes a mean, what must you know about the file?",
+       "th": "ให้ถือคำถามนี้ไว้ตลอดคาบ ก่อนใครจะคำนวณค่าเฉลี่ย เราต้องรู้อะไรเกี่ยวกับไฟล์บ้าง",
+       "th_say": "ให้ถือคำถามนี้ไว้ตลอดคาบ ก่อนใครจะคำนวณค่าเฉลี่ย เราต้องรู้อะไรเกี่ยวกับไฟล์บ้าง"}
+    ],
+    "incident": [
+      {"en": "At seven forty, a two-week export arrives from a road-level air-quality station. The nine o'clock report needs the mean CO concentration.",
+       "th": "เจ็ดโมงสี่สิบ ไฟล์ข้อมูลสองสัปดาห์จากสถานีวัดคุณภาพอากาศริมถนนมาถึง รายงานเก้าโมงต้องใช้ค่าเฉลี่ยความเข้มข้นของ CO",
+       "th_say": "เจ็ดโมงสี่สิบ ไฟล์ข้อมูลสองสัปดาห์จากสถานีวัดคุณภาพอากาศริมถนนมาถึง รายงานเก้าโมงต้องใช้ค่าเฉลี่ยความเข้มข้นของคาร์บอนมอนอกไซด์"},
+      {"en": "A colleague asks an AI assistant for code. It runs without an error and prints minus fifty-seven milligrams per cubic metre.",
+       "th": "เพื่อนร่วมงานให้ AI เขียนโค้ด โค้ดรันได้ ไม่มีข้อผิดพลาด และพิมพ์ค่าออกมาว่า ลบห้าสิบเจ็ด มิลลิกรัมต่อลูกบาศก์เมตร",
+       "th_say": "เพื่อนร่วมงานให้เอไอเขียนโค้ด โค้ดรันได้ ไม่มีข้อผิดพลาด และพิมพ์ค่าออกมาว่า ลบห้าสิบเจ็ด มิลลิกรัมต่อลูกบาศก์เมตร"},
+      {"en": "A concentration cannot be negative. Nothing crashed, yet the number is wrong. Today is about catching this before it reaches the report.",
+       "th": "ความเข้มข้นติดลบไม่ได้ ไม่มีอะไรพัง แต่ตัวเลขผิด วันนี้เราจะฝึกจับความผิดพลาดแบบนี้ก่อนที่มันจะไปถึงรายงาน",
+       "th_say": "ความเข้มข้นติดลบไม่ได้ ไม่มีอะไรพัง แต่ตัวเลขผิด วันนี้เราจะฝึกจับความผิดพลาดแบบนี้ก่อนที่มันจะไปถึงรายงาน"}
+    ],
+    "anatomy": [
+      {"en": "A plant data file usually has five parts: a timestamp, a tag, a value, a unit and a quality flag.",
+       "th": "ไฟล์ข้อมูลโรงงานมักมีห้าส่วน คือ เวลา ชื่อแท็ก ค่า หน่วย และสถานะคุณภาพของค่า",
+       "th_say": "ไฟล์ข้อมูลโรงงานมักมีห้าส่วน คือ เวลา ชื่อแท็ก ค่า หน่วย และสถานะคุณภาพของค่า"},
+      {"en": "Ask whether the time is local or UTC. Ask which instrument a tag belongs to. A number means nothing without its unit.",
+       "th": "ต้องถามว่าเวลาเป็นเวลาท้องถิ่นหรือ UTC แท็กนี้เป็นเครื่องมือวัดตัวไหน และตัวเลขไม่มีความหมายถ้าไม่รู้หน่วย",
+       "th_say": "ต้องถามว่าเวลาเป็นเวลาท้องถิ่นหรือเวลาสากล แท็กนี้เป็นเครื่องมือวัดตัวไหน และตัวเลขไม่มีความหมายถ้าไม่รู้หน่วย"},
+      {"en": "Look at the highlighted row. The flow reads zero, but the quality says I O timeout. That zero is a failure, not a measurement.",
+       "th": "ดูแถวที่ไฮไลต์ไว้ ค่าการไหลเป็นศูนย์ แต่สถานะบอกว่า I/O timeout ศูนย์ตัวนี้คือความล้มเหลวของการวัด ไม่ใช่ค่าที่วัดได้",
+       "th_say": "ดูแถวที่ไฮไลต์ไว้ ค่าการไหลเป็นศูนย์ แต่สถานะบอกว่าการสื่อสารหมดเวลา ศูนย์ตัวนี้คือความล้มเหลวของการวัด ไม่ใช่ค่าที่วัดได้"}
+    ],
+    "sampling": [
+      {"en": "Different instruments record at different rates. Flow and pressure every second or so, temperatures every few seconds to a minute.",
+       "th": "เครื่องมือแต่ละตัวบันทึกด้วยความถี่ต่างกัน การไหลและความดันบันทึกทุกวินาทีหรือใกล้เคียง อุณหภูมิทุกไม่กี่วินาทีถึงหนึ่งนาที",
+       "th_say": "เครื่องมือแต่ละตัวบันทึกด้วยความถี่ต่างกัน การไหลและความดันบันทึกทุกวินาทีหรือใกล้เคียง อุณหภูมิทุกไม่กี่วินาทีถึงหนึ่งนาที"},
+      {"en": "Environmental monitors often give hourly averages, like today's file. A lab assay may come once per shift, hours after the sample was taken.",
+       "th": "เครื่องวัดสิ่งแวดล้อมมักให้ค่าเฉลี่ยรายชั่วโมง เหมือนไฟล์ของวันนี้ ส่วนผลวิเคราะห์จากแล็บอาจมาเพียงกะละครั้ง และมาหลังเก็บตัวอย่างหลายชั่วโมง",
+       "th_say": "เครื่องวัดสิ่งแวดล้อมมักให้ค่าเฉลี่ยรายชั่วโมง เหมือนไฟล์ของวันนี้ ส่วนผลวิเคราะห์จากแล็บอาจมาเพียงกะละครั้ง และมาหลังเก็บตัวอย่างหลายชั่วโมง"},
+      {"en": "Joining them forces a choice: average, take the last value, or wait. Lab 02 is about that choice.",
+       "th": "การรวมข้อมูลเหล่านี้บังคับให้เราต้องเลือก จะเฉลี่ย จะใช้ค่าล่าสุด หรือจะรอ แล็บที่สองว่าด้วยการเลือกนี้",
+       "th_say": "การรวมข้อมูลเหล่านี้บังคับให้เราต้องเลือก จะเฉลี่ย จะใช้ค่าล่าสุด หรือจะรอ แล็บที่สองว่าด้วยการเลือกนี้"}
+    ],
+    "codes": [
+      {"en": "Missing data wears many disguises: an empty cell, a code such as minus two hundred or nine nine nine nine, a text message, a zero during a trip, or the same value repeated for hours.",
+       "th": "ข้อมูลที่หายไปปลอมตัวได้หลายแบบ เป็นช่องว่าง เป็นรหัสอย่าง ลบสองร้อย หรือ 9999 เป็นข้อความ เป็นศูนย์ตอนเครื่องหยุด หรือเป็นค่าเดิมซ้ำอยู่หลายชั่วโมง",
+       "th_say": "ข้อมูลที่หายไปปลอมตัวได้หลายแบบ เป็นช่องว่าง เป็นรหัสอย่าง ลบสองร้อย หรือเก้าเก้าเก้าเก้า เป็นข้อความ เป็นศูนย์ตอนเครื่องหยุด หรือเป็นค่าเดิมซ้ำอยู่หลายชั่วโมง"},
+      {"en": "The rule is simple. Find how this file marks a missing value before you compute anything. Read the documentation, then confirm it in the data.",
+       "th": "กฎง่ายมาก หาให้เจอว่าไฟล์นี้บันทึกค่าที่หายไว้อย่างไร ก่อนคำนวณอะไรทั้งสิ้น อ่านเอกสารประกอบก่อน แล้วยืนยันในข้อมูลจริง",
+       "th_say": "กฎง่ายมาก หาให้เจอว่าไฟล์นี้บันทึกค่าที่หายไว้อย่างไร ก่อนคำนวณอะไรทั้งสิ้น อ่านเอกสารประกอบก่อน แล้วยืนยันในข้อมูลจริง"}
+    ],
+    "act1": [
+      {"en": "Activity one. Work in pairs for eight minutes, without a computer.",
+       "th": "กิจกรรมที่หนึ่ง ทำเป็นคู่ แปดนาที ไม่ใช้คอมพิวเตอร์",
+       "th_say": "กิจกรรมที่หนึ่ง ทำเป็นคู่ แปดนาที ไม่ใช้คอมพิวเตอร์"},
+      {"en": "These are the first lines of the real file, exactly as a program receives them. Write down four settings a program needs to read them correctly.",
+       "th": "นี่คือบรรทัดแรก ๆ ของไฟล์จริง ตรงตามที่โปรแกรมได้รับ ให้เขียนการตั้งค่าสี่อย่างที่โปรแกรมต้องรู้ เพื่ออ่านข้อมูลนี้ได้ถูกต้อง",
+       "th_say": "นี่คือบรรทัดแรกแรกของไฟล์จริง ตรงตามที่โปรแกรมได้รับ ให้เขียนการตั้งค่าสี่อย่างที่โปรแกรมต้องรู้ เพื่ออ่านข้อมูลนี้ได้ถูกต้อง"},
+      {"en": "If you study alone, pause the narration and write your four settings before you go on.",
+       "th": "ถ้าเรียนด้วยตัวเอง ให้หยุดเสียงบรรยาย แล้วเขียนคำตอบสี่ข้อก่อนไปสไลด์ถัดไป",
+       "th_say": "ถ้าเรียนด้วยตัวเอง ให้หยุดเสียงบรรยาย แล้วเขียนคำตอบสี่ข้อก่อนไปสไลด์ถัดไป"}
+    ],
+    "act1-answer": [
+      {"en": "Here are the four settings. The separator is a semicolon, the decimal mark is a comma, a missing reading is minus two hundred, and the date is day, month, year.",
+       "th": "นี่คือคำตอบสี่ข้อ ตัวคั่นคอลัมน์คือเซมิโคลอน จุดทศนิยมคือจุลภาค ค่าที่หายคือ ลบสองร้อย และวันที่เขียนเป็น วัน เดือน ปี",
+       "th_say": "นี่คือคำตอบสี่ข้อ ตัวคั่นคอลัมน์คือเซมิโคลอน จุดทศนิยมคือจุลภาค ค่าที่หายคือ ลบสองร้อย และวันที่เขียนเป็น วัน เดือน ปี"},
+      {"en": "Get any one wrong and the result is quietly wrong. Eleven March can become the third of November.",
+       "th": "ถ้าตั้งผิดแม้ข้อเดียว ผลลัพธ์จะผิดแบบเงียบ ๆ วันที่สิบเอ็ดมีนาคม อาจกลายเป็นวันที่สามพฤศจิกายน",
+       "th_say": "ถ้าตั้งผิดแม้ข้อเดียว ผลลัพธ์จะผิดแบบเงียบเงียบ วันที่สิบเอ็ดมีนาคม อาจกลายเป็นวันที่สามพฤศจิกายน"},
+      {"en": "Notice that both missing rows are at four in the morning. Missing values can follow a pattern. Keep that in mind for later.",
+       "th": "สังเกตว่าแถวที่หายทั้งสองแถวอยู่ที่ตีสี่ ค่าที่หายอาจมีรูปแบบ จำไว้ เราจะกลับมาดูเรื่องนี้",
+       "th_say": "สังเกตว่าแถวที่หายทั้งสองแถวอยู่ที่ตีสี่ ค่าที่หายอาจมีรูปแบบ จำไว้ เราจะกลับมาดูเรื่องนี้"}
+    ],
+    "audit": [
+      {"en": "Before any mean, plot or model, run six checks.",
+       "th": "ก่อนจะหาค่าเฉลี่ย ทำกราฟ หรือสร้างแบบจำลอง ให้ตรวจหกข้อนี้ก่อน",
+       "th_say": "ก่อนจะหาค่าเฉลี่ย ทำกราฟ หรือสร้างแบบจำลอง ให้ตรวจหกข้อนี้ก่อน"},
+      {"en": "Shape: the number of rows and columns. Types: every measurement should be a number. Missing: how many, in which code, at which times.",
+       "th": "ขนาด คือจำนวนแถวและคอลัมน์ ชนิดข้อมูล คือทุกค่าที่วัดต้องเป็นตัวเลข ค่าที่หาย คือหายกี่ค่า บันทึกด้วยรหัสอะไร และหายตอนไหน",
+       "th_say": "ขนาด คือจำนวนแถวและคอลัมน์ ชนิดข้อมูล คือทุกค่าที่วัดต้องเป็นตัวเลข ค่าที่หาย คือหายกี่ค่า บันทึกด้วยรหัสอะไร และหายตอนไหน"},
+      {"en": "Ranges and units: are the minimum and maximum physically possible? Repeats: are any rows recorded twice? Time: is every step equal to the sampling interval?",
+       "th": "ช่วงค่าและหน่วย คือค่าต่ำสุดและสูงสุดเป็นไปได้ทางกายภาพไหม แถวซ้ำ คือมีแถวที่ถูกบันทึกสองครั้งไหม และเวลา คือทุกช่วงห่างเท่ากับช่วงการเก็บข้อมูลหรือไม่",
+       "th_say": "ช่วงค่าและหน่วย คือค่าต่ำสุดและสูงสุดเป็นไปได้ทางกายภาพไหม แถวซ้ำ คือมีแถวที่ถูกบันทึกสองครั้งไหม และเวลา คือทุกช่วงห่างเท่ากับช่วงการเก็บข้อมูลหรือไม่"}
+    ],
+    "read-code": [
+      {"en": "This is what the six checks look like in pandas. You do not need to write these lines from memory.",
+       "th": "นี่คือหน้าตาของการตรวจหกข้อในภาษา pandas นิสิตไม่ต้องจำไปเขียนเอง",
+       "th_say": "นี่คือหน้าตาของการตรวจหกข้อในแพนดาส นิสิตไม่ต้องจำไปเขียนเอง"},
+      {"en": "You do need to read them. For each line, say what it tells you about the file. For example, dtypes shows float for a number and object for text.",
+       "th": "แต่ต้องอ่านเข้าใจ แต่ละบรรทัดบอกอะไรเกี่ยวกับไฟล์ เช่น dtypes ถ้าแสดง float แปลว่าเป็นตัวเลข ถ้าแสดง object แปลว่าเป็นข้อความ",
+       "th_say": "แต่ต้องอ่านเข้าใจ แต่ละบรรทัดบอกอะไรเกี่ยวกับไฟล์ เช่น ดีไทป์ ถ้าแสดง โฟลต แปลว่าเป็นตัวเลข ถ้าแสดง ออบเจกต์ แปลว่าเป็นข้อความ"}
+    ],
+    "verify": [
+      {"en": "Here are four ways to check code you did not write.",
+       "th": "นี่คือสี่วิธีตรวจโค้ดที่เราไม่ได้เขียนเอง",
+       "th_say": "นี่คือสี่วิธีตรวจโค้ดที่เราไม่ได้เขียนเอง"},
+      {"en": "Count the rows before and after each step. Check the range against physics and units. Compute one value by hand from five rows. And plot before and after.",
+       "th": "นับจำนวนแถวก่อนและหลังแต่ละขั้น ตรวจช่วงค่าเทียบกับหลักฟิสิกส์และหน่วย คำนวณหนึ่งค่าด้วยมือจากห้าแถว และวาดกราฟเทียบก่อนกับหลัง",
+       "th_say": "นับจำนวนแถวก่อนและหลังแต่ละขั้น ตรวจช่วงค่าเทียบกับหลักฟิสิกส์และหน่วย คำนวณหนึ่งค่าด้วยมือจากห้าแถว และวาดกราฟเทียบก่อนกับหลัง"},
+      {"en": "None of these needs you to write code. All of them catch real errors.",
+       "th": "ไม่มีข้อไหนต้องเขียนโค้ดเอง และทุกข้อจับข้อผิดพลาดจริงได้",
+       "th_say": "ไม่มีข้อไหนต้องเขียนโค้ดเอง และทุกข้อจับข้อผิดพลาดจริงได้"}
+    ],
+    "ai-code": [
+      {"en": "Here is the code the AI wrote. It sets the separator and the decimal mark, and removes repeated rows.",
+       "th": "นี่คือโค้ดที่ AI เขียน กำหนดตัวคั่นคอลัมน์และจุดทศนิยมไว้ และลบแถวซ้ำแล้ว",
+       "th_say": "นี่คือโค้ดที่เอไอเขียน กำหนดตัวคั่นคอลัมน์และจุดทศนิยมไว้ และลบแถวซ้ำแล้ว"},
+      {"en": "In a file where ninety-nine of three hundred thirty-six hours are minus two hundred, and the valid hours average two point seven four, what does it print? Take one minute to estimate.",
+       "th": "ในไฟล์ที่ 99 จาก 336 ชั่วโมงมีค่าเป็น ลบสองร้อย และชั่วโมงที่ใช้ได้มีค่าเฉลี่ย 2.74 โค้ดนี้จะพิมพ์ค่าอะไร ใช้เวลาหนึ่งนาทีประมาณค่า",
+       "th_say": "ในไฟล์ที่ เก้าสิบเก้า จากสามร้อยสามสิบหกชั่วโมงมีค่าเป็น ลบสองร้อย และชั่วโมงที่ใช้ได้มีค่าเฉลี่ย สองจุดเจ็ดสี่ โค้ดนี้จะพิมพ์ค่าอะไร ใช้เวลาหนึ่งนาทีประมาณค่า"}
+    ],
+    "ai-answer": [
+      {"en": "It prints about minus fifty-seven. Every missing hour is averaged as a concentration of minus two hundred.",
+       "th": "โค้ดพิมพ์ประมาณ ลบห้าสิบเจ็ด เพราะทุกชั่วโมงที่หายถูกนำไปเฉลี่ยเหมือนเป็นความเข้มข้น ลบสองร้อย",
+       "th_say": "โค้ดพิมพ์ประมาณ ลบห้าสิบเจ็ด เพราะทุกชั่วโมงที่หายถูกนำไปเฉลี่ยเหมือนเป็นความเข้มข้น ลบสองร้อย"},
+      {"en": "The fix is one argument: tell pandas that minus two hundred means missing. Then check the result: ninety-nine missing values, a minimum above zero, and a mean of two point seven four.",
+       "th": "แก้ได้ด้วยอาร์กิวเมนต์เดียว คือบอก pandas ว่า ลบสองร้อย แปลว่าค่าหาย แล้วตรวจผล ค่าที่หาย 99 ค่า ค่าต่ำสุดมากกว่าศูนย์ และค่าเฉลี่ย 2.74",
+       "th_say": "แก้ได้ด้วยอาร์กิวเมนต์เดียว คือบอกแพนดาสว่า ลบสองร้อย แปลว่าค่าหาย แล้วตรวจผล ค่าที่หายเก้าสิบเก้าค่า ค่าต่ำสุดมากกว่าศูนย์ และค่าเฉลี่ย สองจุดเจ็ดสี่"},
+      {"en": "A number can be wrong without an error message. The range check catches this one in seconds.",
+       "th": "ตัวเลขผิดได้โดยไม่มีข้อความแจ้งเตือน การตรวจช่วงค่าจับข้อผิดพลาดนี้ได้ในไม่กี่วินาที",
+       "th_say": "ตัวเลขผิดได้โดยไม่มีข้อความแจ้งเตือน การตรวจช่วงค่าจับข้อผิดพลาดนี้ได้ในไม่กี่วินาที"}
+    ],
+    "act2": [
+      {"en": "Activity two. Work on your own for twenty-five minutes, on a laptop or a phone.",
+       "th": "กิจกรรมที่สอง ทำคนเดียว ยี่สิบห้านาที ใช้โน้ตบุ๊กหรือโทรศัพท์ก็ได้",
+       "th_say": "กิจกรรมที่สอง ทำคนเดียว ยี่สิบห้านาที ใช้โน้ตบุ๊กหรือโทรศัพท์ก็ได้"},
+      {"en": "Open Lab 01, enter your name and student ID, and load your own data set. Then choose the import settings and tick the statements you think are true.",
+       "th": "เปิดแล็บที่หนึ่ง ใส่ชื่อและรหัสนิสิต แล้วโหลดชุดข้อมูลของตัวเอง จากนั้นเลือกการตั้งค่าการนำเข้า และเลือกข้อความที่คิดว่าจริง",
+       "th_say": "เปิดแล็บที่หนึ่ง ใส่ชื่อและรหัสนิสิต แล้วโหลดชุดข้อมูลของตัวเอง จากนั้นเลือกการตั้งค่าการนำเข้า และเลือกข้อความที่คิดว่าจริง"},
+      {"en": "Do not run the audit yet. We do that next session. Download your study file to keep your work.",
+       "th": "ยังไม่ต้องกดตรวจสอบ เราจะทำในคาบหน้า ดาวน์โหลดไฟล์งานเก็บไว้ก่อน",
+       "th_say": "ยังไม่ต้องกดตรวจสอบ เราจะทำในคาบหน้า ดาวน์โหลดไฟล์งานเก็บไว้ก่อน"}
+    ],
+    "debrief": [
+      {"en": "Let us debrief. Which import setting did you get wrong first, and what did the verdict say?",
+       "th": "มาสรุปกัน การตั้งค่าการนำเข้าข้อไหนที่ตั้งผิดเป็นข้อแรก และหน้าเว็บบอกว่าอะไร",
+       "th_say": "มาสรุปกัน การตั้งค่าการนำเข้าข้อไหนที่ตั้งผิดเป็นข้อแรก และหน้าเว็บบอกว่าอะไร"},
+      {"en": "Which statements did your pair disagree on? And since your data sets differ, which statements could be true for one of you and not the other?",
+       "th": "ข้อความข้อไหนที่คู่ของคุณเห็นไม่ตรงกัน และเพราะชุดข้อมูลของแต่ละคนต่างกัน ข้อความข้อไหนบ้างที่อาจจริงสำหรับคนหนึ่ง แต่ไม่จริงสำหรับอีกคน",
+       "th_say": "ข้อความข้อไหนที่คู่ของคุณเห็นไม่ตรงกัน และเพราะชุดข้อมูลของแต่ละคนต่างกัน ข้อความข้อไหนบ้างที่อาจจริงสำหรับคนหนึ่ง แต่ไม่จริงสำหรับอีกคน"}
+    ],
+    "exit": [
+      {"en": "Before you leave, answer three short questions on myCourseVille. Two minutes.",
+       "th": "ก่อนออกจากห้อง ตอบคำถามสั้นสามข้อใน myCourseVille ใช้เวลาสองนาที",
+       "th_say": "ก่อนออกจากห้อง ตอบคำถามสั้นสามข้อในมายคอร์สวิลล์ ใช้เวลาสองนาที"},
+      {"en": "Two ways a missing value can appear, one check you would run on AI-written code, and what is still unclear.",
+       "th": "ค่าที่หายปรากฏได้สองแบบอย่างไร การตรวจหนึ่งข้อที่จะใช้กับโค้ดที่ AI เขียน และอะไรที่ยังไม่เข้าใจ",
+       "th_say": "ค่าที่หายปรากฏได้สองแบบอย่างไร การตรวจหนึ่งข้อที่จะใช้กับโค้ดที่เอไอเขียน และอะไรที่ยังไม่เข้าใจ"}
+    ],
+    "next": [
+      {"en": "Next session we finish Lab 01: check the AI's code, enter your notebook numbers, run the audit and answer the questions.",
+       "th": "คาบหน้าเราจะทำแล็บที่หนึ่งให้เสร็จ ตรวจโค้ดของ AI ใส่ตัวเลขจากโน้ตบุ๊ก กดตรวจสอบ และตอบคำถาม",
+       "th_say": "คาบหน้าเราจะทำแล็บที่หนึ่งให้เสร็จ ตรวจโค้ดของเอไอ ใส่ตัวเลขจากโน้ตบุ๊ก กดตรวจสอบ และตอบคำถาม"},
+      {"en": "Before you come, download your file, ask an AI assistant for code that reports the three numbers in Step 5, and read that code before you run it.",
+       "th": "ก่อนมาเรียน ดาวน์โหลดไฟล์ของตัวเอง ให้ AI เขียนโค้ดที่หาตัวเลขสามค่าในขั้นที่ห้า และอ่านโค้ดนั้นก่อนกดรัน",
+       "th_say": "ก่อนมาเรียน ดาวน์โหลดไฟล์ของตัวเอง ให้เอไอเขียนโค้ดที่หาตัวเลขสามค่าในขั้นที่ห้า และอ่านโค้ดนั้นก่อนกดรัน"}
+    ]
+  }
+}
