@@ -1,0 +1,59 @@
+/* 2027 session decks: layout pieces on top of theme/teal-amber.scss */
+@font-face { font-family: "Course Thai"; src: url("../assets/Sarabun-Regular.ttf") format("truetype"); font-weight: 400; }
+/* Quarto writes the theme font stack unquoted, which drops "Source Sans 3"; set it here. */
+.reveal { font-family: "Source Sans 3", "Course Thai", "Helvetica Neue", Arial, sans-serif; }
+.reveal .katex { font-family: KaTeX_Main, "Times New Roman", serif; }
+.fig-pxy text, .reveal svg text { font-family: "Source Sans 3", sans-serif; }
+
+/* route timeline */
+.reveal .route { display: flex; gap: 4px; margin: 1.1em 0 0.9em; }
+.reveal .route .seg { min-width: 92px; border-top: 14px solid var(--seg); padding: 12px 10px 0 0; font-size: 0.56em; line-height: 1.3; }
+.reveal .route .seg p { margin: 0; }
+.reveal .route .seg .t { display: block; color: #66727C; font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.reveal .route .seg strong { display: block; color: #1C242B; }
+.reveal .route .seg .d { display: block; color: #333F4A; }
+.reveal .route .concept { --seg: #B9C1C6; }
+.reveal .route .act { --seg: #E29A2D; }
+.reveal .route .demo { --seg: #0F6E6B; }
+.reveal .route .break { --seg: #DFC98F; }
+.reveal .route .wrap { --seg: #66727C; }
+.reveal .route-question { font-family: "Source Serif 4", Georgia, serif; font-size: 1.05em; color: #1C242B; margin-top: 1.6em; background: #F3F0EB; padding: 22px 28px; border-radius: 4px; }
+.reveal .route-question p { margin: 0; }
+.reveal .label { display: block; font-family: "Source Sans 3", sans-serif; font-size: 0.5em; letter-spacing: .06em; text-transform: uppercase; color: #66727C; margin-bottom: .3em; }
+.reveal .selfstudy { position: absolute; bottom: 0; left: 0; right: 0; font-size: 0.52em; color: #333F4A; border-left: 3px solid #0F6E6B; padding: .2em 0 .2em .8em; }
+.reveal .selfstudy p { margin: 0; }
+
+/* concept slide */
+.reveal .fig-pxy { width: 100%; margin: 0; }
+.reveal .concept-notes { font-size: 0.62em; }
+.reveal .concept-notes p { margin: 0 0 .5em; }
+.reveal .concept-notes .q { display: block; font-weight: 700; color: #1C242B; margin-top: .6em; }
+.reveal .concept-notes .katex-display { margin: .3em 0 .6em; font-size: 1.05em; text-align: left; }
+.reveal .concept-notes .source { display: block; font-size: .8em; color: #66727C; margin-top: 1.2em; }
+
+/* activity slide */
+.reveal section.activity { border-left: 14px solid #E29A2D; padding-left: 40px !important; box-sizing: border-box; }
+.reveal .act-label { display: block; font-size: 0.55em; font-weight: 700; color: #9a5f10; letter-spacing: .03em; margin-bottom: .6em; }
+.reveal .prompt { font-family: "Source Serif 4", Georgia, serif; font-size: 1.15em; line-height: 1.3; color: #1C242B; margin: .2em 0 .8em; }
+.reveal .choices p { display: flex; gap: 18px; margin: 0 0 1em; }
+.reveal .choices span { border: 2px solid #333F4A; border-radius: 4px; padding: .3em 1.1em; font-size: .8em; color: #1C242B; }
+.reveal section.activity > p { font-size: .7em; }
+
+/* demo slide */
+.reveal #demo-lab ol { font-size: .72em; }
+.reveal .lab-button { display: inline-block; margin-top: .8em; background: #0F6E6B; color: #fff !important; padding: .35em 1em; border-radius: 4px; font-size: .7em; font-weight: 600; }
+.reveal .lab-button:hover { background: #0b5653; }
+.reveal .expect { background: #F3F0EB; padding: 12px 18px; border-radius: 4px; font-size: .55em; }
+.reveal .expect p { margin: 0; }
+.reveal .lab-shot { width: 100%; margin: 0 0 10px; border: 1px solid #B9C1C6; border-radius: 4px; }
+.reveal .expect table { font-size: .6em; width: 100%; margin: 0; }
+.reveal .expect table thead { display: none; }
+.reveal .expect td { padding: .25em .4em; border-bottom: 1px solid #B9C1C6; }
+.reveal .expect td:last-child { font-variant-numeric: tabular-nums; }
+
+@media print { .nr-bar, .nr-caption { display: none !important; } }
+
+.reveal .beforeafter { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 1.4em; font-size: .6em; color: #333F4A; }
+.reveal .beforeafter > div { border-top: 1px solid #B9C1C6; padding-top: .6em; }
+.reveal .beforeafter p { margin: 0; }
+.reveal .beforeafter .label { font-size: .8em; margin-bottom: .35em; }

@@ -1,0 +1,31 @@
+# 2027 session decks: Quarto + Reveal.js with optional narration and EN/TH captions.
+# Render from this folder:  quarto render s01.qmd && python3 publish.py
+project:
+  type: default
+  output-dir: _site
+  resources:
+    - narration/**
+    - figures/*.svg
+
+format:
+  revealjs:
+    theme: [default, ../theme/teal-amber.scss]
+    css: slides-2027.css
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    progress: true
+    hash: true
+    transition: none
+    menu: false
+    controls: true
+    controlsLayout: edges
+    controlsBackArrows: visible
+    html-math-method: katex
+    embed-resources: false
+    include-after-body:
+      - ../theme/click-advance.html
+      - narration-player.html
