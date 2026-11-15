@@ -31,7 +31,7 @@
   <button type="button" id="nr-replay" hidden>Replay slide</button>
   <button type="button" id="nr-cc" aria-pressed="false">Captions: off</button>
   <button type="button" id="nr-auto" aria-pressed="false">Auto-advance: off</button>
-  <span class="nr-voice-note" id="nr-voice-note" hidden>Thai voice: AI-generated draft</span>
+  <span class="nr-voice-note" id="nr-voice-note" hidden>Thai voice: draft recording</span>
   <a class="draft-mark" href="../labs/index.html">2105315 labs</a>
 </div>
 <div class="nr-caption" id="nr-caption" aria-live="polite" hidden></div>
@@ -41,6 +41,9 @@
   const store = { get(k, d) { try { return localStorage.getItem('nr315-' + k) ?? d; } catch { return d; } },
                   set(k, v) { try { localStorage.setItem('nr315-' + k, v); } catch {} } };
   const NEXT = { off: 'en', en: 'th', th: 'off' };
+  // Narration cycles only through voices this deck has (Thai is off until recordings are added).
+  let voices = ['en', 'th'];
+  const nextVoice = (v) => { const order = ['off', ...voices]; return order[(order.indexOf(v) + 1) % order.length]; };
   const SOUND_LABEL = { off: 'Narration: off', en: 'Narration: English', th: 'Narration: ไทย' };
   const CC_LABEL = { off: 'Captions: off', en: 'Captions: English', th: 'Captions: ไทย' };
   const state = { sound: store.get('sound', 'off'), cc: store.get('cc', 'off'), auto: store.get('auto', 'off') === 'on' };
@@ -106,7 +109,7 @@
   audio.addEventListener('ended', () => { if (state.auto && !Reveal.isLastSlide()) Reveal.next(); });
   $('nr-pause').addEventListener('click', (e) => { if (audio.paused) audio.play().catch(() => {}); else audio.pause(); e.currentTarget.blur(); });
   $('nr-replay').addEventListener('click', (e) => { if (slide) { audio.currentTime = 0; audio.play().catch(() => {}); } e.currentTarget.blur(); });
-  $('nr-sound').addEventListener('click', (e) => { state.sound = NEXT[state.sound]; store.set('sound', state.sound); paintButtons(); load(); e.currentTarget.blur(); });
+  $('nr-sound').addEventListener('click', (e) => { state.sound = nextVoice(state.sound); store.set('sound', state.sound); paintButtons(); load(); e.currentTarget.blur(); });
   $('nr-cc').addEventListener('click', (e) => {
     state.cc = NEXT[state.cc]; store.set('cc', state.cc); paintButtons();
     if (on() && !audio.paused) syncCaption(); else if (on()) box.hidden = true; else transcript();
@@ -117,6 +120,9 @@
   paintButtons();
   fetch('narration/' + deck + '.json').then((r) => r.ok ? r.json() : {}).then((d) => {
     data = d;
+    voices = ['en', 'th'].filter((v) => Object.values(d).some((s) => s[v]));
+    if (state.sound !== 'off' && !voices.includes(state.sound)) state.sound = voices[0] || 'off';
+    paintButtons();
     if (Reveal.isReady()) load(); else Reveal.on('ready', load);
     Reveal.on('slidechanged', load);
   }).catch(() => { document.querySelector('.nr-bar').hidden = true; });

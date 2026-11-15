@@ -5,8 +5,9 @@ Fourteen sessions of 90 minutes before the midterm, one Quarto + Reveal.js deck 
 
 Controls at the bottom left of every deck:
 
-- **Narration**: off / English / ไทย. English: Kokoro v1.0, voice am_michael (as in the 2105603 decks).
-  Thai: Meta MMS-TTS Thai (`facebook/mms-tts-tha`, CC BY-NC 4.0), an AI placeholder until a recorded voice replaces it.
+- **Narration**: off / English (Kokoro v1.0, voice am_michael, as in the 2105603 decks). A Thai voice appears
+  in the same button once Thai recordings are added (see below); until then there is no Thai voice.
+  The AI Thai voices tried (MMS-TTS Thai, F5-TTS-THAI) were not good enough, so none is published.
 - **Pause / Resume** and **Replay slide** while narration is on.
 - **Captions**: off / English / ไทย, in either language whatever the voice. With narration off, the slide's full text is shown.
 - **Auto-advance**: next slide when the narration ends, for self-study.
@@ -33,7 +34,7 @@ Activity slides use `.activity` (amber rule) and end with a note for students st
 
 ```bash
 pip install quarto-cli kokoro-onnx soundfile transformers torch
-python3 build_narration.py s01 --models <folder with kokoro-v1.0.onnx and voices-v1.0.bin>
+python3 build_narration.py s01 --only en --models <folder with kokoro-v1.0.onnx and voices-v1.0.bin>
 quarto render s01.qmd
 python3 publish.py
 ```
