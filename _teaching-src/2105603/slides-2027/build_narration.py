@@ -29,14 +29,18 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('session')
     ap.add_argument('--models', default=str(HERE / '../tmp/kokoro-models'))
+    ap.add_argument('--only', nargs='*', help='rebuild only these slide ids')
     args = ap.parse_args()
     models = Path(args.models)
     kokoro = Kokoro(str(models / 'kokoro-v1.0.onnx'), str(models / 'voices-v1.0.bin'))
     spec = json.loads((HERE / f'{args.session}-narration.json').read_text())
     out_dir = HERE / 'narration' / args.session
     out_dir.mkdir(parents=True, exist_ok=True)
-    index = {}
+    index_path = HERE / 'narration' / f'{args.session}.json'
+    index = json.loads(index_path.read_text()) if args.only and index_path.exists() else {}
     for slide_id, sentences in spec['slides'].items():
+        if args.only and slide_id not in args.only:
+            continue
         parts, cues, t = [np.zeros(int(LEAD * SR), dtype=np.float32)], [], LEAD
         for s in sentences:
             audio, sr = kokoro.create(s.get('say', s['en']), voice=spec.get('voice', 'am_michael'), speed=SPEED, lang='en-us')
@@ -54,7 +58,8 @@ def main():
             subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', wav.name, '-ac', '1', '-b:a', '64k', str(mp3)], check=True)
         index[slide_id] = {'audio': f'narration/{args.session}/{slide_id}.mp3', 'cues': cues}
         print(slide_id, f'{t:.1f} s', len(cues), 'cues')
-    (HERE / 'narration' / f'{args.session}.json').write_text(json.dumps(index, ensure_ascii=False, indent=1))
+    index = {k: index[k] for k in spec['slides'] if k in index}
+    index_path.write_text(json.dumps(index, ensure_ascii=False, indent=1))
 
 
 if __name__ == '__main__':
