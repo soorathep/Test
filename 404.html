@@ -38,6 +38,15 @@ sitemap: false
     link.textContent = "Open the course website";
     document.querySelector(".post-body").prepend(link);
     window.location.replace(courseUrl);
+  } else if (/^\/teaching\/seminars(?:\/|$)/.test(legacyCoursePath)) {
+    const seminarPath = legacyCoursePath === "/teaching/seminars" ? legacyCoursePath + "/" : legacyCoursePath;
+    const seminarUrl = "https://soorathep.github.io/seminars" + seminarPath + window.location.search + window.location.hash;
+    document.querySelector(".post-head h1").textContent = "This seminar material has moved.";
+    const link = document.createElement("a");
+    link.href = seminarUrl;
+    link.textContent = "Open the seminar material";
+    document.querySelector(".post-body").prepend(link);
+    window.location.replace(seminarUrl);
   } else {
     const downloadUrl = courseDownloads[window.location.pathname];
     if (typeof downloadUrl === "string") {

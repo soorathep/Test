@@ -71,7 +71,7 @@ means duplicating a `<div class="item">` line. Adding a cover means duplicating 
 | Instruments | rare | `id="facilities"` | MRBS instrument booking calendar |
 | Activity photos | whenever | Home + `/activities/` | `_data/activities.yml` + `img/activities/` |
 | **Blog posts** | **whenever** | **`_posts/*.md`** | **You** |
-| Seminars and invited talks | a few / year | `/teaching/seminars/` | `_data/seminars.yml` + the `.qmd` |
+| Seminars and invited talks | a few / year | `/teaching/seminars/` catalog | `soorathep/seminars` for source and publication |
 
 **The CV is upstream of the site.** When the CV changes, the site follows, never the
 reverse. Anything on the site that is not traceable to the CV, Scopus, or a file from a
@@ -160,34 +160,27 @@ Rules learned the hard way:
 
 ### Add a seminar
 
-One-off graduate seminars and invited talks, as opposed to courses. Source lives in
-`_teaching-src/seminars/` (Quarto + Reveal.js, one `.qmd` per talk); the rendered deck
-is committed to `teaching/seminars/`.
+Standalone seminars and invited talks are authored and published in
+[soorathep/seminars](https://github.com/soorathep/seminars), not in this repository.
+This is separate from Seminar 3 (2105717), which remains in course-seminar3.
 
-```bash
-cd _teaching-src/seminars
-cp conferences.qmd 2026-09-09-review-articles.qmd    # edit front matter and body
-quarto preview 2026-09-09-review-articles.qmd        # write, with notes visible
-quarto render --profile public --output-dir _site    # notes stripped
-python3 tools/check-overflow.py _site/2026-09-09-review-articles.html
-python3 tools/publish.py                             # copies into teaching/seminars/
-```
+Follow the new repository README and its _teaching-src/seminars publishing
+instructions. Keep public-profile safeguards for Conferences and ACSSI.
+MMS3 retains its already-authorized published notes/script exception.
 
-Then add an entry to `_data/seminars.yml` — title, date, venue, note, and the rendered
-filename in `slides:`. The talk appears on `/teaching/seminars/` by itself. Nothing
-else to edit.
+The main site keeps _data/seminars.yml and teaching/seminars/index.html as its
+catalog; add new entries here only to keep that catalog synchronized with the
+dedicated site. All material links point to the dedicated site. Do not regenerate
+or restore duplicate seminar sources/assets in main_web.
 
-Seminars are linked from the nav only — deliberately not also listed on `/teaching/`,
-which is for courses. One link per destination.
+Legacy HTML entry pages are small redirects preserving query strings and
+fragments. Deleted direct PDF/ZIP/asset URLs return HTTP 404; the 404 page can
+forward JavaScript-enabled browser navigation but is not an HTTP redirect and
+does not preserve non-browser download clients or arbitrary embeds. Link directly
+to https://soorathep.github.io/seminars/teaching/seminars/ for downloads.
 
-**`--profile public` is not optional.** Without it the full spoken script ships inside
-the HTML and anyone can read it by pressing `S`. `tools/publish.py` refuses to copy a
-deck that still contains notes, but only if you let it do the copying — do not drag
-files across by hand.
-
-`teaching/seminars/index.html` pins its own `permalink:` for the reason in the
-permalink trap below. The decks themselves have no front matter, so Jekyll copies them
-through as static files and the pretty-URL rule never touches them.
+The separate ACSSI book of abstracts under files/ and news image under img/news/
+remain in main_web and must not be removed with the migrated seminar materials.
 
 ---
 
