@@ -57,3 +57,34 @@
 .reveal .beforeafter > div { border-top: 1px solid #B9C1C6; padding-top: .6em; }
 .reveal .beforeafter p { margin: 0; }
 .reveal .beforeafter .label { font-size: .8em; margin-bottom: .35em; }
+
+/* course map */
+.reveal .coursemap { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; margin-top: .7em; }
+.reveal .coursemap p { display: flex; flex-direction: column; align-items: stretch; gap: 7px; margin: 0; }
+.reveal .coursemap .label { margin-bottom: .2em; }
+.reveal .coursemap .cm { font-size: .56em; padding: .4em .8em; border-radius: 4px; background: #F3F0EB; color: #333F4A; }
+.reveal .coursemap .done .cm { background: #fff; border: 1px solid #B9C1C6; color: #66727C; }
+.reveal .coursemap .cm.now { background: #0F6E6B; color: #fff; font-weight: 600; }
+.reveal .bridge { margin-top: 1.1em; font-size: .78em; border-left: 4px solid #E29A2D; padding-left: .8em; }
+.reveal .bridge p { margin: 0; }
+/* flash drum */
+.reveal .flash-sketch { width: 100%; height: auto; }
+.reveal .flash-sketch text { font-family: "Source Sans 3", sans-serif; font-size: 19px; fill: #1C242B; }
+.reveal .flash-sketch text.c { text-anchor: middle; fill: #66727C; }
+.reveal .flash-sketch text.a { fill: #9a5f10; font-weight: 600; }
+.reveal .why-notes { font-size: .66em; }
+.reveal .why-notes .source { display: block; font-size: .78em; color: #66727C; margin-top: 1.2em; }
+/* recap chain */
+.reveal .chain { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; margin-top: 1.2em; }
+.reveal .chain .link { position: relative; background: #F3F0EB; border-radius: 4px; padding: 22px 24px; font-size: .66em; }
+.reveal .chain .link + .link::before { content: "→"; position: absolute; left: -36px; top: 42%; font-size: 1.5em; color: #66727C; }
+.reveal .chain .katex-display { font-size: 1.15em; margin: .6em 0 0; }
+.reveal .chain .link.today { background: #fff; border: 2px solid #0F6E6B; }
+.reveal .chain .link p { margin: 0 0 .4em; }
+.reveal .chain .label { font-size: .85em; }
+.reveal .chain + p { font-size: .6em; color: #66727C; margin-top: 1em; }
+/* outcomes */
+.reveal #outcomes ol { font-size: .8em; margin-top: .2em; position: relative; }
+.reveal #outcomes li { margin-bottom: .9em; padding-right: 230px; position: relative; }
+.reveal #outcomes .where { position: absolute; right: 0; top: 0; width: 210px; font-size: .78em; color: #0F6E6B; border-left: 2px solid #0F6E6B; padding-left: 10px; }
+.reveal #outcomes .where-head { display: block; width: 222px; margin: .5em 142px -.6em auto; font-size: .45em; letter-spacing: .06em; text-transform: uppercase; color: #66727C; }

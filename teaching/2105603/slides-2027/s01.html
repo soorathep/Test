@@ -157,6 +157,75 @@ Soorathep Kheawhom · 2105603 Advanced Chemical Engineering Thermodynamics
 </div>
 
 </section>
+<section id="course-map" class="slide level2">
+<h2>Where this session sits</h2>
+<div class="coursemap">
+<div class="half done">
+<p><span class="label">Before the midterm</span> <span class="cm">Equations of state</span> <span class="cm">Fugacity and chemical potential</span> <span class="cm">Solution thermodynamics</span></p>
+</div>
+<div class="half">
+<p><span class="label">After the midterm · 7 sessions</span> <span class="cm now">1 · VLE and flash</span> <span class="cm">2 · Experimental VLE and consistency</span> <span class="cm">3 · Liquid stability and LLE</span> <span class="cm">4 · Solids and adsorption</span> <span class="cm">5 · Chemical equilibrium</span> <span class="cm">6 · Electrochemical equilibrium</span> <span class="cm">7 · Choosing a model from evidence</span></p>
+</div>
+</div>
+<div class="bridge">
+<p>The first half gave you the <strong>condition</strong> for phase equilibrium. From today we <strong>use</strong> it: given T, P and a feed, which phases form, with what compositions and in what amounts?</p>
+</div>
+</section>
+<section id="why" class="slide level2">
+<h2>Why this matters: a flash drum</h2>
+<div class="columns">
+<div class="column" style="width:56%;">
+<svg class="flash-sketch" viewbox="0 0 640 370" role="img" aria-label="A hot liquid feed passes a valve into a flash drum; vapor leaves at the top and liquid at the bottom">
+  <defs><marker id="ah" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333F4A"></path></marker></defs>
+  <line x1="20" y1="190" x2="232" y2="190" stroke="#333F4A" stroke-width="3" marker-end="url(#ah)"></line>
+  <path d="M110,176 L110,204 L140,190 Z M170,176 L170,204 L140,190 Z" fill="#fff" stroke="#333F4A" stroke-width="2.5"></path>
+  <rect x="236" y="70" width="110" height="240" rx="50" fill="#fff" stroke="#333F4A" stroke-width="3"></rect>
+  <path d="M239,215 L343,215 L343,262 Q291,316 239,262 Z" fill="#0F6E6B" opacity=".22"></path>
+  <line x1="291" y1="70" x2="291" y2="40" stroke="#333F4A" stroke-width="3"></line>
+  <line x1="290" y1="40" x2="430" y2="40" stroke="#333F4A" stroke-width="3" marker-end="url(#ah)"></line>
+  <line x1="291" y1="310" x2="291" y2="335" stroke="#333F4A" stroke-width="3"></line>
+  <line x1="290" y1="335" x2="430" y2="335" stroke="#333F4A" stroke-width="3" marker-end="url(#ah)"></line>
+  <text x="20" y="146" class="s">Feed · 350 K</text><text x="20" y="172" class="s">z = 0.40 benzene</text>
+  <text x="140" y="232" class="s c">valve</text>
+  <text x="291" y="148" class="s c">50 kPa</text>
+  <text x="440" y="34" class="s">Vapor</text><text x="440" y="58" class="a">how much? y = ?</text>
+  <text x="440" y="329" class="s">Liquid</text><text x="440" y="353" class="a">x = ?</text>
+</svg>
+</div><div class="column why-notes" style="width:42%;">
+<p>A hot benzene + toluene liquid is let down to 50 kPa. Part of it boils.</p>
+<p>To size the drum and the equipment after it, you need <strong>how much vapor</strong> forms and <strong>what each stream contains</strong>.</p>
+<p>By the end of today you can answer this by hand and check it in Lab 01.</p>
+<p><span class="source">Answer in Lab 01, real-data case (NIST Antoine, ideal liquid): β = 0.593, y = 0.491, x = 0.268.</span></p>
+</div></div>
+</section>
+<section id="recap" class="slide level2">
+<h2>What you already know</h2>
+<div class="chain">
+<div class="link">
+<p><span class="label">From the first half</span> At equilibrium each component has the same fugacity in every phase.</p>
+<p><span class="math display">\hat f_i^{\,V}=\hat f_i^{\,L}</span></p>
+</div>
+<div class="link">
+<p><span class="label">At low pressure</span> Ideal vapor and the pure-liquid standard state give</p>
+<p><span class="math display">y_iP=x_i\gamma_iP_i^{\text{sat}}</span></p>
+</div>
+<div class="link today">
+<p><span class="label">Today: ideal liquid</span> Set γ<sub>i</sub> = 1. This is Raoult’s law, the simplest case to learn the method on.</p>
+<p><span class="math display">y_iP=x_iP_i^{\text{sat}}</span></p>
+</div>
+</div>
+<p>Sessions 2 and 3 bring back γ ≠ 1 from measured data.</p>
+</section>
+<section id="outcomes" class="slide level2">
+<h2>By the end of today you can</h2>
+<p><span class="where-head">Where you show it</span></p>
+<ol type="1">
+<li><strong>Read</strong> a Pxy diagram and say whether a feed is liquid, vapor or two phases. <span class="where">Activity 1</span></li>
+<li><strong>Calculate</strong> bubble and dew pressures of an ideal mixture. <span class="where">Concepts, Lab 01 demo</span></li>
+<li><strong>Solve</strong> a TP flash for x, y and the vapor fraction β, and check it with a component balance. <span class="where">Activity 2</span></li>
+<li><strong>Explain</strong> how raising P at fixed T changes the split, using numbers. <span class="where">Exit ticket</span></li>
+</ol>
+</section>
 <section id="route" class="slide level2">
 <h2>The 180-minute route</h2>
 <div class="route">
