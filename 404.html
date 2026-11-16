@@ -26,37 +26,28 @@ sitemap: false
 <script>
   const courseDownloads = {{ site.data.course_release_downloads | jsonify }};
   const legacyCoursePath = window.location.pathname;
-  const migratedCourse = legacyCoursePath.match(/^\/teaching\/(2105620|2105315|seminar3)(?:\/|$)/);
-  if (migratedCourse) {
+  const downloadUrl = courseDownloads[legacyCoursePath];
+  const migratedCourse = legacyCoursePath.match(/^\/teaching\/(2105620|2105315|2105623|seminar3)(?:\/|$)/);
+  const migratedFiles = legacyCoursePath.match(/^\/files\/(2105623)\//);
+  const moveTo = (url, title, label) => {
+    document.querySelector(".post-head h1").textContent = title;
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = label;
+    document.querySelector(".post-body").prepend(link);
+    window.location.replace(url);
+  };
+  if (typeof downloadUrl === "string") {
+    // Large course downloads are served by GitHub Releases.
+    moveTo(downloadUrl, "This course download has moved.", "Download from GitHub Releases");
+  } else if (migratedCourse) {
     const courseCode = migratedCourse[1];
     const coursePath = legacyCoursePath === "/teaching/" + courseCode ? legacyCoursePath + "/" : legacyCoursePath;
-    const courseUrl = "https://soorathep.github.io/course-" + courseCode + coursePath + window.location.search + window.location.hash;
-    const heading = document.querySelector(".post-head h1");
-    heading.textContent = "This course has moved.";
-    const link = document.createElement("a");
-    link.href = courseUrl;
-    link.textContent = "Open the course website";
-    document.querySelector(".post-body").prepend(link);
-    window.location.replace(courseUrl);
+    moveTo("https://soorathep.github.io/course-" + courseCode + coursePath + window.location.search + window.location.hash, "This course has moved.", "Open the course website");
+  } else if (migratedFiles) {
+    moveTo("https://soorathep.github.io/course-" + migratedFiles[1] + legacyCoursePath + window.location.search + window.location.hash, "This course file has moved.", "Open the course file");
   } else if (/^\/teaching\/seminars(?:\/|$)/.test(legacyCoursePath)) {
     const seminarPath = legacyCoursePath === "/teaching/seminars" ? legacyCoursePath + "/" : legacyCoursePath;
-    const seminarUrl = "https://soorathep.github.io/seminars" + seminarPath + window.location.search + window.location.hash;
-    document.querySelector(".post-head h1").textContent = "This seminar material has moved.";
-    const link = document.createElement("a");
-    link.href = seminarUrl;
-    link.textContent = "Open the seminar material";
-    document.querySelector(".post-body").prepend(link);
-    window.location.replace(seminarUrl);
-  } else {
-    const downloadUrl = courseDownloads[window.location.pathname];
-    if (typeof downloadUrl === "string") {
-      const heading = document.querySelector(".post-head h1");
-      heading.textContent = "This course download has moved.";
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.textContent = "Download from GitHub Releases";
-      document.querySelector(".post-body").prepend(link);
-      window.location.replace(downloadUrl);
-    }
+    moveTo("https://soorathep.github.io/seminars" + seminarPath + window.location.search + window.location.hash, "This seminar material has moved.", "Open the seminar material");
   }
 </script>

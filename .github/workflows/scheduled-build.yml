@@ -43,10 +43,6 @@ jobs:
           source: ./
           destination: ./_site
 
-      # Keep the downloadable Quarto source intact; Jekyll consumes YAML headers.
-      - name: Preserve MILP Quarto source
-        run: sudo cp teaching/2105623/milp/slides.qmd _site/teaching/2105623/milp/slides.qmd
-
       - name: Check published site size
         run: |
           size=$(du --apparent-size --block-size=1 --summarize _site | cut -f1)

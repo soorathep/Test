@@ -426,3 +426,18 @@ The new gallery's initial nine images were verified byte-for-byte after deployme
 ## Live Activities feed (16 November 2026)
 
 The homepage now fetches https://soorathep.github.io/activities/albums.json on every visit with cache revalidation, and randomly chooses from that current gallery. This supersedes the curated-snapshot limitation above. Add photos/albums only to the activities repository. No main_web edit is needed for new albums. Existing embedded metadata/images remain an immediate loading/offline/error fallback and preserve legacy image URLs. The remote photo is installed only after loading successfully; labels use textContent and photo URLs are constrained to the gallery image directory.
+
+### Retired 2105623 copies (16 November 2026)
+
+With the owner's explicit authorization, teaching/2105623, _teaching-src/2105623,
+files/2105623, _data/opt2026.yml and the two practice-engine checks were removed
+from this repository. Every removed file was first verified to exist in
+soorathep/course-2105623 (identical, or newer for the final-week class).
+The practice checks now live in that repository's tools/ folder.
+
+404.html sends old /teaching/2105623/ and /files/2105623/ URLs to
+https://soorathep.github.io/course-2105623/ with the same path, query and
+fragment. Paths listed in _data/course_release_downloads.json go to their
+GitHub Release asset first. Keep the course-downloads-20261107 Release assets:
+the course site links to them. Answers saved by the old practice pages in
+browser localStorage on www.skhgroup.net are not carried to the new origin.
